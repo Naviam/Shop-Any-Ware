@@ -1,0 +1,10 @@
+E:\TdService\TdService.Specs\bin\Debug\TdService.Specs.dll
+E:\TdService\TdService.Specs\bin\Debug\TdService.Specs.pdb
+E:\TdService\TdService.Specs\bin\Debug\nunit.framework.dll
+E:\TdService\TdService.Specs\bin\Debug\nunit.mocks.dll
+E:\TdService\TdService.Specs\bin\Debug\pnunit.framework.dll
+E:\TdService\TdService.Specs\bin\Debug\Rhino.Mocks.dll
+E:\TdService\TdService.Specs\bin\Debug\nunit.framework.xml
+E:\TdService\TdService.Specs\obj\Debug\ResolveAssemblyReference.cache
+E:\TdService\TdService.Specs\obj\Debug\TdService.Specs.dll
+E:\TdService\TdService.Specs\obj\Debug\TdService.Specs.pdb

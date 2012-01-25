@@ -1,0 +1,5 @@
+E:\TdService\TdService.Infrastructure\bin\Debug\TdService.Infrastructure.dll
+E:\TdService\TdService.Infrastructure\bin\Debug\TdService.Infrastructure.pdb
+E:\TdService\TdService.Infrastructure\obj\Debug\ResolveAssemblyReference.cache
+E:\TdService\TdService.Infrastructure\obj\Debug\TdService.Infrastructure.dll
+E:\TdService\TdService.Infrastructure\obj\Debug\TdService.Infrastructure.pdb
