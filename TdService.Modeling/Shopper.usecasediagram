@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" dslVersion="1.0.0.0" Id="6d340688-62b4-4e76-8141-e92cb18dc89d" name="Shopper" linkedPackageId="f6260d4a-b646-4db8-bc01-e83dd015c993" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <ownedCommentsInternal>
+    <comment Id="2fb1ca31-30dc-485e-b66e-9b08b3319529">
+      <elementDefinition Id="132c6b7b-ddfc-4488-9258-221415d95ca7" />
+      <body>Будет использоваться сторонний сервис вроде getsatisfaction.com</body>
+      <annotatedElements>
+        <useCaseMoniker Id="b3eb7a24-3c59-442f-a3e8-0ab04a95222d" LastKnownName="Leave Feedback" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="dd551789-0db1-4a49-989c-d881dd4de2e6" name="Shopper" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="e9f5ee6f-30a6-42e0-b103-1b5ef0aa4b74" />
+        <generalsInternal>
+          <generalization Id="f430db44-eba4-492b-b404-c3a8f8ab0a28" isSubstitutable="false">
+            <actorMoniker Id="d94e4008-a985-47b0-9810-9d075112740d" LastKnownName="Unregistered Shopper" />
+            <elementDefinition Id="73d5fa34-3591-4e4e-b5c8-ad8bbcb39290" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association Id="6200c3e8-749f-48a6-a0a7-6020abd04af7" isDerived="false" sourceEndRoleName="Shopper" targetEndRoleName="Manage Orders" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="541070da-9d24-4333-a336-ab3a76f95bf7" LastKnownName="Manage Orders" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="89cfff44-47c1-4c96-8e7b-43ff33a11994" name="Shopper" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="0b0045a6-a566-4986-8167-d7f2a15c6611" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b931c5a3-fd40-49b2-948e-2eb30897c102" name="Manage Orders" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="8790567d-dd91-48c9-993b-78b287cde8e8" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="18ccc95d-7f44-469b-adbe-7d823c494332" />
+          </association>
+          <association Id="a2b33dd8-4fe6-4aee-a906-56006a0734d8" isDerived="false" sourceEndRoleName="Shopper" targetEndRoleName="Manage Parcels" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="ebb7fc4b-bba1-4adc-93ae-e97ccccc55ff" LastKnownName="Manage Parcels" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="30e982fc-d74f-4b3a-92e4-245ffbde1e7e" name="Shopper" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="3a66fe56-7ac0-41ab-8995-03d73cfb0ecc" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="59600a69-5ce5-419a-a083-75188abd3006" name="Manage Parcels" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="2b2bb48e-6775-4a1f-b530-23de3e675109" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="c72f6c14-b6a9-4833-8252-40d33da414b8" />
+          </association>
+          <association Id="28628e48-bdf9-4370-8a89-e4afc64c8f85" isDerived="false" sourceEndRoleName="Shopper" targetEndRoleName="Manage Wallet Balance" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="0a3b4e8e-ef86-42a4-870e-67101770d928" LastKnownName="Manage Balance" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="cecaffd6-00bc-4aa8-981b-4f27dcd86242" name="Shopper" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="0285af73-4880-4617-a292-a15843f05e0d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d9ac357a-d510-4902-915a-a66e1056ab79" name="Manage Wallet Balance" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="da66132d-a6a4-4357-aee2-fbaf210ee09f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="4ddac90d-0325-44bb-a295-a575f29e20ed" />
+          </association>
+          <association Id="a8bbb710-9509-4d6b-967c-0071ffc8a756" isDerived="false" sourceEndRoleName="Shopper" targetEndRoleName="Edit Profile" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="3f785dcc-32a3-4b47-a1c2-ddcc15908991" LastKnownName="Edit Profile" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="0309575b-b533-4a6d-b0bf-90434eb9095a" name="Shopper" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="ded04920-e050-41e2-9ddd-7b6356ee0d54" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="89ee2ca5-a1cc-42c3-9a55-524033cdea80" name="Edit Profile" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="64163cc5-4135-410d-95b3-2341a73eb76a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="45e2954c-01d4-4b04-8caf-cce8e1059c93" />
+          </association>
+          <association Id="23b6a130-3ef6-44de-bb99-e9aa610ba25c" isDerived="false" sourceEndRoleName="Shopper" targetEndRoleName="Leave Feedback" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="b3eb7a24-3c59-442f-a3e8-0ab04a95222d" LastKnownName="Leave Feedback" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="9bd468a3-6d97-4224-87dd-616f0ae985b6" name="Shopper" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="958d5b19-cfd8-43b3-9a59-9db6019f95ac" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d8bf4637-21d1-4ace-be51-6b4815d2eea2" name="Leave Feedback" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="8e0b9670-e96f-4911-a525-9be6b58c8b16" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="848f8887-5820-467b-b581-5556073de256" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="d94e4008-a985-47b0-9810-9d075112740d" name="Unregistered Shopper" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="75ac1d6e-299b-4093-ab4a-3dd2d6e7737d" />
+        <targetEnds>
+          <association Id="6a731737-f74b-4ea0-a6db-9c3dbabc4f5e" isDerived="false" sourceEndRoleName="Unregistered Shopper" targetEndRoleName="Sign Up" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="d62caf26-6946-41c6-b73c-ba28205d6a43" LastKnownName="Sign Up" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="5e05b550-672e-4a59-b545-391d43a7aaac" name="Unregistered Shopper" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="fcf4efc0-06fd-45dd-a63c-9273a8461ff8" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d566f014-e077-48b8-93ca-7a7fe8d6b0ef" name="Sign Up" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="4f782b0c-b9d0-42d1-b505-ca80a3024ce3" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="c7ed1dda-3a40-4830-8c65-d02f774bff50" />
+          </association>
+          <association Id="afd099e1-df2c-4d49-8506-bb35bbac5e9a" isDerived="false" sourceEndRoleName="Unregistered Shopper" targetEndRoleName="Sign In" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="6d8dd29f-8955-402c-8473-8cada6248ded" LastKnownName="Sign In" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="18fdba01-c420-4f5d-9c52-e12233a128f5" name="Unregistered Shopper" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="4b287810-0f45-449f-b1ab-bcc412c017e9" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="88d43d25-2f1e-4cc3-a230-af63c6c4432c" name="Sign In" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="d3df5d98-a881-499f-a285-06081269ae3d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="fa2d622a-fd83-4674-be52-e8798ac2c9dc" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="6d8dd29f-8955-402c-8473-8cada6248ded" name="Sign In" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="88a649b1-1516-4115-bc3a-45d2d5f60868" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="d62caf26-6946-41c6-b73c-ba28205d6a43" name="Sign Up" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="5241251a-79d5-4b80-86f0-97fdc0356c1f" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="3f785dcc-32a3-4b47-a1c2-ddcc15908991" name="Edit Profile" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b3d3bc8d-0b95-4bd4-8ade-76358d805bde" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="ebb7fc4b-bba1-4adc-93ae-e97ccccc55ff" name="Manage Parcels" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="2cad333a-f9b3-421c-b1e8-dd13d79134b3" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="0a3b4e8e-ef86-42a4-870e-67101770d928" name="Manage Balance" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="87d61a3a-dfaa-4a00-adc3-1de58d33ab81" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="541070da-9d24-4333-a336-ab3a76f95bf7" name="Manage Orders" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="8da95ebf-5a37-44c4-91aa-7bd53e027b19" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="b3eb7a24-3c59-442f-a3e8-0ab04a95222d" name="Leave Feedback" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="3ff97449-7183-4a75-a127-a67da6ec6606" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="f6260d4a-b646-4db8-bc01-e83dd015c993" name="TdService.Modeling">
+    <elementDefinition Id="e006d43a-3bc9-452c-a7ce-47edd28d044b" />
+    <profileInstances>
+      <packageHasProfileInstances Id="328477ab-680d-4029-aa7e-ff8e4c7f292c">
+        <profileInstance Id="17f19715-507c-4a36-a9ca-29c93b9eb109" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="ce506ee7-9293-4467-ba3f-89a6ed0d5a6c">
+        <profileInstance Id="a631710e-828d-4c03-a16b-6342ec1d8a89" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</useCaseModelRoot>

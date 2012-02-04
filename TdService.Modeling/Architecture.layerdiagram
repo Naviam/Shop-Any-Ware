@@ -1,1 +1,91 @@
-﻿ 
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="94b3da72-4d99-464a-9709-821c13fb0fb3" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
+  <layers>
+    <layer Id="3722710d-1ad2-4e0f-9f69-9f21d117dca9" name="Web Server">
+      <childLayers>
+        <layer Id="37091d8f-140e-4324-9468-2fb39f55f4b6" name="TdService.Domain" forbiddenNamespace="TdService.Web">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="4aae14f8-96ed-4487-8f61-77b90b57260a" direction="Forward">
+              <layerMoniker Id="86dd802b-6142-45f9-8a72-fcaba9286a14" />
+            </dependencyFromLayerToLayer>
+            <dependencyFromLayerToLayer Id="3d396802-e50d-4ad7-89a1-0aa9991f52a6" direction="Forward">
+              <layerMoniker Id="408ec0ce-b6ca-48ad-9832-e619d6b046ff" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+          <childLayers>
+            <layer Id="6c396ed1-35ed-47b4-bbed-0f0601a6f2c0" name="Shopping Cart" />
+            <layer Id="4c889e2e-20ab-4878-9e6f-5c35d06b1268" name="Parcel Collection" />
+            <layer Id="98aa7daf-0cf1-4326-adb4-a0f945efa3e9" name="Balance Manager" />
+            <layer Id="28fd9faa-835d-4033-b7d1-370ed4f3b8db" name="Report Manager" />
+          </childLayers>
+        </layer>
+        <layer Id="86dd802b-6142-45f9-8a72-fcaba9286a14" name="TdService.Data">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="62b37836-5ffa-4211-bc0a-e30abb6287b5" direction="Forward">
+              <layerMoniker Id="97cb8cca-9169-43b1-a8b6-bab5a81da1b7" />
+            </dependencyFromLayerToLayer>
+            <dependencyFromLayerToLayer Id="ffc7eb3b-6b87-430d-af7a-0b2d06296e25" direction="Forward">
+              <layerMoniker Id="49f1c633-d0f6-49e2-9bbc-93be78563684" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+          <childLayers>
+            <layer Id="41788483-5307-4b66-8200-181047ded58d" name="Data Access Components" />
+            <layer Id="f55a7ca6-1ce2-4e8a-ba6f-69291037b0bd" name="Data Helpers/ Utilities" />
+            <layer Id="0521b501-e872-489a-8c10-7381fa5759fb" name="Service Agents" />
+          </childLayers>
+        </layer>
+        <layer Id="408ec0ce-b6ca-48ad-9832-e619d6b046ff" name="TdService.Infrastructure" forbiddenNamespace="TdService.Web">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="9b591109-4cf1-4775-97a0-67a8ba44f777" direction="Forward">
+              <layerMoniker Id="49f1c633-d0f6-49e2-9bbc-93be78563684" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+          <childLayers>
+            <layer Id="00ee4797-3409-4d42-8078-349b29539f85" name="Security" />
+            <layer Id="8f93c786-23c4-4996-9b94-2015c2643ecb" name="Communication" />
+            <layer Id="eb5dc268-6e4b-4ac8-b0c2-c4c036b02bfa" name="Operational Management" />
+            <layer Id="1d48e319-c463-47fc-965c-855bb033cfab" name="Logging" />
+          </childLayers>
+        </layer>
+        <layer Id="f73ca408-af5f-436c-8fe7-214aab239eb8" name="TdService.Web" forbiddenNamespace="TdService.Data">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="f49e34af-8e22-454c-8172-15f2dc326e5a" direction="Forward">
+              <layerMoniker Id="37091d8f-140e-4324-9468-2fb39f55f4b6" />
+              <description>Presentation layer obtains adjusted data from Domain layer.</description>
+            </dependencyFromLayerToLayer>
+            <dependencyFromLayerToLayer Id="635772a5-98f6-4cc3-a41d-fcb5c2e73c42" direction="Forward">
+              <layerMoniker Id="408ec0ce-b6ca-48ad-9832-e619d6b046ff" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+        </layer>
+      </childLayers>
+    </layer>
+    <layer Id="d5dc58aa-cfd2-497d-bae7-c0e4d92bf14e" name="TD Service Users">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="48b9146d-38fd-46c4-ba40-3dfb6061c3b0" direction="Bidirectional">
+          <layerMoniker Id="f73ca408-af5f-436c-8fe7-214aab239eb8" />
+          <description>Users interaction with TD service web site</description>
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <childLayers>
+        <layer Id="9d3918af-f732-4020-85ab-a28e4b287958" name="Shopper" />
+        <layer Id="43d1aff5-c99d-4dd9-b605-df12dc054846" name="Consultant" />
+        <layer Id="455ae044-82eb-4be0-91f9-066c6af89ed2" name="Operator" />
+        <layer Id="5b0bd5a5-f60b-47ae-a2e5-4c767163b76c" name="Administrator" />
+      </childLayers>
+    </layer>
+    <layer Id="49f1c633-d0f6-49e2-9bbc-93be78563684" name="Amazon Cloud Services">
+      <childLayers>
+        <layer Id="1ec6705f-e9b2-4e0a-a169-ef91810285b6" name="SimpleDB" />
+        <layer Id="ff01ea83-73d5-4cdb-88b0-e29366670c7d" name="Simple Email Service" />
+        <layer Id="3e125d91-dd50-4e52-a31a-88b0b8dd5998" name="DynamoDB" />
+        <layer Id="2f097d8a-78a1-4af9-8fd6-f670ebb2cf36" name="S3" />
+      </childLayers>
+    </layer>
+    <layer Id="97cb8cca-9169-43b1-a8b6-bab5a81da1b7" name="MySQL Server">
+      <childLayers>
+        <layer Id="6c206348-ba36-4d45-bb94-32c1184310db" name="TD Service Database" />
+      </childLayers>
+    </layer>
+  </layers>
+</layerModel>

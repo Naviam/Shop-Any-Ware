@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" dslVersion="1.0.0.0" Id="ecc7fd51-6afa-4726-a51d-4fa50970f98e" name="Consultant" linkedPackageId="aee3d19f-fc52-4a3d-a3d8-6ac5a1f08873" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <ownedCommentsInternal>
+    <comment Id="7402e340-ec2a-400c-89b9-cd00a55442f8">
+      <elementDefinition Id="12622981-4084-4c2c-85a5-dbde39741eec" />
+      <body>Искать заказ по:
+магазину,
+номеру отслеживания,
+номеру заказа</body>
+      <annotatedElements>
+        <useCaseMoniker Id="4f9909db-4ecb-4b35-ae0a-4f7289fb0d9c" LastKnownName="Search for order " />
+      </annotatedElements>
+    </comment>
+    <comment Id="9ecfb6c8-f1dc-4f12-bdf5-08374ee27234">
+      <elementDefinition Id="8d016082-446f-45df-ba77-40b1e3bdacd1" />
+      <body>Искать посылку по:
+номеру посылки,
+по заказу который включен в посылку,
+по имени пользователя,
+по дате.</body>
+      <annotatedElements>
+        <useCaseMoniker Id="e478728a-8834-42f8-a722-1bdd21087af2" LastKnownName="Search for parcel" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
+  <profileInstances>
+    <packageHasProfileInstances Id="7483ab61-dae0-40e1-9190-35c96f319302">
+      <profileInstance Id="8363664e-629c-42fe-9e36-d95ad7f25ad5" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="e7d13e14-9292-4b22-93a4-527e3f4fde28">
+      <profileInstance Id="fb88fa38-f7a7-4463-86a3-ae87e04227dd" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="983f5ba5-9712-462e-ac00-3f716005d370" name="Consultant" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b951e9ed-e95f-46d2-9b59-5db1a78dfd9e" />
+        <targetEnds>
+          <association Id="45ca3752-d0f9-4a40-a20b-65945f1ca9b9" isDerived="false" sourceEndRoleName="Consultant" targetEndRoleName="View All Orders" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="e6459020-df58-42fc-bc1c-3b49161d757f" LastKnownName="View All Orders" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="445b261b-0c05-400d-bff4-6148c4803ab2" name="Consultant" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="a179e3d1-8132-41b1-961f-e043a53a8534" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="51d42b24-ddda-4293-8854-dcec563ec14b" name="View All Orders" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="0375fb40-30e8-444c-8bd4-ffec9788c272" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="dc570c19-536d-494c-b1a2-eb45dc07594b" />
+          </association>
+          <association Id="baf83f26-29b3-40fb-9877-2d55f331f530" isDerived="false" sourceEndRoleName="Consultant" targetEndRoleName="View All Parcels" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="dc6840a7-e69f-491f-b165-386084c6537f" LastKnownName="View All Parcels" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="cb788569-40fb-4ed4-894d-d702e84190ff" name="Consultant" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="08074895-fe28-4f44-a4c5-111ee6fcd201" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="4146e7d5-5338-45ef-a46d-4b395bcf730c" name="View All Parcels" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="0a3547e5-9afc-4990-880b-e5c1c3ba1e78" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="85bf1399-8bac-4a50-aa5e-826f2f7413a7" />
+          </association>
+          <association Id="14894adc-0124-41c5-92b9-cdd24d6b4ec8" isDerived="false" sourceEndRoleName="Consultant" targetEndRoleName="Review and answer user questions" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="64d75ca6-a263-4d65-99cd-e345984b75a6" LastKnownName="Review and answer user questions" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="dedc5948-c002-4b83-a737-c1943e98c7cd" name="Consultant" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="33dab028-6806-4a21-834f-7b5e96781740" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="66264b97-2787-474c-9a01-028bf5639b4b" name="Review and answer user questions" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="08a08150-7063-4cbb-85c6-05e8b6dd74c7" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="59797226-57b4-4c43-8be0-fe3bd16527ba" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="4f9909db-4ecb-4b35-ae0a-4f7289fb0d9c" name="Search for order " isAbstract="false" isLeaf="false">
+        <elementDefinition Id="9e1c955f-7ac1-4c5d-a379-a972a1861bf7" />
+        <additions>
+          <include Id="60bc080e-5ca1-4f53-84be-0924d25b7c8c">
+            <useCaseMoniker Id="7c95e8b0-a2c0-4f8a-bed5-f87a9cc0af1f" LastKnownName="View Order Information" />
+            <elementDefinition Id="a5622ff0-0fef-427b-9f42-cfcba25be791" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="7c95e8b0-a2c0-4f8a-bed5-f87a9cc0af1f" name="View Order Information" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="da5f659d-2f33-4c59-a273-e2179676ab9f" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="e478728a-8834-42f8-a722-1bdd21087af2" name="Search for parcel" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="717839b2-60be-4b2d-aabb-12e061c63043" />
+        <additions>
+          <include Id="392df4e0-53e1-4c4d-a404-e62dceced3e8">
+            <useCaseMoniker Id="0f304b29-96dd-4492-9aa5-b739d2940649" LastKnownName="View Parcel Information" />
+            <elementDefinition Id="36192341-23ab-46f0-9797-b3b81c0e777d" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="0f304b29-96dd-4492-9aa5-b739d2940649" name="View Parcel Information" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="63411706-38c2-42f4-a274-196e390d5cbb" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="e6459020-df58-42fc-bc1c-3b49161d757f" name="View All Orders" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="064e49f1-47fb-422f-a572-18aecd24a541" />
+        <additions>
+          <include Id="abc99f04-844c-48a8-9be7-a9347d5a1381">
+            <useCaseMoniker Id="4f9909db-4ecb-4b35-ae0a-4f7289fb0d9c" LastKnownName="Search for order " />
+            <elementDefinition Id="d6b06bf2-7668-4066-86cc-23f47d3bb878" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="dc6840a7-e69f-491f-b165-386084c6537f" name="View All Parcels" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="a81b5573-1c73-4e9e-8935-36bb3a391595" />
+        <additions>
+          <include Id="824d1006-989d-41f2-985f-f2a9d16c94e9">
+            <useCaseMoniker Id="e478728a-8834-42f8-a722-1bdd21087af2" LastKnownName="Search for parcel" />
+            <elementDefinition Id="fef0cbe4-ba14-4571-805b-235b0dd282f3" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="64d75ca6-a263-4d65-99cd-e345984b75a6" name="Review and answer user questions" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="6d98453c-ea4a-4389-9790-c47d9f6211ba" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="aee3d19f-fc52-4a3d-a3d8-6ac5a1f08873" name="TdService.Modeling">
+    <elementDefinition Id="e006d43a-3bc9-452c-a7ce-47edd28d044b" />
+  </package>
+</useCaseModelRoot>

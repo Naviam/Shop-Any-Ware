@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Time">
+  <useCaseModelRootMoniker Id="a76753eb-0ed2-4cc5-a63a-f8c8f71431bf" />
+  <nestedChildShapes>
+    <actorShape Id="335638b5-e5e1-4673-86c4-886e902a7de2" absoluteBounds="1, 3.125, 0.5, 0.5" isReference="false" heightOffset="0">
+      <actorMoniker Id="372b7775-1eef-40f6-b36a-61315c4efa10" LastKnownName="Time" />
+      <relativeChildShapes />
+    </actorShape>
+    <SubsystemShape Id="c78943a5-9c01-447e-9d15-d654c9bec997" absoluteBounds="3, 1.875, 3.125, 3.125" customColor="White">
+      <subsystemMoniker Id="9607c95a-74cd-43a7-98b8-3575b01cef3c" LastKnownName="Email Notification System" />
+      <nestedChildShapes>
+        <useCaseShape Id="7e172fff-9799-46fc-b471-ef241cee2285" absoluteBounds="3.75, 2.375, 1.5, 0.75" customColor="238, 237, 131" heightOffset="0">
+          <useCaseMoniker Id="3c2b9783-ece6-4ddd-99c7-384711c76bb3" LastKnownName="Notify Warehousing period is close to end" />
+          <relativeChildShapes />
+        </useCaseShape>
+        <useCaseShape Id="faa67058-7877-4b37-a742-5d19eab0379a" absoluteBounds="3.75, 3.75, 1.5, 0.75" customColor="238, 237, 131" heightOffset="0">
+          <useCaseMoniker Id="c5efea55-c6a3-47b7-a648-dd3b8ec42671" LastKnownName="Send weekly financial report" />
+          <relativeChildShapes />
+        </useCaseShape>
+      </nestedChildShapes>
+    </SubsystemShape>
+    <useCaseAssociationConnector edgePoints="[(1.5 : 3.32692307692308); (3.79999079534771 : 2.88461715474083)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+      <associationMoniker Id="607c206d-f134-4d8d-a905-da59d45a431c" />
+      <relativeChildShapes />
+      <nodes>
+        <actorShapeMoniker Id="335638b5-e5e1-4673-86c4-886e902a7de2" />
+        <useCaseShapeMoniker Id="7e172fff-9799-46fc-b471-ef241cee2285" />
+      </nodes>
+    </useCaseAssociationConnector>
+    <useCaseAssociationConnector edgePoints="[(1.5 : 3.43269230769231); (3.81903046162466 : 3.96785318345184)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+      <associationMoniker Id="4dab08f8-1300-4975-8e3c-4185f5c85ab6" />
+      <relativeChildShapes />
+      <nodes>
+        <actorShapeMoniker Id="335638b5-e5e1-4673-86c4-886e902a7de2" />
+        <useCaseShapeMoniker Id="faa67058-7877-4b37-a742-5d19eab0379a" />
+      </nodes>
+    </useCaseAssociationConnector>
+  </nestedChildShapes>
+</useCaseDiagram>

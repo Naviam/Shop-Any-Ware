@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" dslVersion="1.0.0.0" Id="7a754603-a75f-4757-9cf6-bf3ccced79d4" name="Use Case" linkedPackageId="6e30d7dd-ffa3-4edd-9141-c373e4d58d72" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <ownedCommentsInternal>
+    <comment Id="59770625-62ec-4c4d-b2f6-238db67a2385">
+      <elementDefinition Id="e5d093a9-bfbf-43b4-a912-2521fbce3d66" />
+      <body>Покупатель
+1. работать с заказами
+    - добавлять;
+    - редактировать; 
+    - оформлять возврат;
+    - удалять заказы;
+    - заполнять таможенную декларацию;
+    - добавить сервис.
+2. работать с посылками
+    - собирать заказы в посылку;
+    - просматривать посылки;
+    - редактировать; и
+    - удалять;
+    - добавить сервис.
+2.5 кошелек (баланс)
+    - пополнение кошелька;
+    - просмотр баланса
+- просмотр истории транзакций.
+3. профайл
+    - просматривать
+    - редактировать имя и фамилию,
+    - менять настройки нотификации
+ - адреса доставки
+    - добалять;
+    - редактировать; и
+    - удалять.</body>
+      <annotatedElements>
+        <actorMoniker Id="2c2242d2-c529-4031-bf0d-271835ebe7cc" LastKnownName="Shopper" />
+      </annotatedElements>
+    </comment>
+    <comment Id="8b303e66-5628-40ae-8b51-241a56614940">
+      <elementDefinition Id="1c6a76f6-557d-4f7a-90ca-96bdc9539cb7" />
+      <body>Консультант
+- искать заказ по номеру и имени пользователя; 
+- просматривать информацию по любому заказу;
+- искать посылку по номеру и имени польователя;
+- просматривать информацию по любой посылке.
+- просматривать и отвечать на вопросы пользователей
+ </body>
+      <annotatedElements>
+        <actorMoniker Id="8ef39ebf-dcdd-4431-a28b-811961e633ac" LastKnownName="Consultant" />
+      </annotatedElements>
+    </comment>
+    <comment Id="d7fb2f2d-f3d3-4155-93c5-535f94cfb87c">
+      <elementDefinition Id="7955a667-ad21-44d8-904a-89e17c860edc" />
+      <body>Оператор
+1. редактировать заказы
+   - обновлять вес; 
+   - дату прибытия; 
+   - статус; 
+   - добавлять фотографии.
+2. поиск заказа
+   - по номеру трекинга;
+   - магазину; 
+   - номер заказа; и
+   - имени пользователя.
+3. посылки 
+   - просматривать очередь формирования посылок;
+   - обрабатывать посылку (менять статус на в обработке).
+</body>
+      <annotatedElements>
+        <actorMoniker Id="59ecd3f7-2255-43e9-b352-85de1c1aad0b" LastKnownName="Operator" />
+      </annotatedElements>
+    </comment>
+    <comment Id="f3f0ef29-cfc7-42fa-81f0-8537d2a39de9">
+      <elementDefinition Id="7e0a1718-614e-4acf-a726-17a8fcb6b02b" />
+      <body>Администратор
+1. работа с заказами
+   - просматривать весь список,
+   - фильтровать список по пользователям.
+   - редактировать любой заказ из списка,
+   - удалять заказы.
+2. работать с посылками
+   - просматривать все посылки,
+   - фильтровать список по пользовтелям,
+   - редактировать,
+   - удалять посылки.
+3. статистика по продажам (сервисов)
+   - просматривать по периодам.
+4. сервисы
+   - просмотр;
+   - обновлять стоимость сервисов.
+</body>
+      <annotatedElements>
+        <actorMoniker Id="b4c1fc40-45c8-489a-90ca-ac5d8928bbbf" LastKnownName="Administrator" />
+      </annotatedElements>
+    </comment>
+    <comment Id="4bf0559e-ea3c-49b8-ac81-ed7160c685a7">
+      <elementDefinition Id="96fa0adc-f8b5-4184-aaa7-dc628d901eb7" />
+      <body>Время
+ - отправлять уведомление пользователям у которых товар находиться на складе 3 недели и больше,
+ - отправлять финансовый отчет администратору еженедельно</body>
+      <annotatedElements>
+        <actorMoniker Id="43e69a44-b24a-4e14-842a-2cfbe309957a" LastKnownName="Time" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <subsystem Id="6059dd91-797f-4156-af54-2e40b1a66a76" name="TD Service - Online Mail Forwarding" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <ownedCommentsInternal>
+          <comment Id="fbdffd84-2f24-4d79-9d9a-c6e898c74bc5">
+            <elementDefinition Id="b798dc59-d985-4478-ae3c-94e2b9a5c0fa" />
+            <body>Интернет сервис форвардинга почтовых отправлений. Предоставляет возможность заказать товар из любых американских магазинов с доставкой в любую точку мира.</body>
+          </comment>
+        </ownedCommentsInternal>
+        <elementDefinition Id="eeac1e7f-c616-4d6d-aa3d-acbdcc26df4a" />
+      </subsystem>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="8ef39ebf-dcdd-4431-a28b-811961e633ac" name="Consultant" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b951e9ed-e95f-46d2-9b59-5db1a78dfd9e" />
+        <targetEnds>
+          <association Id="0df86b41-4690-405e-adf9-e30b04eb189e" isDerived="false" sourceEndRoleName="Sales Representative" targetEndRoleName="TD Service - Online Mail Forwarding" isLeaf="false" isAbstract="false">
+            <subsystemMoniker Id="6059dd91-797f-4156-af54-2e40b1a66a76" LastKnownName="TD Service - Online Mail Forwarding" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="2a628df8-05ce-455b-8afb-5d1d859a5c96" name="Sales Representative" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="556dc0d5-b65a-43a4-a161-d72f9b59ad14" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="116b3c02-84b6-46e2-9eac-039cdf51aa3d" name="TD Service - Online Mail Forwarding" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="2ac14ab8-bcfb-4555-b320-249dbe4f636d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="64f93b79-c0a7-4d37-ac95-4acb0187d577" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="b4c1fc40-45c8-489a-90ca-ac5d8928bbbf" name="Administrator" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="e28f6efb-ff69-4dce-a802-6087dce5a157" />
+        <targetEnds>
+          <association Id="de7d9b70-f7ec-49ed-8a66-259fc500beae" isDerived="false" sourceEndRoleName="Administrator" targetEndRoleName="TD Service - Online Mail Forwarding" isLeaf="false" isAbstract="false">
+            <subsystemMoniker Id="6059dd91-797f-4156-af54-2e40b1a66a76" LastKnownName="TD Service - Online Mail Forwarding" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="64e84381-c5ff-4206-82a1-ddb23cb6d362" name="Administrator" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="d25315dc-2693-4459-a264-7ab93a5390b2" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="545cff54-ee07-425a-92da-594075836d64" name="TD Service - Online Mail Forwarding" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="00d57581-d5a0-4913-abb4-2134bb605f4a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="82a1f73f-ab63-4624-ba22-2b6b47479dc4" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="59ecd3f7-2255-43e9-b352-85de1c1aad0b" name="Operator" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f1d02f09-f7a3-46f4-9184-50abd90f21cd" />
+        <targetEnds>
+          <association Id="e8c18318-a8ba-4783-b937-ff82f7c02113" isDerived="false" sourceEndRoleName="Operator" targetEndRoleName="TD Service - Online Mail Forwarding" isLeaf="false" isAbstract="false">
+            <subsystemMoniker Id="6059dd91-797f-4156-af54-2e40b1a66a76" LastKnownName="TD Service - Online Mail Forwarding" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="edaf0c5b-fcfd-4fbb-9c6a-d4b14b94a1aa" name="Operator" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="2a5b58de-60e3-4245-bf2e-bfefa07b1922" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="7f19a97d-6170-4bfc-a688-0ac12c4bae1e" name="TD Service - Online Mail Forwarding" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="4e0609d8-2aad-486a-a2cd-4431c6a1e571" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="537f8636-608d-4056-9960-ec0571c260bb" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="2c2242d2-c529-4031-bf0d-271835ebe7cc" name="Shopper" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="e9f5ee6f-30a6-42e0-b103-1b5ef0aa4b74" />
+        <targetEnds>
+          <association Id="68269018-cac8-47aa-b403-73a1f1635031" isDerived="false" sourceEndRoleName="Shopper" targetEndRoleName="TD Service - Online Mail Forwarding" isLeaf="false" isAbstract="false">
+            <subsystemMoniker Id="6059dd91-797f-4156-af54-2e40b1a66a76" LastKnownName="TD Service - Online Mail Forwarding" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="40f9f6cf-2dc2-4f30-9e68-2766279d9407" name="Shopper" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="fdb6ef2f-be79-4bc0-aa8e-8843e680307c" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c378f538-a618-40fc-b5d8-c69892028be9" name="TD Service - Online Mail Forwarding" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="aaeca98d-6530-42b2-b4c9-ba89990c2ad7" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="4639ab3e-c7f8-4f25-a63c-1aaffd814c90" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="43e69a44-b24a-4e14-842a-2cfbe309957a" name="Time" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="9e855f96-4af5-4e60-a59a-006798996531" />
+        <targetEnds>
+          <association Id="1a06dc3a-fd5f-43cb-8f8c-e0613af39b46" isDerived="false" sourceEndRoleName="Time" targetEndRoleName="TD Service - Online Mail Forwarding" isLeaf="false" isAbstract="false">
+            <subsystemMoniker Id="6059dd91-797f-4156-af54-2e40b1a66a76" LastKnownName="TD Service - Online Mail Forwarding" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="1d01159c-14e4-4cf8-9872-668ece0a3c81" name="Time" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="3efe72c7-ea9b-49e2-8ccc-52e5a60ba465" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="dae12b4f-b7fd-422d-9e99-fece35362bfb" name="TD Service - Online Mail Forwarding" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="13a7769e-752b-4efe-bc2e-b5d0df8d47c6" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="d2792991-07bd-41b4-a623-9518c28a7a2d" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="6e30d7dd-ffa3-4edd-9141-c373e4d58d72" name="TdService.Modeling">
+    <elementDefinition Id="e006d43a-3bc9-452c-a7ce-47edd28d044b" />
+    <profileInstances>
+      <packageHasProfileInstances Id="392aaa15-b06e-43f0-b582-9d322e86ab08">
+        <profileInstance Id="05d10359-b115-48e8-826c-d6e9f2bbd618" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="61552c53-3245-4a38-9310-03905c3af964">
+        <profileInstance Id="dcaeb10b-a246-4341-965a-8706f9dc3cc6" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</useCaseModelRoot>
