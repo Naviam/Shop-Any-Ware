@@ -37,7 +37,7 @@
     <DeployIisAppPath>tdservice</DeployIisAppPath>
     <PublishDatabases>false</PublishDatabases>
     <RunCodeAnalysis>true</RunCodeAnalysis>
-    <IncludeIisSettings>true</IncludeIisSettings>
+    <IncludeIisSettings>false</IncludeIisSettings>
     <DeployIisAppPhysicalPath>C:\inetpub\wwwroot</DeployIisAppPhysicalPath>
     <IncludeAppPool>true</IncludeAppPool>
   </PropertyGroup>
