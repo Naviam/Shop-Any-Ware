@@ -19,7 +19,19 @@ Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "TdService.Modeling", "TdSer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TdService.Specs", "TdService.Specs\TdService.Specs.csproj", "{F55B2888-785A-4CEA-A0D7-E4A99ACE30C4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TdService.UnitTests", "TdService.UnitTests\TdService.UnitTests.csproj", "{41DF55CC-1535-490B-ABA4-C74A50BA2BE7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{94B7E0F7-1EEC-48C3-9AE6-F95A799FE458}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+		TdService.vsmdi = TdService.vsmdi
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
 Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = TdService.vsmdi
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -49,6 +61,10 @@ Global
 		{F55B2888-785A-4CEA-A0D7-E4A99ACE30C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F55B2888-785A-4CEA-A0D7-E4A99ACE30C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F55B2888-785A-4CEA-A0D7-E4A99ACE30C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41DF55CC-1535-490B-ABA4-C74A50BA2BE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41DF55CC-1535-490B-ABA4-C74A50BA2BE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41DF55CC-1535-490B-ABA4-C74A50BA2BE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41DF55CC-1535-490B-ABA4-C74A50BA2BE7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
