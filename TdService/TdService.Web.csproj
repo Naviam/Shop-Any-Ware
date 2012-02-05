@@ -37,6 +37,9 @@
     <DeployIisAppPath>tdservice</DeployIisAppPath>
     <PublishDatabases>false</PublishDatabases>
     <RunCodeAnalysis>true</RunCodeAnalysis>
+    <IncludeIisSettings>true</IncludeIisSettings>
+    <DeployIisAppPhysicalPath>C:\inetpub\wwwroot</DeployIisAppPhysicalPath>
+    <IncludeAppPool>true</IncludeAppPool>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Elmah">
