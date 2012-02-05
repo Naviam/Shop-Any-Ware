@@ -1,8 +1,0 @@
-E:\TdService\TdService.Data\bin\Debug\TdService.Data.dll
-E:\TdService\TdService.Data\bin\Debug\TdService.Data.pdb
-E:\TdService\TdService.Data\bin\Debug\EntityFramework.dll
-E:\TdService\TdService.Data\bin\Debug\mysql.data.dll
-E:\TdService\TdService.Data\bin\Debug\EntityFramework.xml
-E:\TdService\TdService.Data\obj\Debug\ResolveAssemblyReference.cache
-E:\TdService\TdService.Data\obj\Debug\TdService.Data.dll
-E:\TdService\TdService.Data\obj\Debug\TdService.Data.pdb

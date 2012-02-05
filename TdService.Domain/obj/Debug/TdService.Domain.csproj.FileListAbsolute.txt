@@ -1,9 +1,0 @@
-E:\TdService\TdService.Domain\bin\Debug\TdService.Domain.dll
-E:\TdService\TdService.Domain\bin\Debug\TdService.Domain.pdb
-E:\TdService\TdService.Domain\bin\Debug\TdService.Data.dll
-E:\TdService\TdService.Domain\bin\Debug\TdService.Infrastructure.dll
-E:\TdService\TdService.Domain\bin\Debug\TdService.Data.pdb
-E:\TdService\TdService.Domain\bin\Debug\TdService.Infrastructure.pdb
-E:\TdService\TdService.Domain\obj\Debug\ResolveAssemblyReference.cache
-E:\TdService\TdService.Domain\obj\Debug\TdService.Domain.dll
-E:\TdService\TdService.Domain\obj\Debug\TdService.Domain.pdb
