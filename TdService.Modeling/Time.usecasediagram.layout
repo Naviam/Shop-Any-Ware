@@ -10,11 +10,11 @@
       <subsystemMoniker Id="9607c95a-74cd-43a7-98b8-3575b01cef3c" LastKnownName="Email Notification System" />
       <nestedChildShapes>
         <useCaseShape Id="7e172fff-9799-46fc-b471-ef241cee2285" absoluteBounds="3.75, 2.375, 1.5, 0.75" customColor="238, 237, 131" heightOffset="0">
-          <useCaseMoniker Id="3c2b9783-ece6-4ddd-99c7-384711c76bb3" LastKnownName="Notify Warehousing period is close to end" />
+          <useCaseMoniker Id="3c2b9783-ece6-4ddd-99c7-384711c76bb3" LastKnownName="Send Warehousing Period Ends Notification" />
           <relativeChildShapes />
         </useCaseShape>
-        <useCaseShape Id="faa67058-7877-4b37-a742-5d19eab0379a" absoluteBounds="3.75, 3.75, 1.5, 0.75" customColor="238, 237, 131" heightOffset="0">
-          <useCaseMoniker Id="c5efea55-c6a3-47b7-a648-dd3b8ec42671" LastKnownName="Send weekly financial report" />
+        <useCaseShape Id="faa67058-7877-4b37-a742-5d19eab0379a" absoluteBounds="3.75, 3.75, 1.375, 0.625" customColor="238, 237, 131" heightOffset="0">
+          <useCaseMoniker Id="c5efea55-c6a3-47b7-a648-dd3b8ec42671" LastKnownName="Send Weekly Financial Report" />
           <relativeChildShapes />
         </useCaseShape>
       </nestedChildShapes>
@@ -27,7 +27,7 @@
         <useCaseShapeMoniker Id="7e172fff-9799-46fc-b471-ef241cee2285" />
       </nodes>
     </useCaseAssociationConnector>
-    <useCaseAssociationConnector edgePoints="[(1.5 : 3.43269230769231); (3.81903046162466 : 3.96785318345184)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+    <useCaseAssociationConnector edgePoints="[(1.5 : 3.42892156862745); (3.81637876539006 : 3.92853267488805)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
       <associationMoniker Id="4dab08f8-1300-4975-8e3c-4185f5c85ab6" />
       <relativeChildShapes />
       <nodes>

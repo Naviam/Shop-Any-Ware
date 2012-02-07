@@ -1,0 +1,374 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="482addb2-f428-40c1-8a28-e6e5eda6361b" name="Operator" linkedPackageId="47568c98-c85e-4205-8f8c-8ae35b6bc9f5" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <ownedCommentsInternal>
+    <comment Id="6e8584e0-34e8-4a4a-aff1-2039c57a942d">
+      <elementDefinition Id="5ae0b9c2-2377-4e0e-80ea-b9d59eff6775" />
+      <body>Filter by:
+- shop,
+- tracking number,
+- order number</body>
+      <annotatedElements>
+        <useCaseMoniker Id="339f7fc0-3111-4b9b-86d2-0e666b2b22f5" LastKnownName="Filter Orders" />
+      </annotatedElements>
+    </comment>
+    <comment Id="2e1e950e-bc7e-43b7-838e-7720189941f1">
+      <elementDefinition Id="0580722a-730b-439f-abbe-90f772f8ae4a" />
+      <body>see all orders in the system</body>
+      <annotatedElements>
+        <useCaseMoniker Id="34c27c77-1ec5-4d8d-b64a-3e9ed037c0bb" LastKnownName="View Orders" />
+      </annotatedElements>
+    </comment>
+    <comment Id="95900b84-1b8e-470d-bfbb-3c431fd30a4a">
+      <elementDefinition Id="686038e6-d59e-438f-ae54-951539feaf9d" />
+      <body>Filter by:
+- parcel number,
+- order number included in this parcel,
+- user first and last name,
+- date</body>
+      <annotatedElements>
+        <useCaseMoniker Id="40e4eb16-fcaa-4ed0-a50d-8d72105075c6" LastKnownName="Filter Parcels" />
+      </annotatedElements>
+    </comment>
+    <comment Id="16ed56a7-c123-46de-a9f0-1cf5e4bdca07">
+      <elementDefinition Id="cd28c291-946e-4af4-8c13-d26cbf44a5ad" />
+      <body>see all parcels in the system</body>
+      <annotatedElements>
+        <useCaseMoniker Id="7fdc625c-8db7-4a4d-9b49-bf1bc062205e" LastKnownName="View Parcels" />
+      </annotatedElements>
+    </comment>
+    <comment Id="c9c4a3e7-4307-499f-9ba7-639cd71d3306">
+      <elementDefinition Id="af7d6f08-5d26-45ce-a64b-6eba62b1e98d" />
+      <body>only operator and administrator can make these updates</body>
+      <annotatedElements>
+        <useCaseMoniker Id="7cc0fe59-7304-492e-b84e-01dbfebba250" LastKnownName="Update Order Weight" />
+        <useCaseMoniker Id="ea468d16-aff6-4e5e-9453-5733cd599b44" LastKnownName="Update Arrival Date" />
+        <useCaseMoniker Id="04d4b337-4475-4e5c-8dfb-9eabf1898b30" LastKnownName="Update Status" />
+        <useCaseMoniker Id="005fa9f7-d1a9-4a6a-8bb1-5cd9de02a3d7" LastKnownName="Upload Photoes" />
+        <useCaseMoniker Id="68e70738-c884-41ee-ab5d-cc8ca1c30a4a" LastKnownName="Update Parcel Status" />
+      </annotatedElements>
+    </comment>
+    <comment Id="6f5e9ab3-e3ac-4e0f-a3d1-c9ad7fe30ff1">
+      <elementDefinition Id="89ec5032-030c-43b7-8bb9-a1d020b351ae" />
+      <body>only for administrator</body>
+      <annotatedElements>
+        <useCaseMoniker Id="35716bf0-04f7-41c6-9233-093e3643d37a" LastKnownName="Update Parcel" />
+        <useCaseMoniker Id="526da2be-9235-41c2-a10a-0354d071236a" LastKnownName="Remove Parcel" />
+      </annotatedElements>
+    </comment>
+    <comment Id="d885175c-d359-4b06-8434-2e1f4137f6aa">
+      <elementDefinition Id="5beec9cb-b094-4f6b-a12b-c4ad0c261a22" />
+      <body>only for administrators</body>
+      <annotatedElements>
+        <useCaseMoniker Id="c68b8339-26fe-4f9f-9277-153d6bc7ab62" LastKnownName="Update Order" />
+        <useCaseMoniker Id="fe88ecd1-c022-4f22-ac28-78357a4a599a" LastKnownName="Remove Order" />
+      </annotatedElements>
+    </comment>
+    <comment Id="8e72affb-5421-4ff0-ac0e-4283b3a7ac23">
+      <elementDefinition Id="a47ec726-78c3-4d57-a040-079334bb58e5" />
+      <body>Filter by:
+- date range</body>
+      <annotatedElements>
+        <useCaseMoniker Id="70818528-d2a8-4eff-8671-5062563d1ba9" LastKnownName="Filter Sales Report" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="b831337e-e24d-4043-a38b-9a9d9fee50b4" name="Operator" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f1d02f09-f7a3-46f4-9184-50abd90f21cd" />
+        <generalsInternal>
+          <generalization Id="a644d9f4-7c96-45ca-8ea1-37d97e2e3efb" isSubstitutable="false">
+            <actorMoniker Id="e550a1cc-a0b9-4c8e-a814-f7e2bb30b3ad" LastKnownName="Consultant" />
+            <elementDefinition Id="f484a2f1-b6da-403b-9998-f05f7b9465b1" />
+          </generalization>
+        </generalsInternal>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="32974169-5fb0-4a76-8940-da5f2516a222" name="View Order Details" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="da5f659d-2f33-4c59-a273-e2179676ab9f" />
+        <additions>
+          <include Id="f30e2156-3286-447d-847f-e9f6fc6f4aa4">
+            <useCaseMoniker Id="7cc0fe59-7304-492e-b84e-01dbfebba250" LastKnownName="Update Order Weight" />
+            <elementDefinition Id="e4f2cc6c-503d-4978-a2d7-9678e8e27831" />
+          </include>
+          <include Id="b8ae48bc-dfa0-4968-b9ec-7c27e42ce432">
+            <useCaseMoniker Id="ea468d16-aff6-4e5e-9453-5733cd599b44" LastKnownName="Update Arrival Date" />
+            <elementDefinition Id="db2b3f73-8258-493d-96c2-27c89c06d550" />
+          </include>
+          <include Id="1a44b2d9-6284-4880-b2d8-5060d52b688e">
+            <useCaseMoniker Id="04d4b337-4475-4e5c-8dfb-9eabf1898b30" LastKnownName="Update Status" />
+            <elementDefinition Id="3a0bfd14-9c03-4b21-870a-e60ff65f4f21" />
+          </include>
+          <include Id="29ca71f1-5e76-4d4a-9f32-5cb2c6327007">
+            <useCaseMoniker Id="005fa9f7-d1a9-4a6a-8bb1-5cd9de02a3d7" LastKnownName="Upload Photoes" />
+            <elementDefinition Id="1ba5d142-80a6-41a3-8b0c-ceea348c8261" />
+          </include>
+          <include Id="9724d612-674c-4897-9a16-ecfbc5af88ef">
+            <useCaseMoniker Id="c68b8339-26fe-4f9f-9277-153d6bc7ab62" LastKnownName="Update Order" />
+            <elementDefinition Id="2d0f6c0a-2fdc-4060-aa69-3fc688594778" />
+          </include>
+          <include Id="a39df582-26a7-4f13-a8a7-08725e6ba1d7">
+            <useCaseMoniker Id="fe88ecd1-c022-4f22-ac28-78357a4a599a" LastKnownName="Remove Order" />
+            <elementDefinition Id="f70c81e6-f361-4e42-9315-cf1f02171d49" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="2e81e010-2986-48a3-8fa0-6f19a59639b4" name="View Parcel Details" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="63411706-38c2-42f4-a274-196e390d5cbb" />
+        <additions>
+          <include Id="19d8acae-7c49-4ca9-ac81-582d475497ad">
+            <useCaseMoniker Id="68e70738-c884-41ee-ab5d-cc8ca1c30a4a" LastKnownName="Update Parcel Status" />
+            <elementDefinition Id="660e6f79-c2c2-46b2-baf3-671b6e292668" />
+          </include>
+          <include Id="80f22b6a-8723-4e02-a647-d9fcae5fd9fa">
+            <useCaseMoniker Id="35716bf0-04f7-41c6-9233-093e3643d37a" LastKnownName="Update Parcel" />
+            <elementDefinition Id="a911c171-5d0c-4ba5-b6a6-0471fa2c45fc" />
+          </include>
+          <include Id="3c94043f-a665-4e9c-bc69-be342fc0846c">
+            <useCaseMoniker Id="526da2be-9235-41c2-a10a-0354d071236a" LastKnownName="Remove Parcel" />
+            <elementDefinition Id="dbe5a270-c95a-4d8e-805b-1b665ac1d308" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="7cc0fe59-7304-492e-b84e-01dbfebba250" name="Update Order Weight" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="3974d5aa-9c3b-4749-995e-e8476034ec8d" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="ea468d16-aff6-4e5e-9453-5733cd599b44" name="Update Arrival Date" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="e2d97959-8bab-4482-acd4-5a2f7d33f9ee" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="04d4b337-4475-4e5c-8dfb-9eabf1898b30" name="Update Status" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f693956a-2d4b-410f-8436-7fe3b453de61" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="005fa9f7-d1a9-4a6a-8bb1-5cd9de02a3d7" name="Upload Photoes" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="3de26777-3b6c-4bdc-a094-fe8c7aceb74f" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="68e70738-c884-41ee-ab5d-cc8ca1c30a4a" name="Update Parcel Status" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="044e9151-4a52-4c2c-945d-9272db3302b7" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="339f7fc0-3111-4b9b-86d2-0e666b2b22f5" name="Filter Orders" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="924ace0d-2d2e-476a-b997-8d6a2588b6ea" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="34c27c77-1ec5-4d8d-b64a-3e9ed037c0bb" name="View Orders" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="c09abc0b-ede9-4ca1-85fc-8980f87330dd" />
+        <additions>
+          <include Id="52c51f63-7769-4319-b816-309ca1f06d1a">
+            <useCaseMoniker Id="339f7fc0-3111-4b9b-86d2-0e666b2b22f5" LastKnownName="Filter Orders" />
+            <elementDefinition Id="99a184e8-c76d-42e9-919c-bab948561b03" />
+          </include>
+          <include Id="fae332cb-5dff-46bb-ad0b-87690030dc7d">
+            <useCaseMoniker Id="2814060b-42aa-4514-8389-e4cd54ba2315" LastKnownName="Sort Orders" />
+            <elementDefinition Id="667666e3-653d-4e5c-b75d-4394515cdfa3" />
+          </include>
+          <include Id="c30af02b-b067-46ee-85ac-8865468bc1ce">
+            <useCaseMoniker Id="32974169-5fb0-4a76-8940-da5f2516a222" LastKnownName="View Order Details" />
+            <elementDefinition Id="76c4be70-4017-4720-8955-a946b7378116" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="2814060b-42aa-4514-8389-e4cd54ba2315" name="Sort Orders" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="4987cebc-a1a1-4442-a47c-433b89d1bbf6" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="7fdc625c-8db7-4a4d-9b49-bf1bc062205e" name="View Parcels" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="bdbe8537-c7b8-4d5f-abc2-df7d3d474ed4" />
+        <additions>
+          <include Id="40e6069a-9a4a-4f28-bc68-a33870a8f859">
+            <useCaseMoniker Id="40e4eb16-fcaa-4ed0-a50d-8d72105075c6" LastKnownName="Filter Parcels" />
+            <elementDefinition Id="b4717a0c-bc17-46b5-9ebe-bf57f853ba6c" />
+          </include>
+          <include Id="76c803cf-d880-42a2-9ad8-33aef6534883">
+            <useCaseMoniker Id="3985746d-8928-4b35-925e-2a1cbd12a16b" LastKnownName="Sort Parcels" />
+            <elementDefinition Id="d4506b1f-203b-4ea8-a060-039449e273dd" />
+          </include>
+          <include Id="111d5b86-51b4-48f8-bedd-93ce6693d49a">
+            <useCaseMoniker Id="2e81e010-2986-48a3-8fa0-6f19a59639b4" LastKnownName="View Parcel Details" />
+            <elementDefinition Id="5bdb8c9e-96ee-4c08-86df-0932fcb5a826" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="40e4eb16-fcaa-4ed0-a50d-8d72105075c6" name="Filter Parcels" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f1ea2fd6-514a-4a6c-ab48-f46d2d935ab3" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="3985746d-8928-4b35-925e-2a1cbd12a16b" name="Sort Parcels" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="02c64def-56d7-4df9-9115-8802241ca9ea" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="e550a1cc-a0b9-4c8e-a814-f7e2bb30b3ad" name="Consultant" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b951e9ed-e95f-46d2-9b59-5db1a78dfd9e" />
+        <targetEnds>
+          <association Id="459d432f-d9e2-4c80-9bf3-a14c2c26363b" isDerived="false" sourceEndRoleName="Consultant" targetEndRoleName="Review Feedback and Questions" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="49585a0b-5386-4ce7-95d2-8547aee35070" LastKnownName="View Feedback and Questions" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="bb053c3c-cd58-498a-9d14-a9747a0404fa" name="Consultant" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="1a406e09-681a-491e-a47a-4321d5ac8022" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="e63a568d-8dc6-4ada-b354-13eb7c99b8f1" name="Review Feedback and Questions" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="47427cda-25ae-4b97-8d3a-6729e4f38854" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="787903ec-0c6c-42db-b403-1f53ef14b246" />
+          </association>
+          <association Id="0f3a44a4-5ab5-4f6f-8467-d940cc6edf0b" isDerived="false" sourceEndRoleName="Consultant" targetEndRoleName="View Orders" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="34c27c77-1ec5-4d8d-b64a-3e9ed037c0bb" LastKnownName="View Orders" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="1a85749d-da3e-4039-98fb-e05f322110da" name="Consultant" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="81ba23de-4a64-42da-ae07-f7a9fa0881f7" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="383af3e7-61c9-4500-b430-97777d240c0f" name="View Orders" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="69a16f8a-fb53-453a-86f7-43a67b8c95a2" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="2c439bc7-aa07-4ec6-9bb6-cf3499c35a65" />
+          </association>
+          <association Id="431bac70-c7ce-4f27-b197-a10f5ffcdfea" isDerived="false" sourceEndRoleName="Consultant" targetEndRoleName="View Parcels" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="7fdc625c-8db7-4a4d-9b49-bf1bc062205e" LastKnownName="View Parcels" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="f271645a-195a-47b6-b1bc-0f4c2a5d17e7" name="Consultant" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="144eb304-699b-4473-aa80-ab9dfbb55412" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a4ad3e3a-0d3b-43ed-adb3-a3bfd4e1f009" name="View Parcels" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="cc9202be-27d1-4c3e-9d56-099f4811b34d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="58ef8913-c0f0-41b4-953f-acfb0883bca6" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="bd6d1b8a-9acc-435c-b18f-5c6de753a416" name="Answer Questions" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="063042a0-ff5d-408e-969a-216b66835ec4" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="49585a0b-5386-4ce7-95d2-8547aee35070" name="View Feedback and Questions" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="7e659887-4296-4564-855f-d10f8acb7a19" />
+        <additions>
+          <include Id="1d535ef9-ab8e-40f3-b4a9-f1d182762292">
+            <useCaseMoniker Id="bd6d1b8a-9acc-435c-b18f-5c6de753a416" LastKnownName="Answer Questions" />
+            <elementDefinition Id="daea0438-7c10-4cc5-b020-1565aca1b36c" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="27fc2a38-464f-40d9-a9e4-9d06ae7bb2a1" name="Administrator" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="e28f6efb-ff69-4dce-a802-6087dce5a157" />
+        <generalsInternal>
+          <generalization Id="6fd53aa1-f483-47de-be08-60eded79dfbf" isSubstitutable="false">
+            <actorMoniker Id="b831337e-e24d-4043-a38b-9a9d9fee50b4" LastKnownName="Operator" />
+            <elementDefinition Id="8db0e94f-1ee6-4a24-9181-1d1609e04a45" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association Id="c07cf8cd-7621-4267-aedb-5e792c175a69" isDerived="false" sourceEndRoleName="Administrator" targetEndRoleName="View Sales Report" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="36a7740e-b65f-4c6e-8b79-ed63d87e7c57" LastKnownName="View Sales Report" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="4870da5a-2f83-4946-ba22-f6e01f1260d9" name="Administrator" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="59103bb5-efad-496e-9e22-8bde3efca0f7" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a4144f5b-11a4-44cd-ab24-fe1e0b000919" name="View Sales Report" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="a7aa1121-158e-4c48-85d5-e041576d5593" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="8cdca1d5-071a-4ab3-9beb-d72e5abb8cd7" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="35716bf0-04f7-41c6-9233-093e3643d37a" name="Update Parcel" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="ccd5ede6-9a74-476f-888d-7f995f608b21" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="526da2be-9235-41c2-a10a-0354d071236a" name="Remove Parcel" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="0fc4a73e-5415-4945-84dd-da97e6814da8" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="fe88ecd1-c022-4f22-ac28-78357a4a599a" name="Remove Order" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="74fcd3b0-15b2-4e0f-b447-af2f5c9b7fda" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="c68b8339-26fe-4f9f-9277-153d6bc7ab62" name="Update Order" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="e24052fa-81b1-4bb4-87b3-b52cc0624171" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="36a7740e-b65f-4c6e-8b79-ed63d87e7c57" name="View Sales Report" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="99275cc1-9cd0-4dd4-8b5b-9b9202f72c14" />
+        <additions>
+          <include Id="442fda6d-f59f-4b41-9ac5-3029a8d3c9e8">
+            <useCaseMoniker Id="70818528-d2a8-4eff-8671-5062563d1ba9" LastKnownName="Filter Sales Report" />
+            <elementDefinition Id="62eb025e-a9f1-428d-bc07-1244479550b6" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="70818528-d2a8-4eff-8671-5062563d1ba9" name="Filter Sales Report" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f220bb75-452f-41a1-8373-539abb39f6d4" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="47568c98-c85e-4205-8f8c-8ae35b6bc9f5" name="TdService.Modeling">
+    <elementDefinition Id="e006d43a-3bc9-452c-a7ce-47edd28d044b" />
+    <profileInstances>
+      <packageHasProfileInstances Id="168e0bbd-87e8-45b6-8130-b92079b8720e">
+        <profileInstance Id="6df3fef8-912b-4ff7-a0fc-f5c19a820903" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="69e15eee-015e-4bc2-8fee-700ae28bde6f">
+        <profileInstance Id="96d4a8b3-14d4-4d2f-a416-67e8e5c02b0e" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</useCaseModelRoot>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm9="http://schemas.microsoft.com/dsltools/UseCaseModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner"
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm9="http://schemas.microsoft.com/dsltools/UseCaseModel"
   dslVersion="1.0.0.0"
   Id="e006d43a-3bc9-452c-a7ce-47edd28d044b"
   name="TdService.Modeling" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -98,9 +98,7 @@
    - удалять посылки.
 3. статистика по продажам (сервисов)
    - просматривать по периодам.
-4. сервисы
-   - просмотр;
-   - обновлять стоимость сервисов.
+
 </body>
       <annotatedElements>
         <actorMoniker
@@ -127,7 +125,7 @@
       <annotatedElements>
         <useCaseMoniker
           Id="ccc6fe3b-0943-41d8-88ba-2ee460d37afb"
-          LastKnownName="Withdraw money"
+          LastKnownName="Withdraw Money"
           LastKnownLocation="TdService.Modeling.uml" />
       </annotatedElements>
     </comment>
@@ -137,12 +135,6 @@
 магазину,
 номеру отслеживания,
 номеру заказа</body>
-      <annotatedElements>
-        <useCaseMoniker
-          Id="9e1c955f-7ac1-4c5d-a379-a972a1861bf7"
-          LastKnownName="Search for order "
-          LastKnownLocation="TdService.Modeling.uml" />
-      </annotatedElements>
     </comment>
     <comment
       Id="8d016082-446f-45df-ba77-40b1e3bdacd1">
@@ -151,39 +143,6 @@
 по заказу который включен в посылку,
 по имени пользователя,
 по дате.</body>
-      <annotatedElements>
-        <useCaseMoniker
-          Id="717839b2-60be-4b2d-aabb-12e061c63043"
-          LastKnownName="Search for parcel"
-          LastKnownLocation="TdService.Modeling.uml" />
-      </annotatedElements>
-    </comment>
-    <comment
-      Id="8917a584-c58c-4bbf-ac93-dc2961a2cea1">
-      <body>Искать заказ по:
-магазину,
-номеру отслеживания,
-номеру заказа</body>
-      <annotatedElements>
-        <useCaseMoniker
-          Id="9e1c955f-7ac1-4c5d-a379-a972a1861bf7"
-          LastKnownName="Search for order "
-          LastKnownLocation="TdService.Modeling.uml" />
-      </annotatedElements>
-    </comment>
-    <comment
-      Id="2011e37b-bf26-4813-8852-d88e7ba72f12">
-      <body>Искать посылку по:
-номеру посылки,
-по заказу который включен в посылку,
-по имени пользователя,
-по дате.</body>
-      <annotatedElements>
-        <useCaseMoniker
-          Id="717839b2-60be-4b2d-aabb-12e061c63043"
-          LastKnownName="Search for parcel"
-          LastKnownLocation="TdService.Modeling.uml" />
-      </annotatedElements>
     </comment>
     <comment
       Id="132c6b7b-ddfc-4488-9258-221415d95ca7">
@@ -191,7 +150,172 @@
       <annotatedElements>
         <useCaseMoniker
           Id="3ff97449-7183-4a75-a127-a67da6ec6606"
-          LastKnownName="Leave Feedback"
+          LastKnownName="Leave Feedback Or Ask a Question"
+          LastKnownLocation="TdService.Modeling.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="1bff9fd5-1efe-43a1-92d9-1ead7f7adcfd">
+      <body>не будет реализовано в первой версии</body>
+      <annotatedElements>
+        <useCaseMoniker
+          Id="94e9cfc9-4add-44f6-853f-f1e61703cef3"
+          LastKnownName="Request Item Return"
+          LastKnownLocation="TdService.Modeling.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="a44c5a49-4a48-4929-b20b-d6302aed1ca2">
+      <body>Authorize.NET</body>
+      <annotatedElements>
+        <useCaseMoniker
+          Id="a0a26918-65f6-4fc7-a1a7-2e1b7494f47c"
+          LastKnownName="Pay With Credit Card"
+          LastKnownLocation="TdService.Modeling.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="5ae0b9c2-2377-4e0e-80ea-b9d59eff6775">
+      <body>Filter by:
+- shop,
+- tracking number,
+- order number</body>
+      <annotatedElements>
+        <useCaseMoniker
+          Id="924ace0d-2d2e-476a-b997-8d6a2588b6ea"
+          LastKnownName="Filter Orders"
+          LastKnownLocation="TdService.Modeling.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="0580722a-730b-439f-abbe-90f772f8ae4a">
+      <body>see all orders in the system</body>
+      <annotatedElements>
+        <useCaseMoniker
+          Id="c09abc0b-ede9-4ca1-85fc-8980f87330dd"
+          LastKnownName="View Orders"
+          LastKnownLocation="TdService.Modeling.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="686038e6-d59e-438f-ae54-951539feaf9d">
+      <body>Filter by:
+- parcel number,
+- order number included in this parcel,
+- user first and last name,
+- date</body>
+      <annotatedElements>
+        <useCaseMoniker
+          Id="f1ea2fd6-514a-4a6c-ab48-f46d2d935ab3"
+          LastKnownName="Filter Parcels"
+          LastKnownLocation="TdService.Modeling.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="cd28c291-946e-4af4-8c13-d26cbf44a5ad">
+      <body>see all parcels in the system</body>
+      <annotatedElements>
+        <useCaseMoniker
+          Id="bdbe8537-c7b8-4d5f-abc2-df7d3d474ed4"
+          LastKnownName="View Parcels"
+          LastKnownLocation="TdService.Modeling.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="af7d6f08-5d26-45ce-a64b-6eba62b1e98d">
+      <body>only operator and administrator can make these updates</body>
+      <annotatedElements>
+        <useCaseMoniker
+          Id="3974d5aa-9c3b-4749-995e-e8476034ec8d"
+          LastKnownName="Update Order Weight"
+          LastKnownLocation="TdService.Modeling.uml" />
+        <useCaseMoniker
+          Id="e2d97959-8bab-4482-acd4-5a2f7d33f9ee"
+          LastKnownName="Update Arrival Date"
+          LastKnownLocation="TdService.Modeling.uml" />
+        <useCaseMoniker
+          Id="f693956a-2d4b-410f-8436-7fe3b453de61"
+          LastKnownName="Update Status"
+          LastKnownLocation="TdService.Modeling.uml" />
+        <useCaseMoniker
+          Id="3de26777-3b6c-4bdc-a094-fe8c7aceb74f"
+          LastKnownName="Upload Photoes"
+          LastKnownLocation="TdService.Modeling.uml" />
+        <useCaseMoniker
+          Id="044e9151-4a52-4c2c-945d-9272db3302b7"
+          LastKnownName="Update Parcel Status"
+          LastKnownLocation="TdService.Modeling.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="4af37212-7d5a-4b0e-9a92-ff5889d6f378">
+      <body>Незарегистрированный покупатель
+1. Войти на сайт под своим логином если у него он есть
+2. Восстановить свой пароль если он его забыл
+3. Зарегистрироваться на сайте, если он не зарегистрирован</body>
+      <annotatedElements>
+        <actorMoniker
+          Id="75ac1d6e-299b-4093-ab4a-3dd2d6e7737d"
+          LastKnownName="Unregistered Shopper"
+          LastKnownLocation="TdService.Modeling.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="89ec5032-030c-43b7-8bb9-a1d020b351ae">
+      <body>only for administrator</body>
+      <annotatedElements>
+        <useCaseMoniker
+          Id="ccd5ede6-9a74-476f-888d-7f995f608b21"
+          LastKnownName="Update Parcel"
+          LastKnownLocation="TdService.Modeling.uml" />
+        <useCaseMoniker
+          Id="0fc4a73e-5415-4945-84dd-da97e6814da8"
+          LastKnownName="Remove Parcel"
+          LastKnownLocation="TdService.Modeling.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="5beec9cb-b094-4f6b-a12b-c4ad0c261a22">
+      <body>only for administrators</body>
+      <annotatedElements>
+        <useCaseMoniker
+          Id="e24052fa-81b1-4bb4-87b3-b52cc0624171"
+          LastKnownName="Update Order"
+          LastKnownLocation="TdService.Modeling.uml" />
+        <useCaseMoniker
+          Id="74fcd3b0-15b2-4e0f-b447-af2f5c9b7fda"
+          LastKnownName="Remove Order"
+          LastKnownLocation="TdService.Modeling.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="a47ec726-78c3-4d57-a040-079334bb58e5">
+      <body>Filter by:
+- date range</body>
+      <annotatedElements>
+        <useCaseMoniker
+          Id="f220bb75-452f-41a1-8373-539abb39f6d4"
+          LastKnownName="Filter Sales Report"
+          LastKnownLocation="TdService.Modeling.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="6022f018-9bbc-4f27-957f-fb25d46f68f8">
+      <body>view only own orders</body>
+      <annotatedElements>
+        <useCaseMoniker
+          Id="c09abc0b-ede9-4ca1-85fc-8980f87330dd"
+          LastKnownName="View Orders"
+          LastKnownLocation="TdService.Modeling.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="2f14cf28-229f-4fb0-8834-7946e4db8812">
+      <body>view own parcels only</body>
+      <annotatedElements>
+        <useCaseMoniker
+          Id="bdbe8537-c7b8-4d5f-abc2-df7d3d474ed4"
+          LastKnownName="View Parcels"
           LastKnownLocation="TdService.Modeling.uml" />
       </annotatedElements>
     </comment>
@@ -266,20 +390,20 @@
             </relationshipOwnedElementsInternal>
           </association>
           <association
-            Id="dc570c19-536d-494c-b1a2-eb45dc07594b"
+            Id="787903ec-0c6c-42db-b403-1f53ef14b246"
             isDerived="false"
             sourceEndRoleName="Consultant"
-            targetEndRoleName="View All Orders"
+            targetEndRoleName="Review Feedback and Questions"
             isLeaf="false"
             isAbstract="false">
             <useCaseMoniker
-              Id="064e49f1-47fb-422f-a572-18aecd24a541"
-              LastKnownName="View All Orders"
+              Id="7e659887-4296-4564-855f-d10f8acb7a19"
+              LastKnownName="View Feedback and Questions"
               LastKnownLocation="TdService.Modeling.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="a179e3d1-8132-41b1-961f-e043a53a8534"
+                  Id="1a406e09-681a-491e-a47a-4321d5ac8022"
                   name="Consultant"
                   isLeaf="false"
                   isStatic="false"
@@ -292,8 +416,8 @@
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="0375fb40-30e8-444c-8bd4-ffec9788c272"
-                  name="View All Orders"
+                  Id="47427cda-25ae-4b97-8d3a-6729e4f38854"
+                  name="Review Feedback and Questions"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -305,20 +429,20 @@
             </relationshipOwnedElementsInternal>
           </association>
           <association
-            Id="85bf1399-8bac-4a50-aa5e-826f2f7413a7"
+            Id="2c439bc7-aa07-4ec6-9bb6-cf3499c35a65"
             isDerived="false"
             sourceEndRoleName="Consultant"
-            targetEndRoleName="View All Parcels"
+            targetEndRoleName="View Orders"
             isLeaf="false"
             isAbstract="false">
             <useCaseMoniker
-              Id="a81b5573-1c73-4e9e-8935-36bb3a391595"
-              LastKnownName="View All Parcels"
+              Id="c09abc0b-ede9-4ca1-85fc-8980f87330dd"
+              LastKnownName="View Orders"
               LastKnownLocation="TdService.Modeling.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="08074895-fe28-4f44-a4c5-111ee6fcd201"
+                  Id="81ba23de-4a64-42da-ae07-f7a9fa0881f7"
                   name="Consultant"
                   isLeaf="false"
                   isStatic="false"
@@ -331,8 +455,8 @@
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="0a3547e5-9afc-4990-880b-e5c1c3ba1e78"
-                  name="View All Parcels"
+                  Id="69a16f8a-fb53-453a-86f7-43a67b8c95a2"
+                  name="View Orders"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -344,20 +468,20 @@
             </relationshipOwnedElementsInternal>
           </association>
           <association
-            Id="59797226-57b4-4c43-8be0-fe3bd16527ba"
+            Id="58ef8913-c0f0-41b4-953f-acfb0883bca6"
             isDerived="false"
             sourceEndRoleName="Consultant"
-            targetEndRoleName="Review and answer user questions"
+            targetEndRoleName="View Parcels"
             isLeaf="false"
             isAbstract="false">
             <useCaseMoniker
-              Id="6d98453c-ea4a-4389-9790-c47d9f6211ba"
-              LastKnownName="Review and answer user questions"
+              Id="bdbe8537-c7b8-4d5f-abc2-df7d3d474ed4"
+              LastKnownName="View Parcels"
               LastKnownLocation="TdService.Modeling.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="33dab028-6806-4a21-834f-7b5e96781740"
+                  Id="144eb304-699b-4473-aa80-ab9dfbb55412"
                   name="Consultant"
                   isLeaf="false"
                   isStatic="false"
@@ -370,8 +494,8 @@
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="08a08150-7063-4cbb-85c6-05e8b6dd74c7"
-                  name="Review and answer user questions"
+                  Id="cc9202be-27d1-4c3e-9d56-099f4811b34d"
+                  name="View Parcels"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -391,6 +515,16 @@
         name="Administrator"
         isAbstract="false"
         isLeaf="false">
+        <generalsInternal>
+          <generalization
+            Id="8db0e94f-1ee6-4a24-9181-1d1609e04a45"
+            isSubstitutable="false">
+            <actorMoniker
+              Id="f1d02f09-f7a3-46f4-9184-50abd90f21cd"
+              LastKnownName="Operator"
+              LastKnownLocation="TdService.Modeling.uml" />
+          </generalization>
+        </generalsInternal>
         <targetEnds>
           <association
             Id="82a1f73f-ab63-4624-ba22-2b6b47479dc4"
@@ -421,6 +555,45 @@
                 <memberEnd
                   Id="00d57581-d5a0-4913-abb4-2134bb605f4a"
                   name="TD Service - Online Mail Forwarding"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="8cdca1d5-071a-4ab3-9beb-d72e5abb8cd7"
+            isDerived="false"
+            sourceEndRoleName="Administrator"
+            targetEndRoleName="View Sales Report"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="99275cc1-9cd0-4dd4-8b5b-9b9202f72c14"
+              LastKnownName="View Sales Report"
+              LastKnownLocation="TdService.Modeling.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="59103bb5-efad-496e-9e22-8bde3efca0f7"
+                  name="Administrator"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="a7aa1121-158e-4c48-85d5-e041576d5593"
+                  name="View Sales Report"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -491,84 +664,6 @@
             </relationshipOwnedElementsInternal>
           </association>
           <association
-            Id="18ccc95d-7f44-469b-adbe-7d823c494332"
-            isDerived="false"
-            sourceEndRoleName="Shopper"
-            targetEndRoleName="Manage Orders"
-            isLeaf="false"
-            isAbstract="false">
-            <useCaseMoniker
-              Id="8da95ebf-5a37-44c4-91aa-7bd53e027b19"
-              LastKnownName="Manage Orders"
-              LastKnownLocation="TdService.Modeling.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="0b0045a6-a566-4986-8167-d7f2a15c6611"
-                  name="Shopper"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="8790567d-dd91-48c9-993b-78b287cde8e8"
-                  name="Manage Orders"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false" />
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-          <association
-            Id="c72f6c14-b6a9-4833-8252-40d33da414b8"
-            isDerived="false"
-            sourceEndRoleName="Shopper"
-            targetEndRoleName="Manage Parcels"
-            isLeaf="false"
-            isAbstract="false">
-            <useCaseMoniker
-              Id="2cad333a-f9b3-421c-b1e8-dd13d79134b3"
-              LastKnownName="Manage Parcels"
-              LastKnownLocation="TdService.Modeling.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="3a66fe56-7ac0-41ab-8995-03d73cfb0ecc"
-                  name="Shopper"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="2b2bb48e-6775-4a1f-b530-23de3e675109"
-                  name="Manage Parcels"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false" />
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-          <association
             Id="4ddac90d-0325-44bb-a295-a575f29e20ed"
             isDerived="false"
             sourceEndRoleName="Shopper"
@@ -577,7 +672,7 @@
             isAbstract="false">
             <useCaseMoniker
               Id="87d61a3a-dfaa-4a00-adc3-1de58d33ab81"
-              LastKnownName="Manage Balance"
+              LastKnownName="View Balance"
               LastKnownLocation="TdService.Modeling.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
@@ -655,7 +750,7 @@
             isAbstract="false">
             <useCaseMoniker
               Id="3ff97449-7183-4a75-a127-a67da6ec6606"
-              LastKnownName="Leave Feedback"
+              LastKnownName="Leave Feedback Or Ask a Question"
               LastKnownLocation="TdService.Modeling.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
@@ -685,20 +780,98 @@
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
+          <association
+            Id="4f4de0e1-4f3b-471e-aa34-3915f94b1708"
+            isDerived="false"
+            sourceEndRoleName="Shopper"
+            targetEndRoleName="View Orders"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="c09abc0b-ede9-4ca1-85fc-8980f87330dd"
+              LastKnownName="View Orders"
+              LastKnownLocation="TdService.Modeling.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="e01568d2-13b4-4096-bdb5-3f5e1d00bb8f"
+                  name="Shopper"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="8098a010-645f-45ff-b174-03a4d007da39"
+                  name="View Orders"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="3db6f1f2-47cb-4d5d-9a2c-ac4278a9c464"
+            isDerived="false"
+            sourceEndRoleName="Shopper"
+            targetEndRoleName="View Parcels"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="bdbe8537-c7b8-4d5f-abc2-df7d3d474ed4"
+              LastKnownName="View Parcels"
+              LastKnownLocation="TdService.Modeling.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="a01c6bda-da41-4a90-93ca-ecee5f48fe75"
+                  name="Shopper"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="174631dd-e67b-418e-9481-0c3989faa454"
+                  name="View Parcels"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
         </targetEnds>
       </actor>
     </packageHasNamedElement>
     <packageHasNamedElement>
       <useCase
         Id="8e8b2e03-aa46-455d-9540-028882643e4b"
-        name="Add Orders"
+        name="Add Order"
         isAbstract="false"
         isLeaf="false" />
     </packageHasNamedElement>
     <packageHasNamedElement>
       <useCase
         Id="e24052fa-81b1-4bb4-87b3-b52cc0624171"
-        name="Change / Update Order"
+        name="Update Order"
         isAbstract="false"
         isLeaf="false" />
     </packageHasNamedElement>
@@ -712,7 +885,7 @@
     <packageHasNamedElement>
       <useCase
         Id="74fcd3b0-15b2-4e0f-b447-af2f5c9b7fda"
-        name="Delete Order"
+        name="Remove Order"
         isAbstract="false"
         isLeaf="false" />
     </packageHasNamedElement>
@@ -2395,6 +2568,16 @@
         name="Operator"
         isAbstract="false"
         isLeaf="false">
+        <generalsInternal>
+          <generalization
+            Id="f484a2f1-b6da-403b-9998-f05f7b9465b1"
+            isSubstitutable="false">
+            <actorMoniker
+              Id="b951e9ed-e95f-46d2-9b59-5db1a78dfd9e"
+              LastKnownName="Consultant"
+              LastKnownLocation="TdService.Modeling.uml" />
+          </generalization>
+        </generalsInternal>
         <targetEnds>
           <association
             Id="537f8636-608d-4056-9960-ec0571c260bb"
@@ -2425,84 +2608,6 @@
                 <memberEnd
                   Id="4e0609d8-2aad-486a-a2cd-4431c6a1e571"
                   name="TD Service - Online Mail Forwarding"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false" />
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-          <association
-            Id="a438d6d5-a3be-4f52-a51f-56aae790ed19"
-            isDerived="false"
-            sourceEndRoleName="Operator"
-            targetEndRoleName="View All Orders"
-            isLeaf="false"
-            isAbstract="false">
-            <useCaseMoniker
-              Id="064e49f1-47fb-422f-a572-18aecd24a541"
-              LastKnownName="View All Orders"
-              LastKnownLocation="TdService.Modeling.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="63700d7b-e6b3-4bd8-aeb5-2bbb51f5615b"
-                  name="Operator"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="98a61151-2e5e-41e2-910e-f389e3dc3f91"
-                  name="View All Orders"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false" />
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-          <association
-            Id="1be5a914-eee2-408a-bfa8-3064096f7661"
-            isDerived="false"
-            sourceEndRoleName="Operator"
-            targetEndRoleName="View All Parcels"
-            isLeaf="false"
-            isAbstract="false">
-            <useCaseMoniker
-              Id="a81b5573-1c73-4e9e-8935-36bb3a391595"
-              LastKnownName="View All Parcels"
-              LastKnownLocation="TdService.Modeling.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="ec76d54e-2604-4d3f-8f38-ebe1212e328e"
-                  name="Operator"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="995efe3f-c183-46a1-a6e5-9dfa83c20fc8"
-                  name="View All Parcels"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -2571,7 +2676,7 @@
             isAbstract="false">
             <useCaseMoniker
               Id="683c3a53-6458-44df-9869-0705c2f0fbff"
-              LastKnownName="Notify Warehousing period is close to end"
+              LastKnownName="Send Warehousing Period Ends Notification"
               LastKnownLocation="TdService.Modeling.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
@@ -2610,7 +2715,7 @@
             isAbstract="false">
             <useCaseMoniker
               Id="ab8749d4-3118-4d93-9595-9b2400f92127"
-              LastKnownName="Send weekly financial report"
+              LastKnownName="Send Weekly Financial Report"
               LastKnownLocation="TdService.Modeling.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
@@ -2798,14 +2903,28 @@
             Id="99a184e8-c76d-42e9-919c-bab948561b03">
             <useCaseMoniker
               Id="924ace0d-2d2e-476a-b997-8d6a2588b6ea"
-              LastKnownName="Filter Orders By Date and Status"
+              LastKnownName="Filter Orders"
               LastKnownLocation="TdService.Modeling.uml" />
           </include>
           <include
             Id="667666e3-653d-4e5c-b75d-4394515cdfa3">
             <useCaseMoniker
               Id="4987cebc-a1a1-4442-a47c-433b89d1bbf6"
-              LastKnownName="Sort Orders By Date and Status"
+              LastKnownName="Sort Orders"
+              LastKnownLocation="TdService.Modeling.uml" />
+          </include>
+          <include
+            Id="76c4be70-4017-4720-8955-a946b7378116">
+            <useCaseMoniker
+              Id="da5f659d-2f33-4c59-a273-e2179676ab9f"
+              LastKnownName="View Order Details"
+              LastKnownLocation="TdService.Modeling.uml" />
+          </include>
+          <include
+            Id="e1193158-292c-4cac-80fc-26d9e165d697">
+            <useCaseMoniker
+              Id="8e8b2e03-aa46-455d-9540-028882643e4b"
+              LastKnownName="Add Order"
               LastKnownLocation="TdService.Modeling.uml" />
           </include>
         </additions>
@@ -2903,6 +3022,45 @@
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
+          <association
+            Id="af62b0a1-a250-480c-b994-b4bfe0e7b18d"
+            isDerived="false"
+            sourceEndRoleName="Unregistered Shopper"
+            targetEndRoleName="Reset Password"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="7ea0f1bd-9695-4553-9614-6968e2e89677"
+              LastKnownName="Reset Password"
+              LastKnownLocation="TdService.Modeling.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="c0a8943c-7bd3-4391-89ed-75f1cb263325"
+                  name="Unregistered Shopper"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="3e9c7091-e4d1-415e-b93d-2cd2fd58192a"
+                  name="Reset Password"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
         </targetEnds>
       </actor>
     </packageHasNamedElement>
@@ -2938,14 +3096,14 @@
             Id="f693de2f-76d5-4691-8b9d-505630df8907">
             <useCaseMoniker
               Id="3535e998-fa30-443c-bde4-a4dde51d5f06"
-              LastKnownName="Change First or / and Second Name"
+              LastKnownName="Update User Name"
               LastKnownLocation="TdService.Modeling.uml" />
           </include>
           <include
             Id="e36c9cd6-2bf7-4aa5-b30b-b4be09f5f0c8">
             <useCaseMoniker
               Id="25385858-24a5-4b83-9f18-bae8c0c803cb"
-              LastKnownName="Change Notification Rules"
+              LastKnownName="Update Notification Rules"
               LastKnownLocation="TdService.Modeling.uml" />
           </include>
           <include
@@ -2960,46 +3118,8 @@
     </packageHasNamedElement>
     <packageHasNamedElement>
       <useCase
-        Id="2cad333a-f9b3-421c-b1e8-dd13d79134b3"
-        name="Manage Parcels"
-        isAbstract="false"
-        isLeaf="false">
-        <additions>
-          <include
-            Id="24760b85-63dc-4ba0-8857-f43d7dcf7e34">
-            <useCaseMoniker
-              Id="da2597f1-c03c-4f25-b745-cadebb293710"
-              LastKnownName="Collect the Parcels"
-              LastKnownLocation="TdService.Modeling.uml" />
-          </include>
-          <include
-            Id="52eddc23-24aa-4c5b-aaee-7a984db6276a">
-            <useCaseMoniker
-              Id="ccd5ede6-9a74-476f-888d-7f995f608b21"
-              LastKnownName="Edit / Update Parcel"
-              LastKnownLocation="TdService.Modeling.uml" />
-          </include>
-          <include
-            Id="6d1cafee-b32b-489f-87db-131490e0b7fc">
-            <useCaseMoniker
-              Id="0fc4a73e-5415-4945-84dd-da97e6814da8"
-              LastKnownName="Remove Parcel"
-              LastKnownLocation="TdService.Modeling.uml" />
-          </include>
-          <include
-            Id="73542ecc-7b5a-4d7b-a0f0-37dd44efbbba">
-            <useCaseMoniker
-              Id="bdbe8537-c7b8-4d5f-abc2-df7d3d474ed4"
-              LastKnownName="View Parcels"
-              LastKnownLocation="TdService.Modeling.uml" />
-          </include>
-        </additions>
-      </useCase>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <useCase
         Id="87d61a3a-dfaa-4a00-adc3-1de58d33ab81"
-        name="Manage Balance"
+        name="View Balance"
         isAbstract="false"
         isLeaf="false">
         <additions>
@@ -3014,7 +3134,7 @@
             Id="65864413-94d5-4253-a63e-4f2e3b65b3a2">
             <useCaseMoniker
               Id="ccc6fe3b-0943-41d8-88ba-2ee460d37afb"
-              LastKnownName="Withdraw money"
+              LastKnownName="Withdraw Money"
               LastKnownLocation="TdService.Modeling.uml" />
           </include>
           <include
@@ -3029,67 +3149,15 @@
     </packageHasNamedElement>
     <packageHasNamedElement>
       <useCase
-        Id="8da95ebf-5a37-44c4-91aa-7bd53e027b19"
-        name="Manage Orders"
-        isAbstract="false"
-        isLeaf="false">
-        <additions>
-          <include
-            Id="f987cba4-4b7c-473c-b334-2085e96ac873">
-            <useCaseMoniker
-              Id="c09abc0b-ede9-4ca1-85fc-8980f87330dd"
-              LastKnownName="View Orders"
-              LastKnownLocation="TdService.Modeling.uml" />
-          </include>
-          <include
-            Id="bfb2ce0a-4a0d-4e27-aea2-d2cda5581c6e">
-            <useCaseMoniker
-              Id="148601ce-40b2-424f-9b94-ef77cd69caa4"
-              LastKnownName="Request Photo"
-              LastKnownLocation="TdService.Modeling.uml" />
-          </include>
-          <include
-            Id="b6fb4738-94a7-4642-b486-f1b2e0d162d1">
-            <useCaseMoniker
-              Id="8e8b2e03-aa46-455d-9540-028882643e4b"
-              LastKnownName="Add Orders"
-              LastKnownLocation="TdService.Modeling.uml" />
-          </include>
-          <include
-            Id="1d2bde64-8994-46a8-88af-48c522d4291c">
-            <useCaseMoniker
-              Id="e24052fa-81b1-4bb4-87b3-b52cc0624171"
-              LastKnownName="Change / Update Order"
-              LastKnownLocation="TdService.Modeling.uml" />
-          </include>
-          <include
-            Id="9768be6e-9787-4bb2-9f07-13d686cb2294">
-            <useCaseMoniker
-              Id="94e9cfc9-4add-44f6-853f-f1e61703cef3"
-              LastKnownName="Request Item Return"
-              LastKnownLocation="TdService.Modeling.uml" />
-          </include>
-          <include
-            Id="5591ba35-8555-4047-a389-1b8d60edcf01">
-            <useCaseMoniker
-              Id="74fcd3b0-15b2-4e0f-b447-af2f5c9b7fda"
-              LastKnownName="Delete Order"
-              LastKnownLocation="TdService.Modeling.uml" />
-          </include>
-        </additions>
-      </useCase>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <useCase
         Id="da2597f1-c03c-4f25-b745-cadebb293710"
-        name="Collect the Parcels"
+        name="Collect Parcels"
         isAbstract="false"
         isLeaf="false" />
     </packageHasNamedElement>
     <packageHasNamedElement>
       <useCase
         Id="ccd5ede6-9a74-476f-888d-7f995f608b21"
-        name="Edit / Update Parcel"
+        name="Update Parcel"
         isAbstract="false"
         isLeaf="false" />
     </packageHasNamedElement>
@@ -3103,14 +3171,14 @@
     <packageHasNamedElement>
       <useCase
         Id="924ace0d-2d2e-476a-b997-8d6a2588b6ea"
-        name="Filter Orders By Date and Status"
+        name="Filter Orders"
         isAbstract="false"
         isLeaf="false" />
     </packageHasNamedElement>
     <packageHasNamedElement>
       <useCase
         Id="4987cebc-a1a1-4442-a47c-433b89d1bbf6"
-        name="Sort Orders By Date and Status"
+        name="Sort Orders"
         isAbstract="false"
         isLeaf="false" />
     </packageHasNamedElement>
@@ -3125,14 +3193,28 @@
             Id="b4717a0c-bc17-46b5-9ebe-bf57f853ba6c">
             <useCaseMoniker
               Id="f1ea2fd6-514a-4a6c-ab48-f46d2d935ab3"
-              LastKnownName="Filter by Status and Modified Date"
+              LastKnownName="Filter Parcels"
               LastKnownLocation="TdService.Modeling.uml" />
           </include>
           <include
             Id="d4506b1f-203b-4ea8-a060-039449e273dd">
             <useCaseMoniker
               Id="02c64def-56d7-4df9-9115-8802241ca9ea"
-              LastKnownName="Sort by Status and Modified Date"
+              LastKnownName="Sort Parcels"
+              LastKnownLocation="TdService.Modeling.uml" />
+          </include>
+          <include
+            Id="5bdb8c9e-96ee-4c08-86df-0932fcb5a826">
+            <useCaseMoniker
+              Id="63411706-38c2-42f4-a274-196e390d5cbb"
+              LastKnownName="View Parcel Details"
+              LastKnownLocation="TdService.Modeling.uml" />
+          </include>
+          <include
+            Id="fce3c5f8-00bf-4486-ac0a-43b3c6de6b7d">
+            <useCaseMoniker
+              Id="da2597f1-c03c-4f25-b745-cadebb293710"
+              LastKnownName="Collect Parcels"
               LastKnownLocation="TdService.Modeling.uml" />
           </include>
         </additions>
@@ -3141,14 +3223,14 @@
     <packageHasNamedElement>
       <useCase
         Id="f1ea2fd6-514a-4a6c-ab48-f46d2d935ab3"
-        name="Filter by Status and Modified Date"
+        name="Filter Parcels"
         isAbstract="false"
         isLeaf="false" />
     </packageHasNamedElement>
     <packageHasNamedElement>
       <useCase
         Id="02c64def-56d7-4df9-9115-8802241ca9ea"
-        name="Sort by Status and Modified Date"
+        name="Sort Parcels"
         isAbstract="false"
         isLeaf="false" />
     </packageHasNamedElement>
@@ -3162,14 +3244,14 @@
     <packageHasNamedElement>
       <useCase
         Id="3535e998-fa30-443c-bde4-a4dde51d5f06"
-        name="Change First or / and Second Name"
+        name="Update User Name"
         isAbstract="false"
         isLeaf="false" />
     </packageHasNamedElement>
     <packageHasNamedElement>
       <useCase
         Id="25385858-24a5-4b83-9f18-bae8c0c803cb"
-        name="Change Notification Rules"
+        name="Update Notification Rules"
         isAbstract="false"
         isLeaf="false" />
     </packageHasNamedElement>
@@ -3228,7 +3310,7 @@
     <packageHasNamedElement>
       <useCase
         Id="ccc6fe3b-0943-41d8-88ba-2ee460d37afb"
-        name="Withdraw money"
+        name="Withdraw Money"
         isAbstract="false"
         isLeaf="false" />
     </packageHasNamedElement>
@@ -3243,14 +3325,14 @@
             Id="4ed7b8ff-6119-4c9a-8959-15454233e222">
             <useCaseMoniker
               Id="679ece3e-2b87-42b6-ae1c-51f3f16c6b1d"
-              LastKnownName="Pay with Paypal"
+              LastKnownName="Pay With Paypal"
               LastKnownLocation="TdService.Modeling.uml" />
           </include>
           <include
             Id="32f63342-ecbb-4cff-9ace-93275a41b26d">
             <useCaseMoniker
               Id="a0a26918-65f6-4fc7-a1a7-2e1b7494f47c"
-              LastKnownName="Pay with credit card (Authorize.NET)"
+              LastKnownName="Pay With Credit Card"
               LastKnownLocation="TdService.Modeling.uml" />
           </include>
         </additions>
@@ -3259,14 +3341,14 @@
     <packageHasNamedElement>
       <useCase
         Id="679ece3e-2b87-42b6-ae1c-51f3f16c6b1d"
-        name="Pay with Paypal"
+        name="Pay With Paypal"
         isAbstract="false"
         isLeaf="false" />
     </packageHasNamedElement>
     <packageHasNamedElement>
       <useCase
         Id="a0a26918-65f6-4fc7-a1a7-2e1b7494f47c"
-        name="Pay with credit card (Authorize.NET)"
+        name="Pay With Credit Card"
         isAbstract="false"
         isLeaf="false" />
     </packageHasNamedElement>
@@ -3280,7 +3362,7 @@
     <packageHasNamedElement>
       <useCase
         Id="683c3a53-6458-44df-9869-0705c2f0fbff"
-        name="Notify Warehousing period is close to end"
+        name="Send Warehousing Period Ends Notification"
         isAbstract="false"
         isLeaf="false">
         <subjects>
@@ -3302,7 +3384,7 @@
     <packageHasNamedElement>
       <useCase
         Id="ab8749d4-3118-4d93-9595-9b2400f92127"
-        name="Send weekly financial report"
+        name="Send Weekly Financial Report"
         isAbstract="false"
         isLeaf="false">
         <subjects>
@@ -3315,25 +3397,8 @@
     </packageHasNamedElement>
     <packageHasNamedElement>
       <useCase
-        Id="9e1c955f-7ac1-4c5d-a379-a972a1861bf7"
-        name="Search for order "
-        isAbstract="false"
-        isLeaf="false">
-        <additions>
-          <include
-            Id="a5622ff0-0fef-427b-9f42-cfcba25be791">
-            <useCaseMoniker
-              Id="da5f659d-2f33-4c59-a273-e2179676ab9f"
-              LastKnownName="View Order Information"
-              LastKnownLocation="TdService.Modeling.uml" />
-          </include>
-        </additions>
-      </useCase>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <useCase
         Id="da5f659d-2f33-4c59-a273-e2179676ab9f"
-        name="View Order Information"
+        name="View Order Details"
         isAbstract="false"
         isLeaf="false">
         <additions>
@@ -3365,21 +3430,32 @@
               LastKnownName="Upload Photoes"
               LastKnownLocation="TdService.Modeling.uml" />
           </include>
-        </additions>
-      </useCase>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <useCase
-        Id="717839b2-60be-4b2d-aabb-12e061c63043"
-        name="Search for parcel"
-        isAbstract="false"
-        isLeaf="false">
-        <additions>
           <include
-            Id="36192341-23ab-46f0-9797-b3b81c0e777d">
+            Id="2d0f6c0a-2fdc-4060-aa69-3fc688594778">
             <useCaseMoniker
-              Id="63411706-38c2-42f4-a274-196e390d5cbb"
-              LastKnownName="View Parcel Information"
+              Id="e24052fa-81b1-4bb4-87b3-b52cc0624171"
+              LastKnownName="Update Order"
+              LastKnownLocation="TdService.Modeling.uml" />
+          </include>
+          <include
+            Id="f70c81e6-f361-4e42-9315-cf1f02171d49">
+            <useCaseMoniker
+              Id="74fcd3b0-15b2-4e0f-b447-af2f5c9b7fda"
+              LastKnownName="Remove Order"
+              LastKnownLocation="TdService.Modeling.uml" />
+          </include>
+          <include
+            Id="53941c2d-71c0-44ca-a809-b8d30e22648b">
+            <useCaseMoniker
+              Id="148601ce-40b2-424f-9b94-ef77cd69caa4"
+              LastKnownName="Request Photo"
+              LastKnownLocation="TdService.Modeling.uml" />
+          </include>
+          <include
+            Id="067482a3-5e50-496b-867d-26c0b6cff099">
+            <useCaseMoniker
+              Id="94e9cfc9-4add-44f6-853f-f1e61703cef3"
+              LastKnownName="Request Item Return"
               LastKnownLocation="TdService.Modeling.uml" />
           </include>
         </additions>
@@ -3388,7 +3464,7 @@
     <packageHasNamedElement>
       <useCase
         Id="63411706-38c2-42f4-a274-196e390d5cbb"
-        name="View Parcel Information"
+        name="View Parcel Details"
         isAbstract="false"
         isLeaf="false">
         <additions>
@@ -3399,38 +3475,18 @@
               LastKnownName="Update Parcel Status"
               LastKnownLocation="TdService.Modeling.uml" />
           </include>
-        </additions>
-      </useCase>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <useCase
-        Id="064e49f1-47fb-422f-a572-18aecd24a541"
-        name="View All Orders"
-        isAbstract="false"
-        isLeaf="false">
-        <additions>
           <include
-            Id="d6b06bf2-7668-4066-86cc-23f47d3bb878">
+            Id="a911c171-5d0c-4ba5-b6a6-0471fa2c45fc">
             <useCaseMoniker
-              Id="9e1c955f-7ac1-4c5d-a379-a972a1861bf7"
-              LastKnownName="Search for order "
+              Id="ccd5ede6-9a74-476f-888d-7f995f608b21"
+              LastKnownName="Update Parcel"
               LastKnownLocation="TdService.Modeling.uml" />
           </include>
-        </additions>
-      </useCase>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <useCase
-        Id="a81b5573-1c73-4e9e-8935-36bb3a391595"
-        name="View All Parcels"
-        isAbstract="false"
-        isLeaf="false">
-        <additions>
           <include
-            Id="fef0cbe4-ba14-4571-805b-235b0dd282f3">
+            Id="dbe5a270-c95a-4d8e-805b-1b665ac1d308">
             <useCaseMoniker
-              Id="717839b2-60be-4b2d-aabb-12e061c63043"
-              LastKnownName="Search for parcel"
+              Id="0fc4a73e-5415-4945-84dd-da97e6814da8"
+              LastKnownName="Remove Parcel"
               LastKnownLocation="TdService.Modeling.uml" />
           </include>
         </additions>
@@ -3473,15 +3529,8 @@
     </packageHasNamedElement>
     <packageHasNamedElement>
       <useCase
-        Id="6d98453c-ea4a-4389-9790-c47d9f6211ba"
-        name="Review and answer user questions"
-        isAbstract="false"
-        isLeaf="false" />
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <useCase
         Id="3ff97449-7183-4a75-a127-a67da6ec6606"
-        name="Leave Feedback"
+        name="Leave Feedback Or Ask a Question"
         isAbstract="false"
         isLeaf="false" />
     </packageHasNamedElement>
@@ -3489,6 +3538,61 @@
       <artifact
         Id="7cba18e6-1323-41ee-8ac1-3a4556b873b8"
         name="Artifact1"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="063042a0-ff5d-408e-969a-216b66835ec4"
+        name="Answer Questions"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="7e659887-4296-4564-855f-d10f8acb7a19"
+        name="View Feedback and Questions"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="daea0438-7c10-4cc5-b020-1565aca1b36c">
+            <useCaseMoniker
+              Id="063042a0-ff5d-408e-969a-216b66835ec4"
+              LastKnownName="Answer Questions"
+              LastKnownLocation="TdService.Modeling.uml" />
+          </include>
+        </additions>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="7ea0f1bd-9695-4553-9614-6968e2e89677"
+        name="Reset Password"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="99275cc1-9cd0-4dd4-8b5b-9b9202f72c14"
+        name="View Sales Report"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="62eb025e-a9f1-428d-bc07-1244479550b6">
+            <useCaseMoniker
+              Id="f220bb75-452f-41a1-8373-539abb39f6d4"
+              LastKnownName="Filter Sales Report"
+              LastKnownLocation="TdService.Modeling.uml" />
+          </include>
+        </additions>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="f220bb75-452f-41a1-8373-539abb39f6d4"
+        name="Filter Sales Report"
         isAbstract="false"
         isLeaf="false" />
     </packageHasNamedElement>

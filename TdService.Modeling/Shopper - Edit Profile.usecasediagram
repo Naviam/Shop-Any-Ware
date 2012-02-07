@@ -1,19 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" xmlns:dm11="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" dslVersion="1.0.0.0" Id="51703f76-a690-4eb6-99ff-c3657ac4dae6" name="Shopper - Edit Profile" linkedPackageId="774e4fce-2098-41a5-99f6-35f057c0dc10" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
-  <profileInstances>
-    <packageHasProfileInstances Id="aef6b3f4-5d01-4bfe-ab58-b848b88cf328">
-      <profileInstance Id="e67c05d8-e509-4838-a6ea-e0664641540c" name="StandardProfileL2">
-        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
-      </profileInstance>
-      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="ff5e05ed-da77-4638-ac9a-68bfaa4c458f">
-      <profileInstance Id="496844fb-9cbd-40be-b2f3-0ed59a7d7498" name="StandardProfileL3">
-        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
-      </profileInstance>
-      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
-    </packageHasProfileInstances>
-  </profileInstances>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="51703f76-a690-4eb6-99ff-c3657ac4dae6" name="Shopper - Edit Profile" linkedPackageId="774e4fce-2098-41a5-99f6-35f057c0dc10" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
   <packagedElements>
     <useCaseModelRootHasTypes>
       <actor Id="52a48541-9bbb-4dfd-af68-50aa9197d388" name="Shopper" isAbstract="false" isLeaf="false">
@@ -47,11 +33,11 @@
             <elementDefinition Id="65ae1c47-58c8-46b9-884a-651d880cf39e" />
           </include>
           <include Id="3348767a-c3ed-4897-891a-3d1c15b42533">
-            <useCaseMoniker Id="ae0251dd-c70f-43fe-8fc6-88ec73206e05" LastKnownName="Change First or / and Second Name" />
+            <useCaseMoniker Id="ae0251dd-c70f-43fe-8fc6-88ec73206e05" LastKnownName="Update User Name" />
             <elementDefinition Id="f693de2f-76d5-4691-8b9d-505630df8907" />
           </include>
           <include Id="fa71b571-a53a-4ea9-9a62-5cb617eeb684">
-            <useCaseMoniker Id="fa40de99-f0b5-4345-a0a2-45e294ad9f3c" LastKnownName="Change Notification Rules" />
+            <useCaseMoniker Id="fa40de99-f0b5-4345-a0a2-45e294ad9f3c" LastKnownName="Update Notification Rules" />
             <elementDefinition Id="e36c9cd6-2bf7-4aa5-b30b-b4be09f5f0c8" />
           </include>
           <include Id="a3fa430e-7f5c-4307-94e9-2314dc9e1af8">
@@ -67,12 +53,12 @@
       </useCase>
     </useCaseModelRootHasTypes>
     <useCaseModelRootHasTypes>
-      <useCase Id="ae0251dd-c70f-43fe-8fc6-88ec73206e05" name="Change First or / and Second Name" isAbstract="false" isLeaf="false">
+      <useCase Id="ae0251dd-c70f-43fe-8fc6-88ec73206e05" name="Update User Name" isAbstract="false" isLeaf="false">
         <elementDefinition Id="3535e998-fa30-443c-bde4-a4dde51d5f06" />
       </useCase>
     </useCaseModelRootHasTypes>
     <useCaseModelRootHasTypes>
-      <useCase Id="fa40de99-f0b5-4345-a0a2-45e294ad9f3c" name="Change Notification Rules" isAbstract="false" isLeaf="false">
+      <useCase Id="fa40de99-f0b5-4345-a0a2-45e294ad9f3c" name="Update Notification Rules" isAbstract="false" isLeaf="false">
         <elementDefinition Id="25385858-24a5-4b83-9f18-bae8c0c803cb" />
       </useCase>
     </useCaseModelRootHasTypes>
@@ -113,5 +99,19 @@
   </packagedElements>
   <package Id="774e4fce-2098-41a5-99f6-35f057c0dc10" name="TdService.Modeling">
     <elementDefinition Id="e006d43a-3bc9-452c-a7ce-47edd28d044b" />
+    <profileInstances>
+      <packageHasProfileInstances Id="aef6b3f4-5d01-4bfe-ab58-b848b88cf328">
+        <profileInstance Id="e67c05d8-e509-4838-a6ea-e0664641540c" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="ff5e05ed-da77-4638-ac9a-68bfaa4c458f">
+        <profileInstance Id="496844fb-9cbd-40be-b2f3-0ed59a7d7498" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
   </package>
 </useCaseModelRoot>

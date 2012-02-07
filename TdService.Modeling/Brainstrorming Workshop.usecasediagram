@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" dslVersion="1.0.0.0" Id="7a754603-a75f-4757-9cf6-bf3ccced79d4" name="Use Case" linkedPackageId="6e30d7dd-ffa3-4edd-9141-c373e4d58d72" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="7a754603-a75f-4757-9cf6-bf3ccced79d4" name="Use Case" linkedPackageId="6e30d7dd-ffa3-4edd-9141-c373e4d58d72" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
   <ownedCommentsInternal>
     <comment Id="59770625-62ec-4c4d-b2f6-238db67a2385">
       <elementDefinition Id="e5d093a9-bfbf-43b4-a912-2521fbce3d66" />
@@ -82,9 +82,7 @@
    - удалять посылки.
 3. статистика по продажам (сервисов)
    - просматривать по периодам.
-4. сервисы
-   - просмотр;
-   - обновлять стоимость сервисов.
+
 </body>
       <annotatedElements>
         <actorMoniker Id="b4c1fc40-45c8-489a-90ca-ac5d8928bbbf" LastKnownName="Administrator" />
@@ -97,6 +95,16 @@
  - отправлять финансовый отчет администратору еженедельно</body>
       <annotatedElements>
         <actorMoniker Id="43e69a44-b24a-4e14-842a-2cfbe309957a" LastKnownName="Time" />
+      </annotatedElements>
+    </comment>
+    <comment Id="8a8d156c-ffb3-44ed-a0f5-1c609a800648">
+      <elementDefinition Id="4af37212-7d5a-4b0e-9a92-ff5889d6f378" />
+      <body>Незарегистрированный покупатель
+1. Войти на сайт под своим логином если у него он есть
+2. Восстановить свой пароль если он его забыл
+3. Зарегистрироваться на сайте, если он не зарегистрирован</body>
+      <annotatedElements>
+        <actorMoniker Id="2af9d58a-c742-4517-8f0f-f5e2eeebc8b6" LastKnownName="Unregistered Shopper" />
       </annotatedElements>
     </comment>
   </ownedCommentsInternal>
@@ -138,6 +146,12 @@
     <useCaseModelRootHasTypes>
       <actor Id="b4c1fc40-45c8-489a-90ca-ac5d8928bbbf" name="Administrator" isAbstract="false" isLeaf="false">
         <elementDefinition Id="e28f6efb-ff69-4dce-a802-6087dce5a157" />
+        <generalsInternal>
+          <generalization Id="3ca6d94e-87c5-463d-96e2-726ded80ca17" isSubstitutable="false">
+            <actorMoniker Id="59ecd3f7-2255-43e9-b352-85de1c1aad0b" LastKnownName="Operator" />
+            <elementDefinition Id="8db0e94f-1ee6-4a24-9181-1d1609e04a45" />
+          </generalization>
+        </generalsInternal>
         <targetEnds>
           <association Id="de7d9b70-f7ec-49ed-8a66-259fc500beae" isDerived="false" sourceEndRoleName="Administrator" targetEndRoleName="TD Service - Online Mail Forwarding" isLeaf="false" isAbstract="false">
             <subsystemMoniker Id="6059dd91-797f-4156-af54-2e40b1a66a76" LastKnownName="TD Service - Online Mail Forwarding" />
@@ -161,6 +175,12 @@
     <useCaseModelRootHasTypes>
       <actor Id="59ecd3f7-2255-43e9-b352-85de1c1aad0b" name="Operator" isAbstract="false" isLeaf="false">
         <elementDefinition Id="f1d02f09-f7a3-46f4-9184-50abd90f21cd" />
+        <generalsInternal>
+          <generalization Id="4ebbd21c-e893-4730-8925-e35fd0c1a92f" isSubstitutable="false">
+            <actorMoniker Id="8ef39ebf-dcdd-4431-a28b-811961e633ac" LastKnownName="Consultant" />
+            <elementDefinition Id="f484a2f1-b6da-403b-9998-f05f7b9465b1" />
+          </generalization>
+        </generalsInternal>
         <targetEnds>
           <association Id="e8c18318-a8ba-4783-b937-ff82f7c02113" isDerived="false" sourceEndRoleName="Operator" targetEndRoleName="TD Service - Online Mail Forwarding" isLeaf="false" isAbstract="false">
             <subsystemMoniker Id="6059dd91-797f-4156-af54-2e40b1a66a76" LastKnownName="TD Service - Online Mail Forwarding" />
@@ -184,6 +204,12 @@
     <useCaseModelRootHasTypes>
       <actor Id="2c2242d2-c529-4031-bf0d-271835ebe7cc" name="Shopper" isAbstract="false" isLeaf="false">
         <elementDefinition Id="e9f5ee6f-30a6-42e0-b103-1b5ef0aa4b74" />
+        <generalsInternal>
+          <generalization Id="d509c14c-feec-4a0a-8f60-ba236920cdd4" isSubstitutable="false">
+            <actorMoniker Id="2af9d58a-c742-4517-8f0f-f5e2eeebc8b6" LastKnownName="Unregistered Shopper" />
+            <elementDefinition Id="73d5fa34-3591-4e4e-b5c8-ad8bbcb39290" />
+          </generalization>
+        </generalsInternal>
         <targetEnds>
           <association Id="68269018-cac8-47aa-b403-73a1f1635031" isDerived="false" sourceEndRoleName="Shopper" targetEndRoleName="TD Service - Online Mail Forwarding" isLeaf="false" isAbstract="false">
             <subsystemMoniker Id="6059dd91-797f-4156-af54-2e40b1a66a76" LastKnownName="TD Service - Online Mail Forwarding" />
@@ -225,6 +251,11 @@
             <elementDefinition Id="d2792991-07bd-41b4-a623-9518c28a7a2d" />
           </association>
         </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="2af9d58a-c742-4517-8f0f-f5e2eeebc8b6" name="Unregistered Shopper" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="75ac1d6e-299b-4093-ab4a-3dd2d6e7737d" />
       </actor>
     </useCaseModelRootHasTypes>
   </packagedElements>

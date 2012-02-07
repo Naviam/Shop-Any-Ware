@@ -1,35 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="3e058702-9aec-41e7-9320-9682d66f2766" name="Manage Balance" linkedPackageId="c20bf22c-8a1e-4b87-89ee-d7c720f53916" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="3e058702-9aec-41e7-9320-9682d66f2766" name="View Balance" linkedPackageId="c20bf22c-8a1e-4b87-89ee-d7c720f53916" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
   <ownedCommentsInternal>
     <comment Id="7453cb4c-90a2-426f-b584-2d15d54f7388">
       <elementDefinition Id="3d1ffebb-38a5-4bc3-8334-e47bcd0aecb3" />
       <body>Снятие денег не будет реализованно в первой версии</body>
       <annotatedElements>
-        <useCaseMoniker Id="a0ace77e-c626-43c0-aa6e-a77e4208e5ad" LastKnownName="Withdraw money" />
+        <useCaseMoniker Id="a0ace77e-c626-43c0-aa6e-a77e4208e5ad" LastKnownName="Withdraw Money" />
+      </annotatedElements>
+    </comment>
+    <comment Id="bee46b3d-9bf9-45c1-9d5a-cf2e8ac953cf">
+      <elementDefinition Id="a44c5a49-4a48-4929-b20b-d6302aed1ca2" />
+      <body>Authorize.NET</body>
+      <annotatedElements>
+        <useCaseMoniker Id="dc63f221-a975-468a-be96-82c3955f2653" LastKnownName="Pay With Credit Card" />
       </annotatedElements>
     </comment>
   </ownedCommentsInternal>
-  <profileInstances>
-    <packageHasProfileInstances Id="4cfa79c6-2f52-4319-b53c-260a427c3ad9">
-      <profileInstance Id="2e652c64-0a61-49a4-99af-9c67f0f9d270" name="StandardProfileL2">
-        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
-      </profileInstance>
-      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="2ef8b194-0720-4874-8bba-ab1ac498da4c">
-      <profileInstance Id="969135ff-ceca-405a-990a-7cad0065d393" name="StandardProfileL3">
-        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
-      </profileInstance>
-      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
-    </packageHasProfileInstances>
-  </profileInstances>
   <packagedElements>
     <useCaseModelRootHasTypes>
       <actor Id="b486944e-d986-4541-88c4-930a0251dd80" name="Shopper" isAbstract="false" isLeaf="false">
         <elementDefinition Id="e9f5ee6f-30a6-42e0-b103-1b5ef0aa4b74" />
         <targetEnds>
           <association Id="da46fa26-21ce-45e9-ba2a-4d6541562c9b" isDerived="false" sourceEndRoleName="Shopper" targetEndRoleName="Manage Wallet Balance" isLeaf="false" isAbstract="false">
-            <useCaseMoniker Id="7d6f65cc-eb6a-458d-9f37-409147d80b56" LastKnownName="Manage Balance" />
+            <useCaseMoniker Id="7d6f65cc-eb6a-458d-9f37-409147d80b56" LastKnownName="View Balance" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd Id="2d307e6b-f052-49e9-8674-77f1584b66eb" name="Shopper" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
@@ -48,7 +41,7 @@
       </actor>
     </useCaseModelRootHasTypes>
     <useCaseModelRootHasTypes>
-      <useCase Id="7d6f65cc-eb6a-458d-9f37-409147d80b56" name="Manage Balance" isAbstract="false" isLeaf="false">
+      <useCase Id="7d6f65cc-eb6a-458d-9f37-409147d80b56" name="View Balance" isAbstract="false" isLeaf="false">
         <elementDefinition Id="87d61a3a-dfaa-4a00-adc3-1de58d33ab81" />
         <additions>
           <include Id="1daf0c7d-191d-4a96-b757-f51bc52a9606">
@@ -56,7 +49,7 @@
             <elementDefinition Id="7e87fa14-270e-4dfc-aed7-5e5c50ceb934" />
           </include>
           <include Id="2568a98d-4c41-4498-a6a0-3d895bb89f23">
-            <useCaseMoniker Id="a0ace77e-c626-43c0-aa6e-a77e4208e5ad" LastKnownName="Withdraw money" />
+            <useCaseMoniker Id="a0ace77e-c626-43c0-aa6e-a77e4208e5ad" LastKnownName="Withdraw Money" />
             <elementDefinition Id="65864413-94d5-4253-a63e-4f2e3b65b3a2" />
           </include>
           <include Id="6d49711c-d9b2-4ac6-a52d-8f51c518ff3a">
@@ -67,7 +60,7 @@
       </useCase>
     </useCaseModelRootHasTypes>
     <useCaseModelRootHasTypes>
-      <useCase Id="a0ace77e-c626-43c0-aa6e-a77e4208e5ad" name="Withdraw money" isAbstract="false" isLeaf="false">
+      <useCase Id="a0ace77e-c626-43c0-aa6e-a77e4208e5ad" name="Withdraw Money" isAbstract="false" isLeaf="false">
         <elementDefinition Id="ccc6fe3b-0943-41d8-88ba-2ee460d37afb" />
       </useCase>
     </useCaseModelRootHasTypes>
@@ -76,23 +69,23 @@
         <elementDefinition Id="b4a9af7e-45ca-4ce9-a706-5841c368e87e" />
         <additions>
           <include Id="b2361050-8102-47a3-9213-c1e76fbd49bd">
-            <useCaseMoniker Id="bde16f03-b098-4b97-a6b3-fe4e4f697c3b" LastKnownName="Pay with Paypal" />
+            <useCaseMoniker Id="bde16f03-b098-4b97-a6b3-fe4e4f697c3b" LastKnownName="Pay With Paypal" />
             <elementDefinition Id="4ed7b8ff-6119-4c9a-8959-15454233e222" />
           </include>
           <include Id="a2eb59d8-900c-4ed4-b9f8-2bf6fe72feb4">
-            <useCaseMoniker Id="dc63f221-a975-468a-be96-82c3955f2653" LastKnownName="Pay with credit card (Authorize.NET)" />
+            <useCaseMoniker Id="dc63f221-a975-468a-be96-82c3955f2653" LastKnownName="Pay With Credit Card" />
             <elementDefinition Id="32f63342-ecbb-4cff-9ace-93275a41b26d" />
           </include>
         </additions>
       </useCase>
     </useCaseModelRootHasTypes>
     <useCaseModelRootHasTypes>
-      <useCase Id="bde16f03-b098-4b97-a6b3-fe4e4f697c3b" name="Pay with Paypal" isAbstract="false" isLeaf="false">
+      <useCase Id="bde16f03-b098-4b97-a6b3-fe4e4f697c3b" name="Pay With Paypal" isAbstract="false" isLeaf="false">
         <elementDefinition Id="679ece3e-2b87-42b6-ae1c-51f3f16c6b1d" />
       </useCase>
     </useCaseModelRootHasTypes>
     <useCaseModelRootHasTypes>
-      <useCase Id="dc63f221-a975-468a-be96-82c3955f2653" name="Pay with credit card (Authorize.NET)" isAbstract="false" isLeaf="false">
+      <useCase Id="dc63f221-a975-468a-be96-82c3955f2653" name="Pay With Credit Card" isAbstract="false" isLeaf="false">
         <elementDefinition Id="a0a26918-65f6-4fc7-a1a7-2e1b7494f47c" />
       </useCase>
     </useCaseModelRootHasTypes>
@@ -104,5 +97,19 @@
   </packagedElements>
   <package Id="c20bf22c-8a1e-4b87-89ee-d7c720f53916" name="TdService.Modeling">
     <elementDefinition Id="e006d43a-3bc9-452c-a7ce-47edd28d044b" />
+    <profileInstances>
+      <packageHasProfileInstances Id="4cfa79c6-2f52-4319-b53c-260a427c3ad9">
+        <profileInstance Id="2e652c64-0a61-49a4-99af-9c67f0f9d270" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="2ef8b194-0720-4874-8bba-ab1ac498da4c">
+        <profileInstance Id="969135ff-ceca-405a-990a-7cad0065d393" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
   </package>
 </useCaseModelRoot>

@@ -17,13 +17,6 @@
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets" />
   <ItemGroup>
-    <Content Include="Consultant.usecasediagram">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Consultant.usecasediagram.layout">
-      <SubType>Content</SubType>
-      <DependentUpon>Consultant.usecasediagram</DependentUpon>
-    </Content>
     <Content Include="DomainLayer.classdiagram">
       <SubType>Content</SubType>
     </Content>
@@ -31,19 +24,19 @@
       <SubType>Content</SubType>
       <DependentUpon>DomainLayer.classdiagram</DependentUpon>
     </Content>
-    <Content Include="Operator.usecasediagram">
+    <Content Include="Administrator - Operator - Consultant.usecasediagram">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Operator.usecasediagram.layout">
+    <Content Include="Administrator - Operator - Consultant.usecasediagram.layout">
       <SubType>Content</SubType>
-      <DependentUpon>Operator.usecasediagram</DependentUpon>
+      <DependentUpon>Administrator - Operator - Consultant.usecasediagram</DependentUpon>
     </Content>
-    <Content Include="Shopper - Manage Balance.usecasediagram">
+    <Content Include="Shopper - View Balance.usecasediagram">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Shopper - Manage Balance.usecasediagram.layout">
+    <Content Include="Shopper - View Balance.usecasediagram.layout">
       <SubType>Content</SubType>
-      <DependentUpon>Shopper - Manage Balance.usecasediagram</DependentUpon>
+      <DependentUpon>Shopper - View Balance.usecasediagram</DependentUpon>
     </Content>
     <Content Include="Shopper - Edit Profile.usecasediagram">
       <SubType>Content</SubType>
@@ -52,12 +45,12 @@
       <SubType>Content</SubType>
       <DependentUpon>Shopper - Edit Profile.usecasediagram</DependentUpon>
     </Content>
-    <Content Include="Shopper - Manage Parcels.usecasediagram">
+    <Content Include="Shopper - View Parcels.usecasediagram">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Shopper - Manage Parcels.usecasediagram.layout">
+    <Content Include="Shopper - View Parcels.usecasediagram.layout">
       <SubType>Content</SubType>
-      <DependentUpon>Shopper - Manage Parcels.usecasediagram</DependentUpon>
+      <DependentUpon>Shopper - View Parcels.usecasediagram</DependentUpon>
     </Content>
     <Content Include="Shopper.usecasediagram">
       <SubType>Content</SubType>
@@ -66,12 +59,12 @@
       <SubType>Content</SubType>
       <DependentUpon>Shopper.usecasediagram</DependentUpon>
     </Content>
-    <Content Include="Shopper - Manage Orders.usecasediagram">
+    <Content Include="Shopper - View Orders.usecasediagram">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Shopper - Manage Orders.usecasediagram.layout">
+    <Content Include="Shopper - View Orders.usecasediagram.layout">
       <SubType>Content</SubType>
-      <DependentUpon>Shopper - Manage Orders.usecasediagram</DependentUpon>
+      <DependentUpon>Shopper - View Orders.usecasediagram</DependentUpon>
     </Content>
     <Content Include="Brainstrorming Workshop.usecasediagram">
       <SubType>Content</SubType>
