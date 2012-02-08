@@ -118,7 +118,45 @@
             <useCaseMoniker Id="5c67649e-70fb-4b62-94a6-c7486eabe2ef" LastKnownName="Request Item Return" />
             <elementDefinition Id="067482a3-5e50-496b-867d-26c0b6cff099" />
           </include>
+          <include Id="751c5b58-afd7-4474-adf3-58aecda49219">
+            <useCaseMoniker Id="014d3df1-00c1-41c0-be27-ab62cd8d153b" LastKnownName="View Items" />
+            <elementDefinition Id="788798fb-77ac-4e08-86c2-9c68d6ce191b" />
+          </include>
         </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="014d3df1-00c1-41c0-be27-ab62cd8d153b" name="View Items" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="3f955729-0596-4792-9c59-db0a45eeb066" />
+        <additions>
+          <include Id="a7bc52ad-0003-400f-83aa-5d003d209961">
+            <useCaseMoniker Id="6f42eb96-6da1-4355-be7b-7e23f0fc6261" LastKnownName="Add Item" />
+            <elementDefinition Id="c4f41547-7589-4f78-9824-1769098d1636" />
+          </include>
+          <include Id="0384e223-81d9-43cb-afcf-afd2261e3247">
+            <useCaseMoniker Id="c5739abf-4e67-4ac6-94f4-06cbac0f7cd5" LastKnownName="Update Item" />
+            <elementDefinition Id="4598ea28-0551-41a2-9ed5-2345d66d6c50" />
+          </include>
+          <include Id="61df2df3-ad99-4f54-8c5d-327f606aeeeb">
+            <useCaseMoniker Id="de1b29f3-8434-4624-bd69-c0a77d1ee011" LastKnownName="Remove Item" />
+            <elementDefinition Id="d7766e4d-6444-46f7-8e96-39153d0e304e" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="6f42eb96-6da1-4355-be7b-7e23f0fc6261" name="Add Item" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="51d488a6-d46d-4fdf-a654-d02a54822e39" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="c5739abf-4e67-4ac6-94f4-06cbac0f7cd5" name="Update Item" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="ea6d09da-f45a-40db-abd9-23cb821aed82" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="de1b29f3-8434-4624-bd69-c0a77d1ee011" name="Remove Item" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="1abfc1f5-6105-45e5-be5e-109b3a40107e" />
       </useCase>
     </useCaseModelRootHasTypes>
   </packagedElements>

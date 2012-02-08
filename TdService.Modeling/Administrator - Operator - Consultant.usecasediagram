@@ -314,6 +314,22 @@
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="8cdca1d5-071a-4ab3-9beb-d72e5abb8cd7" />
           </association>
+          <association Id="1ab5e2c8-6325-483d-ba91-2e009781517e" isDerived="false" sourceEndRoleName="Administrator" targetEndRoleName="View Users" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="29cc2643-c22c-460d-8028-98b7fdc6c7a5" LastKnownName="View Users" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="060f3161-2159-4a2a-a235-df36a84fe92a" name="Administrator" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="d3c0bc16-3ca2-4455-9937-bbb11073752d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="833f675c-e087-4913-b798-74415de2d7f8" name="View Users" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="25a60617-d82c-4c20-891b-f790bd08a0ab" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="caecb429-ad72-4797-bae4-d0ee8711cf66" />
+          </association>
         </targetEnds>
       </actor>
     </useCaseModelRootHasTypes>
@@ -351,6 +367,60 @@
     <useCaseModelRootHasTypes>
       <useCase Id="70818528-d2a8-4eff-8671-5062563d1ba9" name="Filter Sales Report" isAbstract="false" isLeaf="false">
         <elementDefinition Id="f220bb75-452f-41a1-8373-539abb39f6d4" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="29cc2643-c22c-460d-8028-98b7fdc6c7a5" name="View Users" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="174eb746-b0a1-4f1c-92f1-a74f753077fe" />
+        <additions>
+          <include Id="7613e665-971a-4b64-942a-4eff9b6f86cd">
+            <useCaseMoniker Id="e83d80a8-0192-444b-a50c-e89a45eda48c" LastKnownName="Add User" />
+            <elementDefinition Id="036bc881-ffbf-46d8-8aa3-41076e26b83b" />
+          </include>
+          <include Id="5dd9b8b1-ef9d-4ab2-a6d6-c0f886cb4a4f">
+            <useCaseMoniker Id="ab6645e9-353c-454d-9b3c-8cf15649b23e" LastKnownName="Update User" />
+            <elementDefinition Id="bb8d6682-c9db-4769-bcaa-18550938de75" />
+          </include>
+          <include Id="569b535b-b538-4b8d-b9f9-918d4f3891cb">
+            <useCaseMoniker Id="aa62bab5-79d2-41a0-b596-70e755d89478" LastKnownName="Remove User" />
+            <elementDefinition Id="50ecb8fd-c33b-4e22-9e7e-63adc421fcd5" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="e83d80a8-0192-444b-a50c-e89a45eda48c" name="Add User" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="a3aa4dce-74d5-4815-868d-2b54553547d6" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="ab6645e9-353c-454d-9b3c-8cf15649b23e" name="Update User" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="8a03112c-2ce6-401e-8925-049820decc02" />
+        <additions>
+          <include Id="b5c56742-88a5-4e88-9ceb-d5f08be20704">
+            <useCaseMoniker Id="08ca1933-c622-4e63-8a82-2a7ef6a519c7" LastKnownName="Add User To Role" />
+            <elementDefinition Id="ae1f7708-da7a-4c82-a740-6ee9b8c6f432" />
+          </include>
+          <include Id="80e05b56-1998-4c3d-9139-08814ae535a0">
+            <useCaseMoniker Id="3fba8a9b-16aa-4a61-845b-0018885097a0" LastKnownName="Remove User From Role" />
+            <elementDefinition Id="c9cb58f5-267e-4cca-9497-831cd3de7a2c" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="aa62bab5-79d2-41a0-b596-70e755d89478" name="Remove User" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="ba719620-06f8-4c86-b2ee-de8ab0b1a746" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="08ca1933-c622-4e63-8a82-2a7ef6a519c7" name="Add User To Role" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="8efc14b6-b6a2-42ac-8b28-775dadb619de" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="3fba8a9b-16aa-4a61-845b-0018885097a0" name="Remove User From Role" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="246d28c0-fe76-493b-b535-be1e12ece3bd" />
       </useCase>
     </useCaseModelRootHasTypes>
   </packagedElements>

@@ -1,19 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" dslVersion="1.0.0.0" Id="9ac889d4-8e99-4420-a52a-e3c60ac82a9b" name="DomainLayer" linkedPackageId="ba2c38dc-b093-4887-b674-005f865b9278" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
-  <profileInstances>
-    <packageHasProfileInstances Id="49e4dd4a-360b-40ee-8f7f-e1e473dc5676">
-      <profileInstance Id="903936cc-0820-43be-8978-90a98a9c1c5b" name="StandardProfileL2">
-        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
-      </profileInstance>
-      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="ea443ec7-73eb-4709-8783-8be47766c3cd">
-      <profileInstance Id="9624cb00-9c0b-4b98-9150-b6884b97bdcd" name="StandardProfileL3">
-        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
-      </profileInstance>
-      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
-    </packageHasProfileInstances>
-  </profileInstances>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" dslVersion="1.0.0.0" Id="9ac889d4-8e99-4420-a52a-e3c60ac82a9b" name="DomainLayer" linkedPackageId="ba2c38dc-b093-4887-b674-005f865b9278" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
   <packagedElements>
     <logicalClassDesignerModelHasTypes>
       <class Id="33d76e02-27b1-49cb-ae7d-686ae8ef38ce" name="Order" isAbstract="false" isLeaf="false" isActiveClass="false">
@@ -77,21 +63,6 @@
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
-        <ownedOperationsInternal>
-          <operation Id="a4af038d-ce24-4779-870e-77d8f7c6a80f" name="Add" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
-            <elementDefinition Id="9a197517-f9c1-44cf-ba82-be41eb011dc8" />
-          </operation>
-          <operation Id="43fb652d-e83b-4d44-a33c-03117d8d3e3d" name="Remove" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
-            <elementDefinition Id="0feedcfa-47f7-42ff-8010-536c7d742512" />
-          </operation>
-          <operation Id="97e95ee5-2749-4f3f-957f-8a72fab43e31" name="Restore" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
-            <description>Account Executive or / and administrator can restore recently deleted order</description>
-            <elementDefinition Id="2ce50d11-acaa-4d85-8a0c-e101d4d4876e" />
-          </operation>
-          <operation Id="b9cfd614-9481-4cb2-8fd9-29a790098aa9" name="Update" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
-            <elementDefinition Id="3fe629a7-25fb-4c43-84f6-ddef1f42551d" />
-          </operation>
-        </ownedOperationsInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
@@ -155,46 +126,6 @@
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
-        <ownedOperationsInternal>
-          <operation Id="c66669a5-a779-4f8b-b5b6-0aa8df35377d" name="Collect" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
-            <elementDefinition Id="55d9babb-a8f8-48cf-bd7f-dda811ae53c5" />
-            <ownedParameters>
-              <operationHasOwnedParameters>
-                <parameter Id="9942a0cf-9058-49f3-9258-130a9438d070" name="CustomsEntryItem" direction="In">
-                  <description>Collect products into a parcel</description>
-                  <elementDefinition Id="85783a03-6620-4444-adf1-58eabca88f78" />
-                  <type_NamedElement>
-                    <referencedTypeMoniker Id="2fafeaea-4d8f-4ccc-b905-66b5eb71ad31" LastKnownName="CustomsEntryItem" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-            </ownedParameters>
-          </operation>
-          <operation Id="8efbae31-1d4b-46cf-b6bf-f25bf5889aaf" name="ChangeAddress" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
-            <elementDefinition Id="ebcb595e-7899-461f-b2c9-4a4039206de0" />
-            <ownedParameters>
-              <operationHasOwnedParameters>
-                <parameter Id="e6af7fde-fc19-42eb-a8e0-210b6d32fe26" direction="Return">
-                  <elementDefinition Id="55afedce-c593-49ef-a1ff-4b8df6bd8466" />
-                  <type_NamedElement>
-                    <referencedTypeMoniker Id="64953083-5406-4d95-97a7-ba1d449000ec" LastKnownName="Boolean" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter Id="c33a6c51-fad9-4adc-82fb-60d27e6cbd0e" name="newAddress" direction="In">
-                  <elementDefinition Id="25f9ca2d-b4b8-4914-a421-221ea46a6e20" />
-                  <type_NamedElement>
-                    <referencedTypeMoniker Id="f6bc6839-d3de-42cb-8cbf-f03d17c5d4c3" LastKnownName="Address" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-            </ownedParameters>
-          </operation>
-          <operation Id="84fb42f5-2646-40ab-8841-d7eff1d6e54f" name="Update" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
-            <elementDefinition Id="3ae015fa-7ebd-4933-b057-df37922cd891" />
-          </operation>
-        </ownedOperationsInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
@@ -283,35 +214,6 @@
             <elementDefinition Id="5967fd83-8952-4513-878c-e80cab99e1c5" />
           </property>
         </ownedAttributesInternal>
-        <ownedOperationsInternal>
-          <operation Id="26f5bf13-ed6c-4f65-a4d8-4abe1e73d698" name="Add" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
-            <elementDefinition Id="23e1c910-5f59-4406-966c-89586cb06d26" />
-            <ownedParameters>
-              <operationHasOwnedParameters>
-                <parameter Id="b97b56a8-3a1d-4295-89db-de7464d8b602" name="Product" direction="In">
-                  <elementDefinition Id="30a04c58-5f7b-4420-912f-cd56911bd0a9" />
-                  <type_NamedElement>
-                    <referencedTypeMoniker Id="2fafeaea-4d8f-4ccc-b905-66b5eb71ad31" LastKnownName="CustomsEntryItem" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-            </ownedParameters>
-          </operation>
-          <operation Id="3da53f9c-7679-43e0-8667-8f00844fa132" name="Remove" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
-            <elementDefinition Id="eb0ceaa1-e20e-4cc7-abeb-e0ed48e47fac" />
-            <ownedParameters>
-              <operationHasOwnedParameters>
-                <parameter Id="86bda27e-8fda-4084-9ad3-06a184557613" name="Id" direction="In">
-                  <description>CustomsEntryItem Id</description>
-                  <elementDefinition Id="95ffde84-e4d9-4c5d-a5ba-c55eec4ea4dd" />
-                  <type_NamedElement>
-                    <referencedTypeMoniker Id="f6a82fb2-46df-4651-ad73-6cd35a6e0ebd" LastKnownName="Integer" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-            </ownedParameters>
-          </operation>
-        </ownedOperationsInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
@@ -343,24 +245,8 @@
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
-        <ownedOperationsInternal>
-          <operation Id="1f851e8d-6c8d-4aa9-bfc4-f78e463345db" name="Update" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
-            <elementDefinition Id="6bdf2b7f-8c32-480a-9c68-733476ec1564" />
-          </operation>
-          <operation Id="f06fd492-b294-452a-8f7a-99dacc20c045" name="Remove" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
-            <elementDefinition Id="28f5c69a-956b-4aea-9938-b07fb2694a53" />
-          </operation>
-          <operation Id="ac9a13b5-dfca-43bf-b534-d57f3fb26413" name="Add" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
-            <elementDefinition Id="898e1e3f-fadf-48e7-891a-87f453a9b029" />
-          </operation>
-        </ownedOperationsInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
-    <packageHasNamedElement>
-      <referencedType Id="2fafeaea-4d8f-4ccc-b905-66b5eb71ad31" name="CustomsEntryItem" isAbstract="false" isLeaf="false" cachedFullName="TdService.Modeling::CustomsEntryItem">
-        <elementDefinition Id="468dfb9f-2023-4648-996a-44add78e8c53" />
-      </referencedType>
-    </packageHasNamedElement>
     <logicalClassDesignerModelHasTypes>
       <class Id="0374bcd0-f438-44df-a0c4-60a0d0b03a5e" name="Address" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="1b67df3d-57cc-4b48-a98e-9fc4643c0b72" />
@@ -443,15 +329,10 @@
               <referencedTypeMoniker Id="3e99916e-b877-473b-a191-ee2aa20f76ab" LastKnownName="Integer" />
             </type_NamedElement>
           </property>
+          <property Id="336e0b69-c59c-42b1-928e-15a9aa28639d" name="IsStorehouse" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="c652b83d-e945-4a86-bbb3-deee38a60032" />
+          </property>
         </ownedAttributesInternal>
-        <ownedOperationsInternal>
-          <operation Id="6653d0c6-f19d-461c-922e-6900403395b7" name="Add" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
-            <elementDefinition Id="fb21a575-23fa-425b-9123-998fe7cdd2bc" />
-          </operation>
-          <operation Id="0a641f6f-7966-49ab-b06d-b7fe193fff90" name="Remove" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
-            <elementDefinition Id="8f03f64e-eaf2-464c-ab11-5578042f0988" />
-          </operation>
-        </ownedOperationsInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
@@ -496,11 +377,6 @@
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
-        <ownedOperationsInternal>
-          <operation Id="cb9a46d8-750c-4d8d-8845-c7cc3c38b1db" name="Update" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
-            <elementDefinition Id="6a86474a-0149-4380-81d9-20595656dac9" />
-          </operation>
-        </ownedOperationsInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
@@ -560,40 +436,6 @@
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
-        <ownedOperationsInternal>
-          <operation Id="ebca1470-80d2-4aeb-8be1-c557a37bfffa" name="ChangePassword" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
-            <elementDefinition Id="c726ae2b-38b6-4c38-b442-ffffb2def6fc" />
-            <ownedParameters>
-              <operationHasOwnedParameters>
-                <parameter Id="4793ba3b-d0c9-4123-b019-fffd1963f508" direction="Return">
-                  <elementDefinition Id="00feceea-2bf4-4269-8cbe-cc2e6b1f949a" />
-                  <type_NamedElement>
-                    <referencedTypeMoniker Id="1797ee35-fb0b-49db-a357-bf7183487b6e" LastKnownName="Boolean" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-            </ownedParameters>
-          </operation>
-        </ownedOperationsInternal>
-      </class>
-    </logicalClassDesignerModelHasTypes>
-    <logicalClassDesignerModelHasTypes>
-      <class Id="4a122a49-1bb3-47b5-aebd-3ad9c4a9c1f5" name="UsaAddress" isAbstract="false" isLeaf="false" isActiveClass="false">
-        <elementDefinition Id="61961a69-86e1-4865-8138-c246496ee73a" />
-        <generalsInternal>
-          <generalization Id="483088a9-071e-4ee6-adc9-be7488588e31" isSubstitutable="false">
-            <classMoniker Id="0374bcd0-f438-44df-a0c4-60a0d0b03a5e" LastKnownName="Address" />
-            <elementDefinition Id="54d4f5a3-6baa-40d0-98c7-c68ad9df20aa" />
-          </generalization>
-        </generalsInternal>
-        <ownedOperationsInternal>
-          <operation Id="8e115683-2213-4563-a784-0ba05c03e061" name="Add" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
-            <elementDefinition Id="f9e9da15-6033-4998-b10a-215d9dea4287" />
-          </operation>
-          <operation Id="d9a3ec12-cf83-4251-9de8-1e39deb5e840" name="Remove" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
-            <elementDefinition Id="27ecec03-fcdc-4a9e-bbe9-ebeef35fbe49" />
-          </operation>
-        </ownedOperationsInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
     <packageHasNamedElement>
@@ -746,11 +588,6 @@
         <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
       </referencedType>
     </packageHasNamedElement>
-    <packageHasNamedElement>
-      <referencedType Id="1797ee35-fb0b-49db-a357-bf7183487b6e" name="Boolean" isAbstract="false" isLeaf="false" cachedFullName="Boolean">
-        <elementDefinition Id="8943dc84-709e-4f62-b15a-a3273aa6f165" />
-      </referencedType>
-    </packageHasNamedElement>
     <logicalClassDesignerModelHasTypes>
       <class Id="8db76f54-96a0-409b-8a68-7a218c6e2ad2" name="Service" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="d0840345-1d4f-48ac-af43-0eb75c6a3bbb" />
@@ -802,14 +639,6 @@
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
-        <ownedOperationsInternal>
-          <operation Id="b245278b-2735-42ae-b5cf-67734589264f" name="Add" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
-            <elementDefinition Id="d81f4354-0d78-40c5-95d4-00ebeb044f95" />
-          </operation>
-          <operation Id="93779038-bf9a-4563-8c5b-0e669a5ff618" name="Remove" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
-            <elementDefinition Id="71a472d3-cce5-4e6c-8476-511041ba5b1e" />
-          </operation>
-        </ownedOperationsInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
     <packageHasNamedElement>
@@ -832,25 +661,15 @@
         <elementDefinition Id="220a3521-e091-4221-bae9-3ef9018e845c" />
       </referencedType>
     </packageHasNamedElement>
-    <packageHasNamedElement>
-      <referencedType Id="64953083-5406-4d95-97a7-ba1d449000ec" name="Boolean" isAbstract="false" isLeaf="false" cachedFullName="Boolean">
-        <elementDefinition Id="8943dc84-709e-4f62-b15a-a3273aa6f165" />
-      </referencedType>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <referencedType Id="f6bc6839-d3de-42cb-8cbf-f03d17c5d4c3" name="Address" isAbstract="false" isLeaf="false" cachedFullName="TdService.Modeling::Address">
-        <elementDefinition Id="1b67df3d-57cc-4b48-a98e-9fc4643c0b72" />
-      </referencedType>
-    </packageHasNamedElement>
     <logicalClassDesignerModelHasTypes>
-      <class Id="8f328c1b-0c03-48d5-ab4b-e7d8ae2b338e" name="Wallet" isAbstract="false" isLeaf="false" isActiveClass="false">
+      <class Id="8f328c1b-0c03-48d5-ab4b-e7d8ae2b338e" name="Balance" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="0405bfc2-edbb-4ada-adb7-c0d203821300" />
         <targetEnds>
-          <association Id="fb2ee8ad-8739-4803-8f91-faf8e190c774" isDerived="false" sourceEndRoleName="Wallet" targetEndRoleName="Parcel" isLeaf="false" isAbstract="false">
+          <association Id="fb2ee8ad-8739-4803-8f91-faf8e190c774" isDerived="false" sourceEndRoleName="Balance" targetEndRoleName="Parcel" isLeaf="false" isAbstract="false">
             <classMoniker Id="24fbb2ea-27b5-4c0a-bb31-6ba4c32b48f6" LastKnownName="Parcel" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
-                <memberEnd Id="55700f24-c01b-4e15-a3f7-7ab8336888e3" name="Wallet" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                <memberEnd Id="55700f24-c01b-4e15-a3f7-7ab8336888e3" name="Balance" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
                   <elementDefinition Id="3f291968-c356-482b-97ab-a5526c8192e8" />
                 </memberEnd>
               </associationHasOwnedEnds>
@@ -868,19 +687,14 @@
             <elementDefinition Id="61940245-19e6-4018-8415-f433b11f7505" />
           </property>
         </ownedAttributesInternal>
-        <ownedOperationsInternal>
-          <operation Id="3db32055-241d-491e-81d5-018a85d6fa9b" name="AddTransaction" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
-            <elementDefinition Id="faab03ee-12a6-4ac6-8321-1f1c0cd0204e" />
-          </operation>
-        </ownedOperationsInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
       <class Id="bf16b912-98ee-408a-be6a-f838fc8fc3d7" name="Transaction" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="e11eda15-44cb-4965-9809-c805213bf90b" />
         <targetEnds>
-          <association Id="7648a239-fe7a-40c1-b10a-1ffa1b38bfe4" isDerived="false" sourceEndRoleName="Transaction" targetEndRoleName="Wallet" isLeaf="false" isAbstract="false">
-            <classMoniker Id="8f328c1b-0c03-48d5-ab4b-e7d8ae2b338e" LastKnownName="Wallet" />
+          <association Id="7648a239-fe7a-40c1-b10a-1ffa1b38bfe4" isDerived="false" sourceEndRoleName="Transaction" targetEndRoleName="Balance" isLeaf="false" isAbstract="false">
+            <classMoniker Id="8f328c1b-0c03-48d5-ab4b-e7d8ae2b338e" LastKnownName="Balance" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd Id="5c398fc6-11ef-4d5a-b4db-348ddd3c30e8" name="Transaction" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
@@ -898,7 +712,7 @@
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
-                <memberEnd Id="c63a15d7-fd66-4fa6-918e-0a4167a9ce0b" name="Wallet" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                <memberEnd Id="c63a15d7-fd66-4fa6-918e-0a4167a9ce0b" name="Balance" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
                   <elementDefinition Id="f67f59e9-be70-4d26-97ed-7257859c47a4" />
                 </memberEnd>
               </associationHasOwnedEnds>
@@ -1017,5 +831,19 @@
   </packagedElements>
   <package Id="ba2c38dc-b093-4887-b674-005f865b9278" name="TdService.Modeling">
     <elementDefinition Id="e006d43a-3bc9-452c-a7ce-47edd28d044b" />
+    <profileInstances>
+      <packageHasProfileInstances Id="49e4dd4a-360b-40ee-8f7f-e1e473dc5676">
+        <profileInstance Id="903936cc-0820-43be-8978-90a98a9c1c5b" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="ea443ec7-73eb-4709-8783-8be47766c3cd">
+        <profileInstance Id="9624cb00-9c0b-4b98-9150-b6884b97bdcd" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
   </package>
 </logicalClassDesignerModel>

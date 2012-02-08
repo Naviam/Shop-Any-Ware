@@ -36,22 +36,6 @@
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="4ddac90d-0325-44bb-a295-a575f29e20ed" />
           </association>
-          <association Id="a8bbb710-9509-4d6b-967c-0071ffc8a756" isDerived="false" sourceEndRoleName="Shopper" targetEndRoleName="Edit Profile" isLeaf="false" isAbstract="false">
-            <useCaseMoniker Id="3f785dcc-32a3-4b47-a1c2-ddcc15908991" LastKnownName="Edit Profile" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd Id="0309575b-b533-4a6d-b0bf-90434eb9095a" name="Shopper" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
-                  <elementDefinition Id="ded04920-e050-41e2-9ddd-7b6356ee0d54" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd Id="89ee2ca5-a1cc-42c3-9a55-524033cdea80" name="Edit Profile" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-                  <elementDefinition Id="64163cc5-4135-410d-95b3-2341a73eb76a" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-            <elementDefinition Id="45e2954c-01d4-4b04-8caf-cce8e1059c93" />
-          </association>
           <association Id="23b6a130-3ef6-44de-bb99-e9aa610ba25c" isDerived="false" sourceEndRoleName="Shopper" targetEndRoleName="Leave Feedback" isLeaf="false" isAbstract="false">
             <useCaseMoniker Id="b3eb7a24-3c59-442f-a3e8-0ab04a95222d" LastKnownName="Leave Feedback Or Ask a Question" />
             <relationshipOwnedElementsInternal>
@@ -99,6 +83,22 @@
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="3db6f1f2-47cb-4d5d-9a2c-ac4278a9c464" />
+          </association>
+          <association Id="7bb87a2c-c7a5-4d77-8b20-aadcfd514448" isDerived="false" sourceEndRoleName="Shopper" targetEndRoleName="View Profile" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="d4c73284-8982-4eca-bebc-c4d170f7b583" LastKnownName="View Profile" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="30aa02d4-92da-4be1-88bf-2e7d609f8e30" name="Shopper" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="fb4df3be-e20d-457a-a47c-96974d2216fb" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="168c83ad-7ae2-4939-8bc4-8e3ba0e196f4" name="View Profile" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="7a47adbc-62ff-49a9-9866-1e062d74f433" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="dd63daa9-ca54-4a5c-b99c-a9ca80e0fc4c" />
           </association>
         </targetEnds>
       </actor>
@@ -169,11 +169,6 @@
       </useCase>
     </useCaseModelRootHasTypes>
     <useCaseModelRootHasTypes>
-      <useCase Id="3f785dcc-32a3-4b47-a1c2-ddcc15908991" name="Edit Profile" isAbstract="false" isLeaf="false">
-        <elementDefinition Id="b3d3bc8d-0b95-4bd4-8ade-76358d805bde" />
-      </useCase>
-    </useCaseModelRootHasTypes>
-    <useCaseModelRootHasTypes>
       <useCase Id="0a3b4e8e-ef86-42a4-870e-67101770d928" name="View Balance" isAbstract="false" isLeaf="false">
         <elementDefinition Id="87d61a3a-dfaa-4a00-adc3-1de58d33ab81" />
       </useCase>
@@ -196,6 +191,11 @@
     <useCaseModelRootHasTypes>
       <useCase Id="0c54a696-e5b5-47b3-bc60-124627792b86" name="View Parcels" isAbstract="false" isLeaf="false">
         <elementDefinition Id="bdbe8537-c7b8-4d5f-abc2-df7d3d474ed4" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="d4c73284-8982-4eca-bebc-c4d170f7b583" name="View Profile" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="cfc25fb3-eb26-4fb8-a66e-5e5666064513" />
       </useCase>
     </useCaseModelRootHasTypes>
   </packagedElements>

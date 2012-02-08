@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm9="http://schemas.microsoft.com/dsltools/UseCaseModel"
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel"
   dslVersion="1.0.0.0"
   Id="e006d43a-3bc9-452c-a7ce-47edd28d044b"
   name="TdService.Modeling" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -10,32 +10,46 @@
     </comment>
     <comment
       Id="e5d093a9-bfbf-43b4-a912-2521fbce3d66">
-      <body>Покупатель
-1. работать с заказами
-    - добавлять;
-    - редактировать; 
-    - оформлять возврат;
-    - удалять заказы;
-    - заполнять таможенную декларацию;
-    - добавить сервис.
-2. работать с посылками
-    - собирать заказы в посылку;
-    - просматривать посылки;
-    - редактировать; и
-    - удалять;
-    - добавить сервис.
-2.5 кошелек (баланс)
-    - пополнение кошелька;
-    - просмотр баланса
-- просмотр истории транзакций.
-3. профайл
-    - просматривать
-    - редактировать имя и фамилию,
-    - менять настройки нотификации
- - адреса доставки
-    - добалять;
-    - редактировать; и
-    - удалять.</body>
+      <body>Shopper
+
+View Orders
+1. Filter Orders
+2. Sort Orders
+3. Add Order
+4. View Order Details
+- Update Order
+- Remove Order
+- Request Photos
+- Request Item Return
+- View Items
+-- Add Item
+-- Update Item
+-- Remove Item
+
+View Parcels
+1. Filter Parcels
+2. Sort Parcels
+3. Collect Parcel
+4. View Parcel Details
+- Update Parcel
+- Remove Parcel
+
+View Balance
+1. Add Money
+- Pay With Paypal
+- Pay With Credit Card
+2. View Transactions
+3. Withdraw Money
+
+View Profile
+1. View Store Address
+2. View Delivery Addresses
+- Add Address
+- Update Address
+- Remove Address
+3. Update User Name
+4. Change Password
+5. Update Notification Rules</body>
       <annotatedElements>
         <actorMoniker
           Id="e9f5ee6f-30a6-42e0-b103-1b5ef0aa4b74"
@@ -45,13 +59,21 @@
     </comment>
     <comment
       Id="1c6a76f6-557d-4f7a-90ca-96bdc9539cb7">
-      <body>Консультант
-- искать заказ по номеру и имени пользователя; 
-- просматривать информацию по любому заказу;
-- искать посылку по номеру и имени польователя;
-- просматривать информацию по любой посылке.
-- просматривать и отвечать на вопросы пользователей
- </body>
+      <body>Consultant
+
+View Orders
+1. Filter Orders
+2. Sort Orders
+3. View Order Details
+
+View Parcels
+1. Filter Parcels
+2. Sort Parcels
+3. View Parcel Details
+
+View Feedback and Questions
+1. Answer Questions
+</body>
       <annotatedElements>
         <actorMoniker
           Id="b951e9ed-e95f-46d2-9b59-5db1a78dfd9e"
@@ -61,20 +83,16 @@
     </comment>
     <comment
       Id="7955a667-ad21-44d8-904a-89e17c860edc">
-      <body>Оператор
-1. редактировать заказы
-   - обновлять вес; 
-   - дату прибытия; 
-   - статус; 
-   - добавлять фотографии.
-2. поиск заказа
-   - по номеру трекинга;
-   - магазину; 
-   - номер заказа; и
-   - имени пользователя.
-3. посылки 
-   - просматривать очередь формирования посылок;
-   - обрабатывать посылку (менять статус на в обработке).
+      <body>Operator
+
+View Order Details
+- Update Order Weight
+- Update Arrival Date
+- Update Status
+- Upload Photoes
+
+View Parcel Details
+- Update Parcel Status
 </body>
       <annotatedElements>
         <actorMoniker
@@ -85,21 +103,25 @@
     </comment>
     <comment
       Id="7e0a1718-614e-4acf-a726-17a8fcb6b02b">
-      <body>Администратор
-1. работа с заказами
-   - просматривать весь список,
-   - фильтровать список по пользователям.
-   - редактировать любой заказ из списка,
-   - удалять заказы.
-2. работать с посылками
-   - просматривать все посылки,
-   - фильтровать список по пользовтелям,
-   - редактировать,
-   - удалять посылки.
-3. статистика по продажам (сервисов)
-   - просматривать по периодам.
+      <body>Administrator
 
-</body>
+View Order Details
+- Update Order
+- Remove Order
+
+View Parcel Details
+- Update Parcel
+- Remove Order
+
+View Sales Report
+- Filter Sales Report
+
+View Users
+- Add User
+- Update User
+-- Add User To Role
+-- Remove User From Role
+- Remove User</body>
       <annotatedElements>
         <actorMoniker
           Id="e28f6efb-ff69-4dce-a802-6087dce5a157"
@@ -109,9 +131,11 @@
     </comment>
     <comment
       Id="96fa0adc-f8b5-4184-aaa7-dc628d901eb7">
-      <body>Время
- - отправлять уведомление пользователям у которых товар находиться на складе 3 недели и больше,
- - отправлять финансовый отчет администратору еженедельно</body>
+      <body>Time
+
+Send Warehousing Period Ends Notification
+
+Send Weekly Financial Report</body>
       <annotatedElements>
         <actorMoniker
           Id="9e855f96-4af5-4e60-a59a-006798996531"
@@ -249,10 +273,13 @@
     </comment>
     <comment
       Id="4af37212-7d5a-4b0e-9a92-ff5889d6f378">
-      <body>Незарегистрированный покупатель
-1. Войти на сайт под своим логином если у него он есть
-2. Восстановить свой пароль если он его забыл
-3. Зарегистрироваться на сайте, если он не зарегистрирован</body>
+      <body>Unregistered Shopper
+
+Sign In
+
+Sign Up
+
+Reset Password</body>
       <annotatedElements>
         <actorMoniker
           Id="75ac1d6e-299b-4093-ab4a-3dd2d6e7737d"
@@ -604,6 +631,45 @@
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
+          <association
+            Id="caecb429-ad72-4797-bae4-d0ee8711cf66"
+            isDerived="false"
+            sourceEndRoleName="Administrator"
+            targetEndRoleName="View Users"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="174eb746-b0a1-4f1c-92f1-a74f753077fe"
+              LastKnownName="View Users"
+              LastKnownLocation="TdService.Modeling.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d3c0bc16-3ca2-4455-9937-bbb11073752d"
+                  name="Administrator"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="25a60617-d82c-4c20-891b-f790bd08a0ab"
+                  name="View Users"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
         </targetEnds>
       </actor>
     </packageHasNamedElement>
@@ -692,45 +758,6 @@
                 <memberEnd
                   Id="da66132d-a6a4-4357-aee2-fbaf210ee09f"
                   name="Manage Wallet Balance"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false" />
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-          <association
-            Id="45e2954c-01d4-4b04-8caf-cce8e1059c93"
-            isDerived="false"
-            sourceEndRoleName="Shopper"
-            targetEndRoleName="Edit Profile"
-            isLeaf="false"
-            isAbstract="false">
-            <useCaseMoniker
-              Id="b3d3bc8d-0b95-4bd4-8ade-76358d805bde"
-              LastKnownName="Edit Profile"
-              LastKnownLocation="TdService.Modeling.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="ded04920-e050-41e2-9ddd-7b6356ee0d54"
-                  name="Shopper"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="64163cc5-4135-410d-95b3-2341a73eb76a"
-                  name="Edit Profile"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -848,6 +875,45 @@
                 <memberEnd
                   Id="174631dd-e67b-418e-9481-0c3989faa454"
                   name="View Parcels"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="dd63daa9-ca54-4a5c-b99c-a9ca80e0fc4c"
+            isDerived="false"
+            sourceEndRoleName="Shopper"
+            targetEndRoleName="View Profile"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="cfc25fb3-eb26-4fb8-a66e-5e5666064513"
+              LastKnownName="View Profile"
+              LastKnownLocation="TdService.Modeling.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="fb4df3be-e20d-457a-a47c-96974d2216fb"
+                  name="Shopper"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="7a47adbc-62ff-49a9-9866-1e062d74f433"
+                  name="View Profile"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -1058,42 +1124,6 @@
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
-        <ownedOperationsInternal>
-          <operation
-            Id="9a197517-f9c1-44cf-ba82-be41eb011dc8"
-            name="Add"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false" />
-          <operation
-            Id="0feedcfa-47f7-42ff-8010-536c7d742512"
-            name="Remove"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false" />
-          <operation
-            Id="2ce50d11-acaa-4d85-8a0c-e101d4d4876e"
-            name="Restore"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <description>Account Executive or / and administrator can restore recently deleted order</description>
-          </operation>
-          <operation
-            Id="3fe629a7-25fb-4c43-84f6-ddef1f42551d"
-            name="Update"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false" />
-        </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -1242,77 +1272,6 @@
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
-        <ownedOperationsInternal>
-          <operation
-            Id="55d9babb-a8f8-48cf-bd7f-dda811ae53c5"
-            name="Collect"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <ownedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="85783a03-6620-4444-adf1-58eabca88f78"
-                  name="CustomsEntryItem"
-                  direction="In">
-                  <description>Collect products into a parcel</description>
-                  <type_NamedElement>
-                    <classMoniker
-                      Id="468dfb9f-2023-4648-996a-44add78e8c53"
-                      LastKnownName="CustomsEntryItem"
-                      LastKnownLocation="TdService.Modeling.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-            </ownedParameters>
-          </operation>
-          <operation
-            Id="ebcb595e-7899-461f-b2c9-4a4039206de0"
-            name="ChangeAddress"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <ownedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="55afedce-c593-49ef-a1ff-4b8df6bd8466"
-                  direction="Return">
-                  <type_NamedElement>
-                    <primitiveTypeMoniker
-                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
-                      LastKnownName="Boolean"
-                      LastKnownLocation="TdService.Modeling.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="25f9ca2d-b4b8-4914-a421-221ea46a6e20"
-                  name="newAddress"
-                  direction="In">
-                  <type_NamedElement>
-                    <classMoniker
-                      Id="1b67df3d-57cc-4b48-a98e-9fc4643c0b72"
-                      LastKnownName="Address"
-                      LastKnownLocation="TdService.Modeling.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-            </ownedParameters>
-          </operation>
-          <operation
-            Id="3ae015fa-7ebd-4933-b057-df37922cd891"
-            name="Update"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false" />
-        </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -1480,57 +1439,6 @@
             aggregation="None"
             isComposite="false" />
         </ownedAttributesInternal>
-        <ownedOperationsInternal>
-          <operation
-            Id="23e1c910-5f59-4406-966c-89586cb06d26"
-            name="Add"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <ownedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="30a04c58-5f7b-4420-912f-cd56911bd0a9"
-                  name="Product"
-                  direction="In">
-                  <type_NamedElement>
-                    <classMoniker
-                      Id="468dfb9f-2023-4648-996a-44add78e8c53"
-                      LastKnownName="CustomsEntryItem"
-                      LastKnownLocation="TdService.Modeling.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-            </ownedParameters>
-          </operation>
-          <operation
-            Id="eb0ceaa1-e20e-4cc7-abeb-e0ed48e47fac"
-            name="Remove"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <ownedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="95ffde84-e4d9-4c5d-a5ba-c55eec4ea4dd"
-                  name="Id"
-                  direction="In">
-                  <description>CustomsEntryItem Id</description>
-                  <type_NamedElement>
-                    <primitiveTypeMoniker
-                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
-                      LastKnownName="Integer"
-                      LastKnownLocation="TdService.Modeling.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-            </ownedParameters>
-          </operation>
-        </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -1614,32 +1522,6 @@
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
-        <ownedOperationsInternal>
-          <operation
-            Id="6bdf2b7f-8c32-480a-9c68-733476ec1564"
-            name="Update"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false" />
-          <operation
-            Id="28f5c69a-956b-4aea-9938-b07fb2694a53"
-            name="Remove"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false" />
-          <operation
-            Id="898e1e3f-fadf-48e7-891a-87f453a9b029"
-            name="Add"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false" />
-        </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -1884,25 +1766,18 @@
                 LastKnownLocation="TdService.Modeling.uml" />
             </type_NamedElement>
           </property>
+          <property
+            Id="c652b83d-e945-4a86-bbb3-deee38a60032"
+            name="IsStorehouse"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
         </ownedAttributesInternal>
-        <ownedOperationsInternal>
-          <operation
-            Id="fb21a575-23fa-425b-9123-998fe7cdd2bc"
-            name="Add"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false" />
-          <operation
-            Id="8f03f64e-eaf2-464c-ab11-5578042f0988"
-            name="Remove"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false" />
-        </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -2002,16 +1877,6 @@
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
-        <ownedOperationsInternal>
-          <operation
-            Id="6a86474a-0149-4380-81d9-20595656dac9"
-            name="Update"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false" />
-        </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -2157,31 +2022,6 @@
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
-        <ownedOperationsInternal>
-          <operation
-            Id="c726ae2b-38b6-4c38-b442-ffffb2def6fc"
-            name="ChangePassword"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <ownedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="00feceea-2bf4-4269-8cbe-cc2e6b1f949a"
-                  direction="Return">
-                  <type_NamedElement>
-                    <primitiveTypeMoniker
-                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
-                      LastKnownName="Boolean"
-                      LastKnownLocation="TdService.Modeling.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-            </ownedParameters>
-          </operation>
-        </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -2201,24 +2041,6 @@
               LastKnownLocation="TdService.Modeling.uml" />
           </generalization>
         </generalsInternal>
-        <ownedOperationsInternal>
-          <operation
-            Id="f9e9da15-6033-4998-b10a-215d9dea4287"
-            name="Add"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false" />
-          <operation
-            Id="27ecec03-fcdc-4a9e-bbe9-ebeef35fbe49"
-            name="Remove"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false" />
-        </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -2338,30 +2160,12 @@
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
-        <ownedOperationsInternal>
-          <operation
-            Id="d81f4354-0d78-40c5-95d4-00ebeb044f95"
-            name="Add"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false" />
-          <operation
-            Id="71a472d3-cce5-4e6c-8476-511041ba5b1e"
-            name="Remove"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false" />
-        </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
       <class
         Id="0405bfc2-edbb-4ada-adb7-c0d203821300"
-        name="Wallet"
+        name="Balance"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
@@ -2369,7 +2173,7 @@
           <association
             Id="3cc7d5e8-2aca-4466-a781-617eaef9aba2"
             isDerived="false"
-            sourceEndRoleName="Wallet"
+            sourceEndRoleName="Balance"
             targetEndRoleName="Parcel"
             isLeaf="false"
             isAbstract="false">
@@ -2381,7 +2185,7 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="3f291968-c356-482b-97ab-a5526c8192e8"
-                  name="Wallet"
+                  name="Balance"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -2419,16 +2223,6 @@
             aggregation="None"
             isComposite="false" />
         </ownedAttributesInternal>
-        <ownedOperationsInternal>
-          <operation
-            Id="faab03ee-12a6-4ac6-8321-1f1c0cd0204e"
-            name="AddTransaction"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false" />
-        </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -2443,12 +2237,12 @@
             Id="b5bab510-44ae-46d1-bab8-98430f04f59e"
             isDerived="false"
             sourceEndRoleName="Transaction"
-            targetEndRoleName="Wallet"
+            targetEndRoleName="Balance"
             isLeaf="false"
             isAbstract="false">
             <classMoniker
               Id="0405bfc2-edbb-4ada-adb7-c0d203821300"
-              LastKnownName="Wallet"
+              LastKnownName="Balance"
               LastKnownLocation="TdService.Modeling.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
@@ -2480,7 +2274,7 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="f67f59e9-be70-4d26-97ed-7257859c47a4"
-                  name="Wallet"
+                  name="Balance"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -3080,44 +2874,6 @@
     </packageHasNamedElement>
     <packageHasNamedElement>
       <useCase
-        Id="b3d3bc8d-0b95-4bd4-8ade-76358d805bde"
-        name="Edit Profile"
-        isAbstract="false"
-        isLeaf="false">
-        <additions>
-          <include
-            Id="65ae1c47-58c8-46b9-884a-651d880cf39e">
-            <useCaseMoniker
-              Id="cfc25fb3-eb26-4fb8-a66e-5e5666064513"
-              LastKnownName="View Profile Settings"
-              LastKnownLocation="TdService.Modeling.uml" />
-          </include>
-          <include
-            Id="f693de2f-76d5-4691-8b9d-505630df8907">
-            <useCaseMoniker
-              Id="3535e998-fa30-443c-bde4-a4dde51d5f06"
-              LastKnownName="Update User Name"
-              LastKnownLocation="TdService.Modeling.uml" />
-          </include>
-          <include
-            Id="e36c9cd6-2bf7-4aa5-b30b-b4be09f5f0c8">
-            <useCaseMoniker
-              Id="25385858-24a5-4b83-9f18-bae8c0c803cb"
-              LastKnownName="Update Notification Rules"
-              LastKnownLocation="TdService.Modeling.uml" />
-          </include>
-          <include
-            Id="b49cfafd-3b93-4489-83d2-9bb627c6ff55">
-            <useCaseMoniker
-              Id="06e28290-abd2-45a4-888b-894929f8f83c"
-              LastKnownName="Manage Delivery Addresses"
-              LastKnownLocation="TdService.Modeling.uml" />
-          </include>
-        </additions>
-      </useCase>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <useCase
         Id="87d61a3a-dfaa-4a00-adc3-1de58d33ab81"
         name="View Balance"
         isAbstract="false"
@@ -3237,9 +2993,47 @@
     <packageHasNamedElement>
       <useCase
         Id="cfc25fb3-eb26-4fb8-a66e-5e5666064513"
-        name="View Profile Settings"
+        name="View Profile"
         isAbstract="false"
-        isLeaf="false" />
+        isLeaf="false">
+        <additions>
+          <include
+            Id="33b5b739-7937-4115-82b1-f88e2b6258d4">
+            <useCaseMoniker
+              Id="06e28290-abd2-45a4-888b-894929f8f83c"
+              LastKnownName="View Delivery Addresses"
+              LastKnownLocation="TdService.Modeling.uml" />
+          </include>
+          <include
+            Id="fe75fc29-f0b6-43a8-b11b-c4e9d321b017">
+            <useCaseMoniker
+              Id="3535e998-fa30-443c-bde4-a4dde51d5f06"
+              LastKnownName="Update User Name"
+              LastKnownLocation="TdService.Modeling.uml" />
+          </include>
+          <include
+            Id="47dc0964-7500-4e34-b8e6-db2739522973">
+            <useCaseMoniker
+              Id="8b264b31-c40f-4793-8c0a-cfc6faeee0b3"
+              LastKnownName="Change Password"
+              LastKnownLocation="TdService.Modeling.uml" />
+          </include>
+          <include
+            Id="9cf2ef2a-3162-4e20-9140-9f0239280790">
+            <useCaseMoniker
+              Id="25385858-24a5-4b83-9f18-bae8c0c803cb"
+              LastKnownName="Update Notification Rules"
+              LastKnownLocation="TdService.Modeling.uml" />
+          </include>
+          <include
+            Id="97755237-dc81-41ea-9d78-4affaa9da7ee">
+            <useCaseMoniker
+              Id="8ec5a34f-dd8d-4aa5-b148-2cba2bbeb81b"
+              LastKnownName="View Store Address"
+              LastKnownLocation="TdService.Modeling.uml" />
+          </include>
+        </additions>
+      </useCase>
     </packageHasNamedElement>
     <packageHasNamedElement>
       <useCase
@@ -3258,7 +3052,7 @@
     <packageHasNamedElement>
       <useCase
         Id="06e28290-abd2-45a4-888b-894929f8f83c"
-        name="Manage Delivery Addresses"
+        name="View Delivery Addresses"
         isAbstract="false"
         isLeaf="false">
         <additions>
@@ -3458,6 +3252,13 @@
               LastKnownName="Request Item Return"
               LastKnownLocation="TdService.Modeling.uml" />
           </include>
+          <include
+            Id="788798fb-77ac-4e08-86c2-9c68d6ce191b">
+            <useCaseMoniker
+              Id="3f955729-0596-4792-9c59-db0a45eeb066"
+              LastKnownName="View Items"
+              LastKnownLocation="TdService.Modeling.uml" />
+          </include>
         </additions>
       </useCase>
     </packageHasNamedElement>
@@ -3595,6 +3396,171 @@
         name="Filter Sales Report"
         isAbstract="false"
         isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="8b264b31-c40f-4793-8c0a-cfc6faeee0b3"
+        name="Change Password"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="8ec5a34f-dd8d-4aa5-b148-2cba2bbeb81b"
+        name="View Store Address"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="174eb746-b0a1-4f1c-92f1-a74f753077fe"
+        name="View Users"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="036bc881-ffbf-46d8-8aa3-41076e26b83b">
+            <useCaseMoniker
+              Id="a3aa4dce-74d5-4815-868d-2b54553547d6"
+              LastKnownName="Add User"
+              LastKnownLocation="TdService.Modeling.uml" />
+          </include>
+          <include
+            Id="bb8d6682-c9db-4769-bcaa-18550938de75">
+            <useCaseMoniker
+              Id="8a03112c-2ce6-401e-8925-049820decc02"
+              LastKnownName="Update User"
+              LastKnownLocation="TdService.Modeling.uml" />
+          </include>
+          <include
+            Id="50ecb8fd-c33b-4e22-9e7e-63adc421fcd5">
+            <useCaseMoniker
+              Id="ba719620-06f8-4c86-b2ee-de8ab0b1a746"
+              LastKnownName="Remove User"
+              LastKnownLocation="TdService.Modeling.uml" />
+          </include>
+        </additions>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="a3aa4dce-74d5-4815-868d-2b54553547d6"
+        name="Add User"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="8a03112c-2ce6-401e-8925-049820decc02"
+        name="Update User"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="ae1f7708-da7a-4c82-a740-6ee9b8c6f432">
+            <useCaseMoniker
+              Id="8efc14b6-b6a2-42ac-8b28-775dadb619de"
+              LastKnownName="Add User To Role"
+              LastKnownLocation="TdService.Modeling.uml" />
+          </include>
+          <include
+            Id="c9cb58f5-267e-4cca-9497-831cd3de7a2c">
+            <useCaseMoniker
+              Id="246d28c0-fe76-493b-b535-be1e12ece3bd"
+              LastKnownName="Remove User From Role"
+              LastKnownLocation="TdService.Modeling.uml" />
+          </include>
+        </additions>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="ba719620-06f8-4c86-b2ee-de8ab0b1a746"
+        name="Remove User"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="8efc14b6-b6a2-42ac-8b28-775dadb619de"
+        name="Add User To Role"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="246d28c0-fe76-493b-b535-be1e12ece3bd"
+        name="Remove User From Role"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="3f955729-0596-4792-9c59-db0a45eeb066"
+        name="View Items"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="c4f41547-7589-4f78-9824-1769098d1636">
+            <useCaseMoniker
+              Id="51d488a6-d46d-4fdf-a654-d02a54822e39"
+              LastKnownName="Add Item"
+              LastKnownLocation="TdService.Modeling.uml" />
+          </include>
+          <include
+            Id="4598ea28-0551-41a2-9ed5-2345d66d6c50">
+            <useCaseMoniker
+              Id="ea6d09da-f45a-40db-abd9-23cb821aed82"
+              LastKnownName="Update Item"
+              LastKnownLocation="TdService.Modeling.uml" />
+          </include>
+          <include
+            Id="d7766e4d-6444-46f7-8e96-39153d0e304e">
+            <useCaseMoniker
+              Id="1abfc1f5-6105-45e5-be5e-109b3a40107e"
+              LastKnownName="Remove Item"
+              LastKnownLocation="TdService.Modeling.uml" />
+          </include>
+        </additions>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="51d488a6-d46d-4fdf-a654-d02a54822e39"
+        name="Add Item"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="ea6d09da-f45a-40db-abd9-23cb821aed82"
+        name="Update Item"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="1abfc1f5-6105-45e5-be5e-109b3a40107e"
+        name="Remove Item"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="a72eacbe-021b-4cbf-9225-1935c29a2825"
+        name="Shopper"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="e120e3f8-ae67-41ec-8de2-abb75d4b8343"
+        name="Order Line Item"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType
