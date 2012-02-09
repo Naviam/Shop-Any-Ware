@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel"
+  dslVersion="1.0.0.0"
+  Id="c437fbbe-6d63-4dfd-87f2-901783904548"
+  name="Orders" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <packagedElements>
+    <packageHasNamedElement>
+      <useCase
+        Id="8e8b2e03-aa46-455d-9540-028882643e4b"
+        name="Add Order"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="924ace0d-2d2e-476a-b997-8d6a2588b6ea"
+        name="Filter Orders"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="74fcd3b0-15b2-4e0f-b447-af2f5c9b7fda"
+        name="Remove Order"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="1abfc1f5-6105-45e5-be5e-109b3a40107e"
+        name="Remove Item"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="51d488a6-d46d-4fdf-a654-d02a54822e39"
+        name="Add Item"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="94e9cfc9-4add-44f6-853f-f1e61703cef3"
+        name="Request Item Return"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="4987cebc-a1a1-4442-a47c-433b89d1bbf6"
+        name="Sort Orders"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="148601ce-40b2-424f-9b94-ef77cd69caa4"
+        name="Request Photo"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="e24052fa-81b1-4bb4-87b3-b52cc0624171"
+        name="Update Order"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="ea6d09da-f45a-40db-abd9-23cb821aed82"
+        name="Update Item"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="3974d5aa-9c3b-4749-995e-e8476034ec8d"
+        name="Update Order Weight"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="c09abc0b-ede9-4ca1-85fc-8980f87330dd"
+        name="View Orders"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="99a184e8-c76d-42e9-919c-bab948561b03">
+            <useCaseMoniker
+              Id="924ace0d-2d2e-476a-b997-8d6a2588b6ea"
+              LastKnownName="Filter Orders"
+              LastKnownLocation="Package_0106.uml" />
+          </include>
+          <include
+            Id="667666e3-653d-4e5c-b75d-4394515cdfa3">
+            <useCaseMoniker
+              Id="4987cebc-a1a1-4442-a47c-433b89d1bbf6"
+              LastKnownName="Sort Orders"
+              LastKnownLocation="Package_0106.uml" />
+          </include>
+          <include
+            Id="76c4be70-4017-4720-8955-a946b7378116">
+            <useCaseMoniker
+              Id="da5f659d-2f33-4c59-a273-e2179676ab9f"
+              LastKnownName="View Order Details"
+              LastKnownLocation="Package_0106.uml" />
+          </include>
+          <include
+            Id="e1193158-292c-4cac-80fc-26d9e165d697">
+            <useCaseMoniker
+              Id="8e8b2e03-aa46-455d-9540-028882643e4b"
+              LastKnownName="Add Order"
+              LastKnownLocation="Package_0106.uml" />
+          </include>
+        </additions>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="da5f659d-2f33-4c59-a273-e2179676ab9f"
+        name="View Order Details"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="e4f2cc6c-503d-4978-a2d7-9678e8e27831">
+            <useCaseMoniker
+              Id="3974d5aa-9c3b-4749-995e-e8476034ec8d"
+              LastKnownName="Update Order Weight"
+              LastKnownLocation="Package_0106.uml" />
+          </include>
+          <include
+            Id="db2b3f73-8258-493d-96c2-27c89c06d550">
+            <useCaseMoniker
+              Id="e2d97959-8bab-4482-acd4-5a2f7d33f9ee"
+              LastKnownName="Update Arrival Date"
+              LastKnownLocation="Package_0106.uml" />
+          </include>
+          <include
+            Id="3a0bfd14-9c03-4b21-870a-e60ff65f4f21">
+            <useCaseMoniker
+              Id="f693956a-2d4b-410f-8436-7fe3b453de61"
+              LastKnownName="Update Order Status"
+              LastKnownLocation="Package_0106.uml" />
+          </include>
+          <include
+            Id="1ba5d142-80a6-41a3-8b0c-ceea348c8261">
+            <useCaseMoniker
+              Id="3de26777-3b6c-4bdc-a094-fe8c7aceb74f"
+              LastKnownName="Upload Photoes"
+              LastKnownLocation="Package_0106.uml" />
+          </include>
+          <include
+            Id="2d0f6c0a-2fdc-4060-aa69-3fc688594778">
+            <useCaseMoniker
+              Id="e24052fa-81b1-4bb4-87b3-b52cc0624171"
+              LastKnownName="Update Order"
+              LastKnownLocation="Package_0106.uml" />
+          </include>
+          <include
+            Id="f70c81e6-f361-4e42-9315-cf1f02171d49">
+            <useCaseMoniker
+              Id="74fcd3b0-15b2-4e0f-b447-af2f5c9b7fda"
+              LastKnownName="Remove Order"
+              LastKnownLocation="Package_0106.uml" />
+          </include>
+          <include
+            Id="53941c2d-71c0-44ca-a809-b8d30e22648b">
+            <useCaseMoniker
+              Id="148601ce-40b2-424f-9b94-ef77cd69caa4"
+              LastKnownName="Request Photo"
+              LastKnownLocation="Package_0106.uml" />
+          </include>
+          <include
+            Id="067482a3-5e50-496b-867d-26c0b6cff099">
+            <useCaseMoniker
+              Id="94e9cfc9-4add-44f6-853f-f1e61703cef3"
+              LastKnownName="Request Item Return"
+              LastKnownLocation="Package_0106.uml" />
+          </include>
+          <include
+            Id="788798fb-77ac-4e08-86c2-9c68d6ce191b">
+            <useCaseMoniker
+              Id="3f955729-0596-4792-9c59-db0a45eeb066"
+              LastKnownName="View Items"
+              LastKnownLocation="Package_0106.uml" />
+          </include>
+        </additions>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="e2d97959-8bab-4482-acd4-5a2f7d33f9ee"
+        name="Update Arrival Date"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="3de26777-3b6c-4bdc-a094-fe8c7aceb74f"
+        name="Upload Photoes"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="3f955729-0596-4792-9c59-db0a45eeb066"
+        name="View Items"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="c4f41547-7589-4f78-9824-1769098d1636">
+            <useCaseMoniker
+              Id="51d488a6-d46d-4fdf-a654-d02a54822e39"
+              LastKnownName="Add Item"
+              LastKnownLocation="Package_0106.uml" />
+          </include>
+          <include
+            Id="4598ea28-0551-41a2-9ed5-2345d66d6c50">
+            <useCaseMoniker
+              Id="ea6d09da-f45a-40db-abd9-23cb821aed82"
+              LastKnownName="Update Item"
+              LastKnownLocation="Package_0106.uml" />
+          </include>
+          <include
+            Id="d7766e4d-6444-46f7-8e96-39153d0e304e">
+            <useCaseMoniker
+              Id="1abfc1f5-6105-45e5-be5e-109b3a40107e"
+              LastKnownName="Remove Item"
+              LastKnownLocation="Package_0106.uml" />
+          </include>
+        </additions>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="f693956a-2d4b-410f-8436-7fe3b453de61"
+        name="Update Order Status"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

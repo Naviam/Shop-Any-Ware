@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel"
+  dslVersion="1.0.0.0"
+  Id="b14fc68d-41cc-4fb7-81b6-696d8cec5686"
+  name="Use Cases" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <packagedElements>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="28d1640b-5895-482f-ad10-0aa953fc13db"
+        LastKnownName="Parcels"
+        LastKnownLocation="Package_0107.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="55045830-8d16-43b3-8c4e-2236eb2744ee"
+        LastKnownName="Profile"
+        LastKnownLocation="Package1_0107.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="e287a24d-e9b8-413c-b10f-0ba88c56bb41"
+        LastKnownName="Admin"
+        LastKnownLocation="Package_0108.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="313664dc-de0a-4333-9221-d61174f17314"
+        LastKnownName="Balance"
+        LastKnownLocation="Package_0109.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="85c6265b-0f9b-4512-bf04-fde6599a54db"
+        LastKnownName="Auth"
+        LastKnownLocation="Package_0111.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="83027b7d-8b7b-472c-a282-ab6b46e8a8d2"
+        LastKnownName="Notifications"
+        LastKnownLocation="Package1_0115.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="c437fbbe-6d63-4dfd-87f2-901783904548"
+        LastKnownName="Orders"
+        LastKnownLocation="Package_0106.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="fc292e76-ae22-495c-ad50-fe097102b5bc"
+        LastKnownName="Feedback"
+        LastKnownLocation="Package_0117.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <subsystem
+        Id="eeac1e7f-c616-4d6d-aa3d-acbdcc26df4a"
+        name="TD Service - Online Mail Forwarding"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

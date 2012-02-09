@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel"
+  dslVersion="1.0.0.0"
+  Id="55045830-8d16-43b3-8c4e-2236eb2744ee"
+  name="Profile" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <packagedElements>
+    <packageHasNamedElement>
+      <useCase
+        Id="1b2bff99-5031-4557-b445-d367343b0150"
+        name="Add Address"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="8b264b31-c40f-4793-8c0a-cfc6faeee0b3"
+        name="Change Password"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="f49ba828-5cf6-4743-94d6-5d0b1df8ed61"
+        name="Remove Address"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="dd3673d8-d359-4ae3-8209-9864e53e60c1"
+        name="Update Address"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="25385858-24a5-4b83-9f18-bae8c0c803cb"
+        name="Update Notification Rules"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="3535e998-fa30-443c-bde4-a4dde51d5f06"
+        name="Update User Name"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="cfc25fb3-eb26-4fb8-a66e-5e5666064513"
+        name="View Profile"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="33b5b739-7937-4115-82b1-f88e2b6258d4">
+            <useCaseMoniker
+              Id="06e28290-abd2-45a4-888b-894929f8f83c"
+              LastKnownName="View Delivery Addresses"
+              LastKnownLocation="Package1_0107.uml" />
+          </include>
+          <include
+            Id="fe75fc29-f0b6-43a8-b11b-c4e9d321b017">
+            <useCaseMoniker
+              Id="3535e998-fa30-443c-bde4-a4dde51d5f06"
+              LastKnownName="Update User Name"
+              LastKnownLocation="Package1_0107.uml" />
+          </include>
+          <include
+            Id="47dc0964-7500-4e34-b8e6-db2739522973">
+            <useCaseMoniker
+              Id="8b264b31-c40f-4793-8c0a-cfc6faeee0b3"
+              LastKnownName="Change Password"
+              LastKnownLocation="Package1_0107.uml" />
+          </include>
+          <include
+            Id="9cf2ef2a-3162-4e20-9140-9f0239280790">
+            <useCaseMoniker
+              Id="25385858-24a5-4b83-9f18-bae8c0c803cb"
+              LastKnownName="Update Notification Rules"
+              LastKnownLocation="Package1_0107.uml" />
+          </include>
+          <include
+            Id="97755237-dc81-41ea-9d78-4affaa9da7ee">
+            <useCaseMoniker
+              Id="8ec5a34f-dd8d-4aa5-b148-2cba2bbeb81b"
+              LastKnownName="View Store Address"
+              LastKnownLocation="Package1_0107.uml" />
+          </include>
+        </additions>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="06e28290-abd2-45a4-888b-894929f8f83c"
+        name="View Delivery Addresses"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="275d9e17-bd30-42b8-b7ed-366945f36c75">
+            <useCaseMoniker
+              Id="1b2bff99-5031-4557-b445-d367343b0150"
+              LastKnownName="Add Address"
+              LastKnownLocation="Package1_0107.uml" />
+          </include>
+          <include
+            Id="94398710-1a5d-462a-a147-392cacabe77e">
+            <useCaseMoniker
+              Id="dd3673d8-d359-4ae3-8209-9864e53e60c1"
+              LastKnownName="Update Address"
+              LastKnownLocation="Package1_0107.uml" />
+          </include>
+          <include
+            Id="a2f671b4-f0c8-476d-bd0b-3f20cd9a6bde">
+            <useCaseMoniker
+              Id="f49ba828-5cf6-4743-94d6-5d0b1df8ed61"
+              LastKnownName="Remove Address"
+              LastKnownLocation="Package1_0107.uml" />
+          </include>
+        </additions>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="8ec5a34f-dd8d-4aa5-b148-2cba2bbeb81b"
+        name="View Store Address"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

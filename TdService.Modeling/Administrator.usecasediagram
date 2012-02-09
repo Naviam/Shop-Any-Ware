@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="b576ed1d-2e1d-4ec8-af45-4e702af89a7f" name="Administrator" linkedPackageId="4f2c5b60-2c01-4d9e-a640-2bf5593e26ca" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <ownedCommentsInternal>
+    <comment Id="8d619e7e-bef8-4c73-8801-356aeae8392f">
+      <elementDefinition Id="d93535cc-7317-43e6-ac06-6ad81b4fa987" />
+      <body>Filter by:
+- date range</body>
+      <annotatedElements>
+        <useCaseMoniker Id="684359ae-2f68-4ce7-87a4-ba72f0681756" LastKnownName="Filter Sales Report" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="14df9b1a-dcdf-43c9-a681-46c330ef4b9a" name="Administrator" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="e28f6efb-ff69-4dce-a802-6087dce5a157" />
+        <targetEnds>
+          <association Id="205e201e-b808-4b04-8bf4-d58f82cb1edc" isDerived="false" sourceEndRoleName="Administrator" targetEndRoleName="View Sales Report" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="6dc3fc20-4157-4140-917f-e0d8bd8156e4" LastKnownName="View Sales Report" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a01935d2-461c-46a7-badc-2bf416c5990c" name="Administrator" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="59103bb5-efad-496e-9e22-8bde3efca0f7" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="bd07ef49-4463-4d65-8123-c695722cfc8d" name="View Sales Report" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="a7aa1121-158e-4c48-85d5-e041576d5593" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="8cdca1d5-071a-4ab3-9beb-d72e5abb8cd7" />
+          </association>
+          <association Id="eb4e6368-5605-4ed3-9cd6-5375b4863b74" isDerived="false" sourceEndRoleName="Administrator" targetEndRoleName="View Users" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="ddb849d5-5eaf-4cd4-912f-917cf05c94ee" LastKnownName="View Users" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a005b26a-0ac1-4e62-b932-e801bc8cdf0d" name="Administrator" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="d3c0bc16-3ca2-4455-9937-bbb11073752d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="f170e91b-0b10-41ac-8e60-c615b6046024" name="View Users" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="25a60617-d82c-4c20-891b-f790bd08a0ab" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="caecb429-ad72-4797-bae4-d0ee8711cf66" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="ddb849d5-5eaf-4cd4-912f-917cf05c94ee" name="View Users" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="174eb746-b0a1-4f1c-92f1-a74f753077fe" />
+        <additions>
+          <include Id="e8ff5e47-bd9d-431b-a9ea-094b9479a382">
+            <useCaseMoniker Id="1bcb8a70-20e9-4774-8aab-eec08c25f9fe" LastKnownName="Add User" />
+            <elementDefinition Id="036bc881-ffbf-46d8-8aa3-41076e26b83b" />
+          </include>
+          <include Id="245c1649-661d-4e17-8148-f64dbfef4eda">
+            <useCaseMoniker Id="bb6f3c8a-b3b4-424b-89dc-574e3dd0a49a" LastKnownName="Update User" />
+            <elementDefinition Id="bb8d6682-c9db-4769-bcaa-18550938de75" />
+          </include>
+          <include Id="e2645b81-2eba-459e-88eb-e18404ada459">
+            <useCaseMoniker Id="805249d4-8c6d-47db-b264-69e1df33ff54" LastKnownName="Remove User" />
+            <elementDefinition Id="50ecb8fd-c33b-4e22-9e7e-63adc421fcd5" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="bb6f3c8a-b3b4-424b-89dc-574e3dd0a49a" name="Update User" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="8a03112c-2ce6-401e-8925-049820decc02" />
+        <additions>
+          <include Id="12687567-3273-44b2-a375-444a70a72855">
+            <useCaseMoniker Id="1ca3c5e3-3c8a-4819-87e9-4d10704b70fd" LastKnownName="Add User To Role" />
+            <elementDefinition Id="ae1f7708-da7a-4c82-a740-6ee9b8c6f432" />
+          </include>
+          <include Id="55c32f3b-82a1-4659-a3bb-c0deed04fbac">
+            <useCaseMoniker Id="da006266-fd2c-4ae3-8fa2-1e3482722efc" LastKnownName="Remove User From Role" />
+            <elementDefinition Id="c9cb58f5-267e-4cca-9497-831cd3de7a2c" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="1bcb8a70-20e9-4774-8aab-eec08c25f9fe" name="Add User" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="a3aa4dce-74d5-4815-868d-2b54553547d6" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="805249d4-8c6d-47db-b264-69e1df33ff54" name="Remove User" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="ba719620-06f8-4c86-b2ee-de8ab0b1a746" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="da006266-fd2c-4ae3-8fa2-1e3482722efc" name="Remove User From Role" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="246d28c0-fe76-493b-b535-be1e12ece3bd" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="1ca3c5e3-3c8a-4819-87e9-4d10704b70fd" name="Add User To Role" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="8efc14b6-b6a2-42ac-8b28-775dadb619de" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="6dc3fc20-4157-4140-917f-e0d8bd8156e4" name="View Sales Report" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="99275cc1-9cd0-4dd4-8b5b-9b9202f72c14" />
+        <additions>
+          <include Id="cf9ffb18-0caa-4f6c-b3cb-3b86950ae409">
+            <useCaseMoniker Id="684359ae-2f68-4ce7-87a4-ba72f0681756" LastKnownName="Filter Sales Report" />
+            <elementDefinition Id="62eb025e-a9f1-428d-bc07-1244479550b6" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="684359ae-2f68-4ce7-87a4-ba72f0681756" name="Filter Sales Report" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f220bb75-452f-41a1-8373-539abb39f6d4" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="4f2c5b60-2c01-4d9e-a640-2bf5593e26ca" name="TdService.Modeling">
+    <elementDefinition Id="e006d43a-3bc9-452c-a7ce-47edd28d044b" />
+    <profileInstances>
+      <packageHasProfileInstances Id="5ee25122-46e2-484e-acd5-6ce0fbb969eb">
+        <profileInstance Id="731faae8-e229-4556-b5b8-b0cd6d73f619" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="de339673-6089-405d-922d-e54b617bec86">
+        <profileInstance Id="8aad7d28-2fd3-49ea-88bf-aa69cc470a43" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</useCaseModelRoot>

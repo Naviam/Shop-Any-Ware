@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel"
+  dslVersion="1.0.0.0"
+  Id="e287a24d-e9b8-413c-b10f-0ba88c56bb41"
+  name="Admin" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <packagedElements>
+    <packageHasNamedElement>
+      <useCase
+        Id="8efc14b6-b6a2-42ac-8b28-775dadb619de"
+        name="Add User To Role"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="f220bb75-452f-41a1-8373-539abb39f6d4"
+        name="Filter Sales Report"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="a3aa4dce-74d5-4815-868d-2b54553547d6"
+        name="Add User"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="ba719620-06f8-4c86-b2ee-de8ab0b1a746"
+        name="Remove User"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="246d28c0-fe76-493b-b535-be1e12ece3bd"
+        name="Remove User From Role"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="8a03112c-2ce6-401e-8925-049820decc02"
+        name="Update User"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="ae1f7708-da7a-4c82-a740-6ee9b8c6f432">
+            <useCaseMoniker
+              Id="8efc14b6-b6a2-42ac-8b28-775dadb619de"
+              LastKnownName="Add User To Role"
+              LastKnownLocation="Package_0108.uml" />
+          </include>
+          <include
+            Id="c9cb58f5-267e-4cca-9497-831cd3de7a2c">
+            <useCaseMoniker
+              Id="246d28c0-fe76-493b-b535-be1e12ece3bd"
+              LastKnownName="Remove User From Role"
+              LastKnownLocation="Package_0108.uml" />
+          </include>
+        </additions>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="99275cc1-9cd0-4dd4-8b5b-9b9202f72c14"
+        name="View Sales Report"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="62eb025e-a9f1-428d-bc07-1244479550b6">
+            <useCaseMoniker
+              Id="f220bb75-452f-41a1-8373-539abb39f6d4"
+              LastKnownName="Filter Sales Report"
+              LastKnownLocation="Package_0108.uml" />
+          </include>
+        </additions>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="174eb746-b0a1-4f1c-92f1-a74f753077fe"
+        name="View Users"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="036bc881-ffbf-46d8-8aa3-41076e26b83b">
+            <useCaseMoniker
+              Id="a3aa4dce-74d5-4815-868d-2b54553547d6"
+              LastKnownName="Add User"
+              LastKnownLocation="Package_0108.uml" />
+          </include>
+          <include
+            Id="bb8d6682-c9db-4769-bcaa-18550938de75">
+            <useCaseMoniker
+              Id="8a03112c-2ce6-401e-8925-049820decc02"
+              LastKnownName="Update User"
+              LastKnownLocation="Package_0108.uml" />
+          </include>
+          <include
+            Id="50ecb8fd-c33b-4e22-9e7e-63adc421fcd5">
+            <useCaseMoniker
+              Id="ba719620-06f8-4c86-b2ee-de8ab0b1a746"
+              LastKnownName="Remove User"
+              LastKnownLocation="Package_0108.uml" />
+          </include>
+        </additions>
+      </useCase>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

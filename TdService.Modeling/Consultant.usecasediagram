@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="255fd7ec-4915-436a-ba65-d50054a1e9db" name="Consultant" linkedPackageId="9b99bf17-64da-4c28-98ca-f196c449024a" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <ownedCommentsInternal>
+    <comment Id="86c30ca2-5172-4dc2-a0bb-527968c98e4d">
+      <elementDefinition Id="3d4e05d2-f431-43c1-bb6d-283bbe0cc669" />
+      <body>This will be implemented with help of third party services, such as getsatisfaction.com</body>
+      <annotatedElements>
+        <useCaseMoniker Id="71286b42-51d5-4027-9321-6875b8512742" LastKnownName="View Feedback and Questions" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="cc01d081-9e92-4f14-a5d4-be9e63d836d2" name="Consultant" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b951e9ed-e95f-46d2-9b59-5db1a78dfd9e" />
+        <targetEnds>
+          <association Id="6fd2b572-a26a-41c3-a13f-775939bc7396" isDerived="false" sourceEndRoleName="Consultant" targetEndRoleName="Review Feedback and Questions" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="71286b42-51d5-4027-9321-6875b8512742" LastKnownName="View Feedback and Questions" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c880d063-424e-4806-a2b6-74904777e458" name="Consultant" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="1a406e09-681a-491e-a47a-4321d5ac8022" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="4c1429ae-3d53-4654-b008-bef46b2c02b0" name="Review Feedback and Questions" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="47427cda-25ae-4b97-8d3a-6729e4f38854" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="787903ec-0c6c-42db-b403-1f53ef14b246" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="71286b42-51d5-4027-9321-6875b8512742" name="View Feedback and Questions" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="7e659887-4296-4564-855f-d10f8acb7a19" />
+        <additions>
+          <include Id="55c3a0e3-dbfa-47f3-869c-110d2fc508e0">
+            <useCaseMoniker Id="e1dcd4bd-9cfa-44a8-a035-c3bf2d7da506" LastKnownName="Answer Questions" />
+            <elementDefinition Id="daea0438-7c10-4cc5-b020-1565aca1b36c" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="e1dcd4bd-9cfa-44a8-a035-c3bf2d7da506" name="Answer Questions" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="063042a0-ff5d-408e-969a-216b66835ec4" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="9b99bf17-64da-4c28-98ca-f196c449024a" name="TdService.Modeling">
+    <elementDefinition Id="e006d43a-3bc9-452c-a7ce-47edd28d044b" />
+    <profileInstances>
+      <packageHasProfileInstances Id="68567e75-9225-40a7-b9b5-5d5cb3182eea">
+        <profileInstance Id="738be802-0ba4-4976-8206-b3cb6a1580ad" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="85d7706b-0a1e-4867-8654-7cd8715811ba">
+        <profileInstance Id="ee3c9fb4-3769-4f2d-8ae9-2f86ede5038f" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</useCaseModelRoot>

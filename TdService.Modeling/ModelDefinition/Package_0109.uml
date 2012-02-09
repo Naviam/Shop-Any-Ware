@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel"
+  dslVersion="1.0.0.0"
+  Id="313664dc-de0a-4333-9221-d61174f17314"
+  name="Balance" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <packagedElements>
+    <packageHasNamedElement>
+      <useCase
+        Id="a0a26918-65f6-4fc7-a1a7-2e1b7494f47c"
+        name="Pay With Credit Card"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="679ece3e-2b87-42b6-ae1c-51f3f16c6b1d"
+        name="Pay With Paypal"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="b4a9af7e-45ca-4ce9-a706-5841c368e87e"
+        name="Add Money"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="4ed7b8ff-6119-4c9a-8959-15454233e222">
+            <useCaseMoniker
+              Id="679ece3e-2b87-42b6-ae1c-51f3f16c6b1d"
+              LastKnownName="Pay With Paypal"
+              LastKnownLocation="Package_0109.uml" />
+          </include>
+          <include
+            Id="32f63342-ecbb-4cff-9ace-93275a41b26d">
+            <useCaseMoniker
+              Id="a0a26918-65f6-4fc7-a1a7-2e1b7494f47c"
+              LastKnownName="Pay With Credit Card"
+              LastKnownLocation="Package_0109.uml" />
+          </include>
+        </additions>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="87d61a3a-dfaa-4a00-adc3-1de58d33ab81"
+        name="View Balance"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="7e87fa14-270e-4dfc-aed7-5e5c50ceb934">
+            <useCaseMoniker
+              Id="b4a9af7e-45ca-4ce9-a706-5841c368e87e"
+              LastKnownName="Add Money"
+              LastKnownLocation="Package_0109.uml" />
+          </include>
+          <include
+            Id="65864413-94d5-4253-a63e-4f2e3b65b3a2">
+            <useCaseMoniker
+              Id="ccc6fe3b-0943-41d8-88ba-2ee460d37afb"
+              LastKnownName="Withdraw Money"
+              LastKnownLocation="Package_0109.uml" />
+          </include>
+          <include
+            Id="5f0b78c6-f25a-44c6-878e-c36207649c96">
+            <useCaseMoniker
+              Id="df088539-7bc5-452f-a754-ebb7905da29d"
+              LastKnownName="View Transactions"
+              LastKnownLocation="Package_0109.uml" />
+          </include>
+        </additions>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="df088539-7bc5-452f-a754-ebb7905da29d"
+        name="View Transactions"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="ccc6fe3b-0943-41d8-88ba-2ee460d37afb"
+        name="Withdraw Money"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

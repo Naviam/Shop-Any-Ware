@@ -21,6 +21,32 @@
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="c38e085c-ea59-4f5d-a372-28c78f0d5efb" />
           </association>
+          <association Id="e1850e4d-9288-4f68-82e7-c5634bd93fa2" isDerived="false" sourceEndRoleName="Order" targetEndRoleName="OrderLineItem" isLeaf="false" isAbstract="false">
+            <classMoniker Id="0c37fc15-2bc9-4f48-9118-26cc0b3d04e4" LastKnownName="OrderLineItem" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="2587dc99-a1f9-4d4d-8466-1e80b28acb67" name="Order" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="b509ca54-d3a6-4d1b-8ab2-883161afd21a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="8e421c45-5ec8-4043-8c8a-f77486b53bf8" name="OrderLineItem" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <lowerValueInternal>
+                    <literalString Id="0668285c-b5a5-4e36-a2ba-cff260bb6772" name="Lower" value="*">
+                      <elementDefinition Id="71c746a0-8710-460b-95aa-fdfca21f1e4d" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="734bc8f1-dea7-4b80-bea8-231abe2827e0" name="Upper" value="*">
+                      <elementDefinition Id="ee2984f8-82dc-4722-829d-b80238c25a51" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="5c3b6776-a53b-4865-8da2-23ecc6be55c5" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="eb786615-8fad-4229-bf32-9afff9db2186" />
+          </association>
         </targetEnds>
         <ownedAttributesInternal>
           <property Id="46353b50-afc5-4a2d-a64c-c0ad4223d277" name="Store" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
@@ -85,7 +111,7 @@
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="cbbf1f6c-9333-4221-ad79-76bf04162c86" />
           </association>
-          <association Id="4bd1db30-a329-4a9f-9094-cfdf7977a8bd" isDerived="false" sourceEndRoleName="Parcel" targetEndRoleName="Order" isLeaf="false" isAbstract="false">
+          <association Id="4bd1db30-a329-4a9f-9094-cfdf7977a8bd" isDerived="false" sourceEndRoleName="Parcel" targetEndRoleName="Orders" isLeaf="false" isAbstract="false">
             <classMoniker Id="33d76e02-27b1-49cb-ae7d-686ae8ef38ce" LastKnownName="Order" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
@@ -94,7 +120,17 @@
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
-                <memberEnd Id="e18144ac-36f6-473e-8519-225f2f43ef13" name="Order" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                <memberEnd Id="e18144ac-36f6-473e-8519-225f2f43ef13" name="Orders" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <lowerValueInternal>
+                    <literalString Id="3757f0bd-6172-4569-ba70-6e06106db27a" name="Lower" value="*">
+                      <elementDefinition Id="ebe2d4f4-e6af-4118-8f5e-829f9283a052" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="8e219c12-2e87-47e9-a1ed-fe201728d423" name="Upper" value="*">
+                      <elementDefinition Id="3da999cb-06ee-4554-b69a-8f5c6f9c616b" />
+                    </literalString>
+                  </upperValueInternal>
                   <elementDefinition Id="8e926e6b-aa81-4fc8-8d2e-1ba54bfb8024" />
                 </memberEnd>
               </associationHasOwnedEnds>
@@ -160,11 +196,11 @@
       </enumeration>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <class Id="0c37fc15-2bc9-4f48-9118-26cc0b3d04e4" name="CustomsEntry" isAbstract="false" isLeaf="false" isActiveClass="false">
+      <class Id="0c37fc15-2bc9-4f48-9118-26cc0b3d04e4" name="OrderLineItem" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="cb5c3d0a-ebe6-43b2-a115-54835cc06246" />
         <targetEnds>
           <association Id="dbc97d4f-62a0-49ea-8e9d-a2c12146085a" isDerived="false" sourceEndRoleName="CustomsEntry" targetEndRoleName="CustomsEntryItem" isLeaf="false" name="CustomsEntryItems" isAbstract="false">
-            <classMoniker Id="946d6d8e-46d8-49af-9795-d6f10381b7d7" LastKnownName="CustomsEntryItem" />
+            <classMoniker Id="946d6d8e-46d8-49af-9795-d6f10381b7d7" LastKnownName="Item" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd Id="b270a9eb-508d-46b2-9575-bd717112aeb9" name="CustomsEntry" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
@@ -189,22 +225,6 @@
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="7011e8d5-9023-469d-a947-87783c2ea08e" />
           </association>
-          <association Id="469a3b19-75fd-49dd-9dcd-21b69bf0bef9" isDerived="false" sourceEndRoleName="CustomsEntry" targetEndRoleName="Order" isLeaf="false" isAbstract="false">
-            <classMoniker Id="33d76e02-27b1-49cb-ae7d-686ae8ef38ce" LastKnownName="Order" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd Id="7912295b-6e87-47a8-88ef-681df1f5ef5c" name="CustomsEntry" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
-                  <elementDefinition Id="13731437-5f12-4e1b-b11a-0bee3a9f4c05" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd Id="5819f8a9-dfb4-4a54-aa55-9316f859d5d0" name="Order" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-                  <elementDefinition Id="01c61d6d-91ea-439e-94ac-a1ede9040f03" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-            <elementDefinition Id="04d0c255-4881-4995-a656-31611e718f99" />
-          </association>
         </targetEnds>
         <ownedAttributesInternal>
           <property Id="ad384a81-edf1-4240-a61f-6f8bceb08515" name="Quantity" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
@@ -217,7 +237,7 @@
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <class Id="946d6d8e-46d8-49af-9795-d6f10381b7d7" name="CustomsEntryItem" isAbstract="false" isLeaf="false" isActiveClass="false">
+      <class Id="946d6d8e-46d8-49af-9795-d6f10381b7d7" name="Item" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="468dfb9f-2023-4648-996a-44add78e8c53" />
         <ownedAttributesInternal>
           <property Id="cf3dd6e7-8173-4807-8b79-a2aa98cbd813" name="Quantity" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
@@ -399,7 +419,7 @@
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="c3dfe16f-c361-4195-936d-18d440cfe7cf" />
           </association>
-          <association Id="d1a550ff-bd25-4ded-b3aa-df0d0b79fb54" isDerived="false" sourceEndRoleName="User" targetEndRoleName="Address" isLeaf="false" isAbstract="false">
+          <association Id="d1a550ff-bd25-4ded-b3aa-df0d0b79fb54" isDerived="false" sourceEndRoleName="User" targetEndRoleName="Addresses" isLeaf="false" isAbstract="false">
             <classMoniker Id="0374bcd0-f438-44df-a0c4-60a0d0b03a5e" LastKnownName="Address" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
@@ -408,12 +428,48 @@
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
-                <memberEnd Id="5863ea9e-92de-44b0-8e2a-4d34935889e1" name="Address" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                <memberEnd Id="5863ea9e-92de-44b0-8e2a-4d34935889e1" name="Addresses" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <lowerValueInternal>
+                    <literalString Id="a0c6a046-1b13-4e4b-b33e-1b6901ea70d4" name="Lower" value="*">
+                      <elementDefinition Id="6991a1ab-7198-4270-928b-f1477316fe9e" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="76d30fab-e58e-4cb9-a276-1dfa3387ce8b" name="Upper" value="*">
+                      <elementDefinition Id="9f88fcfb-b4d9-4802-b478-ac08b4e893d8" />
+                    </literalString>
+                  </upperValueInternal>
                   <elementDefinition Id="53073063-7c88-4f8b-9d84-b2fb48603ce5" />
                 </memberEnd>
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="f954fff2-d5ed-4a1a-a111-202b1f6630b2" />
+          </association>
+          <association Id="8b5d8530-bac6-43cf-8d59-9e26216cfeae" isDerived="false" sourceEndRoleName="User" targetEndRoleName="Orders" isLeaf="false" isAbstract="false">
+            <classMoniker Id="33d76e02-27b1-49cb-ae7d-686ae8ef38ce" LastKnownName="Order" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="31889ba7-e4c8-453a-84b5-633dd8e6e31a" name="User" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="1bbcbc4f-4755-4c0e-aa5a-401de72cda94" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b76f7f92-6e32-4b1e-8c21-bdd331242f59" name="Orders" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <lowerValueInternal>
+                    <literalString Id="7c3e9765-d944-4cf3-b94e-fa653a63448d" name="Lower" value="*">
+                      <elementDefinition Id="03cf973f-d11c-4b3e-9a97-3599354de379" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="2dfb7ff7-ac2d-4496-bbbe-60ead8482963" name="Upper" value="*">
+                      <elementDefinition Id="95ebd045-c7a0-4090-ab75-4f7699799067" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="0cdee95a-ae53-4816-9622-54ac20897c9a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="4da9210d-c2af-4d54-8d70-821d3cdf47f6" />
           </association>
         </targetEnds>
         <ownedAttributesInternal>
@@ -681,6 +737,32 @@
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="3cc7d5e8-2aca-4466-a781-617eaef9aba2" />
           </association>
+          <association Id="3492bcdf-1703-4a08-89f0-c0832a9de545" isDerived="false" sourceEndRoleName="Balance" targetEndRoleName="Transaction" isLeaf="false" isAbstract="false">
+            <classMoniker Id="bf16b912-98ee-408a-be6a-f838fc8fc3d7" LastKnownName="Transaction" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="6edf0d97-1fc5-4bba-a1c5-45cccda9c7c4" name="Balance" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="bb88f0f1-f714-475c-9040-1c2993e973e1" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b8aa9eb9-192c-43e1-aefa-1fcc7f18b218" name="Transaction" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <lowerValueInternal>
+                    <literalString Id="f60b8fd4-e21a-411b-a352-6c2bddeb46f4" name="Lower" value="*">
+                      <elementDefinition Id="050addbe-64bf-413f-8e8c-d540012cabc2" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="26448304-dc12-4b88-a13e-6666f857ad8a" name="Upper" value="*">
+                      <elementDefinition Id="1d2017d3-0ffc-4d8c-ad0a-af73759d2776" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="aeef796d-dbb5-4bfa-b6bb-428474fb4d45" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="df22d91b-914b-4a08-99a4-54f0a30c55c1" />
+          </association>
         </targetEnds>
         <ownedAttributesInternal>
           <property Id="487f4ebe-cc02-495b-b8e3-66a4ecfcea31" name="Amount" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
@@ -693,31 +775,21 @@
       <class Id="bf16b912-98ee-408a-be6a-f838fc8fc3d7" name="Transaction" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="e11eda15-44cb-4965-9809-c805213bf90b" />
         <targetEnds>
-          <association Id="7648a239-fe7a-40c1-b10a-1ffa1b38bfe4" isDerived="false" sourceEndRoleName="Transaction" targetEndRoleName="Balance" isLeaf="false" isAbstract="false">
-            <classMoniker Id="8f328c1b-0c03-48d5-ab4b-e7d8ae2b338e" LastKnownName="Balance" />
+          <association Id="c74f4aa1-2270-40f0-b812-acbd7d97c256" isDerived="false" sourceEndRoleName="Transaction" targetEndRoleName="TransactionStatus" isLeaf="false" isAbstract="false">
+            <enumerationMoniker Id="d9d516ca-dc22-407c-92c9-da1952ae8721" LastKnownName="TransactionStatus" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
-                <memberEnd Id="5c398fc6-11ef-4d5a-b4db-348ddd3c30e8" name="Transaction" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
-                  <lowerValueInternal>
-                    <literalString Id="0cd3d232-8f4a-4809-b08d-3398896e8dd5" name="Lower" value="*">
-                      <elementDefinition Id="9be028a4-e144-4535-8179-fad7df5cd263" />
-                    </literalString>
-                  </lowerValueInternal>
-                  <upperValueInternal>
-                    <literalString Id="b59a9b91-5fb8-478c-a6cb-9d4e3840c223" name="Upper" value="*">
-                      <elementDefinition Id="3ec9cbe6-8637-4354-961a-0195d684b9b7" />
-                    </literalString>
-                  </upperValueInternal>
-                  <elementDefinition Id="3ad42c1f-8bfb-45fd-b4e0-022ccc86e70f" />
+                <memberEnd Id="01f66b99-a2a5-4cd1-a0f4-e0b1f803a507" name="Transaction" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="bae70eb4-8592-421d-a50c-13f602c9a763" />
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
-                <memberEnd Id="c63a15d7-fd66-4fa6-918e-0a4167a9ce0b" name="Balance" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-                  <elementDefinition Id="f67f59e9-be70-4d26-97ed-7257859c47a4" />
+                <memberEnd Id="d6e96ec2-18f6-40bd-afff-61af8f40fa6a" name="TransactionStatus" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="d5e4e6a0-03a1-4d58-a4f3-8513573eb154" />
                 </memberEnd>
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
-            <elementDefinition Id="b5bab510-44ae-46d1-bab8-98430f04f59e" />
+            <elementDefinition Id="a32748b8-a4d6-4237-b2cf-6c48a6801812" />
           </association>
         </targetEnds>
         <ownedAttributesInternal>
@@ -746,11 +818,11 @@
       <enumeration Id="75e16b8f-788e-488d-aa5a-352b559ba779" name="ParcelStatus" isAbstract="false" isLeaf="false">
         <elementDefinition Id="29e87662-2803-483e-9fa2-78d984bf1d81" />
         <targetEnds>
-          <association Id="856c6e4a-2792-45ee-94d0-8814bb997cd5" isDerived="false" sourceEndRoleName="ParcelState" targetEndRoleName="Parcel" isLeaf="false" isAbstract="false">
+          <association Id="856c6e4a-2792-45ee-94d0-8814bb997cd5" isDerived="false" sourceEndRoleName="ParcelStatus" targetEndRoleName="Parcel" isLeaf="false" isAbstract="false">
             <classMoniker Id="24fbb2ea-27b5-4c0a-bb31-6ba4c32b48f6" LastKnownName="Parcel" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
-                <memberEnd Id="ccbcccd8-9138-4e85-bb26-080873d12b19" name="ParcelState" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                <memberEnd Id="ccbcccd8-9138-4e85-bb26-080873d12b19" name="ParcelStatus" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
                   <elementDefinition Id="72fdba8a-2170-4002-a5f2-e1d7c6a17fb1" />
                 </memberEnd>
               </associationHasOwnedEnds>
@@ -800,24 +872,6 @@
     <logicalClassDesignerModelHasTypes>
       <enumeration Id="d9d516ca-dc22-407c-92c9-da1952ae8721" name="TransactionStatus" isAbstract="false" isLeaf="false">
         <elementDefinition Id="df2e66ce-90ca-441d-8775-d29670bfbe45" />
-        <targetEnds>
-          <association Id="205d6575-14d6-4ffd-b089-f14feb5b5e11" isDerived="false" sourceEndRoleName="TransactionStatus" targetEndRoleName="Transaction" isLeaf="false" isAbstract="false">
-            <classMoniker Id="bf16b912-98ee-408a-be6a-f838fc8fc3d7" LastKnownName="Transaction" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd Id="9c4f1df6-4708-4ef0-a909-d64a30a432ff" name="TransactionStatus" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
-                  <elementDefinition Id="13b20f18-3443-4aa9-8d17-f3129576ce5e" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd Id="77fddff2-5473-4787-8609-cb1705d6b0f1" name="Transaction" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-                  <elementDefinition Id="7d599362-bec7-4895-ba94-318de6c8d5c4" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-            <elementDefinition Id="d0759468-12c0-4aba-99d6-bcec4c539ef9" />
-          </association>
-        </targetEnds>
         <ownedLiterals>
           <enumerationLiteral Id="d48fe7c3-6d7d-4d59-a054-d0dae7d77147" name="Pending">
             <elementDefinition Id="2bb2744f-aaef-416c-a358-3a43318667e6" />

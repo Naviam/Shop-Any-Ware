@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel"
+  dslVersion="1.0.0.0"
+  Id="83027b7d-8b7b-472c-a282-ab6b46e8a8d2"
+  name="Notifications" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <packagedElements>
+    <packageHasNamedElement>
+      <useCase
+        Id="683c3a53-6458-44df-9869-0705c2f0fbff"
+        name="Send Warehousing Period Ends Notification"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="b318d4bd-cc3c-40b0-9714-9b5a4ec6d63b"
+            LastKnownName="Email Notification System"
+            LastKnownLocation="Package1_0115.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="ab8749d4-3118-4d93-9595-9b2400f92127"
+        name="Send Weekly Financial Report"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="b318d4bd-cc3c-40b0-9714-9b5a4ec6d63b"
+            LastKnownName="Email Notification System"
+            LastKnownLocation="Package1_0115.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <subsystem
+        Id="b318d4bd-cc3c-40b0-9714-9b5a4ec6d63b"
+        name="Email Notification System"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

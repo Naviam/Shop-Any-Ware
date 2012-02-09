@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel"
+  dslVersion="1.0.0.0"
+  Id="28d1640b-5895-482f-ad10-0aa953fc13db"
+  name="Parcels" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <packagedElements>
+    <packageHasNamedElement>
+      <useCase
+        Id="f1ea2fd6-514a-4a6c-ab48-f46d2d935ab3"
+        name="Filter Parcels"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="da2597f1-c03c-4f25-b745-cadebb293710"
+        name="Collect Parcels"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="0fc4a73e-5415-4945-84dd-da97e6814da8"
+        name="Remove Parcel"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="02c64def-56d7-4df9-9115-8802241ca9ea"
+        name="Sort Parcels"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="ccd5ede6-9a74-476f-888d-7f995f608b21"
+        name="Update Parcel"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="044e9151-4a52-4c2c-945d-9272db3302b7"
+        name="Update Parcel Status"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="63411706-38c2-42f4-a274-196e390d5cbb"
+        name="View Parcel Details"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="660e6f79-c2c2-46b2-baf3-671b6e292668">
+            <useCaseMoniker
+              Id="044e9151-4a52-4c2c-945d-9272db3302b7"
+              LastKnownName="Update Parcel Status"
+              LastKnownLocation="Package_0107.uml" />
+          </include>
+          <include
+            Id="a911c171-5d0c-4ba5-b6a6-0471fa2c45fc">
+            <useCaseMoniker
+              Id="ccd5ede6-9a74-476f-888d-7f995f608b21"
+              LastKnownName="Update Parcel"
+              LastKnownLocation="Package_0107.uml" />
+          </include>
+          <include
+            Id="dbe5a270-c95a-4d8e-805b-1b665ac1d308">
+            <useCaseMoniker
+              Id="0fc4a73e-5415-4945-84dd-da97e6814da8"
+              LastKnownName="Remove Parcel"
+              LastKnownLocation="Package_0107.uml" />
+          </include>
+        </additions>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="bdbe8537-c7b8-4d5f-abc2-df7d3d474ed4"
+        name="View Parcels"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="b4717a0c-bc17-46b5-9ebe-bf57f853ba6c">
+            <useCaseMoniker
+              Id="f1ea2fd6-514a-4a6c-ab48-f46d2d935ab3"
+              LastKnownName="Filter Parcels"
+              LastKnownLocation="Package_0107.uml" />
+          </include>
+          <include
+            Id="d4506b1f-203b-4ea8-a060-039449e273dd">
+            <useCaseMoniker
+              Id="02c64def-56d7-4df9-9115-8802241ca9ea"
+              LastKnownName="Sort Parcels"
+              LastKnownLocation="Package_0107.uml" />
+          </include>
+          <include
+            Id="5bdb8c9e-96ee-4c08-86df-0932fcb5a826">
+            <useCaseMoniker
+              Id="63411706-38c2-42f4-a274-196e390d5cbb"
+              LastKnownName="View Parcel Details"
+              LastKnownLocation="Package_0107.uml" />
+          </include>
+          <include
+            Id="fce3c5f8-00bf-4486-ac0a-43b3c6de6b7d">
+            <useCaseMoniker
+              Id="da2597f1-c03c-4f25-b745-cadebb293710"
+              LastKnownName="Collect Parcels"
+              LastKnownLocation="Package_0107.uml" />
+          </include>
+        </additions>
+      </useCase>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>
