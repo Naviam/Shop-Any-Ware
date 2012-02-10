@@ -1,14 +1,97 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="6d340688-62b4-4e76-8141-e92cb18dc89d" name="Shopper" linkedPackageId="f6260d4a-b646-4db8-bc01-e83dd015c993" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="6d340688-62b4-4e76-8141-e92cb18dc89d" name="Shopper" linkedPackageId="f6260d4a-b646-4db8-bc01-e83dd015c993" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
   <ownedCommentsInternal>
     <comment Id="2fb1ca31-30dc-485e-b66e-9b08b3319529">
       <elementDefinition Id="132c6b7b-ddfc-4488-9258-221415d95ca7" />
       <body>Будет использоваться сторонний сервис вроде getsatisfaction.com</body>
-      <annotatedElements>
-        <useCaseMoniker Id="b3eb7a24-3c59-442f-a3e8-0ab04a95222d" LastKnownName="Leave Feedback Or Ask a Question" />
-      </annotatedElements>
     </comment>
   </ownedCommentsInternal>
+  <appliedStereotypesInternal>
+    <stereotypeInstance Id="536df307-119f-4086-932d-6c908c5dc0d6" name="namespace" profile="CSharpProfile">
+      <elementDefinition Id="83215c40-e8ab-4007-8499-f71aa2691e39" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="8d38dc2a-f29a-40ac-ae1e-492519b28879">
+          <propertyInstance Id="3f0dc4b7-5aa3-417d-b164-885bda20c714" name="BaseName" value="TdService">
+            <elementDefinition Id="9ce0693a-9a0f-4273-b99b-0ac34f47f58e" />
+          </propertyInstance>
+          <elementDefinition Id="4a043077-7e5b-4fd9-96a7-64d7635201c1" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="718926e7-011a-4831-9dcd-8957ad4d5a27">
+          <propertyInstance Id="e64f7620-817b-4e95-8784-2d50f3368b9c" name="ClrAttributes">
+            <elementDefinition Id="2e84046b-908f-4a32-98d4-39e94d9d705e" />
+          </propertyInstance>
+          <elementDefinition Id="beda8572-1b32-41a2-b7ed-7c09aa26de3a" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="1dab76a5-5302-4c16-98c1-11c30257ba0a">
+          <propertyInstance Id="9b093226-34fe-4e39-97b5-8626f02dd77a" name="Usings">
+            <elementDefinition Id="167efa69-29f8-4f1e-bb3f-4b1a8e50ad7b" />
+          </propertyInstance>
+          <elementDefinition Id="9e12bd4b-c667-4f8d-b4b0-34c1a0d569a5" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+    <stereotypeInstance Id="5cf2f1ff-2a63-4519-a41f-b1b31c14d5de" name="TextTemplateBindings" profile="TextTemplateBindings">
+      <elementDefinition Id="8846ae1b-9e13-4ef1-93e8-c9b2308fd2f9" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="ae072ad6-c58a-40cf-9407-b0c365c41cae">
+          <propertyInstance Id="0036b2d0-d805-452a-95e9-6dfad584d44e" name="Alias" value="ClassTemplate|EnumTemplate|InterfaceTemplate|StructTemplate">
+            <elementDefinition Id="3472a760-5369-47af-8753-eaf1f365bf4e" />
+          </propertyInstance>
+          <elementDefinition Id="339138bf-7878-4975-901f-2ec6c33bd3e9" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="115a640c-295a-4b10-9ae3-ab899d14cae8">
+          <propertyInstance Id="78d49c6e-bec0-4800-bf99-b3c5c360bef3" name="TemplateFilePath" value="ClassTemplate=C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.ClassTemplate.t4|EnumTemplate=C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.EnumTemplate.t4|InterfaceTemplate=C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.InterfaceTemplate.t4|StructTemplate=C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.StructTemplate.t4">
+            <elementDefinition Id="459ae12b-427c-4742-8c4d-03fa5c4848fa" />
+          </propertyInstance>
+          <elementDefinition Id="0b7fdb28-9464-4fb3-9b1a-63e64e3015e2" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="6123f77e-0615-4c14-93e0-f7cc27f10eda">
+          <propertyInstance Id="1fd2a268-28b0-4803-a698-a37e6e497c5f" name="ProjectPath" value="ClassTemplate=..\TdService.Domain\TdService.Domain.csproj|EnumTemplate=..\TdService.Domain\TdService.Domain.csproj|InterfaceTemplate=..\TdService.Domain\TdService.Domain.csproj|StructTemplate=..\TdService.Domain\TdService.Domain.csproj">
+            <elementDefinition Id="7cc5cd71-11b2-451f-9656-769cf85f48ec" />
+          </propertyInstance>
+          <elementDefinition Id="587eceeb-25a5-4665-a1d3-8d4c1fea0827" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="60b24803-6277-4527-be02-30dfa4d39af9">
+          <propertyInstance Id="eddb494d-11ec-4ce6-9524-0559a4a6723e" name="TargetDirectory" value="ClassTemplate={PackageStructure}|EnumTemplate={PackageStructure}|InterfaceTemplate={PackageStructure}|StructTemplate={PackageStructure}">
+            <elementDefinition Id="dbda9d32-9304-4b19-b5fe-b3d5e6d5539b" />
+          </propertyInstance>
+          <elementDefinition Id="0172f644-f774-4dab-996a-09d1267fdecf" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="9658c120-e8d9-4cab-a04a-9e3ee843c4b9">
+          <propertyInstance Id="8b27b5db-9ecd-47cb-ae85-8ec3e0efb434" name="TargetName" value="ClassTemplate={Name}|EnumTemplate={Name}|InterfaceTemplate={Name}|StructTemplate={Name}">
+            <elementDefinition Id="a48101f4-3421-4b10-9cf3-66dbb92c1fab" />
+          </propertyInstance>
+          <elementDefinition Id="8ce73baa-a5a3-4c89-a566-97d0fadc1b13" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="819b9f19-ef39-48ad-a53f-c2f3bc649d2d">
+          <propertyInstance Id="ea9c7fba-4965-4058-a450-f52f1f700684" name="Overwrite" value="ClassTemplate=True|EnumTemplate=True|InterfaceTemplate=True|StructTemplate=True">
+            <elementDefinition Id="075e63c1-4076-4e13-8ebd-67950f26cf3a" />
+          </propertyInstance>
+          <elementDefinition Id="6678a209-ab3e-44a4-85bc-444f6be5ee46" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="f4bb7800-37c1-4bce-ad7a-646fc7858c6b">
+          <propertyInstance Id="46671992-ed42-4ed8-8ae0-709be44fb941" name="Parameters">
+            <elementDefinition Id="c1b6d19e-8647-4279-8125-69850c99a4fb" />
+          </propertyInstance>
+          <elementDefinition Id="513e5963-c807-47ec-a46c-717626c8a771" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+  </appliedStereotypesInternal>
+  <profileInstances>
+    <packageHasProfileInstances Id="61b55bd0-456d-4cce-8ca2-526d0619b865">
+      <profileInstance Id="e4488805-e1a0-4dd3-862b-2f6a76d52405" name="TextTemplateBindings">
+        <elementDefinition Id="19fcac95-f5d2-4773-b284-5fd2debd864c" />
+      </profileInstance>
+      <elementDefinition Id="91062264-0281-4ed4-9610-38da3816671b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="96736956-9e34-4070-a717-7e4448023739">
+      <profileInstance Id="b142a8ad-b633-4280-99d0-953262cf224c" name="CSharpProfile">
+        <elementDefinition Id="71d78747-3c24-4160-bbec-b01fff4d0349" />
+      </profileInstance>
+      <elementDefinition Id="dbed6c01-0c96-4afa-963b-e5ae39313121" />
+    </packageHasProfileInstances>
+  </profileInstances>
   <packagedElements>
     <useCaseModelRootHasTypes>
       <actor Id="dd551789-0db1-4a49-989c-d881dd4de2e6" name="Shopper" isAbstract="false" isLeaf="false">
@@ -35,22 +118,6 @@
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="4ddac90d-0325-44bb-a295-a575f29e20ed" />
-          </association>
-          <association Id="23b6a130-3ef6-44de-bb99-e9aa610ba25c" isDerived="false" sourceEndRoleName="Shopper" targetEndRoleName="Leave Feedback" isLeaf="false" isAbstract="false">
-            <useCaseMoniker Id="b3eb7a24-3c59-442f-a3e8-0ab04a95222d" LastKnownName="Leave Feedback Or Ask a Question" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd Id="9bd468a3-6d97-4224-87dd-616f0ae985b6" name="Shopper" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
-                  <elementDefinition Id="958d5b19-cfd8-43b3-9a59-9db6019f95ac" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd Id="d8bf4637-21d1-4ace-be51-6b4815d2eea2" name="Leave Feedback" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-                  <elementDefinition Id="8e0b9670-e96f-4911-a525-9be6b58c8b16" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-            <elementDefinition Id="848f8887-5820-467b-b581-5556073de256" />
           </association>
           <association Id="9948e9ed-6ac6-448f-bada-7ae208215d01" isDerived="false" sourceEndRoleName="Shopper" targetEndRoleName="View Orders" isLeaf="false" isAbstract="false">
             <useCaseMoniker Id="92a49343-2033-432c-92eb-48571cf566d1" LastKnownName="View Orders" />
@@ -171,11 +238,6 @@
     <useCaseModelRootHasTypes>
       <useCase Id="0a3b4e8e-ef86-42a4-870e-67101770d928" name="View Balance" isAbstract="false" isLeaf="false">
         <elementDefinition Id="87d61a3a-dfaa-4a00-adc3-1de58d33ab81" />
-      </useCase>
-    </useCaseModelRootHasTypes>
-    <useCaseModelRootHasTypes>
-      <useCase Id="b3eb7a24-3c59-442f-a3e8-0ab04a95222d" name="Leave Feedback Or Ask a Question" isAbstract="false" isLeaf="false">
-        <elementDefinition Id="3ff97449-7183-4a75-a127-a67da6ec6606" />
       </useCase>
     </useCaseModelRootHasTypes>
     <useCaseModelRootHasTypes>

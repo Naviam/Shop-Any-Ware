@@ -8,7 +8,7 @@
     <ProjectGuid>{4E87BDA7-4AF2-4D94-9A40-68B161FBB71A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TdService.Domain</RootNamespace>
+    <RootNamespace>TdService</RootNamespace>
     <AssemblyName>TdService.Domain</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -40,6 +40,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\Address.cs" />
+    <Compile Include="Domain\Balance.cs" />
+    <Compile Include="Domain\DispatchMethod.cs" />
+    <Compile Include="Domain\Item.cs" />
+    <Compile Include="Domain\Order.cs" />
+    <Compile Include="Domain\OrderLineItem.cs" />
+    <Compile Include="Domain\OrderStatus.cs" />
+    <Compile Include="Domain\Parcel.cs" />
+    <Compile Include="Domain\ParcelStatus.cs" />
+    <Compile Include="Domain\Profile.cs" />
+    <Compile Include="Domain\Role.cs" />
+    <Compile Include="Domain\Service.cs" />
+    <Compile Include="Domain\Transaction.cs" />
+    <Compile Include="Domain\TransactionStatus.cs" />
+    <Compile Include="Domain\User.cs" />
+    <Compile Include="Domain\Weight.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

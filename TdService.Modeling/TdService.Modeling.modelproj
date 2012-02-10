@@ -65,10 +65,13 @@
     <Content Include="ModelDefinition\Package1_0115.uml">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="ModelDefinition\Package1_0128.uml">
+    <Content Include="ModelDefinition\Domain.uml">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="ModelDefinition\Package_0103.uml">
+    <Content Include="ModelDefinition\Repositories.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\UseCases.uml">
       <SubType>Content</SubType>
     </Content>
     <Content Include="ModelDefinition\Package_0106.uml">
@@ -92,8 +95,15 @@
     <Content Include="ModelDefinition\Package_0117.uml">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="ModelDefinition\Package_0128.uml">
+    <Content Include="ModelDefinition\Domain_.uml">
       <SubType>Content</SubType>
+    </Content>
+    <Content Include="Repositories.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Repositories.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Repositories.classdiagram</DependentUpon>
     </Content>
     <Content Include="Shopper - View Balance.usecasediagram">
       <SubType>Content</SubType>
