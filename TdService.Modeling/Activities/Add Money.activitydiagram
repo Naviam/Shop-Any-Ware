@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<activityRootModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm11="http://schemas.microsoft.com/dsltools/UseCaseModel" xmlns:dm12="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ComponentDesigner" dslVersion="1.0.0.0" Id="76b7d55d-d8e1-48c4-8b02-e2293e8d9ac9" name="Add Money" linkedPackageId="633dffc8-53d5-4048-a50a-b08c781ebbae" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner">
+  <appliedStereotypesInternal>
+    <stereotypeInstance Id="8faa7157-4799-4bed-a801-d05df0d02f33" name="namespace" profile="CSharpProfile">
+      <elementDefinition Id="83215c40-e8ab-4007-8499-f71aa2691e39" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="0e9c1ace-548a-4413-b167-9f7e0106d8eb">
+          <propertyInstance Id="725440f6-540e-4577-8f24-a55d2a968510" name="BaseName" value="TdService">
+            <elementDefinition Id="9ce0693a-9a0f-4273-b99b-0ac34f47f58e" />
+          </propertyInstance>
+          <elementDefinition Id="4a043077-7e5b-4fd9-96a7-64d7635201c1" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="8dd78153-e5c2-46ac-adb8-0d5a2149df84">
+          <propertyInstance Id="572a35c1-f49f-43af-b6da-940db326cc06" name="ClrAttributes">
+            <elementDefinition Id="2e84046b-908f-4a32-98d4-39e94d9d705e" />
+          </propertyInstance>
+          <elementDefinition Id="beda8572-1b32-41a2-b7ed-7c09aa26de3a" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="68999a90-6365-4d94-8834-f350e9ea2c09">
+          <propertyInstance Id="9010c053-b869-489e-9cf3-fdcd6cf7a752" name="Usings">
+            <elementDefinition Id="167efa69-29f8-4f1e-bb3f-4b1a8e50ad7b" />
+          </propertyInstance>
+          <elementDefinition Id="9e12bd4b-c667-4f8d-b4b0-34c1a0d569a5" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+    <stereotypeInstance Id="e28f818d-d426-480f-9c22-20c945d0ecc5" name="TextTemplateBindings" profile="TextTemplateBindings">
+      <elementDefinition Id="8846ae1b-9e13-4ef1-93e8-c9b2308fd2f9" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="ff505bf9-e83e-4329-97ae-25742c412d15">
+          <propertyInstance Id="78f8fcaa-7c51-4869-9821-7501693e7523" name="Alias" value="ClassTemplate|EnumTemplate|InterfaceTemplate|StructTemplate">
+            <elementDefinition Id="3472a760-5369-47af-8753-eaf1f365bf4e" />
+          </propertyInstance>
+          <elementDefinition Id="339138bf-7878-4975-901f-2ec6c33bd3e9" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="77e87e79-67cc-4c15-ae8f-450afb574ab4">
+          <propertyInstance Id="a1e49396-67d9-4789-aaca-e2bf1cc7c1de" name="TemplateFilePath" value="ClassTemplate=C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.ClassTemplate.t4|EnumTemplate=C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.EnumTemplate.t4|InterfaceTemplate=C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.InterfaceTemplate.t4|StructTemplate=C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.StructTemplate.t4">
+            <elementDefinition Id="459ae12b-427c-4742-8c4d-03fa5c4848fa" />
+          </propertyInstance>
+          <elementDefinition Id="0b7fdb28-9464-4fb3-9b1a-63e64e3015e2" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="aaa01391-8200-418e-ad09-c3395bf49723">
+          <propertyInstance Id="581a596f-644c-4526-a221-0aadcdbfa41e" name="ProjectPath" value="ClassTemplate=..\TdService.Domain\TdService.Domain.csproj|EnumTemplate=..\TdService.Domain\TdService.Domain.csproj|InterfaceTemplate=..\TdService.Domain\TdService.Domain.csproj|StructTemplate=..\TdService.Domain\TdService.Domain.csproj">
+            <elementDefinition Id="7cc5cd71-11b2-451f-9656-769cf85f48ec" />
+          </propertyInstance>
+          <elementDefinition Id="587eceeb-25a5-4665-a1d3-8d4c1fea0827" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="048b361d-1fbb-4537-b637-5580fa98a2d8">
+          <propertyInstance Id="c563efff-5104-4289-91d7-e56a055616a8" name="TargetDirectory" value="ClassTemplate={PackageStructure}|EnumTemplate={PackageStructure}|InterfaceTemplate={PackageStructure}|StructTemplate={PackageStructure}">
+            <elementDefinition Id="dbda9d32-9304-4b19-b5fe-b3d5e6d5539b" />
+          </propertyInstance>
+          <elementDefinition Id="0172f644-f774-4dab-996a-09d1267fdecf" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="988b9721-4bd5-419a-9833-8be710d6b2b4">
+          <propertyInstance Id="e6a87df8-93a6-452b-883d-0bd4d87a4efd" name="TargetName" value="ClassTemplate={Name}|EnumTemplate={Name}|InterfaceTemplate={Name}|StructTemplate={Name}">
+            <elementDefinition Id="a48101f4-3421-4b10-9cf3-66dbb92c1fab" />
+          </propertyInstance>
+          <elementDefinition Id="8ce73baa-a5a3-4c89-a566-97d0fadc1b13" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="75864739-b180-4865-87ce-a2ad647d3712">
+          <propertyInstance Id="0764d450-8e42-4316-8a58-c20cbad10b86" name="Overwrite" value="ClassTemplate=True|EnumTemplate=True|InterfaceTemplate=True|StructTemplate=True">
+            <elementDefinition Id="075e63c1-4076-4e13-8ebd-67950f26cf3a" />
+          </propertyInstance>
+          <elementDefinition Id="6678a209-ab3e-44a4-85bc-444f6be5ee46" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="1ea725ee-d6f0-486d-9088-e2a86d411347">
+          <propertyInstance Id="93463545-57e1-4227-a619-08a9d9d244c4" name="Parameters">
+            <elementDefinition Id="c1b6d19e-8647-4279-8125-69850c99a4fb" />
+          </propertyInstance>
+          <elementDefinition Id="513e5963-c807-47ec-a46c-717626c8a771" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+  </appliedStereotypesInternal>
+  <profileInstances>
+    <packageHasProfileInstances Id="f9a620c6-1bbc-4037-9842-e113d1543824">
+      <profileInstance Id="ab0cc7bc-d63f-4887-8f8f-47927df51f01" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="23d7002c-4e5e-4312-90c8-28412cbb7a7d">
+      <profileInstance Id="978efc69-3090-42c4-b5ce-125137d7a126" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="7831dce4-e1a4-465d-a1fb-fe9d151bb0ff">
+      <profileInstance Id="496b7079-5ef8-4958-971c-208857ca8700" name="TextTemplateBindings">
+        <elementDefinition Id="19fcac95-f5d2-4773-b284-5fd2debd864c" />
+      </profileInstance>
+      <elementDefinition Id="91062264-0281-4ed4-9610-38da3816671b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="fbff6216-58a5-453d-b046-f77cb1dfe79d">
+      <profileInstance Id="957b9f88-cb69-473c-9248-25e73567c98a" name="CSharpProfile">
+        <elementDefinition Id="71d78747-3c24-4160-bbec-b01fff4d0349" />
+      </profileInstance>
+      <elementDefinition Id="dbed6c01-0c96-4afa-963b-e5ae39313121" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <activityRootModelHasActivity>
+      <activity Id="5e3352e8-65c0-4809-b27d-a006a7ad76f6" name="Add Money" isAbstract="false" isLeaf="false" isActiveClass="false" isReentrant="false" isReadOnly="false" isSingleExecution="false">
+        <elementDefinition Id="a08b2c94-83e3-419f-8e55-ea66e3a76989" />
+        <nodes>
+          <initialNode Id="103484f1-599a-4699-89aa-6bf3fc3c0314" name="Initial1" isLeaf="false">
+            <elementDefinition Id="bcd001c5-0e4a-4af1-b9ff-a35afdaed02e" />
+            <flowNodeTargets>
+              <controlFlow Id="774afde2-b099-4227-966a-1876c1f806f1" isLeaf="false">
+                <opaqueActionMoniker Id="4f146dd5-5ed2-4bc2-b271-fc863696de77" LastKnownName="Add Money" />
+                <elementDefinition Id="904f70c0-1656-4970-b4f3-1cf45c71f342" />
+              </controlFlow>
+            </flowNodeTargets>
+          </initialNode>
+          <activityFinalNode Id="3474af7b-1bbe-4a4c-bf90-50a622465cd2" name="ActivityFinal1" isLeaf="false">
+            <elementDefinition Id="47ac387d-b9c1-4fe1-a638-2bf81a74b56c" />
+          </activityFinalNode>
+          <opaqueAction Id="4f146dd5-5ed2-4bc2-b271-fc863696de77" name="Add Money" isLeaf="false">
+            <elementDefinition Id="08d63d83-94f7-4c0f-840c-0bb8f37077bc" />
+            <flowNodeTargets>
+              <controlFlow Id="61526b10-429a-4804-a96a-e66c39534f52" isLeaf="false">
+                <decisionNodeMoniker Id="9c69d890-5965-403e-ba5d-5e3d0e5507a8" LastKnownName="Decision1" />
+                <elementDefinition Id="42e6d95a-96f7-4753-8175-41ff0a824bb0" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="5449bf26-a1ec-44ac-b82a-b42e0c139d6f" name="Pay with Paypal" isLeaf="false">
+            <elementDefinition Id="57b7b573-a398-430c-a622-10a04b7f5f07" />
+            <flowNodeTargets>
+              <controlFlow Id="97469c86-538f-404e-8dc5-5c7e4d0a5ade" isLeaf="false">
+                <activityFinalNodeMoniker Id="3474af7b-1bbe-4a4c-bf90-50a622465cd2" LastKnownName="ActivityFinal1" />
+                <elementDefinition Id="43aa00f8-c33c-425c-bc32-fafb3d0941fd" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <decisionNode Id="9c69d890-5965-403e-ba5d-5e3d0e5507a8" name="Decision1" isLeaf="false">
+            <elementDefinition Id="3a3867a4-267b-436f-8d64-8ee43418978b" />
+            <flowNodeTargets>
+              <controlFlow Id="4308adec-2ea7-4b04-aaab-4fb58419e06b" isLeaf="false">
+                <opaqueActionMoniker Id="9892016a-3756-404b-818a-ad7d57e09b83" LastKnownName="Pay with credit card" />
+                <elementDefinition Id="a4071e0e-bcbd-4701-be34-e524c43017fe" />
+              </controlFlow>
+              <controlFlow Id="738b18f0-8aad-4b06-9eed-2f94123bd95a" isLeaf="false">
+                <opaqueActionMoniker Id="5449bf26-a1ec-44ac-b82a-b42e0c139d6f" LastKnownName="Pay with Paypal" />
+                <elementDefinition Id="20d5c335-a3bf-458a-bb14-f654bd517208" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <opaqueAction Id="9892016a-3756-404b-818a-ad7d57e09b83" name="Pay with credit card" isLeaf="false">
+            <elementDefinition Id="60b8ebeb-c8cb-4b3f-ba56-91f2968339f2" />
+            <flowNodeTargets>
+              <controlFlow Id="47f8174d-4282-452a-a5f7-1ab6c7b9c5b4" isLeaf="false">
+                <activityFinalNodeMoniker Id="3474af7b-1bbe-4a4c-bf90-50a622465cd2" LastKnownName="ActivityFinal1" />
+                <elementDefinition Id="d23f51d5-a560-48df-af38-7f36300af32d" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+        </nodes>
+      </activity>
+    </activityRootModelHasActivity>
+  </packagedElements>
+  <package Id="633dffc8-53d5-4048-a50a-b08c781ebbae" name="TdService.Modeling">
+    <elementDefinition Id="e006d43a-3bc9-452c-a7ce-47edd28d044b" />
+  </package>
+</activityRootModel>

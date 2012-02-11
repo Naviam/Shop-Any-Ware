@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<logicalClassDesignerDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 15.5, 11.25" name="Repositories">
+<logicalClassDesignerDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 15.5, 11.875" name="Repositories">
   <logicalClassDesignerModelMoniker Id="17ae9c62-b7e7-4799-9587-1e81db2ae087" />
   <nestedChildShapes>
     <interfaceShape Id="6e64c003-78e1-4bfa-b821-1c22fe910722" absoluteBounds="0.875, 0.75, 7.625, 2.8520658894379936" hideQualifiedName="false" increaseHeight="0.18800345897674564" customColor="207, 223, 191">
@@ -30,11 +30,11 @@
         <OperationElementListCompartment Id="3d429dbc-44c7-4220-9684-59861012b018" absoluteBounds="9.015, 1.539175326526165, 6.2200000000000006, 1.162109337747097" name="OperationsCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </interfaceShape>
-    <interfaceShape Id="2e0d948c-41ea-4cee-9b67-1c7e9c4997a9" absoluteBounds="0.875, 3.75, 7.625, 1.9111284192403151" hideQualifiedName="false" increaseHeight="0.18800345897674564" customColor="207, 223, 191">
+    <interfaceShape Id="2e0d948c-41ea-4cee-9b67-1c7e9c4997a9" absoluteBounds="0.875, 3.75, 7.625, 1.8911284192403155" hideQualifiedName="false" increaseHeight="0.18800345897674564" customColor="207, 223, 191">
       <interfaceMoniker Id="3724521c-0930-4c0f-922c-23aa8e3b594c" LastKnownName="IItemRepository" />
       <nestedChildShapes>
-        <AttributeElementListCompartment Id="21713a5f-11cf-4c5f-9cbb-d95c68fcb11b" absoluteBounds="0.89, 4.3280034589767453, 7.5950000000000006, 0.22117186754941942" name="AttributesCompartment" titleTextColor="Black" itemTextColor="Black" />
-        <OperationElementListCompartment Id="06dcb475-ce9d-4f3a-837c-f6fc27de8b19" absoluteBounds="0.89, 4.559175326526165, 7.5950000000000006, 1.0019530927141509" name="OperationsCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <AttributeElementListCompartment Id="21713a5f-11cf-4c5f-9cbb-d95c68fcb11b" absoluteBounds="0.89, 4.3280034589767453, 7.5950000000000006, 0.2011718675494194" name="AttributesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <OperationElementListCompartment Id="06dcb475-ce9d-4f3a-837c-f6fc27de8b19" absoluteBounds="0.89, 4.5391753265261654, 7.5950000000000006, 1.0019530927141509" name="OperationsCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </interfaceShape>
     <interfaceShape Id="d529b924-aa86-4cb1-8606-08377e40aac1" absoluteBounds="9, 3, 6.25, 2.3715971543391543" hideQualifiedName="false" increaseHeight="0.18800345897674564" customColor="207, 223, 191">
@@ -63,6 +63,13 @@
       <nestedChildShapes>
         <AttributeElementListCompartment Id="4c1ebefa-0c47-4794-a640-ea6ccfd878d4" absoluteBounds="9.015, 7.9530034589767453, 6.2200000000000006, 0.2011718675494194" name="AttributesCompartment" titleTextColor="Black" itemTextColor="Black" />
         <OperationElementListCompartment Id="7e029ec0-43dd-4d04-b38b-7ff904996c3b" absoluteBounds="9.015, 8.1641753265261663, 6.2200000000000006, 0.521484357615312" name="OperationsCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </interfaceShape>
+    <interfaceShape Id="6172c4b5-d3cd-4844-9d63-78cd23b426e3" absoluteBounds="0.875, 10.125, 7.625, 1.5429687152306233" hideQualifiedName="false" increaseHeight="0" customColor="207, 223, 191">
+      <interfaceMoniker Id="8cd1d9f1-af7d-4aad-be10-9b35f7e2d98a" LastKnownName="IBalanceRepository" />
+      <nestedChildShapes>
+        <AttributeElementListCompartment Id="95a2f2f6-b4a4-4b3d-a625-97471a3d4712" absoluteBounds="0.89, 10.515, 7.5950000000000006, 0.2011718675494194" name="AttributesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <OperationElementListCompartment Id="ae00ad4d-326d-4416-a6d3-239d97561ca8" absoluteBounds="0.89, 10.72617186754942, 7.5950000000000006, 0.84179684768120444" name="OperationsCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </interfaceShape>
   </nestedChildShapes>

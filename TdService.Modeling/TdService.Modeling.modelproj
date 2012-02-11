@@ -17,12 +17,40 @@
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets" />
   <ItemGroup>
-    <Content Include="Administrator.usecasediagram">
+    <Content Include="Activities\Add Money.activitydiagram">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Administrator.usecasediagram.layout">
+    <Content Include="Activities\Add Money.activitydiagram.layout">
       <SubType>Content</SubType>
-      <DependentUpon>Administrator.usecasediagram</DependentUpon>
+      <DependentUpon>Activities\Add Money.activitydiagram</DependentUpon>
+    </Content>
+    <Content Include="Activities\View Balance.activitydiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Activities\View Balance.activitydiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Activities\View Balance.activitydiagram</DependentUpon>
+    </Content>
+    <Content Include="Activities\View Items.activitydiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Activities\View Items.activitydiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Activities\View Items.activitydiagram</DependentUpon>
+    </Content>
+    <Content Include="Activities\View Orders.activitydiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Activities\View Orders.activitydiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Activities\View Orders.activitydiagram</DependentUpon>
+    </Content>
+    <Content Include="Activities\View Parcels.activitydiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Activities\View Parcels.activitydiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Activities\View Parcels.activitydiagram</DependentUpon>
     </Content>
     <Content Include="Domain Model.classdiagram">
       <SubType>Content</SubType>
@@ -83,6 +111,20 @@
     <Content Include="Repositories.classdiagram.layout">
       <SubType>Content</SubType>
       <DependentUpon>Repositories.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="Sign Up.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Sign Up.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Sign Up.sequencediagram</DependentUpon>
+    </Content>
+    <Content Include="Use Cases\Administrator.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Use Cases\Administrator.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Use Cases\Administrator.usecasediagram</DependentUpon>
     </Content>
     <Content Include="Use Cases\Brainstrorming Workshop.usecasediagram">
       <SubType>Content</SubType>
@@ -154,31 +196,11 @@
       <SubType>Content</SubType>
       <DependentUpon>Use Cases\Time.usecasediagram</DependentUpon>
     </Content>
-    <Content Include="View Items.activitydiagram">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="View Items.activitydiagram.layout">
-      <SubType>Content</SubType>
-      <DependentUpon>View Items.activitydiagram</DependentUpon>
-    </Content>
-    <Content Include="View Orders.activitydiagram">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="View Orders.activitydiagram.layout">
-      <SubType>Content</SubType>
-      <DependentUpon>View Orders.activitydiagram</DependentUpon>
-    </Content>
-    <Content Include="View Parcels.activitydiagram">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="View Parcels.activitydiagram.layout">
-      <SubType>Content</SubType>
-      <DependentUpon>View Parcels.activitydiagram</DependentUpon>
-    </Content>
     <Folder Include="ModelDefinition\" />
     <Content Include="ModelDefinition\TdService.Modeling.uml">
       <SubType>Content</SubType>
     </Content>
+    <Folder Include="Activities" />
     <Folder Include="Use Cases" />
   </ItemGroup>
   <ItemGroup>

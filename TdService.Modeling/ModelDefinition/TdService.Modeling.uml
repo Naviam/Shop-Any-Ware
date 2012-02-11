@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ComponentDesigner" xmlns:dm12="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner"
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ComponentDesigner" xmlns:dm12="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" xmlns:dm13="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner"
   dslVersion="1.0.0.0"
   Id="e006d43a-3bc9-452c-a7ce-47edd28d044b"
   name="TdService.Modeling" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -2227,6 +2227,722 @@ Reset Password</body>
           </opaqueAction>
         </nodes>
       </activity>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <activity
+        Id="efa925b4-ba99-449c-9c2c-bd403327400d"
+        name="View Balance"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false"
+        isReentrant="false"
+        isReadOnly="false"
+        isSingleExecution="false">
+        <nodes>
+          <initialNode
+            Id="121aca34-6748-431e-b3be-12d63ea84749"
+            name="Initial1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="b7d50196-dffc-4962-bc63-23503e0a2072"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="53728695-397e-45bf-8150-81994a715c5a"
+                  LastKnownName="View Balance"
+                  LastKnownLocation="TdService.Modeling.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </initialNode>
+          <opaqueAction
+            Id="53728695-397e-45bf-8150-81994a715c5a"
+            name="View Balance"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="6e532b54-6dbd-46be-9cee-dc6709b9a148"
+                isLeaf="false">
+                <decisionNodeMoniker
+                  Id="4cc77460-607c-48a7-9c46-07fdef181a8f"
+                  LastKnownName="Decision1"
+                  LastKnownLocation="TdService.Modeling.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="3a173c34-f2cd-4b56-be84-2ba9fda0138e"
+            name="Withdraw Money"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="ee102eb7-0fb7-4e45-a1a1-b9e4c3ed6fc8"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="53728695-397e-45bf-8150-81994a715c5a"
+                  LastKnownName="View Balance"
+                  LastKnownLocation="TdService.Modeling.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="042fa579-4c7c-4400-87d6-95cdaaae30ba"
+            name="View Transactions"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="ff95ab6a-60e2-4912-b938-6e7fedff5af7"
+                isLeaf="false">
+                <activityFinalNodeMoniker
+                  Id="4eb4ca17-41b4-4816-94ac-2d83cdceb007"
+                  LastKnownName="ActivityFinal1"
+                  LastKnownLocation="TdService.Modeling.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <decisionNode
+            Id="4cc77460-607c-48a7-9c46-07fdef181a8f"
+            name="Decision1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="d88dd09a-03b3-4036-947a-b0ccac02b9d1"
+                isLeaf="false">
+                <decisionNodeMoniker
+                  Id="a96e6c63-153e-4131-ace4-91235e906309"
+                  LastKnownName="Decision2"
+                  LastKnownLocation="TdService.Modeling.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="b5c8eaf0-fa7a-4bdf-8fd6-2e0a41c8c2ff"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="3a173c34-f2cd-4b56-be84-2ba9fda0138e"
+                  LastKnownName="Withdraw Money"
+                  LastKnownLocation="TdService.Modeling.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="4029a31c-6c2e-40a7-b25f-f9e14ece20be"
+                isLeaf="false">
+                <callBehaviorActionMoniker
+                  Id="c459b372-d403-4aa6-9b66-32b2647369ed"
+                  LastKnownName="Add Money"
+                  LastKnownLocation="TdService.Modeling.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <activityFinalNode
+            Id="4eb4ca17-41b4-4816-94ac-2d83cdceb007"
+            name="ActivityFinal1"
+            isLeaf="false" />
+          <decisionNode
+            Id="a96e6c63-153e-4131-ace4-91235e906309"
+            name="Decision2"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="420dcbab-e494-4744-84e6-c667d716db92"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="042fa579-4c7c-4400-87d6-95cdaaae30ba"
+                  LastKnownName="View Transactions"
+                  LastKnownLocation="TdService.Modeling.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="6bd891ec-cddf-40a2-b10f-fef3e9f29a8b"
+                isLeaf="false">
+                <activityFinalNodeMoniker
+                  Id="4eb4ca17-41b4-4816-94ac-2d83cdceb007"
+                  LastKnownName="ActivityFinal1"
+                  LastKnownLocation="TdService.Modeling.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <callBehaviorAction
+            Id="c459b372-d403-4aa6-9b66-32b2647369ed"
+            name="Add Money"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="d2d41769-8b79-4167-be8b-583dee4d5530"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="53728695-397e-45bf-8150-81994a715c5a"
+                  LastKnownName="View Balance"
+                  LastKnownLocation="TdService.Modeling.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </callBehaviorAction>
+        </nodes>
+      </activity>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <activity
+        Id="a08b2c94-83e3-419f-8e55-ea66e3a76989"
+        name="Add Money"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false"
+        isReentrant="false"
+        isReadOnly="false"
+        isSingleExecution="false">
+        <nodes>
+          <initialNode
+            Id="bcd001c5-0e4a-4af1-b9ff-a35afdaed02e"
+            name="Initial1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="904f70c0-1656-4970-b4f3-1cf45c71f342"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="08d63d83-94f7-4c0f-840c-0bb8f37077bc"
+                  LastKnownName="Add Money"
+                  LastKnownLocation="TdService.Modeling.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </initialNode>
+          <activityFinalNode
+            Id="47ac387d-b9c1-4fe1-a638-2bf81a74b56c"
+            name="ActivityFinal1"
+            isLeaf="false" />
+          <opaqueAction
+            Id="08d63d83-94f7-4c0f-840c-0bb8f37077bc"
+            name="Add Money"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="42e6d95a-96f7-4753-8175-41ff0a824bb0"
+                isLeaf="false">
+                <decisionNodeMoniker
+                  Id="3a3867a4-267b-436f-8d64-8ee43418978b"
+                  LastKnownName="Decision1"
+                  LastKnownLocation="TdService.Modeling.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="57b7b573-a398-430c-a622-10a04b7f5f07"
+            name="Pay with Paypal"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="43aa00f8-c33c-425c-bc32-fafb3d0941fd"
+                isLeaf="false">
+                <activityFinalNodeMoniker
+                  Id="47ac387d-b9c1-4fe1-a638-2bf81a74b56c"
+                  LastKnownName="ActivityFinal1"
+                  LastKnownLocation="TdService.Modeling.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <decisionNode
+            Id="3a3867a4-267b-436f-8d64-8ee43418978b"
+            name="Decision1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="a4071e0e-bcbd-4701-be34-e524c43017fe"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="60b8ebeb-c8cb-4b3f-ba56-91f2968339f2"
+                  LastKnownName="Pay with credit card"
+                  LastKnownLocation="TdService.Modeling.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="20d5c335-a3bf-458a-bb14-f654bd517208"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="57b7b573-a398-430c-a622-10a04b7f5f07"
+                  LastKnownName="Pay with Paypal"
+                  LastKnownLocation="TdService.Modeling.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <opaqueAction
+            Id="60b8ebeb-c8cb-4b3f-ba56-91f2968339f2"
+            name="Pay with credit card"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="d23f51d5-a560-48df-af38-7f36300af32d"
+                isLeaf="false">
+                <activityFinalNodeMoniker
+                  Id="47ac387d-b9c1-4fe1-a638-2bf81a74b56c"
+                  LastKnownName="ActivityFinal1"
+                  LastKnownLocation="TdService.Modeling.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+        </nodes>
+      </activity>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <interaction
+        Id="2ca43410-d69d-4767-b785-b1bfd731eb38"
+        name="Sign Up"
+        collapseFragmentsFlag="false"
+        isActiveClass="false"
+        isAbstract="false"
+        isLeaf="false"
+        isReentrant="false">
+        <ownedCommentsInternal>
+          <comment
+            Id="741c0451-a793-4c3c-ad26-3328f6e72692">
+            <body>Sign Up Process
+
+1. Browse to the home or login page of TdService
+
+2. Click Register for free link
+
+3. Enter your email address, password and same password second time into the form and press enter or click Sign Up button.
+
+4. Check email account for registration letter from System with activation link
+
+5. Click activation link in the body of email.
+
+6. System activates account and redirects user to sign in page.</body>
+          </comment>
+        </ownedCommentsInternal>
+        <fragments>
+          <behaviorExecutionSpecification
+            Id="102ac8af-eee9-462c-8b15-7e0332a5bfce"
+            name="BehaviorExecutionSpecification1">
+            <coveredLifelines>
+              <lifelineMoniker
+                Id="78850335-1189-42b0-88b8-d8b5840629b0"
+                LastKnownName="HomeController"
+                LastKnownLocation="TdService.Modeling.uml" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker
+                Id="bbefcaa8-d046-4285-a514-f87f2f9673fa"
+                LastKnownName="ExecutionOccurrenceSpecification2"
+                LastKnownLocation="TdService.Modeling.uml" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker
+                Id="c6245eeb-728c-4be4-9e93-ebbc99d253c4"
+                LastKnownName="ExecutionOccurrenceSpecification1"
+                LastKnownLocation="TdService.Modeling.uml" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="0d27ab56-1699-48fe-90cf-4ab0fc81c521"
+                LastKnownName="MessageOccurrenceSpecification2"
+                LastKnownLocation="TdService.Modeling.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="c8b651f0-effb-40cc-94db-dca6cce4a3d6"
+                LastKnownName="MessageOccurrenceSpecification5"
+                LastKnownLocation="TdService.Modeling.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="724facff-4a41-4640-a37d-8b550bb3e023"
+                LastKnownName="MessageOccurrenceSpecification8"
+                LastKnownLocation="TdService.Modeling.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="93cce863-8b38-4f7b-8a8e-f7bd8f7b358e"
+                LastKnownName="MessageOccurrenceSpecification3"
+                LastKnownLocation="TdService.Modeling.uml" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification
+            Id="c6245eeb-728c-4be4-9e93-ebbc99d253c4"
+            name="ExecutionOccurrenceSpecification1">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="1ca87ed8-ea9b-4c97-99a4-1578553c0ddb"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="TdService.Modeling.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="78850335-1189-42b0-88b8-d8b5840629b0"
+                LastKnownName="HomeController"
+                LastKnownLocation="TdService.Modeling.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="0d27ab56-1699-48fe-90cf-4ab0fc81c521"
+            name="MessageOccurrenceSpecification2">
+            <covered>
+              <lifelineMoniker
+                Id="78850335-1189-42b0-88b8-d8b5840629b0"
+                LastKnownName="HomeController"
+                LastKnownLocation="TdService.Modeling.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="04228faa-8d6f-4025-8777-77908145742d"
+            name="MessageOccurrenceSpecification1">
+            <covered>
+              <lifelineMoniker
+                Id="455e078b-5f4e-4636-be30-1161ef237046"
+                LastKnownName="unregistered Shopper : Unregistered Shopper"
+                LastKnownLocation="TdService.Modeling.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <behaviorExecutionSpecification
+            Id="f11de055-3f2d-4e2a-b37c-7d363ad3a18c"
+            name="BehaviorExecutionSpecification2">
+            <coveredLifelines>
+              <lifelineMoniker
+                Id="2aac88f6-7825-4687-aa8b-846beb45d31a"
+                LastKnownName="Home.cshtml"
+                LastKnownLocation="TdService.Modeling.uml" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker
+                Id="cb3635e1-fda6-4c57-b720-dfe51f8927d8"
+                LastKnownName="ExecutionOccurrenceSpecification4"
+                LastKnownLocation="TdService.Modeling.uml" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker
+                Id="61c2b850-602a-431d-af6c-0d5bf95d1019"
+                LastKnownName="ExecutionOccurrenceSpecification3"
+                LastKnownLocation="TdService.Modeling.uml" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="72e0f762-f4a1-4aca-9497-22852a381080"
+                LastKnownName="MessageOccurrenceSpecification6"
+                LastKnownLocation="TdService.Modeling.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="4a3c8bc1-a88c-4d1f-bf01-17e4b1ef8f0b"
+                LastKnownName="MessageOccurrenceSpecification7"
+                LastKnownLocation="TdService.Modeling.uml" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification
+            Id="61c2b850-602a-431d-af6c-0d5bf95d1019"
+            name="ExecutionOccurrenceSpecification3">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="d9b4046d-cb49-4111-bb4c-8fc0762fc274"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="TdService.Modeling.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="2aac88f6-7825-4687-aa8b-846beb45d31a"
+                LastKnownName="Home.cshtml"
+                LastKnownLocation="TdService.Modeling.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="c8b651f0-effb-40cc-94db-dca6cce4a3d6"
+            name="MessageOccurrenceSpecification5">
+            <covered>
+              <lifelineMoniker
+                Id="78850335-1189-42b0-88b8-d8b5840629b0"
+                LastKnownName="HomeController"
+                LastKnownLocation="TdService.Modeling.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="72e0f762-f4a1-4aca-9497-22852a381080"
+            name="MessageOccurrenceSpecification6">
+            <covered>
+              <lifelineMoniker
+                Id="2aac88f6-7825-4687-aa8b-846beb45d31a"
+                LastKnownName="Home.cshtml"
+                LastKnownLocation="TdService.Modeling.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="4a3c8bc1-a88c-4d1f-bf01-17e4b1ef8f0b"
+            name="MessageOccurrenceSpecification7">
+            <covered>
+              <lifelineMoniker
+                Id="2aac88f6-7825-4687-aa8b-846beb45d31a"
+                LastKnownName="Home.cshtml"
+                LastKnownLocation="TdService.Modeling.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="724facff-4a41-4640-a37d-8b550bb3e023"
+            name="MessageOccurrenceSpecification8">
+            <covered>
+              <lifelineMoniker
+                Id="78850335-1189-42b0-88b8-d8b5840629b0"
+                LastKnownName="HomeController"
+                LastKnownLocation="TdService.Modeling.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification
+            Id="cb3635e1-fda6-4c57-b720-dfe51f8927d8"
+            name="ExecutionOccurrenceSpecification4">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="be5325f4-f073-481e-9c34-a912b93e7569"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="TdService.Modeling.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="2aac88f6-7825-4687-aa8b-846beb45d31a"
+                LastKnownName="Home.cshtml"
+                LastKnownLocation="TdService.Modeling.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="93cce863-8b38-4f7b-8a8e-f7bd8f7b358e"
+            name="MessageOccurrenceSpecification3">
+            <covered>
+              <lifelineMoniker
+                Id="78850335-1189-42b0-88b8-d8b5840629b0"
+                LastKnownName="HomeController"
+                LastKnownLocation="TdService.Modeling.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="8220a5a9-5e6b-444b-875d-dfc09a5160fe"
+            name="MessageOccurrenceSpecification4">
+            <covered>
+              <lifelineMoniker
+                Id="455e078b-5f4e-4636-be30-1161ef237046"
+                LastKnownName="unregistered Shopper : Unregistered Shopper"
+                LastKnownLocation="TdService.Modeling.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification
+            Id="bbefcaa8-d046-4285-a514-f87f2f9673fa"
+            name="ExecutionOccurrenceSpecification2">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="1f795667-e435-4686-bc67-7e76f1daa393"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="TdService.Modeling.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="78850335-1189-42b0-88b8-d8b5840629b0"
+                LastKnownName="HomeController"
+                LastKnownLocation="TdService.Modeling.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+        </fragments>
+        <lifelines>
+          <lifeline
+            Id="455e078b-5f4e-4636-be30-1161ef237046"
+            name="unregistered Shopper : Unregistered Shopper"
+            isActor="true"
+            lifelineDisplayName="unregistered Shopper : Unregistered Shopper">
+            <represents>
+              <propertyMoniker
+                Id="6110b5b2-1d58-49c7-9c4b-2acebb1ea1e3"
+                LastKnownLocation="TdService.Modeling.uml" />
+            </represents>
+            <topLevelOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="04228faa-8d6f-4025-8777-77908145742d"
+                LastKnownName="MessageOccurrenceSpecification1"
+                LastKnownLocation="TdService.Modeling.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="8220a5a9-5e6b-444b-875d-dfc09a5160fe"
+                LastKnownName="MessageOccurrenceSpecification4"
+                LastKnownLocation="TdService.Modeling.uml" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline
+            Id="78850335-1189-42b0-88b8-d8b5840629b0"
+            name="HomeController"
+            isActor="false"
+            lifelineDisplayName="HomeController">
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker
+                Id="c6245eeb-728c-4be4-9e93-ebbc99d253c4"
+                LastKnownName="ExecutionOccurrenceSpecification1"
+                LastKnownLocation="TdService.Modeling.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="bbefcaa8-d046-4285-a514-f87f2f9673fa"
+                LastKnownName="ExecutionOccurrenceSpecification2"
+                LastKnownLocation="TdService.Modeling.uml" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline
+            Id="1c9f2987-157e-4146-8a41-0154b1a1ba41"
+            name="iUserRepository : IUserRepository"
+            isActor="false"
+            lifelineDisplayName="iUserRepository : IUserRepository">
+            <represents>
+              <propertyMoniker
+                Id="2773d307-97ca-48d5-8c5c-bbf4f2aed213"
+                LastKnownLocation="TdService.Modeling.uml" />
+            </represents>
+          </lifeline>
+          <lifeline
+            Id="2aac88f6-7825-4687-aa8b-846beb45d31a"
+            name="Home.cshtml"
+            isActor="false"
+            lifelineDisplayName="Home.cshtml">
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker
+                Id="61c2b850-602a-431d-af6c-0d5bf95d1019"
+                LastKnownName="ExecutionOccurrenceSpecification3"
+                LastKnownLocation="TdService.Modeling.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="cb3635e1-fda6-4c57-b720-dfe51f8927d8"
+                LastKnownName="ExecutionOccurrenceSpecification4"
+                LastKnownLocation="TdService.Modeling.uml" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline
+            Id="676f3779-f167-4467-8162-67eeccdf97ad"
+            name="SignIn.cshtml"
+            isActor="false"
+            lifelineDisplayName="SignIn.cshtml" />
+          <lifeline
+            Id="34babf7e-d218-4c00-a4a3-67398d2937a7"
+            name="SignUp.cshtml"
+            isActor="false"
+            lifelineDisplayName="SignUp.cshtml" />
+        </lifelines>
+        <messages>
+          <message
+            Id="fb308e1a-186d-4018-a863-8b8ec83ba01a"
+            name="/"
+            messageKind="Complete"
+            messageSort="SynchCall"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="04228faa-8d6f-4025-8777-77908145742d"
+                LastKnownName="MessageOccurrenceSpecification1"
+                LastKnownLocation="TdService.Modeling.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="0d27ab56-1699-48fe-90cf-4ab0fc81c521"
+                LastKnownName="MessageOccurrenceSpecification2"
+                LastKnownLocation="TdService.Modeling.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="2982cded-abff-448b-abe3-436e4bf83721"
+            name="Message1"
+            messageKind="Complete"
+            messageSort="SynchCall"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="c8b651f0-effb-40cc-94db-dca6cce4a3d6"
+                LastKnownName="MessageOccurrenceSpecification5"
+                LastKnownLocation="TdService.Modeling.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="72e0f762-f4a1-4aca-9497-22852a381080"
+                LastKnownName="MessageOccurrenceSpecification6"
+                LastKnownLocation="TdService.Modeling.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="68df09c8-7d68-40ce-b998-10b5b55eb456"
+            name="&lt;&lt;return&gt;&gt;"
+            messageKind="Complete"
+            messageSort="Reply"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="4a3c8bc1-a88c-4d1f-bf01-17e4b1ef8f0b"
+                LastKnownName="MessageOccurrenceSpecification7"
+                LastKnownLocation="TdService.Modeling.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="724facff-4a41-4640-a37d-8b550bb3e023"
+                LastKnownName="MessageOccurrenceSpecification8"
+                LastKnownLocation="TdService.Modeling.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="4175b327-60ca-4431-9a12-284b7656b651"
+            name="&lt;&lt;return&gt;&gt;"
+            messageKind="Complete"
+            messageSort="Reply"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="93cce863-8b38-4f7b-8a8e-f7bd8f7b358e"
+                LastKnownName="MessageOccurrenceSpecification3"
+                LastKnownLocation="TdService.Modeling.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="8220a5a9-5e6b-444b-875d-dfc09a5160fe"
+                LastKnownName="MessageOccurrenceSpecification4"
+                LastKnownLocation="TdService.Modeling.uml" />
+            </receiveEvent>
+          </message>
+        </messages>
+        <ownedAttributesInternal>
+          <property
+            Id="6110b5b2-1d58-49c7-9c4b-2acebb1ea1e3"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <actorMoniker
+                Id="75ac1d6e-299b-4093-ab4a-3dd2d6e7737d"
+                LastKnownName="Unregistered Shopper"
+                LastKnownLocation="TdService.Modeling.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="2773d307-97ca-48d5-8c5c-bbf4f2aed213"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <interfaceMoniker
+                Id="66b95a30-fe8a-4b32-bd0d-e121665a0ea9"
+                LastKnownName="IUserRepository"
+                LastKnownLocation="Repositories.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </interaction>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="1ca87ed8-ea9b-4c97-99a4-1578553c0ddb"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="1f795667-e435-4686-bc67-7e76f1daa393"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="d9b4046d-cb49-4111-bb4c-8fc0762fc274"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="be5325f4-f073-481e-9c34-a912b93e7569"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="17283320-e889-4d6d-bcf9-b160c78c37c1"
+        name="IEnumerable&lt;Transaction&gt;" />
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType

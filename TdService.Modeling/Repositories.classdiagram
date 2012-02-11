@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" dslVersion="1.0.0.0" Id="17ae9c62-b7e7-4799-9587-1e81db2ae087" name="Repositories" linkedPackageId="c0187c52-fc1e-496b-bb94-f3e368acd7c9" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ComponentDesigner" xmlns:dm12="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" xmlns:dm13="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" dslVersion="1.0.0.0" Id="17ae9c62-b7e7-4799-9587-1e81db2ae087" name="Repositories" linkedPackageId="c0187c52-fc1e-496b-bb94-f3e368acd7c9" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
   <appliedStereotypesInternal>
     <stereotypeInstance Id="27a7e559-69e0-44b6-89e6-5e8f8b5999f9" name="namespace" profile="CSharpProfile">
       <elementDefinition Id="83215c40-e8ab-4007-8499-f71aa2691e39" />
@@ -72,32 +72,6 @@
       </propertyInstances>
     </stereotypeInstance>
   </appliedStereotypesInternal>
-  <profileInstances>
-    <packageHasProfileInstances Id="c6180473-5c69-42e4-a08c-8915768a06d8">
-      <profileInstance Id="c36e3684-fc0f-4d43-be60-23d15e889fdc" name="StandardProfileL2">
-        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
-      </profileInstance>
-      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="d90dba30-aa77-41ae-bc4a-d288b4487bf5">
-      <profileInstance Id="d9e94273-d8fc-436f-be9e-c2ce7fdae6c4" name="StandardProfileL3">
-        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
-      </profileInstance>
-      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="9011ea34-78e8-486b-bf3e-01f1a2665a46">
-      <profileInstance Id="d7b317da-4e5f-4664-9d06-78c808213160" name="TextTemplateBindings">
-        <elementDefinition Id="19fcac95-f5d2-4773-b284-5fd2debd864c" />
-      </profileInstance>
-      <elementDefinition Id="91062264-0281-4ed4-9610-38da3816671b" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="fb109399-49ba-4b27-ae53-70e3213e5f30">
-      <profileInstance Id="ebd383e1-67c5-4872-9bd8-3c81f188bf76" name="CSharpProfile">
-        <elementDefinition Id="71d78747-3c24-4160-bbec-b01fff4d0349" />
-      </profileInstance>
-      <elementDefinition Id="dbed6c01-0c96-4afa-963b-e5ae39313121" />
-    </packageHasProfileInstances>
-  </profileInstances>
   <packagedElements>
     <logicalClassDesignerModelHasTypes>
       <Interface Id="ce0a7283-c1ec-4581-8105-533f68f49769" name="IOrderRepository" isAbstract="false" isLeaf="false">
@@ -3675,8 +3649,145 @@
         <elementDefinition Id="ff1f47df-021f-4823-bd24-63d6d9dbc381" />
       </referencedType>
     </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="8cd1d9f1-af7d-4aad-be10-9b35f7e2d98a" name="IBalanceRepository" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b5700627-95fe-4610-873d-38ef8f9b482b" />
+        <ownedOperations>
+          <operation Id="080ef0c1-192f-4cd0-9f94-18bb7dce05d9" name="GetBalance" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="f28837b0-3c20-4e4f-9b9f-c7b24a188e5d" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="2093384d-e295-4e3b-afdf-f0d8c3481bba" direction="Return">
+                  <elementDefinition Id="0936251c-6c36-4257-a99f-c2c8d888c5c6" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="03384917-312e-4df8-968a-a2e306411fc3" LastKnownName="Balance" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="22e2d111-372a-4c43-9e65-af992835dc57" name="username" direction="In">
+                  <elementDefinition Id="fc16d12d-d0f4-4983-a23e-fbd20a2da8e0" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="29502aba-7976-4187-a9a7-ae2e7f0fc4e7" LastKnownName="String" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="d256ae8b-4f40-4562-8f10-f026670076a5" name="AddTransaction" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="3aa0baf4-0a77-462f-a094-1b16fea92485" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="2913ff5b-930d-478e-8032-9f39b12b24f7" name="balanceId" direction="In">
+                  <elementDefinition Id="1fe589c3-8d40-4289-aee4-279df0faff35" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="055d3233-909c-40e7-916f-8fa582bf28ea" LastKnownName="Integer" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="83e9d39d-710c-4804-9588-a3e8551d9cc0" name="transaction" direction="In">
+                  <elementDefinition Id="b120ddf9-b176-4b7c-8948-30f51e538821" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="aa2cff07-cdc2-404f-9a19-8cc111458dee" LastKnownName="Transaction" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="4b325529-dc64-4f87-903d-8d9a559b9b8f" name="UpdateTransactionStatus" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="c075cc4b-b7d6-4eaf-91fb-6f9d718a8b35" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="37ba2ad4-7be9-4f71-9785-919d09bc248a" name="transactionId" direction="In">
+                  <elementDefinition Id="26a8e10f-57ef-4b92-9962-e24aa01d70c5" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="055d3233-909c-40e7-916f-8fa582bf28ea" LastKnownName="Integer" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="66a3135a-45c7-4523-8008-325ae5e68671" name="transactionStatus" direction="In">
+                  <elementDefinition Id="459042c7-082c-423c-8d0f-d0cc8bce9004" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="2c33b0e7-ed7b-4d67-a6b2-bdf373089877" LastKnownName="TransactionStatus" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="6eb2dacb-8f45-4f2a-ab88-415997bb8743" name="GetTransactions" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="84e58676-cd4b-4945-9052-c09600d62546" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="b6723cb5-259a-4492-827f-526961397473" direction="Return">
+                  <elementDefinition Id="c8b00149-b7dd-4d22-b076-8b3a27aff9d6" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="cdbb6f6e-36a5-4888-ae01-efc3ff72a274" LastKnownName="IEnumerable&lt;Transaction&gt;" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="615f4b97-22d1-4721-9b17-81c5858a5b23" name="balanceId" direction="In">
+                  <elementDefinition Id="aef266fc-eb7b-4032-9946-8bab8675f334" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="055d3233-909c-40e7-916f-8fa582bf28ea" LastKnownName="Integer" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperations>
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="03384917-312e-4df8-968a-a2e306411fc3" name="Balance" isAbstract="false" isLeaf="false" cachedFullName="TdService.Modeling::Domain::Balance">
+        <elementDefinition Id="0405bfc2-edbb-4ada-adb7-c0d203821300" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="cdbb6f6e-36a5-4888-ae01-efc3ff72a274" name="IEnumerable&lt;Transaction&gt;" isAbstract="false" isLeaf="false" cachedFullName="IEnumerable&lt;Transaction&gt;">
+        <elementDefinition Id="17283320-e889-4d6d-bcf9-b160c78c37c1" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="aa2cff07-cdc2-404f-9a19-8cc111458dee" name="Transaction" isAbstract="false" isLeaf="false" cachedFullName="TdService.Modeling::Domain::Transaction">
+        <elementDefinition Id="e11eda15-44cb-4965-9809-c805213bf90b" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="2c33b0e7-ed7b-4d67-a6b2-bdf373089877" name="TransactionStatus" isAbstract="false" isLeaf="false" cachedFullName="TdService.Modeling::Domain::TransactionStatus">
+        <elementDefinition Id="df2e66ce-90ca-441d-8775-d29670bfbe45" />
+      </referencedType>
+    </packageHasNamedElement>
   </packagedElements>
   <package Id="c0187c52-fc1e-496b-bb94-f3e368acd7c9" name="TdService.Modeling">
     <elementDefinition Id="e006d43a-3bc9-452c-a7ce-47edd28d044b" />
+    <profileInstances>
+      <packageHasProfileInstances Id="c6180473-5c69-42e4-a08c-8915768a06d8">
+        <profileInstance Id="c36e3684-fc0f-4d43-be60-23d15e889fdc" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="d90dba30-aa77-41ae-bc4a-d288b4487bf5">
+        <profileInstance Id="d9e94273-d8fc-436f-be9e-c2ce7fdae6c4" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="9011ea34-78e8-486b-bf3e-01f1a2665a46">
+        <profileInstance Id="d7b317da-4e5f-4664-9d06-78c808213160" name="TextTemplateBindings">
+          <elementDefinition Id="19fcac95-f5d2-4773-b284-5fd2debd864c" />
+        </profileInstance>
+        <elementDefinition Id="91062264-0281-4ed4-9610-38da3816671b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="fb109399-49ba-4b27-ae53-70e3213e5f30">
+        <profileInstance Id="ebd383e1-67c5-4872-9bd8-3c81f188bf76" name="CSharpProfile">
+          <elementDefinition Id="71d78747-3c24-4160-bbec-b01fff4d0349" />
+        </profileInstance>
+        <elementDefinition Id="dbed6c01-0c96-4afa-963b-e5ae39313121" />
+      </packageHasProfileInstances>
+    </profileInstances>
   </package>
 </logicalClassDesignerModel>
