@@ -11,11 +11,26 @@ namespace TdService.Domain
 	using System.Linq;
 	using System.Text;
 
-	public enum Role
+	public class Role
 	{
-		Shopper,
-		Administrator,
-		Operator,
-		Consultant,
+		public virtual string Name
+		{
+			get;
+			set;
+		}
+
+		public virtual int Id
+		{
+			get;
+			set;
+		}
+
+		public virtual string Description
+		{
+			get;
+			set;
+		}
+
 	}
 }
+

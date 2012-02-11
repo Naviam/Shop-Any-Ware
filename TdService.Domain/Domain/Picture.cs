@@ -11,39 +11,27 @@ namespace TdService.Domain
 	using System.Linq;
 	using System.Text;
 
-	public class Profile
+	public class Picture
 	{
-		public virtual string FirstName
+		public virtual string Filename
 		{
 			get;
 			set;
 		}
 
-		public virtual string LastName
+		public virtual string Path
 		{
 			get;
 			set;
 		}
 
-		/// <summary>
-		/// Tells whether system should notify user about changes to his orders or parcels.
-		/// </summary>
-		public virtual bool NotifyByEmail
+		public virtual int Id
 		{
 			get;
 			set;
 		}
 
-		/// <summary>
-		/// Personal user's warehouse address in USA
-		/// </summary>
-		public virtual Address UsaAddress
-		{
-			get;
-			set;
-		}
-
-		public virtual NotificationRules NotificationRules
+		public virtual PictureType PictureType
 		{
 			get;
 			set;

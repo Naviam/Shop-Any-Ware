@@ -1,74 +1,84 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet type="text/xsl" href="file:///C:/Program Files (x86)/Microsoft Visual Studio 10.0/Common7/IDE/Extensions/Microsoft/Visualization and Modeling Feature Pack/2.0/Logging/CodeGenLog.xslt"?>
 <Log xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeGen.RE.Log">
-  <Message Timestamp="2012-02-10T19:09:18" Importance="High" Text="Code generation or text transformation started." />
-  <Message Timestamp="2012-02-10T19:09:18" Importance="Diagnostic" Text="Name = ClassTemplate" />
-  <Message Timestamp="2012-02-10T19:09:18" Importance="Diagnostic" Text="Overwrite = True" />
-  <Message Timestamp="2012-02-10T19:09:18" Importance="Diagnostic" Text="ProjectPath = ..\TdService.Domain\TdService.Domain.csproj" />
-  <Message Timestamp="2012-02-10T19:09:18" Importance="Diagnostic" Text="TargetDirectory = {PackageStructure}" />
-  <Message Timestamp="2012-02-10T19:09:18" Importance="Diagnostic" Text="TargetName = {Name}" />
-  <Message Timestamp="2012-02-10T19:09:18" Importance="Diagnostic" Text="TemplateFilePath = C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.ClassTemplate.t4" />
-  <Message Timestamp="2012-02-10T19:09:18" Importance="Diagnostic" Text="ResolvedTemplateFilePath = C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.ClassTemplate.t4" />
-  <Message Timestamp="2012-02-10T19:09:18" Importance="Medium" Text="TdService.Modeling's Text Template Binding: 'ClassTemplate' will apply TdService.ClassTemplate.t4 to: 'TdService.Modeling::Domain::Address' -  (Class), 'TdService.Modeling::Domain::Transaction' -  (Class), 'TdService.Modeling::Domain::Parcel' -  (Class), 'TdService.Modeling::Domain::Service' -  (Class), 'TdService.Modeling::Domain::Balance' -  (Class), 'TdService.Modeling::Domain::User' -  (Class), 'TdService.Modeling::Domain::Order' -  (Class), 'TdService.Modeling::Domain::OrderLineItem' -  (Class), 'TdService.Modeling::Domain::Profile' -  (Class), 'TdService.Modeling::Domain::Weight' -  (Class), 'TdService.Modeling::Domain::Item' -  (Class) " />
-  <Message Timestamp="2012-02-10T19:09:19" Importance="Medium" Text="'TdService.Modeling::Domain::Address' -  (Class) : success (file replaced) - C:\Projects\TD-Service\TdService.Domain\Domain\Address.cs" />
-  <Message Timestamp="2012-02-10T19:09:20" Importance="Medium" Text="'TdService.Modeling::Domain::Transaction' -  (Class) : success (file replaced) - C:\Projects\TD-Service\TdService.Domain\Domain\Transaction.cs" />
-  <Message Timestamp="2012-02-10T19:09:20" Importance="Medium" Text="'TdService.Modeling::Domain::Parcel' -  (Class) : success (file replaced) - C:\Projects\TD-Service\TdService.Domain\Domain\Parcel.cs" />
-  <Message Timestamp="2012-02-10T19:09:20" Importance="Medium" Text="'TdService.Modeling::Domain::Service' -  (Class) : success (file replaced) - C:\Projects\TD-Service\TdService.Domain\Domain\Service.cs" />
-  <Message Timestamp="2012-02-10T19:09:20" Importance="Medium" Text="'TdService.Modeling::Domain::Balance' -  (Class) : success (file replaced) - C:\Projects\TD-Service\TdService.Domain\Domain\Balance.cs" />
-  <Message Timestamp="2012-02-10T19:09:20" Importance="Medium" Text="'TdService.Modeling::Domain::User' -  (Class) : success (file replaced) - C:\Projects\TD-Service\TdService.Domain\Domain\User.cs" />
-  <Message Timestamp="2012-02-10T19:09:20" Importance="Medium" Text="'TdService.Modeling::Domain::Order' -  (Class) : success (file replaced) - C:\Projects\TD-Service\TdService.Domain\Domain\Order.cs" />
-  <Message Timestamp="2012-02-10T19:09:20" Importance="Medium" Text="'TdService.Modeling::Domain::OrderLineItem' -  (Class) : success (file replaced) - C:\Projects\TD-Service\TdService.Domain\Domain\OrderLineItem.cs" />
-  <Message Timestamp="2012-02-10T19:09:21" Importance="Medium" Text="'TdService.Modeling::Domain::Profile' -  (Class) : success (file replaced) - C:\Projects\TD-Service\TdService.Domain\Domain\Profile.cs" />
-  <Message Timestamp="2012-02-10T19:09:21" Importance="Diagnostic" Text="'TdService.Modeling::Domain::Weight' -  (Class): no file generated because the 'AppliesToElement' method of the template 'TdService.ClassTemplate.t4' evaluated to false." />
-  <Message Timestamp="2012-02-10T19:09:21" Importance="Medium" Text="'TdService.Modeling::Domain::Item' -  (Class) : success (file replaced) - C:\Projects\TD-Service\TdService.Domain\Domain\Item.cs" />
-  <Message Timestamp="2012-02-10T19:09:21" Importance="Diagnostic" Text="Name = EnumTemplate" />
-  <Message Timestamp="2012-02-10T19:09:21" Importance="Diagnostic" Text="Overwrite = True" />
-  <Message Timestamp="2012-02-10T19:09:21" Importance="Diagnostic" Text="ProjectPath = ..\TdService.Domain\TdService.Domain.csproj" />
-  <Message Timestamp="2012-02-10T19:09:21" Importance="Diagnostic" Text="TargetDirectory = {PackageStructure}" />
-  <Message Timestamp="2012-02-10T19:09:21" Importance="Diagnostic" Text="TargetName = {Name}" />
-  <Message Timestamp="2012-02-10T19:09:21" Importance="Diagnostic" Text="TemplateFilePath = C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.EnumTemplate.t4" />
-  <Message Timestamp="2012-02-10T19:09:21" Importance="Diagnostic" Text="ResolvedTemplateFilePath = C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.EnumTemplate.t4" />
-  <Message Timestamp="2012-02-10T19:09:21" Importance="Medium" Text="TdService.Modeling's Text Template Binding: 'EnumTemplate' will apply TdService.EnumTemplate.t4 to: 'TdService.Modeling::Domain::TransactionStatus' -  (Enumeration), 'TdService.Modeling::Domain::DispatchMethod' -  (Enumeration), 'TdService.Modeling::Domain::ParcelStatus' -  (Enumeration), 'TdService.Modeling::Domain::Role' -  (Enumeration), 'TdService.Modeling::Domain::OrderStatus' -  (Enumeration) " />
-  <Message Timestamp="2012-02-10T19:09:21" Importance="Medium" Text="'TdService.Modeling::Domain::TransactionStatus' -  (Enumeration) : success (file replaced) - C:\Projects\TD-Service\TdService.Domain\Domain\TransactionStatus.cs" />
-  <Message Timestamp="2012-02-10T19:09:21" Importance="Medium" Text="'TdService.Modeling::Domain::DispatchMethod' -  (Enumeration) : success (file replaced) - C:\Projects\TD-Service\TdService.Domain\Domain\DispatchMethod.cs" />
-  <Message Timestamp="2012-02-10T19:09:21" Importance="Medium" Text="'TdService.Modeling::Domain::ParcelStatus' -  (Enumeration) : success (file replaced) - C:\Projects\TD-Service\TdService.Domain\Domain\ParcelStatus.cs" />
-  <Message Timestamp="2012-02-10T19:09:21" Importance="Medium" Text="'TdService.Modeling::Domain::Role' -  (Enumeration) : success (file created) - C:\Projects\TD-Service\TdService.Domain\Domain\Role.cs" />
-  <Message Timestamp="2012-02-10T19:09:22" Importance="Medium" Text="'TdService.Modeling::Domain::OrderStatus' -  (Enumeration) : success (file replaced) - C:\Projects\TD-Service\TdService.Domain\Domain\OrderStatus.cs" />
-  <Message Timestamp="2012-02-10T19:09:22" Importance="Diagnostic" Text="Name = StructTemplate" />
-  <Message Timestamp="2012-02-10T19:09:22" Importance="Diagnostic" Text="Overwrite = True" />
-  <Message Timestamp="2012-02-10T19:09:22" Importance="Diagnostic" Text="ProjectPath = ..\TdService.Domain\TdService.Domain.csproj" />
-  <Message Timestamp="2012-02-10T19:09:22" Importance="Diagnostic" Text="TargetDirectory = {PackageStructure}" />
-  <Message Timestamp="2012-02-10T19:09:22" Importance="Diagnostic" Text="TargetName = {Name}" />
-  <Message Timestamp="2012-02-10T19:09:22" Importance="Diagnostic" Text="TemplateFilePath = C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.StructTemplate.t4" />
-  <Message Timestamp="2012-02-10T19:09:22" Importance="Diagnostic" Text="ResolvedTemplateFilePath = C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.StructTemplate.t4" />
-  <Message Timestamp="2012-02-10T19:09:22" Importance="Medium" Text="TdService.Modeling's Text Template Binding: 'StructTemplate' will apply TdService.StructTemplate.t4 to: 'TdService.Modeling::Domain::Address' -  (Class), 'TdService.Modeling::Domain::Transaction' -  (Class), 'TdService.Modeling::Domain::Parcel' -  (Class), 'TdService.Modeling::Domain::Service' -  (Class), 'TdService.Modeling::Domain::Balance' -  (Class), 'TdService.Modeling::Domain::User' -  (Class), 'TdService.Modeling::Domain::Order' -  (Class), 'TdService.Modeling::Domain::OrderLineItem' -  (Class), 'TdService.Modeling::Domain::Profile' -  (Class), 'TdService.Modeling::Domain::Weight' -  (Class), 'TdService.Modeling::Domain::Item' -  (Class) " />
-  <Message Timestamp="2012-02-10T19:09:22" Importance="Diagnostic" Text="'TdService.Modeling::Domain::Address' -  (Class): no file generated because the 'AppliesToElement' method of the template 'TdService.StructTemplate.t4' evaluated to false." />
-  <Message Timestamp="2012-02-10T19:09:22" Importance="Diagnostic" Text="'TdService.Modeling::Domain::Transaction' -  (Class): no file generated because the 'AppliesToElement' method of the template 'TdService.StructTemplate.t4' evaluated to false." />
-  <Message Timestamp="2012-02-10T19:09:22" Importance="Diagnostic" Text="'TdService.Modeling::Domain::Parcel' -  (Class): no file generated because the 'AppliesToElement' method of the template 'TdService.StructTemplate.t4' evaluated to false." />
-  <Message Timestamp="2012-02-10T19:09:22" Importance="Diagnostic" Text="'TdService.Modeling::Domain::Service' -  (Class): no file generated because the 'AppliesToElement' method of the template 'TdService.StructTemplate.t4' evaluated to false." />
-  <Message Timestamp="2012-02-10T19:09:22" Importance="Diagnostic" Text="'TdService.Modeling::Domain::Balance' -  (Class): no file generated because the 'AppliesToElement' method of the template 'TdService.StructTemplate.t4' evaluated to false." />
-  <Message Timestamp="2012-02-10T19:09:22" Importance="Diagnostic" Text="'TdService.Modeling::Domain::User' -  (Class): no file generated because the 'AppliesToElement' method of the template 'TdService.StructTemplate.t4' evaluated to false." />
-  <Message Timestamp="2012-02-10T19:09:22" Importance="Diagnostic" Text="'TdService.Modeling::Domain::Order' -  (Class): no file generated because the 'AppliesToElement' method of the template 'TdService.StructTemplate.t4' evaluated to false." />
-  <Message Timestamp="2012-02-10T19:09:22" Importance="Diagnostic" Text="'TdService.Modeling::Domain::OrderLineItem' -  (Class): no file generated because the 'AppliesToElement' method of the template 'TdService.StructTemplate.t4' evaluated to false." />
-  <Message Timestamp="2012-02-10T19:09:23" Importance="Diagnostic" Text="'TdService.Modeling::Domain::Profile' -  (Class): no file generated because the 'AppliesToElement' method of the template 'TdService.StructTemplate.t4' evaluated to false." />
-  <Message Timestamp="2012-02-10T19:09:23" Importance="Medium" Text="'TdService.Modeling::Domain::Weight' -  (Class) : success (file replaced) - C:\Projects\TD-Service\TdService.Domain\Domain\Weight.cs" />
-  <Message Timestamp="2012-02-10T19:09:23" Importance="Diagnostic" Text="'TdService.Modeling::Domain::Item' -  (Class): no file generated because the 'AppliesToElement' method of the template 'TdService.StructTemplate.t4' evaluated to false." />
-  <Message Timestamp="2012-02-10T19:09:23" Importance="Diagnostic" Text="The selection included 16 elements which were not bound to a template." />
-  <Message Timestamp="2012-02-10T19:09:23" Importance="Diagnostic" Text="'TdService.Modeling::Domain::' -  (Association): no bound template." />
-  <Message Timestamp="2012-02-10T19:09:23" Importance="Diagnostic" Text="'TdService.Modeling::Domain::' -  (Association): no bound template." />
-  <Message Timestamp="2012-02-10T19:09:23" Importance="Diagnostic" Text="'TdService.Modeling::Domain::' -  (Association): no bound template." />
-  <Message Timestamp="2012-02-10T19:09:23" Importance="Diagnostic" Text="'TdService.Modeling::Domain::' -  (Association): no bound template." />
-  <Message Timestamp="2012-02-10T19:09:23" Importance="Diagnostic" Text="'TdService.Modeling::Domain::' -  (Association): no bound template." />
-  <Message Timestamp="2012-02-10T19:09:23" Importance="Diagnostic" Text="'TdService.Modeling::Domain::' -  (Association): no bound template." />
-  <Message Timestamp="2012-02-10T19:09:23" Importance="Diagnostic" Text="'TdService.Modeling::Domain::' -  (Association): no bound template." />
-  <Message Timestamp="2012-02-10T19:09:23" Importance="Diagnostic" Text="'TdService.Modeling::Domain::' -  (Association): no bound template." />
-  <Message Timestamp="2012-02-10T19:09:23" Importance="Diagnostic" Text="'TdService.Modeling::Domain::' -  (Association): no bound template." />
-  <Message Timestamp="2012-02-10T19:09:23" Importance="Diagnostic" Text="'TdService.Modeling::Domain::' -  (Association): no bound template." />
-  <Message Timestamp="2012-02-10T19:09:23" Importance="Diagnostic" Text="'TdService.Modeling::Domain::' -  (Association): no bound template." />
-  <Message Timestamp="2012-02-10T19:09:23" Importance="Diagnostic" Text="'TdService.Modeling::Domain::' -  (Association): no bound template." />
-  <Message Timestamp="2012-02-10T19:09:23" Importance="Diagnostic" Text="'TdService.Modeling::Domain::' -  (Association): no bound template." />
-  <Message Timestamp="2012-02-10T19:09:23" Importance="Diagnostic" Text="'TdService.Modeling::Domain::' -  (Association): no bound template." />
-  <Message Timestamp="2012-02-10T19:09:23" Importance="Diagnostic" Text="'TdService.Modeling::Domain::' -  (Association): no bound template." />
-  <Message Timestamp="2012-02-10T19:09:23" Importance="Diagnostic" Text="'TdService.Modeling::Domain::' -  (Association): no bound template." />
-  <Message Timestamp="2012-02-10T19:09:23" Importance="High" Text="Code generation complete. Errors: 0. Warnings: 0." />
+  <Message Timestamp="2012-02-11T02:22:12" Importance="High" Text="Code generation or text transformation started." />
+  <Message Timestamp="2012-02-11T02:22:12" Importance="Diagnostic" Text="Name = ClassTemplate" />
+  <Message Timestamp="2012-02-11T02:22:12" Importance="Diagnostic" Text="Overwrite = True" />
+  <Message Timestamp="2012-02-11T02:22:12" Importance="Diagnostic" Text="ProjectPath = ..\TdService.Domain\TdService.Domain.csproj" />
+  <Message Timestamp="2012-02-11T02:22:12" Importance="Diagnostic" Text="TargetDirectory = {PackageStructure}" />
+  <Message Timestamp="2012-02-11T02:22:12" Importance="Diagnostic" Text="TargetName = {Name}" />
+  <Message Timestamp="2012-02-11T02:22:12" Importance="Diagnostic" Text="TemplateFilePath = C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.ClassTemplate.t4" />
+  <Message Timestamp="2012-02-11T02:22:12" Importance="Diagnostic" Text="ResolvedTemplateFilePath = C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.ClassTemplate.t4" />
+  <Message Timestamp="2012-02-11T02:22:12" Importance="Medium" Text="TdService.Modeling's Text Template Binding: 'ClassTemplate' will apply TdService.ClassTemplate.t4 to: 'TdService.Modeling::Domain::Address' -  (Class), 'TdService.Modeling::Domain::Transaction' -  (Class), 'TdService.Modeling::Domain::Parcel' -  (Class), 'TdService.Modeling::Domain::Service' -  (Class), 'TdService.Modeling::Domain::Balance' -  (Class), 'TdService.Modeling::Domain::User' -  (Class), 'TdService.Modeling::Domain::Order' -  (Class), 'TdService.Modeling::Domain::OrderLineItem' -  (Class), 'TdService.Modeling::Domain::Item' -  (Class), 'TdService.Modeling::Domain::Role' -  (Class), 'TdService.Modeling::Domain::Picture' -  (Class), 'TdService.Modeling::Domain::NotificationRules' -  (Class), 'TdService.Modeling::Domain::Profile' -  (Class), 'TdService.Modeling::Domain::Weight' -  (Class) " />
+  <Message Timestamp="2012-02-11T02:22:14" Importance="Medium" Text="'TdService.Modeling::Domain::Address' -  (Class) : success (file replaced) - C:\Projects\TD-Service\TdService.Domain\Domain\Address.cs" />
+  <Message Timestamp="2012-02-11T02:22:14" Importance="Medium" Text="'TdService.Modeling::Domain::Transaction' -  (Class) : success (file replaced) - C:\Projects\TD-Service\TdService.Domain\Domain\Transaction.cs" />
+  <Message Timestamp="2012-02-11T02:22:14" Importance="Medium" Text="'TdService.Modeling::Domain::Parcel' -  (Class) : success (file replaced) - C:\Projects\TD-Service\TdService.Domain\Domain\Parcel.cs" />
+  <Message Timestamp="2012-02-11T02:22:14" Importance="Medium" Text="'TdService.Modeling::Domain::Service' -  (Class) : success (file replaced) - C:\Projects\TD-Service\TdService.Domain\Domain\Service.cs" />
+  <Message Timestamp="2012-02-11T02:22:15" Importance="Medium" Text="'TdService.Modeling::Domain::Balance' -  (Class) : success (file replaced) - C:\Projects\TD-Service\TdService.Domain\Domain\Balance.cs" />
+  <Message Timestamp="2012-02-11T02:22:15" Importance="Medium" Text="'TdService.Modeling::Domain::User' -  (Class) : success (file replaced) - C:\Projects\TD-Service\TdService.Domain\Domain\User.cs" />
+  <Message Timestamp="2012-02-11T02:22:15" Importance="Medium" Text="'TdService.Modeling::Domain::Order' -  (Class) : success (file replaced) - C:\Projects\TD-Service\TdService.Domain\Domain\Order.cs" />
+  <Message Timestamp="2012-02-11T02:22:15" Importance="Medium" Text="'TdService.Modeling::Domain::OrderLineItem' -  (Class) : success (file replaced) - C:\Projects\TD-Service\TdService.Domain\Domain\OrderLineItem.cs" />
+  <Message Timestamp="2012-02-11T02:22:15" Importance="Medium" Text="'TdService.Modeling::Domain::Item' -  (Class) : success (file replaced) - C:\Projects\TD-Service\TdService.Domain\Domain\Item.cs" />
+  <Message Timestamp="2012-02-11T02:22:15" Importance="Medium" Text="'TdService.Modeling::Domain::Role' -  (Class) : success (file replaced) - C:\Projects\TD-Service\TdService.Domain\Domain\Role.cs" />
+  <Message Timestamp="2012-02-11T02:22:15" Importance="Medium" Text="'TdService.Modeling::Domain::Picture' -  (Class) : success (file replaced) - C:\Projects\TD-Service\TdService.Domain\Domain\Picture.cs" />
+  <Message Timestamp="2012-02-11T02:22:16" Importance="Medium" Text="'TdService.Modeling::Domain::NotificationRules' -  (Class) : success (file created) - C:\Projects\TD-Service\TdService.Domain\Domain\NotificationRules.cs" />
+  <Message Timestamp="2012-02-11T02:22:16" Importance="Medium" Text="'TdService.Modeling::Domain::Profile' -  (Class) : success (file replaced) - C:\Projects\TD-Service\TdService.Domain\Domain\Profile.cs" />
+  <Message Timestamp="2012-02-11T02:22:16" Importance="Diagnostic" Text="'TdService.Modeling::Domain::Weight' -  (Class): no file generated because the 'AppliesToElement' method of the template 'TdService.ClassTemplate.t4' evaluated to false." />
+  <Message Timestamp="2012-02-11T02:22:16" Importance="Diagnostic" Text="Name = EnumTemplate" />
+  <Message Timestamp="2012-02-11T02:22:16" Importance="Diagnostic" Text="Overwrite = True" />
+  <Message Timestamp="2012-02-11T02:22:16" Importance="Diagnostic" Text="ProjectPath = ..\TdService.Domain\TdService.Domain.csproj" />
+  <Message Timestamp="2012-02-11T02:22:16" Importance="Diagnostic" Text="TargetDirectory = {PackageStructure}" />
+  <Message Timestamp="2012-02-11T02:22:16" Importance="Diagnostic" Text="TargetName = {Name}" />
+  <Message Timestamp="2012-02-11T02:22:16" Importance="Diagnostic" Text="TemplateFilePath = C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.EnumTemplate.t4" />
+  <Message Timestamp="2012-02-11T02:22:16" Importance="Diagnostic" Text="ResolvedTemplateFilePath = C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.EnumTemplate.t4" />
+  <Message Timestamp="2012-02-11T02:22:16" Importance="Medium" Text="TdService.Modeling's Text Template Binding: 'EnumTemplate' will apply TdService.EnumTemplate.t4 to: 'TdService.Modeling::Domain::TransactionStatus' -  (Enumeration), 'TdService.Modeling::Domain::DispatchMethod' -  (Enumeration), 'TdService.Modeling::Domain::ParcelStatus' -  (Enumeration), 'TdService.Modeling::Domain::PictureType' -  (Enumeration), 'TdService.Modeling::Domain::OrderStatus' -  (Enumeration) " />
+  <Message Timestamp="2012-02-11T02:22:16" Importance="Medium" Text="'TdService.Modeling::Domain::TransactionStatus' -  (Enumeration) : success (file replaced) - C:\Projects\TD-Service\TdService.Domain\Domain\TransactionStatus.cs" />
+  <Message Timestamp="2012-02-11T02:22:16" Importance="Medium" Text="'TdService.Modeling::Domain::DispatchMethod' -  (Enumeration) : success (file replaced) - C:\Projects\TD-Service\TdService.Domain\Domain\DispatchMethod.cs" />
+  <Message Timestamp="2012-02-11T02:22:16" Importance="Medium" Text="'TdService.Modeling::Domain::ParcelStatus' -  (Enumeration) : success (file replaced) - C:\Projects\TD-Service\TdService.Domain\Domain\ParcelStatus.cs" />
+  <Message Timestamp="2012-02-11T02:22:16" Importance="Medium" Text="'TdService.Modeling::Domain::PictureType' -  (Enumeration) : success (file replaced) - C:\Projects\TD-Service\TdService.Domain\Domain\PictureType.cs" />
+  <Message Timestamp="2012-02-11T02:22:17" Importance="Medium" Text="'TdService.Modeling::Domain::OrderStatus' -  (Enumeration) : success (file replaced) - C:\Projects\TD-Service\TdService.Domain\Domain\OrderStatus.cs" />
+  <Message Timestamp="2012-02-11T02:22:17" Importance="Diagnostic" Text="Name = StructTemplate" />
+  <Message Timestamp="2012-02-11T02:22:17" Importance="Diagnostic" Text="Overwrite = True" />
+  <Message Timestamp="2012-02-11T02:22:17" Importance="Diagnostic" Text="ProjectPath = ..\TdService.Domain\TdService.Domain.csproj" />
+  <Message Timestamp="2012-02-11T02:22:17" Importance="Diagnostic" Text="TargetDirectory = {PackageStructure}" />
+  <Message Timestamp="2012-02-11T02:22:17" Importance="Diagnostic" Text="TargetName = {Name}" />
+  <Message Timestamp="2012-02-11T02:22:17" Importance="Diagnostic" Text="TemplateFilePath = C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.StructTemplate.t4" />
+  <Message Timestamp="2012-02-11T02:22:17" Importance="Diagnostic" Text="ResolvedTemplateFilePath = C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.StructTemplate.t4" />
+  <Message Timestamp="2012-02-11T02:22:17" Importance="Medium" Text="TdService.Modeling's Text Template Binding: 'StructTemplate' will apply TdService.StructTemplate.t4 to: 'TdService.Modeling::Domain::Address' -  (Class), 'TdService.Modeling::Domain::Transaction' -  (Class), 'TdService.Modeling::Domain::Parcel' -  (Class), 'TdService.Modeling::Domain::Service' -  (Class), 'TdService.Modeling::Domain::Balance' -  (Class), 'TdService.Modeling::Domain::User' -  (Class), 'TdService.Modeling::Domain::Order' -  (Class), 'TdService.Modeling::Domain::OrderLineItem' -  (Class), 'TdService.Modeling::Domain::Item' -  (Class), 'TdService.Modeling::Domain::Role' -  (Class), 'TdService.Modeling::Domain::Picture' -  (Class), 'TdService.Modeling::Domain::NotificationRules' -  (Class), 'TdService.Modeling::Domain::Profile' -  (Class), 'TdService.Modeling::Domain::Weight' -  (Class) " />
+  <Message Timestamp="2012-02-11T02:22:17" Importance="Diagnostic" Text="'TdService.Modeling::Domain::Address' -  (Class): no file generated because the 'AppliesToElement' method of the template 'TdService.StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2012-02-11T02:22:17" Importance="Diagnostic" Text="'TdService.Modeling::Domain::Transaction' -  (Class): no file generated because the 'AppliesToElement' method of the template 'TdService.StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2012-02-11T02:22:17" Importance="Diagnostic" Text="'TdService.Modeling::Domain::Parcel' -  (Class): no file generated because the 'AppliesToElement' method of the template 'TdService.StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2012-02-11T02:22:17" Importance="Diagnostic" Text="'TdService.Modeling::Domain::Service' -  (Class): no file generated because the 'AppliesToElement' method of the template 'TdService.StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2012-02-11T02:22:17" Importance="Diagnostic" Text="'TdService.Modeling::Domain::Balance' -  (Class): no file generated because the 'AppliesToElement' method of the template 'TdService.StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2012-02-11T02:22:17" Importance="Diagnostic" Text="'TdService.Modeling::Domain::User' -  (Class): no file generated because the 'AppliesToElement' method of the template 'TdService.StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2012-02-11T02:22:17" Importance="Diagnostic" Text="'TdService.Modeling::Domain::Order' -  (Class): no file generated because the 'AppliesToElement' method of the template 'TdService.StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2012-02-11T02:22:17" Importance="Diagnostic" Text="'TdService.Modeling::Domain::OrderLineItem' -  (Class): no file generated because the 'AppliesToElement' method of the template 'TdService.StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2012-02-11T02:22:17" Importance="Diagnostic" Text="'TdService.Modeling::Domain::Item' -  (Class): no file generated because the 'AppliesToElement' method of the template 'TdService.StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2012-02-11T02:22:18" Importance="Diagnostic" Text="'TdService.Modeling::Domain::Role' -  (Class): no file generated because the 'AppliesToElement' method of the template 'TdService.StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2012-02-11T02:22:18" Importance="Diagnostic" Text="'TdService.Modeling::Domain::Picture' -  (Class): no file generated because the 'AppliesToElement' method of the template 'TdService.StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2012-02-11T02:22:18" Importance="Diagnostic" Text="'TdService.Modeling::Domain::NotificationRules' -  (Class): no file generated because the 'AppliesToElement' method of the template 'TdService.StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2012-02-11T02:22:18" Importance="Diagnostic" Text="'TdService.Modeling::Domain::Profile' -  (Class): no file generated because the 'AppliesToElement' method of the template 'TdService.StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2012-02-11T02:22:18" Importance="Medium" Text="'TdService.Modeling::Domain::Weight' -  (Class) : success (file replaced) - C:\Projects\TD-Service\TdService.Domain\Domain\Weight.cs" />
+  <Message Timestamp="2012-02-11T02:22:19" Importance="Diagnostic" Text="The selection included 20 elements which were not bound to a template." />
+  <Message Timestamp="2012-02-11T02:22:19" Importance="Diagnostic" Text="'TdService.Modeling::Domain::' -  (Association): no bound template." />
+  <Message Timestamp="2012-02-11T02:22:19" Importance="Diagnostic" Text="'TdService.Modeling::Domain::' -  (Association): no bound template." />
+  <Message Timestamp="2012-02-11T02:22:19" Importance="Diagnostic" Text="'TdService.Modeling::Domain::' -  (Association): no bound template." />
+  <Message Timestamp="2012-02-11T02:22:19" Importance="Diagnostic" Text="'TdService.Modeling::Domain::' -  (Association): no bound template." />
+  <Message Timestamp="2012-02-11T02:22:19" Importance="Diagnostic" Text="'TdService.Modeling::Domain::' -  (Association): no bound template." />
+  <Message Timestamp="2012-02-11T02:22:19" Importance="Diagnostic" Text="'TdService.Modeling::Domain::' -  (Association): no bound template." />
+  <Message Timestamp="2012-02-11T02:22:19" Importance="Diagnostic" Text="'TdService.Modeling::Domain::' -  (Association): no bound template." />
+  <Message Timestamp="2012-02-11T02:22:19" Importance="Diagnostic" Text="'TdService.Modeling::Domain::' -  (Association): no bound template." />
+  <Message Timestamp="2012-02-11T02:22:19" Importance="Diagnostic" Text="'TdService.Modeling::Domain::' -  (Association): no bound template." />
+  <Message Timestamp="2012-02-11T02:22:19" Importance="Diagnostic" Text="'TdService.Modeling::Domain::' -  (Association): no bound template." />
+  <Message Timestamp="2012-02-11T02:22:19" Importance="Diagnostic" Text="'TdService.Modeling::Domain::' -  (Association): no bound template." />
+  <Message Timestamp="2012-02-11T02:22:19" Importance="Diagnostic" Text="'TdService.Modeling::Domain::' -  (Association): no bound template." />
+  <Message Timestamp="2012-02-11T02:22:19" Importance="Diagnostic" Text="'TdService.Modeling::Domain::' -  (Association): no bound template." />
+  <Message Timestamp="2012-02-11T02:22:19" Importance="Diagnostic" Text="'TdService.Modeling::Domain::' -  (Association): no bound template." />
+  <Message Timestamp="2012-02-11T02:22:19" Importance="Diagnostic" Text="'TdService.Modeling::Domain::' -  (Association): no bound template." />
+  <Message Timestamp="2012-02-11T02:22:19" Importance="Diagnostic" Text="'TdService.Modeling::Domain::' -  (Association): no bound template." />
+  <Message Timestamp="2012-02-11T02:22:19" Importance="Diagnostic" Text="'TdService.Modeling::Domain::' -  (Association): no bound template." />
+  <Message Timestamp="2012-02-11T02:22:19" Importance="Diagnostic" Text="'TdService.Modeling::Domain::' -  (Association): no bound template." />
+  <Message Timestamp="2012-02-11T02:22:19" Importance="Diagnostic" Text="'TdService.Modeling::Domain::' -  (Association): no bound template." />
+  <Message Timestamp="2012-02-11T02:22:19" Importance="Diagnostic" Text="'TdService.Modeling::Domain::' -  (Association): no bound template." />
+  <Message Timestamp="2012-02-11T02:22:19" Importance="High" Text="Code generation complete. Errors: 0. Warnings: 0." />
 </Log>

@@ -11,39 +11,15 @@ namespace TdService.Domain
 	using System.Linq;
 	using System.Text;
 
-	public class Profile
+	public class NotificationRules
 	{
-		public virtual string FirstName
+		public virtual bool NotifyOrderStatusChanged
 		{
 			get;
 			set;
 		}
 
-		public virtual string LastName
-		{
-			get;
-			set;
-		}
-
-		/// <summary>
-		/// Tells whether system should notify user about changes to his orders or parcels.
-		/// </summary>
-		public virtual bool NotifyByEmail
-		{
-			get;
-			set;
-		}
-
-		/// <summary>
-		/// Personal user's warehouse address in USA
-		/// </summary>
-		public virtual Address UsaAddress
-		{
-			get;
-			set;
-		}
-
-		public virtual NotificationRules NotificationRules
+		public virtual bool NotifyParcelStatusChanged
 		{
 			get;
 			set;

@@ -11,29 +11,10 @@ namespace TdService.Domain
 	using System.Linq;
 	using System.Text;
 
-	/// <summary>
-	/// Stores total amount user has available to pay for the services
-	/// </summary>
-	public class Balance
+	public enum PictureType : int
 	{
-		public virtual int Amount
-		{
-			get;
-			set;
-		}
-
-		public virtual int UserId
-		{
-			get;
-			set;
-		}
-
-		public virtual IEnumerable<Transaction> Transactions
-		{
-			get;
-			set;
-		}
-
+		Jpeg,
+		Png,
+		Gif,
 	}
 }
-

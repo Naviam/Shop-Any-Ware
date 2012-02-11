@@ -4,35 +4,27 @@
 //     Changes to this file will be lost if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-namespace TdService.Domain
+namespace TdService.Domain.Repositories
 {
+	using Domain;
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Text;
 
-	/// <summary>
-	/// Stores total amount user has available to pay for the services
-	/// </summary>
-	public class Balance
+	public interface IUserRepository 
 	{
-		public virtual int Amount
-		{
-			get;
-			set;
-		}
+		User GetUser(string username);
 
-		public virtual int UserId
-		{
-			get;
-			set;
-		}
+		bool ValidateUser(string username, string password);
 
-		public virtual IEnumerable<Transaction> Transactions
-		{
-			get;
-			set;
-		}
+		void AddUser(User user);
+
+		void UpdateUser(User user);
+
+		IEnumerable<User> GetUsers(object sortDirection, string sortExpression, string filterExpression, int pageSize = 20);
+
+		void RemoveUser(string username);
 
 	}
 }

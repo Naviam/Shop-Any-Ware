@@ -4,35 +4,18 @@
 //     Changes to this file will be lost if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-namespace TdService.Domain
+namespace TdService.Domain.Repositories
 {
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Text;
 
-	/// <summary>
-	/// Stores total amount user has available to pay for the services
-	/// </summary>
-	public class Balance
+	public interface INotificationRepository 
 	{
-		public virtual int Amount
-		{
-			get;
-			set;
-		}
+		void GetNotificationRules();
 
-		public virtual int UserId
-		{
-			get;
-			set;
-		}
-
-		public virtual IEnumerable<Transaction> Transactions
-		{
-			get;
-			set;
-		}
+		void UpdateNotificationRules();
 
 	}
 }

@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="51703f76-a690-4eb6-99ff-c3657ac4dae6" name="Shopper - View Profile" linkedPackageId="774e4fce-2098-41a5-99f6-35f057c0dc10" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <appliedStereotypesInternal>
+    <stereotypeInstance Id="94b7729f-3f4e-4f28-98a3-e66b38ea7fa1" name="namespace" profile="CSharpProfile">
+      <elementDefinition Id="83215c40-e8ab-4007-8499-f71aa2691e39" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="9818efa2-eddf-4085-8c46-d52d3ac33e73">
+          <propertyInstance Id="7fa03d3c-6449-4080-a31f-167432235e93" name="BaseName" value="TdService">
+            <elementDefinition Id="9ce0693a-9a0f-4273-b99b-0ac34f47f58e" />
+          </propertyInstance>
+          <elementDefinition Id="4a043077-7e5b-4fd9-96a7-64d7635201c1" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="7c538a4f-2abc-4961-89de-4f6dc0b53484">
+          <propertyInstance Id="477a2f4e-9de8-4f38-aec5-594c8c9b94a2" name="ClrAttributes">
+            <elementDefinition Id="2e84046b-908f-4a32-98d4-39e94d9d705e" />
+          </propertyInstance>
+          <elementDefinition Id="beda8572-1b32-41a2-b7ed-7c09aa26de3a" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="38d97a23-e463-4ec5-951e-de3aaaca2197">
+          <propertyInstance Id="17ded8f9-d77f-4c22-b9c0-c13988fc5092" name="Usings">
+            <elementDefinition Id="167efa69-29f8-4f1e-bb3f-4b1a8e50ad7b" />
+          </propertyInstance>
+          <elementDefinition Id="9e12bd4b-c667-4f8d-b4b0-34c1a0d569a5" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+    <stereotypeInstance Id="f7a7f072-9c1f-49b1-be37-bf34132f26f9" name="TextTemplateBindings" profile="TextTemplateBindings">
+      <elementDefinition Id="8846ae1b-9e13-4ef1-93e8-c9b2308fd2f9" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="be51bbb8-0a95-4433-a9ca-a7c4b148ba28">
+          <propertyInstance Id="c798f547-f098-4394-aa5f-dbe371491e25" name="Alias" value="ClassTemplate|EnumTemplate|InterfaceTemplate|StructTemplate">
+            <elementDefinition Id="3472a760-5369-47af-8753-eaf1f365bf4e" />
+          </propertyInstance>
+          <elementDefinition Id="339138bf-7878-4975-901f-2ec6c33bd3e9" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="1808e2e2-f540-4fbd-8451-756d6ee61281">
+          <propertyInstance Id="05c12725-e308-417e-8d9c-d836321283b3" name="TemplateFilePath" value="ClassTemplate=C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.ClassTemplate.t4|EnumTemplate=C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.EnumTemplate.t4|InterfaceTemplate=C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.InterfaceTemplate.t4|StructTemplate=C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.StructTemplate.t4">
+            <elementDefinition Id="459ae12b-427c-4742-8c4d-03fa5c4848fa" />
+          </propertyInstance>
+          <elementDefinition Id="0b7fdb28-9464-4fb3-9b1a-63e64e3015e2" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="e99937a7-d628-4b28-9ea8-fadaf60b9ddc">
+          <propertyInstance Id="47b9fc8b-8a6f-400f-8377-303ed87381ce" name="ProjectPath" value="ClassTemplate=..\TdService.Domain\TdService.Domain.csproj|EnumTemplate=..\TdService.Domain\TdService.Domain.csproj|InterfaceTemplate=..\TdService.Domain\TdService.Domain.csproj|StructTemplate=..\TdService.Domain\TdService.Domain.csproj">
+            <elementDefinition Id="7cc5cd71-11b2-451f-9656-769cf85f48ec" />
+          </propertyInstance>
+          <elementDefinition Id="587eceeb-25a5-4665-a1d3-8d4c1fea0827" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="b3b2ad3c-f2c3-4ac1-aad4-65565b0a5eeb">
+          <propertyInstance Id="74543689-61b4-4837-a186-817152af12f7" name="TargetDirectory" value="ClassTemplate={PackageStructure}|EnumTemplate={PackageStructure}|InterfaceTemplate={PackageStructure}|StructTemplate={PackageStructure}">
+            <elementDefinition Id="dbda9d32-9304-4b19-b5fe-b3d5e6d5539b" />
+          </propertyInstance>
+          <elementDefinition Id="0172f644-f774-4dab-996a-09d1267fdecf" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="a0e63eb2-ee99-42a8-ba58-c5e921821957">
+          <propertyInstance Id="45783c83-4da4-4850-ae53-0f88901f8e74" name="TargetName" value="ClassTemplate={Name}|EnumTemplate={Name}|InterfaceTemplate={Name}|StructTemplate={Name}">
+            <elementDefinition Id="a48101f4-3421-4b10-9cf3-66dbb92c1fab" />
+          </propertyInstance>
+          <elementDefinition Id="8ce73baa-a5a3-4c89-a566-97d0fadc1b13" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="a3c95869-904d-4f38-9ba2-16a010d99377">
+          <propertyInstance Id="e4ff71bf-3b38-4525-92d7-fae7a74dfa35" name="Overwrite" value="ClassTemplate=True|EnumTemplate=True|InterfaceTemplate=True|StructTemplate=True">
+            <elementDefinition Id="075e63c1-4076-4e13-8ebd-67950f26cf3a" />
+          </propertyInstance>
+          <elementDefinition Id="6678a209-ab3e-44a4-85bc-444f6be5ee46" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="7d76cc94-3bad-4cdf-9ddf-21d3e68710fd">
+          <propertyInstance Id="b633385a-e10b-4871-b7f2-eed286988c9e" name="Parameters">
+            <elementDefinition Id="c1b6d19e-8647-4279-8125-69850c99a4fb" />
+          </propertyInstance>
+          <elementDefinition Id="513e5963-c807-47ec-a46c-717626c8a771" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+  </appliedStereotypesInternal>
+  <profileInstances>
+    <packageHasProfileInstances Id="dedf241a-730b-497e-adbf-cfe0e924cbdc">
+      <profileInstance Id="1ca61776-1a44-4310-a900-c020056ab4ba" name="TextTemplateBindings">
+        <elementDefinition Id="19fcac95-f5d2-4773-b284-5fd2debd864c" />
+      </profileInstance>
+      <elementDefinition Id="91062264-0281-4ed4-9610-38da3816671b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="a8097bf1-15bb-4407-8557-014510a7257a">
+      <profileInstance Id="3dd382b3-985b-42a8-870a-3c054ddf7b84" name="CSharpProfile">
+        <elementDefinition Id="71d78747-3c24-4160-bbec-b01fff4d0349" />
+      </profileInstance>
+      <elementDefinition Id="dbed6c01-0c96-4afa-963b-e5ae39313121" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="52a48541-9bbb-4dfd-af68-50aa9197d388" name="Shopper" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="e9f5ee6f-30a6-42e0-b103-1b5ef0aa4b74" />
+        <targetEnds>
+          <association Id="f826dc57-c881-4d9d-8d83-ebcb754165e4" isDerived="false" sourceEndRoleName="Shopper" targetEndRoleName="View Profile" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="f893cf86-5383-4ec3-a85f-5ef276993f3e" LastKnownName="View Profile" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="83844e27-5d63-4a11-99df-5c984cae3a14" name="Shopper" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="fb4df3be-e20d-457a-a47c-96974d2216fb" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="0eae36cb-4373-4d6b-b096-6603ddfe83c1" name="View Profile" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="7a47adbc-62ff-49a9-9866-1e062d74f433" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="dd63daa9-ca54-4a5c-b99c-a9ca80e0fc4c" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="f893cf86-5383-4ec3-a85f-5ef276993f3e" name="View Profile" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="cfc25fb3-eb26-4fb8-a66e-5e5666064513" />
+        <additions>
+          <include Id="fd351da4-6610-47fa-a965-12303034c81c">
+            <useCaseMoniker Id="03796dc0-510a-467b-b778-b9bb8eca6a1a" LastKnownName="View Delivery Addresses" />
+            <elementDefinition Id="33b5b739-7937-4115-82b1-f88e2b6258d4" />
+          </include>
+          <include Id="0cca9a17-be49-4954-84a3-172f2827ce49">
+            <useCaseMoniker Id="ae0251dd-c70f-43fe-8fc6-88ec73206e05" LastKnownName="Update User Name" />
+            <elementDefinition Id="fe75fc29-f0b6-43a8-b11b-c4e9d321b017" />
+          </include>
+          <include Id="377c3be2-3b7e-41f6-8b46-72b5ab0b08e8">
+            <useCaseMoniker Id="b2085217-44f1-4750-8d6d-54ecbe27a771" LastKnownName="Change Password" />
+            <elementDefinition Id="47dc0964-7500-4e34-b8e6-db2739522973" />
+          </include>
+          <include Id="7aea7b4b-9866-4fcb-afab-c72ab14c554a">
+            <useCaseMoniker Id="fa40de99-f0b5-4345-a0a2-45e294ad9f3c" LastKnownName="Update Notification Rules" />
+            <elementDefinition Id="9cf2ef2a-3162-4e20-9140-9f0239280790" />
+          </include>
+          <include Id="d9e9b1c1-c165-4056-8f93-2070bd4df927">
+            <useCaseMoniker Id="1b8ad46f-7058-4d50-9116-137b83250a44" LastKnownName="View Store Address" />
+            <elementDefinition Id="97755237-dc81-41ea-9d78-4affaa9da7ee" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="ae0251dd-c70f-43fe-8fc6-88ec73206e05" name="Update User Name" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="3535e998-fa30-443c-bde4-a4dde51d5f06" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="fa40de99-f0b5-4345-a0a2-45e294ad9f3c" name="Update Notification Rules" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="25385858-24a5-4b83-9f18-bae8c0c803cb" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="03796dc0-510a-467b-b778-b9bb8eca6a1a" name="View Delivery Addresses" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="06e28290-abd2-45a4-888b-894929f8f83c" />
+        <additions>
+          <include Id="556fc673-046f-4c76-bb39-4c61b53b844e">
+            <useCaseMoniker Id="14f2d510-3ef5-4b7f-974a-d4ee9a8f418d" LastKnownName="Add Address" />
+            <elementDefinition Id="275d9e17-bd30-42b8-b7ed-366945f36c75" />
+          </include>
+          <include Id="41e0e37f-bc67-41d5-8504-8e9bc320ba0e">
+            <useCaseMoniker Id="7c46e2b5-485b-4f07-828d-043a22fdd895" LastKnownName="View Delivery Address Details" />
+            <elementDefinition Id="5edd31a1-13e6-48f0-8273-5a5e17f2e7cb" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="14f2d510-3ef5-4b7f-974a-d4ee9a8f418d" name="Add Address" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="1b2bff99-5031-4557-b445-d367343b0150" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="87054044-0343-4c84-ac8b-f73cfd7a67a8" name="Update Address" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="dd3673d8-d359-4ae3-8209-9864e53e60c1" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="29b74c94-86ec-4a32-88cc-53fdd76b3686" name="Remove Address" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f49ba828-5cf6-4743-94d6-5d0b1df8ed61" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="b2085217-44f1-4750-8d6d-54ecbe27a771" name="Change Password" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="8b264b31-c40f-4793-8c0a-cfc6faeee0b3" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="1b8ad46f-7058-4d50-9116-137b83250a44" name="View Store Address" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="8ec5a34f-dd8d-4aa5-b148-2cba2bbeb81b" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="7c46e2b5-485b-4f07-828d-043a22fdd895" name="View Delivery Address Details" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="5e1879e5-51b6-4f97-ada8-a3ddefa1e5e1" />
+        <additions>
+          <include Id="1491dbed-2306-4a39-95f3-8d88bcd3dd2c">
+            <useCaseMoniker Id="87054044-0343-4c84-ac8b-f73cfd7a67a8" LastKnownName="Update Address" />
+            <elementDefinition Id="31735dda-16cf-49e7-bbe9-453d40bbdd27" />
+          </include>
+          <include Id="83f361e2-8e5a-4651-9095-2e56b057f087">
+            <useCaseMoniker Id="29b74c94-86ec-4a32-88cc-53fdd76b3686" LastKnownName="Remove Address" />
+            <elementDefinition Id="b117dc13-b698-4a4d-8587-86da8a7ce55c" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="774e4fce-2098-41a5-99f6-35f057c0dc10" name="TdService.Modeling">
+    <elementDefinition Id="e006d43a-3bc9-452c-a7ce-47edd28d044b" />
+    <profileInstances>
+      <packageHasProfileInstances Id="aef6b3f4-5d01-4bfe-ab58-b848b88cf328">
+        <profileInstance Id="e67c05d8-e509-4838-a6ea-e0664641540c" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="ff5e05ed-da77-4638-ac9a-68bfaa4c458f">
+        <profileInstance Id="496844fb-9cbd-40be-b2f3-0ed59a7d7498" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</useCaseModelRoot>

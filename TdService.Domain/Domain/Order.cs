@@ -49,6 +49,18 @@ namespace TdService.Domain
 			set;
 		}
 
+		public virtual DateTime ArrivalDate
+		{
+			get;
+			set;
+		}
+
+		public virtual DateTime StorageEndDate
+		{
+			get;
+			set;
+		}
+
 		public virtual OrderStatus OrderState
 		{
 			get;
@@ -62,6 +74,12 @@ namespace TdService.Domain
 		}
 
 		public virtual Weight Weight
+		{
+			get;
+			set;
+		}
+
+		public virtual Picture Picture
 		{
 			get;
 			set;

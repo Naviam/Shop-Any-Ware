@@ -7,7 +7,7 @@
     <packageHasNamedElement>
       <useCase
         Id="8efc14b6-b6a2-42ac-8b28-775dadb619de"
-        name="Add User To Role"
+        name="Add User To Roles"
         isAbstract="false"
         isLeaf="false" />
     </packageHasNamedElement>
@@ -35,7 +35,7 @@
     <packageHasNamedElement>
       <useCase
         Id="246d28c0-fe76-493b-b535-be1e12ece3bd"
-        name="Remove User From Role"
+        name="Remove User From Roles"
         isAbstract="false"
         isLeaf="false" />
     </packageHasNamedElement>
@@ -50,14 +50,14 @@
             Id="ae1f7708-da7a-4c82-a740-6ee9b8c6f432">
             <useCaseMoniker
               Id="8efc14b6-b6a2-42ac-8b28-775dadb619de"
-              LastKnownName="Add User To Role"
+              LastKnownName="Add User To Roles"
               LastKnownLocation="Package_0108.uml" />
           </include>
           <include
             Id="c9cb58f5-267e-4cca-9497-831cd3de7a2c">
             <useCaseMoniker
               Id="246d28c0-fe76-493b-b535-be1e12ece3bd"
-              LastKnownName="Remove User From Role"
+              LastKnownName="Remove User From Roles"
               LastKnownLocation="Package_0108.uml" />
           </include>
         </additions>
@@ -95,17 +95,62 @@
               LastKnownLocation="Package_0108.uml" />
           </include>
           <include
-            Id="bb8d6682-c9db-4769-bcaa-18550938de75">
-            <useCaseMoniker
-              Id="8a03112c-2ce6-401e-8925-049820decc02"
-              LastKnownName="Update User"
-              LastKnownLocation="Package_0108.uml" />
-          </include>
-          <include
             Id="50ecb8fd-c33b-4e22-9e7e-63adc421fcd5">
             <useCaseMoniker
               Id="ba719620-06f8-4c86-b2ee-de8ab0b1a746"
               LastKnownName="Remove User"
+              LastKnownLocation="Package_0108.uml" />
+          </include>
+          <include
+            Id="3b7f2b29-6f93-47da-83d7-5980d07584c8">
+            <useCaseMoniker
+              Id="9f0bbc6d-37d0-4fb8-a938-19429da5d5cb"
+              LastKnownName="Filter Users"
+              LastKnownLocation="Package_0108.uml" />
+          </include>
+          <include
+            Id="a4599e51-f5b5-4ca9-bbf0-3f533e315ebe">
+            <useCaseMoniker
+              Id="5e9bd492-5180-4fc4-bfbc-679cd3b4c82e"
+              LastKnownName="Sort Users"
+              LastKnownLocation="Package_0108.uml" />
+          </include>
+          <include
+            Id="0ee6f98c-ce2b-4c92-a084-4882be6c8de2">
+            <useCaseMoniker
+              Id="f231e43a-2c50-4d8e-9930-36a63aa9c2c1"
+              LastKnownName="View User Details"
+              LastKnownLocation="Package_0108.uml" />
+          </include>
+        </additions>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="9f0bbc6d-37d0-4fb8-a938-19429da5d5cb"
+        name="Filter Users"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="5e9bd492-5180-4fc4-bfbc-679cd3b4c82e"
+        name="Sort Users"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="f231e43a-2c50-4d8e-9930-36a63aa9c2c1"
+        name="View User Details"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="9db22bb8-507b-4001-a9ab-5790875b6358">
+            <useCaseMoniker
+              Id="8a03112c-2ce6-401e-8925-049820decc02"
+              LastKnownName="Update User"
               LastKnownLocation="Package_0108.uml" />
           </include>
         </additions>

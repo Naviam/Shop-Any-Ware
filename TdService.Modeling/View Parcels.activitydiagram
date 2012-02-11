@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<activityRootModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm11="http://schemas.microsoft.com/dsltools/UseCaseModel" xmlns:dm12="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ComponentDesigner" dslVersion="1.0.0.0" Id="36c1643b-ee58-4c85-9b11-29d0a8bd7ef4" name="View Parcels" linkedPackageId="4868b5fa-91ef-4765-9222-323a302db7b3" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner">
+  <appliedStereotypesInternal>
+    <stereotypeInstance Id="9a0dcabd-15b9-48e2-a3e7-2623b5fdbfea" name="namespace" profile="CSharpProfile">
+      <elementDefinition Id="83215c40-e8ab-4007-8499-f71aa2691e39" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="433ebedb-cd29-46b0-927f-0088e4bf483f">
+          <propertyInstance Id="f8775659-a219-4410-95f0-e6fa1ed78a29" name="BaseName" value="TdService">
+            <elementDefinition Id="9ce0693a-9a0f-4273-b99b-0ac34f47f58e" />
+          </propertyInstance>
+          <elementDefinition Id="4a043077-7e5b-4fd9-96a7-64d7635201c1" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="e62d7a1b-20a5-465f-88dd-b061f0219d3c">
+          <propertyInstance Id="933105e0-596c-4107-8db5-ccaa341b737b" name="ClrAttributes">
+            <elementDefinition Id="2e84046b-908f-4a32-98d4-39e94d9d705e" />
+          </propertyInstance>
+          <elementDefinition Id="beda8572-1b32-41a2-b7ed-7c09aa26de3a" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="c71b0eee-e989-496d-b234-d118ff7bb885">
+          <propertyInstance Id="64d8b1ff-7935-4fff-a9a2-1469df9b6da4" name="Usings">
+            <elementDefinition Id="167efa69-29f8-4f1e-bb3f-4b1a8e50ad7b" />
+          </propertyInstance>
+          <elementDefinition Id="9e12bd4b-c667-4f8d-b4b0-34c1a0d569a5" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+    <stereotypeInstance Id="e09f0296-ba43-4721-885a-2fe92db56038" name="TextTemplateBindings" profile="TextTemplateBindings">
+      <elementDefinition Id="8846ae1b-9e13-4ef1-93e8-c9b2308fd2f9" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="276e7594-bd31-4363-ad09-b420aa024ac8">
+          <propertyInstance Id="80b0af1a-55c0-4f58-bbad-190129cdbba1" name="Alias" value="ClassTemplate|EnumTemplate|InterfaceTemplate|StructTemplate">
+            <elementDefinition Id="3472a760-5369-47af-8753-eaf1f365bf4e" />
+          </propertyInstance>
+          <elementDefinition Id="339138bf-7878-4975-901f-2ec6c33bd3e9" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="d34e7b3e-6962-4e15-9589-a559b2906de4">
+          <propertyInstance Id="0a3098bb-7edc-4ee2-b868-e9f686cc747f" name="TemplateFilePath" value="ClassTemplate=C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.ClassTemplate.t4|EnumTemplate=C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.EnumTemplate.t4|InterfaceTemplate=C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.InterfaceTemplate.t4|StructTemplate=C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.StructTemplate.t4">
+            <elementDefinition Id="459ae12b-427c-4742-8c4d-03fa5c4848fa" />
+          </propertyInstance>
+          <elementDefinition Id="0b7fdb28-9464-4fb3-9b1a-63e64e3015e2" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="d6eb877a-7687-40c6-9ab3-16c9749cc893">
+          <propertyInstance Id="c02f84a4-5bd7-4bb5-8d64-a0a21057702f" name="ProjectPath" value="ClassTemplate=..\TdService.Domain\TdService.Domain.csproj|EnumTemplate=..\TdService.Domain\TdService.Domain.csproj|InterfaceTemplate=..\TdService.Domain\TdService.Domain.csproj|StructTemplate=..\TdService.Domain\TdService.Domain.csproj">
+            <elementDefinition Id="7cc5cd71-11b2-451f-9656-769cf85f48ec" />
+          </propertyInstance>
+          <elementDefinition Id="587eceeb-25a5-4665-a1d3-8d4c1fea0827" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="5334490a-75ef-4a10-bc03-498f2a9aa012">
+          <propertyInstance Id="3cad2ab8-f46a-432d-8ce5-4742dcbb5e29" name="TargetDirectory" value="ClassTemplate={PackageStructure}|EnumTemplate={PackageStructure}|InterfaceTemplate={PackageStructure}|StructTemplate={PackageStructure}">
+            <elementDefinition Id="dbda9d32-9304-4b19-b5fe-b3d5e6d5539b" />
+          </propertyInstance>
+          <elementDefinition Id="0172f644-f774-4dab-996a-09d1267fdecf" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="3693ec2f-b0a4-45de-b5b7-f373433afd28">
+          <propertyInstance Id="f301352e-eacc-4cef-ba0b-3e771aa7598a" name="TargetName" value="ClassTemplate={Name}|EnumTemplate={Name}|InterfaceTemplate={Name}|StructTemplate={Name}">
+            <elementDefinition Id="a48101f4-3421-4b10-9cf3-66dbb92c1fab" />
+          </propertyInstance>
+          <elementDefinition Id="8ce73baa-a5a3-4c89-a566-97d0fadc1b13" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="2ab657eb-ebc3-427c-bdaa-d896975f7aba">
+          <propertyInstance Id="7a8759cd-17ed-4f23-a70f-ee9ed863c43b" name="Overwrite" value="ClassTemplate=True|EnumTemplate=True|InterfaceTemplate=True|StructTemplate=True">
+            <elementDefinition Id="075e63c1-4076-4e13-8ebd-67950f26cf3a" />
+          </propertyInstance>
+          <elementDefinition Id="6678a209-ab3e-44a4-85bc-444f6be5ee46" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="16e3bef1-bce3-442a-819b-7204e3729a86">
+          <propertyInstance Id="54afa840-c65a-4fef-8d53-4f88b7e7f8ef" name="Parameters">
+            <elementDefinition Id="c1b6d19e-8647-4279-8125-69850c99a4fb" />
+          </propertyInstance>
+          <elementDefinition Id="513e5963-c807-47ec-a46c-717626c8a771" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+  </appliedStereotypesInternal>
+  <profileInstances>
+    <packageHasProfileInstances Id="db41eb6c-bf08-4e88-91f4-d58153197f92">
+      <profileInstance Id="bef919eb-84ac-4f7e-942b-05050bae904d" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="9228662e-72f5-4768-98c6-fc574122912b">
+      <profileInstance Id="c4e9cf5b-5397-4545-a7e6-b4db24508e74" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="8a6ea21f-f693-49ad-bf37-4779b350001e">
+      <profileInstance Id="bf62bcd0-6b08-4bfd-bf6a-aaac36f4e413" name="TextTemplateBindings">
+        <elementDefinition Id="19fcac95-f5d2-4773-b284-5fd2debd864c" />
+      </profileInstance>
+      <elementDefinition Id="91062264-0281-4ed4-9610-38da3816671b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="e985e972-5497-4d07-87d1-e7410692ca21">
+      <profileInstance Id="b7a64a37-4a5e-43d2-b0c4-9ed7844306ad" name="CSharpProfile">
+        <elementDefinition Id="71d78747-3c24-4160-bbec-b01fff4d0349" />
+      </profileInstance>
+      <elementDefinition Id="dbed6c01-0c96-4afa-963b-e5ae39313121" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <activityRootModelHasActivity>
+      <activity Id="b6b1c7c5-dd41-44ab-874e-d4e0c0313375" name="View Parcels" isAbstract="false" isLeaf="false" isActiveClass="false" isReentrant="false" isReadOnly="false" isSingleExecution="false">
+        <elementDefinition Id="baa2030b-09b9-4abd-93c2-a6be610e7706" />
+        <nodes>
+          <opaqueAction Id="337cd80b-51a8-419b-b58e-9e91a6ad58dc" name="View Parcels" isLeaf="false">
+            <elementDefinition Id="4bc1594b-464d-4fc2-b017-6f90834d4425" />
+            <flowNodeTargets>
+              <controlFlow Id="6f589894-4aa0-4559-bcb6-6cf30b94b933" isLeaf="false">
+                <decisionNodeMoniker Id="eb138b94-c817-4a45-83f0-569190b4785d" LastKnownName="Decision1" />
+                <elementDefinition Id="9a2eaaa4-f074-488c-99f2-91475bf50603" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="9d8ae02e-9ad0-4ce0-a128-e3f92fe7d903" name="Sort Parcels" isLeaf="false">
+            <elementDefinition Id="c7a7575f-d34c-450a-a457-d78122205497" />
+            <flowNodeTargets>
+              <controlFlow Id="c6a9c3cb-7329-47bd-bd77-4e56cdd58a78" isLeaf="false">
+                <opaqueActionMoniker Id="337cd80b-51a8-419b-b58e-9e91a6ad58dc" LastKnownName="View Parcels" />
+                <elementDefinition Id="5a62e368-a3d3-4e00-b8bd-467825bc8263" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="eb1862f7-9d70-4588-b284-49e638294074" name="Filter Parcels" isLeaf="false">
+            <elementDefinition Id="c09e8418-99a1-42a0-8c23-a3ec6c1b4376" />
+            <flowNodeTargets>
+              <controlFlow Id="73fb1c6d-b001-4e28-a802-c517fd07fd4d" isLeaf="false">
+                <opaqueActionMoniker Id="337cd80b-51a8-419b-b58e-9e91a6ad58dc" LastKnownName="View Parcels" />
+                <elementDefinition Id="d81d7290-3141-4b2a-8c41-5c76984bfbd7" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="173a7549-7fb8-4bb9-aa03-74ecb03fdcd4" name="Add Parcel" isLeaf="false">
+            <elementDefinition Id="06ea8273-523f-4734-94dc-b290c3e62529" />
+            <flowNodeTargets>
+              <controlFlow Id="7e7a4bcd-174d-43d6-899d-33124dd029cb" isLeaf="false">
+                <opaqueActionMoniker Id="337cd80b-51a8-419b-b58e-9e91a6ad58dc" LastKnownName="View Parcels" />
+                <elementDefinition Id="8958a031-c983-4540-bf8d-ed6b74e25673" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="c15ef0dc-693d-4332-8bfa-13b53beb3702" name="View Parcel Details" isLeaf="false">
+            <elementDefinition Id="46e641eb-0ae5-44db-a6bd-8fcb67f6be06" />
+            <flowNodeTargets>
+              <controlFlow Id="cd75f10c-063d-47cf-90b9-fe573975156b" isLeaf="false">
+                <decisionNodeMoniker Id="dd60dcf3-e751-48c6-bf2d-0eb179224078" LastKnownName="Decision2" />
+                <elementDefinition Id="50b337bb-a192-4e82-b7ad-fa38b9a75a47" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="980d2c5f-c7f4-4189-9aff-71a872125f56" name="Update Parcel" isLeaf="false">
+            <elementDefinition Id="ac4decef-93cf-4b83-9989-6119e7dee9d6" />
+            <flowNodeTargets>
+              <controlFlow Id="be8fdca9-1d26-4908-95c3-a6f483daa1c6" isLeaf="false">
+                <opaqueActionMoniker Id="c15ef0dc-693d-4332-8bfa-13b53beb3702" LastKnownName="View Parcel Details" />
+                <elementDefinition Id="0815379f-bf56-47e3-9546-cdd0fc54d108" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <decisionNode Id="eb138b94-c817-4a45-83f0-569190b4785d" name="Decision1" isLeaf="false">
+            <elementDefinition Id="bd6a6927-122f-45c1-a973-411d6494ff32" />
+            <flowNodeTargets>
+              <controlFlow Id="878b1a0b-8c8e-4f05-b7a9-011b50d94469" isLeaf="false">
+                <opaqueActionMoniker Id="9d8ae02e-9ad0-4ce0-a128-e3f92fe7d903" LastKnownName="Sort Parcels" />
+                <elementDefinition Id="e6e24762-963b-4f9e-8ec7-e09b22dc94f2" />
+              </controlFlow>
+              <controlFlow Id="c2710e54-431a-4eff-922d-9d77fd2a9fb6" isLeaf="false">
+                <opaqueActionMoniker Id="eb1862f7-9d70-4588-b284-49e638294074" LastKnownName="Filter Parcels" />
+                <elementDefinition Id="5197f0c4-a1ff-4547-9aa1-2bb27601e347" />
+              </controlFlow>
+              <controlFlow Id="8c9e7486-5c10-460e-831f-4e7dde90704a" isLeaf="false">
+                <decisionNodeMoniker Id="f6c91c07-ed45-4470-89f7-2b8825cac110" LastKnownName="Decision3" />
+                <elementDefinition Id="3ba62676-c422-4497-830b-a1bfb3439cdf" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <opaqueAction Id="0b7a2d86-f13a-4c77-96a2-9007a577f020" name="Remove Parcel" isLeaf="false">
+            <elementDefinition Id="8bced26f-d3b6-4571-9d12-b06e2b675723" />
+            <flowNodeTargets>
+              <controlFlow Id="3a6ac5cf-ef57-4781-b0dc-3d280efc3a7f" isLeaf="false">
+                <opaqueActionMoniker Id="337cd80b-51a8-419b-b58e-9e91a6ad58dc" LastKnownName="View Parcels" />
+                <elementDefinition Id="7956cef8-34d3-46d3-a4f9-f26fe464c03f" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <decisionNode Id="dd60dcf3-e751-48c6-bf2d-0eb179224078" name="Decision2" isLeaf="false">
+            <elementDefinition Id="d28d7922-cff1-44c8-b5a3-0dee9f423a4f" />
+            <flowNodeTargets>
+              <controlFlow Id="dfb06e0e-06e2-40b4-bcef-312ead28bc35" isLeaf="false">
+                <opaqueActionMoniker Id="980d2c5f-c7f4-4189-9aff-71a872125f56" LastKnownName="Update Parcel" />
+                <elementDefinition Id="b31ef06e-ea1b-40c0-bd78-6786f46c1645" />
+              </controlFlow>
+              <controlFlow Id="193c39f1-dc71-447f-8e92-b66abcb7dbeb" isLeaf="false">
+                <opaqueActionMoniker Id="0b7a2d86-f13a-4c77-96a2-9007a577f020" LastKnownName="Remove Parcel" />
+                <elementDefinition Id="7f4fcb82-db74-48f5-b20f-5d7f8bb01f8e" />
+              </controlFlow>
+              <controlFlow Id="0f2ab24d-aab1-4dc5-9879-3765322480e2" isLeaf="false">
+                <decisionNodeMoniker Id="5ba30c10-9d28-47c8-844b-432a68ff4a0d" LastKnownName="Decision4" />
+                <elementDefinition Id="b87dd0e7-8fff-4834-b3f7-e99a3aad4eca" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <decisionNode Id="f6c91c07-ed45-4470-89f7-2b8825cac110" name="Decision3" isLeaf="false">
+            <elementDefinition Id="c1016b6e-f4fb-4b2a-b28d-3254ecbcb5b6" />
+            <flowNodeTargets>
+              <controlFlow Id="ae1d7c87-e674-43ac-a9d2-736819b5ed33" isLeaf="false">
+                <opaqueActionMoniker Id="173a7549-7fb8-4bb9-aa03-74ecb03fdcd4" LastKnownName="Add Parcel" />
+                <elementDefinition Id="7fb6d45e-710e-4940-bf8b-81d847ebb489" />
+              </controlFlow>
+              <controlFlow Id="23804e84-4aa1-435e-bb63-fefbf80a43b6" isLeaf="false">
+                <opaqueActionMoniker Id="c15ef0dc-693d-4332-8bfa-13b53beb3702" LastKnownName="View Parcel Details" />
+                <elementDefinition Id="4d350dc7-d83e-41ff-abda-d4b2bacd370f" />
+              </controlFlow>
+              <controlFlow Id="45c71b87-c354-4cac-aaba-1712c9735ca7" isLeaf="false">
+                <activityFinalNodeMoniker Id="ebee26de-f79b-4903-baba-76632903b494" LastKnownName="ActivityFinal1" />
+                <elementDefinition Id="c6ca2bb3-cff1-4250-935a-0bbc85c9254b" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <initialNode Id="9e96462a-325a-4c14-958d-c2723a75c409" name="Initial1" isLeaf="false">
+            <elementDefinition Id="35e610b7-bd10-4129-a9a0-4da963dbd748" />
+            <flowNodeTargets>
+              <controlFlow Id="fb267adb-e89b-40fe-87e4-1a1738a5e1d7" isLeaf="false">
+                <opaqueActionMoniker Id="337cd80b-51a8-419b-b58e-9e91a6ad58dc" LastKnownName="View Parcels" />
+                <elementDefinition Id="99f11ef8-be36-4aa8-b47f-fad88f8936a5" />
+              </controlFlow>
+            </flowNodeTargets>
+          </initialNode>
+          <activityFinalNode Id="ebee26de-f79b-4903-baba-76632903b494" name="ActivityFinal1" isLeaf="false">
+            <elementDefinition Id="8f048867-8015-41ce-9469-6f3bbcc189d0" />
+          </activityFinalNode>
+          <decisionNode Id="5ba30c10-9d28-47c8-844b-432a68ff4a0d" name="Decision4" isLeaf="false">
+            <elementDefinition Id="91f5390c-b391-4edb-9731-1f5121720186" />
+            <flowNodeTargets>
+              <controlFlow Id="0522a7c2-8a5d-4757-8635-b132daaa033d" isLeaf="false">
+                <activityFinalNodeMoniker Id="ebee26de-f79b-4903-baba-76632903b494" LastKnownName="ActivityFinal1" />
+                <elementDefinition Id="ea081628-bcb1-45a6-b27b-1a099d4c5b83" />
+              </controlFlow>
+              <controlFlow Id="86b99cbc-0e37-48c2-ba18-9f7013f8aab2" isLeaf="false">
+                <opaqueActionMoniker Id="f5be4703-9fff-473c-b9ed-29862ce7eb77" LastKnownName="Update Parcel Status" />
+                <elementDefinition Id="72bf3fbb-f57e-4b8b-855b-9a255e695952" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <opaqueAction Id="f5be4703-9fff-473c-b9ed-29862ce7eb77" name="Update Parcel Status" isLeaf="false">
+            <elementDefinition Id="5f3bac6b-a7e2-41cc-9c24-1c78ac8382b0" />
+            <flowNodeTargets>
+              <controlFlow Id="81761016-9826-4ce8-b2d8-a429a015715e" isLeaf="false">
+                <opaqueActionMoniker Id="c15ef0dc-693d-4332-8bfa-13b53beb3702" LastKnownName="View Parcel Details" />
+                <elementDefinition Id="91547b2a-d214-4cd6-afdb-d028287b858f" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+        </nodes>
+      </activity>
+    </activityRootModelHasActivity>
+  </packagedElements>
+  <package Id="4868b5fa-91ef-4765-9222-323a302db7b3" name="TdService.Modeling">
+    <elementDefinition Id="e006d43a-3bc9-452c-a7ce-47edd28d044b" />
+  </package>
+</activityRootModel>

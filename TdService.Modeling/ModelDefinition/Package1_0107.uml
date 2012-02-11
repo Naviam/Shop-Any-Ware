@@ -106,17 +106,10 @@
               LastKnownLocation="Package1_0107.uml" />
           </include>
           <include
-            Id="94398710-1a5d-462a-a147-392cacabe77e">
+            Id="5edd31a1-13e6-48f0-8273-5a5e17f2e7cb">
             <useCaseMoniker
-              Id="dd3673d8-d359-4ae3-8209-9864e53e60c1"
-              LastKnownName="Update Address"
-              LastKnownLocation="Package1_0107.uml" />
-          </include>
-          <include
-            Id="a2f671b4-f0c8-476d-bd0b-3f20cd9a6bde">
-            <useCaseMoniker
-              Id="f49ba828-5cf6-4743-94d6-5d0b1df8ed61"
-              LastKnownName="Remove Address"
+              Id="5e1879e5-51b6-4f97-ada8-a3ddefa1e5e1"
+              LastKnownName="View Delivery Address Details"
               LastKnownLocation="Package1_0107.uml" />
           </include>
         </additions>
@@ -128,6 +121,30 @@
         name="View Store Address"
         isAbstract="false"
         isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="5e1879e5-51b6-4f97-ada8-a3ddefa1e5e1"
+        name="View Delivery Address Details"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="31735dda-16cf-49e7-bbe9-453d40bbdd27">
+            <useCaseMoniker
+              Id="dd3673d8-d359-4ae3-8209-9864e53e60c1"
+              LastKnownName="Update Address"
+              LastKnownLocation="Package1_0107.uml" />
+          </include>
+          <include
+            Id="b117dc13-b698-4a4d-8587-86da8a7ce55c">
+            <useCaseMoniker
+              Id="f49ba828-5cf6-4743-94d6-5d0b1df8ed61"
+              LastKnownName="Remove Address"
+              LastKnownLocation="Package1_0107.uml" />
+          </include>
+        </additions>
+      </useCase>
     </packageHasNamedElement>
   </packagedElements>
 </package>

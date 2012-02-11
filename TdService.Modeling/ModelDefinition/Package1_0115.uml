@@ -7,7 +7,7 @@
     <packageHasNamedElement>
       <useCase
         Id="683c3a53-6458-44df-9869-0705c2f0fbff"
-        name="Send Warehousing Period Ends Notification"
+        name="Send Daily Warehousing Period Ends Notification"
         isAbstract="false"
         isLeaf="false">
         <subjects>

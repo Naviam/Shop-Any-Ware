@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="a76753eb-0ed2-4cc5-a63a-f8c8f71431bf" name="Time" linkedPackageId="8d70bd09-d2d1-4a43-897c-d38c7676c38a" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <appliedStereotypesInternal>
+    <stereotypeInstance Id="a6c61b84-cff1-4055-ae5d-82e57a89b0e7" name="namespace" profile="CSharpProfile">
+      <elementDefinition Id="83215c40-e8ab-4007-8499-f71aa2691e39" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="fe00f756-cf7f-41b9-9bdf-16bb028d92fa">
+          <propertyInstance Id="49dbee1e-e528-4a4e-a7ba-57420b43ac79" name="BaseName" value="TdService">
+            <elementDefinition Id="9ce0693a-9a0f-4273-b99b-0ac34f47f58e" />
+          </propertyInstance>
+          <elementDefinition Id="4a043077-7e5b-4fd9-96a7-64d7635201c1" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="60cb195b-13df-4b30-b8c9-e80b0c8bc222">
+          <propertyInstance Id="1174479f-8a9a-459d-a15b-b526e6c75610" name="ClrAttributes">
+            <elementDefinition Id="2e84046b-908f-4a32-98d4-39e94d9d705e" />
+          </propertyInstance>
+          <elementDefinition Id="beda8572-1b32-41a2-b7ed-7c09aa26de3a" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="193f7cbb-2eb7-4488-b25a-0445b9ed6998">
+          <propertyInstance Id="eca148d1-da1b-4f8b-b11e-8cd8f171b32c" name="Usings">
+            <elementDefinition Id="167efa69-29f8-4f1e-bb3f-4b1a8e50ad7b" />
+          </propertyInstance>
+          <elementDefinition Id="9e12bd4b-c667-4f8d-b4b0-34c1a0d569a5" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+    <stereotypeInstance Id="86c25ccb-61b0-477f-996f-052eb4b27bd1" name="TextTemplateBindings" profile="TextTemplateBindings">
+      <elementDefinition Id="8846ae1b-9e13-4ef1-93e8-c9b2308fd2f9" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="31850abe-b1f2-4f6b-a02f-28f4ee66f353">
+          <propertyInstance Id="9aaf01c8-1107-4f0e-b082-42ad0a7e9c52" name="Alias" value="ClassTemplate|EnumTemplate|InterfaceTemplate|StructTemplate">
+            <elementDefinition Id="3472a760-5369-47af-8753-eaf1f365bf4e" />
+          </propertyInstance>
+          <elementDefinition Id="339138bf-7878-4975-901f-2ec6c33bd3e9" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="2072cb69-eecd-41bf-83a7-a32bc97f0f70">
+          <propertyInstance Id="e48bde1c-3bc5-4c18-9300-a66662e2da4b" name="TemplateFilePath" value="ClassTemplate=C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.ClassTemplate.t4|EnumTemplate=C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.EnumTemplate.t4|InterfaceTemplate=C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.InterfaceTemplate.t4|StructTemplate=C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.StructTemplate.t4">
+            <elementDefinition Id="459ae12b-427c-4742-8c4d-03fa5c4848fa" />
+          </propertyInstance>
+          <elementDefinition Id="0b7fdb28-9464-4fb3-9b1a-63e64e3015e2" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="4150edd0-d955-4923-97e7-e3723e43695c">
+          <propertyInstance Id="aa491e9b-2788-40e6-8f95-d9d5c3abf9da" name="ProjectPath" value="ClassTemplate=..\TdService.Domain\TdService.Domain.csproj|EnumTemplate=..\TdService.Domain\TdService.Domain.csproj|InterfaceTemplate=..\TdService.Domain\TdService.Domain.csproj|StructTemplate=..\TdService.Domain\TdService.Domain.csproj">
+            <elementDefinition Id="7cc5cd71-11b2-451f-9656-769cf85f48ec" />
+          </propertyInstance>
+          <elementDefinition Id="587eceeb-25a5-4665-a1d3-8d4c1fea0827" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="964dba27-dbe1-4c50-b9fd-2e4022a2c695">
+          <propertyInstance Id="38fe4e70-5f36-4120-8544-8c70a4559354" name="TargetDirectory" value="ClassTemplate={PackageStructure}|EnumTemplate={PackageStructure}|InterfaceTemplate={PackageStructure}|StructTemplate={PackageStructure}">
+            <elementDefinition Id="dbda9d32-9304-4b19-b5fe-b3d5e6d5539b" />
+          </propertyInstance>
+          <elementDefinition Id="0172f644-f774-4dab-996a-09d1267fdecf" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="dff09122-5232-4176-9ab1-251337f06db7">
+          <propertyInstance Id="71e54358-187b-4a69-9be6-b73bd8e9c1b6" name="TargetName" value="ClassTemplate={Name}|EnumTemplate={Name}|InterfaceTemplate={Name}|StructTemplate={Name}">
+            <elementDefinition Id="a48101f4-3421-4b10-9cf3-66dbb92c1fab" />
+          </propertyInstance>
+          <elementDefinition Id="8ce73baa-a5a3-4c89-a566-97d0fadc1b13" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="4f236b27-0a86-4a30-a184-6ed29aaee395">
+          <propertyInstance Id="ddab8166-f116-4153-933c-b170496ed551" name="Overwrite" value="ClassTemplate=True|EnumTemplate=True|InterfaceTemplate=True|StructTemplate=True">
+            <elementDefinition Id="075e63c1-4076-4e13-8ebd-67950f26cf3a" />
+          </propertyInstance>
+          <elementDefinition Id="6678a209-ab3e-44a4-85bc-444f6be5ee46" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="05f2a850-1d28-43cf-9ecd-f8dcfce96123">
+          <propertyInstance Id="6b49839f-99cc-4b35-9415-139a5c78ab80" name="Parameters">
+            <elementDefinition Id="c1b6d19e-8647-4279-8125-69850c99a4fb" />
+          </propertyInstance>
+          <elementDefinition Id="513e5963-c807-47ec-a46c-717626c8a771" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+  </appliedStereotypesInternal>
+  <profileInstances>
+    <packageHasProfileInstances Id="ea020805-06eb-4c44-92eb-9b9f17722773">
+      <profileInstance Id="29a1cff6-b432-47f8-bd9c-201ad3762300" name="TextTemplateBindings">
+        <elementDefinition Id="19fcac95-f5d2-4773-b284-5fd2debd864c" />
+      </profileInstance>
+      <elementDefinition Id="91062264-0281-4ed4-9610-38da3816671b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="f4dc16cb-de09-49e9-b2f1-0b3838d0b383">
+      <profileInstance Id="667b9913-06e3-40e6-8a02-071a7300f3e8" name="CSharpProfile">
+        <elementDefinition Id="71d78747-3c24-4160-bbec-b01fff4d0349" />
+      </profileInstance>
+      <elementDefinition Id="dbed6c01-0c96-4afa-963b-e5ae39313121" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="372b7775-1eef-40f6-b36a-61315c4efa10" name="Time" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="9e855f96-4af5-4e60-a59a-006798996531" />
+        <targetEnds>
+          <association Id="607c206d-f134-4d8d-a905-da59d45a431c" isDerived="false" sourceEndRoleName="Time" targetEndRoleName="Notify Warehousing period is close to end" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="3c2b9783-ece6-4ddd-99c7-384711c76bb3" LastKnownName="Send Daily Warehousing Period Ends Notification" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="99930a4d-6e2f-45b4-a8f6-2710af551ae0" name="Time" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="b09aed33-10ea-4bd9-b6bf-d63ec62f6ed7" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="9f2116a8-94a7-4e1f-87e2-59af649c1c90" name="Notify Warehousing period is close to end" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="756e7bf9-88ae-40cf-8432-1c15fda8ec30" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="c44ca584-f46e-407e-8f22-7ead95376741" />
+          </association>
+          <association Id="4dab08f8-1300-4975-8e3c-4185f5c85ab6" isDerived="false" sourceEndRoleName="Time" targetEndRoleName="Send weekly financial report" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="c5efea55-c6a3-47b7-a648-dd3b8ec42671" LastKnownName="Send Weekly Financial Report" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="7df8b31a-84e4-474a-a3de-21d160290965" name="Time" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="9af68100-6796-4b58-b6f4-c0295395c9ec" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="4d9cc3db-4109-48fa-bac9-929d3384b71e" name="Send weekly financial report" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="52997f6c-91cc-4c9f-b374-6b21603882e6" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="1b7a60fd-6cd3-4215-a955-3039cb90da80" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="3c2b9783-ece6-4ddd-99c7-384711c76bb3" name="Send Daily Warehousing Period Ends Notification" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="683c3a53-6458-44df-9869-0705c2f0fbff" />
+        <subjects>
+          <subsystemMoniker Id="9607c95a-74cd-43a7-98b8-3575b01cef3c" LastKnownName="Email Notification System" />
+        </subjects>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <subsystem Id="9607c95a-74cd-43a7-98b8-3575b01cef3c" name="Email Notification System" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="b318d4bd-cc3c-40b0-9714-9b5a4ec6d63b" />
+      </subsystem>
+    </useCaseModelRootHasTypes>
+    <packageHasNamedElement>
+      <useCase Id="c5efea55-c6a3-47b7-a648-dd3b8ec42671" name="Send Weekly Financial Report" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="ab8749d4-3118-4d93-9595-9b2400f92127" />
+        <subjects>
+          <subsystemMoniker Id="9607c95a-74cd-43a7-98b8-3575b01cef3c" LastKnownName="Email Notification System" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+  </packagedElements>
+  <package Id="8d70bd09-d2d1-4a43-897c-d38c7676c38a" name="TdService.Modeling">
+    <elementDefinition Id="e006d43a-3bc9-452c-a7ce-47edd28d044b" />
+    <profileInstances>
+      <packageHasProfileInstances Id="a466cd99-7ff3-4577-b3fa-55da789d9b95">
+        <profileInstance Id="f7e9b080-c570-40f4-ab04-0a2af7299056" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="ff36feba-664b-48e7-ab08-951cd71ff02e">
+        <profileInstance Id="e7ee7e3e-3f13-4bc5-9083-b80da89f9a2b" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</useCaseModelRoot>

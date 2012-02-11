@@ -6,12 +6,6 @@
   <packagedElements>
     <packageHasNamedElement>
       <packageMoniker
-        Id="28d1640b-5895-482f-ad10-0aa953fc13db"
-        LastKnownName="Parcels"
-        LastKnownLocation="Package_0107.uml" />
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <packageMoniker
         Id="55045830-8d16-43b3-8c4e-2236eb2744ee"
         LastKnownName="Profile"
         LastKnownLocation="Package1_0107.uml" />
@@ -59,6 +53,12 @@
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="28d1640b-5895-482f-ad10-0aa953fc13db"
+        LastKnownName="Parcels"
+        LastKnownLocation="Package_0107.uml" />
     </packageHasNamedElement>
   </packagedElements>
 </package>

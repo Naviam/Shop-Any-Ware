@@ -24,40 +24,12 @@
       <SubType>Content</SubType>
       <DependentUpon>Administrator.usecasediagram</DependentUpon>
     </Content>
-    <Content Include="Consultant - View Parcels.usecasediagram">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Consultant - View Parcels.usecasediagram.layout">
-      <SubType>Content</SubType>
-      <DependentUpon>Consultant - View Parcels.usecasediagram</DependentUpon>
-    </Content>
-    <Content Include="Consultant.usecasediagram">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Consultant.usecasediagram.layout">
-      <SubType>Content</SubType>
-      <DependentUpon>Consultant.usecasediagram</DependentUpon>
-    </Content>
     <Content Include="Domain Model.classdiagram">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Domain Model.classdiagram.layout">
       <SubType>Content</SubType>
       <DependentUpon>Domain Model.classdiagram</DependentUpon>
-    </Content>
-    <Content Include="DomainLayer.classdiagram">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="DomainLayer.classdiagram.layout">
-      <SubType>Content</SubType>
-      <DependentUpon>DomainLayer.classdiagram</DependentUpon>
-    </Content>
-    <Content Include="Consultant - View Orders.usecasediagram">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Consultant - View Orders.usecasediagram.layout">
-      <SubType>Content</SubType>
-      <DependentUpon>Consultant - View Orders.usecasediagram</DependentUpon>
     </Content>
     <Content Include="ModelDefinition\Package1_0107.uml">
       <SubType>Content</SubType>
@@ -98,6 +70,13 @@
     <Content Include="ModelDefinition\Domain_.uml">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Physical Structure.componentdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Physical Structure.componentdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Physical Structure.componentdiagram</DependentUpon>
+    </Content>
     <Content Include="Repositories.classdiagram">
       <SubType>Content</SubType>
     </Content>
@@ -105,59 +84,102 @@
       <SubType>Content</SubType>
       <DependentUpon>Repositories.classdiagram</DependentUpon>
     </Content>
-    <Content Include="Shopper - View Balance.usecasediagram">
+    <Content Include="Use Cases\Brainstrorming Workshop.usecasediagram">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Shopper - View Balance.usecasediagram.layout">
+    <Content Include="Use Cases\Brainstrorming Workshop.usecasediagram.layout">
       <SubType>Content</SubType>
-      <DependentUpon>Shopper - View Balance.usecasediagram</DependentUpon>
+      <DependentUpon>Use Cases\Brainstrorming Workshop.usecasediagram</DependentUpon>
     </Content>
-    <Content Include="Shopper - View Profile.usecasediagram">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Shopper - View Profile.usecasediagram.layout">
-      <SubType>Content</SubType>
-      <DependentUpon>Shopper - View Profile.usecasediagram</DependentUpon>
-    </Content>
-    <Content Include="Shopper - View Parcels.usecasediagram">
+    <Content Include="Use Cases\Consultant - View Orders.usecasediagram">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Shopper - View Parcels.usecasediagram.layout">
+    <Content Include="Use Cases\Consultant - View Orders.usecasediagram.layout">
       <SubType>Content</SubType>
-      <DependentUpon>Shopper - View Parcels.usecasediagram</DependentUpon>
+      <DependentUpon>Use Cases\Consultant - View Orders.usecasediagram</DependentUpon>
     </Content>
-    <Content Include="Shopper.usecasediagram">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Shopper.usecasediagram.layout">
-      <SubType>Content</SubType>
-      <DependentUpon>Shopper.usecasediagram</DependentUpon>
-    </Content>
-    <Content Include="Shopper - View Orders.usecasediagram">
+    <Content Include="Use Cases\Consultant - View Parcels.usecasediagram">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Shopper - View Orders.usecasediagram.layout">
+    <Content Include="Use Cases\Consultant - View Parcels.usecasediagram.layout">
       <SubType>Content</SubType>
-      <DependentUpon>Shopper - View Orders.usecasediagram</DependentUpon>
+      <DependentUpon>Use Cases\Consultant - View Parcels.usecasediagram</DependentUpon>
     </Content>
-    <Content Include="Brainstrorming Workshop.usecasediagram">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Brainstrorming Workshop.usecasediagram.layout">
-      <SubType>Content</SubType>
-      <DependentUpon>Brainstrorming Workshop.usecasediagram</DependentUpon>
-    </Content>
-    <Content Include="Time.usecasediagram">
+    <Content Include="Use Cases\Consultant.usecasediagram">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Time.usecasediagram.layout">
+    <Content Include="Use Cases\Consultant.usecasediagram.layout">
       <SubType>Content</SubType>
-      <DependentUpon>Time.usecasediagram</DependentUpon>
+      <DependentUpon>Use Cases\Consultant.usecasediagram</DependentUpon>
+    </Content>
+    <Content Include="Use Cases\Shopper - View Balance.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Use Cases\Shopper - View Balance.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Use Cases\Shopper - View Balance.usecasediagram</DependentUpon>
+    </Content>
+    <Content Include="Use Cases\Shopper - View Orders.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Use Cases\Shopper - View Orders.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Use Cases\Shopper - View Orders.usecasediagram</DependentUpon>
+    </Content>
+    <Content Include="Use Cases\Shopper - View Parcels.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Use Cases\Shopper - View Parcels.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Use Cases\Shopper - View Parcels.usecasediagram</DependentUpon>
+    </Content>
+    <Content Include="Use Cases\Shopper - View Profile.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Use Cases\Shopper - View Profile.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Use Cases\Shopper - View Profile.usecasediagram</DependentUpon>
+    </Content>
+    <Content Include="Use Cases\Shopper.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Use Cases\Shopper.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Use Cases\Shopper.usecasediagram</DependentUpon>
+    </Content>
+    <Content Include="Use Cases\Time.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Use Cases\Time.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Use Cases\Time.usecasediagram</DependentUpon>
+    </Content>
+    <Content Include="View Items.activitydiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="View Items.activitydiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>View Items.activitydiagram</DependentUpon>
+    </Content>
+    <Content Include="View Orders.activitydiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="View Orders.activitydiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>View Orders.activitydiagram</DependentUpon>
+    </Content>
+    <Content Include="View Parcels.activitydiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="View Parcels.activitydiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>View Parcels.activitydiagram</DependentUpon>
     </Content>
     <Folder Include="ModelDefinition\" />
     <Content Include="ModelDefinition\TdService.Modeling.uml">
       <SubType>Content</SubType>
     </Content>
+    <Folder Include="Use Cases" />
   </ItemGroup>
   <ItemGroup>
     <Validate Include="Architecture.layerdiagram">

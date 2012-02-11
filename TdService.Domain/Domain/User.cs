@@ -64,7 +64,13 @@ namespace TdService.Domain
 			set;
 		}
 
-		public virtual IEnumerable<Role> Role
+		public virtual IEnumerable<Role> Roles
+		{
+			get;
+			set;
+		}
+
+		public virtual IEnumerable<Parcel> Parcels
 		{
 			get;
 			set;

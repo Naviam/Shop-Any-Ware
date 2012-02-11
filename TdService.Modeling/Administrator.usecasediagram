@@ -10,6 +10,92 @@
       </annotatedElements>
     </comment>
   </ownedCommentsInternal>
+  <appliedStereotypesInternal>
+    <stereotypeInstance Id="1fd30832-a976-402b-b0b7-9772850db846" name="namespace" profile="CSharpProfile">
+      <elementDefinition Id="83215c40-e8ab-4007-8499-f71aa2691e39" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="74670c47-6ca9-474a-9e6d-da9f36e932da">
+          <propertyInstance Id="622e8e32-fd9f-49f1-b04f-00177b1bbcef" name="BaseName" value="TdService">
+            <elementDefinition Id="9ce0693a-9a0f-4273-b99b-0ac34f47f58e" />
+          </propertyInstance>
+          <elementDefinition Id="4a043077-7e5b-4fd9-96a7-64d7635201c1" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="3639cf7e-a31b-4656-9d91-651c218512bb">
+          <propertyInstance Id="5530af6b-00ee-4c4c-975b-6f93640d81f8" name="ClrAttributes">
+            <elementDefinition Id="2e84046b-908f-4a32-98d4-39e94d9d705e" />
+          </propertyInstance>
+          <elementDefinition Id="beda8572-1b32-41a2-b7ed-7c09aa26de3a" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="e129f69a-4e5e-43c3-af38-dffa8e3506fd">
+          <propertyInstance Id="73f7af07-60f6-406a-883c-44fc849a326a" name="Usings">
+            <elementDefinition Id="167efa69-29f8-4f1e-bb3f-4b1a8e50ad7b" />
+          </propertyInstance>
+          <elementDefinition Id="9e12bd4b-c667-4f8d-b4b0-34c1a0d569a5" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+    <stereotypeInstance Id="88c3063f-5130-410a-8948-cfe8c393e4ac" name="TextTemplateBindings" profile="TextTemplateBindings">
+      <elementDefinition Id="8846ae1b-9e13-4ef1-93e8-c9b2308fd2f9" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="b4b181ca-140e-4fcc-aad8-9ef47a90b3b1">
+          <propertyInstance Id="0917d2e7-c6bd-4dac-9d8f-1a120868326d" name="Alias" value="ClassTemplate|EnumTemplate|InterfaceTemplate|StructTemplate">
+            <elementDefinition Id="3472a760-5369-47af-8753-eaf1f365bf4e" />
+          </propertyInstance>
+          <elementDefinition Id="339138bf-7878-4975-901f-2ec6c33bd3e9" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="522b5347-6b47-4cf4-8cad-01fde3c3a569">
+          <propertyInstance Id="562a7a79-8cc9-4426-93a0-8980bac7dada" name="TemplateFilePath" value="ClassTemplate=C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.ClassTemplate.t4|EnumTemplate=C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.EnumTemplate.t4|InterfaceTemplate=C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.InterfaceTemplate.t4|StructTemplate=C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.StructTemplate.t4">
+            <elementDefinition Id="459ae12b-427c-4742-8c4d-03fa5c4848fa" />
+          </propertyInstance>
+          <elementDefinition Id="0b7fdb28-9464-4fb3-9b1a-63e64e3015e2" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="cf797a3c-f6aa-42bb-8217-df1f7cfcf006">
+          <propertyInstance Id="a458721e-5095-490e-a060-83132f566bc0" name="ProjectPath" value="ClassTemplate=..\TdService.Domain\TdService.Domain.csproj|EnumTemplate=..\TdService.Domain\TdService.Domain.csproj|InterfaceTemplate=..\TdService.Domain\TdService.Domain.csproj|StructTemplate=..\TdService.Domain\TdService.Domain.csproj">
+            <elementDefinition Id="7cc5cd71-11b2-451f-9656-769cf85f48ec" />
+          </propertyInstance>
+          <elementDefinition Id="587eceeb-25a5-4665-a1d3-8d4c1fea0827" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="41485269-ac24-4024-ab83-5b81f54803c1">
+          <propertyInstance Id="90710a83-e4fb-463c-8da3-7e3fc4fa2a75" name="TargetDirectory" value="ClassTemplate={PackageStructure}|EnumTemplate={PackageStructure}|InterfaceTemplate={PackageStructure}|StructTemplate={PackageStructure}">
+            <elementDefinition Id="dbda9d32-9304-4b19-b5fe-b3d5e6d5539b" />
+          </propertyInstance>
+          <elementDefinition Id="0172f644-f774-4dab-996a-09d1267fdecf" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="f877f076-5755-4ab1-ac27-9c81896958e5">
+          <propertyInstance Id="f280e1d9-3c5f-48b8-a25a-017ebda0e264" name="TargetName" value="ClassTemplate={Name}|EnumTemplate={Name}|InterfaceTemplate={Name}|StructTemplate={Name}">
+            <elementDefinition Id="a48101f4-3421-4b10-9cf3-66dbb92c1fab" />
+          </propertyInstance>
+          <elementDefinition Id="8ce73baa-a5a3-4c89-a566-97d0fadc1b13" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="5eae3f59-b581-4a69-9f11-da0fda753761">
+          <propertyInstance Id="9bf64609-af9c-4c41-a9fd-d946610fddd2" name="Overwrite" value="ClassTemplate=True|EnumTemplate=True|InterfaceTemplate=True|StructTemplate=True">
+            <elementDefinition Id="075e63c1-4076-4e13-8ebd-67950f26cf3a" />
+          </propertyInstance>
+          <elementDefinition Id="6678a209-ab3e-44a4-85bc-444f6be5ee46" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="449c3402-0934-42d3-81db-1592a7aadb9c">
+          <propertyInstance Id="e6a64868-d574-456a-a7fa-e09eef5e8afa" name="Parameters">
+            <elementDefinition Id="c1b6d19e-8647-4279-8125-69850c99a4fb" />
+          </propertyInstance>
+          <elementDefinition Id="513e5963-c807-47ec-a46c-717626c8a771" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+  </appliedStereotypesInternal>
+  <profileInstances>
+    <packageHasProfileInstances Id="876b6e3d-b9ec-4f14-a20a-d6d50da0fc46">
+      <profileInstance Id="5d51b60d-6ea0-4e33-8aa7-af7c8a47fba3" name="TextTemplateBindings">
+        <elementDefinition Id="19fcac95-f5d2-4773-b284-5fd2debd864c" />
+      </profileInstance>
+      <elementDefinition Id="91062264-0281-4ed4-9610-38da3816671b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="eac774c2-03b5-4e85-90e1-818820db7f81">
+      <profileInstance Id="277b0d6b-92cb-4f59-9b7e-d4a937c53f83" name="CSharpProfile">
+        <elementDefinition Id="71d78747-3c24-4160-bbec-b01fff4d0349" />
+      </profileInstance>
+      <elementDefinition Id="dbed6c01-0c96-4afa-963b-e5ae39313121" />
+    </packageHasProfileInstances>
+  </profileInstances>
   <packagedElements>
     <useCaseModelRootHasTypes>
       <actor Id="14df9b1a-dcdf-43c9-a681-46c330ef4b9a" name="Administrator" isAbstract="false" isLeaf="false">
@@ -58,13 +144,21 @@
             <useCaseMoniker Id="1bcb8a70-20e9-4774-8aab-eec08c25f9fe" LastKnownName="Add User" />
             <elementDefinition Id="036bc881-ffbf-46d8-8aa3-41076e26b83b" />
           </include>
-          <include Id="245c1649-661d-4e17-8148-f64dbfef4eda">
-            <useCaseMoniker Id="bb6f3c8a-b3b4-424b-89dc-574e3dd0a49a" LastKnownName="Update User" />
-            <elementDefinition Id="bb8d6682-c9db-4769-bcaa-18550938de75" />
-          </include>
           <include Id="e2645b81-2eba-459e-88eb-e18404ada459">
             <useCaseMoniker Id="805249d4-8c6d-47db-b264-69e1df33ff54" LastKnownName="Remove User" />
             <elementDefinition Id="50ecb8fd-c33b-4e22-9e7e-63adc421fcd5" />
+          </include>
+          <include Id="77def58b-cdee-440d-883f-e98497e5dacb">
+            <useCaseMoniker Id="5be1811b-eee8-4a38-a7fb-edce548a4929" LastKnownName="Filter Users" />
+            <elementDefinition Id="3b7f2b29-6f93-47da-83d7-5980d07584c8" />
+          </include>
+          <include Id="109ad51a-b178-4a5d-bf34-4db1d968af71">
+            <useCaseMoniker Id="00c83fd9-2d97-48cb-bb7f-4b1b48e66bcd" LastKnownName="Sort Users" />
+            <elementDefinition Id="a4599e51-f5b5-4ca9-bbf0-3f533e315ebe" />
+          </include>
+          <include Id="e5ed30fd-c466-419e-8c6c-da1f1fc0e6fe">
+            <useCaseMoniker Id="f187dd14-33bb-4192-abc6-8b99f6354b4a" LastKnownName="View User Details" />
+            <elementDefinition Id="0ee6f98c-ce2b-4c92-a084-4882be6c8de2" />
           </include>
         </additions>
       </useCase>
@@ -74,11 +168,11 @@
         <elementDefinition Id="8a03112c-2ce6-401e-8925-049820decc02" />
         <additions>
           <include Id="12687567-3273-44b2-a375-444a70a72855">
-            <useCaseMoniker Id="1ca3c5e3-3c8a-4819-87e9-4d10704b70fd" LastKnownName="Add User To Role" />
+            <useCaseMoniker Id="1ca3c5e3-3c8a-4819-87e9-4d10704b70fd" LastKnownName="Add User To Roles" />
             <elementDefinition Id="ae1f7708-da7a-4c82-a740-6ee9b8c6f432" />
           </include>
           <include Id="55c32f3b-82a1-4659-a3bb-c0deed04fbac">
-            <useCaseMoniker Id="da006266-fd2c-4ae3-8fa2-1e3482722efc" LastKnownName="Remove User From Role" />
+            <useCaseMoniker Id="da006266-fd2c-4ae3-8fa2-1e3482722efc" LastKnownName="Remove User From Roles" />
             <elementDefinition Id="c9cb58f5-267e-4cca-9497-831cd3de7a2c" />
           </include>
         </additions>
@@ -95,12 +189,12 @@
       </useCase>
     </useCaseModelRootHasTypes>
     <useCaseModelRootHasTypes>
-      <useCase Id="da006266-fd2c-4ae3-8fa2-1e3482722efc" name="Remove User From Role" isAbstract="false" isLeaf="false">
+      <useCase Id="da006266-fd2c-4ae3-8fa2-1e3482722efc" name="Remove User From Roles" isAbstract="false" isLeaf="false">
         <elementDefinition Id="246d28c0-fe76-493b-b535-be1e12ece3bd" />
       </useCase>
     </useCaseModelRootHasTypes>
     <useCaseModelRootHasTypes>
-      <useCase Id="1ca3c5e3-3c8a-4819-87e9-4d10704b70fd" name="Add User To Role" isAbstract="false" isLeaf="false">
+      <useCase Id="1ca3c5e3-3c8a-4819-87e9-4d10704b70fd" name="Add User To Roles" isAbstract="false" isLeaf="false">
         <elementDefinition Id="8efc14b6-b6a2-42ac-8b28-775dadb619de" />
       </useCase>
     </useCaseModelRootHasTypes>
@@ -118,6 +212,27 @@
     <useCaseModelRootHasTypes>
       <useCase Id="684359ae-2f68-4ce7-87a4-ba72f0681756" name="Filter Sales Report" isAbstract="false" isLeaf="false">
         <elementDefinition Id="f220bb75-452f-41a1-8373-539abb39f6d4" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="5be1811b-eee8-4a38-a7fb-edce548a4929" name="Filter Users" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="9f0bbc6d-37d0-4fb8-a938-19429da5d5cb" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="00c83fd9-2d97-48cb-bb7f-4b1b48e66bcd" name="Sort Users" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="5e9bd492-5180-4fc4-bfbc-679cd3b4c82e" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="f187dd14-33bb-4192-abc6-8b99f6354b4a" name="View User Details" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f231e43a-2c50-4d8e-9930-36a63aa9c2c1" />
+        <additions>
+          <include Id="4a71eba9-6546-4a39-929a-046ae63d502a">
+            <useCaseMoniker Id="bb6f3c8a-b3b4-424b-89dc-574e3dd0a49a" LastKnownName="Update User" />
+            <elementDefinition Id="9db22bb8-507b-4001-a9ab-5790875b6358" />
+          </include>
+        </additions>
       </useCase>
     </useCaseModelRootHasTypes>
   </packagedElements>

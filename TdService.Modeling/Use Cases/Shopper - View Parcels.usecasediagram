@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="a8601b1e-23ef-4bbf-967e-b4659e316243" name="Shopper - View Parcels" linkedPackageId="28a74a8f-c636-44cc-9b61-1bd8452b60c1" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <ownedCommentsInternal>
+    <comment Id="d4b53f1e-424a-45f4-ad1c-38b8ac890d9e">
+      <elementDefinition Id="2f14cf28-229f-4fb0-8834-7946e4db8812" />
+      <body>view own parcels only</body>
+      <annotatedElements>
+        <useCaseMoniker Id="d569686a-fc9e-4b1f-809e-e1b1f376b319" LastKnownName="View Parcels" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
+  <appliedStereotypesInternal>
+    <stereotypeInstance Id="e2457b52-2e8e-4eb8-a5fb-e08c591f0248" name="namespace" profile="CSharpProfile">
+      <elementDefinition Id="83215c40-e8ab-4007-8499-f71aa2691e39" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="b2b365e1-340f-4498-8036-5bb821a14df7">
+          <propertyInstance Id="181efad8-91f9-4214-9a86-72472aa4e757" name="BaseName" value="TdService">
+            <elementDefinition Id="9ce0693a-9a0f-4273-b99b-0ac34f47f58e" />
+          </propertyInstance>
+          <elementDefinition Id="4a043077-7e5b-4fd9-96a7-64d7635201c1" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="a245a5dc-932b-4fac-96a3-b3b9ad6a042a">
+          <propertyInstance Id="158b5745-6484-44ae-8d82-7889d2d9657c" name="ClrAttributes">
+            <elementDefinition Id="2e84046b-908f-4a32-98d4-39e94d9d705e" />
+          </propertyInstance>
+          <elementDefinition Id="beda8572-1b32-41a2-b7ed-7c09aa26de3a" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="fb949593-4e12-4aab-8eab-6e162527a56f">
+          <propertyInstance Id="efff08d4-fabf-40d8-9335-5c1495f839f6" name="Usings">
+            <elementDefinition Id="167efa69-29f8-4f1e-bb3f-4b1a8e50ad7b" />
+          </propertyInstance>
+          <elementDefinition Id="9e12bd4b-c667-4f8d-b4b0-34c1a0d569a5" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+    <stereotypeInstance Id="92247f0d-0961-416c-bbc3-f659563a2028" name="TextTemplateBindings" profile="TextTemplateBindings">
+      <elementDefinition Id="8846ae1b-9e13-4ef1-93e8-c9b2308fd2f9" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="93986e6a-d270-4f9f-abe2-d2eb298ab1dd">
+          <propertyInstance Id="3dd54105-1612-442a-be69-ecc28afae757" name="Alias" value="ClassTemplate|EnumTemplate|InterfaceTemplate|StructTemplate">
+            <elementDefinition Id="3472a760-5369-47af-8753-eaf1f365bf4e" />
+          </propertyInstance>
+          <elementDefinition Id="339138bf-7878-4975-901f-2ec6c33bd3e9" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="77ae4291-ffa4-4b72-b502-14bb05833a49">
+          <propertyInstance Id="0fca00ba-becf-462c-9cbc-bd40df58f9cd" name="TemplateFilePath" value="ClassTemplate=C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.ClassTemplate.t4|EnumTemplate=C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.EnumTemplate.t4|InterfaceTemplate=C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.InterfaceTemplate.t4|StructTemplate=C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.StructTemplate.t4">
+            <elementDefinition Id="459ae12b-427c-4742-8c4d-03fa5c4848fa" />
+          </propertyInstance>
+          <elementDefinition Id="0b7fdb28-9464-4fb3-9b1a-63e64e3015e2" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="da60347d-f00b-4446-b047-79d04b2e015a">
+          <propertyInstance Id="545bbca9-98ca-4846-9850-1c560253a999" name="ProjectPath" value="ClassTemplate=..\TdService.Domain\TdService.Domain.csproj|EnumTemplate=..\TdService.Domain\TdService.Domain.csproj|InterfaceTemplate=..\TdService.Domain\TdService.Domain.csproj|StructTemplate=..\TdService.Domain\TdService.Domain.csproj">
+            <elementDefinition Id="7cc5cd71-11b2-451f-9656-769cf85f48ec" />
+          </propertyInstance>
+          <elementDefinition Id="587eceeb-25a5-4665-a1d3-8d4c1fea0827" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="0dd6af12-8a10-432d-ad83-d66b1a05ac2d">
+          <propertyInstance Id="6b90f07c-e417-43a2-ad0a-c23e9ce584c1" name="TargetDirectory" value="ClassTemplate={PackageStructure}|EnumTemplate={PackageStructure}|InterfaceTemplate={PackageStructure}|StructTemplate={PackageStructure}">
+            <elementDefinition Id="dbda9d32-9304-4b19-b5fe-b3d5e6d5539b" />
+          </propertyInstance>
+          <elementDefinition Id="0172f644-f774-4dab-996a-09d1267fdecf" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="977b0dd5-c445-456b-a3a2-16f674695f43">
+          <propertyInstance Id="84bda9c8-5b06-41ca-8c03-5be16a201151" name="TargetName" value="ClassTemplate={Name}|EnumTemplate={Name}|InterfaceTemplate={Name}|StructTemplate={Name}">
+            <elementDefinition Id="a48101f4-3421-4b10-9cf3-66dbb92c1fab" />
+          </propertyInstance>
+          <elementDefinition Id="8ce73baa-a5a3-4c89-a566-97d0fadc1b13" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="7189d1c9-a5b6-44bd-8527-ddd2e7b15175">
+          <propertyInstance Id="5ba83d59-7975-4ffe-9a20-3ead34b1d587" name="Overwrite" value="ClassTemplate=True|EnumTemplate=True|InterfaceTemplate=True|StructTemplate=True">
+            <elementDefinition Id="075e63c1-4076-4e13-8ebd-67950f26cf3a" />
+          </propertyInstance>
+          <elementDefinition Id="6678a209-ab3e-44a4-85bc-444f6be5ee46" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="290287aa-5426-4419-b79d-768c1778779b">
+          <propertyInstance Id="05d9957e-d209-46cd-8b89-ab4ff8d91ba6" name="Parameters">
+            <elementDefinition Id="c1b6d19e-8647-4279-8125-69850c99a4fb" />
+          </propertyInstance>
+          <elementDefinition Id="513e5963-c807-47ec-a46c-717626c8a771" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+  </appliedStereotypesInternal>
+  <profileInstances>
+    <packageHasProfileInstances Id="069b1ddc-88a0-4f9c-819b-70c0890c13d5">
+      <profileInstance Id="0986a629-f4f9-4dfc-b6ab-f4f8977396eb" name="TextTemplateBindings">
+        <elementDefinition Id="19fcac95-f5d2-4773-b284-5fd2debd864c" />
+      </profileInstance>
+      <elementDefinition Id="91062264-0281-4ed4-9610-38da3816671b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="e7b1d84b-4a72-4ccd-b08d-664eb3167cce">
+      <profileInstance Id="d4a7c462-6c69-4f22-96f9-d9cd39989f27" name="CSharpProfile">
+        <elementDefinition Id="71d78747-3c24-4160-bbec-b01fff4d0349" />
+      </profileInstance>
+      <elementDefinition Id="dbed6c01-0c96-4afa-963b-e5ae39313121" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="c8387859-4e6f-4a71-81e2-12a89a23b13e" name="Shopper" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="e9f5ee6f-30a6-42e0-b103-1b5ef0aa4b74" />
+        <targetEnds>
+          <association Id="e7eb692a-1cdc-40c8-b559-71542d33df4d" isDerived="false" sourceEndRoleName="Shopper" targetEndRoleName="View Parcels" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="d569686a-fc9e-4b1f-809e-e1b1f376b319" LastKnownName="View Parcels" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c414c7d2-9362-45f2-9401-277aaf0ac9ad" name="Shopper" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="a01c6bda-da41-4a90-93ca-ecee5f48fe75" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="7767d247-36e3-41d2-b69e-6ea16c4bf21c" name="View Parcels" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="174631dd-e67b-418e-9481-0c3989faa454" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="3db6f1f2-47cb-4d5d-9a2c-ac4278a9c464" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="7e740bb4-eaf4-40d5-bd63-8ebe45e19c0a" name="Add Parcel" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="da2597f1-c03c-4f25-b745-cadebb293710" />
+        <additions>
+          <include Id="4e694637-54d0-4e38-860b-163f6e567a17">
+            <useCaseMoniker Id="873eb9d5-9f06-486a-a743-0a4fd20eb161" LastKnownName="Add Orders To Parcel" />
+            <elementDefinition Id="25a6c73b-122d-45da-90d4-e3a31d74e0f5" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="530dff75-59d8-4c84-ac85-8d72c59b0410" name="Update Parcel" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="ccd5ede6-9a74-476f-888d-7f995f608b21" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="9049e4a0-a7b8-4ac6-ba01-33071d81e550" name="Remove Parcel" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="0fc4a73e-5415-4945-84dd-da97e6814da8" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="d569686a-fc9e-4b1f-809e-e1b1f376b319" name="View Parcels" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="bdbe8537-c7b8-4d5f-abc2-df7d3d474ed4" />
+        <additions>
+          <include Id="047367d3-4e36-43ce-b5db-8d2714256e8e">
+            <useCaseMoniker Id="005180e3-9070-4c0c-b1e3-24ecdb73a4c1" LastKnownName="Filter Parcels" />
+            <elementDefinition Id="b4717a0c-bc17-46b5-9ebe-bf57f853ba6c" />
+          </include>
+          <include Id="826f24c2-2479-413c-8008-e23f94c87e1e">
+            <useCaseMoniker Id="3e4a7c88-97d7-43c3-94a6-9028887f8e9b" LastKnownName="Sort Parcels" />
+            <elementDefinition Id="d4506b1f-203b-4ea8-a060-039449e273dd" />
+          </include>
+          <include Id="854018cd-ab14-43ef-bf2d-1645d966839a">
+            <useCaseMoniker Id="37d75ad2-8a0f-421f-90c4-97f6dc846605" LastKnownName="View Parcel Details" />
+            <elementDefinition Id="5bdb8c9e-96ee-4c08-86df-0932fcb5a826" />
+          </include>
+          <include Id="a8159ca2-8886-45be-813d-fe7300209784">
+            <useCaseMoniker Id="7e740bb4-eaf4-40d5-bd63-8ebe45e19c0a" LastKnownName="Add Parcel" />
+            <elementDefinition Id="fce3c5f8-00bf-4486-ac0a-43b3c6de6b7d" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="005180e3-9070-4c0c-b1e3-24ecdb73a4c1" name="Filter Parcels" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f1ea2fd6-514a-4a6c-ab48-f46d2d935ab3" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="3e4a7c88-97d7-43c3-94a6-9028887f8e9b" name="Sort Parcels" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="02c64def-56d7-4df9-9115-8802241ca9ea" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="37d75ad2-8a0f-421f-90c4-97f6dc846605" name="View Parcel Details" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="63411706-38c2-42f4-a274-196e390d5cbb" />
+        <additions>
+          <include Id="833d7eee-4435-4171-ac11-fe25fb354368">
+            <useCaseMoniker Id="530dff75-59d8-4c84-ac85-8d72c59b0410" LastKnownName="Update Parcel" />
+            <elementDefinition Id="a911c171-5d0c-4ba5-b6a6-0471fa2c45fc" />
+          </include>
+          <include Id="2d1ae373-bd17-4d3a-9960-c459b8bc94ab">
+            <useCaseMoniker Id="9049e4a0-a7b8-4ac6-ba01-33071d81e550" LastKnownName="Remove Parcel" />
+            <elementDefinition Id="dbe5a270-c95a-4d8e-805b-1b665ac1d308" />
+          </include>
+          <include Id="edc24071-6251-427e-b4b4-bc1a90c9f8b3">
+            <useCaseMoniker Id="873eb9d5-9f06-486a-a743-0a4fd20eb161" LastKnownName="Add Orders To Parcel" />
+            <elementDefinition Id="2bcf0f1d-d3c9-47a3-9a72-3f1af07baf7c" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="873eb9d5-9f06-486a-a743-0a4fd20eb161" name="Add Orders To Parcel" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="95336572-8e61-46c9-9081-48074b2d028f" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="28a74a8f-c636-44cc-9b61-1bd8452b60c1" name="TdService.Modeling">
+    <elementDefinition Id="e006d43a-3bc9-452c-a7ce-47edd28d044b" />
+    <profileInstances>
+      <packageHasProfileInstances Id="6aecd181-24ce-45ac-bcde-c9ffc957c8d2">
+        <profileInstance Id="8dbe4b5b-4c55-47b3-b51c-591f1848aee2" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="9e338df6-e46d-4d4e-8b29-29ab02bce08d">
+        <profileInstance Id="9cea2df1-1b3d-49c8-8ea8-1b02fb9f3652" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</useCaseModelRoot>

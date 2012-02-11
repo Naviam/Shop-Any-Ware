@@ -14,9 +14,19 @@
     <packageHasNamedElement>
       <useCase
         Id="da2597f1-c03c-4f25-b745-cadebb293710"
-        name="Collect Parcels"
+        name="Add Parcel"
         isAbstract="false"
-        isLeaf="false" />
+        isLeaf="false">
+        <additions>
+          <include
+            Id="25a6c73b-122d-45da-90d4-e3a31d74e0f5">
+            <useCaseMoniker
+              Id="95336572-8e61-46c9-9081-48074b2d028f"
+              LastKnownName="Add Orders To Parcel"
+              LastKnownLocation="Package_0107.uml" />
+          </include>
+        </additions>
+      </useCase>
     </packageHasNamedElement>
     <packageHasNamedElement>
       <useCase
@@ -74,6 +84,13 @@
               LastKnownName="Remove Parcel"
               LastKnownLocation="Package_0107.uml" />
           </include>
+          <include
+            Id="2bcf0f1d-d3c9-47a3-9a72-3f1af07baf7c">
+            <useCaseMoniker
+              Id="95336572-8e61-46c9-9081-48074b2d028f"
+              LastKnownName="Add Orders To Parcel"
+              LastKnownLocation="Package_0107.uml" />
+          </include>
         </additions>
       </useCase>
     </packageHasNamedElement>
@@ -109,11 +126,18 @@
             Id="fce3c5f8-00bf-4486-ac0a-43b3c6de6b7d">
             <useCaseMoniker
               Id="da2597f1-c03c-4f25-b745-cadebb293710"
-              LastKnownName="Collect Parcels"
+              LastKnownName="Add Parcel"
               LastKnownLocation="Package_0107.uml" />
           </include>
         </additions>
       </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="95336572-8e61-46c9-9081-48074b2d028f"
+        name="Add Orders To Parcel"
+        isAbstract="false"
+        isLeaf="false" />
     </packageHasNamedElement>
   </packagedElements>
 </package>

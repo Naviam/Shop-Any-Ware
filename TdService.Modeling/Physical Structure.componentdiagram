@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<componentModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm11="http://schemas.microsoft.com/dsltools/UseCaseModel" dslVersion="1.0.0.0" Id="bab41de5-5cb2-42b3-a8a3-559a7570ae7e" name="Physical Structure" linkedPackageId="9e79dbb9-2a80-46bb-9790-27092d6b56a0" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ComponentDesigner">
+  <appliedStereotypesInternal>
+    <stereotypeInstance Id="554547b1-4cf0-459b-9c90-36518ab1b45a" name="namespace" profile="CSharpProfile">
+      <elementDefinition Id="83215c40-e8ab-4007-8499-f71aa2691e39" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="95602f0e-7b4c-4abc-aca6-45ada36b29a2">
+          <propertyInstance Id="c5e29d2e-6290-49a9-baf8-07a074c4f4f7" name="BaseName" value="TdService">
+            <elementDefinition Id="9ce0693a-9a0f-4273-b99b-0ac34f47f58e" />
+          </propertyInstance>
+          <elementDefinition Id="4a043077-7e5b-4fd9-96a7-64d7635201c1" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="8bf95dc9-97cb-4347-be81-1df42b85b9ef">
+          <propertyInstance Id="31225de5-5603-47b9-9536-d6faccd50e35" name="ClrAttributes">
+            <elementDefinition Id="2e84046b-908f-4a32-98d4-39e94d9d705e" />
+          </propertyInstance>
+          <elementDefinition Id="beda8572-1b32-41a2-b7ed-7c09aa26de3a" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="b04a66e3-88ed-4ce4-965d-6b7406380083">
+          <propertyInstance Id="221d0aa1-4763-41c7-b7ee-d03a973920a7" name="Usings">
+            <elementDefinition Id="167efa69-29f8-4f1e-bb3f-4b1a8e50ad7b" />
+          </propertyInstance>
+          <elementDefinition Id="9e12bd4b-c667-4f8d-b4b0-34c1a0d569a5" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+    <stereotypeInstance Id="c29c9099-c2c7-487e-bbd8-912655592173" name="TextTemplateBindings" profile="TextTemplateBindings">
+      <elementDefinition Id="8846ae1b-9e13-4ef1-93e8-c9b2308fd2f9" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="f4c99ad3-b3e3-48a7-a937-4bbc2f08570d">
+          <propertyInstance Id="b139f945-a0cd-4e6d-9646-fbf9e5861c5f" name="Alias" value="ClassTemplate|EnumTemplate|InterfaceTemplate|StructTemplate">
+            <elementDefinition Id="3472a760-5369-47af-8753-eaf1f365bf4e" />
+          </propertyInstance>
+          <elementDefinition Id="339138bf-7878-4975-901f-2ec6c33bd3e9" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="662219fd-8bb7-43c9-b1eb-53a5c934ec03">
+          <propertyInstance Id="992bf7d7-71df-4936-93ad-526164802988" name="TemplateFilePath" value="ClassTemplate=C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.ClassTemplate.t4|EnumTemplate=C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.EnumTemplate.t4|InterfaceTemplate=C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.InterfaceTemplate.t4|StructTemplate=C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.StructTemplate.t4">
+            <elementDefinition Id="459ae12b-427c-4742-8c4d-03fa5c4848fa" />
+          </propertyInstance>
+          <elementDefinition Id="0b7fdb28-9464-4fb3-9b1a-63e64e3015e2" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="42753603-1e48-4051-ba4b-3ab080fe8cd9">
+          <propertyInstance Id="3befa9ce-c8c1-4942-9936-ffaba529c4eb" name="ProjectPath" value="ClassTemplate=..\TdService.Domain\TdService.Domain.csproj|EnumTemplate=..\TdService.Domain\TdService.Domain.csproj|InterfaceTemplate=..\TdService.Domain\TdService.Domain.csproj|StructTemplate=..\TdService.Domain\TdService.Domain.csproj">
+            <elementDefinition Id="7cc5cd71-11b2-451f-9656-769cf85f48ec" />
+          </propertyInstance>
+          <elementDefinition Id="587eceeb-25a5-4665-a1d3-8d4c1fea0827" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="ac8175f0-ea34-4831-9169-a34bdcae1e47">
+          <propertyInstance Id="3fd6b85e-96f5-4112-bbda-3a19949ac586" name="TargetDirectory" value="ClassTemplate={PackageStructure}|EnumTemplate={PackageStructure}|InterfaceTemplate={PackageStructure}|StructTemplate={PackageStructure}">
+            <elementDefinition Id="dbda9d32-9304-4b19-b5fe-b3d5e6d5539b" />
+          </propertyInstance>
+          <elementDefinition Id="0172f644-f774-4dab-996a-09d1267fdecf" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="99cfcb17-291d-4c89-9638-2d5ee16e59bf">
+          <propertyInstance Id="bd4cfc0b-ac96-47f1-ae9e-6f54f74fadc5" name="TargetName" value="ClassTemplate={Name}|EnumTemplate={Name}|InterfaceTemplate={Name}|StructTemplate={Name}">
+            <elementDefinition Id="a48101f4-3421-4b10-9cf3-66dbb92c1fab" />
+          </propertyInstance>
+          <elementDefinition Id="8ce73baa-a5a3-4c89-a566-97d0fadc1b13" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="1e8cba9d-1a63-4dba-b688-da5be5777ce7">
+          <propertyInstance Id="4538fd84-d7f5-4511-8bf9-8742b9083aec" name="Overwrite" value="ClassTemplate=True|EnumTemplate=True|InterfaceTemplate=True|StructTemplate=True">
+            <elementDefinition Id="075e63c1-4076-4e13-8ebd-67950f26cf3a" />
+          </propertyInstance>
+          <elementDefinition Id="6678a209-ab3e-44a4-85bc-444f6be5ee46" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="7631aad8-56e8-48c8-abf5-75daa5e559de">
+          <propertyInstance Id="3c5bd3a7-c890-4197-ac16-4ab0f8b10a8a" name="Parameters">
+            <elementDefinition Id="c1b6d19e-8647-4279-8125-69850c99a4fb" />
+          </propertyInstance>
+          <elementDefinition Id="513e5963-c807-47ec-a46c-717626c8a771" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+  </appliedStereotypesInternal>
+  <profileInstances>
+    <packageHasProfileInstances Id="8ce8d0e7-d5a7-4d00-9c2b-58eff0c690f2">
+      <profileInstance Id="410d09e4-fc60-41f3-b60c-bc3b56d163e8" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="43067d46-d041-4c1c-a699-4f330fa3b356">
+      <profileInstance Id="b5858973-b926-47cc-a25b-d844770af6ae" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="09a9e781-01d2-4b7d-9294-db77489cca29">
+      <profileInstance Id="db445503-aba5-48ae-9a2c-e86c102766db" name="TextTemplateBindings">
+        <elementDefinition Id="19fcac95-f5d2-4773-b284-5fd2debd864c" />
+      </profileInstance>
+      <elementDefinition Id="91062264-0281-4ed4-9610-38da3816671b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="2c6cbc40-d937-4ee9-b099-8310f52b45d3">
+      <profileInstance Id="141ef24b-dea5-4a3c-bf93-665fb435dfb3" name="CSharpProfile">
+        <elementDefinition Id="71d78747-3c24-4160-bbec-b01fff4d0349" />
+      </profileInstance>
+      <elementDefinition Id="dbed6c01-0c96-4afa-963b-e5ae39313121" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <componentModelHasComponents>
+      <component Id="162346cb-fd71-4c77-9af1-5aa4b1300955" name="TdService.Web.dll" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="f05a77ef-6f5c-4217-96b9-a499fc36b804" />
+        <suppliersInternal>
+          <dependency Id="a777513a-3647-4725-9cdb-068bdf2062b3">
+            <componentMoniker Id="a73882a1-d47a-45cb-a0a6-e61a9eaf42ba" LastKnownName="TdService.API.dll" />
+            <elementDefinition Id="215bb286-c2b9-4102-a23f-5ecfff25307f" />
+          </dependency>
+          <dependency Id="6d8ef671-049a-4b94-967b-413c8924fc16">
+            <componentMoniker Id="a4778aeb-2823-4b00-81d3-ff6e728c1284" LastKnownName="TdService.Domain.dll" />
+            <elementDefinition Id="c4639b64-ffa0-4ece-9c87-463f3cefc0e6" />
+          </dependency>
+        </suppliersInternal>
+      </component>
+    </componentModelHasComponents>
+    <componentModelHasComponents>
+      <component Id="a4778aeb-2823-4b00-81d3-ff6e728c1284" name="TdService.Domain.dll" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="6ab42a79-81c5-49e0-9754-ef553dd87dce" />
+        <suppliersInternal>
+          <dependency Id="cd7536e2-f674-4d58-ad1b-8b94646223f5">
+            <componentMoniker Id="4d0e2ff4-abec-4a17-94af-e4aad9106d76" LastKnownName="TdService.Infrastructure.dll" />
+            <elementDefinition Id="ccfe744d-a674-4f52-add4-6178833db5af" />
+          </dependency>
+          <dependency Id="fd3b724c-59b3-4620-aa0c-3de4d5f32c28">
+            <componentMoniker Id="9a9d7317-1cbe-44b2-bf2c-d66875f30e45" LastKnownName="TdService.Data.dll" />
+            <elementDefinition Id="ac1addb5-d72c-4df4-a6ed-e965d998da30" />
+          </dependency>
+        </suppliersInternal>
+      </component>
+    </componentModelHasComponents>
+    <componentModelHasComponents>
+      <component Id="9a9d7317-1cbe-44b2-bf2c-d66875f30e45" name="TdService.Data.dll" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="c83a97a5-a15c-43df-977a-191838dd8b4b" />
+        <suppliersInternal>
+          <dependency Id="29274853-23e1-4000-8039-f1e216079822">
+            <componentMoniker Id="05b5a6ba-8f66-4959-a8b9-234013c01edd" LastKnownName="MySQL Database" />
+            <elementDefinition Id="8ba5a11a-bad6-4d9c-9961-d62155057a63" />
+          </dependency>
+          <dependency Id="3bf70917-c090-4925-91f1-3baaae27a60a">
+            <componentMoniker Id="d69cb7e3-e6a7-44c1-ab9d-a22b9a617caf" LastKnownName="MsSQL Database" />
+            <elementDefinition Id="6ee49564-a448-44d8-b86c-7c8691704e6a" />
+          </dependency>
+        </suppliersInternal>
+      </component>
+    </componentModelHasComponents>
+    <componentModelHasComponents>
+      <component Id="4d0e2ff4-abec-4a17-94af-e4aad9106d76" name="TdService.Infrastructure.dll" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="111943fe-1e11-4597-9eaf-98e38b7bb9bc" />
+        <suppliersInternal>
+          <dependency Id="49adc859-75d6-4e15-9e98-643e161d6954">
+            <componentMoniker Id="745a14ca-f5d4-4fa0-a2af-7e41f19b3f41" LastKnownName="Amazon SimpleDB" />
+            <elementDefinition Id="69ffdbc1-6773-42cf-8b85-e73638f98f12" />
+          </dependency>
+          <dependency Id="7bfd02be-cf04-4560-a998-1bc98decd3cb">
+            <componentMoniker Id="16c37570-22d7-4416-9833-e52f514da7d9" LastKnownName="Amazon S3" />
+            <elementDefinition Id="ed8d68b6-43ab-4b20-8082-73d97ed0b9b2" />
+          </dependency>
+        </suppliersInternal>
+      </component>
+    </componentModelHasComponents>
+    <componentModelHasComponents>
+      <component Id="a73882a1-d47a-45cb-a0a6-e61a9eaf42ba" name="TdService.API.dll" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="a998e4b9-3dbe-4870-844c-8d8abe4cfbfe" />
+        <suppliersInternal>
+          <dependency Id="8ea00208-9dc8-4841-95ff-40d3ff928943">
+            <componentMoniker Id="a4778aeb-2823-4b00-81d3-ff6e728c1284" LastKnownName="TdService.Domain.dll" />
+            <elementDefinition Id="a3dff464-f9ce-45d3-a499-204173955743" />
+          </dependency>
+        </suppliersInternal>
+      </component>
+    </componentModelHasComponents>
+    <componentModelHasComponents>
+      <component Id="05b5a6ba-8f66-4959-a8b9-234013c01edd" name="MySQL Database" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="5b981ba5-fbba-4770-b29a-3fd48c5a5554" />
+      </component>
+    </componentModelHasComponents>
+    <componentModelHasComponents>
+      <component Id="d69cb7e3-e6a7-44c1-ab9d-a22b9a617caf" name="MsSQL Database" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="2ded25e4-8e5b-4b87-95f4-680972a50ded" />
+      </component>
+    </componentModelHasComponents>
+    <componentModelHasComponents>
+      <component Id="745a14ca-f5d4-4fa0-a2af-7e41f19b3f41" name="Amazon SimpleDB" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="6f5bc619-6d85-4f4b-82ac-c0f41ac44acc" />
+      </component>
+    </componentModelHasComponents>
+    <componentModelHasComponents>
+      <component Id="16c37570-22d7-4416-9833-e52f514da7d9" name="Amazon S3" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="7aa638d6-945c-4937-83aa-c85b42bf3ac8" />
+      </component>
+    </componentModelHasComponents>
+  </packagedElements>
+  <package Id="9e79dbb9-2a80-46bb-9790-27092d6b56a0" name="TdService.Modeling">
+    <elementDefinition Id="e006d43a-3bc9-452c-a7ce-47edd28d044b" />
+  </package>
+</componentModel>
