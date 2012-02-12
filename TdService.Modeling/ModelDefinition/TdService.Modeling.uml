@@ -54,7 +54,7 @@ View Profile
         <actorMoniker
           Id="e9f5ee6f-30a6-42e0-b103-1b5ef0aa4b74"
           LastKnownName="Shopper"
-          LastKnownLocation="TdService.Modeling.uml" />
+          LastKnownLocation="UseCases.uml" />
       </annotatedElements>
     </comment>
     <comment
@@ -78,7 +78,7 @@ View Feedback and Questions
         <actorMoniker
           Id="b951e9ed-e95f-46d2-9b59-5db1a78dfd9e"
           LastKnownName="Consultant"
-          LastKnownLocation="TdService.Modeling.uml" />
+          LastKnownLocation="UseCases.uml" />
       </annotatedElements>
     </comment>
     <comment
@@ -98,7 +98,7 @@ View Parcel Details
         <actorMoniker
           Id="f1d02f09-f7a3-46f4-9184-50abd90f21cd"
           LastKnownName="Operator"
-          LastKnownLocation="TdService.Modeling.uml" />
+          LastKnownLocation="UseCases.uml" />
       </annotatedElements>
     </comment>
     <comment
@@ -126,7 +126,7 @@ View Users
         <actorMoniker
           Id="e28f6efb-ff69-4dce-a802-6087dce5a157"
           LastKnownName="Administrator"
-          LastKnownLocation="TdService.Modeling.uml" />
+          LastKnownLocation="UseCases.uml" />
       </annotatedElements>
     </comment>
     <comment
@@ -140,7 +140,7 @@ Send Weekly Financial Report</body>
         <actorMoniker
           Id="9e855f96-4af5-4e60-a59a-006798996531"
           LastKnownName="Time"
-          LastKnownLocation="TdService.Modeling.uml" />
+          LastKnownLocation="UseCases.uml" />
       </annotatedElements>
     </comment>
     <comment
@@ -254,7 +254,7 @@ Reset Password</body>
         <actorMoniker
           Id="75ac1d6e-299b-4093-ab4a-3dd2d6e7737d"
           LastKnownName="Unregistered Shopper"
-          LastKnownLocation="TdService.Modeling.uml" />
+          LastKnownLocation="UseCases.uml" />
       </annotatedElements>
     </comment>
     <comment
@@ -472,837 +472,6 @@ Reset Password</body>
   </profileInstances>
   <packagedElements>
     <packageHasNamedElement>
-      <actor
-        Id="b951e9ed-e95f-46d2-9b59-5db1a78dfd9e"
-        name="Consultant"
-        isAbstract="false"
-        isLeaf="false">
-        <targetEnds>
-          <association
-            Id="64f93b79-c0a7-4d37-ac95-4acb0187d577"
-            isDerived="false"
-            sourceEndRoleName="Sales Representative"
-            targetEndRoleName="TD Service - Online Mail Forwarding"
-            isLeaf="false"
-            isAbstract="false">
-            <subsystemMoniker
-              Id="eeac1e7f-c616-4d6d-aa3d-acbdcc26df4a"
-              LastKnownName="TD Service - Online Mail Forwarding"
-              LastKnownLocation="UseCases.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="556dc0d5-b65a-43a4-a161-d72f9b59ad14"
-                  name="Sales Representative"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="2ac14ab8-bcfb-4555-b320-249dbe4f636d"
-                  name="TD Service - Online Mail Forwarding"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false" />
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-          <association
-            Id="787903ec-0c6c-42db-b403-1f53ef14b246"
-            isDerived="false"
-            sourceEndRoleName="Consultant"
-            targetEndRoleName="Review Feedback and Questions"
-            isLeaf="false"
-            isAbstract="false">
-            <useCaseMoniker
-              Id="7e659887-4296-4564-855f-d10f8acb7a19"
-              LastKnownName="View Feedback and Questions"
-              LastKnownLocation="Package_0117.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="1a406e09-681a-491e-a47a-4321d5ac8022"
-                  name="Consultant"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="47427cda-25ae-4b97-8d3a-6729e4f38854"
-                  name="Review Feedback and Questions"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false" />
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-          <association
-            Id="2c439bc7-aa07-4ec6-9bb6-cf3499c35a65"
-            isDerived="false"
-            sourceEndRoleName="Consultant"
-            targetEndRoleName="View Orders"
-            isLeaf="false"
-            isAbstract="false">
-            <useCaseMoniker
-              Id="c09abc0b-ede9-4ca1-85fc-8980f87330dd"
-              LastKnownName="View Orders"
-              LastKnownLocation="Package_0106.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="81ba23de-4a64-42da-ae07-f7a9fa0881f7"
-                  name="Consultant"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="69a16f8a-fb53-453a-86f7-43a67b8c95a2"
-                  name="View Orders"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false" />
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-          <association
-            Id="58ef8913-c0f0-41b4-953f-acfb0883bca6"
-            isDerived="false"
-            sourceEndRoleName="Consultant"
-            targetEndRoleName="View Parcels"
-            isLeaf="false"
-            isAbstract="false">
-            <useCaseMoniker
-              Id="bdbe8537-c7b8-4d5f-abc2-df7d3d474ed4"
-              LastKnownName="View Parcels"
-              LastKnownLocation="Package_0107.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="144eb304-699b-4473-aa80-ab9dfbb55412"
-                  name="Consultant"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="cc9202be-27d1-4c3e-9d56-099f4811b34d"
-                  name="View Parcels"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false" />
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-        </targetEnds>
-      </actor>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <actor
-        Id="e28f6efb-ff69-4dce-a802-6087dce5a157"
-        name="Administrator"
-        isAbstract="false"
-        isLeaf="false">
-        <generalsInternal>
-          <generalization
-            Id="8db0e94f-1ee6-4a24-9181-1d1609e04a45"
-            isSubstitutable="false">
-            <actorMoniker
-              Id="f1d02f09-f7a3-46f4-9184-50abd90f21cd"
-              LastKnownName="Operator"
-              LastKnownLocation="TdService.Modeling.uml" />
-          </generalization>
-        </generalsInternal>
-        <targetEnds>
-          <association
-            Id="82a1f73f-ab63-4624-ba22-2b6b47479dc4"
-            isDerived="false"
-            sourceEndRoleName="Administrator"
-            targetEndRoleName="TD Service - Online Mail Forwarding"
-            isLeaf="false"
-            isAbstract="false">
-            <subsystemMoniker
-              Id="eeac1e7f-c616-4d6d-aa3d-acbdcc26df4a"
-              LastKnownName="TD Service - Online Mail Forwarding"
-              LastKnownLocation="UseCases.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="d25315dc-2693-4459-a264-7ab93a5390b2"
-                  name="Administrator"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="00d57581-d5a0-4913-abb4-2134bb605f4a"
-                  name="TD Service - Online Mail Forwarding"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false" />
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-          <association
-            Id="8cdca1d5-071a-4ab3-9beb-d72e5abb8cd7"
-            isDerived="false"
-            sourceEndRoleName="Administrator"
-            targetEndRoleName="View Sales Report"
-            isLeaf="false"
-            isAbstract="false">
-            <useCaseMoniker
-              Id="99275cc1-9cd0-4dd4-8b5b-9b9202f72c14"
-              LastKnownName="View Sales Report"
-              LastKnownLocation="Package_0108.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="59103bb5-efad-496e-9e22-8bde3efca0f7"
-                  name="Administrator"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="a7aa1121-158e-4c48-85d5-e041576d5593"
-                  name="View Sales Report"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false" />
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-          <association
-            Id="caecb429-ad72-4797-bae4-d0ee8711cf66"
-            isDerived="false"
-            sourceEndRoleName="Administrator"
-            targetEndRoleName="View Users"
-            isLeaf="false"
-            isAbstract="false">
-            <useCaseMoniker
-              Id="174eb746-b0a1-4f1c-92f1-a74f753077fe"
-              LastKnownName="View Users"
-              LastKnownLocation="Package_0108.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="d3c0bc16-3ca2-4455-9937-bbb11073752d"
-                  name="Administrator"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="25a60617-d82c-4c20-891b-f790bd08a0ab"
-                  name="View Users"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false" />
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-        </targetEnds>
-      </actor>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <actor
-        Id="e9f5ee6f-30a6-42e0-b103-1b5ef0aa4b74"
-        name="Shopper"
-        isAbstract="false"
-        isLeaf="false">
-        <generalsInternal>
-          <generalization
-            Id="73d5fa34-3591-4e4e-b5c8-ad8bbcb39290"
-            isSubstitutable="false">
-            <actorMoniker
-              Id="75ac1d6e-299b-4093-ab4a-3dd2d6e7737d"
-              LastKnownName="Unregistered Shopper"
-              LastKnownLocation="TdService.Modeling.uml" />
-          </generalization>
-        </generalsInternal>
-        <targetEnds>
-          <association
-            Id="4639ab3e-c7f8-4f25-a63c-1aaffd814c90"
-            isDerived="false"
-            sourceEndRoleName="Shopper"
-            targetEndRoleName="TD Service - Online Mail Forwarding"
-            isLeaf="false"
-            isAbstract="false">
-            <subsystemMoniker
-              Id="eeac1e7f-c616-4d6d-aa3d-acbdcc26df4a"
-              LastKnownName="TD Service - Online Mail Forwarding"
-              LastKnownLocation="UseCases.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="fdb6ef2f-be79-4bc0-aa8e-8843e680307c"
-                  name="Shopper"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="aaeca98d-6530-42b2-b4c9-ba89990c2ad7"
-                  name="TD Service - Online Mail Forwarding"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false" />
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-          <association
-            Id="4ddac90d-0325-44bb-a295-a575f29e20ed"
-            isDerived="false"
-            sourceEndRoleName="Shopper"
-            targetEndRoleName="Manage Wallet Balance"
-            isLeaf="false"
-            isAbstract="false">
-            <useCaseMoniker
-              Id="87d61a3a-dfaa-4a00-adc3-1de58d33ab81"
-              LastKnownName="View Balance"
-              LastKnownLocation="Package_0109.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="0285af73-4880-4617-a292-a15843f05e0d"
-                  name="Shopper"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="da66132d-a6a4-4357-aee2-fbaf210ee09f"
-                  name="Manage Wallet Balance"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false" />
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-          <association
-            Id="4f4de0e1-4f3b-471e-aa34-3915f94b1708"
-            isDerived="false"
-            sourceEndRoleName="Shopper"
-            targetEndRoleName="View Orders"
-            isLeaf="false"
-            isAbstract="false">
-            <useCaseMoniker
-              Id="c09abc0b-ede9-4ca1-85fc-8980f87330dd"
-              LastKnownName="View Orders"
-              LastKnownLocation="Package_0106.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="e01568d2-13b4-4096-bdb5-3f5e1d00bb8f"
-                  name="Shopper"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="8098a010-645f-45ff-b174-03a4d007da39"
-                  name="View Orders"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false" />
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-          <association
-            Id="3db6f1f2-47cb-4d5d-9a2c-ac4278a9c464"
-            isDerived="false"
-            sourceEndRoleName="Shopper"
-            targetEndRoleName="View Parcels"
-            isLeaf="false"
-            isAbstract="false">
-            <useCaseMoniker
-              Id="bdbe8537-c7b8-4d5f-abc2-df7d3d474ed4"
-              LastKnownName="View Parcels"
-              LastKnownLocation="Package_0107.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="a01c6bda-da41-4a90-93ca-ecee5f48fe75"
-                  name="Shopper"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="174631dd-e67b-418e-9481-0c3989faa454"
-                  name="View Parcels"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false" />
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-          <association
-            Id="dd63daa9-ca54-4a5c-b99c-a9ca80e0fc4c"
-            isDerived="false"
-            sourceEndRoleName="Shopper"
-            targetEndRoleName="View Profile"
-            isLeaf="false"
-            isAbstract="false">
-            <useCaseMoniker
-              Id="cfc25fb3-eb26-4fb8-a66e-5e5666064513"
-              LastKnownName="View Profile"
-              LastKnownLocation="Package1_0107.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="fb4df3be-e20d-457a-a47c-96974d2216fb"
-                  name="Shopper"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="7a47adbc-62ff-49a9-9866-1e062d74f433"
-                  name="View Profile"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false" />
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-        </targetEnds>
-      </actor>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <actor
-        Id="f1d02f09-f7a3-46f4-9184-50abd90f21cd"
-        name="Operator"
-        isAbstract="false"
-        isLeaf="false">
-        <generalsInternal>
-          <generalization
-            Id="f484a2f1-b6da-403b-9998-f05f7b9465b1"
-            isSubstitutable="false">
-            <actorMoniker
-              Id="b951e9ed-e95f-46d2-9b59-5db1a78dfd9e"
-              LastKnownName="Consultant"
-              LastKnownLocation="TdService.Modeling.uml" />
-          </generalization>
-        </generalsInternal>
-        <targetEnds>
-          <association
-            Id="537f8636-608d-4056-9960-ec0571c260bb"
-            isDerived="false"
-            sourceEndRoleName="Operator"
-            targetEndRoleName="TD Service - Online Mail Forwarding"
-            isLeaf="false"
-            isAbstract="false">
-            <subsystemMoniker
-              Id="eeac1e7f-c616-4d6d-aa3d-acbdcc26df4a"
-              LastKnownName="TD Service - Online Mail Forwarding"
-              LastKnownLocation="UseCases.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="2a5b58de-60e3-4245-bf2e-bfefa07b1922"
-                  name="Operator"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="4e0609d8-2aad-486a-a2cd-4431c6a1e571"
-                  name="TD Service - Online Mail Forwarding"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false" />
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-        </targetEnds>
-      </actor>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <actor
-        Id="9e855f96-4af5-4e60-a59a-006798996531"
-        name="Time"
-        isAbstract="false"
-        isLeaf="false">
-        <targetEnds>
-          <association
-            Id="d2792991-07bd-41b4-a623-9518c28a7a2d"
-            isDerived="false"
-            sourceEndRoleName="Time"
-            targetEndRoleName="TD Service - Online Mail Forwarding"
-            isLeaf="false"
-            isAbstract="false">
-            <subsystemMoniker
-              Id="eeac1e7f-c616-4d6d-aa3d-acbdcc26df4a"
-              LastKnownName="TD Service - Online Mail Forwarding"
-              LastKnownLocation="UseCases.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="3efe72c7-ea9b-49e2-8ccc-52e5a60ba465"
-                  name="Time"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="13a7769e-752b-4efe-bc2e-b5d0df8d47c6"
-                  name="TD Service - Online Mail Forwarding"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false" />
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-          <association
-            Id="c44ca584-f46e-407e-8f22-7ead95376741"
-            isDerived="false"
-            sourceEndRoleName="Time"
-            targetEndRoleName="Notify Warehousing period is close to end"
-            isLeaf="false"
-            isAbstract="false">
-            <useCaseMoniker
-              Id="683c3a53-6458-44df-9869-0705c2f0fbff"
-              LastKnownName="Send Daily Warehousing Period Ends Notification"
-              LastKnownLocation="Package1_0115.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="b09aed33-10ea-4bd9-b6bf-d63ec62f6ed7"
-                  name="Time"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="756e7bf9-88ae-40cf-8432-1c15fda8ec30"
-                  name="Notify Warehousing period is close to end"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false" />
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-          <association
-            Id="1b7a60fd-6cd3-4215-a955-3039cb90da80"
-            isDerived="false"
-            sourceEndRoleName="Time"
-            targetEndRoleName="Send weekly financial report"
-            isLeaf="false"
-            isAbstract="false">
-            <useCaseMoniker
-              Id="ab8749d4-3118-4d93-9595-9b2400f92127"
-              LastKnownName="Send Weekly Financial Report"
-              LastKnownLocation="Package1_0115.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="9af68100-6796-4b58-b6f4-c0295395c9ec"
-                  name="Time"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="52997f6c-91cc-4c9f-b374-6b21603882e6"
-                  name="Send weekly financial report"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false" />
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-        </targetEnds>
-      </actor>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <actor
-        Id="75ac1d6e-299b-4093-ab4a-3dd2d6e7737d"
-        name="Unregistered Shopper"
-        isAbstract="false"
-        isLeaf="false">
-        <targetEnds>
-          <association
-            Id="c7ed1dda-3a40-4830-8c65-d02f774bff50"
-            isDerived="false"
-            sourceEndRoleName="Unregistered Shopper"
-            targetEndRoleName="Sign Up"
-            isLeaf="false"
-            isAbstract="false">
-            <useCaseMoniker
-              Id="5241251a-79d5-4b80-86f0-97fdc0356c1f"
-              LastKnownName="Sign Up"
-              LastKnownLocation="Package_0111.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="fcf4efc0-06fd-45dd-a63c-9273a8461ff8"
-                  name="Unregistered Shopper"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="4f782b0c-b9d0-42d1-b505-ca80a3024ce3"
-                  name="Sign Up"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false" />
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-          <association
-            Id="fa2d622a-fd83-4674-be52-e8798ac2c9dc"
-            isDerived="false"
-            sourceEndRoleName="Unregistered Shopper"
-            targetEndRoleName="Sign In"
-            isLeaf="false"
-            isAbstract="false">
-            <useCaseMoniker
-              Id="88a649b1-1516-4115-bc3a-45d2d5f60868"
-              LastKnownName="Sign In"
-              LastKnownLocation="Package_0111.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="4b287810-0f45-449f-b1ab-bcc412c017e9"
-                  name="Unregistered Shopper"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="d3df5d98-a881-499f-a285-06081269ae3d"
-                  name="Sign In"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false" />
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-          <association
-            Id="af62b0a1-a250-480c-b994-b4bfe0e7b18d"
-            isDerived="false"
-            sourceEndRoleName="Unregistered Shopper"
-            targetEndRoleName="Reset Password"
-            isLeaf="false"
-            isAbstract="false">
-            <useCaseMoniker
-              Id="7ea0f1bd-9695-4553-9614-6968e2e89677"
-              LastKnownName="Reset Password"
-              LastKnownLocation="Package_0111.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="c0a8943c-7bd3-4391-89ed-75f1cb263325"
-                  name="Unregistered Shopper"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="3e9c7091-e4d1-415e-b93d-2cd2fd58192a"
-                  name="Reset Password"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false" />
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-        </targetEnds>
-      </actor>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
       <packageMoniker
         Id="b14fc68d-41cc-4fb7-81b6-696d8cec5686"
         LastKnownName="Use Cases"
@@ -1365,1561 +534,6 @@ Reset Password</body>
         name="IEnumerable&lt;Picture&gt;" />
     </packageHasNamedElement>
     <packageHasNamedElement>
-      <component
-        Id="f05a77ef-6f5c-4217-96b9-a499fc36b804"
-        name="TdService.Web.dll"
-        isAbstract="false"
-        isLeaf="false"
-        isActiveClass="false">
-        <suppliersInternal>
-          <dependency
-            Id="215bb286-c2b9-4102-a23f-5ecfff25307f">
-            <componentMoniker
-              Id="a998e4b9-3dbe-4870-844c-8d8abe4cfbfe"
-              LastKnownName="TdService.API.dll"
-              LastKnownLocation="TdService.Modeling.uml" />
-          </dependency>
-          <dependency
-            Id="c4639b64-ffa0-4ece-9c87-463f3cefc0e6">
-            <componentMoniker
-              Id="6ab42a79-81c5-49e0-9754-ef553dd87dce"
-              LastKnownName="TdService.Domain.dll"
-              LastKnownLocation="TdService.Modeling.uml" />
-          </dependency>
-        </suppliersInternal>
-      </component>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <component
-        Id="6ab42a79-81c5-49e0-9754-ef553dd87dce"
-        name="TdService.Domain.dll"
-        isAbstract="false"
-        isLeaf="false"
-        isActiveClass="false">
-        <suppliersInternal>
-          <dependency
-            Id="ccfe744d-a674-4f52-add4-6178833db5af">
-            <componentMoniker
-              Id="111943fe-1e11-4597-9eaf-98e38b7bb9bc"
-              LastKnownName="TdService.Infrastructure.dll"
-              LastKnownLocation="TdService.Modeling.uml" />
-          </dependency>
-          <dependency
-            Id="ac1addb5-d72c-4df4-a6ed-e965d998da30">
-            <componentMoniker
-              Id="c83a97a5-a15c-43df-977a-191838dd8b4b"
-              LastKnownName="TdService.Data.dll"
-              LastKnownLocation="TdService.Modeling.uml" />
-          </dependency>
-        </suppliersInternal>
-      </component>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <component
-        Id="c83a97a5-a15c-43df-977a-191838dd8b4b"
-        name="TdService.Data.dll"
-        isAbstract="false"
-        isLeaf="false"
-        isActiveClass="false">
-        <suppliersInternal>
-          <dependency
-            Id="8ba5a11a-bad6-4d9c-9961-d62155057a63">
-            <componentMoniker
-              Id="5b981ba5-fbba-4770-b29a-3fd48c5a5554"
-              LastKnownName="MySQL Database"
-              LastKnownLocation="TdService.Modeling.uml" />
-          </dependency>
-          <dependency
-            Id="6ee49564-a448-44d8-b86c-7c8691704e6a">
-            <componentMoniker
-              Id="2ded25e4-8e5b-4b87-95f4-680972a50ded"
-              LastKnownName="MsSQL Database"
-              LastKnownLocation="TdService.Modeling.uml" />
-          </dependency>
-        </suppliersInternal>
-      </component>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <component
-        Id="111943fe-1e11-4597-9eaf-98e38b7bb9bc"
-        name="TdService.Infrastructure.dll"
-        isAbstract="false"
-        isLeaf="false"
-        isActiveClass="false">
-        <suppliersInternal>
-          <dependency
-            Id="69ffdbc1-6773-42cf-8b85-e73638f98f12">
-            <componentMoniker
-              Id="6f5bc619-6d85-4f4b-82ac-c0f41ac44acc"
-              LastKnownName="Amazon SimpleDB"
-              LastKnownLocation="TdService.Modeling.uml" />
-          </dependency>
-          <dependency
-            Id="ed8d68b6-43ab-4b20-8082-73d97ed0b9b2">
-            <componentMoniker
-              Id="7aa638d6-945c-4937-83aa-c85b42bf3ac8"
-              LastKnownName="Amazon S3"
-              LastKnownLocation="TdService.Modeling.uml" />
-          </dependency>
-        </suppliersInternal>
-      </component>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <component
-        Id="a998e4b9-3dbe-4870-844c-8d8abe4cfbfe"
-        name="TdService.API.dll"
-        isAbstract="false"
-        isLeaf="false"
-        isActiveClass="false">
-        <suppliersInternal>
-          <dependency
-            Id="a3dff464-f9ce-45d3-a499-204173955743">
-            <componentMoniker
-              Id="6ab42a79-81c5-49e0-9754-ef553dd87dce"
-              LastKnownName="TdService.Domain.dll"
-              LastKnownLocation="TdService.Modeling.uml" />
-          </dependency>
-        </suppliersInternal>
-      </component>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <component
-        Id="5b981ba5-fbba-4770-b29a-3fd48c5a5554"
-        name="MySQL Database"
-        isAbstract="false"
-        isLeaf="false"
-        isActiveClass="false" />
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <component
-        Id="2ded25e4-8e5b-4b87-95f4-680972a50ded"
-        name="MsSQL Database"
-        isAbstract="false"
-        isLeaf="false"
-        isActiveClass="false" />
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <component
-        Id="6f5bc619-6d85-4f4b-82ac-c0f41ac44acc"
-        name="Amazon SimpleDB"
-        isAbstract="false"
-        isLeaf="false"
-        isActiveClass="false" />
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <component
-        Id="7aa638d6-945c-4937-83aa-c85b42bf3ac8"
-        name="Amazon S3"
-        isAbstract="false"
-        isLeaf="false"
-        isActiveClass="false" />
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <activity
-        Id="f4f80d54-9719-4b12-a1c2-1ab49a250ebe"
-        name="View Orders"
-        isAbstract="false"
-        isLeaf="false"
-        isActiveClass="false"
-        isReentrant="false"
-        isReadOnly="false"
-        isSingleExecution="false">
-        <nodes>
-          <initialNode
-            Id="6e789b3f-cc50-4859-a84d-6674f129372f"
-            name="Initial1"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="ad0640b6-84a0-4dda-a1bd-3ea1af4c9d9f"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="3d283610-eb4f-4c9c-a2fa-b04ce0d0f87c"
-                  LastKnownName="View Orders"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </initialNode>
-          <activityFinalNode
-            Id="9847e563-f8fc-4461-8a24-6766066413f7"
-            name="ActivityFinal1"
-            isLeaf="false" />
-          <opaqueAction
-            Id="3d283610-eb4f-4c9c-a2fa-b04ce0d0f87c"
-            name="View Orders"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="c73b58b0-8b7e-4b34-9b9d-49e212f31229"
-                isLeaf="false">
-                <decisionNodeMoniker
-                  Id="d2d23403-6e2c-4da7-8b85-5c8f59040c8f"
-                  LastKnownName="Decision1"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </opaqueAction>
-          <opaqueAction
-            Id="22b5096f-cdcc-463c-a4d4-176d6caa77a6"
-            name="Filter Orders"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="e4ecfdc9-86c5-4822-a6fb-88ee616bece0"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="3d283610-eb4f-4c9c-a2fa-b04ce0d0f87c"
-                  LastKnownName="View Orders"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </opaqueAction>
-          <opaqueAction
-            Id="d68f9717-6af0-4780-82cc-1b94f6589bce"
-            name="Sort Orders"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="ef5778d6-20a6-4e4f-89d2-4671b44d49eb"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="3d283610-eb4f-4c9c-a2fa-b04ce0d0f87c"
-                  LastKnownName="View Orders"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </opaqueAction>
-          <opaqueAction
-            Id="c9dd2bf4-b40d-4c9c-a540-35a38917dafc"
-            name="View Order Details"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="74e8cbc1-a519-4baf-a190-4487a49f7e0a"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="3d283610-eb4f-4c9c-a2fa-b04ce0d0f87c"
-                  LastKnownName="View Orders"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-              <controlFlow
-                Id="9d398f4e-fac3-4ca9-8add-60a96535bcac"
-                isLeaf="false">
-                <decisionNodeMoniker
-                  Id="ea762e2d-4c4d-49f5-83c5-0cb7ff04f5be"
-                  LastKnownName="Decision3"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </opaqueAction>
-          <decisionNode
-            Id="d2d23403-6e2c-4da7-8b85-5c8f59040c8f"
-            name="Decision1"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="3ae7e230-d57f-4574-b387-3d7c1f0397e1"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="22b5096f-cdcc-463c-a4d4-176d6caa77a6"
-                  LastKnownName="Filter Orders"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-              <controlFlow
-                Id="ef96fce0-0b54-4ade-bf22-9b98b9f83b89"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="d68f9717-6af0-4780-82cc-1b94f6589bce"
-                  LastKnownName="Sort Orders"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-              <controlFlow
-                Id="0c11525b-34f5-4370-b927-c1534b3bcf05"
-                isLeaf="false">
-                <decisionNodeMoniker
-                  Id="afee0c68-c320-4c7f-81b1-b75e591266f0"
-                  LastKnownName="Decision2"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </decisionNode>
-          <opaqueAction
-            Id="a3b3a46e-d8c9-4151-9f5f-1cc14f2a1770"
-            name="Add Order"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="e90442f2-142e-49d1-9116-b83bf3551670"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="c9dd2bf4-b40d-4c9c-a540-35a38917dafc"
-                  LastKnownName="View Order Details"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </opaqueAction>
-          <decisionNode
-            Id="afee0c68-c320-4c7f-81b1-b75e591266f0"
-            name="Decision2"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="0d6fe3c8-8a54-4fbd-8e6c-65123ddf0798"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="c9dd2bf4-b40d-4c9c-a540-35a38917dafc"
-                  LastKnownName="View Order Details"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-              <controlFlow
-                Id="68f2662e-38f5-4f00-b4da-3a3f89fb433e"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="a3b3a46e-d8c9-4151-9f5f-1cc14f2a1770"
-                  LastKnownName="Add Order"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </decisionNode>
-          <decisionNode
-            Id="ea762e2d-4c4d-49f5-83c5-0cb7ff04f5be"
-            name="Decision3"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="67edfa94-129d-4b3a-b9c2-5fe432b775eb"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="c87a607b-187d-4ee8-891c-dbd6ee062eb0"
-                  LastKnownName="Update Order"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-              <controlFlow
-                Id="b82f6c07-ff7d-43c8-a9e9-af58864d52a4"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="3f0f8a75-eb79-437f-ae91-117937696b97"
-                  LastKnownName="Remove Order"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-              <controlFlow
-                Id="9503ea09-5c47-4d12-91af-b74ca2612823"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="ce8589c6-cb78-4db2-bb82-5be2fceb4741"
-                  LastKnownName="Request Picture"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-              <controlFlow
-                Id="0e50cde5-fac4-4a43-8fb4-31420cf16f02"
-                isLeaf="false">
-                <callBehaviorActionMoniker
-                  Id="b068884e-1a85-4792-b36d-fe9d259d4341"
-                  LastKnownName="View Items"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </decisionNode>
-          <opaqueAction
-            Id="c87a607b-187d-4ee8-891c-dbd6ee062eb0"
-            name="Update Order"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="466fb79c-7a8c-459f-89b3-3e664964e3e1"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="c9dd2bf4-b40d-4c9c-a540-35a38917dafc"
-                  LastKnownName="View Order Details"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </opaqueAction>
-          <opaqueAction
-            Id="3f0f8a75-eb79-437f-ae91-117937696b97"
-            name="Remove Order"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="408c74a4-64fc-408c-af5d-65e16e3b14de"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="3d283610-eb4f-4c9c-a2fa-b04ce0d0f87c"
-                  LastKnownName="View Orders"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </opaqueAction>
-          <opaqueAction
-            Id="ce8589c6-cb78-4db2-bb82-5be2fceb4741"
-            name="Request Picture"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="75e423ff-348e-4baf-a184-01f2ae41173c"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="c9dd2bf4-b40d-4c9c-a540-35a38917dafc"
-                  LastKnownName="View Order Details"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </opaqueAction>
-          <callBehaviorAction
-            Id="b068884e-1a85-4792-b36d-fe9d259d4341"
-            name="View Items"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="acdb1a30-c74c-440c-9e20-e7d087b31879"
-                isLeaf="false">
-                <activityFinalNodeMoniker
-                  Id="9847e563-f8fc-4461-8a24-6766066413f7"
-                  LastKnownName="ActivityFinal1"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-            <behavior>
-              <activityMoniker
-                Id="86250b53-383f-4e58-91de-5cecf1cb6a47"
-                LastKnownName="View Items"
-                LastKnownLocation="TdService.Modeling.uml" />
-            </behavior>
-          </callBehaviorAction>
-        </nodes>
-      </activity>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <activity
-        Id="86250b53-383f-4e58-91de-5cecf1cb6a47"
-        name="View Items"
-        isAbstract="false"
-        isLeaf="false"
-        isActiveClass="false"
-        isReentrant="false"
-        isReadOnly="false"
-        isSingleExecution="false">
-        <nodes>
-          <opaqueAction
-            Id="2bee206b-25d4-4cfe-a7c3-638b2dca3402"
-            name="View Items"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="c3137358-9032-4872-81af-ae2b0d72c6d4"
-                isLeaf="false">
-                <decisionNodeMoniker
-                  Id="482015a4-a8cb-4dfc-8364-7dac1555e813"
-                  LastKnownName="Decision1"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </opaqueAction>
-          <opaqueAction
-            Id="33709842-f7c1-4fd9-9130-1811624154af"
-            name="Add Item"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="f0efe794-387a-46c4-a977-615ec368d9fd"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="2bee206b-25d4-4cfe-a7c3-638b2dca3402"
-                  LastKnownName="View Items"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </opaqueAction>
-          <opaqueAction
-            Id="44d2d482-ad67-44a4-b31f-034a042df894"
-            name="View Item Details"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="0903e34b-21f0-466b-a8be-aeebe99c8c7a"
-                isLeaf="false">
-                <decisionNodeMoniker
-                  Id="ae5638c4-2fce-40a8-be29-0d41e225e931"
-                  LastKnownName="Decision2"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </opaqueAction>
-          <opaqueAction
-            Id="eb7052be-4862-461a-ad9f-97711fee08cd"
-            name="Update Item"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="6a67729e-d3d7-4a22-a3a6-cbc058e18837"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="44d2d482-ad67-44a4-b31f-034a042df894"
-                  LastKnownName="View Item Details"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </opaqueAction>
-          <opaqueAction
-            Id="8670304e-f304-4fa0-98df-494a315ff948"
-            name="Remove Item"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="13e1366f-ea57-4608-8802-6035dfe5705a"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="2bee206b-25d4-4cfe-a7c3-638b2dca3402"
-                  LastKnownName="View Items"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </opaqueAction>
-          <decisionNode
-            Id="482015a4-a8cb-4dfc-8364-7dac1555e813"
-            name="Decision1"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="3d7923bc-d66d-4149-bf50-b7edac729c4c"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="33709842-f7c1-4fd9-9130-1811624154af"
-                  LastKnownName="Add Item"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-              <controlFlow
-                Id="785caf04-98dc-4715-90b0-8b0f346aa6ae"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="44d2d482-ad67-44a4-b31f-034a042df894"
-                  LastKnownName="View Item Details"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-              <controlFlow
-                Id="b3ce7879-4ac7-4465-ada1-6811039cd9ec"
-                isLeaf="false">
-                <activityFinalNodeMoniker
-                  Id="f9a41821-f73c-40d3-ab61-5c04bfa182dd"
-                  LastKnownName="ActivityFinal1"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </decisionNode>
-          <decisionNode
-            Id="ae5638c4-2fce-40a8-be29-0d41e225e931"
-            name="Decision2"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="bc06c020-ff8b-46cb-b279-0454d508ffe8"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="eb7052be-4862-461a-ad9f-97711fee08cd"
-                  LastKnownName="Update Item"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-              <controlFlow
-                Id="e8b715a2-5a22-457d-91d5-2cfb9536e963"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="8670304e-f304-4fa0-98df-494a315ff948"
-                  LastKnownName="Remove Item"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-              <controlFlow
-                Id="d33db8d3-d195-4313-a38a-3aa9b87b6274"
-                isLeaf="false">
-                <activityFinalNodeMoniker
-                  Id="f9a41821-f73c-40d3-ab61-5c04bfa182dd"
-                  LastKnownName="ActivityFinal1"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </decisionNode>
-          <initialNode
-            Id="40769c8e-730f-4088-a2b6-52f4f2177be8"
-            name="Initial1"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="3284180f-811a-4215-957f-d24ce0622bbc"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="2bee206b-25d4-4cfe-a7c3-638b2dca3402"
-                  LastKnownName="View Items"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </initialNode>
-          <activityFinalNode
-            Id="f9a41821-f73c-40d3-ab61-5c04bfa182dd"
-            name="ActivityFinal1"
-            isLeaf="false" />
-        </nodes>
-      </activity>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <activity
-        Id="baa2030b-09b9-4abd-93c2-a6be610e7706"
-        name="View Parcels"
-        isAbstract="false"
-        isLeaf="false"
-        isActiveClass="false"
-        isReentrant="false"
-        isReadOnly="false"
-        isSingleExecution="false">
-        <nodes>
-          <opaqueAction
-            Id="4bc1594b-464d-4fc2-b017-6f90834d4425"
-            name="View Parcels"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="9a2eaaa4-f074-488c-99f2-91475bf50603"
-                isLeaf="false">
-                <decisionNodeMoniker
-                  Id="bd6a6927-122f-45c1-a973-411d6494ff32"
-                  LastKnownName="Decision1"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </opaqueAction>
-          <opaqueAction
-            Id="c7a7575f-d34c-450a-a457-d78122205497"
-            name="Sort Parcels"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="5a62e368-a3d3-4e00-b8bd-467825bc8263"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="4bc1594b-464d-4fc2-b017-6f90834d4425"
-                  LastKnownName="View Parcels"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </opaqueAction>
-          <opaqueAction
-            Id="c09e8418-99a1-42a0-8c23-a3ec6c1b4376"
-            name="Filter Parcels"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="d81d7290-3141-4b2a-8c41-5c76984bfbd7"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="4bc1594b-464d-4fc2-b017-6f90834d4425"
-                  LastKnownName="View Parcels"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </opaqueAction>
-          <opaqueAction
-            Id="06ea8273-523f-4734-94dc-b290c3e62529"
-            name="Add Parcel"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="8958a031-c983-4540-bf8d-ed6b74e25673"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="4bc1594b-464d-4fc2-b017-6f90834d4425"
-                  LastKnownName="View Parcels"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </opaqueAction>
-          <opaqueAction
-            Id="46e641eb-0ae5-44db-a6bd-8fcb67f6be06"
-            name="View Parcel Details"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="50b337bb-a192-4e82-b7ad-fa38b9a75a47"
-                isLeaf="false">
-                <decisionNodeMoniker
-                  Id="d28d7922-cff1-44c8-b5a3-0dee9f423a4f"
-                  LastKnownName="Decision2"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </opaqueAction>
-          <opaqueAction
-            Id="ac4decef-93cf-4b83-9989-6119e7dee9d6"
-            name="Update Parcel"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="0815379f-bf56-47e3-9546-cdd0fc54d108"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="46e641eb-0ae5-44db-a6bd-8fcb67f6be06"
-                  LastKnownName="View Parcel Details"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </opaqueAction>
-          <decisionNode
-            Id="bd6a6927-122f-45c1-a973-411d6494ff32"
-            name="Decision1"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="e6e24762-963b-4f9e-8ec7-e09b22dc94f2"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="c7a7575f-d34c-450a-a457-d78122205497"
-                  LastKnownName="Sort Parcels"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-              <controlFlow
-                Id="5197f0c4-a1ff-4547-9aa1-2bb27601e347"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="c09e8418-99a1-42a0-8c23-a3ec6c1b4376"
-                  LastKnownName="Filter Parcels"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-              <controlFlow
-                Id="3ba62676-c422-4497-830b-a1bfb3439cdf"
-                isLeaf="false">
-                <decisionNodeMoniker
-                  Id="c1016b6e-f4fb-4b2a-b28d-3254ecbcb5b6"
-                  LastKnownName="Decision3"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </decisionNode>
-          <opaqueAction
-            Id="8bced26f-d3b6-4571-9d12-b06e2b675723"
-            name="Remove Parcel"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="7956cef8-34d3-46d3-a4f9-f26fe464c03f"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="4bc1594b-464d-4fc2-b017-6f90834d4425"
-                  LastKnownName="View Parcels"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </opaqueAction>
-          <decisionNode
-            Id="d28d7922-cff1-44c8-b5a3-0dee9f423a4f"
-            name="Decision2"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="b31ef06e-ea1b-40c0-bd78-6786f46c1645"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="ac4decef-93cf-4b83-9989-6119e7dee9d6"
-                  LastKnownName="Update Parcel"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-              <controlFlow
-                Id="7f4fcb82-db74-48f5-b20f-5d7f8bb01f8e"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="8bced26f-d3b6-4571-9d12-b06e2b675723"
-                  LastKnownName="Remove Parcel"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-              <controlFlow
-                Id="b87dd0e7-8fff-4834-b3f7-e99a3aad4eca"
-                isLeaf="false">
-                <decisionNodeMoniker
-                  Id="91f5390c-b391-4edb-9731-1f5121720186"
-                  LastKnownName="Decision4"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </decisionNode>
-          <decisionNode
-            Id="c1016b6e-f4fb-4b2a-b28d-3254ecbcb5b6"
-            name="Decision3"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="7fb6d45e-710e-4940-bf8b-81d847ebb489"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="06ea8273-523f-4734-94dc-b290c3e62529"
-                  LastKnownName="Add Parcel"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-              <controlFlow
-                Id="4d350dc7-d83e-41ff-abda-d4b2bacd370f"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="46e641eb-0ae5-44db-a6bd-8fcb67f6be06"
-                  LastKnownName="View Parcel Details"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-              <controlFlow
-                Id="c6ca2bb3-cff1-4250-935a-0bbc85c9254b"
-                isLeaf="false">
-                <activityFinalNodeMoniker
-                  Id="8f048867-8015-41ce-9469-6f3bbcc189d0"
-                  LastKnownName="ActivityFinal1"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </decisionNode>
-          <initialNode
-            Id="35e610b7-bd10-4129-a9a0-4da963dbd748"
-            name="Initial1"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="99f11ef8-be36-4aa8-b47f-fad88f8936a5"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="4bc1594b-464d-4fc2-b017-6f90834d4425"
-                  LastKnownName="View Parcels"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </initialNode>
-          <activityFinalNode
-            Id="8f048867-8015-41ce-9469-6f3bbcc189d0"
-            name="ActivityFinal1"
-            isLeaf="false" />
-          <decisionNode
-            Id="91f5390c-b391-4edb-9731-1f5121720186"
-            name="Decision4"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="ea081628-bcb1-45a6-b27b-1a099d4c5b83"
-                isLeaf="false">
-                <activityFinalNodeMoniker
-                  Id="8f048867-8015-41ce-9469-6f3bbcc189d0"
-                  LastKnownName="ActivityFinal1"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-              <controlFlow
-                Id="72bf3fbb-f57e-4b8b-855b-9a255e695952"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="5f3bac6b-a7e2-41cc-9c24-1c78ac8382b0"
-                  LastKnownName="Update Parcel Status"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </decisionNode>
-          <opaqueAction
-            Id="5f3bac6b-a7e2-41cc-9c24-1c78ac8382b0"
-            name="Update Parcel Status"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="91547b2a-d214-4cd6-afdb-d028287b858f"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="46e641eb-0ae5-44db-a6bd-8fcb67f6be06"
-                  LastKnownName="View Parcel Details"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </opaqueAction>
-        </nodes>
-      </activity>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <activity
-        Id="efa925b4-ba99-449c-9c2c-bd403327400d"
-        name="View Balance"
-        isAbstract="false"
-        isLeaf="false"
-        isActiveClass="false"
-        isReentrant="false"
-        isReadOnly="false"
-        isSingleExecution="false">
-        <nodes>
-          <initialNode
-            Id="121aca34-6748-431e-b3be-12d63ea84749"
-            name="Initial1"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="b7d50196-dffc-4962-bc63-23503e0a2072"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="53728695-397e-45bf-8150-81994a715c5a"
-                  LastKnownName="View Balance"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </initialNode>
-          <opaqueAction
-            Id="53728695-397e-45bf-8150-81994a715c5a"
-            name="View Balance"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="6e532b54-6dbd-46be-9cee-dc6709b9a148"
-                isLeaf="false">
-                <decisionNodeMoniker
-                  Id="4cc77460-607c-48a7-9c46-07fdef181a8f"
-                  LastKnownName="Decision1"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </opaqueAction>
-          <opaqueAction
-            Id="3a173c34-f2cd-4b56-be84-2ba9fda0138e"
-            name="Withdraw Money"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="ee102eb7-0fb7-4e45-a1a1-b9e4c3ed6fc8"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="53728695-397e-45bf-8150-81994a715c5a"
-                  LastKnownName="View Balance"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </opaqueAction>
-          <opaqueAction
-            Id="042fa579-4c7c-4400-87d6-95cdaaae30ba"
-            name="View Transactions"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="ff95ab6a-60e2-4912-b938-6e7fedff5af7"
-                isLeaf="false">
-                <activityFinalNodeMoniker
-                  Id="4eb4ca17-41b4-4816-94ac-2d83cdceb007"
-                  LastKnownName="ActivityFinal1"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </opaqueAction>
-          <decisionNode
-            Id="4cc77460-607c-48a7-9c46-07fdef181a8f"
-            name="Decision1"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="d88dd09a-03b3-4036-947a-b0ccac02b9d1"
-                isLeaf="false">
-                <decisionNodeMoniker
-                  Id="a96e6c63-153e-4131-ace4-91235e906309"
-                  LastKnownName="Decision2"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-              <controlFlow
-                Id="b5c8eaf0-fa7a-4bdf-8fd6-2e0a41c8c2ff"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="3a173c34-f2cd-4b56-be84-2ba9fda0138e"
-                  LastKnownName="Withdraw Money"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-              <controlFlow
-                Id="4029a31c-6c2e-40a7-b25f-f9e14ece20be"
-                isLeaf="false">
-                <callBehaviorActionMoniker
-                  Id="c459b372-d403-4aa6-9b66-32b2647369ed"
-                  LastKnownName="Add Money"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </decisionNode>
-          <activityFinalNode
-            Id="4eb4ca17-41b4-4816-94ac-2d83cdceb007"
-            name="ActivityFinal1"
-            isLeaf="false" />
-          <decisionNode
-            Id="a96e6c63-153e-4131-ace4-91235e906309"
-            name="Decision2"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="420dcbab-e494-4744-84e6-c667d716db92"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="042fa579-4c7c-4400-87d6-95cdaaae30ba"
-                  LastKnownName="View Transactions"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-              <controlFlow
-                Id="6bd891ec-cddf-40a2-b10f-fef3e9f29a8b"
-                isLeaf="false">
-                <activityFinalNodeMoniker
-                  Id="4eb4ca17-41b4-4816-94ac-2d83cdceb007"
-                  LastKnownName="ActivityFinal1"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </decisionNode>
-          <callBehaviorAction
-            Id="c459b372-d403-4aa6-9b66-32b2647369ed"
-            name="Add Money"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="d2d41769-8b79-4167-be8b-583dee4d5530"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="53728695-397e-45bf-8150-81994a715c5a"
-                  LastKnownName="View Balance"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </callBehaviorAction>
-        </nodes>
-      </activity>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <activity
-        Id="a08b2c94-83e3-419f-8e55-ea66e3a76989"
-        name="Add Money"
-        isAbstract="false"
-        isLeaf="false"
-        isActiveClass="false"
-        isReentrant="false"
-        isReadOnly="false"
-        isSingleExecution="false">
-        <nodes>
-          <initialNode
-            Id="bcd001c5-0e4a-4af1-b9ff-a35afdaed02e"
-            name="Initial1"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="904f70c0-1656-4970-b4f3-1cf45c71f342"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="08d63d83-94f7-4c0f-840c-0bb8f37077bc"
-                  LastKnownName="Add Money"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </initialNode>
-          <activityFinalNode
-            Id="47ac387d-b9c1-4fe1-a638-2bf81a74b56c"
-            name="ActivityFinal1"
-            isLeaf="false" />
-          <opaqueAction
-            Id="08d63d83-94f7-4c0f-840c-0bb8f37077bc"
-            name="Add Money"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="42e6d95a-96f7-4753-8175-41ff0a824bb0"
-                isLeaf="false">
-                <decisionNodeMoniker
-                  Id="3a3867a4-267b-436f-8d64-8ee43418978b"
-                  LastKnownName="Decision1"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </opaqueAction>
-          <opaqueAction
-            Id="57b7b573-a398-430c-a622-10a04b7f5f07"
-            name="Pay with Paypal"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="43aa00f8-c33c-425c-bc32-fafb3d0941fd"
-                isLeaf="false">
-                <activityFinalNodeMoniker
-                  Id="47ac387d-b9c1-4fe1-a638-2bf81a74b56c"
-                  LastKnownName="ActivityFinal1"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </opaqueAction>
-          <decisionNode
-            Id="3a3867a4-267b-436f-8d64-8ee43418978b"
-            name="Decision1"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="a4071e0e-bcbd-4701-be34-e524c43017fe"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="60b8ebeb-c8cb-4b3f-ba56-91f2968339f2"
-                  LastKnownName="Pay with credit card"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-              <controlFlow
-                Id="20d5c335-a3bf-458a-bb14-f654bd517208"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="57b7b573-a398-430c-a622-10a04b7f5f07"
-                  LastKnownName="Pay with Paypal"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </decisionNode>
-          <opaqueAction
-            Id="60b8ebeb-c8cb-4b3f-ba56-91f2968339f2"
-            name="Pay with credit card"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="d23f51d5-a560-48df-af38-7f36300af32d"
-                isLeaf="false">
-                <activityFinalNodeMoniker
-                  Id="47ac387d-b9c1-4fe1-a638-2bf81a74b56c"
-                  LastKnownName="ActivityFinal1"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </opaqueAction>
-        </nodes>
-      </activity>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <interaction
-        Id="2ca43410-d69d-4767-b785-b1bfd731eb38"
-        name="Sign Up"
-        collapseFragmentsFlag="false"
-        isActiveClass="false"
-        isAbstract="false"
-        isLeaf="false"
-        isReentrant="false">
-        <ownedCommentsInternal>
-          <comment
-            Id="741c0451-a793-4c3c-ad26-3328f6e72692">
-            <body>Sign Up Process
-
-1. Browse to the home or login page of TdService
-
-2. Click Register for free link
-
-3. Enter your email address, password and same password second time into the form and press enter or click Sign Up button.
-
-4. Check email account for registration letter from System with activation link
-
-5. Click activation link in the body of email.
-
-6. System activates account and redirects user to sign in page.</body>
-          </comment>
-        </ownedCommentsInternal>
-        <fragments>
-          <behaviorExecutionSpecification
-            Id="102ac8af-eee9-462c-8b15-7e0332a5bfce"
-            name="BehaviorExecutionSpecification1">
-            <coveredLifelines>
-              <lifelineMoniker
-                Id="78850335-1189-42b0-88b8-d8b5840629b0"
-                LastKnownName="HomeController"
-                LastKnownLocation="TdService.Modeling.uml" />
-            </coveredLifelines>
-            <finish>
-              <executionOccurrenceSpecificationMoniker
-                Id="bbefcaa8-d046-4285-a514-f87f2f9673fa"
-                LastKnownName="ExecutionOccurrenceSpecification2"
-                LastKnownLocation="TdService.Modeling.uml" />
-            </finish>
-            <start>
-              <executionOccurrenceSpecificationMoniker
-                Id="c6245eeb-728c-4be4-9e93-ebbc99d253c4"
-                LastKnownName="ExecutionOccurrenceSpecification1"
-                LastKnownLocation="TdService.Modeling.uml" />
-            </start>
-            <nestedOccurrences>
-              <messageOccurrenceSpecificationMoniker
-                Id="0d27ab56-1699-48fe-90cf-4ab0fc81c521"
-                LastKnownName="MessageOccurrenceSpecification2"
-                LastKnownLocation="TdService.Modeling.uml" />
-              <messageOccurrenceSpecificationMoniker
-                Id="c8b651f0-effb-40cc-94db-dca6cce4a3d6"
-                LastKnownName="MessageOccurrenceSpecification5"
-                LastKnownLocation="TdService.Modeling.uml" />
-              <messageOccurrenceSpecificationMoniker
-                Id="724facff-4a41-4640-a37d-8b550bb3e023"
-                LastKnownName="MessageOccurrenceSpecification8"
-                LastKnownLocation="TdService.Modeling.uml" />
-              <messageOccurrenceSpecificationMoniker
-                Id="93cce863-8b38-4f7b-8a8e-f7bd8f7b358e"
-                LastKnownName="MessageOccurrenceSpecification3"
-                LastKnownLocation="TdService.Modeling.uml" />
-            </nestedOccurrences>
-          </behaviorExecutionSpecification>
-          <executionOccurrenceSpecification
-            Id="c6245eeb-728c-4be4-9e93-ebbc99d253c4"
-            name="ExecutionOccurrenceSpecification1">
-            <event>
-              <executionOccurrenceSpecificationReferencesEvent>
-                <executionEventMoniker
-                  Id="1ca87ed8-ea9b-4c97-99a4-1578553c0ddb"
-                  LastKnownName="ExecutionEvent"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </executionOccurrenceSpecificationReferencesEvent>
-            </event>
-            <covered>
-              <lifelineMoniker
-                Id="78850335-1189-42b0-88b8-d8b5840629b0"
-                LastKnownName="HomeController"
-                LastKnownLocation="TdService.Modeling.uml" />
-            </covered>
-          </executionOccurrenceSpecification>
-          <messageOccurrenceSpecification
-            Id="0d27ab56-1699-48fe-90cf-4ab0fc81c521"
-            name="MessageOccurrenceSpecification2">
-            <covered>
-              <lifelineMoniker
-                Id="78850335-1189-42b0-88b8-d8b5840629b0"
-                LastKnownName="HomeController"
-                LastKnownLocation="TdService.Modeling.uml" />
-            </covered>
-          </messageOccurrenceSpecification>
-          <messageOccurrenceSpecification
-            Id="04228faa-8d6f-4025-8777-77908145742d"
-            name="MessageOccurrenceSpecification1">
-            <covered>
-              <lifelineMoniker
-                Id="455e078b-5f4e-4636-be30-1161ef237046"
-                LastKnownName="unregistered Shopper : Unregistered Shopper"
-                LastKnownLocation="TdService.Modeling.uml" />
-            </covered>
-          </messageOccurrenceSpecification>
-          <behaviorExecutionSpecification
-            Id="f11de055-3f2d-4e2a-b37c-7d363ad3a18c"
-            name="BehaviorExecutionSpecification2">
-            <coveredLifelines>
-              <lifelineMoniker
-                Id="2aac88f6-7825-4687-aa8b-846beb45d31a"
-                LastKnownName="Home.cshtml"
-                LastKnownLocation="TdService.Modeling.uml" />
-            </coveredLifelines>
-            <finish>
-              <executionOccurrenceSpecificationMoniker
-                Id="cb3635e1-fda6-4c57-b720-dfe51f8927d8"
-                LastKnownName="ExecutionOccurrenceSpecification4"
-                LastKnownLocation="TdService.Modeling.uml" />
-            </finish>
-            <start>
-              <executionOccurrenceSpecificationMoniker
-                Id="61c2b850-602a-431d-af6c-0d5bf95d1019"
-                LastKnownName="ExecutionOccurrenceSpecification3"
-                LastKnownLocation="TdService.Modeling.uml" />
-            </start>
-            <nestedOccurrences>
-              <messageOccurrenceSpecificationMoniker
-                Id="72e0f762-f4a1-4aca-9497-22852a381080"
-                LastKnownName="MessageOccurrenceSpecification6"
-                LastKnownLocation="TdService.Modeling.uml" />
-              <messageOccurrenceSpecificationMoniker
-                Id="4a3c8bc1-a88c-4d1f-bf01-17e4b1ef8f0b"
-                LastKnownName="MessageOccurrenceSpecification7"
-                LastKnownLocation="TdService.Modeling.uml" />
-            </nestedOccurrences>
-          </behaviorExecutionSpecification>
-          <executionOccurrenceSpecification
-            Id="61c2b850-602a-431d-af6c-0d5bf95d1019"
-            name="ExecutionOccurrenceSpecification3">
-            <event>
-              <executionOccurrenceSpecificationReferencesEvent>
-                <executionEventMoniker
-                  Id="d9b4046d-cb49-4111-bb4c-8fc0762fc274"
-                  LastKnownName="ExecutionEvent"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </executionOccurrenceSpecificationReferencesEvent>
-            </event>
-            <covered>
-              <lifelineMoniker
-                Id="2aac88f6-7825-4687-aa8b-846beb45d31a"
-                LastKnownName="Home.cshtml"
-                LastKnownLocation="TdService.Modeling.uml" />
-            </covered>
-          </executionOccurrenceSpecification>
-          <messageOccurrenceSpecification
-            Id="c8b651f0-effb-40cc-94db-dca6cce4a3d6"
-            name="MessageOccurrenceSpecification5">
-            <covered>
-              <lifelineMoniker
-                Id="78850335-1189-42b0-88b8-d8b5840629b0"
-                LastKnownName="HomeController"
-                LastKnownLocation="TdService.Modeling.uml" />
-            </covered>
-          </messageOccurrenceSpecification>
-          <messageOccurrenceSpecification
-            Id="72e0f762-f4a1-4aca-9497-22852a381080"
-            name="MessageOccurrenceSpecification6">
-            <covered>
-              <lifelineMoniker
-                Id="2aac88f6-7825-4687-aa8b-846beb45d31a"
-                LastKnownName="Home.cshtml"
-                LastKnownLocation="TdService.Modeling.uml" />
-            </covered>
-          </messageOccurrenceSpecification>
-          <messageOccurrenceSpecification
-            Id="4a3c8bc1-a88c-4d1f-bf01-17e4b1ef8f0b"
-            name="MessageOccurrenceSpecification7">
-            <covered>
-              <lifelineMoniker
-                Id="2aac88f6-7825-4687-aa8b-846beb45d31a"
-                LastKnownName="Home.cshtml"
-                LastKnownLocation="TdService.Modeling.uml" />
-            </covered>
-          </messageOccurrenceSpecification>
-          <messageOccurrenceSpecification
-            Id="724facff-4a41-4640-a37d-8b550bb3e023"
-            name="MessageOccurrenceSpecification8">
-            <covered>
-              <lifelineMoniker
-                Id="78850335-1189-42b0-88b8-d8b5840629b0"
-                LastKnownName="HomeController"
-                LastKnownLocation="TdService.Modeling.uml" />
-            </covered>
-          </messageOccurrenceSpecification>
-          <executionOccurrenceSpecification
-            Id="cb3635e1-fda6-4c57-b720-dfe51f8927d8"
-            name="ExecutionOccurrenceSpecification4">
-            <event>
-              <executionOccurrenceSpecificationReferencesEvent>
-                <executionEventMoniker
-                  Id="be5325f4-f073-481e-9c34-a912b93e7569"
-                  LastKnownName="ExecutionEvent"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </executionOccurrenceSpecificationReferencesEvent>
-            </event>
-            <covered>
-              <lifelineMoniker
-                Id="2aac88f6-7825-4687-aa8b-846beb45d31a"
-                LastKnownName="Home.cshtml"
-                LastKnownLocation="TdService.Modeling.uml" />
-            </covered>
-          </executionOccurrenceSpecification>
-          <messageOccurrenceSpecification
-            Id="93cce863-8b38-4f7b-8a8e-f7bd8f7b358e"
-            name="MessageOccurrenceSpecification3">
-            <covered>
-              <lifelineMoniker
-                Id="78850335-1189-42b0-88b8-d8b5840629b0"
-                LastKnownName="HomeController"
-                LastKnownLocation="TdService.Modeling.uml" />
-            </covered>
-          </messageOccurrenceSpecification>
-          <messageOccurrenceSpecification
-            Id="8220a5a9-5e6b-444b-875d-dfc09a5160fe"
-            name="MessageOccurrenceSpecification4">
-            <covered>
-              <lifelineMoniker
-                Id="455e078b-5f4e-4636-be30-1161ef237046"
-                LastKnownName="unregistered Shopper : Unregistered Shopper"
-                LastKnownLocation="TdService.Modeling.uml" />
-            </covered>
-          </messageOccurrenceSpecification>
-          <executionOccurrenceSpecification
-            Id="bbefcaa8-d046-4285-a514-f87f2f9673fa"
-            name="ExecutionOccurrenceSpecification2">
-            <event>
-              <executionOccurrenceSpecificationReferencesEvent>
-                <executionEventMoniker
-                  Id="1f795667-e435-4686-bc67-7e76f1daa393"
-                  LastKnownName="ExecutionEvent"
-                  LastKnownLocation="TdService.Modeling.uml" />
-              </executionOccurrenceSpecificationReferencesEvent>
-            </event>
-            <covered>
-              <lifelineMoniker
-                Id="78850335-1189-42b0-88b8-d8b5840629b0"
-                LastKnownName="HomeController"
-                LastKnownLocation="TdService.Modeling.uml" />
-            </covered>
-          </executionOccurrenceSpecification>
-        </fragments>
-        <lifelines>
-          <lifeline
-            Id="455e078b-5f4e-4636-be30-1161ef237046"
-            name="unregistered Shopper : Unregistered Shopper"
-            isActor="true"
-            lifelineDisplayName="unregistered Shopper : Unregistered Shopper">
-            <represents>
-              <propertyMoniker
-                Id="6110b5b2-1d58-49c7-9c4b-2acebb1ea1e3"
-                LastKnownLocation="TdService.Modeling.uml" />
-            </represents>
-            <topLevelOccurrences>
-              <messageOccurrenceSpecificationMoniker
-                Id="04228faa-8d6f-4025-8777-77908145742d"
-                LastKnownName="MessageOccurrenceSpecification1"
-                LastKnownLocation="TdService.Modeling.uml" />
-              <messageOccurrenceSpecificationMoniker
-                Id="8220a5a9-5e6b-444b-875d-dfc09a5160fe"
-                LastKnownName="MessageOccurrenceSpecification4"
-                LastKnownLocation="TdService.Modeling.uml" />
-            </topLevelOccurrences>
-          </lifeline>
-          <lifeline
-            Id="78850335-1189-42b0-88b8-d8b5840629b0"
-            name="HomeController"
-            isActor="false"
-            lifelineDisplayName="HomeController">
-            <topLevelOccurrences>
-              <executionOccurrenceSpecificationMoniker
-                Id="c6245eeb-728c-4be4-9e93-ebbc99d253c4"
-                LastKnownName="ExecutionOccurrenceSpecification1"
-                LastKnownLocation="TdService.Modeling.uml" />
-              <executionOccurrenceSpecificationMoniker
-                Id="bbefcaa8-d046-4285-a514-f87f2f9673fa"
-                LastKnownName="ExecutionOccurrenceSpecification2"
-                LastKnownLocation="TdService.Modeling.uml" />
-            </topLevelOccurrences>
-          </lifeline>
-          <lifeline
-            Id="1c9f2987-157e-4146-8a41-0154b1a1ba41"
-            name="iUserRepository : IUserRepository"
-            isActor="false"
-            lifelineDisplayName="iUserRepository : IUserRepository">
-            <represents>
-              <propertyMoniker
-                Id="2773d307-97ca-48d5-8c5c-bbf4f2aed213"
-                LastKnownLocation="TdService.Modeling.uml" />
-            </represents>
-          </lifeline>
-          <lifeline
-            Id="2aac88f6-7825-4687-aa8b-846beb45d31a"
-            name="Home.cshtml"
-            isActor="false"
-            lifelineDisplayName="Home.cshtml">
-            <topLevelOccurrences>
-              <executionOccurrenceSpecificationMoniker
-                Id="61c2b850-602a-431d-af6c-0d5bf95d1019"
-                LastKnownName="ExecutionOccurrenceSpecification3"
-                LastKnownLocation="TdService.Modeling.uml" />
-              <executionOccurrenceSpecificationMoniker
-                Id="cb3635e1-fda6-4c57-b720-dfe51f8927d8"
-                LastKnownName="ExecutionOccurrenceSpecification4"
-                LastKnownLocation="TdService.Modeling.uml" />
-            </topLevelOccurrences>
-          </lifeline>
-          <lifeline
-            Id="676f3779-f167-4467-8162-67eeccdf97ad"
-            name="SignIn.cshtml"
-            isActor="false"
-            lifelineDisplayName="SignIn.cshtml" />
-          <lifeline
-            Id="34babf7e-d218-4c00-a4a3-67398d2937a7"
-            name="SignUp.cshtml"
-            isActor="false"
-            lifelineDisplayName="SignUp.cshtml" />
-        </lifelines>
-        <messages>
-          <message
-            Id="fb308e1a-186d-4018-a863-8b8ec83ba01a"
-            name="/"
-            messageKind="Complete"
-            messageSort="SynchCall"
-            createSelfMessage="false">
-            <sendEvent>
-              <messageOccurrenceSpecificationMoniker
-                Id="04228faa-8d6f-4025-8777-77908145742d"
-                LastKnownName="MessageOccurrenceSpecification1"
-                LastKnownLocation="TdService.Modeling.uml" />
-            </sendEvent>
-            <receiveEvent>
-              <messageOccurrenceSpecificationMoniker
-                Id="0d27ab56-1699-48fe-90cf-4ab0fc81c521"
-                LastKnownName="MessageOccurrenceSpecification2"
-                LastKnownLocation="TdService.Modeling.uml" />
-            </receiveEvent>
-          </message>
-          <message
-            Id="2982cded-abff-448b-abe3-436e4bf83721"
-            name="Message1"
-            messageKind="Complete"
-            messageSort="SynchCall"
-            createSelfMessage="false">
-            <sendEvent>
-              <messageOccurrenceSpecificationMoniker
-                Id="c8b651f0-effb-40cc-94db-dca6cce4a3d6"
-                LastKnownName="MessageOccurrenceSpecification5"
-                LastKnownLocation="TdService.Modeling.uml" />
-            </sendEvent>
-            <receiveEvent>
-              <messageOccurrenceSpecificationMoniker
-                Id="72e0f762-f4a1-4aca-9497-22852a381080"
-                LastKnownName="MessageOccurrenceSpecification6"
-                LastKnownLocation="TdService.Modeling.uml" />
-            </receiveEvent>
-          </message>
-          <message
-            Id="68df09c8-7d68-40ce-b998-10b5b55eb456"
-            name="&lt;&lt;return&gt;&gt;"
-            messageKind="Complete"
-            messageSort="Reply"
-            createSelfMessage="false">
-            <sendEvent>
-              <messageOccurrenceSpecificationMoniker
-                Id="4a3c8bc1-a88c-4d1f-bf01-17e4b1ef8f0b"
-                LastKnownName="MessageOccurrenceSpecification7"
-                LastKnownLocation="TdService.Modeling.uml" />
-            </sendEvent>
-            <receiveEvent>
-              <messageOccurrenceSpecificationMoniker
-                Id="724facff-4a41-4640-a37d-8b550bb3e023"
-                LastKnownName="MessageOccurrenceSpecification8"
-                LastKnownLocation="TdService.Modeling.uml" />
-            </receiveEvent>
-          </message>
-          <message
-            Id="4175b327-60ca-4431-9a12-284b7656b651"
-            name="&lt;&lt;return&gt;&gt;"
-            messageKind="Complete"
-            messageSort="Reply"
-            createSelfMessage="false">
-            <sendEvent>
-              <messageOccurrenceSpecificationMoniker
-                Id="93cce863-8b38-4f7b-8a8e-f7bd8f7b358e"
-                LastKnownName="MessageOccurrenceSpecification3"
-                LastKnownLocation="TdService.Modeling.uml" />
-            </sendEvent>
-            <receiveEvent>
-              <messageOccurrenceSpecificationMoniker
-                Id="8220a5a9-5e6b-444b-875d-dfc09a5160fe"
-                LastKnownName="MessageOccurrenceSpecification4"
-                LastKnownLocation="TdService.Modeling.uml" />
-            </receiveEvent>
-          </message>
-        </messages>
-        <ownedAttributesInternal>
-          <property
-            Id="6110b5b2-1d58-49c7-9c4b-2acebb1ea1e3"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false">
-            <type_NamedElement>
-              <actorMoniker
-                Id="75ac1d6e-299b-4093-ab4a-3dd2d6e7737d"
-                LastKnownName="Unregistered Shopper"
-                LastKnownLocation="TdService.Modeling.uml" />
-            </type_NamedElement>
-          </property>
-          <property
-            Id="2773d307-97ca-48d5-8c5c-bbf4f2aed213"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false">
-            <type_NamedElement>
-              <interfaceMoniker
-                Id="66b95a30-fe8a-4b32-bd0d-e121665a0ea9"
-                LastKnownName="IUserRepository"
-                LastKnownLocation="Repositories.uml" />
-            </type_NamedElement>
-          </property>
-        </ownedAttributesInternal>
-      </interaction>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
       <executionEvent
         Id="1ca87ed8-ea9b-4c97-99a4-1578553c0ddb"
         name="ExecutionEvent" />
@@ -2930,19 +544,641 @@ Reset Password</body>
         name="ExecutionEvent" />
     </packageHasNamedElement>
     <packageHasNamedElement>
+      <undefinedType
+        Id="17283320-e889-4d6d-bcf9-b160c78c37c1"
+        name="IEnumerable&lt;Transaction&gt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="d76ae8da-eedd-42a2-9bab-6c59a91051ac"
+        LastKnownName="Views"
+        LastKnownLocation="Package_1733.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="3a792f8d-d547-47ba-b8ad-d936ab1db455"
+        LastKnownName="Structure"
+        LastKnownLocation="Package_1734.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="472d8f1c-7382-45c3-8949-11fabb3531a7"
+        LastKnownName="Activities"
+        LastKnownLocation="Package1_1734.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <sendOperationEvent
+        Id="5eee48c8-db08-4793-8851-c0c8bf976ea8">
+        <operation>
+          <operationMoniker
+            Id="76e1a867-d02a-4a73-a303-66c66725803b"
+            LastKnownName="Index"
+            LastKnownLocation="Package_2242.uml" />
+        </operation>
+      </sendOperationEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <receiveOperationEvent
+        Id="56ea039b-7bb0-4afb-83b9-c66766443253">
+        <operation>
+          <operationMoniker
+            Id="76e1a867-d02a-4a73-a303-66c66725803b"
+            LastKnownName="Index"
+            LastKnownLocation="Package_2242.uml" />
+        </operation>
+      </receiveOperationEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
       <executionEvent
-        Id="d9b4046d-cb49-4111-bb4c-8fc0762fc274"
+        Id="0604d041-1441-48f3-a3fd-83c903a9f4a5"
         name="ExecutionEvent" />
     </packageHasNamedElement>
     <packageHasNamedElement>
       <executionEvent
-        Id="be5325f4-f073-481e-9c34-a912b93e7569"
+        Id="05d29c49-2ae5-4b59-ac43-813bc401744d"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="dc6b77b5-32c8-430b-9629-c5ab6662255d"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="582eedb1-c4d8-408e-b468-144f022392c7"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="ceb6d101-ea4a-43bc-a77d-37b1988f288d"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="7e0e182e-4e3d-4939-b3d8-436bbd2cf78a"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <sendOperationEvent
+        Id="a446e2e7-3241-4321-956a-f84001bdd0d0">
+        <operation>
+          <operationMoniker
+            Id="0e2854b5-9c2e-4524-9453-0349f4566cd1"
+            LastKnownName="User"
+            LastKnownLocation="Domain.uml" />
+        </operation>
+      </sendOperationEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <receiveOperationEvent
+        Id="a9ea5a56-2005-4ef6-80e5-3df9ee997baf">
+        <operation>
+          <operationMoniker
+            Id="0e2854b5-9c2e-4524-9453-0349f4566cd1"
+            LastKnownName="User"
+            LastKnownLocation="Domain.uml" />
+        </operation>
+      </receiveOperationEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="05d68131-4c9e-4b57-a0ba-166a3ac73ca2"
+        LastKnownName="Controllers"
+        LastKnownLocation="Package_2242.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="34b2fa78-2c4a-4387-937f-f9702516d516"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="ba4dbe3a-9ba4-4ae5-bbf4-cd6a2ff842fe"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="146eb843-b0ab-4625-8fef-6859a7f61889"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="bcac467f-7a81-4766-b4f8-9b11f01fb2e2"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="b556f5e7-f596-46a9-b7aa-8a919823b263"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="ececab0e-4ec4-41a5-b936-0ec92f3ad26b"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="d2e519ed-c66d-4aa2-bc40-53076bf2cbff"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="a54f426f-6770-4406-9f81-9242e3a9d34f"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <sendOperationEvent
+        Id="2a486636-d9cd-4ba0-ba44-11cc83b46642">
+        <operation>
+          <operationMoniker
+            Id="20c6e30c-b62b-4df0-9a3d-69279e682ee8"
+            LastKnownName="SignUpModel"
+            LastKnownLocation="Domain.uml" />
+        </operation>
+      </sendOperationEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <receiveOperationEvent
+        Id="52e66c6b-5972-4574-bdfa-94365858656b">
+        <operation>
+          <operationMoniker
+            Id="20c6e30c-b62b-4df0-9a3d-69279e682ee8"
+            LastKnownName="SignUpModel"
+            LastKnownLocation="Domain.uml" />
+        </operation>
+      </receiveOperationEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="0887112c-1c52-4529-9622-9b6a0ffc61c9"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="7b82820b-92f3-4710-a769-00ef1540efc0"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <sendOperationEvent
+        Id="fbfb2dea-c6aa-4360-8ab0-aec98cdfc5d3">
+        <operation>
+          <operationMoniker
+            Id="ea12d11d-369f-44d6-81f5-492d12e6e02b"
+            LastKnownName="SignUp"
+            LastKnownLocation="Package_2242.uml" />
+        </operation>
+      </sendOperationEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <receiveOperationEvent
+        Id="15f10e41-9ff3-4bab-9694-080089e6359d">
+        <operation>
+          <operationMoniker
+            Id="ea12d11d-369f-44d6-81f5-492d12e6e02b"
+            LastKnownName="SignUp"
+            LastKnownLocation="Package_2242.uml" />
+        </operation>
+      </receiveOperationEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <sendOperationEvent
+        Id="9f54c874-df11-428f-8459-4383f302ae28">
+        <operation>
+          <operationMoniker
+            Id="04b8e84f-9108-4af8-8738-6aa914223115"
+            LastKnownName="SignUp"
+            LastKnownLocation="Package_2242.uml" />
+        </operation>
+      </sendOperationEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <receiveOperationEvent
+        Id="9f7ff79f-66a8-47c9-930b-2300c239322d">
+        <operation>
+          <operationMoniker
+            Id="04b8e84f-9108-4af8-8738-6aa914223115"
+            LastKnownName="SignUp"
+            LastKnownLocation="Package_2242.uml" />
+        </operation>
+      </receiveOperationEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="8f57eda5-0dfd-4c32-bf03-f095c198d5ba"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="d3a5af11-76b6-4427-8893-e52195d7af48"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <sendOperationEvent
+        Id="de8182fd-ed0f-48d5-b6a9-13abf1c77bac">
+        <operation>
+          <operationMoniker
+            Id="3abd6656-6adc-4648-9347-295130ad688c"
+            LastKnownName="AddUser"
+            LastKnownLocation="Repositories.uml" />
+        </operation>
+      </sendOperationEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <receiveOperationEvent
+        Id="409a54a2-e811-43f0-8706-e244f6591b48">
+        <operation>
+          <operationMoniker
+            Id="3abd6656-6adc-4648-9347-295130ad688c"
+            LastKnownName="AddUser"
+            LastKnownLocation="Repositories.uml" />
+        </operation>
+      </receiveOperationEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="66118a92-12be-4026-90db-61a4678f0fce"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="cd8c42b6-b8be-42e8-9c64-37f8da42731a"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <sendOperationEvent
+        Id="2847599c-5b8e-4375-a9d1-f7c832403365">
+        <operation>
+          <operationMoniker
+            Id="ea12d11d-369f-44d6-81f5-492d12e6e02b"
+            LastKnownName="SignUp"
+            LastKnownLocation="Package_2242.uml" />
+        </operation>
+      </sendOperationEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <receiveOperationEvent
+        Id="67fdd975-0f77-4c56-93d4-f6a9107a6761">
+        <operation>
+          <operationMoniker
+            Id="ea12d11d-369f-44d6-81f5-492d12e6e02b"
+            LastKnownName="SignUp"
+            LastKnownLocation="Package_2242.uml" />
+        </operation>
+      </receiveOperationEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="c3eb3f3f-0802-4ca9-b491-917ff1de039c"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="a022f657-6cb1-42ae-a49d-b3aea3c5d474"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <sendOperationEvent
+        Id="bedb8a68-a45c-497b-a749-d82011c0681f">
+        <operation>
+          <operationMoniker
+            Id="3abd6656-6adc-4648-9347-295130ad688c"
+            LastKnownName="AddUser"
+            LastKnownLocation="Repositories.uml" />
+        </operation>
+      </sendOperationEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <receiveOperationEvent
+        Id="2ffcfe04-6b3c-4f09-a10d-0ac8b98a1bb9">
+        <operation>
+          <operationMoniker
+            Id="3abd6656-6adc-4648-9347-295130ad688c"
+            LastKnownName="AddUser"
+            LastKnownLocation="Repositories.uml" />
+        </operation>
+      </receiveOperationEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="4e4d7e86-0217-4ef4-b472-a3e8d5ca0afc"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="1e1763d9-1d34-4bea-8a51-3fc44960118c"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <sendOperationEvent
+        Id="d5c32520-79bf-4ca6-955e-4b303c1ce2f4">
+        <operation>
+          <operationMoniker
+            Id="ada1a77f-cb45-4100-a986-a7b2b2707f61"
+            LastKnownName="SendAccountActivationLink"
+            LastKnownLocation="Domain.uml" />
+        </operation>
+      </sendOperationEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <receiveOperationEvent
+        Id="67999986-1f2a-4532-a82c-6fe2c3265eed">
+        <operation>
+          <operationMoniker
+            Id="ada1a77f-cb45-4100-a986-a7b2b2707f61"
+            LastKnownName="SendAccountActivationLink"
+            LastKnownLocation="Domain.uml" />
+        </operation>
+      </receiveOperationEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="43968878-567b-4382-9537-21a730a136ef"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="bc47b669-fcb8-464f-97d1-a2b6b8ef0bf8"
         name="ExecutionEvent" />
     </packageHasNamedElement>
     <packageHasNamedElement>
       <undefinedType
-        Id="17283320-e889-4d6d-bcf9-b160c78c37c1"
-        name="IEnumerable&lt;Transaction&gt;" />
+        Id="b429c8a1-eaf5-4120-b966-1125f52ba770"
+        name="string" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <sendOperationEvent
+        Id="fe9096a7-ba7c-41f6-a85a-69f024f7fe56">
+        <operation>
+          <operationMoniker
+            Id="f65b4d9f-7ffa-4bb6-a482-231dab6c7992"
+            LastKnownName="Activate"
+            LastKnownLocation="Package_2242.uml" />
+        </operation>
+      </sendOperationEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <receiveOperationEvent
+        Id="9a6cc9f3-f62b-4a46-a461-2042b22a0a25">
+        <operation>
+          <operationMoniker
+            Id="f65b4d9f-7ffa-4bb6-a482-231dab6c7992"
+            LastKnownName="Activate"
+            LastKnownLocation="Package_2242.uml" />
+        </operation>
+      </receiveOperationEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="86bd47db-eeac-4753-a6a4-4b2291e92e8d"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="f3686f4d-193d-4e13-9c1e-5da62081321e"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <sendOperationEvent
+        Id="9f1a969b-1730-4d4f-aa06-0a9399d1a09f">
+        <operation>
+          <operationMoniker
+            Id="9fce87fe-67bd-4531-a67e-210fe0461777"
+            LastKnownName="AddUserInRoles"
+            LastKnownLocation="Repositories.uml" />
+        </operation>
+      </sendOperationEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <receiveOperationEvent
+        Id="5efadf58-89b5-4528-b6ea-c382a7249fcc">
+        <operation>
+          <operationMoniker
+            Id="9fce87fe-67bd-4531-a67e-210fe0461777"
+            LastKnownName="AddUserInRoles"
+            LastKnownLocation="Repositories.uml" />
+        </operation>
+      </receiveOperationEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="93ab40f1-bdf7-4953-bb3f-de0948ef2311"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="82b4a049-52e1-4c3e-a6a8-61b0e21ce657"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="8bb7f9ee-68bb-451d-bd0e-a1238d621827"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="8187e5a3-5743-4f7e-a5be-44c80295a576"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="20814c38-9eda-4ae7-a55a-025401732307"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="f51a49a5-e7bd-49b7-8398-a66905499d2c"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <sendOperationEvent
+        Id="f7fa45f9-6227-4313-97b5-ca5f974071cd">
+        <operation>
+          <operationMoniker
+            Id="f65b4d9f-7ffa-4bb6-a482-231dab6c7992"
+            LastKnownName="Activate"
+            LastKnownLocation="Package_2242.uml" />
+        </operation>
+      </sendOperationEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <receiveOperationEvent
+        Id="e93ed1c0-6dbf-4f67-acba-d6aa3dbdb52c">
+        <operation>
+          <operationMoniker
+            Id="f65b4d9f-7ffa-4bb6-a482-231dab6c7992"
+            LastKnownName="Activate"
+            LastKnownLocation="Package_2242.uml" />
+        </operation>
+      </receiveOperationEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="138864e5-7eeb-41de-a703-ee9336e67de2"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="af46da5d-ee1f-444a-899d-0c2d0624619d"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="65873d01-57ca-47c9-b259-62be5c34028c"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="69ada197-0dd1-4e0f-af89-3777c01cef05"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="af3c7693-ab06-443e-af4e-7e14177ddb8d"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="cb82ed71-e079-4335-b434-4f326196d7d5"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="f9b5e061-8665-43ba-b8cb-dfc5c6740e85"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="d6b85bf8-7cd5-42ca-8072-b2bbd76b0fe2"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="8b3e2abb-dbba-40b6-9c16-160abc0c9df3"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="d58892f4-7171-41e7-b177-6560d9c468a6"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <sendOperationEvent
+        Id="b12f2570-7def-4383-8474-2b0e98414971">
+        <operation>
+          <operationMoniker
+            Id="e426b6fd-36a9-4902-9de1-736434b428d1"
+            LastKnownName="UpdateUser"
+            LastKnownLocation="Repositories.uml" />
+        </operation>
+      </sendOperationEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <receiveOperationEvent
+        Id="96d78c40-6c10-4031-93cb-56a3ab2e7362">
+        <operation>
+          <operationMoniker
+            Id="e426b6fd-36a9-4902-9de1-736434b428d1"
+            LastKnownName="UpdateUser"
+            LastKnownLocation="Repositories.uml" />
+        </operation>
+      </receiveOperationEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="787e115b-360e-4bd3-94d8-f8c139a9e01a"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="487c228f-6e7a-4df0-be08-9bec332cdac3"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <sendOperationEvent
+        Id="5b98d1fe-2438-45d6-9dcb-1b32c37c9a0d">
+        <operation>
+          <operationMoniker
+            Id="1ba0c729-8889-4ad3-8f6b-7306b5a7256c"
+            LastKnownName="Activate"
+            LastKnownLocation="Domain.uml" />
+        </operation>
+      </sendOperationEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <receiveOperationEvent
+        Id="7f2e0ac4-14f1-4a0d-ab48-6c57e04c88f6">
+        <operation>
+          <operationMoniker
+            Id="1ba0c729-8889-4ad3-8f6b-7306b5a7256c"
+            LastKnownName="Activate"
+            LastKnownLocation="Domain.uml" />
+        </operation>
+      </receiveOperationEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="1163ebd6-b887-4687-9fd5-76e132a48ef2"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="bdc477cf-3388-49ed-9f2b-a34fe3efca1b"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <sendOperationEvent
+        Id="effdb6b3-5def-4f9a-897d-b00424cb1bb2">
+        <operation>
+          <operationMoniker
+            Id="9fce87fe-67bd-4531-a67e-210fe0461777"
+            LastKnownName="AddUserInRoles"
+            LastKnownLocation="Repositories.uml" />
+        </operation>
+      </sendOperationEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <receiveOperationEvent
+        Id="9e749c61-28ba-4626-9698-8abd622e0fdc">
+        <operation>
+          <operationMoniker
+            Id="9fce87fe-67bd-4531-a67e-210fe0461777"
+            LastKnownName="AddUserInRoles"
+            LastKnownLocation="Repositories.uml" />
+        </operation>
+      </receiveOperationEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="3eb339f0-21b7-411e-a331-bb862b6a9be1"
+        name="User" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <sendOperationEvent
+        Id="44eb53e4-5849-4df9-8a4b-d0cd58ac2225">
+        <operation>
+          <operationMoniker
+            Id="cef88e79-cf15-41ac-8e21-0c9b2e09dd76"
+            LastKnownName="GetUserByGuid"
+            LastKnownLocation="Repositories.uml" />
+        </operation>
+      </sendOperationEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <receiveOperationEvent
+        Id="54ab4f04-abaf-4339-b900-c8fc14bfad0d">
+        <operation>
+          <operationMoniker
+            Id="cef88e79-cf15-41ac-8e21-0c9b2e09dd76"
+            LastKnownName="GetUserByGuid"
+            LastKnownLocation="Repositories.uml" />
+        </operation>
+      </receiveOperationEvent>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="ca32e694-40fe-43f6-8302-f5761d766a6c"
+        LastKnownName="Sequencies"
+        LastKnownLocation="Package_0244.uml" />
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType

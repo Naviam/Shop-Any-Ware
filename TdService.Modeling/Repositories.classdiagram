@@ -2025,6 +2025,27 @@
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
+          <operation Id="e3f37281-3e98-4a05-947b-62c21b390ea5" name="GetUserByGuid" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="cef88e79-cf15-41ac-8e21-0c9b2e09dd76" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="d868ee1e-8df2-4211-a607-693b8bdff4ec" name="giud" direction="In" isUnique="false">
+                  <elementDefinition Id="b07438cc-9277-4a7d-9a4a-7f660c27cb39" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="29502aba-7976-4187-a9a7-ae2e7f0fc4e7" LastKnownName="String" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="53ff3ffd-26ef-4a1f-84ef-145b7eed232d" direction="Return" isUnique="false">
+                  <elementDefinition Id="3a8259af-7c53-459e-82ca-9466931ed28f" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="8669419d-9e1e-44e2-8c7b-06dc7bcff9d6" LastKnownName="User" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
         </ownedOperations>
       </Interface>
     </logicalClassDesignerModelHasTypes>
@@ -3758,6 +3779,11 @@
     <packageHasNamedElement>
       <referencedType Id="2c33b0e7-ed7b-4d67-a6b2-bdf373089877" name="TransactionStatus" isAbstract="false" isLeaf="false" cachedFullName="TdService.Modeling::Domain::TransactionStatus">
         <elementDefinition Id="df2e66ce-90ca-441d-8775-d29670bfbe45" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="8669419d-9e1e-44e2-8c7b-06dc7bcff9d6" name="User" isAbstract="false" isLeaf="false" cachedFullName="User">
+        <elementDefinition Id="3eb339f0-21b7-411e-a331-bb862b6a9be1" />
       </referencedType>
     </packageHasNamedElement>
   </packagedElements>

@@ -17,6 +17,13 @@
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets" />
   <ItemGroup>
+    <Content Include="AccountController.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="AccountController.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>AccountController.classdiagram</DependentUpon>
+    </Content>
     <Content Include="Activities\Add Money.activitydiagram">
       <SubType>Content</SubType>
     </Content>
@@ -59,6 +66,34 @@
       <SubType>Content</SubType>
       <DependentUpon>Domain Model.classdiagram</DependentUpon>
     </Content>
+    <Content Include="Dynamic\Sign Up Process\1. Browse home page.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Dynamic\Sign Up Process\1.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Dynamic\Sign Up Process\1. Browse home page.sequencediagram</DependentUpon>
+    </Content>
+    <Content Include="Dynamic\Sign Up Process\2. Browse signup form.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Dynamic\Sign Up Process\2. Click Register Link Button.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Dynamic\Sign Up Process\2. Browse signup form.sequencediagram</DependentUpon>
+    </Content>
+    <Content Include="Dynamic\Sign Up Process\3-4. Submit signup form and send activation link.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Dynamic\Sign Up Process\3-4. Submit signup form.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Dynamic\Sign Up Process\3-4. Submit signup form and send activation link.sequencediagram</DependentUpon>
+    </Content>
+    <Content Include="Dynamic\Sign Up Process\5-6.Browse activation link and activates account.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Dynamic\Sign Up Process\5-6.Browse activation link and activates account.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Dynamic\Sign Up Process\5-6.Browse activation link and activates account.sequencediagram</DependentUpon>
+    </Content>
     <Content Include="ModelDefinition\Package1_0107.uml">
       <SubType>Content</SubType>
     </Content>
@@ -66,6 +101,24 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="ModelDefinition\Domain.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\Package1_1734.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\Package_0047.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\Package_0244.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\Package_1733.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\Package_1734.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\Package_2242.uml">
       <SubType>Content</SubType>
     </Content>
     <Content Include="ModelDefinition\Repositories.uml">
@@ -112,12 +165,12 @@
       <SubType>Content</SubType>
       <DependentUpon>Repositories.classdiagram</DependentUpon>
     </Content>
-    <Content Include="Sign Up.sequencediagram">
+    <Content Include="HomeController.classdiagram">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Sign Up.sequencediagram.layout">
+    <Content Include="HomeController.classdiagram.layout">
       <SubType>Content</SubType>
-      <DependentUpon>Sign Up.sequencediagram</DependentUpon>
+      <DependentUpon>HomeController.classdiagram</DependentUpon>
     </Content>
     <Content Include="Use Cases\Administrator.usecasediagram">
       <SubType>Content</SubType>
@@ -196,11 +249,13 @@
       <SubType>Content</SubType>
       <DependentUpon>Use Cases\Time.usecasediagram</DependentUpon>
     </Content>
+    <Folder Include="Dynamic\Sign Up Process" />
     <Folder Include="ModelDefinition\" />
     <Content Include="ModelDefinition\TdService.Modeling.uml">
       <SubType>Content</SubType>
     </Content>
     <Folder Include="Activities" />
+    <Folder Include="Dynamic" />
     <Folder Include="Use Cases" />
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ComponentDesigner" xmlns:dm12="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" xmlns:dm13="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" dslVersion="1.0.0.0" Id="adcbc731-1258-4b43-aa08-7a51cf8891c6" name="Sign Up" linkedPackageId="4b484414-3918-44c0-aea2-b6ed7616b45e" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <appliedStereotypesInternal>
+    <stereotypeInstance Id="205d9db1-3427-4d13-8427-2f2be233d68a" name="namespace" profile="CSharpProfile">
+      <elementDefinition Id="83215c40-e8ab-4007-8499-f71aa2691e39" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="31df0c81-a00e-495e-bc7f-5cd16164efa9">
+          <propertyInstance Id="597080a1-f290-42c1-afee-3d596d2d8fb5" name="BaseName" value="TdService">
+            <elementDefinition Id="9ce0693a-9a0f-4273-b99b-0ac34f47f58e" />
+          </propertyInstance>
+          <elementDefinition Id="4a043077-7e5b-4fd9-96a7-64d7635201c1" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="c8045c58-868b-486a-9d92-9d238db87835">
+          <propertyInstance Id="765fe400-6d5e-4cdb-8c9a-2a875a7736f4" name="ClrAttributes">
+            <elementDefinition Id="2e84046b-908f-4a32-98d4-39e94d9d705e" />
+          </propertyInstance>
+          <elementDefinition Id="beda8572-1b32-41a2-b7ed-7c09aa26de3a" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="62ccf2d6-1d7d-4543-94ca-1e8257508f97">
+          <propertyInstance Id="a67c8f7e-b785-4fa0-90e4-95795c12977c" name="Usings">
+            <elementDefinition Id="167efa69-29f8-4f1e-bb3f-4b1a8e50ad7b" />
+          </propertyInstance>
+          <elementDefinition Id="9e12bd4b-c667-4f8d-b4b0-34c1a0d569a5" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+    <stereotypeInstance Id="9209cff6-783e-44ad-bc69-f5ba80636250" name="TextTemplateBindings" profile="TextTemplateBindings">
+      <elementDefinition Id="8846ae1b-9e13-4ef1-93e8-c9b2308fd2f9" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="6cf9250c-b69f-4329-9b55-797da650e9e2">
+          <propertyInstance Id="e633f906-ac3b-48ef-bb4c-6f0c044cfbfc" name="Alias" value="ClassTemplate|EnumTemplate|InterfaceTemplate|StructTemplate">
+            <elementDefinition Id="3472a760-5369-47af-8753-eaf1f365bf4e" />
+          </propertyInstance>
+          <elementDefinition Id="339138bf-7878-4975-901f-2ec6c33bd3e9" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="839f1c57-a04f-41b9-8060-d09b554c46d4">
+          <propertyInstance Id="a7f8636a-8e96-48d8-8c5f-ad099d331abe" name="TemplateFilePath" value="ClassTemplate=C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.ClassTemplate.t4|EnumTemplate=C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.EnumTemplate.t4|InterfaceTemplate=C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.InterfaceTemplate.t4|StructTemplate=C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.StructTemplate.t4">
+            <elementDefinition Id="459ae12b-427c-4742-8c4d-03fa5c4848fa" />
+          </propertyInstance>
+          <elementDefinition Id="0b7fdb28-9464-4fb3-9b1a-63e64e3015e2" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="7dee3e16-6355-4026-ad15-50cb792a9a3c">
+          <propertyInstance Id="d82919e6-c151-4bbe-b602-15a37796bde1" name="ProjectPath" value="ClassTemplate=..\TdService.Domain\TdService.Domain.csproj|EnumTemplate=..\TdService.Domain\TdService.Domain.csproj|InterfaceTemplate=..\TdService.Domain\TdService.Domain.csproj|StructTemplate=..\TdService.Domain\TdService.Domain.csproj">
+            <elementDefinition Id="7cc5cd71-11b2-451f-9656-769cf85f48ec" />
+          </propertyInstance>
+          <elementDefinition Id="587eceeb-25a5-4665-a1d3-8d4c1fea0827" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="4e6a9989-6dfa-4966-8921-92dd1efbea97">
+          <propertyInstance Id="6d19148b-27cc-4ed8-9e45-7b41ab6bb489" name="TargetDirectory" value="ClassTemplate={PackageStructure}|EnumTemplate={PackageStructure}|InterfaceTemplate={PackageStructure}|StructTemplate={PackageStructure}">
+            <elementDefinition Id="dbda9d32-9304-4b19-b5fe-b3d5e6d5539b" />
+          </propertyInstance>
+          <elementDefinition Id="0172f644-f774-4dab-996a-09d1267fdecf" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="e4f914a9-284b-4fb3-99cf-55158be7d14c">
+          <propertyInstance Id="91233ddd-9961-4db0-8ed4-d8e5a7583710" name="TargetName" value="ClassTemplate={Name}|EnumTemplate={Name}|InterfaceTemplate={Name}|StructTemplate={Name}">
+            <elementDefinition Id="a48101f4-3421-4b10-9cf3-66dbb92c1fab" />
+          </propertyInstance>
+          <elementDefinition Id="8ce73baa-a5a3-4c89-a566-97d0fadc1b13" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="c705f397-3f11-4790-aef8-fa9947cf49d9">
+          <propertyInstance Id="f3802ef5-dd46-4919-906f-a03ffad457e1" name="Overwrite" value="ClassTemplate=True|EnumTemplate=True|InterfaceTemplate=True|StructTemplate=True">
+            <elementDefinition Id="075e63c1-4076-4e13-8ebd-67950f26cf3a" />
+          </propertyInstance>
+          <elementDefinition Id="6678a209-ab3e-44a4-85bc-444f6be5ee46" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="221b72aa-97a1-4dc6-aaa4-116474b9671b">
+          <propertyInstance Id="927106c1-3733-470c-88d9-f32751ec5395" name="Parameters">
+            <elementDefinition Id="c1b6d19e-8647-4279-8125-69850c99a4fb" />
+          </propertyInstance>
+          <elementDefinition Id="513e5963-c807-47ec-a46c-717626c8a771" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+  </appliedStereotypesInternal>
+  <profileInstances>
+    <packageHasProfileInstances Id="c34ffc01-4d0b-4012-83d6-587336cc66af">
+      <profileInstance Id="0c38b455-222f-428d-8ed6-10d4fef3ea8e" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="b6461dc8-1023-4ba2-99bb-49b760b99d60">
+      <profileInstance Id="c83a2d1b-c42d-4230-afe8-1433d0c4f283" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="88a8c454-84de-4535-86cf-f981b8c6090c">
+      <profileInstance Id="43e41fff-3f7a-48b3-aed9-81399687557b" name="TextTemplateBindings">
+        <elementDefinition Id="19fcac95-f5d2-4773-b284-5fd2debd864c" />
+      </profileInstance>
+      <elementDefinition Id="91062264-0281-4ed4-9610-38da3816671b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="76eba590-b92e-4ca8-98f5-c83f1000591c">
+      <profileInstance Id="89ef465d-9225-4422-9df9-45e7342ad90d" name="CSharpProfile">
+        <elementDefinition Id="71d78747-3c24-4160-bbec-b01fff4d0349" />
+      </profileInstance>
+      <elementDefinition Id="dbed6c01-0c96-4afa-963b-e5ae39313121" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="8face7cf-e682-4a8b-b580-fe83224bf5b7" name="HomeController" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="6d219fbf-b1e1-4c5d-92e4-67762c22669c" />
+        <suppliersInternal>
+          <dependency Id="bdab977b-042d-4d90-b27f-cd1197cf17b4">
+            <classMoniker Id="3c93ba76-6d67-4423-95b1-0a361bf2efd6" LastKnownName="Home.cshtml" />
+            <elementDefinition Id="c4af99b8-bd31-45b0-b55b-35c40852a8cc" />
+          </dependency>
+        </suppliersInternal>
+        <ownedOperationsInternal>
+          <operation Id="97e6f0e0-dc21-456d-b072-84f52bb381d0" name="Index" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="76e1a867-d02a-4a73-a303-66c66725803b" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="30f30eaf-2050-4dfd-a2f6-01f7a91f48ad" direction="Return">
+                  <elementDefinition Id="7225fb73-5595-4ef7-b938-ff7c88e225ce" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="16f3876d-3d4a-4629-977d-60a710d04ee6" LastKnownName="ActionResult" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="16f3876d-3d4a-4629-977d-60a710d04ee6" name="ActionResult" isAbstract="false" isLeaf="false" cachedFullName="ActionResult">
+        <elementDefinition Id="b0a5d4a7-150b-42dc-921b-f8b49195e446" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="3c93ba76-6d67-4423-95b1-0a361bf2efd6" name="Home.cshtml" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="f0e9314a-af29-43d1-b6bc-2669f9660ce9" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="4b484414-3918-44c0-aea2-b6ed7616b45e" name="TdService.Modeling">
+    <elementDefinition Id="e006d43a-3bc9-452c-a7ce-47edd28d044b" />
+  </package>
+</logicalClassDesignerModel>

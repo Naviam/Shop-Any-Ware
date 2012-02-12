@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ComponentDesigner" xmlns:dm12="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" xmlns:dm13="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner"
+  dslVersion="1.0.0.0"
+  Id="d76ae8da-eedd-42a2-9bab-6c59a91051ac"
+  name="Views" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <appliedStereotypesInternal>
+    <stereotypeInstance
+      Id="cf92762d-4495-461b-8827-6acbcae9355e"
+      name="TextTemplateBindings"
+      profile="TextTemplateBindings">
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="2cbe05a0-3869-424b-9d1d-b7039cbb8d69">
+          <propertyInstance
+            Id="d1d6d33f-ebce-469b-96b0-782a37300de3"
+            name="Alias"
+            value="ClassTemplate" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="3e076da4-fd02-457a-8f4d-06e82d00e53d">
+          <propertyInstance
+            Id="0277641e-b455-4778-8f57-df9966104410"
+            name="TemplateFilePath"
+            value="ClassTemplate=C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.ClassTemplate.t4" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="dc4c1c7f-1a73-4d3d-b701-8771cb0361b7">
+          <propertyInstance
+            Id="0fda6f44-673a-408d-ad3a-844266012271"
+            name="ProjectPath"
+            value="ClassTemplate=..\TdService\TdService.Web.csproj" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="5d83d178-22bf-462b-bbe2-14ae088a782b">
+          <propertyInstance
+            Id="cd60f41e-8f8e-4fdd-891e-bca578a6aa8d"
+            name="TargetDirectory"
+            value="ClassTemplate={PackageStructure}" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="a0bb497e-7b47-48e5-ae96-7f592f1df2c9">
+          <propertyInstance
+            Id="d21b78e5-aa86-4cec-a289-ffda9bb74e90"
+            name="TargetName"
+            value="ClassTemplate={Name}" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="ff31252d-1da8-44fb-84ad-94a294d20a73">
+          <propertyInstance
+            Id="af863511-9803-46f2-9f4f-09a90d215a10"
+            name="Overwrite"
+            value="ClassTemplate=True" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="9098cce5-18f7-4488-aee8-f8eb297a194a">
+          <propertyInstance
+            Id="0f5421c6-e3b1-44ac-8069-1ecd1356594c"
+            name="Parameters" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+  </appliedStereotypesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="b0a5d4a7-150b-42dc-921b-f8b49195e446"
+        name="ActionResult" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="f0e9314a-af29-43d1-b6bc-2669f9660ce9"
+        name="Home.cshtml"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="a5420d80-0c1a-458a-8805-1b9faba2a956"
+        name="Signup.cshtml"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="bdbe9b07-d723-4b67-ad67-f9ab1750b7fc"
+        name="Activate.cshtml"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="26b9772b-eab9-4c9f-8e9c-5a7075a7d57c"
+        LastKnownName="Shared"
+        LastKnownLocation="Package_0047.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="571f8da4-f18e-4875-badc-77a037b375df"
+        name="SignIn.cshtml"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

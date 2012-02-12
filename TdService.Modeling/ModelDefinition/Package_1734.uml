@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ComponentDesigner" xmlns:dm12="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" xmlns:dm13="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner"
+  dslVersion="1.0.0.0"
+  Id="3a792f8d-d547-47ba-b8ad-d936ab1db455"
+  name="Structure" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <packagedElements>
+    <packageHasNamedElement>
+      <component
+        Id="7aa638d6-945c-4937-83aa-c85b42bf3ac8"
+        name="Amazon S3"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <component
+        Id="6f5bc619-6d85-4f4b-82ac-c0f41ac44acc"
+        name="Amazon SimpleDB"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <component
+        Id="2ded25e4-8e5b-4b87-95f4-680972a50ded"
+        name="MsSQL Database"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <component
+        Id="5b981ba5-fbba-4770-b29a-3fd48c5a5554"
+        name="MySQL Database"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <component
+        Id="a998e4b9-3dbe-4870-844c-8d8abe4cfbfe"
+        name="TdService.API.dll"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <dependency
+            Id="a3dff464-f9ce-45d3-a499-204173955743">
+            <componentMoniker
+              Id="6ab42a79-81c5-49e0-9754-ef553dd87dce"
+              LastKnownName="TdService.Domain.dll"
+              LastKnownLocation="Package_1734.uml" />
+          </dependency>
+        </suppliersInternal>
+      </component>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <component
+        Id="c83a97a5-a15c-43df-977a-191838dd8b4b"
+        name="TdService.Data.dll"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <dependency
+            Id="8ba5a11a-bad6-4d9c-9961-d62155057a63">
+            <componentMoniker
+              Id="5b981ba5-fbba-4770-b29a-3fd48c5a5554"
+              LastKnownName="MySQL Database"
+              LastKnownLocation="Package_1734.uml" />
+          </dependency>
+          <dependency
+            Id="6ee49564-a448-44d8-b86c-7c8691704e6a">
+            <componentMoniker
+              Id="2ded25e4-8e5b-4b87-95f4-680972a50ded"
+              LastKnownName="MsSQL Database"
+              LastKnownLocation="Package_1734.uml" />
+          </dependency>
+        </suppliersInternal>
+      </component>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <component
+        Id="6ab42a79-81c5-49e0-9754-ef553dd87dce"
+        name="TdService.Domain.dll"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <dependency
+            Id="ccfe744d-a674-4f52-add4-6178833db5af">
+            <componentMoniker
+              Id="111943fe-1e11-4597-9eaf-98e38b7bb9bc"
+              LastKnownName="TdService.Infrastructure.dll"
+              LastKnownLocation="Package_1734.uml" />
+          </dependency>
+          <dependency
+            Id="ac1addb5-d72c-4df4-a6ed-e965d998da30">
+            <componentMoniker
+              Id="c83a97a5-a15c-43df-977a-191838dd8b4b"
+              LastKnownName="TdService.Data.dll"
+              LastKnownLocation="Package_1734.uml" />
+          </dependency>
+        </suppliersInternal>
+      </component>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <component
+        Id="111943fe-1e11-4597-9eaf-98e38b7bb9bc"
+        name="TdService.Infrastructure.dll"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <dependency
+            Id="69ffdbc1-6773-42cf-8b85-e73638f98f12">
+            <componentMoniker
+              Id="6f5bc619-6d85-4f4b-82ac-c0f41ac44acc"
+              LastKnownName="Amazon SimpleDB"
+              LastKnownLocation="Package_1734.uml" />
+          </dependency>
+          <dependency
+            Id="ed8d68b6-43ab-4b20-8082-73d97ed0b9b2">
+            <componentMoniker
+              Id="7aa638d6-945c-4937-83aa-c85b42bf3ac8"
+              LastKnownName="Amazon S3"
+              LastKnownLocation="Package_1734.uml" />
+          </dependency>
+        </suppliersInternal>
+      </component>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <component
+        Id="f05a77ef-6f5c-4217-96b9-a499fc36b804"
+        name="TdService.Web.dll"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <dependency
+            Id="215bb286-c2b9-4102-a23f-5ecfff25307f">
+            <componentMoniker
+              Id="a998e4b9-3dbe-4870-844c-8d8abe4cfbfe"
+              LastKnownName="TdService.API.dll"
+              LastKnownLocation="Package_1734.uml" />
+          </dependency>
+          <dependency
+            Id="c4639b64-ffa0-4ece-9c87-463f3cefc0e6">
+            <componentMoniker
+              Id="6ab42a79-81c5-49e0-9754-ef553dd87dce"
+              LastKnownName="TdService.Domain.dll"
+              LastKnownLocation="Package_1734.uml" />
+          </dependency>
+        </suppliersInternal>
+      </component>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>
