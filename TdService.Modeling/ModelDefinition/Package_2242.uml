@@ -90,8 +90,8 @@
                   <type_NamedElement>
                     <classMoniker
                       Id="cc8b2f14-f20b-41f9-8a72-54d11adc70c2"
-                      LastKnownName="SignUpModel"
-                      LastKnownLocation="Domain.uml" />
+                      LastKnownName="SignUpView"
+                      LastKnownLocation="Package_1030.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>

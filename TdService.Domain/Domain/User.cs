@@ -40,6 +40,18 @@ namespace TdService.Domain
 			set;
 		}
 
+		public virtual bool IsActive
+		{
+			get;
+			set;
+		}
+
+		public virtual string ActivationGuid
+		{
+			get;
+			set;
+		}
+
 		public virtual Profile Profile
 		{
 			get;
@@ -74,6 +86,15 @@ namespace TdService.Domain
 		{
 			get;
 			set;
+		}
+
+		public User()
+		{
+		}
+
+		public virtual void Activate()
+		{
+			throw new System.NotImplementedException();
 		}
 
 	}

@@ -433,7 +433,7 @@ Reset Password</body>
           <propertyInstance
             Id="075e63c1-4076-4e13-8ebd-67950f26cf3a"
             name="Overwrite"
-            value="ClassTemplate=True|EnumTemplate=True|InterfaceTemplate=True|StructTemplate=True" />
+            value="ClassTemplate=False|EnumTemplate=True|InterfaceTemplate=True|StructTemplate=True" />
         </stereotypeInstanceHasPropertyInstances>
         <stereotypeInstanceHasPropertyInstances
           Id="513e5963-c807-47ec-a46c-717626c8a771">
@@ -693,7 +693,7 @@ Reset Password</body>
           <operationMoniker
             Id="20c6e30c-b62b-4df0-9a3d-69279e682ee8"
             LastKnownName="SignUpModel"
-            LastKnownLocation="Domain.uml" />
+            LastKnownLocation="Package_1030.uml" />
         </operation>
       </sendOperationEvent>
     </packageHasNamedElement>
@@ -704,7 +704,7 @@ Reset Password</body>
           <operationMoniker
             Id="20c6e30c-b62b-4df0-9a3d-69279e682ee8"
             LastKnownName="SignUpModel"
-            LastKnownLocation="Domain.uml" />
+            LastKnownLocation="Package_1030.uml" />
         </operation>
       </receiveOperationEvent>
     </packageHasNamedElement>
@@ -1179,6 +1179,12 @@ Reset Password</body>
         Id="ca32e694-40fe-43f6-8302-f5761d766a6c"
         LastKnownName="Sequencies"
         LastKnownLocation="Package_0244.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="3f86ea51-655f-4b97-a2a0-d1a7a6f3f62c"
+        LastKnownName="ViewModel"
+        LastKnownLocation="Package_1030.uml" />
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType

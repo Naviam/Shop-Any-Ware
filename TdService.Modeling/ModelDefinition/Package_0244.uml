@@ -1004,7 +1004,7 @@
             <coveredLifelines>
               <lifelineMoniker
                 Id="36e49db3-fdd5-4ddf-a808-64b23e70178b"
-                LastKnownName="signUpModel : SignUpModel"
+                LastKnownName="signUpModel : SignUpView"
                 LastKnownLocation="Package_0244.uml" />
             </coveredLifelines>
             <finish>
@@ -1044,7 +1044,7 @@
             <covered>
               <lifelineMoniker
                 Id="36e49db3-fdd5-4ddf-a808-64b23e70178b"
-                LastKnownName="signUpModel : SignUpModel"
+                LastKnownName="signUpModel : SignUpView"
                 LastKnownLocation="Package_0244.uml" />
             </covered>
           </executionOccurrenceSpecification>
@@ -1074,7 +1074,7 @@
             <covered>
               <lifelineMoniker
                 Id="36e49db3-fdd5-4ddf-a808-64b23e70178b"
-                LastKnownName="signUpModel : SignUpModel"
+                LastKnownName="signUpModel : SignUpView"
                 LastKnownLocation="Package_0244.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -1084,7 +1084,7 @@
             <covered>
               <lifelineMoniker
                 Id="36e49db3-fdd5-4ddf-a808-64b23e70178b"
-                LastKnownName="signUpModel : SignUpModel"
+                LastKnownName="signUpModel : SignUpView"
                 LastKnownLocation="Package_0244.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -1112,7 +1112,7 @@
             <covered>
               <lifelineMoniker
                 Id="36e49db3-fdd5-4ddf-a808-64b23e70178b"
-                LastKnownName="signUpModel : SignUpModel"
+                LastKnownName="signUpModel : SignUpView"
                 LastKnownLocation="Package_0244.uml" />
             </covered>
           </executionOccurrenceSpecification>
@@ -1719,9 +1719,9 @@
           </lifeline>
           <lifeline
             Id="36e49db3-fdd5-4ddf-a808-64b23e70178b"
-            name="signUpModel : SignUpModel"
+            name="signUpModel : SignUpView"
             isActor="false"
-            lifelineDisplayName="signUpModel : SignUpModel">
+            lifelineDisplayName="signUpModel : SignUpView">
             <represents>
               <propertyMoniker
                 Id="a764bfdc-3626-4192-b238-c790b4a19fc5"
@@ -1818,7 +1818,7 @@
             messageKind="Complete"
             messageSort="CreateMessage"
             createSelfMessage="false"
-            signatureText="+ SignUpModel() : TdService.Modeling::Domain::SignUpModel">
+            signatureText="+ SignUpModel() : TdService.Modeling::ViewModel::SignUpView">
             <sendEvent>
               <messageOccurrenceSpecificationMoniker
                 Id="b40b22eb-155c-4750-b303-b3bcc06ed0f6"
@@ -1932,7 +1932,7 @@
             messageKind="Complete"
             messageSort="SynchCall"
             createSelfMessage="false"
-            signatureText="+ SignUp(signUpModel : SignUpModel)">
+            signatureText="+ SignUp(signUpModel : TdService.Modeling::ViewModel::SignUpView)">
             <sendEvent>
               <messageOccurrenceSpecificationMoniker
                 Id="d10a25b0-dae9-47d1-9e3c-378a67c29b8b"
@@ -2049,8 +2049,8 @@
             <type_NamedElement>
               <classMoniker
                 Id="cc8b2f14-f20b-41f9-8a72-54d11adc70c2"
-                LastKnownName="SignUpModel"
-                LastKnownLocation="Domain.uml" />
+                LastKnownName="SignUpView"
+                LastKnownLocation="Package_1030.uml" />
             </type_NamedElement>
           </property>
           <property
@@ -3549,7 +3549,7 @@
             messageKind="Complete"
             messageSort="SynchCall"
             createSelfMessage="false"
-            signatureText="+ SignUp(signUpModel : SignUpModel)">
+            signatureText="+ SignUp(signUpModel : TdService.Modeling::ViewModel::SignUpView)">
             <sendEvent>
               <messageOccurrenceSpecificationMoniker
                 Id="3819d9ee-ffc9-4bf4-a792-8475e1077c7c"

@@ -58,7 +58,7 @@
           <elementDefinition Id="8ce73baa-a5a3-4c89-a566-97d0fadc1b13" />
         </stereotypeInstanceHasPropertyInstances>
         <stereotypeInstanceHasPropertyInstances Id="e5401ae2-9b4d-4d5e-ad8e-6e9a4b1df362">
-          <propertyInstance Id="3b47b5de-eef3-4f04-9540-0dcbb2a36936" name="Overwrite" value="ClassTemplate=True|EnumTemplate=True|InterfaceTemplate=True|StructTemplate=True">
+          <propertyInstance Id="3b47b5de-eef3-4f04-9540-0dcbb2a36936" name="Overwrite" value="ClassTemplate=False|EnumTemplate=True|InterfaceTemplate=True|StructTemplate=True">
             <elementDefinition Id="075e63c1-4076-4e13-8ebd-67950f26cf3a" />
           </propertyInstance>
           <elementDefinition Id="6678a209-ab3e-44a4-85bc-444f6be5ee46" />

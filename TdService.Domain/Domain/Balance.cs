@@ -34,6 +34,26 @@ namespace TdService.Domain
 			set;
 		}
 
+		public virtual bool CanWithdraw(Decimal amount)
+		{
+		    return Amount >= amount;
+		}
+
+		public virtual void Withdraw(Decimal amount)
+		{
+			throw new System.NotImplementedException();
+		}
+
+		public virtual void Deposit()
+		{
+			throw new System.NotImplementedException();
+		}
+
+		public virtual void GetTransactions()
+		{
+			throw new System.NotImplementedException();
+		}
+
 	}
 }
 

@@ -25,24 +25,6 @@ namespace TdService.Domain
 			set;
 		}
 
-		/// <summary>
-		/// Tells whether system should notify user about changes to his orders or parcels.
-		/// </summary>
-		public virtual bool NotifyByEmail
-		{
-			get;
-			set;
-		}
-
-		/// <summary>
-		/// Personal user's warehouse address in USA
-		/// </summary>
-		public virtual Address UsaAddress
-		{
-			get;
-			set;
-		}
-
 		public virtual NotificationRules NotificationRules
 		{
 			get;
