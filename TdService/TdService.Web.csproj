@@ -87,9 +87,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\ico\favicon.ico" />
-    <Content Include="Content\images\bootstrap-apple-114x114.png" />
-    <Content Include="Content\images\bootstrap-apple-57x57.png" />
-    <Content Include="Content\images\bootstrap-apple-72x72.png" />
+    <Content Include="Content\img\bootstrap-apple-114x114.png" />
+    <Content Include="Content\img\bootstrap-apple-57x57.png" />
+    <Content Include="Content\img\bootstrap-apple-72x72.png" />
+    <Content Include="Content\img\glyphicons-halflings-white.png" />
+    <Content Include="Content\img\glyphicons-halflings.png" />
     <Content Include="Content\less\bootstrap.css">
       <DependentUpon>bootstrap.less</DependentUpon>
     </Content>
