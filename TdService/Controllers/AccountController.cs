@@ -43,9 +43,26 @@ namespace TdService.Web.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Displays Registration Form.
+        /// </summary>
+        /// <returns>
+        /// Returns Action Result with SignUpView model.
+        /// </returns>
         public ActionResult SignUp()
         {
             return View();
+        }
+
+        /// <summary>
+        /// Logout User.
+        /// </summary>
+        /// <returns>
+        /// Returns Login Form View.
+        /// </returns>
+        public ActionResult SignOut()
+        {
+            return RedirectToAction("SignIn");
         }
     }
 }
