@@ -21,9 +21,9 @@
     @*<link href="@Url.Content("~/Content/less/responsive.css")" rel="stylesheet">*@
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="@Url.Content("~/Content/ico/favicon.ico")">
-    <link rel="apple-touch-icon" href="@Url.Content("~/Content/img/apple-touch-icon.png")">
-    <link rel="apple-touch-icon" sizes="72x72" href="@Url.Content("~/Content/img/apple-touch-icon-72x72.png")">
-    <link rel="apple-touch-icon" sizes="114x114" href="@Url.Content("~/Content/img/apple-touch-icon-114x114.png")">
+    <link rel="apple-touch-icon" href="@Url.Content("~/Content/img/bootstrap-apple-57x57.png")">
+    <link rel="apple-touch-icon" sizes="72x72" href="@Url.Content("~/Content/img/bootstrap-apple-72x72.png")">
+    <link rel="apple-touch-icon" sizes="114x114" href="@Url.Content("~/Content/img/bootstrap-apple-114x114.png")">
 </head>
 <body>
     <div class="navbar navbar-fixed-top">
@@ -62,53 +62,7 @@
     <div class="container">
         @RenderBody()
     </div>
-    <div id="storeAddress" class="modal hide fade">
-        <div class="modal-header">
-        <a class="close" data-dismiss="modal">×</a>
-        <h3>Your Store Address in USA</h3>
-        </div>
-        <div class="modal-body">
-        <table class="table-bordered table-striped table-condensed">
-            <tbody>
-                <tr>
-                    <td>First Name: </td>
-                    <td>Vitali</td>
-                </tr>
-                <tr>
-                    <td>Last Name: </td>
-                    <td>Hatalski</td>
-                </tr>
-                <tr>
-                    <td>Address 1: </td>
-                    <td>701 Ashland Ave</td>
-                </tr>
-                <tr>
-                    <td>Address 2: </td>
-                    <td>BWW-Ltrshop , Ste #20901</td>
-                </tr>
-                <tr>
-                    <td>Zip Code: </td>
-                    <td>19032</td>
-                </tr>
-                <tr>
-                    <td>City: </td>
-                    <td>Folcroft</td>
-                </tr>
-                <tr>
-                    <td>State: </td>
-                    <td>"Pennsylvania" or "PA"</td>
-                </tr>
-                <tr>
-                    <td>Phone: </td>
-                    <td>(734)5166594</td>
-                </tr>
-            </tbody>
-        </table>
-        </div>
-        <div class="modal-footer">
-            <a href="#" class="btn" data-dismiss="modal">Close</a>
-        </div>
-    </div>
+    @{Html.RenderPartial("storeAddress");}
     <!-- /container -->
     <!-- Le javascript
     ================================================== -->
