@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ComponentDesigner" xmlns:dm12="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" xmlns:dm13="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" dslVersion="1.0.0.0" Id="9ac889d4-8e99-4420-a52a-e3c60ac82a9b" name="Domain Model Layer" linkedPackageId="ba2c38dc-b093-4887-b674-005f865b9278" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="9ac889d4-8e99-4420-a52a-e3c60ac82a9b" name="Domain Model Layer" linkedPackageId="ba2c38dc-b093-4887-b674-005f865b9278" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
   <appliedStereotypesInternal>
     <stereotypeInstance Id="94ccf99d-3b90-4bc3-a273-c3de19672580" name="namespace" profile="CSharpProfile">
       <elementDefinition Id="83215c40-e8ab-4007-8499-f71aa2691e39" />
@@ -793,7 +793,7 @@
         </appliedStereotypesInternal>
         <elementDefinition Id="3f5d317d-854e-411c-a809-78c770e2ec07" />
         <ownedLiterals>
-          <enumerationLiteral Id="810fb530-6e8d-4b98-9b5c-52b3a1e814e7" name="WaitingArrival">
+          <enumerationLiteral Id="810fb530-6e8d-4b98-9b5c-52b3a1e814e7" name="Waiting">
             <elementDefinition Id="6b840792-8dc3-4d7d-bb02-c3cad77b7bbc" />
             <specification>
               <literalInteger Id="fdeb85c0-c421-4003-a952-9e7d29d0c85b" name="Integer" value="0">
@@ -801,7 +801,7 @@
               </literalInteger>
             </specification>
           </enumerationLiteral>
-          <enumerationLiteral Id="26e7e004-3b35-424c-b59a-120b88e74535" name="Arrived">
+          <enumerationLiteral Id="26e7e004-3b35-424c-b59a-120b88e74535" name="Received">
             <elementDefinition Id="f2c65247-86d5-408f-85ac-3b068bda7f4b" />
             <specification>
               <literalInteger Id="c2375b81-4f3a-4840-858b-500378343128" name="Integer" value="1">
