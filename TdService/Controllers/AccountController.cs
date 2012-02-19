@@ -15,7 +15,7 @@ namespace TdService.Web.Controllers
     /// <summary>
     /// This controller is responsible for authentication and authorization of user.
     /// </summary>
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         /// <summary>
         /// Displays SignIn view. GET: /Account/SignIn

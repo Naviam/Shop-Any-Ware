@@ -14,7 +14,7 @@ namespace TdService.Web.Controllers
     /// <summary>
     /// This controller contains methods to work with balance.
     /// </summary>
-    public class BalanceController : Controller
+    public class BalanceController : BaseController
     {
         /// <summary>
         /// Show the list of transactions.

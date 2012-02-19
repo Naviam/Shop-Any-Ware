@@ -14,7 +14,7 @@ namespace TdService.Web.Controllers
     /// <summary>
     /// The controller that contains membership methods.
     /// </summary>
-    public class MemberController : Controller
+    public class MemberController : BaseController
     {
         /// <summary>
         /// The default view of an authenticated user.
