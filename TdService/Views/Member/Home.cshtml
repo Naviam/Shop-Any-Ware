@@ -3,9 +3,72 @@
 }
 
 <div class="row">
-    <div class="span9">
-        <table class="table-bordered table-striped table-condensed">
+    <div class="span7">
+        <table class="table-bordered table-striped table-condensed span7">
             <caption style="text-align: right;padding-bottom: 4px;">
+                <h3 class="offset1">Account Balance: 0 USD</h3>
+                <a class="btn btn-primary" href="#"><i class="icon-white icon-plus"></i> ADD</a>
+                <a class="btn btn-primary" href="#"><i class="icon-white icon-minus"></i> WITHDRAW</a>
+            </caption>
+            <thead>
+                <tr>
+                    <td>Date</td>
+                    <td>Type</td>
+                    <td>Status</td>
+                    <td>Amount</td>
+                    <td>Commission</td>
+                    <td>Total</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>02 Feb 2012</td>
+                    <td>Shipment - #1</td>
+                    <td>Delivered</td>
+                    <td>68.75 USD</td>
+                    <td>0 USD</td>
+                    <td>-68.75 USD</td>
+                </tr>
+                <tr>
+                    <td>01 Feb 2012</td>
+                    <td>Payment - Paypal</td>
+                    <td>Approved</td>
+                    <td>68.75 USD</td>
+                    <td>-2.48 USD</td>
+                    <td>71.23 USD</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="span4">
+        <table class="table-bordered table-striped table-condensed span4">
+            <caption style="text-align: right;padding-bottom: 4px;">
+                <h3 class="offset1">Store Address in USA</h3>
+                <a class="btn btn-primary" href="#"><i class="icon-white icon-file"></i> COPY TO CLIPBOARD</a>
+            </caption>
+            <thead>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<hr class="span11"/>
+<div class="row">
+    <div class="span12">
+        <table class="table-bordered table-striped table-condensed span11">
+            <caption style="text-align: right;padding-bottom: 4px;">
+                <h3 class="offset1">View Orders</h3>
                 <a class="btn btn-primary" href="#"><i class="icon-white icon-plus"></i> ADD ORDER</a>
             </caption>
             <thead>
@@ -23,7 +86,7 @@
                     <td>22112</td>
                     <td>Amazon</td>
                     <td>7732267633</td>
-                    <td></td>
+                    <td>-</td>
                     <td><span class="label label-warning">Waiting</span></td>
                     <td><a href="#">details</a></td>
                 </tr>
@@ -31,7 +94,7 @@
                     <td>22113</td>
                     <td>Amazon</td>
                     <td>7732267633</td>
-                    <td></td>
+                    <td>-</td>
                     <td><span class="label label-warning">Waiting</span></td>
                     <td><a href="#">details</a></td>
                 </tr>
@@ -39,7 +102,7 @@
                     <td>22114</td>
                     <td>Amazon</td>
                     <td>7732267633</td>
-                    <td></td>
+                    <td>2 lbs 10 oz</td>
                     <td><span class="label label-success">Received</span></td>
                     <td><a href="#">details</a></td>
                 </tr>
@@ -47,7 +110,7 @@
                     <td>22115</td>
                     <td>Amazon</td>
                     <td>7732267633</td>
-                    <td></td>
+                    <td>5 lbs 12 oz</td>
                     <td><span class="label label-success">Received</span></td>
                     <td><a href="#">details</a></td>
                 </tr>
@@ -55,7 +118,7 @@
                     <td>22116</td>
                     <td>Amazon</td>
                     <td>7732267633</td>
-                    <td></td>
+                    <td>3 lbs 45 oz</td>
                     <td><span class="label label-info">Processed</span></td>
                     <td><a href="#">details</a></td>
                 </tr>
@@ -65,14 +128,13 @@
             </tfoot>
         </table>
     </div>
-    <div class="span3">
-        <h3>View Balance</h3>
-    </div>
 </div>
+<hr class="span11"/>
 <div class="row">
-    <div class="span9">
-        <table class="table-bordered table-striped table-condensed">
+    <div class="span12">
+        <table class="table-bordered table-striped table-condensed span11">
             <caption style="text-align: right;padding-bottom: 4px;">
+                <h3 class="offset1">View Parcels</h3>
                 <a href="#" class="btn btn-primary"><i class="icon-white icon-gift"></i> COLLECT A PARCEL</a>
             </caption>
             <thead>
@@ -93,50 +155,43 @@
                 <tr>
                     <td>1</td>
                     <td>Minsk, Novovilenskaya</td>
-                    <td>ESM Express</td>
-                    <td></td>
-                    <td><span class="label label-warning">Waiting</span></td>
-                    <td><a href="#">details</a></td>
+                    <td>EMS Express</td>
+                    <td>02 Feb 2012</td>
+                    <td>19 Feb 2012</td>
+                    <td>3$</td>
+                    <td>3 lbs 45 oz</td>
+                    <td><span class="label label-info">Delivered</span></td>
+                    <td><a href="http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum=EE972210493US">EE972210493US</a></td>
+                    <td><a href="#">62.69$</a></td>
                 </tr>
                 <tr>
                     <td>2</td>
-                    <td>Amazon</td>
-                    <td>7732267633</td>
-                    <td></td>
-                    <td><span class="label label-warning">Waiting</span></td>
-                    <td><a href="#">details</a></td>
+                    <td>Minsk, Novovilenskaya</td>
+                    <td>EMS Express</td>
+                    <td>02 Feb 2012</td>
+                    <td>19 Feb 2012</td>
+                    <td>3$</td>
+                    <td>3 lbs 45 oz</td>
+                    <td><span class="label label-warning">In Transit</span></td>
+                    <td><a href="http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum=EE972210493US">EE972210493US</a></td>
+                    <td><a href="#">62.69$</a></td>
                 </tr>
                 <tr>
                     <td>3</td>
-                    <td>Amazon</td>
-                    <td>7732267633</td>
-                    <td></td>
-                    <td><span class="label label-success">Received</span></td>
-                    <td><a href="#">details</a></td>
-                </tr>
-                <tr>
-                    <td>22115</td>
-                    <td>Amazon</td>
-                    <td>7732267633</td>
-                    <td></td>
-                    <td><span class="label label-success">Received</span></td>
-                    <td><a href="#">details</a></td>
-                </tr>
-                <tr>
-                    <td>22116</td>
-                    <td>Amazon</td>
-                    <td>7732267633</td>
-                    <td></td>
-                    <td><span class="label label-info">Processed</span></td>
-                    <td><a href="#">details</a></td>
+                    <td>Minsk, Novovilenskaya</td>
+                    <td>EMS Express</td>
+                    <td>02 Feb 2012</td>
+                    <td>19 Feb 2012</td>
+                    <td>3$</td>
+                    <td>3 lbs 45 oz</td>
+                    <td><span class="label label-success">Collected</span></td>
+                    <td><a href="http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum=EE972210493US">EE972210493US</a></td>
+                    <td><a href="#">62.69$</a></td>
                 </tr>
             </tbody>
             <tfoot>
                 <tr></tr>
             </tfoot>
         </table>
-    </div>
-    <div class="span3">
-        News
     </div>
 </div>
