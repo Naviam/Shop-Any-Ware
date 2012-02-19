@@ -2,4 +2,54 @@
     ViewBag.Title = "Shop Any Ware - Balance";
 }
 
-<h2>Account Balance</h2>
+<div class="row">
+    <div class="span11">
+        <table class="table-bordered table-striped table-condensed span11">
+            <caption style="text-align: right;padding-bottom: 4px;">
+                <h4 style="float: left;padding-top: 6px">Account Balance: 0 USD</h4>
+                <a class="btn btn-primary" href="#"><i class="icon-white icon-plus"></i> ADD</a>
+                <a class="btn btn-primary" href="#"><i class="icon-white icon-minus"></i> WITHDRAW</a>
+            </caption>
+            <thead>
+                <tr>
+                    <td>Date</td>
+                    <td>Type</td>
+                    <td>Status</td>
+                    <td>Amount</td>
+                    <td>Commission</td>
+                    <td>Total</td>
+                    <td>Balance</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>19 Feb 2012</td>
+                    <td>Payment - Paypal</td>
+                    <td><span class="label label-warning">Pending</span></td>
+                    <td>54.75 USD</td>
+                    <td>-2.01 USD</td>
+                    <td>56.76 USD</td>
+                    <td>0 USD</td>
+                </tr>
+                <tr>
+                    <td>02 Feb 2012</td>
+                    <td>Shipment - #1</td>
+                    <td><span class="label label-info">Delivered</span></td>
+                    <td>68.75 USD</td>
+                    <td>0 USD</td>
+                    <td>-68.75 USD</td>
+                    <td>0 USD</td>
+                </tr>
+                <tr>
+                    <td>01 Feb 2012</td>
+                    <td>Payment - Paypal</td>
+                    <td><span class="label label-info">Approved</span></td>
+                    <td>68.75 USD</td>
+                    <td>-2.48 USD</td>
+                    <td>71.23 USD</td>
+                    <td>68.75 USD</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
