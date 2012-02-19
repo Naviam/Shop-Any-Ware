@@ -22,9 +22,17 @@
             </thead>
             <tbody>
                 <tr>
+                    <td>19 Feb 2012</td>
+                    <td>Payment - Paypal</td>
+                    <td><span class="label label-warning">Pending</span></td>
+                    <td>54.75 USD</td>
+                    <td>-2.01 USD</td>
+                    <td>56.76 USD</td>
+                </tr>
+                <tr>
                     <td>02 Feb 2012</td>
                     <td>Shipment - #1</td>
-                    <td>Delivered</td>
+                    <td><span class="label label-info">Delivered</span></td>
                     <td>68.75 USD</td>
                     <td>0 USD</td>
                     <td>-68.75 USD</td>
@@ -32,19 +40,25 @@
                 <tr>
                     <td>01 Feb 2012</td>
                     <td>Payment - Paypal</td>
-                    <td>Approved</td>
+                    <td><span class="label label-info">Approved</span></td>
                     <td>68.75 USD</td>
                     <td>-2.48 USD</td>
                     <td>71.23 USD</td>
                 </tr>
             </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="6" style="text-align: center">
+                        <a class="btn btn-primary" href="#">SHOW MORE</a>
+                    </td>
+                </tr>
+            </tfoot>
         </table>
     </div>
     <div class="span4">
         <table class="table-bordered table-striped table-condensed span4">
             <caption style="text-align: right;padding-bottom: 4px;">
                 <h3 class="offset1">Store Address in USA</h3>
-                <a class="btn btn-primary" href="#"><i class="icon-white icon-file"></i> COPY TO CLIPBOARD</a>
             </caption>
             <tbody>
                 <tr>
@@ -93,7 +107,7 @@
             </caption>
             <thead>
                 <tr>
-                    <td>Order #</td>
+                    <td>#</td>
                     <td>Shop</td>
                     <td>Shop's Order #</td>
                     <td>Weight</td>
@@ -144,7 +158,11 @@
                 </tr>
             </tbody>
             <tfoot>
-                <tr></tr>
+                <tr>
+                    <td colspan="6" style="text-align: center">
+                        <a class="btn btn-primary" href="@Url.Action("Index", "Order")">SHOW MORE</a>
+                    </td>
+                </tr>
             </tfoot>
         </table>
     </div>
@@ -159,16 +177,15 @@
             </caption>
             <thead>
                 <tr>
-                    <td>Parcel #</td>
+                    <td>#</td>
                     <td>Delivery Address</td>
                     <td>Delivery Method</td>
                     <td>Dispatch Date</td>
                     <td>Delivery Date</td>
-                    <td>Insurance</td>
-                    <td>Weight</td>
                     <td>Status</td>
                     <td>Tracking Number</td>
                     <td>Cost</td>
+                    <td></td>
                 </tr>
             </thead>
             <tbody>
@@ -178,39 +195,40 @@
                     <td>EMS Express</td>
                     <td>02 Feb 2012</td>
                     <td>19 Feb 2012</td>
-                    <td>3$</td>
-                    <td>3 lbs 45 oz</td>
                     <td><span class="label label-info">Delivered</span></td>
                     <td><a href="http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum=EE972210493US">EE972210493US</a></td>
                     <td><a href="#">62.69$</a></td>
+                    <td><a href="#">details</a></td>
                 </tr>
                 <tr>
                     <td>2</td>
                     <td>Minsk, Novovilenskaya</td>
                     <td>EMS Priority</td>
                     <td>02 Feb 2012</td>
-                    <td>19 Feb 2012</td>
-                    <td>3$</td>
-                    <td>3 lbs 45 oz</td>
+                    <td>-</td>
                     <td><span class="label label-warning">In Transit</span></td>
-                    <td><a href="http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum=EE972210493US">EE972210493US</a></td>
-                    <td><a href="#">62.69$</a></td>
+                    <td><a href="http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum=EE972210492US">EE972210492US</a></td>
+                    <td><a href="#">42.67$</a></td>
+                    <td><a href="#">details</a></td>
                 </tr>
                 <tr>
                     <td>3</td>
                     <td>Minsk, Novovilenskaya</td>
                     <td>Major Express</td>
-                    <td>02 Feb 2012</td>
-                    <td>19 Feb 2012</td>
                     <td>-</td>
-                    <td>3 lbs 45 oz</td>
+                    <td>-</td>
                     <td><span class="label label-success">Collected</span></td>
-                    <td><a href="http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum=EE972210493US">EE972210493US</a></td>
-                    <td><a href="#">62.69$</a></td>
+                    <td>-</td>
+                    <td><a href="#">54.09$</a></td>
+                    <td><a href="#">details</a></td>
                 </tr>
             </tbody>
             <tfoot>
-                <tr></tr>
+                <tr>
+                    <td colspan="9" style="text-align: center">
+                        <a class="btn btn-primary" href="@Url.Action("Index", "Parcel")">SHOW MORE</a>
+                    </td>
+                </tr>
             </tfoot>
         </table>
     </div>

@@ -35,9 +35,9 @@
                 <div class="nav-collapse">
                     <ul class="nav">
                         <li class="active"><a href="@Url.Action("Home", "Member")">Summary</a></li>
-                        <li><a href="#prices">Orders</a></li>
-                        <li><a href="#about">Parcels</a></li>
-                        <li><a href="#about">Balance</a></li>
+                        <li><a href="@Url.Action("Index", "Order")">Orders</a></li>
+                        <li><a href="@Url.Action("Index", "Parcel")">Parcels</a></li>
+                        <li><a href="@Url.Action("Index", "Balance")">Balance</a></li>
                         <li><a href="@Url.Action("SignIn", "Account")">Sign In</a></li>
                         <li><a href="@Url.Action("SignUp", "Account")">Register</a></li>
                     </ul>
@@ -46,8 +46,9 @@
                             Vitali Hatalski <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#"><i class="icon-user"></i> Profile</a></li>
-                                <li><a href="#"><i class="icon-th-list"></i> Delivery</a></li>
-                                <li><a href="#"><i class="icon-cog"></i> Settings</a></li>
+                                <li><a data-toggle="modal" href="#storeAddress"><i class="icon-home"></i> Store Address in US</a></li>
+                                <li><a href="#"><i class="icon-th-list"></i> Delivery Addresses</a></li>
+                                <li><a href="#"><i class="icon-cog"></i> Account Settings</a></li>
                                 <li class="divider"></li>
                                 <li><a href="@Url.Action("SignOut", "Account")"><i class="icon-off"></i> Sign Out</a></li>
                             </ul>
@@ -60,6 +61,53 @@
     </div>
     <div class="container">
         @RenderBody()
+    </div>
+    <div id="storeAddress" class="modal hide fade">
+        <div class="modal-header">
+        <a class="close" data-dismiss="modal">×</a>
+        <h3>Your Store Address in USA</h3>
+        </div>
+        <div class="modal-body">
+        <table class="table-bordered table-striped table-condensed">
+            <tbody>
+                <tr>
+                    <td>First Name: </td>
+                    <td>Vitali</td>
+                </tr>
+                <tr>
+                    <td>Last Name: </td>
+                    <td>Hatalski</td>
+                </tr>
+                <tr>
+                    <td>Address 1: </td>
+                    <td>701 Ashland Ave</td>
+                </tr>
+                <tr>
+                    <td>Address 2: </td>
+                    <td>BWW-Ltrshop , Ste #20901</td>
+                </tr>
+                <tr>
+                    <td>Zip Code: </td>
+                    <td>19032</td>
+                </tr>
+                <tr>
+                    <td>City: </td>
+                    <td>Folcroft</td>
+                </tr>
+                <tr>
+                    <td>State: </td>
+                    <td>"Pennsylvania" or "PA"</td>
+                </tr>
+                <tr>
+                    <td>Phone: </td>
+                    <td>(734)5166594</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn" data-dismiss="modal">Close</a>
+        </div>
     </div>
     <!-- /container -->
     <!-- Le javascript
