@@ -347,7 +347,7 @@
     <Content Include="Views\Shared\addOrderForm.cshtml" />
     <Content Include="Views\Shared\addParcelForm.cshtml" />
     <Content Include="Views\Shared\parcelTable.cshtml" />
-    <Content Include="ShopperMenu.sitemap" />
+    <Content Include="Shopper.sitemap" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Price.cshtml" />
     <Content Include="Views\Home\Terms.cshtml" />
