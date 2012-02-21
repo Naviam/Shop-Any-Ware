@@ -33,17 +33,12 @@
                     class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
                 </a><a class="brand" href="#">Shop Any Ware</a>
                 <div class="nav-collapse">
-                    <ul class="nav">
-                        <li class="active"><a href="@Url.Action("Home", "Member")">Summary</a></li>
-                        <li><a href="@Url.Action("Index", "Order")">Orders</a></li>
-                        <li><a href="@Url.Action("Index", "Parcel")">Parcels</a></li>
-                        <li><a href="@Url.Action("Index", "Balance")">Balance</a></li>
-                        <li><a href="@Url.Action("SignIn", "Account")">Sign In</a></li>
-                        <li><a href="@Url.Action("SignUp", "Account")">Register</a></li>
-                    </ul>
+                    @Html.MvcSiteMap("TopMenu").Menu("TopMenuHelperModel", true)
+                    <a href="@Url.Action("SignUp", "Account")" class="btn btn-success" style="margin-top:6px;margin-left: 20px">Sign Up</a>
                     <ul class="nav pull-right">
-                        <li id="fat-menu" class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            Vitali Hatalski <b class="caret"></b></a>
+                        <li id="fat-menu" class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                      Vitali Hatalski <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#"><i class="icon-user"></i> Profile</a></li>
                                 <li><a data-toggle="modal" href="#storeAddress"><i class="icon-home"></i> Store Address in US</a></li>
@@ -59,10 +54,60 @@
             </div>
         </div>
     </div>
-    <div class="container">
+    <div class="container">        <header class="jumbotron subhead" id="overview">            <div class="subnav">
+                @Html.MvcSiteMap("Shopper").Menu("PillsMenuHelperModel", false)
+                @*<ul class="nav nav-pills">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Buttons <b class="caret"></b></a>                        <ul class="dropdown-menu">                            <li><a href="#buttonGroups">Button groups</a></li>                            <li><a href="#buttonDropdowns">Button dropdowns</a></li>                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Navigation <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#navs">Nav, tabs, pills</a></li>
+                            <li><a href="#navbar">Navbar</a></li>
+                            <li><a href="#breadcrumbs">Breadcrumbs</a></li>
+                            <li><a href="#pagination">Pagination</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#labels">Labels</a></li>
+                    <li><a href="#typography">Typography</a></li>
+                    <li><a href="#thumbnails">Thumbnails</a></li>
+                    <li><a href="#alerts">Alerts</a></li>
+                    <li><a href="#progress">Progress bars</a></li>
+                    <li><a href="#misc">Miscellaneous</a></li>
+                </ul>*@
+            </div>
+        </header>
         @RenderBody()
+        <hr>
+        <footer>
+            <p>&copy; ShowAnyWare.com 2012</p>
+        </footer>
     </div>
-    @{Html.RenderPartial("storeAddress");}
+    <div id="storeAddress" class="modal hide fade">
+        <div class="modal-header">
+            <a class="close" data-dismiss="modal">×</a>
+            <h3>Your Store Address in USA</h3>
+        </div>
+        <div class="modal-body">
+            @{Html.RenderPartial("storeAddress", true);}
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn" data-dismiss="modal">Close</a>
+        </div>
+    </div>
+    <div id="profile" class="modal hide fade">
+        <div class="modal-header">
+            <a class="close" data-dismiss="modal">×</a>
+            <h3>Edit Your Profile</h3>
+        </div>
+        <div class="modal-body">
+            @{Html.RenderPartial("storeAddress", true);}
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn" data-dismiss="modal">Close</a>
+        </div>
+    </div>
     <!-- /container -->
     <!-- Le javascript
     ================================================== -->

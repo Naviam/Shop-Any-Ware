@@ -12,45 +12,7 @@
         @{Html.RenderPartial("balanceTable");}
     </div>
     <div class="span4">
-        <table class="table-condensed" style="width:100%;margin-bottom: 18px;background-color: whitesmoke;-webkit-border-radius: 6px;-moz-border-radius: 6px;border-radius: 6px;">
-            <caption style="padding-bottom: 8px;">
-                <h4 style="float: left;padding-top: 6px">Store Address in USA</h4>
-            </caption>
-            <tbody>
-                <tr>
-                    <td>First Name: </td>
-                    <td>Vitali</td>
-                </tr>
-                <tr>
-                    <td>Last Name: </td>
-                    <td>Hatalski</td>
-                </tr>
-                <tr>
-                    <td>Address 1: </td>
-                    <td>701 Ashland Ave</td>
-                </tr>
-                <tr>
-                    <td>Address 2: </td>
-                    <td>BWW-Ltrshop , Ste #20901</td>
-                </tr>
-                <tr>
-                    <td>Zip Code: </td>
-                    <td>19032</td>
-                </tr>
-                <tr>
-                    <td>City: </td>
-                    <td>Folcroft</td>
-                </tr>
-                <tr>
-                    <td>State: </td>
-                    <td>"Pennsylvania" or "PA"</td>
-                </tr>
-                <tr>
-                    <td>Phone: </td>
-                    <td>(734)5166594</td>
-                </tr>
-            </tbody>
-        </table>
+        @{Html.RenderPartial("storeAddress", false);}
     </div>
 </div>
 <div class="row">
