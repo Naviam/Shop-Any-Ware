@@ -84,7 +84,7 @@ namespace TdService.Web.Controllers
         public ActionResult SignOut()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("SignIn");
+            return RedirectToAction("Index", "Home");
         }
     }
 }
