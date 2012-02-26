@@ -4,11 +4,11 @@
             xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-3.0 MvcSiteMapSchema.xsd"
             enableLocalization="true">
   <mvcSiteMapNode title="Home" controller="Home" action="Index">
-      <mvcSiteMapNode title="US Shops" controller="Home" action="Shops" />
-      <mvcSiteMapNode title="Price" controller="Home" action="Price" />
+      <mvcSiteMapNode title="Top Stores" controller="Home" action="Shops" />
+      <mvcSiteMapNode title="Our Services" controller="Home" action="Services" />
       <mvcSiteMapNode title="Terms" controller="Home" action="Terms" />
       <mvcSiteMapNode title="Contacts" controller="Home" action="Contact" />
       <!--<mvcSiteMapNode title="About Us" controller="Home" action="About" />-->
-      <mvcSiteMapNode title="Help" controller="Home" action="Help" />
+      <mvcSiteMapNode title="FAQ" controller="Home" action="Help" />
   </mvcSiteMapNode>
 </mvcSiteMap>

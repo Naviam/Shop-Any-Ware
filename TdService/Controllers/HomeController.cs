@@ -44,7 +44,7 @@ namespace TdService.Web.Controllers
         /// <returns>
         /// Returns view with the table of service plans.
         /// </returns>
-        public ActionResult Price()
+        public ActionResult Services()
         {
             return View();
         }
