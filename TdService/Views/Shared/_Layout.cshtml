@@ -18,7 +18,7 @@
             padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
         }
     </style>
-    @*<link href="@Url.Content("~/Content/less/responsive.css")" rel="stylesheet">*@
+    <link href="@Url.Content("~/Content/less/responsive.css")" rel="stylesheet">
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="@Url.Content("~/Content/ico/favicon.ico")">
     <link rel="apple-touch-icon" href="@Url.Content("~/Content/img/bootstrap-apple-57x57.png")">
@@ -33,32 +33,62 @@
                     class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
                 </a><a class="brand" href="#">Shop Any Ware</a>
                 <div class="nav-collapse">
-                    @Html.MvcSiteMap("TopMenu").Menu("TopMenuHelperModel", true)
-                    <a href="@Url.Action("SignUp", "Account")" class="btn btn-success" style="margin-top:6px;margin-left: 20px">Sign Up</a>
-                    <ul class="nav pull-right">
-                        <li id="fat-menu" class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                      Vitali Hatalski <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#"><i class="icon-user"></i> Profile</a></li>
-                                <li><a data-toggle="modal" href="#storeAddress"><i class="icon-home"></i> Store Address in US</a></li>
-                                <li><a href="#"><i class="icon-th-list"></i> Delivery Addresses</a></li>
-                                <li><a href="#"><i class="icon-cog"></i> Account Settings</a></li>
-                                <li class="divider"></li>
-                                <li><a href="@Url.Action("SignOut", "Account")"><i class="icon-off"></i> Sign Out</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        @Html.MvcSiteMap("TopMenu").Menu("TopMenuHelperModel", true)
+                    }
+                    else
+                    {
+                        @Html.MvcSiteMap("Shopper").Menu("PillsMenuHelperModel", false);
+                    }
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <ul class="nav pull-right">
+                            <li id="fat-menu" class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                          Vitali Hatalski <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#"><i class="icon-user"></i> Profile</a></li>
+                                    <li><a data-toggle="modal" href="#storeAddress"><i class="icon-home"></i> Store Address in US</a></li>
+                                    <li><a href="#"><i class="icon-th-list"></i> Delivery Addresses</a></li>
+                                    <li><a href="#"><i class="icon-cog"></i> Account Settings</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="@Url.Action("SignOut", "Account")"><i class="icon-off"></i> Sign Out</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    }
+                    else
+                    {
+                        <a href="@Url.Action("SignUp", "Account")" class="btn btn-primary" style="margin-top:6px;margin-left: 20px">SIGN UP &raquo;</a>                        
+                        <div class="pull-right">
+                        <form class="form-inline form-horizontal" style="margin: 2pt 0pt 0px" action="@Url.Action("SignIn", "Account")" method="POST">
+                            <input class="input-small" type="text" placeholder="Email"/>
+                            <input class="input-small" type="password" placeholder="Password"/>
+                            <label class="checkbox"><input type="checkbox"/>Remember?</label>
+                            <button class="btn btn-info" type="submit" style="margin-top:6px">SIGN IN &raquo;</button>
+                        </form>    
+                        </div>
+                    }
                 </div>
                 <!--/.nav-collapse -->
             </div>
         </div>
     </div>
-    <div class="container">        <header class="jumbotron subhead" id="overview">            <div class="subnav">
-                @Html.MvcSiteMap("Shopper").Menu("PillsMenuHelperModel", false)
-                @*<ul class="nav nav-pills">
+    <div class="container">
+        @*<header class="jumbotron subhead" id="overview">
+            <div class="subnav">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    @Html.MvcSiteMap("Shopper").Menu("PillsMenuHelperModel", false);
+                }
+                <ul class="nav nav-pills">
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Buttons <b class="caret"></b></a>                        <ul class="dropdown-menu">                            <li><a href="#buttonGroups">Button groups</a></li>                            <li><a href="#buttonDropdowns">Button dropdowns</a></li>                        </ul>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Buttons <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#buttonGroups">Button groups</a></li>
+                            <li><a href="#buttonDropdowns">Button dropdowns</a></li>
+                        </ul>
                     </li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Navigation <b class="caret"></b></a>
@@ -75,9 +105,9 @@
                     <li><a href="#alerts">Alerts</a></li>
                     <li><a href="#progress">Progress bars</a></li>
                     <li><a href="#misc">Miscellaneous</a></li>
-                </ul>*@
+                </ul>
             </div>
-        </header>
+        </header>*@
         @RenderBody()
         <hr>
         <footer>

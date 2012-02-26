@@ -7,6 +7,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Web.Security;
+
 namespace TdService.Web.Controllers
 {
     using System.Web.Mvc;
@@ -40,7 +42,11 @@ namespace TdService.Web.Controllers
         [HttpPost]
         public ActionResult SignIn(SignInRequest request)
         {
+            FormsAuthentication.RedirectFromLoginPage("demo", true);
+
             return View();
+
+            // return RedirectToAction("Index", "Home");
         }
 
         /// <summary>
@@ -55,6 +61,21 @@ namespace TdService.Web.Controllers
         }
 
         /// <summary>
+        /// Process registration form data and create user's account
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// Redirects user to Sign In form in case of success.
+        /// </returns>
+        [HttpPost]
+        public ActionResult SignUp(SignUpRequest request)
+        {
+            return RedirectToAction("SignIn");
+        }
+
+        /// <summary>
         /// Logout User.
         /// </summary>
         /// <returns>
@@ -62,6 +83,7 @@ namespace TdService.Web.Controllers
         /// </returns>
         public ActionResult SignOut()
         {
+            FormsAuthentication.SignOut();
             return RedirectToAction("SignIn");
         }
     }

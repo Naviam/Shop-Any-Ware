@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="https://shopanyware.com:8172/MsDeploy.axd" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="tdservice" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="ShopAnyWare" publishMethod="MSDeploy" replaceMatchingFiles="True" userName="Administrator" savePWD="True" userPWD="AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAeagVmR9NeEW3llo5uBMbWwAAAAACAAAAAAAQZgAAAAEAACAAAAD7Ecd0nKQ5IOZxetSKQiVXKC1KaAeBeIEmTytWIMTAYAAAAAAOgAAAAAIAACAAAAB+Bjy+Sy7Y4s4xeCFn+f8iRmRBqafiijS7j1YkG0v88yAAAABAcGlkFpwIL7ZZ/LgwvhHTLQnoF0FAdeBzsZ1UhOzTgkAAAAC4hFmuazKjFsAnZbFo9PQAK1V2EL7hPjZ5akqag1FLtttHbNuVPigJldJ0eq61Co6TeY+0rDjh1e+5u+fGXgjl" SelectedForPublish="True" />
+</publishData>

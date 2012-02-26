@@ -1,5 +1,5 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="SignInRequest.cs" company="TdService">
+// <copyright file="SignUpRequest.cs" company="TdService">
 // Vitali Hatalski. 2012.
 // </copyright>
 // -----------------------------------------------------------------------
@@ -7,9 +7,9 @@
 namespace TdService.AppService
 {
     /// <summary>
-    /// This class describes request parameters for sign in action.
+    /// This class describes request parameters for sign up action.
     /// </summary>
-    public class SignInRequest : RequestBase
+    public class SignUpRequest : RequestBase
     {
         /// <summary>
         /// Gets or sets Username.
@@ -20,5 +20,10 @@ namespace TdService.AppService
         /// Gets or sets Password.
         /// </summary>
         public string Password { get; set; }
+
+        /// <summary>
+        /// Gets or sets Password Confirmation.
+        /// </summary>
+        public string PasswordConfirm { get; set; }
     }
 }

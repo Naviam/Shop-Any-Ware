@@ -6,9 +6,9 @@
 
 <div class="row">
     <div class="span4 offset4">
-        <form>
+        <form action="@Url.Action("SignUp", "Account")" method="POST">
             <fieldset>
-                <legend>Sign Up Form</legend>
+                <legend>Register and Get Your USA Address</legend>
                 <label for="credentials_username">Username or Email:</label>
                 <input id="credentials_username" name="credentials_username" type="text" class="input-xlarge" placeholder="Email" />
                 <label for="credentials_password">Password:</label>
@@ -16,7 +16,7 @@
                 <label for="credentials_password_confirm">Confirm Password:</label>
                 <input id="credentials_password_confirm" name="credentials_password_confirm" type="password" class="input-xlarge" placeholder="Confirm Password" />
                 <hr/>
-                <input id="credentials_button_login" name="credentials_login" type="submit" class="btn-primary btn-large" value="Get Started"/>
+                <input id="credentials_button_login" name="credentials_login" type="submit" class="btn-primary btn-large" value="Start Shopping!"/>
             </fieldset>
         </form>
     </div>
