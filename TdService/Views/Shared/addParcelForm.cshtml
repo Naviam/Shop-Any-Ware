@@ -1,1 +1,38 @@
-﻿
+﻿<form class="form-horizontal">
+    <fieldset>
+        <div class="control-group">
+            <label class="control-label" for="parcelname">Package name: </label>
+            <div class="controls">
+                <input type="text" class="input-xlarge" id="parcelname"/>
+                <p class="help-block">You can change the automatically assigned package name.</p>
+            </div>
+            <label class="control-label" for="deliveryaddress">Delivery Address: </label>
+            <div class="controls">
+                <select class="input-xlarge" id="deliveryaddress">
+                    <option>Minsk, Novovilenskaya</option>
+                    <option>Minsk, Nekrasova</option>
+                </select>
+                <p class="help-block">Please choose delivery address for the package.</p>
+            </div>
+            <label class="control-label" for="deliverymethod">Delivery Method: </label>
+            <div class="controls">
+                <select class="input-xlarge" id="deliverymethod">
+                    <option>EMS - Priority Mail</option>
+                    <option>EMS - Express Mail</option>
+                    <option>Major Express</option>
+                </select>
+                <p class="help-block">Please choose delivery method for your package.</p>
+            </div>
+            <label class="control-label" for="insurance">Insurance amount: </label>
+            <div class="controls">
+                <input type="text" class="input-xlarge" id="insurance"/>
+                <p class="help-block">By default your package is insured with $100. Every $2 of insurance will cover additional $100.</p>
+            </div>
+            <label class="control-label" for="notes">Notes: </label>
+            <div class="controls">
+                <textarea class="input-xlarge" id="notes"></textarea>
+                <p class="help-block">Please add additional notes to your order.</p>
+            </div>
+        </div>
+    </fieldset>
+</form>

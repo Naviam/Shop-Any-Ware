@@ -2,7 +2,7 @@
     <caption style="text-align: right; padding-bottom: 4px;">
         <h4 style="float: left; padding-top: 6px">Account Balance: 0 USD</h4>
         <a class="btn btn-small btn-primary" href="#"><i class="icon-white icon-plus"></i>ADD</a>
-        <a class="btn btn-small btn-primary" href="#"><i class="icon-white icon-minus"></i>WITHDRAW</a>
+        @*<a class="btn btn-small btn-primary" href="#"><i class="icon-white icon-minus"></i>WITHDRAW</a>*@
     </caption>
     <thead>
         <tr>
@@ -45,3 +45,16 @@
         </tr>
     </tbody>
 </table>
+<div id="addMoney" class="modal hide fade">
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal">×</a>
+        <h3>Add money to your ShowAnyWare account</h3>
+    </div>
+    <div class="modal-body">
+        @{Html.RenderPartial("addMoneyForm");}
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="btn" data-dismiss="modal">Close</a>
+        <a href="#" class="btn btn-primary" data-dismiss="modal">Add Money</a>
+    </div>
+</div>
