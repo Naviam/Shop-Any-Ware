@@ -28,7 +28,7 @@
 <body>
     <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
-            <div class="container">
+            <div class="container-fluid">
                 <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
                     class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
                 </a><a class="brand" href="@Url.Action("Index", "Home")">Shop Any Ware</a>
@@ -50,7 +50,7 @@
                                 <ul class="dropdown-menu">
                                     <li><a href="#"><i class="icon-user"></i> Profile</a></li>
                                     <li><a data-toggle="modal" href="#storeAddress"><i class="icon-home"></i> Store Address in US</a></li>
-                                    <li><a href="#"><i class="icon-th-list"></i> Delivery Addresses</a></li>
+                                    <li><a href="@Url.Action("Index", "Profile")"><i class="icon-th-list"></i> Delivery Addresses</a></li>
                                     <li><a href="#"><i class="icon-cog"></i> Account Settings</a></li>
                                     <li class="divider"></li>
                                     <li><a href="@Url.Action("SignOut", "Account")"><i class="icon-off"></i> Sign Out</a></li>
@@ -60,22 +60,15 @@
                     }
                     else
                     {
-                        <a href="@Url.Action("SignUp", "Account")" class="btn btn-primary" style="margin-top:6px;margin-left: 20px">SIGN UP &raquo;</a>                        
-                        <div class="pull-right">
-                        <form class="form-inline form-horizontal" style="margin: 2pt 0pt 0px" action="@Url.Action("SignIn", "Account")" method="POST">
-                            <input class="input-small" type="text" placeholder="Email"/>
-                            <input class="input-small" type="password" placeholder="Password"/>
-                            <label class="checkbox"><input type="checkbox"/>Remember?</label>
-                            <button class="btn btn-info" type="submit" style="margin-top:6px">SIGN IN &raquo;</button>
-                        </form>    
-                        </div>
+                        <a href="@Url.Action("SignUp", "Account")" class="btn btn-success" style="margin-top:6px;margin-left: 20px">JOIN US &raquo;</a>                        
+                        <a href="@Url.Action("SignIn", "Account")" class="btn btn-primary" style="margin-top:6px;margin-left: 20px">SIGN IN &raquo;</a>                        
                     }
                 </div>
                 <!--/.nav-collapse -->
             </div>
         </div>
     </div>
-    <div class="container">
+    <div class="container-fluid">
         @*<header class="jumbotron subhead" id="overview">
             <div class="subnav">
                 @if (User.Identity.IsAuthenticated)

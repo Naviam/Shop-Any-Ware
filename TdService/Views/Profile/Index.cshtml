@@ -1,5 +1,11 @@
 ﻿@{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Shop Any Ware - Profile";
 }
 
-<h2>Index</h2>
+<h2>Delivery Addresses</h2>
+
+<div class="row-fluid">
+    <div class="span12">
+        @{Html.RenderPartial("addressTable");}
+    </div>
+</div>
