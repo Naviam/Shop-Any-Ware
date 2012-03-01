@@ -362,6 +362,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\PillsMenuHelperModel.cshtml" />
     <Content Include="Views\Shared\addMoneyForm.cshtml" />
+    <Content Include="Views\Shared\profileForm.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
