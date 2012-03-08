@@ -365,6 +365,7 @@
     <Content Include="Views\Shared\profileForm.cshtml" />
     <Content Include="Views\Shared\addressTable.cshtml" />
     <Content Include="Views\Shared\addDeliveryAddressForm.cshtml" />
+    <Content Include="Views\Member\Overview.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

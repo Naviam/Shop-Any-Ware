@@ -26,5 +26,16 @@ namespace TdService.Web.Controllers
         {
             return View();
         }
+
+        /// <summary>
+        /// Testing the new interface.
+        /// </summary>
+        /// <returns>
+        /// Returns the page with the new interface.
+        /// </returns>
+        public ActionResult Overview()
+        {
+            return View();
+        }
     }
 }
