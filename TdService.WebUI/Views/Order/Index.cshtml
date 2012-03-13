@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Shop Any Ware - Orders";
+}
+
+<h2>View Orders</h2>
+<div class="row">
+    <div class="span12">
+        <form class="well form-search">
+            <input type="text" class="input-large search-query">
+            <button type="submit" class="btn">Search</button>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="span12">
+        @{Html.RenderPartial("orderTable");}
+    </div>
+</div>

@@ -1,0 +1,73 @@
+﻿<table class="table table-striped table-condensed">
+    <caption style="text-align: right; padding-bottom: 4px;">
+        <h4 style="float: left;padding-top: 6px">Latest Parcels</h4>
+        <a href="#addParcel" class="btn btn-small btn-primary" data-toggle="modal"><i class="icon-white icon-gift"></i>COLLECT A PARCEL</a>
+    </caption>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Delivery Address</th>
+            <th>Delivery Method</th>
+            <th>Dispatch Date</th>
+            <th>Delivery Date</th>
+            <th>Status</th>
+            <th>Tracking Number</th>
+            <th>Cost</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Minsk, Novovilenskaya</td>
+            <td>EMS Express</td>
+            <td>02 Feb 2012</td>
+            <td>19 Feb 2012</td>
+            <td><span class="label label-info">Delivered</span></td>
+            <td><a href="http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum=EE972210493US">EE972210493US</a></td>
+            <td><a href="#">62.69$</a></td>
+            <td><a href="#">details</a></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Minsk, Novovilenskaya</td>
+            <td>EMS Priority</td>
+            <td>02 Feb 2012</td>
+            <td>-</td>
+            <td><span class="label label-warning">In Transit</span></td>
+            <td><a href="http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum=EE972210492US">EE972210492US</a></td>
+            <td><a href="#">42.67$</a></td>
+            <td><a href="#">details</a></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Minsk, Novovilenskaya</td>
+            <td>Major Express</td>
+            <td>-</td>
+            <td>-</td>
+            <td><span class="label label-success">Collected</span></td>
+            <td>-</td>
+            <td><a href="#">54.09$</a></td>
+            <td><a href="#">details</a></td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="9" style="text-align: center">
+            </td>
+        </tr>
+    </tfoot>
+</table>
+<div id="addParcel" class="modal hide fade">
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal">×</a>
+        <h3>Collect a package</h3>
+    </div>
+    <div class="modal-body">
+        @{Html.RenderPartial("addParcelForm");}
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="btn" data-dismiss="modal">Close</a>
+        <a href="#" class="btn btn-primary" data-dismiss="modal">Collect</a>
+    </div>
+</div>

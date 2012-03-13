@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4E87BDA7-4AF2-4D94-9A40-68B161FBB71A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TdService</RootNamespace>
+    <AssemblyName>TdService.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Domain\Address.cs" />
+    <Compile Include="Domain\Balance.cs" />
+    <Compile Include="Domain\DeliveryAddress.cs" />
+    <Compile Include="Domain\DispatchMethod.cs" />
+    <Compile Include="Domain\Item.cs" />
+    <Compile Include="Domain\NotificationRules.cs" />
+    <Compile Include="Domain\Order.cs" />
+    <Compile Include="Domain\OrderLineItem.cs" />
+    <Compile Include="Domain\OrderStatus.cs" />
+    <Compile Include="Domain\Parcel.cs" />
+    <Compile Include="Domain\ParcelStatus.cs" />
+    <Compile Include="Domain\Picture.cs" />
+    <Compile Include="Domain\PictureType.cs" />
+    <Compile Include="Domain\Profile.cs" />
+    <Compile Include="Domain\Repositories\IAddressRepository.cs" />
+    <Compile Include="Domain\Repositories\IItemRepository.cs" />
+    <Compile Include="Domain\Repositories\INotificationRepository.cs" />
+    <Compile Include="Domain\Repositories\IOrderRepository.cs" />
+    <Compile Include="Domain\Repositories\IParcelRepository.cs" />
+    <Compile Include="Domain\Repositories\IProfileRepository.cs" />
+    <Compile Include="Domain\Repositories\IReportRepository.cs" />
+    <Compile Include="Domain\Repositories\IRoleRepository.cs" />
+    <Compile Include="Domain\Repositories\IUserRepository.cs" />
+    <Compile Include="Domain\Role.cs" />
+    <Compile Include="Domain\Service.cs" />
+    <Compile Include="Domain\Transaction.cs" />
+    <Compile Include="Domain\TransactionStatus.cs" />
+    <Compile Include="Domain\User.cs" />
+    <Compile Include="Domain\Weight.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
