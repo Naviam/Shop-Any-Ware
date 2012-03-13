@@ -101,18 +101,6 @@
     <Content Include="Content\img\bootstrap-apple-72x72.png" />
     <Content Include="Content\img\glyphicons-halflings-white.png" />
     <Content Include="Content\img\glyphicons-halflings.png" />
-    <Content Include="Content\less\bootstrap.css">
-      <DependentUpon>bootstrap.less</DependentUpon>
-    </Content>
-    <Content Include="Content\less\bootstrap.min.css">
-      <DependentUpon>bootstrap.less</DependentUpon>
-    </Content>
-    <Content Include="Content\less\responsive.css">
-      <DependentUpon>responsive.less</DependentUpon>
-    </Content>
-    <Content Include="Content\less\responsive.min.css">
-      <DependentUpon>responsive.less</DependentUpon>
-    </Content>
     <Content Include="Content\main.css">
       <DependentUpon>main.less</DependentUpon>
     </Content>
