@@ -4,32 +4,18 @@
 //     Changes to this file will be lost if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-namespace TdService.Domain
+namespace TdService.Domain.Repositories
 {
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Text;
 
-	public class OrderLineItem
+	public interface INotificationRepository 
 	{
-		public virtual int Quantity
-		{
-			get;
-			set;
-		}
+		void GetNotificationRules();
 
-		public virtual Decimal Amount
-		{
-			get;
-			set;
-		}
-
-		public virtual Product Item
-		{
-			get;
-			set;
-		}
+		void UpdateNotificationRules();
 
 	}
 }

@@ -95,6 +95,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\TdService.mdf" />
     <Content Include="Content\ico\favicon.ico" />
     <Content Include="Content\img\bootstrap-apple-114x114.png" />
     <Content Include="Content\img\bootstrap-apple-57x57.png" />

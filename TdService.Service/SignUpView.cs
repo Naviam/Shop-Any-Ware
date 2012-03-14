@@ -1,16 +1,11 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="SignUpView.cs" company="">
-// TODO: Update copyright text.
+// <copyright file="SignUpView.cs" company="TdService">
+// Vitali Hatalski. 2012.
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TdService.AppService
+namespace TdService.Service
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-
     /// <summary>
     /// TODO: Update summary.
     /// </summary>

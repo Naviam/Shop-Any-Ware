@@ -1186,39 +1186,6 @@ Reset Password</body>
         LastKnownName="ViewModel"
         LastKnownLocation="Package_1030.uml" />
     </packageHasNamedElement>
-    <packageHasNamedElement>
-      <class
-        Id="04fec06d-c9a4-445e-84d9-94de0d27bd88"
-        name="DeliveryAddress"
-        isAbstract="false"
-        isLeaf="false"
-        isActiveClass="false">
-        <ownedAttributesInternal>
-          <property
-            Id="36515506-061d-4472-b77e-2f0629098c39"
-            name="FirstName"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false" />
-          <property
-            Id="b1438e7a-67c6-4bd5-aef0-2e1b6e6de37a"
-            name="LastName"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false" />
-        </ownedAttributesInternal>
-      </class>
-    </packageHasNamedElement>
   </packagedElements>
   <primitiveType
     Id="220a3521-e091-4221-bae9-3ef9018e845c"

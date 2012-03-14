@@ -1581,7 +1581,7 @@
             isAbstract="false">
             <classMoniker
               Id="468dfb9f-2023-4648-996a-44add78e8c53"
-              LastKnownName="Item"
+              LastKnownName="Product"
               LastKnownLocation="Domain.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
@@ -1767,7 +1767,7 @@
     <packageHasNamedElement>
       <class
         Id="468dfb9f-2023-4648-996a-44add78e8c53"
-        name="Item"
+        name="Product"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
@@ -1814,6 +1814,46 @@
             </propertyInstances>
           </stereotypeInstance>
         </appliedStereotypesInternal>
+        <targetEnds>
+          <association
+            Id="67a51b4b-1d81-446c-862b-ae92bfd4fac8"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName="Price"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="359a0401-c852-473c-ae66-7d196e20464e"
+              LastKnownName="Price"
+              LastKnownLocation="Domain.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="ac66a013-0a6d-4464-9553-cc8fe9f1ae99"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="8b775f04-997a-4c3a-ba54-6edd6e5b441d"
+                  name="Price"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
         <ownedAttributesInternal>
           <property
             Id="2aeb967b-60b0-41bc-ba98-15d4f750f533"
@@ -1885,7 +1925,7 @@
           </property>
           <property
             Id="a028328a-1f3e-4038-9e24-a131b47e2336"
-            name="ProductName"
+            name="Name"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
@@ -1948,74 +1988,6 @@
               <primitiveTypeMoniker
                 Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
                 LastKnownName="String"
-                LastKnownLocation="TdService.Modeling.uml" />
-            </type_NamedElement>
-          </property>
-          <property
-            Id="26d0bfe0-fbdb-40ac-a5ba-914aa52d2fb7"
-            name="Price"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false">
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="45bbb549-c72d-4b88-af88-ebb8272c8c70"
-                name="property"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="0999ca58-0c2d-40db-aa35-648f3a0ce49a">
-                    <propertyInstance
-                      Id="abdae7e9-d6a1-4257-8c50-140081ae9ad7"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="48ee62f1-0d5b-4fe5-99ef-738bc455d186">
-                    <propertyInstance
-                      Id="f9409371-7557-4588-a075-106dea075071"
-                      name="Get"
-                      value="none" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="8ce000bc-b917-4755-88fb-723636fbb276">
-                    <propertyInstance
-                      Id="db0c0d8e-01d2-4053-b854-dc43c6aa45c1"
-                      name="HasBody"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="fc6a6979-b3c4-45af-ba12-5173e3625df4">
-                    <propertyInstance
-                      Id="0ea614a4-6f7f-45e5-adfc-12302ffefc9e"
-                      name="IsUnsafe"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="8bc92f95-efc6-40e8-a487-4dfcb50d2191">
-                    <propertyInstance
-                      Id="bbe97bf1-dbc8-4656-8094-ae2e8b1aedd1"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="b618f680-1443-4e89-b208-67945347515e">
-                    <propertyInstance
-                      Id="fac80494-6db7-4766-8f1e-77c13d69586d"
-                      name="Set"
-                      value="none" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
-            <type_NamedElement>
-              <undefinedTypeMoniker
-                Id="b515db65-a9ad-4cd9-adde-3bc726d11a3f"
-                LastKnownName="Decimal"
                 LastKnownLocation="TdService.Modeling.uml" />
             </type_NamedElement>
           </property>
@@ -3399,6 +3371,46 @@
             </propertyInstances>
           </stereotypeInstance>
         </appliedStereotypesInternal>
+        <targetEnds>
+          <association
+            Id="280e5310-9afe-48e4-b578-1a413e059a0f"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName="Price"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="359a0401-c852-473c-ae66-7d196e20464e"
+              LastKnownName="Price"
+              LastKnownLocation="Domain.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="64921669-b21b-431d-a62a-e6f1848cc0ce"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="43a2a836-c8fe-4693-b8dc-ea9928416542"
+                  name="Price"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
         <ownedAttributesInternal>
           <property
             Id="1d8f9cc0-6f81-4afe-ba52-4a68646c528a"
@@ -4501,7 +4513,7 @@
             <classMoniker
               Id="04fec06d-c9a4-445e-84d9-94de0d27bd88"
               LastKnownName="DeliveryAddress"
-              LastKnownLocation="TdService.Modeling.uml" />
+              LastKnownLocation="Domain.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
@@ -6303,6 +6315,47 @@
           </operation>
         </ownedOperationsInternal>
       </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="04fec06d-c9a4-445e-84d9-94de0d27bd88"
+        name="DeliveryAddress"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedAttributesInternal>
+          <property
+            Id="36515506-061d-4472-b77e-2f0629098c39"
+            name="FirstName"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="b1438e7a-67c6-4bd5-aef0-2e1b6e6de37a"
+            name="LastName"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+        </ownedAttributesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="359a0401-c852-473c-ae66-7d196e20464e"
+        name="Price"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
     </packageHasNamedElement>
   </packagedElements>
 </package>

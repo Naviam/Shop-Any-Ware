@@ -4,32 +4,23 @@
 //     Changes to this file will be lost if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-namespace TdService.Domain
+namespace TdService.Domain.Repositories
 {
+	using Domain;
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Text;
 
-	public class OrderLineItem
+	public interface IProfileRepository 
 	{
-		public virtual int Quantity
-		{
-			get;
-			set;
-		}
+		Profile GetUserProfile(string username);
 
-		public virtual Decimal Amount
-		{
-			get;
-			set;
-		}
+		Address GetWarehouseAddress(string username);
 
-		public virtual Product Item
-		{
-			get;
-			set;
-		}
+		bool ChangePassword(string username, string oldPassword, string newPassword);
+
+		void UpdateUserProfile(string username, Profile profile);
 
 	}
 }

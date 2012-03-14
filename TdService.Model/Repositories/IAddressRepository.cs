@@ -4,32 +4,27 @@
 //     Changes to this file will be lost if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-namespace TdService.Domain
+namespace TdService.Domain.Repositories
 {
+	using Domain;
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Text;
 
-	public class OrderLineItem
+	public interface IAddressRepository 
 	{
-		public virtual int Quantity
-		{
-			get;
-			set;
-		}
+		IEnumerable<Address> GetDeliveryAddresses(string username);
 
-		public virtual Decimal Amount
-		{
-			get;
-			set;
-		}
+		Address GetWarehouseAddress(string username);
 
-		public virtual Product Item
-		{
-			get;
-			set;
-		}
+		void AddDeliveryAddress(string username, Address address);
+
+		void UpdateDeliveryAddress(Address address);
+
+		void RemoveDeliveryAddress(int addressId);
+
+		Address GetDeliveryAddressDetails(int addressId);
 
 	}
 }

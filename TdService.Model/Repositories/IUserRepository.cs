@@ -4,32 +4,27 @@
 //     Changes to this file will be lost if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-namespace TdService.Domain
+namespace TdService.Domain.Repositories
 {
+	using Domain;
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Text;
 
-	public class OrderLineItem
+	public interface IUserRepository 
 	{
-		public virtual int Quantity
-		{
-			get;
-			set;
-		}
+		User GetUser(string username);
 
-		public virtual Decimal Amount
-		{
-			get;
-			set;
-		}
+		bool ValidateUser(string username, string password);
 
-		public virtual Product Item
-		{
-			get;
-			set;
-		}
+		void AddUser(User user);
+
+		void UpdateUser(User user);
+
+		IEnumerable<User> GetUsers(object sortDirection, string sortExpression, string filterExpression, int pageSize = 20);
+
+		void RemoveUser(string username);
 
 	}
 }

@@ -6,31 +6,14 @@
 //------------------------------------------------------------------------------
 namespace TdService.Domain
 {
-	using System;
-	using System.Collections.Generic;
-	using System.Linq;
-	using System.Text;
-
-	public class OrderLineItem
+    public class Product
 	{
-		public virtual int Quantity
-		{
-			get;
-			set;
-		}
+		public virtual int Quantity { get; set; }
 
-		public virtual Decimal Amount
-		{
-			get;
-			set;
-		}
+		public virtual string ProductName { get; set; }
 
-		public virtual Product Item
-		{
-			get;
-			set;
-		}
+		public virtual Price Price { get; set; }
 
+		public virtual int Id { get; set; }
 	}
 }
-
