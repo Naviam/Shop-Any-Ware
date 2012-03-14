@@ -42,6 +42,9 @@
     <IncludeAppPool>true</IncludeAppPool>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.2.1.265\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Elmah">
       <HintPath>..\packages\elmah.corelibrary.1.2.1\lib\Elmah.dll</HintPath>
     </Reference>
@@ -165,6 +168,10 @@
     <Content Include="Views\Account\SignIn.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TdService.Infrastructure\TdService.Infrastructure.csproj">
+      <Project>{81B36459-F01A-4F69-869B-EA585BEE2005}</Project>
+      <Name>TdService.Infrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TdService.Model\TdService.Model.csproj">
       <Project>{4E87BDA7-4AF2-4D94-9A40-68B161FBB71A}</Project>
       <Name>TdService.Model</Name>

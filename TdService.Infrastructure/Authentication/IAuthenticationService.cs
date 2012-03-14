@@ -9,8 +9,6 @@
 
 namespace TdService.Infrastructure.Authentication
 {
-    using Domain;
-
     /// <summary>
     /// Interface for the Membership API.
     /// </summary>
@@ -25,10 +23,7 @@ namespace TdService.Infrastructure.Authentication
         /// <param name="password">
         /// The password.
         /// </param>
-        /// <returns>
-        /// User object.
-        /// </returns>
-        User Login(string email, string password);
+        void Login(string email, string password);
 
         /// <summary>
         /// Register user.
@@ -39,9 +34,6 @@ namespace TdService.Infrastructure.Authentication
         /// <param name="password">
         /// The password.
         /// </param>
-        /// <returns>
-        /// User object.
-        /// </returns>
-        User RegisterUser(string email, string password);
+        void RegisterUser(string email, string password);
     }
 }

@@ -9,7 +9,6 @@
 
 namespace TdService.UnitTests
 {
-    using System.IO;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     /// <summary>

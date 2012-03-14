@@ -72,6 +72,12 @@
     <Compile Include="Domain\Weight.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TdService.Infrastructure\TdService.Infrastructure.csproj">
+      <Project>{81B36459-F01A-4F69-869B-EA585BEE2005}</Project>
+      <Name>TdService.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
