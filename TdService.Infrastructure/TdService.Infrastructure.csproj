@@ -64,6 +64,11 @@
     <Compile Include="Domain\IRepository.cs" />
     <Compile Include="Domain\ValueObjectBase.cs" />
     <Compile Include="Domain\ValueObjectIsInvalidException.cs" />
+    <Compile Include="Email\EmailServiceFactory.cs" />
+    <Compile Include="Email\IEmailService.cs" />
+    <Compile Include="Email\SMTPService.cs" />
+    <Compile Include="Helpers\PriceHelper.cs" />
+    <Compile Include="Helpers\UrlHelper.cs" />
     <Compile Include="HtmlParser.cs" />
     <Compile Include="Logging\ILogger.cs" />
     <Compile Include="Logging\Log4NetAdapter.cs" />
@@ -88,8 +93,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CookieStorage\" />
-    <Folder Include="Email\" />
-    <Folder Include="Helpers\" />
     <Folder Include="Payments\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

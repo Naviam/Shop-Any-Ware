@@ -8,7 +8,7 @@
     <ProjectGuid>{4E87BDA7-4AF2-4D94-9A40-68B161FBB71A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TdService</RootNamespace>
+    <RootNamespace>TdService.Model</RootNamespace>
     <AssemblyName>TdService.Model</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -45,7 +45,7 @@
     <Compile Include="Domain\DeliveryAddress.cs" />
     <Compile Include="Domain\DispatchMethod.cs" />
     <Compile Include="Domain\Price.cs" />
-    <Compile Include="Domain\Product.cs" />
+    <Compile Include="Products\Product.cs" />
     <Compile Include="Domain\NotificationRules.cs" />
     <Compile Include="Domain\Order.cs" />
     <Compile Include="Domain\OrderLineItem.cs" />
@@ -55,8 +55,11 @@
     <Compile Include="Domain\Picture.cs" />
     <Compile Include="Domain\PictureType.cs" />
     <Compile Include="Domain\Profile.cs" />
+    <Compile Include="Products\IProductAttribute.cs" />
+    <Compile Include="Products\ProductColor.cs" />
+    <Compile Include="Products\ProductSize.cs" />
     <Compile Include="Repositories\IAddressRepository.cs" />
-    <Compile Include="Repositories\IProductRepository.cs" />
+    <Compile Include="Products\IProductRepository.cs" />
     <Compile Include="Repositories\INotificationRepository.cs" />
     <Compile Include="Repositories\IOrderRepository.cs" />
     <Compile Include="Repositories\IParcelRepository.cs" />

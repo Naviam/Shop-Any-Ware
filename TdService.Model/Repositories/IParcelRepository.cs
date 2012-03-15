@@ -7,6 +7,7 @@
 
 using TdService.Domain;
 using System.Collections.Generic;
+using TdService.Model.Domain;
 
 namespace TdService.Repositories
 {
