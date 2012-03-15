@@ -6,6 +6,9 @@
 
 namespace TdService.Infrastructure.Querying
 {
+    using System;
+    using System.Linq.Expressions;
+
     /// <summary>
     /// Criterion class.
     /// </summary>
@@ -44,5 +47,30 @@ namespace TdService.Infrastructure.Querying
         /// Gets CriteriaOperator.
         /// </summary>
         public CriteriaOperator CriteriaOperator { get; private set; }
+
+        /// <summary>
+        /// Create criterion.
+        /// </summary>
+        /// <param name="expression">
+        /// The expression.
+        /// </param>
+        /// <param name="value">
+        /// The value.
+        /// </param>
+        /// <param name="criteriaOperator">
+        /// The criteria operator.
+        /// </param>
+        /// <typeparam name="T">
+        /// Any object type.
+        /// </typeparam>
+        /// <returns>
+        /// Criterion object.
+        /// </returns>
+        public static Criterion Create<T>(Expression<Func<T, object>> expression, object value, CriteriaOperator criteriaOperator)
+        {
+            var propertyName = PropertyNameHelper.ResolvePropertyName(expression);
+            var myCriterion = new Criterion(propertyName, value, criteriaOperator);
+            return myCriterion;
+        }
     }
 }
