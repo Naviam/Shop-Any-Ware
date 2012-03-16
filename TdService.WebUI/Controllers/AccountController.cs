@@ -7,11 +7,13 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using TdService.Service;
+
 namespace TdService.Web.Controllers
 {
     using System.Web.Mvc;
     using System.Web.Security;
-    using AppService;
+    using Service;
 
     /// <summary>
     /// This controller is responsible for authentication and authorization of user.

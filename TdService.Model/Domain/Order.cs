@@ -4,14 +4,14 @@
 //     Changes to this file will be lost if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-namespace TdService.Domain
-{
-	using System;
-	using System.Collections.Generic;
-	using System.Linq;
-	using System.Text;
 
-	public class Order
+using System;
+using System.Collections.Generic;
+using TdService.Domain;
+
+namespace TdService.Model.Domain
+{
+    public class Order
 	{
 		public virtual string Store
 		{

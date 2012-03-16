@@ -1,18 +1,13 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="SignInView.cs" company="">
-// TODO: Update copyright text.
+// <copyright file="SignInView.cs" company="TdService">
+// Vitali Hatalski. 2012.
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TdService.AppService
+namespace TdService.Service
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-
     /// <summary>
-    /// TODO: Update summary.
+    /// This is a view object for UI.
     /// </summary>
     public class SignInView
     {

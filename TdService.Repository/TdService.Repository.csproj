@@ -60,6 +60,10 @@
     <Folder Include="Data\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TdService.Infrastructure\TdService.Infrastructure.csproj">
+      <Project>{81B36459-F01A-4F69-869B-EA585BEE2005}</Project>
+      <Name>TdService.Infrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TdService.Model\TdService.Model.csproj">
       <Project>{4E87BDA7-4AF2-4D94-9A40-68B161FBB71A}</Project>
       <Name>TdService.Model</Name>

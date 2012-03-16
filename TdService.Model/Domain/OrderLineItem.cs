@@ -4,14 +4,13 @@
 //     Changes to this file will be lost if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-namespace TdService.Domain
-{
-	using System;
-	using System.Collections.Generic;
-	using System.Linq;
-	using System.Text;
 
-	public class OrderLineItem
+using System;
+using TdService.Model.Products;
+
+namespace TdService.Model.Domain
+{
+    public class OrderLineItem
 	{
 		public virtual int Quantity
 		{
@@ -25,7 +24,7 @@ namespace TdService.Domain
 			set;
 		}
 
-		public virtual Item Item
+		public virtual Product Item
 		{
 			get;
 			set;

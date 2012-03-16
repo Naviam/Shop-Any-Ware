@@ -4,6 +4,9 @@
 //     Changes to this file will be lost if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using TdService.Model.Domain;
+
 namespace TdService.Domain
 {
 	using System;
