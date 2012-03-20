@@ -1,18 +1,18 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="ProductSize.cs" company="TdService">
+// <copyright file="ItemColor.cs" company="TdService">
 // Vitali Hatalski. 2012.
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TdService.Model.Products
+namespace TdService.Model.Items
 {
     using System;
     using Infrastructure.Domain;
 
     /// <summary>
-    /// Size attribute of the product.
+    /// Weight attribute of the product.
     /// </summary>
-    public class ProductSize : EntityBase<int>, IProductAttribute
+    public class ItemColor : EntityBase<int>, IItemAttribute
     {
         /// <summary>
         /// Gets or sets Name.
@@ -20,7 +20,7 @@ namespace TdService.Model.Products
         public string Name { get; set; }
 
         /// <summary>
-        /// Validates size attribute.
+        /// Validates weight attribute.
         /// </summary>
         protected override void Validate()
         {

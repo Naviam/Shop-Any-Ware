@@ -5,31 +5,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using TdService.Model.Products;
-
-namespace TdService.Model.Domain
+namespace TdService.Model.Orders
 {
-    public class OrderLineItem
+    public enum OrderStatus : int
 	{
-		public virtual int Quantity
-		{
-			get;
-			set;
-		}
-
-		public virtual Decimal Amount
-		{
-			get;
-			set;
-		}
-
-		public virtual Product Item
-		{
-			get;
-			set;
-		}
-
+		WaitingArrival = 0,
+		Arrived = 1,
+		Processed = 2,
 	}
 }
-

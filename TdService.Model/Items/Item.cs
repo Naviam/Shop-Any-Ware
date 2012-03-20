@@ -1,10 +1,10 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="Product.cs" company="TdService">
+// <copyright file="Item.cs" company="TdService">
 // Vitali Hatalski. 2012.
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TdService.Model.Products
+namespace TdService.Model.Items
 {
     using System;
     using Infrastructure.Domain;
@@ -12,8 +12,13 @@ namespace TdService.Model.Products
     /// <summary>
     /// Product is what user is buying from online shops.
     /// </summary>
-    public class Product : EntityBase<int>, IAggregateRoot
+    public class Item : EntityBase<int>, IAggregateRoot
     {
+        /// <summary>
+        /// Gets or sets Id.
+        /// </summary>
+        public int Id { get; set; }
+
         /// <summary>
         /// Gets or sets Name.
         /// </summary>
@@ -27,12 +32,17 @@ namespace TdService.Model.Products
         /// <summary>
         /// Gets or sets Size.
         /// </summary>
-        public ProductSize Size { get; set; }
+        public ItemSize Size { get; set; }
 
         /// <summary>
         /// Gets or sets Color.
         /// </summary>
-        public ProductColor Color { get; set; }
+        public ItemColor Color { get; set; }
+
+        /// <summary>
+        /// Gets or sets Weight.
+        /// </summary>
+        public Weight Weight { get; set; }
 
         /// <summary>
         /// Gets or sets Price.

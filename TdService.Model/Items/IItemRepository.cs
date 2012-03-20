@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="IProductRepository.cs" company="TdService">
+// <copyright file="IItemRepository.cs" company="TdService">
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Model.Products
+namespace TdService.Model.Items
 {
     using System.Collections.Generic;
     using Infrastructure.Domain;
@@ -15,7 +15,7 @@ namespace TdService.Model.Products
     /// <summary>
     /// Interface for the products repository.
     /// </summary>
-    public interface IProductRepository : IRepository<Product, int>
+    public interface IItemRepository : IRepository<Item, int>
     {
         /// <summary>
         /// Get the list of order's products.
@@ -24,43 +24,43 @@ namespace TdService.Model.Products
         /// The order id.
         /// </param>
         /// <returns>
-        /// Collection of products.
+        /// Collection of items.
         /// </returns>
-        IEnumerable<Product> GetOrderProducts(int orderId);
+        IEnumerable<Item> GetOrderItems(int orderId);
 
         /// <summary>
-        /// Add product to an order.
+        /// Add item to an order.
         /// </summary>
         /// <param name="orderId">
         /// The order id.
         /// </param>
-        /// <param name="product">
-        /// The product.
+        /// <param name="item">
+        /// The item.
         /// </param>
-        void AddProductToOrder(int orderId, Product product);
+        void AddItemToOrder(int orderId, Item item);
 
         /// <summary>
-        /// Update product.
+        /// Update item.
         /// </summary>
-        /// <param name="product">
-        /// The product.
+        /// <param name="item">
+        /// The item.
         /// </param>
-        void UpdateProduct(Product product);
+        void UpdateItem(Item item);
 
         /// <summary>
-        /// Remove product completely.
+        /// Remove item completely.
         /// </summary>
-        /// <param name="productId">
-        /// The product id.
+        /// <param name="itemId">
+        /// The item id.
         /// </param>
-        void RemoveProduct(int productId);
+        void RemoveItem(int itemId);
 
         /// <summary>
         /// Request return of a product back to the shop.
         /// </summary>
-        /// <param name="productId">
-        /// The product id.
+        /// <param name="itemId">
+        /// The item id.
         /// </param>
-        void RequestProductReturn(int productId);
+        void RequestItemReturn(int itemId);
     }
 }

@@ -1,15 +1,15 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="IProductAttribute.cs" company="TdService">
+// <copyright file="IItemAttribute.cs" company="TdService">
 // Vitali Hatalski. 2012.
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TdService.Model.Products
+namespace TdService.Model.Items
 {
     /// <summary>
     /// Interface for product attributes.
     /// </summary>
-    public interface IProductAttribute
+    public interface IItemAttribute
     {
         /// <summary>
         /// Gets or sets Id.

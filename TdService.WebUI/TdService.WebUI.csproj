@@ -48,10 +48,6 @@
     <Reference Include="Elmah">
       <HintPath>..\packages\elmah.corelibrary.1.2.1\lib\Elmah.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework, Version=4.3.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.4.3.0\lib\net40\EntityFramework.dll</HintPath>
-    </Reference>
     <Reference Include="MvcSiteMapProvider">
       <HintPath>..\packages\MvcSiteMapProvider.3.2.1.0\lib\net40\MvcSiteMapProvider.dll</HintPath>
     </Reference>
@@ -105,6 +101,12 @@
     <Content Include="Content\img\bootstrap-apple-72x72.png" />
     <Content Include="Content\img\glyphicons-halflings-white.png" />
     <Content Include="Content\img\glyphicons-halflings.png" />
+    <Content Include="Content\less\bootstrap.css">
+      <DependentUpon>bootstrap.less</DependentUpon>
+    </Content>
+    <Content Include="Content\less\bootstrap.min.css">
+      <DependentUpon>bootstrap.less</DependentUpon>
+    </Content>
     <Content Include="Content\main.css">
       <DependentUpon>main.less</DependentUpon>
     </Content>
@@ -130,9 +132,11 @@
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\knockout-2.0.0.debug.js" />
     <Content Include="Scripts\knockout-2.0.0.js" />
-    <Content Include="Scripts\less-1.2.1.min.js" />
+    <Content Include="Scripts\knockout.debug.js" />
+    <Content Include="Scripts\knockout.js" />
+    <Content Include="Scripts\less.min.js" />
+    <Content Include="Scripts\model\OrderViewModel.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -190,10 +194,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Content\less\accordion.less">
-      <Compile>False</Compile>
-      <Minify>False</Minify>
-    </None>
+    <None Include="Content\less\accordion.less" />
     <None Include="Content\less\alerts.less">
       <Compile>False</Compile>
       <Minify>False</Minify>
@@ -211,14 +212,8 @@
       <Compile>False</Compile>
       <Minify>False</Minify>
     </None>
-    <None Include="Content\less\carousel.less">
-      <Compile>False</Compile>
-      <Minify>False</Minify>
-    </None>
-    <None Include="Content\less\close.less">
-      <Compile>False</Compile>
-      <Minify>False</Minify>
-    </None>
+    <None Include="Content\less\carousel.less" />
+    <None Include="Content\less\close.less" />
     <None Include="Content\less\code.less">
       <Compile>False</Compile>
       <Minify>False</Minify>
@@ -247,10 +242,7 @@
       <Compile>False</Compile>
       <Minify>False</Minify>
     </None>
-    <None Include="Content\less\layouts.less">
-      <Compile>False</Compile>
-      <Minify>False</Minify>
-    </None>
+    <None Include="Content\less\layouts.less" />
     <None Include="Content\less\mixins.less">
       <Compile>False</Compile>
       <Minify>False</Minify>
@@ -275,10 +267,7 @@
       <Compile>False</Compile>
       <Minify>False</Minify>
     </None>
-    <None Include="Content\less\popovers.less">
-      <Compile>False</Compile>
-      <Minify>False</Minify>
-    </None>
+    <None Include="Content\less\popovers.less" />
     <None Include="Content\less\progress-bars.less">
       <Compile>False</Compile>
       <Minify>False</Minify>
@@ -303,22 +292,13 @@
       <Compile>False</Compile>
       <Minify>False</Minify>
     </None>
-    <None Include="Content\less\thumbnails.less">
-      <Compile>False</Compile>
-      <Minify>False</Minify>
-    </None>
-    <None Include="Content\less\tooltip.less">
-      <Compile>False</Compile>
-      <Minify>False</Minify>
-    </None>
+    <None Include="Content\less\thumbnails.less" />
+    <None Include="Content\less\tooltip.less" />
     <None Include="Content\less\type.less">
       <Compile>False</Compile>
       <Minify>False</Minify>
     </None>
-    <None Include="Content\less\utilities.less">
-      <Compile>False</Compile>
-      <Minify>False</Minify>
-    </None>
+    <None Include="Content\less\utilities.less" />
     <None Include="Content\less\variables.less">
       <Compile>False</Compile>
       <Minify>False</Minify>

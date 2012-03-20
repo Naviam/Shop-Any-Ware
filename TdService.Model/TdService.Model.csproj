@@ -12,6 +12,8 @@
     <AssemblyName>TdService.Model</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\TD-Service\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,7 +34,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,39 +44,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\Address.cs" />
-    <Compile Include="Domain\Balance.cs" />
-    <Compile Include="Domain\DeliveryAddress.cs" />
-    <Compile Include="Domain\DispatchMethod.cs" />
+    <Compile Include="Addresses\Address.cs" />
+    <Compile Include="Wallet\Balance.cs" />
+    <Compile Include="Shoppers\DeliveryAddress.cs" />
+    <Compile Include="Shipping\DispatchMethod.cs" />
     <Compile Include="Domain\Price.cs" />
-    <Compile Include="Products\Product.cs" />
-    <Compile Include="Domain\NotificationRules.cs" />
-    <Compile Include="Domain\Order.cs" />
-    <Compile Include="Domain\OrderLineItem.cs" />
-    <Compile Include="Domain\OrderStatus.cs" />
-    <Compile Include="Domain\Parcel.cs" />
-    <Compile Include="Domain\ParcelStatus.cs" />
+    <Compile Include="Items\Item.cs" />
+    <Compile Include="Shoppers\NotificationRules.cs" />
+    <Compile Include="Orders\OrderLineItem.cs" />
+    <Compile Include="Orders\OrderStatus.cs" />
+    <Compile Include="Packages\Parcel.cs" />
+    <Compile Include="Packages\ParcelStatus.cs" />
     <Compile Include="Domain\Picture.cs" />
     <Compile Include="Domain\PictureType.cs" />
-    <Compile Include="Domain\Profile.cs" />
-    <Compile Include="Products\IProductAttribute.cs" />
-    <Compile Include="Products\ProductColor.cs" />
-    <Compile Include="Products\ProductSize.cs" />
-    <Compile Include="Repositories\IAddressRepository.cs" />
-    <Compile Include="Products\IProductRepository.cs" />
-    <Compile Include="Repositories\INotificationRepository.cs" />
-    <Compile Include="Repositories\IOrderRepository.cs" />
-    <Compile Include="Repositories\IParcelRepository.cs" />
-    <Compile Include="Repositories\IProfileRepository.cs" />
+    <Compile Include="Shoppers\Profile.cs" />
+    <Compile Include="Items\IItemAttribute.cs" />
+    <Compile Include="Items\ItemColor.cs" />
+    <Compile Include="Items\ItemSize.cs" />
+    <Compile Include="Orders\Order.cs" />
+    <Compile Include="Shop.cs" />
+    <Compile Include="Addresses\IAddressRepository.cs" />
+    <Compile Include="Items\IItemRepository.cs" />
+    <Compile Include="Shoppers\INotificationRepository.cs" />
+    <Compile Include="Orders\IOrderRepository.cs" />
+    <Compile Include="Packages\IParcelRepository.cs" />
+    <Compile Include="Shoppers\IProfileRepository.cs" />
     <Compile Include="Repositories\IReportRepository.cs" />
-    <Compile Include="Repositories\IRoleRepository.cs" />
-    <Compile Include="Repositories\IUserRepository.cs" />
-    <Compile Include="Domain\Role.cs" />
+    <Compile Include="Shoppers\IRoleRepository.cs" />
+    <Compile Include="Shoppers\IUserRepository.cs" />
+    <Compile Include="Shoppers\Role.cs" />
     <Compile Include="Domain\Service.cs" />
-    <Compile Include="Domain\Transaction.cs" />
-    <Compile Include="Domain\TransactionStatus.cs" />
-    <Compile Include="Domain\User.cs" />
-    <Compile Include="Domain\Weight.cs" />
+    <Compile Include="Wallet\Transaction.cs" />
+    <Compile Include="Wallet\TransactionStatus.cs" />
+    <Compile Include="Shoppers\User.cs" />
+    <Compile Include="Weight.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -81,7 +86,11 @@
       <Name>TdService.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
