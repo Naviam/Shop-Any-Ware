@@ -95,24 +95,27 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\TdService.mdf" />
+    <Content Include="Content\css\font-awesome.css" />
+    <Content Include="Content\font\fontawesome-webfont.svg" />
     <Content Include="Content\ico\favicon.ico" />
+    <Content Include="Content\img\apple-touch-icon-114-precomposed.png" />
+    <Content Include="Content\img\apple-touch-icon-57-precomposed.png" />
+    <Content Include="Content\img\apple-touch-icon-72-precomposed.png" />
     <Content Include="Content\img\bootstrap-apple-114x114.png" />
     <Content Include="Content\img\bootstrap-apple-57x57.png" />
     <Content Include="Content\img\bootstrap-apple-72x72.png" />
     <Content Include="Content\img\glyphicons-halflings-white.png" />
     <Content Include="Content\img\glyphicons-halflings.png" />
-    <Content Include="Content\less\bootstrap.css">
-      <DependentUpon>bootstrap.less</DependentUpon>
-    </Content>
-    <Content Include="Content\less\bootstrap.min.css">
-      <DependentUpon>bootstrap.less</DependentUpon>
-    </Content>
-    <Content Include="Content\main.css">
-      <DependentUpon>main.less</DependentUpon>
-    </Content>
+    <Content Include="Content\less\bootstrap-responsive.css" />
+    <Content Include="Content\less\bootstrap.css" />
+    <Content Include="Content\less\bootstrap.min.css" />
+    <Content Include="Content\less\docs.css" />
+    <Content Include="Content\less\responsive.css" />
+    <Content Include="Content\less\responsive.min.css" />
+    <Content Include="Content\main.css" />
+    <Content Include="Content\Site.css" />
     <Content Include="Content\test.css" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="README.jQuery.vsdoc.txt" />
     <Content Include="Scripts\bootstrap\bootstrap-alert.js" />
     <Content Include="Scripts\bootstrap\bootstrap-button.js" />
@@ -314,6 +317,50 @@
     <Content Include="TopMenu.sitemap">
       <SubType>Designer</SubType>
     </Content>
+    <None Include="Content\font\fontawesome-webfont.eot" />
+    <None Include="Content\font\fontawesome-webfont.svgz" />
+    <None Include="Content\font\fontawesome-webfont.ttf" />
+    <None Include="Content\font\fontawesome-webfont.woff" />
+    <None Include="Content\less\accordion.less" />
+    <None Include="Content\less\alerts.less" />
+    <None Include="Content\less\badges.less" />
+    <None Include="Content\less\bootstrap.less" />
+    <None Include="Content\less\breadcrumbs.less" />
+    <None Include="Content\less\button-groups.less" />
+    <None Include="Content\less\buttons.less" />
+    <None Include="Content\less\carousel.less" />
+    <None Include="Content\less\close.less" />
+    <None Include="Content\less\code.less" />
+    <None Include="Content\less\component-animations.less" />
+    <None Include="Content\less\dropdowns.less" />
+    <None Include="Content\less\font-awesome.less" />
+    <None Include="Content\less\forms.less" />
+    <None Include="Content\less\grid.less" />
+    <None Include="Content\less\hero-unit.less" />
+    <None Include="Content\less\labels.less" />
+    <None Include="Content\less\layouts.less" />
+    <None Include="Content\less\mixins.less" />
+    <None Include="Content\less\modals.less" />
+    <None Include="Content\less\navbar.less" />
+    <None Include="Content\less\navs.less" />
+    <None Include="Content\less\pager.less" />
+    <None Include="Content\less\pagination.less" />
+    <None Include="Content\less\popovers.less" />
+    <None Include="Content\less\progress-bars.less" />
+    <None Include="Content\less\reset.less" />
+    <None Include="Content\less\responsive.less" />
+    <None Include="Content\less\scaffolding.less" />
+    <None Include="Content\less\sprites.less" />
+    <None Include="Content\less\tables.less" />
+    <None Include="Content\less\thumbnails.less" />
+    <None Include="Content\less\tooltip.less" />
+    <None Include="Content\less\type.less" />
+    <None Include="Content\less\utilities.less" />
+    <None Include="Content\less\variables.less" />
+    <None Include="Content\less\wells.less" />
+    <None Include="Content\main.less" />
+    <None Include="Content\sass\font-awesome.sass" />
+    <None Include="Content\sass\font-awesome.scss" />
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>
