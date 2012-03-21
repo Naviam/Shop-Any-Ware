@@ -3,60 +3,31 @@
 }
 
 <div class="row-fluid">
-    <div class="span4">
-        Shop Orders
-        <ul>
-            <li>
-                <div>ID: 38737 Amazon: Order # 7732267633, TN# 1Z32863V0307459092, <a href="#">photos</a> <span class="label label-warning">Waiting</span>, Weight, Special Services (request photos)</div>
-                <div>Item 1, Name: Kindle, Quantity: 1, Color: Black, Price: 79$</div>
-                <div>Item 2, Name: IPAD, Quantity: 1, Color: White, Price: 450$</div>
-                <div>Total: Quantity 2, Price: 529$</div>
-            </li>
-            <li><div>ID: 38737 Amazon: Order # 7732267633, TN# 1Z32863V0307459092</div></li>
-            <li><div>ID: 38737 Amazon: Order # 7732267633, TN# 1Z32863V0307459092</div></li>
-            <li><div>ID: 38737 Amazon: Order # 7732267633, TN# 1Z32863V0307459092</div></li>
-            <li><div>ID: 38737 Amazon: Order # 7732267633, TN# 1Z32863V0307459092</div></li>
-            <li><div>ID: 38737 Amazon: Order # 7732267633, TN# 1Z32863V0307459092</div></li>
-        </ul>
+    <div class="span4" data-bind="foreach: orders">
         <div class="package action">
             <div class="box">
-                <div class="white">Amazon, Order# 7732267633</div>
-                <div class="white">Tracking# 1Z32863V0307459092</div>
+                <div class="white"><span data-bind="text: shop"></span>, Order # <span data-bind="text: orderNumber"></span></div>
+                <div class="white">Tracking # <a class="tn" title="A Title" data-content="And here's some amazing content. It's very engaging. right?" data-bind="text: trackingNumber" href="http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum=EE972210493US"></a></div>
                 <div class="white">
                     <table>
-                        <tr>
-                            <th>Photo</th>
-                            <th>Item Name</th>
-                            <th>Size/Color</th>
-                            <th>Quantity</th>
-                            <th>Price</th>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox"/></td>
-                            <td class="left">item1</td>
-                            <td>22/black</td>
-                            <td>2</td>
-                            <td>$24</td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox"/></td>
-                            <td class="left">item2</td>
-                            <td>white</td>
-                            <td>1</td>
-                            <td>$2</td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox"/></td>
-                            <td class="left">item3</td>
-                            <td>silver</td>
-                            <td>1</td>
-                            <td>$7</td>
-                        </tr>
-                        <tr>
-                            <td class="right" colspan="3">Total</td>
-                            <td>4</td>
-                            <td>$33</td>
-                        </tr>
+                        <thead>
+                            <tr>
+                                <th>Photo</th>
+                                <th>Item Name</th>
+                                <th>Size/Color</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody class="order_items" data-bind="foreach: items">
+                            <tr>
+                                <td><input type="checkbox"/></td>
+                                <td class="left" data-bind="text: name"></td>
+                                <td data-bind="text: size"></td>
+                                <td data-bind="text: quantity"></td>
+                                <td data-bind="text: price"></td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
                 <div class="btn-toolbar">
@@ -64,13 +35,13 @@
                         <button href="#photo" class="btn btn-small" data-toggle="modal"><i class="icon-camera"></i>PHOTO</button>
                     </div>
                     <div class="btn-group">
-                      <button data-toggle="dropdown" class="btn dropdown-toggle">Action <span class="caret"></span></button>
-                      <ul class="dropdown-menu">
-                        <li><a href="#">Remove box</a></li>
-                        <li><a href="#">Remove invoice</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Return package</a></li>
-                      </ul>
+                        <button data-toggle="dropdown" class="btn dropdown-toggle">Action <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Remove box</a></li>
+                            <li><a href="#">Remove invoice</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Return package</a></li>
+                        </ul>
                     </div><!-- /btn-group -->
                 </div>
             </div>
@@ -81,86 +52,75 @@
                 <span class="label label-info">Date: 10 Feb 2012</span>
             </div>
         </div>
-        
-        <div class="package new">
-            <div><a href="#addMoney" class="btn btn-primary" data-toggle="modal"><i class="icon-white icon-plus"></i>Click to add a new package</a></div>
-        </div>
     </div>
     <div class="span4">
-        Current Packages
-        <ul>
-            <li>
-                <div>ID: 1 Description, TN# 1Z32863V0307459092, Delivery Date, Dispatch Date, <span class="label label-warning">Waiting</span>, Weight, Request Additional Services (remove invoices, remove boots box, pack in a plastic box, etc.</div>
-                <div>Item 1, Name: Kindle, Quantity: 1, Color: Black, Price: 79$</div>
-                <div>Item 2, Name: IPAD, Quantity: 1, Color: White, Price: 450$</div>
-                <div>Total: Quantity 2, Price: 529$</div>
-            </li>
-            <li>
-                <div>ID: 2 Description, TN# 1Z32863V0307459092, Delivery Date, Dispatch Date, <span class="label label-warning">Waiting</span>, Weight, Request Additional Services (remove invoices, remove boots box, pack in a plastic box, etc.</div>
-                <div>Item 1, Name: Kindle, Quantity: 1, Color: Black, Price: 79$</div>
-                <div>Item 2, Name: IPAD, Quantity: 1, Color: White, Price: 450$</div>
-                <div>Total: Quantity 2, Price: 529$</div>
-            </li>
-        </ul>
-
-        <div class="package action">
-            <div class="box">
-                <div class="white">User address &#9660;</div>
-                <div class="white">Delivery method &#9660;</div>
-                <div class="white">
-                    <table>
-                        <tr>
-                            <th>Item Name</th>
-                            <th>Size/Color</th>
-                            <th>Weight</th>
-                            <th>Quantity</th>
-                            <th>Price</th>
-                        </tr>
-                        <tr>
-                            <td class="left">Package1: item1</td>
-                            <td>22/black</td>
-                            <td>.510kg</td>
-                            <td>2</td>
-                            <td>$24</td>
-                        </tr>
-                        <tr>
-                            <td class="left">Package1: item2</td>
-                            <td>white</td>
-                            <td>.240kg</td>
-                            <td>1</td>
-                            <td>$2</td>
-                        </tr>
-                        <tr>
-                            <td class="left">Package2: item3</td>
-                            <td>silver</td>
-                            <td>.360kg</td>
-                            <td>1</td>
-                            <td>$7</td>
-                        </tr>
-                        <tr>
-                            <td class="left">Package3 [Full]</td>
-                            <td></td>
-                            <td>.800kg</td>
-                            <td></td>
-                            <td>$37</td>
-                        </tr>
-                        <tr>
-                            <td class="right" colspan="2">Total</td>
-                            <td>1.910kg</td>
-                            <td>4</td>
-                            <td>$70</td>
-                        </tr>
-                    </table>
+        <div class="package new">
+            <div><a href="#addNewPackage" class="btn btn-primary" data-toggle="modal"><i class="icon-white icon-plus"></i>Click to add a new package</a></div>
+        </div>
+        <div data-bind="foreach: packages">
+            <div class="package action">
+                <div class="box">
+                    <div class="white" data-bind="text: deliveryAddress"></div>
+                    <div class="white" data-bind="text: dispatchMethod"></div>
+                    <div class="white">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Item Name</th>
+                                    <th>Size/Color</th>
+                                    <th>Weight</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody class="package_items">
+                                <tr>
+                                    <td class="left" date-bind="text: name">Package1: item1</td>
+                                    <td>22/black</td>
+                                    <td>.510kg</td>
+                                    <td>2</td>
+                                    <td>$24</td>
+                                </tr>
+                                <tr>
+                                    <td class="left">Package1: item2</td>
+                                    <td>white</td>
+                                    <td>.240kg</td>
+                                    <td>1</td>
+                                    <td>$2</td>
+                                </tr>
+                                <tr>
+                                    <td class="left">Package2: item3</td>
+                                    <td>silver</td>
+                                    <td>.360kg</td>
+                                    <td>1</td>
+                                    <td>$7</td>
+                                </tr>
+                                <tr>
+                                    <td class="left">Package3 [Full]</td>
+                                    <td></td>
+                                    <td>.800kg</td>
+                                    <td></td>
+                                    <td>$37</td>
+                                </tr>
+                                <tr>
+                                    <td class="right" colspan="2">Total</td>
+                                    <td>1.910kg</td>
+                                    <td>4</td>
+                                    <td>$70</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="right">
+                        <a href="#return" class="btn btn-small" data-toggle="modal"><i class="icon-plane"></i>SEND PACKAGE</a>
+                    </p>
                 </div>
-                <p class="right">
-                    <a href="#return" class="btn btn-small" data-toggle="modal"><i class="icon-plane"></i>SEND PACKAGE</a>
-                </p>
-            </div>
-            <div class="labels">
-                <span class="label label-info">ID: 38737</span>
-                <span class="label label-info label-photo">Photo:</span><a href="#" class="badge badge-photo">4</a>
-                <span class="label label-info">Status: In Process</span>
-                <span class="label label-info">Delivery Date: 10 Feb 2012</span>
+                <div class="labels">
+                    <span class="label label-info">ID: 38737</span>
+                    <span class="label label-info label-photo">Photo:</span><a href="#" class="badge badge-photo">4</a>
+                    <span class="label label-info">Status: In Process</span>
+                    <span class="label label-info">Delivery Date: 10 Feb 2012</span>
+                </div>
             </div>
         </div>
     </div>
@@ -239,3 +199,36 @@
         </div>
     </div>
 </div>
+@section Scripts
+{
+    <script type="text/javascript" src="@Url.Content("~/Scripts/model/OrderViewModel.js")"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".tn").popover();
+            $("tr", ".order_items").draggable({
+                helper: "clone",
+                revert: "invalid",
+                cursor: "move"
+            });
+            $("tr", ".package_items").draggable({
+                helper: "clone",
+                revert: "invalid",
+                cursor: "move"
+            });
+            // let the trash be droppable, accepting the gallery items
+            $(".order_items").droppable({
+                accept: ".order_items > tr",
+                drop: function (event, ui) {
+                    
+                }
+            });
+            $(".package_items").droppable({
+                accept: ".order_items > tr",
+                drop: function (event, ui) {
+
+                }
+            });
+            $("table, tr").disableSelection();
+        });
+    </script>
+}

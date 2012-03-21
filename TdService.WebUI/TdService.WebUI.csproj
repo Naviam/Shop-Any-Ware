@@ -42,11 +42,36 @@
     <IncludeAppPool>true</IncludeAppPool>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxMin">
+      <HintPath>..\packages\AjaxMin.4.41.4378.21434\lib\net20\AjaxMin.dll</HintPath>
+    </Reference>
     <Reference Include="AutoMapper">
       <HintPath>..\packages\AutoMapper.2.1.265\lib\net40\AutoMapper.dll</HintPath>
     </Reference>
+    <Reference Include="Combres">
+      <HintPath>..\packages\combres.2.2.2.5\lib\net40\Combres.dll</HintPath>
+    </Reference>
+    <Reference Include="Combres.Mvc">
+      <HintPath>..\packages\combres.mvc.2.2.2.5\lib\net40\Combres.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="dotless.Core">
+      <HintPath>..\packages\dotless.1.2.0.0\lib\dotless.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="EcmaScript.NET.modified">
+      <HintPath>..\packages\YUICompressor.NET.1.6.0.2\lib\net35\EcmaScript.NET.modified.dll</HintPath>
+    </Reference>
     <Reference Include="Elmah">
       <HintPath>..\packages\elmah.corelibrary.1.2.1\lib\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="Fasterflect">
+      <HintPath>..\packages\fasterflect.2.0.1\lib\net40\Fasterflect.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.1.2.11\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
     <Reference Include="MvcSiteMapProvider">
       <HintPath>..\packages\MvcSiteMapProvider.3.2.1.0\lib\net40\MvcSiteMapProvider.dll</HintPath>
@@ -77,8 +102,15 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebActivator">
+      <HintPath>..\packages\WebActivator.1.4.4\lib\net40\WebActivator.dll</HintPath>
+    </Reference>
+    <Reference Include="Yahoo.Yui.Compressor">
+      <HintPath>..\packages\YUICompressor.NET.1.6.0.2\lib\net35\Yahoo.Yui.Compressor.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\Combres.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AddressController.cs" />
     <Compile Include="Controllers\BalanceController.cs" />
@@ -94,6 +126,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\combres.xml" />
+    <Content Include="App_Data\combres_full_with_annotation.xml" />
     <Content Include="App_Data\TdService.mdf" />
     <Content Include="Content\css\font-awesome.css" />
     <Content Include="Content\font\fontawesome-webfont.svg" />
@@ -112,11 +146,10 @@
     <Content Include="Content\less\docs.css" />
     <Content Include="Content\less\responsive.css" />
     <Content Include="Content\less\responsive.min.css" />
-    <Content Include="Content\main.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\styles.css" />
     <Content Include="Content\test.css" />
     <Content Include="Global.asax" />
-    <Content Include="README.jQuery.vsdoc.txt" />
     <Content Include="Scripts\bootstrap\bootstrap-alert.js" />
     <Content Include="Scripts\bootstrap\bootstrap-button.js" />
     <Content Include="Scripts\bootstrap\bootstrap-carousel.js" />
@@ -140,6 +173,53 @@
     <Content Include="Scripts\knockout.js" />
     <Content Include="Scripts\less.min.js" />
     <Content Include="Scripts\model\OrderViewModel.js" />
+    <Content Include="Scripts\ui\jquery-ui-1.8.18.custom.js" />
+    <Content Include="Scripts\ui\jquery.effects.blind.js" />
+    <Content Include="Scripts\ui\jquery.effects.bounce.js" />
+    <Content Include="Scripts\ui\jquery.effects.clip.js" />
+    <Content Include="Scripts\ui\jquery.effects.core.js" />
+    <Content Include="Scripts\ui\jquery.effects.drop.js" />
+    <Content Include="Scripts\ui\jquery.effects.explode.js" />
+    <Content Include="Scripts\ui\jquery.effects.fade.js" />
+    <Content Include="Scripts\ui\jquery.effects.fold.js" />
+    <Content Include="Scripts\ui\jquery.effects.highlight.js" />
+    <Content Include="Scripts\ui\jquery.effects.pulsate.js" />
+    <Content Include="Scripts\ui\jquery.effects.scale.js" />
+    <Content Include="Scripts\ui\jquery.effects.shake.js" />
+    <Content Include="Scripts\ui\jquery.effects.slide.js" />
+    <Content Include="Scripts\ui\jquery.effects.transfer.js" />
+    <Content Include="Scripts\ui\jquery.ui.core.js" />
+    <Content Include="Scripts\ui\jquery.ui.draggable.js" />
+    <Content Include="Scripts\ui\jquery.ui.droppable.js" />
+    <Content Include="Scripts\ui\jquery.ui.mouse.js" />
+    <Content Include="Scripts\ui\jquery.ui.position.js" />
+    <Content Include="Scripts\ui\jquery.ui.resizable.js" />
+    <Content Include="Scripts\ui\jquery.ui.selectable.js" />
+    <Content Include="Scripts\ui\jquery.ui.sortable.js" />
+    <Content Include="Scripts\ui\jquery.ui.widget.js" />
+    <Content Include="Scripts\ui\minified\jquery.effects.blind.min.js" />
+    <Content Include="Scripts\ui\minified\jquery.effects.bounce.min.js" />
+    <Content Include="Scripts\ui\minified\jquery.effects.clip.min.js" />
+    <Content Include="Scripts\ui\minified\jquery.effects.core.min.js" />
+    <Content Include="Scripts\ui\minified\jquery.effects.drop.min.js" />
+    <Content Include="Scripts\ui\minified\jquery.effects.explode.min.js" />
+    <Content Include="Scripts\ui\minified\jquery.effects.fade.min.js" />
+    <Content Include="Scripts\ui\minified\jquery.effects.fold.min.js" />
+    <Content Include="Scripts\ui\minified\jquery.effects.highlight.min.js" />
+    <Content Include="Scripts\ui\minified\jquery.effects.pulsate.min.js" />
+    <Content Include="Scripts\ui\minified\jquery.effects.scale.min.js" />
+    <Content Include="Scripts\ui\minified\jquery.effects.shake.min.js" />
+    <Content Include="Scripts\ui\minified\jquery.effects.slide.min.js" />
+    <Content Include="Scripts\ui\minified\jquery.effects.transfer.min.js" />
+    <Content Include="Scripts\ui\minified\jquery.ui.core.min.js" />
+    <Content Include="Scripts\ui\minified\jquery.ui.draggable.min.js" />
+    <Content Include="Scripts\ui\minified\jquery.ui.droppable.min.js" />
+    <Content Include="Scripts\ui\minified\jquery.ui.mouse.min.js" />
+    <Content Include="Scripts\ui\minified\jquery.ui.position.min.js" />
+    <Content Include="Scripts\ui\minified\jquery.ui.resizable.min.js" />
+    <Content Include="Scripts\ui\minified\jquery.ui.selectable.min.js" />
+    <Content Include="Scripts\ui\minified\jquery.ui.sortable.min.js" />
+    <Content Include="Scripts\ui\minified\jquery.ui.widget.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -197,6 +277,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="combres.readme" />
     <None Include="Content\less\accordion.less" />
     <None Include="Content\less\alerts.less">
       <Compile>False</Compile>
@@ -310,10 +391,6 @@
       <Compile>False</Compile>
       <Minify>False</Minify>
     </None>
-    <None Include="Content\main.less">
-      <Compile>True</Compile>
-      <Minify>True</Minify>
-    </None>
     <Content Include="TopMenu.sitemap">
       <SubType>Designer</SubType>
     </Content>
@@ -358,7 +435,6 @@
     <None Include="Content\less\utilities.less" />
     <None Include="Content\less\variables.less" />
     <None Include="Content\less\wells.less" />
-    <None Include="Content\main.less" />
     <None Include="Content\sass\font-awesome.sass" />
     <None Include="Content\sass\font-awesome.scss" />
     <None Include="MvcSiteMapSchema.xsd">

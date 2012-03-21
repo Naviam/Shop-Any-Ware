@@ -8,9 +8,9 @@
 namespace TdService.Model.Orders
 {
     public enum OrderStatus : int
-	{
-		WaitingArrival = 0,
-		Arrived = 1,
-		Processed = 2,
-	}
+    {
+        WaitingArrival = 0,
+        Arrived = 1,
+        Processed = 2,
+    }
 }

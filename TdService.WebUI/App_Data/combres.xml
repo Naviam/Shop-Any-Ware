@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  This file contains basic settings needed for most web apps.
+  For full Combres settings (with explanation), refer to the sample definition file: combres_full_with_annotation.xml
+  Also, refer to Combres' documentation: http://combres.codeplex.com/documentation	
+-->
+<combres xmlns='urn:combres'>
+  <filters>
+    <filter type="Combres.Filters.FixUrlsInCssFilter, Combres" />
+  </filters>
+  <resourceSets url="~/combres.axd"
+                defaultDuration="30"
+                defaultVersion="auto"
+                defaultDebugEnabled="false"
+                defaultIgnorePipelineWhenDebug="true"
+                localChangeMonitorInterval="30"
+                remoteChangeMonitorInterval="60"
+                >
+    <resourceSet name="siteCss" type="css">
+      <resource path="~/Content/less/bootstrap.css" />
+      <resource path="~/Content/less/responsive.css" />
+      <resource path="~/Content/css/font-awesome.css" />
+      <resource path="~/Content/styles.css" />
+    </resourceSet>
+    <resourceSet name="jqueryJs" type="js">
+      <resource path="~/scripts/jquery-1.7.1.min.js" minifierRef="off" />
+      <resource path="~/scripts/jquery.validate.min.js" minifierRef="off" />
+      <resource path="~/scripts/jquery.validate.unobtrusive.min.js" minifierRef="off" />
+      <resource path="~/scripts/ui/jquery-ui-1.8.18.custom.js" minifierRef="off" />
+    </resourceSet>
+    <resourceSet name="bootstrapJs" type="js">
+      <resource path="~/Scripts/bootstrap/bootstrap-transition.js" />
+      <resource path="~/Scripts/bootstrap/bootstrap-alert.js" />
+      <resource path="~/Scripts/bootstrap/bootstrap-modal.js" />
+      <resource path="~/Scripts/bootstrap/bootstrap-dropdown.js" />
+      <resource path="~/Scripts/bootstrap/bootstrap-scrollspy.js" />
+      <resource path="~/Scripts/bootstrap/bootstrap-tab.js" />
+      <resource path="~/Scripts/bootstrap/bootstrap-tooltip.js" />
+      <resource path="~/Scripts/bootstrap/bootstrap-popover.js" />
+      <resource path="~/Scripts/bootstrap/bootstrap-button.js" />
+      <resource path="~/Scripts/bootstrap/bootstrap-collapse.js" />
+      <resource path="~/Scripts/bootstrap/bootstrap-carousel.js" />
+      <resource path="~/Scripts/bootstrap/bootstrap-typeahead.js" />
+    </resourceSet>
+    <resourceSet name="siteJs" type="js">
+        <resource reference="jqueryJs"/>
+        <resource reference="bootstrapJs"/>
+        <resource path="~/scripts/knockout.js" />
+    </resourceSet>
+  </resourceSets>
+</combres>
