@@ -18,7 +18,8 @@
                                 <tr>
                                     <th></th>
                                     <th>Item Name</th>
-                                    <th>Size/Color</th>
+                                    <th>Size</th>
+                                    <th>Color</th>
                                     <th>Quantity</th>
                                     <th>Price</th>
                                 </tr>
@@ -28,6 +29,7 @@
                                     <td><a href="#" data-bind="click: $parent.removeItem">Remove</a></td>
                                     <td class="left" data-bind="text: name"></td>
                                     <td data-bind="text: size"></td>
+                                    <td data-bind="text: color"></td>
                                     <td data-bind="text: quantity"></td>
                                     <td data-bind="text: price"></td>
                                 </tr>
@@ -51,9 +53,9 @@
                     </div>
                 </div>
                 <div class="labels">
-                    <span class="label label-info">ID: 38737</span>
+                    <span class="label label-info">ID: <span data-bind="text: id"></span></span>
                     <span class="label label-info label-photo">Photo:</span><a href="#" class="badge badge-photo">4</a>
-                    <span class="label label-info">Status: In Process</span>
+                    <span class="label label-info">Status: <span data-bind="text: status"></span></span>
                     <span class="label label-info">Date: 10 Feb 2012</span>
                 </div>
             </div>
