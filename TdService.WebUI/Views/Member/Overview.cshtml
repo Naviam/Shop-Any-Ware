@@ -12,7 +12,7 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>Photo</th>
+                                <th></th>
                                 <th>Item Name</th>
                                 <th>Size/Color</th>
                                 <th>Quantity</th>
@@ -21,7 +21,7 @@
                         </thead>
                         <tbody class="order_items" data-bind="foreach: items">
                             <tr>
-                                <td><input type="checkbox"/></td>
+                                <td><a href="#" data-bind="click: $parent.removeItem">Remove</a></td>
                                 <td class="left" data-bind="text: name"></td>
                                 <td data-bind="text: size"></td>
                                 <td data-bind="text: quantity"></td>

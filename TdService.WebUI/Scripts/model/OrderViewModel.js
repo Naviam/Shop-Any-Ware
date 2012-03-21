@@ -37,17 +37,18 @@ function Order(shop, orderNumber, trackingNumber) {
     });
 
     self.addItem = function () {
-        var item = new Item(null, "IPAD 3", 1, null, null, 909.05);
+        var item = new Item(null, "IPAD 3", 1, "11\"", "White", 809.05);
         self.items.unshift(item);
     };
 
     self.removeItem = function (item) {
-        for (var i = 0; i < self.items.length; i++) {
-            if (item == self.items[i]) {
-                self.items.splice(i, 1);
-                i--;
-            }
-        }
+        self.items.remove(item);
+//        for (var i = 0; i < self.items.length; i++) {
+//            if (item == self.items[i]) {
+//                self.items.splice(i, 1);
+//                i--;
+//            }
+//        }
     };
 }
 
