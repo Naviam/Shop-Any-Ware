@@ -1,4 +1,22 @@
-﻿function Order(shop, orderNumber, trackingNumber) {
+﻿function Item(url, name, quantity, size, color, price) {
+    var self = this;
+    self.url = ko.observable(url);
+    self.name = ko.observable(name);
+    self.size = ko.observable(size);
+    self.color = ko.observable(color);
+    self.price = ko.observable(price);
+    self.quantity = ko.observable(quantity);
+    self.photoRequired = ko.observable(false);
+    self.photoUrl = null;
+
+    self.addPhoto = function (photoUrl) {
+        if (self.photoRequired) {
+            self.photoUrl = photoUrl;
+        }
+    };
+}
+
+function Order(shop, orderNumber, trackingNumber) {
     var self = this;
     self.shop = ko.observable(shop);
     self.orderNumber = ko.observable(orderNumber);
@@ -18,8 +36,9 @@
         return total;
     });
 
-    self.addItem = function(item) {
-        self.Items.unshift(item);
+    self.addItem = function () {
+        var item = new Item(null, "IPAD 3", 1, null, null, 909.05);
+        self.items.unshift(item);
     };
 
     self.removeItem = function (item) {
@@ -38,24 +57,6 @@ function Package(description, deliveryAddress, dispatchMethod) {
     self.deliveryAddress = deliveryAddress;
     self.dispatchMethod = dispatchMethod;
 };
-
-function Item(url, name, quantity, size, color, price) {
-    var self = this;
-    self.url = ko.observable(url);
-    self.name = ko.observable(name);
-    self.size = ko.observable(size);
-    self.color = ko.observable(color);
-    self.price = ko.observable(price);
-    self.quantity = ko.observable(quantity);
-    self.photoRequired = ko.observable(false);
-    self.photoUrl = null;
-
-    self.addPhoto = function (photoUrl) {
-        if (self.photoRequired) {
-            self.photoUrl = photoUrl;
-        }
-    };
-}
 
 function DashboardViewModel() {
     var self = this;
