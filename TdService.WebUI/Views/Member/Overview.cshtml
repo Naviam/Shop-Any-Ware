@@ -5,7 +5,7 @@
 <div class="row-fluid">
     <div class="span4">
                 <div class="package new">
-                    <div><a href="#addNewOrder" class="btn btn-primary" data-toggle="modal"><i class="icon-white icon-plus"></i>Click to add a new order</a></div>
+                    <div><a href="#" class="btn btn-primary" data-toggle="modal"><i class="icon-white icon-plus"></i>Click to add a new order</a></div>
                 </div>
         <div data-bind="foreach: orders">
             <div class="package action">
@@ -16,7 +16,6 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th></th>
                                     <th>Item Name</th>
                                     <th>Size</th>
                                     <th>Color</th>
@@ -24,14 +23,13 @@
                                     <th>Price</th>
                                 </tr>
                             </thead>
-                            <tbody class="order_items" data-bind="sortable: {data: items}">
+                            <tbody id="order_items" data-bind="sortable: {data: items}">
                                 <tr>
-                                    <td><a href="#" data-bind="click: $parent.removeItem">Remove</a></td>
-                                    <td class="left" data-bind="text: name"></td>
-                                    <td data-bind="text: size"></td>
-                                    <td data-bind="text: color"></td>
-                                    <td data-bind="text: quantity"></td>
-                                    <td data-bind="text: price"></td>
+                                    <td class="left"><a href="#" data-bind="click: $parent.removeItem, text: name"></a></td>
+                                    <td data-bind="text: size" contenteditable="true"></td>
+                                    <td data-bind="text: color" contenteditable="true"></td>
+                                    <td data-bind="text: quantity" contenteditable="true"></td>
+                                    <td data-bind="text: price" contenteditable="true"></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -56,14 +54,14 @@
                     <span class="label label-info">ID: <span data-bind="text: id"></span></span>
                     <span class="label label-info label-photo">Photo:</span><a href="#" class="badge badge-photo">4</a>
                     <span class="label label-info">Status: <span data-bind="text: status"></span></span>
-                    <span class="label label-info">Date: 10 Feb 2012</span>
+                    <span class="label label-info">Date: <span data-bind="text: receivedDate"></span></span>
                 </div>
             </div>
         </div>
     </div>
     <div class="span4">
         <div class="package new">
-            <div><a href="#addNewPackage" class="btn btn-primary" data-toggle="modal"><i class="icon-white icon-plus"></i>Click to add a new package</a></div>
+            <div><a href="#" class="btn btn-primary" data-toggle="modal"><i class="icon-white icon-plus"></i>Click to add a new package</a></div>
         </div>
         <table class="pac">
             <tr>
@@ -99,7 +97,7 @@
                                     <th>Price</th>
                                 </tr>
                             </thead>
-                            <tbody class="package_items" data-bind="sortable: {data: items}">
+                            <tbody id="package_items" data-bind="sortable: {data: items}">
                                 <tr>
                                     <td class="left" data-bind="text: name"></td>
                                     <td data-bind="text: size"></td>
@@ -120,7 +118,7 @@
                     <p class="right">
                         <span>COST: $1234</span>
                         <span>Weight: 1.23 kg</span>
-                        <a href="#return" class="btn btn-small" data-toggle="modal"><i class="icon-plane"></i>SEND PACKAGE</a>
+                        <a href="#" class="btn btn-small" data-toggle="modal"><i class="icon-plane"></i>SEND PACKAGE</a>
                     </p>
                 </div>
                 <div class="labels">
@@ -209,34 +207,11 @@
 </div>
 @section Scripts
 {
-    <script type="text/javascript" src="@Url.Content("~/Scripts/model/OrderViewModel.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/model/DashboardViewModel.js")"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $(".tn").popover();
-//            $("tr", ".order_items").draggable({
-//                helper: "clone",
-//                revert: "invalid",
-//                cursor: "move"
-//            });
-//            $("tr", ".package_items").draggable({
-//                helper: "clone",
-//                revert: "invalid",
-//                cursor: "move"
-//            });
-//            // let the trash be droppable, accepting the gallery items
-//            $(".order_items").droppable({
-//                accept: ".order_items > tr",
-//                drop: function (event, ui) {
-//                    
-//                }
-//            });
-//            $(".package_items").droppable({
-//                accept: ".order_items > tr",
-//                drop: function (event, ui) {
-
-//                }
-//            });
-            //$("table, tr").disableSelection();
+            $("table, tr").disableSelection();
         });
     </script>
 }
