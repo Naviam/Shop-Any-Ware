@@ -169,10 +169,12 @@
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\knockout-2.0.0.js" />
+    <Content Include="Scripts\knockout-sortable.js" />
+    <Content Include="Scripts\knockout-sortable.min.js" />
     <Content Include="Scripts\knockout.debug.js" />
     <Content Include="Scripts\knockout.js" />
     <Content Include="Scripts\less.min.js" />
-    <Content Include="Scripts\model\OrderViewModel.js" />
+    <Content Include="Scripts\model\DashboardViewModel.js" />
     <Content Include="Scripts\ui\jquery-ui-1.8.18.custom.js" />
     <Content Include="Scripts\ui\jquery.effects.blind.js" />
     <Content Include="Scripts\ui\jquery.effects.bounce.js" />
