@@ -43,9 +43,10 @@
       <resource path="~/Scripts/bootstrap/bootstrap-typeahead.js" />
     </resourceSet>
     <resourceSet name="siteJs" type="js">
-        <resource reference="jqueryJs"/>
-        <resource reference="bootstrapJs"/>
-        <resource path="~/scripts/knockout.js" />
+      <resource reference="jqueryJs"/>
+      <resource reference="bootstrapJs"/>
+      <resource path="~/scripts/knockout.js" />
+      <resource path="~/scripts/knockout-sortable.js" />
     </resourceSet>
   </resourceSets>
 </combres>

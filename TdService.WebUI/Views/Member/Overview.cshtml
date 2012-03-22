@@ -24,7 +24,7 @@
                                     <th>Price</th>
                                 </tr>
                             </thead>
-                            <tbody class="order_items" data-bind="foreach: items">
+                            <tbody class="order_items" data-bind="sortable: {data: items}">
                                 <tr>
                                     <td><a href="#" data-bind="click: $parent.removeItem">Remove</a></td>
                                     <td class="left" data-bind="text: name"></td>
@@ -99,41 +99,22 @@
                                     <th>Price</th>
                                 </tr>
                             </thead>
-                            <tbody class="package_items">
+                            <tbody class="package_items" data-bind="sortable: {data: items}">
                                 <tr>
-                                    <td class="left" date-bind="text: name">Package1: item1</td>
-                                    <td>22</td>
-                                    <td>black</td>
-                                    <td>2</td>
-                                    <td>$24</td>
+                                    <td class="left" data-bind="text: name"></td>
+                                    <td data-bind="text: size"></td>
+                                    <td data-bind="text: color"></td>
+                                    <td data-bind="text: quantity"></td>
+                                    <td data-bind="text: price"></td>
                                 </tr>
-                                <tr>
-                                    <td class="left">Package1: item2</td>
-                                    <td></td>
-                                    <td>white</td>
-                                    <td>1</td>
-                                    <td>$2</td>
-                                </tr>
-                                <tr>
-                                    <td class="left">Package2: item3</td>
-                                    <td></td>
-                                    <td>silver</td>
-                                    <td>1</td>
-                                    <td>$7</td>
-                                </tr>
-                                <tr>
-                                    <td class="left">Package3 [Full]</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>$37</td>
-                                </tr>
+                            </tbody>
+                            <tfoot>
                                 <tr>
                                     <td class="right" colspan="3">Total</td>
                                     <td>4</td>
                                     <td>$70</td>
                                 </tr>
-                            </tbody>
+                            </tfoot>
                         </table>
                     </div>
                     <p class="right">
@@ -232,30 +213,30 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $(".tn").popover();
-            $("tr", ".order_items").draggable({
-                helper: "clone",
-                revert: "invalid",
-                cursor: "move"
-            });
-            $("tr", ".package_items").draggable({
-                helper: "clone",
-                revert: "invalid",
-                cursor: "move"
-            });
-            // let the trash be droppable, accepting the gallery items
-            $(".order_items").droppable({
-                accept: ".order_items > tr",
-                drop: function (event, ui) {
-                    
-                }
-            });
-            $(".package_items").droppable({
-                accept: ".order_items > tr",
-                drop: function (event, ui) {
+//            $("tr", ".order_items").draggable({
+//                helper: "clone",
+//                revert: "invalid",
+//                cursor: "move"
+//            });
+//            $("tr", ".package_items").draggable({
+//                helper: "clone",
+//                revert: "invalid",
+//                cursor: "move"
+//            });
+//            // let the trash be droppable, accepting the gallery items
+//            $(".order_items").droppable({
+//                accept: ".order_items > tr",
+//                drop: function (event, ui) {
+//                    
+//                }
+//            });
+//            $(".package_items").droppable({
+//                accept: ".order_items > tr",
+//                drop: function (event, ui) {
 
-                }
-            });
-            $("table, tr").disableSelection();
+//                }
+//            });
+            //$("table, tr").disableSelection();
         });
     </script>
 }

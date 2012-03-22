@@ -1,9 +1,9 @@
 ﻿function Photo(id, itemId, url, description) {
     var self = this;
-    self.id = id;
-    self.itemId = itemId;
-    self.url = url;
-    self.description = description;
+    self.id = ko.observable(id);
+    self.itemId = ko.observable(itemId);
+    self.url = ko.observable(url);
+    self.description = ko.observable(description);
 }
 
 function Item(id, url, name, quantity, size, color, price) {
@@ -57,10 +57,27 @@ function Order(id, shop, orderNumber, trackingNumber) {
 
 function Package(id, description, deliveryAddress, dispatchMethod) {
     var self = this;
-    self.id = id;
+    self.id = ko.observable(id);
     self.description = ko.observable(description);
     self.deliveryAddress = ko.observable(deliveryAddress);
     self.dispatchMethod = ko.observable(dispatchMethod);
+    self.status = ko.observable("Created");
+    self.dispatchedDate = ko.observable(new Date());
+    self.deliveredDate = ko.observable(new Date());
+
+    self.items = ko.observableArray([
+        new Item(1, null, "Kindle", 1, "7\"", "Gray", 79.43),
+        new Item(2, null, "Sony Vaio", 1, "14\"", "Black", 990.00),
+        new Item(3, null, "Dell Vostro", 2, "17\"", "White", 1500.00)
+    ]);
+
+    self.dropItem = function (item) {
+        self.items.unshift(item);
+    };
+
+    self.removeItem = function (item) {
+        self.items.remove(item);
+    };
 };
 
 function DashboardViewModel() {
