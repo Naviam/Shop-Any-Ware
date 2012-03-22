@@ -97,6 +97,14 @@ function DashboardViewModel() {
         new Order(3, "Ebay.com", "7732267635", "1Z32863V0307459095")
     ]);
 
+    self.addOrder = function () {
+        self.orders.unshift(new Order(1, "Amazon.com Inc", "78793773", "1Z32863V0307459091"));
+    };
+
+    self.removeOrder = function(order) {
+        self.orders.remove(order);
+    };
+
     self.packages = ko.observableArray([
         new Package(1, "my package 1", "my address 1", "EMS Express"),
         new Package(2, "my package 2", "my address 2", "EMS Priority")
@@ -126,5 +134,14 @@ function DashboardViewModel() {
         new Shop(21, "L.L. Bean Inc", "Apparel / Accessories"),
         new Shop(22, "Target Corp", "Mass Merchant")
     ]);
+
+    ko.bindingHandlers.autosuggest = {
+        init: function (element, valueAccessor, allBindingAccessors, model) {
+            var shopNames = $.map(model.shops(), function (n) {
+                return n.name();
+            });
+            $(element).typeahead({ source: shopNames });
+        }
+    };
 }
 ko.applyBindings(new DashboardViewModel());

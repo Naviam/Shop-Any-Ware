@@ -3,14 +3,31 @@
 }
 <div class="row-fluid">
     <div class="span4">
-                <div class="package new">
-                    <div><a href="#" class="btn btn-large btn-success" data-toggle="modal"><i class="icon-white icon-plus-sign"></i> Click to add a new order</a> or something</div>
+        <div class="package new">
+            <div><a href="#" class="btn btn-large btn-success" data-bind="click: addOrder"><i class="icon-white icon-plus-sign"></i> Click to add a new order</a> or something</div>
+        </div>
+        <form class="form-horizontal">
+            <fieldset>
+                <div class="control-group">
+                    <label class="control-label" for="shopname">Shop name: </label>
+                    <div class="controls">
+                        <input type="text" class="input-xlarge" id="shopname" data-bind="autosuggest: shops" placeholder="Please type the shop name" />
+                    </div>
+                    <label class="control-label" for="ordernumber">Order Number: </label>
+                    <div class="controls">
+                        <input type="text" class="input-xlarge" id="ordernumber" placeholder="Please type the order number" />
+                    </div>
+                    <label class="control-label" for="trackingnumber">Tracking Number: </label>
+                    <div class="controls">
+                        <input type="text" class="input-xlarge" id="trackingnumber" placeholder="Please type the tracking number of your package" />
+                    </div>
                 </div>
-                @{Html.RenderPartial("addOrderForm");}
+            </fieldset>
+        </form>
         <div data-bind="foreach: orders">
             <div class="package action">
                 <div class="box">
-                    <div class="white"><span data-bind="text: shop"></span>, Order # <span data-bind="text: orderNumber"></span></div>
+                    <div class="white">Order # <span data-bind="text: orderNumber"></span> in <span data-bind="text: shop"></span></div>
                     <div class="white">Tracking # <a class="tn" title="A Title" data-content="And here's some amazing content. It's very engaging. right?" data-bind="text: trackingNumber" href="http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum=EE972210493US"></a></div>
                     <div class="white">
                         <table>
@@ -20,7 +37,7 @@
                                     <th>Item Name</th>
                                     <th>Size</th>
                                     <th>Color</th>
-                                    <th>Quantity</th>
+                                    <th>Qty</th>
                                     <th>Price</th>
                                     <th></th>
                                 </tr>
@@ -58,7 +75,7 @@
                     </div>
                     <div class="btn-toolbar">
                         <div class="btn-group">
-                            <button href="#photo" class="btn btn-small btn-danger" data-toggle="modal"><i class="icon-white icon-trash"></i> REMOVE</button>
+                            <button href="#photo" class="btn btn-small btn-danger"><i class="icon-white icon-trash"></i> REMOVE</button>
                         </div>
                         <div class="btn-group">
                             <button href="#photo" class="btn btn-small" data-toggle="modal"><i class="icon-camera"></i> PHOTO</button>
