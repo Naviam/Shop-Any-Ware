@@ -1,12 +1,12 @@
 ﻿@{
     ViewBag.Title = "Shop Any Ware - Overview";
 }
-
 <div class="row-fluid">
     <div class="span4">
                 <div class="package new">
-                    <div><a href="#" class="btn btn-large btn-success" data-toggle="modal"><i class="icon-white icon-plus"></i> Click to add a new order</a></div>
+                    <div><a href="#" class="btn btn-large btn-success" data-toggle="modal"><i class="icon-white icon-plus-sign"></i> Click to add a new order</a> or something</div>
                 </div>
+                @{Html.RenderPartial("addOrderForm");}
         <div data-bind="foreach: orders">
             <div class="package action">
                 <div class="box">
@@ -16,23 +16,45 @@
                         <table>
                             <thead>
                                 <tr>
+                                    <th></th>
                                     <th>Item Name</th>
                                     <th>Size</th>
                                     <th>Color</th>
                                     <th>Quantity</th>
                                     <th>Price</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody id="order_items" data-bind="sortable: {data: items}">
                                 <tr>
+                                    <td class="draggable"><div></div></td>
                                     <td class="left"><a href="#" data-bind="click: $parent.removeItem, text: name"></a></td>
-                                    <td data-bind="text: size" contenteditable="true"></td>
-                                    <td data-bind="text: color" contenteditable="true"></td>
-                                    <td data-bind="text: quantity" contenteditable="true"></td>
-                                    <td data-bind="text: price" contenteditable="true"></td>
+                                    <td><span data-bind="text: size" contenteditable="true"></span></td>
+                                    <td><span data-bind="text: color" contenteditable="true"></span></td>
+                                    <td><span data-bind="text: quantity" contenteditable="true"></span></td>
+                                    <td><span data-bind="text: price" contenteditable="true"></span></td>
+                                    <td class="draggable"><div></div></td>
                                 </tr>
                             </tbody>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td colspan="5" class="left"><a href="#" data-bind="click: addItem">Add new item</a></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td class="draggable"><div></div></td>
+                                    <td class="left">Total</td>
+                                    <td colspan="2"></td>
+                                    <td>4</td>
+                                    <td>$70</td>
+                                    <td class="draggable"><div></div></td>
+                                </tr>
+                            </tfoot>
                         </table>
+                        <span contenteditable="true">example of an editable text</span>
                     </div>
                     <div class="btn-toolbar">
                         <div class="btn-group">
@@ -61,7 +83,7 @@
     </div>
     <div class="span4">
         <div class="package new">
-            <div><a href="#" class="btn btn-large btn-success" data-toggle="modal"><i class="icon-white icon-plus"></i> Click to add a new package</a></div>
+            <div><a href="#" class="btn btn-large btn-success" data-toggle="modal"><i class="icon-white icon-gift"></i> Click to add a new package</a></div>
         </div>
         <table class="pac">
             <tr>

@@ -19,7 +19,6 @@
     <resourceSet name="siteCss" type="css">
       <resource path="~/Content/less/bootstrap.css" />
       <resource path="~/Content/less/responsive.css" />
-      <resource path="~/Content/css/font-awesome.css" />
       <resource path="~/Content/styles.css" />
     </resourceSet>
     <resourceSet name="jqueryJs" type="js">
