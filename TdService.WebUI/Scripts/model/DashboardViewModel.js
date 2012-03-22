@@ -1,4 +1,11 @@
-﻿function Photo(id, itemId, url, description) {
+﻿function Shop(id, name, category) {
+    var self = this;
+    self.id = ko.observable(id);
+    self.name = ko.observable(name);
+    self.category = ko.observable(category);
+}
+
+function Photo(id, itemId, url, description) {
     var self = this;
     self.id = ko.observable(id);
     self.itemId = ko.observable(itemId);
@@ -93,6 +100,31 @@ function DashboardViewModel() {
     self.packages = ko.observableArray([
         new Package(1, "my package 1", "my address 1", "EMS Express"),
         new Package(2, "my package 2", "my address 2", "EMS Priority")
+    ]);
+
+    self.shops = ko.observableArray([
+        new Shop(1, "Amazon.com Inc", "Mass Merchant"),
+        new Shop(2, "Staples Inc", "Office Supplies"),
+        new Shop(3, "Apple Inc", "Computers / Electronics"),
+        new Shop(4, "Dell Inc", "Computers / Electronics"),
+        new Shop(5, "Office Depot Inc", "Office Supplies"),
+        new Shop(6, "Walmart.com", "Mass Merchant"),
+        new Shop(7, "Sears Holdings Corp", "Mass Merchant"),
+        new Shop(8, "Liberty Media Corp (QVC, Liberty E-Commerce)", "Mass Merchant"),
+        new Shop(9, "OfficeMax Inc", "Office Supplies"),
+        new Shop(10, "CDW Corp", "Computers / Electronics"),
+        new Shop(11, "Best Buy Co", "Computers / Electronics"),
+        new Shop(12, "Newegg Inc", "Computers / Electronics"),
+        new Shop(13, "Netflix Inc", "Books / Music / Videos"),
+        new Shop(14, "SonyStyle.com", "Computers / Electronics"),
+        new Shop(15, "W.W. Grainger Inc", "Hardware / Home Improvement"),
+        new Shop(16, "Costco Wholesale Corp", "Mass Merchant"),
+        new Shop(17, "Macy’s Inc", "Mass Merchant"),
+        new Shop(18, "Victoria’s Secret Direct & Bath and Body Works", "Apparel / Accessories"),
+        new Shop(19, "HP Home & Home Office Store", "Computers / Electronics"),
+        new Shop(20, "J.C. Penney Co. Inc", "Mass Merchant"),
+        new Shop(21, "L.L. Bean Inc", "Apparel / Accessories"),
+        new Shop(22, "Target Corp", "Mass Merchant")
     ]);
 }
 ko.applyBindings(new DashboardViewModel());
