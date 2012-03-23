@@ -101,8 +101,8 @@ function DashboardViewModel() {
         self.orders.unshift(new Order(1, "Amazon.com Inc", "78793773", "1Z32863V0307459091"));
     };
 
-    self.removeOrder = function(order) {
-        self.orders.remove(order);
+    self.removeOrder = function () {
+        self.orders.remove(this);
     };
 
     self.packages = ko.observableArray([
