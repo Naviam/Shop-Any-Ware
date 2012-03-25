@@ -21,6 +21,7 @@ function Item(id, url, name, quantity, size, color, price) {
     self.size = ko.observable(size);
     self.color = ko.observable(color);
     self.price = ko.observable(price);
+    self.currency = ko.observable("USD");
     self.quantity = ko.observable(quantity);
 }
 
