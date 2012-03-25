@@ -32,7 +32,7 @@ function Order(id, shop, orderNumber, trackingNumber) {
     self.orderNumber = ko.observable(orderNumber);
     self.trackingNumber = ko.observable(trackingNumber);
     self.status = ko.observable("open");
-    self.receivedDate = new Date();
+    self.receivedDate = new Date().toDateString();
     self.createdDate = new Date();
 
     self.items = ko.observableArray([
