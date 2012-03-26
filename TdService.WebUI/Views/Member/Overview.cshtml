@@ -3,6 +3,9 @@
 }
 <div class="row-fluid">
     <div class="span4">
+        <div class="alert-success">
+            text
+        </div>
         <div class="package new">
             <div><a href="#" class="btn btn-large btn-success" data-bind="click: addOrder"><i class="icon-white icon-plus-sign"></i> Click to add a new order</a> or something</div>
         </div>
@@ -26,65 +29,76 @@
         </form>
         <div data-bind="foreach: orders">
             <div class="package action">
-                <div class="box">
-                    <div class="white">Order # <span data-bind="text: orderNumber"></span> from <span data-bind="text: shop"></span></div>
-                    <div class="white">Tracking # <a class="tn" title="A Title" data-content="And here's some amazing content. It's very engaging. right?" data-bind="text: trackingNumber" href="http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum=EE972210493US"></a></div>
-                    <div class="white">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>Item Name</th>
-                                    <th>Size</th>
-                                    <th>Color</th>
-                                    <th>Qty</th>
-                                    <th>Price</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody id="order_items" data-bind="sortable: {data: items}">
-                                <tr>
-                                    <td class="draggable"><div></div></td>
-                                    <td class="left"><a href="#" data-bind="click: $parent.removeItem, text: name"></a></td>
-                                    <td><span data-bind="text: size"></span></td>
-                                    <td><span data-bind="text: color"></span></td>
-                                    <td><span data-bind="text: quantity"></span></td>
-                                    <td><span data-bind="text: price"></span></td>
-                                    <td class="draggable"><div></div></td>
-                                </tr>
-                            </tbody>
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td colspan="5" class="left"><a href="#" data-bind="click: addItem">Add new item</a></td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <td class="draggable"><div></div></td>
-                                    <td class="left">Total</td>
-                                    <td colspan="2"></td>
-                                    <td>4</td>
-                                    <td>$70</td>
-                                    <td class="draggable"><div></div></td>
-                                </tr>
-                            </tfoot>
-                        </table>
-                        <span contenteditable="true">example of an editable text</span>
-                    </div>
-                    <div class="btn-toolbar">
-                        <div class="btn-group">
-                            <button href="#photo" class="btn btn-small btn-danger" data-bind="click: $parent.removeOrder"><i class="icon-white icon-trash"></i> REMOVE</button>
-                        </div>
-                        <div class="btn-group">
-                            <button href="#photo" class="btn btn-small" data-toggle="modal"><i class="icon-camera"></i> PHOTO</button>
-                        </div>
-                        <div class="btn-group">
-                            <button href="#photo" class="btn btn-small" data-toggle="modal"><i class="icon-retweet"></i> RETURN</button>
-                        </div>
-                    </div>
-                </div>
+                <table class="pac">
+                    <tr>
+                        <td class="c_t"></td>
+                    </tr>
+                    <tr>
+                        <td class="c_c">
+                            <div class="box">
+                                <div class="white">Order # <span data-bind="text: orderNumber"></span> from <span data-bind="text: shop"></span></div>
+                                <div class="white">Tracking # <a class="tn" title="A Title" data-content="And here's some amazing content. It's very engaging. right?" data-bind="text: trackingNumber" href="http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum=EE972210493US"></a></div>
+                                <div class="white">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>Item Name</th>
+                                                <th>Size</th>
+                                                <th>Color</th>
+                                                <th>Qty</th>
+                                                <th>Price</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="order_items" data-bind="sortable: {data: items}">
+                                            <tr>
+                                                <td class="draggable"><div></div></td>
+                                                <td class="left"><a href="#" data-bind="click: $parent.removeItem, text: name"></a></td>
+                                                <td><span data-bind="text: size"></span></td>
+                                                <td><span data-bind="text: color"></span></td>
+                                                <td><span data-bind="text: quantity"></span></td>
+                                                <td><span data-bind="text: price"></span></td>
+                                                <td class="draggable"><div></div></td>
+                                            </tr>
+                                        </tbody>
+                                        <tbody>
+                                            <tr>
+                                                <td></td>
+                                                <td colspan="5" class="left"><a href="#" data-bind="click: addItem">Add new item</a></td>
+                                                <td></td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td class="draggable"><div></div></td>
+                                                <td class="left">Total</td>
+                                                <td colspan="2"></td>
+                                                <td>4</td>
+                                                <td>$70</td>
+                                                <td class="draggable"><div></div></td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                    <span contenteditable="true">example of an editable text</span>
+                                </div>
+                                <div class="btn-toolbar">
+                                    <div class="btn-group">
+                                        <button href="#photo" class="btn btn-small btn-danger" data-bind="click: $parent.removeOrder"><i class="icon-white icon-trash"></i> REMOVE</button>
+                                    </div>
+                                    <div class="btn-group">
+                                        <button href="#photo" class="btn btn-small" data-toggle="modal"><i class="icon-camera"></i> PHOTO</button>
+                                    </div>
+                                    <div class="btn-group">
+                                        <button href="#photo" class="btn btn-small" data-toggle="modal"><i class="icon-retweet"></i> RETURN</button>
+                                    </div>
+                                </div>
+                            </div>
+                            </td>
+                    <tr>
+                        <td class="c_b"></td>
+                    </tr>
+                </table>
                 <div class="labels">
                     <span class="label label-info">ID: <span data-bind="text: id"></span></span>
                     <span class="label label-info label-photo">Photo: </span><a href="#" class="badge badge-photo">4</a>
@@ -98,23 +112,6 @@
         <div class="package new">
             <div><a href="#" class="btn btn-large btn-success" data-toggle="modal"><i class="icon-white icon-gift"></i> Click to add a new package</a></div>
         </div>
-        <table class="pac">
-            <tr>
-                <td class="l_t"></td>
-                <td class="c_t"></td>
-                <td class="r_t"></td>
-            </tr>
-            <tr>
-                <td class="l_c"></td>
-                <td class="c_c">zdfzxvxzcv zvzc zxcv xzzdfzxvxzcv zvzc zxcv xzzdfzxvxzcv zvzc zxcv xzzdfzxvxzcv zvzc zxcv xzzdfzxvxzcv zvzc zxcv xzzdfzxvxzcv zvzc zxcv xz<br /><br /><br /><br /><br /><br /><br />zdfzxvxzcv zvzc zxcv xzzdfzxvxzcv zvzc zxcv xzzdfzxvxzcv zvzc zxcv xzzdfzxvxzcv zvzc zxcv xzzdfzxvxzcv zvzc zxcv xzzdfzxvxzcv zvzc zxcv xz<br /><br /><br /><br /><br /><br /><br />zdfzxvxzcv zvzc zxcv xzzdfzxvxzcv zvzc zxcv xzzdfzxvxzcv zvzc zxcv xzzdfzxvxzcv zvzc zxcv xzzdfzxvxzcv zvzc zxcv xzzdfzxvxzcv zvzc zxcv xz<br /><br /><br /><br /><br /><br /><br />zdfzxvxzcv zvzc zxcv xzzdfzxvxzcv zvzc zxcv xzzdfzxvxzcv zvzc zxcv xzzdfzxvxzcv zvzc zxcv xzzdfzxvxzcv zvzc zxcv xzzdfzxvxzcv zvzc zxcv xz<br /><br /><br /><br /><br /><br /><br />zdfzxvxzcv zvzc zxcv xzzdfzxvxzcv zvzc zxcv xzzdfzxvxzcv zvzc zxcv xzzdfzxvxzcv zvzc zxcv xzzdfzxvxzcv zvzc zxcv xzzdfzxvxzcv zvzc zxcv xz<br /><br /><br /><br /><br /><br /><br />zdfzxvxzcv zvzc zxcv xzzdfzxvxzcv zvzc zxcv xzzdfzxvxzcv zvzc zxcv xzzdfzxvxzcv zvzc zxcv xzzdfzxvxzcv zvzc zxcv xzzdfzxvxzcv zvzc zxcv xz<br /><br /><br /><br /><br /><br /><br /></td>
-                <td class="r_c"></td>
-            </tr>
-            <tr>
-                <td class="l_b"></td>
-                <td class="c_b"></td>
-                <td class="r_b"></td>
-            </tr>
-        </table>
         <div data-bind="foreach: packages">
             <div class="package action">
                 <div class="box">
