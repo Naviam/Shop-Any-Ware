@@ -5,7 +5,7 @@
     <a class="close" data-dismiss="alert">×</a>
     <strong>Warning!</strong> Please add money to your balance so we can process incoming orders (take a photo).
 </div>*@
-<div class="row-fluid">
+@*<div class="row-fluid">
     <div id="actionPanel" class="span4">
         <form class="form-horizontal">
             <fieldset>
@@ -35,43 +35,14 @@
                 </div>
             </fieldset>
         </form>
-        <form class="form-horizontal">
-            <fieldset>
-                <div class="control-group">
-                    <label class="control-label" for="shopname">Item Name: </label>
-                    <div class="controls">
-                        <input type="text" class="input-xlarge" id="itemName" data-bind="autosuggest: shops" placeholder="Please type item name here" />
-                    </div>
-                    <label class="control-label" for="shopname">Size: </label>
-                    <div class="controls">
-                        <input type="text" class="input-xlarge" id="itemSize" data-bind="autosuggest: shops" placeholder="Please type item name here" />
-                    </div>
-                    <label class="control-label" for="shopname">Color: </label>
-                    <div class="controls">
-                        <input type="text" class="input-xlarge" id="itemColor" data-bind="autosuggest: shops" placeholder="Please type item name here" />
-                    </div>
-                    <label class="control-label" for="shopname">Quantity: </label>
-                    <div class="controls">
-                        <input type="text" class="input-xlarge" id="itemQuantity" data-bind="autosuggest: shops" placeholder="Please type item name here" />
-                    </div>
-                    <label class="control-label" for="shopname">Price: </label>
-                    <div class="controls">
-                        <input type="text" class="input-xlarge" id="itemPrice" data-bind="autosuggest: shops" placeholder="Please type item name here" />
-                    </div>
-                </div>
-                <div class="control-group">
-                    <a href="#" class="btn" data-dismiss="click: addOrder">Close</a>
-                    <a href="#" class="btn btn-primary" data-dismiss="modal">Add Order</a>
-                </div>
-            </fieldset>
-        </form>
     </div>
-</div>
+</div>*@
 <div class="row-fluid">
     <div id="orders" class="span4">
-        <div class="package new">
-            <div>Click here to <a href="#" class="" data-bind="click: addOrder"><i class="icon-white icon-plus-sign"></i> Add Shop's Order</a> or 
-            <a href="#" class="" data-bind="click: addOrder"><i class="icon-white icon-plus-sign"></i> Paste Item's Url</a></div>
+        <div id="addOrderForm" class="package new">
+            <div><a href="#" class="" data-bind="click: addOrder">Add order from online store</a>
+            <br/> or <br/>
+            <a href="#" class="" data-bind="click: addOrder">Paste item url for shopping assistance</a></div>
         </div>
         <div data-bind="foreach: orders">
             <div class="package action">
@@ -79,9 +50,25 @@
                     <div class="white">Order # <span data-bind="text: orderNumber"></span> from <span data-bind="text: shop"></span></div>
                     <div class="white">Tracking # <a class="tn" title="A Title" data-content="And here's some amazing content. It's very engaging. right?" data-bind="text: trackingNumber" href="http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum=EE972210493US"></a></div>
                     <div class="white">
-                    <a href="#" class="btn btn-small btn-success" data-bind="click: addItem"><i class="icon-white icon-plus-sign"></i> Add Item</a>
-                        </div>
-                        <div class="white">
+                        <a href="#" class="btn btn-mini btn-success" data-bind="click: addItem"><i class="icon-white icon-plus-sign"></i> Add Item</a>
+                        <form class="form-inline">
+                            <fieldset>
+                                    @*<label class="control-label" for="itemName">Item Name:</label>*@
+                                    <input type="text" class="input-mini" id="itemName" placeholder="name" />
+                                    @*<br/>
+                                    <label class="control-label" for="itemSize">Size:</label>*@
+                                    <input type="text" class="input-mini" id="itemSize" placeholder="size" />
+                                    <input type="text" class="input-mini" id="itemColor" placeholder="color" />
+                                    <input type="text" class="input-mini" id="itemQuantity" placeholder="quantity" />
+                                    <input type="text" class="input-mini" id="itemPrice" placeholder="price" />
+                                <div class="controls">
+                                    <a href="#" class="btn btn-mini btn-success">Add Item</a>
+                                    <a href="#" class="btn btn-mini btn-danger">Discard</a>
+                                </div>
+                           </fieldset>
+                        </form>
+                    </div>
+                    <div class="white">
                         <table>
                             <thead>
                                 <tr>
@@ -94,7 +81,7 @@
                                     <th></th>
                                 </tr>
                             </thead>
-                            <tbody id="order_items" data-bind="sortable: {data: items}">
+                            <tbody id="order_items" data-bind="sortable: {data: items, afterAdd: showItem}">
                                 <tr>
                                     <td class="draggable"><div></div></td>
                                     <td class="left"><span data-bind="click: $parent.removeItem, text: name"></span></td>

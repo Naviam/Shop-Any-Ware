@@ -56,13 +56,11 @@ function Order(id, shop, orderNumber, trackingNumber) {
             for (var n = 0; n < self.items.length; n++)
                 total += self.items[n].price;
             return total;
-        } 
+        }
     });
 
-    self.myDropCallback = function(arg) {
-        if (console) {
-            console.log("Moved '" + arg.item.name() + "' from " + arg.sourceParent.id + " (index: " + arg.sourceIndex + ") to " + arg.targetParent.id + " (index " + arg.targetIndex + ")");
-        }
+    self.showItem = function (dom, index, element) {
+        $(dom).hide().slideDown();
     };
 
     self.addItem = function () {
