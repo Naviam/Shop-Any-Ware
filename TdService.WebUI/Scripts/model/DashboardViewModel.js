@@ -23,6 +23,10 @@ function Item(id, url, name, quantity, size, color, price) {
     self.price = ko.observable(price);
     self.currency = ko.observable("USD");
     self.quantity = ko.observable(quantity);
+
+    self.hideItem = function (element) {
+        if (elem.nodeType === 1) $(elem).slideUp(function() { $(elem).remove(); });
+    };
 }
 
 function Order(id, shop, orderNumber, trackingNumber) {
@@ -46,12 +50,20 @@ function Order(id, shop, orderNumber, trackingNumber) {
     ]);
 
     // Computed data
-    self.totalAmount = ko.computed(function () {
-        var total = 0;
-        for (var n = 0; n < self.items.length; n++)
-            total += self.items[n].price;
-        return total;
+    self.totalAmount = ko.computed({
+        read: function () {
+            var total = 0;
+            for (var n = 0; n < self.items.length; n++)
+                total += self.items[n].price;
+            return total;
+        } 
     });
+
+    self.myDropCallback = function(arg) {
+        if (console) {
+            console.log("Moved '" + arg.item.name() + "' from " + arg.sourceParent.id + " (index: " + arg.sourceIndex + ") to " + arg.targetParent.id + " (index " + arg.targetIndex + ")");
+        }
+    };
 
     self.addItem = function () {
         var item = new Item(4, null, "IPAD 3", 1, "11\"", "White", 809.05);
@@ -142,6 +154,21 @@ function DashboardViewModel() {
                 return n.name();
             });
             $(element).typeahead({ source: shopNames });
+        }
+    };
+
+    // Here's a custom Knockout binding that makes elements shown/hidden via jQuery's fadeIn()/fadeOut() methods
+    // Could be stored in a separate utility library
+    ko.bindingHandlers.fadeVisible = {
+        init: function (element, valueAccessor) {
+            // Initially set the element to be instantly visible/hidden depending on the value
+            var value = valueAccessor();
+            $(element).toggle(ko.utils.unwrapObservable(value)); // Use "unwrapObservable" so we can handle values that may or may not be observable
+        },
+        update: function (element, valueAccessor) {
+            // Whenever the value subsequently changes, slowly fade the element in or out
+            var value = valueAccessor();
+            ko.utils.unwrapObservable(value) ? $(element).fadeIn() : $(element).fadeOut();
         }
     };
 }
