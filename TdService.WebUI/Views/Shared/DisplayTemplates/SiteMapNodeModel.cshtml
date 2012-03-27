@@ -1,7 +1,7 @@
 ﻿@model SiteMapNodeModel
 
 @if (Model.IsCurrentNode)  { 
-    <text><li class="active"><a href="@Model.Url">@Model.Title</a></li></text>
+    <text><li class="active"><a href="@Model.Url"><i class="icon-white icon-th-large"></i> @Model.Title</a></li></text>
 }
 else if (Model.IsClickable)
 { 
