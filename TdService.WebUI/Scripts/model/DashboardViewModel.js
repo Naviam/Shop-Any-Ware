@@ -109,7 +109,7 @@ function DashboardViewModel() {
     ]);
 
     self.showAddOrderForm = function (element) {
-        $("#addOrderForm").html("<input type=\"text\" />");
+        $("#addOrderForm").html("<input type=\"text\" placeholder=\"type shop name here\" />");
     };
 
     self.addOrder = function () {
