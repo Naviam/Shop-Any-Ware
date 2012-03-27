@@ -108,6 +108,10 @@ function DashboardViewModel() {
         new Order(3, "Ebay.com", "7732267635", "1Z32863V0307459095")
     ]);
 
+    self.showAddOrderForm = function (element) {
+        $("#addOrderForm").html("<input type=\"text\" />");
+    };
+
     self.addOrder = function () {
         self.orders.unshift(new Order(1, "Amazon.com Inc", "78793773", "1Z32863V0307459091"));
     };
