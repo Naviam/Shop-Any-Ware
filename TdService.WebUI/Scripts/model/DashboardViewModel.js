@@ -66,10 +66,12 @@ function Order(id, shop, orderNumber, trackingNumber) {
     self.addItem = function () {
         var item = new Item(4, null, "IPAD 3", 1, "11\"", "White", 809.05);
         self.items.unshift(item);
+        $("#orders").getNiceScroll().resize();
     };
 
     self.removeItem = function (item) {
         self.items.remove(item);
+        $("#orders").getNiceScroll().resize();
     };
 }
 
@@ -91,10 +93,12 @@ function Package(id, description, deliveryAddress, dispatchMethod) {
 
     self.dropItem = function (item) {
         self.items.unshift(item);
+        $("#packages").getNiceScroll().resize();
     };
 
     self.removeItem = function (item) {
         self.items.remove(item);
+        $("#packages").getNiceScroll().resize();
     };
 };
 
@@ -114,10 +118,12 @@ function DashboardViewModel() {
 
     self.addOrder = function () {
         self.orders.unshift(new Order(1, "Amazon.com Inc", "78793773", "1Z32863V0307459091"));
+        $("#orders").getNiceScroll().resize();
     };
 
     self.removeOrder = function () {
         self.orders.remove(this);
+        $("#orders").getNiceScroll().resize();
     };
 
     self.packages = ko.observableArray([
@@ -156,6 +162,19 @@ function DashboardViewModel() {
                 return n.name();
             });
             $(element).typeahead({ source: shopNames });
+        }
+    };
+
+    ko.bindingHandlers.nicescroller = {
+        init: function (element, valueAccessor, allBindingAccessors, model) {
+            var columnHeight = $(window).height() - $("#actionPanel").height() -
+                $("#topmenu").height() - $(".modal-footer").height() - 90;
+            $(element).height(columnHeight);
+            $(element).niceScroll({
+                cursorborder: "",
+                cursorcolor: "#A67852",
+                boxzoom: false
+            });
         }
     };
 
