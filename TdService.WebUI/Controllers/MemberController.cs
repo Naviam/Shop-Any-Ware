@@ -33,7 +33,7 @@ namespace TdService.Web.Controllers
         /// <returns>
         /// Returns the page with the new interface.
         /// </returns>
-        public ActionResult Overview()
+        public ActionResult Dashboard()
         {
             return View();
         }

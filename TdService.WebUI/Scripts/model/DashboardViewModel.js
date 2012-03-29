@@ -23,6 +23,10 @@ function Item(id, url, name, quantity, size, color, price) {
     self.price = ko.observable(price);
     self.currency = ko.observable("USD");
     self.quantity = ko.observable(quantity);
+
+    self.hideItem = function (element) {
+        if (elem.nodeType === 1) $(elem).slideUp(function() { $(elem).remove(); });
+    };
 }
 
 function Order(id, shop, orderNumber, trackingNumber) {
@@ -46,20 +50,28 @@ function Order(id, shop, orderNumber, trackingNumber) {
     ]);
 
     // Computed data
-    self.totalAmount = ko.computed(function () {
-        var total = 0;
-        for (var n = 0; n < self.items.length; n++)
-            total += self.items[n].price;
-        return total;
+    self.totalAmount = ko.computed({
+        read: function () {
+            var total = 0;
+            for (var n = 0; n < self.items.length; n++)
+                total += self.items[n].price;
+            return total;
+        }
     });
+
+    self.showItem = function (dom, index, element) {
+        $(dom).hide().slideDown();
+    };
 
     self.addItem = function () {
         var item = new Item(4, null, "IPAD 3", 1, "11\"", "White", 809.05);
         self.items.unshift(item);
+        $("#orders").getNiceScroll().resize();
     };
 
     self.removeItem = function (item) {
         self.items.remove(item);
+        $("#orders").getNiceScroll().resize();
     };
 }
 
@@ -81,10 +93,12 @@ function Package(id, description, deliveryAddress, dispatchMethod) {
 
     self.dropItem = function (item) {
         self.items.unshift(item);
+        $("#packages").getNiceScroll().resize();
     };
 
     self.removeItem = function (item) {
         self.items.remove(item);
+        $("#packages").getNiceScroll().resize();
     };
 };
 
@@ -98,12 +112,18 @@ function DashboardViewModel() {
         new Order(3, "Ebay.com", "7732267635", "1Z32863V0307459095")
     ]);
 
+    self.showAddOrderForm = function (element) {
+        $("#addOrderForm").html("<input type=\"text\" class=\"input-xlarge\" data-bind=\"autosuggest: shops\" placeholder=\"type shop name here\" />");
+    };
+
     self.addOrder = function () {
         self.orders.unshift(new Order(1, "Amazon.com Inc", "78793773", "1Z32863V0307459091"));
+        $("#orders").getNiceScroll().resize();
     };
 
     self.removeOrder = function () {
         self.orders.remove(this);
+        $("#orders").getNiceScroll().resize();
     };
 
     self.packages = ko.observableArray([
@@ -142,6 +162,34 @@ function DashboardViewModel() {
                 return n.name();
             });
             $(element).typeahead({ source: shopNames });
+        }
+    };
+
+    ko.bindingHandlers.nicescroller = {
+        init: function (element, valueAccessor, allBindingAccessors, model) {
+            var columnHeight = $(window).height() - $("#actionPanel").height() -
+                $("#topmenu").height() - $(".modal-footer").height() - 90;
+            $(element).height(columnHeight);
+            $(element).niceScroll({
+                cursorborder: "",
+                cursorcolor: "#A67852",
+                boxzoom: false
+            });
+        }
+    };
+
+    // Here's a custom Knockout binding that makes elements shown/hidden via jQuery's fadeIn()/fadeOut() methods
+    // Could be stored in a separate utility library
+    ko.bindingHandlers.fadeVisible = {
+        init: function (element, valueAccessor) {
+            // Initially set the element to be instantly visible/hidden depending on the value
+            var value = valueAccessor();
+            $(element).toggle(ko.utils.unwrapObservable(value)); // Use "unwrapObservable" so we can handle values that may or may not be observable
+        },
+        update: function (element, valueAccessor) {
+            // Whenever the value subsequently changes, slowly fade the element in or out
+            var value = valueAccessor();
+            ko.utils.unwrapObservable(value) ? $(element).fadeIn() : $(element).fadeOut();
         }
     };
 }
