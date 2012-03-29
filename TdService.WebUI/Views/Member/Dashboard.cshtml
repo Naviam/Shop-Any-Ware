@@ -39,10 +39,14 @@
 </div>*@
 <div id="actionPanel" class="row-fluid">
     <div class="span4">
-        <div id="addOrderForm" class="package new">
-            <div><a href="#" class="" data-bind="click: showAddOrderForm">Add order from online store</a>
+        <div id="addOrderForm" class="package">
+            <input class="span4" data-bind="autosuggest: shops" placeholder="type shop name or item's url for shopping assistance" />
+            <a href="#" class="btn btn-success" data-bind="click: showAddOrderForm">Add Order</a>
+            @*<div>
+                <a href="#" class="" data-bind="click: showAddOrderForm">Add order from online store</a>
                 <br/> or <br/>
-                <a href="#" class="" data-bind="click: addOrder">Paste item url for shopping assistance</a></div>
+                <a href="#" class="" data-bind="click: addOrder">Paste item url for shopping assistance</a>
+            </div>*@
         </div>
     </div>
     <div class="span4">
