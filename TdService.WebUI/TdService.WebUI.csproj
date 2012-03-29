@@ -145,6 +145,8 @@
     <Content Include="Content\img\draggable.png" />
     <Content Include="Content\img\glyphicons-halflings-white.png" />
     <Content Include="Content\img\glyphicons-halflings.png" />
+    <Content Include="Content\img\story_collapsed1.png" />
+    <Content Include="Content\img\story_expanded1.png" />
     <Content Include="Content\img\white_bg.jpg" />
     <Content Include="Content\less\bootstrap-responsive.css" />
     <Content Include="Content\less\bootstrap.css" />
