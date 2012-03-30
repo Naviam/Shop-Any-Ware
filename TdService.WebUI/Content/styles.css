@@ -11,7 +11,7 @@ footer{color:#999;text-align:right}
                 .action table tr span:hover{background-color:#FFEEA8;cursor:text}
             .box table td.draggable{padding:0;width:9px}
                 .box table td.draggable div{background:url(img/draggable.png) repeat-y;padding:4px 0;height:12px;width:9px}
-            .box table tfoot td{background-color:#eee;border-top:12px solid #fff;font-weight:bold}
+            .box table tfoot td{background-color:#eee;font-weight:bold}
         .box .left{text-align:left}
         .box .right{text-align:right}
     .from{color:#999;font-style:italic}
