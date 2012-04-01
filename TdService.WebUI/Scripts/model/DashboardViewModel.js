@@ -38,6 +38,22 @@ function Order(id, shop, orderNumber, trackingNumber) {
     self.status = ko.observable("open");
     self.receivedDate = new Date().toDateString();
     self.createdDate = new Date();
+    
+    self.addItem = function () {
+        var item = new Item(4, null, "IPAD 3", 1, "11\"", "White", 809.05);
+        self.items.unshift(item);
+        $("#orders").getNiceScroll().resize();
+    };
+
+    self.removeItem = function (item) {
+        self.items.remove(item);
+        $("#orders").getNiceScroll().resize();
+    };
+    
+    self.addItemUrl = function (itemUrl) {
+        var item = new Item(null, itemUrl, null, 1, null, null, null);
+        self.items.unshift(item);
+    };
 
     self.items = ko.observableArray([
         new Item(1, null, "Kindle", 1, "7\"", "Gray", 79.43),
@@ -61,17 +77,6 @@ function Order(id, shop, orderNumber, trackingNumber) {
 
     self.showItem = function (dom, index, element) {
         $(dom).hide().slideDown();
-    };
-
-    self.addItem = function () {
-        var item = new Item(4, null, "IPAD 3", 1, "11\"", "White", 809.05);
-        self.items.unshift(item);
-        $("#orders").getNiceScroll().resize();
-    };
-
-    self.removeItem = function (item) {
-        self.items.remove(item);
-        $("#orders").getNiceScroll().resize();
     };
 }
 
@@ -104,6 +109,7 @@ function Package(id, description, deliveryAddress, dispatchMethod) {
 
 function DashboardViewModel() {
     var self = this;
+    self.newOrder = ko.observable("");
 
     // Non-editable catalog data - would come from the server
     self.orders = ko.observableArray([
@@ -112,12 +118,15 @@ function DashboardViewModel() {
         new Order(3, "Ebay.com", "7732267635", "1Z32863V0307459095")
     ]);
 
-    self.showAddOrderForm = function (element) {
-        $("#addOrderForm").html("<input type=\"text\" class=\"input-xlarge\" data-bind=\"autosuggest: shops\" placeholder=\"type shop name here\" />");
-    };
-
     self.addOrder = function () {
-        self.orders.unshift(new Order(1, "Amazon.com Inc", "78793773", "1Z32863V0307459091"));
+        if (/^([a-z]([a-z]|\d|\+|-|\.)*):(\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?((\[(|(v[\da-f]{1,}\.(([a-z]|\d|-|\.|_|~)|[!\$&'\(\)\*\+,;=]|:)+))\])|((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=])*)(:\d*)?)(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*|(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)|((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)|((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)){0})(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i.test(self.newOrder())) {
+            var order = new Order(null, "sample", null, null);
+            order.addItemUrl(self.newOrder());
+            self.orders.unshift(order);
+        } else if (self.newOrder() != null && self.newOrder() != undefined && self.newOrder() != "") {
+            self.orders.unshift(new Order(null, self.newOrder(), null, null, null));
+        }
+        self.newOrder("");
         $("#orders").getNiceScroll().resize();
     };
 

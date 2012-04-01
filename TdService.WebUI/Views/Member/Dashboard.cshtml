@@ -40,8 +40,8 @@
 <div class="row-fluid">
     <div class="span4">
         <div id="addOrderForm" class="package">
-            <input class="span4 add-order" data-bind="autosuggest: shops" placeholder="type shop name or item's url for shopping assistance" />
-            <a href="#" class="btn btn-large btn-success" data-bind="click: showAddOrderForm">Add Order</a>
+            <input class="span4 add-order" data-bind="value: newOrder, autosuggest: shops" placeholder="type shop name or item's url for shopping assistance" />
+            <a href="#" class="btn btn-large btn-success" data-bind="click: addOrder">Add Order</a>
             @*<div>
                 <a href="#" class="" data-bind="click: showAddOrderForm">Add order from online store</a>
                 <br/> or <br/>
@@ -56,6 +56,9 @@
                         Order # <span data-bind="text: orderNumber"></span> from <span data-bind="text: shop"></span>
                     </div>
                     <div class="white">Tracking # <a class="tn" title="A Title" data-content="And here's some amazing content. It's very engaging. right?" data-bind="text: trackingNumber" href="http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum=EE972210493US"></a></div>
+                    <div class="white">
+                        The items will be automatically populated when the order arrived.
+                    </div>
                     <div id="order_extended" class="collapse in">
                         <div class="white">
                             <table>
@@ -83,6 +86,14 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
+                                        <td></td>
+                                        <td class="left" colspan="5">
+                                            <input type="text" placeholder="item's url for shopping assistance"/>
+                                            <a href="#" class="btn btn-mini btn-success" data-bind="click: addItem"><i class="icon-white icon-plus-sign"></i></a>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
                                         <td class="draggable"><div></div></td>
                                         <td class="left">Total</td>
                                         <td colspan="2"></td>
@@ -94,7 +105,7 @@
                             </table>
                         </div>
                         <div class="white">
-                            <form class="form-inline addItemForm">
+                            <form class="form-inline">
                                 <fieldset>
                                     <div class="right">
                                         <label for="itemName">New item: </label>
