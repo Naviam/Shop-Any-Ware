@@ -84,7 +84,7 @@
             model.newOrder(shopName);
             var result = model.addOrder();
             assert(result).isTrue("addOrder returns true");
-            assert(model.orders.pop().shop()).equals(shopName, "shop name should be same as in given");
+            assert(model.orders.pop().shop()).equals(shopName, "shop namebbZCZZASS should be same as in given");
         });
 
         given([""]).
