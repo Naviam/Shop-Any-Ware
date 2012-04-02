@@ -157,6 +157,7 @@
     <Content Include="Content\less\docs.css" />
     <Content Include="Content\less\responsive.css" />
     <Content Include="Content\less\responsive.min.css" />
+    <Content Include="Content\qunit.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\styles.css" />
     <Content Include="Content\test.css" />
@@ -176,6 +177,9 @@
     <Content Include="Scripts\jquery-1.7.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
+    <Content Include="Scripts\jquery.linq-vsdoc.js" />
+    <Content Include="Scripts\jquery.linq.js" />
+    <Content Include="Scripts\jquery.linq.min.js" />
     <Content Include="Scripts\jquery.nicescroll.js" />
     <Content Include="Scripts\jquery.nicescroll.min.js" />
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
@@ -191,6 +195,12 @@
     <Content Include="Scripts\model\DashboardViewModel.js" />
     <Content Include="Scripts\model\OrderViewModel.js" />
     <Content Include="Scripts\model\PackageViewModel.js" />
+    <Content Include="Scripts\qunit.js" />
+    <Content Include="Scripts\Specs\dashboard_specs.js" />
+    <Content Include="Scripts\Specs\example.specs.html" />
+    <Content Include="Scripts\Specs\example.specs.js" />
+    <Content Include="Scripts\Specs\pavlov.js" />
+    <Content Include="Scripts\Specs\Dashboard.htm" />
     <Content Include="Scripts\ui\jquery-ui-1.8.18.custom.js" />
     <Content Include="Scripts\ui\jquery.effects.blind.js" />
     <Content Include="Scripts\ui\jquery.effects.bounce.js" />
@@ -252,12 +262,6 @@
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\MicrosoftAjax.js" />
-    <Content Include="Scripts\MicrosoftAjax.debug.js" />
-    <Content Include="Scripts\MicrosoftMvcAjax.js" />
-    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
-    <Content Include="Scripts\MicrosoftMvcValidation.js" />
-    <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />

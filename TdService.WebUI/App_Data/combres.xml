@@ -23,6 +23,7 @@
     </resourceSet>
     <resourceSet name="jqueryJs" type="js">
       <resource path="~/scripts/jquery-1.7.1.min.js" minifierRef="off" />
+      <resource path="~/scripts/jquery.linq.min.js" minifierRef="off" />
       <resource path="~/scripts/jquery.validate.min.js" minifierRef="off" />
       <resource path="~/scripts/jquery.validate.unobtrusive.min.js" minifierRef="off" />
       <resource path="~/scripts/ui/jquery-ui-1.8.18.custom.js" minifierRef="off" />
