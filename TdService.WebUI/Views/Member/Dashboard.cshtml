@@ -73,7 +73,7 @@
                                         <th></th>
                                     </tr>
                                 </thead>
-                                <tbody id="order_items" data-bind="sortable: {data: items, afterAdd: showItem}">
+                                <tbody class="sortable" id="order_items" data-bind="sortable: {data: items, afterAdd: showItem}">
                                     <tr>
                                         <td class="draggable"><div></div></td>
                                         <td class="left"><span data-bind="click: $parent.removeItem, text: name"></span></td>
@@ -86,13 +86,13 @@
                                 </tbody>
                                 <tbody class="edit">
                                     <tr>
-                                        <td class="draggable"><div></div></td>
+                                        <td></td>
                                         <td class="left"><input type="text" placeholder="name"/></td>
                                         <td><input type="text" placeholder="size"/></td>
                                         <td><input type="text" placeholder="color"/></td>
                                         <td><input type="text" placeholder="qty"/></td>
                                         <td><input type="text" placeholder="price"/></td>
-                                        <td class="draggable"><div></div></td>
+                                        <td></td>
                                     </tr>
                                 </tbody>
                                 <tfoot>
