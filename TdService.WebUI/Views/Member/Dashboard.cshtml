@@ -39,8 +39,16 @@
 <div class="row-fluid">
     <div class="span4">
         <div id="addOrderForm" class="package">
-            <input class="add-order" data-bind="value: newOrder, autosuggest: shops" placeholder="type shop name or item's url" />
-            <a href="#" class="btn btn-large btn-success" data-bind="click: addOrder">Add Order</a>
+            <table style="width:100%;position: relative;z-index: 1001">
+                <tr>
+                    <td>
+                        <input class="add-order" style="width: 100%" data-bind="value: newOrder, autosuggest: shops" placeholder="type shop name or item's url"/>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-large btn-success" style="float: right" data-bind="click: addOrder">Add Order</a>
+                    </td>
+                </tr>
+            </table>
                 @*<div>
                 <a href="#" class="" data-bind="click: showAddOrderForm">Add order from online store</a>
                 <br/> or <br/>
@@ -50,16 +58,18 @@
         <div id="orders" style="clear: left" data-bind="foreach: orders">
             <div class="package action">
                 <div class="box">
-                    <div class="white">
+                    <div>
                         <img title="Collapse" data-toggle="collapse" data-target="#order_extended" src="@Url.Content("~/content/img/story_collapsed1.png")" alt="Collapse">
-                        Order # <input data-bind="text: orderNumber" type="text" placeholder="size"/> from <span data-bind="text: shop"></span>
+                        <span class="">ID: <span data-bind="text: id"></span></span>
+                        <span style="float:right" data-bind="text: receivedDate"></span>
                     </div>
-                    <div class="white">Tracking # <input type="text" placeholder="size"/><a class="tn" title="A Title" data-content="And here's some amazing content. It's very engaging. right?" data-bind="text: trackingNumber" href="http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum=EE972210493US"></a></div>
                     <div class="white">
-                        The items will be automatically populated when the order arrived.
+                        Order # <span data-bind="text: orderNumber" type="text" placeholder="size"></span> from <span data-bind="text: shop"></span>
+                        <br />Tracking # <span class="tn" title="A Title" data-content="And here's some amazing content. It's very engaging. right?" data-bind="text: trackingNumber" href="http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum=EE972210493US"></span>
                     </div>
                     <div id="order_extended" class="collapse in">
                         <div class="white">
+                            The items will be automatically displayed when the order received.
                             <table>
                                 <thead>
                                     <tr>
@@ -142,20 +152,16 @@
                                 <button class="btn btn-small" data-toggle="modal"><i class="icon-retweet"></i> RETURN</button>
                             </div>
                         </div>
+                         
                     </div>
-                </div>
-                <div>
-                    <span class="label label-info">ID: <span data-bind="text: id"></span></span>
-                    <span class="label label-info label-photo">Photo: </span><a href="#" class="badge badge-photo">4</a>
-                    <span class="label label-info">Status: <span data-bind="text: status"></span></span>
-                    <span class="label label-info">Date: <span data-bind="text: receivedDate"></span></span>
                 </div>
             </div>
         </div>
     </div>
     <div class="span4">
         <div class="package">
-            <div><a href="#" class="btn btn-large btn-success" data-toggle="modal"><i class="icon-white icon-gift"></i> Add Package</a></div>
+            <div><a href="#" class="btn btn-large btn-success" style="float: right" data-toggle="modal"><i class="icon-white icon-gift"></i> Add Package</a></div>
+            <div style="clear: right"></div>
         </div>
         <div id="packages" data-bind="foreach: packages">
             <div class="package action">
@@ -208,9 +214,10 @@
         </div>
     </div>
     <div class="span4">
-        <div class="package span4">
-            <span>$100</span>
-            <a href="#" class="btn btn-large btn-success" data-bind="click: addOrder">Add Funds</a>
+        <div class="package">
+            <span style="font-size: 26px;margin: 10px;display:block;float: left">Balance: $100</span>
+            <a href="#" class="btn btn-large btn-success" style="float: right" data-bind="click: addOrder">Add Funds</a>
+            <div style="clear: left;padding-bottom:10px"></div>
         </div>
         <div class="package" style="clear: left">
             <div class="box">
@@ -298,11 +305,11 @@
     <script type="text/javascript" src="@Url.Content("~/Scripts/model/DashboardViewModel.js")"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            $('.left').dotdotdot({
-                watch: 'window'
-            });
-            $('.add-order').tooltip({title: 'wrong url'});
-            $(".tn").popover();
+//            $('.left').dotdotdot({
+//                watch: 'window'
+//            });
+//            $('.add-order').tooltip({title: 'wrong url'});
+//            $(".tn").popover();
             $("table, tr").disableSelection();
             //$("html").niceScroll();
             var columnHeight = $(window).height() - $("#actionPanel").height() - $("#topmenu").height() - $(".modal-footer").height() - 90;
