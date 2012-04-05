@@ -58,7 +58,7 @@ function Order(id, shop, orderNumber, trackingNumber) {
     self.items = ko.observableArray([
         new Item(1, null, "Kindle", 1, "7\"", "Gray", 79.43),
         new Item(2, null, "Sony Vaio", 1, "14\"", "Black", 990.00),
-        new Item(3, null, "Dell Vostro", 2, "17\"", "White", 1500.00)
+        new Item(3, null, "Dell Vostro - Example of long name", 2, "17\"", "White", 1500.00)
     ]);
 
     self.photos = ko.observableArray([
@@ -171,6 +171,13 @@ function DashboardViewModel() {
                 return n.name();
             });
             $(element).typeahead({ source: shopNames });
+        }
+    };
+
+    ko.bindingHandlers.ellipsis = {
+        init: function (element, valueAccessor, allBindingAccessors, model) {
+            var value = valueAccessor();
+            $(element).ellipsis({ ellipsis: ko.utils.unwrapObservable(value), setTitle: 'onEllipsis', live: true });
         }
     };
 
