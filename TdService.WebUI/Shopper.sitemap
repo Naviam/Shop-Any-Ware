@@ -5,9 +5,10 @@
             enableLocalization="true">
     <mvcSiteMapNode title="SignIn" controller="Account" action="Index">
         <mvcSiteMapNode title="Dashboard" controller="Member" action="Dashboard" />
-        <mvcSiteMapNode title="Summary" controller="Member" action="Home" />
+        <mvcSiteMapNode title="Delivery Addresses" controller="Profile" action="Index" />
+        <!--<mvcSiteMapNode title="Summary" controller="Member" action="Home" />
         <mvcSiteMapNode title="Orders" controller="Order" action="Index" />
         <mvcSiteMapNode title="Parcels" controller="Parcel" action="Index" />
-        <mvcSiteMapNode title="Balance" controller="Balance" action="Index" />
+        <mvcSiteMapNode title="Balance" controller="Balance" action="Index" />-->
     </mvcSiteMapNode>
 </mvcSiteMap>
