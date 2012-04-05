@@ -47,6 +47,7 @@
       <resource reference="bootstrapJs"/>
       <resource path="~/scripts/knockout.js" />
       <resource path="~/scripts/knockout-sortable.js" />
+      <resource path="~/scripts/dotdotdot/jquery.dotdotdot-1.4.0-packed.js" minifierRef="off" />
       <resource path="~/scripts/jquery.nicescroll.min.js" minifierRef="off" />
     </resourceSet>
   </resourceSets>
