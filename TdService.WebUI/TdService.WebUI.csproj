@@ -174,9 +174,15 @@
     <Content Include="Scripts\bootstrap\bootstrap-tooltip.js" />
     <Content Include="Scripts\bootstrap\bootstrap-transition.js" />
     <Content Include="Scripts\bootstrap\bootstrap-typeahead.js" />
+    <Content Include="Scripts\dotdotdot\index.html" />
+    <Content Include="Scripts\dotdotdot\jquery.dotdotdot-1.4.0-packed.js" />
+    <Content Include="Scripts\dotdotdot\jquery.dotdotdot-1.4.0.js" />
+    <Content Include="Scripts\dotdotdot\jquery.js" />
     <Content Include="Scripts\jquery-1.7.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
+    <Content Include="Scripts\jquery.autoellipsis-1.0.3.js" />
+    <Content Include="Scripts\jquery.autoellipsis-1.0.3.min.js" />
     <Content Include="Scripts\jquery.linq-vsdoc.js" />
     <Content Include="Scripts\jquery.linq.js" />
     <Content Include="Scripts\jquery.linq.min.js" />
