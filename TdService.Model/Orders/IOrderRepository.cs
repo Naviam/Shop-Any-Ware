@@ -22,20 +22,17 @@ namespace TdService.Model.Orders
         /// Add order.
         /// </summary>
         /// <param name="order">
-        /// The order.
+        /// The order to add.
         /// </param>
-        /// <param name="userId">
-        /// The user id.
-        /// </param>
-        void AddOrder(Order order, string userId);
+        void AddOrder(Order order);
 
         /// <summary>
         /// Remove order.
         /// </summary>
-        /// <param name="orderId">
-        /// The order id.
+        /// <param name="order">
+        /// The order to remove.
         /// </param>
-        void RemoveOrder(int orderId);
+        void RemoveOrder(Order order);
 
         /// <summary>
         /// Update order.
@@ -95,6 +92,7 @@ namespace TdService.Model.Orders
         /// The order id.
         /// </param>
         /// <returns>
+        /// Order details.
         /// </returns>
         Order GetOrderDetails(int orderId);
 

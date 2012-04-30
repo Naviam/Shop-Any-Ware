@@ -6,7 +6,6 @@
 
 namespace TdService
 {
-    using System;
     using System.Data.Entity;
     using Model.Items;
     using Model.Orders;
@@ -16,7 +15,7 @@ namespace TdService
     /// <summary>
     /// DbContext for the entity framework mapping.
     /// </summary>
-    public class TdServiceContext : DbContext, IDisposable
+    public class TdServiceContext : DbContext
     {
         /// <summary>
         /// Gets or sets Items.

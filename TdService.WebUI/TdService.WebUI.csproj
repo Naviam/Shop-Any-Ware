@@ -126,7 +126,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\combres.xml" />
+    <Content Include="App_Data\combres.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="App_Data\combres_full_with_annotation.xml" />
     <Content Include="App_Data\TdService.mdf" />
     <Content Include="App_Data\TdService_log.LDF">
@@ -491,7 +493,9 @@
     <Content Include="Views\Shared\addOrderForm.cshtml" />
     <Content Include="Views\Shared\addParcelForm.cshtml" />
     <Content Include="Views\Shared\parcelTable.cshtml" />
-    <Content Include="Shopper.sitemap" />
+    <Content Include="Shopper.sitemap">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Services.cshtml" />
     <Content Include="Views\Home\Terms.cshtml" />

@@ -35,7 +35,7 @@ namespace TdService.TestConsole
                                 Weight = new Weight { Pounds = 5, Ounces = 1 }
                             };
             var repo = new OrderRepository();
-            repo.AddOrder(order, "1");
+            repo.AddOrder(order);
         }
     }
 }

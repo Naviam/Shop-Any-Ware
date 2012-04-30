@@ -19,12 +19,9 @@ namespace TdService
         /// Add order.
         /// </summary>
         /// <param name="order">
-        /// The order.
+        /// The order to add.
         /// </param>
-        /// <param name="userId">
-        /// The user id.
-        /// </param>
-        public void AddOrder(Order order, string userId)
+        public void AddOrder(Order order)
         {
             using (var context = new TdServiceContext())
             {
@@ -33,19 +30,62 @@ namespace TdService
             }
         }
 
-        public void RemoveOrder(int orderId)
+        /// <summary>
+        /// Remove an order.
+        /// </summary>
+        /// <param name="order">
+        /// The order to remove.
+        /// </param>
+        public void RemoveOrder(Order order)
         {
-            throw new NotImplementedException();
+            using (var context = new TdServiceContext())
+            {
+                context.Orders.Remove(order);
+                context.SaveChanges();
+            }
         }
 
+        /// <summary>
+        /// Update the order.
+        /// </summary>
+        /// <param name="order">
+        /// The order to update.
+        /// </param>
         public void UpdateOrder(Order order)
         {
-            throw new NotImplementedException();
+            using (var context = new TdServiceContext())
+            {
+                context.Orders.Remove(order);
+                context.Orders.Add(order);
+                context.SaveChanges();
+            }
         }
 
-        public IEnumerable<Order> GetAllOrders(object sortDirection, string sortExpression, string filterExpression, int pageSize = 20)
+        /// <summary>
+        /// Get all orders from all users for operators.
+        /// </summary>
+        /// <param name="sortDirection">
+        /// The sort direction.
+        /// </param>
+        /// <param name="sortExpression">
+        /// The sort expression.
+        /// </param>
+        /// <param name="filterExpression">
+        /// The filter expression.
+        /// </param>
+        /// <param name="pageSize">
+        /// The page size.
+        /// </param>
+        /// <returns>
+        /// Collection of orders.
+        /// </returns>
+        public IEnumerable<Order> GetAllOrders(
+            object sortDirection, string sortExpression, string filterExpression, int pageSize = 20)
         {
-            throw new NotImplementedException();
+            using (var context = new TdServiceContext())
+            {
+                return context.Orders;
+            }
         }
 
         public IEnumerable<Order> GetUserOrders(string username, object sortDirection, string sortExpression, string filterExpression, int pageSize = 20)
