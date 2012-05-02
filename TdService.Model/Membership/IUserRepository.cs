@@ -7,10 +7,11 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Model.Shoppers
-{
-    using System.Collections.Generic;
+using System.Collections.Generic;
+using TdService.Model.Membership;
 
+namespace TdService.Model.Membership
+{
     /// <summary>
     /// Interface for user repository.
     /// </summary>

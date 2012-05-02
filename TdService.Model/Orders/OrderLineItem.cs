@@ -9,7 +9,6 @@
 
 namespace TdService.Model.Orders
 {
-    using System;
     using Items;
 
     /// <summary>

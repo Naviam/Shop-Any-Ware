@@ -19,9 +19,9 @@ namespace TdService.Model.Orders
         public int Id { get; set; }
 
         /// <summary>
-        /// Gets or sets Shop.
+        /// Gets or sets Retailer.
         /// </summary>
-        public Shop Shop { get; set; }
+        public Retailer Retailer { get; set; }
 
         /// <summary>
         /// Gets or sets OrderNumber.

@@ -7,11 +7,12 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Model.Shoppers
+namespace TdService.Model.Membership
 {
     using System;
     using System.Collections.Generic;
-    using Domain;
+    using Addresses;
+    using Model;
     using Orders;
     using Packages;
 
@@ -26,12 +27,12 @@ namespace TdService.Model.Shoppers
         public int Id { get; set; }
 
         /// <summary>
-        /// Email address.
+        /// Gets or sets Email.
         /// </summary>
         public string Email { get; set; }
 
         /// <summary>
-        /// User's password
+        /// Gets or sets Password.
         /// </summary>
         public string Password { get; set; }
 
@@ -58,27 +59,28 @@ namespace TdService.Model.Shoppers
         /// <summary>
         /// Gets or sets Orders.
         /// </summary>
-        public virtual IEnumerable<Order> Orders { get; set; }
+        public IEnumerable<Order> Orders { get; set; }
 
         /// <summary>
         /// Gets or sets Balance.
         /// </summary>
-        public virtual Balance Balance { get; set; }
+        public Balance Balance { get; set; }
 
         /// <summary>
         /// Gets or sets Roles.
         /// </summary>
-        public virtual IEnumerable<Role> Roles { get; set; }
+        public IEnumerable<Role> Roles { get; set; }
 
         /// <summary>
         /// Gets or sets Parcels.
         /// </summary>
-        public virtual IEnumerable<Parcel> Parcels { get; set; }
+        public IEnumerable<Package> Parcels { get; set; }
 
         /// <summary>
         /// Activate user.
         /// </summary>
         /// <exception cref="NotImplementedException">
+        /// Not yet implemented.
         /// </exception>
         public virtual void Activate()
         {

@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TdService.Domain
+namespace TdService.Model
 {
     /// <summary>
     /// Price class used to describe price of a product or a service.

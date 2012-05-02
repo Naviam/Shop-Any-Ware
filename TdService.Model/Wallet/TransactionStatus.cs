@@ -4,7 +4,7 @@
 //     Changes to this file will be lost if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-namespace TdService.Domain
+namespace TdService.Model
 {
 	using System;
 	using System.Collections.Generic;

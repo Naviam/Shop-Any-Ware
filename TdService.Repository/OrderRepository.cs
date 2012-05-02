@@ -4,6 +4,8 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
+using TdService.Model.Items;
+
 namespace TdService
 {
     using System;
@@ -23,7 +25,7 @@ namespace TdService
         /// </param>
         public void AddOrder(Order order)
         {
-            using (var context = new TdServiceContext())
+            using (var context = new ShopAnyWareSql())
             {
                 context.Orders.Add(order);
                 context.SaveChanges();
@@ -38,7 +40,7 @@ namespace TdService
         /// </param>
         public void RemoveOrder(Order order)
         {
-            using (var context = new TdServiceContext())
+            using (var context = new ShopAnyWareSql())
             {
                 context.Orders.Remove(order);
                 context.SaveChanges();
@@ -53,7 +55,7 @@ namespace TdService
         /// </param>
         public void UpdateOrder(Order order)
         {
-            using (var context = new TdServiceContext())
+            using (var context = new ShopAnyWareSql())
             {
                 context.Orders.Remove(order);
                 context.Orders.Add(order);
@@ -82,7 +84,7 @@ namespace TdService
         public IEnumerable<Order> GetAllOrders(
             object sortDirection, string sortExpression, string filterExpression, int pageSize = 20)
         {
-            using (var context = new TdServiceContext())
+            using (var context = new ShopAnyWareSql())
             {
                 return context.Orders;
             }
@@ -103,7 +105,7 @@ namespace TdService
             throw new NotImplementedException();
         }
 
-        public void AddPhotos(int orderId, IEnumerable<Domain.Picture> picture)
+        public void AddPhotos(int orderId, IEnumerable<ItemImage> picture)
         {
             throw new NotImplementedException();
         }

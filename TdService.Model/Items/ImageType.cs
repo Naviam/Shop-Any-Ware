@@ -1,32 +1,32 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="OrderStatus.cs" company="TdService">
+// <copyright file="ImageType.cs" company="TdService">
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
-//   Defines the OrderStatus type.
+//   Defines the ImageType type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Model.Orders
+namespace TdService.Model.Items
 {
     /// <summary>
-    /// Order status.
+    /// Image type.
     /// </summary>
-    public enum OrderStatus
+    public enum ImageType
     {
         /// <summary>
-        /// Waiting arrival.
+        /// Jpeg format
         /// </summary>
-        WaitingArrival = 0,
+        Jpeg,
 
         /// <summary>
-        /// Arrived status.
+        /// PNG format
         /// </summary>
-        Arrived = 1,
+        Png,
 
         /// <summary>
-        /// Processed status.
+        /// GIF format
         /// </summary>
-        Processed = 2,
+        Gif,
     }
 }

@@ -7,10 +7,10 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Model.Shoppers
+namespace TdService.Model.Membership
 {
     using System.Collections.Generic;
-    using Domain;
+    using Membership;
 
     /// <summary>
     /// Interface for user role repository.

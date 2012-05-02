@@ -11,6 +11,8 @@ namespace TdService.Web
 {
     using System.Web.Mvc;
     using System.Web.Routing;
+    using SimpleInjector;
+    using Model.Orders;
 
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
     // visit http://go.microsoft.com/?LinkId=9394801
@@ -52,10 +54,26 @@ namespace TdService.Web
         /// </summary>
         protected void Application_Start()
         {
+            DatabaseInitializer.InitializeShopAnyWare();
+
             AreaRegistration.RegisterAllAreas();
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+
+            // 1. Create a new Simple Injector container
+            // var container = new Container();
+
+            // 2. Configure the container (register)
+            // container.RegisterSingle<IOrderRepository, OrderRepository>();
+
+            // See below for more configuration examples
+
+            // 3. Optionally verify the container's configuration.
+            // container.Verify();
+
+            // 4. Store the container for use by Page classes.
+            // Global.Container = container;
         }
     }
 }

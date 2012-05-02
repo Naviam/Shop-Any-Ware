@@ -1,18 +1,18 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Weight.cs" company="TdService">
+// <copyright file="ItemImage.cs" company="TdService">
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
-//   Defines the Weight type.
+//   Defines the ItemImage type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Model
+namespace TdService.Model.Items
 {
     /// <summary>
-    /// The weight of an order.
+    /// Item image.
     /// </summary>
-    public struct Weight
+    public class ItemImage
     {
         /// <summary>
         /// Gets or sets Id.
@@ -20,23 +20,18 @@ namespace TdService.Model
         public int Id { get; set; }
 
         /// <summary>
-        /// Gets or sets Pounds.
+        /// Gets or sets Filename.
         /// </summary>
-        public float Pounds { get; set; }
+        public string Filename { get; set; }
 
         /// <summary>
-        /// Gets or sets Ounces.
+        /// Gets or sets Path.
         /// </summary>
-        public float Ounces { get; set; }
+        public string Path { get; set; }
 
         /// <summary>
-        /// Gets or sets Kilograms.
+        /// Gets or sets PictureType.
         /// </summary>
-        public float Kilograms { get; set; }
-
-        /// <summary>
-        /// Gets or sets Grams.
-        /// </summary>
-        public float Grams { get; set; }
+        public ImageType PictureType { get; set; }
     }
 }

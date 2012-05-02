@@ -1,32 +1,32 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="OrderStatus.cs" company="TdService">
+// <copyright file="Role.cs" company="TdService">
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
-//   Defines the OrderStatus type.
+//   Defines the Role type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Model.Orders
+namespace TdService.Model.Membership
 {
     /// <summary>
-    /// Order status.
+    /// User role.
     /// </summary>
-    public enum OrderStatus
+    public class Role
     {
         /// <summary>
-        /// Waiting arrival.
+        /// Gets or sets Name.
         /// </summary>
-        WaitingArrival = 0,
+        public string Name { get; set; }
 
         /// <summary>
-        /// Arrived status.
+        /// Gets or sets Id.
         /// </summary>
-        Arrived = 1,
+        public int Id { get; set; }
 
         /// <summary>
-        /// Processed status.
+        /// Gets or sets Description.
         /// </summary>
-        Processed = 2,
+        public string Description { get; set; }
     }
 }

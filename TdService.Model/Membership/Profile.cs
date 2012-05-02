@@ -4,19 +4,17 @@
 //     Changes to this file will be lost if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-namespace TdService.Domain
-{
-	using System;
-	using System.Collections.Generic;
-	using System.Linq;
-	using System.Text;
 
-	public enum ParcelStatus : int
-	{
-		PendingPayment = 0,
-		Processing = 3,
-		Paid = 1,
-		Collected,
-		Dispatched,
-	}
+namespace TdService.Model.Membership
+{
+    public class Profile
+    {
+        public int Id { get; set; }
+
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        public NotificationRules NotificationRules { get; set; }
+    }
 }

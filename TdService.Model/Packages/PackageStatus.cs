@@ -1,42 +1,42 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Weight.cs" company="TdService">
+// <copyright file="PackageStatus.cs" company="TdService">
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
-//   Defines the Weight type.
+//   Defines the PackageStatus type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Model
+namespace TdService.Model.Packages
 {
     /// <summary>
-    /// The weight of an order.
+    /// Status of the package.
     /// </summary>
-    public struct Weight
+    public enum PackageStatus
     {
         /// <summary>
-        /// Gets or sets Id.
+        /// Pending payment
         /// </summary>
-        public int Id { get; set; }
+        PendingPayment = 0,
 
         /// <summary>
-        /// Gets or sets Pounds.
+        /// In progress
         /// </summary>
-        public float Pounds { get; set; }
+        Processing = 3,
 
         /// <summary>
-        /// Gets or sets Ounces.
+        /// Paid status
         /// </summary>
-        public float Ounces { get; set; }
+        Paid = 1,
 
         /// <summary>
-        /// Gets or sets Kilograms.
+        /// Collected status
         /// </summary>
-        public float Kilograms { get; set; }
+        Collected,
 
         /// <summary>
-        /// Gets or sets Grams.
+        /// Dispatched status
         /// </summary>
-        public float Grams { get; set; }
+        Dispatched,
     }
 }

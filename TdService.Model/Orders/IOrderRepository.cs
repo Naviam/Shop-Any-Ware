@@ -7,11 +7,13 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using TdService.Model.Items;
+
 namespace TdService.Model.Orders
 {
     using System;
     using System.Collections.Generic;
-    using Domain;
+    using Model;
 
     /// <summary>
     /// Interface for order repository.
@@ -113,7 +115,7 @@ namespace TdService.Model.Orders
         /// <param name="picture">
         /// The picture.
         /// </param>
-        void AddPhotos(int orderId, IEnumerable<Picture> picture);
+        void AddPhotos(int orderId, IEnumerable<ItemImage> picture);
 
         /// <summary>
         /// Update order status.

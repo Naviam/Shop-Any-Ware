@@ -4,28 +4,22 @@
 //     Changes to this file will be lost if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-namespace TdService.Domain
+namespace TdService.Model
 {
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Text;
 
-	public class Profile
+	public class NotificationRules
 	{
-		public virtual string FirstName
+		public virtual bool NotifyOrderStatusChanged
 		{
 			get;
 			set;
 		}
 
-		public virtual string LastName
-		{
-			get;
-			set;
-		}
-
-		public virtual NotificationRules NotificationRules
+		public virtual bool NotifyParcelStatusChanged
 		{
 			get;
 			set;

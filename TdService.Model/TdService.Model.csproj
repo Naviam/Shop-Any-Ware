@@ -46,37 +46,37 @@
   <ItemGroup>
     <Compile Include="Addresses\Address.cs" />
     <Compile Include="Wallet\Balance.cs" />
-    <Compile Include="Shoppers\DeliveryAddress.cs" />
+    <Compile Include="Addresses\DeliveryAddress.cs" />
     <Compile Include="Shipping\DispatchMethod.cs" />
     <Compile Include="Domain\Price.cs" />
     <Compile Include="Items\Item.cs" />
-    <Compile Include="Shoppers\NotificationRules.cs" />
+    <Compile Include="Notification\NotificationRules.cs" />
     <Compile Include="Orders\OrderLineItem.cs" />
     <Compile Include="Orders\OrderStatus.cs" />
-    <Compile Include="Packages\Parcel.cs" />
-    <Compile Include="Packages\ParcelStatus.cs" />
-    <Compile Include="Domain\Picture.cs" />
-    <Compile Include="Domain\PictureType.cs" />
-    <Compile Include="Shoppers\Profile.cs" />
+    <Compile Include="Packages\Package.cs" />
+    <Compile Include="Packages\PackageStatus.cs" />
+    <Compile Include="Items\ItemImage.cs" />
+    <Compile Include="Items\ImageType.cs" />
+    <Compile Include="Membership\Profile.cs" />
     <Compile Include="Items\IItemAttribute.cs" />
     <Compile Include="Items\ItemColor.cs" />
     <Compile Include="Items\ItemSize.cs" />
     <Compile Include="Orders\Order.cs" />
-    <Compile Include="Shop.cs" />
+    <Compile Include="Retailer.cs" />
     <Compile Include="Addresses\IAddressRepository.cs" />
     <Compile Include="Items\IItemRepository.cs" />
-    <Compile Include="Shoppers\INotificationRepository.cs" />
+    <Compile Include="Notification\INotificationRepository.cs" />
     <Compile Include="Orders\IOrderRepository.cs" />
-    <Compile Include="Packages\IParcelRepository.cs" />
-    <Compile Include="Shoppers\IProfileRepository.cs" />
+    <Compile Include="Packages\IPackageRepository.cs" />
+    <Compile Include="Membership\IProfileRepository.cs" />
     <Compile Include="Repositories\IReportRepository.cs" />
-    <Compile Include="Shoppers\IRoleRepository.cs" />
-    <Compile Include="Shoppers\IUserRepository.cs" />
-    <Compile Include="Shoppers\Role.cs" />
+    <Compile Include="Membership\IRoleRepository.cs" />
+    <Compile Include="Membership\IUserRepository.cs" />
+    <Compile Include="Membership\Role.cs" />
     <Compile Include="Domain\Service.cs" />
     <Compile Include="Wallet\Transaction.cs" />
     <Compile Include="Wallet\TransactionStatus.cs" />
-    <Compile Include="Shoppers\User.cs" />
+    <Compile Include="Membership\User.cs" />
     <Compile Include="Weight.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -88,6 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />

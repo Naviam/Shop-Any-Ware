@@ -1,22 +1,25 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Parcel.cs" company="TdService">
+// <copyright file="Package.cs" company="TdService">
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
-//   Defines the Parcel type.
+//   Defines the Package type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
+
+using TdService.Model.Shipping;
 
 namespace TdService.Model.Packages
 {
     using System.Collections.Generic;
-    using Domain;
+    using Addresses;
+    using Model;
     using Orders;
 
     /// <summary>
     /// Parcel that user creates to send to home address.
     /// </summary>
-    public class Parcel
+    public class Package
     {
         /// <summary>
         /// Gets or sets Id.
@@ -36,16 +39,16 @@ namespace TdService.Model.Packages
         /// <summary>
         /// Gets or sets Orders.
         /// </summary>
-        public virtual IEnumerable<Order> Orders { get; set; }
+        public IEnumerable<Order> Orders { get; set; }
 
         /// <summary>
         /// Gets or sets DispatchMethod.
         /// </summary>
-        public virtual DispatchMethod DispatchMethod { get; set; }
+        public DispatchMethod DispatchMethod { get; set; }
 
         /// <summary>
         /// Gets or sets Services.
         /// </summary>
-        public virtual IEnumerable<Service> Services { get; set; }
+        public IEnumerable<Service> Services { get; set; }
     }
 }

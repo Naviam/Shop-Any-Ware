@@ -29,7 +29,7 @@ namespace TdService.TestConsole
             var order = new Order
                             {
                                 OrderNumber = "4534523d",
-                                Shop = new Shop(),
+                                Retailer = new Retailer(),
                                 TrackingNumber = "1Zdrr844353459",
                                 ArrivalDate = DateTime.Now,
                                 Weight = new Weight { Pounds = 5, Ounces = 1 }
