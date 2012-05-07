@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TdService
+namespace TdService.Data.SqlRepository
 {
     using System.Data.Entity;
     using Model;

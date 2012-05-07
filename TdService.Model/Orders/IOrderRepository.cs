@@ -7,12 +7,11 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using TdService.Model.Items;
-
 namespace TdService.Model.Orders
 {
     using System;
     using System.Collections.Generic;
+    using Items;
     using Model;
 
     /// <summary>

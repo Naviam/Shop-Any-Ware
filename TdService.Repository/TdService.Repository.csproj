@@ -8,8 +8,8 @@
     <ProjectGuid>{D536586D-E628-4049-B826-AB0B57FC99FF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TdService</RootNamespace>
-    <AssemblyName>TdService.Repository</AssemblyName>
+    <RootNamespace>TdService.Data.SqlRepository</RootNamespace>
+    <AssemblyName>TdService.SqlRepository</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\TdService\</SolutionDir>
@@ -66,9 +66,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\TdService.Infrastructure\TdService.Infrastructure.csproj">
       <Project>{81B36459-F01A-4F69-869B-EA585BEE2005}</Project>

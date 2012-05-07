@@ -7,6 +7,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using TdService.Data.SqlRepository;
+
 namespace TdService.TestConsole
 {
     using System;

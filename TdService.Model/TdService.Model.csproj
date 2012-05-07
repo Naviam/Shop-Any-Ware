@@ -45,6 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Addresses\Address.cs" />
+    <Compile Include="Orders\IRequestForOrderRepository.cs" />
+    <Compile Include="Orders\RequestForOrder.cs" />
     <Compile Include="Wallet\Balance.cs" />
     <Compile Include="Addresses\DeliveryAddress.cs" />
     <Compile Include="Shipping\DispatchMethod.cs" />

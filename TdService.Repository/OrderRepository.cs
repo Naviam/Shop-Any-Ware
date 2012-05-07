@@ -4,12 +4,11 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-using TdService.Model.Items;
-
-namespace TdService
+namespace TdService.Data.SqlRepository
 {
     using System;
     using System.Collections.Generic;
+    using Model.Items;
     using Model.Orders;
 
     /// <summary>
