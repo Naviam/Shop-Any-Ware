@@ -7,9 +7,6 @@
 namespace TdService.Model.Orders
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
     using Infrastructure.Domain;
 
     /// <summary>
@@ -17,9 +14,15 @@ namespace TdService.Model.Orders
     /// </summary>
     public class RequestForOrder : EntityBase<int>
     {
+        /// <summary>
+        /// Gets or sets ShopName.
+        /// </summary>
         public string ShopName { get; set; }
 
-        public string S { get; set; }
+        /// <summary>
+        /// Gets or sets Retailer.
+        /// </summary>
+        public Retailer Retailer { get; set; }
 
         protected override void Validate()
         {

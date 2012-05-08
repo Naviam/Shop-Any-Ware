@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<activityRootModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="0dfbc501-4b3b-4abc-8715-4d1010c1cf55" name="Order Flow" linkedPackageId="ea6523ef-c8b1-4abe-b8c1-f9fc7fdb975e" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner">
+  <ownedCommentsInternal>
+    <comment Id="5d165c73-6061-4b72-81e5-6cd7348c663b">
+      <elementDefinition Id="2f3c0ead-ff42-4ebc-8654-27d8a11d1a56" />
+      <body>владелец не найден</body>
+    </comment>
+    <comment Id="c10bbca8-1caa-445e-a99c-84f681031dac">
+      <elementDefinition Id="c7c29a15-7df1-43fb-9eb8-6cda7e1c14fc" />
+      <body>владелец найден</body>
+    </comment>
+    <comment Id="7918e193-ae3a-42c2-b55d-b54ea26ca71a">
+      <elementDefinition Id="b6cdf160-8816-4711-9232-035e6566326f" />
+      <body>пока заказ не получен можно отменить</body>
+    </comment>
+    <comment Id="14c10957-4099-46d3-b28b-d0c56bbce2d4">
+      <elementDefinition Id="e0c625a4-3a28-4b93-983c-f4e1a3bb905e" />
+      <body>если заказ пришел и был по какой-то причине отменен то владельцу будет выслано письмо</body>
+    </comment>
+    <comment Id="bc45f7e2-719e-4e86-b90d-3cb7422a13a9">
+      <elementDefinition Id="e9b3dc60-d141-466d-95cb-096534ff4d05" />
+      <body>пользователь может заранее указать на любом этапе после того как заказ создан в системе что нужно сформировать посылку включающую все вещи в заказе</body>
+    </comment>
+  </ownedCommentsInternal>
+  <appliedStereotypesInternal>
+    <stereotypeInstance Id="13a08144-bcc9-4070-88a7-a9bc2d728fd2" name="namespace" profile="CSharpProfile">
+      <elementDefinition Id="83215c40-e8ab-4007-8499-f71aa2691e39" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="fbe58833-e19b-4d3d-bfd6-b8a2aec6c9e5">
+          <propertyInstance Id="e94c76f4-ac7e-4d3b-8e1f-3bae60e6c910" name="BaseName" value="TdService">
+            <elementDefinition Id="9ce0693a-9a0f-4273-b99b-0ac34f47f58e" />
+          </propertyInstance>
+          <elementDefinition Id="4a043077-7e5b-4fd9-96a7-64d7635201c1" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="7433f8b6-dd71-42e8-ba42-e07c90464a83">
+          <propertyInstance Id="f9c1ed14-bf75-4137-8aad-bf7453977d91" name="ClrAttributes">
+            <elementDefinition Id="2e84046b-908f-4a32-98d4-39e94d9d705e" />
+          </propertyInstance>
+          <elementDefinition Id="beda8572-1b32-41a2-b7ed-7c09aa26de3a" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="cd3b8e40-828e-4eef-be26-c21157171157">
+          <propertyInstance Id="c7511f46-a195-479c-88c6-6c6850559aaa" name="Usings">
+            <elementDefinition Id="167efa69-29f8-4f1e-bb3f-4b1a8e50ad7b" />
+          </propertyInstance>
+          <elementDefinition Id="9e12bd4b-c667-4f8d-b4b0-34c1a0d569a5" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+    <stereotypeInstance Id="3b235971-d6d6-4824-95cf-cd2f1183d56d" name="TextTemplateBindings" profile="TextTemplateBindings">
+      <elementDefinition Id="8846ae1b-9e13-4ef1-93e8-c9b2308fd2f9" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="ef2a3ed3-0753-480e-95c9-7e90057373f2">
+          <propertyInstance Id="0e3138ba-fd56-4740-8c14-461277c8fa5b" name="Alias" value="ClassTemplate|EnumTemplate|InterfaceTemplate|StructTemplate">
+            <elementDefinition Id="3472a760-5369-47af-8753-eaf1f365bf4e" />
+          </propertyInstance>
+          <elementDefinition Id="339138bf-7878-4975-901f-2ec6c33bd3e9" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="4cb6b821-a1f1-49eb-9463-cf277fa261b6">
+          <propertyInstance Id="cb94448a-e36d-411a-9a52-78f4d1e2c0d3" name="TemplateFilePath" value="ClassTemplate=C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.ClassTemplate.t4|EnumTemplate=C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.EnumTemplate.t4|InterfaceTemplate=C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.InterfaceTemplate.t4|StructTemplate=C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Visualization and Modeling Feature Pack\2.0\Templates\Text\TdService.StructTemplate.t4">
+            <elementDefinition Id="459ae12b-427c-4742-8c4d-03fa5c4848fa" />
+          </propertyInstance>
+          <elementDefinition Id="0b7fdb28-9464-4fb3-9b1a-63e64e3015e2" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="b788057d-4ace-4d74-941a-5886edb884e1">
+          <propertyInstance Id="246e9af4-c163-4106-ae3f-7ec1fc51b232" name="ProjectPath" value="ClassTemplate=..\TdService.Domain\TdService.Domain.csproj|EnumTemplate=..\TdService.Domain\TdService.Domain.csproj|InterfaceTemplate=..\TdService.Domain\TdService.Domain.csproj|StructTemplate=..\TdService.Domain\TdService.Domain.csproj">
+            <elementDefinition Id="7cc5cd71-11b2-451f-9656-769cf85f48ec" />
+          </propertyInstance>
+          <elementDefinition Id="587eceeb-25a5-4665-a1d3-8d4c1fea0827" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="c449f239-4ac1-4c53-9f42-fc7b41e35647">
+          <propertyInstance Id="fb638719-6677-482b-86b0-1fa760fbc840" name="TargetDirectory" value="ClassTemplate={PackageStructure}|EnumTemplate={PackageStructure}|InterfaceTemplate={PackageStructure}|StructTemplate={PackageStructure}">
+            <elementDefinition Id="dbda9d32-9304-4b19-b5fe-b3d5e6d5539b" />
+          </propertyInstance>
+          <elementDefinition Id="0172f644-f774-4dab-996a-09d1267fdecf" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="cf67b2c6-2a0d-4d15-a991-b12287d126f7">
+          <propertyInstance Id="5947ea48-50a9-4463-ad96-44d32cdcfecd" name="TargetName" value="ClassTemplate={Name}|EnumTemplate={Name}|InterfaceTemplate={Name}|StructTemplate={Name}">
+            <elementDefinition Id="a48101f4-3421-4b10-9cf3-66dbb92c1fab" />
+          </propertyInstance>
+          <elementDefinition Id="8ce73baa-a5a3-4c89-a566-97d0fadc1b13" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="7f94f016-f42a-4088-bdd8-15b132459519">
+          <propertyInstance Id="20e6757c-7172-4a92-95cd-23fbff9ed04c" name="Overwrite" value="ClassTemplate=False|EnumTemplate=True|InterfaceTemplate=True|StructTemplate=True">
+            <elementDefinition Id="075e63c1-4076-4e13-8ebd-67950f26cf3a" />
+          </propertyInstance>
+          <elementDefinition Id="6678a209-ab3e-44a4-85bc-444f6be5ee46" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="4726c49c-3fd9-4e34-89c2-fb56132d0cbf">
+          <propertyInstance Id="dea3a906-d942-4f89-83f4-3bf5c1cf7fd7" name="Parameters">
+            <elementDefinition Id="c1b6d19e-8647-4279-8125-69850c99a4fb" />
+          </propertyInstance>
+          <elementDefinition Id="513e5963-c807-47ec-a46c-717626c8a771" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+  </appliedStereotypesInternal>
+  <profileInstances>
+    <packageHasProfileInstances Id="9c575e98-cdba-44e8-8810-33b60259e249">
+      <profileInstance Id="ce330914-ba55-4db3-9277-29f016b28dda" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="43bce529-d4ff-45e8-ad7a-2976a4f49c15">
+      <profileInstance Id="f41a0bfd-d1be-4013-8e72-d6ac978e40b2" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="f08f975a-6b41-4a39-a6b2-e68e46481138">
+      <profileInstance Id="76ebde1d-fdeb-4e23-a0aa-9a8876c8cb02" name="TextTemplateBindings">
+        <elementDefinition Id="19fcac95-f5d2-4773-b284-5fd2debd864c" />
+      </profileInstance>
+      <elementDefinition Id="91062264-0281-4ed4-9610-38da3816671b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="f4c3bf9d-3b8d-4744-a1b1-3d6e72e9a916">
+      <profileInstance Id="48084774-7ace-4dc2-b9ee-fa15d401f907" name="CSharpProfile">
+        <elementDefinition Id="71d78747-3c24-4160-bbec-b01fff4d0349" />
+      </profileInstance>
+      <elementDefinition Id="dbed6c01-0c96-4afa-963b-e5ae39313121" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <activityRootModelHasActivity>
+      <activity Id="5243a552-0745-4ed8-a8e4-9ed8050bd319" name="Order Flow" isAbstract="false" isLeaf="false" isActiveClass="false" isReentrant="false" isReadOnly="false" isSingleExecution="false">
+        <elementDefinition Id="7e023f4a-74d3-40b6-821f-5bef060eb318" />
+        <nodes>
+          <initialNode Id="7768fb03-0163-4126-9f66-a1df61307ddb" name="Initial1" isLeaf="false">
+            <elementDefinition Id="1a3daeea-00ef-4c2b-9dd3-8271449f1263" />
+            <flowNodeTargets>
+              <controlFlow Id="c8909109-66a8-439c-8943-a4e5b0d62bb9" isLeaf="false">
+                <opaqueActionMoniker Id="5177220f-c785-49ca-9459-88075c0c40da" LastKnownName="Создание заказа" />
+                <elementDefinition Id="3d5da6f6-c0e3-409d-8343-e4b67b54a3de" />
+              </controlFlow>
+            </flowNodeTargets>
+          </initialNode>
+          <opaqueAction Id="5177220f-c785-49ca-9459-88075c0c40da" name="Создание заказа" isLeaf="false">
+            <elementDefinition Id="4b6cf032-0257-4cdc-bba2-9ad99de00bea" />
+            <flowNodeTargets>
+              <controlFlow Id="f2b0193f-ef0b-4c1c-9929-99d3a0eb5890" isLeaf="false">
+                <decisionNodeMoniker Id="38f316a5-83bc-4b34-bdc7-12eb0e547ca4" LastKnownName="Decision1" />
+                <elementDefinition Id="6184dec5-3734-4a09-9eeb-16e41a4acf0b" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="26f2eb4e-f8bf-4baa-bad7-c5369fb2995b" name="Отмена заказа" isLeaf="false">
+            <elementDefinition Id="461dbaab-8ef1-4597-ad5a-a005dfd877ec" />
+          </opaqueAction>
+          <opaqueAction Id="82db19bf-4929-483a-ae77-35f18bb75da0" name="Сканирование инвойса и добавление вещей в заказ" isLeaf="false">
+            <elementDefinition Id="c72efc9b-6edc-4429-94b6-084f045aba20" />
+            <flowNodeTargets>
+              <controlFlow Id="f364f862-9037-436b-a9fb-7275eae31ed4" isLeaf="false">
+                <opaqueActionMoniker Id="65380672-bc8f-4067-b857-e4d1a26a1cca" LastKnownName="Добавление фотографий и взвешивание каждой вещи" />
+                <elementDefinition Id="0ad24a49-a130-47c5-9d5d-42dbf26dad26" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="b4768e55-7869-41cb-89f3-9de9b317dbf1" name="Получение заказа у курьера и определение владельца посылки" isLeaf="false">
+            <elementDefinition Id="531061ee-a981-49b9-a626-c47a8b0e7ee1" />
+            <flowNodeTargets>
+              <controlFlow Id="ee21a7e9-9baf-479a-bab6-c0af84391c10" isLeaf="false">
+                <decisionNodeMoniker Id="9cb82998-3db7-42c8-826a-e31e35a843ef" LastKnownName="Decision2" />
+                <elementDefinition Id="afddd327-b7cb-4b5f-8b63-184c2c23fef0" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="65380672-bc8f-4067-b857-e4d1a26a1cca" name="Добавление фотографий и взвешивание каждой вещи" isLeaf="false">
+            <elementDefinition Id="8240bd33-969e-4b33-8597-07d68777e20e" />
+            <flowNodeTargets>
+              <controlFlow Id="cadacfd9-920f-4c28-89fd-a970bc0a7602" isLeaf="false">
+                <opaqueActionMoniker Id="bd76b654-b046-4517-a2ee-b5578e8e3ab5" LastKnownName="Заказ готов к дальнейшему формированию посылки из него" />
+                <elementDefinition Id="6b20f1c5-e7f7-4a5f-b8fa-329ec652b405" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="79664477-c049-4951-bcad-2fe2e1c31989" name="Утилизация" isLeaf="false">
+            <elementDefinition Id="b2a3ecf3-5f37-40ff-b6f4-62a70a506b86" />
+          </opaqueAction>
+          <decisionNode Id="38f316a5-83bc-4b34-bdc7-12eb0e547ca4" name="Decision1" isLeaf="false">
+            <elementDefinition Id="81a2b2b4-7e79-482c-8ab6-1cb15b7af0e5" />
+            <flowNodeTargets>
+              <controlFlow Id="62be3f08-86b5-4fc8-9465-df5f667b1563" isLeaf="false">
+                <opaqueActionMoniker Id="26f2eb4e-f8bf-4baa-bad7-c5369fb2995b" LastKnownName="Отмена заказа" />
+                <elementDefinition Id="8696aa8d-6085-48a6-929b-7f4ea24ecb0f" />
+              </controlFlow>
+              <controlFlow Id="93df16fe-efc1-403c-a3a7-2654bce37e67" isLeaf="false">
+                <opaqueActionMoniker Id="b4768e55-7869-41cb-89f3-9de9b317dbf1" LastKnownName="Получение заказа у курьера и определение владельца посылки" />
+                <elementDefinition Id="499e9b0e-d671-47b6-b280-c01b47318969" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <decisionNode Id="9cb82998-3db7-42c8-826a-e31e35a843ef" name="Decision2" isLeaf="false">
+            <elementDefinition Id="7a889544-a5c8-4532-9f29-cbe7212327e5" />
+            <flowNodeTargets>
+              <controlFlow Id="fe154dd8-2265-42d4-86a4-fc399ea3454b" isLeaf="false">
+                <opaqueActionMoniker Id="79664477-c049-4951-bcad-2fe2e1c31989" LastKnownName="Утилизация" />
+                <elementDefinition Id="51b1eac1-61c6-4219-b991-834c82b801df" />
+              </controlFlow>
+              <controlFlow Id="d529557b-10b8-4d7f-a611-509f3c54cfb7" isLeaf="false">
+                <opaqueActionMoniker Id="82db19bf-4929-483a-ae77-35f18bb75da0" LastKnownName="Сканирование инвойса и добавление вещей в заказ" />
+                <elementDefinition Id="66f95477-83eb-45e3-b014-edc61fe2031b" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <opaqueAction Id="bd76b654-b046-4517-a2ee-b5578e8e3ab5" name="Заказ готов к дальнейшему формированию посылки из него" isLeaf="false">
+            <elementDefinition Id="bd244c3b-0568-457e-ac4e-e56e3fe6d427" />
+            <flowNodeTargets>
+              <controlFlow Id="9ddabbf8-9902-4374-91fc-c630ff6f0b6b" isLeaf="false">
+                <activityFinalNodeMoniker Id="f25b244d-d83a-4399-8b77-9184e8aebb69" LastKnownName="ActivityFinal1" />
+                <elementDefinition Id="507cfe08-1747-43f5-811b-e96b6218388f" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <activityFinalNode Id="f25b244d-d83a-4399-8b77-9184e8aebb69" name="ActivityFinal1" isLeaf="false">
+            <elementDefinition Id="2c646e7d-3ef4-4a58-9760-5b0b44bddbd9" />
+          </activityFinalNode>
+        </nodes>
+      </activity>
+    </activityRootModelHasActivity>
+  </packagedElements>
+  <package Id="ea6523ef-c8b1-4abe-b8c1-f9fc7fdb975e" name="TdService.Modeling">
+    <elementDefinition Id="e006d43a-3bc9-452c-a7ce-47edd28d044b" />
+  </package>
+</activityRootModel>

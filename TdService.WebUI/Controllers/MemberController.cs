@@ -63,7 +63,7 @@ namespace TdService.Web.Controllers
         /// </returns>
         public ActionResult Dashboard()
         {
-            this.repository.AddOrder(new Order { ArrivalDate = DateTime.UtcNow.Date });
+            this.repository.AddOrder(new Order { ReceivedDate = DateTime.UtcNow.Date });
             return View();
         }
     }

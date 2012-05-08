@@ -33,7 +33,7 @@ namespace TdService.TestConsole
                                 OrderNumber = "4534523d",
                                 Retailer = new Retailer(),
                                 TrackingNumber = "1Zdrr844353459",
-                                ArrivalDate = DateTime.Now,
+                                ReceivedDate = DateTime.Now,
                                 Weight = new Weight { Pounds = 5, Ounces = 1 }
                             };
             var repo = new OrderRepository();

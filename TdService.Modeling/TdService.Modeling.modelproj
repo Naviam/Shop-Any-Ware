@@ -31,6 +31,13 @@
       <SubType>Content</SubType>
       <DependentUpon>Activities\Add Money.activitydiagram</DependentUpon>
     </Content>
+    <Content Include="Activities\Order Flow.activitydiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Activities\Order Flow.activitydiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Activities\Order Flow.activitydiagram</DependentUpon>
+    </Content>
     <Content Include="Activities\View Balance.activitydiagram">
       <SubType>Content</SubType>
     </Content>

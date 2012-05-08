@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner"
   dslVersion="1.0.0.0"
   Id="e006d43a-3bc9-452c-a7ce-47edd28d044b"
   name="TdService.Modeling" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -359,6 +359,26 @@ Reset Password</body>
           LastKnownName="Update Parcel Status"
           LastKnownLocation="Package_0107.uml" />
       </annotatedElements>
+    </comment>
+    <comment
+      Id="2f3c0ead-ff42-4ebc-8654-27d8a11d1a56">
+      <body>владелец не найден</body>
+    </comment>
+    <comment
+      Id="c7c29a15-7df1-43fb-9eb8-6cda7e1c14fc">
+      <body>владелец найден</body>
+    </comment>
+    <comment
+      Id="b6cdf160-8816-4711-9232-035e6566326f">
+      <body>пока заказ не получен можно отменить</body>
+    </comment>
+    <comment
+      Id="e0c625a4-3a28-4b93-983c-f4e1a3bb905e">
+      <body>если заказ пришел и был по какой-то причине отменен то владельцу будет выслано письмо</body>
+    </comment>
+    <comment
+      Id="e9b3dc60-d141-466d-95cb-096534ff4d05">
+      <body>пользователь может заранее указать на любом этапе после того как заказ создан в системе что нужно сформировать посылку включающую все вещи в заказе</body>
     </comment>
   </ownedCommentsInternal>
   <appliedStereotypesInternal>
@@ -1185,6 +1205,168 @@ Reset Password</body>
         Id="3f86ea51-655f-4b97-a2a0-d1a7a6f3f62c"
         LastKnownName="ViewModel"
         LastKnownLocation="Package_1030.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <activity
+        Id="7e023f4a-74d3-40b6-821f-5bef060eb318"
+        name="Order Flow"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false"
+        isReentrant="false"
+        isReadOnly="false"
+        isSingleExecution="false">
+        <nodes>
+          <initialNode
+            Id="1a3daeea-00ef-4c2b-9dd3-8271449f1263"
+            name="Initial1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="3d5da6f6-c0e3-409d-8343-e4b67b54a3de"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="4b6cf032-0257-4cdc-bba2-9ad99de00bea"
+                  LastKnownName="Создание заказа"
+                  LastKnownLocation="TdService.Modeling.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </initialNode>
+          <opaqueAction
+            Id="4b6cf032-0257-4cdc-bba2-9ad99de00bea"
+            name="Создание заказа"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="6184dec5-3734-4a09-9eeb-16e41a4acf0b"
+                isLeaf="false">
+                <decisionNodeMoniker
+                  Id="81a2b2b4-7e79-482c-8ab6-1cb15b7af0e5"
+                  LastKnownName="Decision1"
+                  LastKnownLocation="TdService.Modeling.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="461dbaab-8ef1-4597-ad5a-a005dfd877ec"
+            name="Отмена заказа"
+            isLeaf="false" />
+          <opaqueAction
+            Id="c72efc9b-6edc-4429-94b6-084f045aba20"
+            name="Сканирование инвойса и добавление вещей в заказ"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="0ad24a49-a130-47c5-9d5d-42dbf26dad26"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="8240bd33-969e-4b33-8597-07d68777e20e"
+                  LastKnownName="Добавление фотографий и взвешивание каждой вещи"
+                  LastKnownLocation="TdService.Modeling.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="531061ee-a981-49b9-a626-c47a8b0e7ee1"
+            name="Получение заказа у курьера и определение владельца посылки"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="afddd327-b7cb-4b5f-8b63-184c2c23fef0"
+                isLeaf="false">
+                <decisionNodeMoniker
+                  Id="7a889544-a5c8-4532-9f29-cbe7212327e5"
+                  LastKnownName="Decision2"
+                  LastKnownLocation="TdService.Modeling.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="8240bd33-969e-4b33-8597-07d68777e20e"
+            name="Добавление фотографий и взвешивание каждой вещи"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="6b20f1c5-e7f7-4a5f-b8fa-329ec652b405"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="bd244c3b-0568-457e-ac4e-e56e3fe6d427"
+                  LastKnownName="Заказ готов к дальнейшему формированию посылки из него"
+                  LastKnownLocation="TdService.Modeling.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="b2a3ecf3-5f37-40ff-b6f4-62a70a506b86"
+            name="Утилизация"
+            isLeaf="false" />
+          <decisionNode
+            Id="81a2b2b4-7e79-482c-8ab6-1cb15b7af0e5"
+            name="Decision1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="8696aa8d-6085-48a6-929b-7f4ea24ecb0f"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="461dbaab-8ef1-4597-ad5a-a005dfd877ec"
+                  LastKnownName="Отмена заказа"
+                  LastKnownLocation="TdService.Modeling.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="499e9b0e-d671-47b6-b280-c01b47318969"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="531061ee-a981-49b9-a626-c47a8b0e7ee1"
+                  LastKnownName="Получение заказа у курьера и определение владельца посылки"
+                  LastKnownLocation="TdService.Modeling.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <decisionNode
+            Id="7a889544-a5c8-4532-9f29-cbe7212327e5"
+            name="Decision2"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="51b1eac1-61c6-4219-b991-834c82b801df"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="b2a3ecf3-5f37-40ff-b6f4-62a70a506b86"
+                  LastKnownName="Утилизация"
+                  LastKnownLocation="TdService.Modeling.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="66f95477-83eb-45e3-b014-edc61fe2031b"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="c72efc9b-6edc-4429-94b6-084f045aba20"
+                  LastKnownName="Сканирование инвойса и добавление вещей в заказ"
+                  LastKnownLocation="TdService.Modeling.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <opaqueAction
+            Id="bd244c3b-0568-457e-ac4e-e56e3fe6d427"
+            name="Заказ готов к дальнейшему формированию посылки из него"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="507cfe08-1747-43f5-811b-e96b6218388f"
+                isLeaf="false">
+                <activityFinalNodeMoniker
+                  Id="2c646e7d-3ef4-4a58-9760-5b0b44bddbd9"
+                  LastKnownName="ActivityFinal1"
+                  LastKnownLocation="TdService.Modeling.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <activityFinalNode
+            Id="2c646e7d-3ef4-4a58-9760-5b0b44bddbd9"
+            name="ActivityFinal1"
+            isLeaf="false" />
+        </nodes>
+      </activity>
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType

@@ -17,16 +17,26 @@ namespace TdService.Model.Orders
         /// <summary>
         /// Waiting arrival.
         /// </summary>
-        WaitingArrival = 0,
+        New = 0,
 
         /// <summary>
-        /// Arrived status.
+        /// Arrived order.
         /// </summary>
-        Arrived = 1,
+        Received = 1,
 
         /// <summary>
-        /// Processed status.
+        /// Ready for package creation.
         /// </summary>
-        Processed = 2,
+        Ready = 2,
+
+        /// <summary>
+        /// Cancelled status.
+        /// </summary>
+        Canceled = 3,
+
+        /// <summary>
+        /// Returned to seller.
+        /// </summary>
+        Returned = 4
     }
 }
