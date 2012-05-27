@@ -7,13 +7,13 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using TdService.Data.SqlRepository;
-
 namespace TdService.Web.Controllers
 {
     using System;
     using System.Web.Mvc;
     using Model.Orders;
+
+    using TdService.Data.SqlRepository;
 
     /// <summary>
     /// The controller that contains membership methods.
@@ -52,7 +52,7 @@ namespace TdService.Web.Controllers
         /// </returns>
         public ActionResult Home()
         {
-            return View();
+            return this.View();
         }
 
         /// <summary>
@@ -63,8 +63,12 @@ namespace TdService.Web.Controllers
         /// </returns>
         public ActionResult Dashboard()
         {
-            this.repository.AddOrder(new Order { ReceivedDate = DateTime.UtcNow.Date });
-            return View();
+            this.repository.AddOrder(new Order(new OrderNewState())
+            {
+                CreatedDate = DateTime.UtcNow.Date,
+                ReceivedDate = DateTime.UtcNow.Date
+            });
+            return this.View();
         }
     }
 }

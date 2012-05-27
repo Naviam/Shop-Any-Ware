@@ -16,16 +16,13 @@ namespace TdService.Model.Membership
     using Orders;
     using Packages;
 
+    using TdService.Infrastructure.Domain;
+
     /// <summary>
     /// This class describes user in the system
     /// </summary>
-    public class User
+    public class User : EntityBase<int>
     {
-        /// <summary>
-        /// Gets or sets Id.
-        /// </summary>
-        public int Id { get; set; }
-
         /// <summary>
         /// Gets or sets Email.
         /// </summary>
@@ -37,14 +34,9 @@ namespace TdService.Model.Membership
         public string Password { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether IsActive.
+        /// Gets or sets Row Version.
         /// </summary>
-        public bool IsActive { get; set; }
-
-        /// <summary>
-        /// Gets or sets ActivationGuid.
-        /// </summary>
-        public string ActivationGuid { get; set; }
+        public byte[] RowVersion { get; set; }
 
         /// <summary>
         /// Gets or sets Profile.
@@ -77,12 +69,12 @@ namespace TdService.Model.Membership
         public IEnumerable<Package> Parcels { get; set; }
 
         /// <summary>
-        /// Activate user.
+        /// Validate object.
         /// </summary>
         /// <exception cref="NotImplementedException">
-        /// Not yet implemented.
+        /// not yet implemented
         /// </exception>
-        public virtual void Activate()
+        protected override void Validate()
         {
             throw new NotImplementedException();
         }

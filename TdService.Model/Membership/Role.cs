@@ -9,10 +9,14 @@
 
 namespace TdService.Model.Membership
 {
+    using System;
+
+    using TdService.Infrastructure.Domain;
+
     /// <summary>
     /// User role.
     /// </summary>
-    public class Role
+    public class Role : EntityBase<int>
     {
         /// <summary>
         /// Gets or sets Name.
@@ -20,13 +24,24 @@ namespace TdService.Model.Membership
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets Id.
-        /// </summary>
-        public int Id { get; set; }
-
-        /// <summary>
         /// Gets or sets Description.
         /// </summary>
         public string Description { get; set; }
+
+        /// <summary>
+        /// Gets or sets Row Version.
+        /// </summary>
+        public byte[] RowVersion { get; set; }
+
+        /// <summary>
+        /// Validate business rules.
+        /// </summary>
+        /// <exception cref="NotImplementedException">
+        /// not implemented yet
+        /// </exception>
+        protected override void Validate()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

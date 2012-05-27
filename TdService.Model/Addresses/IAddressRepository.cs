@@ -16,8 +16,26 @@ namespace TdService.Model.Addresses
     /// </summary>
     public interface IAddressRepository 
     {
+        /// <summary>
+        /// Get the list of user's delivery addresses.
+        /// </summary>
+        /// <param name="username">
+        /// The username.
+        /// </param>
+        /// <returns>
+        /// Collection of user's delivery addresses.
+        /// </returns>
         IEnumerable<Address> GetDeliveryAddresses(string username);
 
+        /// <summary>
+        /// Get user's personal warehouse address.
+        /// </summary>
+        /// <param name="username">
+        /// The username.
+        /// </param>
+        /// <returns>
+        /// ShopAnyWare address for user's purchases delivery in U.S.
+        /// </returns>
         Address GetWarehouseAddress(string username);
 
         void AddDeliveryAddress(string username, Address address);

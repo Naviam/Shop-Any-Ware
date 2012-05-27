@@ -10,7 +10,6 @@
 namespace TdService.Model.Membership
 {
     using System.Collections.Generic;
-    using Membership;
 
     /// <summary>
     /// Interface for user role repository.
@@ -28,10 +27,10 @@ namespace TdService.Model.Membership
         /// <summary>
         /// Remove role.
         /// </summary>
-        /// <param name="roleId">
-        /// The role id.
+        /// <param name="role">
+        /// The role.
         /// </param>
-        void RemoveRole(int roleId);
+        void RemoveRole(Role role);
 
         /// <summary>
         /// Update role.

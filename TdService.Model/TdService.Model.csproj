@@ -49,6 +49,7 @@
     <Compile Include="Orders\IOrderState.cs" />
     <Compile Include="Orders\IRequestForOrderRepository.cs" />
     <Compile Include="Orders\OrderCanceledState.cs" />
+    <Compile Include="Orders\OrderReceivedState.cs" />
     <Compile Include="Orders\RequestForOrder.cs" />
     <Compile Include="Orders\RequestForOrderStatus.cs" />
     <Compile Include="Wallet\Balance.cs" />

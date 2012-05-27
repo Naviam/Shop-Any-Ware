@@ -9,11 +9,14 @@
 
 namespace TdService.Model.Addresses
 {
+    using System;
+    using TdService.Infrastructure.Domain;
+
     /// <summary>
     /// This is a base class for address information.
     /// </summary>
-    public class Address
-	{
+    public class Address : EntityBase<int>
+    {
         /// <summary>
         /// Gets or sets AddressName.
         /// </summary>
@@ -65,8 +68,19 @@ namespace TdService.Model.Addresses
         public string State { get; set; }
 
         /// <summary>
-        /// Gets or sets Id.
+        /// Gets or sets Row Version.
         /// </summary>
-        public int Id { get; set; }
+        public byte[] RowVersion { get; set; }
+
+        /// <summary>
+        /// Validate object.
+        /// </summary>
+        /// <exception cref="NotImplementedException">
+        /// Not implemented yet.
+        /// </exception>
+        protected override void Validate()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

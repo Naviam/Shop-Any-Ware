@@ -69,6 +69,17 @@ namespace TdService.Model.Orders
         public Weight Weight { get; set; }
 
         /// <summary>
+        /// Gets a value indicating whether CanCancel.
+        /// </summary>
+        public bool CanCancel
+        {
+            get
+            {
+                return this.orderState.CanCancel;
+            }
+        }
+
+        /// <summary>
         /// Get order status.
         /// </summary>
         /// <returns>
@@ -102,22 +113,11 @@ namespace TdService.Model.Orders
         }
 
         /// <summary>
-        /// Can order be canceled?
-        /// </summary>
-        /// <returns>
-        /// Boolean value.
-        /// </returns>
-        public bool CanCancel()
-        {
-            return this.orderState.CanCancel();
-        }
-
-        /// <summary>
         /// Cancel order.
         /// </summary>
         public void Cancel()
         {
-            if (this.CanCancel())
+            if (this.CanCancel)
             {
                 this.orderState.Cancel(this);
             }

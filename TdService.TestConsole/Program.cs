@@ -7,13 +7,13 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using TdService.Data.SqlRepository;
-
 namespace TdService.TestConsole
 {
     using System;
     using Model;
     using Model.Orders;
+
+    using TdService.Data.SqlRepository;
 
     /// <summary>
     /// Main application entry point.
@@ -28,7 +28,7 @@ namespace TdService.TestConsole
         /// </param>
         public static void Main(string[] args)
         {
-            var order = new Order
+            var order = new Order(new OrderNewState())
                             {
                                 OrderNumber = "4534523d",
                                 Retailer = new Retailer(),

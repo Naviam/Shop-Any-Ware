@@ -7,11 +7,10 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using TdService.Model.Membership;
-
 namespace TdService.Model.Membership
 {
+    using System.Collections.Generic;
+
     /// <summary>
     /// Interface for user repository.
     /// </summary>
@@ -20,19 +19,19 @@ namespace TdService.Model.Membership
         /// <summary>
         /// Get user by name.
         /// </summary>
-        /// <param name="username">
-        /// The username.
+        /// <param name="email">
+        /// The user's email.
         /// </param>
         /// <returns>
         /// User object.
         /// </returns>
-        User GetUser(string username);
+        User GetUser(string email);
 
         /// <summary>
         /// Validate user credentials.
         /// </summary>
-        /// <param name="username">
-        /// The username.
+        /// <param name="email">
+        /// The user's email.
         /// </param>
         /// <param name="password">
         /// The password.
@@ -40,7 +39,7 @@ namespace TdService.Model.Membership
         /// <returns>
         /// Boolean value that indicates the result of validation.
         /// </returns>
-        bool ValidateUser(string username, string password);
+        bool ValidateUser(string email, string password);
 
         /// <summary>
         /// Add new user.
@@ -59,31 +58,22 @@ namespace TdService.Model.Membership
         void UpdateUser(User user);
 
         /// <summary>
-        /// Get users.
+        /// Get users sorted by email ascending.
         /// </summary>
-        /// <param name="sortDirection">
-        /// The sort direction.
-        /// </param>
-        /// <param name="sortExpression">
-        /// The sort expression.
-        /// </param>
-        /// <param name="filterExpression">
-        /// The filter expression.
-        /// </param>
         /// <param name="pageSize">
         /// The page size.
         /// </param>
         /// <returns>
         /// Collection of users.
         /// </returns>
-        IEnumerable<User> GetUsers(object sortDirection, string sortExpression, string filterExpression, int pageSize = 20);
+        IEnumerable<User> GetUsersSortedByEmailAsc(int pageSize = 20);
 
         /// <summary>
         /// Remove user.
         /// </summary>
-        /// <param name="username">
-        /// The username.
+        /// <param name="user">
+        /// The user.
         /// </param>
-        void RemoveUser(string username);
+        void RemoveUser(User user);
     }
 }

@@ -20,12 +20,14 @@ namespace TdService.Model.Orders
         OrderStatus Status { get; }
 
         /// <summary>
-        /// Tells if items can be added to this order.
+        /// Gets a value indicating whether items can be added to order.
         /// </summary>
-        /// <returns>
-        /// Boolean value indicating whether items can be added.
-        /// </returns>
-        bool CanAddItems();
+        bool CanAddItems { get; }
+
+        /// <summary>
+        /// Gets a value indicating whether order can be canceled.
+        /// </summary>
+        bool CanCancel { get; }
 
         /// <summary>
         /// Add item to the order.
@@ -42,14 +44,6 @@ namespace TdService.Model.Orders
         /// The items.
         /// </param>
         void AddItems(IEnumerable<Item> items);
-
-        /// <summary>
-        /// Tells if order can be cancelled.
-        /// </summary>
-        /// <returns>
-        /// Boolean value.
-        /// </returns>
-        bool CanCancel();
 
         /// <summary>
         /// Cancel order.

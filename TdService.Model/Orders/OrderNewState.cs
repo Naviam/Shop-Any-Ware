@@ -6,6 +6,11 @@
 
 namespace TdService.Model.Orders
 {
+    using System;
+    using System.Collections.Generic;
+
+    using TdService.Model.Items;
+
     /// <summary>
     /// Describes the cancelled order behavior.
     /// </summary>
@@ -20,14 +25,44 @@ namespace TdService.Model.Orders
         }
 
         /// <summary>
-        /// Indicates whether an order can be canceled.
+        /// Gets a value indicating whether items can be added to order.
         /// </summary>
-        /// <returns>
-        /// Boolean value.
-        /// </returns>
-        public bool CanCancel()
+        public bool CanAddItems
         {
-            return false;
+            get
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether the order can be canceled.
+        /// </summary>
+        bool IOrderState.CanCancel
+        {
+            get
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Add item to this order.
+        /// </summary>
+        /// <param name="item">
+        /// The item.
+        /// </param>
+        /// <exception cref="NotImplementedException">
+        /// Message describes 
+        /// </exception>
+        public void AddItem(Item item)
+        {
+            throw new NotImplementedException("Items cannot be added to canceled order.");
+        }
+
+        public void AddItems(IEnumerable<Item> items)
+        {
+            throw new System.NotImplementedException();
         }
 
         /// <summary>
