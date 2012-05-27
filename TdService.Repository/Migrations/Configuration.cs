@@ -7,11 +7,11 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Data.SqlRepository.Migrations
+namespace TdService.Repository.MsSql.Migrations
 {
     using System.Data.Entity.Migrations;
 
-    using TdService.Data.SqlRepository;
+    using TdService.Repository.MsSql;
 
     /// <summary>
     /// The configuration for database migration.

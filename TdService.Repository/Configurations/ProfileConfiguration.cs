@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TdService.Data.SqlRepository.Configurations
+namespace TdService.Repository.MsSql.Configurations
 {
     using System.Data.Entity.ModelConfiguration;
 
@@ -20,9 +20,9 @@ namespace TdService.Data.SqlRepository.Configurations
         /// </summary>
         public ProfileConfiguration()
         {
-            Property(p => p.FirstName).HasMaxLength(64).IsRequired();
-            Property(p => p.LastName).HasMaxLength(64).IsRequired();
-            Property(p => p.RowVersion).IsRowVersion();
+            this.Property(p => p.FirstName).HasMaxLength(64).IsRequired();
+            this.Property(p => p.LastName).HasMaxLength(64).IsRequired();
+            this.Property(p => p.RowVersion).IsRowVersion();
         }
     }
 }

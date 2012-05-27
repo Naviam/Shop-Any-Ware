@@ -10,8 +10,8 @@
     <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TdService.Web</RootNamespace>
-    <AssemblyName>TdService.Web</AssemblyName>
+    <RootNamespace>TdService.UI.Web.MVC</RootNamespace>
+    <AssemblyName>TdService.UI.Web.MVC</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>false</UseIISExpress>
@@ -113,15 +113,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\Combres.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AddressController.cs" />
-    <Compile Include="Controllers\BalanceController.cs" />
-    <Compile Include="Controllers\BaseController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MemberController.cs" />
-    <Compile Include="Controllers\OrderController.cs" />
-    <Compile Include="Controllers\ParcelController.cs" />
-    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -281,9 +272,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
@@ -299,17 +288,21 @@
       <Project>{4E87BDA7-4AF2-4D94-9A40-68B161FBB71A}</Project>
       <Name>TdService.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TdService.Presentation\TdService.Presentation.csproj">
+    <ProjectReference Include="..\TdService.Presentation\TdService.Controllers.csproj">
       <Project>{8C23E268-EACF-4E5F-B96A-3BB48238AADC}</Project>
-      <Name>TdService.Presentation</Name>
+      <Name>TdService.Controllers</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TdService.Repository\TdService.Repository.csproj">
+    <ProjectReference Include="..\TdService.Repository\TdService.Repository.MsSql.csproj">
       <Project>{D536586D-E628-4049-B826-AB0B57FC99FF}</Project>
-      <Name>TdService.Repository</Name>
+      <Name>TdService.Repository.MsSql</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TdService.Service\TdService.Service.csproj">
+    <ProjectReference Include="..\TdService.Service.Cache\TdService.Services.Cache.csproj">
+      <Project>{3782423D-0D89-47F8-8D84-0AB3AF741086}</Project>
+      <Name>TdService.Services.Cache</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TdService.Service\TdService.Services.csproj">
       <Project>{A9DEDA99-A27D-4687-B912-46F339EA36A4}</Project>
-      <Name>TdService.Service</Name>
+      <Name>TdService.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

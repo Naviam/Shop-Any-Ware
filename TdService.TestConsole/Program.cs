@@ -13,7 +13,7 @@ namespace TdService.TestConsole
     using Model;
     using Model.Orders;
 
-    using TdService.Data.SqlRepository;
+    using TdService.Repository.MsSql;
 
     /// <summary>
     /// Main application entry point.

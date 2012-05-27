@@ -7,11 +7,12 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Web.Controllers
+namespace TdService.Controllers
 {
     using System.Web.Mvc;
     using System.Web.Security;
-    using Service;
+
+    using TdService.Service;
 
     /// <summary>
     /// This controller is responsible for authentication and authorization of user.
@@ -26,7 +27,7 @@ namespace TdService.Web.Controllers
         /// </returns>
         public ActionResult SignIn()
         {
-            return View();
+            return this.View();
         }
 
         /// <summary>
@@ -43,7 +44,7 @@ namespace TdService.Web.Controllers
         {
             FormsAuthentication.RedirectFromLoginPage("demo", true);
 
-            return View();
+            return this.View();
 
             // return RedirectToAction("Index", "Home");
         }
@@ -56,7 +57,7 @@ namespace TdService.Web.Controllers
         /// </returns>
         public ActionResult SignUp()
         {
-            return View();
+            return this.View();
         }
 
         /// <summary>
@@ -71,7 +72,7 @@ namespace TdService.Web.Controllers
         [HttpPost]
         public ActionResult SignUp(SignUpRequest request)
         {
-            return RedirectToAction("SignIn");
+            return this.RedirectToAction("SignIn");
         }
 
         /// <summary>
@@ -83,7 +84,7 @@ namespace TdService.Web.Controllers
         public ActionResult SignOut()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("Index", "Home");
+            return this.RedirectToAction("Index", "Home");
         }
     }
 }

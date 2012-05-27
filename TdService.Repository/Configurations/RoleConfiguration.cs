@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TdService.Data.SqlRepository.Configurations
+namespace TdService.Repository.MsSql.Configurations
 {
     using System.Data.Entity.ModelConfiguration;
 
@@ -20,10 +20,10 @@ namespace TdService.Data.SqlRepository.Configurations
         /// </summary>
         public RoleConfiguration()
         {
-            Property(r => r.Name).IsRequired();
-            Property(r => r.Name).HasMaxLength(64);
-            Property(r => r.Description).HasMaxLength(256);
-            Property(r => r.RowVersion).IsRowVersion();
+            this.Property(r => r.Name).IsRequired();
+            this.Property(r => r.Name).HasMaxLength(64);
+            this.Property(r => r.Description).HasMaxLength(256);
+            this.Property(r => r.RowVersion).IsRowVersion();
         }
     }
 }

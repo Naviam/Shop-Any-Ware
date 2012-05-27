@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Web.Controllers
+namespace TdService.Controllers
 {
     using System.Web.Mvc;
 

@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TdService.Data.SqlRepository.Configurations
+namespace TdService.Repository.MsSql.Configurations
 {
     using System.Data.Entity.ModelConfiguration;
 
@@ -20,8 +20,8 @@ namespace TdService.Data.SqlRepository.Configurations
         /// </summary>
         public RetailerConfiguration()
         {
-            Property(r => r.Name).IsRequired().HasMaxLength(64);
-            Property(r => r.Category).IsRequired().HasMaxLength(64);
+            this.Property(r => r.Name).IsRequired().HasMaxLength(64);
+            this.Property(r => r.Category).IsRequired().HasMaxLength(64);
         }
     }
 }

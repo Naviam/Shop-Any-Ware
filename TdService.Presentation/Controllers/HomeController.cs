@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Web.Controllers
+namespace TdService.Controllers
 {
     using System.Web.Mvc;
 
@@ -24,7 +24,7 @@ namespace TdService.Web.Controllers
         /// </returns>
         public ActionResult Index()
         {
-            return View();
+            return this.View();
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace TdService.Web.Controllers
         /// </returns>
         public ActionResult Shops()
         {
-            return View();
+            return this.View();
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace TdService.Web.Controllers
         /// </returns>
         public ActionResult Services()
         {
-            return View();
+            return this.View();
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace TdService.Web.Controllers
         /// </returns>
         public ActionResult Terms()
         {
-            return View();
+            return this.View();
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace TdService.Web.Controllers
         /// </returns>
         public ActionResult Help()
         {
-            return View();
+            return this.View();
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace TdService.Web.Controllers
         /// </returns>
         public ActionResult Contact()
         {
-            return View();
+            return this.View();
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace TdService.Web.Controllers
         /// </returns>
         public ActionResult About()
         {
-            return View();
+            return this.View();
         }
     }
 }

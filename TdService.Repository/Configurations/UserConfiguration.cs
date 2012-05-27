@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TdService.Data.SqlRepository.Configurations
+namespace TdService.Repository.MsSql.Configurations
 {
     using System.Data.Entity.ModelConfiguration;
 
@@ -20,11 +20,11 @@ namespace TdService.Data.SqlRepository.Configurations
         /// </summary>
         public UserConfiguration()
         {
-            Property(u => u.Password).IsRequired();
-            Property(u => u.Password).HasMaxLength(20);
-            Property(u => u.Email).IsRequired();
-            Property(u => u.Email).HasMaxLength(256);
-            Property(u => u.RowVersion).IsRowVersion();
+            this.Property(u => u.Password).IsRequired();
+            this.Property(u => u.Password).HasMaxLength(20);
+            this.Property(u => u.Email).IsRequired();
+            this.Property(u => u.Email).HasMaxLength(256);
+            this.Property(u => u.RowVersion).IsRowVersion();
         }
     }
 }

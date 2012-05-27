@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Web.Controllers
+namespace TdService.Controllers
 {
     using System.Web.Mvc;
 
@@ -24,7 +24,7 @@ namespace TdService.Web.Controllers
         /// </returns>
         public ActionResult Index()
         {
-            return View();
+            return this.View();
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace TdService.Web.Controllers
         /// </returns>
         public ActionResult Warehouse()
         {
-            return View();
+            return this.View();
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace TdService.Web.Controllers
         /// </returns>
         public ActionResult Details(int addressId)
         {
-            return View();
+            return this.View();
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace TdService.Web.Controllers
         [HttpPost]
         public ActionResult Create()
         {
-            return RedirectToAction("Index");
+            return this.RedirectToAction("Index");
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace TdService.Web.Controllers
         [HttpPost]
         public ActionResult Remove()
         {
-            return RedirectToAction("Index");
+            return this.RedirectToAction("Index");
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace TdService.Web.Controllers
         [HttpPost]
         public ActionResult Update()
         {
-            return RedirectToAction("Index");
+            return this.RedirectToAction("Index");
         }
     }
 }

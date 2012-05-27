@@ -4,12 +4,13 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TdService.Data.SqlRepository
+namespace TdService.Repository.MsSql
 {
     using System;
     using System.Collections.Generic;
-    using Model.Items;
-    using Model.Orders;
+
+    using TdService.Model.Items;
+    using TdService.Model.Orders;
 
     /// <summary>
     /// Order repository to work with orders in database.

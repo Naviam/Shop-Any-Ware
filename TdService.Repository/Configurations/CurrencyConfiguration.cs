@@ -4,9 +4,10 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TdService.Data.SqlRepository.Configurations
+namespace TdService.Repository.MsSql.Configurations
 {
     using System.Data.Entity.ModelConfiguration;
+
     using TdService.Model.Balance;
 
     /// <summary>
@@ -19,10 +20,10 @@ namespace TdService.Data.SqlRepository.Configurations
         /// </summary>
         public CurrencyConfiguration()
         {
-            Property(c => c.Name).HasMaxLength(64);
-            Property(c => c.Entity).HasMaxLength(64);
-            Property(c => c.AlphabeticCode).IsRequired().IsFixedLength().HasMaxLength(3);
-            Property(c => c.NumericCode).IsRequired().IsFixedLength().HasMaxLength(3);
+            this.Property(c => c.Name).HasMaxLength(64);
+            this.Property(c => c.Entity).HasMaxLength(64);
+            this.Property(c => c.AlphabeticCode).IsRequired().IsFixedLength().HasMaxLength(3);
+            this.Property(c => c.NumericCode).IsRequired().IsFixedLength().HasMaxLength(3);
         }
     }
 }

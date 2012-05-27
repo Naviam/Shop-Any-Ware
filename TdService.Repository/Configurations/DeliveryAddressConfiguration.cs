@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TdService.Data.SqlRepository.Configurations
+namespace TdService.Repository.MsSql.Configurations
 {
     using System.Data.Entity.ModelConfiguration;
 
@@ -20,24 +20,24 @@ namespace TdService.Data.SqlRepository.Configurations
         /// </summary>
         public DeliveryAddressConfiguration()
         {
-            Property(a => a.AddressName).IsRequired();
-            Property(a => a.AddressName).HasMaxLength(64);
-            Property(a => a.Country).IsRequired();
-            Property(a => a.Country).HasMaxLength(64);
-            Property(a => a.City).IsRequired();
-            Property(a => a.City).HasMaxLength(64);
-            Property(a => a.State).HasMaxLength(64);
-            Property(a => a.Region).HasMaxLength(64);
-            Property(a => a.Address1).IsRequired();
-            Property(a => a.Address1).HasMaxLength(256);
-            Property(a => a.Address2).HasMaxLength(256);
-            Property(a => a.Address3).HasMaxLength(256);
-            Property(a => a.FirstName).IsRequired();
-            Property(a => a.FirstName).HasMaxLength(64);
-            Property(a => a.LastName).IsRequired();
-            Property(a => a.LastName).HasMaxLength(64);
-            Property(a => a.Phone).HasMaxLength(21);
-            Property(a => a.RowVersion).IsRowVersion();
+            this.Property(a => a.AddressName).IsRequired();
+            this.Property(a => a.AddressName).HasMaxLength(64);
+            this.Property(a => a.Country).IsRequired();
+            this.Property(a => a.Country).HasMaxLength(64);
+            this.Property(a => a.City).IsRequired();
+            this.Property(a => a.City).HasMaxLength(64);
+            this.Property(a => a.State).HasMaxLength(64);
+            this.Property(a => a.Region).HasMaxLength(64);
+            this.Property(a => a.Address1).IsRequired();
+            this.Property(a => a.Address1).HasMaxLength(256);
+            this.Property(a => a.Address2).HasMaxLength(256);
+            this.Property(a => a.Address3).HasMaxLength(256);
+            this.Property(a => a.FirstName).IsRequired();
+            this.Property(a => a.FirstName).HasMaxLength(64);
+            this.Property(a => a.LastName).IsRequired();
+            this.Property(a => a.LastName).HasMaxLength(64);
+            this.Property(a => a.Phone).HasMaxLength(21);
+            this.Property(a => a.RowVersion).IsRowVersion();
         }
     }
 }

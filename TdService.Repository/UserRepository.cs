@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TdService.Data.SqlRepository
+namespace TdService.Repository.MsSql
 {
     using System;
     using System.Collections.Generic;

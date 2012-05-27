@@ -56,9 +56,9 @@
       <Project>{4E87BDA7-4AF2-4D94-9A40-68B161FBB71A}</Project>
       <Name>TdService.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TdService.Repository\TdService.Repository.csproj">
+    <ProjectReference Include="..\TdService.Repository\TdService.Repository.MsSql.csproj">
       <Project>{D536586D-E628-4049-B826-AB0B57FC99FF}</Project>
-      <Name>TdService.Repository</Name>
+      <Name>TdService.Repository.MsSql</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

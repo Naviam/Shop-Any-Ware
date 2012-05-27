@@ -4,19 +4,20 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TdService.Data.SqlRepository
+namespace TdService.Repository.MsSql
 {
     using System.Data.Entity;
-    using Model;
-    using Model.Items;
-    using Model.Membership;
-    using Model.Orders;
-    using Model.Packages;
 
-    using TdService.Data.SqlRepository.Configurations;
+    using Configurations;
+
+    using TdService.Model;
     using TdService.Model.Addresses;
     using TdService.Model.Balance;
+    using TdService.Model.Items;
+    using TdService.Model.Membership;
     using TdService.Model.Notification;
+    using TdService.Model.Orders;
+    using TdService.Model.Packages;
 
     /// <summary>
     /// DbContext for the entity framework mapping.

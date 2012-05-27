@@ -1,30 +1,30 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ParcelController.cs" company="TdService">
+// <copyright file="ProfileController.cs" company="TdService">
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
-//   Defines the ParcelController type.
+//   Defines the ProfileController type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Web.Controllers
+namespace TdService.Controllers
 {
     using System.Web.Mvc;
 
     /// <summary>
-    /// This controller contains methods to work with parcels.
+    /// Profile controller contains methods to work with user's profile.
     /// </summary>
-    public class ParcelController : BaseController
+    public class ProfileController : BaseController
     {
         /// <summary>
-        /// Get the list of parcels.
+        /// Get Profile Summary
         /// </summary>
         /// <returns>
-        /// Returns view with the list of parcels.
+        /// Returns view with the profile details.
         /// </returns>
         public ActionResult Index()
         {
-            return View();
+            return this.View();
         }
     }
 }

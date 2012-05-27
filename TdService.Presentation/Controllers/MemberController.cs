@@ -7,13 +7,12 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Web.Controllers
+namespace TdService.Controllers
 {
     using System;
     using System.Web.Mvc;
-    using Model.Orders;
 
-    using TdService.Data.SqlRepository;
+    using TdService.Model.Orders;
 
     /// <summary>
     /// The controller that contains membership methods.
@@ -24,14 +23,6 @@ namespace TdService.Web.Controllers
         /// Order repository.
         /// </summary>
         private readonly IOrderRepository repository;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MemberController"/> class.
-        /// </summary>
-        public MemberController()
-        {
-            this.repository = new OrderRepository();
-        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MemberController"/> class.
