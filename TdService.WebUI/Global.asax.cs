@@ -60,20 +60,6 @@ namespace TdService.UI.Web.MVC
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
-
-            // 1. Create a new Simple Injector container
-            // var container = new Container();
-
-            // 2. Configure the container (register)
-            // container.RegisterSingle<IOrderRepository, OrderRepository>();
-
-            // See below for more configuration examples
-
-            // 3. Optionally verify the container's configuration.
-            // container.Verify();
-
-            // 4. Store the container for use by Page classes.
-            // Global.Container = container;
         }
     }
 }
