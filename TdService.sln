@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TdService.UI.Web.MVC", "TdService.WebUI\TdService.UI.Web.MVC.csproj", "{21DB700B-C1D7-481D-939E-8AA00FF2F546}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TdService.UI.Web.MVC", "TdService.UI.Web.MVC\TdService.UI.Web.MVC.csproj", "{21DB700B-C1D7-481D-939E-8AA00FF2F546}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{611ACF14-A6CF-48D9-A410-3B2661638823}"
 	ProjectSection(SolutionItems) = preProject
@@ -9,11 +9,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{611ACF
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TdService.Repository.MsSql", "TdService.Repository\TdService.Repository.MsSql.csproj", "{D536586D-E628-4049-B826-AB0B57FC99FF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TdService.Repository.MsSql", "TdService.Repository.MsSql\TdService.Repository.MsSql.csproj", "{D536586D-E628-4049-B826-AB0B57FC99FF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TdService.Model", "TdService.Model\TdService.Model.csproj", "{4E87BDA7-4AF2-4D94-9A40-68B161FBB71A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TdService.Controllers", "TdService.Presentation\TdService.Controllers.csproj", "{8C23E268-EACF-4E5F-B96A-3BB48238AADC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TdService.Controllers", "TdService.Controllers\TdService.Controllers.csproj", "{8C23E268-EACF-4E5F-B96A-3BB48238AADC}"
 EndProject
 Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "TdService.Modeling", "TdService.Modeling\TdService.Modeling.modelproj", "{468BBD3F-058E-4C14-932A-8E15234411DA}"
 EndProject
@@ -28,7 +28,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TdService.Services", "TdService.Service\TdService.Services.csproj", "{A9DEDA99-A27D-4687-B912-46F339EA36A4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TdService.Services", "TdService.Services\TdService.Services.csproj", "{A9DEDA99-A27D-4687-B912-46F339EA36A4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. Data Access Layer", "4. Data Access Layer", "{10BEAC72-06AF-416D-8C19-9B67C75A5BD5}"
 EndProject
@@ -42,7 +42,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Infrastructure Layer", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TdService.TestConsole", "TdService.TestConsole\TdService.TestConsole.csproj", "{7220EDF2-AEA2-4A5B-BBC8-9F284FEBEA9C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TdService.Services.Cache", "TdService.Service.Cache\TdService.Services.Cache.csproj", "{3782423D-0D89-47F8-8D84-0AB3AF741086}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TdService.Services.Cache", "TdService.Services.Cache\TdService.Services.Cache.csproj", "{3782423D-0D89-47F8-8D84-0AB3AF741086}"
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
