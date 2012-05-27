@@ -1,49 +1,40 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Role.cs" company="TdService">
+// <copyright file="Wallet.cs" company="TdService">
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
-//   Defines the Role type.
+//   Stores total amount user has available to pay for the services
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Model.Membership
+namespace TdService.Model.Balance
 {
     using System;
     using System.Collections.Generic;
 
     using TdService.Infrastructure.Domain;
+    using TdService.Model.Membership;
 
     /// <summary>
-    /// User role.
+    /// Stores total amount user has available to pay for the services
     /// </summary>
-    public class Role : EntityBase<int>
+    public class Wallet : EntityBase<int>
     {
         /// <summary>
-        /// Gets or sets Name.
+        /// Gets or sets Amount.
         /// </summary>
-        public string Name { get; set; }
+        public int Amount { get; set; }
 
         /// <summary>
-        /// Gets or sets Description.
+        /// Gets or sets Transactions.
         /// </summary>
-        public string Description { get; set; }
-
-        /// <summary>
-        /// Gets or sets Users.
-        /// </summary>
-        public List<User> Users { get; set; }
-
-        /// <summary>
-        /// Gets or sets Row Version.
-        /// </summary>
-        public byte[] RowVersion { get; set; }
+        public List<Transaction> Transactions { get; set; }
 
         /// <summary>
         /// Validate business rules.
         /// </summary>
         /// <exception cref="NotImplementedException">
-        /// not implemented yet
+        /// not yet implemented.
         /// </exception>
         protected override void Validate()
         {

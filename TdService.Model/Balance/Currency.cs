@@ -1,49 +1,48 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Role.cs" company="TdService">
+// <copyright file="Currency.cs" company="TdService">
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
-//   Defines the Role type.
+//   This class describes the currency.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Model.Membership
+namespace TdService.Model.Balance
 {
     using System;
-    using System.Collections.Generic;
 
     using TdService.Infrastructure.Domain;
 
     /// <summary>
-    /// User role.
+    /// This class describes the currency.
     /// </summary>
-    public class Role : EntityBase<int>
+    public class Currency : EntityBase<int>
     {
         /// <summary>
-        /// Gets or sets Name.
+        /// Gets or sets Entity (country).
         /// </summary>
-        public string Name { get; set; }
+        public string Entity { get; set; }
 
         /// <summary>
-        /// Gets or sets Description.
+        /// Gets or sets Alphabetic Code.
         /// </summary>
-        public string Description { get; set; }
+        public string AlphabeticCode { get; set; }
 
         /// <summary>
-        /// Gets or sets Users.
+        /// Gets or sets Numeric Code.
         /// </summary>
-        public List<User> Users { get; set; }
+        public string NumericCode { get; set; }
 
         /// <summary>
-        /// Gets or sets Row Version.
+        /// Gets or sets Minor Unit.
         /// </summary>
-        public byte[] RowVersion { get; set; }
+        public int MinorUnit { get; set; }
 
         /// <summary>
         /// Validate business rules.
         /// </summary>
         /// <exception cref="NotImplementedException">
-        /// not implemented yet
+        /// not yet implemented
         /// </exception>
         protected override void Validate()
         {

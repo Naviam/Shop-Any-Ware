@@ -52,15 +52,15 @@ namespace TdService.Model.Membership
         Role GetRole(int roleId);
 
         /// <summary>
-        /// Add users to roles.
+        /// Add users in role.
         /// </summary>
-        /// <param name="user">
-        /// The user.
+        /// <param name="users">
+        /// The users.
         /// </param>
-        /// <param name="roles">
-        /// The roles.
+        /// <param name="role">
+        /// The role.
         /// </param>
-        void AddUserInRoles(User user, IEnumerable<Role> roles);
+        void AddUsersInRole(List<User> users, Role role);
 
         /// <summary>
         /// Get user's roles.
@@ -74,15 +74,15 @@ namespace TdService.Model.Membership
         IEnumerable<Role> GetUserRoles(string username);
 
         /// <summary>
-        /// Remove user from roles.
+        /// Remove users from role.
         /// </summary>
-        /// <param name="user">
-        /// The user.
+        /// <param name="users">
+        /// The users.
         /// </param>
-        /// <param name="roles">
-        /// The roles.
+        /// <param name="roleName">
+        /// The role name.
         /// </param>
-        void RemoveUserFromRoles(User user, IEnumerable<Role> roles);
+        void RemoveUsersFromRole(List<User> users, string roleName);
 
         /// <summary>
         /// Get roles.

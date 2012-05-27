@@ -93,19 +93,61 @@ namespace TdService.Data.SqlRepository
             }
         }
 
-        public void AddUserInRoles(User user, IEnumerable<Role> roles)
+        /// <summary>
+        /// Add users in role.
+        /// </summary>
+        /// <param name="users">
+        /// The users.
+        /// </param>
+        /// <param name="role">
+        /// The role.
+        /// </param>
+        public void AddUsersInRole(List<User> users, Role role)
         {
-            throw new System.NotImplementedException();
+            using (var context = new ShopAnyWareSql())
+            {
+                role.Users.AddRange(users);
+                context.SaveChanges();
+            }
         }
 
-        public IEnumerable<Role> GetUserRoles(string username)
+        /// <summary>
+        /// Get roles for user.
+        /// </summary>
+        /// <param name="email">
+        /// The user's email.
+        /// </param>
+        /// <returns>
+        /// Collection of roles.
+        /// </returns>
+        public IEnumerable<Role> GetUserRoles(string email)
         {
-            throw new System.NotImplementedException();
+            using (var context = new ShopAnyWareSql())
+            {
+                var user = context.Users.SingleOrDefault(u => u.Email == email);
+                return (user != null) ? user.Roles : new List<Role>();
+            }
         }
 
-        public void RemoveUserFromRoles(User user, IEnumerable<Role> roles)
+        /// <summary>
+        /// Remove users from role.
+        /// </summary>
+        /// <param name="users">
+        /// The users.
+        /// </param>
+        /// <param name="roleName">
+        /// The role name.
+        /// </param>
+        public void RemoveUsersFromRole(List<User> users, string roleName)
         {
-            throw new System.NotImplementedException();
+            using (var context = new ShopAnyWareSql())
+            {
+                var role = context.Roles.SingleOrDefault(r => r.Name == roleName);
+                if (role != null)
+                {
+                    role.Users.RemoveAll(u => u.Roles.Contains(role));
+                }
+            }
         }
     }
 }

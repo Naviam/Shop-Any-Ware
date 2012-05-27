@@ -14,6 +14,7 @@ namespace TdService.Data.SqlRepository
     using Model.Packages;
 
     using TdService.Model.Addresses;
+    using TdService.Model.Balance;
 
     /// <summary>
     /// DbContext for the entity framework mapping.
@@ -39,6 +40,21 @@ namespace TdService.Data.SqlRepository
         /// Gets or sets Retailers.
         /// </summary>
         public DbSet<Retailer> Retailers { get; set; }
+
+        /// <summary>
+        /// Gets or sets Whallets.
+        /// </summary>
+        public DbSet<Wallet> Wallets { get; set; }
+
+        /// <summary>
+        /// Gets or sets Transactions.
+        /// </summary>
+        public DbSet<Transaction> Transactions { get; set; }
+
+        /// <summary>
+        /// Gets or sets Currencies.
+        /// </summary>
+        public DbSet<Currency> Currencies { get; set; }
 
         /// <summary>
         /// Gets or sets Users.
@@ -75,6 +91,8 @@ namespace TdService.Data.SqlRepository
             modelBuilder.Entity<Role>().Property(r => r.RowVersion).IsRowVersion();
 
             // user table
+            modelBuilder.Entity<User>().Property(u => u.Password).IsRequired();
+            modelBuilder.Entity<User>().Property(u => u.Password).HasMaxLength(20);
             modelBuilder.Entity<User>().Property(u => u.Email).IsRequired();
             modelBuilder.Entity<User>().Property(u => u.Email).HasMaxLength(256);
             modelBuilder.Entity<User>().Property(u => u.RowVersion).IsRowVersion();

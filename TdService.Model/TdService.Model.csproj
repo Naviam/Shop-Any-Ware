@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Addresses\Address.cs" />
+    <Compile Include="Balance\Currency.cs" />
     <Compile Include="Orders\OrderNewState.cs" />
     <Compile Include="Orders\IOrderState.cs" />
     <Compile Include="Orders\IRequestForOrderRepository.cs" />
@@ -52,7 +53,7 @@
     <Compile Include="Orders\OrderReceivedState.cs" />
     <Compile Include="Orders\RequestForOrder.cs" />
     <Compile Include="Orders\RequestForOrderStatus.cs" />
-    <Compile Include="Wallet\Balance.cs" />
+    <Compile Include="Balance\Wallet.cs" />
     <Compile Include="Addresses\DeliveryAddress.cs" />
     <Compile Include="Shipping\DispatchMethod.cs" />
     <Compile Include="Domain\Price.cs" />
@@ -81,8 +82,8 @@
     <Compile Include="Membership\IUserRepository.cs" />
     <Compile Include="Membership\Role.cs" />
     <Compile Include="Domain\Service.cs" />
-    <Compile Include="Wallet\Transaction.cs" />
-    <Compile Include="Wallet\TransactionStatus.cs" />
+    <Compile Include="Balance\Transaction.cs" />
+    <Compile Include="Balance\TransactionStatus.cs" />
     <Compile Include="Membership\User.cs" />
     <Compile Include="Weight.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
