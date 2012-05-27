@@ -7,25 +7,21 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using TdService.Model.Shipping;
-
 namespace TdService.Model.Packages
 {
+    using System;
     using System.Collections.Generic;
     using Addresses;
-    using Model;
     using Orders;
+
+    using TdService.Infrastructure.Domain;
+    using TdService.Model.Shipping;
 
     /// <summary>
     /// Parcel that user creates to send to home address.
     /// </summary>
-    public class Package
+    public class Package : EntityBase<int>
     {
-        /// <summary>
-        /// Gets or sets Id.
-        /// </summary>
-        public int Id { get; set; }
-
         /// <summary>
         /// Gets or sets Name.
         /// </summary>
@@ -47,8 +43,14 @@ namespace TdService.Model.Packages
         public DispatchMethod DispatchMethod { get; set; }
 
         /// <summary>
-        /// Gets or sets Services.
+        /// Validate business rules.
         /// </summary>
-        public IEnumerable<Service> Services { get; set; }
+        /// <exception cref="NotImplementedException">
+        /// not yet implemented.
+        /// </exception>
+        protected override void Validate()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

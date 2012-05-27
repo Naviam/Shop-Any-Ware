@@ -58,6 +58,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configurations\CurrencyConfiguration.cs" />
+    <Compile Include="Configurations\DeliveryAddressConfiguration.cs" />
+    <Compile Include="Configurations\ProfileConfiguration.cs" />
+    <Compile Include="Configurations\RetailerConfiguration.cs" />
+    <Compile Include="Configurations\RoleConfiguration.cs" />
+    <Compile Include="Configurations\UserConfiguration.cs" />
     <Compile Include="DatabaseInitializer.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="OrderRepository.cs" />

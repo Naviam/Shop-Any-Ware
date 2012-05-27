@@ -16,12 +16,12 @@ namespace TdService.Model.Membership
     /// </summary>
     public interface IProfileRepository 
     {
-        Profile GetUserProfile(string username);
+        Profile GetUserProfile(string email);
 
-        Address GetWarehouseAddress(string username);
+        Address GetWarehouseAddress(string email);
 
         bool ChangePassword(string username, string oldPassword, string newPassword);
 
-        void UpdateUserProfile(string username, Profile profile);
+        void UpdateUserProfile(string email, Profile profile);
     }
 }

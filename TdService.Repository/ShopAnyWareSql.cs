@@ -13,8 +13,10 @@ namespace TdService.Data.SqlRepository
     using Model.Orders;
     using Model.Packages;
 
+    using TdService.Data.SqlRepository.Configurations;
     using TdService.Model.Addresses;
     using TdService.Model.Balance;
+    using TdService.Model.Notification;
 
     /// <summary>
     /// DbContext for the entity framework mapping.
@@ -72,6 +74,11 @@ namespace TdService.Data.SqlRepository
         public DbSet<Profile> Profiles { get; set; }
 
         /// <summary>
+        /// Gets or sets Notification Rules.
+        /// </summary>
+        public DbSet<NotificationRule> NotificationRules { get; set; }
+
+        /// <summary>
         /// Gets or sets Delivery Addresses.
         /// </summary>
         public DbSet<DeliveryAddress> DeliveryAddresses { get; set; }
@@ -84,37 +91,12 @@ namespace TdService.Data.SqlRepository
         /// </param>
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            // role table
-            modelBuilder.Entity<Role>().Property(r => r.Name).IsRequired();
-            modelBuilder.Entity<Role>().Property(r => r.Name).HasMaxLength(64);
-            modelBuilder.Entity<Role>().Property(r => r.Description).HasMaxLength(256);
-            modelBuilder.Entity<Role>().Property(r => r.RowVersion).IsRowVersion();
-
-            // user table
-            modelBuilder.Entity<User>().Property(u => u.Password).IsRequired();
-            modelBuilder.Entity<User>().Property(u => u.Password).HasMaxLength(20);
-            modelBuilder.Entity<User>().Property(u => u.Email).IsRequired();
-            modelBuilder.Entity<User>().Property(u => u.Email).HasMaxLength(256);
-            modelBuilder.Entity<User>().Property(u => u.RowVersion).IsRowVersion();
-
-            // delivery address table
-            modelBuilder.Entity<DeliveryAddress>().Property(a => a.AddressName).IsRequired();
-            modelBuilder.Entity<DeliveryAddress>().Property(a => a.AddressName).HasMaxLength(64);
-            modelBuilder.Entity<DeliveryAddress>().Property(a => a.Country).IsRequired();
-            modelBuilder.Entity<DeliveryAddress>().Property(a => a.Country).HasMaxLength(64);
-            modelBuilder.Entity<DeliveryAddress>().Property(a => a.City).IsRequired();
-            modelBuilder.Entity<DeliveryAddress>().Property(a => a.City).HasMaxLength(64);
-            modelBuilder.Entity<DeliveryAddress>().Property(a => a.State).HasMaxLength(64);
-            modelBuilder.Entity<DeliveryAddress>().Property(a => a.Address1).IsRequired();
-            modelBuilder.Entity<DeliveryAddress>().Property(a => a.Address1).HasMaxLength(256);
-            modelBuilder.Entity<DeliveryAddress>().Property(a => a.Address2).HasMaxLength(256);
-            modelBuilder.Entity<DeliveryAddress>().Property(a => a.Address3).HasMaxLength(256);
-            modelBuilder.Entity<DeliveryAddress>().Property(a => a.FirstName).IsRequired();
-            modelBuilder.Entity<DeliveryAddress>().Property(a => a.FirstName).HasMaxLength(64);
-            modelBuilder.Entity<DeliveryAddress>().Property(a => a.LastName).IsRequired();
-            modelBuilder.Entity<DeliveryAddress>().Property(a => a.LastName).HasMaxLength(64);
-            modelBuilder.Entity<DeliveryAddress>().Property(a => a.Phone).HasMaxLength(21);
-            modelBuilder.Entity<DeliveryAddress>().Property(a => a.RowVersion).IsRowVersion();
+            modelBuilder.Configurations.Add(new RoleConfiguration());
+            modelBuilder.Configurations.Add(new UserConfiguration());
+            modelBuilder.Configurations.Add(new DeliveryAddressConfiguration());
+            modelBuilder.Configurations.Add(new ProfileConfiguration());
+            modelBuilder.Configurations.Add(new CurrencyConfiguration());
+            modelBuilder.Configurations.Add(new RetailerConfiguration());
         }
     }
 }

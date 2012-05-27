@@ -7,11 +7,11 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using TdService.Data.SqlRepository;
-
-namespace TdService.Migrations
+namespace TdService.Data.SqlRepository.Migrations
 {
     using System.Data.Entity.Migrations;
+
+    using TdService.Data.SqlRepository;
 
     /// <summary>
     /// The configuration for database migration.
@@ -23,7 +23,7 @@ namespace TdService.Migrations
         /// </summary>
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            this.AutomaticMigrationsEnabled = true;
         }
 
         /// <summary>

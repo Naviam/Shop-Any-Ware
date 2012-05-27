@@ -7,15 +7,17 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Model.Repositories
+namespace TdService.Model.Reports
 {
     using System;
     using System.Collections.Generic;
-    using Orders;
+
+    using TdService.Model.Orders;
 
     /// <summary>
+    /// This interface contains report methods.
     /// </summary>
-    public interface IReportRepository 
+    public interface IReportRepository
     {
         void GetSalesReport(DateTime periodStartDate, DateTime periodEndDate, string filterExpression);
 

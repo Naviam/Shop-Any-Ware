@@ -56,9 +56,8 @@
     <Compile Include="Balance\Wallet.cs" />
     <Compile Include="Addresses\DeliveryAddress.cs" />
     <Compile Include="Shipping\DispatchMethod.cs" />
-    <Compile Include="Domain\Price.cs" />
     <Compile Include="Items\Item.cs" />
-    <Compile Include="Notification\NotificationRules.cs" />
+    <Compile Include="Notification\NotificationRule.cs" />
     <Compile Include="Orders\OrderLineItem.cs" />
     <Compile Include="Orders\OrderStatus.cs" />
     <Compile Include="Packages\Package.cs" />
@@ -77,11 +76,10 @@
     <Compile Include="Orders\IOrderRepository.cs" />
     <Compile Include="Packages\IPackageRepository.cs" />
     <Compile Include="Membership\IProfileRepository.cs" />
-    <Compile Include="Repositories\IReportRepository.cs" />
+    <Compile Include="Reports\IReportRepository.cs" />
     <Compile Include="Membership\IRoleRepository.cs" />
     <Compile Include="Membership\IUserRepository.cs" />
     <Compile Include="Membership\Role.cs" />
-    <Compile Include="Domain\Service.cs" />
     <Compile Include="Balance\Transaction.cs" />
     <Compile Include="Balance\TransactionStatus.cs" />
     <Compile Include="Membership\User.cs" />

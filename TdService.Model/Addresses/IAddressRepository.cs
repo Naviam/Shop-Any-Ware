@@ -14,36 +14,66 @@ namespace TdService.Model.Addresses
     /// <summary>
     /// Interface for address repository.
     /// </summary>
-    public interface IAddressRepository 
+    public interface IAddressRepository
     {
         /// <summary>
         /// Get the list of user's delivery addresses.
         /// </summary>
-        /// <param name="username">
+        /// <param name="email">
         /// The username.
         /// </param>
         /// <returns>
         /// Collection of user's delivery addresses.
         /// </returns>
-        IEnumerable<Address> GetDeliveryAddresses(string username);
+        IEnumerable<DeliveryAddress> GetDeliveryAddresses(string email);
 
         /// <summary>
         /// Get user's personal warehouse address.
         /// </summary>
-        /// <param name="username">
+        /// <param name="email">
         /// The username.
         /// </param>
         /// <returns>
         /// ShopAnyWare address for user's purchases delivery in U.S.
         /// </returns>
-        Address GetWarehouseAddress(string username);
+        Address GetWarehouseAddress(string email);
 
-        void AddDeliveryAddress(string username, Address address);
+        /// <summary>
+        /// Get user's delivery address details.
+        /// </summary>
+        /// <param name="addressId">
+        /// The address id.
+        /// </param>
+        /// <returns>
+        /// Delivery address object.
+        /// </returns>
+        DeliveryAddress GetDeliveryAddressDetails(int addressId);
 
-        void UpdateDeliveryAddress(Address address);
+        /// <summary>
+        /// Add user's delivery address.
+        /// </summary>
+        /// <param name="email">
+        /// The email.
+        /// </param>
+        /// <param name="address">
+        /// The address.
+        /// </param>
+        void AddDeliveryAddress(string email, DeliveryAddress address);
 
-        void RemoveDeliveryAddress(int addressId);
+        /// <summary>
+        /// Update user's delivery address.
+        /// </summary>
+        /// <param name="address">
+        /// The address.
+        /// </param>
+        void UpdateDeliveryAddress(DeliveryAddress address);
 
-        Address GetDeliveryAddressDetails(int addressId);
+        /// <summary>
+        /// Remove user's delivery address.
+        /// </summary>
+        /// <param name="address">
+        /// The address.
+        /// </param>
+        void RemoveDeliveryAddress(DeliveryAddress address);
     }
 }

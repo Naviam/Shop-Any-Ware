@@ -24,6 +24,11 @@ namespace TdService.Model.Balance
         public string Entity { get; set; }
 
         /// <summary>
+        /// Gets or sets Currency Name.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
         /// Gets or sets Alphabetic Code.
         /// </summary>
         public string AlphabeticCode { get; set; }

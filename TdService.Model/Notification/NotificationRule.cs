@@ -1,49 +1,38 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Profile.cs" company="TdService">
+// <copyright file="NotificationRule.cs" company="TdService">
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
-//   Defines the Profile type.
+//   User notification rules.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Model.Membership
+namespace TdService.Model.Notification
 {
     using System;
 
     using TdService.Infrastructure.Domain;
-    using TdService.Model.Notification;
 
     /// <summary>
-    /// User profile.
+    /// User notification rules.
     /// </summary>
-    public class Profile : EntityBase<int>
+    public class NotificationRule : EntityBase<int>
     {
         /// <summary>
-        /// Gets or sets First Name.
+        /// Gets or sets a value indicating whether NotifyOrderStatusChanged.
         /// </summary>
-        public string FirstName { get; set; }
+        public bool NotifyOrderStatusChanged { get; set; }
 
         /// <summary>
-        /// Gets or sets Last Name.
+        /// Gets or sets a value indicating whether NotifyParcelStatusChanged.
         /// </summary>
-        public string LastName { get; set; }
-
-        /// <summary>
-        /// Gets or sets Notification Rule.
-        /// </summary>
-        public NotificationRule NotificationRule { get; set; }
-
-        /// <summary>
-        /// Gets or sets Row Version.
-        /// </summary>
-        public byte[] RowVersion { get; set; }
+        public bool NotifyParcelStatusChanged { get; set; }
 
         /// <summary>
         /// Validate business rules.
         /// </summary>
         /// <exception cref="NotImplementedException">
-        /// not implemented yet
+        /// not yet implemented.
         /// </exception>
         protected override void Validate()
         {

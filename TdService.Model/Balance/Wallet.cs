@@ -13,7 +13,6 @@ namespace TdService.Model.Balance
     using System.Collections.Generic;
 
     using TdService.Infrastructure.Domain;
-    using TdService.Model.Membership;
 
     /// <summary>
     /// Stores total amount user has available to pay for the services
@@ -23,7 +22,7 @@ namespace TdService.Model.Balance
         /// <summary>
         /// Gets or sets Amount.
         /// </summary>
-        public int Amount { get; set; }
+        public decimal Amount { get; set; }
 
         /// <summary>
         /// Gets or sets Transactions.
