@@ -7,11 +7,12 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-[assembly: WebActivator.PreApplicationStartMethod(typeof(TdService.Web.App_Start.Combres), "PreStart")]
+[assembly: WebActivator.PreApplicationStartMethod(typeof(TdService.UI.Web.MVC.App_Start.Combres), "PreStart")]
 
-namespace TdService.Web.App_Start
+namespace TdService.UI.Web.MVC.App_Start
 {
     using System.Web.Routing;
+
     using global::Combres;
 
     /// <summary>
