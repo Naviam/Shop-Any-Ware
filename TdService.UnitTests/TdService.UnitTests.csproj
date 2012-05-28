@@ -49,7 +49,7 @@
     <Compile Include="HtmlParserTestSuite.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TdService.Presentation\TdService.Controllers.csproj">
+    <ProjectReference Include="..\TdService.Controllers\TdService.Controllers.csproj">
       <Project>{8C23E268-EACF-4E5F-B96A-3BB48238AADC}</Project>
       <Name>TdService.Controllers</Name>
     </ProjectReference>

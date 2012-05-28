@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Service
+namespace TdService.Services
 {
     /// <summary>
     /// Defines the base class for request view parameters.

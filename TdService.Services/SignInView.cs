@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TdService.Service
+namespace TdService.Services
 {
     /// <summary>
     /// This is a view object for UI.

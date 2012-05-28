@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AddressController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BalanceController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -66,7 +67,7 @@
       <Project>{4E87BDA7-4AF2-4D94-9A40-68B161FBB71A}</Project>
       <Name>TdService.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TdService.Service\TdService.Services.csproj">
+    <ProjectReference Include="..\TdService.Services\TdService.Services.csproj">
       <Project>{A9DEDA99-A27D-4687-B912-46F339EA36A4}</Project>
       <Name>TdService.Services</Name>
     </ProjectReference>

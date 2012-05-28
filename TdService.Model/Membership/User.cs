@@ -12,7 +12,6 @@ namespace TdService.Model.Membership
     using System;
     using System.Collections.Generic;
     using Addresses;
-    using Model;
     using Orders;
     using Packages;
 

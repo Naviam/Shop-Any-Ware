@@ -17,6 +17,7 @@ namespace TdService.UI.Web.MVC.App_Start
     using SimpleInjector;
     using SimpleInjector.Integration.Web.Mvc;
 
+    using TdService.Model.Membership;
     using TdService.Model.Orders;
     using TdService.Repository.MsSql.Repositories;
 
@@ -45,6 +46,8 @@ namespace TdService.UI.Web.MVC.App_Start
         private static void InitializeContainer(Container container)
         {
             container.Register<IOrderRepository, OrderRepository>();
+            container.Register<IUserRepository, UserRepository>();
+            container.Register<IRoleRepository, RoleRepository>();
 
             // For instance:
             // container.Register<IUserRepository, SqlUserRepository>();

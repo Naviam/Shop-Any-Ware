@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TdService.Service
+namespace TdService.Services
 {
     /// <summary>
     /// This class describes request parameters for sign up action.

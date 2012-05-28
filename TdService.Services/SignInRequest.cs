@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TdService.Service
+namespace TdService.Services
 {
     /// <summary>
     /// This class describes request parameters for sign in action.
@@ -12,9 +12,9 @@ namespace TdService.Service
     public class SignInRequest : RequestBase
     {
         /// <summary>
-        /// Gets or sets Username.
+        /// Gets or sets Email.
         /// </summary>
-        public string Username { get; set; }
+        public string Email { get; set; }
 
         /// <summary>
         /// Gets or sets Password.

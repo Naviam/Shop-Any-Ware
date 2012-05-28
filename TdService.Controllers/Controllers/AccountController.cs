@@ -10,15 +10,41 @@
 namespace TdService.Controllers
 {
     using System.Web.Mvc;
-    using System.Web.Security;
 
-    using TdService.Service;
+    using TdService.Infrastructure.Authentication;
+    using TdService.Model.Membership;
+    using TdService.Services;
 
     /// <summary>
     /// This controller is responsible for authentication and authorization of user.
     /// </summary>
     public class AccountController : BaseController
     {
+        /// <summary>
+        /// User repository.
+        /// </summary>
+        private readonly IUserRepository userRepository;
+
+        /// <summary>
+        /// Form authentication.
+        /// </summary>
+        private readonly IFormsAuthentication formsAuthentication;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AccountController"/> class.
+        /// </summary>
+        /// <param name="userRepository">
+        /// The user repository.
+        /// </param>
+        /// <param name="formsAuthentication">
+        /// The form Authentication.
+        /// </param>
+        public AccountController(IUserRepository userRepository, IFormsAuthentication formsAuthentication)
+        {
+            this.userRepository = userRepository;
+            this.formsAuthentication = formsAuthentication;
+        }
+
         /// <summary>
         /// Displays SignIn view. GET: /Account/SignIn
         /// </summary>
@@ -42,11 +68,14 @@ namespace TdService.Controllers
         [HttpPost]
         public ActionResult SignIn(SignInRequest request)
         {
-            FormsAuthentication.RedirectFromLoginPage("demo", true);
+            var isValid = this.userRepository.ValidateUser(request.Email, request.Password);
+
+            if (isValid)
+            {
+                this.formsAuthentication.SetAuthenticationToken(request.Email);
+            }
 
             return this.View();
-
-            // return RedirectToAction("Index", "Home");
         }
 
         /// <summary>
@@ -83,7 +112,7 @@ namespace TdService.Controllers
         /// </returns>
         public ActionResult SignOut()
         {
-            FormsAuthentication.SignOut();
+            this.formsAuthentication.SignOut();
             return this.RedirectToAction("Index", "Home");
         }
     }

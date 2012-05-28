@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TdService.Service
+namespace TdService.Services
 {
     /// <summary>
     /// TODO: Update summary.

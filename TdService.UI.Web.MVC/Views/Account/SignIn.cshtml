@@ -1,4 +1,4 @@
-﻿@model TdService.Service.SignInView
+﻿@model TdService.Services.SignInView
 
 @{
     ViewBag.Title = "Shop Any Ware - Sign In";
@@ -8,8 +8,8 @@
         <form action="@Url.Action("SignIn", "Account")" method="POST">
             <fieldset>
                 <legend>Sign In Form</legend>
-                <label for="credentials_username">Username or Email:</label>
-                <input id="credentials_username" name="credentials_username" type="text" class="input-xlarge" placeholder="Email" />
+                <label for="credentials_email">Email:</label>
+                <input id="credentials_email" name="credentials_email" type="text" class="input-xlarge" placeholder="Email" />
                 <label for="credentials_password">Password:</label>
                 <input id="credentials_password" name="credentials_password" type="password" class="input-xlarge" placeholder="Password" />
                 <hr/>
