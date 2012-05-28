@@ -28,6 +28,11 @@ namespace TdService.Model.Packages
         public string Name { get; set; }
 
         /// <summary>
+        /// Gets or sets Row Version.
+        /// </summary>
+        public byte[] RowVersion { get; set; }
+
+        /// <summary>
         /// Gets or sets Address.
         /// </summary>
         public Address Address { get; set; }
