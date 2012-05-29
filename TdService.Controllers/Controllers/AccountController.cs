@@ -13,7 +13,7 @@ namespace TdService.Controllers
 
     using TdService.Infrastructure.Authentication;
     using TdService.Model.Membership;
-    using TdService.Services;
+    using TdService.Services.Messaging.Account;
 
     /// <summary>
     /// This controller is responsible for authentication and authorization of user.
