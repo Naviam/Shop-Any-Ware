@@ -9,7 +9,6 @@
 
 namespace TdService.Model.Addresses
 {
-    using System;
     using TdService.Infrastructure.Domain;
 
     /// <summary>
@@ -18,14 +17,9 @@ namespace TdService.Model.Addresses
     public class Address : EntityBase<int>
     {
         /// <summary>
-        /// Gets or sets AddressName.
-        /// </summary>
-        public string AddressName { get; set; }
-
-        /// <summary>
         /// Gets or sets Zip.
         /// </summary>
-        public int Zip { get; set; }
+        public string ZipCode { get; set; }
 
         /// <summary>
         /// Gets or sets Country.
@@ -43,19 +37,19 @@ namespace TdService.Model.Addresses
         public string City { get; set; }
 
         /// <summary>
-        /// Gets or sets Address1.
+        /// Gets or sets Address Line 1.
         /// </summary>
-        public string Address1 { get; set; }
+        public string AddressLine1 { get; set; }
 
         /// <summary>
-        /// Gets or sets Address2.
+        /// Gets or sets Address Line 2.
         /// </summary>
-        public string Address2 { get; set; }
+        public string AddressLine2 { get; set; }
 
         /// <summary>
-        /// Gets or sets Address3.
+        /// Gets or sets Address Line 3.
         /// </summary>
-        public string Address3 { get; set; }
+        public string AddressLine3 { get; set; }
 
         /// <summary>
         /// Gets or sets Phone.
@@ -73,14 +67,29 @@ namespace TdService.Model.Addresses
         public byte[] RowVersion { get; set; }
 
         /// <summary>
-        /// Validate object.
+        /// Validate business rules against this entity.
         /// </summary>
-        /// <exception cref="NotImplementedException">
-        /// Not implemented yet.
-        /// </exception>
         protected override void Validate()
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(this.AddressLine1))
+            {
+                this.AddBrokenRule(AddressBusinessRules.AddressLine1Required);
+            }
+
+            if (string.IsNullOrEmpty(this.ZipCode))
+            {
+                this.AddBrokenRule(AddressBusinessRules.ZipCodeRequired);
+            }
+
+            if (string.IsNullOrEmpty(this.City))
+            {
+                this.AddBrokenRule(AddressBusinessRules.CityRequired);
+            }
+
+            if (string.IsNullOrEmpty(this.Country))
+            {
+                this.AddBrokenRule(AddressBusinessRules.CountryRequired);
+            }
         }
     }
 }

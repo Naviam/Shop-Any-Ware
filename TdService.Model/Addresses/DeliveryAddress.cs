@@ -15,13 +15,41 @@ namespace TdService.Model.Addresses
     public class DeliveryAddress : Address
     {
         /// <summary>
-        /// Gets or sets FirstName.
+        /// Gets or sets Address Name.
+        /// </summary>
+        public string AddressName { get; set; }
+
+        /// <summary>
+        /// Gets or sets First Name.
         /// </summary>
         public string FirstName { get; set; }
 
         /// <summary>
-        /// Gets or sets LastName.
+        /// Gets or sets Last Name.
         /// </summary>
         public string LastName { get; set; }
+
+        /// <summary>
+        /// Validate business rules.
+        /// </summary>
+        protected override void Validate()
+        {
+            base.Validate();
+
+            if (string.IsNullOrEmpty(this.AddressName))
+            {
+                this.AddBrokenRule(DeliveryAddressBusinessRules.AddressNameRequired);
+            }
+
+            if (string.IsNullOrEmpty(this.FirstName))
+            {
+                this.AddBrokenRule(DeliveryAddressBusinessRules.FirstNameRequired);
+            }
+
+            if (string.IsNullOrEmpty(this.LastName))
+            {
+                this.AddBrokenRule(DeliveryAddressBusinessRules.LastNameRequired);
+            }
+        }
     }
 }

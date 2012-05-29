@@ -45,6 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Addresses\Address.cs" />
+    <Compile Include="Addresses\AddressBusinessRules.cs" />
+    <Compile Include="Addresses\DeliveryAddressBusinessRules.cs" />
+    <Compile Include="Addresses\InvalidAddressException.cs" />
     <Compile Include="Addresses\WarehouseAddress.cs" />
     <Compile Include="Balance\Currency.cs" />
     <Compile Include="Orders\OrderNewState.cs" />
@@ -91,6 +94,10 @@
     <ProjectReference Include="..\TdService.Infrastructure\TdService.Infrastructure.csproj">
       <Project>{81B36459-F01A-4F69-869B-EA585BEE2005}</Project>
       <Name>TdService.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TdService.Resources\TdService.Resources.csproj">
+      <Project>{9DC0E782-6E6B-4FA4-A7C1-728ED25CE063}</Project>
+      <Name>TdService.Resources</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
