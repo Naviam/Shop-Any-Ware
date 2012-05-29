@@ -1,20 +1,20 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="SignUpRequest.cs" company="TdService">
+// <copyright file="SignUpView.cs" company="TdService">
 // Vitali Hatalski. 2012.
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TdService.Services
+namespace TdService.Services.ViewModels.Account
 {
     /// <summary>
-    /// This class describes request parameters for sign up action.
+    /// This class describes the view model for sign up page.
     /// </summary>
-    public class SignUpRequest : RequestBase
+    public class SignUpView
     {
         /// <summary>
-        /// Gets or sets Username.
+        /// Gets or sets Email.
         /// </summary>
-        public string Username { get; set; }
+        public string Email { get; set; }
 
         /// <summary>
         /// Gets or sets Password.
@@ -22,7 +22,7 @@ namespace TdService.Services
         public string Password { get; set; }
 
         /// <summary>
-        /// Gets or sets Password Confirmation.
+        /// Gets or sets PasswordConfirm.
         /// </summary>
         public string PasswordConfirm { get; set; }
     }

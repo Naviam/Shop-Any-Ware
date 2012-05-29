@@ -1,15 +1,15 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="SignInRequest.cs" company="TdService">
+// <copyright file="SignInView.cs" company="TdService">
 // Vitali Hatalski. 2012.
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TdService.Services
+namespace TdService.Services.ViewModels.Account
 {
     /// <summary>
-    /// This class describes request parameters for sign in action.
+    /// This class describes the view model for sign in page.
     /// </summary>
-    public class SignInRequest : RequestBase
+    public class SignInView
     {
         /// <summary>
         /// Gets or sets Email.
@@ -20,5 +20,10 @@ namespace TdService.Services
         /// Gets or sets Password.
         /// </summary>
         public string Password { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether user cookies should be remembered.
+        /// </summary>
+        public bool RememberMe { get; set; }
     }
 }

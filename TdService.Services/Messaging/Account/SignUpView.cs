@@ -1,15 +1,15 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="SignInView.cs" company="TdService">
+// <copyright file="SignUpView.cs" company="TdService">
 // Vitali Hatalski. 2012.
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TdService.Services
+namespace TdService.Services.Messaging.Account
 {
     /// <summary>
-    /// This is a view object for UI.
+    /// TODO: Update summary.
     /// </summary>
-    public class SignInView
+    public class SignUpView
     {
         /// <summary>
         /// Gets or sets Email.
@@ -22,8 +22,8 @@ namespace TdService.Services
         public string Password { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether user cookies should be persistent.
+        /// Gets or sets PasswordConfirm.
         /// </summary>
-        public bool RememberMe { get; set; }
+        public string PasswordConfirm { get; set; }
     }
 }
