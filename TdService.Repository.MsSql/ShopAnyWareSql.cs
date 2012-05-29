@@ -144,16 +144,16 @@ namespace TdService.Repository.MsSql
                     {
                         new DeliveryAddress
                             {
-                                Address1 = "Novovilenskaya street",
-                                Address2 = "10, 41",
-                                Address3 = string.Empty,
+                                AddressLine1 = "Novovilenskaya street",
+                                AddressLine2 = "10, 41",
+                                AddressLine3 = string.Empty,
                                 AddressName = "Minsk - Novovilenskaya",
                                 City = "Minsk",
                                 Country = "Russia",
                                 FirstName = "Vitali",
                                 LastName = "Hatalski",
                                 Phone = "+375295067630",
-                                Zip = 220053
+                                ZipCode = 220053
                             }
                     };
 
