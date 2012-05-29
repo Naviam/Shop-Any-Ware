@@ -51,7 +51,9 @@ namespace TdService.Repository.MsSql.Repositories
         {
             using (var context = new ShopAnyWareSql())
             {
-                var user = context.Users.SingleOrDefault(u => (string.Compare(u.Email, email, StringComparison.OrdinalIgnoreCase) == 0 && string.Compare(u.Password, password, StringComparison.Ordinal) == 0));
+                var user = context.Users.SingleOrDefault(u => 
+                    (string.Compare(u.Email, email, StringComparison.OrdinalIgnoreCase) == 0 && 
+                    string.Compare(u.Password, password, StringComparison.Ordinal) == 0));
                 return user != null;
             }
         }

@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Addresses\Address.cs" />
+    <Compile Include="Addresses\WarehouseAddress.cs" />
     <Compile Include="Balance\Currency.cs" />
     <Compile Include="Orders\OrderNewState.cs" />
     <Compile Include="Orders\IOrderState.cs" />

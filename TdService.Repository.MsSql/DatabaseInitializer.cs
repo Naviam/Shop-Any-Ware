@@ -18,7 +18,7 @@ namespace TdService.Repository.MsSql
         /// </summary>
         public static void InitializeShopAnyWare()
         {
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ShopAnyWareSql>());
+            Database.SetInitializer(new ShopAnyWareSql.ShowAnyWareInitializer());
         }
     }
 }

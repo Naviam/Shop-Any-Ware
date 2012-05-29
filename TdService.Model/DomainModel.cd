@@ -3,7 +3,7 @@
   <Class Name="TdService.Model.Addresses.Address" Collapsed="true">
     <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ACACAAAAgAAAAAAJAAAMCAAAAAIAAAAAAAAAJAAAAAA=</HashCode>
+      <HashCode>ACAAAAAAgACAAAAJAAAMDAAAAAIAAAAAAAAAJAAAAAA=</HashCode>
       <FileName>Addresses\Address.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -21,46 +21,11 @@
       <FileName>Items\ItemImage.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="TdService.Model.Price" Collapsed="true">
-    <Position X="4.75" Y="2.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Domain\Price.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="TdService.Model.Service" Collapsed="true">
-    <Position X="4.75" Y="3.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAACAAAAAQAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Domain\Service.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="TdService.Model.NotificationRules" Collapsed="true">
-    <Position X="3" Y="1.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAEAAAAAAAA=</HashCode>
-      <FileName>Notification\NotificationRules.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="TdService.Model.Retailer" Collapsed="true">
     <Position X="8.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAgAAAAAAAAAAQAAAAAAAAAAAAAAAAACAA=</HashCode>
       <FileName>Retailer.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="TdService.Model.Balance" Collapsed="true">
-    <Position X="3" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AACAAAAAAAAAAAAAAAAAAAiEAAgAAAAAAAAAAABAAAI=</HashCode>
-      <FileName>Wallet\Balance.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="TdService.Model.Transaction" Collapsed="true">
-    <Position X="6.5" Y="3.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAgAAAAAgAACAAAAAAAAAQAABAAIEAAAAAAA=</HashCode>
-      <FileName>Wallet\Transaction.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TdService.Model.Items.Item" Collapsed="true" BaseTypeListCollapsed="true">
@@ -90,28 +55,28 @@
   <Class Name="TdService.Model.Membership.Profile" Collapsed="true">
     <Position X="6.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAg=</HashCode>
+      <HashCode>AAAAAEAAAACAQAAAAAAABAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
       <FileName>Membership\Profile.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TdService.Model.Membership.Role" Collapsed="true">
     <Position X="3" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAgAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAACAAAACgAAAAAAAABAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Membership\Role.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TdService.Model.Membership.User" Collapsed="true">
     <Position X="8.25" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAECAAAAQCAAAABAEAgAAAAAAgAACAACABAAAAEAAAA=</HashCode>
+      <HashCode>AAEAAAAAQCCAAAAAAAAABAAAAiAACAACABAAAAAAAAA=</HashCode>
       <FileName>Membership\User.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TdService.Model.Orders.Order" Collapsed="true">
     <Position X="4.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAEIEAAAAAAAAAAAAAAEAACAAAAAAAAgAAAAAAAA=</HashCode>
+      <HashCode>AAAAAEIEQEDACAAAACAAAAEAhCAAAAAAAgAAAAAAAAQ=</HashCode>
       <FileName>Orders\Order.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -125,7 +90,7 @@
   <Class Name="TdService.Model.Packages.Package" Collapsed="true">
     <Position X="8.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>gAECAAAAAAAAAAAAAAAAAAQAAAAAAACCAAAAAAAAAAA=</HashCode>
+      <HashCode>AAEAAAAAAACAAAAAAAAABAQAAAAAAACCAAAAAAAAAAA=</HashCode>
       <FileName>Packages\Package.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -167,14 +132,14 @@
   <Interface Name="TdService.Model.Membership.IRoleRepository" Collapsed="true">
     <Position X="3" Y="7.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAQAAEAAAAAAAAAgAAAgAAAAAAAAAAACAIQAAAEAAA=</HashCode>
+      <HashCode>AAAQAAEAAAAAAAAAgAAAgAAAAAAAAAAACAAQAQAAAgA=</HashCode>
       <FileName>Membership\IRoleRepository.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="TdService.Model.Membership.IUserRepository" Collapsed="true">
     <Position X="4.75" Y="7.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>IAEAAAAAAAAAAAAAAAAAAAAAAQAAAAAgGAAAAAAAAAA=</HashCode>
+      <HashCode>AAEAAAgAAAAAAAAAAAAAAAAAAQAAAAAgGAAAAAAAAAA=</HashCode>
       <FileName>Membership\IUserRepository.cs</FileName>
     </TypeIdentifier>
   </Interface>
@@ -183,13 +148,6 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAIAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Notification\INotificationRepository.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="TdService.Model.Repositories.IReportRepository" Collapsed="true">
-    <Position X="8.25" Y="6.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
-      <FileName>Repositories\IReportRepository.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="TdService.Model.Orders.IOrderRepository" Collapsed="true">
@@ -220,17 +178,10 @@
       <FileName>Shipping\DispatchMethod.cs</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="TdService.Model.TransactionStatus" Collapsed="true">
-    <Position X="3" Y="9.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
-      <FileName>Wallet\TransactionStatus.cs</FileName>
-    </TypeIdentifier>
-  </Enum>
   <Enum Name="TdService.Model.Orders.OrderStatus" Collapsed="true">
     <Position X="4.75" Y="8.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAIAAAAABAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAABAAAACCEAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Orders\OrderStatus.cs</FileName>
     </TypeIdentifier>
   </Enum>

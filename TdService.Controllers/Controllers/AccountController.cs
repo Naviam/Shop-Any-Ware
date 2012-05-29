@@ -73,6 +73,7 @@ namespace TdService.Controllers
             if (isValid)
             {
                 this.formsAuthentication.SetAuthenticationToken(request.Email);
+                return this.RedirectToAction("Dashboard", "Member");
             }
 
             return this.View();

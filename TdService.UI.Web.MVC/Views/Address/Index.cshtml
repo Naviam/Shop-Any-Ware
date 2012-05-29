@@ -2,4 +2,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Delivery Addresses</h2>
+
+<div class="row-fluid">
+    <div class="span12">
+        @{Html.RenderPartial("addressTable");}
+    </div>
+</div>

@@ -11,6 +11,7 @@ namespace TdService.Repository.MsSql.Migrations
 {
     using System.Data.Entity.Migrations;
 
+    using TdService.Model.Membership;
     using TdService.Repository.MsSql;
 
     /// <summary>
@@ -43,6 +44,8 @@ namespace TdService.Repository.MsSql.Migrations
             // new Person { FullName = "Brice Lambson" },
             // new Person { FullName = "Rowan Miller" }
             // );
+
+            // context.Users.AddOrUpdate(u => u.Email, new User { Email = "vhatalski@naviam.com" });
         }
     }
 }

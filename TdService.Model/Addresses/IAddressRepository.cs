@@ -25,7 +25,7 @@ namespace TdService.Model.Addresses
         /// <returns>
         /// Collection of user's delivery addresses.
         /// </returns>
-        IEnumerable<DeliveryAddress> GetDeliveryAddresses(string email);
+        List<DeliveryAddress> GetDeliveryAddresses(string email);
 
         /// <summary>
         /// Get user's personal warehouse address.
@@ -36,7 +36,7 @@ namespace TdService.Model.Addresses
         /// <returns>
         /// ShopAnyWare address for user's purchases delivery in U.S.
         /// </returns>
-        Address GetWarehouseAddress(string email);
+        WarehouseAddress GetWarehouseAddress(string email);
 
         /// <summary>
         /// Get user's delivery address details.
@@ -58,15 +58,7 @@ namespace TdService.Model.Addresses
         /// <param name="address">
         /// The address.
         /// </param>
-        void AddDeliveryAddress(string email, DeliveryAddress address);
-
-        /// <summary>
-        /// Update user's delivery address.
-        /// </summary>
-        /// <param name="address">
-        /// The address.
-        /// </param>
-        void UpdateDeliveryAddress(DeliveryAddress address);
+        void AddOrUpdateDeliveryAddress(string email, DeliveryAddress address);
 
         /// <summary>
         /// Remove user's delivery address.
