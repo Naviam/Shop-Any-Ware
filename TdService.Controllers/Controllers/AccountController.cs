@@ -9,11 +9,9 @@
 
 namespace TdService.Controllers
 {
-    using System.Globalization;
     using System.Web.Mvc;
 
     using TdService.Infrastructure.Authentication;
-    using TdService.Model.Membership;
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging.Membership;
     using TdService.Services.ViewModels.Account;
@@ -36,8 +34,8 @@ namespace TdService.Controllers
         /// <summary>
         /// Initializes a new instance of the <see cref="AccountController"/> class.
         /// </summary>
-        /// <param name="membershipRepository">
-        /// The membership repository.
+        /// <param name="membershipService">
+        /// The membership service.
         /// </param>
         /// <param name="formsAuthentication">
         /// The forms authentication.
@@ -77,11 +75,11 @@ namespace TdService.Controllers
 
             if (isValid)
             {
-                var getUserRequest = new GetUserRequest { Email = request.Email };
-                var validatedUser = this.membershipService.GetUser(getUserRequest);
-                user.AuthenticationToken = validatedUser.Id.ToString(CultureInfo.InvariantCulture);
-                user.Email = validatedUser.Email;
-                user.IsAuthenticated = true;
+                // var getUserRequest = new GetUserRequest { Email = request.Email };
+                // var validatedUser = this.membershipService.GetUser(getUserRequest);
+                // user.AuthenticationToken = validatedUser.Id.ToString(CultureInfo.InvariantCulture);
+                // user.Email = validatedUser.Email;
+                // user.IsAuthenticated = true;
                 this.formsAuthentication.SetAuthenticationToken(request.Email, request.RememberMe);
                 return this.RedirectToAction("Dashboard", "Member");
             }
