@@ -46,12 +46,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementations\MembershipService.cs" />
+    <Compile Include="Messaging\Membership\ValidateUserRequest.cs" />
+    <Compile Include="Messaging\Address\GetDeliveryAddressesRequest.cs" />
+    <Compile Include="Messaging\Address\GetDeliveryAddressesResponse.cs" />
+    <Compile Include="Interfaces\IAddressService.cs" />
+    <Compile Include="Messaging\Membership\GetUserRequest.cs" />
+    <Compile Include="Messaging\Membership\GetUserResponse.cs" />
+    <Compile Include="Interfaces\IMembershipService.cs" />
+    <Compile Include="Messaging\Membership\LoginUserRequest.cs" />
+    <Compile Include="Messaging\Membership\RegisterUserRequest.cs" />
+    <Compile Include="Messaging\Membership\RegisterUserResponse.cs" />
     <Compile Include="RequestBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Messaging\Account\SignInRequest.cs" />
-    <Compile Include="Messaging\Account\SignInView.cs" />
-    <Compile Include="Messaging\Account\SignUpRequest.cs" />
-    <Compile Include="Messaging\Account\SignUpView.cs" />
     <Compile Include="ViewModels\Account\SignInView.cs" />
     <Compile Include="ViewModels\Account\SignUpView.cs" />
   </ItemGroup>
@@ -69,8 +76,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Implementations\" />
-    <Folder Include="Interfaces\" />
     <Folder Include="Mapping\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

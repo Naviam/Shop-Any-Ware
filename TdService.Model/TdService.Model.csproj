@@ -50,6 +50,8 @@
     <Compile Include="Addresses\InvalidAddressException.cs" />
     <Compile Include="Addresses\WarehouseAddress.cs" />
     <Compile Include="Balance\Currency.cs" />
+    <Compile Include="Membership\IMembershipRepository.cs" />
+    <Compile Include="Membership\UserBusinessRules.cs" />
     <Compile Include="Orders\OrderNewState.cs" />
     <Compile Include="Orders\IOrderState.cs" />
     <Compile Include="Orders\IRequestForOrderRepository.cs" />
@@ -79,10 +81,7 @@
     <Compile Include="Notification\INotificationRepository.cs" />
     <Compile Include="Orders\IOrderRepository.cs" />
     <Compile Include="Packages\IPackageRepository.cs" />
-    <Compile Include="Membership\IProfileRepository.cs" />
     <Compile Include="Reports\IReportRepository.cs" />
-    <Compile Include="Membership\IRoleRepository.cs" />
-    <Compile Include="Membership\IUserRepository.cs" />
     <Compile Include="Membership\Role.cs" />
     <Compile Include="Balance\Transaction.cs" />
     <Compile Include="Balance\TransactionStatus.cs" />

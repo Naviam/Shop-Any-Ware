@@ -138,4 +138,7 @@
   <data name="DeliveryAddress_LastNameRequired" xml:space="preserve">
     <value>A delivery address must contain your last name.</value>
   </data>
+  <data name="User_EmailRequired" xml:space="preserve">
+    <value>An user must have an email.</value>
+  </data>
 </root>

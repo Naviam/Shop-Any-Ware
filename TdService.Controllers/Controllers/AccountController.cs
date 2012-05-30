@@ -9,11 +9,14 @@
 
 namespace TdService.Controllers
 {
+    using System.Globalization;
     using System.Web.Mvc;
 
     using TdService.Infrastructure.Authentication;
     using TdService.Model.Membership;
-    using TdService.Services.Messaging.Account;
+    using TdService.Services.Interfaces;
+    using TdService.Services.Messaging.Membership;
+    using TdService.Services.ViewModels.Account;
 
     /// <summary>
     /// This controller is responsible for authentication and authorization of user.
@@ -21,27 +24,27 @@ namespace TdService.Controllers
     public class AccountController : BaseController
     {
         /// <summary>
-        /// User repository.
+        /// Membership repository.
         /// </summary>
-        private readonly IUserRepository userRepository;
+        private readonly IMembershipService membershipService;
 
         /// <summary>
-        /// Form authentication.
+        /// Forms authentication.
         /// </summary>
         private readonly IFormsAuthentication formsAuthentication;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AccountController"/> class.
         /// </summary>
-        /// <param name="userRepository">
-        /// The user repository.
+        /// <param name="membershipRepository">
+        /// The membership repository.
         /// </param>
         /// <param name="formsAuthentication">
-        /// The form Authentication.
+        /// The forms authentication.
         /// </param>
-        public AccountController(IUserRepository userRepository, IFormsAuthentication formsAuthentication)
+        public AccountController(IMembershipService membershipService, IFormsAuthentication formsAuthentication)
         {
-            this.userRepository = userRepository;
+            this.membershipService = membershipService;
             this.formsAuthentication = formsAuthentication;
         }
 
@@ -66,13 +69,20 @@ namespace TdService.Controllers
         /// Redirect user to the home page of authenticated users.
         /// </returns>
         [HttpPost]
-        public ActionResult SignIn(SignInRequest request)
+        public ActionResult SignIn(SignInView request)
         {
-            var isValid = this.userRepository.ValidateUser(request.Email, request.Password);
+            var user = new AuthUser { IsAuthenticated = false };
+            var validateUserRequest = new ValidateUserRequest { Email = request.Email, Password = request.Password };
+            var isValid = this.membershipService.ValidateUser(validateUserRequest);
 
             if (isValid)
             {
-                this.formsAuthentication.SetAuthenticationToken(request.Email);
+                var getUserRequest = new GetUserRequest { Email = request.Email };
+                var validatedUser = this.membershipService.GetUser(getUserRequest);
+                user.AuthenticationToken = validatedUser.Id.ToString(CultureInfo.InvariantCulture);
+                user.Email = validatedUser.Email;
+                user.IsAuthenticated = true;
+                this.formsAuthentication.SetAuthenticationToken(request.Email, request.RememberMe);
                 return this.RedirectToAction("Dashboard", "Member");
             }
 
@@ -100,9 +110,9 @@ namespace TdService.Controllers
         /// Redirects user to Sign In form in case of success.
         /// </returns>
         [HttpPost]
-        public ActionResult SignUp(SignUpRequest request)
+        public ActionResult SignUp(SignUpView request)
         {
-            return this.RedirectToAction("SignIn");
+            return this.RedirectToAction("SignIn", "Account");
         }
 
         /// <summary>

@@ -47,8 +47,7 @@ namespace TdService.UI.Web.MVC.App_Start
         private static void InitializeContainer(Container container)
         {
             container.Register<IOrderRepository, OrderRepository>();
-            container.Register<IUserRepository, UserRepository>();
-            container.Register<IRoleRepository, RoleRepository>();
+            container.Register<IMembershipRepository, MembershipRepository>();
             container.Register<IFormsAuthentication, AspFormsAuthentication>();
 
             // For instance:

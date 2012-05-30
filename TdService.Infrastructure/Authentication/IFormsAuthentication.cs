@@ -17,7 +17,10 @@ namespace TdService.Infrastructure.Authentication
         /// <param name="token">
         /// The token.
         /// </param>
-        void SetAuthenticationToken(string token);
+        /// <param name="persist">
+        /// The persist cookie flag.
+        /// </param>
+        void SetAuthenticationToken(string token, bool persist);
 
         /// <summary>
         /// Get authentication token.

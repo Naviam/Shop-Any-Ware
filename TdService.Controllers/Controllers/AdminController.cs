@@ -18,26 +18,17 @@ namespace TdService.Controllers
         /// <summary>
         /// User repository.
         /// </summary>
-        private readonly IUserRepository userRepository;
-
-        /// <summary>
-        /// Role repository.
-        /// </summary>
-        private readonly IRoleRepository roleRepository;
+        private readonly IMembershipRepository membershipRepository;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AdminController"/> class.
         /// </summary>
-        /// <param name="userRepository">
-        /// The user repository.
+        /// <param name="membershipRepository">
+        /// The membership Repository.
         /// </param>
-        /// <param name="roleRepository">
-        /// The role repository.
-        /// </param>
-        public AdminController(IUserRepository userRepository, IRoleRepository roleRepository)
+        public AdminController(IMembershipRepository membershipRepository)
         {
-            this.userRepository = userRepository;
-            this.roleRepository = roleRepository;
+            this.membershipRepository = membershipRepository;
         }
 
         /// <summary>

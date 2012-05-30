@@ -20,9 +20,12 @@ namespace TdService.Infrastructure.Authentication
         /// <param name="token">
         /// The token.
         /// </param>
-        public void SetAuthenticationToken(string token)
+        /// <param name="persist">
+        /// The persist cookie boolean value.
+        /// </param>
+        public void SetAuthenticationToken(string token, bool persist)
         {
-            FormsAuthentication.SetAuthCookie(token, false);
+            FormsAuthentication.SetAuthCookie(token, persist);
         }
 
         /// <summary>

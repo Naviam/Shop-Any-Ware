@@ -54,8 +54,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Authentication\AspFormsAuthentication.cs" />
+    <Compile Include="Authentication\AspMembershipAuthentication.cs" />
     <Compile Include="Authentication\IAuthenticationService.cs" />
+    <Compile Include="Authentication\IExternalAuthenticationService.cs" />
     <Compile Include="Authentication\IFormsAuthentication.cs" />
+    <Compile Include="Authentication\AuthUser.cs" />
+    <Compile Include="Authentication\ILocalAuthenticationService.cs" />
     <Compile Include="Configuration\ApplicationSettingsFactory.cs" />
     <Compile Include="Configuration\IApplicationSettings.cs" />
     <Compile Include="Configuration\WebConfigApplicationSettings.cs" />

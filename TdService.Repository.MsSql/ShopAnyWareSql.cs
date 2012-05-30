@@ -153,7 +153,7 @@ namespace TdService.Repository.MsSql
                                 FirstName = "Vitali",
                                 LastName = "Hatalski",
                                 Phone = "+375295067630",
-                                ZipCode = 220053
+                                ZipCode = "220053"
                             }
                     };
 

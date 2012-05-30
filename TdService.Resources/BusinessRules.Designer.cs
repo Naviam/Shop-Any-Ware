@@ -122,5 +122,14 @@ namespace TdService.Resources {
                 return ResourceManager.GetString("DeliveryAddress_LastNameRequired", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An user must have an email..
+        /// </summary>
+        public static string User_EmailRequired {
+            get {
+                return ResourceManager.GetString("User_EmailRequired", resourceCulture);
+            }
+        }
     }
 }
