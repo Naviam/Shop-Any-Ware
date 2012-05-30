@@ -21,6 +21,8 @@ namespace TdService.UI.Web.MVC.App_Start
     using TdService.Model.Membership;
     using TdService.Model.Orders;
     using TdService.Repository.MsSql.Repositories;
+    using TdService.Services.Implementations;
+    using TdService.Services.Interfaces;
 
     /// <summary>
     /// This class is for Simple Injector Dependency Injection initialization.
@@ -48,6 +50,7 @@ namespace TdService.UI.Web.MVC.App_Start
         {
             container.Register<IOrderRepository, OrderRepository>();
             container.Register<IMembershipRepository, MembershipRepository>();
+            container.Register<IMembershipService, MembershipService>();
             container.Register<IFormsAuthentication, AspFormsAuthentication>();
 
             // For instance:
