@@ -36,7 +36,7 @@
                 </a>
                 <a class="brand" href="@Url.Action("Index", "Home")">Shop Any Ware</a>
                 <div class="nav-collapse">
-                    @if (!User.Identity.IsAuthenticated)
+                    @if (User.Identity.IsAuthenticated)
                     {
                         @Html.MvcSiteMap("TopMenu").Menu("TopMenuHelperModel", true)
                     }
@@ -44,7 +44,7 @@
                     {
                         @Html.MvcSiteMap("Shopper").Menu("PillsMenuHelperModel", false);
                     }
-                    @if (User.Identity.IsAuthenticated)
+                    @if (!User.Identity.IsAuthenticated)
                     {
                         @*<ul class="nav nav-pills pull-right">
                             <li><a href="#"><i class="icon-white icon-user"></i> @HttpContext.Current.User.Identity.Name</a></li>
