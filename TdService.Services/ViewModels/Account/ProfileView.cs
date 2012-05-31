@@ -6,6 +6,8 @@
 
 namespace TdService.Services.ViewModels.Account
 {
+    using System.ComponentModel.DataAnnotations;
+
     /// <summary>
     /// This is the profile model for web form.
     /// </summary>
@@ -14,6 +16,7 @@ namespace TdService.Services.ViewModels.Account
         /// <summary>
         /// Gets or sets Email.
         /// </summary>
+        [Required]
         public string Email { get; set; }
 
         /// <summary>
@@ -24,11 +27,13 @@ namespace TdService.Services.ViewModels.Account
         /// <summary>
         /// Gets or sets First Name.
         /// </summary>
+        [Required]
         public string FirstName { get; set; }
 
         /// <summary>
         /// Gets or sets Last Name.
         /// </summary>
+        [Required]
         public string LastName { get; set; }
     }
 }
