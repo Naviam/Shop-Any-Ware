@@ -6,8 +6,12 @@
 
 namespace TdService.Services.Implementations
 {
+    using System.Linq;
+    using System.Text;
+
     using TdService.Model.Membership;
     using TdService.Services.Interfaces;
+    using TdService.Services.Mapping;
     using TdService.Services.Messaging.Membership;
     using TdService.Services.ViewModels.Account;
 
@@ -112,6 +116,7 @@ namespace TdService.Services.Implementations
                 {
                     Email = user.Email,
                     CurrentPassword = user.Password,
+                    Id = (profile == null) ? 0 : profile.Id,
                     FirstName = (profile == null) ? string.Empty : profile.FirstName,
                     LastName = (profile == null) ? string.Empty : profile.LastName
                 };
@@ -126,9 +131,37 @@ namespace TdService.Services.Implementations
         /// </param>
         public void UpdateProfile(ProfileView profileView)
         {
-            // validate business model
-            this.membershipRepository.UpdateFullName(
-                profileView.Email, profileView.FirstName, profileView.LastName);
+            var profile = new Profile { FirstName = profileView.FirstName, LastName = profileView.LastName };
+
+            this.ThrowExceptionIfProfileIsInvalid(profile);
+
+            this.membershipRepository.UpdateProfile(profileView.Email, profile);
+        }
+
+        /// <summary>
+        /// Validates profile.
+        /// </summary>
+        /// <param name="profile">
+        /// The profile.
+        /// </param>
+        /// <exception cref="InvalidProfileException">
+        /// Thrown when business rules are broken.
+        /// </exception>
+        private void ThrowExceptionIfProfileIsInvalid(Profile profile)
+        {
+            if (profile.GetBrokenRules().Any())
+            {
+                var profileIssues = new StringBuilder();
+                profileIssues.AppendLine(
+                    "There were some issues with the profile you are editing.");
+
+                foreach (var rule in profile.GetBrokenRules())
+                {
+                    profileIssues.AppendLine(rule.Rule);
+                }
+
+                throw new InvalidProfileException(profileIssues.ToString());
+            }
         }
     }
 }

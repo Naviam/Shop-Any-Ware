@@ -124,6 +124,24 @@ namespace TdService.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to First name is a required field. It is used to generate your U.S. address..
+        /// </summary>
+        public static string Profile_FirstNameRequired {
+            get {
+                return ResourceManager.GetString("Profile_FirstNameRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last name is a required field. It is used to generate your U.S. address..
+        /// </summary>
+        public static string Profile_LastNameRequired {
+            get {
+                return ResourceManager.GetString("Profile_LastNameRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An user must have an email..
         /// </summary>
         public static string User_EmailRequired {

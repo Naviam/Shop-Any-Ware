@@ -67,6 +67,10 @@
       <Project>{4E87BDA7-4AF2-4D94-9A40-68B161FBB71A}</Project>
       <Name>TdService.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TdService.Resources\TdService.Resources.csproj">
+      <Project>{9DC0E782-6E6B-4FA4-A7C1-728ED25CE063}</Project>
+      <Name>TdService.Resources</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TdService.Services\TdService.Services.csproj">
       <Project>{A9DEDA99-A27D-4687-B912-46F339EA36A4}</Project>
       <Name>TdService.Services</Name>

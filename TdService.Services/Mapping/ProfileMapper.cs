@@ -18,15 +18,17 @@ namespace TdService.Services.Mapping
     public static class ProfileMapper
     {
         /// <summary>
+        /// Convert profile view to profile domain object.
         /// </summary>
-        /// <param name="profile">
-        /// The profile.
+        /// <param name="profileView">
+        /// The profile view.
         /// </param>
         /// <returns>
+        /// Profile object.
         /// </returns>
-        public static ProfileView ConvertToProfileView(this Profile profile)
+        public static Profile ConvertToProfile(this ProfileView profileView)
         {
-            return Mapper.Map<Profile, ProfileView>(profile);
+            return Mapper.Map<ProfileView, Profile>(profileView);
         }
     }
 }

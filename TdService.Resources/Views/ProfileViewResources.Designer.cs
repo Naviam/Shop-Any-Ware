@@ -149,5 +149,14 @@ namespace TdService.Resources.Views {
                 return ResourceManager.GetString("SaveChangesButton", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your profile has been successfully updated..
+        /// </summary>
+        public static string UpdateProfileSuccessMessage {
+            get {
+                return ResourceManager.GetString("UpdateProfileSuccessMessage", resourceCulture);
+            }
+        }
     }
 }

@@ -11,8 +11,13 @@ namespace TdService.Services.ViewModels.Account
     /// <summary>
     /// This is the profile model for web form.
     /// </summary>
-    public class ProfileView
+    public class ProfileView : BaseView
     {
+        /// <summary>
+        /// Gets or sets Id.
+        /// </summary>
+        public int Id { get; set; }
+
         /// <summary>
         /// Gets or sets Email.
         /// </summary>

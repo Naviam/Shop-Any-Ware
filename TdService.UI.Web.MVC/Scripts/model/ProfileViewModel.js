@@ -2,8 +2,8 @@
     /// <summary>
     ///     View model that describes profile form behavior.
     /// </summary>
-    /// <param name="orders" type="Array">
-    ///     Optional collection of initial orders.
+    /// <param name="model" type="Object">
+    ///     Optional model with initial data.
     /// </param>
     var profile = JSON.parse(model);
     var self = this;
@@ -15,8 +15,22 @@
 
     self.updateFullName = function () {
         /// <summary>Update first and last name.</summary>
-        /// <param name="order">Order to remove.</param>
-
+        $.post("Profile/Save", $("form").serialize(),
+            function (data, textStatus, jqXhr) {
+                noty({
+                    "text": data.Message,
+                    "layout": "topCenter",
+                    "type": data.MessageType,
+                    "theme": "noty_theme_twitter",
+                    "animateOpen": { "height": "toggle" },
+                    "animateClose": { "height": "toggle" },
+                    "speed": 500,
+                    "timeout": 5000,
+                    "closeButton": false,
+                    "closeOnSelfClick": true,
+                    "closeOnSelfOver": false,
+                    "modal": false
+                });
+            });
     };
 };
-

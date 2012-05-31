@@ -6,6 +6,8 @@
 
 namespace TdService.Services.ViewModels.Account
 {
+    using System.ComponentModel.DataAnnotations;
+
     /// <summary>
     /// This class describes the view model for sign in page.
     /// </summary>
@@ -14,11 +16,13 @@ namespace TdService.Services.ViewModels.Account
         /// <summary>
         /// Gets or sets Email.
         /// </summary>
+        [Required]
         public string Email { get; set; }
 
         /// <summary>
         /// Gets or sets Password.
         /// </summary>
+        [Required]
         public string Password { get; set; }
 
         /// <summary>

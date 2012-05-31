@@ -9,9 +9,11 @@
 
 namespace TdService.Controllers
 {
+    using System;
     using System.Web.Mvc;
 
     using TdService.Infrastructure.Authentication;
+    using TdService.Resources.Views;
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging.Membership;
     using TdService.Services.ViewModels.Account;
@@ -68,10 +70,20 @@ namespace TdService.Controllers
         /// Returns profile view.
         /// </returns>
         [HttpPost]
-        public ActionResult Save(ProfileView profileView)
+        public JsonResult Save(ProfileView profileView)
         {
-            this.membershipService.UpdateProfile(profileView);
-            return this.View("Index", profileView);
+            try
+            {
+                this.membershipService.UpdateProfile(profileView);
+                profileView.Message = ProfileViewResources.UpdateProfileSuccessMessage;
+                profileView.MessageType = "success";
+            }
+            catch (Exception e)
+            {
+                profileView.Message = e.Message;
+                profileView.MessageType = "error";
+            }
+            return this.Json(profileView);
         }
     }
 }

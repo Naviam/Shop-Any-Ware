@@ -64,7 +64,7 @@ namespace TdService.Controllers
         [HttpPost]
         public ActionResult SignIn(SignInView request)
         {
-            var user = new AuthUser { IsAuthenticated = false };
+            // var user = new AuthUser { IsAuthenticated = false };
             var validateUserRequest = new ValidateUserRequest { Email = request.Email, Password = request.Password };
             var isValid = this.membershipService.ValidateUser(validateUserRequest);
 

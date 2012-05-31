@@ -195,22 +195,25 @@ namespace TdService.Repository.MsSql.Repositories
         /// <param name="email">
         /// The email.
         /// </param>
-        /// <param name="firstName">
-        /// The first name.
+        /// <param name="profile">
+        /// The profile.
         /// </param>
-        /// <param name="lastName">
-        /// The last name.
-        /// </param>
-        public void UpdateFullName(string email, string firstName, string lastName)
+        public void UpdateProfile(string email, Profile profile)
         {
             using (var context = new ShopAnyWareSql())
             {
-                var profile = context.Users.Where(u => string.Compare(u.Email, email, StringComparison.OrdinalIgnoreCase) == 0)
-                    .Select(u => u.Profile).SingleOrDefault();
-                if (profile != null)
+                // if (profile.Id == 0)
+                // {
+                // context.Profiles.Add(profile);
+                // }
+                // context.Entry(profile).State = EntityState.Modified;
+                // context.SaveChanges();
+                var profileDb = context.Users.Where(u => string.Compare(u.Email, email, StringComparison.OrdinalIgnoreCase) == 0)
+                .Select(u => u.Profile).SingleOrDefault();
+                if (profileDb != null)
                 {
-                    profile.FirstName = firstName;
-                    profile.LastName = lastName;
+                    profileDb.FirstName = profile.FirstName;
+                    profileDb.LastName = profile.LastName;
                     context.SaveChanges();
                 }
             }

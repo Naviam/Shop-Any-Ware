@@ -158,6 +158,9 @@
     <Content Include="Content\less\docs.css" />
     <Content Include="Content\less\responsive.css" />
     <Content Include="Content\less\responsive.min.css" />
+    <Content Include="Content\noty\jquery.noty.css" />
+    <Content Include="Content\noty\noty_theme_default.css" />
+    <Content Include="Content\noty\noty_theme_twitter.css" />
     <Content Include="Content\qunit.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\styles.css" />
@@ -192,6 +195,7 @@
     <Content Include="Scripts\jquery.linq.min.js" />
     <Content Include="Scripts\jquery.nicescroll.js" />
     <Content Include="Scripts\jquery.nicescroll.min.js" />
+    <Content Include="Scripts\jquery.noty.js" />
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />

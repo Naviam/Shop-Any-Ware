@@ -138,6 +138,12 @@
   <data name="DeliveryAddress_LastNameRequired" xml:space="preserve">
     <value>A delivery address must contain your last name.</value>
   </data>
+  <data name="Profile_FirstNameRequired" xml:space="preserve">
+    <value>First name is a required field. It is used to generate your U.S. address.</value>
+  </data>
+  <data name="Profile_LastNameRequired" xml:space="preserve">
+    <value>Last name is a required field. It is used to generate your U.S. address.</value>
+  </data>
   <data name="User_EmailRequired" xml:space="preserve">
     <value>An user must have an email.</value>
   </data>

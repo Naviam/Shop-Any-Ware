@@ -50,8 +50,7 @@
             </div>
         </div>
         <div class="form-actions">
-            <button type="submit" class="btn btn-primary">@ProfileViewResources.SaveChangesButton</button>
-            <button class="btn">Cancel</button>
+            <button type="submit" data-bind="click: updateFullName" class="btn btn-primary">@ProfileViewResources.SaveChangesButton</button>
         </div>
     </fieldset>
 }
@@ -60,8 +59,7 @@
 {
     <script type="text/javascript" src="@Url.Content("~/Scripts/model/ProfileViewModel.js")"></script>
     <script type="text/javascript">
-        $(document).ready(function()
-        {
+        $(document).ready(function() {
             ko.applyBindings(new ProfileViewModel($("#model").val()));
         });
     </script>

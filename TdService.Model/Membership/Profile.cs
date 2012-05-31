@@ -44,7 +44,12 @@ namespace TdService.Model.Membership
         {
             if (string.IsNullOrEmpty(this.FirstName))
             {
-                // this.AddBrokenRule(new BusinessRule(string.Empty));
+                this.AddBrokenRule(ProfileBusinessRules.FirstNameRequired);
+            }
+
+            if (string.IsNullOrEmpty(this.LastName))
+            {
+                this.AddBrokenRule(ProfileBusinessRules.LastNameRequired);
             }
         }
     }

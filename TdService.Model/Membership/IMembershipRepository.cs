@@ -56,18 +56,15 @@ namespace TdService.Model.Membership
         bool ChangePassword(string email, string oldPassword, string newPassword);
 
         /// <summary>
-        /// Update full name of the user.
+        /// Update profile of the user.
         /// </summary>
         /// <param name="email">
         /// The email.
         /// </param>
-        /// <param name="firstName">
-        /// The first Name.
+        /// <param name="profile">
+        /// The profile.
         /// </param>
-        /// <param name="lastName">
-        /// The last Name.
-        /// </param>
-        void UpdateFullName(string email, string firstName, string lastName); 
+        void UpdateProfile(string email, Profile profile);
         #endregion
 
         #region Roles
