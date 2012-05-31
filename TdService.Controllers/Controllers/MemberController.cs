@@ -12,7 +12,6 @@ namespace TdService.Controllers
     using System;
     using System.Web.Mvc;
 
-    using TdService.Infrastructure.Authentication;
     using TdService.Model.Orders;
 
     /// <summary>
@@ -31,11 +30,7 @@ namespace TdService.Controllers
         /// <param name="repo">
         /// The repo.
         /// </param>
-        /// <param name="formsAuthentication">
-        /// The forms Authentication.
-        /// </param>
-        public MemberController(IOrderRepository repo, IFormsAuthentication formsAuthentication)
-            : base(formsAuthentication)
+        public MemberController(IOrderRepository repo)
         {
             this.repository = repo;
         }

@@ -2,7 +2,6 @@
 #ignore thumbnails created by windows
 Thumbs.db
 #Ignore files build by Visual Studio
-*.suo
 *.obj
 *.exe
 *.pdb
@@ -13,6 +12,7 @@ Thumbs.db
 *_i.c
 *_p.c
 *.ncb
+*.suo
 *.tlb
 *.tlh
 *.bak

@@ -11,24 +11,11 @@ namespace TdService.Controllers
 {
     using System.Web.Mvc;
 
-    using TdService.Infrastructure.Authentication;
-
     /// <summary>
     /// The controller contains methods to work with the addresses.
     /// </summary>
     public class AddressController : BaseController
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AddressController"/> class.
-        /// </summary>
-        /// <param name="formsAuthentication">
-        /// The forms authentication.
-        /// </param>
-        public AddressController(IFormsAuthentication formsAuthentication)
-            : base(formsAuthentication)
-        {
-        }
-
         /// <summary>
         /// Show the list of delivery addresses.
         /// </summary>

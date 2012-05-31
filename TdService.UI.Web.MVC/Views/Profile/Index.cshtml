@@ -1,4 +1,4 @@
-﻿@using TdService.Resources.Views
+@using TdService.Resources.Views
 @model TdService.Services.ViewModels.Account.ProfileView
 @{
     ViewBag.Title = ProfileViewResources.PageTitle;
@@ -8,34 +8,34 @@
     <input id="model" type="hidden" value="@(new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(Model))" />
     <fieldset>
         <div class="control-group">
-            <label class="control-label"><h2>@ProfileViewResources.PageHeader</h2></label>
+            <label class="control-label"><h2>Profile</h2></label>
         </div>
         <div class="control-group">
-            <label class="control-label">@ProfileViewResources.EmailHeader</label>
+            <label class="control-label">Email</label>
             <div class="controls">
-                <input id="Email" name="Email" class="input-xlarge" type="text" data-bind="value: email" readonly="readonly">
+                <input class="input-xlarge" type="text" value="email address here">
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label">@ProfileViewResources.PasswordHeader</label>
+            <label class="control-label">Password</label>
             <div class="controls">
-                <input id="CurrentPassword" name="CurrentPassword" class="input-xlarge" data-bind="value: currentPassword" type="password" readonly="readonly">
+                <input class="input-xlarge" type="password" value="password">
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label">@ProfileViewResources.FirstNameHeader</label>
+            <label class="control-label">First Name</label>
             <div class="controls">
-                <input id="FirstName" name="FirstName" class="input-xlarge" type="text" data-bind="value: firstName">
+                <input class="input-xlarge" type="text" value="first name">
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label">@ProfileViewResources.LastNameHeader</label>
+            <label class="control-label">Surname</label>
             <div class="controls">
-                <input id="LastName" name="LastName" class="input-xlarge" type="text" data-bind="value: lastName">
+                <input class="input-xlarge" type="text" value="surname">
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label">@ProfileViewResources.NotificationHeader</label>
+            <label class="control-label">Notifications</label>
             <div class="controls">
                 <label class="checkbox">
                     <input type="checkbox" id="NotifyOnOrderStatusChange" name="NotifyOnOrderStatusChange" value="option1">
@@ -50,19 +50,8 @@
             </div>
         </div>
         <div class="form-actions">
-            <button type="submit" class="btn btn-primary">@ProfileViewResources.SaveChangesButton</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
             <button class="btn">Cancel</button>
         </div>
     </fieldset>
-}
-
-@section Scripts
-{
-    <script type="text/javascript" src="@Url.Content("~/Scripts/model/ProfileViewModel.js")"></script>
-    <script type="text/javascript">
-        $(document).ready(function()
-        {
-            ko.applyBindings(new ProfileViewModel($("#model").val()));
-        });
-    </script>
 }

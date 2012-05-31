@@ -4,20 +4,32 @@
     ViewBag.Title = "Shop Any Ware - Registration";
 }
 
-<div class="row">
-    <div class="span4 offset4">
-        <form action="@Url.Action("SignUp", "Account")" method="POST">
-            <fieldset>
-                <legend>Register and Get Your USA Address</legend>
-                <label for="credentials_username">Email:</label>
-                <input id="credentials_username" name="credentials_username" type="text" class="input-xlarge" placeholder="Email" />
-                <label for="credentials_password">Password:</label>
-                <input id="credentials_password" name="credentials_password" type="password" class="input-xlarge" placeholder="Password" />
-                <label for="credentials_password_confirm">Confirm Password:</label>
-                <input id="credentials_password_confirm" name="credentials_password_confirm" type="password" class="input-xlarge" placeholder="Confirm Password" />
-                <hr/>
-                <input id="credentials_button_login" name="credentials_login" type="submit" class="btn-primary btn-large" value="Start Shopping!"/>
-            </fieldset>
-        </form>
-    </div>
-</div>
+<form class="form-horizontal" action="@Url.Action("SignUp", "Account")" method="POST">
+    <fieldset>
+        <div class="control-group">
+            <h2>Register and Get Your USA Address</h2>
+        </div>
+        <div class="control-group error">
+            <label class="control-label">Email:</label>
+            <div class="controls">
+                <input class="input-xlarge" type="text" value="email address here">
+                <span class="help-inline">Please correct the error</span>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Confirm Password:</label>
+            <div class="controls">
+                <input class="input-xlarge" type="password" value="password">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Password:</label>
+            <div class="controls">
+                <input class="input-xlarge" type="password" value="password">
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary btn-large">Start Shopping!</button>
+        </div>
+    </fieldset>
+</form>

@@ -39,7 +39,11 @@
 <div class="row-fluid">
     <div class="span4">
         <div id="addOrderForm" class="package">
-            <table style="width:100%;position: relative;z-index: 1001">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#">Мы покупаем и пересылаем</a></li>
+                <li><a href="#">Вы покупаете и мы пересылаем</a></li>
+            </ul>
+            <table class="form-inline" style="width:100%;position: relative;z-index: 1001">
                 <tr>
                     <td>
                         <input class="add-order" style="width: 100%" data-bind="value: newOrder, autosuggest: shops" placeholder="type shop name or item's url"/>
@@ -64,8 +68,9 @@
                         <span style="float:right" data-bind="text: receivedDate"></span>
                     </div>
                     <div class="white">
-                        Order # <span data-bind="text: orderNumber" type="text" placeholder="size"></span> from <span data-bind="text: shop"></span>
-                        <br />Tracking # <span class="tn" title="A Title" data-content="And here's some amazing content. It's very engaging. right?" data-bind="text: trackingNumber" href="http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum=EE972210493US"></span>
+                        <i class="icon icon-pencil"></i> Order # <span data-bind="text: orderNumber" type="text" placeholder="size"></span> from <span data-bind="text: shop"></span>
+                        <br />
+                        <i class="icon icon-pencil"></i> Tracking # <span class="tn" title="A Title" data-content="And here's some amazing content. It's very engaging. right?" data-bind="text: trackingNumber" href="http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum=EE972210493US"></span>
                     </div>
                     <div id="order_extended" class="collapse in">
                         <div class="white">
@@ -75,9 +80,9 @@
                                     <tr>
                                         <th></th>
                                         <th>Item</th>
-                                        <th>Size</th>
+                                        <!--<th>Size</th>
                                         <th>Color</th>
-                                        <th>Qty</th>
+                                        <th>Qty</th>-->
                                         <th>Price</th>
                                         <th></th>
                                     </tr>
@@ -85,15 +90,15 @@
                                 <tbody class="sortable" id="order_items" data-bind="sortable: {data: items, afterAdd: showItem}">
                                     <tr>
                                         <td class="draggable"><div></div></td>
-                                        <td class="left"><span data-bind="click: $parent.removeItem, text: name"></span></td>
-                                        <td><span data-bind="text: size"></span></td>
+                                        <td class="left"><i class="icon-camera"></i> <span data-bind="click: $parent.removeItem, text: name"></span></td>
+                                        <!--<td><span data-bind="text: size"></span></td>
                                         <td><span data-bind="text: color"></span></td>
-                                        <td><span data-bind="text: quantity"></span></td>
+                                        <td><span data-bind="text: quantity"></span></td>-->
                                         <td><span data-bind="text: price"></span></td>
                                         <td class="draggable"><div></div></td>
                                     </tr>
                                 </tbody>
-                                <tbody class="edit">
+                                <!--<tbody class="edit">
                                     <tr>
                                         <td></td>
                                         <td class="left"><input type="text" placeholder="name"/></td>
@@ -107,7 +112,7 @@
                                 <tfoot>
                                     <tr>
                                         <td></td>
-                                        <td class="left" colspan="5">
+                                        <td class="left" colspan="2">
                                             <input type="text" placeholder="item's url for shopping assistance"/>
                                             <a href="#" class="btn btn-mini btn-success" data-bind="click: addItem"><i class="icon-white icon-plus-sign"></i></a>
                                         </td>
@@ -121,7 +126,7 @@
                                         <td data-bind="text: totalAmount"></td>
                                         <td class="draggable"><div></div></td>
                                     </tr>
-                                </tfoot>
+                                </tfoot>-->
                             </table>
                         </div>@*
                         <div class="white">
@@ -143,16 +148,15 @@
                         </div>*@
                         <div class="btn-toolbar">
                             <div class="btn-group">
-                                <button class="btn btn-small btn-danger" data-bind="click: $parent.removeOrder"><i class="icon-white icon-trash"></i> REMOVE</button>
+                                <button class="btn btn-small btn-primary"><i class="icon-white icon-plus-sign"></i> ADD ITEM</button>
                             </div>
                             <div class="btn-group">
-                                <button class="btn btn-small" data-toggle="modal"><i class="icon-camera"></i> PHOTO</button>
+                                <button class="btn btn-small btn-danger" data-bind="click: $parent.removeOrder"><i class="icon-white icon-trash"></i> REMOVE</button>
                             </div>
                             <div class="btn-group">
                                 <button class="btn btn-small" data-toggle="modal"><i class="icon-retweet"></i> RETURN</button>
                             </div>
                         </div>
-                         
                     </div>
                 </div>
             </div>
@@ -166,33 +170,39 @@
         <div id="packages" data-bind="foreach: packages">
             <div class="package action">
                 <div class="box">
-                    <div class="white" data-bind="text: description"></div>
-                    <div class="white span3" data-bind="text: deliveryAddress"></div>
-                    <div class="white span2" data-bind="text: dispatchMethod"></div>
+                    <div>
+                        <img title="Collapse" data-toggle="collapse" src="@Url.Content("~/content/img/story_collapsed1.png")" alt="Collapse">
+                        <span data-bind="text: description"></span>
+                        <span style="float:right"></span>
+                    </div>
+                    <div class="white">
+                       <span data-bind="text: deliveryAddress"></span>
+                       <br />
+                       <span data-bind="text: dispatchMethod"></span>
+                    </div>
                     <div class="white">
                         <table>
                             <thead>
                                 <tr>
                                     <th>Item</th>
-                                    <th>Size</th>
+                                    <!--<th>Size</th>
                                     <th>Color</th>
-                                    <th>Quantity</th>
+                                    <th>Quantity</th>-->
                                     <th>Price</th>
                                 </tr>
                             </thead>
                             <tbody id="package_items" data-bind="sortable: {data: items}">
                                 <tr>
-                                    <td class="left"><span data-bind="text: name"></span></td>
-                                    <td><span data-bind="text: size"></span></td>
+                                    <td class="left"><i class="icon-camera"></i> <span data-bind="text: name"></span></td>
+                                    <!--<td><span data-bind="text: size"></span></td>
                                     <td><span data-bind="text: color"></span></td>
-                                    <td><span data-bind="text: quantity"></span></td>
+                                    <td><span data-bind="text: quantity"></span></td>-->
                                     <td><span data-bind="text: price"></span></td>
                                 </tr>
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <td class="right" colspan="3">Total</td>
-                                    <td>4</td>
+                                    <td class="right">Total</td>
                                     <td>$70</td>
                                 </tr>
                             </tfoot>
@@ -206,7 +216,7 @@
                 </div>
                 <div>
                     <span class="label label-info">ID: 38737</span>
-                    <span class="label label-info label-photo">Photo:</span><a href="#" class="badge badge-photo">4</a>
+                    <span class="label label-info label-photo">Photo:</span><a href="#" class="label badge-photo">4</a>
                     <span class="label label-info">Status: In Process</span>
                     <span class="label label-info">Delivery Date: 10 Feb 2012</span>
                 </div>

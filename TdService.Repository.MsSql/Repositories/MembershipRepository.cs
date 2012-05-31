@@ -33,8 +33,7 @@ namespace TdService.Repository.MsSql.Repositories
         {
             using (var context = new ShopAnyWareSql())
             {
-                var user = context.Users.Include("Profile").SingleOrDefault(u => u.Email == email);
-                return user;
+                return context.Users.SingleOrDefault(u => u.Email == email);
             }
         }
 

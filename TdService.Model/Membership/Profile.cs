@@ -9,6 +9,8 @@
 
 namespace TdService.Model.Membership
 {
+    using System;
+
     using TdService.Infrastructure.Domain;
     using TdService.Model.Notification;
 
@@ -40,12 +42,12 @@ namespace TdService.Model.Membership
         /// <summary>
         /// Validate business rules.
         /// </summary>
+        /// <exception cref="NotImplementedException">
+        /// not implemented yet
+        /// </exception>
         protected override void Validate()
         {
-            if (string.IsNullOrEmpty(this.FirstName))
-            {
-                // this.AddBrokenRule(new BusinessRule(string.Empty));
-            }
+            throw new NotImplementedException();
         }
     }
 }
