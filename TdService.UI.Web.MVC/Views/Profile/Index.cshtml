@@ -1,7 +1,7 @@
 ﻿@using TdService.Resources.Views
 @model TdService.Services.ViewModels.Account.ProfileView
 @{
-    ViewBag.Title = "Shop Any Ware - Profile";
+    ViewBag.Title = ProfileViewResources.PageTitle;
 }
 @using (Html.BeginForm("Save", "Profile", FormMethod.Post, new { @class = "form-horizontal" }))
 {
@@ -38,14 +38,14 @@
             <label class="control-label">@ProfileViewResources.NotificationHeader</label>
             <div class="controls">
                 <label class="checkbox">
-                    <input type="checkbox" id="optionsCheckbox" value="option1">
-                    Email me on order status change
+                    <input type="checkbox" id="NotifyOnOrderStatusChange" name="NotifyOnOrderStatusChange" value="option1">
+                    @ProfileViewResources.Notification_OnOrderStatusChange
                 </label>
             </div>
             <div class="controls">
                 <label class="checkbox">
-                    <input type="checkbox" id="optionsCheckbox" value="option1">
-                    Email me on package status change
+                    <input type="checkbox" id="NotifyOnPackageStatusChange" value="option1">
+                    @ProfileViewResources.Notification_OnPackageStatusChange
                 </label>
             </div>
         </div>

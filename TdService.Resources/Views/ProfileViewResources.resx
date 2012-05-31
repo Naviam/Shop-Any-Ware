@@ -129,8 +129,17 @@
   <data name="NotificationHeader" xml:space="preserve">
     <value>Notification</value>
   </data>
+  <data name="Notification_OnOrderStatusChange" xml:space="preserve">
+    <value>Email me on order status change</value>
+  </data>
+  <data name="Notification_OnPackageStatusChange" xml:space="preserve">
+    <value>Email me on package status change</value>
+  </data>
   <data name="PageHeader" xml:space="preserve">
     <value>Profile</value>
+  </data>
+  <data name="PageTitle" xml:space="preserve">
+    <value>Shop Any Ware - Profile</value>
   </data>
   <data name="PasswordHeader" xml:space="preserve">
     <value>Current Password</value>

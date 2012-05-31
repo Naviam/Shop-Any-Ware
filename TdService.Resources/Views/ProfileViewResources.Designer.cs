@@ -88,6 +88,24 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email me on order status change.
+        /// </summary>
+        public static string Notification_OnOrderStatusChange {
+            get {
+                return ResourceManager.GetString("Notification_OnOrderStatusChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email me on package status change.
+        /// </summary>
+        public static string Notification_OnPackageStatusChange {
+            get {
+                return ResourceManager.GetString("Notification_OnPackageStatusChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Notification.
         /// </summary>
         public static string NotificationHeader {
@@ -102,6 +120,15 @@ namespace TdService.Resources.Views {
         public static string PageHeader {
             get {
                 return ResourceManager.GetString("PageHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shop Any Ware - Profile.
+        /// </summary>
+        public static string PageTitle {
+            get {
+                return ResourceManager.GetString("PageTitle", resourceCulture);
             }
         }
         
