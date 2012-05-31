@@ -3,19 +3,38 @@
 @{
     ViewBag.Title = "Shop Any Ware - Sign In";
 }
-<div class="row">
-    <div class="span4 offset4">
-        <form action="@Url.Action("SignIn", "Account")" method="POST">
-            <fieldset>
-                <legend>Sign In Form</legend>
-                <label for="email">Email:</label>
-                <input id="email" name="email" type="text" class="input-xlarge" placeholder="Email" />
-                <label for="password">Password:</label>
-                <input id="password" name="password" type="password" class="input-xlarge" placeholder="Password" />
-                <hr/>
-                <input id="button_login" name="login" type="submit" class="btn btn-primary btn-large" value="Start Shopping"/>
-                <input id="button_cancel" name="cancel" type="button" class="btn btn-large" value="Cancel" />
-            </fieldset>
-        </form>
-    </div>
-</div>
+
+<form class="form-horizontal" action="@Url.Action("SignIn", "Account")" method="POST">
+    <fieldset>
+        <div class="control-group">
+            <h2>Log in to view your ShopAnyWare.ru Account</h2>
+        </div>
+        <div class="control-group error">
+            <label class="control-label">Email:</label>
+            <div class="controls">
+                <input class="input-xlarge" type="text" value="email address here">
+                <span class="help-inline">Please correct the error</span>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Password:</label>
+            <div class="controls">
+                <input class="input-xlarge" type="password" value="password">
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <a href="@Url.Action("Forgot", "Account")">Forgot email or password?</a>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <input id="rememberMe" class="input-xlarge" type="checkbox" checked="checked">
+                <label for="rememberMe" class="control-label">Remember me for 2 weeks</label>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary btn-large">Start Shopping!</button>
+        </div>
+    </fieldset>
+</form>

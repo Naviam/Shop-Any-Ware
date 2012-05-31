@@ -109,6 +109,17 @@ namespace TdService.Controllers
         }
 
         /// <summary>
+        /// Remind forgotten password or email form.
+        /// </summary>
+        /// <returns>
+        /// Forgot email or password page.
+        /// </returns>
+        public ActionResult Forgot()
+        {
+            return this.View();
+        }
+
+        /// <summary>
         /// Logout User.
         /// </summary>
         /// <returns>
