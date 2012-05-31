@@ -207,6 +207,7 @@
     <Content Include="Scripts\model\DashboardViewModel.js" />
     <Content Include="Scripts\model\OrderViewModel.js" />
     <Content Include="Scripts\model\PackageViewModel.js" />
+    <Content Include="Scripts\model\ProfileViewModel.js" />
     <Content Include="Scripts\qunit.js" />
     <Content Include="Scripts\Specs\dashboard_specs.js" />
     <Content Include="Scripts\Specs\example.specs.html" />
@@ -279,7 +280,9 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
@@ -302,6 +305,10 @@
     <ProjectReference Include="..\TdService.Repository.MsSql\TdService.Repository.MsSql.csproj">
       <Project>{D536586D-E628-4049-B826-AB0B57FC99FF}</Project>
       <Name>TdService.Repository.MsSql</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TdService.Resources\TdService.Resources.csproj">
+      <Project>{9DC0E782-6E6B-4FA4-A7C1-728ED25CE063}</Project>
+      <Name>TdService.Resources</Name>
     </ProjectReference>
     <ProjectReference Include="..\TdService.Services.Cache\TdService.Services.Cache.csproj">
       <Project>{3782423D-0D89-47F8-8D84-0AB3AF741086}</Project>

@@ -45,6 +45,7 @@
     <resourceSet name="siteJs" type="js">
       <resource reference="jqueryJs"/>
       <resource reference="bootstrapJs"/>
+      <resource path="~/scripts/json2.js" />
       <resource path="~/scripts/knockout-2.1.0.js" />
       <resource path="~/scripts/knockout-sortable.js" />
       <resource path="~/scripts/dotdotdot/jquery.dotdotdot-1.4.0-packed.js" minifierRef="off" />

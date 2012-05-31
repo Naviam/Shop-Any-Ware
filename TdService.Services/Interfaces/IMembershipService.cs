@@ -7,6 +7,7 @@
 namespace TdService.Services.Interfaces
 {
     using TdService.Services.Messaging.Membership;
+    using TdService.Services.ViewModels.Account;
 
     /// <summary>
     /// Interface of membership service.
@@ -33,11 +34,13 @@ namespace TdService.Services.Interfaces
         void LoginUser(LoginUserRequest request);
 
         /// <summary>
+        /// Validate user.
         /// </summary>
         /// <param name="request">
         /// The request.
         /// </param>
         /// <returns>
+        /// True if user valid.
         /// </returns>
         bool ValidateUser(ValidateUserRequest request);
 
@@ -51,5 +54,24 @@ namespace TdService.Services.Interfaces
         /// Get user response object.
         /// </returns>
         GetUserResponse GetUser(GetUserRequest request);
+
+        /// <summary>
+        /// Get user's profile.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// Get profile response object.
+        /// </returns>
+        GetProfileResponse GetProfile(GetProfileRequest request);
+
+        /// <summary>
+        /// Update profile.
+        /// </summary>
+        /// <param name="profileView">
+        /// The profile view.
+        /// </param>
+        void UpdateProfile(ProfileView profileView);
     }
 }

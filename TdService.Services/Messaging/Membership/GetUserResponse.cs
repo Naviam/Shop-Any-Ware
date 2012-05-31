@@ -16,6 +16,9 @@ namespace TdService.Services.Messaging.Membership
     /// </summary>
     public class GetUserResponse
     {
+        /// <summary>
+        /// Gets or sets User.
+        /// </summary>
         public User User { get; set; }
     }
 }
