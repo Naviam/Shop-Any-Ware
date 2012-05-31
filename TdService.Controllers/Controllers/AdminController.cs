@@ -8,6 +8,7 @@ namespace TdService.Controllers
 {
     using System.Web.Mvc;
 
+    using TdService.Infrastructure.Authentication;
     using TdService.Model.Membership;
 
     /// <summary>
@@ -26,7 +27,11 @@ namespace TdService.Controllers
         /// <param name="membershipRepository">
         /// The membership Repository.
         /// </param>
-        public AdminController(IMembershipRepository membershipRepository)
+        /// <param name="formsAuthentication">
+        /// The forms Authentication.
+        /// </param>
+        public AdminController(IMembershipRepository membershipRepository, IFormsAuthentication formsAuthentication)
+            : base(formsAuthentication)
         {
             this.membershipRepository = membershipRepository;
         }

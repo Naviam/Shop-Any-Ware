@@ -1,24 +1,24 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright file="GetUserResponse.cs" company="TdService">
+// <copyright file="GetProfileResponse.cs" company="TdService">
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
-//   Defines the GetUserResponse type.
+//   Defines the get profile request object.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace TdService.Services.Messaging.Membership
 {
-    using TdService.Model.Membership;
+    using TdService.Services.ViewModels.Account;
 
     /// <summary>
-    /// Get user response object.
+    /// Get profile response object.
     /// </summary>
-    public class GetUserResponse
+    public class GetProfileResponse
     {
         /// <summary>
-        /// Gets or sets User.
+        /// Gets or sets Profile.
         /// </summary>
-        public User User { get; set; }
+        public ProfileView ProfileView { get; set; }
     }
 }

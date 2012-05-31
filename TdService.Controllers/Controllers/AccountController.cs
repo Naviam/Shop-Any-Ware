@@ -25,12 +25,7 @@ namespace TdService.Controllers
         /// Membership repository.
         /// </summary>
         private readonly IMembershipService membershipService;
-
-        /// <summary>
-        /// Forms authentication.
-        /// </summary>
-        private readonly IFormsAuthentication formsAuthentication;
-
+        
         /// <summary>
         /// Initializes a new instance of the <see cref="AccountController"/> class.
         /// </summary>
@@ -41,9 +36,9 @@ namespace TdService.Controllers
         /// The forms authentication.
         /// </param>
         public AccountController(IMembershipService membershipService, IFormsAuthentication formsAuthentication)
+            : base(formsAuthentication)
         {
             this.membershipService = membershipService;
-            this.formsAuthentication = formsAuthentication;
         }
 
         /// <summary>
@@ -80,7 +75,7 @@ namespace TdService.Controllers
                 // user.AuthenticationToken = validatedUser.Id.ToString(CultureInfo.InvariantCulture);
                 // user.Email = validatedUser.Email;
                 // user.IsAuthenticated = true;
-                this.formsAuthentication.SetAuthenticationToken(request.Email, request.RememberMe);
+                this.FormsAuthentication.SetAuthenticationToken(request.Email, request.RememberMe);
                 return this.RedirectToAction("Dashboard", "Member");
             }
 
@@ -121,7 +116,7 @@ namespace TdService.Controllers
         /// </returns>
         public ActionResult SignOut()
         {
-            this.formsAuthentication.SignOut();
+            this.FormsAuthentication.SignOut();
             return this.RedirectToAction("Index", "Home");
         }
     }

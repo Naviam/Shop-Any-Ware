@@ -1,54 +1,68 @@
-﻿@{
+﻿@using TdService.Resources.Views
+@model TdService.Services.ViewModels.Account.ProfileView
+@{
     ViewBag.Title = "Shop Any Ware - Profile";
 }
-
-<form class="form-horizontal">
+@using (Html.BeginForm("Save", "Profile", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    <input id="model" type="hidden" value="@(new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(Model))" />
     <fieldset>
         <div class="control-group">
-            <label class="control-label"><h2>Profile</h2></label>
+            <label class="control-label"><h2>@ProfileViewResources.PageHeader</h2></label>
         </div>
         <div class="control-group">
-            <label class="control-label">Email</label>
+            <label class="control-label">@ProfileViewResources.EmailHeader</label>
             <div class="controls">
-                <input class="input-xlarge" type="text" value="email address here">
+                <input id="Email" name="Email" class="input-xlarge" type="text" data-bind="value: email" readonly="readonly">
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label">Password</label>
+            <label class="control-label">@ProfileViewResources.PasswordHeader</label>
             <div class="controls">
-                <input class="input-xlarge" type="password" value="password">
+                <input id="CurrentPassword" name="CurrentPassword" class="input-xlarge" data-bind="value: currentPassword" type="password" readonly="readonly">
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label">First Name</label>
+            <label class="control-label">@ProfileViewResources.FirstNameHeader</label>
             <div class="controls">
-                <input class="input-xlarge" type="text" value="first name">
+                <input id="FirstName" name="FirstName" class="input-xlarge" type="text" data-bind="value: firstName">
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label">Surname</label>
+            <label class="control-label">@ProfileViewResources.LastNameHeader</label>
             <div class="controls">
-                <input class="input-xlarge" type="text" value="surname">
+                <input id="LastName" name="LastName" class="input-xlarge" type="text" data-bind="value: lastName">
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label">Notifications</label>
+            <label class="control-label">@ProfileViewResources.NotificationHeader</label>
             <div class="controls">
                 <label class="checkbox">
-                <input type="checkbox" id="optionsCheckbox" value="option1">
-                    Option 1
+                    <input type="checkbox" id="optionsCheckbox" value="option1">
+                    Email me on order status change
                 </label>
             </div>
             <div class="controls">
                 <label class="checkbox">
-                <input type="checkbox" id="optionsCheckbox" value="option1">
-                    Option 2
+                    <input type="checkbox" id="optionsCheckbox" value="option1">
+                    Email me on package status change
                 </label>
             </div>
         </div>
         <div class="form-actions">
-            <button type="submit" class="btn btn-primary">Save changes</button>
+            <button type="submit" class="btn btn-primary">@ProfileViewResources.SaveChangesButton</button>
             <button class="btn">Cancel</button>
         </div>
     </fieldset>
-</form>
+}
+
+@section Scripts
+{
+    <script type="text/javascript" src="@Url.Content("~/Scripts/model/ProfileViewModel.js")"></script>
+    <script type="text/javascript">
+        $(document).ready(function()
+        {
+            ko.applyBindings(new ProfileViewModel($("#model").val()));
+        });
+    </script>
+}

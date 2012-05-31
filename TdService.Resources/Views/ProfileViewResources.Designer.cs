@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TdService.Resources {
+namespace TdService.Resources.Views {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace TdService.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Membership {
+    public class ProfileViewResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Membership() {
+        internal ProfileViewResources() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace TdService.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TdService.Resources.Membership", typeof(Membership).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TdService.Resources.Views.ProfileViewResources", typeof(ProfileViewResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,6 +57,69 @@ namespace TdService.Resources {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email.
+        /// </summary>
+        public static string EmailHeader {
+            get {
+                return ResourceManager.GetString("EmailHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to First Name.
+        /// </summary>
+        public static string FirstNameHeader {
+            get {
+                return ResourceManager.GetString("FirstNameHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last Name.
+        /// </summary>
+        public static string LastNameHeader {
+            get {
+                return ResourceManager.GetString("LastNameHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Notification.
+        /// </summary>
+        public static string NotificationHeader {
+            get {
+                return ResourceManager.GetString("NotificationHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profile.
+        /// </summary>
+        public static string PageHeader {
+            get {
+                return ResourceManager.GetString("PageHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current Password.
+        /// </summary>
+        public static string PasswordHeader {
+            get {
+                return ResourceManager.GetString("PasswordHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save Changes.
+        /// </summary>
+        public static string SaveChangesButton {
+            get {
+                return ResourceManager.GetString("SaveChangesButton", resourceCulture);
             }
         }
     }
