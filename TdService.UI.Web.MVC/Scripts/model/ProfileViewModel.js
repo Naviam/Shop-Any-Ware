@@ -12,20 +12,20 @@
     //    self.newPassword = ko.observable("");
     self.firstName = ko.observable(profile.FirstName);
     self.lastName = ko.observable(profile.LastName);
-    self.notifyOnOrderStatusChange = ko.observable(profile.NotifyOnOrderStatusChange);
-    self.notifyOnPackageStatusChange = ko.observable(profile.NotifyOnPackageStatusChange);
+//    self.notifyOnOrderStatusChange = ko.observable(profile.NotifyOnOrderStatusChange);
+//    self.notifyOnPackageStatusChange = ko.observable(profile.NotifyOnPackageStatusChange);
 
-    $("form").validate({
-        errorClass: 'error',
-        validClass: 'success',
-        errorElement: 'span',
-        highlight: function (element, errorClass, validClass) {
-            $(element).parents("div[class='control-group']").addClass(errorClass).removeClass(validClass);
-        },
-        unhighlight: function (element, errorClass, validClass) {
-            $(element).parents(".error").removeClass(errorClass).addClass(validClass);
-        }
-    });
+//    $("form").validate({
+//        errorClass: 'error',
+//        validClass: 'success',
+//        errorElement: 'span',
+//        highlight: function (element, errorClass, validClass) {
+//            $(element).parents("div[class='control-group']").addClass(errorClass).removeClass(validClass);
+//        },
+//        unhighlight: function (element, errorClass, validClass) {
+//            $(element).parents(".error").removeClass(errorClass).addClass(validClass);
+//        }
+//    });
 
     self.updateProfile = function () {
         /// <summary>Update first and last name.</summary>

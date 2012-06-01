@@ -53,7 +53,7 @@
                     </td>
                 </tr>
             </table>
-                @*<div>
+            @*<div>
                 <a href="#" class="" data-bind="click: showAddOrderForm">Add order from online store</a>
                 <br/> or <br/>
                 <a href="#" class="" data-bind="click: addOrder">Paste item url for shopping assistance</a>
@@ -81,8 +81,8 @@
                                         <th></th>
                                         <th>Item</th>
                                         <!--<th>Size</th>
-                                        <th>Color</th>
-                                        <th>Qty</th>-->
+                                            <th>Color</th>
+                                            <th>Qty</th>-->
                                         <th>Price</th>
                                         <th></th>
                                     </tr>
@@ -90,43 +90,43 @@
                                 <tbody class="sortable" id="order_items" data-bind="sortable: {data: items, afterAdd: showItem}">
                                     <tr>
                                         <td class="draggable"><div></div></td>
-                                        <td class="left"><i class="icon-camera"></i> <span data-bind="click: $parent.removeItem, text: name"></span></td>
+                                        <td class="left"><i class="icon-camera"></i> <span class="tn"  title="A Title" data-content="<b>And</b> here's some amazing content. It's very engaging. right?" data-bind="click: $parent.removeItem, text: name"></span></td>
                                         <!--<td><span data-bind="text: size"></span></td>
-                                        <td><span data-bind="text: color"></span></td>
-                                        <td><span data-bind="text: quantity"></span></td>-->
+                                            <td><span data-bind="text: color"></span></td>
+                                            <td><span data-bind="text: quantity"></span></td>-->
                                         <td><span data-bind="text: price"></span></td>
                                         <td class="draggable"><div></div></td>
                                     </tr>
                                 </tbody>
                                 <!--<tbody class="edit">
-                                    <tr>
-                                        <td></td>
-                                        <td class="left"><input type="text" placeholder="name"/></td>
-                                        <td><input type="text" placeholder="size"/></td>
-                                        <td><input type="text" placeholder="color"/></td>
-                                        <td><input type="text" placeholder="qty"/></td>
-                                        <td><input type="text" placeholder="price"/></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <td></td>
-                                        <td class="left" colspan="2">
-                                            <input type="text" placeholder="item's url for shopping assistance"/>
-                                            <a href="#" class="btn btn-mini btn-success" data-bind="click: addItem"><i class="icon-white icon-plus-sign"></i></a>
-                                        </td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="draggable"><div></div></td>
-                                        <td class="left">Total</td>
-                                        <td colspan="2"></td>
-                                        <td>4</td>
-                                        <td data-bind="text: totalAmount"></td>
-                                        <td class="draggable"><div></div></td>
-                                    </tr>
-                                </tfoot>-->
+                                        <tr>
+                                            <td></td>
+                                            <td class="left"><input type="text" placeholder="name"/></td>
+                                            <td><input type="text" placeholder="size"/></td>
+                                            <td><input type="text" placeholder="color"/></td>
+                                            <td><input type="text" placeholder="qty"/></td>
+                                            <td><input type="text" placeholder="price"/></td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td></td>
+                                            <td class="left" colspan="2">
+                                                <input type="text" placeholder="item's url for shopping assistance"/>
+                                                <a href="#" class="btn btn-mini btn-success" data-bind="click: addItem"><i class="icon-white icon-plus-sign"></i></a>
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="draggable"><div></div></td>
+                                            <td class="left">Total</td>
+                                            <td colspan="2"></td>
+                                            <td>4</td>
+                                            <td data-bind="text: totalAmount"></td>
+                                            <td class="draggable"><div></div></td>
+                                        </tr>
+                                    </tfoot>-->
                             </table>
                         </div>@*
                         <div class="white">
@@ -148,7 +148,7 @@
                         </div>*@
                         <div class="btn-toolbar">
                             <div class="btn-group">
-                                <button class="btn btn-small btn-primary"><i class="icon-white icon-plus-sign"></i> ADD ITEM</button>
+                                <button class="btn btn-small btn-primary" data-toggle="modal" href="#myModal"><i class="icon-white icon-plus-sign"></i> ADD ITEM</button>
                             </div>
                             <div class="btn-group">
                                 <button class="btn btn-small btn-danger" data-bind="click: $parent.removeOrder"><i class="icon-white icon-trash"></i> REMOVE</button>
@@ -176,9 +176,9 @@
                         <span style="float:right"></span>
                     </div>
                     <div class="white">
-                       <span data-bind="text: deliveryAddress"></span>
-                       <br />
-                       <span data-bind="text: dispatchMethod"></span>
+                        <span data-bind="text: deliveryAddress"></span>
+                        <br />
+                        <span data-bind="text: dispatchMethod"></span>
                     </div>
                     <div class="white">
                         <table>
@@ -186,8 +186,8 @@
                                 <tr>
                                     <th>Item</th>
                                     <!--<th>Size</th>
-                                    <th>Color</th>
-                                    <th>Quantity</th>-->
+                                        <th>Color</th>
+                                        <th>Quantity</th>-->
                                     <th>Price</th>
                                 </tr>
                             </thead>
@@ -195,8 +195,8 @@
                                 <tr>
                                     <td class="left"><i class="icon-camera"></i> <span data-bind="text: name"></span></td>
                                     <!--<td><span data-bind="text: size"></span></td>
-                                    <td><span data-bind="text: color"></span></td>
-                                    <td><span data-bind="text: quantity"></span></td>-->
+                                        <td><span data-bind="text: color"></span></td>
+                                        <td><span data-bind="text: quantity"></span></td>-->
                                     <td><span data-bind="text: price"></span></td>
                                 </tr>
                             </tbody>
@@ -310,6 +310,19 @@
         </div>
     </div>
 </div>
+<div class="modal" id="myModal">
+  <div class="modal-header">
+    <button class="close" data-dismiss="modal">×</button>
+    <h3>Modal header</h3>
+  </div>
+  <div class="modal-body">
+    <p>One fine body…</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn">Close</a>
+    <a href="#" class="btn btn-primary">Save changes</a>
+  </div>
+</div>
 @section Scripts
 {
     <script type="text/javascript" src="@Url.Content("~/Scripts/model/DashboardViewModel.js")"></script>
@@ -319,7 +332,7 @@
             //                watch: 'window'
             //            });
             //            $('.add-order').tooltip({title: 'wrong url'});
-            //            $(".tn").popover();
+            $(".tn").popover();
             // $("table, tr").disableSelection();
             //$("html").niceScroll();
             var columnHeight = $(window).height() - $("#actionPanel").height() - $("#topmenu").height() - $(".modal-footer").height() - 90;
