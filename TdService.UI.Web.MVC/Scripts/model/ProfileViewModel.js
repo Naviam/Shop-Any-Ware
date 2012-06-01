@@ -12,8 +12,8 @@
     //    self.newPassword = ko.observable("");
     self.firstName = ko.observable(profile.FirstName);
     self.lastName = ko.observable(profile.LastName);
-//    self.notifyOnOrderStatusChange = ko.observable(profile.NotifyOnOrderStatusChange);
-//    self.notifyOnPackageStatusChange = ko.observable(profile.NotifyOnPackageStatusChange);
+    self.notifyOnOrderStatusChange = ko.observable(profile.NotifyOnOrderStatusChange);
+    self.notifyOnPackageStatusChange = ko.observable(profile.NotifyOnPackageStatusChange);
 
 //    $("form").validate({
 //        errorClass: 'error',
