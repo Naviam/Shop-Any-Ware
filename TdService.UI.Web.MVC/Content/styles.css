@@ -19,6 +19,8 @@ footer{color:#999;text-align:right}
                 .box table td.draggable div{background:url(img/draggable.png) repeat-y;padding:4px 0;height:12px;width:9px}
             .box table .sortable tr:hover{background-color:#eee;cursor:move}
             .box table tfoot td{background-color:#eee;font-weight:bold}
+        .box .details td{vertical-align:top}
+            .details p{margin:2px 4px}
         .box .left{text-align:left}
         .box .right{text-align:right}
         .edit input{padding:2px 4px;text-align:center;width:80%}
