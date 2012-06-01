@@ -9,6 +9,7 @@ namespace TdService.Services.Implementations
     using TdService.Model.Addresses;
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging.Address;
+    using TdService.Services.ViewModels.Account;
 
     /// <summary>
     /// This class contains service methods to work with delivery addresses.
@@ -42,8 +43,26 @@ namespace TdService.Services.Implementations
         /// </returns>
         public GetDeliveryAddressesResponse GetDeliveryAddresses(GetDeliveryAddressesRequest request)
         {
-            this.addressRepository.GetDeliveryAddresses(request.Email);
-            return null;
+            var response = new GetDeliveryAddressesResponse { DeliveryAddressesView = new DeliveryAddressesView() };
+            response.DeliveryAddressesView.DeliveryAddressBook =
+                this.addressRepository.GetDeliveryAddresses(request.Email);
+            return response;
+        }
+
+        /// <summary>
+        /// Add or update delivery address.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// Add or update delivery address response.
+        /// </returns>
+        public AddOrUpdateDeliveryAddressResponse AddOrUpdateDeliveryAddress(AddOrUpdateDeliveryAddressRequest request)
+        {
+            var response = new AddOrUpdateDeliveryAddressResponse();
+            this.addressRepository.AddOrUpdateDeliveryAddress(request.Email, request.Address);
+            return response;
         }
     }
 }

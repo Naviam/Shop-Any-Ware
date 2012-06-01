@@ -9,10 +9,16 @@
 
 namespace TdService.Services.Messaging.Address
 {
+    using TdService.Services.ViewModels.Account;
+
     /// <summary>
     /// Get delivery addresses response object.
     /// </summary>
     public class GetDeliveryAddressesResponse
     {
+        /// <summary>
+        /// Gets or sets DeliveryAddressesView.
+        /// </summary>
+        public DeliveryAddressesView DeliveryAddressesView { get; set; }
     }
 }

@@ -7,8 +7,21 @@
     /// </param>
     var model = JSON.parse(modelParam);
     var self = this;
-    self.addressBook = ko.observableArray(model.DeliveryAddressBook);
+    self.addressBook = ko.observableArray(model);
 
+    self.id = ko.observable(0);
+    self.firstName = ko.observable("");
+    self.lastName = ko.observable("");
+    self.addressName = ko.observable("");
+    self.country = ko.observable("");
+    self.region = ko.observable("");
+    self.city = ko.observable("");
+    self.address1 = ko.observable("");
+    self.address2 = ko.observable("");
+    self.address3 = ko.observable("");
+    self.zip = ko.observable("");
+    self.phone = ko.observable("");
+    
     //    $("form").validate({
     //        errorClass: 'error',
     //        validClass: 'success',
@@ -22,7 +35,7 @@
     //    });
 
     self.addNewAddress = function () {
-        /// <summary>Update first and last name.</summary>
+        /// <summary>Add new address.</summary>
         if ($("form").valid()) {
             $.post("Address/Create", $("form").serialize(),
                 function (data, textStatus, jqXhr) {

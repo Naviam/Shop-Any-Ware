@@ -18,6 +18,7 @@ namespace TdService.UI.Web.MVC.App_Start
     using SimpleInjector.Integration.Web.Mvc;
 
     using TdService.Infrastructure.Authentication;
+    using TdService.Model.Addresses;
     using TdService.Model.Membership;
     using TdService.Model.Orders;
     using TdService.Repository.MsSql.Repositories;
@@ -52,6 +53,8 @@ namespace TdService.UI.Web.MVC.App_Start
             container.Register<IMembershipRepository, MembershipRepository>();
             container.Register<IMembershipService, MembershipService>();
             container.Register<IFormsAuthentication, AspFormsAuthentication>();
+            container.Register<IAddressService, DeliveryAddressService>();
+            container.Register<IAddressRepository, AddressRepository>();
 
             // For instance:
             // container.Register<IUserRepository, SqlUserRepository>();

@@ -13,6 +13,7 @@ namespace TdService.Controllers
 
     using TdService.Infrastructure.Authentication;
     using TdService.Services.Interfaces;
+    using TdService.Services.Messaging.Address;
     using TdService.Services.ViewModels.Account;
 
     /// <summary>
@@ -48,9 +49,12 @@ namespace TdService.Controllers
         /// </returns>
         public ActionResult Index()
         {
-            var model = new DeliveryAddressesView();
-
-            return this.View("Index", model);
+            var request = new GetDeliveryAddressesRequest
+                {
+                    Email = FormsAuthentication.GetAuthenticationToken()
+                };
+            var response = this.addressService.GetDeliveryAddresses(request);
+            return this.View("Index", response.DeliveryAddressesView);
         }
 
         /// <summary>
@@ -81,12 +85,16 @@ namespace TdService.Controllers
         /// <summary>
         /// Add delivery address.
         /// </summary>
+        /// <param name="view">
+        /// The view.
+        /// </param>
         /// <returns>
         /// Returns view with delivery addresses.
         /// </returns>
         [HttpPost]
-        public ActionResult Create()
+        public ActionResult Create(DeliveryAddressesView view)
         {
+            this.addressService.AddOrUpdateDeliveryAddress(new AddOrUpdateDeliveryAddressRequest());
             return this.RedirectToAction("Index");
         }
 

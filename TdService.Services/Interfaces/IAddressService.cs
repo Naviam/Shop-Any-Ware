@@ -23,5 +23,16 @@ namespace TdService.Services.Interfaces
         /// Collection of user's delivery addresses.
         /// </returns>
         GetDeliveryAddressesResponse GetDeliveryAddresses(GetDeliveryAddressesRequest request);
+
+        /// <summary>
+        /// Add or update delivery address.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// Service response.
+        /// </returns>
+        AddOrUpdateDeliveryAddressResponse AddOrUpdateDeliveryAddress(AddOrUpdateDeliveryAddressRequest request);
     }
 }
