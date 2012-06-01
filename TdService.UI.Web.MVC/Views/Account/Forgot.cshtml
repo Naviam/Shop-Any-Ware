@@ -2,4 +2,22 @@
     ViewBag.Title = "ShopAnyWare - Forgot email or password";
 }
 
-<h2>Forgot</h2>
+<form class="form-horizontal" method="POST">
+    <fieldset>
+        <div class="control-group">
+            <h2>Forgot Password?</h2>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Email</label>
+            <div class="controls">
+                <input name="Email" class="input-xlarge" type="text" data-val="true" 
+                       data-bind="value: email" 
+                       data-val-length-max="256">
+                <span class="field-validation-valid" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary btn-large">Reset Password</button>
+        </div>
+    </fieldset>
+</form>
