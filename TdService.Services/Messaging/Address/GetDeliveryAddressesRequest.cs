@@ -14,5 +14,9 @@ namespace TdService.Services.Messaging.Address
     /// </summary>
     public class GetDeliveryAddressesRequest
     {
+        /// <summary>
+        /// Gets or sets Email.
+        /// </summary>
+        public string Email { get; set; }
     }
 }

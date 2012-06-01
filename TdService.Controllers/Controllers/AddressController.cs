@@ -12,6 +12,8 @@ namespace TdService.Controllers
     using System.Web.Mvc;
 
     using TdService.Infrastructure.Authentication;
+    using TdService.Services.Interfaces;
+    using TdService.Services.ViewModels.Account;
 
     /// <summary>
     /// The controller contains methods to work with the addresses.
@@ -19,14 +21,23 @@ namespace TdService.Controllers
     public class AddressController : BaseController
     {
         /// <summary>
+        /// The address Service.
+        /// </summary>
+        private readonly IAddressService addressService;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="AddressController"/> class.
         /// </summary>
         /// <param name="formsAuthentication">
         /// The forms authentication.
         /// </param>
-        public AddressController(IFormsAuthentication formsAuthentication)
+        /// <param name="addressService">
+        /// The address Service.
+        /// </param>
+        public AddressController(IFormsAuthentication formsAuthentication, IAddressService addressService)
             : base(formsAuthentication)
         {
+            this.addressService = addressService;
         }
 
         /// <summary>
@@ -37,7 +48,9 @@ namespace TdService.Controllers
         /// </returns>
         public ActionResult Index()
         {
-            return this.View();
+            var model = new DeliveryAddressesView();
+
+            return this.View("Index", model);
         }
 
         /// <summary>
