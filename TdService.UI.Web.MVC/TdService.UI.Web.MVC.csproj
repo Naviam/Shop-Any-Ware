@@ -146,6 +146,7 @@
     <Content Include="Content\img\draggable.png" />
     <Content Include="Content\img\glyphicons-halflings-white.png" />
     <Content Include="Content\img\glyphicons-halflings.png" />
+    <Content Include="Content\img\kindle.jpg" />
     <Content Include="Content\img\sorting\asc.gif" />
     <Content Include="Content\img\sorting\desc.gif" />
     <Content Include="Content\img\sorting\sort.gif" />
