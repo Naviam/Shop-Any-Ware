@@ -10,6 +10,7 @@ namespace TdService.Services.Implementations
     using System.Text;
 
     using TdService.Model.Membership;
+    using TdService.Model.Notification;
     using TdService.Services.Interfaces;
     using TdService.Services.Mapping;
     using TdService.Services.Messaging.Membership;
@@ -120,6 +121,16 @@ namespace TdService.Services.Implementations
                     FirstName = (profile == null) ? string.Empty : profile.FirstName,
                     LastName = (profile == null) ? string.Empty : profile.LastName
                 };
+            if (profile != null)
+            {
+                if (profile.NotificationRule != null)
+                {
+                    response.ProfileView.NotifyOnOrderStatusChange = 
+                        profile.NotificationRule.NotifyOrderStatusChanged;
+                    response.ProfileView.NotifyOnPackageStatusChange =
+                        profile.NotificationRule.NotifyParcelStatusChanged;
+                }
+            }
             return response;
         }
 
@@ -131,7 +142,17 @@ namespace TdService.Services.Implementations
         /// </param>
         public void UpdateProfile(ProfileView profileView)
         {
-            var profile = new Profile { FirstName = profileView.FirstName, LastName = profileView.LastName };
+            var profile = new Profile
+                {
+                    FirstName = profileView.FirstName,
+                    LastName = profileView.LastName,
+                    NotificationRule =
+                        new NotificationRule
+                            {
+                                NotifyOrderStatusChanged = profileView.NotifyOnOrderStatusChange,
+                                NotifyParcelStatusChanged = profileView.NotifyOnPackageStatusChange
+                            }
+                };
 
             this.ThrowExceptionIfProfileIsInvalid(profile);
 

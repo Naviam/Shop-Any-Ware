@@ -1,25 +1,32 @@
-﻿@model TdService.Services.ViewModels.Account.SignInView
+﻿@using TdService.Resources
+@using TdService.Resources.Views
+@model TdService.Services.ViewModels.Account.SignInView
 
 @{
-    ViewBag.Title = "Shop Any Ware - Sign In";
+    ViewBag.Title = SignInResources.PageTitle;
 }
 
 <form class="form-horizontal" action="@Url.Action("SignIn", "Account")" method="POST">
     <fieldset>
         <div class="control-group">
-            <h2>Log in to view your ShopAnyWare.ru Account</h2>
+            <h2>@SignInResources.PageHeader</h2>
         </div>
         <div class="control-group error">
-            <label class="control-label">Email:</label>
+            <label class="control-label">@SignInResources.EmailHeader</label>
             <div class="controls">
-                <input name="Email" class="input-xlarge" type="text">
-                <span class="help-inline">Please correct the error</span>
+                <input name="Email" class="input-xlarge" type="text" data-val="true" 
+                       data-bind="value: email" data-val-length="@BusinessRules.User_EmailRequired" 
+                       data-val-length-max="256" data-val-required="@BusinessRules.User_EmailRequired">
+                <span class="field-validation-valid" data-valmsg-for="Email" data-valmsg-replace="true"></span>
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label">Password:</label>
+            <label class="control-label">@SignInResources.PasswordHeader:</label>
             <div class="controls">
-                <input name="Password" class="input-xlarge" type="password">
+                <input name="Password" class="input-xlarge" type="password" data-val="true" 
+                       data-bind="value: password" data-val-length="@BusinessRules.Profile_FirstNameLength" 
+                       data-val-length-max="21" data-val-required="@BusinessRules.Profile_FirstNameRequired">
+                <span class="field-validation-valid" data-valmsg-for="Password" data-valmsg-replace="true"></span>
             </div>
         </div>
         <div class="control-group">
@@ -30,7 +37,7 @@
         <div class="control-group">
             <div class="controls">
                 <input id="rememberMe" name="RememberMe" class="input-xlarge" type="checkbox" checked="checked">
-                <label for="rememberMe" class="control-label">Remember me for 2 weeks</label>
+                <label for="rememberMe" class="control-label">@SignInResources.RememberMeHeader</label>
             </div>
         </div>
         <div class="form-actions">

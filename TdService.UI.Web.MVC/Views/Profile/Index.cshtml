@@ -1,4 +1,5 @@
 ﻿@using TdService.Resources.Views
+@using TdService.Resources
 @model TdService.Services.ViewModels.Account.ProfileView
 @{
     ViewBag.Title = ProfileViewResources.PageTitle;
@@ -25,32 +26,38 @@
         <div class="control-group">
             <label class="control-label">@ProfileViewResources.FirstNameHeader</label>
             <div class="controls">
-                <input id="FirstName" name="FirstName" class="input-xlarge" type="text" data-bind="value: firstName">
+                <input name="FirstName" class="input-xlarge" type="text" data-bind="value: firstName" 
+                       data-val="true" data-val-length="@BusinessRules.Profile_FirstNameLength" 
+                       data-val-length-max="64" data-val-required="@BusinessRules.Profile_FirstNameRequired">
+                <span class="field-validation-valid" data-valmsg-for="FirstName" data-valmsg-replace="true"></span>
             </div>
         </div>
         <div class="control-group">
             <label class="control-label">@ProfileViewResources.LastNameHeader</label>
             <div class="controls">
-                <input id="LastName" name="LastName" class="input-xlarge" type="text" data-bind="value: lastName">
+                <input name="LastName" class="input-xlarge" type="text" data-bind="value: lastName"
+                       data-val="true" data-val-length="@BusinessRules.Profile_LastNameLength" 
+                       data-val-length-max="64" data-val-required="@BusinessRules.Profile_LastNameRequired">
+                <span class="field-validation-valid" data-valmsg-for="LastName" data-valmsg-replace="true"></span>
             </div>
         </div>
         <div class="control-group">
             <label class="control-label">@ProfileViewResources.NotificationHeader</label>
             <div class="controls">
                 <label class="checkbox">
-                    <input type="checkbox" id="NotifyOnOrderStatusChange" name="NotifyOnOrderStatusChange" value="option1">
+                    <input type="checkbox" data-bind="checked: notifyOnOrderStatusChange" name="NotifyOnOrderStatusChange" value="option1">
                     @ProfileViewResources.Notification_OnOrderStatusChange
                 </label>
             </div>
             <div class="controls">
                 <label class="checkbox">
-                    <input type="checkbox" id="NotifyOnPackageStatusChange" value="option1">
+                    <input type="checkbox" data-bind="notifyOnPackageStatusChange" name="NotifyOnPackageStatusChange" value="option1">
                     @ProfileViewResources.Notification_OnPackageStatusChange
                 </label>
             </div>
         </div>
         <div class="form-actions">
-            <button type="submit" data-bind="click: updateFullName" class="btn btn-primary">@ProfileViewResources.SaveChangesButton</button>
+            <button type="submit" data-bind="click: updateProfile" class="btn btn-primary">@ProfileViewResources.SaveChangesButton</button>
         </div>
     </fieldset>
 }
@@ -59,7 +66,7 @@
 {
     <script type="text/javascript" src="@Url.Content("~/Scripts/model/ProfileViewModel.js")"></script>
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(document).ready(function () {
             ko.applyBindings(new ProfileViewModel($("#model").val()));
         });
     </script>

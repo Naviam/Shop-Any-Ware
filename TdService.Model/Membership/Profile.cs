@@ -47,9 +47,19 @@ namespace TdService.Model.Membership
                 this.AddBrokenRule(ProfileBusinessRules.FirstNameRequired);
             }
 
+            if (this.FirstName.Length > 64)
+            {
+                this.AddBrokenRule(ProfileBusinessRules.FirstNameLength);
+            }
+
             if (string.IsNullOrEmpty(this.LastName))
             {
                 this.AddBrokenRule(ProfileBusinessRules.LastNameRequired);
+            }
+
+            if (this.LastName.Length > 64)
+            {
+                this.AddBrokenRule(ProfileBusinessRules.LastNameLength);
             }
         }
     }

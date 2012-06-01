@@ -13,6 +13,7 @@ namespace TdService.Repository.MsSql.Repositories
 
     using TdService.Model.Addresses;
     using TdService.Model.Membership;
+    using TdService.Model.Notification;
 
     /// <summary>
     /// This repository contains methods to work with users and roles.
@@ -152,6 +153,15 @@ namespace TdService.Repository.MsSql.Repositories
             }
         }
 
+        /// <summary>
+        /// </summary>
+        /// <param name="email">
+        /// The email.
+        /// </param>
+        /// <returns>
+        /// </returns>
+        /// <exception cref="NotImplementedException">
+        /// </exception>
         public WarehouseAddress GetWarehouseAddress(string email)
         {
             throw new NotImplementedException();
@@ -185,6 +195,7 @@ namespace TdService.Repository.MsSql.Repositories
                     context.SaveChanges();
                     return true;
                 }
+
                 return false;
             }
         }
@@ -202,18 +213,22 @@ namespace TdService.Repository.MsSql.Repositories
         {
             using (var context = new ShopAnyWareSql())
             {
-                // if (profile.Id == 0)
-                // {
-                // context.Profiles.Add(profile);
-                // }
-                // context.Entry(profile).State = EntityState.Modified;
-                // context.SaveChanges();
-                var profileDb = context.Users.Where(u => string.Compare(u.Email, email, StringComparison.OrdinalIgnoreCase) == 0)
-                .Select(u => u.Profile).SingleOrDefault();
+                var profileDb = context.Users
+                    .Where(u => string.Compare(u.Email, email, StringComparison.OrdinalIgnoreCase) == 0)
+                    .Select(u => u.Profile).SingleOrDefault();
                 if (profileDb != null)
                 {
                     profileDb.FirstName = profile.FirstName;
                     profileDb.LastName = profile.LastName;
+                    if (profile.NotificationRule != null)
+                    {
+                        profileDb.NotificationRule = new NotificationRule
+                        {
+                            NotifyOrderStatusChanged = profile.NotificationRule.NotifyOrderStatusChanged,
+                            NotifyParcelStatusChanged = profile.NotificationRule.NotifyParcelStatusChanged
+                        };
+                    }
+
                     context.SaveChanges();
                 }
             }

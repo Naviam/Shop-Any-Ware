@@ -124,7 +124,16 @@ namespace TdService.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to First name is a required field. It is used to generate your U.S. address..
+        ///   Looks up a localized string similar to First name must be a string with a maximum length of 64..
+        /// </summary>
+        public static string Profile_FirstNameLength {
+            get {
+                return ResourceManager.GetString("Profile_FirstNameLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to First name is a required field..
         /// </summary>
         public static string Profile_FirstNameRequired {
             get {
@@ -133,7 +142,16 @@ namespace TdService.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Last name is a required field. It is used to generate your U.S. address..
+        ///   Looks up a localized string similar to Last name must be a string with a maximum length of 64..
+        /// </summary>
+        public static string Profile_LastNameLength {
+            get {
+                return ResourceManager.GetString("Profile_LastNameLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last name is a required field..
         /// </summary>
         public static string Profile_LastNameRequired {
             get {
