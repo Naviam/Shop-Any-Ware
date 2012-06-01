@@ -12,7 +12,6 @@ namespace TdService.Services.Implementations
     using TdService.Model.Membership;
     using TdService.Model.Notification;
     using TdService.Services.Interfaces;
-    using TdService.Services.Mapping;
     using TdService.Services.Messaging.Membership;
     using TdService.Services.ViewModels.Account;
 
