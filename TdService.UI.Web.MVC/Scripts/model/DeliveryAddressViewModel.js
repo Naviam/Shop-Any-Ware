@@ -37,12 +37,12 @@
     self.addNewAddress = function () {
         /// <summary>Add new address.</summary>
         if ($("form").valid()) {
-            $.post("Address/Create", $("form").serialize(),
+            $.post("Address/Add", $("form").serialize(),
                 function (data, textStatus, jqXhr) {
                     noty({
                         "text": data.Message,
                         "layout": "topCenter",
-                        "type": data.MessageType,
+                        "type": data.MessageType.toString().toLowerCase(),
                         "theme": "noty_theme_twitter",
                         "animateOpen": { "height": "toggle" },
                         "animateClose": { "height": "toggle" },

@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright file="AddOrUpdateDeliveryAddressResponse.cs" company="TdService">
+// <copyright file="AddDeliveryAddressResponse.cs" company="TdService">
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
@@ -9,10 +9,16 @@
 
 namespace TdService.Services.Messaging.Address
 {
+    using TdService.Services.ViewModels.Account;
+
     /// <summary>
-    /// Add Or Update Delivery Address Response
+    /// Add Delivery Address Response
     /// </summary>
-    public class AddOrUpdateDeliveryAddressResponse
+    public class AddDeliveryAddressResponse
     {
+        /// <summary>
+        /// Gets or sets DeliveryAddressView.
+        /// </summary>
+        public DeliveryAddressesView DeliveryAddressesView { get; set; }
     }
 }

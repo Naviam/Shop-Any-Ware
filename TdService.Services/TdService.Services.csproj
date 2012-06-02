@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Implementations\DeliveryAddressService.cs" />
     <Compile Include="Implementations\MembershipService.cs" />
+    <Compile Include="Mapping\DeliveryAddressMapper.cs" />
     <Compile Include="Messaging\Address\AddOrUpdateDeliveryAddressRequest.cs" />
     <Compile Include="Messaging\Address\AddOrUpdateDeliveryAddressResponse.cs" />
     <Compile Include="Mapping\ProfileMapper.cs" />
@@ -67,10 +68,12 @@
     <Compile Include="RequestBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Account\DeliveryAddressesView.cs" />
+    <Compile Include="ViewModels\Account\DeliveryAddressView.cs" />
     <Compile Include="ViewModels\Account\ProfileView.cs" />
     <Compile Include="ViewModels\Account\SignInView.cs" />
     <Compile Include="ViewModels\Account\SignUpView.cs" />
     <Compile Include="ViewModels\BaseView.cs" />
+    <Compile Include="ViewModels\ViewModelMessageType.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TdService.Infrastructure\TdService.Infrastructure.csproj">

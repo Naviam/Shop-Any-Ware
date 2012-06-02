@@ -33,6 +33,6 @@ namespace TdService.Services.Interfaces
         /// <returns>
         /// Service response.
         /// </returns>
-        AddOrUpdateDeliveryAddressResponse AddOrUpdateDeliveryAddress(AddOrUpdateDeliveryAddressRequest request);
+        AddDeliveryAddressResponse AddDeliveryAddress(AddDeliveryAddressRequest request);
     }
 }

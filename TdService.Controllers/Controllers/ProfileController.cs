@@ -16,6 +16,7 @@ namespace TdService.Controllers
     using TdService.Resources.Views;
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging.Membership;
+    using TdService.Services.ViewModels;
     using TdService.Services.ViewModels.Account;
 
     /// <summary>
@@ -76,12 +77,12 @@ namespace TdService.Controllers
             {
                 this.membershipService.UpdateProfile(profileView);
                 profileView.Message = ProfileViewResources.UpdateProfileSuccessMessage;
-                profileView.MessageType = "success";
+                profileView.MessageType = ViewModelMessageType.Success;
             }
             catch (Exception e)
             {
                 profileView.Message = e.Message;
-                profileView.MessageType = "error";
+                profileView.MessageType = ViewModelMessageType.Error;
             }
             return this.Json(profileView);
         }

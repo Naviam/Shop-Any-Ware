@@ -50,6 +50,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Common.resx</DependentUpon>
     </Compile>
+    <Compile Include="Views\AddressViewResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AddressViewResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Views\ProfileViewResources.ru.Designer.cs">
       <DependentUpon>ProfileViewResources.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -85,6 +90,10 @@
     <EmbeddedResource Include="Common.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Common.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AddressViewResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AddressViewResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ProfileViewResources.ru.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

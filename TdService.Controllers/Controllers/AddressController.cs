@@ -12,8 +12,10 @@ namespace TdService.Controllers
     using System.Web.Mvc;
 
     using TdService.Infrastructure.Authentication;
+    using TdService.Resources.Views;
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging.Address;
+    using TdService.Services.ViewModels;
     using TdService.Services.ViewModels.Account;
 
     /// <summary>
@@ -92,10 +94,26 @@ namespace TdService.Controllers
         /// Returns view with delivery addresses.
         /// </returns>
         [HttpPost]
-        public ActionResult Create(DeliveryAddressesView view)
+        public JsonResult Add(DeliveryAddressView view)
         {
-            this.addressService.AddOrUpdateDeliveryAddress(new AddOrUpdateDeliveryAddressRequest());
-            return this.RedirectToAction("Index");
+            var addressesView = new DeliveryAddressesView();
+            try
+            {
+                var response = this.addressService.AddDeliveryAddress(
+                        new AddDeliveryAddressRequest
+                            {
+                                DeliveryAddressesView = new DeliveryAddressesView { DeliveryAddressView = view }
+                            });
+                addressesView = response.DeliveryAddressesView;
+                addressesView.Message = AddressViewResources.AddDeliveryAddressSuccessMessage;
+                addressesView.MessageType = ViewModelMessageType.Error;
+            }
+            catch (System.Exception e)
+            {
+                addressesView.Message = e.Message;
+                addressesView.MessageType = ViewModelMessageType.Error;
+            }
+            return this.Json(addressesView);
         }
 
         /// <summary>
@@ -105,9 +123,9 @@ namespace TdService.Controllers
         /// Returns view with delivery addresses.
         /// </returns>
         [HttpPost]
-        public ActionResult Remove()
+        public JsonResult Remove()
         {
-            return this.RedirectToAction("Index");
+            return this.Json(string.Empty);
         }
 
         /// <summary>
@@ -117,9 +135,9 @@ namespace TdService.Controllers
         /// Returns view with delivery addresses.
         /// </returns>
         [HttpPost]
-        public ActionResult Update()
+        public JsonResult Update()
         {
-            return this.RedirectToAction("Index");
+            return this.Json(string.Empty);
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="BaseView.cs" company="TdService">
+// <copyright file="ViewModelMessageType.cs" company="TdService">
 // Vitali Hatalski. 2012.
 // </copyright>
 // -----------------------------------------------------------------------
@@ -7,18 +7,23 @@
 namespace TdService.Services.ViewModels
 {
     /// <summary>
-    /// Base class for view models.
+    /// The view model message types.
     /// </summary>
-    public class BaseView
+    public enum ViewModelMessageType
     {
         /// <summary>
-        /// Gets or sets Message.
+        /// Success message.
         /// </summary>
-        public string Message { get; set; }
+        Success,
 
         /// <summary>
-        /// Gets or sets Message Type.
+        /// Error message.
         /// </summary>
-        public ViewModelMessageType MessageType { get; set; }
+        Error,
+
+        /// <summary>
+        /// Warning message.
+        /// </summary>
+        Warning
     }
 }
