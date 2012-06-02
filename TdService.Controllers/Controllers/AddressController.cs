@@ -106,12 +106,12 @@ namespace TdService.Controllers
                             });
                 addressesView = response.DeliveryAddressesView;
                 addressesView.Message = AddressViewResources.AddDeliveryAddressSuccessMessage;
-                addressesView.MessageType = ViewModelMessageType.Error;
+                addressesView.MessageType = ViewModelMessageType.Success.ToString().ToLower();
             }
             catch (System.Exception e)
             {
                 addressesView.Message = e.Message;
-                addressesView.MessageType = ViewModelMessageType.Error;
+                addressesView.MessageType = ViewModelMessageType.Error.ToString().ToLower();
             }
             return this.Json(addressesView);
         }

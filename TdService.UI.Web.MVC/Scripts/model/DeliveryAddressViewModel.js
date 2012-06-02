@@ -18,21 +18,9 @@
     self.city = ko.observable("");
     self.address1 = ko.observable("");
     self.address2 = ko.observable("");
-    self.address3 = ko.observable("");
+    // self.address3 = ko.observable("");
     self.zip = ko.observable("");
     self.phone = ko.observable("");
-    
-    //    $("form").validate({
-    //        errorClass: 'error',
-    //        validClass: 'success',
-    //        errorElement: 'span',
-    //        highlight: function (element, errorClass, validClass) {
-    //            $(element).parents("div[class='control-group']").addClass(errorClass).removeClass(validClass);
-    //        },
-    //        unhighlight: function (element, errorClass, validClass) {
-    //            $(element).parents(".error").removeClass(errorClass).addClass(validClass);
-    //        }
-    //    });
 
     self.addNewAddress = function () {
         /// <summary>Add new address.</summary>
@@ -42,7 +30,7 @@
                     noty({
                         "text": data.Message,
                         "layout": "topCenter",
-                        "type": data.MessageType.toString().toLowerCase(),
+                        "type": data.MessageType,
                         "theme": "noty_theme_twitter",
                         "animateOpen": { "height": "toggle" },
                         "animateClose": { "height": "toggle" },

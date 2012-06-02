@@ -19,6 +19,6 @@ namespace TdService.Services.ViewModels
         /// <summary>
         /// Gets or sets Message Type.
         /// </summary>
-        public ViewModelMessageType MessageType { get; set; }
+        public string MessageType { get; set; }
     }
 }

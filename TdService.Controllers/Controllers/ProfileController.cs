@@ -77,12 +77,12 @@ namespace TdService.Controllers
             {
                 this.membershipService.UpdateProfile(profileView);
                 profileView.Message = ProfileViewResources.UpdateProfileSuccessMessage;
-                profileView.MessageType = ViewModelMessageType.Success;
+                profileView.MessageType = ViewModelMessageType.Success.ToString().ToLower();
             }
             catch (Exception e)
             {
                 profileView.Message = e.Message;
-                profileView.MessageType = ViewModelMessageType.Error;
+                profileView.MessageType = ViewModelMessageType.Error.ToString().ToLower();
             }
             return this.Json(profileView);
         }
