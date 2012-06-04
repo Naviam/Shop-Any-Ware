@@ -88,6 +88,33 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please enter street.
+        /// </summary>
+        public static string Address1_Placeholder {
+            get {
+                return ResourceManager.GetString("Address1_Placeholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter suite #.
+        /// </summary>
+        public static string Address2_Placeholder {
+            get {
+                return ResourceManager.GetString("Address2_Placeholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter address name.
+        /// </summary>
+        public static string AddressName_Placeholder {
+            get {
+                return ResourceManager.GetString("AddressName_Placeholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Address 1.
         /// </summary>
         public static string AddressTable_AddressLine1 {
@@ -187,11 +214,74 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please enter city.
+        /// </summary>
+        public static string City_Placeholder {
+            get {
+                return ResourceManager.GetString("City_Placeholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter country.
+        /// </summary>
+        public static string Country_Placeholder {
+            get {
+                return ResourceManager.GetString("Country_Placeholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter first name.
+        /// </summary>
+        public static string FirstName_Placeholder {
+            get {
+                return ResourceManager.GetString("FirstName_Placeholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter last name.
+        /// </summary>
+        public static string LastName_Placeholder {
+            get {
+                return ResourceManager.GetString("LastName_Placeholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ShopAnyWare - Delivery Address Book.
         /// </summary>
         public static string PageTitle {
             get {
                 return ResourceManager.GetString("PageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter phone number.
+        /// </summary>
+        public static string Phone_Placeholder {
+            get {
+                return ResourceManager.GetString("Phone_Placeholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please entrer region.
+        /// </summary>
+        public static string Region_Placeholder {
+            get {
+                return ResourceManager.GetString("Region_Placeholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter zip code.
+        /// </summary>
+        public static string ZipCode_Placeholder {
+            get {
+                return ResourceManager.GetString("ZipCode_Placeholder", resourceCulture);
             }
         }
     }

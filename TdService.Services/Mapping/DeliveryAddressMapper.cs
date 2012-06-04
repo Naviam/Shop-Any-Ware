@@ -25,9 +25,12 @@ namespace TdService.Services.Mapping
         /// <returns>
         /// Delivery address.
         /// </returns>
-        public static DeliveryAddress ConvertToDeliveryAddress(this DeliveryAddressView deliveryAddressView)
+        public static DeliveryAddress ConvertToDeliveryAddress(this DeliveryAddressDetails deliveryAddressView)
         {
-            return Mapper.Map<DeliveryAddressView, DeliveryAddress>(deliveryAddressView);
+            // Configure AutoMapper
+            Mapper.CreateMap<DeliveryAddress, DeliveryAddressDetails>();
+            Mapper.AssertConfigurationIsValid();
+            return Mapper.Map<DeliveryAddressDetails, DeliveryAddress>(deliveryAddressView);
         }
     }
 }

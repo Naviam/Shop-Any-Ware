@@ -4,6 +4,13 @@
 @{
     ViewBag.Title = ProfileViewResources.PageTitle;
 }
+
+<ul class="breadcrumb">
+  <li>
+    <a href="#">Dashboard</a> <span class="divider">/</span>
+  </li>
+  <li class="active">Profile</li>
+</ul>
 @using (Html.BeginForm("Save", "Profile", FormMethod.Post, new { @class = "form-horizontal" }))
 {
     <input id="model" type="hidden" value="@(new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(Model))" />

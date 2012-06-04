@@ -68,7 +68,7 @@
     <Compile Include="RequestBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Account\DeliveryAddressesView.cs" />
-    <Compile Include="ViewModels\Account\DeliveryAddressView.cs" />
+    <Compile Include="ViewModels\Account\DeliveryAddressDetails.cs" />
     <Compile Include="ViewModels\Account\ProfileView.cs" />
     <Compile Include="ViewModels\Account\SignInView.cs" />
     <Compile Include="ViewModels\Account\SignUpView.cs" />

@@ -126,6 +126,15 @@
   <data name="AddDeliveryAddressSuccessMessage" xml:space="preserve">
     <value>Your new delivery address has been successfully added.</value>
   </data>
+  <data name="Address1_Placeholder" xml:space="preserve">
+    <value>Please enter street</value>
+  </data>
+  <data name="Address2_Placeholder" xml:space="preserve">
+    <value>Please enter suite #</value>
+  </data>
+  <data name="AddressName_Placeholder" xml:space="preserve">
+    <value>Please enter address name</value>
+  </data>
   <data name="AddressTable_AddressLine1" xml:space="preserve">
     <value>Address 1</value>
   </data>
@@ -159,7 +168,28 @@
   <data name="AddressTable_ZipCode" xml:space="preserve">
     <value>Zip Code</value>
   </data>
+  <data name="City_Placeholder" xml:space="preserve">
+    <value>Please enter city</value>
+  </data>
+  <data name="Country_Placeholder" xml:space="preserve">
+    <value>Please enter country</value>
+  </data>
+  <data name="FirstName_Placeholder" xml:space="preserve">
+    <value>Please enter first name</value>
+  </data>
+  <data name="LastName_Placeholder" xml:space="preserve">
+    <value>Please enter last name</value>
+  </data>
   <data name="PageTitle" xml:space="preserve">
     <value>ShopAnyWare - Delivery Address Book</value>
+  </data>
+  <data name="Phone_Placeholder" xml:space="preserve">
+    <value>Please enter phone number</value>
+  </data>
+  <data name="Region_Placeholder" xml:space="preserve">
+    <value>Please entrer region</value>
+  </data>
+  <data name="ZipCode_Placeholder" xml:space="preserve">
+    <value>Please enter zip code</value>
   </data>
 </root>

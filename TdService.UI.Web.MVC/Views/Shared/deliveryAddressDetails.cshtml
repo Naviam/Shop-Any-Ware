@@ -1,0 +1,73 @@
+﻿@using TdService.Resources.Views
+@model TdService.Services.ViewModels.Account.DeliveryAddressDetails
+
+<form class="form-horizontal" data-bind="submit: addNewAddress">
+    <fieldset>
+        <div class="control-group">
+            <h2>@AddressViewResources.AddAddressTitle</h2>
+        </div>
+        <div class="control-group">
+            <label class="control-label">@AddressViewResources.AddressTable_AddressName:</label>
+            <div class="controls">
+                <input class="input-xlarge" name="AddressName" data-bind="value: addressName" type="text" placeholder="@AddressViewResources.AddressName_Placeholder" />
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">@AddressViewResources.AddressTable_FirstName:</label>
+            <div class="controls">
+                <input class="input-xlarge" name="FirstName" data-bind="value: firstName" type="text" placeholder="@AddressViewResources.FirstName_Placeholder" />
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">@AddressViewResources.AddressTable_LastName:</label>
+            <div class="controls">
+                <input class="input-xlarge" name="LastName" data-bind="value: lastName" type="text" placeholder="@AddressViewResources.LastName_Placeholder" />
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">@AddressViewResources.AddressTable_Country:</label>
+            <div class="controls">
+                <input class="input-xlarge" name="Country" data-bind="value: country" type="text" placeholder="@AddressViewResources.Country_Placeholder" />
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">@AddressViewResources.AddressTable_Region:</label>
+            <div class="controls">
+                <input class="input-xlarge" name="Region" data-bind="value: region" type="text" placeholder="@AddressViewResources.Region_Placeholder" />
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">@AddressViewResources.AddressTable_City:</label>
+            <div class="controls">
+                <input class="input-xlarge" name="City" data-bind="value: city" type="text" placeholder="@AddressViewResources.City_Placeholder" />
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">@AddressViewResources.AddressTable_AddressLine1:</label>
+            <div class="controls">
+                <input class="input-xlarge" name="AddressLine1" data-bind="value: address1" type="text" placeholder="@AddressViewResources.Address1_Placeholder" />
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">@AddressViewResources.AddressTable_AddressLine2:</label>
+            <div class="controls">
+                <input class="input-xlarge" name="AddressLine2" data-bind="value: address2" type="text" placeholder="@AddressViewResources.Address2_Placeholder" />
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">@AddressViewResources.AddressTable_ZipCode:</label>
+            <div class="controls">
+                <input class="input-xlarge" name="ZipCode" data-bind="value: zip" type="text" placeholder="@AddressViewResources.ZipCode_Placeholder" />
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">@AddressViewResources.AddressTable_Phone:</label>
+            <div class="controls">
+                <input class="input-xlarge" name="Phone" data-bind="value: phone" type="text" placeholder="@AddressViewResources.Phone_Placeholder" />
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">@AddressViewResources.AddAddressButton</button>
+        </div>
+    </fieldset>
+</form>

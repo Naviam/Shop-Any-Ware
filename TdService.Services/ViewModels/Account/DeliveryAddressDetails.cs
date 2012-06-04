@@ -1,5 +1,5 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="DeliveryAddressView.cs" company="TdService">
+// <copyright file="DeliveryAddressDetails.cs" company="TdService">
 // Vitali Hatalski. 2012.
 // </copyright>
 // -----------------------------------------------------------------------
@@ -9,7 +9,7 @@ namespace TdService.Services.ViewModels.Account
     /// <summary>
     /// This class describes the delivery address view model.
     /// </summary>
-    public class DeliveryAddressView
+    public class DeliveryAddressDetails : BaseView
     {
         /// <summary>
         /// Gets or sets Id.
