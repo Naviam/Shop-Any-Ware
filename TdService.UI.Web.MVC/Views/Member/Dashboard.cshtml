@@ -39,7 +39,7 @@
                                 <thead>
                                     <tr>
                                         <th></th>
-                                        <th>Item</th>
+                                        <th class="left">Item</th>
                                         <th>Price</th>
                                         <th></th>
                                     </tr>
@@ -72,6 +72,10 @@
     </div>
     <div class="span4">
         <div class="package">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#">Recent</a></li>
+                <li><a href="#">History</a></li>
+            </ul>
             <div><a href="#" class="btn btn-large btn-success" style="float: right" data-toggle="modal"><i class="icon-white icon-gift"></i> Add Package</a></div>
             <div style="clear: right"></div>
         </div>
@@ -92,7 +96,7 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Item</th>
+                                    <th class="left">Item</th>
                                     <th>Price</th>
                                 </tr>
                             </thead>
@@ -127,7 +131,10 @@
     </div>
     <div class="span4">
         <div class="package">
-            <span style="font-size: 26px;margin: 10px;display:block;float: left">Balance: $100</span>
+            <ul class="nav nav-tabs" style="visibility:hidden">
+                <li class="active"><a href="#">&nbsp;</a></li>
+            </ul>
+            <span style="font-size: 26px;margin:10px 10px 0;display:block;float: left">Balance: $100</span>
             <a href="#" class="btn btn-large btn-success" style="float: right" data-bind="click: addOrder">Add Funds</a>
             <div style="clear: left;padding-bottom:10px"></div>
         </div>
@@ -136,7 +143,7 @@
                 <div class="white">
                     <table>
                         <tr>
-                            <th>Description</th>
+                            <th class="left">Description</th>
                             <th>Date</th>
                             <th>Status</th>
                             <th>Total</th>

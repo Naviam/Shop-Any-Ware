@@ -34,7 +34,11 @@ footer{color:#999;text-align:right}
     
     .pac{border-collapse:collapse;margin:0;padding:0;width:100%}
     .pac td{margin:0;padding:0}
+.filter{display:table;list-style:none}
+    .filter li{margin:8px 0}
+    .filter .text{width:48px;text-align:right}
+.roles{clear:both}
+    .roles th{background-color:#F9F9F9}
 
-    
 .new{border:1px dashed #ccc}
     .new div{font-size:32px;color:#ccc;margin:8px auto;text-align:center}
