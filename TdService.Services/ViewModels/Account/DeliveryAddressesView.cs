@@ -23,6 +23,6 @@ namespace TdService.Services.ViewModels.Account
         /// <summary>
         /// Gets or sets DeliveryAddressView.
         /// </summary>
-        public DeliveryAddressView DeliveryAddressView { get; set; }
+        public DeliveryAddressDetails DeliveryAddressView { get; set; }
     }
 }

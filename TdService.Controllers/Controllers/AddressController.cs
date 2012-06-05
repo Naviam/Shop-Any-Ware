@@ -81,7 +81,19 @@ namespace TdService.Controllers
         /// </returns>
         public ActionResult Details(int addressId)
         {
-            return this.View();
+            var details = new DeliveryAddressDetails
+                {
+                    Id = 1,
+                    ZipCode = "220113",
+                    City = "Minsk",
+                    Country = "Belarus",
+                    AddressLine1 = "Novovilenskaya street",
+                    AddressLine2 = "10, 41",
+                    State = "Minsk",
+                    Region = "Minsk",
+                    Phone = "+375295067630"
+                };
+            return this.View(details);
         }
 
         /// <summary>
@@ -94,7 +106,7 @@ namespace TdService.Controllers
         /// Returns view with delivery addresses.
         /// </returns>
         [HttpPost]
-        public JsonResult Add(DeliveryAddressView view)
+        public JsonResult Add(DeliveryAddressDetails view)
         {
             var addressesView = new DeliveryAddressesView();
             try
