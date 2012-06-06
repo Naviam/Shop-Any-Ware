@@ -1,11 +1,7 @@
 ﻿@using TdService.Resources.Views
-@model TdService.Services.ViewModels.Account.DeliveryAddressDetails
 
-<form class="form-horizontal" data-bind="submit: addNewAddress">
+<form class="form-horizontal" data-bind="submit: addDeliveryAddress">
     <fieldset>
-        <div class="control-group">
-            <h2>@AddressViewResources.AddAddressTitle</h2>
-        </div>
         <div class="control-group">
             <label class="control-label">@AddressViewResources.AddressTable_AddressName:</label>
             <div class="controls">
@@ -45,19 +41,19 @@
         <div class="control-group">
             <label class="control-label">@AddressViewResources.AddressTable_AddressLine1:</label>
             <div class="controls">
-                <input class="input-xlarge" name="AddressLine1" data-bind="value: address1" type="text" placeholder="@AddressViewResources.Address1_Placeholder" />
+                <input class="input-xlarge" name="AddressLine1" data-bind="value: addressLine1" type="text" placeholder="@AddressViewResources.Address1_Placeholder" />
             </div>
         </div>
         <div class="control-group">
             <label class="control-label">@AddressViewResources.AddressTable_AddressLine2:</label>
             <div class="controls">
-                <input class="input-xlarge" name="AddressLine2" data-bind="value: address2" type="text" placeholder="@AddressViewResources.Address2_Placeholder" />
+                <input class="input-xlarge" name="AddressLine2" data-bind="value: addressLine2" type="text" placeholder="@AddressViewResources.Address2_Placeholder" />
             </div>
         </div>
         <div class="control-group">
             <label class="control-label">@AddressViewResources.AddressTable_ZipCode:</label>
             <div class="controls">
-                <input class="input-xlarge" name="ZipCode" data-bind="value: zip" type="text" placeholder="@AddressViewResources.ZipCode_Placeholder" />
+                <input class="input-xlarge" name="ZipCode" data-bind="value: zipCode" type="text" placeholder="@AddressViewResources.ZipCode_Placeholder" />
             </div>
         </div>
         <div class="control-group">
@@ -65,9 +61,6 @@
             <div class="controls">
                 <input class="input-xlarge" name="Phone" data-bind="value: phone" type="text" placeholder="@AddressViewResources.Phone_Placeholder" />
             </div>
-        </div>
-        <div class="form-actions">
-            <button type="submit" class="btn btn-primary">@AddressViewResources.AddAddressButton</button>
         </div>
     </fieldset>
 </form>

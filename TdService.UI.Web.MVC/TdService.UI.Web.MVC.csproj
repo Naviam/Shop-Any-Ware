@@ -530,7 +530,6 @@
     <Content Include="Views\Shared\DisplayTemplates\PillsMenuHelperModel.cshtml" />
     <Content Include="Views\Shared\addMoneyForm.cshtml" />
     <Content Include="Views\Shared\profileForm.cshtml" />
-    <Content Include="Views\Shared\addDeliveryAddressForm.cshtml" />
     <Content Include="Views\Member\Dashboard.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\SiteMapPathHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />

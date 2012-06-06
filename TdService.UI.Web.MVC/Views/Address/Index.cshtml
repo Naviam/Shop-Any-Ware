@@ -1,22 +1,24 @@
-﻿@using TdService.Resources.Views
+﻿@using TdService.Resources
+@using TdService.Resources.Views
 @model TdService.Services.ViewModels.Account.DeliveryAddressesView
 @{
     ViewBag.Title = AddressViewResources.PageTitle;
 }
 
 <ul class="breadcrumb">
-  <li>
-    <a href="#">Dashboard</a> <span class="divider">/</span>
-  </li>
-  <li>
-    <a href="#">Profile</a> <span class="divider">/</span>
-  </li>
-  <li class="active">Delivery Addresses</li>
+    <li>
+        <a href="#">@BreadcrumbResources.Dashboard</a> <span class="divider">/</span>
+    </li>
+    <li>
+        <a href="#">@BreadcrumbResources.Profile</a> <span class="divider">/</span>
+    </li>
+    <li class="active">@BreadcrumbResources.DeliveryAddresses</li>
 </ul>
+<a class="btn btn-success" data-toggle="modal" href="#deliveryAddressModel" >Add Delivery Address</a>
 <input id="model" type="hidden" value="@(new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(Model.DeliveryAddressBook))" />
 <div class="row-fluid">
     <div class="span12">
-        <table class="table table-striped table-condensed">
+        <table id="dashboardModel" class="table table-striped table-condensed">
             <thead>
                 <tr>
                     <th></th>
@@ -33,104 +35,35 @@
             </thead>
             <tbody data-bind="foreach: addressBook">
                 <tr>
-                    <td><input type="button" class="btn-primary btn-mini" value="Edit"/><input type="button" class="btn-danger btn-mini" value="Remove"/></td>
-                    <td><span data-bind="text: AddressName"></span><input type="hidden" data-bind="value: Id" /></td>
-                    <td><span data-bind="text: FirstName"></span>, <span data-bind="text: LastName"></span></td>
-                    <td><span data-bind="text: Country"></span></td>
-                    <td><span data-bind="text: Region"></span></td>
-                    <td><span data-bind="text: City"></span></td>
-                    <td><span data-bind="text: AddressLine1"></span></td>
-                    <td><span data-bind="text: AddressLine2"></span></td>
-                    <td><span data-bind="text: ZipCode"></span></td>
-                    <td><span data-bind="text: Phone"></span></td>
+                    <td>
+                        <input type="button" data-bind="click: $root.editDeliveryAddress" class="btn btn-primary btn-mini" value="Edit" />
+                        <input type="button" data-bind="click: $root.removeDeliveryAddress" class="btn btn-danger btn-mini" value="Remove" />
+                    </td>
+                    <td><span data-bind="text: addressName"></span><input type="hidden" data-bind="value: id" /></td>
+                    <td><span data-bind="text: firstName"></span>, <span data-bind="text: lastName"></span></td>
+                    <td><span data-bind="text: country"></span></td>
+                    <td><span data-bind="text: region"></span></td>
+                    <td><span data-bind="text: city"></span></td>
+                    <td><span data-bind="text: addressLine1"></span></td>
+                    <td><span data-bind="text: addressLine2"></span></td>
+                    <td><span data-bind="text: zipCode"></span></td>
+                    <td><span data-bind="text: phone"></span></td>
                 </tr>
             </tbody>
-        </table><!--
-                    <div id="addDeliveryAddress" class="modal hide fade">
-                        <div class="modal-header">
-                            <a class="close" data-dismiss="modal">×</a>
-                            <h3>Add your new delivery address</h3>
-                        </div>
-                        <div class="modal-body">
-                            @{Html.RenderPartial("addDeliveryAddressForm");}
-                        </div>
-                        <div class="modal-footer">
-                            <a href="#" class="btn" data-dismiss="modal">Close</a>
-                            <a href="#" class="btn btn-primary" data-dismiss="modal">Add Delivery Address</a>
-                        </div>
-                    </div>-->
-        <br />
-        <form class="form-horizontal" data-bind="submit: addNewAddress">
-            <fieldset>
-                <div class="control-group">
-                    <h2>@AddressViewResources.AddAddressTitle</h2>
-                </div>
-                <div class="control-group">
-                    <label class="control-label">@AddressViewResources.AddressTable_AddressName:</label>
-                    <div class="controls">
-                        <input class="input-xlarge" name="AddressName" data-bind="value: addressName" type="text" placeholder="Please enter address name" />
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label">@AddressViewResources.AddressTable_FirstName:</label>
-                    <div class="controls">
-                        <input class="input-xlarge" name="FirstName" data-bind="value: firstName" type="text" placeholder="Please enter your first name" />
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label">@AddressViewResources.AddressTable_LastName:</label>
-                    <div class="controls">
-                        <input class="input-xlarge" name="LastName" data-bind="value: lastName" type="text" placeholder="Please enter your last name" />
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label">@AddressViewResources.AddressTable_Country:</label>
-                    <div class="controls">
-                        <input class="input-xlarge" name="Country" data-bind="value: country" type="text" placeholder="Please enter your country" />
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label">@AddressViewResources.AddressTable_Region:</label>
-                    <div class="controls">
-                        <input class="input-xlarge" name="Region" data-bind="value: region" type="text" placeholder="Please enter your region" />
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label">@AddressViewResources.AddressTable_City:</label>
-                    <div class="controls">
-                        <input class="input-xlarge" name="City" data-bind="value: city" type="text" placeholder="Please enter your city" />
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label">@AddressViewResources.AddressTable_AddressLine1:</label>
-                    <div class="controls">
-                        <input class="input-xlarge" name="AddressLine1" data-bind="value: address1" type="text" placeholder="Please enter your street" />
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label">@AddressViewResources.AddressTable_AddressLine2:</label>
-                    <div class="controls">
-                        <input class="input-xlarge" name="AddressLine2" data-bind="value: address2" type="text" placeholder="Please enter your home address and suite number" />
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label">@AddressViewResources.AddressTable_ZipCode:</label>
-                    <div class="controls">
-                        <input class="input-xlarge" name="ZipCode" data-bind="value: zip" type="text" placeholder="Please enter your zip code" />
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label">@AddressViewResources.AddressTable_Phone:</label>
-                    <div class="controls">
-                        <input class="input-xlarge" name="Phone" data-bind="value: phone" type="text" placeholder="Please enter your phone number" />
-                    </div>
-                </div>
-                <div class="form-actions">
-                    <button type="submit" class="btn btn-primary">@AddressViewResources.AddAddressButton</button>
-                </div>
-            </fieldset>
-        </form>
-        @*@{Html.RenderPartial("addressTable");}*@
+        </table>
+        <div id="deliveryAddressModel" class="modal hide fade">
+            <div class="modal-header">
+                <a class="close" data-dismiss="modal">×</a>
+                <h3>@AddressViewResources.AddAddressTitle</h3>
+            </div>
+            <div class="modal-body">
+                @{Html.RenderPartial("deliveryAddressDetails");}
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn" data-dismiss="modal">Close</a>
+                <a href="#" class="btn btn-success" data-bind="click: addDeliveryAddress" data-dismiss="modal">@AddressViewResources.AddAddressButton</a>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -139,7 +72,9 @@
     <script type="text/javascript" src="@Url.Content("~/Scripts/model/DeliveryAddressViewModel.js")"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            ko.applyBindings(new DeliveryAddressViewModel($("#model").val()));
+            window.deliveryAddressViewModel = new DeliveryAddressViewModel($("#model").val());
+            ko.applyBindings(deliveryAddressViewModel, document.getElementById('dashboardModel'));
+            ko.applyBindings(new DeliveryAddress(), document.getElementById('deliveryAddressModel'));
         });
     </script>
 }
