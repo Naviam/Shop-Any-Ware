@@ -11,7 +11,6 @@ namespace TdService.Services.Implementations
 
     using TdService.Model.Addresses;
     using TdService.Services.Interfaces;
-    using TdService.Services.Mapping;
     using TdService.Services.Messaging.Address;
     using TdService.Services.ViewModels.Account;
 
@@ -65,9 +64,24 @@ namespace TdService.Services.Implementations
         public AddDeliveryAddressResponse AddDeliveryAddress(AddDeliveryAddressRequest request)
         {
             var response = new AddDeliveryAddressResponse();
-            var deliveryAddress = request.DeliveryAddressesView.DeliveryAddressView.ConvertToDeliveryAddress();
+            var deliveryAddress = new DeliveryAddress
+                {
+                    Id = 0,
+                    FirstName = request.DeliveryAddressDetails.FirstName,
+                    LastName = request.DeliveryAddressDetails.LastName,
+                    AddressName = request.DeliveryAddressDetails.AddressName,
+                    Region = request.DeliveryAddressDetails.Region,
+                    Phone = request.DeliveryAddressDetails.Phone,
+                    State = request.DeliveryAddressDetails.State,
+                    City = request.DeliveryAddressDetails.City,
+                    Country = request.DeliveryAddressDetails.Country,
+                    ZipCode = request.DeliveryAddressDetails.ZipCode,
+                    AddressLine1 = request.DeliveryAddressDetails.AddressLine1,
+                    AddressLine2 = request.DeliveryAddressDetails.AddressLine2,
+                    AddressLine3 = request.DeliveryAddressDetails.AddressLine3
+                };
 
-            this.ThrowExceptionIfDeliveryAddressIsInvalid(deliveryAddress);
+            ThrowExceptionIfDeliveryAddressIsInvalid(deliveryAddress);
 
             this.addressRepository.AddOrUpdateDeliveryAddress(request.Email, deliveryAddress);
 
@@ -83,13 +97,12 @@ namespace TdService.Services.Implementations
         /// <exception cref="InvalidDeliveryAddressException">
         /// Thrown when business rules are broken.
         /// </exception>
-        private void ThrowExceptionIfDeliveryAddressIsInvalid(DeliveryAddress address)
+        private static void ThrowExceptionIfDeliveryAddressIsInvalid(DeliveryAddress address)
         {
             if (address.GetBrokenRules().Any())
             {
                 var addressIssues = new StringBuilder();
-                addressIssues.AppendLine(
-                    "There were some issues with the delivery address you are adding or editing.");
+                addressIssues.AppendLine("There were some issues with the delivery address you are adding or editing.");
 
                 foreach (var rule in address.GetBrokenRules())
                 {

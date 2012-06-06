@@ -108,24 +108,23 @@ namespace TdService.Controllers
         [HttpPost]
         public JsonResult Add(DeliveryAddressDetails view)
         {
-            var addressesView = new DeliveryAddressesView();
             try
             {
-                var response = this.addressService.AddDeliveryAddress(
+                this.addressService.AddDeliveryAddress(
                         new AddDeliveryAddressRequest
                             {
-                                DeliveryAddressesView = new DeliveryAddressesView { DeliveryAddressView = view }
+                                Email = HttpContext.User.Identity.Name,
+                                DeliveryAddressDetails = view
                             });
-                addressesView = response.DeliveryAddressesView;
-                addressesView.Message = AddressViewResources.AddDeliveryAddressSuccessMessage;
-                addressesView.MessageType = ViewModelMessageType.Success.ToString().ToLower();
+                view.Message = AddressViewResources.AddDeliveryAddressSuccessMessage;
+                view.MessageType = ViewModelMessageType.Success.ToString().ToLower();
             }
             catch (System.Exception e)
             {
-                addressesView.Message = e.Message;
-                addressesView.MessageType = ViewModelMessageType.Error.ToString().ToLower();
+                view.Message = e.Message;
+                view.MessageType = ViewModelMessageType.Error.ToString().ToLower();
             }
-            return this.Json(addressesView);
+            return this.Json(view);
         }
 
         /// <summary>

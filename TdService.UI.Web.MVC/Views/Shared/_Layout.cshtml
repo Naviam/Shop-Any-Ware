@@ -54,6 +54,20 @@
                         <ul class="nav pull-right">
                             <li id="fat-menu" class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    Language: English <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Russian</a></li>
+                                </ul>
+                            </li>
+                            <li id="fat-menu" class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    Your address in U.S. <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    @{Html.RenderPartial("storeAddress", true);}
+                                </ul>
+                            </li>
+                            <li id="fat-menu" class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     @HttpContext.Current.User.Identity.Name <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="@Url.Action("Index", "Profile")"><i class="icon-user"></i> Profile</a></li>

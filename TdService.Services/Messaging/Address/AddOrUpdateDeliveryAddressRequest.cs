@@ -19,7 +19,7 @@ namespace TdService.Services.Messaging.Address
         /// <summary>
         /// Gets or sets Delivery Addresses View.
         /// </summary>
-        public DeliveryAddressesView DeliveryAddressesView { get; set; }
+        public DeliveryAddressDetails DeliveryAddressDetails { get; set; }
 
         /// <summary>
         /// Gets or sets Email.

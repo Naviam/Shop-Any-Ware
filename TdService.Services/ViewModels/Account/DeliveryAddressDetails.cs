@@ -17,6 +17,16 @@ namespace TdService.Services.ViewModels.Account
         public int Id { get; set; }
 
         /// <summary>
+        /// Gets or sets FirstName.
+        /// </summary>
+        public string FirstName { get; set; }
+
+        /// <summary>
+        /// Gets or sets LastName.
+        /// </summary>
+        public string LastName { get; set; }
+
+        /// <summary>
         /// Gets or sets Zip.
         /// </summary>
         public string ZipCode { get; set; }
@@ -60,5 +70,10 @@ namespace TdService.Services.ViewModels.Account
         /// Gets or sets State.
         /// </summary>
         public string State { get; set; }
+
+        /// <summary>
+        /// Gets or sets AddressName.
+        /// </summary>
+        public string AddressName { get; set; }
     }
 }
