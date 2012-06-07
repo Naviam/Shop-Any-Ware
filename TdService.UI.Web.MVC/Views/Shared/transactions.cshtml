@@ -1,0 +1,25 @@
+﻿@model bool
+           
+@* if to be show in modal = true, othewise false *@
+
+<table class="table-striped table-condensed address">
+    @if (!Model)
+    {
+<text>
+    <caption style="text-align: right; padding-bottom: 4px;">
+        <h4 style="float: left;padding-top: 6px">Your Store Address in USA</h4>
+        <a class="btn btn-small btn-primary" href="#"><i class="icon-white icon-file"></i>COPY</a>
+    </caption>
+</text>
+    }
+    <tbody>
+        <tr>
+            <td>10-may-2012:</td>
+            <td>+ $20 from credit card</td>
+        </tr>
+        <tr>
+            <td>09-may-2012:</td>
+            <td>- $10 shopname</td>
+        </tr>
+    </tbody>
+</table>

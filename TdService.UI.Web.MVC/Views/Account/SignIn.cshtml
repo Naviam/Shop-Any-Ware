@@ -31,13 +31,9 @@
         </div>
         <div class="control-group">
             <div class="controls">
-                <a href="@Url.Action("Forgot", "Account")">Forgot email or password?</a>
-            </div>
-        </div>
-        <div class="control-group">
-            <div class="controls">
-                <input id="rememberMe" name="RememberMe" class="input-xlarge" type="checkbox" checked="checked">
-                <label for="rememberMe" class="control-label">@SignInResources.RememberMeHeader</label>
+                <div style="float:left"><input id="rememberMe" name="RememberMe" type="checkbox" checked="checked"></div>
+                <div style="float:left;margin:3px"><label for="rememberMe">@SignInResources.RememberMeHeader</label></div>
+                <div style="float:left;margin:3px 0 0 22px"><a href="@Url.Action("Forgot", "Account")">Forgot email or password?</a></div>
             </div>
         </div>
         <div class="form-actions">

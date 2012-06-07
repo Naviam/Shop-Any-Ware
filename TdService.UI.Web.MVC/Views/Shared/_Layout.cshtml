@@ -52,11 +52,20 @@
                             <li><a href="@Url.Action("SignOut", "Account")"><i class="icon-white icon-off"></i> Sign Out</a></li>
                         </ul>*@
                         <ul class="nav pull-right">
-                            <li id="fat-menu" class="dropdown">
+                            @*<li id="fat-menu" class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     Language: English <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="#">Russian</a></li>
+                                </ul>
+                            </li>*@
+                            <li><a href="#" class="en"></a></li>
+                            <li><a href="#" class="ru"></a></li>
+                            <li id="fat-menu" class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    Balance: $100 <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    @{Html.RenderPartial("transactions", true);}
                                 </ul>
                             </li>
                             <li id="fat-menu" class="dropdown">

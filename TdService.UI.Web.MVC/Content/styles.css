@@ -6,6 +6,9 @@ input,textarea,select,.uneditable-input{margin-bottom:0}
 
 footer{color:#999;text-align:right}
 
+.address{margin:8px 12px;width:340px}
+.action_copy{float:right}
+    .action_copy i{margin-right:4px}
 .package{margin:12px}
     .add-order{padding:8px;font-size:16px}
     .box{background:url(img/box_bg.jpg);border:1px solid #aa9985;border-radius:4px;padding:4px 8px}
@@ -39,6 +42,9 @@ footer{color:#999;text-align:right}
     .filter .text{width:48px;text-align:right}
 .header{clear:both}
     .header th{background-color:#F9F9F9}
+.en,.ru{margin:12px 8px;border:1px solid #eee;padding:0 !important;height:14px;width:22px}
+    .en{background:url(img/en.png)}
+    .ru{background:url(img/ru.png)}
 
 .new{border:1px dashed #ccc}
     .new div{font-size:32px;color:#ccc;margin:8px auto;text-align:center}
