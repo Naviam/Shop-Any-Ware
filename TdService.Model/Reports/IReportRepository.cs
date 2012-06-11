@@ -13,6 +13,7 @@ namespace TdService.Model.Reports
     using System.Collections.Generic;
 
     using TdService.Model.Orders;
+    using TdService.Model.RFO;
 
     /// <summary>
     /// This interface contains report methods.

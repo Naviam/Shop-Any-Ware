@@ -10,7 +10,9 @@
 namespace TdService.Model.Packages
 {
     using System.Collections.Generic;
-    using Orders;
+    using RFO;
+
+    using TdService.Model.Orders;
 
     /// <summary>
     /// The interface for package repository.

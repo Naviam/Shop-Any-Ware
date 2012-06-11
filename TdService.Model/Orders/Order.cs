@@ -8,8 +8,9 @@ namespace TdService.Model.Orders
 {
     using System;
     using System.Collections.Generic;
-    using Infrastructure.Domain;
-    using Items;
+
+    using TdService.Infrastructure.Domain;
+    using TdService.Model.Items;
 
     /// <summary>
     /// This class describes the order from online shops.
@@ -80,15 +81,20 @@ namespace TdService.Model.Orders
         }
 
         /// <summary>
-        /// Get order status.
+        /// Gets Order Status.
         /// </summary>
-        /// <returns>
-        /// Order status.
-        /// </returns>
-        public OrderStatus Status()
+        public OrderStatus Status
         {
-            return this.orderState.Status;
+            get
+            {
+                return this.orderState.Status;
+            }
         }
+
+        /// <summary>
+        /// Gets or sets Extended Status.
+        /// </summary>
+        public string StatusExtended { get; set; }
 
         /// <summary>
         /// Add item to an order.
@@ -102,24 +108,13 @@ namespace TdService.Model.Orders
         }
 
         /// <summary>
-        /// Add collection of items to this order.
-        /// </summary>
-        /// <param name="items">
-        /// The items.
-        /// </param>
-        public void AddItems(IEnumerable<Item> items)
-        {
-            this.Items.AddRange(items);
-        }
-
-        /// <summary>
         /// Cancel order.
         /// </summary>
         public void Cancel()
         {
             if (this.CanCancel)
             {
-                this.orderState.Cancel(this);
+                this.orderState.Remove(this);
             }
         }
 

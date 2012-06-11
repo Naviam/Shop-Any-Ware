@@ -19,6 +19,7 @@ namespace TdService.Repository.MsSql
     using TdService.Model.Membership;
     using TdService.Model.Notification;
     using TdService.Model.Orders;
+    using TdService.Model.RFO;
     using TdService.Model.Packages;
 
     /// <summary>

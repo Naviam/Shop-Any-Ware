@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TdService.Model.Orders
+namespace TdService.Model.RFO
 {
     using System;
     using Infrastructure.Domain;

@@ -11,8 +11,9 @@ namespace TdService.TestConsole
 {
     using System;
     using Model;
-    using Model.Orders;
+    using Model.RFO;
 
+    using TdService.Model.Orders;
     using TdService.Repository.MsSql;
     using TdService.Repository.MsSql.Repositories;
 
@@ -29,7 +30,7 @@ namespace TdService.TestConsole
         /// </param>
         public static void Main(string[] args)
         {
-            var order = new Order(new OrderNewState())
+            var order = new Order(new OrderCreatedState())
                             {
                                 OrderNumber = "4534523d",
                                 Retailer = new Retailer(),

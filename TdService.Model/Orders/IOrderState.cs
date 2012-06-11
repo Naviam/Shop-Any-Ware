@@ -6,8 +6,7 @@
 
 namespace TdService.Model.Orders
 {
-    using System.Collections.Generic;
-    using Items;
+    using TdService.Model.Items;
 
     /// <summary>
     /// Interface that describes order state.
@@ -20,14 +19,55 @@ namespace TdService.Model.Orders
         OrderStatus Status { get; }
 
         /// <summary>
-        /// Gets a value indicating whether items can be added to order.
+        /// Receive order.
         /// </summary>
-        bool CanAddItems { get; }
+        void ReceiveOrder();
 
         /// <summary>
-        /// Gets a value indicating whether order can be canceled.
+        /// Process incoming order.
         /// </summary>
-        bool CanCancel { get; }
+        void ProcessIncomingOrder();
+
+        /// <summary>
+        /// Request order return.
+        /// </summary>
+        void RequestOrderReturn();
+
+        /// <summary>
+        /// Process order for return.
+        /// </summary>
+        void ProcessOrderForReturn();
+
+        /// <summary>
+        /// Return order.
+        /// </summary>
+        void ReturnOrder();
+
+        /// <summary>
+        /// Dispose order.
+        /// </summary>
+        void DisposeOrder();
+
+        /// <summary>
+        /// Change order's status.
+        /// </summary>
+        /// <param name="newStatus">
+        /// The new status.
+        /// </param>
+        void ChangeStatusTo(OrderStatus newStatus);
+
+        #region Working with items
+
+        /// <summary>
+        /// Get item's details.
+        /// </summary>
+        /// <param name="id">
+        /// The id.
+        /// </param>
+        /// <returns>
+        /// Order's item details.
+        /// </returns>
+        Item GetItemDetails(int id);
 
         /// <summary>
         /// Add item to the order.
@@ -38,19 +78,79 @@ namespace TdService.Model.Orders
         void AddItem(Item item);
 
         /// <summary>
-        /// Add collection of items to the order.
+        /// Update item details.
         /// </summary>
-        /// <param name="items">
-        /// The items.
+        /// <param name="item">
+        /// The item.
         /// </param>
-        void AddItems(IEnumerable<Item> items);
+        void UpdateItem(Item item);
 
         /// <summary>
-        /// Cancel order.
+        /// Remove item from the order.
+        /// </summary>
+        /// <param name="item">
+        /// The item.
+        /// </param>
+        void RemoveItem(Item item);
+
+        /// <summary>
+        /// Add item's photo.
+        /// </summary>
+        /// <param name="item">
+        /// The item.
+        /// </param>
+        /// <param name="photo">
+        /// The photo.
+        /// </param>
+        void AddItemPhoto(Item item, string photo);
+
+        /// <summary>
+        /// Remove item's photo.
+        /// </summary>
+        /// <param name="item">
+        /// The item.
+        /// </param>
+        void RemoveItemPhoto(Item item);
+
+        #endregion
+
+        #region Working with orders
+
+        /// <summary>
+        /// Find order by id.
+        /// </summary>
+        /// <param name="id">
+        /// The id.
+        /// </param>
+        /// <returns>
+        /// Order details.
+        /// </returns>
+        Order Find(int id);
+
+        /// <summary>
+        /// Add new order.
+        /// </summary>
+        /// <param name="order">
+        /// The order.
+        /// </param>
+        void Add(Order order);
+
+        /// <summary>
+        /// Edit order.
+        /// </summary>
+        /// <param name="order">
+        /// The order.
+        /// </param>
+        void Edit(Order order);
+
+        /// <summary>
+        /// Remove order.
         /// </summary>
         /// <param name="order">
         /// The order to cancel.
         /// </param>
-        void Cancel(Order order);
+        void Remove(Order order);
+
+        #endregion
     }
 }

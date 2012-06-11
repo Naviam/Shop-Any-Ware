@@ -4,13 +4,8 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TdService.Model.Orders
+namespace TdService.Model.RFO
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-
     /// <summary>
     /// The status of request for an order.
     /// </summary>

@@ -14,6 +14,7 @@ namespace TdService.Controllers
 
     using TdService.Infrastructure.Authentication;
     using TdService.Model.Orders;
+    using TdService.Model.RFO;
 
     /// <summary>
     /// The controller that contains membership methods.
@@ -59,7 +60,7 @@ namespace TdService.Controllers
         /// </returns>
         public ActionResult Dashboard()
         {
-            this.repository.AddOrder(new Order(new OrderNewState())
+            this.repository.AddOrder(new Order(new OrderCreatedState())
             {
                 CreatedDate = DateTime.UtcNow.Date,
                 ReceivedDate = DateTime.UtcNow.Date

@@ -26,6 +26,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DeployIisAppPath>Default Web Site</DeployIisAppPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -34,7 +35,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DeployIisAppPath>tdservice</DeployIisAppPath>
+    <DeployIisAppPath>shopanyware</DeployIisAppPath>
     <PublishDatabases>false</PublishDatabases>
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <IncludeIisSettings>false</IncludeIisSettings>
@@ -154,8 +155,12 @@
     <Content Include="Content\img\story_expanded1.png" />
     <Content Include="Content\img\white_bg.jpg" />
     <Content Include="Content\less\bootstrap-responsive.css" />
-    <Content Include="Content\less\bootstrap.css" />
-    <Content Include="Content\less\bootstrap.min.css" />
+    <Content Include="Content\less\bootstrap.css">
+      <DependentUpon>bootstrap.less</DependentUpon>
+    </Content>
+    <Content Include="Content\less\bootstrap.min.css">
+      <DependentUpon>bootstrap.less</DependentUpon>
+    </Content>
     <Content Include="Content\less\docs.css" />
     <Content Include="Content\less\responsive.css" />
     <Content Include="Content\less\responsive.min.css" />
@@ -532,7 +537,6 @@
     <Content Include="Views\Shared\profileForm.cshtml" />
     <Content Include="Views\Member\Dashboard.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\SiteMapPathHelperModel.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
     <Content Include="Views\Admin\Dashboard.cshtml" />
     <Content Include="Views\Account\Forgot.cshtml" />
     <Content Include="Views\Shared\deliveryAddressDetails.cshtml" />

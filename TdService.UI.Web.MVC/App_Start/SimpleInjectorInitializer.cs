@@ -21,6 +21,7 @@ namespace TdService.UI.Web.MVC.App_Start
     using TdService.Model.Addresses;
     using TdService.Model.Membership;
     using TdService.Model.Orders;
+    using TdService.Model.RFO;
     using TdService.Repository.MsSql.Repositories;
     using TdService.Services.Implementations;
     using TdService.Services.Interfaces;

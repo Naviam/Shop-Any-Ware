@@ -1,29 +1,27 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="OrderReceivedState.cs" company="TdService">
-// Vitali Hatalski. 2012.
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="OrderCreatedState.cs" company="TdService">
+//   Vitali Hatalski. 2012.
 // </copyright>
-// -----------------------------------------------------------------------
+// <summary>
+//   Describes the newly created order behavior.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace TdService.Model.Orders
 {
     using TdService.Model.Items;
 
     /// <summary>
-    /// Describes the received order behavior.
+    /// Describes the newly created order behavior.
     /// </summary>
-    public class OrderReceivedState : IOrderState
+    public class OrderCreatedState : IOrderState
     {
-        #region Implementation of IOrderState
-
         /// <summary>
-        /// Gets Status.
+        /// Gets Order Status.
         /// </summary>
         public OrderStatus Status
         {
-            get
-            {
-                return OrderStatus.Received;
-            }
+            get { return OrderStatus.Created; }
         }
 
         /// <summary>
@@ -180,15 +178,24 @@ namespace TdService.Model.Orders
         }
 
         /// <summary>
+        /// Indicates whether an order can be canceled.
+        /// </summary>
+        /// <returns>
+        /// Boolean value.
+        /// </returns>
+        public bool CanCancel()
+        {
+            return true;
+        }
+
+        /// <summary>
         /// Remove order.
         /// </summary>
         /// <param name="order">
-        /// The order to cancel.
+        /// The order.
         /// </param>
         public void Remove(Order order)
         {
         }
-
-        #endregion
     }
 }

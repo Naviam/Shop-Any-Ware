@@ -12,11 +12,12 @@ namespace TdService.Model.Membership
     using System;
     using System.Collections.Generic;
     using Addresses;
-    using Orders;
+    using RFO;
     using Packages;
 
     using TdService.Infrastructure.Domain;
     using TdService.Model.Balance;
+    using TdService.Model.Orders;
 
     /// <summary>
     /// This class describes user in the system

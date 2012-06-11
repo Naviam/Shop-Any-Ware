@@ -1,17 +1,20 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="OrderReceivedState.cs" company="TdService">
-// Vitali Hatalski. 2012.
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="OrderDisposedState.cs" company="TdService">
+//   Vitali Hatalski. 2012.
 // </copyright>
-// -----------------------------------------------------------------------
+// <summary>
+//   Describes the disposed order behavior.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace TdService.Model.Orders
 {
     using TdService.Model.Items;
 
     /// <summary>
-    /// Describes the received order behavior.
+    /// Describes the disposed order behavior.
     /// </summary>
-    public class OrderReceivedState : IOrderState
+    public class OrderDisposedState : IOrderState
     {
         #region Implementation of IOrderState
 
@@ -22,7 +25,7 @@ namespace TdService.Model.Orders
         {
             get
             {
-                return OrderStatus.Received;
+                return OrderStatus.Disposed;
             }
         }
 

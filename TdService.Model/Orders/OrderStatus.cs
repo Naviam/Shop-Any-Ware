@@ -17,26 +17,41 @@ namespace TdService.Model.Orders
         /// <summary>
         /// Waiting arrival.
         /// </summary>
-        New = 0,
+        Created = 0,
 
         /// <summary>
-        /// Arrived order.
+        /// Created on request for order.
         /// </summary>
-        Received = 1,
+        CreatedOnRequest = 1,
 
         /// <summary>
-        /// Ready for package creation.
+        /// Incoming order is processing by operator.
         /// </summary>
-        Ready = 2,
+        Receiving = 2,
 
         /// <summary>
-        /// Cancelled status.
+        /// Received and ready for package creation.
         /// </summary>
-        Canceled = 3,
+        Received = 3,
+
+        /// <summary>
+        /// Return of an order has been requested by an user.
+        /// </summary>
+        ReturnRequested = 4,
+
+        /// <summary>
+        /// Return is processed by operator.
+        /// </summary>
+        ReturnInProgress = 5,
 
         /// <summary>
         /// Returned to seller.
         /// </summary>
-        Returned = 4
+        Returned = 6,
+
+        /// <summary>
+        /// Disposed order.
+        /// </summary>
+        Disposed = 7
     }
 }

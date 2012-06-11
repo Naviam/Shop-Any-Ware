@@ -1,5 +1,5 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="OrderReceivedState.cs" company="TdService">
+// <copyright file="OrderReceivingState.cs" company="TdService">
 // Vitali Hatalski. 2012.
 // </copyright>
 // -----------------------------------------------------------------------
@@ -11,7 +11,7 @@ namespace TdService.Model.Orders
     /// <summary>
     /// Describes the received order behavior.
     /// </summary>
-    public class OrderReceivedState : IOrderState
+    public class OrderReceivingState : IOrderState
     {
         #region Implementation of IOrderState
 
@@ -22,7 +22,7 @@ namespace TdService.Model.Orders
         {
             get
             {
-                return OrderStatus.Received;
+                return OrderStatus.Receiving;
             }
         }
 
