@@ -2,16 +2,16 @@
     ViewBag.Title = "Shop Any Ware - Overview";
 }
 <div class="row-fluid">
-    <div class="span4">
+    <div class="span6">
         <div id="addOrderForm" class="package">
             <ul class="nav nav-tabs">
                 <li><a href="#">Мы покупаем и пересылаем</a></li>
                 <li class="active"><a href="#">Вы покупаете и мы пересылаем</a></li>
             </ul>
-            <table class="form-inline" style="width:100%;position: relative;z-index: 1001">
+            <table class="form-inline" style="width:100%;position:relative;z-index:99">
                 <tr>
                     <td>
-                        <input class="add-order" style="width: 100%" data-bind="value: newOrder, autosuggest: shops" placeholder="please enter shop name"/>
+                        <input class="add-order" style="width:100%" data-bind="value: newOrder, autosuggest: shops" placeholder="please enter shop name"/>
                     </td>
                     <td>
                         <a href="#" class="btn btn-large btn-success" style="float: right" data-bind="click: addOrder">Add Order</a>
@@ -51,12 +51,15 @@
                                         <td class="left"><i class="icon-camera"></i> <span class="tn" title="Kindle" data-content="<table class='details'><tr><td><img src='@Url.Content("~/content/img/kindle.jpg")' /></td><td><p>Name: Kindle</p><p>Weight: 1.3lbs</p><p>Color: Black</p><p>Quantity: 1</p><p>Cost: $100</p></td>" data-bind="click: $parent.removeItem, text: name"></span></td>
                                         <td><span data-bind="text: price"></span> <i class="icon-pencil"></i></td>
                                         <td>
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-arrow-right"></i> Move <b class="caret"></b></a>
-                                            <ul class="dropdown-menu">
-                                                <li><i class="icon-plus"></i> Add to a new package</li>
+                                            <div class="btn-group">
+                                              <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">Move <span class="caret"></span></button>
+                                              <ul class="dropdown-menu">
                                                 <li><i class="icon-gift"></i> Package name</li>
                                                 <li><i class="icon-gift"></i> My Gifts</li>
-                                            </ul>
+                                                <li class="divider"></li>
+                                                <li><i class="icon-plus"></i> Add to a new package</li>
+                                              </ul>
+                                            </div>
                                         </td>
                                         <td class="draggable"><div></div></td>
                                     </tr>
@@ -67,12 +70,15 @@
                                         <td class="right">Total</td>
                                         <td>$70</td>
                                         <td>
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-arrow-right"></i> Move <b class="caret"></b></a>
-                                            <ul class="dropdown-menu">
-                                                <li><i class="icon-plus"></i> Add to a new package</li>
+                                            <div class="btn-group">
+                                              <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">Move <span class="caret"></span></button>
+                                              <ul class="dropdown-menu">
                                                 <li><i class="icon-gift"></i> Package name</li>
                                                 <li><i class="icon-gift"></i> My Gifts</li>
-                                            </ul>
+                                                <li class="divider"></li>
+                                                <li><i class="icon-plus"></i> Add to a new package</li>
+                                              </ul>
+                                            </div>
                                         </td>
                                         <td class="draggable"><div></div></td>
                                     </tr>
@@ -90,7 +96,7 @@
             </div>
         </div>
     </div>
-    <div class="span4">
+    <div class="span6">
         <div class="package">
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#">Recent</a></li>
@@ -150,7 +156,7 @@
             </div>
         </div>
     </div>
-    <div class="span4">
+    @*<div class="span4">
         <div class="package">
             <ul class="nav nav-tabs" style="visibility:hidden">
                 <li class="active"><a href="#">&nbsp;</a></li>
@@ -238,7 +244,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>*@
 </div>
 <div class="modal" id="myModal" style="display: none">
   <div class="modal-header">
