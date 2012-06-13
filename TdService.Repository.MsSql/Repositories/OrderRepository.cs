@@ -11,7 +11,6 @@ namespace TdService.Repository.MsSql.Repositories
 
     using TdService.Model.Items;
     using TdService.Model.Orders;
-    using TdService.Model.RFO;
 
     /// <summary>
     /// Order repository to work with orders in database.
