@@ -1,18 +1,20 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="IMembershipService.cs" company="TdService">
+// <copyright file="FakeMembershipService.cs" company="TdService">
 // Vitali Hatalski. 2012.
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TdService.Services.Interfaces
+namespace TdService.ShopAnyWare.Tests.Controllers
 {
+    using TdService.Services.Interfaces;
+    using TdService.Services.Messaging;
     using TdService.Services.Messaging.Membership;
     using TdService.Services.ViewModels.Account;
 
     /// <summary>
-    /// Interface of membership service.
+    /// Fake membership service for testing purpose.
     /// </summary>
-    public interface IMembershipService
+    public class FakeMembershipService : IMembershipService
     {
         /// <summary>
         /// Register user.
@@ -23,7 +25,11 @@ namespace TdService.Services.Interfaces
         /// <returns>
         /// Register user response.
         /// </returns>
-        RegisterUserResponse RegisterUser(RegisterUserRequest request);
+        public RegisterUserResponse RegisterUser(RegisterUserRequest request)
+        {
+            var response = new RegisterUserResponse { IdentityToken = "1", MessageType = MessageType.Success };
+            return response;
+        }
 
         /// <summary>
         /// Login user.
@@ -32,9 +38,12 @@ namespace TdService.Services.Interfaces
         /// The request.
         /// </param>
         /// <returns>
-        /// The login user response.
+        /// The login user.
         /// </returns>
-        LoginUserResponse LoginUser(LoginUserRequest request);
+        public LoginUserResponse LoginUser(LoginUserRequest request)
+        {
+            return new LoginUserResponse();
+        }
 
         /// <summary>
         /// Validate user.
@@ -45,7 +54,10 @@ namespace TdService.Services.Interfaces
         /// <returns>
         /// True if user valid.
         /// </returns>
-        ValidateUserResponse ValidateUser(ValidateUserRequest request);
+        public ValidateUserResponse ValidateUser(ValidateUserRequest request)
+        {
+            return new ValidateUserResponse();
+        }
 
         /// <summary>
         /// Get user.
@@ -56,7 +68,10 @@ namespace TdService.Services.Interfaces
         /// <returns>
         /// Get user response object.
         /// </returns>
-        GetUserResponse GetUser(GetUserRequest request);
+        public GetUserResponse GetUser(GetUserRequest request)
+        {
+            return new GetUserResponse();
+        }
 
         /// <summary>
         /// Get user's profile.
@@ -67,7 +82,10 @@ namespace TdService.Services.Interfaces
         /// <returns>
         /// Get profile response object.
         /// </returns>
-        GetProfileResponse GetProfile(GetProfileRequest request);
+        public GetProfileResponse GetProfile(GetProfileRequest request)
+        {
+            return new GetProfileResponse();
+        }
 
         /// <summary>
         /// Update profile.
@@ -78,6 +96,9 @@ namespace TdService.Services.Interfaces
         /// <returns>
         /// The update profile.
         /// </returns>
-        UpdateProfileResponse UpdateProfile(ProfileView profileView);
+        public UpdateProfileResponse UpdateProfile(ProfileView profileView)
+        {
+            return new UpdateProfileResponse();
+        }
     }
 }

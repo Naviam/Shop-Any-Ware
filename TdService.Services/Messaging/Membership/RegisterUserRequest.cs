@@ -12,7 +12,7 @@ namespace TdService.Services.Messaging.Membership
     /// <summary>
     /// Register user request for service.
     /// </summary>
-    public class RegisterUserRequest
+    public class RegisterUserRequest : RequestBase
     {
         /// <summary>
         /// Gets or sets Email.

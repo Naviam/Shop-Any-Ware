@@ -12,7 +12,7 @@ namespace TdService.Services.Messaging.Membership
     /// <summary>
     /// Validate user request object.
     /// </summary>
-    public class ValidateUserRequest
+    public class ValidateUserRequest : RequestBase
     {
         /// <summary>
         /// Gets or sets Email.

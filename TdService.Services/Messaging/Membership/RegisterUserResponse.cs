@@ -12,7 +12,7 @@ namespace TdService.Services.Messaging.Membership
     /// <summary>
     /// Register user response for service.
     /// </summary>
-    public class RegisterUserResponse
+    public class RegisterUserResponse : ResponseBase
     {
         /// <summary>
         /// Gets or sets IdentityToken.

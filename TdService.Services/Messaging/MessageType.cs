@@ -1,24 +1,32 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright file="GetUserResponse.cs" company="TdService">
+// <copyright file="MessageType.cs" company="TdService">
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
-//   Defines the GetUserResponse type.
+//   Message types.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Services.Messaging.Membership
+namespace TdService.Services.Messaging
 {
-    using TdService.Model.Membership;
-
     /// <summary>
-    /// Get user response object.
+    /// Message types.
     /// </summary>
-    public class GetUserResponse : ResponseBase
+    public enum MessageType
     {
         /// <summary>
-        /// Gets or sets User.
+        /// Success type.
         /// </summary>
-        public User User { get; set; }
+        Success = 0,
+
+        /// <summary>
+        /// Warning type.
+        /// </summary>
+        Warning = 1,
+
+        /// <summary>
+        /// Error type.
+        /// </summary>
+        Error = 2
     }
 }

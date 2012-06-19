@@ -12,13 +12,8 @@ namespace TdService.Services.Messaging.Membership
     /// <summary>
     /// Get profile request object.
     /// </summary>
-    public class GetProfileRequest
+    public class GetProfileRequest : RequestBase
     {
-        /// <summary>
-        /// Gets or sets User Id.
-        /// </summary>
-        public int UserId { get; set; }
-
         /// <summary>
         /// Gets or sets Email.
         /// </summary>

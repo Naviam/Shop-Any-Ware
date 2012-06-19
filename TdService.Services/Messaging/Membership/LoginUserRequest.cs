@@ -12,7 +12,7 @@ namespace TdService.Services.Messaging.Membership
     /// <summary>
     /// Login user request object.
     /// </summary>
-    public class LoginUserRequest
+    public class LoginUserRequest : RequestBase
     {
     }
 }

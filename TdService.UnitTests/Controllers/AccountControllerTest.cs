@@ -91,10 +91,9 @@ namespace TdService.UnitTests.Controllers
         [TestMethod]
         public void ForgotTest()
         {
-            ActionResult expected = null; // TODO: Initialize to an appropriate value
-            ActionResult actual;
-            actual = target.Forgot();
-            Assert.AreEqual(expected, actual);
+            ActionResult expected = null;
+            var actual = (ViewResult)AccountController.Forgot();
+            Assert.AreEqual(expected, actual.ViewData[""]);
             Assert.Inconclusive("Verify the correctness of this test method.");
         }
 
@@ -254,8 +253,12 @@ namespace TdService.UnitTests.Controllers
         /// <param name="request">
         /// The request.
         /// </param>
-        public void LoginUser(LoginUserRequest request)
+        /// <returns>
+        /// The login user.
+        /// </returns>
+        public LoginUserResponse LoginUser(LoginUserRequest request)
         {
+            return new LoginUserResponse();
         }
 
         /// <summary>
@@ -267,9 +270,9 @@ namespace TdService.UnitTests.Controllers
         /// <returns>
         /// True if user valid.
         /// </returns>
-        public bool ValidateUser(ValidateUserRequest request)
+        public ValidateUserResponse ValidateUser(ValidateUserRequest request)
         {
-            return false;
+            return new ValidateUserResponse();
         }
 
         /// <summary>
@@ -283,7 +286,7 @@ namespace TdService.UnitTests.Controllers
         /// </returns>
         public GetUserResponse GetUser(GetUserRequest request)
         {
-            return null;
+            return new GetUserResponse();
         }
 
         /// <summary>
@@ -297,7 +300,7 @@ namespace TdService.UnitTests.Controllers
         /// </returns>
         public GetProfileResponse GetProfile(GetProfileRequest request)
         {
-            return null;
+            return new GetProfileResponse();
         }
 
         /// <summary>
@@ -306,8 +309,12 @@ namespace TdService.UnitTests.Controllers
         /// <param name="profileView">
         /// The profile view.
         /// </param>
-        public void UpdateProfile(ProfileView profileView)
+        /// <returns>
+        /// The update profile.
+        /// </returns>
+        public UpdateProfileResponse UpdateProfile(ProfileView profileView)
         {
+            return new UpdateProfileResponse();
         }
 
         #endregion

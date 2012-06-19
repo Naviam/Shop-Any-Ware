@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Services
+namespace TdService.Services.Messaging
 {
     /// <summary>
     /// Defines the base class for request view parameters.
@@ -15,8 +15,8 @@ namespace TdService.Services
     public class RequestBase
     {
         /// <summary>
-        /// Gets or sets Message.
+        /// Gets or sets Identity Token.
         /// </summary>
-        public string Message { get; set; }
+        public string IdentityToken { get; set; }
     }
 }

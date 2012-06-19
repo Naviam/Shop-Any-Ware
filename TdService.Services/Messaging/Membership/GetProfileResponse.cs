@@ -14,7 +14,7 @@ namespace TdService.Services.Messaging.Membership
     /// <summary>
     /// Get profile response object.
     /// </summary>
-    public class GetProfileResponse
+    public class GetProfileResponse : ResponseBase
     {
         /// <summary>
         /// Gets or sets Profile.

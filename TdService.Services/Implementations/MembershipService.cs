@@ -11,7 +11,9 @@ namespace TdService.Services.Implementations
 
     using TdService.Model.Membership;
     using TdService.Model.Notification;
+    using TdService.Resources;
     using TdService.Services.Interfaces;
+    using TdService.Services.Messaging;
     using TdService.Services.Messaging.Membership;
     using TdService.Services.ViewModels.Account;
 
@@ -54,8 +56,13 @@ namespace TdService.Services.Implementations
                 {
                     Email = request.Email,
                     Password = request.Password,
-                    Profile = new Profile { FirstName = request.FirstName, LastName = request.LastName }
+                    Profile = new Profile
+                        {
+                            FirstName = request.FirstName,
+                            LastName = request.LastName
+                        }
                 };
+            this.membershipRepository.AddUser(user);
             return response;
         }
 
@@ -65,8 +72,12 @@ namespace TdService.Services.Implementations
         /// <param name="request">
         /// The request.
         /// </param>
-        public void LoginUser(LoginUserRequest request)
+        /// <returns>
+        /// The login user.
+        /// </returns>
+        public LoginUserResponse LoginUser(LoginUserRequest request)
         {
+            return new LoginUserResponse();
         }
 
         /// <summary>
@@ -78,9 +89,17 @@ namespace TdService.Services.Implementations
         /// <returns>
         /// True if user exists in db, otherwise false.
         /// </returns>
-        public bool ValidateUser(ValidateUserRequest request)
+        public ValidateUserResponse ValidateUser(ValidateUserRequest request)
         {
-            return this.membershipRepository.ValidateUser(request.Email, request.Password);
+            var response = new ValidateUserResponse();
+            if (this.membershipRepository.ValidateUser(request.Email, request.Password))
+            {
+                response.Message = MembershipResources.ValidationSuccess;
+                return response;
+            }
+
+            response.ErrorCode = "NotValidUser";
+            return response;
         }
 
         /// <summary>
@@ -94,7 +113,17 @@ namespace TdService.Services.Implementations
         /// </returns>
         public GetUserResponse GetUser(GetUserRequest request)
         {
-            var response = new GetUserResponse { User = this.membershipRepository.GetUser(request.Email) };
+            var response = new GetUserResponse
+                {
+                    User = this.membershipRepository.GetUser(request.Email),
+                    MessageType = MessageType.Success
+                };
+            if (response.User == null)
+            {
+                response.MessageType = MessageType.Error;
+                response.ErrorCode = "UserNotFound";
+            }
+
             return response;
         }
 
@@ -139,8 +168,12 @@ namespace TdService.Services.Implementations
         /// <param name="profileView">
         /// The profile view.
         /// </param>
-        public void UpdateProfile(ProfileView profileView)
+        /// <returns>
+        /// The update profile.
+        /// </returns>
+        public UpdateProfileResponse UpdateProfile(ProfileView profileView)
         {
+            var response = new UpdateProfileResponse();
             var profile = new Profile
                 {
                     FirstName = profileView.FirstName,
@@ -153,9 +186,11 @@ namespace TdService.Services.Implementations
                             }
                 };
 
-            this.ThrowExceptionIfProfileIsInvalid(profile);
+            ThrowExceptionIfProfileIsInvalid(profile);
 
             this.membershipRepository.UpdateProfile(profileView.Email, profile);
+
+            return new UpdateProfileResponse();
         }
 
         /// <summary>
@@ -167,7 +202,7 @@ namespace TdService.Services.Implementations
         /// <exception cref="InvalidProfileException">
         /// Thrown when business rules are broken.
         /// </exception>
-        private void ThrowExceptionIfProfileIsInvalid(Profile profile)
+        private static void ThrowExceptionIfProfileIsInvalid(Profile profile)
         {
             if (profile.GetBrokenRules().Any())
             {

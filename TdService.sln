@@ -46,6 +46,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TdService.Services.Cache", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TdService.Resources", "TdService.Resources\TdService.Resources.csproj", "{9DC0E782-6E6B-4FA4-A7C1-728ED25CE063}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TdService.ShopAnyWare.Tests", "TdService.ShopAnyWare.Tests\TdService.ShopAnyWare.Tests.csproj", "{E7A096EC-1A73-4EBD-9CF1-617A1A1179F6}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = TdService.vsmdi
@@ -179,6 +181,16 @@ Global
 		{9DC0E782-6E6B-4FA4-A7C1-728ED25CE063}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{9DC0E782-6E6B-4FA4-A7C1-728ED25CE063}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{9DC0E782-6E6B-4FA4-A7C1-728ED25CE063}.Release|x86.ActiveCfg = Release|Any CPU
+		{E7A096EC-1A73-4EBD-9CF1-617A1A1179F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7A096EC-1A73-4EBD-9CF1-617A1A1179F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7A096EC-1A73-4EBD-9CF1-617A1A1179F6}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{E7A096EC-1A73-4EBD-9CF1-617A1A1179F6}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{E7A096EC-1A73-4EBD-9CF1-617A1A1179F6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E7A096EC-1A73-4EBD-9CF1-617A1A1179F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7A096EC-1A73-4EBD-9CF1-617A1A1179F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7A096EC-1A73-4EBD-9CF1-617A1A1179F6}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{E7A096EC-1A73-4EBD-9CF1-617A1A1179F6}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{E7A096EC-1A73-4EBD-9CF1-617A1A1179F6}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -196,5 +208,6 @@ Global
 		{81B36459-F01A-4F69-869B-EA585BEE2005} = {CEB99E70-B62D-4173-8784-32ABBB3AC042}
 		{468BBD3F-058E-4C14-932A-8E15234411DA} = {CEB99E70-B62D-4173-8784-32ABBB3AC042}
 		{9DC0E782-6E6B-4FA4-A7C1-728ED25CE063} = {CEB99E70-B62D-4173-8784-32ABBB3AC042}
+		{E7A096EC-1A73-4EBD-9CF1-617A1A1179F6} = {CEB99E70-B62D-4173-8784-32ABBB3AC042}
 	EndGlobalSection
 EndGlobal
