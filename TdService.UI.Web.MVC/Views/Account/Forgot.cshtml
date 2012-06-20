@@ -4,7 +4,7 @@
     ViewBag.Title = ForgotViewResources.PageTitle;
 }
 
-@using(Html.BeginForm("Forgot", "Account", new { @class = "form-horizontal" }))
+@using(Html.BeginForm("Forgot", "Account", FormMethod.Post, new Dictionary<string, object> { { "class", "form-horizontal" } }))
 {
     @Html.AntiForgeryToken("forgot")
     <fieldset>
@@ -12,19 +12,22 @@
             <h2>@ForgotViewResources.PageHeader</h2>
         </div>
         <div class="control-group">
-            <label class="control-label">Email</label>
+            @ForgotViewResources.FormHelpMessage
+        </div>
+        <div class="control-group">
+            <label class="control-label">@ForgotViewResources.EmailFormLabel</label>
             <div class="controls">
-                @Html.TextBoxFor(m => m.Email, new { @class = "input-xlarge", @data-bind = "value: email" })
+                @Html.TextBoxFor(m => m.Email, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: email" }, { "placeholder", ForgotViewResources.EmailFormFieldPlaceholder } })
                 @Html.ValidationMessageFor(m => m.Email)
             </div>
             <div class="form-actions">
-                <button type="submit" class="btn btn-primary btn-large">Reset Password</button>
+                <button type="submit" class="btn btn-primary btn-large">@ForgotViewResources.ResetPasswordButton</button>
             </div>
         </div>
     </fieldset>
 }
 
-<form class="form-horizontal" method="POST">
+@*<form class="form-horizontal" method="POST">
     <fieldset>
         <div class="control-group">
             <h2>Forgot Password?</h2>
@@ -42,4 +45,4 @@
             <button type="submit" class="btn btn-primary btn-large">Reset Password</button>
         </div>
     </fieldset>
-</form>
+</form>*@

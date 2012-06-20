@@ -19,7 +19,6 @@ namespace TdService.Repository.MsSql
     using TdService.Model.Membership;
     using TdService.Model.Notification;
     using TdService.Model.Orders;
-    using TdService.Model.RFO;
     using TdService.Model.Packages;
 
     /// <summary>
@@ -30,62 +29,90 @@ namespace TdService.Repository.MsSql
         /// <summary>
         /// Gets or sets Items.
         /// </summary>
+// ReSharper disable UnusedMember.Global
         public DbSet<Item> Items { get; set; }
+// ReSharper restore UnusedMember.Global
 
         /// <summary>
         /// Gets or sets Orders.
         /// </summary>
+// ReSharper disable UnusedAutoPropertyAccessor.Global
         public DbSet<Order> Orders { get; set; }
+// ReSharper restore UnusedAutoPropertyAccessor.Global
 
         /// <summary>
         /// Gets or sets Packages.
         /// </summary>
+// ReSharper disable UnusedMember.Global
         public DbSet<Package> Packages { get; set; }
+// ReSharper restore UnusedMember.Global
 
         /// <summary>
         /// Gets or sets Retailers.
         /// </summary>
+// ReSharper disable MemberCanBePrivate.Global
+// ReSharper disable UnusedAutoPropertyAccessor.Global
         public DbSet<Retailer> Retailers { get; set; }
+// ReSharper restore UnusedAutoPropertyAccessor.Global
+// ReSharper restore MemberCanBePrivate.Global
 
         /// <summary>
         /// Gets or sets Whallets.
         /// </summary>
+// ReSharper disable UnusedMember.Global
         public DbSet<Wallet> Wallets { get; set; }
+// ReSharper restore UnusedMember.Global
 
         /// <summary>
         /// Gets or sets Transactions.
         /// </summary>
+// ReSharper disable UnusedMember.Global
         public DbSet<Transaction> Transactions { get; set; }
+// ReSharper restore UnusedMember.Global
 
         /// <summary>
         /// Gets or sets Currencies.
         /// </summary>
+// ReSharper disable MemberCanBePrivate.Global
+// ReSharper disable UnusedAutoPropertyAccessor.Global
         public DbSet<Currency> Currencies { get; set; }
+// ReSharper restore UnusedAutoPropertyAccessor.Global
+// ReSharper restore MemberCanBePrivate.Global
 
         /// <summary>
         /// Gets or sets Users.
         /// </summary>
+// ReSharper disable UnusedAutoPropertyAccessor.Global
         public DbSet<User> Users { get; set; }
+// ReSharper restore UnusedAutoPropertyAccessor.Global
 
         /// <summary>
         /// Gets or sets Roles.
         /// </summary>
+// ReSharper disable UnusedAutoPropertyAccessor.Global
         public DbSet<Role> Roles { get; set; }
+// ReSharper restore UnusedAutoPropertyAccessor.Global
 
         /// <summary>
         /// Gets or sets Profiles.
         /// </summary>
+// ReSharper disable UnusedMember.Global
         public DbSet<Profile> Profiles { get; set; }
+// ReSharper restore UnusedMember.Global
 
         /// <summary>
         /// Gets or sets Notification Rules.
         /// </summary>
+// ReSharper disable UnusedMember.Global
         public DbSet<NotificationRule> NotificationRules { get; set; }
+// ReSharper restore UnusedMember.Global
 
         /// <summary>
         /// Gets or sets Delivery Addresses.
         /// </summary>
+// ReSharper disable UnusedAutoPropertyAccessor.Global
         public DbSet<DeliveryAddress> DeliveryAddresses { get; set; }
+// ReSharper restore UnusedAutoPropertyAccessor.Global
 
         /// <summary>
         /// Model creating rules.
@@ -167,7 +194,8 @@ namespace TdService.Repository.MsSql
 
                 user.Profile.NotificationRule = new NotificationRule
                     {
-                        NotifyOrderStatusChanged = true, NotifyParcelStatusChanged = true 
+                        NotifyOnOrderStatusChanged = true,
+                        NotifyOnPackageStatusChanged = true 
                     };
                 context.Entry(user).State = EntityState.Modified;
                 context.SaveChanges();

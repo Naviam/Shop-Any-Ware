@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TdService.ShopAnyWare.Tests.Controllers
+namespace TdService.ShopAnyWare.Tests.Mocks
 {
     using TdService.Infrastructure.Authentication;
 

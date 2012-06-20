@@ -6,6 +6,8 @@
 
 namespace TdService.Services.ViewModels.Account
 {
+    using System.ComponentModel.DataAnnotations;
+
     /// <summary>
     /// This class describes the view model for sign up page.
     /// </summary>
@@ -14,16 +16,22 @@ namespace TdService.Services.ViewModels.Account
         /// <summary>
         /// Gets or sets Email.
         /// </summary>
+        [Required]
+        [RegularExpression(@"^[\w\.\-]+@[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]{1,})*(\.[a-zA-Z]{2,3}){1,2}$",
+            ErrorMessageResourceName = "InvalidEmail",
+            ErrorMessageResourceType = typeof(Resources.ErrorCodeResources))]
         public string Email { get; set; }
 
         /// <summary>
         /// Gets or sets Password.
         /// </summary>
+        [Required]
         public string Password { get; set; }
 
         /// <summary>
         /// Gets or sets PasswordConfirm.
         /// </summary>
+        [Required]
         public string PasswordConfirm { get; set; }
     }
 }

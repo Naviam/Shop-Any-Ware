@@ -154,43 +154,58 @@ namespace TdService.Services.Implementations
                 if (profile.NotificationRule != null)
                 {
                     response.ProfileView.NotifyOnOrderStatusChange = 
-                        profile.NotificationRule.NotifyOrderStatusChanged;
+                        profile.NotificationRule.NotifyOnOrderStatusChanged;
                     response.ProfileView.NotifyOnPackageStatusChange =
-                        profile.NotificationRule.NotifyParcelStatusChanged;
+                        profile.NotificationRule.NotifyOnPackageStatusChanged;
                 }
             }
+
             return response;
         }
 
         /// <summary>
         /// Update profile.
         /// </summary>
-        /// <param name="profileView">
-        /// The profile view.
+        /// <param name="request">
+        /// The update profile request.
         /// </param>
         /// <returns>
         /// The update profile.
         /// </returns>
-        public UpdateProfileResponse UpdateProfile(ProfileView profileView)
+        public UpdateProfileResponse UpdateProfile(UpdateProfileRequest request)
         {
             var response = new UpdateProfileResponse();
             var profile = new Profile
                 {
-                    FirstName = profileView.FirstName,
-                    LastName = profileView.LastName,
+                    FirstName = request.FirstName,
+                    LastName = request.LastName,
                     NotificationRule =
                         new NotificationRule
                             {
-                                NotifyOrderStatusChanged = profileView.NotifyOnOrderStatusChange,
-                                NotifyParcelStatusChanged = profileView.NotifyOnPackageStatusChange
+                                NotifyOnOrderStatusChanged = request.NotificationRule.NotifyOnOrderStatusChanged,
+                                NotifyOnPackageStatusChanged = request.NotificationRule.NotifyOnPackageStatusChanged
                             }
                 };
 
             ThrowExceptionIfProfileIsInvalid(profile);
 
-            this.membershipRepository.UpdateProfile(profileView.Email, profile);
+            this.membershipRepository.UpdateProfile(request.IdentityToken, profile);
 
-            return new UpdateProfileResponse();
+            return response;
+        }
+
+        /// <summary>
+        /// Generate change password link.
+        /// </summary>
+        /// <param name="request">
+        /// The generate change pasword link request.
+        /// </param>
+        /// <returns>
+        /// The response with generated link.
+        /// </returns>
+        public ChangePasswordLinkResponse GenerateChangePasswordLink(ChangePasswordLinkRequest request)
+        {
+            return null;
         }
 
         /// <summary>

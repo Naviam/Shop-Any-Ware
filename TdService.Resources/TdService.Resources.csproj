@@ -55,6 +55,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Common.resx</DependentUpon>
     </Compile>
+    <Compile Include="EmailResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmailResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="ErrorCodeResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -69,11 +74,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ForgotViewResources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ProfileViewResources.ru.Designer.cs">
-      <DependentUpon>ProfileViewResources.ru.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\DashboardViewResources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -110,6 +110,10 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Common.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="EmailResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>EmailResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="ErrorCodeResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ErrorCodeResources.Designer.cs</LastGenOutput>
@@ -122,10 +126,6 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ForgotViewResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\ProfileViewResources.ru.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>ProfileViewResources.ru.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\DashboardViewResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>DashboardViewResources.Designer.cs</LastGenOutput>
@@ -134,10 +134,12 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>MembershipResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\ForgotViewResources.ru.resx" />
     <EmbeddedResource Include="Views\ProfileViewResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ProfileViewResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\ProfileViewResources.ru.resx" />
     <EmbeddedResource Include="Views\SignInResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SignInResources.Designer.cs</LastGenOutput>

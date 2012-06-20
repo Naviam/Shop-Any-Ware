@@ -124,6 +124,7 @@ namespace TdService.Controllers
                 view.Message = e.Message;
                 view.MessageType = ViewModelMessageType.Error.ToString().ToLower();
             }
+
             return this.Json(view);
         }
 

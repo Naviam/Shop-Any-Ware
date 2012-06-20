@@ -7,7 +7,6 @@
 namespace TdService.Services.Interfaces
 {
     using TdService.Services.Messaging.Membership;
-    using TdService.Services.ViewModels.Account;
 
     /// <summary>
     /// Interface of membership service.
@@ -72,12 +71,23 @@ namespace TdService.Services.Interfaces
         /// <summary>
         /// Update profile.
         /// </summary>
-        /// <param name="profileView">
-        /// The profile view.
+        /// <param name="request">
+        /// The update profile request DTO.
         /// </param>
         /// <returns>
-        /// The update profile.
+        /// The update profile response DTO.
         /// </returns>
-        UpdateProfileResponse UpdateProfile(ProfileView profileView);
+        UpdateProfileResponse UpdateProfile(UpdateProfileRequest request);
+
+        /// <summary>
+        /// Generate change password link.
+        /// </summary>
+        /// <param name="request">
+        /// The generate change pasword link request.
+        /// </param>
+        /// <returns>
+        /// The response with generated link.
+        /// </returns>
+        ChangePasswordLinkResponse GenerateChangePasswordLink(ChangePasswordLinkRequest request);
     }
 }

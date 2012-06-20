@@ -61,6 +61,33 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enter email.
+        /// </summary>
+        public static string EmailFormFieldPlaceholder {
+            get {
+                return ResourceManager.GetString("EmailFormFieldPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email.
+        /// </summary>
+        public static string EmailFormLabel {
+            get {
+                return ResourceManager.GetString("EmailFormLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter email address you have specified at registration..
+        /// </summary>
+        public static string FormHelpMessage {
+            get {
+                return ResourceManager.GetString("FormHelpMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Forgot Password?.
         /// </summary>
         public static string PageHeader {
@@ -75,6 +102,15 @@ namespace TdService.Resources.Views {
         public static string PageTitle {
             get {
                 return ResourceManager.GetString("PageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset Password.
+        /// </summary>
+        public static string ResetPasswordButton {
+            get {
+                return ResourceManager.GetString("ResetPasswordButton", resourceCulture);
             }
         }
     }

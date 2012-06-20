@@ -4,12 +4,11 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TdService.ShopAnyWare.Tests.Controllers
+namespace TdService.ShopAnyWare.Tests.Mocks
 {
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging;
     using TdService.Services.Messaging.Membership;
-    using TdService.Services.ViewModels.Account;
 
     /// <summary>
     /// Fake membership service for testing purpose.
@@ -88,15 +87,29 @@ namespace TdService.ShopAnyWare.Tests.Controllers
         }
 
         /// <summary>
-        /// Update profile.
+        /// Generate change password link.
         /// </summary>
-        /// <param name="profileView">
-        /// The profile view.
+        /// <param name="request">
+        /// The generate change pasword link request.
         /// </param>
         /// <returns>
-        /// The update profile.
+        /// The response with generated link.
         /// </returns>
-        public UpdateProfileResponse UpdateProfile(ProfileView profileView)
+        public ChangePasswordLinkResponse GenerateChangePasswordLink(ChangePasswordLinkRequest request)
+        {
+            return null;
+        }
+
+        /// <summary>
+        /// Update profile.
+        /// </summary>
+        /// <param name="request">
+        /// The update profile request.
+        /// </param>
+        /// <returns>
+        /// The update profile response.
+        /// </returns>
+        public UpdateProfileResponse UpdateProfile(UpdateProfileRequest request)
         {
             return new UpdateProfileResponse();
         }

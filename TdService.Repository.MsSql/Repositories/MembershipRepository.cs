@@ -154,13 +154,16 @@ namespace TdService.Repository.MsSql.Repositories
         }
 
         /// <summary>
+        /// Get U.S. warehouse address.
         /// </summary>
         /// <param name="email">
         /// The email.
         /// </param>
         /// <returns>
+        /// Warehouse address.
         /// </returns>
         /// <exception cref="NotImplementedException">
+        /// not yet implemented.
         /// </exception>
         public WarehouseAddress GetWarehouseAddress(string email)
         {
@@ -224,8 +227,8 @@ namespace TdService.Repository.MsSql.Repositories
                     {
                         profileDb.NotificationRule = new NotificationRule
                         {
-                            NotifyOrderStatusChanged = profile.NotificationRule.NotifyOrderStatusChanged,
-                            NotifyParcelStatusChanged = profile.NotificationRule.NotifyParcelStatusChanged
+                            NotifyOnOrderStatusChanged = profile.NotificationRule.NotifyOnOrderStatusChanged,
+                            NotifyOnPackageStatusChanged = profile.NotificationRule.NotifyOnPackageStatusChanged
                         };
                     }
 

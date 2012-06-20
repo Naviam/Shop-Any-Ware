@@ -90,36 +90,130 @@ namespace TdService.Repository.MsSql.Repositories
             }
         }
 
-        public IEnumerable<Order> GetUserOrders(string username, object sortDirection, string sortExpression, string filterExpression, int pageSize = 20)
+        /// <summary>
+        /// Get user's orders.
+        /// </summary>
+        /// <param name="username">
+        /// The username.
+        /// </param>
+        /// <param name="sortDirection">
+        /// The sort direction.
+        /// </param>
+        /// <param name="sortExpression">
+        /// The sort expression.
+        /// </param>
+        /// <param name="filterExpression">
+        /// The filter expression.
+        /// </param>
+        /// <param name="pageSize">
+        /// The page size.
+        /// </param>
+        /// <returns>
+        /// Collection of user's orders.
+        /// </returns>
+        /// <exception cref="NotImplementedException">
+        /// not yet implemented.
+        /// </exception>
+        public IEnumerable<Order> GetUserOrders(
+            string username, 
+            object sortDirection, 
+            string sortExpression, 
+            string filterExpression, 
+            int pageSize = 20)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Get order details.
+        /// </summary>
+        /// <param name="orderId">
+        /// The order id.
+        /// </param>
+        /// <returns>
+        /// Order details.
+        /// </returns>
+        /// <exception cref="NotImplementedException">
+        /// not yet implemented.
+        /// </exception>
         public Order GetOrderDetails(int orderId)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Request photos.
+        /// </summary>
+        /// <param name="orderId">
+        /// The order id.
+        /// </param>
         public void RequestPhotos(int orderId)
         {
-            throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Add photos.
+        /// </summary>
+        /// <param name="orderId">
+        /// The order id.
+        /// </param>
+        /// <param name="picture">
+        /// The picture.
+        /// </param>
+        /// <exception cref="NotImplementedException">
+        /// not yet implemented
+        /// </exception>
         public void AddPhotos(int orderId, IEnumerable<ItemImage> picture)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Update order status.
+        /// </summary>
+        /// <param name="orderId">
+        /// The order id.
+        /// </param>
+        /// <param name="newStatus">
+        /// The new status.
+        /// </param>
+        /// <exception cref="NotImplementedException">
+        /// not yet implemented
+        /// </exception>
         public void UpdateOrderStatus(int orderId, OrderStatus newStatus)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Update arrival date.
+        /// </summary>
+        /// <param name="orderId">
+        /// The order id.
+        /// </param>
+        /// <param name="arrivalDate">
+        /// The arrival date.
+        /// </param>
+        /// <exception cref="NotImplementedException">
+        /// not yet implemented
+        /// </exception>
         public void UpdateArrivalDate(int orderId, DateTime arrivalDate)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Update order weight
+        /// </summary>
+        /// <param name="orderId">
+        /// The order id.
+        /// </param>
+        /// <param name="weight">
+        /// The weight.
+        /// </param>
+        /// <exception cref="NotImplementedException">
+        /// not yet implemented
+        /// </exception>
         public void UpdateOrderWeight(int orderId, Model.Weight weight)
         {
             throw new NotImplementedException();

@@ -49,9 +49,12 @@
   <ItemGroup>
     <Compile Include="Implementations\DeliveryAddressService.cs" />
     <Compile Include="Implementations\MembershipService.cs" />
+    <Compile Include="Messaging\Membership\ChangePasswordLinkRequest.cs" />
+    <Compile Include="Messaging\Membership\ChangePasswordLinkResponse.cs" />
+    <Compile Include="Messaging\Membership\UpdateProfileRequest.cs" />
     <Compile Include="Mapping\DeliveryAddressMapper.cs" />
-    <Compile Include="Messaging\Address\AddOrUpdateDeliveryAddressRequest.cs" />
-    <Compile Include="Messaging\Address\AddOrUpdateDeliveryAddressResponse.cs" />
+    <Compile Include="Messaging\Address\AddDeliveryAddressRequest.cs" />
+    <Compile Include="Messaging\Address\AddDeliveryAddressResponse.cs" />
     <Compile Include="Mapping\ProfileMapper.cs" />
     <Compile Include="Messaging\Membership\GetProfileResponse.cs" />
     <Compile Include="Messaging\Membership\GetProfileRequest.cs" />

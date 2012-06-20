@@ -24,6 +24,12 @@ namespace TdService.Model.RFO
         /// </summary>
         public Retailer Retailer { get; set; }
 
+        /// <summary>
+        /// Validate business rules.
+        /// </summary>
+        /// <exception cref="NotImplementedException">
+        /// not yet implemented
+        /// </exception>
         protected override void Validate()
         {
             throw new NotImplementedException();

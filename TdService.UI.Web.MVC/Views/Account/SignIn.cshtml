@@ -15,7 +15,7 @@
             <label class="control-label">@SignInResources.EmailHeader</label>
             <div class="controls">
                 <input name="Email" class="input-xlarge" type="text" data-val="true" 
-                       data-bind="value: email" data-val-length="@BusinessRules.User_EmailRequired" 
+                       data-bind="value: email" placeholder="Enter email" data-val-length="@BusinessRules.User_EmailRequired" 
                        data-val-length-max="256" data-val-required="@BusinessRules.User_EmailRequired">
                 <span class="field-validation-valid" data-valmsg-for="Email" data-valmsg-replace="true"></span>
             </div>
@@ -24,7 +24,7 @@
             <label class="control-label">@SignInResources.PasswordHeader:</label>
             <div class="controls">
                 <input name="Password" class="input-xlarge" type="password" data-val="true" 
-                       data-bind="value: password" data-val-length="@BusinessRules.Profile_FirstNameLength" 
+                       data-bind="value: password" placeholder="Enter password" data-val-length="@BusinessRules.Profile_FirstNameLength" 
                        data-val-length-max="21" data-val-required="@BusinessRules.Profile_FirstNameRequired">
                 <span class="field-validation-valid" data-valmsg-for="Password" data-valmsg-replace="true"></span>
             </div>

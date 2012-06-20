@@ -18,10 +18,10 @@ namespace TdService.UI.Web.MVC.App_Start
     using SimpleInjector.Integration.Web.Mvc;
 
     using TdService.Infrastructure.Authentication;
+    using TdService.Infrastructure.Email;
     using TdService.Model.Addresses;
     using TdService.Model.Membership;
     using TdService.Model.Orders;
-    using TdService.Model.RFO;
     using TdService.Repository.MsSql.Repositories;
     using TdService.Services.Implementations;
     using TdService.Services.Interfaces;
@@ -50,6 +50,7 @@ namespace TdService.UI.Web.MVC.App_Start
         /// </param>
         private static void InitializeContainer(Container container)
         {
+            container.Register<IEmailService, SmtpService>();
             container.Register<IOrderRepository, OrderRepository>();
             container.Register<IMembershipRepository, MembershipRepository>();
             container.Register<IMembershipService, MembershipService>();

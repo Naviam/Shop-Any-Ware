@@ -12,7 +12,7 @@ namespace TdService.Model.Membership
     using System;
     using System.Collections.Generic;
     using Addresses;
-    using RFO;
+
     using Packages;
 
     using TdService.Infrastructure.Domain;

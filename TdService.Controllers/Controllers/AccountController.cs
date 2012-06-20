@@ -41,7 +41,7 @@ namespace TdService.Controllers
         /// The membership service.
         /// </param>
         /// <param name="emailService">
-        /// Email service.
+        /// The email service.
         /// </param>
         /// <param name="formsAuthentication">
         /// The forms authentication.
@@ -79,6 +79,7 @@ namespace TdService.Controllers
         /// Redirect user to the home page of authenticated users.
         /// </returns>
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult SignIn(SignInView request)
         {
             var validateUserRequest = new ValidateUserRequest
@@ -127,6 +128,7 @@ namespace TdService.Controllers
         /// Redirects user to Sign In form in case of success.
         /// </returns>
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult SignUp(SignUpView request)
         {
             return this.RedirectToAction("SignIn", "Account");
@@ -138,7 +140,6 @@ namespace TdService.Controllers
         /// <returns>
         /// Model with new password.
         /// </returns>
-        [HttpPost]
         public ActionResult Forgot()
         {
             ViewData.Model = new ForgotPasswordView();
@@ -154,11 +155,14 @@ namespace TdService.Controllers
         /// <returns>
         /// Model with new password.
         /// </returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Forgot(ForgotPasswordView view)
         {
             if (ModelState.IsValid)
             {
-                var newPassword = this.membershipService.ResetPassword(view.Email);
+                var request = new ChangePasswordLinkRequest { IdentityToken = this.HttpContext.User.Identity.Name };
+                var response = this.membershipService.GenerateChangePasswordLink(request);
                 this.emailService.SendMail(
                     "noreply@shopanyware.com", 
                     view.Email, 

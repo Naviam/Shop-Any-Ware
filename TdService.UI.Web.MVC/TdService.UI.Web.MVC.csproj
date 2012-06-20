@@ -184,6 +184,7 @@
     <Content Include="Scripts\bootstrap\bootstrap-tooltip.js" />
     <Content Include="Scripts\bootstrap\bootstrap-transition.js" />
     <Content Include="Scripts\bootstrap\bootstrap-typeahead.js" />
+    <Content Include="Scripts\Common.js" />
     <Content Include="Scripts\dotdotdot\index.html" />
     <Content Include="Scripts\dotdotdot\jquery.dotdotdot-1.4.0-packed.js" />
     <Content Include="Scripts\dotdotdot\jquery.dotdotdot-1.4.0.js" />

@@ -21,12 +21,12 @@ namespace TdService.Model.Notification
         /// <summary>
         /// Gets or sets a value indicating whether NotifyOrderStatusChanged.
         /// </summary>
-        public bool NotifyOrderStatusChanged { get; set; }
+        public bool NotifyOnOrderStatusChanged { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether NotifyParcelStatusChanged.
         /// </summary>
-        public bool NotifyParcelStatusChanged { get; set; }
+        public bool NotifyOnPackageStatusChanged { get; set; }
 
         /// <summary>
         /// Validate business rules.

@@ -117,22 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="EmailFormFieldPlaceholder" xml:space="preserve">
-    <value>Enter email</value>
-  </data>
-  <data name="EmailFormLabel" xml:space="preserve">
-    <value>Email</value>
-  </data>
   <data name="FormHelpMessage" xml:space="preserve">
-    <value>Enter email address you have specified at registration.</value>
-  </data>
-  <data name="PageHeader" xml:space="preserve">
-    <value>Forgot Password?</value>
-  </data>
-  <data name="PageTitle" xml:space="preserve">
-    <value>ShopAnyWare - Forgot email or password</value>
-  </data>
-  <data name="ResetPasswordButton" xml:space="preserve">
-    <value>Reset Password</value>
+    <value>Укажите email который был использован при регистрации</value>
   </data>
 </root>
