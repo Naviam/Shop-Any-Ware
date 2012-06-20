@@ -11,7 +11,14 @@ footer{color:#999;text-align:right}
     .action_copy i{margin-right:4px}
 .error-inline{clear:right}
     .error-inline input,.error-inline div{float:left}
-    .alert-error{margin:0 12px;padding:4px 8px}
+    
+.field-validation-error{color:#ff0000}
+    .field-validation-error span{background-color:#f2dede;border-color:#eed3d7;color:#b94a48;margin:0 12px;padding:4px 8px;line-height:28px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px}
+.field-validation-valid{display:none}
+.input-validation-error{border:1px solid #ff0000;background-color:#ffeeee}
+.validation-summary-errors{font-weight:bold;color:#ff0000}
+
+.validation-summary-valid{display: none;}
 .en,.ru{margin:12px 8px;border:1px solid #eee;padding:0 !important;height:14px;width:22px}
     .en{background:url(img/en.png)}
     .ru{background:url(img/ru.png)}

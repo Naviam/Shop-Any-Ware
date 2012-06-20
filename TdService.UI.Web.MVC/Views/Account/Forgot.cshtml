@@ -18,9 +18,7 @@
             <label class="control-label">@ForgotViewResources.EmailFormLabel</label>
             <div class="controls error-inline">
                 @Html.TextBoxFor(m => m.Email, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: email" }, { "placeholder", ForgotViewResources.EmailFormFieldPlaceholder } })
-                <div class="alert alert-error" style="display:none">
                     @Html.ValidationMessageFor(m => m.Email)
-                </div>
             </div>
         </div>
         <div class="form-actions">
