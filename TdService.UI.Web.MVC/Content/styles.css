@@ -9,6 +9,9 @@ footer{color:#999;text-align:right}
 .address{margin:8px 12px;width:340px}
 .action_copy{float:right}
     .action_copy i{margin-right:4px}
+.error-inline{clear:right}
+    .error-inline input,.error-inline div{float:left}
+    .alert-error{margin:0 12px;padding:4px 8px}
 .en,.ru{margin:12px 8px;border:1px solid #eee;padding:0 !important;height:14px;width:22px}
     .en{background:url(img/en.png)}
     .ru{background:url(img/ru.png)}
