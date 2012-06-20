@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TdService.Resources {
+namespace TdService.Resources.Views {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace TdService.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class ErrorCodeResources {
+    public class AccountViewResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ErrorCodeResources() {
+        internal AccountViewResources() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace TdService.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TdService.Resources.ErrorCodeResources", typeof(ErrorCodeResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TdService.Resources.Views.AccountViewResources", typeof(AccountViewResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,65 +61,56 @@ namespace TdService.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please type a valid email address..
+        ///   Looks up a localized string similar to Enter email.
         /// </summary>
-        public static string InvalidEmail {
+        public static string EmailFormFieldPlaceholder {
             get {
-                return ResourceManager.GetString("InvalidEmail", resourceCulture);
+                return ResourceManager.GetString("EmailFormFieldPlaceholder", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Email can&apos;t be more than 256 chars length..
+        ///   Looks up a localized string similar to Email.
         /// </summary>
-        public static string MaxLengthEmail {
+        public static string EmailFormLabel {
             get {
-                return ResourceManager.GetString("MaxLengthEmail", resourceCulture);
+                return ResourceManager.GetString("EmailFormLabel", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Password can&apos;t be more than 21 chars length..
+        ///   Looks up a localized string similar to Enter email address you have specified at registration..
         /// </summary>
-        public static string MaxLengthPassword {
+        public static string FormHelpMessage {
             get {
-                return ResourceManager.GetString("MaxLengthPassword", resourceCulture);
+                return ResourceManager.GetString("FormHelpMessage", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Email or password are incorrect..
+        ///   Looks up a localized string similar to Forgot Password?.
         /// </summary>
-        public static string NotValidUser {
+        public static string PageHeader {
             get {
-                return ResourceManager.GetString("NotValidUser", resourceCulture);
+                return ResourceManager.GetString("PageHeader", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Email is required..
+        ///   Looks up a localized string similar to ShopAnyWare - Forgot email or password.
         /// </summary>
-        public static string RequiredEmail {
+        public static string PageTitle {
             get {
-                return ResourceManager.GetString("RequiredEmail", resourceCulture);
+                return ResourceManager.GetString("PageTitle", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Password is required..
+        ///   Looks up a localized string similar to Reset Password.
         /// </summary>
-        public static string RequiredPassword {
+        public static string ResetPasswordButton {
             get {
-                return ResourceManager.GetString("RequiredPassword", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Can&apos;t retrieve user details. Such user has not been found..
-        /// </summary>
-        public static string UserNotFound {
-            get {
-                return ResourceManager.GetString("UserNotFound", resourceCulture);
+                return ResourceManager.GetString("ResetPasswordButton", resourceCulture);
             }
         }
     }

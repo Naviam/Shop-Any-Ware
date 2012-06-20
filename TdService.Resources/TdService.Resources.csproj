@@ -65,6 +65,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ErrorCodeResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Views\AccountViewResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AccountViewResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Views\AddressViewResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -117,6 +122,10 @@
     <EmbeddedResource Include="ErrorCodeResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ErrorCodeResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AccountViewResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AccountViewResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\AddressViewResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

@@ -117,25 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="InvalidEmail" xml:space="preserve">
-    <value>Please type a valid email address.</value>
+  <data name="EmailFormFieldPlaceholder" xml:space="preserve">
+    <value>Enter email</value>
   </data>
-  <data name="MaxLengthEmail" xml:space="preserve">
-    <value>Email can't be more than 256 chars length.</value>
+  <data name="EmailFormLabel" xml:space="preserve">
+    <value>Email</value>
   </data>
-  <data name="MaxLengthPassword" xml:space="preserve">
-    <value>Password can't be more than 21 chars length.</value>
+  <data name="FormHelpMessage" xml:space="preserve">
+    <value>Enter email address you have specified at registration.</value>
   </data>
-  <data name="NotValidUser" xml:space="preserve">
-    <value>Email or password are incorrect.</value>
+  <data name="PageHeader" xml:space="preserve">
+    <value>Forgot Password?</value>
   </data>
-  <data name="RequiredEmail" xml:space="preserve">
-    <value>Email is required.</value>
+  <data name="PageTitle" xml:space="preserve">
+    <value>ShopAnyWare - Forgot email or password</value>
   </data>
-  <data name="RequiredPassword" xml:space="preserve">
-    <value>Password is required.</value>
-  </data>
-  <data name="UserNotFound" xml:space="preserve">
-    <value>Can't retrieve user details. Such user has not been found.</value>
+  <data name="ResetPasswordButton" xml:space="preserve">
+    <value>Reset Password</value>
   </data>
 </root>

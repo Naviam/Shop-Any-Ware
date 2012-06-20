@@ -70,7 +70,7 @@ namespace TdService.Model.Membership
         public List<Package> Parcels { get; set; }
 
         /// <summary>
-        /// Validate object.
+        /// Validate business rules.
         /// </summary>
         /// <exception cref="NotImplementedException">
         /// not yet implemented

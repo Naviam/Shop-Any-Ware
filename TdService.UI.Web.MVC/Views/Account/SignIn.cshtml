@@ -1,9 +1,44 @@
 ﻿@using TdService.Resources
 @using TdService.Resources.Views
 @model TdService.Services.ViewModels.Account.SignInView
-
 @{
     ViewBag.Title = SignInResources.PageTitle;
+}
+@using (Html.BeginForm("SignIn", "Account", FormMethod.Post, new Dictionary<string, object> { { "class", "form-horizontal" } }))
+{
+    <fieldset>
+        <div class="control-group">
+            <h2>@SignInResources.PageHeader</h2>
+        </div>
+        <div class="control-group">
+            <label class="control-label">@SignInResources.EmailHeader</label>
+            <div class="controls">
+                @Html.TextBoxFor(m => m.Email, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: email" }, { "placeholder", ForgotViewResources.EmailFormFieldPlaceholder } })
+                @Html.ValidationMessageFor(m => m.Email)
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">@SignInResources.PasswordHeader:</label>
+            <div class="controls">
+                @Html.TextBoxFor(m => m.Password, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: password" }, { "placeholder", ForgotViewResources.EmailFormFieldPlaceholder } })
+                @Html.ValidationMessageFor(m => m.Password)
+                <input name="Password" class="input-xlarge" type="password" data-val="true" 
+                       data-bind="value: password" placeholder="Enter password" data-val-length="@BusinessRules.Profile_FirstNameLength" 
+                       data-val-length-max="21" data-val-required="@BusinessRules.Profile_FirstNameRequired">
+                <span class="field-validation-valid" data-valmsg-for="Password" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <div style="float:left"><input id="rememberMe" name="RememberMe" type="checkbox" checked="checked"></div>
+                <div style="float:left;margin:3px"><label for="rememberMe">@SignInResources.RememberMeHeader</label></div>
+                <div style="float:left;margin:3px 0 0 22px"><a href="@Url.Action("Forgot", "Account")">Forgot email or password?</a></div>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary btn-large">Start Shopping!</button>
+        </div>
+    </fieldset>
 }
 
 <form class="form-horizontal" action="@Url.Action("SignIn", "Account")" method="POST">

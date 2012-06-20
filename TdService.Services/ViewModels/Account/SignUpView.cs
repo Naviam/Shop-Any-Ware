@@ -16,7 +16,8 @@ namespace TdService.Services.ViewModels.Account
         /// <summary>
         /// Gets or sets Email.
         /// </summary>
-        [Required]
+        [Required(ErrorMessageResourceName = "RequiredEmail", ErrorMessageResourceType = typeof(Resources.ErrorCodeResources))]
+        [StringLength(256, ErrorMessageResourceName = "MaxLengthEmail", ErrorMessageResourceType = typeof(Resources.ErrorCodeResources))]
         [RegularExpression(@"^[\w\.\-]+@[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]{1,})*(\.[a-zA-Z]{2,3}){1,2}$",
             ErrorMessageResourceName = "InvalidEmail",
             ErrorMessageResourceType = typeof(Resources.ErrorCodeResources))]
@@ -25,7 +26,7 @@ namespace TdService.Services.ViewModels.Account
         /// <summary>
         /// Gets or sets Password.
         /// </summary>
-        [Required]
+        [Required(ErrorMessageResourceName = "RequiredPassword", ErrorMessageResourceType = typeof(Resources.ErrorCodeResources))]
         public string Password { get; set; }
 
         /// <summary>
