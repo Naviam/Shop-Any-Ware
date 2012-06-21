@@ -104,15 +104,26 @@ namespace TdService.Model.Membership
         Role GetRole(int roleId);
 
         /// <summary>
+        /// Get role by name.
+        /// </summary>
+        /// <param name="roleName">
+        /// The role name.
+        /// </param>
+        /// <returns>
+        /// Role object.
+        /// </returns>
+        Role GetRole(string roleName);
+
+        /// <summary>
         /// Add users in role.
         /// </summary>
-        /// <param name="users">
+        /// <param name="user">
         /// The users.
         /// </param>
-        /// <param name="role">
-        /// The role.
+        /// <param name="roleName">
+        /// The role name.
         /// </param>
-        void AddUsersInRole(List<User> users, Role role);
+        void AddUserInRole(User user, string roleName);
 
         /// <summary>
         /// Get user's roles.
@@ -143,6 +154,7 @@ namespace TdService.Model.Membership
         /// All application roles.
         /// </returns>
         IEnumerable<Role> GetRoles();
+
         #endregion
 
         #region Users

@@ -43,10 +43,6 @@
     <IncludeAppPool>true</IncludeAppPool>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper, Version=2.1.267.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\AutoMapper.2.1.267\lib\net40\AutoMapper.dll</HintPath>
-    </Reference>
     <Reference Include="Combres">
       <HintPath>..\packages\combres.2.2.2.6\lib\net40\Combres.dll</HintPath>
     </Reference>
@@ -542,6 +538,7 @@
     <Content Include="Views\Account\Forgot.cshtml" />
     <Content Include="Views\Shared\deliveryAddressDetails.cshtml" />
     <Content Include="Views\Shared\transactions.cshtml" />
+    <Content Include="Views\Member\Welcome.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

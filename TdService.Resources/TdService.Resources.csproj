@@ -75,11 +75,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AddressViewResources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Views\ForgotViewResources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ForgotViewResources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Views\DashboardViewResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -95,11 +90,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ProfileViewResources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\SignInResources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SignInResources.resx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -131,10 +121,6 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AddressViewResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\ForgotViewResources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>ForgotViewResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\DashboardViewResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>DashboardViewResources.Designer.cs</LastGenOutput>
@@ -143,16 +129,11 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>MembershipResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\ForgotViewResources.ru.resx" />
     <EmbeddedResource Include="Views\ProfileViewResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ProfileViewResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ProfileViewResources.ru.resx" />
-    <EmbeddedResource Include="Views\SignInResources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>SignInResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

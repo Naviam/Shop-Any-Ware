@@ -72,6 +72,11 @@ namespace TdService.Repository.MsSql.Repositories
         {
             using (var context = new ShopAnyWareSql())
             {
+                if (user.Roles.Any())
+                {
+                    context.Roles.Attach(user.Roles[0]);
+                }
+
                 context.Users.Add(user);
                 context.SaveChanges();
             }
@@ -297,7 +302,24 @@ namespace TdService.Repository.MsSql.Repositories
         {
             using (var context = new ShopAnyWareSql())
             {
-                return context.Roles.Single(r => r.Id == roleId);
+                return context.Roles.Find(roleId);
+            }
+        }
+
+        /// <summary>
+        /// Get role by name.
+        /// </summary>
+        /// <param name="roleName">
+        /// The role name.
+        /// </param>
+        /// <returns>
+        /// Role object.
+        /// </returns>
+        public Role GetRole(string roleName)
+        {
+            using (var context = new ShopAnyWareSql())
+            {
+                return context.Roles.Single(r => r.Name == roleName);
             }
         }
 
@@ -318,17 +340,19 @@ namespace TdService.Repository.MsSql.Repositories
         /// <summary>
         /// Add users in role.
         /// </summary>
-        /// <param name="users">
-        /// The users.
+        /// <param name="user">
+        /// The user.
         /// </param>
-        /// <param name="role">
-        /// The role.
+        /// <param name="roleName">
+        /// The name of role.
         /// </param>
-        public void AddUsersInRole(List<User> users, Role role)
+        public void AddUserInRole(User user, string roleName)
         {
             using (var context = new ShopAnyWareSql())
             {
-                role.Users.AddRange(users);
+                var role = this.GetRole(roleName);
+                context.Roles.Attach(role);
+                role.Users.Add(user);
                 context.SaveChanges();
             }
         }

@@ -14,7 +14,6 @@ namespace TdService.Controllers
 
     using TdService.Infrastructure.Authentication;
     using TdService.Model.Orders;
-    using TdService.Model.RFO;
 
     /// <summary>
     /// The controller that contains membership methods.
@@ -58,6 +57,7 @@ namespace TdService.Controllers
         /// <returns>
         /// Returns the page with the new interface.
         /// </returns>
+        [Authorize(Roles = "Shopper")]
         public ActionResult Dashboard()
         {
             this.repository.AddOrder(new Order(new OrderCreatedState())
@@ -65,6 +65,18 @@ namespace TdService.Controllers
                 CreatedDate = DateTime.UtcNow.Date,
                 ReceivedDate = DateTime.UtcNow.Date
             });
+            return this.View();
+        }
+
+        /// <summary>
+        /// Welcome page after successfull registration.
+        /// </summary>
+        /// <returns>
+        /// View with welcome message.
+        /// </returns>
+        [Authorize(Roles = "Shopper")]
+        public ActionResult Welcome()
+        {
             return this.View();
         }
     }

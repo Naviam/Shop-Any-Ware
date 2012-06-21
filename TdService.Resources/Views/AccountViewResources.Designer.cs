@@ -61,6 +61,15 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confirm Password.
+        /// </summary>
+        public static string ConfirmPasswordFormLabel {
+            get {
+                return ResourceManager.GetString("ConfirmPasswordFormLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter email.
         /// </summary>
         public static string EmailFormFieldPlaceholder {
@@ -79,29 +88,101 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter email address you have specified at registration..
+        ///   Looks up a localized string similar to Enter your first name.
         /// </summary>
-        public static string FormHelpMessage {
+        public static string FirstNameFormFieldPlaceholder {
             get {
-                return ResourceManager.GetString("FormHelpMessage", resourceCulture);
+                return ResourceManager.GetString("FirstNameFormFieldPlaceholder", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Forgot Password?.
+        ///   Looks up a localized string similar to First Name.
         /// </summary>
-        public static string PageHeader {
+        public static string FirstNameFormLabel {
             get {
-                return ResourceManager.GetString("PageHeader", resourceCulture);
+                return ResourceManager.GetString("FirstNameFormLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter email address you have specified at registration..
+        /// </summary>
+        public static string ForgotFormHelpMessage {
+            get {
+                return ResourceManager.GetString("ForgotFormHelpMessage", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to ShopAnyWare - Forgot email or password.
         /// </summary>
-        public static string PageTitle {
+        public static string ForgotPageTitle {
             get {
-                return ResourceManager.GetString("PageTitle", resourceCulture);
+                return ResourceManager.GetString("ForgotPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Forgot Password?.
+        /// </summary>
+        public static string ForgotPasswordHeader {
+            get {
+                return ResourceManager.GetString("ForgotPasswordHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter your last name.
+        /// </summary>
+        public static string LastNameFormFieldPlaceholder {
+            get {
+                return ResourceManager.GetString("LastNameFormFieldPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last Name.
+        /// </summary>
+        public static string LastNameFormLabel {
+            get {
+                return ResourceManager.GetString("LastNameFormLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Re-enter password.
+        /// </summary>
+        public static string PasswordConfirmFormFieldPlaceholder {
+            get {
+                return ResourceManager.GetString("PasswordConfirmFormFieldPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter password.
+        /// </summary>
+        public static string PasswordFormFieldPlaceholder {
+            get {
+                return ResourceManager.GetString("PasswordFormFieldPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password.
+        /// </summary>
+        public static string PasswordFormLabel {
+            get {
+                return ResourceManager.GetString("PasswordFormLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remember Me.
+        /// </summary>
+        public static string RememberMeFormLabel {
+            get {
+                return ResourceManager.GetString("RememberMeFormLabel", resourceCulture);
             }
         }
         
@@ -111,6 +192,60 @@ namespace TdService.Resources.Views {
         public static string ResetPasswordButton {
             get {
                 return ResourceManager.GetString("ResetPasswordButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start Shopping!.
+        /// </summary>
+        public static string SignInButton {
+            get {
+                return ResourceManager.GetString("SignInButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Log in to view your ShopAnyWare Account.
+        /// </summary>
+        public static string SignInPageHeader {
+            get {
+                return ResourceManager.GetString("SignInPageHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shop Any Ware - Sign In.
+        /// </summary>
+        public static string SignInPageTitle {
+            get {
+                return ResourceManager.GetString("SignInPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get Your U.S. Address!.
+        /// </summary>
+        public static string SignUpButton {
+            get {
+                return ResourceManager.GetString("SignUpButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Register and Get Your USA Address.
+        /// </summary>
+        public static string SignUpPageHeader {
+            get {
+                return ResourceManager.GetString("SignUpPageHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shop Any Ware - Registration.
+        /// </summary>
+        public static string SignUpPageTitle {
+            get {
+                return ResourceManager.GetString("SignUpPageTitle", resourceCulture);
             }
         }
     }

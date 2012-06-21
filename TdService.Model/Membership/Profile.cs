@@ -46,8 +46,7 @@ namespace TdService.Model.Membership
             {
                 this.AddBrokenRule(ProfileBusinessRules.FirstNameRequired);
             }
-
-            if (this.FirstName.Length > 64)
+            else if (this.FirstName.Length > 64)
             {
                 this.AddBrokenRule(ProfileBusinessRules.FirstNameLength);
             }
@@ -56,8 +55,7 @@ namespace TdService.Model.Membership
             {
                 this.AddBrokenRule(ProfileBusinessRules.LastNameRequired);
             }
-
-            if (this.LastName.Length > 64)
+            else if (this.LastName.Length > 64)
             {
                 this.AddBrokenRule(ProfileBusinessRules.LastNameLength);
             }

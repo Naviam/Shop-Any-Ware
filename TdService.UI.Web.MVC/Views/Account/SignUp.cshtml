@@ -1,47 +1,51 @@
 ﻿@model TdService.Services.ViewModels.Account.SignUpView
-
+@using TdService.Resources.Views;
 @{
-    ViewBag.Title = "Shop Any Ware - Registration";
+    ViewBag.Title = AccountViewResources.SignUpPageTitle;
 }
-
-<form class="form-horizontal" action="@Url.Action("SignUp", "Account")" method="POST">
+@using (Html.BeginForm("SignUp", "Account", FormMethod.Post, new Dictionary<string, object> { { "class", "form-horizontal" } }))
+{
     <fieldset>
         <div class="control-group">
-            <h2>Register and Get Your USA Address</h2>
+            <h2>@AccountViewResources.SignUpPageHeader</h2>
         </div>
-        <div class="control-group error">
-            <label class="control-label">Email:</label>
+        <div class="control-group">
+            <label class="control-label">@AccountViewResources.EmailFormLabel:</label>
             <div class="controls">
-                <input class="input-xlarge" type="text" value="email address here">
-                <span class="help-inline">Please correct the error</span>
+                @Html.TextBoxFor(m => m.Email, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: email" }, { "placeholder", AccountViewResources.EmailFormFieldPlaceholder } })
+                @Html.ValidationMessageFor(m => m.Email)
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label">Password:</label>
+            <label class="control-label">@AccountViewResources.PasswordFormLabel:</label>
             <div class="controls">
-                <input class="input-xlarge" type="password" value="password">
+                @Html.PasswordFor(m => m.Password, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: password" }, { "placeholder", AccountViewResources.PasswordFormFieldPlaceholder } })
+                @Html.ValidationMessageFor(m => m.Password)
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label">Confirm Password:</label>
+            <label class="control-label">@AccountViewResources.ConfirmPasswordFormLabel:</label>
             <div class="controls">
-                <input class="input-xlarge" type="password" value="password">
+                @Html.PasswordFor(m => m.PasswordConfirm, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: passwordConfirm" }, { "placeholder", AccountViewResources.PasswordConfirmFormFieldPlaceholder } })
+                @Html.ValidationMessageFor(m => m.PasswordConfirm)
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label">First Name:</label>
+            <label class="control-label">@AccountViewResources.FirstNameFormLabel:</label>
             <div class="controls">
-                <input class="input-xlarge" type="text" value="">
+                @Html.TextBoxFor(m => m.FirstName, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: firstName" }, { "placeholder", AccountViewResources.FirstNameFormFieldPlaceholder } })
+                @Html.ValidationMessageFor(m => m.FirstName)
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label">Last Name:</label>
+            <label class="control-label">@AccountViewResources.LastNameFormLabel:</label>
             <div class="controls">
-                <input class="input-xlarge" type="text" value="">
+                @Html.TextBoxFor(m => m.LastName, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: lastName" }, { "placeholder", AccountViewResources.LastNameFormFieldPlaceholder } })
+                @Html.ValidationMessageFor(m => m.LastName)
             </div>
         </div>
         <div class="form-actions">
-            <button type="submit" class="btn btn-primary btn-large">Start Shopping!</button>
+            <button type="submit" class="btn btn-primary btn-large">@AccountViewResources.SignUpButton</button>
         </div>
     </fieldset>
-</form>
+}

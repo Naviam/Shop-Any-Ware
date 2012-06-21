@@ -121,17 +121,38 @@ namespace TdService.Controllers
         /// <summary>
         /// Process registration form data and create user's account
         /// </summary>
-        /// <param name="request">
-        /// The request.
+        /// <param name="view">
+        /// The view model.
         /// </param>
         /// <returns>
         /// Redirects user to Sign In form in case of success.
         /// </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult SignUp(SignUpView request)
+        public ActionResult SignUp(SignUpView view)
         {
-            return this.RedirectToAction("SignIn", "Account");
+            if (ModelState.IsValid)
+            {
+                var request = new RegisterUserRequest
+                {
+                    IdentityToken = null,
+                    Email = view.Email,
+                    Password = view.Password,
+                    FirstName = view.FirstName,
+                    LastName = view.LastName
+                };
+                var response = this.membershipService.RegisterUser(request);
+                if (response.MessageType != MessageType.Error)
+                {
+                    return this.RedirectToAction("Welcome", "Member");
+                }
+
+                view.MessageType = response.MessageType.ToString();
+                view.Message = response.Message
+                               ?? (new ResourceManager(typeof(Resources.ErrorCodeResources))).GetString(response.ErrorCode);
+            }
+
+            return this.View(view);
         }
 
         /// <summary>

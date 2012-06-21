@@ -25,17 +25,6 @@ namespace TdService.Services.Interfaces
         RegisterUserResponse RegisterUser(RegisterUserRequest request);
 
         /// <summary>
-        /// Login user.
-        /// </summary>
-        /// <param name="request">
-        /// The request.
-        /// </param>
-        /// <returns>
-        /// The login user response.
-        /// </returns>
-        LoginUserResponse LoginUser(LoginUserRequest request);
-
-        /// <summary>
         /// Validate user.
         /// </summary>
         /// <param name="request">

@@ -65,9 +65,9 @@ namespace TdService.Model.Membership
         public List<Role> Roles { get; set; }
 
         /// <summary>
-        /// Gets or sets Parcels.
+        /// Gets or sets Packages.
         /// </summary>
-        public List<Package> Parcels { get; set; }
+        public List<Package> Packages { get; set; }
 
         /// <summary>
         /// Validate business rules.

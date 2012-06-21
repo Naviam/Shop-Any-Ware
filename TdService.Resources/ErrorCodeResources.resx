@@ -132,8 +132,17 @@
   <data name="RequiredEmail" xml:space="preserve">
     <value>Email is required.</value>
   </data>
+  <data name="RequiredFirstName" xml:space="preserve">
+    <value>First name is required to get U.S. address.</value>
+  </data>
+  <data name="RequiredLastName" xml:space="preserve">
+    <value>Last name is required to get U.S. address.</value>
+  </data>
   <data name="RequiredPassword" xml:space="preserve">
     <value>Password is required.</value>
+  </data>
+  <data name="RequiredPasswordConfirmation" xml:space="preserve">
+    <value>Re-enter password to avoid mistakes.</value>
   </data>
   <data name="UserNotFound" xml:space="preserve">
     <value>Can't retrieve user details. Such user has not been found.</value>

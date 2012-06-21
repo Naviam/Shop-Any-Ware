@@ -117,22 +117,67 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ConfirmPasswordFormLabel" xml:space="preserve">
+    <value>Confirm Password</value>
+  </data>
   <data name="EmailFormFieldPlaceholder" xml:space="preserve">
     <value>Enter email</value>
   </data>
   <data name="EmailFormLabel" xml:space="preserve">
     <value>Email</value>
   </data>
-  <data name="FormHelpMessage" xml:space="preserve">
+  <data name="FirstNameFormFieldPlaceholder" xml:space="preserve">
+    <value>Enter your first name</value>
+  </data>
+  <data name="FirstNameFormLabel" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="ForgotFormHelpMessage" xml:space="preserve">
     <value>Enter email address you have specified at registration.</value>
   </data>
-  <data name="PageHeader" xml:space="preserve">
+  <data name="ForgotPageTitle" xml:space="preserve">
+    <value>ShopAnyWare - Forgot email or password</value>
+  </data>
+  <data name="ForgotPasswordHeader" xml:space="preserve">
     <value>Forgot Password?</value>
   </data>
-  <data name="PageTitle" xml:space="preserve">
-    <value>ShopAnyWare - Forgot email or password</value>
+  <data name="LastNameFormFieldPlaceholder" xml:space="preserve">
+    <value>Enter your last name</value>
+  </data>
+  <data name="LastNameFormLabel" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="PasswordConfirmFormFieldPlaceholder" xml:space="preserve">
+    <value>Re-enter password</value>
+  </data>
+  <data name="PasswordFormFieldPlaceholder" xml:space="preserve">
+    <value>Enter password</value>
+  </data>
+  <data name="PasswordFormLabel" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="RememberMeFormLabel" xml:space="preserve">
+    <value>Remember Me</value>
   </data>
   <data name="ResetPasswordButton" xml:space="preserve">
     <value>Reset Password</value>
+  </data>
+  <data name="SignInButton" xml:space="preserve">
+    <value>Start Shopping!</value>
+  </data>
+  <data name="SignInPageHeader" xml:space="preserve">
+    <value>Log in to view your ShopAnyWare Account</value>
+  </data>
+  <data name="SignInPageTitle" xml:space="preserve">
+    <value>Shop Any Ware - Sign In</value>
+  </data>
+  <data name="SignUpButton" xml:space="preserve">
+    <value>Get Your U.S. Address!</value>
+  </data>
+  <data name="SignUpPageHeader" xml:space="preserve">
+    <value>Register and Get Your USA Address</value>
+  </data>
+  <data name="SignUpPageTitle" xml:space="preserve">
+    <value>Shop Any Ware - Registration</value>
   </data>
 </root>

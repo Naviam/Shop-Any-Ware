@@ -11,7 +11,7 @@ namespace TdService.Services.ViewModels.Account
     /// <summary>
     /// This class describes the view model for sign up page.
     /// </summary>
-    public class SignUpView
+    public class SignUpView : BaseView
     {
         /// <summary>
         /// Gets or sets Email.
@@ -30,9 +30,21 @@ namespace TdService.Services.ViewModels.Account
         public string Password { get; set; }
 
         /// <summary>
-        /// Gets or sets PasswordConfirm.
+        /// Gets or sets Password Confirm.
         /// </summary>
-        [Required]
+        [Required(ErrorMessageResourceName = "RequiredPasswordConfirmation", ErrorMessageResourceType = typeof(Resources.ErrorCodeResources))]
         public string PasswordConfirm { get; set; }
+
+        /// <summary>
+        /// Gets or sets First Name.
+        /// </summary>
+        [Required(ErrorMessageResourceName = "RequiredFirstName", ErrorMessageResourceType = typeof(Resources.ErrorCodeResources))]
+        public string FirstName { get; set; }
+
+        /// <summary>
+        /// Gets or sets Last Name.
+        /// </summary>
+        [Required(ErrorMessageResourceName = "RequiredLastName", ErrorMessageResourceType = typeof(Resources.ErrorCodeResources))]
+        public string LastName { get; set; }
     }
 }

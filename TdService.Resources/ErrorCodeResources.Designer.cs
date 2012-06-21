@@ -106,11 +106,38 @@ namespace TdService.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to First name is required to get U.S. address..
+        /// </summary>
+        public static string RequiredFirstName {
+            get {
+                return ResourceManager.GetString("RequiredFirstName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last name is required to get U.S. address..
+        /// </summary>
+        public static string RequiredLastName {
+            get {
+                return ResourceManager.GetString("RequiredLastName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password is required..
         /// </summary>
         public static string RequiredPassword {
             get {
                 return ResourceManager.GetString("RequiredPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Re-enter password to avoid mistakes..
+        /// </summary>
+        public static string RequiredPasswordConfirmation {
+            get {
+                return ResourceManager.GetString("RequiredPasswordConfirmation", resourceCulture);
             }
         }
         

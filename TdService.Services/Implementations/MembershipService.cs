@@ -6,6 +6,7 @@
 
 namespace TdService.Services.Implementations
 {
+    using System.Collections.Generic;
     using System.Linq;
     using System.Text;
 
@@ -56,29 +57,13 @@ namespace TdService.Services.Implementations
                 {
                     Email = request.Email,
                     Password = request.Password,
-                    Profile = new Profile
-                        {
-                            FirstName = request.FirstName,
-                            LastName = request.LastName
-                        }
+                    Profile = new Profile { FirstName = request.FirstName, LastName = request.LastName },
+                    Roles = new List<Role> { this.membershipRepository.GetRole("Shopper") }
                 };
             this.membershipRepository.AddUser(user);
             return response;
         }
 
-        /// <summary>
-        /// Login user.
-        /// </summary>
-        /// <param name="request">
-        /// The request.
-        /// </param>
-        /// <returns>
-        /// The login user.
-        /// </returns>
-        public LoginUserResponse LoginUser(LoginUserRequest request)
-        {
-            return new LoginUserResponse();
-        }
 
         /// <summary>
         /// Validate user against database.
