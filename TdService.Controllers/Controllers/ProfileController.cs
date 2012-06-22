@@ -74,8 +74,18 @@ namespace TdService.Controllers
                             NotifyOnOrderStatusChange = response.NotifyOnOrderStatusChange,
                             NotifyOnPackageStatusChange = response.NotifyOnPackageStatusChange,
                             MessageType = response.MessageType.ToString().ToLower(),
-                            Message = response.Message ?? (new ResourceManager(typeof(ErrorCodeResources))).GetString(response.ErrorCode)
+                            Message = response.Message ?? string.Empty
                         };
+
+                    if (!string.IsNullOrEmpty(response.ErrorCode))
+                    {
+                        profileView.MessageType = response.MessageType.ToString();
+                        profileView.Message =
+                            (new ResourceManager(typeof(ErrorCodeResources))).GetString(response.ErrorCode);
+                    }
+
+                    ViewData.Model = profileView;
+                    return this.View();
                 }
             }
             catch (Exception e)

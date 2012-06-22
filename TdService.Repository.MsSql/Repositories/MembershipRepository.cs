@@ -153,7 +153,7 @@ namespace TdService.Repository.MsSql.Repositories
         {
             using (var context = new ShopAnyWareSql())
             {
-                return context.Profiles.Include("NotificationRule").Include("Paert").SingleOrDefault(p => p.Id == id);
+                return context.Profiles.Include("NotificationRule").SingleOrDefault(p => p.Id == id);
             }
         }
 

@@ -184,6 +184,8 @@ namespace TdService.Services.Implementations
 
             this.membershipRepository.UpdateProfile(request.IdentityToken, profile);
 
+            response.MessageType = MessageType.Success;
+            response.Message = Resources.Views.ProfileViewResources.UpdateProfileSuccessMessage;
             return response;
         }
 
