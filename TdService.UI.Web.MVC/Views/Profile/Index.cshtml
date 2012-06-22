@@ -1,62 +1,69 @@
 ﻿@using TdService.Resources.Views
-@using TdService.Resources
 @model TdService.Services.ViewModels.Account.ProfileView
 @{
     ViewBag.Title = ProfileViewResources.PageTitle;
 }
 
 <ul class="breadcrumb">
-  <li>
-    <a href="#">Dashboard</a> <span class="divider">/</span>
-  </li>
-  <li class="active">Profile</li>
+    <li>
+        <a href="#">Dashboard</a> <span class="divider">/</span>
+    </li>
+    <li class="active">Profile</li>
 </ul>
+@if (Model.MessageType == "error")
+{
+    <div class="alert alert-error">
+        <button class="close" data-dismiss="alert">×</button>
+        <strong>Error: </strong>@Model.Message
+    </div>
+}
 @using (Html.BeginForm("Save", "Profile", FormMethod.Post, new { @class = "form-horizontal" }))
 {
+    @Html.AntiForgeryToken("Profile")
     <input id="model" type="hidden" value="@(new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(Model))" />
     <fieldset>
+        @Html.HiddenFor(m => m.Id)
         <div class="control-group">
             <label class="control-label"><h2>@ProfileViewResources.PageHeader</h2></label>
         </div>
         <div class="control-group">
-            <label class="control-label">@ProfileViewResources.EmailHeader</label>
+            <label class="control-label">@ProfileViewResources.EmailHeader:</label>
             <div class="controls">
-                <input id="Email" name="Email" class="input-xlarge" type="text" data-bind="value: email" readonly="readonly">
+                @Html.TextBoxFor(m => m.Email, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: email" }, { "readonly", "readonly" } })
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label">@ProfileViewResources.PasswordHeader</label>
+            <label class="control-label">@ProfileViewResources.PasswordHeader:</label>
             <div class="controls">
-                <input id="CurrentPassword" name="CurrentPassword" class="input-xlarge" data-bind="value: currentPassword" type="password" readonly="readonly">
+                @Html.PasswordFor(m => m.CurrentPassword, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: currentPassword" }, { "readonly", "readonly" } })
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label">@ProfileViewResources.FirstNameHeader</label>
+            <label class="control-label">@ProfileViewResources.FirstNameHeader:</label>
             <div class="controls">
-                <input name="FirstName" class="input-xlarge" type="text" data-bind="value: firstName" 
-                       data-val="true" data-val-length="@BusinessRules.Profile_FirstNameLength" 
-                       data-val-length-max="64" data-val-required="@BusinessRules.Profile_FirstNameRequired">
-                <span class="field-validation-valid" data-valmsg-for="FirstName" data-valmsg-replace="true"></span>
+                @Html.TextBoxFor(m => m.FirstName, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: firstName" } })
+                @Html.ValidationMessageFor(m => m.FirstName)
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label">@ProfileViewResources.LastNameHeader</label>
+            <label class="control-label">@ProfileViewResources.LastNameHeader:</label>
             <div class="controls">
-                <input name="LastName" class="input-xlarge" type="text" data-bind="value: lastName">
+                @Html.TextBoxFor(m => m.LastName, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: lastName" } })
+                @Html.ValidationMessageFor(m => m.LastName)
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label">@ProfileViewResources.NotificationHeader</label>
+            <label class="control-label">@ProfileViewResources.NotificationHeader:</label>
             <div class="controls">
                 <label class="checkbox">
-                    <input type="checkbox" data-bind="checked: notifyOnOrderStatusChange" name="NotifyOnOrderStatusChange">
-                    @ProfileViewResources.Notification_OnOrderStatusChange
+                    @Html.CheckBoxFor(m => m.NotifyOnOrderStatusChange, new Dictionary<string, object> { { "data-bind", "checked: notifyOnOrderStatusChange" } })
+                    @Html.LabelFor(m => m.NotifyOnOrderStatusChange, ProfileViewResources.Notification_OnOrderStatusChange)
                 </label>
             </div>
             <div class="controls">
                 <label class="checkbox">
-                    <input type="checkbox" data-bind="checked: notifyOnPackageStatusChange" name="NotifyOnPackageStatusChange">
-                    @ProfileViewResources.Notification_OnPackageStatusChange
+                    @Html.CheckBoxFor(m => m.NotifyOnPackageStatusChange, new Dictionary<string, object> { { "data-bind", "checked: notifyOnPackageStatusChange" } })
+                    @Html.LabelFor(m => m.NotifyOnPackageStatusChange, ProfileViewResources.Notification_OnPackageStatusChange)
                 </label>
             </div>
         </div>

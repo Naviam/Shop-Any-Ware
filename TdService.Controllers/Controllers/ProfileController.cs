@@ -10,11 +10,12 @@
 namespace TdService.Controllers
 {
     using System;
+    using System.Resources;
     using System.Web.Mvc;
 
     using TdService.Infrastructure.Authentication;
     using TdService.Model.Notification;
-    using TdService.Resources.Views;
+    using TdService.Resources;
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging.Membership;
     using TdService.Services.ViewModels;
@@ -53,13 +54,43 @@ namespace TdService.Controllers
         /// </returns>
         public ActionResult Index()
         {
-            var profileResponse = this.membershipService.GetProfile(
+            var profileView = new ProfileView();
+            try
+            {
+                var response = this.membershipService.GetProfile(
                 new GetProfileRequest
                     {
-                        Email = this.FormsAuthentication.GetAuthenticationToken()
+                        IdentityToken = this.FormsAuthentication.GetAuthenticationToken()
                     });
+                if (response != null)
+                {
+                    profileView = new ProfileView
+                        {
+                            Email = response.Email,
+                            Id = response.Id,
+                            CurrentPassword = response.CurrentPassword,
+                            FirstName = response.FirstName,
+                            LastName = response.LastName,
+                            NotifyOnOrderStatusChange = response.NotifyOnOrderStatusChange,
+                            NotifyOnPackageStatusChange = response.NotifyOnPackageStatusChange,
+                            MessageType = response.MessageType.ToString().ToLower(),
+                            Message = response.Message ?? (new ResourceManager(typeof(ErrorCodeResources))).GetString(response.ErrorCode)
+                        };
+                }
+            }
+            catch (Exception e)
+            {
+                profileView.Message = e.Message;
+                profileView.MessageType = ViewModelMessageType.Error.ToString().ToLower();
+                ViewData.Model = profileView;
 
-            return this.View(profileResponse.ProfileView);
+                return this.View();
+            }
+
+            profileView.MessageType = ViewModelMessageType.Error.ToString().ToLower();
+            profileView.Message = ErrorCodeResources.ProfileNotFound;
+            ViewData.Model = profileView;
+            return this.View();
         }
 
         /// <summary>
@@ -72,31 +103,35 @@ namespace TdService.Controllers
         /// Returns profile view.
         /// </returns>
         [HttpPost]
-        public JsonResult Save(ProfileView profileView)
+        [ValidateAntiForgeryToken]
+        public ActionResult Save(ProfileView profileView)
         {
-            try
+            if (ModelState.IsValid)
             {
-                var request = new UpdateProfileRequest
+                try
+                {
+                    var request = new UpdateProfileRequest
                     {
                         FirstName = profileView.FirstName,
                         LastName = profileView.LastName,
-                        IdentityToken = HttpContext.User.Identity.Name,
+                        IdentityToken = this.FormsAuthentication.GetAuthenticationToken(),
                         NotificationRule =
                             new NotificationRule
-                                {
-                                    NotifyOnOrderStatusChanged = profileView.NotifyOnOrderStatusChange,
-                                    NotifyOnPackageStatusChanged = profileView.NotifyOnPackageStatusChange
-                                }
+                            {
+                                NotifyOnOrderStatusChanged = profileView.NotifyOnOrderStatusChange,
+                                NotifyOnPackageStatusChanged = profileView.NotifyOnPackageStatusChange
+                            }
                     };
 
-                var response = this.membershipService.UpdateProfile(request);
-                profileView.Message = ProfileViewResources.UpdateProfileSuccessMessage;
-                profileView.MessageType = ViewModelMessageType.Success.ToString().ToLower();
-            }
-            catch (Exception e)
-            {
-                profileView.Message = e.Message;
-                profileView.MessageType = ViewModelMessageType.Error.ToString().ToLower();
+                    var response = this.membershipService.UpdateProfile(request);
+                    profileView.Message = response.Message; // ProfileViewResources.UpdateProfileSuccessMessage
+                    profileView.MessageType = ViewModelMessageType.Success.ToString().ToLower();
+                }
+                catch (Exception e)
+                {
+                    profileView.Message = e.Message;
+                    profileView.MessageType = ViewModelMessageType.Error.ToString().ToLower();
+                }
             }
 
             return this.Json(profileView);

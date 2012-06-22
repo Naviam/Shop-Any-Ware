@@ -53,10 +53,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AccountControllerTests.cs" />
+    <Compile Include="Controllers\ProfileControllerTests.cs" />
     <Compile Include="Mocks\FakeEmailService.cs" />
     <Compile Include="Mocks\FakeFormsAuthentication.cs" />
     <Compile Include="Mocks\FakeMembershipService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\FakeMembershipRepository.cs" />
     <Compile Include="Services\MembershipServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>

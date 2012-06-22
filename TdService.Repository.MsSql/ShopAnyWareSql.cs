@@ -197,7 +197,7 @@ namespace TdService.Repository.MsSql
                         NotifyOnOrderStatusChanged = true,
                         NotifyOnPackageStatusChanged = true 
                     };
-                context.Entry(user).State = EntityState.Modified;
+                context.Entry(user.Profile).State = EntityState.Modified;
                 context.SaveChanges();
 
                 var user2 = new User { Email = "tdservice@mail.ru", Password = "1", Roles = new List<Role>() };

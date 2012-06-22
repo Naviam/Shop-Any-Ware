@@ -123,11 +123,20 @@
   <data name="MaxLengthEmail" xml:space="preserve">
     <value>Email can't be more than 256 chars length.</value>
   </data>
+  <data name="MaxLengthFirstName" xml:space="preserve">
+    <value>First name can't be more than 64 chars length.</value>
+  </data>
+  <data name="MaxLengthLastName" xml:space="preserve">
+    <value>Last name can't be more than 64 chars length.</value>
+  </data>
   <data name="MaxLengthPassword" xml:space="preserve">
     <value>Password can't be more than 21 chars length.</value>
   </data>
   <data name="NotValidUser" xml:space="preserve">
     <value>Email or password are incorrect.</value>
+  </data>
+  <data name="ProfileNotFound" xml:space="preserve">
+    <value>Can't retrieve user profile. Profile has not been found.</value>
   </data>
   <data name="RequiredEmail" xml:space="preserve">
     <value>Email is required.</value>

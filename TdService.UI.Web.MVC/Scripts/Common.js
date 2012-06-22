@@ -1,3 +1,3 @@
 ﻿$(document).ready(function () {
-    $("input[type=text]").first().focus();
+    $("input[type=text][readonly!=readonly]").first().focus();
 });

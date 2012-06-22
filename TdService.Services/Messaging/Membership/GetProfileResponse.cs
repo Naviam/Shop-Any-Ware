@@ -9,16 +9,44 @@
 
 namespace TdService.Services.Messaging.Membership
 {
-    using TdService.Services.ViewModels.Account;
-
     /// <summary>
     /// Get profile response object.
     /// </summary>
     public class GetProfileResponse : ResponseBase
     {
         /// <summary>
-        /// Gets or sets Profile.
+        /// Gets or sets Id.
         /// </summary>
-        public ProfileView ProfileView { get; set; }
+        public int Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets First Name.
+        /// </summary>
+        public string FirstName { get; set; }
+
+        /// <summary>
+        /// Gets or sets Last Name.
+        /// </summary>
+        public string LastName { get; set; }
+
+        /// <summary>
+        /// Gets or sets Email.
+        /// </summary>
+        public string Email { get; set; }
+
+        /// <summary>
+        /// Gets or sets Current Password.
+        /// </summary>
+        public string CurrentPassword { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether NotifyOnOrderStatusChange.
+        /// </summary>
+        public bool NotifyOnOrderStatusChange { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether NotifyOnPackageStatusChange.
+        /// </summary>
+        public bool NotifyOnPackageStatusChange { get; set; }
     }
 }

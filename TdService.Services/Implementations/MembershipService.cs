@@ -16,7 +16,6 @@ namespace TdService.Services.Implementations
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging;
     using TdService.Services.Messaging.Membership;
-    using TdService.Services.ViewModels.Account;
 
     using Profile = TdService.Model.Membership.Profile;
 
@@ -63,7 +62,6 @@ namespace TdService.Services.Implementations
             this.membershipRepository.AddUser(user);
             return response;
         }
-
 
         /// <summary>
         /// Validate user against database.
@@ -124,27 +122,37 @@ namespace TdService.Services.Implementations
         public GetProfileResponse GetProfile(GetProfileRequest request)
         {
             var response = new GetProfileResponse();
-            var user = this.membershipRepository.GetUser(request.Email);
-            var profile = user.Profile;
-            response.ProfileView = new ProfileView
-                {
-                    Email = user.Email,
-                    CurrentPassword = user.Password,
-                    Id = (profile == null) ? 0 : profile.Id,
-                    FirstName = (profile == null) ? string.Empty : profile.FirstName,
-                    LastName = (profile == null) ? string.Empty : profile.LastName
-                };
-            if (profile != null)
+            var user = this.membershipRepository.GetUser(request.IdentityToken);
+            if (user != null)
             {
-                if (profile.NotificationRule != null)
+                var profile = this.membershipRepository.GetProfile(user.Profile.Id);
+                if (profile != null)
                 {
-                    response.ProfileView.NotifyOnOrderStatusChange = 
-                        profile.NotificationRule.NotifyOnOrderStatusChanged;
-                    response.ProfileView.NotifyOnPackageStatusChange =
-                        profile.NotificationRule.NotifyOnPackageStatusChanged;
+                    response = new GetProfileResponse
+                    {
+                        FirstName = profile.FirstName,
+                        LastName = profile.LastName,
+                        Id = profile.Id,
+                        Email = user.Email,
+                        CurrentPassword = user.Password
+                    };
+                    if (profile.NotificationRule != null)
+                    {
+                        response.NotifyOnOrderStatusChange = profile.NotificationRule.NotifyOnOrderStatusChanged;
+                        response.NotifyOnPackageStatusChange = profile.NotificationRule.NotifyOnPackageStatusChanged;
+                    }
+
+                    response.MessageType = MessageType.Success;
+                    return response;
                 }
+
+                response.MessageType = MessageType.Error;
+                response.ErrorCode = "ProfileNotFound";
+                return response;
             }
 
+            response.MessageType = MessageType.Error;
+            response.ErrorCode = "UserNotFound";
             return response;
         }
 

@@ -79,6 +79,24 @@ namespace TdService.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to First name can&apos;t be more than 64 chars length..
+        /// </summary>
+        public static string MaxLengthFirstName {
+            get {
+                return ResourceManager.GetString("MaxLengthFirstName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last name can&apos;t be more than 64 chars length..
+        /// </summary>
+        public static string MaxLengthLastName {
+            get {
+                return ResourceManager.GetString("MaxLengthLastName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password can&apos;t be more than 21 chars length..
         /// </summary>
         public static string MaxLengthPassword {
@@ -93,6 +111,15 @@ namespace TdService.Resources {
         public static string NotValidUser {
             get {
                 return ResourceManager.GetString("NotValidUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Can&apos;t retrieve user profile. Profile has not been found..
+        /// </summary>
+        public static string ProfileNotFound {
+            get {
+                return ResourceManager.GetString("ProfileNotFound", resourceCulture);
             }
         }
         

@@ -1,21 +1,25 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="IMembershipRepository.cs" company="TdService">
-// Vitali Hatalski. 2012.
+// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="FakeMembershipRepository.cs" company="TdService">
+//   Vitali Hatalski. 2012.
 // </copyright>
-// -----------------------------------------------------------------------
+// <summary>
+//   Fake membership repository for testing purpose.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Model.Membership
+namespace TdService.ShopAnyWare.Tests.Services
 {
     using System.Collections.Generic;
 
     using TdService.Model.Addresses;
+    using TdService.Model.Membership;
+    using TdService.Model.Notification;
 
     /// <summary>
-    /// Interface for membership repository (roles, users and profile).
+    /// Fake membership repository for testing purpose.
     /// </summary>
-    public interface IMembershipRepository
+    public class FakeMembershipRepository : IMembershipRepository
     {
-        #region Profile
         /// <summary>
         /// Get user's profile.
         /// </summary>
@@ -25,7 +29,27 @@ namespace TdService.Model.Membership
         /// <returns>
         /// User's profile.
         /// </returns>
-        Profile GetProfile(int id);
+        public Profile GetProfile(int id)
+        {
+            if (id == 1)
+            {
+                return new Profile
+                    {
+                        Id = id,
+                        FirstName = "Vitali",
+                        LastName = "Hatalski",
+                        NotificationRule =
+                            new NotificationRule
+                                {
+                                    Id = 1,
+                                    NotifyOnOrderStatusChanged = true,
+                                    NotifyOnPackageStatusChanged = true 
+                                }
+                    };
+            }
+
+            return null;
+        }
 
         /// <summary>
         /// Get warehouse address for user.
@@ -36,7 +60,10 @@ namespace TdService.Model.Membership
         /// <returns>
         /// Warehouse address for user.
         /// </returns>
-        WarehouseAddress GetWarehouseAddress(string email);
+        public WarehouseAddress GetWarehouseAddress(string email)
+        {
+            return null;
+        }
 
         /// <summary>
         /// Change user's password.
@@ -53,7 +80,10 @@ namespace TdService.Model.Membership
         /// <returns>
         /// True if password was changed, otherwise false.
         /// </returns>
-        bool ChangePassword(string email, string oldPassword, string newPassword);
+        public bool ChangePassword(string email, string oldPassword, string newPassword)
+        {
+            return false;
+        }
 
         /// <summary>
         /// Update profile of the user.
@@ -64,17 +94,19 @@ namespace TdService.Model.Membership
         /// <param name="profile">
         /// The profile.
         /// </param>
-        void UpdateProfile(string email, Profile profile);
-        #endregion
+        public void UpdateProfile(string email, Profile profile)
+        {
+        }
 
-        #region Roles
         /// <summary>
         /// Add new role.
         /// </summary>
         /// <param name="role">
         /// The role.
         /// </param>
-        void AddRole(Role role);
+        public void AddRole(Role role)
+        {
+        }
 
         /// <summary>
         /// Remove role.
@@ -82,7 +114,9 @@ namespace TdService.Model.Membership
         /// <param name="role">
         /// The role.
         /// </param>
-        void RemoveRole(Role role);
+        public void RemoveRole(Role role)
+        {
+        }
 
         /// <summary>
         /// Update role.
@@ -90,7 +124,9 @@ namespace TdService.Model.Membership
         /// <param name="role">
         /// The role.
         /// </param>
-        void UpdateRole(Role role);
+        public void UpdateRole(Role role)
+        {
+        }
 
         /// <summary>
         /// Get role by id.
@@ -101,7 +137,10 @@ namespace TdService.Model.Membership
         /// <returns>
         /// Application role.
         /// </returns>
-        Role GetRole(int roleId);
+        public Role GetRole(int roleId)
+        {
+            return null;
+        }
 
         /// <summary>
         /// Get role by name.
@@ -112,7 +151,10 @@ namespace TdService.Model.Membership
         /// <returns>
         /// Role object.
         /// </returns>
-        Role GetRole(string roleName);
+        public Role GetRole(string roleName)
+        {
+            return null;
+        }
 
         /// <summary>
         /// Add users in role.
@@ -123,7 +165,9 @@ namespace TdService.Model.Membership
         /// <param name="roleName">
         /// The role name.
         /// </param>
-        void AddUserInRole(User user, string roleName);
+        public void AddUserInRole(User user, string roleName)
+        {
+        }
 
         /// <summary>
         /// Get user's roles.
@@ -134,7 +178,10 @@ namespace TdService.Model.Membership
         /// <returns>
         /// User's roles.
         /// </returns>
-        IEnumerable<Role> GetUserRoles(string email);
+        public IEnumerable<Role> GetUserRoles(string email)
+        {
+            yield break;
+        }
 
         /// <summary>
         /// Remove users from role.
@@ -145,7 +192,9 @@ namespace TdService.Model.Membership
         /// <param name="roleName">
         /// The role name.
         /// </param>
-        void RemoveUsersFromRole(List<User> users, string roleName);
+        public void RemoveUsersFromRole(List<User> users, string roleName)
+        {
+        }
 
         /// <summary>
         /// Get roles.
@@ -153,11 +202,11 @@ namespace TdService.Model.Membership
         /// <returns>
         /// All application roles.
         /// </returns>
-        IEnumerable<Role> GetRoles();
+        public IEnumerable<Role> GetRoles()
+        {
+            yield break;
+        }
 
-        #endregion
-
-        #region Users
         /// <summary>
         /// Get user by name.
         /// </summary>
@@ -167,7 +216,34 @@ namespace TdService.Model.Membership
         /// <returns>
         /// User object.
         /// </returns>
-        User GetUser(string email);
+        public User GetUser(string email)
+        {
+            if (email == "vhatalski@naviam.com")
+            {
+                var user = new User
+                    {
+                        Email = email,
+                        Profile =
+                            new Profile
+                                {
+                                    Id = 1,
+                                    FirstName = "Vitali",
+                                    LastName = "Hatalski",
+                                    NotificationRule =
+                                        new NotificationRule
+                                            {
+                                                Id = 1,
+                                                NotifyOnOrderStatusChanged = true,
+                                                NotifyOnPackageStatusChanged = true
+                                            }
+                                }
+                    };
+
+                return user;
+            }
+
+            return null;
+        }
 
         /// <summary>
         /// Validate user credentials.
@@ -181,7 +257,10 @@ namespace TdService.Model.Membership
         /// <returns>
         /// Boolean value that indicates the result of validation.
         /// </returns>
-        bool ValidateUser(string email, string password);
+        public bool ValidateUser(string email, string password)
+        {
+            return false;
+        }
 
         /// <summary>
         /// Add new user.
@@ -189,7 +268,9 @@ namespace TdService.Model.Membership
         /// <param name="user">
         /// The user.
         /// </param>
-        void AddUser(User user);
+        public void AddUser(User user)
+        {
+        }
 
         /// <summary>
         /// Update user's email in the database.
@@ -200,7 +281,9 @@ namespace TdService.Model.Membership
         /// <param name="newEmail">
         /// The new Email.
         /// </param>
-        void UpdateUserEmail(string oldEmail, string newEmail);
+        public void UpdateUserEmail(string oldEmail, string newEmail)
+        {
+        }
 
         /// <summary>
         /// Get users sorted by email ascending.
@@ -211,7 +294,10 @@ namespace TdService.Model.Membership
         /// <returns>
         /// Collection of users.
         /// </returns>
-        IEnumerable<User> GetUsersSortedByEmailAsc(int pageSize = 20);
+        public IEnumerable<User> GetUsersSortedByEmailAsc(int pageSize = 20)
+        {
+            yield break;
+        }
 
         /// <summary>
         /// Remove user.
@@ -219,8 +305,8 @@ namespace TdService.Model.Membership
         /// <param name="email">
         /// The email.
         /// </param>
-        void RemoveUser(string email);
-
-        #endregion
+        public void RemoveUser(string email)
+        {
+        }
     }
 }

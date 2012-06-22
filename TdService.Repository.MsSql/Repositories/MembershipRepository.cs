@@ -141,20 +141,19 @@ namespace TdService.Repository.MsSql.Repositories
         #region Profile
 
         /// <summary>
-        /// Get user's profile by email.
+        /// Get user's profile by id.
         /// </summary>
-        /// <param name="email">
-        /// The email.
+        /// <param name="id">
+        /// The profile id.
         /// </param>
         /// <returns>
         /// User's profile.
         /// </returns>
-        public Profile GetProfile(string email)
+        public Profile GetProfile(int id)
         {
             using (var context = new ShopAnyWareSql())
             {
-                return context.Users.Where(u => string.Compare(u.Email, email, StringComparison.OrdinalIgnoreCase) == 0)
-                    .Select(u => u.Profile).SingleOrDefault();
+                return context.Profiles.Include("NotificationRule").Include("Paert").SingleOrDefault(p => p.Id == id);
             }
         }
 

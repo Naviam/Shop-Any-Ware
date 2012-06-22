@@ -22,6 +22,7 @@ namespace TdService.Repository.MsSql.Configurations
         {
             this.Property(r => r.Name).IsRequired().HasMaxLength(64);
             this.Property(r => r.Category).IsRequired().HasMaxLength(64);
+            this.Property(r => r.Description).HasMaxLength(1024);
         }
     }
 }
