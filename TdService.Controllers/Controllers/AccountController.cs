@@ -164,18 +164,45 @@ namespace TdService.Controllers
                     FirstName = view.FirstName,
                     LastName = view.LastName
                 };
+
                 var response = this.membershipService.RegisterUser(request);
                 if (response.MessageType != MessageType.Error)
                 {
                     return this.RedirectToAction("Welcome", "Member");
                 }
 
+                if (response.MessageType == MessageType.Error && response.ErrorCode == "EmailExists")
+                {
+                    ModelState.AddModelError("Email", (new ResourceManager(typeof(Resources.ErrorCodeResources))).GetString(response.ErrorCode));
+                }
+
                 view.MessageType = response.MessageType.ToString();
-                view.Message = response.Message
-                               ?? (new ResourceManager(typeof(Resources.ErrorCodeResources))).GetString(response.ErrorCode);
+                view.Message = (response.Message
+                               ?? (new ResourceManager(typeof(Resources.ErrorCodeResources))).GetString(response.ErrorCode)) ?? string.Empty;
             }
 
             return this.View(view);
+        }
+
+        /// <summary>
+        /// Check if email exists in database.
+        /// </summary>
+        /// <param name="email">
+        /// The email.
+        /// </param>
+        /// <returns>
+        /// View with
+        /// </returns>
+        [HttpPost]
+        public JsonResult VerifyEmail(string email)
+        {
+            var response = this.membershipService.GetUser(new GetUserRequest { IdentityToken = email });
+            if (response.User != null)
+            {
+                response.Message = Resources.Views.AccountViewResources.SignUpEmailOk;
+            }
+
+            return this.Json(response);
         }
 
         /// <summary>

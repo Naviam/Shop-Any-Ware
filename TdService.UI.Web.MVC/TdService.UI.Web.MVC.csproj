@@ -216,6 +216,10 @@
     <Content Include="Scripts\model\OrderViewModel.js" />
     <Content Include="Scripts\model\PackageViewModel.js" />
     <Content Include="Scripts\model\ProfileViewModel.js" />
+    <Content Include="Scripts\model\SignUpViewModel.js" />
+    <Content Include="Scripts\MVVM\App.js" />
+    <Content Include="Scripts\MVVM\ember-0.9.8.1.js" />
+    <Content Include="Scripts\MVVM\ember-0.9.8.1.min.js" />
     <Content Include="Scripts\qunit.js" />
     <Content Include="Scripts\Specs\dashboard_specs.js" />
     <Content Include="Scripts\Specs\example.specs.html" />
@@ -290,6 +294,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
+    <Folder Include="Scripts\MVVM\Model\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

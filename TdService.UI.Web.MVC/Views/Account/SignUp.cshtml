@@ -12,7 +12,7 @@
         <div class="control-group">
             <label class="control-label">@AccountViewResources.EmailFormLabel:</label>
             <div class="controls">
-                @Html.TextBoxFor(m => m.Email, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: email" }, { "placeholder", AccountViewResources.EmailFormFieldPlaceholder } })
+                @Html.TextBoxFor(m => m.Email, new Dictionary<string, object> { { "type", "email" }, { "class", "input-xlarge" }, { "data-bind", "value: email, change: verifyEmailExists" }, { "placeholder", AccountViewResources.EmailFormFieldPlaceholder } })
                 @Html.ValidationMessageFor(m => m.Email)
             </div>
         </div>
@@ -48,4 +48,11 @@
             <button type="submit" class="btn btn-primary btn-large">@AccountViewResources.SignUpButton</button>
         </div>
     </fieldset>
+}
+@section Scripts
+{
+    <script type="text/javascript" src="@Url.Content("~/Scripts/model/SignUpViewModel.js")"></script>
+    <script type="text/javascript">
+        
+    </script>
 }

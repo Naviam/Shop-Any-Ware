@@ -232,6 +232,15 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to E-mail is OK..
+        /// </summary>
+        public static string SignUpEmailOk {
+            get {
+                return ResourceManager.GetString("SignUpEmailOk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Register and Get Your USA Address.
         /// </summary>
         public static string SignUpPageHeader {

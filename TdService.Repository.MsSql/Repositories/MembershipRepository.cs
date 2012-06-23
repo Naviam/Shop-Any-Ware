@@ -79,6 +79,20 @@ namespace TdService.Repository.MsSql.Repositories
 
                 context.Users.Add(user);
                 context.SaveChanges();
+
+                user.Profile = new Profile { FirstName = user.Profile.FirstName, LastName = user.Profile.LastName };
+                context.Entry(user).State = EntityState.Modified;
+                context.SaveChanges();
+
+                var profile = context.Profiles.Find(user.Profile.Id);
+                profile.NotificationRule = new NotificationRule
+                {
+                    NotifyOnOrderStatusChanged = true,
+                    NotifyOnPackageStatusChanged = true
+                };
+                context.NotificationRules.Attach(profile.NotificationRule);
+                context.Entry(profile).State = EntityState.Modified;
+                context.SaveChanges();
             }
         }
 

@@ -56,10 +56,38 @@ namespace TdService.Services.Implementations
                 {
                     Email = request.Email,
                     Password = request.Password,
-                    Profile = new Profile { FirstName = request.FirstName, LastName = request.LastName },
+                    Profile = new Profile
+                        {
+                            FirstName = request.FirstName,
+                            LastName = request.LastName,
+                            NotificationRule = new NotificationRule
+                                {
+                                    NotifyOnOrderStatusChanged = true,
+                                    NotifyOnPackageStatusChanged = true
+                                }
+                        },
                     Roles = new List<Role> { this.membershipRepository.GetRole("Shopper") }
                 };
-            this.membershipRepository.AddUser(user);
+            var userInDatabase = this.membershipRepository.GetUser(request.Email);
+            if (userInDatabase != null)
+            {
+                response.MessageType = MessageType.Error;
+                response.ErrorCode = "EmailExists";
+            }
+            else
+            {
+                this.membershipRepository.AddUser(user);
+
+                // var createdUser = this.membershipRepository.GetUser(user.Email);
+                // if (createdUser != null)
+                // {
+                //    if (createdUser.Profile != null)
+                //    {
+                //        var profile = this.membershipRepository.GetProfile(createdUser.Profile.Id);
+                //    }
+                // }
+            }
+
             return response;
         }
 
@@ -98,7 +126,7 @@ namespace TdService.Services.Implementations
         {
             var response = new GetUserResponse
                 {
-                    User = this.membershipRepository.GetUser(request.Email),
+                    User = this.membershipRepository.GetUser(request.IdentityToken),
                     MessageType = MessageType.Success
                 };
             if (response.User == null)
