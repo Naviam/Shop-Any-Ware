@@ -9,10 +9,13 @@
 
 namespace TdService.Controllers
 {
+    using System;
+    using System.Collections.Specialized;
     using System.Resources;
     using System.Web.Mvc;
 
     using TdService.Infrastructure.Authentication;
+    using TdService.Infrastructure.CookieStorage;
     using TdService.Infrastructure.Email;
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging;
@@ -35,6 +38,11 @@ namespace TdService.Controllers
         private readonly IEmailService emailService;
 
         /// <summary>
+        /// Cookie storage service.
+        /// </summary>
+        private readonly ICookieStorageService cookieStorageService;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="AccountController"/> class.
         /// </summary>
         /// <param name="membershipService">
@@ -43,17 +51,22 @@ namespace TdService.Controllers
         /// <param name="emailService">
         /// The email service.
         /// </param>
+        /// <param name="cookieStorageService">
+        /// The cookie Storage Service.
+        /// </param>
         /// <param name="formsAuthentication">
         /// The forms authentication.
         /// </param>
         public AccountController(
             IMembershipService membershipService,
             IEmailService emailService,
+            ICookieStorageService cookieStorageService,
             IFormsAuthentication formsAuthentication)
             : base(formsAuthentication)
         {
             this.membershipService = membershipService;
             this.emailService = emailService;
+            this.cookieStorageService = cookieStorageService;
         }
 
         /// <summary>
@@ -65,6 +78,7 @@ namespace TdService.Controllers
         public ActionResult SignIn()
         {
             var model = new SignInView();
+            this.SetCredentialsFromCookie(ref model);
             ViewData.Model = model;
             return this.View();
         }
@@ -72,7 +86,7 @@ namespace TdService.Controllers
         /// <summary>
         /// Defines a POST interface for submiting the SignIn form.
         /// </summary>
-        /// <param name="request">
+        /// <param name="view">
         /// Sign In Request object with username, password and remember me fields.
         /// </param>
         /// <returns>
@@ -80,29 +94,38 @@ namespace TdService.Controllers
         /// </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult SignIn(SignInView request)
+        public ActionResult SignIn(SignInView view)
         {
-            var validateUserRequest = new ValidateUserRequest
-                {
-                    Email = request.Email,
-                    Password = request.Password
-                };
-            var response = this.membershipService.ValidateUser(validateUserRequest);
-
-            if (response.MessageType != MessageType.Error)
+            if (ModelState.IsValid)
             {
-                this.FormsAuthentication.SetAuthenticationToken(request.Email, request.RememberMe);
-                return this.RedirectToAction("Dashboard", "Member");
-            }
+                var validateUserRequest = new ValidateUserRequest
+                {
+                    Email = view.Email,
+                    Password = view.Password
+                };
+                var response = this.membershipService.ValidateUser(validateUserRequest);
 
-            var model = new SignInView
+                if (response.MessageType != MessageType.Error)
+                {
+                    this.FormsAuthentication.SetAuthenticationToken(view.Email, false);
+                    this.SaveCredentialsToCookie(view);
+                    return this.RedirectToAction("Dashboard", "Member");
+                }
+
+                var model = new SignInView
                 {
                     MessageType = response.MessageType.ToString(),
-                    Message =
-                        response.Message
-                        ?? (new ResourceManager(typeof(Resources.ErrorCodeResources))).GetString(response.ErrorCode)
+                    Message = response.Message ?? string.Empty
                 };
-            ViewData.Model = model;
+                if (response.ErrorCode != null)
+                {
+                    model.Message =
+                        (new ResourceManager(typeof(Resources.ErrorCodeResources))).GetString(response.ErrorCode);
+                }
+
+                ViewData.Model = model;
+            }
+
             return this.View();
         }
 
@@ -182,12 +205,12 @@ namespace TdService.Controllers
         {
             if (ModelState.IsValid)
             {
-                var request = new ChangePasswordLinkRequest { IdentityToken = this.HttpContext.User.Identity.Name };
-                var response = this.membershipService.GenerateChangePasswordLink(request);
+                var request = new ChangePasswordLinkRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() };
+                this.membershipService.GenerateChangePasswordLink(request);
                 this.emailService.SendMail(
-                    "noreply@shopanyware.com", 
-                    view.Email, 
-                    Resources.EmailResources.ResetPasswordSubject, 
+                    "noreply@shopanyware.com",
+                    view.Email,
+                    Resources.EmailResources.ResetPasswordSubject,
                     Resources.EmailResources.ResetPasswordBody);
             }
 
@@ -204,7 +227,49 @@ namespace TdService.Controllers
         public ActionResult SignOut()
         {
             this.FormsAuthentication.SignOut();
-            return this.RedirectToAction("Index", "Home");
+            return this.RedirectToAction("SignIn", "Account");
+        }
+
+        /// <summary>
+        /// Save credentials to cookie.
+        /// </summary>
+        /// <param name="view">
+        /// The view.
+        /// </param>
+        private void SaveCredentialsToCookie(SignInView view)
+        {
+            if (view.RememberMe)
+            {
+                var values = new NameValueCollection(3);
+                values["Email"] = view.Email;
+                values["Password"] = view.Password;
+                values["RememberMe"] = view.RememberMe ? "yes" : "no";
+                this.cookieStorageService.SaveCollection(
+                    "shopanyware_login", values, DateTime.UtcNow.AddYears(20));
+            }
+            else
+            {
+                var values = new NameValueCollection(3);
+                values["Email"] = string.Empty;
+                values["Password"] = string.Empty;
+                values["RememberMe"] = string.Empty;
+                this.cookieStorageService.SaveCollection(
+                    "shopanyware_login", values, DateTime.UtcNow.AddDays(-2));
+            }
+        }
+
+        /// <summary>
+        /// Set credentials from cookie to sign in view.
+        /// </summary>
+        /// <param name="view">
+        /// The view.
+        /// </param>
+        private void SetCredentialsFromCookie(ref SignInView view)
+        {
+            var values = this.cookieStorageService.RetrieveCollection("shopanyware_login");
+            view.Email = values["Email"];
+            view.Password = values["Password"];
+            view.RememberMe = values["RememberMe"] == "yes";
         }
     }
 }

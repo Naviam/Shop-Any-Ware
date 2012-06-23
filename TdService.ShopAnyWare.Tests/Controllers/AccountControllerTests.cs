@@ -15,6 +15,7 @@ namespace TdService.ShopAnyWare.Tests.Controllers
 
     using TdService.Controllers;
     using TdService.Infrastructure.Authentication;
+    using TdService.Infrastructure.CookieStorage;
     using TdService.Infrastructure.Email;
     using TdService.Services.Interfaces;
     using TdService.Services.ViewModels.Account;
@@ -42,6 +43,11 @@ namespace TdService.ShopAnyWare.Tests.Controllers
         private IEmailService EmailService { get; set; }
 
         /// <summary>
+        /// Gets or sets Cookie Storage Service.
+        /// </summary>
+        private ICookieStorageService CookieStorageService { get; set; }
+
+        /// <summary>
         /// Initial setup for account controller tests.
         /// </summary>
         [TestFixtureSetUp]
@@ -50,6 +56,7 @@ namespace TdService.ShopAnyWare.Tests.Controllers
             this.MembershipService = new FakeMembershipService();
             this.FormsAuthentication = new FakeFormsAuthentication();
             this.EmailService = new FakeEmailService();
+            this.CookieStorageService = new CookieStorageService();
         }
 
         /// <summary>
@@ -62,6 +69,7 @@ namespace TdService.ShopAnyWare.Tests.Controllers
             var controller = new AccountController(
                 this.MembershipService,
                 this.EmailService,
+                this.CookieStorageService,
                 this.FormsAuthentication);
             var expected = string.Empty;
 
@@ -83,6 +91,7 @@ namespace TdService.ShopAnyWare.Tests.Controllers
             var controller = new AccountController(
                 this.MembershipService,
                 this.EmailService,
+                this.CookieStorageService,
                 this.FormsAuthentication);
             var expected = string.Empty;
 
@@ -104,6 +113,7 @@ namespace TdService.ShopAnyWare.Tests.Controllers
             var controller = new AccountController(
                 this.MembershipService,
                 this.EmailService,
+                this.CookieStorageService,
                 this.FormsAuthentication);
             var expected = string.Empty;
 
@@ -125,6 +135,7 @@ namespace TdService.ShopAnyWare.Tests.Controllers
             var controller = new AccountController(
                 this.MembershipService,
                 this.EmailService,
+                this.CookieStorageService,
                 this.FormsAuthentication);
             var view = new ForgotPasswordView { Email = "vhatalski@naviam.com" };
 
@@ -146,6 +157,7 @@ namespace TdService.ShopAnyWare.Tests.Controllers
             var controller = new AccountController(
                 this.MembershipService,
                 this.EmailService,
+                this.CookieStorageService,
                 this.FormsAuthentication);
             var view = new ForgotPasswordView { Email = "vhatalski@invalid" };
 
