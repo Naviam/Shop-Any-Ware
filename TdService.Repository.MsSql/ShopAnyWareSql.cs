@@ -20,99 +20,72 @@ namespace TdService.Repository.MsSql
     using TdService.Model.Notification;
     using TdService.Model.Orders;
     using TdService.Model.Packages;
+    using TdService.Repository.MsSql.Repositories;
 
     /// <summary>
     /// DbContext for the entity framework mapping.
     /// </summary>
-    public class ShopAnyWareSql : DbContext
+    public class ShopAnyWareSql : DbContext, IShopAnyWareContext
     {
         /// <summary>
-        /// Gets or sets Items.
+        /// Gets Items.
         /// </summary>
-// ReSharper disable UnusedMember.Global
-        public DbSet<Item> Items { get; set; }
-// ReSharper restore UnusedMember.Global
+        public IDbSet<Item> Items { get; private set; }
 
         /// <summary>
-        /// Gets or sets Orders.
+        /// Gets Orders.
         /// </summary>
-// ReSharper disable UnusedAutoPropertyAccessor.Global
-        public DbSet<Order> Orders { get; set; }
-// ReSharper restore UnusedAutoPropertyAccessor.Global
+        public IDbSet<Order> Orders { get; private set; }
 
         /// <summary>
-        /// Gets or sets Packages.
+        /// Gets Packages.
         /// </summary>
-// ReSharper disable UnusedMember.Global
-        public DbSet<Package> Packages { get; set; }
-// ReSharper restore UnusedMember.Global
+        public IDbSet<Package> Packages { get; private set; }
 
         /// <summary>
-        /// Gets or sets Retailers.
+        /// Gets Retailers.
         /// </summary>
-// ReSharper disable MemberCanBePrivate.Global
-// ReSharper disable UnusedAutoPropertyAccessor.Global
-        public DbSet<Retailer> Retailers { get; set; }
-// ReSharper restore UnusedAutoPropertyAccessor.Global
-// ReSharper restore MemberCanBePrivate.Global
+        public IDbSet<Retailer> Retailers { get; private set; }
 
         /// <summary>
-        /// Gets or sets Whallets.
+        /// Gets Whallets.
         /// </summary>
-// ReSharper disable UnusedMember.Global
-        public DbSet<Wallet> Wallets { get; set; }
-// ReSharper restore UnusedMember.Global
+        public IDbSet<Wallet> Wallets { get; private set; }
 
         /// <summary>
-        /// Gets or sets Transactions.
+        /// Gets Transactions.
         /// </summary>
-// ReSharper disable UnusedMember.Global
-        public DbSet<Transaction> Transactions { get; set; }
-// ReSharper restore UnusedMember.Global
+        public IDbSet<Transaction> Transactions { get; private set; }
 
         /// <summary>
-        /// Gets or sets Currencies.
+        /// Gets Currencies.
         /// </summary>
-// ReSharper disable MemberCanBePrivate.Global
-// ReSharper disable UnusedAutoPropertyAccessor.Global
-        public DbSet<Currency> Currencies { get; set; }
-// ReSharper restore UnusedAutoPropertyAccessor.Global
-// ReSharper restore MemberCanBePrivate.Global
+        public IDbSet<Currency> Currencies { get; private set; }
 
         /// <summary>
-        /// Gets or sets Users.
+        /// Gets Users.
         /// </summary>
-// ReSharper disable UnusedAutoPropertyAccessor.Global
-        public DbSet<User> Users { get; set; }
-// ReSharper restore UnusedAutoPropertyAccessor.Global
+        public IDbSet<User> Users { get; private set; }
 
         /// <summary>
-        /// Gets or sets Roles.
+        /// Gets Roles.
         /// </summary>
-// ReSharper disable UnusedAutoPropertyAccessor.Global
-        public DbSet<Role> Roles { get; set; }
-// ReSharper restore UnusedAutoPropertyAccessor.Global
+        public IDbSet<Role> Roles { get; private set; }
 
         /// <summary>
-        /// Gets or sets Profiles.
+        /// Gets Profiles.
         /// </summary>
-// ReSharper disable UnusedMember.Global
-        public DbSet<Profile> Profiles { get; set; }
-// ReSharper restore UnusedMember.Global
+        public IDbSet<Profile> Profiles { get; private set; }
 
         /// <summary>
-        /// Gets or sets Notification Rules.
+        /// Gets Notification Rules.
         /// </summary>
-// ReSharper disable UnusedMember.Global
-        public DbSet<NotificationRule> NotificationRules { get; set; }
-// ReSharper restore UnusedMember.Global
+        public IDbSet<NotificationRule> NotificationRules { get; private set; }
 
         /// <summary>
-        /// Gets or sets Delivery Addresses.
+        /// Gets Delivery Addresses.
         /// </summary>
-// ReSharper disable UnusedAutoPropertyAccessor.Global
-        public DbSet<DeliveryAddress> DeliveryAddresses { get; set; }
-// ReSharper restore UnusedAutoPropertyAccessor.Global
+        public IDbSet<DeliveryAddress> DeliveryAddresses { get; private set; }
 
         /// <summary>
         /// Model creating rules.
