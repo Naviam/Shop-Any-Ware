@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Configurations\CurrencyConfiguration.cs" />
     <Compile Include="Configurations\DeliveryAddressConfiguration.cs" />
+    <Compile Include="Configurations\OrderConfiguration.cs" />
     <Compile Include="Configurations\ProfileConfiguration.cs" />
     <Compile Include="Configurations\RetailerConfiguration.cs" />
     <Compile Include="Configurations\RoleConfiguration.cs" />

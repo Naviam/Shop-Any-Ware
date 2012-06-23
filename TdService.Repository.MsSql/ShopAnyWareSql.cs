@@ -128,6 +128,7 @@ namespace TdService.Repository.MsSql
             modelBuilder.Configurations.Add(new ProfileConfiguration());
             modelBuilder.Configurations.Add(new CurrencyConfiguration());
             modelBuilder.Configurations.Add(new RetailerConfiguration());
+            modelBuilder.Configurations.Add(new OrderConfiguration());
         }
 
         /// <summary>
