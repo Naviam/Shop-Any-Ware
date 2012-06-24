@@ -30,84 +30,84 @@ namespace TdService.Repository.MsSql
         /// Gets Items.
         /// </summary>
 // ReSharper disable UnusedAutoPropertyAccessor.Local
-        public DbSet<Item> Items { get; private set; }
+        public DbSet<Item> Items { get; set; }
 // ReSharper restore UnusedAutoPropertyAccessor.Local
 
         /// <summary>
         /// Gets Orders.
         /// </summary>
 // ReSharper disable UnusedAutoPropertyAccessor.Local
-        public DbSet<Order> Orders { get; private set; }
+        public DbSet<Order> Orders { get; set; }
 // ReSharper restore UnusedAutoPropertyAccessor.Local
 
         /// <summary>
         /// Gets Packages.
         /// </summary>
 // ReSharper disable UnusedAutoPropertyAccessor.Local
-        public DbSet<Package> Packages { get; private set; }
+        public DbSet<Package> Packages { get; set; }
 // ReSharper restore UnusedAutoPropertyAccessor.Local
 
         /// <summary>
         /// Gets Retailers.
         /// </summary>
 // ReSharper disable UnusedAutoPropertyAccessor.Local
-        public DbSet<Retailer> Retailers { get; private set; }
+        public DbSet<Retailer> Retailers { get; set; }
 // ReSharper restore UnusedAutoPropertyAccessor.Local
 
         /// <summary>
         /// Gets Whallets.
         /// </summary>
 // ReSharper disable UnusedAutoPropertyAccessor.Local
-        public DbSet<Wallet> Wallets { get; private set; }
+        public DbSet<Wallet> Wallets { get; set; }
 // ReSharper restore UnusedAutoPropertyAccessor.Local
 
         /// <summary>
         /// Gets Transactions.
         /// </summary>
 // ReSharper disable UnusedAutoPropertyAccessor.Local
-        public DbSet<Transaction> Transactions { get; private set; }
+        public DbSet<Transaction> Transactions { get; set; }
 // ReSharper restore UnusedAutoPropertyAccessor.Local
 
         /// <summary>
         /// Gets Currencies.
         /// </summary>
 // ReSharper disable UnusedAutoPropertyAccessor.Local
-        public DbSet<Currency> Currencies { get; private set; }
+        public DbSet<Currency> Currencies { get; set; }
 // ReSharper restore UnusedAutoPropertyAccessor.Local
 
         /// <summary>
         /// Gets Users.
         /// </summary>
 // ReSharper disable UnusedAutoPropertyAccessor.Local
-        public DbSet<User> Users { get; private set; }
+        public DbSet<User> Users { get; set; }
 // ReSharper restore UnusedAutoPropertyAccessor.Local
 
         /// <summary>
         /// Gets Roles.
         /// </summary>
 // ReSharper disable UnusedAutoPropertyAccessor.Local
-        public DbSet<Role> Roles { get; private set; }
+        public DbSet<Role> Roles { get; set; }
 // ReSharper restore UnusedAutoPropertyAccessor.Local
 
         /// <summary>
         /// Gets Profiles.
         /// </summary>
 // ReSharper disable UnusedAutoPropertyAccessor.Local
-        public DbSet<Profile> Profiles { get; private set; }
+        public DbSet<Profile> Profiles { get; set; }
 // ReSharper restore UnusedAutoPropertyAccessor.Local
 
         /// <summary>
         /// Gets Notification Rules.
         /// </summary>
 // ReSharper disable UnusedAutoPropertyAccessor.Local
-        public DbSet<NotificationRule> NotificationRules { get; private set; }
+        public DbSet<NotificationRule> NotificationRules { get; set; }
 // ReSharper restore UnusedAutoPropertyAccessor.Local
 
         /// <summary>
         /// Gets Delivery Addresses.
         /// </summary>
 // ReSharper disable UnusedAutoPropertyAccessor.Local
-        public DbSet<DeliveryAddress> DeliveryAddresses { get; private set; }
+        public DbSet<DeliveryAddress> DeliveryAddresses { get; set; }
 // ReSharper restore UnusedAutoPropertyAccessor.Local
 
         /// <summary>
