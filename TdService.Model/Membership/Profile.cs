@@ -10,7 +10,6 @@
 namespace TdService.Model.Membership
 {
     using TdService.Infrastructure.Domain;
-    using TdService.Model.Notification;
 
     /// <summary>
     /// User profile.
@@ -28,9 +27,14 @@ namespace TdService.Model.Membership
         public string LastName { get; set; }
 
         /// <summary>
-        /// Gets or sets Notification Rule.
+        /// Gets or sets a value indicating whether NotifyOnOrderStatusChanged.
         /// </summary>
-        public NotificationRule NotificationRule { get; set; }
+        public bool NotifyOnOrderStatusChanged { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether NotifyOnPackageStatusChanged.
+        /// </summary>
+        public bool NotifyOnPackageStatusChanged { get; set; }
 
         /// <summary>
         /// Gets or sets Row Version.

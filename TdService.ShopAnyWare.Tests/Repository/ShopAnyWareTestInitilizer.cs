@@ -17,7 +17,6 @@ namespace TdService.ShopAnyWare.Tests.Repository
     using TdService.Model.Addresses;
     using TdService.Model.Balance;
     using TdService.Model.Membership;
-    using TdService.Model.Notification;
     using TdService.Repository.MsSql;
 
     /// <summary>
@@ -79,16 +78,14 @@ namespace TdService.ShopAnyWare.Tests.Repository
             context.Entry(user).State = EntityState.Modified;
             context.SaveChanges();
 
-            user.Profile = new Profile { FirstName = "Vitali", LastName = "Hatalski" };
+            user.Profile = new Profile
+                {
+                    FirstName = "Vitali",
+                    LastName = "Hatalski",
+                    NotifyOnOrderStatusChanged = true,
+                    NotifyOnPackageStatusChanged = true
+                };
             context.Entry(user).State = EntityState.Modified;
-            context.SaveChanges();
-
-            user.Profile.NotificationRule = new NotificationRule
-            {
-                NotifyOnOrderStatusChanged = true,
-                NotifyOnPackageStatusChanged = true
-            };
-            context.Entry(user.Profile).State = EntityState.Modified;
             context.SaveChanges();
 
             var user2 = new User { Email = "tdservice@mail.ru", Password = "1", Roles = new List<Role>() };

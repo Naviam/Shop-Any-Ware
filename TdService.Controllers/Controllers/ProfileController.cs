@@ -14,7 +14,6 @@ namespace TdService.Controllers
     using System.Web.Mvc;
 
     using TdService.Infrastructure.Authentication;
-    using TdService.Model.Notification;
     using TdService.Resources;
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging.Membership;
@@ -124,13 +123,9 @@ namespace TdService.Controllers
                     {
                         FirstName = profileView.FirstName,
                         LastName = profileView.LastName,
-                        IdentityToken = this.FormsAuthentication.GetAuthenticationToken(),
-                        NotificationRule =
-                            new NotificationRule
-                            {
-                                NotifyOnOrderStatusChanged = profileView.NotifyOnOrderStatusChange,
-                                NotifyOnPackageStatusChanged = profileView.NotifyOnPackageStatusChange
-                            }
+                        NotifyOnOrderStatusChanged = profileView.NotifyOnOrderStatusChange,
+                        NotifyOnPackageStatusChanged = profileView.NotifyOnPackageStatusChange,
+                        IdentityToken = this.FormsAuthentication.GetAuthenticationToken()
                     };
 
                     var response = this.membershipService.UpdateProfile(request);

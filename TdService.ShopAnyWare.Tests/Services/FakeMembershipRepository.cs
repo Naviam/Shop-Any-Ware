@@ -13,7 +13,6 @@ namespace TdService.ShopAnyWare.Tests.Services
 
     using TdService.Model.Addresses;
     using TdService.Model.Membership;
-    using TdService.Model.Notification;
 
     /// <summary>
     /// Fake membership repository for testing purpose.
@@ -38,30 +37,11 @@ namespace TdService.ShopAnyWare.Tests.Services
                         Id = id,
                         FirstName = "Vitali",
                         LastName = "Hatalski",
-                        NotificationRule =
-                            new NotificationRule
-                                {
-                                    Id = 1,
-                                    NotifyOnOrderStatusChanged = true,
-                                    NotifyOnPackageStatusChanged = true 
-                                }
+                        NotifyOnOrderStatusChanged = true,
+                        NotifyOnPackageStatusChanged = true
                     };
             }
 
-            return null;
-        }
-
-        /// <summary>
-        /// Get warehouse address for user.
-        /// </summary>
-        /// <param name="email">
-        /// The email.
-        /// </param>
-        /// <returns>
-        /// Warehouse address for user.
-        /// </returns>
-        public WarehouseAddress GetWarehouseAddress(string email)
-        {
             return null;
         }
 
@@ -229,13 +209,8 @@ namespace TdService.ShopAnyWare.Tests.Services
                                     Id = 1,
                                     FirstName = "Vitali",
                                     LastName = "Hatalski",
-                                    NotificationRule =
-                                        new NotificationRule
-                                            {
-                                                Id = 1,
-                                                NotifyOnOrderStatusChanged = true,
-                                                NotifyOnPackageStatusChanged = true
-                                            }
+                                    NotifyOnOrderStatusChanged = true,
+                                    NotifyOnPackageStatusChanged = true
                                 }
                     };
 

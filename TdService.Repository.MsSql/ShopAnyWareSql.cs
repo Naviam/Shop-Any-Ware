@@ -17,7 +17,6 @@ namespace TdService.Repository.MsSql
     using TdService.Model.Balance;
     using TdService.Model.Items;
     using TdService.Model.Membership;
-    using TdService.Model.Notification;
     using TdService.Model.Orders;
     using TdService.Model.Packages;
 
@@ -94,13 +93,6 @@ namespace TdService.Repository.MsSql
         /// </summary>
 // ReSharper disable UnusedAutoPropertyAccessor.Local
         public DbSet<Profile> Profiles { get; set; }
-// ReSharper restore UnusedAutoPropertyAccessor.Local
-
-        /// <summary>
-        /// Gets Notification Rules.
-        /// </summary>
-// ReSharper disable UnusedAutoPropertyAccessor.Local
-        public DbSet<NotificationRule> NotificationRules { get; set; }
 // ReSharper restore UnusedAutoPropertyAccessor.Local
 
         /// <summary>
@@ -186,16 +178,14 @@ namespace TdService.Repository.MsSql
                 context.Entry(user).State = EntityState.Modified;
                 context.SaveChanges();
 
-                user.Profile = new Profile { FirstName = "Vitali", LastName = "Hatalski" };
+                user.Profile = new Profile
+                    {
+                        FirstName = "Vitali",
+                        LastName = "Hatalski",
+                        NotifyOnOrderStatusChanged = true,
+                        NotifyOnPackageStatusChanged = true
+                    };
                 context.Entry(user).State = EntityState.Modified;
-                context.SaveChanges();
-
-                user.Profile.NotificationRule = new NotificationRule
-                {
-                    NotifyOnOrderStatusChanged = true,
-                    NotifyOnPackageStatusChanged = true
-                };
-                context.Entry(user.Profile).State = EntityState.Modified;
                 context.SaveChanges();
 
                 var user2 = new User { Email = "tdservice@mail.ru", Password = "1", Roles = new List<Role>() };
@@ -258,7 +248,12 @@ namespace TdService.Repository.MsSql
                 context.SaveChanges();
 
                 context.Retailers.Add(
-                    new Retailer { Category = "Computers", Name = "Apple, Inc.", Description = "Apple Computers" });
+                    new Retailer
+                        {
+                            Category = "Computers",
+                            Name = "Apple, Inc.",
+                            Description = "Apple Computers"
+                        });
                 context.SaveChanges();
 
                 base.Seed(context);

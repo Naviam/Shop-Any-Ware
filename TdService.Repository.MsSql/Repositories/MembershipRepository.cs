@@ -9,12 +9,10 @@ namespace TdService.Repository.MsSql.Repositories
     using System;
     using System.Collections.Generic;
     using System.Data;
-    using System.Data.Entity;
     using System.Linq;
 
     using TdService.Model.Addresses;
     using TdService.Model.Membership;
-    using TdService.Model.Notification;
 
     /// <summary>
     /// This repository contains methods to work with users and roles.
@@ -239,14 +237,8 @@ namespace TdService.Repository.MsSql.Repositories
                 {
                     profileDb.FirstName = profile.FirstName;
                     profileDb.LastName = profile.LastName;
-                    if (profile.NotificationRule != null)
-                    {
-                        profileDb.NotificationRule = new NotificationRule
-                        {
-                            NotifyOnOrderStatusChanged = profile.NotificationRule.NotifyOnOrderStatusChanged,
-                            NotifyOnPackageStatusChanged = profile.NotificationRule.NotifyOnPackageStatusChanged
-                        };
-                    }
+                    profileDb.NotifyOnOrderStatusChanged = profile.NotifyOnOrderStatusChanged;
+                    profileDb.NotifyOnPackageStatusChanged = profile.NotifyOnPackageStatusChanged;
 
                     context.SaveChanges();
                 }

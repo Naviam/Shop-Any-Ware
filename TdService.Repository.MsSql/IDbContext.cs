@@ -16,7 +16,6 @@ namespace TdService.Repository.MsSql
     using TdService.Model.Balance;
     using TdService.Model.Items;
     using TdService.Model.Membership;
-    using TdService.Model.Notification;
     using TdService.Model.Orders;
     using TdService.Model.Packages;
 
@@ -74,11 +73,6 @@ namespace TdService.Repository.MsSql
         /// Gets Profiles.
         /// </summary>
         IDbSet<Profile> Profiles { get; }
-
-        /// <summary>
-        /// Gets Notification Rules.
-        /// </summary>
-        IDbSet<NotificationRule> NotificationRules { get; }
 
         /// <summary>
         /// Gets DeliveryAddresses.

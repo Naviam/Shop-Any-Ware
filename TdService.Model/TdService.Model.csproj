@@ -70,7 +70,6 @@
     <Compile Include="Shipping\Courier.cs" />
     <Compile Include="Shipping\DispatchMethod.cs" />
     <Compile Include="Items\Item.cs" />
-    <Compile Include="Notification\NotificationRule.cs" />
     <Compile Include="Orders\OrderStatus.cs" />
     <Compile Include="Packages\Package.cs" />
     <Compile Include="Packages\PackageStatus.cs" />
@@ -84,7 +83,6 @@
     <Compile Include="Retailer.cs" />
     <Compile Include="Addresses\IAddressRepository.cs" />
     <Compile Include="Items\IItemRepository.cs" />
-    <Compile Include="Notification\INotificationRepository.cs" />
     <Compile Include="Orders\IOrderRepository.cs" />
     <Compile Include="Packages\IPackageRepository.cs" />
     <Compile Include="Reports\IReportRepository.cs" />

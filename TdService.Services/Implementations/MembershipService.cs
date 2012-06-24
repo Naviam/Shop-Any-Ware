@@ -10,7 +10,6 @@ namespace TdService.Services.Implementations
     using System.Text;
 
     using TdService.Model.Membership;
-    using TdService.Model.Notification;
     using TdService.Resources;
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging;
@@ -58,12 +57,7 @@ namespace TdService.Services.Implementations
                     Profile = new Profile
                         {
                             FirstName = request.FirstName,
-                            LastName = request.LastName,
-                            NotificationRule = new NotificationRule
-                                {
-                                    NotifyOnOrderStatusChanged = true,
-                                    NotifyOnPackageStatusChanged = true
-                                }
+                            LastName = request.LastName
                         }
                 };
 
@@ -163,13 +157,10 @@ namespace TdService.Services.Implementations
                         LastName = profile.LastName,
                         Id = profile.Id,
                         Email = user.Email,
-                        CurrentPassword = user.Password
+                        CurrentPassword = user.Password,
+                        NotifyOnOrderStatusChange = profile.NotifyOnOrderStatusChanged,
+                        NotifyOnPackageStatusChange = profile.NotifyOnPackageStatusChanged
                     };
-                    if (profile.NotificationRule != null)
-                    {
-                        response.NotifyOnOrderStatusChange = profile.NotificationRule.NotifyOnOrderStatusChanged;
-                        response.NotifyOnPackageStatusChange = profile.NotificationRule.NotifyOnPackageStatusChanged;
-                    }
 
                     response.MessageType = MessageType.Success;
                     return response;
@@ -201,12 +192,8 @@ namespace TdService.Services.Implementations
                 {
                     FirstName = request.FirstName,
                     LastName = request.LastName,
-                    NotificationRule =
-                        new NotificationRule
-                            {
-                                NotifyOnOrderStatusChanged = request.NotificationRule.NotifyOnOrderStatusChanged,
-                                NotifyOnPackageStatusChanged = request.NotificationRule.NotifyOnPackageStatusChanged
-                            }
+                    NotifyOnOrderStatusChanged = request.NotifyOnOrderStatusChanged,
+                    NotifyOnPackageStatusChanged = request.NotifyOnPackageStatusChanged
                 };
 
             ThrowExceptionIfProfileIsInvalid(profile);

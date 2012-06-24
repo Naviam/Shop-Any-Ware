@@ -9,7 +9,6 @@
 
 namespace TdService.Services.Messaging.Membership
 {
-    using TdService.Model.Notification;
     using TdService.Services.Messaging;
 
     /// <summary>
@@ -28,8 +27,13 @@ namespace TdService.Services.Messaging.Membership
         public string LastName { get; set; }
 
         /// <summary>
-        /// Gets or sets Notification Rule.
+        /// Gets or sets a value indicating whether NotifyOnOrderStatusChanged.
         /// </summary>
-        public NotificationRule NotificationRule { get; set; }
+        public bool NotifyOnOrderStatusChanged { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether NotifyOnPackageStatusChanged.
+        /// </summary>
+        public bool NotifyOnPackageStatusChanged { get; set; }
     }
 }
