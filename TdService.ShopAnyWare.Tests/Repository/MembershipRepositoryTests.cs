@@ -39,13 +39,23 @@ namespace TdService.ShopAnyWare.Tests.Repository
             var user = new User
                 {
                     Email = "v.hatalski@gmail.com",
-                    Password = "ruinruin"
+                    Password = "ruinruin",
+                    Profile = new Profile()
+                        {
+                            FirstName = "Vitali",
+                            LastName = "Hatalski"
+                        }
                 };
 
             // act
             repository.AddShopper(user);
+            var actual = repository.GetUser("v.hatalski@gmail.com");
 
             // assert
+            Assert.That(actual.Email, Is.EqualTo(user.Email));
+            Assert.That(actual.Password, Is.EqualTo(user.Password));
+            Assert.That(actual.Profile.FirstName, Is.EqualTo(user.Profile.FirstName));
+            Assert.That(actual.Profile.LastName, Is.EqualTo(user.Profile.LastName));
         }
     }
 }

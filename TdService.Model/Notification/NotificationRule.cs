@@ -19,24 +19,20 @@ namespace TdService.Model.Notification
     public class NotificationRule : EntityBase<int>
     {
         /// <summary>
-        /// Gets or sets a value indicating whether NotifyOrderStatusChanged.
+        /// Gets or sets a value indicating whether NotifyOnOrderStatusChanged.
         /// </summary>
         public bool NotifyOnOrderStatusChanged { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether NotifyParcelStatusChanged.
+        /// Gets or sets a value indicating whether NotifyOnPackageStatusChanged.
         /// </summary>
         public bool NotifyOnPackageStatusChanged { get; set; }
 
         /// <summary>
         /// Validate business rules.
         /// </summary>
-        /// <exception cref="NotImplementedException">
-        /// not yet implemented.
-        /// </exception>
         protected override void Validate()
         {
-            throw new NotImplementedException();
         }
     }
 }

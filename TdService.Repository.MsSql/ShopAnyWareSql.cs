@@ -24,101 +24,90 @@ namespace TdService.Repository.MsSql
     /// <summary>
     /// DbContext for the entity framework mapping.
     /// </summary>
-    public class ShopAnyWareSql : DbContext, IDbContext
+    public class ShopAnyWareSql : DbContext
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ShopAnyWareSql"/> class.
-        /// </summary>
-        /// <param name="connectionName">
-        /// The connection name.
-        /// </param>
-        public ShopAnyWareSql(string connectionName = "ShopAnyWareSql")
-            : base(connectionName)
-        {
-        }
-
         /// <summary>
         /// Gets Items.
         /// </summary>
 // ReSharper disable UnusedAutoPropertyAccessor.Local
-        public IDbSet<Item> Items { get; private set; }
+        public DbSet<Item> Items { get; private set; }
 // ReSharper restore UnusedAutoPropertyAccessor.Local
 
         /// <summary>
         /// Gets Orders.
         /// </summary>
 // ReSharper disable UnusedAutoPropertyAccessor.Local
-        public IDbSet<Order> Orders { get; private set; }
+        public DbSet<Order> Orders { get; private set; }
 // ReSharper restore UnusedAutoPropertyAccessor.Local
 
         /// <summary>
         /// Gets Packages.
         /// </summary>
 // ReSharper disable UnusedAutoPropertyAccessor.Local
-        public IDbSet<Package> Packages { get; private set; }
+        public DbSet<Package> Packages { get; private set; }
 // ReSharper restore UnusedAutoPropertyAccessor.Local
 
         /// <summary>
         /// Gets Retailers.
         /// </summary>
 // ReSharper disable UnusedAutoPropertyAccessor.Local
-        public IDbSet<Retailer> Retailers { get; private set; }
+        public DbSet<Retailer> Retailers { get; private set; }
 // ReSharper restore UnusedAutoPropertyAccessor.Local
 
         /// <summary>
         /// Gets Whallets.
         /// </summary>
 // ReSharper disable UnusedAutoPropertyAccessor.Local
-        public IDbSet<Wallet> Wallets { get; private set; }
+        public DbSet<Wallet> Wallets { get; private set; }
 // ReSharper restore UnusedAutoPropertyAccessor.Local
 
         /// <summary>
         /// Gets Transactions.
         /// </summary>
 // ReSharper disable UnusedAutoPropertyAccessor.Local
-        public IDbSet<Transaction> Transactions { get; private set; }
+        public DbSet<Transaction> Transactions { get; private set; }
 // ReSharper restore UnusedAutoPropertyAccessor.Local
 
         /// <summary>
         /// Gets Currencies.
         /// </summary>
 // ReSharper disable UnusedAutoPropertyAccessor.Local
-        public IDbSet<Currency> Currencies { get; private set; }
+        public DbSet<Currency> Currencies { get; private set; }
 // ReSharper restore UnusedAutoPropertyAccessor.Local
 
         /// <summary>
         /// Gets Users.
         /// </summary>
 // ReSharper disable UnusedAutoPropertyAccessor.Local
-        public IDbSet<User> Users { get; private set; }
+        public DbSet<User> Users { get; private set; }
 // ReSharper restore UnusedAutoPropertyAccessor.Local
 
         /// <summary>
         /// Gets Roles.
         /// </summary>
 // ReSharper disable UnusedAutoPropertyAccessor.Local
-        public IDbSet<Role> Roles { get; private set; }
+        public DbSet<Role> Roles { get; private set; }
 // ReSharper restore UnusedAutoPropertyAccessor.Local
 
         /// <summary>
         /// Gets Profiles.
         /// </summary>
 // ReSharper disable UnusedAutoPropertyAccessor.Local
-        public IDbSet<Profile> Profiles { get; private set; }
+        public DbSet<Profile> Profiles { get; private set; }
 // ReSharper restore UnusedAutoPropertyAccessor.Local
 
         /// <summary>
         /// Gets Notification Rules.
         /// </summary>
 // ReSharper disable UnusedAutoPropertyAccessor.Local
-        public IDbSet<NotificationRule> NotificationRules { get; private set; }
+        public DbSet<NotificationRule> NotificationRules { get; private set; }
 // ReSharper restore UnusedAutoPropertyAccessor.Local
 
         /// <summary>
         /// Gets Delivery Addresses.
         /// </summary>
 // ReSharper disable UnusedAutoPropertyAccessor.Local
-        public IDbSet<DeliveryAddress> DeliveryAddresses { get; private set; }
+        public DbSet<DeliveryAddress> DeliveryAddresses { get; private set; }
 // ReSharper restore UnusedAutoPropertyAccessor.Local
 
         /// <summary>

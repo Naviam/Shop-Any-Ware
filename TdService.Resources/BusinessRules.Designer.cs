@@ -167,5 +167,14 @@ namespace TdService.Resources {
                 return ResourceManager.GetString("User_EmailRequired", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An user must have a password..
+        /// </summary>
+        public static string User_PasswordRequired {
+            get {
+                return ResourceManager.GetString("User_PasswordRequired", resourceCulture);
+            }
+        }
     }
 }

@@ -153,4 +153,7 @@
   <data name="User_EmailRequired" xml:space="preserve">
     <value>An user must have an email.</value>
   </data>
+  <data name="User_PasswordRequired" xml:space="preserve">
+    <value>An user must have a password.</value>
+  </data>
 </root>

@@ -9,7 +9,6 @@
 
 namespace TdService.Model.Membership
 {
-    using System;
     using System.Collections.Generic;
     using Addresses;
 
@@ -72,12 +71,17 @@ namespace TdService.Model.Membership
         /// <summary>
         /// Validate business rules.
         /// </summary>
-        /// <exception cref="NotImplementedException">
-        /// not yet implemented
-        /// </exception>
         protected override void Validate()
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(this.Email))
+            {
+                this.AddBrokenRule(UserBusinessRules.EmailRequired);
+            }
+
+            if (string.IsNullOrEmpty(this.Password))
+            {
+                this.AddBrokenRule(UserBusinessRules.PasswordRequired);
+            }
         }
     }
 }

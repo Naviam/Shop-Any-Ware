@@ -12,12 +12,18 @@ namespace TdService.Model.Membership
     /// <summary>
     /// User business rules.
     /// </summary>
-    public class UserBusinessRules
+    public static class UserBusinessRules
     {
         /// <summary>
         /// This rule ensures that email for user is set.
         /// </summary>
         public static readonly BusinessRule EmailRequired =
             new BusinessRule("Email", BusinessRules.User_EmailRequired);
+
+        /// <summary>
+        /// This rule ensures that password for user is set.
+        /// </summary>
+        public static readonly BusinessRule PasswordRequired =
+            new BusinessRule("Email", BusinessRules.User_PasswordRequired);
     }
 }

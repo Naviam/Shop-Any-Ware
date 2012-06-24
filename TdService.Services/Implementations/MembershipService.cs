@@ -6,7 +6,6 @@
 
 namespace TdService.Services.Implementations
 {
-    using System.Collections.Generic;
     using System.Linq;
     using System.Text;
 
@@ -67,6 +66,9 @@ namespace TdService.Services.Implementations
                                 }
                         }
                 };
+
+            ThrowExceptionIfUserIsInvalid(user);
+
             var userInDatabase = this.membershipRepository.GetUser(request.Email);
             if (userInDatabase != null)
             {
