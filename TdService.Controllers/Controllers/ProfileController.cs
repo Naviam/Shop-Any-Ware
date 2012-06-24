@@ -103,7 +103,7 @@ namespace TdService.Controllers
         }
 
         /// <summary>
-        /// Save full name.
+        /// Save profile.
         /// </summary>
         /// <param name="profileView">
         /// The profile View.

@@ -12,7 +12,6 @@ namespace TdService.Model.Packages
     using System;
     using System.Collections.Generic;
     using Addresses;
-    using RFO;
 
     using TdService.Infrastructure.Domain;
     using TdService.Model.Orders;

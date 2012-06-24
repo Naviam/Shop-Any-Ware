@@ -9,6 +9,7 @@ namespace TdService.Services.Implementations
     using System.Linq;
     using System.Text;
 
+    using TdService.Model.Balance;
     using TdService.Model.Membership;
     using TdService.Resources;
     using TdService.Services.Interfaces;
@@ -57,7 +58,9 @@ namespace TdService.Services.Implementations
                     Profile = new Profile
                         {
                             FirstName = request.FirstName,
-                            LastName = request.LastName
+                            LastName = request.LastName,
+                            NotifyOnOrderStatusChanged = true,
+                            NotifyOnPackageStatusChanged = true
                         }
                 };
 

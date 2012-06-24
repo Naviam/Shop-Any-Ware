@@ -117,12 +117,13 @@ namespace TdService.Repository.MsSql
             modelBuilder.Configurations.Add(new CurrencyConfiguration());
             modelBuilder.Configurations.Add(new RetailerConfiguration());
             modelBuilder.Configurations.Add(new OrderConfiguration());
+            modelBuilder.Configurations.Add(new PackageConfiguration());
         }
 
         /// <summary>
         /// This initializer is used to populate database with static data.
         /// </summary>
-        public class ShowAnyWareInitializer : DropCreateDatabaseIfModelChanges<ShopAnyWareSql>
+        public class ShowAnyWareInitializer : DropCreateDatabaseAlways<ShopAnyWareSql>
         {
             /// <summary>
             /// Populate database with static data.
@@ -147,6 +148,7 @@ namespace TdService.Repository.MsSql
 
                 context.SaveChanges();
 
+                // vitali
                 var user = new User
                 {
                     Email = "vhatalski@naviam.com",
@@ -179,42 +181,102 @@ namespace TdService.Repository.MsSql
                 context.SaveChanges();
 
                 user.Profile = new Profile
-                    {
-                        FirstName = "Vitali",
-                        LastName = "Hatalski",
-                        NotifyOnOrderStatusChanged = true,
-                        NotifyOnPackageStatusChanged = true
-                    };
+                {
+                    FirstName = "Vitali",
+                    LastName = "Hatalski",
+                    NotifyOnOrderStatusChanged = true,
+                    NotifyOnPackageStatusChanged = true
+                };
                 context.Entry(user).State = EntityState.Modified;
                 context.SaveChanges();
 
-                var user2 = new User { Email = "tdservice@mail.ru", Password = "1", Roles = new List<Role>() };
+                // oleg
+                var user2 = new User
+                {
+                    Email = "tdservice@mail.ru",
+                    Password = "1",
+                    Roles = new List<Role>(),
+                    Wallet = new Wallet { Amount = 988.00m }
+                };
                 user2.Roles.Add(adminRole);
                 user2.Roles.Add(operatorRole);
                 context.Users.Add(user2);
+                context.SaveChanges();
 
-                var shopper = new User { Email = "shopper@shopanyware.ru", Password = "1", Roles = new List<Role>() };
+                user2.Profile = new Profile
+                {
+                    FirstName = "Oleg",
+                    LastName = "Voronin",
+                    NotifyOnOrderStatusChanged = true,
+                    NotifyOnPackageStatusChanged = true
+                };
+                context.Entry(user2).State = EntityState.Modified;
+                context.SaveChanges();
+
+                // shopper
+                var shopper = new User
+                {
+                    Email = "shopper@shopanyware.ru",
+                    Password = "1",
+                    Roles = new List<Role>(),
+                    Wallet = new Wallet { Amount = 88.00m }
+                };
                 shopper.Roles.Add(shopperRole);
                 context.Users.Add(shopper);
+                context.SaveChanges();
 
+                shopper.Profile = new Profile
+                {
+                    FirstName = "Shopper Name",
+                    LastName = "Surname",
+                    NotifyOnOrderStatusChanged = true,
+                    NotifyOnPackageStatusChanged = true
+                };
+                context.Entry(shopper).State = EntityState.Modified;
+                context.SaveChanges();
+
+                // operator
                 var operatorUser = new User
                 {
                     Email = "operator@shopanyware.ru",
                     Password = "1",
-                    Roles = new List<Role>()
+                    Roles = new List<Role>(),
+                    Wallet = new Wallet { Amount = 0.00m }
                 };
                 operatorUser.Roles.Add(operatorRole);
                 context.Users.Add(operatorUser);
+                context.SaveChanges();
 
+                operatorUser.Profile = new Profile
+                {
+                    FirstName = "Operator Name",
+                    LastName = "Surname",
+                    NotifyOnOrderStatusChanged = true,
+                    NotifyOnPackageStatusChanged = true
+                };
+                context.Entry(operatorUser).State = EntityState.Modified;
+                context.SaveChanges();
+
+                // consultant
                 var consultant = new User
                 {
                     Email = "consultant@shopanyware.ru",
                     Password = "1",
-                    Roles = new List<Role>()
+                    Roles = new List<Role>(),
+                    Wallet = new Wallet { Amount = 0.00m }
                 };
                 consultant.Roles.Add(consultantRole);
                 context.Users.Add(consultant);
+                context.SaveChanges();
 
+                consultant.Profile = new Profile
+                {
+                    FirstName = "Consultant Name",
+                    LastName = "Surname",
+                    NotifyOnOrderStatusChanged = true,
+                    NotifyOnPackageStatusChanged = true
+                };
+                context.Entry(consultant).State = EntityState.Modified;
                 context.SaveChanges();
 
                 context.Currencies.Add(
@@ -248,12 +310,7 @@ namespace TdService.Repository.MsSql
                 context.SaveChanges();
 
                 context.Retailers.Add(
-                    new Retailer
-                        {
-                            Category = "Computers",
-                            Name = "Apple, Inc.",
-                            Description = "Apple Computers"
-                        });
+                    new Retailer { Category = "Computers", Name = "Apple, Inc.", Description = "Apple Computers" });
                 context.SaveChanges();
 
                 base.Seed(context);

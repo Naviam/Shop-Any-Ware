@@ -12,6 +12,7 @@ namespace TdService.Repository.MsSql.Repositories
     using System.Linq;
 
     using TdService.Model.Addresses;
+    using TdService.Model.Balance;
     using TdService.Model.Membership;
 
     /// <summary>
@@ -76,19 +77,9 @@ namespace TdService.Repository.MsSql.Repositories
                 context.Users.Add(user);
                 context.SaveChanges();
 
-                // user.Profile = new Profile { FirstName = user.Profile.FirstName, LastName = user.Profile.LastName };
-                // context.Entry(user).State = EntityState.Modified;
-                // context.SaveChanges();
-
-                // var profile = context.Profiles.Find(user.Profile.Id);
-                // profile.NotificationRule = new NotificationRule
-                // {
-                //     NotifyOnOrderStatusChanged = true,
-                //     NotifyOnPackageStatusChanged = true
-                // };
-                // context.NotificationRules.Attach(profile.NotificationRule);
-                // context.Entry(profile).State = EntityState.Modified;
-                // context.SaveChanges();
+                user.Wallet = new Wallet { Amount = 0.00m };
+                context.Entry(user).State = EntityState.Modified;
+                context.SaveChanges();
             }
         }
 

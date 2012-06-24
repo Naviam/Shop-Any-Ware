@@ -88,12 +88,36 @@ namespace TdService.ShopAnyWare.Tests.Repository
             context.Entry(user).State = EntityState.Modified;
             context.SaveChanges();
 
-            var user2 = new User { Email = "tdservice@mail.ru", Password = "1", Roles = new List<Role>() };
+            var user2 = new User
+                {
+                    Email = "tdservice@mail.ru",
+                    Password = "1",
+                    Roles = new List<Role>()
+                };
             user2.Roles.Add(adminRole);
             user2.Roles.Add(operatorRole);
+            user2.Profile = new Profile
+                {
+                    FirstName = "Oleg",
+                    LastName = "Voronin",
+                    NotifyOnOrderStatusChanged = true,
+                    NotifyOnPackageStatusChanged = true
+                };
             context.Users.Add(user2);
 
-            var shopper = new User { Email = "shopper@shopanyware.ru", Password = "1", Roles = new List<Role>() };
+            var shopper = new User
+                {
+                    Email = "shopper@shopanyware.ru",
+                    Password = "1",
+                    Roles = new List<Role>()
+                };
+            shopper.Profile = new Profile
+                {
+                    FirstName = "Shopper Name",
+                    LastName = "Surname",
+                    NotifyOnOrderStatusChanged = true,
+                    NotifyOnPackageStatusChanged = true
+                };
             shopper.Roles.Add(shopperRole);
             context.Users.Add(shopper);
 
@@ -104,6 +128,13 @@ namespace TdService.ShopAnyWare.Tests.Repository
                 Roles = new List<Role>()
             };
             operatorUser.Roles.Add(operatorRole);
+            operatorUser.Profile = new Profile
+            {
+                FirstName = "Operator Name",
+                LastName = "Surname",
+                NotifyOnOrderStatusChanged = true,
+                NotifyOnPackageStatusChanged = true
+            };
             context.Users.Add(operatorUser);
 
             var consultant = new User
@@ -113,6 +144,13 @@ namespace TdService.ShopAnyWare.Tests.Repository
                 Roles = new List<Role>()
             };
             consultant.Roles.Add(consultantRole);
+            consultant.Profile = new Profile
+            {
+                FirstName = "Consultant Name",
+                LastName = "Surname",
+                NotifyOnOrderStatusChanged = true,
+                NotifyOnPackageStatusChanged = true
+            };
             context.Users.Add(consultant);
 
             context.SaveChanges();
