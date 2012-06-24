@@ -65,8 +65,7 @@ namespace TdService.Services.Implementations
                                     NotifyOnOrderStatusChanged = true,
                                     NotifyOnPackageStatusChanged = true
                                 }
-                        },
-                    Roles = new List<Role> { this.membershipRepository.GetRole("Shopper") }
+                        }
                 };
             var userInDatabase = this.membershipRepository.GetUser(request.Email);
             if (userInDatabase != null)
@@ -76,7 +75,7 @@ namespace TdService.Services.Implementations
             }
             else
             {
-                this.membershipRepository.AddUser(user);
+                this.membershipRepository.AddShopper(user);
 
                 // var createdUser = this.membershipRepository.GetUser(user.Email);
                 // if (createdUser != null)
@@ -254,6 +253,31 @@ namespace TdService.Services.Implementations
                 }
 
                 throw new InvalidProfileException(profileIssues.ToString());
+            }
+        }
+
+        /// <summary>
+        /// Throw exception if user is invalid.
+        /// </summary>
+        /// <param name="user">
+        /// The user.
+        /// </param>
+        /// <exception cref="InvalidUserException">
+        /// Thrown when business rules are broken.
+        /// </exception>
+        private static void ThrowExceptionIfUserIsInvalid(User user)
+        {
+            if (user.GetBrokenRules().Any())
+            {
+                var issues = new StringBuilder();
+
+                // issues.AppendLine("There were some issues.");
+                foreach (var rule in user.GetBrokenRules())
+                {
+                    issues.AppendLine(rule.Rule);
+                }
+
+                throw new InvalidUserException(issues.ToString());
             }
         }
     }

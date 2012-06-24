@@ -268,7 +268,7 @@ namespace TdService.ShopAnyWare.Tests.Services
         /// <param name="user">
         /// The user.
         /// </param>
-        public void AddUser(User user)
+        public void AddShopper(User user)
         {
         }
 

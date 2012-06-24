@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright file="IShopAnyWareContext.cs" company="TdService">
+// <copyright file="IDbContext.cs" company="TdService">
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
@@ -7,9 +7,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Repository.MsSql.Repositories
+namespace TdService.Repository.MsSql
 {
-    using System;
     using System.Data.Entity;
 
     using TdService.Model;
@@ -24,10 +23,8 @@ namespace TdService.Repository.MsSql.Repositories
     /// <summary>
     /// Interface for ShopAnyWare database context.
     /// </summary>
-    public interface IShopAnyWareContext : IDisposable
+    public interface IDbContext
     {
-        IDbSet<TEntity> Set<TEntity>() where TEntity : class;
-
         /// <summary>
         /// Gets Items.
         /// </summary>
@@ -95,7 +92,5 @@ namespace TdService.Repository.MsSql.Repositories
         /// Result number.
         /// </returns>
         int SaveChanges();
-
-        Entry(object entry);
     }
 }

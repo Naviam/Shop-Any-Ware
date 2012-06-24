@@ -53,6 +53,7 @@
     <Compile Include="Balance\Currency.cs" />
     <Compile Include="Membership\IMembershipRepository.cs" />
     <Compile Include="Membership\InvalidProfileException.cs" />
+    <Compile Include="Membership\InvalidUserException.cs" />
     <Compile Include="Membership\ProfileBusinessRules.cs" />
     <Compile Include="Membership\UserBusinessRules.cs" />
     <Compile Include="Orders\OrderReceivingState.cs" />

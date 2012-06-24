@@ -1,0 +1,51 @@
+﻿// -----------------------------------------------------------------------
+// <copyright file="MembershipRepositoryTests.cs" company="TdService">
+// Vitali Hatalski. 2012.
+// </copyright>
+// -----------------------------------------------------------------------
+
+namespace TdService.ShopAnyWare.Tests.Repository
+{
+    using System.Collections.Generic;
+
+    using NUnit.Framework;
+
+    using TdService.Model.Membership;
+    using TdService.Repository.MsSql.Repositories;
+
+    /// <summary>
+    /// Membership repository for testing.
+    /// </summary>
+    [TestFixture]
+    public class MembershipRepositoryTests
+    {
+        /// <summary>
+        /// Setup tests.
+        /// </summary>
+        [SetUp]
+        public void Setup()
+        {
+            new ShopAnyWareTestInitilizer();
+        }
+
+        /// <summary>
+        /// Should add user with all related info.
+        /// </summary>
+        [Test]
+        public void ShouldAddUserWithAllRelatedInfo()
+        {
+            // arrange
+            var repository = new MembershipRepository();
+            var user = new User
+                {
+                    Email = "v.hatalski@gmail.com",
+                    Password = "ruinruin"
+                };
+
+            // act
+            repository.AddShopper(user);
+
+            // assert
+        }
+    }
+}

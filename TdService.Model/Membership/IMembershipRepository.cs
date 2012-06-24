@@ -28,17 +28,6 @@ namespace TdService.Model.Membership
         Profile GetProfile(int id);
 
         /// <summary>
-        /// Get warehouse address for user.
-        /// </summary>
-        /// <param name="email">
-        /// The email.
-        /// </param>
-        /// <returns>
-        /// Warehouse address for user.
-        /// </returns>
-        WarehouseAddress GetWarehouseAddress(string email);
-
-        /// <summary>
         /// Change user's password.
         /// </summary>
         /// <param name="email">
@@ -189,7 +178,7 @@ namespace TdService.Model.Membership
         /// <param name="user">
         /// The user.
         /// </param>
-        void AddUser(User user);
+        void AddShopper(User user);
 
         /// <summary>
         /// Update user's email in the database.

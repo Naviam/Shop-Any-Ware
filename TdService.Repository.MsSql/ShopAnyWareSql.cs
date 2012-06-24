@@ -20,72 +20,106 @@ namespace TdService.Repository.MsSql
     using TdService.Model.Notification;
     using TdService.Model.Orders;
     using TdService.Model.Packages;
-    using TdService.Repository.MsSql.Repositories;
 
     /// <summary>
     /// DbContext for the entity framework mapping.
     /// </summary>
-    public class ShopAnyWareSql : DbContext, IShopAnyWareContext
+    public class ShopAnyWareSql : DbContext, IDbContext
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ShopAnyWareSql"/> class.
+        /// </summary>
+        /// <param name="connectionName">
+        /// The connection name.
+        /// </param>
+        public ShopAnyWareSql(string connectionName = "ShopAnyWareSql")
+            : base(connectionName)
+        {
+        }
+
         /// <summary>
         /// Gets Items.
         /// </summary>
+// ReSharper disable UnusedAutoPropertyAccessor.Local
         public IDbSet<Item> Items { get; private set; }
+// ReSharper restore UnusedAutoPropertyAccessor.Local
 
         /// <summary>
         /// Gets Orders.
         /// </summary>
+// ReSharper disable UnusedAutoPropertyAccessor.Local
         public IDbSet<Order> Orders { get; private set; }
+// ReSharper restore UnusedAutoPropertyAccessor.Local
 
         /// <summary>
         /// Gets Packages.
         /// </summary>
+// ReSharper disable UnusedAutoPropertyAccessor.Local
         public IDbSet<Package> Packages { get; private set; }
+// ReSharper restore UnusedAutoPropertyAccessor.Local
 
         /// <summary>
         /// Gets Retailers.
         /// </summary>
+// ReSharper disable UnusedAutoPropertyAccessor.Local
         public IDbSet<Retailer> Retailers { get; private set; }
+// ReSharper restore UnusedAutoPropertyAccessor.Local
 
         /// <summary>
         /// Gets Whallets.
         /// </summary>
+// ReSharper disable UnusedAutoPropertyAccessor.Local
         public IDbSet<Wallet> Wallets { get; private set; }
+// ReSharper restore UnusedAutoPropertyAccessor.Local
 
         /// <summary>
         /// Gets Transactions.
         /// </summary>
+// ReSharper disable UnusedAutoPropertyAccessor.Local
         public IDbSet<Transaction> Transactions { get; private set; }
+// ReSharper restore UnusedAutoPropertyAccessor.Local
 
         /// <summary>
         /// Gets Currencies.
         /// </summary>
+// ReSharper disable UnusedAutoPropertyAccessor.Local
         public IDbSet<Currency> Currencies { get; private set; }
+// ReSharper restore UnusedAutoPropertyAccessor.Local
 
         /// <summary>
         /// Gets Users.
         /// </summary>
+// ReSharper disable UnusedAutoPropertyAccessor.Local
         public IDbSet<User> Users { get; private set; }
+// ReSharper restore UnusedAutoPropertyAccessor.Local
 
         /// <summary>
         /// Gets Roles.
         /// </summary>
+// ReSharper disable UnusedAutoPropertyAccessor.Local
         public IDbSet<Role> Roles { get; private set; }
+// ReSharper restore UnusedAutoPropertyAccessor.Local
 
         /// <summary>
         /// Gets Profiles.
         /// </summary>
+// ReSharper disable UnusedAutoPropertyAccessor.Local
         public IDbSet<Profile> Profiles { get; private set; }
+// ReSharper restore UnusedAutoPropertyAccessor.Local
 
         /// <summary>
         /// Gets Notification Rules.
         /// </summary>
+// ReSharper disable UnusedAutoPropertyAccessor.Local
         public IDbSet<NotificationRule> NotificationRules { get; private set; }
+// ReSharper restore UnusedAutoPropertyAccessor.Local
 
         /// <summary>
         /// Gets Delivery Addresses.
         /// </summary>
+// ReSharper disable UnusedAutoPropertyAccessor.Local
         public IDbSet<DeliveryAddress> DeliveryAddresses { get; private set; }
+// ReSharper restore UnusedAutoPropertyAccessor.Local
 
         /// <summary>
         /// Model creating rules.
@@ -121,9 +155,10 @@ namespace TdService.Repository.MsSql
                 var shopperRole = new Role { Name = "Shopper", Description = "Main user of the system" };
                 var operatorRole = new Role { Name = "Operator", Description = "Person who process orders" };
                 var consultantRole = new Role
-                    {
-                        Name = "Consultant", Description = "Person who help user to solve service issues" 
-                    };
+                {
+                    Name = "Consultant",
+                    Description = "Person who help user to solve service issues"
+                };
                 context.Roles.Add(adminRole);
                 context.Roles.Add(shopperRole);
                 context.Roles.Add(operatorRole);
@@ -132,12 +167,12 @@ namespace TdService.Repository.MsSql
                 context.SaveChanges();
 
                 var user = new User
-                    {
-                        Email = "vhatalski@naviam.com",
-                        Password = "ruinruin",
-                        Roles = new List<Role> { adminRole },
-                        Wallet = new Wallet { Amount = 1003.23m }
-                    };
+                {
+                    Email = "vhatalski@naviam.com",
+                    Password = "ruinruin",
+                    Roles = new List<Role> { adminRole },
+                    Wallet = new Wallet { Amount = 1003.23m }
+                };
                 user = context.Users.Add(user);
 
                 context.SaveChanges();
@@ -167,10 +202,10 @@ namespace TdService.Repository.MsSql
                 context.SaveChanges();
 
                 user.Profile.NotificationRule = new NotificationRule
-                    {
-                        NotifyOnOrderStatusChanged = true,
-                        NotifyOnPackageStatusChanged = true 
-                    };
+                {
+                    NotifyOnOrderStatusChanged = true,
+                    NotifyOnPackageStatusChanged = true
+                };
                 context.Entry(user.Profile).State = EntityState.Modified;
                 context.SaveChanges();
 
@@ -184,16 +219,20 @@ namespace TdService.Repository.MsSql
                 context.Users.Add(shopper);
 
                 var operatorUser = new User
-                    {
-                        Email = "operator@shopanyware.ru", Password = "1", Roles = new List<Role>() 
-                    };
+                {
+                    Email = "operator@shopanyware.ru",
+                    Password = "1",
+                    Roles = new List<Role>()
+                };
                 operatorUser.Roles.Add(operatorRole);
                 context.Users.Add(operatorUser);
 
                 var consultant = new User
-                    {
-                        Email = "consultant@shopanyware.ru", Password = "1", Roles = new List<Role>() 
-                    };
+                {
+                    Email = "consultant@shopanyware.ru",
+                    Password = "1",
+                    Roles = new List<Role>()
+                };
                 consultant.Roles.Add(consultantRole);
                 context.Users.Add(consultant);
 
@@ -201,27 +240,31 @@ namespace TdService.Repository.MsSql
 
                 context.Currencies.Add(
                     new Currency
-                        {
-                            AlphabeticCode = "USD",
-                            Entity = "UNITED STATES",
-                            Name = "US Dollar",
-                            NumericCode = "840",
-                            MinorUnit = 2
-                        });
+                    {
+                        AlphabeticCode = "USD",
+                        Entity = "UNITED STATES",
+                        Name = "US Dollar",
+                        NumericCode = "840",
+                        MinorUnit = 2
+                    });
                 context.Currencies.Add(
                     new Currency
-                        {
-                            AlphabeticCode = "EUR", Entity = "Europa", Name = "Euro", NumericCode = "978", MinorUnit = 2 
-                        });
+                    {
+                        AlphabeticCode = "EUR",
+                        Entity = "Europa",
+                        Name = "Euro",
+                        NumericCode = "978",
+                        MinorUnit = 2
+                    });
                 context.Currencies.Add(
                     new Currency
-                        {
-                            AlphabeticCode = "RUB",
-                            Entity = "RUSSIAN FEDERATION",
-                            Name = "Russian Ruble",
-                            NumericCode = "643",
-                            MinorUnit = 2
-                        });
+                    {
+                        AlphabeticCode = "RUB",
+                        Entity = "RUSSIAN FEDERATION",
+                        Name = "Russian Ruble",
+                        NumericCode = "643",
+                        MinorUnit = 2
+                    });
 
                 context.SaveChanges();
 

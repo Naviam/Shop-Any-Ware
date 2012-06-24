@@ -9,6 +9,7 @@ namespace TdService.Repository.MsSql.Repositories
     using System;
     using System.Collections.Generic;
     using System.Data;
+    using System.Data.Entity;
     using System.Linq;
 
     using TdService.Model.Addresses;
@@ -68,31 +69,28 @@ namespace TdService.Repository.MsSql.Repositories
         /// <param name="user">
         /// The user.
         /// </param>
-        public void AddUser(User user)
+        public void AddShopper(User user)
         {
             using (var context = new ShopAnyWareSql())
             {
-                if (user.Roles.Any())
-                {
-                    context.Roles.Attach(user.Roles[0]);
-                }
-
+                var role = context.Roles.SingleOrDefault(r => r.Name == "Shopper");
+                context.Roles.Attach(role);
                 context.Users.Add(user);
                 context.SaveChanges();
 
-                user.Profile = new Profile { FirstName = user.Profile.FirstName, LastName = user.Profile.LastName };
-                context.Entry(user).State = EntityState.Modified;
-                context.SaveChanges();
+                // user.Profile = new Profile { FirstName = user.Profile.FirstName, LastName = user.Profile.LastName };
+                // context.Entry(user).State = EntityState.Modified;
+                // context.SaveChanges();
 
-                var profile = context.Profiles.Find(user.Profile.Id);
-                profile.NotificationRule = new NotificationRule
-                {
-                    NotifyOnOrderStatusChanged = true,
-                    NotifyOnPackageStatusChanged = true
-                };
-                context.NotificationRules.Attach(profile.NotificationRule);
-                context.Entry(profile).State = EntityState.Modified;
-                context.SaveChanges();
+                // var profile = context.Profiles.Find(user.Profile.Id);
+                // profile.NotificationRule = new NotificationRule
+                // {
+                //     NotifyOnOrderStatusChanged = true,
+                //     NotifyOnPackageStatusChanged = true
+                // };
+                // context.NotificationRules.Attach(profile.NotificationRule);
+                // context.Entry(profile).State = EntityState.Modified;
+                // context.SaveChanges();
             }
         }
 

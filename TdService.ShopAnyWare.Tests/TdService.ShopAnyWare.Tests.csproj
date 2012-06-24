@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.4.3.1\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="MvcContrib.TestHelper">
       <HintPath>..\packages\MvcContrib.Mvc3.TestHelper-ci.3.0.100.0\lib\MvcContrib.TestHelper.dll</HintPath>
     </Reference>
@@ -43,7 +46,9 @@
       <HintPath>..\packages\RhinoMocks.3.6.1\lib\net\Rhino.Mocks.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -58,11 +63,13 @@
     <Compile Include="Mocks\FakeFormsAuthentication.cs" />
     <Compile Include="Mocks\FakeMembershipService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\ShopAnyWareTest.cs" />
+    <Compile Include="Repository\MembershipRepositoryTests.cs" />
+    <Compile Include="Repository\ShopAnyWareTestInitilizer.cs" />
     <Compile Include="Services\FakeMembershipRepository.cs" />
     <Compile Include="Services\MembershipServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -77,6 +84,10 @@
     <ProjectReference Include="..\TdService.Model\TdService.Model.csproj">
       <Project>{4E87BDA7-4AF2-4D94-9A40-68B161FBB71A}</Project>
       <Name>TdService.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TdService.Repository.MsSql\TdService.Repository.MsSql.csproj">
+      <Project>{D536586D-E628-4049-B826-AB0B57FC99FF}</Project>
+      <Name>TdService.Repository.MsSql</Name>
     </ProjectReference>
     <ProjectReference Include="..\TdService.Services\TdService.Services.csproj">
       <Project>{A9DEDA99-A27D-4687-B912-46F339EA36A4}</Project>
