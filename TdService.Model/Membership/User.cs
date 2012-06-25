@@ -77,10 +77,18 @@ namespace TdService.Model.Membership
             {
                 this.AddBrokenRule(UserBusinessRules.EmailRequired);
             }
+            else if (this.Email.Length > 256)
+            {
+                this.AddBrokenRule(UserBusinessRules.EmailLength);
+            }
 
             if (string.IsNullOrEmpty(this.Password))
             {
                 this.AddBrokenRule(UserBusinessRules.PasswordRequired);
+            }
+            else if (this.Password.Length > 64)
+            {
+                this.AddBrokenRule(UserBusinessRules.PasswordLength);
             }
         }
     }

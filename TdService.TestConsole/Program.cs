@@ -11,10 +11,9 @@ namespace TdService.TestConsole
 {
     using System;
     using Model;
-    using Model.RFO;
 
+    using TdService.Model.Common;
     using TdService.Model.Orders;
-    using TdService.Repository.MsSql;
     using TdService.Repository.MsSql.Repositories;
 
     /// <summary>

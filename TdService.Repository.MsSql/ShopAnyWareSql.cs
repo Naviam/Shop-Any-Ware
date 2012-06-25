@@ -15,6 +15,7 @@ namespace TdService.Repository.MsSql
     using TdService.Model;
     using TdService.Model.Addresses;
     using TdService.Model.Balance;
+    using TdService.Model.Common;
     using TdService.Model.Items;
     using TdService.Model.Membership;
     using TdService.Model.Orders;
@@ -136,11 +137,7 @@ namespace TdService.Repository.MsSql
                 var adminRole = new Role { Name = "Admin", Description = "System Administrator" };
                 var shopperRole = new Role { Name = "Shopper", Description = "Main user of the system" };
                 var operatorRole = new Role { Name = "Operator", Description = "Person who process orders" };
-                var consultantRole = new Role
-                {
-                    Name = "Consultant",
-                    Description = "Person who help user to solve service issues"
-                };
+                var consultantRole = new Role { Name = "Consultant", Description = "Person who help user to solve service issues" };
                 context.Roles.Add(adminRole);
                 context.Roles.Add(shopperRole);
                 context.Roles.Add(operatorRole);
@@ -309,8 +306,12 @@ namespace TdService.Repository.MsSql
 
                 context.SaveChanges();
 
-                context.Retailers.Add(
-                    new Retailer { Category = "Computers", Name = "Apple, Inc.", Description = "Apple Computers" });
+                context.Retailers.Add(new Retailer { Category = "Computers", Name = "Apple, Inc.", Url = "apple.com", Description = "Apple Computers" });
+                context.Retailers.Add(new Retailer { Category = "Computers", Name = "Amazon.com", Description = "Apple Computers" });
+                context.Retailers.Add(new Retailer { Category = "Computers", Name = "Apple, Inc.", Description = "Apple Computers" });
+                context.Retailers.Add(new Retailer { Category = "Computers", Name = "Apple, Inc.", Description = "Apple Computers" });
+                context.Retailers.Add(new Retailer { Category = "Computers", Name = "Apple, Inc.", Description = "Apple Computers" });
+                context.Retailers.Add(new Retailer { Category = "Computers", Name = "Apple, Inc.", Description = "Apple Computers" });
                 context.SaveChanges();
 
                 base.Seed(context);

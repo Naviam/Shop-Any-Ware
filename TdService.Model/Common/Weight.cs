@@ -7,18 +7,17 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Model
+namespace TdService.Model.Common
 {
+    using System;
+
+    using TdService.Infrastructure.Domain;
+
     /// <summary>
     /// The weight of an order.
     /// </summary>
-    public struct Weight
+    public class Weight : EntityBase<int>
     {
-        /// <summary>
-        /// Gets or sets Id.
-        /// </summary>
-        public int Id { get; set; }
-
         /// <summary>
         /// Gets or sets Pounds.
         /// </summary>
@@ -38,5 +37,16 @@ namespace TdService.Model
         /// Gets or sets Grams.
         /// </summary>
         public float Grams { get; set; }
+
+        /// <summary>
+        /// Validate business rules.
+        /// </summary>
+        /// <exception cref="NotImplementedException">
+        /// not yet implemented.
+        /// </exception>
+        protected override void Validate()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

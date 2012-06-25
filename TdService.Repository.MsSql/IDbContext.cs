@@ -14,6 +14,7 @@ namespace TdService.Repository.MsSql
     using TdService.Model;
     using TdService.Model.Addresses;
     using TdService.Model.Balance;
+    using TdService.Model.Common;
     using TdService.Model.Items;
     using TdService.Model.Membership;
     using TdService.Model.Orders;

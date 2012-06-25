@@ -21,9 +21,21 @@ namespace TdService.Model.Membership
             new BusinessRule("Email", BusinessRules.User_EmailRequired);
 
         /// <summary>
+        /// This rule ensures that email for user is within max length.
+        /// </summary>
+        public static readonly BusinessRule EmailLength =
+            new BusinessRule("Email", BusinessRules.User_EmailLength);
+
+        /// <summary>
         /// This rule ensures that password for user is set.
         /// </summary>
         public static readonly BusinessRule PasswordRequired =
-            new BusinessRule("Email", BusinessRules.User_PasswordRequired);
+            new BusinessRule("Password", BusinessRules.User_PasswordRequired);
+
+        /// <summary>
+        /// This rule ensures that password for user is within max length.
+        /// </summary>
+        public static readonly BusinessRule PasswordLength =
+            new BusinessRule("Password", BusinessRules.User_PasswordLength);
     }
 }

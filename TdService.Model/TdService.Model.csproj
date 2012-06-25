@@ -51,15 +51,19 @@
     <Compile Include="Addresses\InvalidDeliveryAddressException.cs" />
     <Compile Include="Addresses\WarehouseAddress.cs" />
     <Compile Include="Balance\Currency.cs" />
+    <Compile Include="Common\InvalidRetailerException.cs" />
+    <Compile Include="Common\RetailerBusinessRules.cs" />
     <Compile Include="Membership\IMembershipRepository.cs" />
     <Compile Include="Membership\InvalidProfileException.cs" />
     <Compile Include="Membership\InvalidUserException.cs" />
     <Compile Include="Membership\ProfileBusinessRules.cs" />
+    <Compile Include="Membership\RoleBusinessRules.cs" />
     <Compile Include="Membership\UserBusinessRules.cs" />
     <Compile Include="Orders\OrderReceivingState.cs" />
     <Compile Include="Orders\OrderBusinessRules.cs" />
     <Compile Include="Orders\OrderDisposedState.cs" />
     <Compile Include="Orders\IOrderState.cs" />
+    <Compile Include="Packages\PackageBusinessRules.cs" />
     <Compile Include="RFO\IRequestForOrderRepository.cs" />
     <Compile Include="Orders\OrderCreatedState.cs" />
     <Compile Include="Orders\OrderReceivedState.cs" />
@@ -80,7 +84,7 @@
     <Compile Include="Items\ItemColor.cs" />
     <Compile Include="Items\ItemSize.cs" />
     <Compile Include="Orders\Order.cs" />
-    <Compile Include="Retailer.cs" />
+    <Compile Include="Common\Retailer.cs" />
     <Compile Include="Addresses\IAddressRepository.cs" />
     <Compile Include="Items\IItemRepository.cs" />
     <Compile Include="Orders\IOrderRepository.cs" />
@@ -90,7 +94,7 @@
     <Compile Include="Balance\Transaction.cs" />
     <Compile Include="Balance\TransactionStatus.cs" />
     <Compile Include="Membership\User.cs" />
-    <Compile Include="Weight.cs" />
+    <Compile Include="Common\Weight.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

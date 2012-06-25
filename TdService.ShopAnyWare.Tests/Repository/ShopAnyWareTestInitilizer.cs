@@ -16,6 +16,7 @@ namespace TdService.ShopAnyWare.Tests.Repository
     using TdService.Model;
     using TdService.Model.Addresses;
     using TdService.Model.Balance;
+    using TdService.Model.Common;
     using TdService.Model.Membership;
     using TdService.Repository.MsSql;
 

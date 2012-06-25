@@ -9,6 +9,8 @@ namespace TdService.Model.RFO
     using System;
     using Infrastructure.Domain;
 
+    using TdService.Model.Common;
+
     /// <summary>
     /// This class describes user's request for an order.
     /// </summary>

@@ -6,8 +6,6 @@
 
 namespace TdService.ShopAnyWare.Tests.Repository
 {
-    using System.Collections.Generic;
-
     using NUnit.Framework;
 
     using TdService.Model.Membership;
@@ -43,7 +41,9 @@ namespace TdService.ShopAnyWare.Tests.Repository
                     Profile = new Profile()
                         {
                             FirstName = "Vitali",
-                            LastName = "Hatalski"
+                            LastName = "Hatalski",
+                            NotifyOnOrderStatusChanged = true,
+                            NotifyOnPackageStatusChanged = true
                         }
                 };
 

@@ -8,7 +8,7 @@ namespace TdService.Repository.MsSql.Configurations
 {
     using System.Data.Entity.ModelConfiguration;
 
-    using TdService.Model;
+    using TdService.Model.Common;
 
     /// <summary>
     /// This class describes the configuration of retailers db table.
@@ -22,6 +22,7 @@ namespace TdService.Repository.MsSql.Configurations
         {
             this.Property(r => r.Name).IsRequired().HasMaxLength(64);
             this.Property(r => r.Category).IsRequired().HasMaxLength(64);
+            this.Property(r => r.Url).IsRequired().HasMaxLength(256);
             this.Property(r => r.Description).HasMaxLength(1024);
         }
     }

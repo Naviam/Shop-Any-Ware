@@ -12,9 +12,8 @@ namespace TdService.Model.Orders
     using System;
     using System.Collections.Generic;
 
-    using TdService.Model;
+    using TdService.Model.Common;
     using TdService.Model.Items;
-    using TdService.Model.RFO;
 
     /// <summary>
     /// Interface for order repository.

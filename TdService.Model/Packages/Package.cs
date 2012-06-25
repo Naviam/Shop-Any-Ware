@@ -28,6 +28,31 @@ namespace TdService.Model.Packages
         public string Name { get; set; }
 
         /// <summary>
+        /// Gets or sets Status.
+        /// </summary>
+        public PackageStatus Status { get; set; }
+
+        /// <summary>
+        /// Gets or sets Created Date.
+        /// </summary>
+        public DateTime CreatedDate { get; set; }
+
+        /// <summary>
+        /// Gets or sets Dispatched Date.
+        /// </summary>
+        public DateTime DispatchedDate { get; set; }
+
+        /// <summary>
+        /// Gets or sets Delivered Date.
+        /// </summary>
+        public DateTime DeliveredDate { get; set; }
+
+        /// <summary>
+        /// Gets or sets Delivery Address.
+        /// </summary>
+        public DeliveryAddress DeliveryAddress { get; set; }
+
+        /// <summary>
         /// Gets or sets Row Version.
         /// </summary>
         public byte[] RowVersion { get; set; }
@@ -50,12 +75,16 @@ namespace TdService.Model.Packages
         /// <summary>
         /// Validate business rules.
         /// </summary>
-        /// <exception cref="NotImplementedException">
-        /// not yet implemented.
-        /// </exception>
         protected override void Validate()
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(this.Name))
+            {
+                this.AddBrokenRule(PackageBusinessRules.NameRequired);
+            }
+            else if (this.Name.Length > 64)
+            {
+                this.AddBrokenRule(PackageBusinessRules.NameLength);
+            }
         }
     }
 }

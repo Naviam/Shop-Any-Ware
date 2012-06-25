@@ -47,7 +47,19 @@ namespace TdService.Model.Membership
         /// </exception>
         protected override void Validate()
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(this.Name))
+            {
+                this.AddBrokenRule(RoleBusinessRules.NameRequired);
+            }
+            else if (this.Name.Length > 64)
+            {
+                this.AddBrokenRule(RoleBusinessRules.NameLength);
+            }
+
+            if (!string.IsNullOrEmpty(this.Description) && this.Description.Length > 1024)
+            {
+                this.AddBrokenRule(RoleBusinessRules.DescriptionLength);
+            }
         }
     }
 }

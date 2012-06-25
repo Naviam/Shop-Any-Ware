@@ -10,6 +10,7 @@ namespace TdService.Model.Orders
     using System.Collections.Generic;
 
     using TdService.Infrastructure.Domain;
+    using TdService.Model.Common;
     using TdService.Model.Items;
 
     /// <summary>
@@ -110,12 +111,42 @@ namespace TdService.Model.Orders
         /// <summary>
         /// Validate the business logic.
         /// </summary>
-        /// <exception cref="NotImplementedException">
-        /// Not yet implemented.
-        /// </exception>
         protected override void Validate()
         {
-            throw new NotImplementedException();
+            if (this.Retailer == null)
+            {
+                this.AddBrokenRule(OrderBusinessRules.RetailerRequired);
+            }
+
+            if (this.CreatedDate == DateTime.MinValue)
+            {
+                this.AddBrokenRule(OrderBusinessRules.CreatedDateRequired);
+            }
+
+            if (this.Status == OrderStatus.Received && this.ReceivedDate == DateTime.MinValue)
+            {
+                this.AddBrokenRule(OrderBusinessRules.ReceivedDateRequired);
+            }
+
+            if (this.Status == OrderStatus.Received && this.Weight == null)
+            {
+                this.AddBrokenRule(OrderBusinessRules.WeightRequired);
+            }
+
+            if (!string.IsNullOrEmpty(this.OrderNumber) && this.OrderNumber.Length > 64)
+            {
+                this.AddBrokenRule(OrderBusinessRules.OrderNumberLength);
+            }
+
+            if (!string.IsNullOrEmpty(this.TrackingNumber) && this.TrackingNumber.Length > 64)
+            {
+                this.AddBrokenRule(OrderBusinessRules.TrackingNumberLength);
+            }
+
+            if (!string.IsNullOrEmpty(this.StatusExtended) && this.StatusExtended.Length > 64)
+            {
+                this.AddBrokenRule(OrderBusinessRules.StatusExtendedLength);
+            }
         }
     }
 }

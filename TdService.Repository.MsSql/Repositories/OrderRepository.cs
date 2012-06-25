@@ -9,6 +9,7 @@ namespace TdService.Repository.MsSql.Repositories
     using System;
     using System.Collections.Generic;
 
+    using TdService.Model.Common;
     using TdService.Model.Items;
     using TdService.Model.Orders;
 
@@ -214,7 +215,7 @@ namespace TdService.Repository.MsSql.Repositories
         /// <exception cref="NotImplementedException">
         /// not yet implemented
         /// </exception>
-        public void UpdateOrderWeight(int orderId, Model.Weight weight)
+        public void UpdateOrderWeight(int orderId, Weight weight)
         {
             throw new NotImplementedException();
         }

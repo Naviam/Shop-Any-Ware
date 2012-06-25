@@ -138,6 +138,33 @@
   <data name="DeliveryAddress_LastNameRequired" xml:space="preserve">
     <value>A delivery address must contain your last name.</value>
   </data>
+  <data name="Order_CreatedDateRequired" xml:space="preserve">
+    <value>Order must have a created date.</value>
+  </data>
+  <data name="Order_OrderNumberLength" xml:space="preserve">
+    <value>Order number must be a string with a maximum length of 64.</value>
+  </data>
+  <data name="Order_ReceivedDateRequired" xml:space="preserve">
+    <value>Order in Received status must have a received date.</value>
+  </data>
+  <data name="Order_RetailerRequired" xml:space="preserve">
+    <value>Order must have a retailer.</value>
+  </data>
+  <data name="Order_StatusExtendedLength" xml:space="preserve">
+    <value>Order extended status must be a string with a maximum length of 64.</value>
+  </data>
+  <data name="Order_TrackingNumberLength" xml:space="preserve">
+    <value>Tracking number must be a string with a maximum length of 64.</value>
+  </data>
+  <data name="Order_WeightRequired" xml:space="preserve">
+    <value>Order in Received status must have a weight.</value>
+  </data>
+  <data name="Package_NameLength" xml:space="preserve">
+    <value>Package name must be a string with a maximum length of 64.</value>
+  </data>
+  <data name="Package_NameRequired" xml:space="preserve">
+    <value>A package must have a name.</value>
+  </data>
   <data name="Profile_FirstNameLength" xml:space="preserve">
     <value>First name must be a string with a maximum length of 64.</value>
   </data>
@@ -150,8 +177,44 @@
   <data name="Profile_LastNameRequired" xml:space="preserve">
     <value>Last name is a required field.</value>
   </data>
+  <data name="Retailer_CategoryLength" xml:space="preserve">
+    <value>Retailer category must be a string with a maximum length of 64.</value>
+  </data>
+  <data name="Retailer_CategoryRequired" xml:space="preserve">
+    <value>A retailer must have a category.</value>
+  </data>
+  <data name="Retailer_DescriptionLength" xml:space="preserve">
+    <value>Retailer description must be a string with a maximum length of 1024.</value>
+  </data>
+  <data name="Retailer_NameLength" xml:space="preserve">
+    <value>Retailer name must be a string with a maximum length of 64.</value>
+  </data>
+  <data name="Retailer_NameRequired" xml:space="preserve">
+    <value>A retailer must have a name.</value>
+  </data>
+  <data name="Retailer_UrlLength" xml:space="preserve">
+    <value>Retailer url must be a string with a maximum length of 256.</value>
+  </data>
+  <data name="Retailer_UrlRequired" xml:space="preserve">
+    <value>A retailer must have a url.</value>
+  </data>
+  <data name="Role_DescriptionLength" xml:space="preserve">
+    <value>Description must be a string with a maximum length of 64.</value>
+  </data>
+  <data name="Role_NameLength" xml:space="preserve">
+    <value>Name must be a string with a maximum length of 64.</value>
+  </data>
+  <data name="Role_NameRequired" xml:space="preserve">
+    <value>A role must have a name.</value>
+  </data>
+  <data name="User_EmailLength" xml:space="preserve">
+    <value>Email must be a string with a maximum length of 256.</value>
+  </data>
   <data name="User_EmailRequired" xml:space="preserve">
     <value>An user must have an email.</value>
+  </data>
+  <data name="User_PasswordLength" xml:space="preserve">
+    <value>Password must be a string with a maximum length of 64.</value>
   </data>
   <data name="User_PasswordRequired" xml:space="preserve">
     <value>An user must have a password.</value>

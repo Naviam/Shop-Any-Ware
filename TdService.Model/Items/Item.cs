@@ -9,6 +9,8 @@ namespace TdService.Model.Items
     using System;
     using Infrastructure.Domain;
 
+    using TdService.Model.Common;
+
     /// <summary>
     /// Product is what user is buying from online shops.
     /// </summary>
