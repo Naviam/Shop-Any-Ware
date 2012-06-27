@@ -73,7 +73,16 @@ namespace TdService.Repository.MsSql.Repositories
             using (var context = new ShopAnyWareSql())
             {
                 var role = context.Roles.SingleOrDefault(r => r.Name == "Shopper");
-                context.Roles.Attach(role);
+                if (role == null)
+                {
+                    context.Roles.Add(new Role { Description = string.Empty, Name = "Shopper" });
+                    context.SaveChanges();
+                }
+                else
+                {
+                    context.Roles.Attach(role);
+                }
+
                 context.Users.Add(user);
                 context.SaveChanges();
 

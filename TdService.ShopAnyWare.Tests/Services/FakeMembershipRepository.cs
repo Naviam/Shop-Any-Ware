@@ -200,7 +200,7 @@ namespace TdService.ShopAnyWare.Tests.Services
         {
             if (email == "vhatalski@naviam.com")
             {
-                var user = new User
+                var user = new User(this)
                     {
                         Email = email,
                         Profile =

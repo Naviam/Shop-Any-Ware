@@ -1,3 +1,3 @@
 ﻿$(document).ready(function () {
-    $("input[type=text][readonly!=readonly]").first().focus();
+    $([]).add("input[type=text][readonly!=readonly]").add("[type=email][readonly!=readonly]").first().focus();
 });

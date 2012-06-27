@@ -72,6 +72,7 @@
     <Compile Include="Balance\Wallet.cs" />
     <Compile Include="Addresses\DeliveryAddress.cs" />
     <Compile Include="Shipping\Courier.cs" />
+    <Compile Include="Shipping\CourierBusinessRules.cs" />
     <Compile Include="Shipping\DispatchMethod.cs" />
     <Compile Include="Items\Item.cs" />
     <Compile Include="Orders\OrderStatus.cs" />

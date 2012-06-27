@@ -34,7 +34,7 @@ namespace TdService.ShopAnyWare.Tests.Repository
         {
             // arrange
             var repository = new MembershipRepository();
-            var user = new User
+            var user = new User(repository)
                 {
                     Email = "v.hatalski@gmail.com",
                     Password = "ruinruin",

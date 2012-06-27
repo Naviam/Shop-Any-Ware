@@ -10,7 +10,7 @@
 namespace TdService.Model.Shipping
 {
     /// <summary>
-    /// Post service and method which will be used to send parcel to the user's delivery address
+    /// Post service and method which will be used to send package to the user's delivery address
     /// </summary>
     public enum DispatchMethod
     {

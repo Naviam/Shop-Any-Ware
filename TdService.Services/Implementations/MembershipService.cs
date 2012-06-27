@@ -6,6 +6,7 @@
 
 namespace TdService.Services.Implementations
 {
+    using System;
     using System.Linq;
     using System.Text;
 
@@ -51,7 +52,7 @@ namespace TdService.Services.Implementations
         public RegisterUserResponse RegisterUser(RegisterUserRequest request)
         {
             var response = new RegisterUserResponse();
-            var user = new User
+            var user = new User(this.membershipRepository)
                 {
                     Email = request.Email,
                     Password = request.Password,
@@ -64,28 +65,35 @@ namespace TdService.Services.Implementations
                         }
                 };
 
-            ThrowExceptionIfUserIsInvalid(user);
-
-            var userInDatabase = this.membershipRepository.GetUser(request.Email);
-            if (userInDatabase != null)
+            try
+            {
+                ThrowExceptionIfUserIsInvalid(user);
+            }
+            catch (InvalidUserException)
             {
                 response.MessageType = MessageType.Error;
                 response.ErrorCode = "EmailExists";
             }
-            else
-            {
+
+            // var userInDatabase = this.membershipRepository.GetUser(request.Email);
+            // if (userInDatabase != null)
+            // {
+            // response.MessageType = MessageType.Error;
+            // response.ErrorCode = "EmailExists";
+            // }
+            // else
+            // {
                 this.membershipRepository.AddShopper(user);
 
                 // var createdUser = this.membershipRepository.GetUser(user.Email);
                 // if (createdUser != null)
                 // {
-                //    if (createdUser.Profile != null)
-                //    {
-                //        var profile = this.membershipRepository.GetProfile(createdUser.Profile.Id);
-                //    }
+                // if (createdUser.Profile != null)
+                // {
+                // var profile = this.membershipRepository.GetProfile(createdUser.Profile.Id);
                 // }
-            }
-
+                // }
+            // }
             return response;
         }
 

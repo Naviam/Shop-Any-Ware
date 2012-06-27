@@ -24,6 +24,29 @@ namespace TdService.Model.Membership
     public class User : EntityBase<int>
     {
         /// <summary>
+        /// Membership repository.
+        /// </summary>
+        private readonly IMembershipRepository repository;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="User"/> class.
+        /// </summary>
+        public User()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="User"/> class.
+        /// </summary>
+        /// <param name="repository">
+        /// The repository.
+        /// </param>
+        public User(IMembershipRepository repository)
+        {
+            this.repository = repository;
+        }
+
+        /// <summary>
         /// Gets or sets Email.
         /// </summary>
         public string Email { get; set; }
@@ -81,6 +104,10 @@ namespace TdService.Model.Membership
             {
                 this.AddBrokenRule(UserBusinessRules.EmailLength);
             }
+            else if (this.repository.GetUser(this.Email) != null)
+            {
+                this.AddBrokenRule(UserBusinessRules.EmailExists);
+            }
 
             if (string.IsNullOrEmpty(this.Password))
             {
@@ -89,6 +116,10 @@ namespace TdService.Model.Membership
             else if (this.Password.Length > 64)
             {
                 this.AddBrokenRule(UserBusinessRules.PasswordLength);
+            }
+            else if (this.Password.Length < 7)
+            {
+                this.AddBrokenRule(UserBusinessRules.PasswordMinLength);
             }
         }
     }

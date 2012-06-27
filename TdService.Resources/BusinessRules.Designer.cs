@@ -97,6 +97,24 @@ namespace TdService.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Courier name must be a string with a maximum length of 64..
+        /// </summary>
+        public static string Courier_NameMaxLength {
+            get {
+                return ResourceManager.GetString("Courier_NameMaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A courier must have a name..
+        /// </summary>
+        public static string Courier_NameRequired {
+            get {
+                return ResourceManager.GetString("Courier_NameRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A delivery address must have a name..
         /// </summary>
         public static string DeliveryAddress_AddressNameRequired {
@@ -331,6 +349,15 @@ namespace TdService.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This user already exists..
+        /// </summary>
+        public static string User_EmailExists {
+            get {
+                return ResourceManager.GetString("User_EmailExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email must be a string with a maximum length of 256..
         /// </summary>
         public static string User_EmailLength {
@@ -354,6 +381,15 @@ namespace TdService.Resources {
         public static string User_PasswordLength {
             get {
                 return ResourceManager.GetString("User_PasswordLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password must be a string with a minimum length of 7..
+        /// </summary>
+        public static string User_PasswordMinLength {
+            get {
+                return ResourceManager.GetString("User_PasswordMinLength", resourceCulture);
             }
         }
         

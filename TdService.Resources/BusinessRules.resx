@@ -129,6 +129,12 @@
   <data name="Address_ZipCodeRequired" xml:space="preserve">
     <value>An address must have a zip code.</value>
   </data>
+  <data name="Courier_NameMaxLength" xml:space="preserve">
+    <value>Courier name must be a string with a maximum length of 64.</value>
+  </data>
+  <data name="Courier_NameRequired" xml:space="preserve">
+    <value>A courier must have a name.</value>
+  </data>
   <data name="DeliveryAddress_AddressNameRequired" xml:space="preserve">
     <value>A delivery address must have a name.</value>
   </data>
@@ -207,6 +213,9 @@
   <data name="Role_NameRequired" xml:space="preserve">
     <value>A role must have a name.</value>
   </data>
+  <data name="User_EmailExists" xml:space="preserve">
+    <value>This user already exists.</value>
+  </data>
   <data name="User_EmailLength" xml:space="preserve">
     <value>Email must be a string with a maximum length of 256.</value>
   </data>
@@ -215,6 +224,9 @@
   </data>
   <data name="User_PasswordLength" xml:space="preserve">
     <value>Password must be a string with a maximum length of 64.</value>
+  </data>
+  <data name="User_PasswordMinLength" xml:space="preserve">
+    <value>Password must be a string with a minimum length of 7.</value>
   </data>
   <data name="User_PasswordRequired" xml:space="preserve">
     <value>An user must have a password.</value>

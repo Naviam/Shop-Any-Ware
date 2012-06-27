@@ -27,6 +27,12 @@ namespace TdService.Model.Membership
             new BusinessRule("Email", BusinessRules.User_EmailLength);
 
         /// <summary>
+        /// This rule ensures that email already exists in repository.
+        /// </summary>
+        public static readonly BusinessRule EmailExists =
+            new BusinessRule("Email", BusinessRules.User_EmailExists);
+
+        /// <summary>
         /// This rule ensures that password for user is set.
         /// </summary>
         public static readonly BusinessRule PasswordRequired =
@@ -37,5 +43,11 @@ namespace TdService.Model.Membership
         /// </summary>
         public static readonly BusinessRule PasswordLength =
             new BusinessRule("Password", BusinessRules.User_PasswordLength);
+
+        /// <summary>
+        /// This rule ensures that password for user is within max length.
+        /// </summary>
+        public static readonly BusinessRule PasswordMinLength =
+            new BusinessRule("Password", BusinessRules.User_PasswordMinLength);
     }
 }
