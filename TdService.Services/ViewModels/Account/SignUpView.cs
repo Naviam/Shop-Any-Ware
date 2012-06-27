@@ -27,13 +27,14 @@ namespace TdService.Services.ViewModels.Account
         /// Gets or sets Password.
         /// </summary>
         [Required(ErrorMessageResourceName = "RequiredPassword", ErrorMessageResourceType = typeof(Resources.ErrorCodeResources))]
-        [StringLength(21, ErrorMessageResourceName = "MaxLengthPassword", ErrorMessageResourceType = typeof(Resources.ErrorCodeResources))]
+        [StringLength(21, MinimumLength = 7, ErrorMessageResourceName = "MaxLengthPassword", ErrorMessageResourceType = typeof(Resources.ErrorCodeResources))]
         public string Password { get; set; }
 
         /// <summary>
         /// Gets or sets Password Confirm.
         /// </summary>
         [Required(ErrorMessageResourceName = "RequiredPasswordConfirmation", ErrorMessageResourceType = typeof(Resources.ErrorCodeResources))]
+        [StringLength(21, MinimumLength = 7, ErrorMessageResourceName = "MaxLengthPassword", ErrorMessageResourceType = typeof(Resources.ErrorCodeResources))]
         public string PasswordConfirm { get; set; }
 
         /// <summary>
