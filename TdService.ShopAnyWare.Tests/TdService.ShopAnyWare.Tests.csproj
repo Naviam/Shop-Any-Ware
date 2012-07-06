@@ -62,9 +62,13 @@
     <Compile Include="Mocks\FakeEmailService.cs" />
     <Compile Include="Mocks\FakeFormsAuthentication.cs" />
     <Compile Include="Mocks\FakeMembershipService.cs" />
+    <Compile Include="Model\OrderEntityTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\MembershipRepositoryTests.cs" />
-    <Compile Include="Repository\ShopAnyWareTestInitilizer.cs" />
+    <Compile Include="Repository\OrderRepositoryTests.cs" />
+    <Compile Include="Repository\ShopAnyWareTestInitilizer.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Services\FakeMembershipRepository.cs" />
     <Compile Include="Services\MembershipServiceTests.cs" />
   </ItemGroup>

@@ -8,6 +8,7 @@ namespace TdService.Repository.MsSql.Repositories
 {
     using System;
     using System.Collections.Generic;
+    using System.Data;
 
     using TdService.Model.Common;
     using TdService.Model.Items;
@@ -58,8 +59,7 @@ namespace TdService.Repository.MsSql.Repositories
         {
             using (var context = new ShopAnyWareSql())
             {
-                context.Orders.Remove(order);
-                context.Orders.Add(order);
+                context.Entry(order).State = EntityState.Modified;
                 context.SaveChanges();
             }
         }

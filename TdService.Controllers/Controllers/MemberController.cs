@@ -13,6 +13,7 @@ namespace TdService.Controllers
     using System.Web.Mvc;
 
     using TdService.Infrastructure.Authentication;
+    using TdService.Model.Common;
     using TdService.Model.Orders;
 
     /// <summary>
@@ -60,11 +61,7 @@ namespace TdService.Controllers
         [Authorize(Roles = "Shopper")]
         public ActionResult Dashboard()
         {
-            this.repository.AddOrder(new Order(new OrderCreatedState())
-            {
-                CreatedDate = DateTime.UtcNow.Date,
-                ReceivedDate = DateTime.UtcNow.Date
-            });
+            this.repository.AddOrder(new Order(new OrderCreatedState(), new Retailer { Name = "Amazon, Inc." }));
             return this.View();
         }
 

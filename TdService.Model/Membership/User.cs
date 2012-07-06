@@ -44,6 +44,10 @@ namespace TdService.Model.Membership
         public User(IMembershipRepository repository)
         {
             this.repository = repository;
+            this.Orders = new List<Order>();
+            this.Packages = new List<Package>();
+            this.Wallet = new Wallet();
+            this.Profile = new Profile();
         }
 
         /// <summary>
@@ -90,6 +94,17 @@ namespace TdService.Model.Membership
         /// Gets or sets Packages.
         /// </summary>
         public List<Package> Packages { get; set; }
+
+        /// <summary>
+        /// Add new order to user.
+        /// </summary>
+        /// <param name="order">
+        /// The order.
+        /// </param>
+        public void AddOrder(Order order)
+        {
+            this.Orders.Add(order);
+        }
 
         /// <summary>
         /// Validate business rules.

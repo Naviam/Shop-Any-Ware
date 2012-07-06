@@ -29,9 +29,14 @@ namespace TdService.Model.Orders
         /// <param name="baseState">
         /// The base state.
         /// </param>
-        public Order(IOrderState baseState)
+        /// <param name="retailer">
+        /// The retailer.
+        /// </param>
+        public Order(IOrderState baseState, Retailer retailer)
         {
             this.orderState = baseState;
+            this.Retailer = retailer;
+            this.CreatedDate = DateTime.UtcNow;
             this.Items = new List<Item>();
         }
 
@@ -56,9 +61,9 @@ namespace TdService.Model.Orders
         public List<Item> Items { get; set; }
 
         /// <summary>
-        /// Gets or sets CreatedDate.
+        /// Gets Created Date.
         /// </summary>
-        public DateTime CreatedDate { get; set; }
+        public DateTime CreatedDate { get; private set; }
 
         /// <summary>
         /// Gets or sets ReceivedDate.
@@ -123,12 +128,12 @@ namespace TdService.Model.Orders
                 this.AddBrokenRule(OrderBusinessRules.CreatedDateRequired);
             }
 
-            if (this.Status == OrderStatus.Received && this.ReceivedDate == DateTime.MinValue)
+            if (this.orderState is OrderReceivedState && this.ReceivedDate == DateTime.MinValue)
             {
                 this.AddBrokenRule(OrderBusinessRules.ReceivedDateRequired);
             }
 
-            if (this.Status == OrderStatus.Received && this.Weight == null)
+            if (this.orderState is OrderReceivedState && this.Weight == null)
             {
                 this.AddBrokenRule(OrderBusinessRules.WeightRequired);
             }

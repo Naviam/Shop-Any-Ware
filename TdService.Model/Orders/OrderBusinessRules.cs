@@ -12,7 +12,7 @@ namespace TdService.Model.Orders
     /// <summary>
     /// The order business rules.
     /// </summary>
-    public class OrderBusinessRules
+    public static class OrderBusinessRules
     {
         /// <summary>
         /// This rule ensures that retailer is set.

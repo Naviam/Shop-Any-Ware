@@ -6,6 +6,8 @@
 
 namespace TdService.ShopAnyWare.Tests.Repository
 {
+    using System.Data.Entity;
+
     using NUnit.Framework;
 
     using TdService.Model.Membership;
@@ -23,14 +25,14 @@ namespace TdService.ShopAnyWare.Tests.Repository
         [SetUp]
         public void Setup()
         {
-            new ShopAnyWareTestInitilizer();
+            Database.SetInitializer(new ShopAnyWareTestInitilizer());
         }
 
         /// <summary>
         /// Should add user with all related info.
         /// </summary>
         [Test]
-        public void ShouldAddUserWithAllRelatedInfo()
+        public void ShouldAddUserWithProfile()
         {
             // arrange
             var repository = new MembershipRepository();
@@ -38,7 +40,7 @@ namespace TdService.ShopAnyWare.Tests.Repository
                 {
                     Email = "v.hatalski@gmail.com",
                     Password = "ruinruin",
-                    Profile = new Profile()
+                    Profile = new Profile
                         {
                             FirstName = "Vitali",
                             LastName = "Hatalski",
@@ -56,6 +58,41 @@ namespace TdService.ShopAnyWare.Tests.Repository
             Assert.That(actual.Password, Is.EqualTo(user.Password));
             Assert.That(actual.Profile.FirstName, Is.EqualTo(user.Profile.FirstName));
             Assert.That(actual.Profile.LastName, Is.EqualTo(user.Profile.LastName));
+            Assert.That(actual.Profile.NotifyOnOrderStatusChanged, Is.EqualTo(user.Profile.NotifyOnOrderStatusChanged));
+            Assert.That(actual.Profile.NotifyOnPackageStatusChanged, Is.EqualTo(user.Profile.NotifyOnPackageStatusChanged));
+        }
+
+        /// <summary>
+        /// Should be able to update profile of an existing user.
+        /// </summary>
+        [Test]
+        public void ShouldUpdateExistingUserProfile()
+        {
+            // arrange
+            var repository = new MembershipRepository();
+            var user = new User(repository)
+            {
+                Email = "vhatalski@naviam.com",
+                Password = "ruinruin",
+                Profile = new Profile
+                {
+                    FirstName = "Alex",
+                    LastName = "Smirnov",
+                    NotifyOnOrderStatusChanged = false,
+                    NotifyOnPackageStatusChanged = false
+                }
+            };
+
+            repository.UpdateProfile(user.Email, user.Profile);
+            var actual = repository.GetUser("vhatalski@naviam.com");
+
+            // assert
+            Assert.That(actual.Email, Is.EqualTo(user.Email));
+            Assert.That(actual.Password, Is.EqualTo(user.Password));
+            Assert.That(actual.Profile.FirstName, Is.EqualTo(user.Profile.FirstName));
+            Assert.That(actual.Profile.LastName, Is.EqualTo(user.Profile.LastName));
+            Assert.That(actual.Profile.NotifyOnOrderStatusChanged, Is.EqualTo(user.Profile.NotifyOnOrderStatusChanged));
+            Assert.That(actual.Profile.NotifyOnPackageStatusChanged, Is.EqualTo(user.Profile.NotifyOnPackageStatusChanged));
         }
     }
 }
