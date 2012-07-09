@@ -131,6 +131,7 @@ namespace TdService.Repository.MsSql
             /// </param>
             protected override void Seed(ShopAnyWareSql context)
             {
+                context.Database.ExecuteSqlCommand("ALTER TABLE Retailers ADD CONSTRAINT rc_Url UNIQUE(Url)");
                 StaticDataSeed.SeedMembership.Populate(context);
                 StaticDataSeed.SeedCurrencies.Populate(context);
                 StaticDataSeed.SeedRetailers.Populate(context);

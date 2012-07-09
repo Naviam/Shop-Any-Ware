@@ -16,6 +16,18 @@ namespace TdService.Model.Common
     /// </summary>
     public class Retailer : EntityBase<int>
     {
+        public Retailer(string urlOrName)
+        {
+            this.Name = urlOrName;
+            this.Url = urlOrName;
+            this.Category = urlOrName;
+            this.Description = urlOrName;
+        }
+
+        public Retailer()
+        {
+        }
+
         /// <summary>
         /// Gets or sets Name.
         /// </summary>

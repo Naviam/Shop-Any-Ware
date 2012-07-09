@@ -9,7 +9,10 @@
 
 namespace TdService.Model.Membership
 {
+    using System;
     using System.Collections.Generic;
+    using System.Linq;
+
     using Addresses;
 
     using Packages;
@@ -94,6 +97,20 @@ namespace TdService.Model.Membership
         /// Gets or sets Packages.
         /// </summary>
         public List<Package> Packages { get; set; }
+
+        /// <summary>
+        /// Get the most recent user orders 
+        /// (when order is not yet received or older than 30 days from received date).
+        /// </summary>
+        /// <returns>
+        /// Collection of the most recent user orders.
+        /// </returns>
+        public List<Order> GetRecentOrder()
+        {
+            return this.Orders.Where(
+                order => order.ReceivedDate == DateTime.MinValue
+                    || order.ReceivedDate < DateTime.UtcNow.AddDays(-30)).ToList();
+        }
 
         /// <summary>
         /// Add new order to user.

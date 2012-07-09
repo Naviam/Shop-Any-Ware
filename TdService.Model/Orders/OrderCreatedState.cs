@@ -21,7 +21,21 @@ namespace TdService.Model.Orders
         /// </summary>
         public DateTime CreatedDate
         {
-            get { return DateTime.UtcNow; }
+            get
+            {
+                return DateTime.UtcNow;
+            }
+        }
+
+        /// <summary>
+        /// Get received date.
+        /// </summary>
+        public DateTime ReceivedDate
+        {
+            get
+            {
+                return DateTime.MinValue;
+            }
         }
 
         /// <summary>
@@ -29,7 +43,10 @@ namespace TdService.Model.Orders
         /// </summary>
         public OrderStatus Status
         {
-            get { return OrderStatus.Created; }
+            get
+            {
+                return OrderStatus.Created;
+            }
         }
     }
 }

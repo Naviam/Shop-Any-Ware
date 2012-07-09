@@ -68,7 +68,7 @@ namespace TdService.Model.Orders
         /// <summary>
         /// Gets or sets ReceivedDate.
         /// </summary>
-        public DateTime ReceivedDate { get; set; }
+        public DateTime? ReceivedDate { get; set; }
 
         /// <summary>
         /// Gets or sets Weight.
