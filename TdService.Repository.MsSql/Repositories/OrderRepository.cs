@@ -72,12 +72,10 @@ namespace TdService.Repository.MsSql.Repositories
         public void RemoveOrder(int orderId)
         {
             var order = context.Orders.Find(orderId);
-            if (context.Entry(order).State == EntityState.Detached)
+            if (order != null)
             {
-                context.Orders.Attach(order);
+                context.Orders.Remove(order);
             }
-
-            context.Orders.Remove(order);
         }
 
         /// <summary>
