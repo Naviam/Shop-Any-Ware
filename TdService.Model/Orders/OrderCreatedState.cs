@@ -47,6 +47,10 @@ namespace TdService.Model.Orders
             {
                 return OrderStatus.Created;
             }
+            set
+            {
+                var p = value;
+            }
         }
     }
 }

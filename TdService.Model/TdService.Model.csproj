@@ -10,10 +10,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TdService.Model</RootNamespace>
     <AssemblyName>TdService.Model</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\TD-Service\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -23,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,6 +33,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -58,6 +61,8 @@
     <Compile Include="Membership\IMembershipRepository.cs" />
     <Compile Include="Membership\InvalidProfileException.cs" />
     <Compile Include="Membership\InvalidUserException.cs" />
+    <Compile Include="Membership\IProfileRepository.cs" />
+    <Compile Include="Membership\IUserRepository.cs" />
     <Compile Include="Membership\ProfileBusinessRules.cs" />
     <Compile Include="Membership\RoleBusinessRules.cs" />
     <Compile Include="Membership\UserBusinessRules.cs" />
@@ -73,6 +78,7 @@
     <Compile Include="RFO\RequestForOrderStatus.cs" />
     <Compile Include="Balance\Wallet.cs" />
     <Compile Include="Addresses\DeliveryAddress.cs" />
+    <Compile Include="Services\OrderService.cs" />
     <Compile Include="Shipping\Courier.cs" />
     <Compile Include="Shipping\CourierBusinessRules.cs" />
     <Compile Include="Shipping\DispatchMethod.cs" />

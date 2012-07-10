@@ -84,6 +84,10 @@ namespace TdService.Model.Orders
             {
                 return this.orderState.Status;
             }
+            set
+            {
+                this.orderState.Status = OrderStatus.Created;
+            }
         }
 
         /// <summary>

@@ -14,6 +14,6 @@ namespace TdService.Model.Orders
         /// <summary>
         /// Gets Status.
         /// </summary>
-        OrderStatus Status { get; }
+        OrderStatus Status { get; set; }
     }
 }
