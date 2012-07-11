@@ -66,10 +66,10 @@
     <Compile Include="Membership\ProfileBusinessRules.cs" />
     <Compile Include="Membership\RoleBusinessRules.cs" />
     <Compile Include="Membership\UserBusinessRules.cs" />
-    <Compile Include="Orders\OrderReceivingState.cs" />
     <Compile Include="Orders\OrderBusinessRules.cs" />
     <Compile Include="Orders\OrderDisposedState.cs" />
     <Compile Include="Orders\IOrderState.cs" />
+    <Compile Include="Orders\OrderReturnedState.cs" />
     <Compile Include="Packages\PackageBusinessRules.cs" />
     <Compile Include="RFO\IRequestForOrderRepository.cs" />
     <Compile Include="Orders\OrderCreatedState.cs" />

@@ -105,7 +105,7 @@ namespace TdService.Model.Membership
         /// <returns>
         /// Collection of the most recent user orders.
         /// </returns>
-        public List<Order> GetRecentOrder()
+        public List<Order> GetRecentOrders()
         {
             return this.Orders.Where(
                 order => order.ReceivedDate == DateTime.MinValue
@@ -121,6 +121,17 @@ namespace TdService.Model.Membership
         public void AddOrder(Order order)
         {
             this.Orders.Add(order);
+        }
+
+        /// <summary>
+        /// Remove order.
+        /// </summary>
+        /// <param name="order">
+        /// The order.
+        /// </param>
+        public void RemoveOrder(Order order)
+        {
+            this.Orders.Remove(order);
         }
 
         /// <summary>

@@ -61,9 +61,9 @@ namespace TdService.Repository.MsSql.Repositories
         /// <summary>
         /// Save changes to db.
         /// </summary>
-        public void SaveChanges()
+        public int SaveChanges()
         {
-            this.context.SaveChanges();
+            return this.context.SaveChanges();
         }
     }
 }

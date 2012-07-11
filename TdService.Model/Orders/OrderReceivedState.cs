@@ -6,21 +6,63 @@
 
 namespace TdService.Model.Orders
 {
-    using System;
-
     /// <summary>
     /// Describes the received order behavior.
     /// </summary>
     public class OrderReceivedState : IOrderState
     {
         /// <summary>
-        /// Gets Status.
+        /// Flag that says whether items are editable in this order.
         /// </summary>
-        public OrderStatus Status
+        public bool CanEditItems
         {
             get
             {
-                return OrderStatus.Received;
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Flag that says whether this order is editable.
+        /// </summary>
+        public bool CanEditOrder
+        {
+            get
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Flag that says whether this order can be returned.
+        /// </summary>
+        public bool CanRequestOrderReturn
+        {
+            get
+            {
+                return true;
+            }
+        }
+
+        /// <summary>
+        /// Flag that says whether this order can be disposed.
+        /// </summary>
+        public bool CanDisposeOrder
+        {
+            get
+            {
+                return true;
+            }
+        }
+
+        /// <summary>
+        /// Flag that says whether this order can be removed.
+        /// </summary>
+        public bool CanRemoveOrder
+        {
+            get
+            {
+                return false;
             }
         }
     }

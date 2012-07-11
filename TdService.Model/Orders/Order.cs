@@ -12,6 +12,7 @@ namespace TdService.Model.Orders
     using TdService.Infrastructure.Domain;
     using TdService.Model.Common;
     using TdService.Model.Items;
+    using TdService.Model.Membership;
 
     /// <summary>
     /// This class describes the order from online shops.
@@ -66,6 +67,16 @@ namespace TdService.Model.Orders
         public DateTime CreatedDate { get; private set; }
 
         /// <summary>
+        /// Created by user.
+        /// </summary>
+        public User CreatedByUser { get; set; }
+
+        /// <summary>
+        /// In which role user has created this order.
+        /// </summary>
+        public Role CreatedByRole { get; set; }
+
+        /// <summary>
         /// Gets or sets ReceivedDate.
         /// </summary>
         public DateTime? ReceivedDate { get; set; }
@@ -78,17 +89,7 @@ namespace TdService.Model.Orders
         /// <summary>
         /// Gets Order Status.
         /// </summary>
-        public OrderStatus Status
-        {
-            get
-            {
-                return this.orderState.Status;
-            }
-            set
-            {
-                this.orderState.Status = OrderStatus.Created;
-            }
-        }
+        public OrderStatus Status { get; set; }
 
         /// <summary>
         /// Gets or sets Extended Status.
@@ -103,7 +104,14 @@ namespace TdService.Model.Orders
         /// </param>
         public void AddItem(Item item)
         {
-            this.Items.Add(item);
+            if (this.orderState is OrderCreatedState)
+            {
+                this.Items.Add(item);
+            }
+            else
+            {
+                throw new InvalidOperationException("Item cannot be added to order that is not in created state.");
+            }
         }
 
         /// <summary>

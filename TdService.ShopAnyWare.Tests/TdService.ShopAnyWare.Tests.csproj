@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Controllers\AccountControllerTests.cs" />
     <Compile Include="Controllers\ProfileControllerTests.cs" />
+    <Compile Include="DomainServices\OrderServiceTests.cs" />
     <Compile Include="Mocks\FakeEmailService.cs" />
     <Compile Include="Mocks\FakeFormsAuthentication.cs" />
     <Compile Include="Mocks\FakeMembershipService.cs" />

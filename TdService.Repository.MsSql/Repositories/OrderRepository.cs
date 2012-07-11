@@ -33,7 +33,7 @@ namespace TdService.Repository.MsSql.Repositories
         /// </returns>
         public Order GetOrderById(int orderId)
         {
-            return context.Orders.Find(orderId);
+            return this.context.Orders.Find(orderId);
         }
 
         /// <summary>
@@ -47,8 +47,7 @@ namespace TdService.Repository.MsSql.Repositories
         /// </returns>
         public Order AddOrder(Order order)
         {
-            var result = context.Orders.Add(order);
-            return result;
+            return this.context.Orders.Add(order);
         }
 
         /// <summary>
@@ -59,8 +58,7 @@ namespace TdService.Repository.MsSql.Repositories
         /// </param>
         public void UpdateOrder(Order order)
         {
-            context.Orders.Attach(order);
-            context.Entry(order).State = EntityState.Modified;
+            this.context.Entry(order).State = EntityState.Modified;
         }
 
         /// <summary>
@@ -71,10 +69,10 @@ namespace TdService.Repository.MsSql.Repositories
         /// </param>
         public void RemoveOrder(int orderId)
         {
-            var order = context.Orders.Find(orderId);
+            var order = this.context.Orders.Find(orderId);
             if (order != null)
             {
-                context.Orders.Remove(order);
+                this.context.Orders.Remove(order);
             }
         }
 
@@ -83,7 +81,7 @@ namespace TdService.Repository.MsSql.Repositories
         /// </summary>
         public void SaveChanges()
         {
-            context.SaveChanges();
+            this.context.SaveChanges();
         }
     }
 }

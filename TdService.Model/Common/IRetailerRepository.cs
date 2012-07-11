@@ -32,5 +32,13 @@ namespace TdService.Model.Common
         /// The retailer id.
         /// </param>
         void Remove(int retailerId);
+
+        /// <summary>
+        /// Save changes to db.
+        /// </summary>
+        /// <returns>
+        /// Db change result.
+        /// </returns>
+        int SaveChanges();
     }
 }

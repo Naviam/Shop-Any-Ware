@@ -9,47 +9,63 @@
 
 namespace TdService.Model.Orders
 {
-    using System;
-
     /// <summary>
     /// Describes the newly created order behavior.
     /// </summary>
     public class OrderCreatedState : IOrderState
     {
         /// <summary>
-        /// Gets the created date.
+        /// Flag that says whether items are editable in this order.
         /// </summary>
-        public DateTime CreatedDate
+        public bool CanEditItems
         {
             get
             {
-                return DateTime.UtcNow;
+                return true;
             }
         }
 
         /// <summary>
-        /// Get received date.
+        /// Flag that says whether this order is editable.
         /// </summary>
-        public DateTime ReceivedDate
+        public bool CanEditOrder
         {
             get
             {
-                return DateTime.MinValue;
+                return true;
             }
         }
 
         /// <summary>
-        /// Gets Order Status.
+        /// Flag that says whether this order can be returned.
         /// </summary>
-        public OrderStatus Status
+        public bool CanRequestOrderReturn
         {
             get
             {
-                return OrderStatus.Created;
+                return true;
             }
-            set
+        }
+
+        /// <summary>
+        /// Flag that says whether this order can be disposed.
+        /// </summary>
+        public bool CanDisposeOrder
+        {
+            get
             {
-                var p = value;
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Flag that says whether this order can be removed.
+        /// </summary>
+        public bool CanRemoveOrder
+        {
+            get
+            {
+                return true;
             }
         }
     }

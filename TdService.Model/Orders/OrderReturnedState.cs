@@ -1,18 +1,9 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="OrderDisposedState.cs" company="TdService">
-//   Vitali Hatalski. 2012.
-// </copyright>
-// <summary>
-//   Describes the disposed order behavior.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace TdService.Model.Orders
+﻿namespace TdService.Model.Orders
 {
     /// <summary>
-    /// Describes the disposed order behavior.
+    /// Describe the order behavior when return of an order is in progress.
     /// </summary>
-    public class OrderDisposedState : IOrderState
+    public class OrderReturnedState : IOrderState
     {
         /// <summary>
         /// Flag that says whether items are editable in this order.

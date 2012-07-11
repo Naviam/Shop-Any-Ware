@@ -46,6 +46,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TdService.Resources", "TdSe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TdService.ShopAnyWare.Tests", "TdService.ShopAnyWare.Tests\TdService.ShopAnyWare.Tests.csproj", "{E7A096EC-1A73-4EBD-9CF1-617A1A1179F6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.5 Services Layer", "1.5 Services Layer", "{26053E1F-C81F-48B0-ABEF-804142F0F12B}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = TdService.vsmdi
