@@ -12,6 +12,11 @@ namespace TdService.Model.Orders
     public interface IOrderState
     {
         /// <summary>
+        /// Can this order be received (status changed to received).
+        /// </summary>
+        bool CanOrderBeReceived { get; }
+
+        /// <summary>
         /// Flag that says whether items are editable in this order.
         /// </summary>
         bool CanEditItems { get; }

@@ -42,7 +42,7 @@
         /// </summary>
         /// <param name="email">The email of an user.</param>
         /// <param name="shopNameOrUrl">The shop name or url.</param>
-        public void AddNewOrderToUser(string email, string shopNameOrUrl)
+        public Order AddNewOrderToUser(string email, string shopNameOrUrl)
         {
             var user = this.userRepository.GetUserByEmail(email);
             if (user == null)
@@ -56,7 +56,7 @@
             this.retailerRepository.SaveChanges();
 
             // create new order
-            var order = new Order(new OrderCreatedState(), retailer);
+            var order = Order.CreateNewOrder(retailer);
             order = this.orderRepository.AddOrder(order);
             this.orderRepository.SaveChanges();
 
@@ -64,6 +64,8 @@
             user.AddOrder(order);
             this.userRepository.UpdateUser(user);
             this.userRepository.SaveChanges();
+
+            return order;
         }
 
         /// <summary>

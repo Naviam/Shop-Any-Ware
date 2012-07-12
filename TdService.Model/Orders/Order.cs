@@ -25,20 +25,16 @@ namespace TdService.Model.Orders
         private IOrderState orderState;
 
         /// <summary>
+        /// Order status.
+        /// </summary>
+        private OrderStatus orderStatus;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="Order"/> class.
         /// </summary>
-        /// <param name="baseState">
-        /// The base state.
-        /// </param>
-        /// <param name="retailer">
-        /// The retailer.
-        /// </param>
-        public Order(IOrderState baseState, Retailer retailer)
+        public Order(OrderStatus orderStatus)
         {
-            this.orderState = baseState;
-            this.Retailer = retailer;
-            this.CreatedDate = DateTime.UtcNow;
-            this.Items = new List<Item>();
+            this.orderStatus = orderStatus;
         }
 
         /// <summary>
@@ -57,6 +53,11 @@ namespace TdService.Model.Orders
         public string TrackingNumber { get; set; }
 
         /// <summary>
+        /// Created by user.
+        /// </summary>
+        public User CreatedByUser { get; set; }
+
+        /// <summary>
         /// Gets or sets Items.
         /// </summary>
         public List<Item> Items { get; set; }
@@ -67,34 +68,91 @@ namespace TdService.Model.Orders
         public DateTime CreatedDate { get; private set; }
 
         /// <summary>
-        /// Created by user.
+        /// Gets or sets Received Date.
         /// </summary>
-        public User CreatedByUser { get; set; }
+        public DateTime? ReceivedDate { get; private set; }
 
         /// <summary>
-        /// In which role user has created this order.
+        /// Gets or sets date of order return.
         /// </summary>
-        public Role CreatedByRole { get; set; }
+        public DateTime? ReturnedDate { get; private set; }
 
         /// <summary>
-        /// Gets or sets ReceivedDate.
+        /// Gets or sets date of disposal.
         /// </summary>
-        public DateTime? ReceivedDate { get; set; }
+        public DateTime? DisposedDate { get; private set; }
 
         /// <summary>
         /// Gets or sets Weight.
-        /// </summary>
+        /// </summary>lf
         public Weight Weight { get; set; }
 
         /// <summary>
         /// Gets Order Status.
         /// </summary>
-        public OrderStatus Status { get; set; }
+        public OrderStatus Status
+        {
+            get
+            {
+                return this.orderStatus;
+            }
+            set
+            {
+                switch (value)
+                {
+                    case OrderStatus.New:
+                        if (this.orderState == null)
+                        {
+                            this.orderState = new OrderCreatedState();
+                            this.CreatedDate = DateTime.UtcNow;
+                        }
+                        else
+                        {
+                            throw new InvalidOperationException("Only new order can be set to created state.");
+                        }
+                        break;
+                    case OrderStatus.Received:
+                        if (this.orderState.CanOrderBeReceived)
+                        {
+                            this.orderState = new OrderReceivedState();
+                            this.ReceivedDate = DateTime.UtcNow;
+                        }
+                        else
+                        {
+                            throw new InvalidOperationException("This order cannot be set into received state.");
+                        }
+                        break;
+                    case OrderStatus.Returned:
+                        if (this)
+                        this.orderState = new OrderReturnedState();
+                        this.ReturnedDate = DateTime.UtcNow;
+                        break;
+                    case OrderStatus.Disposed:
+                        this.orderState = new OrderDisposedState();
+                        this.DisposedDate = DateTime.UtcNow;
+                        break;
+                }
+
+                this.orderStatus = value;
+            }
+        }
 
         /// <summary>
         /// Gets or sets Extended Status.
         /// </summary>
-        public string StatusExtended { get; set; }
+        public OrderExtendedStatus StatusExtended { get; set; }
+
+        /// <summary>
+        /// Create new order.
+        /// </summary>
+        /// <returns></returns>
+        public Order CreateNew(Retailer retailer)
+        {
+            var order = new Order();
+            order.Status = OrderStatus.New;
+            orderState = new OrderCreatedState();
+            return order;
+        }
 
         /// <summary>
         /// Add item to an order.
@@ -104,7 +162,7 @@ namespace TdService.Model.Orders
         /// </param>
         public void AddItem(Item item)
         {
-            if (this.orderState is OrderCreatedState)
+            if (this.orderState.CanEditItems)
             {
                 this.Items.Add(item);
             }

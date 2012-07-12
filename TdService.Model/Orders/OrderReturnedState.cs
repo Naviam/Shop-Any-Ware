@@ -6,6 +6,18 @@
     public class OrderReturnedState : IOrderState
     {
         /// <summary>
+        /// Can this order be received (status changed to received).
+        /// </summary>
+        public bool CanOrderBeReceived
+        {
+            get
+            {
+                // can be received again if return unsuccessfull
+                return true;
+            }
+        }
+
+        /// <summary>
         /// Flag that says whether items are editable in this order.
         /// </summary>
         public bool CanEditItems

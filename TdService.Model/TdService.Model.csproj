@@ -69,6 +69,7 @@
     <Compile Include="Orders\OrderBusinessRules.cs" />
     <Compile Include="Orders\OrderDisposedState.cs" />
     <Compile Include="Orders\IOrderState.cs" />
+    <Compile Include="Orders\OrderExtendedStatus.cs" />
     <Compile Include="Orders\OrderReturnedState.cs" />
     <Compile Include="Packages\PackageBusinessRules.cs" />
     <Compile Include="RFO\IRequestForOrderRepository.cs" />

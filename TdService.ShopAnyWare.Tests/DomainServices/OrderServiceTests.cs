@@ -1,11 +1,14 @@
 ﻿namespace TdService.ShopAnyWare.Tests.DomainServices
 {
+    using System.Data.Entity;
+    using System.Linq;
+
     using NUnit.Framework;
 
-    using TdService.Model.Common;
-    using TdService.Model.Membership;
-    using TdService.Model.Orders;
+    using TdService.Model.Services;
+    using TdService.Repository.MsSql;
     using TdService.Repository.MsSql.Repositories;
+    using TdService.ShopAnyWare.Tests.Repository;
 
     /// <summary>
     /// Order service tests.
@@ -13,20 +16,35 @@
     [TestFixture]
     public class OrderServiceTests
     {
-        private IUserRepository userRepository;
+        /// <summary>
+        /// Shop any ware context.
+        /// </summary>
+        private ShopAnyWareSql context;
 
         [SetUp]
         public void SetUp()
         {
-            this.userRepository = new UserRepository();
+            Database.SetInitializer(new ShopAnyWareTestInitilizer());
+            this.context = new ShopAnyWareSql();
         }
 
         [Test]
-        public void ShouldBeAbleToAddOrderToUser()
+        public void ShouldBeAbleToCreateNewOrder()
         {
             // arrange
-            var user = this.userRepository.GetUserByEmail("vhatalski@naviam.com");
-            var order = new Order(new OrderCreatedState(), new Retailer("apple.com"));
+            const string ParameterEmail = "vhatalski@naviam.com";
+            const string ParameterShopNameOrUrl = "apple.com";
+            var userRepository = new UserRepository(this.context);
+            var orderRepository = new OrderRepository(this.context);
+            var retailerRepository = new RetailerRepository(this.context);
+            var orderService = new OrderService(userRepository, orderRepository, retailerRepository);
+
+            // act
+            var order = orderService.AddNewOrderToUser(ParameterEmail, ParameterShopNameOrUrl);
+
+            // assert
+            var user = userRepository.GetUserByEmail(ParameterEmail);
+            Assert.That(user.GetRecentOrders().SingleOrDefault(o => o.Id == order.Id), Is.EqualTo(order));
         }
     }
 }
