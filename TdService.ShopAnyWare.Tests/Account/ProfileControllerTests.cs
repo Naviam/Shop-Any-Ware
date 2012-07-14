@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TdService.ShopAnyWare.Tests.Controllers
+namespace TdService.ShopAnyWare.Tests.Account
 {
     using System.Web.Mvc;
 
@@ -14,7 +14,6 @@ namespace TdService.ShopAnyWare.Tests.Controllers
     using TdService.Infrastructure.Authentication;
     using TdService.Services.Interfaces;
     using TdService.Services.ViewModels.Account;
-    using TdService.ShopAnyWare.Tests.Mocks;
 
     /// <summary>
     /// Profile controller tests.

@@ -12,12 +12,12 @@ namespace TdService.Model.Orders
     /// <summary>
     /// Describes the newly created order behavior.
     /// </summary>
-    public class OrderCreatedState : IOrderState
+    public class OrderNewState : IOrderState
     {
         /// <summary>
         /// Can this order be received (status changed to received).
         /// </summary>
-        public bool CanOrderBeReceived
+        public bool CanBeReceived
         {
             get
             {
@@ -28,7 +28,7 @@ namespace TdService.Model.Orders
         /// <summary>
         /// Flag that says whether items are editable in this order.
         /// </summary>
-        public bool CanEditItems
+        public bool CanItemsBeModified
         {
             get
             {
@@ -39,7 +39,7 @@ namespace TdService.Model.Orders
         /// <summary>
         /// Flag that says whether this order is editable.
         /// </summary>
-        public bool CanEditOrder
+        public bool CanBeModified
         {
             get
             {
@@ -50,7 +50,7 @@ namespace TdService.Model.Orders
         /// <summary>
         /// Flag that says whether this order can be returned.
         /// </summary>
-        public bool CanRequestOrderReturn
+        public bool CanBeRequestedForReturn
         {
             get
             {
@@ -59,9 +59,20 @@ namespace TdService.Model.Orders
         }
 
         /// <summary>
+        /// Flag that says whether this order can be returned.
+        /// </summary>
+        public bool CanBeReturned
+        {
+            get
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
         /// Flag that says whether this order can be disposed.
         /// </summary>
-        public bool CanDisposeOrder
+        public bool CanBeDisposed
         {
             get
             {
@@ -72,7 +83,7 @@ namespace TdService.Model.Orders
         /// <summary>
         /// Flag that says whether this order can be removed.
         /// </summary>
-        public bool CanRemoveOrder
+        public bool CanBeRemoved
         {
             get
             {

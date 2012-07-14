@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.ShopAnyWare.Tests.Model
+namespace TdService.ShopAnyWare.Tests.Orders
 {
     using NUnit.Framework;
 

@@ -53,6 +53,10 @@
   <ItemGroup>
     <Compile Include="Implementations\DeliveryAddressService.cs" />
     <Compile Include="Implementations\MembershipService.cs" />
+    <Compile Include="Implementations\OrderService.cs" />
+    <Compile Include="Interfaces\IOrderService.cs" />
+    <Compile Include="Mapping\GetRecentOrdersResponseMapping.cs" />
+    <Compile Include="Mapping\OrderMapper.cs" />
     <Compile Include="Messaging\Membership\ChangePasswordLinkRequest.cs" />
     <Compile Include="Messaging\Membership\ChangePasswordLinkResponse.cs" />
     <Compile Include="Messaging\Membership\UpdateProfileRequest.cs" />
@@ -76,6 +80,8 @@
     <Compile Include="Messaging\Membership\RegisterUserResponse.cs" />
     <Compile Include="Messaging\Membership\ValidateUserResponse.cs" />
     <Compile Include="Messaging\MessageType.cs" />
+    <Compile Include="Messaging\Order\GetRecentOrdersRequest.cs" />
+    <Compile Include="Messaging\Order\GetRecentOrdersResponse.cs" />
     <Compile Include="Messaging\RequestBase.cs" />
     <Compile Include="Messaging\ResponseBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -86,6 +92,7 @@
     <Compile Include="ViewModels\Account\SignInView.cs" />
     <Compile Include="ViewModels\Account\SignUpView.cs" />
     <Compile Include="ViewModels\BaseView.cs" />
+    <Compile Include="ViewModels\Order\OrderViewModel.cs" />
     <Compile Include="ViewModels\ViewModelMessageType.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -105,7 +112,9 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

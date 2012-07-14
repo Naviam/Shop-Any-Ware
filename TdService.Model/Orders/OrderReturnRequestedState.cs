@@ -1,9 +1,12 @@
-﻿namespace TdService.Model.Orders
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace TdService.Model.Orders
 {
-    /// <summary>
-    /// Describe the order behavior when return of an order is in progress.
-    /// </summary>
-    public class OrderReturnedState : IOrderState
+    public class OrderReturnRequestedState : IOrderState
     {
         /// <summary>
         /// Can this order be received (status changed to received).
@@ -12,7 +15,7 @@
         {
             get
             {
-                return false;
+                return true;
             }
         }
 
@@ -56,7 +59,7 @@
         {
             get
             {
-                return false;
+                return true;
             }
         }
 

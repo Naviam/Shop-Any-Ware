@@ -14,31 +14,36 @@ namespace TdService.Model.Orders
         /// <summary>
         /// Can this order be received (status changed to received).
         /// </summary>
-        bool CanOrderBeReceived { get; }
+        bool CanBeReceived { get; }
 
         /// <summary>
         /// Flag that says whether items are editable in this order.
         /// </summary>
-        bool CanEditItems { get; }
+        bool CanItemsBeModified { get; }
 
         /// <summary>
         /// Flag that says whether this order is editable.
         /// </summary>
-        bool CanEditOrder { get; }
+        bool CanBeModified { get; }
+
+        /// <summary>
+        /// Flag that says whether this order can be requested for returned.
+        /// </summary>
+        bool CanBeRequestedForReturn { get; }
 
         /// <summary>
         /// Flag that says whether this order can be returned.
         /// </summary>
-        bool CanRequestOrderReturn { get; }
+        bool CanBeReturned { get; }
 
         /// <summary>
         /// Flag that says whether this order can be disposed.
         /// </summary>
-        bool CanDisposeOrder { get; }
+        bool CanBeDisposed { get; }
 
         /// <summary>
         /// Flag that says whether this order can be removed.
         /// </summary>
-        bool CanRemoveOrder { get; }
+        bool CanBeRemoved { get; }
     }
 }

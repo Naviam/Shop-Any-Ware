@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TdService.ShopAnyWare.Tests.Repository
+namespace TdService.ShopAnyWare.Tests.Account
 {
     using System.Data.Entity;
 
@@ -12,6 +12,7 @@ namespace TdService.ShopAnyWare.Tests.Repository
 
     using TdService.Model.Membership;
     using TdService.Repository.MsSql.Repositories;
+    using TdService.ShopAnyWare.Tests.Repository;
 
     /// <summary>
     /// Membership repository for testing.

@@ -124,7 +124,7 @@ namespace TdService.ShopAnyWare.Tests.Repository
             retailer = retailerRepository.FindOrAdd(retailer);
             retailerRepository.SaveChanges();
 
-            var newOrder = new Order(new OrderCreatedState(), retailer);
+            var newOrder = Order.CreateNew(retailer);
 
             if (newOrder.GetBrokenRules().Any())
             {

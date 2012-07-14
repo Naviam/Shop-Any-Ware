@@ -1,4 +1,4 @@
-﻿namespace TdService.Model.Services
+﻿namespace TdService.Model.DomainServices
 {
     using System;
     using System.Linq;
@@ -10,7 +10,7 @@
     /// <summary>
     /// Order domain service.
     /// </summary>
-    public class OrderService
+    public class OrderDomainService
     {
         /// <summary>
         /// User repository.
@@ -27,7 +27,7 @@
         /// </summary>
         private readonly IRetailerRepository retailerRepository;
 
-        public OrderService(
+        public OrderDomainService(
             IUserRepository userRepository,
             IOrderRepository orderRepository,
             IRetailerRepository retailerRepository)
@@ -56,7 +56,7 @@
             this.retailerRepository.SaveChanges();
 
             // create new order
-            var order = Order.CreateNewOrder(retailer);
+            var order = Order.CreateNew(retailer);
             order = this.orderRepository.AddOrder(order);
             this.orderRepository.SaveChanges();
 
@@ -72,8 +72,8 @@
         /// Remove order from user.
         /// </summary>
         /// <param name="email"></param>
-        /// <param name="orderId"></param>
-        public void RemoveOrderFromUser(string email, int orderId)
+        /// <param name="order"></param>
+        public void RemoveOrderFromUser(string email, Order order)
         {
             var user = this.userRepository.GetUserByEmail(email);
             if (user == null)
@@ -81,12 +81,12 @@
                 throw new ArgumentException("The user has not been found in db by this email.", "email");
             }
 
-            var order = user.Orders.SingleOrDefault(o => o.Id == orderId);
-            user.RemoveOrder(order);
+            var orderDb = user.Orders.SingleOrDefault(o => o.Id == order.Id);
+            user.RemoveOrder(orderDb);
 
-            if (order != null)
+            if (orderDb != null)
             {
-                this.orderRepository.RemoveOrder(orderId);
+                this.orderRepository.RemoveOrder(orderDb.Id);
                 this.orderRepository.SaveChanges();
             }
         }

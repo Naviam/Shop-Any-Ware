@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TdService.ShopAnyWare.Tests.Services
+namespace TdService.ShopAnyWare.Tests.Account
 {
     using NUnit.Framework;
 

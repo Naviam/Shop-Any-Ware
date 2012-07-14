@@ -25,13 +25,18 @@ namespace TdService.Model.Orders
         Received = 1,
 
         /// <summary>
+        /// Return of an order was requested by shopper.
+        /// </summary>
+        ReturnRequested = 2,
+
+        /// <summary>
         /// Returned to seller.
         /// </summary>
-        Returned = 2,
+        Returned = 3,
 
         /// <summary>
         /// Disposed order.
         /// </summary>
-        Disposed = 3
+        Disposed = 4
     }
 }

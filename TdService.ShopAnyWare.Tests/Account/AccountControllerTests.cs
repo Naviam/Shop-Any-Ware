@@ -19,6 +19,7 @@ namespace TdService.ShopAnyWare.Tests.Controllers
     using TdService.Infrastructure.Email;
     using TdService.Services.Interfaces;
     using TdService.Services.ViewModels.Account;
+    using TdService.ShopAnyWare.Tests.Account;
     using TdService.ShopAnyWare.Tests.Mocks;
 
     /// <summary>

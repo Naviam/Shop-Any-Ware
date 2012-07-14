@@ -7,11 +7,10 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.ShopAnyWare.Tests.Services
+namespace TdService.ShopAnyWare.Tests.Account
 {
     using System.Collections.Generic;
 
-    using TdService.Model.Addresses;
     using TdService.Model.Membership;
 
     /// <summary>

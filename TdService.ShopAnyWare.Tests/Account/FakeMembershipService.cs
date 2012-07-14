@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TdService.ShopAnyWare.Tests.Mocks
+namespace TdService.ShopAnyWare.Tests.Account
 {
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging;

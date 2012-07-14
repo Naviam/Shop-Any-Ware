@@ -58,6 +58,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MemberController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

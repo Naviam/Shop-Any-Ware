@@ -5,7 +5,7 @@
 
     using NUnit.Framework;
 
-    using TdService.Model.Services;
+    using TdService.Model.DomainServices;
     using TdService.Repository.MsSql;
     using TdService.Repository.MsSql.Repositories;
     using TdService.ShopAnyWare.Tests.Repository;
@@ -14,7 +14,7 @@
     /// Order service tests.
     /// </summary>
     [TestFixture]
-    public class OrderServiceTests
+    public class OrderDomainServiceTests
     {
         /// <summary>
         /// Shop any ware context.
@@ -37,7 +37,7 @@
             var userRepository = new UserRepository(this.context);
             var orderRepository = new OrderRepository(this.context);
             var retailerRepository = new RetailerRepository(this.context);
-            var orderService = new OrderService(userRepository, orderRepository, retailerRepository);
+            var orderService = new OrderDomainService(userRepository, orderRepository, retailerRepository);
 
             // act
             var order = orderService.AddNewOrderToUser(ParameterEmail, ParameterShopNameOrUrl);
