@@ -18,10 +18,9 @@
         /// <returns>
         /// Order view model collection.
         /// </returns>
-        public static IEnumerable<OrderViewModel> ConvertToOrderViewModelCollection(this IEnumerable<GetRecentOrdersResponse> getRecentOrdersResponseCollection)
+        public static List<OrderViewModel> ConvertToOrderViewModelCollection(this List<GetRecentOrdersResponse> getRecentOrdersResponseCollection)
         {
-            Mapper.CreateMap<IEnumerable<GetRecentOrdersResponse>, IEnumerable<OrderViewModel>>();
-            return Mapper.Map<IEnumerable<GetRecentOrdersResponse>, IEnumerable<OrderViewModel>>(getRecentOrdersResponseCollection);
+            return Mapper.Map<List<GetRecentOrdersResponse>, List<OrderViewModel>>(getRecentOrdersResponseCollection);
         }
     }
 }

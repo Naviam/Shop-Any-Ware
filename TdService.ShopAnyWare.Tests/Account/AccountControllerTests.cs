@@ -4,11 +4,8 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TdService.ShopAnyWare.Tests.Controllers
+namespace TdService.ShopAnyWare.Tests.Account
 {
-    using System;
-    using System.Linq;
-    using System.Reflection;
     using System.Web.Mvc;
 
     using NUnit.Framework;
@@ -19,7 +16,7 @@ namespace TdService.ShopAnyWare.Tests.Controllers
     using TdService.Infrastructure.Email;
     using TdService.Services.Interfaces;
     using TdService.Services.ViewModels.Account;
-    using TdService.ShopAnyWare.Tests.Account;
+    using TdService.ShopAnyWare.Tests.Helpers;
     using TdService.ShopAnyWare.Tests.Mocks;
 
     /// <summary>
@@ -176,35 +173,7 @@ namespace TdService.ShopAnyWare.Tests.Controllers
         [Test]
         public void ShouldBeAbleToLogOffOnlyIfAuthorized()
         {
-            AssertIsAuthorized(typeof(AccountController), "SignOut");
-        }
-
-        /// <summary>
-        /// Assert is authorized helper.
-        /// </summary>
-        /// <param name="type">
-        /// The type.
-        /// </param>
-        private static void AssertIsAuthorized(ICustomAttributeProvider type)
-        {
-            Assert.IsTrue(type.GetCustomAttributes(false).Any(o => o.GetType() == typeof(AuthorizeAttribute)));
-        }
-
-        /// <summary>
-        /// Assert is authorized helper.
-        /// </summary>
-        /// <param name="type">
-        /// The type.
-        /// </param>
-        /// <param name="action">
-        /// The action.
-        /// </param>
-        /// <param name="parameters">
-        /// The parameters.
-        /// </param>
-        private static void AssertIsAuthorized(Type type, string action, params Type[] parameters)
-        {
-            AssertIsAuthorized(type.GetMethod(action, parameters));
+            TestHelper.AssertIsAuthorized(typeof(AccountController), "SignOut");
         }
     }
 }

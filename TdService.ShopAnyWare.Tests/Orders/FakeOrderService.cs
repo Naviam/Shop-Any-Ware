@@ -1,5 +1,6 @@
 ﻿namespace TdService.ShopAnyWare.Tests.Orders
 {
+    using System;
     using System.Collections.Generic;
 
     using TdService.Services.Interfaces;
@@ -18,7 +19,41 @@
         /// </returns>
         public IEnumerable<GetRecentOrdersResponse> GetRecent(GetRecentOrdersRequest request)
         {
-            yield break;
+            var result = new List<GetRecentOrdersResponse>
+                {
+                    new GetRecentOrdersResponse
+                        {
+                            Id = 1,
+                            CreatedDate = DateTime.UtcNow.AddDays(-30),
+                            OrderNumber = "order number test 1",
+                            ReceivedDate = DateTime.UtcNow.AddDays(-5),
+                            TrackingNumber = "tracking number test 1",
+                            Status = "Received",
+                            RetailerName = "Amazon, Inc."
+                        },
+                    new GetRecentOrdersResponse
+                        {
+                            Id = 2,
+                            CreatedDate = DateTime.UtcNow.AddDays(-40),
+                            OrderNumber = "order number test 2",
+                            ReceivedDate = DateTime.UtcNow.AddDays(-25),
+                            TrackingNumber = "tracking number test 2",
+                            Status = "Received",
+                            RetailerName = "Amazon, Inc."
+                        },
+                    new GetRecentOrdersResponse
+                        {
+                            Id = 3,
+                            CreatedDate = DateTime.UtcNow.AddDays(-15),
+                            OrderNumber = "order number test 3",
+                            ReceivedDate = DateTime.MinValue,
+                            TrackingNumber = "tracking number test 3",
+                            Status = "New",
+                            RetailerName = "Amazon, Inc."
+                        }
+                };
+
+            return result;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿namespace TdService.Controllers
 {
+    using System.Linq;
     using System.Web.Mvc;
 
     using TdService.Infrastructure.Authentication;
@@ -36,11 +37,12 @@
         /// <returns>
         /// Get recent orders json result.
         /// </returns>
+        [Authorize]
         [HttpPost]
         public ActionResult GetRecent()
         {
-            var request = new GetRecentOrdersRequest { IdentityToken = this.User.Identity.Name };
-            var response = this.orderService.GetRecent(request);
+            var request = new GetRecentOrdersRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() };
+            var response = this.orderService.GetRecent(request).ToList();
             var viewModelCollection = response.ConvertToOrderViewModelCollection();
             return this.Json(viewModelCollection);
         }

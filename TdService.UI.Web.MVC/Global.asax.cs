@@ -57,6 +57,8 @@ namespace TdService.UI.Web.MVC
         /// </summary>
         protected void Application_Start()
         {
+            AutoMapperConfiguration.Configure();
+
             DatabaseInitializer.InitializeShopAnyWare();
 
             // AreaRegistration.RegisterAllAreas();
