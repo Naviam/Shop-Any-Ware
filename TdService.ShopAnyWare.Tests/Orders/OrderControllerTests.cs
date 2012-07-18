@@ -171,7 +171,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
             if (actual != null)
             {
                 var actualOrders = (List<OrderViewModel>)actual.Data;
-                for (var i = 0; i <= expected.Count; i++)
+                for (var i = 0; i < expected.Count; i++)
                 {
                     Assert.That(actualOrders[i].Id, Is.EqualTo(expected[i].Id));
                     Assert.That(actualOrders[i].CreatedDate, Is.EqualTo(expected[i].CreatedDate).Within(1).Minutes);
