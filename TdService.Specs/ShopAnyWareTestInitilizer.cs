@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.ShopAnyWare.Tests.Repository
+namespace TdService.Specs
 {
     using System.Data.Entity;
 

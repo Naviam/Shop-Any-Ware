@@ -44,11 +44,16 @@ namespace TdService.Services.Messaging.Order
         /// <summary>
         /// Gets or sets received date.
         /// </summary>
-        public DateTime ReceivedDate { get; set; }
+        public DateTime? ReceivedDate { get; set; }
 
         /// <summary>
         /// Gets or sets order status.
         /// </summary>
         public string Status { get; set; }
+
+        /// <summary>
+        /// Gets or sets the returned date.
+        /// </summary>
+        public DateTime? ReturnedDate { get; set; }
     }
 }

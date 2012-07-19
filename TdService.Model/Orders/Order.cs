@@ -27,6 +27,15 @@ namespace TdService.Model.Orders
         /// <summary>
         /// Initializes a new instance of the <see cref="Order"/> class.
         /// </summary>
+        public Order()
+        {
+            this.orderState = new OrderNewState();
+            this.Status = OrderStatus.New;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Order"/> class.
+        /// </summary>
         /// <param name="orderStatus">
         /// The order Status.
         /// </param>
@@ -69,9 +78,9 @@ namespace TdService.Model.Orders
         public string TrackingNumber { get; set; }
 
         /// <summary>
-        /// Gets or sets created by user.
+        /// Gets or sets user.
         /// </summary>
-        public User CreatedBy { get; set; }
+        public User User { get; set; }
 
         /// <summary>
         /// Gets or sets Items.

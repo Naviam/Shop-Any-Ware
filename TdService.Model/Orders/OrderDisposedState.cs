@@ -15,7 +15,7 @@ namespace TdService.Model.Orders
     public class OrderDisposedState : IOrderState
     {
         /// <summary>
-        /// Can this order be received (status changed to received).
+        /// Gets whether this order be received (status changed to received).
         /// </summary>
         public bool CanBeReceived
         {
@@ -37,7 +37,7 @@ namespace TdService.Model.Orders
         }
 
         /// <summary>
-        /// Flag that says whether this order is editable.
+        /// Gets flag that says whether this order is editable.
         /// </summary>
         public bool CanBeModified
         {
@@ -48,7 +48,7 @@ namespace TdService.Model.Orders
         }
 
         /// <summary>
-        /// Flag that says whether this order can be returned.
+        /// Gets or sets flag that says whether this order can be returned.
         /// </summary>
         public bool CanBeRequestedForReturn
         {

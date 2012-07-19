@@ -60,7 +60,7 @@ namespace TdService.Services.Implementations
         /// </returns>
         public List<GetRecentOrdersResponse> GetRecent(GetRecentOrdersRequest request)
         {
-            var user = this.userRepository.GetUserByEmail(request.IdentityToken);
+            var user = this.userRepository.GetUserWithOrdersByEmail(request.IdentityToken);
             if (user != null)
             {
                 var recentOrders = user.GetRecentOrders();

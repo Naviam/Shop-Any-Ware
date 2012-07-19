@@ -74,6 +74,7 @@
     <Compile Include="Repositories\MembershipRepository.cs" />
     <Compile Include="StaticDataSeed\SeedCurrencies.cs" />
     <Compile Include="StaticDataSeed\SeedMembership.cs" />
+    <Compile Include="StaticDataSeed\SeedOrders.cs" />
     <Compile Include="StaticDataSeed\SeedRetailers.cs" />
   </ItemGroup>
   <ItemGroup>

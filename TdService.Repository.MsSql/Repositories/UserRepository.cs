@@ -50,6 +50,20 @@
         }
 
         /// <summary>
+        /// Get user with orders by email.
+        /// </summary>
+        /// <param name="email">
+        /// The email address.
+        /// </param>
+        /// <returns>
+        /// The user.
+        /// </returns>
+        public User GetUserWithOrdersByEmail(string email)
+        {
+            return this.context.Users.Include("Orders").SingleOrDefault(u => u.Email == email);
+        }
+
+        /// <summary>
         /// Create new user.
         /// </summary>
         /// <param name="user">

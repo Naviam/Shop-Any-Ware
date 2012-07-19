@@ -19,6 +19,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
     using TdService.Model.Orders;
     using TdService.Services.Implementations;
     using TdService.Services.Messaging.Order;
+    using TdService.Services.ViewModels.Order;
 
     /// <summary>
     /// The order service tests.
@@ -42,6 +43,8 @@ namespace TdService.ShopAnyWare.Tests.Orders
         [SetUp]
         public void SetUp()
         {
+            AutoMapperConfiguration.Configure();
+
             var orders = new List<Order>
                 {
                     new Order(OrderStatus.Received)
@@ -69,13 +72,48 @@ namespace TdService.ShopAnyWare.Tests.Orders
             // arrange
             var service = new OrderService(this.userRepository, this.orderRepository);
             var request = new GetRecentOrdersRequest { IdentityToken = "vhatalski@naviam.com" };
-            var expected = new List<GetRecentOrdersResponse>();
+            var expected = new List<GetRecentOrdersResponse>
+                {
+                    new GetRecentOrdersResponse
+                        {
+                            CreatedDate = DateTime.UtcNow,
+                            Id = 0,
+                            OrderNumber = "12212",
+                            ReceivedDate = null,
+                            RetailerName = "amazon.com",
+                            ReturnedDate = null,
+                            Status = "New"
+                        },
+                    new GetRecentOrdersResponse
+                        {
+                            CreatedDate = DateTime.UtcNow,
+                            Id = 1,
+                            OrderNumber = "122122",
+                            ReceivedDate = DateTime.UtcNow,
+                            RetailerName = "apple.com",
+                            ReturnedDate = null,
+                            Status = "Received"
+                        }
+                };
 
             // act
             var actual = service.GetRecent(request);
 
             // assert
-            Assert.That(actual, Is.EqualTo(expected));
+            Assert.That(actual, Is.Not.Null);
+            if (actual != null)
+            {
+                for (var i = 0; i < expected.Count; i++)
+                {
+                    Assert.That(actual[i].Id, Is.EqualTo(expected[i].Id));
+                    Assert.That(actual[i].CreatedDate, Is.EqualTo(expected[i].CreatedDate).Within(1).Minutes);
+                    Assert.That(actual[i].ReceivedDate, Is.EqualTo(expected[i].ReceivedDate).Within(1).Minutes);
+                    Assert.That(actual[i].RetailerName, Is.EqualTo(expected[i].RetailerName));
+                    Assert.That(actual[i].OrderNumber, Is.EqualTo(expected[i].OrderNumber));
+                    Assert.That(actual[i].TrackingNumber, Is.EqualTo(expected[i].TrackingNumber));
+                    Assert.That(actual[i].Status, Is.EqualTo(expected[i].Status));
+                }
+            }
         }
     }
 }

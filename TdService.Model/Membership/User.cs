@@ -107,9 +107,16 @@ namespace TdService.Model.Membership
         /// </returns>
         public List<Order> GetRecentOrders()
         {
-            return this.Orders.Where(
-                order => !order.ReceivedDate.HasValue
-                    || order.ReceivedDate.Value < DateTime.UtcNow.AddDays(-30)).ToList();
+            var orders = this.Orders;
+            if (orders != null)
+            {
+                return orders.Where(
+                    order => !order.ReceivedDate.HasValue
+                             || order.ReceivedDate.Value > DateTime.UtcNow.AddDays(-30)).ToList();
+            }
+
+            this.Orders = new List<Order>();
+            return this.Orders;
         }
 
         /// <summary>

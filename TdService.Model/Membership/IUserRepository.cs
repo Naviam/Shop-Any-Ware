@@ -28,6 +28,17 @@
         User GetUserByEmail(string email);
 
         /// <summary>
+        /// Get user with orders by email.
+        /// </summary>
+        /// <param name="email">
+        /// The email address.
+        /// </param>
+        /// <returns>
+        /// The user.
+        /// </returns>
+        User GetUserWithOrdersByEmail(string email);
+
+        /// <summary>
         /// Create new user.
         /// </summary>
         /// <param name="user">

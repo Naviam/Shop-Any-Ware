@@ -51,12 +51,12 @@ namespace TdService.Controllers
         /// <returns>
         /// Get recent orders json result.
         /// </returns>
-        [Authorize]
+        [Authorize(Roles = "Shopper")]
         [HttpPost]
         public ActionResult GetRecent()
         {
             var request = new GetRecentOrdersRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() };
-            var response = this.orderService.GetRecent(request).ToList();
+            var response = this.orderService.GetRecent(request);
             var viewModelCollection = response.ConvertToOrderViewModelCollection();
             return this.Json(viewModelCollection);
         }
