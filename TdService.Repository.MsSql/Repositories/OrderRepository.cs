@@ -15,8 +15,17 @@ namespace TdService.Repository.MsSql.Repositories
     /// </summary>
     public class OrderRepository : IOrderRepository
     {
+        /// <summary>
+        /// The context.
+        /// </summary>
         private readonly ShopAnyWareSql context;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="OrderRepository"/> class.
+        /// </summary>
+        /// <param name="context">
+        /// The context.
+        /// </param>
         public OrderRepository(ShopAnyWareSql context)
         {
             this.context = context;

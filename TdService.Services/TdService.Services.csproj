@@ -55,8 +55,7 @@
     <Compile Include="Implementations\MembershipService.cs" />
     <Compile Include="Implementations\OrderService.cs" />
     <Compile Include="Interfaces\IOrderService.cs" />
-    <Compile Include="Mapping\GetRecentOrdersResponseMapping.cs" />
-    <Compile Include="Mapping\OrderMapper.cs" />
+    <Compile Include="Mapping\OrderMapping.cs" />
     <Compile Include="Messaging\Membership\ChangePasswordLinkRequest.cs" />
     <Compile Include="Messaging\Membership\ChangePasswordLinkResponse.cs" />
     <Compile Include="Messaging\Membership\UpdateProfileRequest.cs" />

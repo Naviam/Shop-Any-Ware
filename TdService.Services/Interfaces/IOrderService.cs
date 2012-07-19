@@ -1,9 +1,21 @@
-﻿namespace TdService.Services.Interfaces
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="IOrderService.cs" company="TdService">
+//   Vitali Hatalski. 2012.
+// </copyright>
+// <summary>
+//   The OrderService interface.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace TdService.Services.Interfaces
 {
     using System.Collections.Generic;
 
     using TdService.Services.Messaging.Order;
 
+    /// <summary>
+    /// The OrderService interface.
+    /// </summary>
     public interface IOrderService
     {
         /// <summary>
@@ -15,6 +27,6 @@
         /// <returns>
         /// Collection of response messages.
         /// </returns>
-        IEnumerable<GetRecentOrdersResponse> GetRecent(GetRecentOrdersRequest request);
+        List<GetRecentOrdersResponse> GetRecent(GetRecentOrdersRequest request);
     }
 }

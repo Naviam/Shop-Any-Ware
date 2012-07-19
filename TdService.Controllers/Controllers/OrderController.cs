@@ -1,4 +1,13 @@
-﻿namespace TdService.Controllers
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="OrderController.cs" company="TdService">
+//   Vitali Hatalski. 2012.
+// </copyright>
+// <summary>
+//   This controller contains methods to work with orders.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace TdService.Controllers
 {
     using System.Linq;
     using System.Web.Mvc;
@@ -19,10 +28,15 @@
         private readonly IOrderService orderService;
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="OrderController"/> class. 
         /// Order controller constructor.
         /// </summary>
-        /// <param name="orderService"></param>
-        /// <param name="formsAuthentication"></param>
+        /// <param name="orderService">
+        /// The order service.
+        /// </param>
+        /// <param name="formsAuthentication">
+        /// The form authentication.
+        /// </param>
         public OrderController(
             IOrderService orderService, 
             IFormsAuthentication formsAuthentication)

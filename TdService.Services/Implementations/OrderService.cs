@@ -1,12 +1,25 @@
-﻿namespace TdService.Services.Implementations
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="OrderService.cs" company="TdService">
+//   Vitali Hatalski. 2012.
+// </copyright>
+// <summary>
+//   The order service.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace TdService.Services.Implementations
 {
     using System.Collections.Generic;
 
     using TdService.Model.Membership;
     using TdService.Model.Orders;
     using TdService.Services.Interfaces;
+    using TdService.Services.Mapping;
     using TdService.Services.Messaging.Order;
 
+    /// <summary>
+    /// The order service.
+    /// </summary>
     public class OrderService : IOrderService
     {
         /// <summary>
@@ -14,10 +27,13 @@
         /// </summary>
         private readonly IOrderRepository orderRepository;
 
+        /// <summary>
+        /// The user repository.
+        /// </summary>
         private readonly IUserRepository userRepository;
 
         /// <summary>
-        /// Order service constructor.
+        /// Initializes a new instance of the <see cref="OrderService"/> class.
         /// </summary>
         /// <param name="userRepository">
         /// User repository.
@@ -42,12 +58,13 @@
         /// <returns>
         /// The response message.
         /// </returns>
-        public IEnumerable<GetRecentOrdersResponse> GetRecent(GetRecentOrdersRequest request)
+        public List<GetRecentOrdersResponse> GetRecent(GetRecentOrdersRequest request)
         {
             var user = this.userRepository.GetUserByEmail(request.IdentityToken);
             if (user != null)
             {
                 var recentOrders = user.GetRecentOrders();
+                return recentOrders.ConvertToRecentOrdersResponseCollection();
             }
 
             return null;

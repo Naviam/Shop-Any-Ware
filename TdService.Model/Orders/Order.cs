@@ -27,6 +27,9 @@ namespace TdService.Model.Orders
         /// <summary>
         /// Initializes a new instance of the <see cref="Order"/> class.
         /// </summary>
+        /// <param name="orderStatus">
+        /// The order Status.
+        /// </param>
         public Order(OrderStatus orderStatus)
         {
             this.Status = orderStatus;
@@ -66,9 +69,9 @@ namespace TdService.Model.Orders
         public string TrackingNumber { get; set; }
 
         /// <summary>
-        /// Created by user.
+        /// Gets or sets created by user.
         /// </summary>
-        public User CreatedByUser { get; set; }
+        public User CreatedBy { get; set; }
 
         /// <summary>
         /// Gets or sets Items.
@@ -76,7 +79,7 @@ namespace TdService.Model.Orders
         public List<Item> Items { get; set; }
 
         /// <summary>
-        /// Gets Created Date.
+        /// Gets or sets Created Date.
         /// </summary>
         public DateTime CreatedDate { get; set; }
 
@@ -108,7 +111,12 @@ namespace TdService.Model.Orders
         /// <summary>
         /// Create new order.
         /// </summary>
-        /// <returns></returns>
+        /// <param name="retailer">
+        /// The retailer.
+        /// </param>
+        /// <returns>
+        /// The order.
+        /// </returns>
         public static Order CreateNew(Retailer retailer)
         {
             var order = new Order(OrderStatus.New) { Retailer = retailer, CreatedDate = DateTime.UtcNow };

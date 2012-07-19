@@ -108,8 +108,8 @@ namespace TdService.Model.Membership
         public List<Order> GetRecentOrders()
         {
             return this.Orders.Where(
-                order => order.ReceivedDate == DateTime.MinValue
-                    || order.ReceivedDate < DateTime.UtcNow.AddDays(-30)).ToList();
+                order => !order.ReceivedDate.HasValue
+                    || order.ReceivedDate.Value < DateTime.UtcNow.AddDays(-30)).ToList();
         }
 
         /// <summary>

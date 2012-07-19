@@ -47,7 +47,7 @@ namespace TdService.Services.Messaging.Order
         public DateTime ReceivedDate { get; set; }
 
         /// <summary>
-        /// Get or sets order status.
+        /// Gets or sets order status.
         /// </summary>
         public string Status { get; set; }
     }

@@ -1,4 +1,13 @@
-﻿namespace TdService.ShopAnyWare.Tests.Orders
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="FakeOrderService.cs" company="TdService">
+//   Vitali Hatalski. 2012.
+// </copyright>
+// <summary>
+//   Defines the FakeOrderService type.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace TdService.ShopAnyWare.Tests.Orders
 {
     using System;
     using System.Collections.Generic;
@@ -6,6 +15,9 @@
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging.Order;
 
+    /// <summary>
+    /// The fake order service.
+    /// </summary>
     public class FakeOrderService : IOrderService
     {
         /// <summary>
@@ -17,7 +29,7 @@
         /// <returns>
         /// Collection of response messages.
         /// </returns>
-        public IEnumerable<GetRecentOrdersResponse> GetRecent(GetRecentOrdersRequest request)
+        public List<GetRecentOrdersResponse> GetRecent(GetRecentOrdersRequest request)
         {
             var result = new List<GetRecentOrdersResponse>
                 {
