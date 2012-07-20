@@ -1,26 +1,21 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="OrderViewModel.cs" company="TdService">
+// <copyright file="AddOrderRequest.cs" company="TdService">
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
-//   Order view model to display order on a view.
+//   The add order request.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Services.ViewModels.Order
+namespace TdService.Services.Messaging.Order
 {
     using System;
 
     /// <summary>
-    /// Order view model to display order on a view.
+    /// The add order request.
     /// </summary>
-    public class OrderViewModel
+    public class AddOrderRequest : RequestBase
     {
-        /// <summary>
-        /// Gets or sets order ID.
-        /// </summary>
-        public int Id { get; set; }
-
         /// <summary>
         /// Gets or sets retailer name.
         /// </summary>
@@ -40,15 +35,5 @@ namespace TdService.Services.ViewModels.Order
         /// Gets or sets created date.
         /// </summary>
         public DateTime CreatedDate { get; set; }
-
-        /// <summary>
-        /// Gets or sets received date.
-        /// </summary>
-        public DateTime? ReceivedDate { get; set; }
-
-        /// <summary>
-        /// Gets or sets order status.
-        /// </summary>
-        public string Status { get; set; }
     }
 }

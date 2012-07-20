@@ -9,6 +9,7 @@
 
 namespace TdService.Specs
 {
+    using System;
     using System.Collections.Generic;
     using System.Data.Entity;
     using System.Diagnostics;
@@ -85,12 +86,12 @@ namespace TdService.Specs
             var controller = new OrderController(this.orderService, this.formsAuthentication);
 
             // act
-            var recentOrders = controller.GetRecent() as JsonResult;
+            var actual = controller.GetRecent() as JsonResult;
             
             // assert
-            Assert.That(recentOrders, Is.Not.Null);
-            Debug.Assert(recentOrders != null, "recentOrders != null");
-            var model = recentOrders.Data as List<OrderViewModel>;
+            Assert.That(actual, Is.Not.Null);
+            Debug.Assert(actual != null, "actual != null");
+            var model = actual.Data as List<OrderViewModel>;
             Assert.That(model, Is.Not.Null);
             Debug.Assert(model != null, "model != null");
             Assert.That(model.Any(), Is.True);
@@ -105,7 +106,29 @@ namespace TdService.Specs
             // arrange 
             this.formsAuthentication.SetAuthenticationToken("vhatalski@naviam.com", true);
             var controller = new OrderController(this.orderService, this.formsAuthentication);
+            var model = new OrderViewModel
+                {
+                    Id = 0,
+                    RetailerName = "apple.com",
+                    CreatedDate = DateTime.UtcNow,
+                    ReceivedDate = null,
+                    OrderNumber = null,
+                    TrackingNumber = null,
+                    Status = null
+                };
 
+            // act
+            var actual = controller.AddOrder(model) as JsonResult;
+
+            // assert
+            Assert.That(actual, Is.Not.Null);
+            Debug.Assert(actual != null, "actual != null");
+            var result = actual.Data as OrderViewModel;
+            Assert.That(result, Is.Not.Null);
+            Debug.Assert(result != null, "result != null");
+            Assert.That(result.Id, Is.GreaterThan(0));
+            Assert.That(result.RetailerName, Is.EqualTo("apple.com"));
+            Assert.That(result.Status, Is.EqualTo("New"));
         }
     }
 }

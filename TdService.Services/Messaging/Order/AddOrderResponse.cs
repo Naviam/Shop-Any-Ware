@@ -1,20 +1,20 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="OrderViewModel.cs" company="TdService">
+// <copyright file="AddOrderResponse.cs" company="TdService">
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
-//   Order view model to display order on a view.
+//   Defines the AddOrderResponse type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Services.ViewModels.Order
+namespace TdService.Services.Messaging.Order
 {
     using System;
 
     /// <summary>
-    /// Order view model to display order on a view.
+    /// The add order response.
     /// </summary>
-    public class OrderViewModel
+    public class AddOrderResponse : ResponseBase
     {
         /// <summary>
         /// Gets or sets order ID.
@@ -40,15 +40,5 @@ namespace TdService.Services.ViewModels.Order
         /// Gets or sets created date.
         /// </summary>
         public DateTime CreatedDate { get; set; }
-
-        /// <summary>
-        /// Gets or sets received date.
-        /// </summary>
-        public DateTime? ReceivedDate { get; set; }
-
-        /// <summary>
-        /// Gets or sets order status.
-        /// </summary>
-        public string Status { get; set; }
     }
 }

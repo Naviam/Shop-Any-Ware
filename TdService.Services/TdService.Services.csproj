@@ -79,6 +79,8 @@
     <Compile Include="Messaging\Membership\RegisterUserResponse.cs" />
     <Compile Include="Messaging\Membership\ValidateUserResponse.cs" />
     <Compile Include="Messaging\MessageType.cs" />
+    <Compile Include="Messaging\Order\AddOrderRequest.cs" />
+    <Compile Include="Messaging\Order\AddOrderResponse.cs" />
     <Compile Include="Messaging\Order\GetRecentOrdersRequest.cs" />
     <Compile Include="Messaging\Order\GetRecentOrdersResponse.cs" />
     <Compile Include="Messaging\RequestBase.cs" />

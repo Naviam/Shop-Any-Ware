@@ -65,7 +65,7 @@ namespace TdService.Model.Orders
         /// <summary>
         /// Gets or sets Retailer.
         /// </summary>
-        public Retailer Retailer { get; set; }
+        public virtual Retailer Retailer { get; set; }
 
         /// <summary>
         /// Gets or sets OrderNumber.

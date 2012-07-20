@@ -28,5 +28,16 @@ namespace TdService.Services.Interfaces
         /// Collection of response messages.
         /// </returns>
         List<GetRecentOrdersResponse> GetRecent(GetRecentOrdersRequest request);
+
+        /// <summary>
+        /// Add new order.
+        /// </summary>
+        /// <param name="request">
+        /// The add new order request.
+        /// </param>
+        /// <returns>
+        /// The add order response.
+        /// </returns>
+        AddOrderResponse AddOrder(AddOrderRequest request);
     }
 }

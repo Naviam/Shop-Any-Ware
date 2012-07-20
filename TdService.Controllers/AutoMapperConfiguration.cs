@@ -27,6 +27,10 @@ namespace TdService
         {
             Mapper.CreateMap<GetRecentOrdersResponse, OrderViewModel>();
             Mapper.CreateMap<Order, GetRecentOrdersResponse>();
+            Mapper.CreateMap<AddOrderResponse, OrderViewModel>();
+            Mapper.CreateMap<OrderViewModel, AddOrderRequest>();
+            Mapper.CreateMap<AddOrderRequest, Order>();
+            Mapper.CreateMap<Order, AddOrderResponse>();
         }
     }
 }

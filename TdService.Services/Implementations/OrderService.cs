@@ -69,5 +69,30 @@ namespace TdService.Services.Implementations
 
             return null;
         }
+
+        /// <summary>
+        /// Add new order.
+        /// </summary>
+        /// <param name="request">
+        /// The add new order request.
+        /// </param>
+        /// <returns>
+        /// The add order response.
+        /// </returns>
+        public AddOrderResponse AddOrder(AddOrderRequest request)
+        {
+            var user = this.userRepository.GetUserWithOrdersByEmail(request.IdentityToken);
+            if (user != null)
+            {
+                var order = request.ConvertToOrder();
+                var result = this.orderRepository.AddOrder(order);
+                this.orderRepository.SaveChanges();
+                user.AddOrder(result);
+                this.orderRepository.SaveChanges();
+                return result.ConvertToAddOrderResponse();
+            }
+
+            return null;
+        }
     }
 }
