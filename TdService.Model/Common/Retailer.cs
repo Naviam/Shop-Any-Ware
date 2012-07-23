@@ -24,6 +24,9 @@ namespace TdService.Model.Common
             this.Description = urlOrName;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Retailer"/> class.
+        /// </summary>
         public Retailer()
         {
         }
@@ -62,11 +65,7 @@ namespace TdService.Model.Common
                 this.AddBrokenRule(RetailerBusinessRules.NameLength);
             }
 
-            if (string.IsNullOrEmpty(this.Category))
-            {
-                this.AddBrokenRule(RetailerBusinessRules.CategoryRequired);
-            }
-            else if (this.Category.Length > 64)
+            if (!string.IsNullOrEmpty(this.Category) && this.Category.Length > 64)
             {
                 this.AddBrokenRule(RetailerBusinessRules.CategoryLength);
             }

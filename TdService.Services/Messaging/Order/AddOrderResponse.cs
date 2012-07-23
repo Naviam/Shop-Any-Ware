@@ -22,23 +22,18 @@ namespace TdService.Services.Messaging.Order
         public int Id { get; set; }
 
         /// <summary>
-        /// Gets or sets retailer name.
+        /// Gets or sets retailer url.
         /// </summary>
-        public string RetailerName { get; set; }
-
-        /// <summary>
-        /// Gets or sets order number.
-        /// </summary>
-        public string OrderNumber { get; set; }
-
-        /// <summary>
-        /// Gets or sets tracking number.
-        /// </summary>
-        public string TrackingNumber { get; set; }
+        public string RetailerUrl { get; set; }
 
         /// <summary>
         /// Gets or sets created date.
         /// </summary>
         public DateTime CreatedDate { get; set; }
+
+        /// <summary>
+        /// Gets or sets the status.
+        /// </summary>
+        public string Status { get; set; }
     }
 }

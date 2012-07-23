@@ -11,6 +11,7 @@ namespace TdService.Services.Implementations
 {
     using System.Collections.Generic;
 
+    using TdService.Model.Common;
     using TdService.Model.Membership;
     using TdService.Model.Orders;
     using TdService.Services.Interfaces;
@@ -85,6 +86,7 @@ namespace TdService.Services.Implementations
             if (user != null)
             {
                 var order = request.ConvertToOrder();
+                order.Retailer = new Retailer { Url = request.RetailerUrl, Name = request.RetailerUrl };
                 var result = this.orderRepository.AddOrder(order);
                 this.orderRepository.SaveChanges();
                 user.AddOrder(result);

@@ -11,6 +11,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.Web.Mvc;
 
     using AutoMapper;
@@ -19,6 +20,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
 
     using TdService.Controllers;
     using TdService.Infrastructure.Authentication;
+    using TdService.Model.Orders;
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging.Order;
     using TdService.Services.ViewModels.Order;
@@ -134,11 +136,11 @@ namespace TdService.ShopAnyWare.Tests.Orders
                     new OrderViewModel
                         {
                             Id = 1, 
-                            CreatedDate = currentDate.AddDays(-30), 
-                            OrderNumber = "order number test 1", 
-                            ReceivedDate = currentDate.AddDays(-5), 
-                            TrackingNumber = "tracking number test 1", 
-                            RetailerName = "Amazon, Inc.", 
+                            CreatedDate = currentDate.AddDays(-30),
+                            OrderNumber = "order number test 1",
+                            ReceivedDate = currentDate.AddDays(-5),
+                            TrackingNumber = "tracking number test 1",
+                            RetailerName = "Amazon, Inc.",
                             Status = "Received"
                         }, 
                     new OrderViewModel
@@ -181,7 +183,55 @@ namespace TdService.ShopAnyWare.Tests.Orders
                     Assert.That(actualOrders[i].TrackingNumber, Is.EqualTo(expected[i].TrackingNumber));
                     Assert.That(actualOrders[i].Status, Is.EqualTo(expected[i].Status));
                 }
+            }
+        }
 
+        /// <summary>
+        /// This test verifies that only authorized users can access addorder method.
+        /// </summary>
+        [Category("Controller")]
+        [Test]
+        public void ShouldBeAbleToPostNewOrderOnlyIfAuthorized()
+        {
+            TestHelper.AssertIsAuthorized(typeof(OrderController), "AddOrder");
+        }
+
+        /// <summary>
+        /// This test verifies that new order can be created and returned with generated ID.
+        /// </summary>
+        [Category("Controller")]
+        [Test]
+        public void ShouldBeAbleToPostNewOrderAndGetOrderWithIdBack()
+        {
+            // arrange
+            var controller = new OrderController(this.orderService, this.formsAuthentication);
+            var currentDate = DateTime.UtcNow;
+            var expected = new OrderViewModel
+                {
+                    CreatedDate = currentDate,
+                    ReceivedDate = null,
+                    RetailerName = "apple.com",
+                    Id = 0,
+                    OrderNumber = string.Empty,
+                    Status = "New",
+                    TrackingNumber = string.Empty
+                };
+
+            // act
+            var actual = controller.AddOrder(expected) as JsonResult;
+
+            // assert
+            Assert.That(actual, Is.Not.Null);
+            if (actual != null)
+            {
+                var model = actual.Data as OrderViewModel;
+                Assert.That(model, Is.Not.Null);
+                Debug.Assert(model != null, "model != null");
+                Assert.That(model.Id, Is.GreaterThan(0));
+                Assert.That(model.CreatedDate, Is.EqualTo(currentDate));
+                Assert.That(model.OrderNumber, Is.Empty);
+                Assert.That(model.TrackingNumber, Is.Empty);
+                Assert.That(model.Status, Is.EqualTo("New"));
             }
         }
     }

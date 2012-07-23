@@ -1,4 +1,13 @@
-﻿namespace TdService.Model.Membership
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="IUserRepository.cs" company="TdService">
+//   Vitali Hatalski. 2012.
+// </copyright>
+// <summary>
+//   User repository contract.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace TdService.Model.Membership
 {
     /// <summary>
     /// User repository contract.

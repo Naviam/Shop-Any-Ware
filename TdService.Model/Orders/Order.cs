@@ -2,6 +2,9 @@
 // <copyright file="Order.cs" company="TdService">
 // Vitali Hatalski. 2012.
 // </copyright>
+// <summary>
+// This class describes the order from online shops.
+// </summary>
 // -----------------------------------------------------------------------
 
 namespace TdService.Model.Orders

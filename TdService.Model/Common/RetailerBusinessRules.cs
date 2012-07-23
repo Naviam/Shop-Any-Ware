@@ -27,12 +27,6 @@ namespace TdService.Model.Common
             new BusinessRule("Name", BusinessRules.Retailer_NameLength);
 
         /// <summary>
-        /// This rule ensures that category is set.
-        /// </summary>
-        public static readonly BusinessRule CategoryRequired =
-            new BusinessRule("Category", BusinessRules.Retailer_CategoryRequired);
-
-        /// <summary>
         /// This rule ensures that category is within max length.
         /// </summary>
         public static readonly BusinessRule CategoryLength =

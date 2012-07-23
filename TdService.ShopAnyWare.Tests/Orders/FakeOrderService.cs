@@ -67,5 +67,25 @@ namespace TdService.ShopAnyWare.Tests.Orders
 
             return result;
         }
+
+        /// <summary>
+        /// Add new order.
+        /// </summary>
+        /// <param name="request">
+        /// The add new order request.
+        /// </param>
+        /// <returns>
+        /// The add order response.
+        /// </returns>
+        public AddOrderResponse AddOrder(AddOrderRequest request)
+        {
+            return new AddOrderResponse
+                {
+                    CreatedDate = request.CreatedDate,
+                    RetailerUrl = request.RetailerUrl,
+                    Status = "New",
+                    Id = 1
+                };
+        }
     }
 }

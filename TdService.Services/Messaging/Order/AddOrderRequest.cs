@@ -17,19 +17,9 @@ namespace TdService.Services.Messaging.Order
     public class AddOrderRequest : RequestBase
     {
         /// <summary>
-        /// Gets or sets retailer name.
+        /// Gets or sets retailer url.
         /// </summary>
-        public string RetailerName { get; set; }
-
-        /// <summary>
-        /// Gets or sets order number.
-        /// </summary>
-        public string OrderNumber { get; set; }
-
-        /// <summary>
-        /// Gets or sets tracking number.
-        /// </summary>
-        public string TrackingNumber { get; set; }
+        public string RetailerUrl { get; set; }
 
         /// <summary>
         /// Gets or sets created date.

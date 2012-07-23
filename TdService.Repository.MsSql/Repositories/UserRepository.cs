@@ -1,4 +1,13 @@
-﻿namespace TdService.Repository.MsSql.Repositories
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="UserRepository.cs" company="TdService">
+//   Vitali Hatalski. 2012.
+// </copyright>
+// <summary>
+//   User repository.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace TdService.Repository.MsSql.Repositories
 {
     using System;
     using System.Data;
@@ -16,6 +25,12 @@
         /// </summary>
         private readonly ShopAnyWareSql context;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UserRepository"/> class.
+        /// </summary>
+        /// <param name="context">
+        /// The context.
+        /// </param>
         public UserRepository(ShopAnyWareSql context)
         {
             this.context = context;
@@ -74,7 +89,7 @@
         /// </returns>
         public User CreateUser(User user)
         {
-            return context.Users.Add(user);
+            return this.context.Users.Add(user);
         }
 
         /// <summary>
@@ -114,7 +129,7 @@
         /// </returns>
         public bool ValidateCredentials(User user)
         {
-            var userLocal = context.Users.SingleOrDefault(u =>
+            var userLocal = this.context.Users.SingleOrDefault(u =>
                     (string.Compare(u.Email, user.Email, StringComparison.OrdinalIgnoreCase) == 0 &&
                     string.Compare(u.Password, user.Password, StringComparison.Ordinal) == 0));
             return userLocal != null;
