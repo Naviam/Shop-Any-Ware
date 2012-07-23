@@ -1,4 +1,13 @@
-﻿namespace TdService.ShopAnyWare.Tests.Helpers
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="TestHelper.cs" company="TdService">
+//   Vitali Hatalski. 2012.
+// </copyright>
+// <summary>
+//   The test helper.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace TdService.ShopAnyWare.Tests.Helpers
 {
     using System;
     using System.Linq;
@@ -7,6 +16,9 @@
 
     using NUnit.Framework;
 
+    /// <summary>
+    /// The test helper.
+    /// </summary>
     internal static class TestHelper
     {
         /// <summary>
@@ -34,7 +46,8 @@
         /// </param>
         internal static void AssertIsAuthorized(Type type, string action, params Type[] parameters)
         {
-            AssertIsAuthorized(type.GetMethod(action, parameters));
+            var methodInfo = type.GetMethod(action, parameters);
+            AssertIsAuthorized(methodInfo);
         }
     }
 }

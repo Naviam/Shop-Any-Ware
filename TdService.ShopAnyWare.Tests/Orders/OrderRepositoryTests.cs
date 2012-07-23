@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.ShopAnyWare.Tests.Repository
+namespace TdService.ShopAnyWare.Tests.Orders
 {
     using System.Data.Entity;
     using System.Linq;
@@ -19,6 +19,7 @@ namespace TdService.ShopAnyWare.Tests.Repository
     using TdService.Model.Orders;
     using TdService.Repository.MsSql;
     using TdService.Repository.MsSql.Repositories;
+    using TdService.ShopAnyWare.Tests.Repository;
 
     /// <summary>
     /// Order repository for testing.

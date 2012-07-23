@@ -22,9 +22,9 @@ namespace TdService.Services.ViewModels.Order
         public int Id { get; set; }
 
         /// <summary>
-        /// Gets or sets retailer name.
+        /// Gets or sets retailer url.
         /// </summary>
-        public string RetailerName { get; set; }
+        public string RetailerUrl { get; set; }
 
         /// <summary>
         /// Gets or sets order number.

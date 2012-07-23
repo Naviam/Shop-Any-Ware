@@ -20,7 +20,6 @@ namespace TdService.ShopAnyWare.Tests.Orders
 
     using TdService.Controllers;
     using TdService.Infrastructure.Authentication;
-    using TdService.Model.Orders;
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging.Order;
     using TdService.Services.ViewModels.Order;
@@ -53,6 +52,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
 
             this.orderService = new FakeOrderService();
             this.formsAuthentication = new FakeFormsAuthentication();
+            this.formsAuthentication.SetAuthenticationToken("vhatalski@naviam.com", true);
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
                 {
                     CreatedDate = DateTime.UtcNow,
                     ReceivedDate = DateTime.UtcNow,
-                    RetailerName = string.Empty,
+                    RetailerUrl = string.Empty,
                     Id = 1,
                     OrderNumber = string.Empty,
                     TrackingNumber = string.Empty,
@@ -90,7 +90,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
                         {
                             CreatedDate = DateTime.UtcNow,
                             ReceivedDate = DateTime.UtcNow,
-                            RetailerName = string.Empty,
+                            RetailerUrl = string.Empty,
                             Id = 1,
                             OrderNumber = string.Empty,
                             TrackingNumber = string.Empty,
@@ -140,7 +140,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
                             OrderNumber = "order number test 1",
                             ReceivedDate = currentDate.AddDays(-5),
                             TrackingNumber = "tracking number test 1",
-                            RetailerName = "Amazon, Inc.",
+                            RetailerUrl = "Amazon, Inc.",
                             Status = "Received"
                         }, 
                     new OrderViewModel
@@ -150,7 +150,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
                             OrderNumber = "order number test 2", 
                             ReceivedDate = currentDate.AddDays(-25), 
                             TrackingNumber = "tracking number test 2", 
-                            RetailerName = "Amazon, Inc.", 
+                            RetailerUrl = "Amazon, Inc.", 
                             Status = "Received"
                         }, 
                     new OrderViewModel
@@ -160,7 +160,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
                             OrderNumber = "order number test 3", 
                             ReceivedDate = DateTime.MinValue, 
                             TrackingNumber = "tracking number test 3", 
-                            RetailerName = "Amazon, Inc.", 
+                            RetailerUrl = "Amazon, Inc.", 
                             Status = "New"
                         }
                 };
@@ -178,7 +178,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
                     Assert.That(actualOrders[i].Id, Is.EqualTo(expected[i].Id));
                     Assert.That(actualOrders[i].CreatedDate, Is.EqualTo(expected[i].CreatedDate).Within(1).Minutes);
                     Assert.That(actualOrders[i].ReceivedDate, Is.EqualTo(expected[i].ReceivedDate).Within(1).Minutes);
-                    Assert.That(actualOrders[i].RetailerName, Is.EqualTo(expected[i].RetailerName));
+                    Assert.That(actualOrders[i].RetailerUrl, Is.EqualTo(expected[i].RetailerUrl));
                     Assert.That(actualOrders[i].OrderNumber, Is.EqualTo(expected[i].OrderNumber));
                     Assert.That(actualOrders[i].TrackingNumber, Is.EqualTo(expected[i].TrackingNumber));
                     Assert.That(actualOrders[i].Status, Is.EqualTo(expected[i].Status));
@@ -193,7 +193,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
         [Test]
         public void ShouldBeAbleToPostNewOrderOnlyIfAuthorized()
         {
-            TestHelper.AssertIsAuthorized(typeof(OrderController), "AddOrder");
+            TestHelper.AssertIsAuthorized(typeof(OrderController), "AddOrder", typeof(OrderViewModel));
         }
 
         /// <summary>
@@ -210,7 +210,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
                 {
                     CreatedDate = currentDate,
                     ReceivedDate = null,
-                    RetailerName = "apple.com",
+                    RetailerUrl = "apple.com",
                     Id = 0,
                     OrderNumber = string.Empty,
                     Status = "New",
@@ -229,8 +229,8 @@ namespace TdService.ShopAnyWare.Tests.Orders
                 Debug.Assert(model != null, "model != null");
                 Assert.That(model.Id, Is.GreaterThan(0));
                 Assert.That(model.CreatedDate, Is.EqualTo(currentDate));
-                Assert.That(model.OrderNumber, Is.Empty);
-                Assert.That(model.TrackingNumber, Is.Empty);
+                Assert.That(model.OrderNumber, Is.Null);
+                Assert.That(model.TrackingNumber, Is.Null);
                 Assert.That(model.Status, Is.EqualTo("New"));
             }
         }

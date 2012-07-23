@@ -19,7 +19,6 @@ namespace TdService.ShopAnyWare.Tests.Orders
     using TdService.Model.Orders;
     using TdService.Services.Implementations;
     using TdService.Services.Messaging.Order;
-    using TdService.Services.ViewModels.Order;
 
     /// <summary>
     /// The order service tests.
@@ -50,7 +49,6 @@ namespace TdService.ShopAnyWare.Tests.Orders
                     new Order(OrderStatus.Received)
                         {
                             CreatedDate = DateTime.UtcNow,
-                            CreatedBy = new User(),
                             DisposedDate = null,
                             Id = 0,
                             OrderNumber = "12212",
@@ -61,6 +59,30 @@ namespace TdService.ShopAnyWare.Tests.Orders
                 };
             this.orderRepository = new FakeOrderRepository(orders);
             this.userRepository = new FakeUserRepository();
+        }
+
+        /// <summary>
+        /// Should be able to add new order to the list of user orders.
+        /// </summary>
+        [Test]
+        public void ShouldBeAbleToAddNewOrder()
+        {
+            // arrange
+            var service = new OrderService(this.userRepository, this.orderRepository);
+            var request = new AddOrderRequest
+                {
+                    IdentityToken = "vhatalski@naviam.com",
+                    RetailerUrl = "apple.com",
+                    CreatedDate = DateTime.UtcNow
+                };
+
+            // act
+            var actual = service.AddOrder(request);
+
+            // assert
+            Assert.That(actual, Is.Not.Null);
+            Assert.That(actual.CreatedDate, Is.EqualTo(request.CreatedDate));
+            Assert.That(actual.RetailerUrl, Is.EqualTo(request.RetailerUrl));
         }
 
         /// <summary>
@@ -80,7 +102,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
                             Id = 0,
                             OrderNumber = "12212",
                             ReceivedDate = null,
-                            RetailerName = "amazon.com",
+                            RetailerUrl = "amazon.com",
                             ReturnedDate = null,
                             Status = "New"
                         },
@@ -90,7 +112,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
                             Id = 1,
                             OrderNumber = "122122",
                             ReceivedDate = DateTime.UtcNow,
-                            RetailerName = "apple.com",
+                            RetailerUrl = "apple.com",
                             ReturnedDate = null,
                             Status = "Received"
                         }
@@ -108,7 +130,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
                     Assert.That(actual[i].Id, Is.EqualTo(expected[i].Id));
                     Assert.That(actual[i].CreatedDate, Is.EqualTo(expected[i].CreatedDate).Within(1).Minutes);
                     Assert.That(actual[i].ReceivedDate, Is.EqualTo(expected[i].ReceivedDate).Within(1).Minutes);
-                    Assert.That(actual[i].RetailerName, Is.EqualTo(expected[i].RetailerName));
+                    Assert.That(actual[i].RetailerUrl, Is.EqualTo(expected[i].RetailerUrl));
                     Assert.That(actual[i].OrderNumber, Is.EqualTo(expected[i].OrderNumber));
                     Assert.That(actual[i].TrackingNumber, Is.EqualTo(expected[i].TrackingNumber));
                     Assert.That(actual[i].Status, Is.EqualTo(expected[i].Status));

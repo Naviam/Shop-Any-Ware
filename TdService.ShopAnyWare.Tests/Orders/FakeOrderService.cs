@@ -41,7 +41,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
                             ReceivedDate = DateTime.UtcNow.AddDays(-5),
                             TrackingNumber = "tracking number test 1",
                             Status = "Received",
-                            RetailerName = "Amazon, Inc."
+                            RetailerUrl = "Amazon, Inc."
                         },
                     new GetRecentOrdersResponse
                         {
@@ -51,7 +51,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
                             ReceivedDate = DateTime.UtcNow.AddDays(-25),
                             TrackingNumber = "tracking number test 2",
                             Status = "Received",
-                            RetailerName = "Amazon, Inc."
+                            RetailerUrl = "Amazon, Inc."
                         },
                     new GetRecentOrdersResponse
                         {
@@ -61,7 +61,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
                             ReceivedDate = DateTime.MinValue,
                             TrackingNumber = "tracking number test 3",
                             Status = "New",
-                            RetailerName = "Amazon, Inc."
+                            RetailerUrl = "Amazon, Inc."
                         }
                 };
 

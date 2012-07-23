@@ -1,4 +1,13 @@
-﻿namespace TdService.ShopAnyWare.Tests.DomainServices
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="OrderDomainServiceTests.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   Order service tests.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace TdService.ShopAnyWare.Tests.Orders
 {
     using System.Data.Entity;
     using System.Linq;

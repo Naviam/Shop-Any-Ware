@@ -109,7 +109,7 @@ namespace TdService.Specs
             var model = new OrderViewModel
                 {
                     Id = 0,
-                    RetailerName = "apple.com",
+                    RetailerUrl = "apple.com",
                     CreatedDate = DateTime.UtcNow,
                     ReceivedDate = null,
                     OrderNumber = null,
@@ -127,7 +127,7 @@ namespace TdService.Specs
             Assert.That(result, Is.Not.Null);
             Debug.Assert(result != null, "result != null");
             Assert.That(result.Id, Is.GreaterThan(0));
-            Assert.That(result.RetailerName, Is.EqualTo("apple.com"));
+            Assert.That(result.RetailerUrl, Is.EqualTo("apple.com"));
             Assert.That(result.Status, Is.EqualTo("New"));
         }
     }

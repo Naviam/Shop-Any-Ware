@@ -57,33 +57,52 @@ namespace TdService.ShopAnyWare.Tests.Orders
                         Profile = new Profile { FirstName = "Vitali", LastName = "Hatalski" },
                         Roles = new List<Role>(),
                         Packages = new List<Package>(),
-                        Orders = new List<Order>
-                            {
-                                new Order(OrderStatus.New)
-                                {
-                                    CreatedDate = DateTime.UtcNow,
-                                    CreatedBy = new User(),
-                                    DisposedDate = null,
-                                    Id = 0,
-                                    OrderNumber = "12212",
-                                    ReceivedDate = null,
-                                    Retailer = new Retailer("amazon.com"),
-                                    ReturnedDate = null
-                                },
-                                new Order(OrderStatus.Received)
-                                {
-                                    CreatedDate = DateTime.UtcNow,
-                                    CreatedBy = new User(),
-                                    DisposedDate = null,
-                                    Id = 1,
-                                    OrderNumber = "122122",
-                                    ReceivedDate = DateTime.UtcNow,
-                                    Retailer = new Retailer("apple.com"),
-                                    ReturnedDate = null
-                                }
-                            },
+                        Orders = null,
                         DeliveryAddresses = null
                     };
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Get user with orders by email.
+        /// </summary>
+        /// <param name="email">
+        /// The email address.
+        /// </param>
+        /// <returns>
+        /// The user.
+        /// </returns>
+        public User GetUserWithOrdersByEmail(string email)
+        {
+            var user = this.GetUserByEmail(email);
+            if (user != null)
+            {
+                user.Orders = new List<Order>
+                    {
+                        new Order(OrderStatus.New)
+                            {
+                                CreatedDate = DateTime.UtcNow,
+                                DisposedDate = null,
+                                Id = 0,
+                                OrderNumber = "12212",
+                                ReceivedDate = null,
+                                Retailer = new Retailer("amazon.com"),
+                                ReturnedDate = null
+                            },
+                        new Order(OrderStatus.Received)
+                            {
+                                CreatedDate = DateTime.UtcNow,
+                                DisposedDate = null,
+                                Id = 1,
+                                OrderNumber = "122122",
+                                ReceivedDate = DateTime.UtcNow,
+                                Retailer = new Retailer("apple.com"),
+                                ReturnedDate = null
+                            }
+                    };
+                return user;
             }
 
             return null;
