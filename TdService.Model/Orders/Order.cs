@@ -199,5 +199,16 @@ namespace TdService.Model.Orders
                 this.AddBrokenRule(OrderBusinessRules.TrackingNumberLength);
             }
         }
+
+        /// <summary>
+        /// Check whether order can be removed.
+        /// </summary>
+        /// <returns>
+        /// The boolean result.
+        /// </returns>
+        public bool CanBeRemoved()
+        {
+            return this.orderState.CanBeRemoved;
+        }
     }
 }

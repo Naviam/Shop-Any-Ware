@@ -18,6 +18,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
     using TdService.Model.Membership;
     using TdService.Model.Orders;
     using TdService.Services.Implementations;
+    using TdService.Services.Messaging;
     using TdService.Services.Messaging.Order;
 
     /// <summary>
@@ -136,6 +137,24 @@ namespace TdService.ShopAnyWare.Tests.Orders
                     Assert.That(actual[i].Status, Is.EqualTo(expected[i].Status));
                 }
             }
+        }
+
+        /// <summary>
+        /// Should be able to remove order in new status and that belongs to user.
+        /// </summary>
+        [Test]
+        public void ShouldBeAbleToRemoveOrderOnlyIfInNewStatusAndBelongsToUser()
+        {
+            // arrange
+            var service = new OrderService(this.userRepository, this.orderRepository);
+            var request = new RemoveOrderRequest { IdentityToken = "vhatalski@naviam.com", Id = 1 };
+
+            // act
+            var actual = service.RemoveOrder(request);
+
+            // assert
+            Assert.That(actual, Is.Not.Null);
+            Assert.That(actual.MessageType, Is.EqualTo(MessageType.Success));
         }
     }
 }

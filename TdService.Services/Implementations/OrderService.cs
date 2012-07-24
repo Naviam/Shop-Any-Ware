@@ -10,12 +10,14 @@
 namespace TdService.Services.Implementations
 {
     using System.Collections.Generic;
+    using System.Linq;
 
     using TdService.Model.Common;
     using TdService.Model.Membership;
     using TdService.Model.Orders;
     using TdService.Services.Interfaces;
     using TdService.Services.Mapping;
+    using TdService.Services.Messaging;
     using TdService.Services.Messaging.Order;
 
     /// <summary>
@@ -92,6 +94,39 @@ namespace TdService.Services.Implementations
                 user.AddOrder(result);
                 this.orderRepository.SaveChanges();
                 return result.ConvertToAddOrderResponse();
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Remove order.
+        /// </summary>
+        /// <param name="request">
+        /// Remove order request.
+        /// </param>
+        /// <returns>
+        /// Remove order response.
+        /// </returns>
+        public RemoveOrderResponse RemoveOrder(RemoveOrderRequest request)
+        {
+            var user = this.userRepository.GetUserWithOrdersByEmail(request.IdentityToken);
+            if (user != null)
+            {
+                user.RemoveOrder(request.Id);
+
+                // check if order belongs to user
+                if (user.HasOrder(request.Id))
+                {
+                    this.orderRepository.RemoveOrder(request.Id);
+                    this.orderRepository.SaveChanges();
+                    return new RemoveOrderResponse { MessageType = MessageType.Success };
+                }
+
+                return new RemoveOrderResponse
+                    {
+                        MessageType = MessageType.Error
+                    };
             }
 
             return null;

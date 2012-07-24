@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="OrderDomainServiceTests.cs" company="">
-//   
+// <copyright file="OrderDomainServiceTests.cs" company="TdService">
+//   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
 //   Order service tests.
@@ -30,6 +30,9 @@ namespace TdService.ShopAnyWare.Tests.Orders
         /// </summary>
         private ShopAnyWareSql context;
 
+        /// <summary>
+        /// Set up tests.
+        /// </summary>
         [SetUp]
         public void SetUp()
         {
@@ -37,6 +40,9 @@ namespace TdService.ShopAnyWare.Tests.Orders
             this.context = new ShopAnyWareSql();
         }
 
+        /// <summary>
+        /// Should be able to create new order.
+        /// </summary>
         [Test]
         public void ShouldBeAbleToCreateNewOrder()
         {

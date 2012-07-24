@@ -99,6 +99,20 @@ namespace TdService.Model.Membership
         public List<Package> Packages { get; set; }
 
         /// <summary>
+        /// Checks whether user has order with specified ID.
+        /// </summary>
+        /// <param name="orderId">
+        /// The order ID to look for.
+        /// </param>
+        /// <returns>
+        /// The boolean result.
+        /// </returns>
+        public Order GetOrderById(int orderId)
+        {
+            return this.Orders.FirstOrDefault(o => o.Id == orderId);
+        }
+
+        /// <summary>
         /// Get the most recent user orders 
         /// (when order is not yet received or older than 30 days from received date).
         /// </summary>
@@ -133,12 +147,22 @@ namespace TdService.Model.Membership
         /// <summary>
         /// Remove order.
         /// </summary>
-        /// <param name="order">
-        /// The order.
+        /// <param name="orderId">
+        /// The order ID to remove.
         /// </param>
-        public void RemoveOrder(Order order)
+        public void RemoveOrder(int orderId)
         {
-            this.Orders.Remove(order);
+            var order = this.GetOrderById(orderId);
+            if (order != null)
+            {
+                if (order.Status == OrderStatus.New)
+                {
+                    if (order.CanBeRemoved())
+                    {
+                        this.Orders.Remove(order);
+                    }
+                }
+            }
         }
 
         /// <summary>

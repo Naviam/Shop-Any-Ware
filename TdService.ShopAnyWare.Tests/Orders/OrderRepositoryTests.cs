@@ -102,12 +102,28 @@ namespace TdService.ShopAnyWare.Tests.Orders
             Assert.That(actual.Id, Is.Positive);
         }
 
+        /// <summary>
+        /// Should be able to remove order.
+        /// </summary>
         [Test]
-        public void ShouldBeAbleToDeleteOrder()
+        public void ShouldBeAbleToRemoveOrderFromDatabase()
         {
             // arrange
             var repository = new OrderRepository(this.context);
+            const int OrderId = 1;
+            var order = repository.GetOrderById(OrderId);
+            if (order == null)
+            {
+                Assert.Fail("order with ID = 1 was not found in db");
+            }
 
+            // act
+            repository.RemoveOrder(OrderId);
+            repository.SaveChanges();
+            var actual = repository.GetOrderById(OrderId);
+
+            // assert
+            Assert.That(actual, Is.Null);
         }
 
         /// <summary>

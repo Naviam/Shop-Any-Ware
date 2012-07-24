@@ -54,6 +54,8 @@
     <Compile Include="Implementations\DeliveryAddressService.cs" />
     <Compile Include="Implementations\MembershipService.cs" />
     <Compile Include="Implementations\OrderService.cs" />
+    <Compile Include="Messaging\Order\RemoveOrderRequest.cs" />
+    <Compile Include="Messaging\Order\RemoveOrderResponse.cs" />
     <Compile Include="Interfaces\IOrderService.cs" />
     <Compile Include="Mapping\OrderMapping.cs" />
     <Compile Include="Messaging\Membership\ChangePasswordLinkRequest.cs" />
