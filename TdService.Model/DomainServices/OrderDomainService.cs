@@ -1,7 +1,15 @@
-﻿namespace TdService.Model.DomainServices
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="OrderDomainService.cs" company="TdService">
+//   Vitali Hatalski. 2012.
+// </copyright>
+// <summary>
+//   Order domain service.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace TdService.Model.DomainServices
 {
     using System;
-    using System.Linq;
 
     using TdService.Model.Common;
     using TdService.Model.Membership;
@@ -27,6 +35,18 @@
         /// </summary>
         private readonly IRetailerRepository retailerRepository;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="OrderDomainService"/> class.
+        /// </summary>
+        /// <param name="userRepository">
+        /// The user repository.
+        /// </param>
+        /// <param name="orderRepository">
+        /// The order repository.
+        /// </param>
+        /// <param name="retailerRepository">
+        /// The retailer repository.
+        /// </param>
         public OrderDomainService(
             IUserRepository userRepository,
             IOrderRepository orderRepository,
@@ -40,8 +60,15 @@
         /// <summary>
         /// Add new order to user.
         /// </summary>
-        /// <param name="email">The email of an user.</param>
-        /// <param name="shopNameOrUrl">The shop name or url.</param>
+        /// <param name="email">
+        /// The email of an user.
+        /// </param>
+        /// <param name="shopNameOrUrl">
+        /// The shop name or url.
+        /// </param>
+        /// <returns>
+        /// The TdService.Model.Orders.Order.
+        /// </returns>
         public Order AddNewOrderToUser(string email, string shopNameOrUrl)
         {
             var user = this.userRepository.GetUserByEmail(email);
@@ -66,29 +93,6 @@
             this.userRepository.SaveChanges();
 
             return order;
-        }
-
-        /// <summary>
-        /// Remove order from user.
-        /// </summary>
-        /// <param name="email"></param>
-        /// <param name="order"></param>
-        public void RemoveOrderFromUser(string email, Order order)
-        {
-            var user = this.userRepository.GetUserByEmail(email);
-            if (user == null)
-            {
-                throw new ArgumentException("The user has not been found in db by this email.", "email");
-            }
-
-            var orderDb = user.Orders.SingleOrDefault(o => o.Id == order.Id);
-            user.RemoveOrder(orderDb);
-
-            if (orderDb != null)
-            {
-                this.orderRepository.RemoveOrder(orderDb.Id);
-                this.orderRepository.SaveChanges();
-            }
         }
     }
 }

@@ -100,7 +100,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
                     new GetRecentOrdersResponse
                         {
                             CreatedDate = DateTime.UtcNow,
-                            Id = 0,
+                            Id = 1,
                             OrderNumber = "12212",
                             ReceivedDate = null,
                             RetailerUrl = "amazon.com",
@@ -110,12 +110,22 @@ namespace TdService.ShopAnyWare.Tests.Orders
                     new GetRecentOrdersResponse
                         {
                             CreatedDate = DateTime.UtcNow,
-                            Id = 1,
+                            Id = 2,
                             OrderNumber = "122122",
                             ReceivedDate = DateTime.UtcNow,
                             RetailerUrl = "apple.com",
                             ReturnedDate = null,
                             Status = "Received"
+                        },
+                    new GetRecentOrdersResponse
+                        {
+                            CreatedDate = DateTime.UtcNow,
+                            Id = 3,
+                            OrderNumber = "1221227776",
+                            ReceivedDate = DateTime.UtcNow,
+                            RetailerUrl = "apple.com",
+                            ReturnedDate = null,
+                            Status = "ReturnRequested"
                         }
                 };
 
@@ -143,7 +153,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
         /// Should be able to remove order in new status and that belongs to user.
         /// </summary>
         [Test]
-        public void ShouldBeAbleToRemoveOrderOnlyIfInNewStatusAndBelongsToUser()
+        public void ShouldBeAbleToRemoveOrder()
         {
             // arrange
             var service = new OrderService(this.userRepository, this.orderRepository);
@@ -155,6 +165,24 @@ namespace TdService.ShopAnyWare.Tests.Orders
             // assert
             Assert.That(actual, Is.Not.Null);
             Assert.That(actual.MessageType, Is.EqualTo(MessageType.Success));
+        }
+
+        /// <summary>
+        /// Should be able to remove order in other state than new.
+        /// </summary>
+        [Test]
+        public void ShouldNotBeAbleToRemoveOrderInStateOtherThanNew()
+        {
+            // arrange
+            var service = new OrderService(this.userRepository, this.orderRepository);
+            var request = new RemoveOrderRequest { IdentityToken = "vhatalski@naviam.com", Id = 2 };
+
+            // act
+            var actual = service.RemoveOrder(request);
+
+            // assert
+            Assert.That(actual, Is.Not.Null);
+            Assert.That(actual.MessageType, Is.EqualTo(MessageType.Warning));
         }
     }
 }

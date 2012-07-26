@@ -234,5 +234,15 @@ namespace TdService.ShopAnyWare.Tests.Orders
                 Assert.That(model.Status, Is.EqualTo("New"));
             }
         }
+
+        /// <summary>
+        /// Should be able to call remove order method in controller only if authorized.
+        /// </summary>
+        [Category("Controller")]
+        [Test]
+        public void ShouldBeAbleToRemoveNewOrderOnlyIfAuthorized()
+        {
+            TestHelper.AssertIsAuthorized(typeof(OrderController), "RemoveOrder", typeof(int));
+        }
     }
 }

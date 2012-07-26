@@ -130,5 +130,39 @@ namespace TdService.Specs
             Assert.That(result.RetailerUrl, Is.EqualTo("apple.com"));
             Assert.That(result.Status, Is.EqualTo("New"));
         }
+
+        /// <summary>
+        /// Should be able to remove new order.
+        /// </summary>
+        [Test]
+        public void ShouldBeAbleToRemoveNewOrder()
+        {
+            // arrange 
+            this.formsAuthentication.SetAuthenticationToken("vhatalski@naviam.com", true);
+            var controller = new OrderController(this.orderService, this.formsAuthentication);
+            var model = new OrderViewModel
+            {
+                Id = 0,
+                RetailerUrl = "apple.com",
+                CreatedDate = DateTime.UtcNow,
+                ReceivedDate = null,
+                OrderNumber = null,
+                TrackingNumber = null,
+                Status = null
+            };
+
+            // act
+            var createdOrder = (controller.AddOrder(model) as JsonResult).Data as OrderViewModel;
+            var actual = controller.RemoveOrder(createdOrder.Id) as JsonResult;
+
+            // assert
+            Assert.That(actual, Is.Not.Null);
+            Debug.Assert(actual != null, "actual != null");
+            var result = actual.Data as OrderViewModel;
+            Assert.That(result, Is.Not.Null);
+            Debug.Assert(result != null, "result != null");
+            Assert.That(result.Id, Is.EqualTo(createdOrder.Id));
+            Assert.That(result.MessageType, Is.EqualTo("Success"));
+        }
     }
 }

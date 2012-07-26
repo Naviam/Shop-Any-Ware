@@ -85,7 +85,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
                             {
                                 CreatedDate = DateTime.UtcNow,
                                 DisposedDate = null,
-                                Id = 0,
+                                Id = 1,
                                 OrderNumber = "12212",
                                 ReceivedDate = null,
                                 Retailer = new Retailer("amazon.com"),
@@ -95,8 +95,18 @@ namespace TdService.ShopAnyWare.Tests.Orders
                             {
                                 CreatedDate = DateTime.UtcNow,
                                 DisposedDate = null,
-                                Id = 1,
+                                Id = 2,
                                 OrderNumber = "122122",
+                                ReceivedDate = DateTime.UtcNow,
+                                Retailer = new Retailer("apple.com"),
+                                ReturnedDate = null
+                            },
+                        new Order(OrderStatus.ReturnRequested)
+                            {
+                                CreatedDate = DateTime.UtcNow,
+                                DisposedDate = null,
+                                Id = 3,
+                                OrderNumber = "1221227776",
                                 ReceivedDate = DateTime.UtcNow,
                                 Retailer = new Retailer("apple.com"),
                                 ReturnedDate = null

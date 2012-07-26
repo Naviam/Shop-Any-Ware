@@ -13,6 +13,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
     using System.Collections.Generic;
 
     using TdService.Services.Interfaces;
+    using TdService.Services.Messaging;
     using TdService.Services.Messaging.Order;
 
     /// <summary>
@@ -86,6 +87,20 @@ namespace TdService.ShopAnyWare.Tests.Orders
                     Status = "New",
                     Id = 1
                 };
+        }
+
+        /// <summary>
+        /// Remove order in new status.
+        /// </summary>
+        /// <param name="request">
+        /// The remove order request.
+        /// </param>
+        /// <returns>
+        /// The remove order response.
+        /// </returns>
+        public RemoveOrderResponse RemoveOrder(RemoveOrderRequest request)
+        {
+            return new RemoveOrderResponse { MessageType = MessageType.Success };
         }
     }
 }

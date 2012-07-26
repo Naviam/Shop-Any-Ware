@@ -150,19 +150,26 @@ namespace TdService.Model.Membership
         /// <param name="orderId">
         /// The order ID to remove.
         /// </param>
-        public void RemoveOrder(int orderId)
+        /// <returns>
+        /// The System.Boolean.
+        /// </returns>
+        public bool RemoveOrder(int orderId)
         {
             var order = this.GetOrderById(orderId);
             if (order != null)
             {
-                if (order.Status == OrderStatus.New)
+                if (order.CanBeRemoved())
                 {
-                    if (order.CanBeRemoved())
-                    {
-                        this.Orders.Remove(order);
-                    }
+                    this.Orders.Remove(order);
+                }
+                else
+                {
+                    return false;
                 }
             }
+
+            // return true if order was not found (than we may think it is already removed)
+            return true;
         }
 
         /// <summary>

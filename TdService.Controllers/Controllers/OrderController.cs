@@ -80,5 +80,33 @@ namespace TdService.Controllers
             var result = response.ConverToOrderViewModel();
             return this.Json(result);
         }
+
+        /// <summary>
+        /// Remove order in new status.
+        /// </summary>
+        /// <param name="orderId">
+        /// The order ID to remove.
+        /// </param>
+        /// <returns>
+        /// Json result.
+        /// </returns>
+        [Authorize(Roles = "Shopper")]
+        [HttpPost]
+        public ActionResult RemoveOrder(int orderId)
+        {
+            var request = new RemoveOrderRequest
+                {
+                    IdentityToken = this.FormsAuthentication.GetAuthenticationToken(),
+                    Id = orderId
+                };
+            var response = this.orderService.RemoveOrder(request);
+            var result = new OrderViewModel
+                {
+                    Id = orderId,
+                    Message = response.Message,
+                    MessageType = response.MessageType.ToString()
+                };
+            return this.Json(result);
+        }
     }
 }

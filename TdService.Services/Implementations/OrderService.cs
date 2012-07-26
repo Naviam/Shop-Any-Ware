@@ -9,8 +9,8 @@
 
 namespace TdService.Services.Implementations
 {
+    using System;
     using System.Collections.Generic;
-    using System.Linq;
 
     using TdService.Model.Common;
     using TdService.Model.Membership;
@@ -110,26 +110,33 @@ namespace TdService.Services.Implementations
         /// </returns>
         public RemoveOrderResponse RemoveOrder(RemoveOrderRequest request)
         {
+            var response = new RemoveOrderResponse { MessageType = MessageType.Success };
+
             var user = this.userRepository.GetUserWithOrdersByEmail(request.IdentityToken);
             if (user != null)
             {
-                user.RemoveOrder(request.Id);
-
-                // check if order belongs to user
-                if (user.HasOrder(request.Id))
+                try
                 {
-                    this.orderRepository.RemoveOrder(request.Id);
-                    this.orderRepository.SaveChanges();
-                    return new RemoveOrderResponse { MessageType = MessageType.Success };
-                }
-
-                return new RemoveOrderResponse
+                    var result = user.RemoveOrder(request.Id);
+                    if (result)
                     {
-                        MessageType = MessageType.Error
-                    };
+                        this.orderRepository.RemoveOrder(request.Id);
+                        this.orderRepository.SaveChanges();
+                    }
+                    else
+                    {
+                        response.MessageType = MessageType.Warning;
+                        response.Message = "The order cannot be removed in current state.";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    response.MessageType = MessageType.Error;
+                    response.Message = ex.Message;
+                }
             }
 
-            return null;
+            return response;
         }
     }
 }
