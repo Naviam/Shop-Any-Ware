@@ -119,6 +119,23 @@ namespace TdService.ShopAnyWare.Tests.Orders
         }
 
         /// <summary>
+        /// Validate user against db.
+        /// </summary>
+        /// <param name="email">
+        /// The email.
+        /// </param>
+        /// <param name="password">
+        /// The password.
+        /// </param>
+        /// <returns>
+        /// The boolean value.
+        /// </returns>
+        public bool ValidateUser(string email, string password)
+        {
+            return true;
+        }
+
+        /// <summary>
         /// Create new user.
         /// </summary>
         /// <param name="user">

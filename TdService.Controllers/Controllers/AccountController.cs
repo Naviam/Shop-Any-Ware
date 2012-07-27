@@ -93,7 +93,7 @@ namespace TdService.Controllers
         /// Redirect user to the home page of authenticated users.
         /// </returns>
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken(Salt = "signin")]
         public ActionResult SignIn(SignInView view)
         {
             if (ModelState.IsValid)
@@ -151,7 +151,7 @@ namespace TdService.Controllers
         /// Redirects user to Sign In form in case of success.
         /// </returns>
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken(Salt = "signup")]
         public ActionResult SignUp(SignUpView view)
         {
             if (ModelState.IsValid)

@@ -1,9 +1,21 @@
-﻿namespace TdService.Repository.MsSql.Repositories
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="ProfileRepository.cs" company="TdService">
+//   Vitali Hatalski. 2012.
+// </copyright>
+// <summary>
+//   The profile repository.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace TdService.Repository.MsSql.Repositories
 {
     using System.Data;
 
     using TdService.Model.Membership;
 
+    /// <summary>
+    /// The profile repository.
+    /// </summary>
     public class ProfileRepository : IProfileRepository
     {
         /// <summary>
@@ -11,6 +23,12 @@
         /// </summary>
         private readonly ShopAnyWareSql context;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ProfileRepository"/> class.
+        /// </summary>
+        /// <param name="context">
+        /// The context.
+        /// </param>
         public ProfileRepository(ShopAnyWareSql context)
         {
             this.context = context;
@@ -20,7 +38,7 @@
         /// Find or add profile.
         /// </summary>
         /// <param name="profile">
-        /// The profile.
+        /// The profile to add or find.
         /// </param>
         /// <returns>
         /// The profile.

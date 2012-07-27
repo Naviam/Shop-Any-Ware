@@ -15,17 +15,6 @@ namespace TdService.Model.Membership
     public interface IUserRepository
     {
         /// <summary>
-        /// Get user by id.
-        /// </summary>
-        /// <param name="userId">
-        /// The user ID.
-        /// </param>
-        /// <returns>
-        /// The user.
-        /// </returns>
-        User GetUserById(int userId);
-
-        /// <summary>
         /// Get user by email.
         /// </summary>
         /// <param name="email">
@@ -46,6 +35,20 @@ namespace TdService.Model.Membership
         /// The user.
         /// </returns>
         User GetUserWithOrdersByEmail(string email);
+
+        /// <summary>
+        /// Validate user against db.
+        /// </summary>
+        /// <param name="email">
+        /// The email.
+        /// </param>
+        /// <param name="password">
+        /// The password.
+        /// </param>
+        /// <returns>
+        /// The boolean value.
+        /// </returns>
+        bool ValidateUser(string email, string password);
 
         /// <summary>
         /// Create new user.

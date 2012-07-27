@@ -11,6 +11,7 @@ namespace TdService.ShopAnyWare.Tests.Account
     using TdService.Model.Membership;
     using TdService.Services.Implementations;
     using TdService.Services.Messaging.Membership;
+    using TdService.ShopAnyWare.Tests.Orders;
 
     /// <summary>
     /// This class contains membership service tests.
@@ -19,9 +20,19 @@ namespace TdService.ShopAnyWare.Tests.Account
     public class MembershipServiceTests
     {
         /// <summary>
-        /// Gets or sets Membership Repository.
+        /// User Repository.
         /// </summary>
-        private IMembershipRepository MembershipRepository { get; set; }
+        private IUserRepository userRepository;
+
+        /// <summary>
+        /// The role repository.
+        /// </summary>
+        private IRoleRepository roleRepository;
+
+        /// <summary>
+        /// The profile repository.
+        /// </summary>
+        private IProfileRepository profileRepository;
 
         /// <summary>
         /// Initial setup for membership service tests.
@@ -29,7 +40,9 @@ namespace TdService.ShopAnyWare.Tests.Account
         [TestFixtureSetUp]
         public void SetUp()
         {
-            this.MembershipRepository = new FakeMembershipRepository();
+            this.userRepository = new FakeUserRepository();
+            this.profileRepository = new FakeProfileRepository();
+            this.roleRepository = new FakeRoleRepository();
         }
 
         /// <summary>
@@ -39,7 +52,7 @@ namespace TdService.ShopAnyWare.Tests.Account
         public void ShouldBeAbleToGetProfileIfEmailExists()
         {
             // arrange
-            var service = new MembershipService(this.MembershipRepository);
+            var service = new MembershipService(this.userRepository, this.roleRepository, this.profileRepository);
             var request = new GetProfileRequest { IdentityToken = "vhatalski@naviam.com" };
 
             // act
@@ -56,7 +69,7 @@ namespace TdService.ShopAnyWare.Tests.Account
         public void ShouldNotBeAbleToGetProfileIfEmailDoesNotExist()
         {
             // arrange
-            var service = new MembershipService(this.MembershipRepository);
+            var service = new MembershipService(this.userRepository, this.roleRepository, this.profileRepository);
             var request = new GetProfileRequest { IdentityToken = "vhatalski2@naviam.com" };
 
             // act

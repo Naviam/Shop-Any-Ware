@@ -33,5 +33,10 @@ namespace TdService.Services.Messaging.Membership
         /// Gets or sets LastName.
         /// </summary>
         public string LastName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the role name.
+        /// </summary>
+        public string RoleName { get; set; }
     }
 }

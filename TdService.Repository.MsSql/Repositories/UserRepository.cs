@@ -37,20 +37,6 @@ namespace TdService.Repository.MsSql.Repositories
         }
 
         /// <summary>
-        /// Get user by id.
-        /// </summary>
-        /// <param name="userId">
-        /// The user ID.
-        /// </param>
-        /// <returns>
-        /// The user.
-        /// </returns>
-        public User GetUserById(int userId)
-        {
-            return this.context.Users.Find(userId);
-        }
-
-        /// <summary>
         /// Get user by email.
         /// </summary>
         /// <param name="email">
@@ -61,7 +47,7 @@ namespace TdService.Repository.MsSql.Repositories
         /// </returns>
         public User GetUserByEmail(string email)
         {
-            return this.context.Users.SingleOrDefault(u => u.Email == email);
+            return this.context.Users.Include("Profile").SingleOrDefault(u => u.Email == email);
         }
 
         /// <summary>
@@ -75,7 +61,27 @@ namespace TdService.Repository.MsSql.Repositories
         /// </returns>
         public User GetUserWithOrdersByEmail(string email)
         {
-            return this.context.Users.Include("Orders").SingleOrDefault(u => u.Email == email);
+            return this.context.Users.Include("Profile").Include("Orders").SingleOrDefault(u => u.Email == email);
+        }
+
+        /// <summary>
+        /// Validate user against db.
+        /// </summary>
+        /// <param name="email">
+        /// The email.
+        /// </param>
+        /// <param name="password">
+        /// The password.
+        /// </param>
+        /// <returns>
+        /// The boolean value.
+        /// </returns>
+        public bool ValidateUser(string email, string password)
+        {
+            var user = this.context.Users.SingleOrDefault(u =>
+                    (string.Compare(u.Email, email, StringComparison.OrdinalIgnoreCase) == 0 &&
+                    string.Compare(u.Password, password, StringComparison.Ordinal) == 0));
+            return user != null;
         }
 
         /// <summary>

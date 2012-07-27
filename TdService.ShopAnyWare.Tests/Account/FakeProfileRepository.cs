@@ -1,18 +1,20 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="IProfileRepository.cs" company="TdService">
+// <copyright file="FakeProfileRepository.cs" company="TdService">
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
-//   Profile repository interface.
+//   Defines the FakeProfileRepository type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Model.Membership
+namespace TdService.ShopAnyWare.Tests.Account
 {
+    using TdService.Model.Membership;
+
     /// <summary>
-    /// Profile repository interface.
+    /// The fake profile repository.
     /// </summary>
-    public interface IProfileRepository
+    public class FakeProfileRepository : IProfileRepository
     {
         /// <summary>
         /// Find or add profile.
@@ -23,7 +25,10 @@ namespace TdService.Model.Membership
         /// <returns>
         /// The profile result.
         /// </returns>
-        Profile FindOrAddProfile(Profile profile);
+        public Profile FindOrAddProfile(Profile profile)
+        {
+            return null;
+        }
 
         /// <summary>
         /// Update profile.
@@ -31,7 +36,9 @@ namespace TdService.Model.Membership
         /// <param name="profile">
         /// The profile.
         /// </param>
-        void UpdateProfile(Profile profile);
+        public void UpdateProfile(Profile profile)
+        {
+        }
 
         /// <summary>
         /// Save changes to db.
@@ -39,6 +46,9 @@ namespace TdService.Model.Membership
         /// <returns>
         /// Commit changes result.
         /// </returns>
-        int SaveChanges();
+        public int SaveChanges()
+        {
+            return 0;
+        }
     }
 }

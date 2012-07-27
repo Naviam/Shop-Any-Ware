@@ -62,6 +62,7 @@
     <Compile Include="Membership\InvalidProfileException.cs" />
     <Compile Include="Membership\InvalidUserException.cs" />
     <Compile Include="Membership\IProfileRepository.cs" />
+    <Compile Include="Membership\IRoleRepository.cs" />
     <Compile Include="Membership\IUserRepository.cs" />
     <Compile Include="Membership\ProfileBusinessRules.cs" />
     <Compile Include="Membership\RoleBusinessRules.cs" />

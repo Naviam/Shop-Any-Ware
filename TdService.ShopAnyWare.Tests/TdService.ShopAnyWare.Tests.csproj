@@ -66,6 +66,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account\AccountControllerTests.cs" />
+    <Compile Include="Account\FakeProfileRepository.cs" />
+    <Compile Include="Account\FakeRoleRepository.cs" />
     <Compile Include="Account\ProfileControllerTests.cs" />
     <Compile Include="Helpers\TestHelper.cs" />
     <Compile Include="Orders\FakeOrderRepository.cs" />
@@ -79,12 +81,10 @@
     <Compile Include="Orders\OrderControllerTests.cs" />
     <Compile Include="Orders\OrderServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Account\MembershipRepositoryTests.cs" />
     <Compile Include="Orders\OrderRepositoryTests.cs" />
     <Compile Include="Repository\ShopAnyWareTestInitilizer.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Account\FakeMembershipRepository.cs" />
     <Compile Include="Account\MembershipServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>

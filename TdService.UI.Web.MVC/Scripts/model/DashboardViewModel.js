@@ -127,12 +127,12 @@ function DashboardViewModel() {
             self.orders.unshift(new Order(null, self.newOrder(), null, null, null));
         }
         self.newOrder("");
-        $("#orders").getNiceScroll().resize();
+        // $("#orders").getNiceScroll().resize();
     };
 
     self.removeOrder = function () {
         self.orders.remove(this);
-        $("#orders").getNiceScroll().resize();
+        // $("#orders").getNiceScroll().resize();
     };
 
     self.packages = ko.observableArray([

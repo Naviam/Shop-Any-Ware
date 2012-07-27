@@ -29,7 +29,7 @@ namespace TdService.Model.Membership
         /// <summary>
         /// Membership repository.
         /// </summary>
-        private readonly IMembershipRepository repository;
+        private readonly IUserRepository repository;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="User"/> class.
@@ -44,7 +44,7 @@ namespace TdService.Model.Membership
         /// <param name="repository">
         /// The repository.
         /// </param>
-        public User(IMembershipRepository repository)
+        public User(IUserRepository repository)
         {
             this.repository = repository;
             this.Orders = new List<Order>();
@@ -185,7 +185,7 @@ namespace TdService.Model.Membership
             {
                 this.AddBrokenRule(UserBusinessRules.EmailLength);
             }
-            else if (this.repository.GetUser(this.Email) != null)
+            else if (this.repository.GetUserByEmail(this.Email) != null)
             {
                 this.AddBrokenRule(UserBusinessRules.EmailExists);
             }

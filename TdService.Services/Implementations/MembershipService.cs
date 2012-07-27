@@ -6,11 +6,9 @@
 
 namespace TdService.Services.Implementations
 {
-    using System;
     using System.Linq;
     using System.Text;
 
-    using TdService.Model.Balance;
     using TdService.Model.Membership;
     using TdService.Resources;
     using TdService.Services.Interfaces;
@@ -27,17 +25,38 @@ namespace TdService.Services.Implementations
         /// <summary>
         /// Membership repository.
         /// </summary>
-        private readonly IMembershipRepository membershipRepository;
+        private readonly IUserRepository userRepository;
+
+        /// <summary>
+        /// The role repository.
+        /// </summary>
+        private readonly IRoleRepository roleRepository;
+
+        /// <summary>
+        /// The profile repository.
+        /// </summary>
+        private readonly IProfileRepository profileRepository;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MembershipService"/> class.
         /// </summary>
-        /// <param name="membershipRepository">
-        /// The membership repository.
+        /// <param name="userRepository">
+        /// The user repository.
         /// </param>
-        public MembershipService(IMembershipRepository membershipRepository)
+        /// <param name="roleRepository">
+        /// The role repository.
+        /// </param>
+        /// <param name="profileRepository">
+        /// The profile Repository.
+        /// </param>
+        public MembershipService(
+            IUserRepository userRepository,
+            IRoleRepository roleRepository,
+            IProfileRepository profileRepository)
         {
-            this.membershipRepository = membershipRepository;
+            this.userRepository = userRepository;
+            this.roleRepository = roleRepository;
+            this.profileRepository = profileRepository;
         }
 
         /// <summary>
@@ -52,7 +71,7 @@ namespace TdService.Services.Implementations
         public RegisterUserResponse RegisterUser(RegisterUserRequest request)
         {
             var response = new RegisterUserResponse();
-            var user = new User(this.membershipRepository)
+            var user = new User(this.userRepository)
                 {
                     Email = request.Email,
                     Password = request.Password,
@@ -68,6 +87,21 @@ namespace TdService.Services.Implementations
             try
             {
                 ThrowExceptionIfUserIsInvalid(user);
+                var createdUser = this.userRepository.CreateUser(user);
+                this.profileRepository.FindOrAddProfile(user.Profile);
+                this.userRepository.SaveChanges();
+                this.profileRepository.SaveChanges();
+
+                var role = this.roleRepository.GetRoleByName(request.RoleName);
+                if (role == null)
+                {
+                    this.roleRepository.AddRole(new Role { Name = request.RoleName, Description = string.Empty });
+                    this.roleRepository.SaveChanges();
+                    role = this.roleRepository.GetRoleByName(request.RoleName);
+                }
+
+                createdUser.Roles.Add(role);
+                this.userRepository.SaveChanges();
             }
             catch (InvalidUserException)
             {
@@ -75,25 +109,6 @@ namespace TdService.Services.Implementations
                 response.ErrorCode = "EmailExists";
             }
 
-            // var userInDatabase = this.membershipRepository.GetUser(request.Email);
-            // if (userInDatabase != null)
-            // {
-            // response.MessageType = MessageType.Error;
-            // response.ErrorCode = "EmailExists";
-            // }
-            // else
-            // {
-                this.membershipRepository.AddShopper(user);
-
-                // var createdUser = this.membershipRepository.GetUser(user.Email);
-                // if (createdUser != null)
-                // {
-                // if (createdUser.Profile != null)
-                // {
-                // var profile = this.membershipRepository.GetProfile(createdUser.Profile.Id);
-                // }
-                // }
-            // }
             return response;
         }
 
@@ -109,7 +124,7 @@ namespace TdService.Services.Implementations
         public ValidateUserResponse ValidateUser(ValidateUserRequest request)
         {
             var response = new ValidateUserResponse();
-            if (this.membershipRepository.ValidateUser(request.Email, request.Password))
+            if (this.userRepository.ValidateUser(request.Email, request.Password))
             {
                 response.Message = MembershipResources.ValidationSuccess;
                 return response;
@@ -132,7 +147,7 @@ namespace TdService.Services.Implementations
         {
             var response = new GetUserResponse
                 {
-                    User = this.membershipRepository.GetUser(request.IdentityToken),
+                    User = this.userRepository.GetUserByEmail(request.IdentityToken),
                     MessageType = MessageType.Success
                 };
             if (response.User == null)
@@ -156,24 +171,24 @@ namespace TdService.Services.Implementations
         public GetProfileResponse GetProfile(GetProfileRequest request)
         {
             var response = new GetProfileResponse();
-            var user = this.membershipRepository.GetUser(request.IdentityToken);
+            var user = this.userRepository.GetUserByEmail(request.IdentityToken);
             if (user != null)
             {
-                var profile = this.membershipRepository.GetProfile(user.Profile.Id);
+                var profile = user.Profile;
                 if (profile != null)
                 {
                     response = new GetProfileResponse
-                    {
-                        FirstName = profile.FirstName,
-                        LastName = profile.LastName,
-                        Id = profile.Id,
-                        Email = user.Email,
-                        CurrentPassword = user.Password,
-                        NotifyOnOrderStatusChange = profile.NotifyOnOrderStatusChanged,
-                        NotifyOnPackageStatusChange = profile.NotifyOnPackageStatusChanged
-                    };
+                        {
+                            FirstName = profile.FirstName,
+                            LastName = profile.LastName,
+                            Id = profile.Id,
+                            Email = user.Email,
+                            CurrentPassword = user.Password,
+                            NotifyOnOrderStatusChange = profile.NotifyOnOrderStatusChanged,
+                            NotifyOnPackageStatusChange = profile.NotifyOnPackageStatusChanged,
+                            MessageType = MessageType.Success
+                        };
 
-                    response.MessageType = MessageType.Success;
                     return response;
                 }
 
@@ -209,7 +224,14 @@ namespace TdService.Services.Implementations
 
             ThrowExceptionIfProfileIsInvalid(profile);
 
-            this.membershipRepository.UpdateProfile(request.IdentityToken, profile);
+            var user = this.userRepository.GetUserByEmail(request.IdentityToken);
+            // this.profileRepository.UpdateProfile();
+            user.Profile.FirstName = request.FirstName;
+            user.Profile.LastName = request.LastName;
+            user.Profile.NotifyOnOrderStatusChanged = request.NotifyOnOrderStatusChanged;
+            user.Profile.NotifyOnPackageStatusChanged = request.NotifyOnPackageStatusChanged;
+
+            this.userRepository.SaveChanges();
 
             response.MessageType = MessageType.Success;
             response.Message = Resources.Views.ProfileViewResources.UpdateProfileSuccessMessage;
