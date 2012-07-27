@@ -53,6 +53,9 @@ namespace TdService.UI.Web.MVC.App_Start
         {
             container.Register<IEmailService, SmtpService>();
             container.Register<IOrderRepository, OrderRepository>();
+            container.Register<IUserRepository, UserRepository>();
+            container.Register<IRoleRepository, RoleRepository>();
+            container.Register<IProfileRepository, ProfileRepository>();
             container.Register<IMembershipRepository, MembershipRepository>();
             container.Register<IMembershipService, MembershipService>();
             container.Register<IFormsAuthentication, AspFormsAuthentication>();

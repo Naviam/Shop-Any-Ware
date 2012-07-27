@@ -126,6 +126,7 @@ namespace TdService.Services.Implementations
             var response = new ValidateUserResponse();
             if (this.userRepository.ValidateUser(request.Email, request.Password))
             {
+                response.MessageType = MessageType.Success;
                 response.Message = MembershipResources.ValidationSuccess;
                 return response;
             }

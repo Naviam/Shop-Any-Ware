@@ -70,6 +70,7 @@
     <Compile Include="Account\FakeRoleRepository.cs" />
     <Compile Include="Account\ProfileControllerTests.cs" />
     <Compile Include="Helpers\TestHelper.cs" />
+    <Compile Include="Mocks\FakeCookieProvider.cs" />
     <Compile Include="Orders\FakeOrderRepository.cs" />
     <Compile Include="Orders\FakeOrderService.cs" />
     <Compile Include="Orders\FakeUserRepository.cs" />

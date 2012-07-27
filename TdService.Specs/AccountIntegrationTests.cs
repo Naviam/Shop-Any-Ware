@@ -23,6 +23,7 @@ namespace TdService.Specs
     using TdService.Repository.MsSql.Repositories;
     using TdService.Services.Implementations;
     using TdService.Services.ViewModels.Account;
+    using TdService.Specs.Infrastructure;
 
     /// <summary>
     /// The account integration tests.
@@ -60,6 +61,9 @@ namespace TdService.Specs
         /// </summary>
         private IEmailService emailService;
 
+        /// <summary>
+        /// The cookie storage service.
+        /// </summary>
         private ICookieStorageService cookieStorageService;
 
         /// <summary>
@@ -69,15 +73,15 @@ namespace TdService.Specs
         public void SetUp()
         {
             AutoMapperConfiguration.Configure();
+            Database.SetInitializer(new ShopAnyWareTestInitilizer());
 
             this.formsAuthentication = new FakeFormsAuthentication();
-            Database.SetInitializer(new ShopAnyWareTestInitilizer());
             this.context = new ShopAnyWareSql();
             this.userRepository = new UserRepository(this.context);
             this.roleRepository = new RoleRepository(this.context);
             this.profileRepository = new ProfileRepository(this.context);
             this.emailService = new SmtpService();
-            this.cookieStorageService = new CookieStorageService();
+            this.cookieStorageService = new FakeCookieProvider();
         }
 
         /// <summary>
@@ -97,11 +101,15 @@ namespace TdService.Specs
             var view = new SignInView { Email = "vhatalski@naviam.com", Password = "ruinruin", RememberMe = true };
 
             // act
-            var actual = controller.SignIn(view) as ViewResult;
-            var model = actual.Model as SignInView;
+            var actual = controller.SignIn(view) as RedirectToRouteResult;
 
             // assert
-            Assert.That(model, Is.Not.Null);
+            Assert.That(actual, Is.Not.Null);
+            if (actual != null)
+            {
+                Assert.That(actual.RouteValues["action"], Is.EqualTo("Dashboard"));
+                Assert.That(actual.RouteValues["controller"], Is.EqualTo("Member"));
+            }
         }
     }
 }
