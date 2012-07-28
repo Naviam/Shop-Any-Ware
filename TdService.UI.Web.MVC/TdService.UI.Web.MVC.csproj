@@ -301,6 +301,7 @@
     <Content Include="Scripts\ui\minified\jquery.ui.selectable.min.js" />
     <Content Include="Scripts\ui\minified\jquery.ui.sortable.min.js" />
     <Content Include="Scripts\ui\minified\jquery.ui.widget.min.js" />
+    <Content Include="Scripts\ViewModels\DashboardViewModel.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

@@ -73,7 +73,11 @@ namespace TdService.ShopAnyWare.Tests.Orders
                     Id = 1,
                     OrderNumber = string.Empty,
                     TrackingNumber = string.Empty,
-                    Status = string.Empty
+                    Status = string.Empty,
+                    CanBeModified = true,
+                    CanBeRemoved = true,
+                    CanBeRequestedForReturn = true,
+                    CanItemsBeModified = true
                 };
             try
             {
@@ -94,7 +98,11 @@ namespace TdService.ShopAnyWare.Tests.Orders
                             Id = 1,
                             OrderNumber = string.Empty,
                             TrackingNumber = string.Empty,
-                            Status = string.Empty
+                            Status = string.Empty,
+                            CanBeModified = true,
+                            CanBeRemoved = true,
+                            CanBeRequestedForReturn = true,
+                            CanItemsBeModified = true
                         }
                 };
 
@@ -182,6 +190,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
                     Assert.That(actualOrders[i].OrderNumber, Is.EqualTo(expected[i].OrderNumber));
                     Assert.That(actualOrders[i].TrackingNumber, Is.EqualTo(expected[i].TrackingNumber));
                     Assert.That(actualOrders[i].Status, Is.EqualTo(expected[i].Status));
+                    Assert.That(actualOrders[i].CanBeRemoved, Is.EqualTo(expected[i].CanBeRemoved));
                 }
             }
         }

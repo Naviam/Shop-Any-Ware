@@ -158,7 +158,7 @@ namespace TdService.Model.Membership
             var order = this.GetOrderById(orderId);
             if (order != null)
             {
-                if (order.CanBeRemoved())
+                if (order.CanBeRemoved)
                 {
                     this.Orders.Remove(order);
                 }

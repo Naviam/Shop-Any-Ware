@@ -121,6 +121,50 @@ namespace TdService.Model.Orders
         public OrderStatus Status { get; private set; }
 
         /// <summary>
+        /// Gets a value indicating whether this order can be modified.
+        /// </summary>
+        public bool CanBeModified
+        {
+            get
+            {
+                return this.orderState.CanBeModified;
+            }
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether this order can be removed.
+        /// </summary>
+        public bool CanBeRemoved
+        {
+            get
+            {
+                return this.orderState.CanBeRemoved;
+            }
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether this order can be requested for return.
+        /// </summary>
+        public bool CanBeRequestedForReturn
+        {
+            get
+            {
+                return this.orderState.CanBeRequestedForReturn;
+            }
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether items can be modified.
+        /// </summary>
+        public bool CanItemsBeModified
+        {
+            get
+            {
+                return this.orderState.CanItemsBeModified;
+            }
+        }
+
+        /// <summary>
         /// Create new order.
         /// </summary>
         /// <param name="retailer">
@@ -198,17 +242,6 @@ namespace TdService.Model.Orders
             {
                 this.AddBrokenRule(OrderBusinessRules.TrackingNumberLength);
             }
-        }
-
-        /// <summary>
-        /// Check whether order can be removed.
-        /// </summary>
-        /// <returns>
-        /// The boolean result.
-        /// </returns>
-        public bool CanBeRemoved()
-        {
-            return this.orderState.CanBeRemoved;
         }
     }
 }
