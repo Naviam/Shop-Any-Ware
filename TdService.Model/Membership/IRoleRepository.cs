@@ -9,6 +9,8 @@
 
 namespace TdService.Model.Membership
 {
+    using System.Collections.Generic;
+
     /// <summary>
     /// The RoleRepository interface.
     /// </summary>
@@ -24,6 +26,14 @@ namespace TdService.Model.Membership
         /// The role.
         /// </returns>
         Role GetRoleByName(string roleName);
+
+        /// <summary>
+        /// Get all roles.
+        /// </summary>
+        /// <returns>
+        /// Collection of roles.
+        /// </returns>
+        IEnumerable<Role> GetAllRoles();
 
         /// <summary>
         /// Add new role.

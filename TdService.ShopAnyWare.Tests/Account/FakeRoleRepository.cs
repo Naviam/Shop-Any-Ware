@@ -9,6 +9,8 @@
 
 namespace TdService.ShopAnyWare.Tests.Account
 {
+    using System.Collections.Generic;
+
     using TdService.Model.Membership;
 
     /// <summary>
@@ -28,6 +30,17 @@ namespace TdService.ShopAnyWare.Tests.Account
         public Role GetRoleByName(string roleName)
         {
             return null;
+        }
+
+        /// <summary>
+        /// Get all roles.
+        /// </summary>
+        /// <returns>
+        /// Collection of roles.
+        /// </returns>
+        public IEnumerable<Role> GetAllRoles()
+        {
+            yield break;
         }
 
         /// <summary>

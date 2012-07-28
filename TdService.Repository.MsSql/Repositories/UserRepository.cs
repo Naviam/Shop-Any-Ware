@@ -47,7 +47,7 @@ namespace TdService.Repository.MsSql.Repositories
         /// </returns>
         public User GetUserByEmail(string email)
         {
-            return this.context.Users.Include("Profile").SingleOrDefault(u => u.Email == email);
+            return this.context.Users.Include("Profile").Include("Roles").SingleOrDefault(u => u.Email == email);
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace TdService.Repository.MsSql.Repositories
         /// </returns>
         public User GetUserWithOrdersByEmail(string email)
         {
-            return this.context.Users.Include("Profile").Include("Orders").SingleOrDefault(u => u.Email == email);
+            return this.context.Users.Include("Profile").Include("Orders").Include("Roles").SingleOrDefault(u => u.Email == email);
         }
 
         /// <summary>

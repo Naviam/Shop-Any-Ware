@@ -9,6 +9,7 @@
 
 namespace TdService.Repository.MsSql.Repositories
 {
+    using System.Collections.Generic;
     using System.Data;
     using System.Linq;
 
@@ -47,6 +48,17 @@ namespace TdService.Repository.MsSql.Repositories
         public Role GetRoleByName(string roleName)
         {
             return this.context.Roles.SingleOrDefault(r => r.Name == roleName);
+        }
+
+        /// <summary>
+        /// Get all roles.
+        /// </summary>
+        /// <returns>
+        /// Collection of roles.
+        /// </returns>
+        public IEnumerable<Role> GetAllRoles()
+        {
+            return this.context.Roles.ToList();
         }
 
         /// <summary>

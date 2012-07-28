@@ -342,6 +342,10 @@
       <Project>{8C23E268-EACF-4E5F-B96A-3BB48238AADC}</Project>
       <Name>TdService.Controllers</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TdService.Providers\TdService.Providers.csproj">
+      <Project>{86c4c56e-4f69-478d-bc73-d0c054d701aa}</Project>
+      <Name>TdService.Providers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TdService.Repository.MsSql\TdService.Repository.MsSql.csproj">
       <Project>{D536586D-E628-4049-B826-AB0B57FC99FF}</Project>
       <Name>TdService.Repository.MsSql</Name>

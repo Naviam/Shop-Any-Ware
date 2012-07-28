@@ -1,20 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{8C23E268-EACF-4E5F-B96A-3BB48238AADC}</ProjectGuid>
+    <ProjectGuid>{86C4C56E-4F69-478D-BC73-D0C054D701AA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TdService</RootNamespace>
-    <AssemblyName>TdService.Controllers</AssemblyName>
+    <RootNamespace>TdService.Providers</RootNamespace>
+    <AssemblyName>TdService.Providers</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\TdService\</SolutionDir>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -24,7 +22,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -33,17 +30,19 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper, Version=2.1.267.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\AutoMapper.2.1.267\lib\net40\AutoMapper.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.5.0.0-rc\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,44 +50,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AutoMapperConfiguration.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AddressController.cs" />
-    <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\BalanceController.cs" />
-    <Compile Include="Controllers\BaseController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MemberController.cs" />
-    <Compile Include="Controllers\OrderController.cs" />
-    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShopAnyWareRoleProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TdService.Infrastructure\TdService.Infrastructure.csproj">
-      <Project>{81B36459-F01A-4F69-869B-EA585BEE2005}</Project>
+      <Project>{81b36459-f01a-4f69-869b-ea585bee2005}</Project>
       <Name>TdService.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\TdService.Model\TdService.Model.csproj">
-      <Project>{4E87BDA7-4AF2-4D94-9A40-68B161FBB71A}</Project>
+      <Project>{4e87bda7-4af2-4d94-9a40-68b161fbb71a}</Project>
       <Name>TdService.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TdService.Providers\TdService.Providers.csproj">
-      <Project>{86c4c56e-4f69-478d-bc73-d0c054d701aa}</Project>
-      <Name>TdService.Providers</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TdService.Resources\TdService.Resources.csproj">
-      <Project>{9DC0E782-6E6B-4FA4-A7C1-728ED25CE063}</Project>
-      <Name>TdService.Resources</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TdService.Services\TdService.Services.csproj">
-      <Project>{A9DEDA99-A27D-4687-B912-46F339EA36A4}</Project>
-      <Name>TdService.Services</Name>
+    <ProjectReference Include="..\TdService.Repository.MsSql\TdService.Repository.MsSql.csproj">
+      <Project>{d536586d-e628-4049-b826-ab0b57fc99ff}</Project>
+      <Name>TdService.Repository.MsSql</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
