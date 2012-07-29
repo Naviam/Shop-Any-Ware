@@ -20,6 +20,7 @@ namespace TdService.Specs
 
     using TdService.Controllers;
     using TdService.Infrastructure.Authentication;
+    using TdService.Model.Common;
     using TdService.Model.Membership;
     using TdService.Model.Orders;
     using TdService.Repository.MsSql;
@@ -55,6 +56,11 @@ namespace TdService.Specs
         private IOrderRepository orderRepository;
 
         /// <summary>
+        /// The retailer repository.
+        /// </summary>
+        private IRetailerRepository retailerRepository;
+
+        /// <summary>
         /// The forms authentication.
         /// </summary>
         private IFormsAuthentication formsAuthentication;
@@ -72,7 +78,8 @@ namespace TdService.Specs
             this.context = new ShopAnyWareSql();
             this.userRepository = new UserRepository(this.context);
             this.orderRepository = new OrderRepository(this.context);
-            this.orderService = new OrderService(this.userRepository, this.orderRepository);
+            this.retailerRepository = new RetailerRepository(this.context);
+            this.orderService = new OrderService(this.userRepository, this.orderRepository, this.retailerRepository);
         }
 
         /// <summary>
@@ -118,7 +125,7 @@ namespace TdService.Specs
                 };
 
             // act
-            var actual = controller.AddOrder(model) as JsonResult;
+            var actual = controller.AddOrder(model.RetailerUrl) as JsonResult;
 
             // assert
             Assert.That(actual, Is.Not.Null);
@@ -129,6 +136,43 @@ namespace TdService.Specs
             Assert.That(result.Id, Is.GreaterThan(0));
             Assert.That(result.RetailerUrl, Is.EqualTo("apple.com"));
             Assert.That(result.Status, Is.EqualTo("New"));
+        }
+
+        /// <summary>
+        /// Should be able to add new order.
+        /// </summary>
+        [Test]
+        public void ShouldBeAbleToAddNewOrderWithExistentRetailer()
+        {
+            // arrange 
+            this.formsAuthentication.SetAuthenticationToken("vhatalski@naviam.com", true);
+            var controller = new OrderController(this.orderService, this.formsAuthentication);
+            var model = new OrderViewModel
+            {
+                Id = 0,
+                RetailerUrl = "test",
+                CreatedDate = DateTime.UtcNow,
+                ReceivedDate = null,
+                OrderNumber = null,
+                TrackingNumber = null,
+                Status = null
+            };
+
+            // act
+            var actual = controller.AddOrder(model.RetailerUrl) as JsonResult;
+            var actual2 = controller.AddOrder(model.RetailerUrl) as JsonResult;
+
+            // assert
+            Assert.That(actual, Is.Not.Null);
+            Debug.Assert(actual != null, "actual != null");
+            var result = actual.Data as OrderViewModel;
+            Assert.That(result, Is.Not.Null);
+            Debug.Assert(result != null, "result != null");
+            Assert.That(result.Id, Is.GreaterThan(0));
+            Assert.That(result.RetailerUrl, Is.EqualTo("test"));
+            Assert.That(result.Status, Is.EqualTo("New"));
+            var result2 = actual2.Data as OrderViewModel;
+            Assert.That(result2.Id, Is.GreaterThan(0));
         }
 
         /// <summary>
@@ -152,7 +196,7 @@ namespace TdService.Specs
             };
 
             // act
-            var createdOrder = (controller.AddOrder(model) as JsonResult).Data as OrderViewModel;
+            var createdOrder = (controller.AddOrder(model.RetailerUrl) as JsonResult).Data as OrderViewModel;
             var actual = controller.RemoveOrder(createdOrder.Id) as JsonResult;
 
             // assert

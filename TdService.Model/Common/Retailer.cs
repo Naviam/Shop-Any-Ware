@@ -16,6 +16,12 @@ namespace TdService.Model.Common
     /// </summary>
     public class Retailer : EntityBase<int>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Retailer"/> class.
+        /// </summary>
+        /// <param name="urlOrName">
+        /// The url or name.
+        /// </param>
         public Retailer(string urlOrName)
         {
             this.Name = urlOrName;

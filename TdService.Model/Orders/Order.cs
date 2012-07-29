@@ -81,11 +81,6 @@ namespace TdService.Model.Orders
         public string TrackingNumber { get; set; }
 
         /// <summary>
-        /// Gets or sets user.
-        /// </summary>
-        public User User { get; set; }
-
-        /// <summary>
         /// Gets or sets Items.
         /// </summary>
         public List<Item> Items { get; set; }

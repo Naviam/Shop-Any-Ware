@@ -11,6 +11,8 @@ namespace TdService.Services.Implementations
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
 
     using TdService.Model.Common;
     using TdService.Model.Membership;
@@ -36,6 +38,11 @@ namespace TdService.Services.Implementations
         private readonly IUserRepository userRepository;
 
         /// <summary>
+        /// The retailer repository.
+        /// </summary>
+        private readonly IRetailerRepository retailerRepository;
+        
+        /// <summary>
         /// Initializes a new instance of the <see cref="OrderService"/> class.
         /// </summary>
         /// <param name="userRepository">
@@ -44,12 +51,17 @@ namespace TdService.Services.Implementations
         /// <param name="orderRepository">
         /// Order repository.
         /// </param>
+        /// <param name="retailerRepository">
+        /// The retailer Repository.
+        /// </param>
         public OrderService(
             IUserRepository userRepository,
-            IOrderRepository orderRepository)
+            IOrderRepository orderRepository,
+            IRetailerRepository retailerRepository)
         {
             this.userRepository = userRepository;
             this.orderRepository = orderRepository;
+            this.retailerRepository = retailerRepository;
         }
 
         /// <summary>
@@ -88,12 +100,37 @@ namespace TdService.Services.Implementations
             if (user != null)
             {
                 var order = request.ConvertToOrder();
-                order.Retailer = new Retailer { Url = request.RetailerUrl, Name = request.RetailerUrl };
-                var result = this.orderRepository.AddOrder(order);
+
+                var retailer = new Retailer(request.RetailerUrl);
+                retailer = this.retailerRepository.FindOrAdd(retailer);
+                this.retailerRepository.SaveChanges();
+
+                var newOrder = Order.CreateNew(retailer);
+
+                if (newOrder.GetBrokenRules().Any())
+                {
+                    var message = new StringBuilder();
+                    foreach (var rule in newOrder.GetBrokenRules())
+                    {
+                        message.Append(rule.Rule);
+                    }
+                    throw new 
+                }
+
+                var orderResult = this.orderRepository.AddOrder(newOrder);
                 this.orderRepository.SaveChanges();
-                user.AddOrder(result);
+
+                if (user.Orders == null)
+                {
+                    user.Orders = new List<Order> { orderResult };
+                }
+                else
+                {
+                    user.Orders.Add(orderResult);
+                }
+
                 this.orderRepository.SaveChanges();
-                return result.ConvertToAddOrderResponse();
+                return orderResult.ConvertToAddOrderResponse();
             }
 
             return null;

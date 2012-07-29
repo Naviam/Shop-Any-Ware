@@ -21,6 +21,7 @@ namespace TdService.UI.Web.MVC.App_Start
     using TdService.Infrastructure.CookieStorage;
     using TdService.Infrastructure.Email;
     using TdService.Model.Addresses;
+    using TdService.Model.Common;
     using TdService.Model.Membership;
     using TdService.Model.Orders;
     using TdService.Repository.MsSql.Repositories;
@@ -51,17 +52,22 @@ namespace TdService.UI.Web.MVC.App_Start
         /// </param>
         private static void InitializeContainer(Container container)
         {
+            // services
+            container.Register<IFormsAuthentication, AspFormsAuthentication>();
+            container.Register<IMembershipService, MembershipService>();
             container.Register<IEmailService, SmtpService>();
+            container.Register<ICookieStorageService, CookieStorageService>();
+            container.Register<IAddressService, DeliveryAddressService>();
+            container.Register<IOrderService, OrderService>();
+
+            // repositories
             container.Register<IOrderRepository, OrderRepository>();
+            container.Register<IRetailerRepository, RetailerRepository>();
             container.Register<IUserRepository, UserRepository>();
             container.Register<IRoleRepository, RoleRepository>();
             container.Register<IProfileRepository, ProfileRepository>();
             container.Register<IMembershipRepository, MembershipRepository>();
-            container.Register<IMembershipService, MembershipService>();
-            container.Register<IFormsAuthentication, AspFormsAuthentication>();
-            container.Register<IAddressService, DeliveryAddressService>();
             container.Register<IAddressRepository, AddressRepository>();
-            container.Register<ICookieStorageService, CookieStorageService>();
 
             // For instance:
             // container.Register<IUserRepository, SqlUserRepository>();

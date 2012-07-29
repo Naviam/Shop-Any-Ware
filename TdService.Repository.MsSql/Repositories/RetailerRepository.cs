@@ -9,7 +9,6 @@
 
 namespace TdService.Repository.MsSql.Repositories
 {
-    using System;
     using System.Data;
     using System.Linq;
 
@@ -25,6 +24,12 @@ namespace TdService.Repository.MsSql.Repositories
         /// </summary>
         private readonly ShopAnyWareSql context;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RetailerRepository"/> class.
+        /// </summary>
+        /// <param name="context">
+        /// The context.
+        /// </param>
         public RetailerRepository(ShopAnyWareSql context)
         {
             this.context = context;
@@ -42,7 +47,7 @@ namespace TdService.Repository.MsSql.Repositories
         public Retailer FindOrAdd(Retailer retailer)
         {
             return this.context.Retailers.SingleOrDefault(r => r.Url == retailer.Url) 
-                ?? this.context.Retailers.SingleOrDefault(r => string.Compare(r.Name, retailer.Name, StringComparison.OrdinalIgnoreCase) == 0)
+                ?? this.context.Retailers.SingleOrDefault(r => r.Name == retailer.Name)
                 ?? this.context.Retailers.Add(retailer);
         }
 
@@ -61,6 +66,9 @@ namespace TdService.Repository.MsSql.Repositories
         /// <summary>
         /// Save changes to db.
         /// </summary>
+        /// <returns>
+        /// The System.Int32.
+        /// </returns>
         public int SaveChanges()
         {
             return this.context.SaveChanges();

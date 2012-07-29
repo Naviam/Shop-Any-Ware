@@ -202,7 +202,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
         [Test]
         public void ShouldBeAbleToPostNewOrderOnlyIfAuthorized()
         {
-            TestHelper.AssertIsAuthorized(typeof(OrderController), "AddOrder", typeof(OrderViewModel));
+            TestHelper.AssertIsAuthorized(typeof(OrderController), "AddOrder", typeof(string));
         }
 
         /// <summary>
@@ -227,7 +227,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
                 };
 
             // act
-            var actual = controller.AddOrder(expected) as JsonResult;
+            var actual = controller.AddOrder(expected.RetailerUrl) as JsonResult;
 
             // assert
             Assert.That(actual, Is.Not.Null);
@@ -237,7 +237,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
                 Assert.That(model, Is.Not.Null);
                 Debug.Assert(model != null, "model != null");
                 Assert.That(model.Id, Is.GreaterThan(0));
-                Assert.That(model.CreatedDate, Is.EqualTo(currentDate));
+                Assert.That(model.CreatedDate, Is.EqualTo(currentDate).Within(1).Minutes);
                 Assert.That(model.OrderNumber, Is.Null);
                 Assert.That(model.TrackingNumber, Is.Null);
                 Assert.That(model.Status, Is.EqualTo("New"));

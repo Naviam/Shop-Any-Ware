@@ -62,6 +62,7 @@
     <Compile Include="Configurations\RoleConfiguration.cs" />
     <Compile Include="Configurations\UserConfiguration.cs" />
     <Compile Include="DatabaseInitializer.cs" />
+    <Compile Include="DomainServices\OrderDomainService.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\AddressRepository.cs" />
     <Compile Include="IDbContext.cs" />

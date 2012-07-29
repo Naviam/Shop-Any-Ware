@@ -9,6 +9,7 @@
 
 namespace TdService.Controllers
 {
+    using System;
     using System.Web.Mvc;
 
     using TdService.Infrastructure.Authentication;
@@ -64,18 +65,22 @@ namespace TdService.Controllers
         /// <summary>
         /// Add new order.
         /// </summary>
-        /// <param name="model">
-        /// The order view model.
+        /// <param name="retailerUrl">
+        /// The retailer Url.
         /// </param>
         /// <returns>
         /// Json result.
         /// </returns>
         [Authorize(Roles = "Shopper")]
         [HttpPost]
-        public ActionResult AddOrder(OrderViewModel model)
+        public ActionResult AddOrder([Bind]string retailerUrl)
         {
-            var request = model.ConvertToAddOrderRequest();
-            request.IdentityToken = this.FormsAuthentication.GetAuthenticationToken();
+            var request = new AddOrderRequest
+                {
+                    RetailerUrl = retailerUrl,
+                    CreatedDate = DateTime.UtcNow,
+                    IdentityToken = this.FormsAuthentication.GetAuthenticationToken()
+                };
             var response = this.orderService.AddOrder(request);
             var result = response.ConverToOrderViewModel();
             return this.Json(result);

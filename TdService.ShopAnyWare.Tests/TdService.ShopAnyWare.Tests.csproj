@@ -73,6 +73,7 @@
     <Compile Include="Mocks\FakeCookieProvider.cs" />
     <Compile Include="Orders\FakeOrderRepository.cs" />
     <Compile Include="Orders\FakeOrderService.cs" />
+    <Compile Include="Orders\FakeRetailerRepository.cs" />
     <Compile Include="Orders\FakeUserRepository.cs" />
     <Compile Include="Orders\OrderDomainServiceTests.cs" />
     <Compile Include="Mocks\FakeEmailService.cs" />

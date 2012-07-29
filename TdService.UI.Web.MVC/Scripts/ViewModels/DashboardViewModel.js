@@ -48,9 +48,9 @@ function DashboardViewModel(serverModel) {
     var self = this;
 
     // default model properties
-    self.message = ko.observable(serverModel.Message);
-    self.messageType = ko.observable(serverModel.MessageType);
-    self.errorCode = ko.observable(serverModel.ErrorCode);
+    // self.message = ko.observable(serverModel.Message);
+    // self.messageType = ko.observable(serverModel.MessageType);
+    // self.errorCode = ko.observable(serverModel.ErrorCode);
 
     // dashboard view model properties
     self.newOrderField = ko.observable();
@@ -61,17 +61,23 @@ function DashboardViewModel(serverModel) {
     self.packages = ko.observableArray();
     self.retailers = ko.observableArray();
 
+    self.shouldShowOrdersEmptyMessage = ko.computed(function () {
+        /// <summary>Determines whether no orders message should be displayed.</summary>
+        return self.orders().length == 0;
+    });
+
     self.loadRetailers = function() {
         /// <summary>Load shops from db to autosuggest them for user.</summary>
     };
 
     self.getRecentOrders = function() {
         /// <summary>Load recent orders from server.</summary>
-        $.getJSON("/order/getrecent", function (data) {
+        $.post("/tdservice/order/getrecent", function (data) {
             var orders = ko.toJS(data);
-            alert(orders);
+            self.orders = ko.observable(orders);
         });
     };
+    self.getRecentOrders();
 
     self.getRecentPackages = function() {
         /// <summary>Load recent packages from server.</summary>
@@ -81,11 +87,15 @@ function DashboardViewModel(serverModel) {
         /// <summary>Load history of packages.</summary>
     };
 
-    self.createOrder = function(shopName) {
+    self.createOrder = function() {
         /// <summary>Add new order.</summary>
-        $.post("/order/addorder", ko.toJSON(shopName), function(data) {
-
-        });
+        if (self.newOrderField() != "") {
+            $.post("/tdservice/order/addorder", { "retailerUrl": ko.toJSON(self.newOrderField()) }, function (data) {
+                alert(data);
+                self.newOrderField("");
+            });
+        }
+        // show error message
     };
 
     self.removeOrder = function(orderId) {
@@ -100,5 +110,3 @@ function DashboardViewModel(serverModel) {
         /// <summary>Remove package.</summary>
     };
 }
-
-ko.applyBindings(new DashboardViewModel());

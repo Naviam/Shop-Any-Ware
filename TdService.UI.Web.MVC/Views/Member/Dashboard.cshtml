@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Shop Any Ware - Overview";
+    ViewBag.Title = "Shop Any Ware - Dashboard";
 }
 <div class="row-fluid">
     <div class="span6">
@@ -11,14 +11,15 @@
             <table class="form-inline" style="width:100%;position:relative;z-index:99">
                 <tr>
                     <td>
-                        <input class="add-order" style="width:100%" data-bind="value: newOrder, autosuggest: shops" placeholder="please enter shop name or url (ex. amazon.com)"/>
+                        <input class="add-order" style="width:100%" data-bind="value: newOrderField, autosuggest: retailers" placeholder="please enter shop name or url (ex. amazon.com)"/>
                     </td>
                     <td>
-                        <a href="#" class="btn btn-large btn-success" style="float: right" data-bind="click: addOrder">Add Order</a>
+                        <a href="#" class="btn btn-large btn-success" style="float: right" data-bind="click: createOrder">Add Order</a>
                     </td>
                 </tr>
             </table>
         </div>
+        <div data-bind="visible: shouldShowOrdersEmptyMessage">There are no active orders right now. Please create a new one.</div>
         <div id="orders" style="clear: left" data-bind="foreach: orders">
             <div class="package action">
                 <div class="box">
@@ -147,104 +148,9 @@
                         <a href="#" class="btn btn-small right" data-toggle="modal"><i class="icon-plane"></i>SEND PACKAGE</a>
                     </div>
                 </div>
-                @*<div>
-                    <span class="label label-info">ID: 38737</span>
-                    <span class="label label-info label-photo">Photo:</span><a href="#" class="label badge-photo">4</a>
-                    <span class="label label-info">Status: In Process</span>
-                    <span class="label label-info">Delivery Date: 10 Feb 2012</span>
-                </div>*@
             </div>
         </div>
     </div>
-    @*<div class="span4">
-        <div class="package">
-            <ul class="nav nav-tabs" style="visibility:hidden">
-                <li class="active"><a href="#">&nbsp;</a></li>
-            </ul>
-            <span style="font-size: 26px;margin:10px 10px 0;display:block;float: left">Balance: $100</span>
-            <a href="#" class="btn btn-large btn-success" style="float: right" data-bind="click: addOrder">Add Funds</a>
-            <div style="clear: left;padding-bottom:10px"></div>
-        </div>
-        <div class="package" style="clear: left">
-            <div class="box">
-                <div class="white">
-                    <table>
-                        <tr>
-                            <th class="left">Description</th>
-                            <th>Date</th>
-                            <th>Status</th>
-                            <th>Total</th>
-                        </tr>
-                        <tr>
-                            <td class="left">Shipment / Package #</td>
-                            <td>Date</td>
-                            <td><span class="label label-warning">Pending</span></td>
-                            <td>$68.75</td>
-                        </tr>
-                        <tr>
-                            <td class="left">Shipment / Package #</td>
-                            <td>Date</td>
-                            <td><span class="label label-warning">Pending</span></td>
-                            <td>$68.75</td>
-                        </tr>
-                        <tr>
-                            <td class="left">Shipment / Package #</td>
-                            <td>Date</td>
-                            <td><span class="label label-success">Approved</span></td>
-                            <td>$68.75</td>
-                        </tr>
-                        <tr>
-                            <td class="left">Shipment / Package #</td>
-                            <td>Date</td>
-                            <td><span class="label label-success">Approved</span></td>
-                            <td>$68.75</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <div class="package">
-            <div class="box">
-                <div class="white">Your Store Address in USA</div>
-                <div class="white">
-                    <table>
-                        <tr>
-                            <td>First Name: </td>
-                            <td>Vitali</td>
-                        </tr>
-                        <tr>
-                            <td>Last Name: </td>
-                            <td>Hatalski</td>
-                        </tr>
-                        <tr>
-                            <td>Address 1: </td>
-                            <td>701 Ashland Ave</td>
-                        </tr>
-                        <tr>
-                            <td>Address 2: </td>
-                            <td>BWW-Ltrshop , Ste #20901</td>
-                        </tr>
-                        <tr>
-                            <td>Zip Code: </td>
-                            <td>19032</td>
-                        </tr>
-                        <tr>
-                            <td>City: </td>
-                            <td>Folcroft</td>
-                        </tr>
-                        <tr>
-                            <td>State: </td>
-                            <td>"Pennsylvania" or "PA"</td>
-                        </tr>
-                        <tr>
-                            <td>Phone: </td>
-                            <td>(734)5166594</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>*@
 </div>
 <div class="modal" id="myModal" style="display: none">
   <div class="modal-header">
@@ -261,13 +167,14 @@
 </div>
 @section Scripts
 {
-    <script type="text/javascript" src="@Url.Content("~/Scripts/model/DashboardViewModel.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/ViewModels/DashboardViewModel.js")"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             //            $('.left').dotdotdot({
             //                watch: 'window'
             //            });
             //            $('.add-order').tooltip({title: 'wrong url'});
+            ko.applyBindings(new DashboardViewModel());
             $(".tn").popover();
             // $("table, tr").disableSelection();
             //$("html").niceScroll();
