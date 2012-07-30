@@ -9,6 +9,7 @@
 
 namespace TdService.Repository.MsSql.Repositories
 {
+    using System;
     using System.Collections.Generic;
     using System.Data;
     using System.Linq;
@@ -18,7 +19,7 @@ namespace TdService.Repository.MsSql.Repositories
     /// <summary>
     /// The role repository.
     /// </summary>
-    public class RoleRepository : IRoleRepository
+    public class RoleRepository : IRoleRepository, IDisposable
     {
         /// <summary>
         /// Shop any ware db context.
@@ -104,6 +105,15 @@ namespace TdService.Repository.MsSql.Repositories
         public void SaveChanges()
         {
             this.context.SaveChanges();
+        }
+
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
+        /// <filterpriority>2</filterpriority>
+        public void Dispose()
+        {
+            this.context.Dispose();
         }
     }
 }

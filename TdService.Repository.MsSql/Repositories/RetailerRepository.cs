@@ -9,6 +9,7 @@
 
 namespace TdService.Repository.MsSql.Repositories
 {
+    using System;
     using System.Data;
     using System.Linq;
 
@@ -17,7 +18,7 @@ namespace TdService.Repository.MsSql.Repositories
     /// <summary>
     /// Retailer repository.
     /// </summary>
-    public class RetailerRepository : IRetailerRepository
+    public class RetailerRepository : IRetailerRepository, IDisposable
     {
         /// <summary>
         /// Shop any ware sql context.
@@ -72,6 +73,15 @@ namespace TdService.Repository.MsSql.Repositories
         public int SaveChanges()
         {
             return this.context.SaveChanges();
+        }
+
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
+        /// <filterpriority>2</filterpriority>
+        public void Dispose()
+        {
+            this.context.Dispose();
         }
     }
 }

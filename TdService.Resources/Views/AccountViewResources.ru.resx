@@ -117,37 +117,70 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="EmailHeader" xml:space="preserve">
+  <data name="ConfirmPasswordFormLabel" xml:space="preserve">
+    <value>Подтвердить пароль</value>
+  </data>
+  <data name="EmailFormFieldPlaceholder" xml:space="preserve">
+    <value>Введите адрес электронной почты</value>
+  </data>
+  <data name="EmailFormLabel" xml:space="preserve">
     <value>Электронная почта</value>
   </data>
-  <data name="FirstNameHeader" xml:space="preserve">
+  <data name="FirstNameFormFieldPlaceholder" xml:space="preserve">
+    <value>Введите имя</value>
+  </data>
+  <data name="FirstNameFormLabel" xml:space="preserve">
     <value>Имя</value>
   </data>
-  <data name="LastNameHeader" xml:space="preserve">
+  <data name="ForgotFormHelpMessage" xml:space="preserve">
+    <value>Enter email address you have specified at registration.</value>
+  </data>
+  <data name="ForgotPageTitle" xml:space="preserve">
+    <value>ShopAnyWare - Забыли электронный адрес или пароль?</value>
+  </data>
+  <data name="ForgotPasswordHeader" xml:space="preserve">
+    <value>Забыли пароль?</value>
+  </data>
+  <data name="LastNameFormFieldPlaceholder" xml:space="preserve">
+    <value>Введите фамилию</value>
+  </data>
+  <data name="LastNameFormLabel" xml:space="preserve">
     <value>Фамилия</value>
   </data>
-  <data name="NotificationHeader" xml:space="preserve">
-    <value>Уведомления</value>
+  <data name="PasswordConfirmFormFieldPlaceholder" xml:space="preserve">
+    <value>Введите пароль повторно</value>
   </data>
-  <data name="Notification_OnOrderStatusChange" xml:space="preserve">
-    <value>Уведомлять об изменении статуса заказа</value>
+  <data name="PasswordFormFieldPlaceholder" xml:space="preserve">
+    <value>Введите пароль</value>
   </data>
-  <data name="Notification_OnPackageStatusChange" xml:space="preserve">
-    <value>Уведомлять об изменении статуса посылки</value>
+  <data name="PasswordFormLabel" xml:space="preserve">
+    <value>Пароль</value>
   </data>
-  <data name="PageHeader" xml:space="preserve">
-    <value>Профиль</value>
+  <data name="RememberMeFormLabel" xml:space="preserve">
+    <value>Запомнить меня</value>
   </data>
-  <data name="PageTitle" xml:space="preserve">
-    <value>Shop Any Ware - Профиль</value>
+  <data name="ResetPasswordButton" xml:space="preserve">
+    <value>Сбросить пароль</value>
   </data>
-  <data name="PasswordHeader" xml:space="preserve">
-    <value>Текущий пароль</value>
+  <data name="SignInButton" xml:space="preserve">
+    <value>Войти!</value>
   </data>
-  <data name="SaveChangesButton" xml:space="preserve">
-    <value>Сохранить изменения</value>
+  <data name="SignInPageHeader" xml:space="preserve">
+    <value>Войти в Ваш ShopAnyWare аккаунт</value>
   </data>
-  <data name="UpdateProfileSuccessMessage" xml:space="preserve">
-    <value>Ваш профиль был успешно изменен.</value>
+  <data name="SignInPageTitle" xml:space="preserve">
+    <value>Shop Any Ware - Логин</value>
+  </data>
+  <data name="SignUpButton" xml:space="preserve">
+    <value>Получите Ваш адрес в США!</value>
+  </data>
+  <data name="SignUpEmailOk" xml:space="preserve">
+    <value>Электронный адрес в порядке</value>
+  </data>
+  <data name="SignUpPageHeader" xml:space="preserve">
+    <value>Зарегистрируйтесь и получите Ваш адрес склада в США!</value>
+  </data>
+  <data name="SignUpPageTitle" xml:space="preserve">
+    <value>Shop Any Ware - Регистрация</value>
   </data>
 </root>

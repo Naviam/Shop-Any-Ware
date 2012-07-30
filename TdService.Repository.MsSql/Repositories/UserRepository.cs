@@ -20,7 +20,7 @@ namespace TdService.Repository.MsSql.Repositories
     /// <summary>
     /// User repository.
     /// </summary>
-    public class UserRepository : IUserRepository
+    public class UserRepository : IUserRepository, IDisposable
     {
         /// <summary>
         /// Shop any ware db context.
@@ -175,6 +175,15 @@ namespace TdService.Repository.MsSql.Repositories
         public void SaveChanges()
         {
             this.context.SaveChanges();
+        }
+
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
+        /// <filterpriority>2</filterpriority>
+        public void Dispose()
+        {
+            this.context.Dispose();
         }
     }
 }

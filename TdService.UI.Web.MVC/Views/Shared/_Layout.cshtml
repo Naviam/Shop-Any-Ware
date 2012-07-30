@@ -1,4 +1,5 @@
 ﻿@using Combres.Mvc;
+@using TdService.Resources.Views
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +35,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
-                <a class="brand" href="@Url.Action("Index", "Home")">Shop Any Ware</a>
+                <a class="brand" href="@Url.Action("Index", "Home")">@LayoutViewResources.PageHeader</a>
                 <div class="nav-collapse">
                     @if (!User.Identity.IsAuthenticated)
                     {
@@ -46,31 +47,19 @@
                     }
                     @if (User.Identity.IsAuthenticated)
                     {
-                        @*<ul class="nav nav-pills pull-right">
-                            <li><a href="#"><i class="icon-white icon-user"></i> @HttpContext.Current.User.Identity.Name</a></li>
-                            <li><a href="#"><i class="icon-white icon-cog"></i> Settings</a></li>
-                            <li><a href="@Url.Action("SignOut", "Account")"><i class="icon-white icon-off"></i> Sign Out</a></li>
-                        </ul>*@
                         <ul class="nav pull-right">
-                            @*<li id="fat-menu" class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    Language: English <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Russian</a></li>
-                                </ul>
-                            </li>*@
-                            <li><a href="#" class="en"></a></li>
-                            <li><a href="#" class="ru"></a></li>
+                            <li><a href="#" class="en" onclick="click: changeCulture('en');"></a></li>
+                            <li><a href="#" class="ru" onclick="click: changeCulture('ru');"></a></li>
                             <li id="fat-menu" class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    Balance: $100 <b class="caret"></b></a>
+                                    @LayoutViewResources.BalanceMenuHeader: $100 <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     @{Html.RenderPartial("transactions", true);}
                                 </ul>
                             </li>
                             <li id="fat-menu" class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    Your address in U.S. <b class="caret"></b></a>
+                                    @LayoutViewResources.YourUsAddressMenuHeader <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     @{Html.RenderPartial("storeAddress", true);}
                                 </ul>
@@ -79,13 +68,12 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     @HttpContext.Current.User.Identity.Name <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="@Url.Action("Index", "Profile")"><i class="icon-user"></i> Profile</a></li>
-                                    @*<li><a data-toggle="modal" href="#storeAddress"><i class="icon-home"></i> Store Address in US</a></li>*@
-                                    <li><a href="@Url.Action("Index", "Address")"><i class="icon-th-list"></i> Delivery Addresses</a></li>
+                                    <li><a href="@Url.Action("Index", "Profile")"><i class="icon-user"></i> @LayoutViewResources.ProfileMenuHeader</a></li>
+                                    <li><a href="@Url.Action("Index", "Address")"><i class="icon-th-list"></i> @LayoutViewResources.DeliveryAddressesMenuHeader</a></li>
                                     <li class="divider"></li>
-                                    <li><a href="@Url.Action("Dashboard", "Admin")"><i class="icon-cog"></i> Administration</a></li>
+                                    <li><a href="@Url.Action("Dashboard", "Admin")"><i class="icon-cog"></i> @LayoutViewResources.AdministrationMenuHeader</a></li>
                                     <li class="divider"></li>
-                                    <li><a href="@Url.Action("SignOut", "Account")"><i class="icon-off"></i> Sign Out</a></li>
+                                    <li><a href="@Url.Action("SignOut", "Account")"><i class="icon-off"></i> @LayoutViewResources.SignOutMenuHeader</a></li>
                                 </ul>
                             </li>
                             @*<li><a href="@Url.Action("SignOut", "Account")"><i class="icon-white icon-off"></i> Sign Out</a></li>*@
@@ -93,8 +81,8 @@
                     }
                     else
                     {
-                        <a href="@Url.Action("SignUp", "Account")" class="btn btn-success" style="margin-top:6px;margin-left: 20px">JOIN US &raquo;</a>                        
-                        <a href="@Url.Action("SignIn", "Account")" class="btn btn-primary" style="margin-top:6px;margin-left: 20px">SIGN IN &raquo;</a>                        
+                        <a href="@Url.Action("SignUp", "Account")" class="btn btn-success" style="margin-top:6px;margin-left: 20px">@LayoutViewResources.JoinUsMenuHeader &raquo;</a>
+                        <a href="@Url.Action("SignIn", "Account")" class="btn btn-primary" style="margin-top:6px;margin-left: 20px">@LayoutViewResources.SignInMenuHeader &raquo;</a>
                     }
                 </div>
                 <!--/.nav-collapse -->
@@ -105,32 +93,8 @@
         @RenderBody()
         <hr>
         <footer>
-            <p>&copy; ShowAnyWare.com 2012</p>
+            <p>&copy; @LayoutViewResources.Footer</p>
         </footer>
-    </div>
-    <div id="storeAddress" class="modal hide fade">
-        <div class="modal-header">
-            <a class="close" data-dismiss="modal">×</a>
-            <h3>Your Store Address in USA</h3>
-        </div>
-        <div class="modal-body">
-            @{Html.RenderPartial("storeAddress", true);}
-        </div>
-        <div class="modal-footer">
-            <a href="#" class="btn" data-dismiss="modal">Close</a>
-        </div>
-    </div>
-    <div id="profile" class="modal hide fade">
-        <div class="modal-header">
-            <a class="close" data-dismiss="modal">×</a>
-            <h3>Edit Your Profile</h3>
-        </div>
-        <div class="modal-body">
-            @{Html.RenderPartial("storeAddress", true);}
-        </div>
-        <div class="modal-footer">
-            <a href="#" class="btn" data-dismiss="modal">Close</a>
-        </div>
     </div>
     <!-- /container -->
     <!-- Le javascript

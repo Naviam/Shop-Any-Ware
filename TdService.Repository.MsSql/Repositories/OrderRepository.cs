@@ -6,6 +6,7 @@
 
 namespace TdService.Repository.MsSql.Repositories
 {
+    using System;
     using System.Data;
 
     using TdService.Model.Common;
@@ -14,7 +15,7 @@ namespace TdService.Repository.MsSql.Repositories
     /// <summary>
     /// Order repository to work with orders in database.
     /// </summary>
-    public class OrderRepository : IOrderRepository
+    public class OrderRepository : IOrderRepository, IDisposable
     {
         /// <summary>
         /// The context.
@@ -103,6 +104,15 @@ namespace TdService.Repository.MsSql.Repositories
         public void SaveChanges()
         {
             this.context.SaveChanges();
+        }
+
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
+        /// <filterpriority>2</filterpriority>
+        public void Dispose()
+        {
+            this.context.Dispose();
         }
     }
 }

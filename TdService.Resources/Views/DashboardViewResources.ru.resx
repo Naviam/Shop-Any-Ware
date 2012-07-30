@@ -117,37 +117,94 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="EmailHeader" xml:space="preserve">
-    <value>Электронная почта</value>
+  <data name="ActionHeader" xml:space="preserve">
+    <value />
   </data>
-  <data name="FirstNameHeader" xml:space="preserve">
-    <value>Имя</value>
+  <data name="ActionMoveHeader" xml:space="preserve">
+    <value>Переместить</value>
   </data>
-  <data name="LastNameHeader" xml:space="preserve">
-    <value>Фамилия</value>
+  <data name="AddItemButton" xml:space="preserve">
+    <value>Добавить товар</value>
   </data>
-  <data name="NotificationHeader" xml:space="preserve">
-    <value>Уведомления</value>
+  <data name="AddItemForm" xml:space="preserve">
+    <value>Форма добавления товара</value>
   </data>
-  <data name="Notification_OnOrderStatusChange" xml:space="preserve">
-    <value>Уведомлять об изменении статуса заказа</value>
+  <data name="AddOrderButton" xml:space="preserve">
+    <value>Добавить заказ</value>
   </data>
-  <data name="Notification_OnPackageStatusChange" xml:space="preserve">
-    <value>Уведомлять об изменении статуса посылки</value>
+  <data name="AddPackageButton" xml:space="preserve">
+    <value>Создать посылку</value>
   </data>
-  <data name="PageHeader" xml:space="preserve">
-    <value>Профиль</value>
+  <data name="CancelButton" xml:space="preserve">
+    <value>Отменить</value>
   </data>
-  <data name="PageTitle" xml:space="preserve">
-    <value>Shop Any Ware - Профиль</value>
+  <data name="DashboardPageTitle" xml:space="preserve">
+    <value>Shop Any Ware - Главная</value>
   </data>
-  <data name="PasswordHeader" xml:space="preserve">
-    <value>Текущий пароль</value>
+  <data name="HistoryPackagesTabHeader" xml:space="preserve">
+    <value>История</value>
+  </data>
+  <data name="ItemNameHeader" xml:space="preserve">
+    <value>Название товара</value>
+  </data>
+  <data name="ItemsTotalHeader" xml:space="preserve">
+    <value>Всего</value>
+  </data>
+  <data name="MoveToNewPackage" xml:space="preserve">
+    <value>Переместить в новую посылку</value>
+  </data>
+  <data name="NewOrderPlaceholder" xml:space="preserve">
+    <value>введите ссылку на магазин или его название латиницей (например: amazon.com)</value>
+  </data>
+  <data name="NewPackagePlaceholder" xml:space="preserve">
+    <value>введите название посылки (например: "моя первая посылка")</value>
+  </data>
+  <data name="NoItemsMessage" xml:space="preserve">
+    <value>Товар будет автоматически отображен после поступления заказа на склад и обработки оператором.</value>
+  </data>
+  <data name="NoOrdersMessage" xml:space="preserve">
+    <value>There are no active orders right now. Please create a new one.</value>
+  </data>
+  <data name="OrderIdHeader" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="OrderNumberHeader" xml:space="preserve">
+    <value>Номер заказа</value>
+  </data>
+  <data name="OrderOption1" xml:space="preserve">
+    <value>Мы покупаем и пересылаем</value>
+  </data>
+  <data name="OrderOption2" xml:space="preserve">
+    <value>Вы покупаете и мы пересылаем</value>
+  </data>
+  <data name="PriceHeader" xml:space="preserve">
+    <value>Цена</value>
+  </data>
+  <data name="RecentPackagesTabHeader" xml:space="preserve">
+    <value>Последние</value>
+  </data>
+  <data name="RemoveOrderButton" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="ReturnOrderButton" xml:space="preserve">
+    <value>Вернуть</value>
   </data>
   <data name="SaveChangesButton" xml:space="preserve">
     <value>Сохранить изменения</value>
   </data>
-  <data name="UpdateProfileSuccessMessage" xml:space="preserve">
-    <value>Ваш профиль был успешно изменен.</value>
+  <data name="SendPackageButton" xml:space="preserve">
+    <value>Отправить посылку</value>
+  </data>
+  <data name="StatusHeader" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="TotalCostHeader" xml:space="preserve">
+    <value>Общие затраты</value>
+  </data>
+  <data name="TotalWeightHeader" xml:space="preserve">
+    <value>Вес</value>
+  </data>
+  <data name="TrackingNumberHeader" xml:space="preserve">
+    <value>Номер отслеживания</value>
   </data>
 </root>

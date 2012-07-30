@@ -9,6 +9,7 @@
 
 namespace TdService.Repository.MsSql.Repositories
 {
+    using System;
     using System.Data;
 
     using TdService.Model.Membership;
@@ -16,7 +17,7 @@ namespace TdService.Repository.MsSql.Repositories
     /// <summary>
     /// The profile repository.
     /// </summary>
-    public class ProfileRepository : IProfileRepository
+    public class ProfileRepository : IProfileRepository, IDisposable
     {
         /// <summary>
         /// Shop any ware db context.
@@ -69,6 +70,15 @@ namespace TdService.Repository.MsSql.Repositories
         public int SaveChanges()
         {
             return this.context.SaveChanges();
+        }
+
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
+        /// <filterpriority>2</filterpriority>
+        public void Dispose()
+        {
+            this.context.Dispose();
         }
     }
 }

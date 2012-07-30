@@ -117,37 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="EmailHeader" xml:space="preserve">
-    <value>Электронная почта</value>
+  <data name="AdministrationMenuHeader" xml:space="preserve">
+    <value>Administration</value>
   </data>
-  <data name="FirstNameHeader" xml:space="preserve">
-    <value>Имя</value>
+  <data name="BalanceMenuHeader" xml:space="preserve">
+    <value>Balance</value>
   </data>
-  <data name="LastNameHeader" xml:space="preserve">
-    <value>Фамилия</value>
+  <data name="DeliveryAddressesMenuHeader" xml:space="preserve">
+    <value>Delivery Addresses</value>
   </data>
-  <data name="NotificationHeader" xml:space="preserve">
-    <value>Уведомления</value>
+  <data name="Footer" xml:space="preserve">
+    <value>ShowAnyWare.com 2012</value>
   </data>
-  <data name="Notification_OnOrderStatusChange" xml:space="preserve">
-    <value>Уведомлять об изменении статуса заказа</value>
-  </data>
-  <data name="Notification_OnPackageStatusChange" xml:space="preserve">
-    <value>Уведомлять об изменении статуса посылки</value>
+  <data name="JoinUsMenuHeader" xml:space="preserve">
+    <value>JOIN US</value>
   </data>
   <data name="PageHeader" xml:space="preserve">
-    <value>Профиль</value>
+    <value>Shop Any Ware</value>
   </data>
-  <data name="PageTitle" xml:space="preserve">
-    <value>Shop Any Ware - Профиль</value>
+  <data name="ProfileMenuHeader" xml:space="preserve">
+    <value>Profile</value>
   </data>
-  <data name="PasswordHeader" xml:space="preserve">
-    <value>Текущий пароль</value>
+  <data name="SignInMenuHeader" xml:space="preserve">
+    <value>SIGN IN</value>
   </data>
-  <data name="SaveChangesButton" xml:space="preserve">
-    <value>Сохранить изменения</value>
+  <data name="SignOutMenuHeader" xml:space="preserve">
+    <value>Sign Out</value>
   </data>
-  <data name="UpdateProfileSuccessMessage" xml:space="preserve">
-    <value>Ваш профиль был успешно изменен.</value>
+  <data name="YourUsAddressMenuHeader" xml:space="preserve">
+    <value>Your address in U.S.</value>
   </data>
 </root>
