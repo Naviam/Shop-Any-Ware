@@ -15,7 +15,6 @@ namespace TdService.Services.Implementations
     using System.Text;
 
     using TdService.Model.Common;
-    using TdService.Model.DomainServices;
     using TdService.Model.Membership;
     using TdService.Model.Orders;
     using TdService.Services.Interfaces;

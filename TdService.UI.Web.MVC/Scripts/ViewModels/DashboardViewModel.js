@@ -54,6 +54,14 @@ function Order(serverModel) {
         //return total;
         return 0;
     });
+    self.orderItemsId = ko.computed(function () {
+        /// <summary>Determines the total amount of the order.</summary>
+        return 'order_items_' + self.id().toString();
+    });
+    self.orderItemsIdWithNumberSign = ko.computed(function () {
+        /// <summary>Determines the total amount of the order.</summary>
+        return '#' + self.orderItemsId();
+    });
 
     // order view model collections
     self.items = ko.observableArray();

@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="OrderCreatedState.cs" company="TdService">
+// <copyright file="OrderNewState.cs" company="TdService">
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
@@ -15,7 +15,7 @@ namespace TdService.Model.Orders
     public class OrderNewState : IOrderState
     {
         /// <summary>
-        /// Can this order be received (status changed to received).
+        /// Gets a value indicating whether order can be received.
         /// </summary>
         public bool CanBeReceived
         {
@@ -26,7 +26,7 @@ namespace TdService.Model.Orders
         }
 
         /// <summary>
-        /// Flag that says whether items are editable in this order.
+        /// Gets a value indicating whether can items be modified.
         /// </summary>
         public bool CanItemsBeModified
         {
@@ -37,7 +37,7 @@ namespace TdService.Model.Orders
         }
 
         /// <summary>
-        /// Flag that says whether this order is editable.
+        /// Gets a value indicating whether order can be modified.
         /// </summary>
         public bool CanBeModified
         {
@@ -48,18 +48,18 @@ namespace TdService.Model.Orders
         }
 
         /// <summary>
-        /// Flag that says whether this order can be returned.
+        /// Gets a value indicating whether order can be requested for return.
         /// </summary>
         public bool CanBeRequestedForReturn
         {
             get
             {
-                return true;
+                return false;
             }
         }
 
         /// <summary>
-        /// Flag that says whether this order can be returned.
+        /// Gets a value indicating whether order can be returned.
         /// </summary>
         public bool CanBeReturned
         {
@@ -70,7 +70,7 @@ namespace TdService.Model.Orders
         }
 
         /// <summary>
-        /// Flag that says whether this order can be disposed.
+        /// Gets a value indicating whether order can be disposed.
         /// </summary>
         public bool CanBeDisposed
         {
@@ -81,7 +81,7 @@ namespace TdService.Model.Orders
         }
 
         /// <summary>
-        /// Flag that says whether this order can be removed.
+        /// Gets a value indicating whether order can be removed.
         /// </summary>
         public bool CanBeRemoved
         {

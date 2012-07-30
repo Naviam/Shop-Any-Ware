@@ -25,7 +25,7 @@
             <div class="package action">
                 <div class="box">
                     <div>
-                        <img title="Collapse" data-toggle="collapse" data-target="#order_extended" src="@Url.Content("~/content/img/story_collapsed1.png")" alt="Collapse">
+                        <img title="Collapse" data-bind="attr: { 'data-target': orderItemsIdWithNumberSign }" data-toggle="collapse" src="@Url.Content("~/content/img/story_collapsed1.png")" alt="Collapse">
                         <span class="">@DashboardViewResources.OrderIdHeader: <span data-bind="text: id"></span></span>
                         <span style="float:right" data-bind="text: createdDate"></span>
                         <span style="float:right" data-bind="text: receivedDate"></span>
@@ -35,7 +35,7 @@
                         <br />
                         <i class="icon icon-pencil"></i> @DashboardViewResources.TrackingNumberHeader <span class="tn" title="A Title" data-content="And here's some amazing content. It's very engaging. right?" data-bind="text: trackingNumber" href="http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum=EE972210493US"></span>
                     </div>
-                    <div id="order_extended" class="collapse in">
+                    <div data-bind="attr: { id: orderItemsId }" class="collapse">
                         <div class="white">
                             @DashboardViewResources.NoItemsMessage
                             <table>
