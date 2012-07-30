@@ -81,6 +81,11 @@ namespace TdService.Model.Orders
         public string TrackingNumber { get; set; }
 
         /// <summary>
+        /// Gets or sets the user.
+        /// </summary>
+        public User User { get; set; }
+
+        /// <summary>
         /// Gets or sets Items.
         /// </summary>
         public List<Item> Items { get; set; }
@@ -208,11 +213,10 @@ namespace TdService.Model.Orders
         /// </summary>
         protected override void Validate()
         {
-            if (this.Retailer == null)
-            {
-                this.AddBrokenRule(OrderBusinessRules.RetailerRequired);
-            }
-
+            // if (this.Retailer == null)
+            // {
+            // this.AddBrokenRule(OrderBusinessRules.RetailerRequired);
+            // }
             if (this.CreatedDate == DateTime.MinValue)
             {
                 this.AddBrokenRule(OrderBusinessRules.CreatedDateRequired);

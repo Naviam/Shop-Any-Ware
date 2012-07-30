@@ -9,11 +9,21 @@
 
 namespace TdService.Model.Orders
 {
+    using TdService.Model.Common;
+
     /// <summary>
     /// Interface for order repository.
     /// </summary>
     public interface IOrderRepository
     {
+        /// <summary>
+        /// Attach retailer.
+        /// </summary>
+        /// <param name="retailer">
+        /// The retailer.
+        /// </param>
+        void AttachRetailer(Retailer retailer);
+
         /// <summary>
         /// Add order.
         /// </summary>

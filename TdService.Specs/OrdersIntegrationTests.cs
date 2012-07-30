@@ -90,10 +90,10 @@ namespace TdService.Specs
         {
             // arrange
             this.formsAuthentication.SetAuthenticationToken("vhatalski@naviam.com", true);
-            var controller = new OrderController(this.orderService, this.formsAuthentication);
+            var controller = new OrdersController(this.orderService, this.formsAuthentication);
 
             // act
-            var actual = controller.GetRecent() as JsonResult;
+            var actual = controller.Recent() as JsonResult;
             
             // assert
             Assert.That(actual, Is.Not.Null);
@@ -112,7 +112,7 @@ namespace TdService.Specs
         {
             // arrange 
             this.formsAuthentication.SetAuthenticationToken("vhatalski@naviam.com", true);
-            var controller = new OrderController(this.orderService, this.formsAuthentication);
+            var controller = new OrdersController(this.orderService, this.formsAuthentication);
             var model = new OrderViewModel
                 {
                     Id = 0,
@@ -125,7 +125,7 @@ namespace TdService.Specs
                 };
 
             // act
-            var actual = controller.AddOrder(model.RetailerUrl) as JsonResult;
+            var actual = controller.Add(model.RetailerUrl) as JsonResult;
 
             // assert
             Assert.That(actual, Is.Not.Null);
@@ -146,7 +146,7 @@ namespace TdService.Specs
         {
             // arrange 
             this.formsAuthentication.SetAuthenticationToken("vhatalski@naviam.com", true);
-            var controller = new OrderController(this.orderService, this.formsAuthentication);
+            var controller = new OrdersController(this.orderService, this.formsAuthentication);
             var model = new OrderViewModel
             {
                 Id = 0,
@@ -159,8 +159,8 @@ namespace TdService.Specs
             };
 
             // act
-            var actual = controller.AddOrder(model.RetailerUrl) as JsonResult;
-            var actual2 = controller.AddOrder(model.RetailerUrl) as JsonResult;
+            var actual = controller.Add(model.RetailerUrl) as JsonResult;
+            var actual2 = controller.Add(model.RetailerUrl) as JsonResult;
 
             // assert
             Assert.That(actual, Is.Not.Null);
@@ -183,7 +183,7 @@ namespace TdService.Specs
         {
             // arrange 
             this.formsAuthentication.SetAuthenticationToken("vhatalski@naviam.com", true);
-            var controller = new OrderController(this.orderService, this.formsAuthentication);
+            var controller = new OrdersController(this.orderService, this.formsAuthentication);
             var model = new OrderViewModel
             {
                 Id = 0,
@@ -196,8 +196,8 @@ namespace TdService.Specs
             };
 
             // act
-            var createdOrder = (controller.AddOrder(model.RetailerUrl) as JsonResult).Data as OrderViewModel;
-            var actual = controller.RemoveOrder(createdOrder.Id) as JsonResult;
+            var createdOrder = (controller.Add(model.RetailerUrl) as JsonResult).Data as OrderViewModel;
+            var actual = controller.Remove(createdOrder.Id) as JsonResult;
 
             // assert
             Assert.That(actual, Is.Not.Null);

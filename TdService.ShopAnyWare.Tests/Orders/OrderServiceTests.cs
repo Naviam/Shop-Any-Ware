@@ -88,7 +88,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
 
             // assert
             Assert.That(actual, Is.Not.Null);
-            Assert.That(actual.CreatedDate, Is.EqualTo(request.CreatedDate));
+            Assert.That(actual.CreatedDate, Is.EqualTo(request.CreatedDate).Within(1).Minutes);
             Assert.That(actual.RetailerUrl, Is.EqualTo(request.RetailerUrl));
         }
 

@@ -10,10 +10,12 @@
 namespace TdService.Repository.MsSql.Repositories
 {
     using System;
+    using System.Collections.Generic;
     using System.Data;
     using System.Linq;
 
     using TdService.Model.Membership;
+    using TdService.Model.Orders;
 
     /// <summary>
     /// User repository.
@@ -34,6 +36,32 @@ namespace TdService.Repository.MsSql.Repositories
         public UserRepository(ShopAnyWareSql context)
         {
             this.context = context;
+        }
+
+        /// <summary>
+        /// Attach order.
+        /// </summary>
+        /// <param name="email">
+        /// The user email.
+        /// </param>
+        /// <param name="orderId">
+        /// The order ID.
+        /// </param>
+        public void AttachOrder(string email, int orderId)
+        {
+            var user = this.context.Users.SingleOrDefault(user1 => user1.Email == email);
+            var order = this.context.Orders.Find(orderId);
+            if (user != null)
+            {
+                if (user.Orders == null)
+                {
+                    user.Orders = new List<Order> { order };
+                }
+                else
+                {
+                    user.Orders.Add(order);
+                }
+            }
         }
 
         /// <summary>

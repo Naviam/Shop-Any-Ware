@@ -3,6 +3,23 @@
 /// <reference path="../json2.js" />
 /// <reference path="../knockout-2.1.0.debug.js" />
 
+ko.extenders.defaultIfNull = function (target, defaultValue) {
+    var result = ko.computed({
+        read: target,
+        write: function (newValue) {
+            if (!newValue) {
+                target(defaultValue);
+            } else {
+                target(newValue);
+            }
+        }
+    });
+
+    result(target());
+
+    return result;
+};
+
 function Order(serverModel) {
     /// <summary>Order view model.</summary>
     var self = this;
@@ -15,8 +32,8 @@ function Order(serverModel) {
     // order view model properties
     self.id = ko.observable(serverModel.Id);
     self.retailerUrl = ko.observable(serverModel.RetailerUrl);
-    self.orderNumber = ko.observable(serverModel.OrderNumber);
-    self.trackingNumber = ko.observable(serverModel.TrackingNumber);
+    self.orderNumber = ko.observable(serverModel.OrderNumber).extend({ defaultIfNull: "not set" });
+    self.trackingNumber = ko.observable(serverModel.TrackingNumber).extend({ defaultIfNull: "not set" });
     self.createdDate = ko.observable(serverModel.CreatedDate);
     self.receivedDate = ko.observable(serverModel.ReceivedDate);
     self.status = ko.observable(serverModel.Status);
@@ -72,9 +89,13 @@ function DashboardViewModel(serverModel) {
 
     self.getRecentOrders = function() {
         /// <summary>Load recent orders from server.</summary>
-        $.post("/tdservice/order/getrecent", function (data) {
+        $.post("/tdservice/orders/recent", function (data) {
             var orders = ko.toJS(data);
-            self.orders = ko.observable(orders);
+            self.orders.removeAll();
+            $.each(orders, function(index, value) {
+                var order = new Order(value);
+                self.orders.unshift(order);
+            });
         });
     };
     self.getRecentOrders();
@@ -90,16 +111,28 @@ function DashboardViewModel(serverModel) {
     self.createOrder = function() {
         /// <summary>Add new order.</summary>
         if (self.newOrderField() != "") {
-            $.post("/tdservice/order/addorder", { "retailerUrl": ko.toJSON(self.newOrderField()) }, function (data) {
-                alert(data);
-                self.newOrderField("");
+            $.post("/tdservice/orders/add", { "retailerUrl": self.newOrderField() }, function (data) {
+                var model = ko.toJS(data);
+                if (model.MessageType == "Success") {
+                    var order = new Order(model);
+                    self.newOrderField("");
+                    self.orders.unshift(order);
+                    //window.noty({ text: model.Message });
+                }
             });
         }
         // show error message
     };
 
-    self.removeOrder = function(orderId) {
+    self.removeOrder = function(order) {
         /// <summary>Remove order.</summary>
+        $.post("/tdservice/orders/remove", { "orderId": order.id }, function (data) {
+            var model = ko.toJS(data);
+            if (model.MessageType == "Success") {
+                self.orders.remove(order);
+                //window.noty({ text: model.Message });
+            }
+        });
     };
 
     self.createPackage = function(packageName) {

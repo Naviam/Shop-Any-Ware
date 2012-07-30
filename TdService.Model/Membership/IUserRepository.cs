@@ -9,11 +9,24 @@
 
 namespace TdService.Model.Membership
 {
+    using TdService.Model.Orders;
+
     /// <summary>
     /// User repository contract.
     /// </summary>
     public interface IUserRepository
     {
+        /// <summary>
+        /// Attach order.
+        /// </summary>
+        /// <param name="email">
+        /// The user email.
+        /// </param>
+        /// <param name="orderId">
+        /// The order ID.
+        /// </param>
+        void AttachOrder(string email, int orderId);
+
         /// <summary>
         /// Get user by email.
         /// </summary>

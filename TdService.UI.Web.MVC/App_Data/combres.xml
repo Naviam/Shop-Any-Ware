@@ -26,6 +26,7 @@
     </resourceSet>
     <resourceSet name="jqueryJs" type="js">
       <resource path="~/scripts/jquery-1.7.1.min.js" minifierRef="off" />
+      <resource path="~/Scripts/json2.js" />
       <resource path="~/scripts/linq.min.js" minifierRef="off" />
       <resource path="~/scripts/jquery.validate.min.js" minifierRef="off" />
       <resource path="~/scripts/jquery.validate.unobtrusive.min.js" minifierRef="off" />
@@ -45,14 +46,20 @@
       <resource path="~/Scripts/bootstrap/bootstrap-carousel.js" />
       <resource path="~/Scripts/bootstrap/bootstrap-typeahead.js" />
     </resourceSet>
+    <resourceSet name="noty" type="js">
+      <resource path="~/Scripts/noty/jquery.noty.js" />
+      <resource path="~/Scripts/noty/layouts/topCenter.js" />
+    </resourceSet>
+    <resourceSet name="knockout" type="js">
+      <resource path="~/Scripts/knockout-2.1.0.js" />
+      <resource path="~/Scripts/knockout-sortable.js" />
+    </resourceSet>
     <resourceSet name="siteJs" type="js">
       <resource reference="jqueryJs"/>
       <resource reference="bootstrapJs"/>
-      <resource path="~/scripts/jquery.noty.js" />
-      <resource path="~/scripts/json2.js" />
-      <resource path="~/scripts/Common.js" />
-      <resource path="~/scripts/knockout-2.1.0.js" />
-      <resource path="~/scripts/knockout-sortable.js" />
+      <resource reference="knockout"/>
+      <resource reference="noty"/>
+      <resource path="~/Scripts/Common.js" />
       <!--<resource path="~/scripts/dotdotdot/jquery.dotdotdot-1.4.0-packed.js" minifierRef="off" />-->
       <!--<resource path="~/scripts/jquery.nicescroll.min.js" minifierRef="off" />-->
     </resourceSet>

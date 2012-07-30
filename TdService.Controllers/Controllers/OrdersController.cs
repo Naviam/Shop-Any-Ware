@@ -21,7 +21,7 @@ namespace TdService.Controllers
     /// <summary>
     /// This controller contains methods to work with orders.
     /// </summary>
-    public class OrderController : BaseController
+    public class OrdersController : BaseController
     {
         /// <summary>
         /// Order service.
@@ -29,7 +29,7 @@ namespace TdService.Controllers
         private readonly IOrderService orderService;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="OrderController"/> class. 
+        /// Initializes a new instance of the <see cref="OrdersController"/> class. 
         /// Order controller constructor.
         /// </summary>
         /// <param name="orderService">
@@ -38,7 +38,7 @@ namespace TdService.Controllers
         /// <param name="formsAuthentication">
         /// The form authentication.
         /// </param>
-        public OrderController(
+        public OrdersController(
             IOrderService orderService, 
             IFormsAuthentication formsAuthentication)
             : base(formsAuthentication)
@@ -54,7 +54,7 @@ namespace TdService.Controllers
         /// </returns>
         [Authorize(Roles = "Shopper")]
         [HttpPost]
-        public ActionResult GetRecent()
+        public ActionResult Recent()
         {
             var request = new GetRecentOrdersRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() };
             var response = this.orderService.GetRecent(request);
@@ -73,7 +73,7 @@ namespace TdService.Controllers
         /// </returns>
         [Authorize(Roles = "Shopper")]
         [HttpPost]
-        public ActionResult AddOrder([Bind]string retailerUrl)
+        public ActionResult Add([Bind]string retailerUrl)
         {
             var request = new AddOrderRequest
                 {
@@ -97,7 +97,7 @@ namespace TdService.Controllers
         /// </returns>
         [Authorize(Roles = "Shopper")]
         [HttpPost]
-        public ActionResult RemoveOrder(int orderId)
+        public ActionResult Remove(int orderId)
         {
             var request = new RemoveOrderRequest
                 {

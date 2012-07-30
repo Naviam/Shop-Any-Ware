@@ -37,6 +37,19 @@ namespace TdService.ShopAnyWare.Tests.Orders
         }
 
         /// <summary>
+        /// Attach order.
+        /// </summary>
+        /// <param name="email">
+        /// The email.
+        /// </param>
+        /// <param name="orderId">
+        /// The order ID.
+        /// </param>
+        public void AttachOrder(string email, int orderId)
+        {
+        }
+
+        /// <summary>
         /// Get user by email.
         /// </summary>
         /// <param name="email">

@@ -11,6 +11,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
 {
     using System.Collections.Generic;
 
+    using TdService.Model.Common;
     using TdService.Model.Orders;
 
     /// <summary>
@@ -32,6 +33,16 @@ namespace TdService.ShopAnyWare.Tests.Orders
         public FakeOrderRepository(List<Order> orders)
         {
             this.orders = orders;
+        }
+
+        /// <summary>
+        /// Attach retailer.
+        /// </summary>
+        /// <param name="retailer">
+        /// The retailer.
+        /// </param>
+        public void AttachRetailer(Retailer retailer)
+        {
         }
 
         /// <summary>

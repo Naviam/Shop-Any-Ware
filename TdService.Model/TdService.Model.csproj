@@ -67,6 +67,7 @@
     <Compile Include="Membership\ProfileBusinessRules.cs" />
     <Compile Include="Membership\RoleBusinessRules.cs" />
     <Compile Include="Membership\UserBusinessRules.cs" />
+    <Compile Include="Orders\InvalidOrderException.cs" />
     <Compile Include="Orders\OrderBusinessRules.cs" />
     <Compile Include="Orders\OrderDisposedState.cs" />
     <Compile Include="Orders\IOrderState.cs" />

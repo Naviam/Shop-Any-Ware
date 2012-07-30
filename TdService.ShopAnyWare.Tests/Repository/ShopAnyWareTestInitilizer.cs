@@ -27,6 +27,8 @@ namespace TdService.ShopAnyWare.Tests.Repository
         /// </param>
         protected override void Seed(ShopAnyWareSql context)
         {
+            context.Database.ExecuteSqlCommand("ALTER TABLE Retailers ADD CONSTRAINT rc_Url UNIQUE(Url)");
+
             SeedMembership.Populate(context);
             SeedCurrencies.Populate(context);
             SeedRetailers.Populate(context);

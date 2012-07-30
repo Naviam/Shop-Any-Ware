@@ -8,6 +8,7 @@ namespace TdService.Repository.MsSql.Repositories
 {
     using System.Data;
 
+    using TdService.Model.Common;
     using TdService.Model.Orders;
 
     /// <summary>
@@ -43,6 +44,17 @@ namespace TdService.Repository.MsSql.Repositories
         public Order GetOrderById(int orderId)
         {
             return this.context.Orders.Find(orderId);
+        }
+
+        /// <summary>
+        /// Attach retailer.
+        /// </summary>
+        /// <param name="retailer">
+        /// The retailer.
+        /// </param>
+        public void AttachRetailer(Retailer retailer)
+        {
+            this.context.Retailers.Attach(retailer);
         }
 
         /// <summary>

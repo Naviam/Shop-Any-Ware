@@ -125,7 +125,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
         [Test(Description = "This test verifies that only authorized users can access getrecent orders method.")]
         public void ShouldBeAbleToCallGetRecentOrdersOnlyIfAuthorized()
         {
-            TestHelper.AssertIsAuthorized(typeof(OrderController), "GetRecent");
+            TestHelper.AssertIsAuthorized(typeof(OrdersController), "GetRecent");
         }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
         public void ShouldReturnJsonCollectionOfRecentOrders()
         {
             // arrange
-            var controller = new OrderController(this.orderService, this.formsAuthentication);
+            var controller = new OrdersController(this.orderService, this.formsAuthentication);
             var currentDate = DateTime.UtcNow;
             var expected = new List<OrderViewModel>
                 {
@@ -174,7 +174,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
                 };
 
             // act
-            var actual = controller.GetRecent() as JsonResult;
+            var actual = controller.Recent() as JsonResult;
 
             // assert
             Assert.That(actual, Is.Not.Null);
@@ -202,7 +202,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
         [Test]
         public void ShouldBeAbleToPostNewOrderOnlyIfAuthorized()
         {
-            TestHelper.AssertIsAuthorized(typeof(OrderController), "AddOrder", typeof(string));
+            TestHelper.AssertIsAuthorized(typeof(OrdersController), "AddOrder", typeof(string));
         }
 
         /// <summary>
@@ -213,7 +213,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
         public void ShouldBeAbleToPostNewOrderAndGetOrderWithIdBack()
         {
             // arrange
-            var controller = new OrderController(this.orderService, this.formsAuthentication);
+            var controller = new OrdersController(this.orderService, this.formsAuthentication);
             var currentDate = DateTime.UtcNow;
             var expected = new OrderViewModel
                 {
@@ -227,7 +227,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
                 };
 
             // act
-            var actual = controller.AddOrder(expected.RetailerUrl) as JsonResult;
+            var actual = controller.Add(expected.RetailerUrl) as JsonResult;
 
             // assert
             Assert.That(actual, Is.Not.Null);
@@ -251,7 +251,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
         [Test]
         public void ShouldBeAbleToRemoveNewOrderOnlyIfAuthorized()
         {
-            TestHelper.AssertIsAuthorized(typeof(OrderController), "RemoveOrder", typeof(int));
+            TestHelper.AssertIsAuthorized(typeof(OrdersController), "RemoveOrder", typeof(int));
         }
     }
 }

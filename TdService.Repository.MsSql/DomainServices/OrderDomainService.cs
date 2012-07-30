@@ -9,6 +9,10 @@
 
 namespace TdService.Repository.MsSql.DomainServices
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+
     using TdService.Model.Common;
     using TdService.Model.Membership;
     using TdService.Model.Orders;
@@ -45,9 +49,56 @@ namespace TdService.Repository.MsSql.DomainServices
             this.retailerRepository = new RetailerRepository(context);
         }
 
-        public Order CreateOrder(string email, Order order)
+        /// <summary>
+        /// Create new order.
+        /// </summary>
+        /// <param name="email">
+        /// The email.
+        /// </param>
+        /// <param name="retailerUrl">
+        /// The retailer url.
+        /// </param>
+        /// <returns>
+        /// The order.
+        /// </returns>
+        public Order CreateOrder(string email, string retailerUrl)
         {
-            return new Order();
+            var user = this.userRepository.GetUserWithOrdersByEmail(email);
+            if (user != null)
+            {
+                var retailer = new Retailer(retailerUrl);
+                retailer = this.retailerRepository.FindOrAdd(retailer);
+                this.retailerRepository.SaveChanges();
+
+                var newOrder = Order.CreateNew(retailer);
+
+                if (newOrder.GetBrokenRules().Any())
+                {
+                    var message = new StringBuilder();
+                    foreach (var rule in newOrder.GetBrokenRules())
+                    {
+                        message.Append(rule.Rule);
+                    }
+                    throw new InvalidOrderException(message.ToString());
+                }
+
+                var orderResult = this.orderRepository.AddOrder(newOrder);
+                this.orderRepository.SaveChanges();
+
+                if (user.Orders == null)
+                {
+                    user.Orders = new List<Order> { orderResult };
+                }
+                else
+                {
+                    user.Orders.Add(orderResult);
+                }
+
+                this.orderRepository.SaveChanges();
+                return orderResult;
+            }
+
+            return null;
         }
     }
 }

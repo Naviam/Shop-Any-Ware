@@ -15,6 +15,7 @@ namespace TdService.Services.Implementations
     using System.Text;
 
     using TdService.Model.Common;
+    using TdService.Model.DomainServices;
     using TdService.Model.Membership;
     using TdService.Model.Orders;
     using TdService.Services.Interfaces;
@@ -96,44 +97,31 @@ namespace TdService.Services.Implementations
         /// </returns>
         public AddOrderResponse AddOrder(AddOrderRequest request)
         {
-            var user = this.userRepository.GetUserWithOrdersByEmail(request.IdentityToken);
-            if (user != null)
+            var retailer = new Retailer(request.RetailerUrl);
+            retailer = this.retailerRepository.FindOrAdd(retailer);
+            this.retailerRepository.SaveChanges();
+
+            var newOrder = new Order(OrderStatus.New) { CreatedDate = DateTime.UtcNow };
+            if (newOrder.GetBrokenRules().Any())
             {
-                var order = request.ConvertToOrder();
-
-                var retailer = new Retailer(request.RetailerUrl);
-                retailer = this.retailerRepository.FindOrAdd(retailer);
-                this.retailerRepository.SaveChanges();
-
-                var newOrder = Order.CreateNew(retailer);
-
-                if (newOrder.GetBrokenRules().Any())
+                var message = new StringBuilder();
+                foreach (var rule in newOrder.GetBrokenRules())
                 {
-                    var message = new StringBuilder();
-                    foreach (var rule in newOrder.GetBrokenRules())
-                    {
-                        message.Append(rule.Rule);
-                    }
-                    throw new 
+                    message.Append(rule.Rule);
                 }
 
-                var orderResult = this.orderRepository.AddOrder(newOrder);
-                this.orderRepository.SaveChanges();
-
-                if (user.Orders == null)
-                {
-                    user.Orders = new List<Order> { orderResult };
-                }
-                else
-                {
-                    user.Orders.Add(orderResult);
-                }
-
-                this.orderRepository.SaveChanges();
-                return orderResult.ConvertToAddOrderResponse();
+                throw new InvalidOrderException(message.ToString());
             }
 
-            return null;
+            var orderResult = this.orderRepository.AddOrder(newOrder);
+            this.orderRepository.AttachRetailer(retailer);
+            orderResult.Retailer = retailer;
+            this.orderRepository.SaveChanges();
+
+            this.userRepository.AttachOrder(request.IdentityToken, orderResult.Id);
+            this.userRepository.SaveChanges();
+
+            return orderResult.ConvertToAddOrderResponse();
         }
 
         /// <summary>

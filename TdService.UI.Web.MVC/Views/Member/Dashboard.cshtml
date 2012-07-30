@@ -26,10 +26,11 @@
                     <div>
                         <img title="Collapse" data-toggle="collapse" data-target="#order_extended" src="@Url.Content("~/content/img/story_collapsed1.png")" alt="Collapse">
                         <span class="">ID: <span data-bind="text: id"></span></span>
+                        <span style="float:right" data-bind="text: createdDate"></span>
                         <span style="float:right" data-bind="text: receivedDate"></span>
                     </div>
                     <div class="white">
-                        <i class="icon icon-pencil"></i> Order # <span data-bind="text: orderNumber" type="text" placeholder="size"></span> from <span data-bind="text: shop"></span>
+                        <i class="icon icon-pencil"></i> Order # <span data-bind="text: orderNumber" type="text" placeholder="size"></span> from <span data-bind="text: retailerUrl"></span>
                         <br />
                         <i class="icon icon-pencil"></i> Tracking # <span class="tn" title="A Title" data-content="And here's some amazing content. It's very engaging. right?" data-bind="text: trackingNumber" href="http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum=EE972210493US"></span>
                     </div>
@@ -46,7 +47,7 @@
                                         <th></th>
                                     </tr>
                                 </thead>
-                                <tbody class="sortable" id="order_items" data-bind="sortable: {data: items, afterAdd: showItem}">
+                                <tbody class="sortable" id="order_items" data-bind="sortable: {data: items}">
                                     <tr>
                                         <td class="draggable"><div></div></td>
                                         <td class="left"><i class="icon-camera"></i> <span class="tn" title="Kindle" data-content="<table class='details'><tr><td><img src='@Url.Content("~/content/img/kindle.jpg")' /></td><td><p>Name: Kindle</p><p>Weight: 1.3lbs</p><p>Color: Black</p><p>Quantity: 1</p><p>Cost: $100</p></td>" data-bind="click: $parent.removeItem, text: name"></span></td>
@@ -87,10 +88,10 @@
                             </table>
                         </div>
                         <div class="btn-toolbar">
-                            <span class="label label-info">Status: In Process</span>
-                            <button class="btn btn-small btn-primary" data-toggle="modal" href="#myModal"><i class="icon-white icon-plus-sign"></i> ADD ITEM</button>
-                            <button class="btn btn-small btn-danger" data-bind="click: $parent.removeOrder"><i class="icon-white icon-trash"></i> REMOVE</button>
-                            <button class="btn btn-small" data-toggle="modal"><i class="icon-retweet"></i> RETURN</button>
+                            <span class="label label-info" data-bind="text: status"></span>
+                            <button class="btn btn-small btn-primary" data-bind="visible: canItemsBeModified" data-toggle="modal" href="#myModal"><i class="icon-white icon-plus-sign"></i> ADD ITEM</button>
+                            <button class="btn btn-small btn-danger" data-bind="click: $parent.removeOrder, visible: canBeRemoved"><i class="icon-white icon-trash"></i> REMOVE</button>
+                            <button class="btn btn-small" data-toggle="modal" data-bind="visible: canBeRequestedForReturn"><i class="icon-retweet"></i> RETURN</button>
                         </div>
                     </div>
                 </div>
