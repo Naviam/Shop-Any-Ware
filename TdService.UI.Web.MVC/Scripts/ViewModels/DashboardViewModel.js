@@ -47,11 +47,12 @@ function Order(serverModel) {
     // order view model computed properties
     self.totalAmount = ko.computed(function () {
         /// <summary>Determines the total amount of the order.</summary>
-        var total = 0;
-        for (var i = 0; i < self.items().length; i++) {
-            total = total + self.items[i].price;
-        }
-        return total;
+        //var total = 0;
+        //for (var i = 0; i < self.items().length; i++) {
+        //    total = total + self.items[i].price;
+        //}
+        //return total;
+        return 0;
     });
 
     // order view model collections
