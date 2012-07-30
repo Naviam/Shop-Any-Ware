@@ -112,7 +112,7 @@ namespace TdService.Controllers
         /// Returns profile view.
         /// </returns>
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken(Salt = "Profile")]
         public ActionResult Save(ProfileView profileView)
         {
             if (ModelState.IsValid)

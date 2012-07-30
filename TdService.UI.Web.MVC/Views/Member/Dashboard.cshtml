@@ -1,49 +1,50 @@
-﻿@{
-    ViewBag.Title = "Shop Any Ware - Dashboard";
+﻿@using TdService.Resources.Views
+@{
+    ViewBag.Title = DashboardViewResources.DashboardPageTitle;
 }
 <div class="row-fluid">
     <div class="span6">
         <div id="addOrderForm" class="package">
             <ul class="nav nav-tabs">
-                <li><a href="#">Мы покупаем и пересылаем</a></li>
-                <li class="active"><a href="#">Вы покупаете и мы пересылаем</a></li>
+                <li><a href="#">@DashboardViewResources.OrderOption1</a></li>
+                <li class="active"><a href="#">@DashboardViewResources.OrderOption2</a></li>
             </ul>
             <table class="form-inline" style="width:100%;position:relative;z-index:99">
                 <tr>
                     <td>
-                        <input class="add-order" style="width:100%" data-bind="value: newOrderField, autosuggest: retailers" placeholder="please enter shop name or url (ex. amazon.com)"/>
+                        <input class="add-order" style="width:100%" data-bind="value: newOrderField, autosuggest: retailers" placeholder="@DashboardViewResources.NewOrderPlaceholder"/>
                     </td>
                     <td>
-                        <a href="#" class="btn btn-large btn-success" style="float: right" data-bind="click: createOrder">Add Order</a>
+                        <a href="#" class="btn btn-large btn-success" style="float: right" data-bind="click: createOrder">@DashboardViewResources.AddOrderButton</a>
                     </td>
                 </tr>
             </table>
         </div>
-        <div data-bind="visible: shouldShowOrdersEmptyMessage">There are no active orders right now. Please create a new one.</div>
+        <div data-bind="visible: shouldShowOrdersEmptyMessage">@DashboardViewResources.NoOrdersMessage</div>
         <div id="orders" style="clear: left" data-bind="foreach: orders">
             <div class="package action">
                 <div class="box">
                     <div>
                         <img title="Collapse" data-toggle="collapse" data-target="#order_extended" src="@Url.Content("~/content/img/story_collapsed1.png")" alt="Collapse">
-                        <span class="">ID: <span data-bind="text: id"></span></span>
+                        <span class="">@DashboardViewResources.OrderIdHeader: <span data-bind="text: id"></span></span>
                         <span style="float:right" data-bind="text: createdDate"></span>
                         <span style="float:right" data-bind="text: receivedDate"></span>
                     </div>
                     <div class="white">
-                        <i class="icon icon-pencil"></i> Order # <span data-bind="text: orderNumber" type="text" placeholder="size"></span> from <span data-bind="text: retailerUrl"></span>
+                        <i class="icon icon-pencil"></i> @DashboardViewResources.OrderNumberHeader <span data-bind="text: orderNumber" type="text" placeholder="size"></span> from <span data-bind="text: retailerUrl"></span>
                         <br />
-                        <i class="icon icon-pencil"></i> Tracking # <span class="tn" title="A Title" data-content="And here's some amazing content. It's very engaging. right?" data-bind="text: trackingNumber" href="http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum=EE972210493US"></span>
+                        <i class="icon icon-pencil"></i> @DashboardViewResources.TrackingNumberHeader <span class="tn" title="A Title" data-content="And here's some amazing content. It's very engaging. right?" data-bind="text: trackingNumber" href="http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum=EE972210493US"></span>
                     </div>
                     <div id="order_extended" class="collapse in">
                         <div class="white">
-                            The items will be automatically displayed when the order received.
+                            @DashboardViewResources.NoItemsMessage
                             <table>
                                 <thead>
                                     <tr>
                                         <th></th>
-                                        <th class="left">Item</th>
-                                        <th>Price</th>
-                                        <th>Action</th>
+                                        <th class="left">@DashboardViewResources.ItemNameHeader</th>
+                                        <th>@DashboardViewResources.PriceHeader</th>
+                                        <th>@DashboardViewResources.ActionHeader</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -54,13 +55,12 @@
                                         <td><span data-bind="text: price"></span> <i class="icon-pencil"></i></td>
                                         <td>
                                             <div class="btn-group">
-                                              <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">Move <span class="caret"></span></button>
+                                              <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">@DashboardViewResources.ActionMoveHeader <span class="caret"></span></button>
                                               <ul class="dropdown-menu">
-                                                <li><i class="icon-gift"></i> Package name</li>
-                                                <li><i class="icon-gift"></i> My Gifts</li>
+                                                <li><i class="icon-plus"></i> @DashboardViewResources.MoveToNewPackage</li>
                                                 <li class="divider"></li>
-                                                <li><i class="icon-plus"></i> Add to a new package</li>
-                                              </ul>
+                                                <li><i class="icon-gift"></i> Package name</li>
+                                                <li><i class="icon-gift"></i> My Gifts</li></ul>
                                             </div>
                                         </td>
                                         <td class="draggable"><div></div></td>
@@ -68,30 +68,20 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <td class="draggable"><div></div></td>
-                                        <td class="right">Total</td>
-                                        <td>$70</td>
-                                        <td>
-                                            <div class="btn-group">
-                                              <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">Move <span class="caret"></span></button>
-                                              <ul class="dropdown-menu">
-                                                <li><i class="icon-gift"></i> Package name</li>
-                                                <li><i class="icon-gift"></i> My Gifts</li>
-                                                <li class="divider"></li>
-                                                <li><i class="icon-plus"></i> Add to a new package</li>
-                                              </ul>
-                                            </div>
-                                        </td>
-                                        <td class="draggable"><div></div></td>
+                                        <td><div></div></td>
+                                        <td class="right">@DashboardViewResources.ItemsTotalHeader</td>
+                                        <td>$0</td>
+                                        <td></td>
+                                        <td><div></div></td>
                                     </tr>
                                 </tfoot>
                             </table>
                         </div>
                         <div class="btn-toolbar">
-                            <span class="label label-info" data-bind="text: status"></span>
-                            <button class="btn btn-small btn-primary" data-bind="visible: canItemsBeModified" data-toggle="modal" href="#myModal"><i class="icon-white icon-plus-sign"></i> ADD ITEM</button>
-                            <button class="btn btn-small btn-danger" data-bind="click: $parent.removeOrder, visible: canBeRemoved"><i class="icon-white icon-trash"></i> REMOVE</button>
-                            <button class="btn btn-small" data-toggle="modal" data-bind="visible: canBeRequestedForReturn"><i class="icon-retweet"></i> RETURN</button>
+                            <span class="label label-info">@DashboardViewResources.StatusHeader: <span data-bind="text: status"></span></span>
+                            <button class="btn btn-small btn-primary" data-bind="visible: canItemsBeModified" data-toggle="modal" href="#myModal"><i class="icon-white icon-plus-sign"></i> @DashboardViewResources.AddItemButton</button>
+                            <button class="btn btn-small btn-danger" data-bind="click: $parent.removeOrder, visible: canBeRemoved"><i class="icon-white icon-trash"></i> @DashboardViewResources.RemoveOrderButton</button>
+                            <button class="btn btn-small" data-toggle="modal" data-bind="visible: canBeRequestedForReturn"><i class="icon-retweet"></i> @DashboardViewResources.ReturnOrderButton</button>
                         </div>
                     </div>
                 </div>
@@ -101,11 +91,19 @@
     <div class="span6">
         <div class="package">
             <ul class="nav nav-tabs">
-                <li class="active"><a href="#">Recent</a></li>
-                <li><a href="#">History</a></li>
+                <li class="active"><a href="#">@DashboardViewResources.RecentPackagesTabHeader</a></li>
+                <li><a href="#">@DashboardViewResources.HistoryPackagesTabHeader</a></li>
             </ul>
-            <div><a href="#" class="btn btn-large btn-success" style="float: right" data-toggle="modal"><i class="icon-white icon-gift"></i> Add Package</a></div>
-            <div style="clear: right"></div>
+            <table class="form-inline" style="width:100%;position:relative;z-index:99">
+                <tr>
+                    <td>
+                        <input class="add-order" style="width:100%" data-bind="value: newPackageField" placeholder="@DashboardViewResources.NewPackagePlaceholder"/>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-large btn-success" style="float: right" data-toggle="modal"><i class="icon-white icon-gift"></i> @DashboardViewResources.AddPackageButton</a>
+                    </td>
+                </tr>
+            </table>
         </div>
         <div id="packages" data-bind="foreach: packages">
             <div class="package action">
@@ -124,8 +122,8 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th class="left">Item</th>
-                                    <th>Price</th>
+                                    <th class="left">@DashboardViewResources.ItemNameHeader</th>
+                                    <th>@DashboardViewResources.PriceHeader</th>
                                 </tr>
                             </thead>
                             <tbody id="package_items" data-bind="sortable: {data: items}">
@@ -136,17 +134,17 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <td class="right">Total</td>
-                                    <td>$70</td>
+                                    <td class="right">@DashboardViewResources.ItemsTotalHeader</td>
+                                    <td>$0</td>
                                 </tr>
                             </tfoot>
                         </table>
                     </div>
                     <div class="btn-toolbar">
-                        <span class="label label-info">Status: In Process</span>
-                        <span>COST: $1234</span>
-                        <span>Weight: 1.23 kg</span>
-                        <a href="#" class="btn btn-small right" data-toggle="modal"><i class="icon-plane"></i>SEND PACKAGE</a>
+                        <span class="label label-info">@DashboardViewResources.StatusHeader: <span data-bind="text: status"></span></span>
+                        <span>@DashboardViewResources.TotalCostHeader: $1234</span>
+                        <span>@DashboardViewResources.TotalWeightHeader: 1.23 kg</span>
+                        <a href="#" class="btn btn-small right" data-toggle="modal"><i class="icon-plane"></i>@DashboardViewResources.SendPackageButton</a>
                     </div>
                 </div>
             </div>
@@ -156,14 +154,14 @@
 <div class="modal" id="myModal" style="display: none">
   <div class="modal-header">
     <button class="close" data-dismiss="modal">×</button>
-    <h3>Modal header</h3>
+    <h3>@DashboardViewResources.AddItemForm</h3>
   </div>
   <div class="modal-body">
-    <p>One fine body…</p>
+    <p></p>
   </div>
   <div class="modal-footer">
-    <a href="#" class="btn">Close</a>
-    <a href="#" class="btn btn-primary">Save changes</a>
+    <a href="#" class="btn">@DashboardViewResources.CancelButton</a>
+    <a href="#" class="btn btn-primary">@DashboardViewResources.SaveChangesButton</a>
   </div>
 </div>
 @section Scripts

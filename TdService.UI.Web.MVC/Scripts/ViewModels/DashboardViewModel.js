@@ -14,11 +14,17 @@ ko.extenders.defaultIfNull = function (target, defaultValue) {
             }
         }
     });
-
     result(target());
-
     return result;
 };
+
+function Item(serverModel) {
+    /// <summary>Item view model.</summary>
+    var self = this;
+
+    // item view model properties
+    self.price = ko.observable(serverModel.Price);
+}
 
 function Order(serverModel) {
     /// <summary>Order view model.</summary>
@@ -38,6 +44,16 @@ function Order(serverModel) {
     self.receivedDate = ko.observable(serverModel.ReceivedDate);
     self.status = ko.observable(serverModel.Status);
 
+    // order view model computed properties
+    self.totalAmount = ko.computed(function () {
+        /// <summary>Determines the total amount of the order.</summary>
+        var total = 0;
+        for (var i = 0; i < self.items().length; i++) {
+            total = total + self.items[i].price;
+        }
+        return total;
+    });
+
     // order view model collections
     self.items = ko.observableArray();
 
@@ -47,7 +63,7 @@ function Order(serverModel) {
     self.canItemsBeModified = serverModel.CanItemsBeModified;
     self.canBeRequestedForReturn = serverModel.CanBeRequestedForReturn;
 
-    self.getItemDetails = function(itemId) {
+    self.getItemDetails = function(item) {
         /// <summary>Get item details.</summary>
     };
 
@@ -58,6 +74,12 @@ function Order(serverModel) {
     self.removeItem = function(item) {
         /// <summary>Remove item from order.</summary>
     };
+}
+
+function Retailer(serverModel) {
+    var self = this;
+    
+
 }
 
 function DashboardViewModel(serverModel) {
@@ -83,8 +105,16 @@ function DashboardViewModel(serverModel) {
         return self.orders().length == 0;
     });
 
-    self.loadRetailers = function() {
+    self.suggestRetailers = function() {
         /// <summary>Load shops from db to autosuggest them for user.</summary>
+        $.post("/tdservice/retailers/suggest", { "searchText": self.newOrderField() }, function (data) {
+            var retailers = ko.toJS(data);
+            self.retailers.removeAll();
+            $.each(retailers, function (index, value) {
+                var retailer = new Retailer(value);
+                self.retailers.unshift(order);
+            });
+        });
     };
 
     self.getRecentOrders = function() {
@@ -100,14 +130,6 @@ function DashboardViewModel(serverModel) {
     };
     self.getRecentOrders();
 
-    self.getRecentPackages = function() {
-        /// <summary>Load recent packages from server.</summary>
-    };
-
-    self.getPackages = function(recordsToShow) {
-        /// <summary>Load history of packages.</summary>
-    };
-
     self.createOrder = function() {
         /// <summary>Add new order.</summary>
         if (self.newOrderField() != "") {
@@ -117,7 +139,7 @@ function DashboardViewModel(serverModel) {
                     var order = new Order(model);
                     self.newOrderField("");
                     self.orders.unshift(order);
-                    //window.noty({ text: model.Message });
+                    window.showNotice(data.Message, data.MessageType);
                 }
             });
         }
@@ -130,9 +152,17 @@ function DashboardViewModel(serverModel) {
             var model = ko.toJS(data);
             if (model.MessageType == "Success") {
                 self.orders.remove(order);
-                //window.noty({ text: model.Message });
+                window.showNotice(data.Message, data.MessageType);
             }
         });
+    };
+
+    self.getRecentPackages = function () {
+        /// <summary>Load recent packages from server.</summary>
+    };
+
+    self.getPackageHistory = function (recordsToShow) {
+        /// <summary>Load history of packages.</summary>
     };
 
     self.createPackage = function(packageName) {

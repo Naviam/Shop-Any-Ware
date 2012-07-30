@@ -48,7 +48,19 @@
     </resourceSet>
     <resourceSet name="noty" type="js">
       <resource path="~/Scripts/noty/jquery.noty.js" />
+      <!--<resource path="~/Scripts/noty/layouts/bottom.js" />
+      <resource path="~/Scripts/noty/layouts/bottomCenter.js" />
+      <resource path="~/Scripts/noty/layouts/bottomLeft.js" />
+      <resource path="~/Scripts/noty/layouts/bottomRight.js" />
+      <resource path="~/Scripts/noty/layouts/center.js" />
+      <resource path="~/Scripts/noty/layouts/centerLeft.js" />
+      <resource path="~/Scripts/noty/layouts/centerRight.js" />
+      <resource path="~/Scripts/noty/layouts/inline.js" />
+      <resource path="~/Scripts/noty/layouts/top.js" />
       <resource path="~/Scripts/noty/layouts/topCenter.js" />
+      <resource path="~/Scripts/noty/layouts/topLeft.js" />
+      <resource path="~/Scripts/noty/layouts/topRight.js" />
+      <resource path="~/Scripts/noty/themes/default.js" />-->
     </resourceSet>
     <resourceSet name="knockout" type="js">
       <resource path="~/Scripts/knockout-2.1.0.js" />
