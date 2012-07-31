@@ -15,28 +15,28 @@ namespace TdService.Model.Packages
     public enum PackageStatus
     {
         /// <summary>
-        /// Pending payment
+        /// New package
         /// </summary>
-        PendingPayment = 0,
+        New = 0,
 
         /// <summary>
-        /// In progress
+        /// Pending payment.
         /// </summary>
-        Processing = 3,
+        PendingPayment = 1,
 
         /// <summary>
-        /// Paid status
+        /// Ready to be dispatched.
         /// </summary>
-        Paid = 1,
+        ReadyToDispatch = 2,
 
         /// <summary>
-        /// Collected status
+        /// Dispatched status.
         /// </summary>
-        Collected,
+        Dispatched = 3,
 
         /// <summary>
-        /// Dispatched status
+        /// Delivered status.
         /// </summary>
-        Dispatched,
+        Delivered = 4
     }
 }

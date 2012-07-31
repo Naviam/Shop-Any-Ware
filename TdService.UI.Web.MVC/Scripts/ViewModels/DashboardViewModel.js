@@ -26,6 +26,53 @@ function Item(serverModel) {
     self.price = ko.observable(serverModel.Price);
 }
 
+function Package(serverModel) {
+    /// <summary>Package view model.</summary>
+    var self = this;
+
+    // default model properties
+    self.message = ko.observable(serverModel.Message);
+    self.messageType = ko.observable(serverModel.MessageType);
+    self.errorCode = ko.observable(serverModel.ErrorCode);
+
+    // package view model properties
+    self.id = ko.observable(serverModel.Id);
+    self.name = ko.observable(serverModel.Name);
+    self.deliveryAddressId = ko.observable(serverModel.DeliveryAddressId);
+    self.deliveryAddressName = ko.observable(serverModel.deliveryAddressName).extend({ defaultIfNull: "not set" });
+    self.dispatchMethod = ko.observable(serverModel.DispatchMethod).extend({ defaultIfNull: "not set" });
+    self.createdDate = ko.observable(serverModel.CreatedDate);
+    self.dispatchedDate = ko.observable(serverModel.DispatchedDate);
+    self.deliveredDate = ko.observable(serverModel.DeliveredDate);
+    self.status = ko.observable(serverModel.Status);
+
+    // package view model collections
+    self.items = ko.observableArray();
+
+    // package state properties
+    self.canBeRemoved = serverModel.CanBeRemoved;
+    self.canBeModified = serverModel.CanBeModified;
+    self.canItemsBeModified = serverModel.CanItemsBeModified;
+    self.canBeSent = serverModel.CanBeSent;
+    self.canBeDisposed = serverModel.CanBeDisposed;
+
+    self.sendPackage = function(pack) {
+        /// <summary>Send package.</summary>
+    };
+    
+    self.getItemDetails = function (item) {
+        /// <summary>Get item details.</summary>
+    };
+
+    self.addItem = function (item) {
+        /// <summary>Add new item to order.</summary>
+    };
+
+    self.removeItem = function (item) {
+        /// <summary>Remove item from order.</summary>
+    };
+}
+
 function Order(serverModel) {
     /// <summary>Order view model.</summary>
     var self = this;
@@ -87,8 +134,6 @@ function Order(serverModel) {
 
 function Retailer(serverModel) {
     var self = this;
-    
-
 }
 
 function DashboardViewModel(serverModel) {
@@ -106,6 +151,7 @@ function DashboardViewModel(serverModel) {
 
     // dashboard view model collections
     self.orders = ko.observableArray();
+    self.addresses = ko.observableArray();
     self.packages = ko.observableArray();
     self.retailers = ko.observableArray();
 
@@ -168,7 +214,16 @@ function DashboardViewModel(serverModel) {
 
     self.getRecentPackages = function () {
         /// <summary>Load recent packages from server.</summary>
+        $.post("/tdservice/packages/recent", function (data) {
+            var packages = ko.toJS(data);
+            self.packages.removeAll();
+            $.each(packages, function (index, value) {
+                var pack = new Package(value);
+                self.packages.unshift(pack);
+            });
+        });
     };
+    self.getRecentPackages();
 
     self.getPackageHistory = function (recordsToShow) {
         /// <summary>Load history of packages.</summary>

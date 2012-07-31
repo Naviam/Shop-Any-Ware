@@ -71,10 +71,12 @@
     <Compile Include="Orders\OrderBusinessRules.cs" />
     <Compile Include="Orders\OrderDisposedState.cs" />
     <Compile Include="Orders\IOrderState.cs" />
-    <Compile Include="Orders\OrderExtendedStatus.cs" />
     <Compile Include="Orders\OrderReturnedState.cs" />
     <Compile Include="Orders\OrderReturnRequestedState.cs" />
+    <Compile Include="Packages\InvalidPackageException.cs" />
+    <Compile Include="Packages\IPackageState.cs" />
     <Compile Include="Packages\PackageBusinessRules.cs" />
+    <Compile Include="Packages\PackageNewState.cs" />
     <Compile Include="RFO\IRequestForOrderRepository.cs" />
     <Compile Include="Orders\OrderNewState.cs" />
     <Compile Include="Orders\OrderReceivedState.cs" />

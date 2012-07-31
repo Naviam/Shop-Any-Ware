@@ -96,6 +96,7 @@
     <Compile Include="ViewModels\Account\SignUpView.cs" />
     <Compile Include="ViewModels\BaseView.cs" />
     <Compile Include="ViewModels\Order\OrderViewModel.cs" />
+    <Compile Include="ViewModels\Package\PackageViewModel.cs" />
     <Compile Include="ViewModels\ViewModelMessageType.cs" />
   </ItemGroup>
   <ItemGroup>

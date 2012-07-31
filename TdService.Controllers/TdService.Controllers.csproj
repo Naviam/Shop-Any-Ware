@@ -60,6 +60,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MemberController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
+    <Compile Include="Controllers\PackagesController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\RetailersController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

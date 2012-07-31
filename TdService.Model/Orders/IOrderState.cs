@@ -12,37 +12,37 @@ namespace TdService.Model.Orders
     public interface IOrderState
     {
         /// <summary>
-        /// Can this order be received (status changed to received).
+        /// Gets a value indicating whether order can be received.
         /// </summary>
         bool CanBeReceived { get; }
 
         /// <summary>
-        /// Flag that says whether items are editable in this order.
+        /// Gets a value indicating whether can items be modified.
         /// </summary>
         bool CanItemsBeModified { get; }
 
         /// <summary>
-        /// Flag that says whether this order is editable.
+        /// Gets a value indicating whether can be modified.
         /// </summary>
         bool CanBeModified { get; }
 
         /// <summary>
-        /// Flag that says whether this order can be requested for returned.
+        /// Gets a value indicating whether can be requested for return.
         /// </summary>
         bool CanBeRequestedForReturn { get; }
 
         /// <summary>
-        /// Flag that says whether this order can be returned.
+        /// Gets a value indicating whether can be returned.
         /// </summary>
         bool CanBeReturned { get; }
 
         /// <summary>
-        /// Flag that says whether this order can be disposed.
+        /// Gets a value indicating whether can be disposed.
         /// </summary>
         bool CanBeDisposed { get; }
 
         /// <summary>
-        /// Flag that says whether this order can be removed.
+        /// Gets a value indicating whether can be removed.
         /// </summary>
         bool CanBeRemoved { get; }
     }

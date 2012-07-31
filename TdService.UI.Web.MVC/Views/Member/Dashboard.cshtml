@@ -100,7 +100,7 @@
                         <input class="add-order" style="width:100%" data-bind="value: newPackageField" placeholder="@DashboardViewResources.NewPackagePlaceholder"/>
                     </td>
                     <td>
-                        <a href="#" class="btn btn-large btn-success" style="float: right" data-toggle="modal"><i class="icon-white icon-gift"></i> @DashboardViewResources.AddPackageButton</a>
+                        <a href="#" class="btn btn-large btn-success" style="float: right" data-bind="click: createPackage"><i class="icon-white icon-gift"></i> @DashboardViewResources.AddPackageButton</a>
                     </td>
                 </tr>
             </table>
@@ -110,11 +110,11 @@
                 <div class="box">
                     <div>
                         <img title="Collapse" data-toggle="collapse" src="@Url.Content("~/content/img/story_collapsed1.png")" alt="Collapse">
-                        <span data-bind="text: description"></span>
+                        <span data-bind="text: name"></span>
                         <span style="float:right"></span>
                     </div>
                     <div class="white">
-                        <span data-bind="text: deliveryAddress"></span>
+                        <span data-bind="text: deliveryAddressName"></span>
                         <br />
                         <span data-bind="text: dispatchMethod"></span>
                     </div>
@@ -144,7 +144,7 @@
                         <span class="label label-info">@DashboardViewResources.StatusHeader: <span data-bind="text: status"></span></span>
                         <span>@DashboardViewResources.TotalCostHeader: $1234</span>
                         <span>@DashboardViewResources.TotalWeightHeader: 1.23 kg</span>
-                        <a href="#" class="btn btn-small right" data-toggle="modal"><i class="icon-plane"></i>@DashboardViewResources.SendPackageButton</a>
+                        <a href="#" class="btn btn-small right" data-bind="click: sendPackage"><i class="icon-plane"></i>@DashboardViewResources.SendPackageButton</a>
                     </div>
                 </div>
             </div>

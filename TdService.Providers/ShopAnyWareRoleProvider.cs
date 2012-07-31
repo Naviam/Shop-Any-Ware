@@ -24,40 +24,10 @@ namespace TdService.Providers
     public class ShopAnyWareRoleProvider : RoleProvider
     {
         /// <summary>
-        /// The role repository.
-        /// </summary>
-        private readonly IRoleRepository roleRepository;
-
-        /// <summary>
-        /// The user repository.
-        /// </summary>
-        private readonly IUserRepository userRepository;
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="ShopAnyWareRoleProvider"/> class.
         /// </summary>
         public ShopAnyWareRoleProvider()
         {
-            var context = new ShopAnyWareSql();
-            this.roleRepository = new RoleRepository(context);
-            this.userRepository = new UserRepository(context);
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ShopAnyWareRoleProvider"/> class.
-        /// </summary>
-        /// <param name="roleRepository">
-        /// The role provider.
-        /// </param>
-        /// <param name="userRepository">
-        /// The user repository.
-        /// </param>
-        public ShopAnyWareRoleProvider(
-            IRoleRepository roleRepository,
-            IUserRepository userRepository)
-        {
-            this.roleRepository = roleRepository;
-            this.userRepository = userRepository;
         }
 
         /// <summary>
@@ -115,8 +85,12 @@ namespace TdService.Providers
         /// <param name="username">The user name to search for.</param><param name="roleName">The role to search in.</param>
         public override bool IsUserInRole(string username, string roleName)
         {
-            var user = this.userRepository.GetUserByEmail(username);
-            return user.Roles.Any(r => r.Name == roleName);
+            using (var context = new ShopAnyWareSql())
+            {
+                var user =
+                    context.Users.Include("Profile").Include("Roles").SingleOrDefault(u => u.Email == username);
+                return user != null && user.Roles.Any(r => r.Name == roleName);
+            }
         }
 
         /// <summary>
@@ -128,8 +102,16 @@ namespace TdService.Providers
         /// <param name="username">The user to return a list of roles for.</param>
         public override string[] GetRolesForUser(string username)
         {
-            var user = this.userRepository.GetUserByEmail(username);
-            return user.Roles.Select(r => r.Name).ToArray();
+            using (var context = new ShopAnyWareSql())
+            {
+                var user = context.Users.Include("Profile").Include("Roles").SingleOrDefault(u => u.Email == username);
+                if (user != null)
+                {
+                    return user.Roles.Select(r => r.Name).ToArray();
+                }
+            }
+
+            return new string[] { };
         }
 
         /// <summary>
@@ -138,8 +120,12 @@ namespace TdService.Providers
         /// <param name="roleName">The name of the role to create.</param>
         public override void CreateRole(string roleName)
         {
-            this.roleRepository.AddRole(new Role { Name = roleName, Description = string.Empty });
-            this.roleRepository.SaveChanges();
+            using (var context = new ShopAnyWareSql())
+            {
+                var role = new Role { Name = roleName, Description = string.Empty };
+                context.Roles.Add(role);
+                context.SaveChanges();
+            }
         }
 
         /// <summary>
@@ -151,8 +137,13 @@ namespace TdService.Providers
         /// <param name="roleName">The name of the role to delete.</param><param name="throwOnPopulatedRole">If true, throw an exception if <paramref name="roleName"/> has one or more members and do not delete <paramref name="roleName"/>.</param>
         public override bool DeleteRole(string roleName, bool throwOnPopulatedRole)
         {
-            var role = this.roleRepository.GetRoleByName(roleName);
-            this.roleRepository.RemoveRole(role.Id);
+            using (var context = new ShopAnyWareSql())
+            {
+                var role = context.Roles.SingleOrDefault(r => r.Name == roleName);
+                context.Roles.Remove(role);
+                context.SaveChanges();
+            }
+
             return true;
         }
 
@@ -165,8 +156,11 @@ namespace TdService.Providers
         /// <param name="roleName">The name of the role to search for in the data source.</param>
         public override bool RoleExists(string roleName)
         {
-            var role = this.roleRepository.GetRoleByName(roleName);
-            return role != null;
+            using (var context = new ShopAnyWareSql())
+            {
+                var role = context.Roles.SingleOrDefault(r => r.Name == roleName);
+                return role != null;
+            }
         }
 
         /// <summary>
@@ -196,9 +190,16 @@ namespace TdService.Providers
         /// <param name="roleName">The name of the role to get the list of users for.</param>
         public override string[] GetUsersInRole(string roleName)
         {
-            var role = this.roleRepository.GetRoleByName(roleName);
-            var users = from user in role.Users select user.Email;
-            return users.ToArray();
+            using (var context = new ShopAnyWareSql())
+            {
+                var role = context.Roles.SingleOrDefault(r => r.Name == roleName);
+                if (role != null)
+                {
+                    var users = from user in role.Users select user.Email;
+                    return users.ToArray();
+                }
+            }
+            return new string[] { };
         }
 
         /// <summary>
@@ -209,8 +210,11 @@ namespace TdService.Providers
         /// </returns>
         public override string[] GetAllRoles()
         {
-            var roles = this.roleRepository.GetAllRoles();
-            return roles.Select(role => role.Name).ToArray();
+            using (var context = new ShopAnyWareSql())
+            {
+                var roles = context.Roles.ToList();
+                return roles.Select(role => role.Name).ToArray();
+            }
         }
 
         /// <summary>
@@ -222,9 +226,17 @@ namespace TdService.Providers
         /// <param name="roleName">The role to search in.</param><param name="usernameToMatch">The user name to search for.</param>
         public override string[] FindUsersInRole(string roleName, string usernameToMatch)
         {
-            var role = this.roleRepository.GetRoleByName(roleName);
-            var users = from user in role.Users where user.Email.Contains(usernameToMatch) select user.Email;
-            return users.ToArray();
+            using (var context = new ShopAnyWareSql())
+            {
+                var role = context.Roles.SingleOrDefault(r => r.Name == roleName);
+                if (role != null)
+                {
+                    var users = from user in role.Users where user.Email.Contains(usernameToMatch) select user.Email;
+                    return users.ToArray();
+                }
+            }
+
+            return new string[] { };
         }
     }
 }
