@@ -259,6 +259,24 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Created.
+        /// </summary>
+        public static string PackageCreatedDateHeader {
+            get {
+                return ResourceManager.GetString("PackageCreatedDateHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string PackageNameHeader {
+            get {
+                return ResourceManager.GetString("PackageNameHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Price.
         /// </summary>
         public static string PriceHeader {

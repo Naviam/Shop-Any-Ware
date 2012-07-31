@@ -183,6 +183,12 @@
   <data name="OrderRemovedSuccess" xml:space="preserve">
     <value>The order has been successfully removed.</value>
   </data>
+  <data name="PackageCreatedDateHeader" xml:space="preserve">
+    <value>Created</value>
+  </data>
+  <data name="PackageNameHeader" xml:space="preserve">
+    <value>Name</value>
+  </data>
   <data name="PriceHeader" xml:space="preserve">
     <value>Price</value>
   </data>

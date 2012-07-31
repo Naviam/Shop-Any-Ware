@@ -165,6 +165,9 @@
   <data name="NoOrdersMessage" xml:space="preserve">
     <value>There are no active orders right now. Please create a new one.</value>
   </data>
+  <data name="OrderCreatedSuccess" xml:space="preserve">
+    <value>Заказ был успешно добавлен.</value>
+  </data>
   <data name="OrderIdHeader" xml:space="preserve">
     <value>ID</value>
   </data>
@@ -176,6 +179,15 @@
   </data>
   <data name="OrderOption2" xml:space="preserve">
     <value>Вы покупаете и мы пересылаем</value>
+  </data>
+  <data name="OrderRemovedSuccess" xml:space="preserve">
+    <value>Заказ был успешно удален.</value>
+  </data>
+  <data name="PackageCreatedDateHeader" xml:space="preserve">
+    <value>Создана</value>
+  </data>
+  <data name="PackageNameHeader" xml:space="preserve">
+    <value>Название</value>
   </data>
   <data name="PriceHeader" xml:space="preserve">
     <value>Цена</value>

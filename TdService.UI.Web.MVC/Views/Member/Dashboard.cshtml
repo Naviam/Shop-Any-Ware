@@ -26,7 +26,7 @@
                 <div class="box">
                     <div>
                         <img title="Collapse" data-bind="attr: { 'data-target': orderItemsIdWithNumberSign }" data-toggle="collapse" src="@Url.Content("~/content/img/story_collapsed1.png")" alt="Collapse">
-                        <span class="">@DashboardViewResources.OrderIdHeader: <span data-bind="text: id"></span></span>
+                        <span>@DashboardViewResources.OrderIdHeader: <span data-bind="text: id"></span></span>
                         <span style="float:right" data-bind="text: createdDate"></span>
                         <span style="float:right" data-bind="text: receivedDate"></span>
                     </div>
@@ -108,8 +108,9 @@
                 <div class="box">
                     <div>
                         <img title="Collapse" data-toggle="collapse" data-bind="attr: { 'data-target': packageItemsIdWithNumberSign }" src="@Url.Content("~/content/img/story_collapsed1.png")" alt="Collapse">
-                        <span data-bind="text: name"></span>
-                        <span style="float:right"></span>
+                        <span>@DashboardViewResources.OrderIdHeader: <span data-bind="text: id"></span></span>
+                        <span>@DashboardViewResources.PackageNameHeader: <span data-bind="text: name"></span></span>
+                        <span style="float:right">@DashboardViewResources.PackageCreatedDateHeader: <span data-bind="text: createdDate"></span></span>
                     </div>
                     <div class="white">
                         <span data-bind="text: deliveryAddressName"></span>
