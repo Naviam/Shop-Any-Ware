@@ -13,6 +13,7 @@ namespace TdService.Controllers
     using System.Web.Mvc;
 
     using TdService.Infrastructure.Authentication;
+    using TdService.Resources.Views;
     using TdService.Services.Interfaces;
     using TdService.Services.Mapping;
     using TdService.Services.Messaging;
@@ -84,7 +85,7 @@ namespace TdService.Controllers
                 };
             var response = this.orderService.AddOrder(request);
             var result = response.ConverToOrderViewModel();
-            result.Message = "The order has been successfully created.";
+            result.Message = DashboardViewResources.OrderCreatedSuccess;
             result.MessageType = MessageType.Success.ToString();
             return this.Json(result);
         }
@@ -111,7 +112,7 @@ namespace TdService.Controllers
             var result = new OrderViewModel
                 {
                     Id = orderId,
-                    Message = response.Message ?? "The order has been successfully removed.",
+                    Message = response.Message ?? DashboardViewResources.OrderRemovedSuccess,
                     MessageType = response.MessageType.ToString()
                 };
             return this.Json(result);

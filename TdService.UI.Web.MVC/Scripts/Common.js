@@ -49,7 +49,7 @@ function showNotice(message, type) {
         "animateOpen": { "height": "toggle" },
         "animateClose": { "height": "toggle" },
         "speed": 500,
-        "timeout": 8000,
+        "timeout": 4000,
         "closeButton": true,
         "closeOnSelfClick": true,
         "closeOnSelfOver": false,

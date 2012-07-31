@@ -205,6 +205,15 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The order has been successfully created..
+        /// </summary>
+        public static string OrderCreatedSuccess {
+            get {
+                return ResourceManager.GetString("OrderCreatedSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ID.
         /// </summary>
         public static string OrderIdHeader {
@@ -237,6 +246,15 @@ namespace TdService.Resources.Views {
         public static string OrderOption2 {
             get {
                 return ResourceManager.GetString("OrderOption2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The order has been successfully removed..
+        /// </summary>
+        public static string OrderRemovedSuccess {
+            get {
+                return ResourceManager.GetString("OrderRemovedSuccess", resourceCulture);
             }
         }
         

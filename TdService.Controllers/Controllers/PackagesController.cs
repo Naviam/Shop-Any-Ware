@@ -53,6 +53,8 @@ namespace TdService.Controllers
                             DeliveryAddressId = 1,
                             DeliveryAddressName = "my address 1",
                             DispatchMethod = "ExpressDelivery",
+                            CanBeRemoved = true,
+                            CanBeSent = true,
                             MessageType = "Success"
                         },
                     new PackageViewModel
@@ -64,6 +66,8 @@ namespace TdService.Controllers
                             DeliveryAddressId = 2,
                             DeliveryAddressName = "my address 2",
                             DispatchMethod = "ExpressDelivery",
+                            CanBeRemoved = true,
+                            CanBeSent = true,
                             MessageType = "Success"
                         }
                 };

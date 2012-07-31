@@ -22,7 +22,7 @@
         </div>
         <div data-bind="visible: shouldShowOrdersEmptyMessage">@DashboardViewResources.NoOrdersMessage</div>
         <div id="orders" style="clear: left" data-bind="foreach: orders">
-            <div class="package action">
+            <div data-bind="attr: { id: id }" class="package action">
                 <div class="box">
                     <div>
                         <img title="Collapse" data-bind="attr: { 'data-target': orderItemsIdWithNumberSign }" data-toggle="collapse" src="@Url.Content("~/content/img/story_collapsed1.png")" alt="Collapse">
@@ -35,54 +35,52 @@
                         <br />
                         <i class="icon icon-pencil"></i> @DashboardViewResources.TrackingNumberHeader <span class="tn" title="A Title" data-content="And here's some amazing content. It's very engaging. right?" data-bind="text: trackingNumber" href="http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum=EE972210493US"></span>
                     </div>
-                    <div data-bind="attr: { id: orderItemsId }" class="collapse">
-                        <div class="white">
-                            @DashboardViewResources.NoItemsMessage
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th class="left">@DashboardViewResources.ItemNameHeader</th>
-                                        <th>@DashboardViewResources.PriceHeader</th>
-                                        <th>@DashboardViewResources.ActionHeader</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody class="sortable" id="order_items" data-bind="sortable: {data: items}">
-                                    <tr>
-                                        <td class="draggable"><div></div></td>
-                                        <td class="left"><i class="icon-camera"></i> <span class="tn" title="Kindle" data-content="<table class='details'><tr><td><img src='@Url.Content("~/content/img/kindle.jpg")' /></td><td><p>Name: Kindle</p><p>Weight: 1.3lbs</p><p>Color: Black</p><p>Quantity: 1</p><p>Cost: $100</p></td>" data-bind="click: $parent.removeItem, text: name"></span></td>
-                                        <td><span data-bind="text: price"></span> <i class="icon-pencil"></i></td>
-                                        <td>
-                                            <div class="btn-group">
-                                              <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">@DashboardViewResources.ActionMoveHeader <span class="caret"></span></button>
-                                              <ul class="dropdown-menu">
-                                                <li><i class="icon-plus"></i> @DashboardViewResources.MoveToNewPackage</li>
-                                                <li class="divider"></li>
-                                                <li><i class="icon-gift"></i> Package name</li>
-                                                <li><i class="icon-gift"></i> My Gifts</li></ul>
-                                            </div>
-                                        </td>
-                                        <td class="draggable"><div></div></td>
-                                    </tr>
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <td><div></div></td>
-                                        <td class="right">@DashboardViewResources.ItemsTotalHeader</td>
-                                        <td>$0</td>
-                                        <td></td>
-                                        <td><div></div></td>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                        </div>
-                        <div class="btn-toolbar">
-                            <span class="label label-info">@DashboardViewResources.StatusHeader: <span data-bind="text: status"></span></span>
-                            <button class="btn btn-small btn-primary" data-bind="visible: canItemsBeModified" data-toggle="modal" href="#myModal"><i class="icon-white icon-plus-sign"></i> @DashboardViewResources.AddItemButton</button>
-                            <button class="btn btn-small btn-danger" data-bind="click: $parent.removeOrder, visible: canBeRemoved"><i class="icon-white icon-trash"></i> @DashboardViewResources.RemoveOrderButton</button>
-                            <button class="btn btn-small" data-toggle="modal" data-bind="visible: canBeRequestedForReturn"><i class="icon-retweet"></i> @DashboardViewResources.ReturnOrderButton</button>
-                        </div>
+                    <div data-bind="attr: { id: orderItemsId }" class="white collapse">
+                        @DashboardViewResources.NoItemsMessage
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th class="left">@DashboardViewResources.ItemNameHeader</th>
+                                    <th>@DashboardViewResources.PriceHeader</th>
+                                    <th>@DashboardViewResources.ActionHeader</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody class="sortable" id="order_items" data-bind="sortable: {data: items}">
+                                <tr>
+                                    <td class="draggable"><div></div></td>
+                                    <td class="left"><i class="icon-camera"></i> <span class="tn" title="Kindle" data-content="<table class='details'><tr><td><img src='@Url.Content("~/content/img/kindle.jpg")' /></td><td><p>Name: Kindle</p><p>Weight: 1.3lbs</p><p>Color: Black</p><p>Quantity: 1</p><p>Cost: $100</p></td>" data-bind="click: $parent.removeItem, text: name"></span></td>
+                                    <td><span data-bind="text: price"></span> <i class="icon-pencil"></i></td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">@DashboardViewResources.ActionMoveHeader <span class="caret"></span></button>
+                                            <ul class="dropdown-menu">
+                                            <li><i class="icon-plus"></i> @DashboardViewResources.MoveToNewPackage</li>
+                                            <li class="divider"></li>
+                                            <li><i class="icon-gift"></i> Package name</li>
+                                            <li><i class="icon-gift"></i> My Gifts</li></ul>
+                                        </div>
+                                    </td>
+                                    <td class="draggable"><div></div></td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td><div></div></td>
+                                    <td class="right">@DashboardViewResources.ItemsTotalHeader</td>
+                                    <td>$0</td>
+                                    <td></td>
+                                    <td><div></div></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <div class="btn-toolbar">
+                        <span class="label label-info">@DashboardViewResources.StatusHeader: <span data-bind="text: status"></span></span>
+                        <button class="btn btn-small btn-primary" data-bind="visible: canItemsBeModified" data-toggle="modal" href="#myModal"><i class="icon-white icon-plus-sign"></i> @DashboardViewResources.AddItemButton</button>
+                        <button class="btn btn-small btn-danger" data-bind="click: $parent.removeOrder, visible: canBeRemoved"><i class="icon-white icon-trash"></i> @DashboardViewResources.RemoveOrderButton</button>
+                        <button class="btn btn-small" data-toggle="modal" data-bind="visible: canBeRequestedForReturn"><i class="icon-retweet"></i> @DashboardViewResources.ReturnOrderButton</button>
                     </div>
                 </div>
             </div>
@@ -109,7 +107,7 @@
             <div class="package action">
                 <div class="box">
                     <div>
-                        <img title="Collapse" data-toggle="collapse" src="@Url.Content("~/content/img/story_collapsed1.png")" alt="Collapse">
+                        <img title="Collapse" data-toggle="collapse" data-bind="attr: { 'data-target': packageItemsIdWithNumberSign }" src="@Url.Content("~/content/img/story_collapsed1.png")" alt="Collapse">
                         <span data-bind="text: name"></span>
                         <span style="float:right"></span>
                     </div>
@@ -118,7 +116,7 @@
                         <br />
                         <span data-bind="text: dispatchMethod"></span>
                     </div>
-                    <div class="white">
+                    <div data-bind="attr: { id: packageItemsId }" class="white collapse">
                         <table>
                             <thead>
                                 <tr>
@@ -144,7 +142,8 @@
                         <span class="label label-info">@DashboardViewResources.StatusHeader: <span data-bind="text: status"></span></span>
                         <span>@DashboardViewResources.TotalCostHeader: $1234</span>
                         <span>@DashboardViewResources.TotalWeightHeader: 1.23 kg</span>
-                        <a href="#" class="btn btn-small right" data-bind="click: sendPackage"><i class="icon-plane"></i>@DashboardViewResources.SendPackageButton</a>
+                        <button class="btn btn-small btn-primary right" data-bind="click: sendPackage, visible: canBeSent"><i class="icon-white icon-plane"></i>@DashboardViewResources.SendPackageButton</button>
+                        <button class="btn btn-small btn-danger" data-bind="click: $parent.removeOrder, visible: canBeRemoved"><i class="icon-white icon-trash"></i> @DashboardViewResources.RemoveOrderButton</button>
                     </div>
                 </div>
             </div>

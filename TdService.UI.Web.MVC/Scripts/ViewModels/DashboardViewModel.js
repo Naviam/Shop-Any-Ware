@@ -46,6 +46,25 @@ function Package(serverModel) {
     self.deliveredDate = ko.observable(serverModel.DeliveredDate);
     self.status = ko.observable(serverModel.Status);
 
+    // order view model computed properties
+    self.totalAmount = ko.computed(function () {
+        /// <summary>Determines the total amount of the order.</summary>
+        //var total = 0;
+        //for (var i = 0; i < self.items().length; i++) {
+        //    total = total + self.items[i].price;
+        //}
+        //return total;
+        return 0;
+    });
+    self.packageItemsId = ko.computed(function () {
+        /// <summary>This id is used for collapse / expand feature.</summary>
+        return 'package_items_' + self.id().toString();
+    });
+    self.packageItemsIdWithNumberSign = ko.computed(function () {
+        /// <summary>This id is used for collapse / expand feature.</summary>
+        return '#' + self.packageItemsId();
+    });
+    
     // package view model collections
     self.items = ko.observableArray();
 
@@ -195,6 +214,8 @@ function DashboardViewModel(serverModel) {
                     self.newOrderField("");
                     self.orders.unshift(order);
                     window.showNotice(data.Message, data.MessageType);
+                    $('#' + order.id()).show("blind", {}, "normal", function () {
+                    });
                 }
             });
         }
@@ -206,8 +227,10 @@ function DashboardViewModel(serverModel) {
         $.post("/tdservice/orders/remove", { "orderId": order.id }, function (data) {
             var model = ko.toJS(data);
             if (model.MessageType == "Success") {
-                self.orders.remove(order);
                 window.showNotice(data.Message, data.MessageType);
+                $('#' + order.id()).hide("explode", {}, "normal", function () {
+                    self.orders.remove(order);
+                });
             }
         });
     };
