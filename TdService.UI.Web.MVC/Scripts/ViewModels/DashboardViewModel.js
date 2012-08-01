@@ -120,6 +120,9 @@ function Order(serverModel) {
         //return total;
         return 0;
     });
+    self.orderDate = ko.computed(function() {
+        return self.receivedDate() == null ? self.createdDate() : self.receivedDate();
+    });
     self.orderItemsId = ko.computed(function () {
         /// <summary>Determines the total amount of the order.</summary>
         return 'order_items_' + self.id().toString();
