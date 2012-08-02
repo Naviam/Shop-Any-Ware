@@ -11,18 +11,19 @@
             </ul>
             <div class="control-group">
                 <div class="controls">
-                    <div class="input-append">
-                        <input class="add-order" style="width:72%" data-bind="value: newOrderField, autosuggest: retailers" placeholder="@DashboardViewResources.NewOrderPlaceholder"/><button class="btn btn-large btn-success" type="button" data-bind="click: createOrder">@DashboardViewResources.AddOrderButton</button>
+                    <div class="input-prepend input-append">
+                        <span class="add-on btn-large btn-success"><i class="icon-white icon-plus"></i></span>
+                        <input class="add-order" style="width:65%" data-bind="value: newOrderField, autosuggest: retailers" placeholder="@DashboardViewResources.NewOrderPlaceholder"/><button class="btn btn-large btn-success" type="button" data-bind="click: createOrder">@DashboardViewResources.AddOrderButton</button>
                     </div>
                 </div>
             </div>
         </div>
-        <div data-bind="visible: shouldShowOrdersEmptyMessage">@DashboardViewResources.NoOrdersMessage</div>
-        <div id="orders" style="clear: left" data-bind="foreach: orders">
+        <div class="alert alert-info package" data-bind="visible: shouldShowOrdersEmptyMessage">@DashboardViewResources.NoOrdersMessage</div>
+        <div id="orders" data-bind="foreach: orders">
             <div data-bind="attr: { id: id }" class="package action">
                 <div class="box">
                     <div>
-                        <img title="Collapse" data-bind="attr: { 'data-target': orderItemsIdWithNumberSign }" data-toggle="collapse" src="@Url.Content("~/content/img/story_collapsed1.png")" alt="Collapse">
+                        <span data-bind="attr: { 'data-target': orderItemsIdWithNumberSign }" data-toggle="collapse"><i class="icon-white icon-chevron-right"></i></span>
                         @DashboardViewResources.OrderNumberHeader <span data-bind="text: orderNumber" type="text" placeholder="size"></span> from <span data-bind="text: retailerUrl"></span>
                         @DashboardViewResources.TrackingNumberHeader <span class="tn" title="A Title" data-content="And here's some amazing content. It's very engaging. right?" data-bind="text: trackingNumber" href="http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum=EE972210493US"></span>
                     </div>
@@ -73,13 +74,14 @@
                         <span class="label label-info">@DashboardViewResources.StatusHeader: <span data-bind="text: status"></span></span>
                         <button class="btn btn-small btn-primary" data-bind="visible: canItemsBeModified" data-toggle="modal" href="#myModal"><i class="icon-white icon-plus-sign"></i> @DashboardViewResources.AddItemButton</button>
                         <button class="btn btn-small btn-danger" data-bind="click: $parent.removeOrder, visible: canBeRemoved"><i class="icon-white icon-trash"></i> @DashboardViewResources.RemoveOrderButton</button>
+                        <button class="btn btn-small btn-danger"><i class="icon-white icon-inbox"></i> IN STOCK</button>
                         <button class="btn btn-small" data-toggle="modal" data-bind="visible: canBeRequestedForReturn"><i class="icon-retweet"></i> @DashboardViewResources.ReturnOrderButton</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="span6">
+    <div class="span6" style="float:right">
         <div class="package">
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#">@DashboardViewResources.RecentPackagesTabHeader</a></li>
@@ -98,14 +100,14 @@
             <div class="package action">
                 <div class="box">
                     <div>
-                        <img title="Collapse" data-toggle="collapse" data-bind="attr: { 'data-target': packageItemsIdWithNumberSign }" src="@Url.Content("~/content/img/story_collapsed1.png")" alt="Collapse">
+                        <span data-bind="attr: { 'data-target': packageItemsIdWithNumberSign }" data-toggle="collapse"><i class="icon-white icon-chevron-right"></i></span>
                         <span>@DashboardViewResources.PackageNameHeader: <span data-bind="text: name"></span></span>
                     </div>
                     <div data-bind="attr: { id: packageItemsId }" class="white collapse">
                         <table>
                             <thead>
                                 <tr class="left">
-                                    <th colspan="2">Таможенная декларация</th>
+                                    <th colspan="2"><h4>Таможенная декларация</h4></th>
                                 </tr>
                                 <tr>
                                     <th class="left">@DashboardViewResources.ItemNameHeader</th>
@@ -128,7 +130,7 @@
                                     <td>$70</td>
                                 </tr>
                                 <tr>
-                                    <td class="right"><span>Доставить на адрес  <span data-bind="text: deliveryAddressName"></span></span></td>
+                                    <td class="right"><span>Доставить на адрес <span data-bind="text: deliveryAddressName"></span></span></td>
                                     <td>$0</td>
                                 </tr>
                             </tfoot>
@@ -136,10 +138,12 @@
                         <table>
                             <thead>
                                 <tr class="left">
-                                    <th colspan="2">Доставка</th>
+                                    <th colspan="3"><h4>Доставка</h4></th>
                                 </tr>
+                            </thead>
+                            <tbody id="package_delivery">
                                 <tr>
-                                    <th class="left">
+                                    <td class="left">
                                         <ul class="nav nav-pills">
                                         <li class="dropdown" id="menu1">
                                             <a class="dropdown-toggle" data-toggle="dropdown" href="#menu1">
@@ -154,18 +158,28 @@
                                             </ul>
                                         </li>
                                         </ul>
-                                    </th>
-                                    <th>Метод доставки</th>
-                                    <th>Цена</th>
+                                    </td>
+                                    <td class="left">
+                                        <ul class="nav nav-pills">
+                                        <li class="dropdown" id="menu2">
+                                            <a class="dropdown-toggle" data-toggle="dropdown" href="#menu2">
+                                                Метод доставки
+                                                <b class="caret"></b>
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="#">Standart Delivery</a></li>
+                                                <li><a href="#">Express Delivery</a></li>
+                                            </ul>
+                                        </li>
+                                        </ul>
+                                    </td>
                                 </tr>
-                            </thead>
-                            <tbody id="package_delivery">
+                            </tbody>
+                            <tfoot>
                                 <tr>
                                     <td class="left"><i class="icon-camera"></i> <span data-bind="text: name"></span></td>
                                     <td><span data-bind="text: price"></span></td>
                                 </tr>
-                            </tbody>
-                            <tfoot>
                                 <tr>
                                     <td class="right">@DashboardViewResources.ItemsTotalHeader</td>
                                     <td>$100</td>
@@ -175,8 +189,16 @@
                                     <td>$70</td>
                                 </tr>
                                 <tr>
-                                    <td class="right"><span>Доставить на адрес  <span data-bind="text: deliveryAddressName"></span></span></td>
+                                    <td class="right"><span>Доставить на адрес <span data-bind="text: deliveryAddressName"></span></span></td>
                                     <td>$0</td>
+                                </tr>
+                                <tr>
+                                    <td class="right"><span>@DashboardViewResources.TotalCostHeader:</td>
+                                    <td>$1234</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="right"><span>@DashboardViewResources.TotalWeightHeader:</td>
+                                    <td>1.23 kg</span></td>
                                 </tr>
                             </tfoot>
                         </table>
@@ -185,8 +207,6 @@
                         <span class="label label-info">@DashboardViewResources.OrderIdHeader: <span data-bind="text: id"></span></span>
                         <span class="label label-info">@DashboardViewResources.StatusHeader: <span data-bind="text: status"></span></span>
                         <span class="label label-info">@DashboardViewResources.PackageCreatedDateHeader: <span data-bind="text: createdDate"></span></span>
-                        <span>@DashboardViewResources.TotalCostHeader: $1234</span>
-                        <span>@DashboardViewResources.TotalWeightHeader: 1.23 kg</span>
                         <button class="btn btn-small btn-primary right" data-bind="click: sendPackage, visible: canBeSent"><i class="icon-white icon-plane"></i>@DashboardViewResources.SendPackageButton</button>
                         <button class="btn btn-small btn-danger" data-bind="click: $parent.removeOrder, visible: canBeRemoved"><i class="icon-white icon-trash"></i> @DashboardViewResources.RemoveOrderButton</button>
                     </div>
@@ -201,7 +221,42 @@
     <h3>@DashboardViewResources.AddItemForm</h3>
   </div>
   <div class="modal-body">
-    <p></p>
+    <form class="form-horizontal">
+        <fieldset>
+          <div class="control-group">
+            <label class="control-label" for="focusedInput">Name</label>
+            <div class="controls">
+              <input class="input-xlarge focused" id="focusedInput" type="text">
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="focusedInput">Size</label>
+            <div class="controls">
+              <input class="input-xlarge focused" id="focusedInput" type="text">
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="focusedInput">Color</label>
+            <div class="controls">
+              <input class="input-xlarge focused" id="focusedInput" type="text">
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="focusedInput">Quantity</label>
+            <div class="controls">
+              <input class="input-xlarge focused" id="focusedInput" type="text">
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="focusedInput">Price</label>
+            <div class="controls">
+              <div class="input-prepend input-append">
+                <span class="add-on">$</span><input class="span1" id="appendedPrependedInput" size="16" type="text" style="text-align:right"><span class="add-on">.00</span>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </form>
   </div>
   <div class="modal-footer">
     <a href="#" class="btn">@DashboardViewResources.CancelButton</a>
