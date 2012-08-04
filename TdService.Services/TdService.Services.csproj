@@ -54,6 +54,7 @@
     <Compile Include="Implementations\DeliveryAddressService.cs" />
     <Compile Include="Implementations\MembershipService.cs" />
     <Compile Include="Implementations\OrderService.cs" />
+    <Compile Include="Interfaces\IItemsService.cs" />
     <Compile Include="Messaging\Order\RemoveOrderRequest.cs" />
     <Compile Include="Messaging\Order\RemoveOrderResponse.cs" />
     <Compile Include="Interfaces\IOrderService.cs" />
@@ -95,7 +96,10 @@
     <Compile Include="ViewModels\Account\SignInView.cs" />
     <Compile Include="ViewModels\Account\SignUpView.cs" />
     <Compile Include="ViewModels\BaseView.cs" />
+    <Compile Include="ViewModels\Item\ItemViewModel.cs" />
+    <Compile Include="ViewModels\Item\OrderItemViewModel.cs" />
     <Compile Include="ViewModels\Order\OrderViewModel.cs" />
+    <Compile Include="ViewModels\PackageItemViewModel.cs" />
     <Compile Include="ViewModels\Package\PackageViewModel.cs" />
     <Compile Include="ViewModels\ViewModelMessageType.cs" />
   </ItemGroup>
@@ -118,6 +122,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Messaging\Item\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />

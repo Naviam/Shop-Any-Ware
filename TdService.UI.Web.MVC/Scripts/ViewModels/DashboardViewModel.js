@@ -144,17 +144,28 @@ function Order(serverModel) {
         }
         return total;
     });
+
     self.orderDate = ko.computed(function() {
         return self.receivedDate() == null ? self.createdDate() : self.receivedDate();
     });
+    
     self.orderItemsId = ko.computed(function () {
         /// <summary>Determines the total amount of the order.</summary>
         return 'order_items_' + self.id().toString();
     });
+    
     self.orderItemsIdWithNumberSign = ko.computed(function () {
         /// <summary>Determines the total amount of the order.</summary>
         return '#' + self.orderItemsId();
     });
+
+    self.loadItems = function() {
+        /// <summary>Get collection of items for the order.</summary>
+        for (var i = 0; i < 5; i++) {
+            this.items().unshift(new Item({}));
+        }
+    };
+    self.loadItems();
 
     self.getItemDetails = function(item) {
         /// <summary>Get item details.</summary>

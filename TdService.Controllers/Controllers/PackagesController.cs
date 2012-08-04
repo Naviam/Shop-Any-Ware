@@ -13,8 +13,6 @@ namespace TdService.Controllers
     using System.Collections.Generic;
     using System.Web.Mvc;
 
-    using Newtonsoft.Json;
-
     using TdService.Infrastructure.Authentication;
     using TdService.Services.ViewModels.Package;
 

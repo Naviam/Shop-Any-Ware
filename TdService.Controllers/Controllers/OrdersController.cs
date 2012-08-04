@@ -10,10 +10,7 @@
 namespace TdService.Controllers
 {
     using System;
-    using System.Globalization;
     using System.Web.Mvc;
-
-    using Newtonsoft.Json;
 
     using TdService.Infrastructure.Authentication;
     using TdService.Resources.Views;
