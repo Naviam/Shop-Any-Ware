@@ -12,7 +12,7 @@ namespace TdService.Services.Messaging.Item
     /// <summary>
     /// The add item to package response.
     /// </summary>
-    public class AddItemToPackageResponse : ResponseBase
+    public class AddItemToPackageResponse : ItemDto
     {
     }
 }

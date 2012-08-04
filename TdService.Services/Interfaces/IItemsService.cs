@@ -9,10 +9,12 @@
 
 namespace TdService.Services.Interfaces
 {
+    using System.Collections.Generic;
+
     using TdService.Services.Messaging.Item;
 
     /// <summary>
-    /// The ItemsService interface.
+    /// The Items Service interface.
     /// </summary>
     public interface IItemsService
     {
@@ -37,5 +39,16 @@ namespace TdService.Services.Interfaces
         /// The add item to package response message.
         /// </returns>
         AddItemToPackageResponse AddItemToPackage(AddItemToPackageRequest request);
+
+        /// <summary>
+        /// Get order items.
+        /// </summary>
+        /// <param name="request">
+        /// The get order items request message.
+        /// </param>
+        /// <returns>
+        /// The get order items response message collection.
+        /// </returns>
+        List<GetOrderItemsResponse> GetOrderItems(GetOrderItemsRequest request);
     }
 }

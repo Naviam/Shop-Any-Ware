@@ -10,10 +10,12 @@
 namespace TdService.Model.Packages
 {
     using System;
+    using System.Collections.Generic;
 
     using Addresses;
 
     using TdService.Infrastructure.Domain;
+    using TdService.Model.Items;
     using TdService.Model.Shipping;
 
     /// <summary>
@@ -69,6 +71,11 @@ namespace TdService.Model.Packages
         /// Gets or sets DispatchMethod.
         /// </summary>
         public DispatchMethod DispatchMethod { get; set; }
+
+        /// <summary>
+        /// Gets or sets the items.
+        /// </summary>
+        public List<Item> Items { get; set; }
 
         /// <summary>
         /// Gets a value indicating whether package can be modified.

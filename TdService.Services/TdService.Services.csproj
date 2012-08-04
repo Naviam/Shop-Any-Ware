@@ -52,9 +52,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Implementations\DeliveryAddressService.cs" />
+    <Compile Include="Implementations\ItemsService.cs" />
     <Compile Include="Implementations\MembershipService.cs" />
     <Compile Include="Implementations\OrderService.cs" />
     <Compile Include="Interfaces\IItemsService.cs" />
+    <Compile Include="Mapping\ItemMapping.cs" />
+    <Compile Include="Messaging\Item\AddItemToOrderRequest.cs" />
+    <Compile Include="Messaging\Item\AddItemToOrderResponse.cs" />
+    <Compile Include="Messaging\Item\AddItemToPackageRequest.cs" />
+    <Compile Include="Messaging\Item\AddItemToPackageResponse.cs" />
+    <Compile Include="Messaging\Item\GetOrderItemsRequest.cs" />
+    <Compile Include="Messaging\Item\GetOrderItemsResponse.cs" />
+    <Compile Include="Messaging\Item\ItemDto.cs" />
     <Compile Include="Messaging\Order\RemoveOrderRequest.cs" />
     <Compile Include="Messaging\Order\RemoveOrderResponse.cs" />
     <Compile Include="Interfaces\IOrderService.cs" />
@@ -123,9 +132,7 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Messaging\Item\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

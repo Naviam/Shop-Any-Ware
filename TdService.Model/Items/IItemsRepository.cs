@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="IItemRepository.cs" company="TdService">
+// <copyright file="IItemsRepository.cs" company="TdService">
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
@@ -10,12 +10,11 @@
 namespace TdService.Model.Items
 {
     using System.Collections.Generic;
-    using Infrastructure.Domain;
 
     /// <summary>
     /// Interface for the products repository.
     /// </summary>
-    public interface IItemRepository : IRepository<Item, int>
+    public interface IItemsRepository
     {
         /// <summary>
         /// Get the list of order's products.
@@ -29,6 +28,17 @@ namespace TdService.Model.Items
         IEnumerable<Item> GetOrderItems(int orderId);
 
         /// <summary>
+        /// Get package items.
+        /// </summary>
+        /// <param name="packageId">
+        /// The package id.
+        /// </param>
+        /// <returns>
+        /// Collection of package items.
+        /// </returns>
+        IEnumerable<Item> GetPackageItems(int packageId);
+
+        /// <summary>
         /// Add item to an order.
         /// </summary>
         /// <param name="orderId">
@@ -37,7 +47,24 @@ namespace TdService.Model.Items
         /// <param name="item">
         /// The item.
         /// </param>
-        void AddItemToOrder(int orderId, Item item);
+        /// <returns>
+        /// The TdService.Model.Items.Item.
+        /// </returns>
+        Item AddItemToOrder(int orderId, Item item);
+
+        /// <summary>
+        /// Add item to package.
+        /// </summary>
+        /// <param name="packageId">
+        /// The package id.
+        /// </param>
+        /// <param name="item">
+        /// The item to add.
+        /// </param>
+        /// <returns>
+        /// The TdService.Model.Items.Item.
+        /// </returns>
+        Item AddItemToPackage(int packageId, Item item);
 
         /// <summary>
         /// Update item.
@@ -56,11 +83,11 @@ namespace TdService.Model.Items
         void RemoveItem(int itemId);
 
         /// <summary>
-        /// Request return of a product back to the shop.
+        /// Save changes to db.
         /// </summary>
-        /// <param name="itemId">
-        /// The item id.
-        /// </param>
-        void RequestItemReturn(int itemId);
+        /// <returns>
+        /// The result of operation.
+        /// </returns>
+        int SaveChanges();
     }
 }

@@ -101,7 +101,7 @@
     <Compile Include="Orders\Order.cs" />
     <Compile Include="Common\Retailer.cs" />
     <Compile Include="Addresses\IAddressRepository.cs" />
-    <Compile Include="Items\IItemRepository.cs" />
+    <Compile Include="Items\IItemsRepository.cs" />
     <Compile Include="Orders\IOrderRepository.cs" />
     <Compile Include="Packages\IPackageRepository.cs" />
     <Compile Include="Reports\IReportRepository.cs" />

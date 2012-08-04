@@ -1,18 +1,20 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="AddItemToOrderRequest.cs" company="TdService">
+// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="GetOrderItemsRequest.cs" company="TdService">
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
-//   The add item to order request.
+//   The get order items request.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace TdService.Services.Messaging.Item
 {
+    using TdService.Services.Messaging;
+
     /// <summary>
-    /// The add item to order request.
+    /// The get order items request.
     /// </summary>
-    public class AddItemToOrderRequest : RequestBase
+    public class GetOrderItemsRequest : RequestBase
     {
         /// <summary>
         /// Gets or sets the order id.

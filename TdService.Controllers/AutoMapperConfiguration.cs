@@ -9,11 +9,16 @@
 
 namespace TdService
 {
+    using System.Collections.Generic;
+
     using AutoMapper;
 
     using TdService.Model.Common;
+    using TdService.Model.Items;
     using TdService.Model.Orders;
+    using TdService.Services.Messaging.Item;
     using TdService.Services.Messaging.Order;
+    using TdService.Services.ViewModels.Item;
     using TdService.Services.ViewModels.Order;
 
     /// <summary>
@@ -26,6 +31,7 @@ namespace TdService
         /// </summary>
         public static void Configure()
         {
+            // mapping orders
             Mapper.CreateMap<GetRecentOrdersResponse, OrderViewModel>();
             Mapper.CreateMap<Order, GetRecentOrdersResponse>();
             Mapper.CreateMap<AddOrderResponse, OrderViewModel>();
@@ -33,6 +39,11 @@ namespace TdService
             Mapper.CreateMap<string, Retailer>().ConvertUsing<RetailerConverter>();
             Mapper.CreateMap<AddOrderRequest, Order>();
             Mapper.CreateMap<Order, AddOrderResponse>();
+
+            // mapping items
+            Mapper.CreateMap<OrderItemViewModel, AddItemToOrderRequest>();
+            Mapper.CreateMap<AddItemToOrderRequest, Item>();
+            Mapper.CreateMap<List<Item>, List<GetOrderItemsResponse>>();
         }
 
         /// <summary>

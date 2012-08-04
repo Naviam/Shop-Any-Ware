@@ -1,19 +1,24 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="Item.cs" company="TdService">
-// Vitali Hatalski. 2012.
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="ItemDto.cs" company="TdService">
+//   Vitali Hatalski. 2012.
 // </copyright>
-// -----------------------------------------------------------------------
+// <summary>
+//   The item dto.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Model.Items
+namespace TdService.Services.Messaging.Item
 {
-    using System;
-    using Infrastructure.Domain;
-
     /// <summary>
-    /// Product is what user is buying from online shops.
+    /// The item dto.
     /// </summary>
-    public class Item : EntityBase<int>, IAggregateRoot
+    public class ItemDto : ResponseBase
     {
+        /// <summary>
+        /// Gets or sets the id.
+        /// </summary>
+        public int Id { get; set; }
+
         /// <summary>
         /// Gets or sets Name.
         /// </summary>
@@ -43,13 +48,5 @@ namespace TdService.Model.Items
         /// Gets or sets Price.
         /// </summary>
         public decimal Price { get; set; }
-
-        /// <summary>
-        /// Validates product.
-        /// </summary>
-        protected override void Validate()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

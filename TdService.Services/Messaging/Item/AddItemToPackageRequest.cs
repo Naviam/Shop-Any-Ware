@@ -14,5 +14,9 @@ namespace TdService.Services.Messaging.Item
     /// </summary>
     public class AddItemToPackageRequest : RequestBase
     {
+        /// <summary>
+        /// Gets or sets the package id.
+        /// </summary>
+        public int PackageId { get; set; }
     }
 }
