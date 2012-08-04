@@ -132,6 +132,9 @@
   <data name="AddOrderButton" xml:space="preserve">
     <value>Добавить заказ</value>
   </data>
+  <data name="AddOrderButtonLoadingMessage" xml:space="preserve">
+    <value>Добавляем заказ...</value>
+  </data>
   <data name="AddPackageButton" xml:space="preserve">
     <value>Создать посылку</value>
   </data>

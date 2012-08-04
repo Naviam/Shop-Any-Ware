@@ -13,7 +13,7 @@
                 <div class="controls">
                     <div class="input-prepend input-append">
                         <span class="add-on btn-large btn-success"><i class="icon-white icon-plus"></i></span>
-                        <input class="add-order" style="width:65%" data-bind="value: newOrderField, valueUpdate: 'afterkeydown', executeOnEnter: createOrder, autosuggest: retailers" title="@DashboardViewResources.NewOrderPlaceholder" placeholder="@DashboardViewResources.NewOrderPlaceholder"/><button class="btn btn-large btn-success" type="button" data-bind="click: createOrder, disable: disableAddOrderButton">@DashboardViewResources.AddOrderButton</button>
+                        <input class="add-order" style="width:65%" data-bind="value: newOrderField, valueUpdate: 'afterkeydown', executeOnEnter: createOrder, autosuggest: retailers" title="@DashboardViewResources.NewOrderPlaceholder" placeholder="@DashboardViewResources.NewOrderPlaceholder"/><button id="addNewOrderButton" class="btn btn-large btn-success" type="button" data-loading-text="@DashboardViewResources.AddOrderButtonLoadingMessage" data-bind="click: createOrder, disable: disableAddOrderButton">@DashboardViewResources.AddOrderButton</button>
                     </div>
                 </div>
             </div>

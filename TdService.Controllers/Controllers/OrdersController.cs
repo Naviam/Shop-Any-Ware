@@ -10,7 +10,10 @@
 namespace TdService.Controllers
 {
     using System;
+    using System.Globalization;
     using System.Web.Mvc;
+
+    using Newtonsoft.Json;
 
     using TdService.Infrastructure.Authentication;
     using TdService.Resources.Views;
@@ -19,6 +22,8 @@ namespace TdService.Controllers
     using TdService.Services.Messaging;
     using TdService.Services.Messaging.Order;
     using TdService.Services.ViewModels.Order;
+
+    using Formatting = System.Xml.Formatting;
 
     /// <summary>
     /// This controller contains methods to work with orders.
@@ -61,7 +66,13 @@ namespace TdService.Controllers
             var request = new GetRecentOrdersRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() };
             var response = this.orderService.GetRecent(request);
             var result = response.ConvertToOrderViewModelCollection();
-            return this.Json(result);
+
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = result
+            };
+            return jsonNetResult;
         }
 
         /// <summary>
@@ -87,7 +98,13 @@ namespace TdService.Controllers
             var result = response.ConverToOrderViewModel();
             result.Message = DashboardViewResources.OrderCreatedSuccess;
             result.MessageType = MessageType.Success.ToString();
-            return this.Json(result);
+
+            var jsonNetResult = new JsonNetResult
+                {
+                    Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                    Data = result
+                };
+            return jsonNetResult;
         }
 
         /// <summary>
@@ -115,7 +132,13 @@ namespace TdService.Controllers
                     Message = response.Message ?? DashboardViewResources.OrderRemovedSuccess,
                     MessageType = response.MessageType.ToString()
                 };
-            return this.Json(result);
+
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = result
+            };
+            return jsonNetResult;
         }
     }
 }

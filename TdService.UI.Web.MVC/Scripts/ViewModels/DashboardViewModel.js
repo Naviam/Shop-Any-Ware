@@ -240,17 +240,20 @@ function DashboardViewModel(serverModel) {
 
     self.createOrder = function() {
         /// <summary>Add new order.</summary>
+        $("#addNewOrderButton").button('toggle').button('loading');
         if (self.newOrderField.isValid()) {
             $.post("/tdservice/orders/add", { "retailerUrl": self.newOrderField() }, function (data) {
                 var model = ko.toJS(data);
                 if (model.MessageType == "Success") {
                     var order = new Order(model);
-                    self.newOrderField("");
                     self.orders.unshift(order);
                     window.showNotice(data.Message, data.MessageType);
                     $('#' + order.id()).show("blind", {}, "normal", function () {
+                        self.newOrderField("");
+
                     });
                 }
+                $("#addNewOrderButton").button('toggle').button('reset');
             });
             return;
         }

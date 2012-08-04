@@ -13,8 +13,12 @@ namespace TdService.Controllers
     using System.Collections.Generic;
     using System.Web.Mvc;
 
+    using Newtonsoft.Json;
+
     using TdService.Infrastructure.Authentication;
     using TdService.Services.ViewModels.Package;
+
+    using Formatting = System.Xml.Formatting;
 
     /// <summary>
     /// The packages controller.
@@ -71,7 +75,13 @@ namespace TdService.Controllers
                             MessageType = "Success"
                         }
                 };
-            return this.Json(response);
+
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = response
+            };
+            return jsonNetResult;
         }
     }
 }

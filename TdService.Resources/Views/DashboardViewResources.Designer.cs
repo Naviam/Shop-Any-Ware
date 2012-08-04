@@ -106,6 +106,15 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adding Order....
+        /// </summary>
+        public static string AddOrderButtonLoadingMessage {
+            get {
+                return ResourceManager.GetString("AddOrderButtonLoadingMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add Package.
         /// </summary>
         public static string AddPackageButton {
