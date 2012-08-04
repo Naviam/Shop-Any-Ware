@@ -2,6 +2,9 @@
 /// <reference path="../jquery.noty.js" />
 /// <reference path="../json2.js" />
 /// <reference path="../knockout-2.1.0.debug.js" />
+/// <reference path="../knockout.mapping-latest.debug.js" />
+/// <reference path="../knockout.validation.debug.js" />
+/// <reference path="../knockout-sortable.js" />
 
 ko.extenders.defaultIfNull = function (target, defaultValue) {
     var result = ko.computed({
@@ -18,12 +21,26 @@ ko.extenders.defaultIfNull = function (target, defaultValue) {
     return result;
 };
 
+ko.bindingHandlers.executeOnEnter = {
+    init: function (element, valueAccessor, allBindingsAccessor, viewModel) {
+        var allBindings = allBindingsAccessor();
+        $(element).keypress(function (event) {
+            var keyCode = (event.which ? event.which : event.keyCode);
+            if (keyCode === 13) {
+                allBindings.executeOnEnter.call(viewModel);
+                return false;
+            }
+            return true;
+        });
+    }
+};
+
 function Item(serverModel) {
     /// <summary>Item view model.</summary>
     var self = this;
 
     // item view model properties
-    self.price = ko.observable(serverModel.Price);
+    self.price = ko.observable(0);
 }
 
 function Package(serverModel) {
@@ -46,25 +63,6 @@ function Package(serverModel) {
     self.deliveredDate = ko.observable(serverModel.DeliveredDate);
     self.status = ko.observable(serverModel.Status);
 
-    // order view model computed properties
-    self.totalAmount = ko.computed(function () {
-        /// <summary>Determines the total amount of the order.</summary>
-        //var total = 0;
-        //for (var i = 0; i < self.items().length; i++) {
-        //    total = total + self.items[i].price;
-        //}
-        //return total;
-        return 0;
-    });
-    self.packageItemsId = ko.computed(function () {
-        /// <summary>This id is used for collapse / expand feature.</summary>
-        return 'package_items_' + self.id().toString();
-    });
-    self.packageItemsIdWithNumberSign = ko.computed(function () {
-        /// <summary>This id is used for collapse / expand feature.</summary>
-        return '#' + self.packageItemsId();
-    });
-    
     // package view model collections
     self.items = ko.observableArray();
 
@@ -74,6 +72,24 @@ function Package(serverModel) {
     self.canItemsBeModified = serverModel.CanItemsBeModified;
     self.canBeSent = serverModel.CanBeSent;
     self.canBeDisposed = serverModel.CanBeDisposed;
+
+    // order view model computed properties
+    self.totalItemsAmount = ko.computed(function () {
+        /// <summary>Determines the total amount of the order.</summary>
+        var total = 0;
+        for (var i = 0; i < self.items().length; i++) {
+            total = total + self.items[i].price;
+        }
+        return total;
+    });
+    self.packageItemsId = ko.computed(function () {
+        /// <summary>This id is used for collapse / expand feature.</summary>
+        return 'package_items_' + self.id().toString();
+    });
+    self.packageItemsIdWithNumberSign = ko.computed(function () {
+        /// <summary>This id is used for collapse / expand feature.</summary>
+        return '#' + self.packageItemsId();
+    });
 
     self.sendPackage = function(pack) {
         /// <summary>Send package.</summary>
@@ -110,15 +126,23 @@ function Order(serverModel) {
     self.receivedDate = ko.observable(serverModel.ReceivedDate);
     self.status = ko.observable(serverModel.Status);
 
+    // order view model collections
+    self.items = ko.observableArray();
+
+    // order state properties
+    self.canBeRemoved = serverModel.CanBeRemoved;
+    self.canBeModified = serverModel.CanBeModified;
+    self.canItemsBeModified = serverModel.CanItemsBeModified;
+    self.canBeRequestedForReturn = serverModel.CanBeRequestedForReturn;
+
     // order view model computed properties
-    self.totalAmount = ko.computed(function () {
+    self.totalItemsAmount = ko.computed(function () {
         /// <summary>Determines the total amount of the order.</summary>
-        //var total = 0;
-        //for (var i = 0; i < self.items().length; i++) {
-        //    total = total + self.items[i].price;
-        //}
-        //return total;
-        return 0;
+        var total = 0;
+        for (var i = 0; i < self.items().length; i++) {
+            total = total + self.items[i].price;
+        }
+        return total;
     });
     self.orderDate = ko.computed(function() {
         return self.receivedDate() == null ? self.createdDate() : self.receivedDate();
@@ -131,15 +155,6 @@ function Order(serverModel) {
         /// <summary>Determines the total amount of the order.</summary>
         return '#' + self.orderItemsId();
     });
-
-    // order view model collections
-    self.items = ko.observableArray();
-
-    // order state properties
-    self.canBeRemoved = serverModel.CanBeRemoved;
-    self.canBeModified = serverModel.CanBeModified;
-    self.canItemsBeModified = serverModel.CanItemsBeModified;
-    self.canBeRequestedForReturn = serverModel.CanBeRequestedForReturn;
 
     self.getItemDetails = function(item) {
         /// <summary>Get item details.</summary>
@@ -162,14 +177,16 @@ function DashboardViewModel(serverModel) {
     /// <summary>Dashboard view model. The parent model for others.</summary>
     var self = this;
 
+    self.init = true;
+
     // default model properties
     // self.message = ko.observable(serverModel.Message);
     // self.messageType = ko.observable(serverModel.MessageType);
     // self.errorCode = ko.observable(serverModel.ErrorCode);
 
     // dashboard view model properties
-    self.newOrderField = ko.observable();
-    self.newPackageField = ko.observable();
+    self.newOrderField = ko.observable().extend({ required: true });
+    self.newPackageField = ko.observable().extend({ required: { message: ' ', params: true } });
 
     // dashboard view model collections
     self.orders = ko.observableArray();
@@ -177,19 +194,33 @@ function DashboardViewModel(serverModel) {
     self.packages = ko.observableArray();
     self.retailers = ko.observableArray();
 
+    // computed properties
     self.shouldShowOrdersEmptyMessage = ko.computed(function () {
         /// <summary>Determines whether no orders message should be displayed.</summary>
         return self.orders().length == 0;
     });
 
+    self.disableAddOrderButton = ko.computed(function () {
+        /// <summary>Determines whether add order button should be disabled.</summary>
+        return self.newOrderField() === undefined || self.newOrderField() == '';
+    });
+
+    self.disableCreatePackageButton = ko.computed(function () {
+        /// <summary>Determines whether create package button should be disabled.</summary>
+        return self.newPackageField() === undefined || self.newPackageField() == '';
+    });
+
     self.suggestRetailers = function() {
         /// <summary>Load shops from db to autosuggest them for user.</summary>
+        if (!self.newOrderField.isValid()) {
+            return;
+        }
         $.post("/tdservice/retailers/suggest", { "searchText": self.newOrderField() }, function (data) {
             var retailers = ko.toJS(data);
             self.retailers.removeAll();
             $.each(retailers, function (index, value) {
                 var retailer = new Retailer(value);
-                self.retailers.unshift(order);
+                self.retailers.unshift(retailer);
             });
         });
     };
@@ -209,7 +240,7 @@ function DashboardViewModel(serverModel) {
 
     self.createOrder = function() {
         /// <summary>Add new order.</summary>
-        if (self.newOrderField() != "") {
+        if (self.newOrderField.isValid()) {
             $.post("/tdservice/orders/add", { "retailerUrl": self.newOrderField() }, function (data) {
                 var model = ko.toJS(data);
                 if (model.MessageType == "Success") {
@@ -221,8 +252,10 @@ function DashboardViewModel(serverModel) {
                     });
                 }
             });
+            return;
         }
-        // show error message
+        $(event.target).tooltip({ trigger: 'manual'});
+        $(event.target).tooltip('show');
     };
 
     self.removeOrder = function(order) {
@@ -262,4 +295,6 @@ function DashboardViewModel(serverModel) {
     self.removePackage = function(packageId) {
         /// <summary>Remove package.</summary>
     };
+
+    self.init = false;
 }

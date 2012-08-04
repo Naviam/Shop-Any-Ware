@@ -9,11 +9,11 @@
                 <li><a href="#">@DashboardViewResources.OrderOption1</a></li>
                 <li class="active"><a href="#">@DashboardViewResources.OrderOption2</a></li>
             </ul>
-            <div class="control-group">
+            <div class="control-group" data-bind="css: { error: !newOrderField.isValid() }, validationOptions: { insertMessages: false, decorateElement: true, errorClass: 'error', parseInputAttributes: false, errorElementClass: 'error' }">
                 <div class="controls">
                     <div class="input-prepend input-append">
                         <span class="add-on btn-large btn-success"><i class="icon-white icon-plus"></i></span>
-                        <input class="add-order" style="width:65%" data-bind="value: newOrderField, autosuggest: retailers" placeholder="@DashboardViewResources.NewOrderPlaceholder"/><button class="btn btn-large btn-success" type="button" data-bind="click: createOrder">@DashboardViewResources.AddOrderButton</button>
+                        <input class="add-order" style="width:65%" data-bind="value: newOrderField, valueUpdate: 'afterkeydown', executeOnEnter: createOrder, autosuggest: retailers" title="@DashboardViewResources.NewOrderPlaceholder" placeholder="@DashboardViewResources.NewOrderPlaceholder"/><button class="btn btn-large btn-success" type="button" data-bind="click: createOrder, disable: disableAddOrderButton">@DashboardViewResources.AddOrderButton</button>
                     </div>
                 </div>
             </div>
@@ -27,7 +27,7 @@
                         @DashboardViewResources.OrderNumberHeader <span data-bind="text: orderNumber" type="text" placeholder="size"></span> from <span data-bind="text: retailerUrl"></span>
                         @DashboardViewResources.TrackingNumberHeader <span class="tn" title="A Title" data-content="And here's some amazing content. It's very engaging. right?" data-bind="text: trackingNumber" href="http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum=EE972210493US"></span>
                     </div>
-                    <div data-bind="attr: { id: orderItemsId }" class="white collapse">
+                    <div data-bind="attr: { id: orderItemsId }" class="white collapse in">
                         @DashboardViewResources.NoItemsMessage
                         <table>
                             <thead>
@@ -61,7 +61,7 @@
                                 <tr>
                                     <td><div></div></td>
                                     <td class="right">@DashboardViewResources.ItemsTotalHeader</td>
-                                    <td>$0</td>
+                                    <td>$<span data-bind="text: totalItemsAmount"></span></td>
                                     <td></td>
                                     <td><div></div></td>
                                 </tr>
@@ -91,7 +91,7 @@
                 <div class="controls">
                     <div class="input-prepend input-append">
                         <span class="add-on btn-large btn-success"><i class="icon-white icon-gift"></i></span>
-                        <input class="add-order" style="width:60%" data-bind="value: newPackageField" placeholder="@DashboardViewResources.NewPackagePlaceholder"/><button class="btn btn-large btn-success" type="button" data-bind="click: createPackage">@DashboardViewResources.AddPackageButton</button>
+                        <input class="add-order" style="width:60%" data-bind="value: newPackageField, valueUpdate: 'afterkeydown'" placeholder="@DashboardViewResources.NewPackagePlaceholder"/><button class="btn btn-large btn-success" type="button" data-bind="click: createPackage, disable: disableCreatePackageButton">@DashboardViewResources.AddPackageButton</button>
                     </div>
                 </div>
             </div>
@@ -103,7 +103,7 @@
                         <span data-bind="attr: { 'data-target': packageItemsIdWithNumberSign }" data-toggle="collapse"><i class="icon-white icon-chevron-right"></i></span>
                         <span>@DashboardViewResources.PackageNameHeader: <span data-bind="text: name"></span></span>
                     </div>
-                    <div data-bind="attr: { id: packageItemsId }" class="white collapse">
+                    <div data-bind="attr: { id: packageItemsId }" class="white collapse in">
                         <table>
                             <thead>
                                 <tr class="left">
@@ -123,15 +123,11 @@
                             <tfoot>
                                 <tr>
                                     <td class="right">@DashboardViewResources.ItemsTotalHeader</td>
-                                    <td>$100</td>
+                                    <td>$<span data-bind="text: totalItemsAmount"></span></td>
                                 </tr>
                                 <tr>
-                                    <td class="right"><span>Метод доставки: <span data-bind="text: dispatchMethod"></span></span></td>
-                                    <td>$70</td>
-                                </tr>
-                                <tr>
-                                    <td class="right"><span>Доставить на адрес <span data-bind="text: deliveryAddressName"></span></span></td>
-                                    <td>$0</td>
+                                    <td class="right">@DashboardViewResources.TotalWeightHeader:</td>
+                                    <td>1.23 kg</td>
                                 </tr>
                             </tfoot>
                         </table>
@@ -177,28 +173,12 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <td class="left"><i class="icon-camera"></i> <span data-bind="text: name"></span></td>
-                                    <td><span data-bind="text: price"></span></td>
-                                </tr>
-                                <tr>
-                                    <td class="right">@DashboardViewResources.ItemsTotalHeader</td>
+                                    <td class="right">Стоимость доставки</td>
                                     <td>$100</td>
                                 </tr>
                                 <tr>
-                                    <td class="right"><span>Метод доставки: <span data-bind="text: dispatchMethod"></span></span></td>
-                                    <td>$70</td>
-                                </tr>
-                                <tr>
-                                    <td class="right"><span>Доставить на адрес: <span data-bind="text: deliveryAddressName"></span></span></td>
-                                    <td>$0</td>
-                                </tr>
-                                <tr>
-                                    <td class="right"><span>@DashboardViewResources.TotalCostHeader:</td>
-                                    <td>$1234</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="right"><span>@DashboardViewResources.TotalWeightHeader:</td>
-                                    <td>1.23 kg</span></td>
+                                    <td class="right">@DashboardViewResources.TotalCostHeader:</td>
+                                    <td>$1234</td>
                                 </tr>
                             </tfoot>
                         </table>
@@ -216,64 +196,62 @@
     </div>
 </div>
 <div class="modal" id="myModal" style="display: none">
-  <div class="modal-header">
-    <button class="close" data-dismiss="modal">×</button>
-    <h3>@DashboardViewResources.AddItemForm</h3>
-  </div>
-  <div class="modal-body">
-    <form class="form-horizontal">
-        <fieldset>
-          <div class="control-group">
-            <label class="control-label" for="focusedInput">Name</label>
-            <div class="controls">
-              <input class="input-xlarge focused" id="focusedInput" type="text">
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label" for="focusedInput">Size</label>
-            <div class="controls">
-              <input class="input-xlarge focused" id="focusedInput" type="text">
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label" for="focusedInput">Color</label>
-            <div class="controls">
-              <input class="input-xlarge focused" id="focusedInput" type="text">
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label" for="focusedInput">Quantity</label>
-            <div class="controls">
-              <input class="input-xlarge focused" id="focusedInput" type="text">
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label" for="focusedInput">Price</label>
-            <div class="controls">
-              <div class="input-prepend input-append">
-                <span class="add-on">$</span><input class="span1" id="appendedPrependedInput" size="16" type="text" style="text-align:right"><span class="add-on">.00</span>
-              </div>
-            </div>
-          </div>
-        </fieldset>
-      </form>
-  </div>
-  <div class="modal-footer">
-    <a href="#" class="btn">@DashboardViewResources.CancelButton</a>
-    <a href="#" class="btn btn-primary">@DashboardViewResources.SaveChangesButton</a>
-  </div>
+    <div class="modal-header">
+        <button class="close" data-dismiss="modal">×</button>
+        <h3>@DashboardViewResources.AddItemForm</h3>
+    </div>
+    <div class="modal-body">
+        <form class="form-horizontal">
+            <fieldset>
+                <div class="control-group">
+                    <label class="control-label" for="focusedInput">Name</label>
+                    <div class="controls">
+                        <input class="input-xlarge focused" id="focusedInput" type="text">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="focusedInput">Size</label>
+                    <div class="controls">
+                        <input class="input-xlarge focused" id="focusedInput" type="text">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="focusedInput">Color</label>
+                    <div class="controls">
+                        <input class="input-xlarge focused" id="focusedInput" type="text">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="focusedInput">Quantity</label>
+                    <div class="controls">
+                        <input class="input-xlarge focused" id="focusedInput" type="text">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="focusedInput">Price</label>
+                    <div class="controls">
+                        <div class="input-prepend input-append">
+                            <span class="add-on">$</span><input class="span1" id="appendedPrependedInput" size="16" type="text" style="text-align:right"><span class="add-on">.00</span>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="btn">@DashboardViewResources.CancelButton</a>
+        <a href="#" class="btn btn-primary">@DashboardViewResources.SaveChangesButton</a>
+    </div>
 </div>
 @section Scripts
 {
     <script type="text/javascript" src="@Url.Content("~/Scripts/ViewModels/DashboardViewModel.js")"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            //            $('.left').dotdotdot({
-            //                watch: 'window'
-            //            });
-            //            $('.add-order').tooltip({title: 'wrong url'});
-            ko.applyBindings(new DashboardViewModel());
-            $(".tn").popover();
+            var mainViewModel = new DashboardViewModel();
+            ko.applyBindings(mainViewModel);
+            ko.validation.init(mainViewModel, { insertMessages: false, decorateElement: true, errorClass: 'error', parseInputAttributes: true });
+            // $(".tn").popover();
             // $("table, tr").disableSelection();
             //$("html").niceScroll();
 //            var columnHeight = $(window).height() - $("#actionPanel").height() - $("#topmenu").height() - $(".modal-footer").height() - 90;

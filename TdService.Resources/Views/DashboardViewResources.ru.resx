@@ -154,7 +154,7 @@
     <value>Переместить в новую посылку</value>
   </data>
   <data name="NewOrderPlaceholder" xml:space="preserve">
-    <value>введите ссылку на магазин или его название латиницей (например: amazon.com)</value>
+    <value>введите ссылку на магазин или его название (например: amazon.com)</value>
   </data>
   <data name="NewPackagePlaceholder" xml:space="preserve">
     <value>введите название посылки (например: "моя первая посылка")</value>
@@ -163,7 +163,7 @@
     <value>Товар будет автоматически отображен после поступления заказа на склад и обработки оператором.</value>
   </data>
   <data name="NoOrdersMessage" xml:space="preserve">
-    <value>There are no active orders right now. Please create a new one.</value>
+    <value>На данный момент у Вас отсутствуют активные заказы. Добавьте новый заказ.</value>
   </data>
   <data name="OrderCreatedSuccess" xml:space="preserve">
     <value>Заказ был успешно добавлен.</value>

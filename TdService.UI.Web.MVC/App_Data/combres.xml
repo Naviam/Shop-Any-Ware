@@ -64,6 +64,8 @@
     </resourceSet>
     <resourceSet name="knockout" type="js">
       <resource path="~/Scripts/knockout-2.1.0.js" />
+      <resource path="~/Scripts/knockout.mapping-latest.js" />
+      <resource path="~/Scripts/knockout.validation.js" />
       <resource path="~/Scripts/knockout-sortable.js" />
     </resourceSet>
     <resourceSet name="siteJs" type="js">

@@ -230,6 +230,10 @@
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\knockout-sortable.js" />
     <Content Include="Scripts\knockout-sortable.min.js" />
+    <Content Include="Scripts\knockout.mapping-latest.debug.js" />
+    <Content Include="Scripts\knockout.mapping-latest.js" />
+    <Content Include="Scripts\knockout.validation.debug.js" />
+    <Content Include="Scripts\knockout.validation.js" />
     <Content Include="Scripts\less.min.js" />
     <None Include="Scripts\linq-vsdoc.js" />
     <Content Include="Scripts\linq.jquery.js" />
