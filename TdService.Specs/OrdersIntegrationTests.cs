@@ -93,7 +93,7 @@ namespace TdService.Specs
             var controller = new OrdersController(this.orderService, this.formsAuthentication);
 
             // act
-            var actual = controller.Recent() as JsonResult;
+            var actual = controller.Recent() as JsonNetResult;
             
             // assert
             Assert.That(actual, Is.Not.Null);
@@ -125,7 +125,7 @@ namespace TdService.Specs
                 };
 
             // act
-            var actual = controller.Add(model.RetailerUrl) as JsonResult;
+            var actual = controller.Add(model.RetailerUrl) as JsonNetResult;
 
             // assert
             Assert.That(actual, Is.Not.Null);
@@ -159,8 +159,8 @@ namespace TdService.Specs
             };
 
             // act
-            var actual = controller.Add(model.RetailerUrl) as JsonResult;
-            var actual2 = controller.Add(model.RetailerUrl) as JsonResult;
+            var actual = controller.Add(model.RetailerUrl) as JsonNetResult;
+            var actual2 = controller.Add(model.RetailerUrl) as JsonNetResult;
 
             // assert
             Assert.That(actual, Is.Not.Null);
@@ -196,8 +196,8 @@ namespace TdService.Specs
             };
 
             // act
-            var createdOrder = (controller.Add(model.RetailerUrl) as JsonResult).Data as OrderViewModel;
-            var actual = controller.Remove(createdOrder.Id) as JsonResult;
+            var createdOrder = (controller.Add(model.RetailerUrl) as JsonNetResult).Data as OrderViewModel;
+            var actual = controller.Remove(createdOrder.Id) as JsonNetResult;
 
             // assert
             Assert.That(actual, Is.Not.Null);

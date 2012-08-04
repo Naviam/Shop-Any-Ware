@@ -125,6 +125,7 @@
     <Compile Include="AccountIntegrationTests.cs" />
     <Compile Include="Infrastructure\FakeCookieProvider.cs" />
     <Compile Include="FakeFormsAuthentication.cs" />
+    <Compile Include="ItemsIntegrationTests.cs" />
     <Compile Include="OrdersIntegrationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShopAnyWareTestInitilizer.cs" />

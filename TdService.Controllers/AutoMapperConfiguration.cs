@@ -40,10 +40,15 @@ namespace TdService
             Mapper.CreateMap<AddOrderRequest, Order>();
             Mapper.CreateMap<Order, AddOrderResponse>();
 
-            // mapping items
+            // add order item
             Mapper.CreateMap<OrderItemViewModel, AddItemToOrderRequest>();
             Mapper.CreateMap<AddItemToOrderRequest, Item>();
-            Mapper.CreateMap<List<Item>, List<GetOrderItemsResponse>>();
+            Mapper.CreateMap<Item, AddItemToOrderResponse>();
+            Mapper.CreateMap<AddItemToOrderResponse, OrderItemViewModel>();
+
+            // get order items
+            Mapper.CreateMap<Item, GetOrderItemsResponse>();
+            Mapper.CreateMap<GetOrderItemsResponse, OrderItemViewModel>();
         }
 
         /// <summary>
