@@ -90,14 +90,19 @@ namespace TdService.Repository.MsSql.Repositories
         /// </returns>
         public Item AddItemToOrder(int orderId, Item item)
         {
-            item = this.context.Items.Add(item);
+            var newItem = this.context.Items.Add(item);
             var order = this.context.Orders.Include("Items").SingleOrDefault(o => o.Id == orderId);
             if (order != null)
             {
-                order.Items.Add(item);
+                if (order.Items == null)
+                {
+                    order.Items = new List<Item>();
+                }
+
+                order.Items.Add(newItem);
             }
 
-            return item;
+            return newItem;
         }
 
         /// <summary>

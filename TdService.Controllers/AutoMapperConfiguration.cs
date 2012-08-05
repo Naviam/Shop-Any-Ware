@@ -9,8 +9,6 @@
 
 namespace TdService
 {
-    using System.Collections.Generic;
-
     using AutoMapper;
 
     using TdService.Model.Common;

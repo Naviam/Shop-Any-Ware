@@ -144,6 +144,18 @@
   <data name="DeliveryAddress_LastNameRequired" xml:space="preserve">
     <value>A delivery address must contain your last name.</value>
   </data>
+  <data name="Item_NameRequired" xml:space="preserve">
+    <value>An item must have a name.</value>
+  </data>
+  <data name="Item_PriceRequired" xml:space="preserve">
+    <value>An item must have a price.</value>
+  </data>
+  <data name="Item_QuantityRequired" xml:space="preserve">
+    <value>An item must have a quantity.</value>
+  </data>
+  <data name="Item_WeightRequired" xml:space="preserve">
+    <value>An item must have a weight.</value>
+  </data>
   <data name="Order_CreatedDateRequired" xml:space="preserve">
     <value>Order must have a created date.</value>
   </data>

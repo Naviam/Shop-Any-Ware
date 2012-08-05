@@ -142,6 +142,42 @@ namespace TdService.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An item must have a name..
+        /// </summary>
+        public static string Item_NameRequired {
+            get {
+                return ResourceManager.GetString("Item_NameRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An item must have a price..
+        /// </summary>
+        public static string Item_PriceRequired {
+            get {
+                return ResourceManager.GetString("Item_PriceRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An item must have a quantity..
+        /// </summary>
+        public static string Item_QuantityRequired {
+            get {
+                return ResourceManager.GetString("Item_QuantityRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An item must have a weight..
+        /// </summary>
+        public static string Item_WeightRequired {
+            get {
+                return ResourceManager.GetString("Item_WeightRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Order must have a created date..
         /// </summary>
         public static string Order_CreatedDateRequired {

@@ -58,6 +58,8 @@
     <Compile Include="Common\IRetailerRepository.cs" />
     <Compile Include="Common\RetailerBusinessRules.cs" />
     <Compile Include="IRepository.cs" />
+    <Compile Include="Items\InvalidItemException.cs" />
+    <Compile Include="Items\ItemBussinessRules.cs" />
     <Compile Include="Membership\IMembershipRepository.cs" />
     <Compile Include="Membership\InvalidProfileException.cs" />
     <Compile Include="Membership\InvalidUserException.cs" />

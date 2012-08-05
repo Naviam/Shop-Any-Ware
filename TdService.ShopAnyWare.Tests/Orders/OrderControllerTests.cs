@@ -125,7 +125,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
         [Test(Description = "This test verifies that only authorized users can access getrecent orders method.")]
         public void ShouldBeAbleToCallGetRecentOrdersOnlyIfAuthorized()
         {
-            TestHelper.AssertIsAuthorized(typeof(OrdersController), "GetRecent");
+            TestHelper.AssertIsAuthorized(typeof(OrdersController), "Recent");
         }
 
         /// <summary>
@@ -174,7 +174,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
                 };
 
             // act
-            var actual = controller.Recent() as JsonResult;
+            var actual = controller.Recent() as JsonNetResult;
 
             // assert
             Assert.That(actual, Is.Not.Null);
@@ -202,7 +202,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
         [Test]
         public void ShouldBeAbleToPostNewOrderOnlyIfAuthorized()
         {
-            TestHelper.AssertIsAuthorized(typeof(OrdersController), "AddOrder", typeof(string));
+            TestHelper.AssertIsAuthorized(typeof(OrdersController), "Add", typeof(string));
         }
 
         /// <summary>
@@ -227,7 +227,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
                 };
 
             // act
-            var actual = controller.Add(expected.RetailerUrl) as JsonResult;
+            var actual = controller.Add(expected.RetailerUrl) as JsonNetResult;
 
             // assert
             Assert.That(actual, Is.Not.Null);
@@ -251,7 +251,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
         [Test]
         public void ShouldBeAbleToRemoveNewOrderOnlyIfAuthorized()
         {
-            TestHelper.AssertIsAuthorized(typeof(OrdersController), "RemoveOrder", typeof(int));
+            TestHelper.AssertIsAuthorized(typeof(OrdersController), "Remove", typeof(int));
         }
     }
 }

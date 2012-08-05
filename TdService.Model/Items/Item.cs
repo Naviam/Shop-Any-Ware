@@ -6,7 +6,6 @@
 
 namespace TdService.Model.Items
 {
-    using System;
     using Infrastructure.Domain;
 
     /// <summary>
@@ -45,11 +44,19 @@ namespace TdService.Model.Items
         public decimal Price { get; set; }
 
         /// <summary>
-        /// Validates product.
+        /// Validate item business rules.
         /// </summary>
         protected override void Validate()
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrWhiteSpace(this.Name))
+            {
+                this.AddBrokenRule(ItemBussinessRules.NameRequired);
+            }
+
+            if (this.Quantity == 0)
+            {
+                this.AddBrokenRule(ItemBussinessRules.QuantityRequired);
+            }
         }
     }
 }

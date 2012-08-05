@@ -1,22 +1,23 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="AddItemToOrderRequest.cs" company="TdService">
+// <copyright file="InvalidItemException.cs" company="TdService">
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
-//   The add item to order request.
+//   The invalid item exception.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Services.Messaging.Item
+namespace TdService.Model.Items
 {
+    using System;
+
     /// <summary>
-    /// The add item to order request.
+    /// The invalid item exception.
     /// </summary>
-    public class AddItemToOrderRequest : ItemDto
+    public class InvalidItemException : Exception
     {
-        /// <summary>
-        /// Gets or sets the order id.
-        /// </summary>
-        public int OrderId { get; set; }
+        public InvalidItemException(string message) : base(message)
+        {
+        }
     }
 }

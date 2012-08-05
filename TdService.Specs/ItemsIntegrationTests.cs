@@ -13,7 +13,6 @@ namespace TdService.Specs
     using System.Data.Entity;
     using System.Diagnostics;
     using System.Linq;
-    using System.Web.Mvc;
 
     using NUnit.Framework;
     using TdService.Controllers;
@@ -70,7 +69,7 @@ namespace TdService.Specs
         /// Should be able to view order's items.
         /// </summary>
         [Test]
-        public void ShouldBeAbleToViewMyRecentOrders()
+        public void ShouldBeAbleToViewOrderItems()
         {
             // arrange
             this.formsAuthentication.SetAuthenticationToken("vhatalski@naviam.com", true);
@@ -87,6 +86,29 @@ namespace TdService.Specs
             Assert.That(model, Is.Not.Null);
             Debug.Assert(model != null, "model != null");
             Assert.That(model.Any(), Is.True);
+        }
+
+        /// <summary>
+        /// Should be able to add item to order.
+        /// </summary>
+        [Test]
+        public void ShouldBeAbleToAddItemToOrder()
+        {
+            // arrange
+            this.formsAuthentication.SetAuthenticationToken("vhatalski@naviam.com", true);
+            var controller = new ItemsController(this.itemsService, this.formsAuthentication);
+            var viewModel = new OrderItemViewModel { OrderId = 1, Name = "Kindle", Quantity = 1, Price = 70.43m, Weight = 70 };
+
+            // act
+            var actual = controller.AddItemToOrder(viewModel) as JsonNetResult;
+
+            // assert
+            Assert.That(actual, Is.Not.Null);
+            Debug.Assert(actual != null, "actual != null");
+            var model = actual.Data as OrderItemViewModel;
+            Assert.That(model, Is.Not.Null);
+            Debug.Assert(model != null, "model != null");
+            Assert.That(model.Id, Is.GreaterThan(0));
         }
     }
 }

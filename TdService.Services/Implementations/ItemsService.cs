@@ -51,6 +51,7 @@ namespace TdService.Services.Implementations
             var item = request.ConvertToItem();
             // TODO: validate item
             var addedItem = this.itemsRepository.AddItemToOrder(request.OrderId, item);
+            this.itemsRepository.SaveChanges();
             return addedItem.ConvertToAddItemToOrderResponse();
         }
 
