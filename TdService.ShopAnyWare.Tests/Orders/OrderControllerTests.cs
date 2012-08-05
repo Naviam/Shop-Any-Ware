@@ -12,7 +12,6 @@ namespace TdService.ShopAnyWare.Tests.Orders
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
-    using System.Web.Mvc;
 
     using AutoMapper;
 
