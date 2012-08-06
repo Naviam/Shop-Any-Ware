@@ -91,6 +91,13 @@ function Package(serverModel) {
         }
         return total;
     });
+
+    self.loadItems = ko.computed(function () {
+        self.items.removeAll();
+        self.items.unshift(new Item({ Name: 'Kindle', Price: 79 }));
+        self.items.unshift(new Item({ Name: 'Dell', Price: 879 }));
+    });
+    self.loadItems();
     self.packageItemsId = ko.computed(function () {
         /// <summary>This id is used for collapse / expand feature.</summary>
         return 'package_items_' + self.id().toString();

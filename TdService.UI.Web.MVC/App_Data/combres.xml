@@ -16,14 +16,6 @@
                 localChangeMonitorInterval="30"
                 remoteChangeMonitorInterval="60"
                 >
-    <resourceSet name="siteCss" type="css">
-      <resource path="~/Content/less/bootstrap.css" />
-      <resource path="~/Content/less/responsive.css" />
-      <resource path="~/Content/styles.css" />
-      <resource path="~/Content/noty/jquery.noty.css" />
-      <resource path="~/Content/noty/noty_theme_default.css" />
-      <resource path="~/Content/noty/noty_theme_twitter.css" />
-    </resourceSet>
     <resourceSet name="jqueryJs" type="js">
       <resource path="~/scripts/jquery-1.7.1.min.js" minifierRef="off" />
       <resource path="~/Scripts/json2.js" />
@@ -45,6 +37,14 @@
       <resource path="~/Scripts/bootstrap/bootstrap-collapse.js" />
       <resource path="~/Scripts/bootstrap/bootstrap-carousel.js" />
       <resource path="~/Scripts/bootstrap/bootstrap-typeahead.js" />
+    </resourceSet>
+    <resourceSet name="siteCss" type="css">
+      <resource path="~/Content/less/bootstrap.css" />
+      <resource path="~/Content/less/responsive.css" />
+      <resource path="~/Content/styles.css" />
+      <resource path="~/Content/noty/jquery.noty.css" />
+      <resource path="~/Content/noty/noty_theme_default.css" />
+      <resource path="~/Content/noty/noty_theme_twitter.css" />
     </resourceSet>
     <resourceSet name="noty" type="js">
       <resource path="~/Scripts/noty/jquery.noty.js" />
