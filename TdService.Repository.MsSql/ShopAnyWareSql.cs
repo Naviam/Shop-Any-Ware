@@ -17,6 +17,7 @@ namespace TdService.Repository.MsSql
     using TdService.Model.Membership;
     using TdService.Model.Orders;
     using TdService.Model.Packages;
+    using TdService.Repository.MsSql.StaticDataSeed;
 
     /// <summary>
     /// DbContext for the entity framework mapping.
@@ -133,10 +134,11 @@ namespace TdService.Repository.MsSql
             protected override void Seed(ShopAnyWareSql context)
             {
                 context.Database.ExecuteSqlCommand("ALTER TABLE Retailers ADD CONSTRAINT rc_Url UNIQUE(Url)");
-                StaticDataSeed.SeedMembership.Populate(context);
-                StaticDataSeed.SeedCurrencies.Populate(context);
-                StaticDataSeed.SeedRetailers.Populate(context);
-                StaticDataSeed.SeedOrders.Populate(context);
+                SeedMembership.Populate(context);
+                SeedCurrencies.Populate(context);
+                SeedRetailers.Populate(context);
+                SeedOrders.Populate(context);
+                SeedPackages.Populate(context);
 
                 base.Seed(context);
             }

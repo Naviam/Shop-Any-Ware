@@ -99,6 +99,26 @@ namespace TdService.Model.Membership
         public List<Package> Packages { get; set; }
 
         /// <summary>
+        /// Get recent packages.
+        /// </summary>
+        /// <returns>
+        /// Collection of recent packages.
+        /// </returns>
+        public List<Package> GetRecentPackages()
+        {
+            var packages = this.Packages;
+            if (packages != null)
+            {
+                return packages.Where(
+                    p => !p.DeliveredDate.HasValue
+                             || p.DeliveredDate.Value > DateTime.UtcNow.AddDays(-30)).ToList();
+            }
+
+            this.Packages = new List<Package>();
+            return this.Packages;
+        }
+
+        /// <summary>
         /// Checks whether user has order with specified ID.
         /// </summary>
         /// <param name="orderId">

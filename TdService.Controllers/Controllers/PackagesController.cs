@@ -14,6 +14,9 @@ namespace TdService.Controllers
     using System.Web.Mvc;
 
     using TdService.Infrastructure.Authentication;
+    using TdService.Services.Interfaces;
+    using TdService.Services.Mapping;
+    using TdService.Services.Messaging.Package;
     using TdService.Services.ViewModels.Package;
 
     using Formatting = System.Xml.Formatting;
@@ -24,14 +27,50 @@ namespace TdService.Controllers
     public class PackagesController : BaseController
     {
         /// <summary>
+        /// The packages service.
+        /// </summary>
+        private readonly IPackagesService packagesService;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="PackagesController"/> class.
         /// </summary>
+        /// <param name="packagesService">
+        /// The packages service.
+        /// </param>
         /// <param name="formsAuthentication">
         /// The forms authentication.
         /// </param>
-        public PackagesController(IFormsAuthentication formsAuthentication)
+        public PackagesController(
+            IPackagesService packagesService,
+            IFormsAuthentication formsAuthentication)
             : base(formsAuthentication)
         {
+            this.packagesService = packagesService;
+        }
+
+        /// <summary>
+        /// Add new package.
+        /// </summary>
+        /// <param name="packageName">
+        /// The package name.
+        /// </param>
+        /// <returns>
+        /// Json result with package view model.
+        /// </returns>
+        [Authorize(Roles = "Shopper")]
+        [HttpPost]
+        public ActionResult Add(string packageName)
+        {
+            var request = new AddPackageRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken(), Name = packageName };
+
+            var response = this.packagesService.AddPackage(request);
+
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = response.ConvertToPackageViewModel()
+            };
+            return jsonNetResult;
         }
 
         /// <summary>

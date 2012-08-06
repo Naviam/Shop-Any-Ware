@@ -14,8 +14,10 @@ namespace TdService
     using TdService.Model.Common;
     using TdService.Model.Items;
     using TdService.Model.Orders;
+    using TdService.Model.Packages;
     using TdService.Services.Messaging.Item;
     using TdService.Services.Messaging.Order;
+    using TdService.Services.Messaging.Package;
     using TdService.Services.ViewModels.Item;
     using TdService.Services.ViewModels.Order;
 
@@ -47,6 +49,10 @@ namespace TdService
             // get order items
             Mapper.CreateMap<Item, GetOrderItemsResponse>();
             Mapper.CreateMap<GetOrderItemsResponse, OrderItemViewModel>();
+
+            // packages
+            Mapper.CreateMap<Package, GetRecentPackagesResponse>();
+            Mapper.CreateMap<Package, AddPackageResponse>();
         }
 
         /// <summary>

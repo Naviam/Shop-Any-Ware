@@ -16,6 +16,7 @@ namespace TdService.Repository.MsSql.Repositories
 
     using TdService.Model.Membership;
     using TdService.Model.Orders;
+    using TdService.Model.Packages;
 
     /// <summary>
     /// User repository.
@@ -65,6 +66,32 @@ namespace TdService.Repository.MsSql.Repositories
         }
 
         /// <summary>
+        /// Attach package to user.
+        /// </summary>
+        /// <param name="email">
+        /// The user email.
+        /// </param>
+        /// <param name="packageId">
+        /// The package id.
+        /// </param>
+        public void AttachPackage(string email, int packageId)
+        {
+            var user = this.context.Users.SingleOrDefault(user1 => user1.Email == email);
+            var package = this.context.Packages.Find(packageId);
+            if (user != null)
+            {
+                if (user.Packages == null)
+                {
+                    user.Packages = new List<Package> { package };
+                }
+                else
+                {
+                    user.Packages.Add(package);
+                }
+            }
+        }
+
+        /// <summary>
         /// Get user by email.
         /// </summary>
         /// <param name="email">
@@ -90,6 +117,20 @@ namespace TdService.Repository.MsSql.Repositories
         public User GetUserWithOrdersByEmail(string email)
         {
             return this.context.Users.Include("Profile").Include("Orders").Include("Roles").SingleOrDefault(u => u.Email == email);
+        }
+
+        /// <summary>
+        /// Get user with packages by email.
+        /// </summary>
+        /// <param name="email">
+        /// The email address.
+        /// </param>
+        /// <returns>
+        /// The user with packages.
+        /// </returns>
+        public User GetUserWithPackagesByEmail(string email)
+        {
+            return this.context.Users.Include("Profile").Include("Packages").Include("Roles").SingleOrDefault(u => u.Email == email);
         }
 
         /// <summary>

@@ -31,6 +31,7 @@ namespace TdService.Specs
             SeedCurrencies.Populate(context);
             SeedRetailers.Populate(context);
             SeedOrders.Populate(context);
+            SeedPackages.Populate(context);
 
             base.Seed(context);
         }

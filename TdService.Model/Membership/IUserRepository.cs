@@ -9,8 +9,6 @@
 
 namespace TdService.Model.Membership
 {
-    using TdService.Model.Orders;
-
     /// <summary>
     /// User repository contract.
     /// </summary>
@@ -45,9 +43,20 @@ namespace TdService.Model.Membership
         /// The email address.
         /// </param>
         /// <returns>
-        /// The user.
+        /// The user with orders.
         /// </returns>
         User GetUserWithOrdersByEmail(string email);
+
+        /// <summary>
+        /// Get user with packages by email.
+        /// </summary>
+        /// <param name="email">
+        /// The email address.
+        /// </param>
+        /// <returns>
+        /// The user with packages.
+        /// </returns>
+        User GetUserWithPackagesByEmail(string email);
 
         /// <summary>
         /// Validate user against db.
@@ -105,5 +114,16 @@ namespace TdService.Model.Membership
         /// Save changes to db.
         /// </summary>
         void SaveChanges();
+
+        /// <summary>
+        /// Attach package to user.
+        /// </summary>
+        /// <param name="email">
+        /// The user email.
+        /// </param>
+        /// <param name="packageId">
+        /// The package id to attach.
+        /// </param>
+        void AttachPackage(string email, int packageId);
     }
 }

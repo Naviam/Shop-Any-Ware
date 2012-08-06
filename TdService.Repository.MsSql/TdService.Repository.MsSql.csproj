@@ -70,6 +70,7 @@
     <Compile Include="Repositories\ItemsRepository.cs" />
     <Compile Include="Repositories\OrderRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\PackageRepository.cs" />
     <Compile Include="Repositories\ProfileRepository.cs" />
     <Compile Include="Repositories\RetailerRepository.cs" />
     <Compile Include="Repositories\RoleRepository.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="StaticDataSeed\SeedCurrencies.cs" />
     <Compile Include="StaticDataSeed\SeedMembership.cs" />
     <Compile Include="StaticDataSeed\SeedOrders.cs" />
+    <Compile Include="StaticDataSeed\SeedPackages.cs" />
     <Compile Include="StaticDataSeed\SeedRetailers.cs" />
   </ItemGroup>
   <ItemGroup>

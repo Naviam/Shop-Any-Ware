@@ -55,8 +55,11 @@
     <Compile Include="Implementations\ItemsService.cs" />
     <Compile Include="Implementations\MembershipService.cs" />
     <Compile Include="Implementations\OrderService.cs" />
+    <Compile Include="Implementations\PackagesService.cs" />
     <Compile Include="Interfaces\IItemsService.cs" />
+    <Compile Include="Interfaces\IPackagesService.cs" />
     <Compile Include="Mapping\ItemMapping.cs" />
+    <Compile Include="Mapping\PackageMapping.cs" />
     <Compile Include="Messaging\Item\AddItemToOrderRequest.cs" />
     <Compile Include="Messaging\Item\AddItemToOrderResponse.cs" />
     <Compile Include="Messaging\Item\AddItemToPackageRequest.cs" />
@@ -95,6 +98,10 @@
     <Compile Include="Messaging\Order\AddOrderResponse.cs" />
     <Compile Include="Messaging\Order\GetRecentOrdersRequest.cs" />
     <Compile Include="Messaging\Order\GetRecentOrdersResponse.cs" />
+    <Compile Include="Messaging\Package\AddPackageRequest.cs" />
+    <Compile Include="Messaging\Package\AddPackageResponse.cs" />
+    <Compile Include="Messaging\Package\GetRecentPackagesRequest.cs" />
+    <Compile Include="Messaging\Package\GetRecentPackagesResponse.cs" />
     <Compile Include="Messaging\RequestBase.cs" />
     <Compile Include="Messaging\ResponseBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -132,6 +132,20 @@ namespace TdService.ShopAnyWare.Tests.Orders
         }
 
         /// <summary>
+        /// Get user with packages by email.
+        /// </summary>
+        /// <param name="email">
+        /// The email address.
+        /// </param>
+        /// <returns>
+        /// The user with packages.
+        /// </returns>
+        public User GetUserWithPackagesByEmail(string email)
+        {
+            return null;
+        }
+
+        /// <summary>
         /// Validate user against db.
         /// </summary>
         /// <param name="email">
@@ -200,6 +214,19 @@ namespace TdService.ShopAnyWare.Tests.Orders
         /// Save changes to db.
         /// </summary>
         public void SaveChanges()
+        {
+        }
+
+        /// <summary>
+        /// Attach package to user.
+        /// </summary>
+        /// <param name="email">
+        /// The user email.
+        /// </param>
+        /// <param name="packageId">
+        /// The package id to attach.
+        /// </param>
+        public void AttachPackage(string email, int packageId)
         {
         }
     }

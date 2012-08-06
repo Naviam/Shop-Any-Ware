@@ -55,12 +55,12 @@ namespace TdService.Model.Packages
         /// <summary>
         /// Gets or sets Dispatched Date.
         /// </summary>
-        public DateTime DispatchedDate { get; set; }
+        public DateTime? DispatchedDate { get; set; }
 
         /// <summary>
         /// Gets or sets Delivered Date.
         /// </summary>
-        public DateTime DeliveredDate { get; set; }
+        public DateTime? DeliveredDate { get; set; }
 
         /// <summary>
         /// Gets or sets Delivery Address.
