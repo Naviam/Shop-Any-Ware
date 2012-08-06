@@ -28,8 +28,8 @@
                         @DashboardViewResources.TrackingNumberHeader <span class="tn" title="A Title" data-content="And here's some amazing content. It's very engaging. right?" data-bind="text: trackingNumber" href="http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum=EE972210493US"></span>
                     </div>
                     <div data-bind="attr: { id: orderItemsId }" class="white collapse in">
-                        @DashboardViewResources.NoItemsMessage
-                        <table>
+                        <span data-bind="visible: items().length == 0">@DashboardViewResources.NoItemsMessage</span>
+                        <table data-bind="visible: hasItems">
                             <thead>
                                 <tr>
                                     <th></th>
@@ -40,18 +40,18 @@
                                 </tr>
                             </thead>
                             <tbody class="sortable" id="order_items" data-bind="sortable: {data: items}">
-                                <tr>
+                                <tr data-bind="attr: {id: id}">
                                     <td class="draggable"><div></div></td>
-                                    <td class="left"><i class="icon-camera"></i> <span class="tn" title="Kindle" data-content="<table class='details'><tr><td><img src='@Url.Content("~/content/img/kindle.jpg")' /></td><td><p>Name: Kindle</p><p>Weight: 1.3lbs</p><p>Color: Black</p><p>Quantity: 1</p><p>Cost: $100</p></td>" data-bind="click: $parent.removeItem, text: name"></span></td>
-                                    <td><span data-bind="text: price"></span> <i class="icon-pencil"></i></td>
+                                    <td class="left"><i class="icon-camera"></i> <span class="tn" title="Click to edit item name" data-content="<table class='details'><tr><td><img src='@Url.Content("~/content/img/kindle.jpg")' /></td><td><p>Name: Kindle</p><p>Weight: 1.3lbs</p><p>Color: Black</p><p>Quantity: 1</p><p>Cost: $100</p></td>" data-bind="click: $parent.removeItem, text: name"></span></td>
+                                    <td>$<span title="Click to edit item price." data-bind="text: price"></span></td>
                                     <td>
                                         <div class="btn-group">
                                             <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">@DashboardViewResources.ActionMoveHeader <span class="caret"></span></button>
                                             <ul class="dropdown-menu">
-                                            <li><i class="icon-plus"></i> @DashboardViewResources.MoveToNewPackage</li>
-                                            <li class="divider"></li>
-                                            <li><i class="icon-gift"></i> Package name</li>
-                                            <li><i class="icon-gift"></i> My Gifts</li></ul>
+                                                <li><i class="icon-plus"></i> @DashboardViewResources.MoveToNewPackage</li>
+                                                <li class="divider"></li>
+                                                <li><i class="icon-gift"></i> Package name</li>
+                                                <li><i class="icon-gift"></i> My Gifts</li></ul>
                                         </div>
                                     </td>
                                     <td class="draggable"><div></div></td>
@@ -68,11 +68,65 @@
                             </tfoot>
                         </table>
                     </div>
+                    <div class="modal" id="itemFormModal" style="display: none">
+                        <div class="modal-header">
+                            <button class="close" data-dismiss="modal">×</button>
+                            <h3>@DashboardViewResources.AddItemForm</h3>
+                        </div>
+                        <div class="modal-body" data-bind="with: itemViewModel">
+                            <form class="form-horizontal">
+                                <fieldset>
+                                    <div class="control-group">
+                                        <label class="control-label" for="itemName">Name</label>
+                                        <div class="controls">
+                                            <input class="input-xlarge focused" data-bind="value: Name" id="itemName" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="itemQuantity">Quantity</label>
+                                        <div class="controls">
+                                            <input class="input-xlarge focused" data-bind="value: Quantity" id="itemQuantity" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="itemPrice">Price</label>
+                                        <div class="controls">
+                                            <div class="input-prepend input-append">
+                                                <span class="add-on">$</span><input class="span1" data-bind="value: Price" id="itemPrice" size="16" type="text" style="text-align:right"><span class="add-on">.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="itemColor">Color</label>
+                                        <div class="controls">
+                                            <input class="input-xlarge focused" data-bind="value: Color" id="itemColor" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="itemSize">Size</label>
+                                        <div class="controls">
+                                            <input class="input-xlarge focused" data-bind="value: Size" id="itemSize" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="itemWeight">Weight</label>
+                                        <div class="controls">
+                                            <input class="input-xlarge focused" data-bind="value: Weight" id="itemWeight" type="text">
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#" class="btn" data-dismiss="modal">@DashboardViewResources.CancelButton</a>
+                            <a href="#" class="btn btn-primary" data-bind="click: addItem">@DashboardViewResources.SaveChangesButton</a>
+                        </div>
+                    </div>
                     <div class="btn-toolbar">
                         <span class="label label-info">@DashboardViewResources.OrderIdHeader: <span data-bind="text: id"></span></span>
                         <span class="label label-info">Создан: <span data-bind="text: orderDate"></span></span>
                         <span class="label label-info">@DashboardViewResources.StatusHeader: <span data-bind="text: status"></span></span>
-                        <button class="btn btn-small btn-primary" data-bind="visible: canItemsBeModified" data-toggle="modal" href="#myModal"><i class="icon-white icon-plus-sign"></i> @DashboardViewResources.AddItemButton</button>
+                        <button class="btn btn-small btn-primary" data-bind="visible: canItemsBeModified" data-toggle="modal" href="#itemFormModal"><i class="icon-white icon-plus-sign"></i> @DashboardViewResources.AddItemButton</button>
                         <button class="btn btn-small btn-danger" data-bind="click: $parent.removeOrder, visible: canBeRemoved"><i class="icon-white icon-trash"></i> @DashboardViewResources.RemoveOrderButton</button>
                         <button class="btn btn-small btn-danger"><i class="icon-white icon-inbox"></i> IN STOCK</button>
                         <button class="btn btn-small" data-toggle="modal" data-bind="visible: canBeRequestedForReturn"><i class="icon-retweet"></i> @DashboardViewResources.ReturnOrderButton</button>
@@ -193,54 +247,6 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<div class="modal" id="myModal" style="display: none">
-    <div class="modal-header">
-        <button class="close" data-dismiss="modal">×</button>
-        <h3>@DashboardViewResources.AddItemForm</h3>
-    </div>
-    <div class="modal-body">
-        <form class="form-horizontal">
-            <fieldset>
-                <div class="control-group">
-                    <label class="control-label" for="focusedInput">Name</label>
-                    <div class="controls">
-                        <input class="input-xlarge focused" id="focusedInput" type="text">
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label" for="focusedInput">Size</label>
-                    <div class="controls">
-                        <input class="input-xlarge focused" id="focusedInput" type="text">
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label" for="focusedInput">Color</label>
-                    <div class="controls">
-                        <input class="input-xlarge focused" id="focusedInput" type="text">
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label" for="focusedInput">Quantity</label>
-                    <div class="controls">
-                        <input class="input-xlarge focused" id="focusedInput" type="text">
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label" for="focusedInput">Price</label>
-                    <div class="controls">
-                        <div class="input-prepend input-append">
-                            <span class="add-on">$</span><input class="span1" id="appendedPrependedInput" size="16" type="text" style="text-align:right"><span class="add-on">.00</span>
-                        </div>
-                    </div>
-                </div>
-            </fieldset>
-        </form>
-    </div>
-    <div class="modal-footer">
-        <a href="#" class="btn">@DashboardViewResources.CancelButton</a>
-        <a href="#" class="btn btn-primary">@DashboardViewResources.SaveChangesButton</a>
     </div>
 </div>
 @section Scripts

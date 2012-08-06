@@ -22,6 +22,7 @@ namespace TdService.UI.Web.MVC.App_Start
     using TdService.Infrastructure.Email;
     using TdService.Model.Addresses;
     using TdService.Model.Common;
+    using TdService.Model.Items;
     using TdService.Model.Membership;
     using TdService.Model.Orders;
     using TdService.Repository.MsSql.Repositories;
@@ -59,6 +60,7 @@ namespace TdService.UI.Web.MVC.App_Start
             container.Register<ICookieStorageService, CookieStorageService>();
             container.Register<IAddressService, DeliveryAddressService>();
             container.Register<IOrderService, OrderService>();
+            container.Register<IItemsService, ItemsService>();
 
             // repositories
             container.Register<IOrderRepository, OrderRepository>();
@@ -68,6 +70,7 @@ namespace TdService.UI.Web.MVC.App_Start
             container.Register<IProfileRepository, ProfileRepository>();
             container.Register<IMembershipRepository, MembershipRepository>();
             container.Register<IAddressRepository, AddressRepository>();
+            container.Register<IItemsRepository, ItemsRepository>();
 
             // For instance:
             // container.Register<IUserRepository, SqlUserRepository>();

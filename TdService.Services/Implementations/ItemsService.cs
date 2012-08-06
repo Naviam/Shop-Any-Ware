@@ -11,9 +11,12 @@ namespace TdService.Services.Implementations
 {
     using System.Collections.Generic;
     using System.Linq;
+    using System.Text;
+
     using TdService.Model.Items;
     using TdService.Services.Interfaces;
     using TdService.Services.Mapping;
+    using TdService.Services.Messaging;
     using TdService.Services.Messaging.Item;
 
     /// <summary>
@@ -49,10 +52,31 @@ namespace TdService.Services.Implementations
         public AddItemToOrderResponse AddItemToOrder(AddItemToOrderRequest request)
         {
             var item = request.ConvertToItem();
-            // TODO: validate item
+            
+            if (item.GetBrokenRules().Any())
+            {
+                var sb = new StringBuilder();
+                foreach (var rule in item.GetBrokenRules())
+                {
+                    sb.Append(rule.Property);
+                    sb.Append(": ");
+                    sb.Append(rule.Rule);
+                    sb.Append(" ");
+                }
+
+                return new AddItemToOrderResponse
+                    {
+                        Message = sb.ToString(),
+                        MessageType = MessageType.Error
+                    };
+            }
+
             var addedItem = this.itemsRepository.AddItemToOrder(request.OrderId, item);
             this.itemsRepository.SaveChanges();
-            return addedItem.ConvertToAddItemToOrderResponse();
+            var response = addedItem.ConvertToAddItemToOrderResponse();
+            response.MessageType = MessageType.Success;
+            response.Message = "The item has been added successfully.";
+            return response;
         }
 
         /// <summary>

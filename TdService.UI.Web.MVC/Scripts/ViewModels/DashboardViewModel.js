@@ -39,8 +39,17 @@ function Item(serverModel) {
     /// <summary>Item view model.</summary>
     var self = this;
 
-    // item view model properties
-    self.price = ko.observable(0);
+    self.id = ko.observable(serverModel.Id);
+    self.name = ko.observable(serverModel.Name);
+    self.price = ko.observable(serverModel.Price);
+    self.quantity = ko.observable(serverModel.Quantity);
+    self.size = ko.observable(serverModel.Size);
+    self.weight = ko.observable(serverModel.Weight);
+    self.color = ko.observable(serverModel.Color);
+
+    self.showDetails = function(item) {
+        /// <summary>Show item details.</summary>
+    };
 }
 
 function Package(serverModel) {
@@ -78,7 +87,7 @@ function Package(serverModel) {
         /// <summary>Determines the total amount of the order.</summary>
         var total = 0;
         for (var i = 0; i < self.items().length; i++) {
-            total = total + self.items[i].price;
+            total = total + self.items()[i].price();
         }
         return total;
     });
@@ -108,6 +117,19 @@ function Package(serverModel) {
     };
 }
 
+function ItemViewModel() {
+    /// <summary>Add item view model.</summary>
+    var self = this;
+
+    self.OrderId = 0;
+    self.Name = ko.observable("").extend({ required: true });
+    self.Quantity = ko.observable(1).extend({ required: true });
+    self.Price = ko.observable().extend({ required: true });
+    self.Weight = ko.observable();
+    self.Size = ko.observable("");
+    self.Color = ko.observable("");
+}
+
 function Order(serverModel) {
     /// <summary>Order view model.</summary>
     var self = this;
@@ -129,6 +151,8 @@ function Order(serverModel) {
     // order view model collections
     self.items = ko.observableArray();
 
+    self.itemViewModel = new ItemViewModel();
+
     // order state properties
     self.canBeRemoved = serverModel.CanBeRemoved;
     self.canBeModified = serverModel.CanBeModified;
@@ -140,9 +164,14 @@ function Order(serverModel) {
         /// <summary>Determines the total amount of the order.</summary>
         var total = 0;
         for (var i = 0; i < self.items().length; i++) {
-            total = total + self.items[i].price;
+            total = total + self.items()[i].price();
         }
         return total;
+    });
+
+    self.hasItems = ko.computed(function() {
+        /// <summary>Determines whether order has items.</summary>
+        return self.items().length > 0;
     });
 
     self.orderDate = ko.computed(function() {
@@ -161,9 +190,14 @@ function Order(serverModel) {
 
     self.loadItems = function() {
         /// <summary>Get collection of items for the order.</summary>
-        for (var i = 0; i < 5; i++) {
-            this.items().unshift(new Item({}));
-        }
+        $.post("/tdservice/items/getorderitems", { "orderId": self.id() }, function (data) {
+            var items = ko.toJS(data);
+            self.items.removeAll();
+            $.each(items, function (index, value) {
+                var item = new Item(value);
+                self.items.unshift(item);
+            });
+        });
     };
     self.loadItems();
 
@@ -171,12 +205,43 @@ function Order(serverModel) {
         /// <summary>Get item details.</summary>
     };
 
-    self.addItem = function(item) {
+    self.addItem = function() {
         /// <summary>Add new item to order.</summary>
+        self.itemViewModel.OrderId = self.id();
+        var params =
+            {
+                "OrderId": self.id(),
+                "Name": self.itemViewModel.Name(),
+                "Quantity": self.itemViewModel.Quantity(),
+                "Price": self.itemViewModel.Price(),
+                "Size": self.itemViewModel.Size(),
+                "Weight": self.itemViewModel.Weight(),
+                "Color": self.itemViewModel.Color()
+            };
+        $.post("/tdservice/items/additemtoorder", params, function (data) {
+            var model = ko.toJS(data);
+            if (model.MessageType == "Success") {
+                var item = new Item(model);
+                self.items.unshift(item);
+                window.showNotice(data.Message, data.MessageType);
+                $('#' + item.id()).show("blind", {}, "normal", function () {
+                    self.itemViewModel = new ItemViewModel();
+                });
+            }
+        });
     };
 
     self.removeItem = function(item) {
         /// <summary>Remove item from order.</summary>
+        $.post("/tdservice/items/removeitemfromorder", ko.toJSON(item.id), function (data) {
+            var model = ko.toJS(data);
+            if (model.MessageType == "Success") {
+                self.items.remove(item);
+                window.showNotice(model.Message, model.MessageType);
+                $('#' + item.id()).show("blind", {}, "normal", function () {
+                });
+            }
+        });
     };
 }
 
@@ -187,13 +252,6 @@ function Retailer(serverModel) {
 function DashboardViewModel(serverModel) {
     /// <summary>Dashboard view model. The parent model for others.</summary>
     var self = this;
-
-    self.init = true;
-
-    // default model properties
-    // self.message = ko.observable(serverModel.Message);
-    // self.messageType = ko.observable(serverModel.MessageType);
-    // self.errorCode = ko.observable(serverModel.ErrorCode);
 
     // dashboard view model properties
     self.newOrderField = ko.observable().extend({ required: true });
@@ -309,6 +367,4 @@ function DashboardViewModel(serverModel) {
     self.removePackage = function(packageId) {
         /// <summary>Remove package.</summary>
     };
-
-    self.init = false;
 }

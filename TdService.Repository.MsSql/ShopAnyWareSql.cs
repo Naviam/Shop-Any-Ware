@@ -116,6 +116,7 @@ namespace TdService.Repository.MsSql
             modelBuilder.Configurations.Add(new RetailerConfiguration());
             modelBuilder.Configurations.Add(new OrderConfiguration());
             modelBuilder.Configurations.Add(new PackageConfiguration());
+            modelBuilder.Configurations.Add(new ItemConfiguration());
         }
 
         /// <summary>
@@ -135,6 +136,7 @@ namespace TdService.Repository.MsSql
                 StaticDataSeed.SeedMembership.Populate(context);
                 StaticDataSeed.SeedCurrencies.Populate(context);
                 StaticDataSeed.SeedRetailers.Populate(context);
+                StaticDataSeed.SeedOrders.Populate(context);
 
                 base.Seed(context);
             }

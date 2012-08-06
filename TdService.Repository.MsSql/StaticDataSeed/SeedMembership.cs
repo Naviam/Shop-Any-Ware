@@ -45,7 +45,7 @@ namespace TdService.Repository.MsSql.StaticDataSeed
             {
                 Email = "vhatalski@naviam.com",
                 Password = "ruinruin",
-                Roles = new List<Role> { adminRole, shopperRole },
+                Roles = new List<Role> { adminRole, shopperRole, operatorRole },
                 Wallet = new Wallet { Amount = 1003.23m }
             };
             user = context.Users.Add(user);
