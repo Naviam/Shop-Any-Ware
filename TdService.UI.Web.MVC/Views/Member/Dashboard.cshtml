@@ -12,7 +12,7 @@
             <div class="control-group" data-bind="css: { error: !newOrderField.isValid() }, validationOptions: { insertMessages: false, decorateElement: true, errorClass: 'error', parseInputAttributes: false, errorElementClass: 'error' }">
                 <div class="controls">
                     <div class="input-prepend input-append">
-                        <span class="add-on btn-large btn-success"><i class="icon-white icon-plus"></i></span>
+                        <span class="add-on btn-large btn-success grey"><i class="icon icon-plus"></i></span>
                         <input class="add-order" style="width:65%" data-bind="value: newOrderField, valueUpdate: 'afterkeydown', executeOnEnter: createOrder, autosuggest: retailers" title="@DashboardViewResources.NewOrderPlaceholder" placeholder="@DashboardViewResources.NewOrderPlaceholder"/><button id="addNewOrderButton" class="btn btn-large btn-success" type="button" data-loading-text="@DashboardViewResources.AddOrderButtonLoadingMessage" data-bind="click: createOrder, disable: disableAddOrderButton">@DashboardViewResources.AddOrderButton</button>
                     </div>
                 </div>
@@ -22,10 +22,11 @@
         <div id="orders" data-bind="foreach: orders">
             <div data-bind="attr: { id: id }" class="package action">
                 <div class="box">
-                    <div>
+                    <div class="title">
                         <span data-bind="attr: { 'data-target': orderItemsIdWithNumberSign }" data-toggle="collapse"><i class="icon-white icon-chevron-right"></i></span>
                         @DashboardViewResources.OrderNumberHeader <span data-bind="text: orderNumber" type="text" placeholder="size"></span> from <span data-bind="text: retailerUrl"></span>
                         @DashboardViewResources.TrackingNumberHeader <span class="tn" title="A Title" data-content="And here's some amazing content. It's very engaging. right?" data-bind="text: trackingNumber" href="http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum=EE972210493US"></span>
+                        <span class="float_right"><i class="icon-white icon-move"></i></span>
                     </div>
                     <div data-bind="attr: { id: orderItemsId }" class="white collapse in">
                         <span data-bind="visible: items().length == 0">@DashboardViewResources.NoItemsMessage</span>
@@ -34,6 +35,8 @@
                                 <tr>
                                     <th></th>
                                     <th class="left">@DashboardViewResources.ItemNameHeader</th>
+                                    <th>Qty</th>
+                                    <th>Weight</th>
                                     <th>@DashboardViewResources.PriceHeader</th>
                                     <th>@DashboardViewResources.ActionHeader</th>
                                     <th></th>
@@ -43,15 +46,19 @@
                                 <tr data-bind="attr: {id: id}">
                                     <td class="draggable"><div></div></td>
                                     <td class="left"><i class="icon-camera"></i> <span class="tn" title="Click to edit item name" data-content="<table class='details'><tr><td><img src='@Url.Content("~/content/img/kindle.jpg")' /></td><td><p>Name: Kindle</p><p>Weight: 1.3lbs</p><p>Color: Black</p><p>Quantity: 1</p><p>Cost: $100</p></td>" data-bind="click: $parent.removeItem, text: name"></span></td>
+                                    <td>1</td>
+                                    <td>2 lbs</td>
                                     <td>$<span title="Click to edit item price." data-bind="text: price"></span></td>
                                     <td>
                                         <div class="btn-group">
-                                            <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">@DashboardViewResources.ActionMoveHeader <span class="caret"></span></button>
+                                            <button class="btn btn-mini"><i class="icon icon-edit"></i></button>
+                                            <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown"><i class="icon icon-move"></i>@*@DashboardViewResources.ActionMoveHeader*@ <span class="caret"></span></button>
                                             <ul class="dropdown-menu">
                                                 <li><i class="icon-plus"></i> @DashboardViewResources.MoveToNewPackage</li>
                                                 <li class="divider"></li>
                                                 <li><i class="icon-gift"></i> Package name</li>
-                                                <li><i class="icon-gift"></i> My Gifts</li></ul>
+                                                <li><i class="icon-gift"></i> My Gifts</li>
+                                            </ul>
                                         </div>
                                     </td>
                                     <td class="draggable"><div></div></td>
@@ -59,8 +66,8 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <td><div></div></td>
-                                    <td class="right">@DashboardViewResources.ItemsTotalHeader</td>
+                                    <td></td>
+                                    <td class="right" colspan="3">@DashboardViewResources.ItemsTotalHeader</td>
                                     <td>$<span data-bind="text: totalItemsAmount"></span></td>
                                     <td></td>
                                     <td><div></div></td>
@@ -83,19 +90,19 @@
                                         </div>
                                     </div>
                                     <div class="control-group">
+                                        <label class="control-label" for="itemPrice">Price</label>
+                                        <div class="controls">
+                                            <div class="input-prepend">
+                                                <span class="add-on">$</span><input class="span1" data-bind="value: Price" id="itemPrice" size="16" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
                                         <label class="control-label" for="itemQuantity">Quantity</label>
                                         <div class="controls">
                                             <input class="input-xlarge focused" data-bind="value: Quantity" id="itemQuantity" type="text">
                                         </div>
-                                    </div>
-                                    <div class="control-group">
-                                        <label class="control-label" for="itemPrice">Price</label>
-                                        <div class="controls">
-                                            <div class="input-prepend input-append">
-                                                <span class="add-on">$</span><input class="span1" data-bind="value: Price" id="itemPrice" size="16" type="text" style="text-align:right"><span class="add-on">.00</span>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    </div>@*
                                     <div class="control-group">
                                         <label class="control-label" for="itemColor">Color</label>
                                         <div class="controls">
@@ -107,7 +114,7 @@
                                         <div class="controls">
                                             <input class="input-xlarge focused" data-bind="value: Size" id="itemSize" type="text">
                                         </div>
-                                    </div>
+                                    </div>*@
                                     <div class="control-group">
                                         <label class="control-label" for="itemWeight">Weight</label>
                                         <div class="controls">
@@ -144,93 +151,84 @@
             <div class="control-group">
                 <div class="controls">
                     <div class="input-prepend input-append">
-                        <span class="add-on btn-large btn-success"><i class="icon-white icon-gift"></i></span>
+                        <span class="add-on btn-large btn-success grey"><i class="icon icon-gift"></i></span>
                         <input class="add-order" style="width:60%" data-bind="value: newPackageField, valueUpdate: 'afterkeydown'" placeholder="@DashboardViewResources.NewPackagePlaceholder"/><button class="btn btn-large btn-success" type="button" data-bind="click: createPackage, disable: disableCreatePackageButton">@DashboardViewResources.AddPackageButton</button>
                     </div>
                 </div>
             </div>
         </div>
         <div id="packages" data-bind="foreach: packages">
-            <div class="package action">
+            <div data-bind="attr: { id: 'package' + id }"  class="package action">
                 <div class="box">
-                    <div>
+                    <div class="title">
                         <span data-bind="attr: { 'data-target': packageItemsIdWithNumberSign }" data-toggle="collapse"><i class="icon-white icon-chevron-right"></i></span>
-                        <span>@DashboardViewResources.PackageNameHeader: <span data-bind="text: name"></span></span>
+                        <i class="icon-white icon-tag"></i>@*<span>@DashboardViewResources.PackageNameHeader: *@ <span data-bind="text: name"></span></span>
                     </div>
                     <div data-bind="attr: { id: packageItemsId }" class="white collapse in">
                         <table>
                             <thead>
                                 <tr class="left">
-                                    <th colspan="2"><h4>Таможенная декларация</h4></th>
+                                    <th colspan="4"><h4>Таможенная декларация</h4></th>
                                 </tr>
                                 <tr>
                                     <th class="left">@DashboardViewResources.ItemNameHeader</th>
+                                    <th>Qty</th>
+                                    <th>Weight</th>
                                     <th>@DashboardViewResources.PriceHeader</th>
                                 </tr>
                             </thead>
                             <tbody id="package_items" data-bind="sortable: {data: items}">
                                 <tr>
-                                    <td class="left"><i class="icon-camera"></i> <span data-bind="text: name"></span></td>
+                                    <td class="left"><a href="#" title="Return item to package name_here"><i class="icon-arrow-left"></i></a> <i class="icon-camera"></i> <span data-bind="text: name"></span></td>
+                                    <td>1</td>
+                                    <td>2 lbs</td>
                                     <td><span data-bind="text: price"></span></td>
                                 </tr>
                             </tbody>
                             <tfoot>
                                 <tr>
                                     <td class="right">@DashboardViewResources.ItemsTotalHeader</td>
+                                    <td>1</td>
+                                    <td>2 lbs</td>
                                     <td>$<span data-bind="text: totalItemsAmount"></span></td>
                                 </tr>
-                                <tr>
+                                @*<tr>
                                     <td class="right">@DashboardViewResources.TotalWeightHeader:</td>
                                     <td>1.23 kg</td>
-                                </tr>
+                                </tr>*@
                             </tfoot>
                         </table>
                         <table>
                             <thead>
                                 <tr class="left">
-                                    <th colspan="3"><h4>Доставка</h4></th>
+                                    <th colspan="4"><h4>Доставка</h4></th>
                                 </tr>
                             </thead>
                             <tbody id="package_delivery">
                                 <tr>
-                                    <td class="left">
-                                        <ul class="nav nav-pills">
-                                        <li class="dropdown" id="menu1">
-                                            <a class="dropdown-toggle" data-toggle="dropdown" href="#menu1">
-                                                Адрес доставки
-                                                <b class="caret"></b>
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="#">Мой адрес 1</a></li>
-                                                <li><a href="#">Мой адрес 2</a></li>
-                                                <li class="divider"></li>
-                                                <li><a href="#">Добавить адрес</a></li>
-                                            </ul>
-                                        </li>
-                                        </ul>
+                                    <td class="left" colspan="2">
+                                        <select id="selectError">
+                                            <option>Мой адрес 1</option>
+                                            <option>Мой адрес 2</option>
+                                            <option>Добавить адрес</option>
+                                        </select>
                                     </td>
-                                    <td class="left">
-                                        <ul class="nav nav-pills">
-                                        <li class="dropdown" id="menu2">
-                                            <a class="dropdown-toggle" data-toggle="dropdown" href="#menu2">
-                                                Метод доставки
-                                                <b class="caret"></b>
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="#">Standart Delivery</a></li>
-                                                <li><a href="#">Express Delivery</a></li>
-                                            </ul>
-                                        </li>
-                                        </ul>
+                                    <td class="left" colspan="2">
+                                        <select id="selectError">
+                                            <option>Standart Delivery</option>
+                                            <option>Express Delivery</option>
+                                        </select>
                                     </td>
                                 </tr>
                             </tbody>
                             <tfoot>
                                 <tr>
+                                    <td colspan="2"></td>
                                     <td class="right">Стоимость доставки</td>
                                     <td>$100</td>
                                 </tr>
                                 <tr>
+                                    <td colspan="2"></td>
                                     <td class="right">@DashboardViewResources.TotalCostHeader:</td>
                                     <td>$1234</td>
                                 </tr>

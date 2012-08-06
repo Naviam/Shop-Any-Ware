@@ -61,5 +61,19 @@ namespace TdService.Services.Mapping
         {
             return Mapper.Map<AddPackageResponse, PackageViewModel>(response);
         }
+
+        /// <summary>
+        /// Convert list of get recent packages responses to list of package view models.
+        /// </summary>
+        /// <param name="responses">
+        /// The list of get recent packags responses.
+        /// </param>
+        /// <returns>
+        /// The list of package view models.
+        /// </returns>
+        public static List<PackageViewModel> ConvertToPackageViewModelCollection(this List<GetRecentPackagesResponse> responses)
+        {
+            return Mapper.Map<List<GetRecentPackagesResponse>, List<PackageViewModel>>(responses);
+        }
     }
 }

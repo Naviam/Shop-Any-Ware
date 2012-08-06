@@ -20,6 +20,7 @@ namespace TdService
     using TdService.Services.Messaging.Package;
     using TdService.Services.ViewModels.Item;
     using TdService.Services.ViewModels.Order;
+    using TdService.Services.ViewModels.Package;
 
     /// <summary>
     /// The auto mapper configuration.
@@ -53,6 +54,8 @@ namespace TdService
             // packages
             Mapper.CreateMap<Package, GetRecentPackagesResponse>();
             Mapper.CreateMap<Package, AddPackageResponse>();
+            Mapper.CreateMap<AddPackageResponse, PackageViewModel>();
+            Mapper.CreateMap<GetRecentPackagesResponse, PackageViewModel>();
         }
 
         /// <summary>

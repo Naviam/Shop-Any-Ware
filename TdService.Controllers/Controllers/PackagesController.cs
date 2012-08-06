@@ -9,15 +9,12 @@
 
 namespace TdService.Controllers
 {
-    using System;
-    using System.Collections.Generic;
     using System.Web.Mvc;
 
     using TdService.Infrastructure.Authentication;
     using TdService.Services.Interfaces;
     using TdService.Services.Mapping;
     using TdService.Services.Messaging.Package;
-    using TdService.Services.ViewModels.Package;
 
     using Formatting = System.Xml.Formatting;
 
@@ -83,40 +80,14 @@ namespace TdService.Controllers
         [HttpPost]
         public ActionResult Recent()
         {
-            var response = new List<PackageViewModel>
-                {
-                    new PackageViewModel
-                        {
-                            Id = 1,
-                            CreatedDate = DateTime.UtcNow,
-                            Name = "my package 1",
-                            Status = "New",
-                            DeliveryAddressId = 1,
-                            DeliveryAddressName = "my address 1",
-                            DispatchMethod = "ExpressDelivery",
-                            CanBeRemoved = true,
-                            CanBeSent = true,
-                            MessageType = "Success"
-                        },
-                    new PackageViewModel
-                        {
-                            Id = 2,
-                            CreatedDate = DateTime.UtcNow,
-                            Name = "my package 2",
-                            Status = "New",
-                            DeliveryAddressId = 2,
-                            DeliveryAddressName = "my address 2",
-                            DispatchMethod = "ExpressDelivery",
-                            CanBeRemoved = true,
-                            CanBeSent = true,
-                            MessageType = "Success"
-                        }
-                };
+            var request = new GetRecentPackagesRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() };
+            var response = this.packagesService.GetRecent(request);
+            var result = response.ConvertToPackageViewModelCollection();
 
             var jsonNetResult = new JsonNetResult
             {
                 Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
-                Data = response
+                Data = result
             };
             return jsonNetResult;
         }

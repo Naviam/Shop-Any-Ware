@@ -56,7 +56,7 @@ namespace TdService.Services.Implementations
         /// <returns>
         /// The collection of get recent packages response messages.
         /// </returns>
-        public List<GetRecentPackagesResponse> GetRecentPackages(GetRecentPackagesRequest request)
+        public List<GetRecentPackagesResponse> GetRecent(GetRecentPackagesRequest request)
         {
             var user = this.userRepository.GetUserWithPackagesByEmail(request.IdentityToken);
             if (user != null)

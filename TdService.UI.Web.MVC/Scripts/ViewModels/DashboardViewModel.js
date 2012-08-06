@@ -91,6 +91,13 @@ function Package(serverModel) {
         }
         return total;
     });
+
+    self.loadItems = ko.computed(function () {
+        self.items.removeAll();
+        self.items.unshift(new Item({ Name: 'Kindle', Price: 79 }));
+        self.items.unshift(new Item({ Name: 'Dell', Price: 879 }));
+    });
+    self.loadItems();
     self.packageItemsId = ko.computed(function () {
         /// <summary>This id is used for collapse / expand feature.</summary>
         return 'package_items_' + self.id().toString();
@@ -255,7 +262,7 @@ function DashboardViewModel(serverModel) {
 
     // dashboard view model properties
     self.newOrderField = ko.observable().extend({ required: true });
-    self.newPackageField = ko.observable().extend({ required: { message: ' ', params: true } });
+    self.newPackageField = ko.observable().extend({ required: true });
 
     // dashboard view model collections
     self.orders = ko.observableArray();
@@ -360,11 +367,34 @@ function DashboardViewModel(serverModel) {
         /// <summary>Load history of packages.</summary>
     };
 
-    self.createPackage = function(packageName) {
+    self.createPackage = function() {
         /// <summary>Create package.</summary>
+        if (self.newPackageField.isValid()) {
+            $.post("/tdservice/packages/add", { "packageName": self.newPackageField() }, function (data) {
+                var model = ko.toJS(data);
+                if (model.MessageType == "Success") {
+                    var newPackage = new Package(model);
+                    self.packages.unshift(newPackage);
+                    window.showNotice(data.Message, data.MessageType);
+                    $('#package' + newPackage.id()).show("blind", {}, "normal", function () {
+                        self.newPackageField("");
+                    });
+                }
+            });
+            return;
+        }
     };
 
-    self.removePackage = function(packageId) {
+    self.removePackage = function(currentPackage) {
         /// <summary>Remove package.</summary>
+        $.post("/tdservice/packages/remove", { "packageId": currentPackage.id }, function (data) {
+            var model = ko.toJS(data);
+            if (model.MessageType == "Success") {
+                window.showNotice(data.Message, data.MessageType);
+                $('#' + currentPackage.id()).hide("explode", {}, "normal", function () {
+                    self.packages.remove(currentPackage);
+                });
+            }
+        });
     };
 }

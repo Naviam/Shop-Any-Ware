@@ -27,7 +27,7 @@ namespace TdService.Services.Interfaces
         /// <returns>
         /// The collection of get recent packages response messages.
         /// </returns>
-        List<GetRecentPackagesResponse> GetRecentPackages(GetRecentPackagesRequest request);
+        List<GetRecentPackagesResponse> GetRecent(GetRecentPackagesRequest request);
 
         /// <summary>
         /// Add new package.
