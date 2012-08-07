@@ -21,18 +21,19 @@ footer{color:#999;text-align:right}
 .validation-summary-errors{font-weight:bold;color:#ff0000}
 .validation-summary-valid{display: none;}
 
-.en,.ru{margin:12px 8px;border:1px solid #eee;padding:0 !important;height:14px;width:22px}
+.en,.ru{margin:10px 8px;border:2px solid #000;padding:0 !important;height:16px;width:24px}
     .en{background:url(img/en.png)}
     .ru{background:url(img/ru.png)}
 .filter{display:table;list-style:none}
     .filter li{margin:8px 0}
     .filter .text{width:48px;text-align:right}
 .float_right{float:right}
+.choosen_culture{border:2px solid #000;outline:1px solid #ff9900}
 .header{clear:both}
     .header th{background-color:#F9F9F9}
 .new{border:1px dashed #ccc}
     .new div{font-size:32px;color:#ccc;margin:8px auto;text-align:center}
-.input-append .grey{margin-right:-4px !important;line-height:26px;height:26px;width:26px;
+/*.input-append .grey{margin-right:-4px !important;line-height:26px;height:26px;width:26px;
       background-color: #E6E6E6;
   background-image: -moz-linear-gradient(top, #E6E6E6, #ccc);
   background-image: -ms-linear-gradient(top, #E6E6E6, #ccc);
@@ -41,18 +42,21 @@ footer{color:#999;text-align:right}
   background-image: -o-linear-gradient(top, #E6E6E6, #ccc);
   background-image: linear-gradient(top, #E6E6E6, #ccc);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#E6E6E6', endColorstr='#ccc', GradientType=0);
-  border-color: #ccc #ccc #E6E6E6;}
+  border-color: #ccc #ccc #E6E6E6;}*/
+.link_example{margin:4px}
+    .link_example a{border-bottom:1px dotted #999;color:#999;text-decoration:none}
+        .link_example a:hover{border-bottom:1px dotted #333;color:#333;text-decoration:none}
 .package{margin:12px}
     .add-order{padding:8px;font-size:16px}
     .box{background:url(img/box_bg.jpg);border:1px solid #aa9985;border-radius:4px;padding:4px 8px}
-        .box .title{color:#fff;cursor:move;font-weight:bold;text-shadow:1px 1px 1px #999}
+        .box .name{color:#fff;cursor:move;font-weight:bold;text-shadow:1px 1px 1px #999}
         .box .white{background:url(img/white_bg.jpg);border-radius:2px;margin:4px 0}
         .box table{border:0;width:100%}
             .box table th{background-color:#eee;padding:2px 4px}
             .box table td{border-top:1px dashed #ccc;padding:2px 4px;text-align:center}
                 .box table td .dropdown-menu li{margin:4px 8px;text-align:left}
             /*.action table tr span{padding:2px 4px}*/
-                .action table tbody tr span:hover{background-color:#FFEEA8;cursor:text}
+                .action table.info tbody tr span:hover{background-color:#FFEEA8;cursor:text}
             .box table td.draggable{padding:0;width:9px}
                 .box table td.draggable div{background:url(img/draggable.png) repeat-y;padding:4px 0;height:12px;width:9px}
             .box table .sortable tr:hover{background-color:#eee;cursor:move}
@@ -62,14 +66,21 @@ footer{color:#999;text-align:right}
         .box .left{text-align:left}
         .box .right{text-align:right}
         .box table .btn-group .btn{float:none}
+        .box table tfoot{font-weight:bold}
         .edit input{padding:2px 4px;text-align:center;width:80%}
             .edit .left input{text-align:left}
+    .box .header{width:auto}
+    .box .header td{border:0}
     .box table tfoot{border-top:1px solid #ccc}
     .from{color:#999;font-style:italic}
     .label-photo{border-radius:3px 0 0 3px}
     .badge-photo{background-color:#ff9900;border-radius:0 3px 3px 0;font-size:10.998px}
-    .package .btn-toolbar{margin:0;padding:0;text-align:right}
-        .package .btn-toolbar ul{text-align:left}
+    .package .title{padding:0;width:100%}
+        .package .title .right{text-align:right}
+        .package .title td{border:0;padding:0;margin:0;text-align:left}
+        .package .title td .label{line-height:normal;margin:0}
+        .package .title .icon-white{margin:2px}
+        .package .title .icon-chevron-right{cursor:pointer}
     .package .btn-group{margin:0;padding:0}
     .package .btn-large{font-size:14px}
     .pac{border-collapse:collapse;margin:0;padding:0;width:100%}
