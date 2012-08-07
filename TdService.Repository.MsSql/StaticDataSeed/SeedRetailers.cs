@@ -9,6 +9,10 @@
 
 namespace TdService.Repository.MsSql.StaticDataSeed
 {
+    using System.IO;
+    using System.Web;
+
+    using TdService.Infrastructure.Helpers;
     using TdService.Model.Common;
 
     /// <summary>
@@ -24,13 +28,20 @@ namespace TdService.Repository.MsSql.StaticDataSeed
         /// </param>
         public static void Populate(ShopAnyWareSql context)
         {
-            context.Retailers.Add(new Retailer
+            var path = HttpContext.Current.Server.MapPath("~/App_Data/retailers.txt");
+            var retailers = ExcelHelper.LoadRetailersFromExcelFile(path);
+
+            foreach (var retailer in retailers)
+            {
+                context.Retailers.Add(new Retailer
                 {
-                    Category = "Computers",
-                    Name = "Apple, Inc.", 
-                    Url = "apple.com",
-                    Description = "Apple Computers"
+                    Category = retailer.Url,
+                    Name = retailer.Url,
+                    Url = retailer.Url,
+                    Description = retailer.Description
                 });
+            }
+
             context.SaveChanges();
         }
     }
