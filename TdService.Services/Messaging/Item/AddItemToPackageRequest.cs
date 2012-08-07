@@ -18,5 +18,10 @@ namespace TdService.Services.Messaging.Item
         /// Gets or sets the package id.
         /// </summary>
         public int PackageId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the item id.
+        /// </summary>
+        public int ItemId { get; set; }
     }
 }

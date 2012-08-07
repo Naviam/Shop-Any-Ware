@@ -92,5 +92,29 @@ namespace TdService.Controllers
             };
             return jsonNetResult;
         }
+
+        /// <summary>
+        /// Get package items.
+        /// </summary>
+        /// <param name="packageId">
+        /// The package id.
+        /// </param>
+        /// <returns>
+        /// The json result of item view models.
+        /// </returns>
+        [HttpPost]
+        [Authorize(Roles = "Shopper, Operator")]
+        public ActionResult GetPackageItems(int packageId)
+        {
+            var request = new GetPackageItemsRequest { PackageId = packageId };
+            var response = this.itemsService.GetPackageItems(request);
+
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = response.ConvertToPackageItemViewModelCollection()
+            };
+            return jsonNetResult;
+        }
     }
 }

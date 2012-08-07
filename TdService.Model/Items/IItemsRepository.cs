@@ -17,6 +17,17 @@ namespace TdService.Model.Items
     public interface IItemsRepository
     {
         /// <summary>
+        /// Get item by Id.
+        /// </summary>
+        /// <param name="itemId">
+        /// The item Id.
+        /// </param>
+        /// <returns>
+        /// The item.
+        /// </returns>
+        Item GetItemById(int itemId);
+
+        /// <summary>
         /// Get the list of order's products.
         /// </summary>
         /// <param name="orderId">
@@ -25,7 +36,7 @@ namespace TdService.Model.Items
         /// <returns>
         /// Collection of items.
         /// </returns>
-        IEnumerable<Item> GetOrderItems(int orderId);
+        List<Item> GetOrderItems(int orderId);
 
         /// <summary>
         /// Get package items.
@@ -36,7 +47,7 @@ namespace TdService.Model.Items
         /// <returns>
         /// Collection of package items.
         /// </returns>
-        IEnumerable<Item> GetPackageItems(int packageId);
+        List<Item> GetPackageItems(int packageId);
 
         /// <summary>
         /// Add item to an order.
@@ -53,18 +64,26 @@ namespace TdService.Model.Items
         Item AddItemToOrder(int orderId, Item item);
 
         /// <summary>
-        /// Add item to package.
+        /// Attach item to package.
         /// </summary>
         /// <param name="packageId">
         /// The package id.
         /// </param>
-        /// <param name="item">
-        /// The item to add.
+        /// <param name="itemId">
+        /// The item id to attach.
         /// </param>
-        /// <returns>
-        /// The TdService.Model.Items.Item.
-        /// </returns>
-        Item AddItemToPackage(int packageId, Item item);
+        void AttachItemToPackage(int packageId, int itemId);
+
+        /// <summary>
+        /// Detach item from package.
+        /// </summary>
+        /// <param name="packageId">
+        /// The package Id.
+        /// </param>
+        /// <param name="itemId">
+        /// The item Id.
+        /// </param>
+        void DetachItemFromPackage(int packageId, int itemId);
 
         /// <summary>
         /// Update item.

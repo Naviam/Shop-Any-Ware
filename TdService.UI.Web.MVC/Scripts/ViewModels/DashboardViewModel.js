@@ -6,6 +6,10 @@
 /// <reference path="../knockout.validation.debug.js" />
 /// <reference path="../knockout-sortable.js" />
 
+function getUrl(methodUrl) {
+    return window.location.host + methodUrl;
+}
+
 ko.extenders.defaultIfNull = function (target, defaultValue) {
     var result = ko.computed({
         read: target,
@@ -197,7 +201,7 @@ function Order(serverModel) {
 
     self.loadItems = function() {
         /// <summary>Get collection of items for the order.</summary>
-        $.post("/tdservice/items/getorderitems", { "orderId": self.id() }, function (data) {
+        $.post("/items/getorderitems", { "orderId": self.id() }, function (data) {
             var items = ko.toJS(data);
             self.items.removeAll();
             $.each(items, function (index, value) {
@@ -225,7 +229,7 @@ function Order(serverModel) {
                 "Weight": self.itemViewModel.Weight(),
                 "Color": self.itemViewModel.Color()
             };
-        $.post("/tdservice/items/additemtoorder", params, function (data) {
+        $.post("/items/additemtoorder", params, function (data) {
             var model = ko.toJS(data);
             if (model.MessageType == "Success") {
                 var item = new Item(model);
@@ -240,7 +244,7 @@ function Order(serverModel) {
 
     self.removeItem = function(item) {
         /// <summary>Remove item from order.</summary>
-        $.post("/tdservice/items/removeitemfromorder", ko.toJSON(item.id), function (data) {
+        $.post("/items/removeitemfromorder", ko.toJSON(item.id), function (data) {
             var model = ko.toJS(data);
             if (model.MessageType == "Success") {
                 self.items.remove(item);
@@ -291,7 +295,7 @@ function DashboardViewModel(serverModel) {
         if (!self.newOrderField.isValid()) {
             return;
         }
-        $.post("/tdservice/retailers/suggest", { "searchText": self.newOrderField() }, function (data) {
+        $.post("/retailers/suggest", { "searchText": self.newOrderField() }, function (data) {
             var retailers = ko.toJS(data);
             self.retailers.removeAll();
             $.each(retailers, function (index, value) {
@@ -303,7 +307,7 @@ function DashboardViewModel(serverModel) {
 
     self.getRecentOrders = function() {
         /// <summary>Load recent orders from server.</summary>
-        $.post("/tdservice/orders/recent", function (data) {
+        $.post("/orders/recent", function (data) {
             var orders = ko.toJS(data);
             self.orders.removeAll();
             $.each(orders, function(index, value) {
@@ -318,7 +322,7 @@ function DashboardViewModel(serverModel) {
         /// <summary>Add new order.</summary>
         $("#addNewOrderButton").button('toggle').button('loading');
         if (self.newOrderField.isValid()) {
-            $.post("/tdservice/orders/add", { "retailerUrl": self.newOrderField() }, function (data) {
+            $.post("/orders/add", { "retailerUrl": self.newOrderField() }, function (data) {
                 var model = ko.toJS(data);
                 if (model.MessageType == "Success") {
                     var order = new Order(model);
@@ -339,7 +343,7 @@ function DashboardViewModel(serverModel) {
 
     self.removeOrder = function(order) {
         /// <summary>Remove order.</summary>
-        $.post("/tdservice/orders/remove", { "orderId": order.id }, function (data) {
+        $.post("/orders/remove", { "orderId": order.id }, function (data) {
             var model = ko.toJS(data);
             if (model.MessageType == "Success") {
                 window.showNotice(data.Message, data.MessageType);
@@ -352,7 +356,7 @@ function DashboardViewModel(serverModel) {
 
     self.getRecentPackages = function () {
         /// <summary>Load recent packages from server.</summary>
-        $.post("/tdservice/packages/recent", function (data) {
+        $.post("/packages/recent", function (data) {
             var packages = ko.toJS(data);
             self.packages.removeAll();
             $.each(packages, function (index, value) {
@@ -370,7 +374,7 @@ function DashboardViewModel(serverModel) {
     self.createPackage = function() {
         /// <summary>Create package.</summary>
         if (self.newPackageField.isValid()) {
-            $.post("/tdservice/packages/add", { "packageName": self.newPackageField() }, function (data) {
+            $.post("/packages/add", { "packageName": self.newPackageField() }, function (data) {
                 var model = ko.toJS(data);
                 if (model.MessageType == "Success") {
                     var newPackage = new Package(model);
@@ -387,7 +391,7 @@ function DashboardViewModel(serverModel) {
 
     self.removePackage = function(currentPackage) {
         /// <summary>Remove package.</summary>
-        $.post("/tdservice/packages/remove", { "packageId": currentPackage.id }, function (data) {
+        $.post("/packages/remove", { "packageId": currentPackage.id }, function (data) {
             var model = ko.toJS(data);
             if (model.MessageType == "Success") {
                 window.showNotice(data.Message, data.MessageType);

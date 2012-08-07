@@ -66,6 +66,8 @@
     <Compile Include="Messaging\Item\AddItemToPackageResponse.cs" />
     <Compile Include="Messaging\Item\GetOrderItemsRequest.cs" />
     <Compile Include="Messaging\Item\GetOrderItemsResponse.cs" />
+    <Compile Include="Messaging\Item\GetPackageItemsRequest.cs" />
+    <Compile Include="Messaging\Item\GetPackageItemsResponse.cs" />
     <Compile Include="Messaging\Item\ItemDto.cs" />
     <Compile Include="Messaging\Order\RemoveOrderRequest.cs" />
     <Compile Include="Messaging\Order\RemoveOrderResponse.cs" />
