@@ -10,6 +10,7 @@
 namespace TdService.Repository.MsSql.Repositories
 {
     using System;
+    using System.Linq;
 
     using TdService.Model.Packages;
 
@@ -32,6 +33,20 @@ namespace TdService.Repository.MsSql.Repositories
         public PackageRepository(ShopAnyWareSql context)
         {
             this.context = context;
+        }
+
+        /// <summary>
+        /// Get package with items by Id.
+        /// </summary>
+        /// <param name="packageId">
+        /// The package Id.
+        /// </param>
+        /// <returns>
+        /// The package.
+        /// </returns>
+        public Package GetPackageWithItemsById(int packageId)
+        {
+            return this.context.Packages.Include("Items").SingleOrDefault(p => p.Id == packageId);
         }
 
         /// <summary>

@@ -18,6 +18,7 @@ namespace TdService.Specs
     using TdService.Controllers;
     using TdService.Infrastructure.Authentication;
     using TdService.Model.Items;
+    using TdService.Model.Packages;
     using TdService.Repository.MsSql;
     using TdService.Repository.MsSql.Repositories;
     using TdService.Services.Implementations;
@@ -46,6 +47,11 @@ namespace TdService.Specs
         private IItemsRepository itemsRepository;
 
         /// <summary>
+        /// The packages repository.
+        /// </summary>
+        private IPackageRepository packageRepository;
+
+        /// <summary>
         /// The forms authentication.
         /// </summary>
         private IFormsAuthentication formsAuthentication;
@@ -62,7 +68,8 @@ namespace TdService.Specs
             Database.SetInitializer(new ShopAnyWareTestInitilizer());
             this.context = new ShopAnyWareSql();
             this.itemsRepository = new ItemsRepository(this.context);
-            this.itemsService = new ItemsService(this.itemsRepository);
+            this.packageRepository = new PackageRepository(this.context);
+            this.itemsService = new ItemsService(this.itemsRepository, this.packageRepository);
         }
 
         /// <summary>

@@ -74,7 +74,7 @@ namespace TdService.Services.Mapping
         /// <returns>
         /// The collection of package item view models.
         /// </returns>
-        public static List<PackageItemViewModel> ConvertToOrderItemViewModelCollection(this List<GetPackageItemsResponse> packageItemsResponses)
+        public static List<PackageItemViewModel> ConvertToPackageItemViewModelCollection(this List<GetPackageItemsResponse> packageItemsResponses)
         {
             return Mapper.Map<List<GetPackageItemsResponse>, List<PackageItemViewModel>>(packageItemsResponses);
         }

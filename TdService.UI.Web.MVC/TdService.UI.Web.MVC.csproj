@@ -249,7 +249,6 @@
     <Content Include="Scripts\model\DashboardViewModel.js" />
     <Content Include="Scripts\model\DeliveryAddressViewModel.js" />
     <Content Include="Scripts\model\OrderViewModel.js" />
-    <Content Include="Scripts\model\PackageViewModel.js" />
     <Content Include="Scripts\model\ProfileViewModel.js" />
     <Content Include="Scripts\model\SignUpViewModel.js" />
     <Content Include="Scripts\MVVM\App.js" />

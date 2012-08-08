@@ -10,6 +10,7 @@
 namespace TdService.Repository.MsSql.Repositories
 {
     using System;
+    using System.Collections.Generic;
     using System.Data;
     using System.Linq;
 
@@ -34,6 +35,17 @@ namespace TdService.Repository.MsSql.Repositories
         public RetailerRepository(ShopAnyWareSql context)
         {
             this.context = context;
+        }
+
+        /// <summary>
+        /// Get all retailers.
+        /// </summary>
+        /// <returns>
+        /// The System.Collections.Generic.List`1[T -&gt; TdService.Model.Common.Retailer].
+        /// </returns>
+        public List<Retailer> GetAll()
+        {
+            return this.context.Retailers.ToList();
         }
 
         /// <summary>

@@ -18,10 +18,12 @@ namespace TdService
     using TdService.Services.Messaging.Item;
     using TdService.Services.Messaging.Order;
     using TdService.Services.Messaging.Package;
+    using TdService.Services.Messaging.Retailer;
     using TdService.Services.ViewModels;
     using TdService.Services.ViewModels.Item;
     using TdService.Services.ViewModels.Order;
     using TdService.Services.ViewModels.Package;
+    using TdService.Services.ViewModels.Retailer;
 
     /// <summary>
     /// The auto mapper configuration.
@@ -45,6 +47,8 @@ namespace TdService
 
             // retailer
             Mapper.CreateMap<string, Retailer>().ConvertUsing<RetailerConverter>();
+            Mapper.CreateMap<Retailer, GetRetailersResponse>();
+            Mapper.CreateMap<GetRetailersResponse, RetailerViewModel>();
 
             // add order item
             Mapper.CreateMap<OrderItemViewModel, AddItemToOrderRequest>();
