@@ -180,7 +180,7 @@ function Order(serverModel) {
     self.retailerUrl = ko.observable(serverModel.RetailerUrl);
     self.orderNumber = ko.observable(serverModel.OrderNumber);
     self.trackingNumber = ko.observable(serverModel.TrackingNumber);
-    self.createdDate = ko.observable(serverModel.CreatedDate);
+    self.createdDate = ko.observable(new Date(serverModel.CreatedDate).toLocaleDateString());
     self.receivedDate = ko.observable(serverModel.ReceivedDate);
     self.status = ko.observable(serverModel.Status);
 
