@@ -451,10 +451,19 @@ function DashboardViewModel(serverModel) {
     
     ko.bindingHandlers.autosuggest = {
         init: function (element, valueAccessor, allBindingAccessors, model) {
-            var retailers = $.map(model.retailers(), function (n) {
-                return n.url();
+            $.post("/retailers/get", { "searchText": self.newOrderField() }, function (data) {
+                var retailers = ko.toJS(data);
+                self.retailers.removeAll();
+                $.each(retailers, function (index, value) {
+                    var retailer = new Retailer(value);
+                    self.retailers.unshift(retailer.url);
+                });
+                var retailerUrls = $.map(retailers, function (n) {
+                    return n.Url;
+                });
+                $(element).typeahead({ source: retailerUrls });
             });
-            $(element).typeahead({ source: retailers });
+            
         }
     };
 }

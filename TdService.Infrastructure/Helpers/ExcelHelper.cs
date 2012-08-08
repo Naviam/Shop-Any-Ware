@@ -39,7 +39,7 @@ namespace TdService.Infrastructure.Helpers
             {
                 Url = row[1],
                 Description = row[2]
-            }).Skip(1).ToList();
+            }).ToList();
         }
     }
 }
