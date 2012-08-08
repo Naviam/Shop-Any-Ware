@@ -9,6 +9,8 @@
 
 namespace TdService.ShopAnyWare.Tests.Orders
 {
+    using System.Collections.Generic;
+
     using TdService.Model.Common;
 
     /// <summary>
@@ -16,6 +18,17 @@ namespace TdService.ShopAnyWare.Tests.Orders
     /// </summary>
     public class FakeRetailerRepository : IRetailerRepository
     {
+        /// <summary>
+        /// Get all retailers.
+        /// </summary>
+        /// <returns>
+        /// The System.Collections.Generic.List`1[T -&gt; TdService.Model.Common.Retailer].
+        /// </returns>
+        public List<Retailer> GetAll()
+        {
+            return null;
+        }
+
         /// <summary>
         /// Find or add retailer.
         /// </summary>

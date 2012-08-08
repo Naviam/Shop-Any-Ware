@@ -10,8 +10,12 @@
 namespace TdService.Controllers
 {
     using System.Web.Mvc;
+    using System.Xml;
 
     using TdService.Infrastructure.Authentication;
+    using TdService.Services.Interfaces;
+    using TdService.Services.Mapping;
+    using TdService.Services.Messaging.Retailer;
 
     /// <summary>
     /// The retailers controller.
@@ -19,14 +23,43 @@ namespace TdService.Controllers
     public class RetailersController : BaseController
     {
         /// <summary>
+        /// The retailers service.
+        /// </summary>
+        private readonly IRetailersService retailersService;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="RetailersController"/> class.
         /// </summary>
         /// <param name="formsAuthentication">
         /// The forms authentication.
         /// </param>
-        public RetailersController(IFormsAuthentication formsAuthentication)
+        /// <param name="retailersService">
+        /// The retailers Service.
+        /// </param>
+        public RetailersController(IFormsAuthentication formsAuthentication, IRetailersService retailersService)
             : base(formsAuthentication)
         {
+            this.retailersService = retailersService;
+        }
+
+        /// <summary>
+        /// Get all retailers.
+        /// </summary>
+        /// <returns>
+        /// Collection of retailers.
+        /// </returns>
+        public ActionResult Get()
+        {
+            var request = new GetRetailersRequest();
+            var response = this.retailersService.GetAll(request);
+            var retailers = response.ConvertToRetailerViewModelCollection();
+
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = retailers
+            };
+            return jsonNetResult;
         }
 
         /// <summary>
@@ -41,7 +74,12 @@ namespace TdService.Controllers
         public ActionResult Suggest(string searchText)
         {
             var request = new object();
-            return this.Json(request);
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = request
+            };
+            return jsonNetResult;
         }
     }
 }

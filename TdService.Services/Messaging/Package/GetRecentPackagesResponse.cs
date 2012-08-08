@@ -60,5 +60,30 @@ namespace TdService.Services.Messaging.Package
         /// Gets or sets the status.
         /// </summary>
         public string Status { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether can be modified.
+        /// </summary>
+        public bool CanBeModified { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether can items be modified.
+        /// </summary>
+        public bool CanItemsBeModified { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether can be sent.
+        /// </summary>
+        public bool CanBeSent { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether can be removed.
+        /// </summary>
+        public bool CanBeRemoved { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether can be disposed.
+        /// </summary>
+        public bool CanBeDisposed { get; set; }
     }
 }

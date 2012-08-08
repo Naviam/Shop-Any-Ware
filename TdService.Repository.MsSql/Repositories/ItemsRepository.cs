@@ -37,6 +37,20 @@ namespace TdService.Repository.MsSql.Repositories
         }
 
         /// <summary>
+        /// Get item by Id.
+        /// </summary>
+        /// <param name="itemId">
+        /// The item Id.
+        /// </param>
+        /// <returns>
+        /// The item.
+        /// </returns>
+        public Item GetItemById(int itemId)
+        {
+            return this.context.Items.Find(itemId);
+        }
+
+        /// <summary>
         /// Get the list of order's products.
         /// </summary>
         /// <param name="orderId">
@@ -45,15 +59,10 @@ namespace TdService.Repository.MsSql.Repositories
         /// <returns>
         /// Collection of items.
         /// </returns>
-        public IEnumerable<Item> GetOrderItems(int orderId)
+        public List<Item> GetOrderItems(int orderId)
         {
             var order = this.context.Orders.Include("Items").SingleOrDefault(o => o.Id == orderId);
-            if (order != null)
-            {
-                return order.Items;
-            }
-
-            return null;
+            return order != null ? order.Items : null;
         }
 
         /// <summary>
@@ -65,15 +74,10 @@ namespace TdService.Repository.MsSql.Repositories
         /// <returns>
         /// Collection of package items.
         /// </returns>
-        public IEnumerable<Item> GetPackageItems(int packageId)
+        public List<Item> GetPackageItems(int packageId)
         {
             var package = this.context.Packages.Include("Items").SingleOrDefault(p => p.Id == packageId);
-            if (package != null)
-            {
-                return package.Items;
-            }
-
-            return null;
+            return package != null ? package.Items : null;
         }
 
         /// <summary>
@@ -106,27 +110,45 @@ namespace TdService.Repository.MsSql.Repositories
         }
 
         /// <summary>
-        /// Add item to package.
+        /// Attach item to package.
         /// </summary>
         /// <param name="packageId">
         /// The package id.
         /// </param>
-        /// <param name="item">
-        /// The item to add.
+        /// <param name="itemId">
+        /// The item id to attach.
         /// </param>
-        /// <returns>
-        /// The TdService.Model.Items.Item.
-        /// </returns>
-        public Item AddItemToPackage(int packageId, Item item)
+        public void AttachItemToPackage(int packageId, int itemId)
         {
-            item = this.context.Items.Add(item);
+            var item = this.context.Items.Find(itemId);
             var package = this.context.Packages.Include("Items").SingleOrDefault(p => p.Id == packageId);
             if (package != null)
             {
                 package.Items.Add(item);
             }
+        }
 
-            return item;
+        /// <summary>
+        /// Detach item from package.
+        /// </summary>
+        /// <param name="packageId">
+        /// The package Id.
+        /// </param>
+        /// <param name="itemId">
+        /// The item Id.
+        /// </param>
+        public void DetachItemFromPackage(int packageId, int itemId)
+        {
+            var package = this.context.Packages.Include("Items").SingleOrDefault(p => p.Id == packageId);
+            if (package != null)
+            {
+                var itemToDetach = package.Items.SingleOrDefault(i => i.Id == itemId);
+
+                if (itemToDetach != null)
+                {
+                    package.Items.Remove(itemToDetach);
+                }
+            }
         }
 
         /// <summary>

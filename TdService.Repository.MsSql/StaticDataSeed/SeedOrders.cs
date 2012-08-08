@@ -13,7 +13,6 @@ namespace TdService.Repository.MsSql.StaticDataSeed
     using System.Collections.Generic;
     using System.Linq;
 
-    using TdService.Model.Common;
     using TdService.Model.Items;
     using TdService.Model.Orders;
 
@@ -31,7 +30,7 @@ namespace TdService.Repository.MsSql.StaticDataSeed
         public static void Populate(ShopAnyWareSql context)
         {
             var user = context.Users.SingleOrDefault(u => u.Email == "vhatalski@naviam.com");
-            var retailer = context.Retailers.SingleOrDefault(r => r.Url == "apple.com");
+            var retailer = context.Retailers.Find(1);
             if (user != null)
             {
                 user.Orders = new List<Order>

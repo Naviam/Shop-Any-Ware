@@ -6,6 +6,10 @@
 /// <reference path="../knockout.validation.debug.js" />
 /// <reference path="../knockout-sortable.js" />
 
+function getUrl(methodUrl) {
+    return window.location.host + methodUrl;
+}
+
 ko.extenders.defaultIfNull = function (target, defaultValue) {
     var result = ko.computed({
         read: target,
@@ -82,9 +86,9 @@ function Package(serverModel) {
     self.canBeSent = serverModel.CanBeSent;
     self.canBeDisposed = serverModel.CanBeDisposed;
 
-    // order view model computed properties
+    // package view model computed properties
     self.totalItemsAmount = ko.computed(function () {
-        /// <summary>Determines the total amount of the order.</summary>
+        /// <summary>Determines the total amount of items in te the package.</summary>
         var total = 0;
         for (var i = 0; i < self.items().length; i++) {
             total = total + self.items()[i].price();
@@ -92,16 +96,41 @@ function Package(serverModel) {
         return total;
     });
 
+    self.totalItemsQuantity = ko.computed(function() {
+        /// <summary>Determines the total number of items in the package.</summary>
+        var total = 0;
+        for (var i = 0; i < self.items().length; i++) {
+            total = total + self.items()[i].quantity();
+        }
+        return total;
+    });
+
+    self.totalItemsWeight = ko.computed(function() {
+        /// <summary>Determines the total weight of items in the package.</summary>
+        var total = 0;
+        for (var i = 0; i < self.items().length; i++) {
+            total = total + self.items()[i].weight();
+        }
+        return total;
+    });
+
     self.loadItems = ko.computed(function () {
-        self.items.removeAll();
-        self.items.unshift(new Item({ Name: 'Kindle', Price: 79 }));
-        self.items.unshift(new Item({ Name: 'Dell', Price: 879 }));
+        $.post("/items/getpackageitems", { "packageId": self.id() }, function (data) {
+            var items = ko.toJS(data);
+            self.items.removeAll();
+            $.each(items, function (index, value) {
+                var item = new Item(value);
+                self.items.unshift(item);
+            });
+        });
     });
     self.loadItems();
+
     self.packageItemsId = ko.computed(function () {
         /// <summary>This id is used for collapse / expand feature.</summary>
         return 'package_items_' + self.id().toString();
     });
+
     self.packageItemsIdWithNumberSign = ko.computed(function () {
         /// <summary>This id is used for collapse / expand feature.</summary>
         return '#' + self.packageItemsId();
@@ -110,7 +139,7 @@ function Package(serverModel) {
     self.sendPackage = function(pack) {
         /// <summary>Send package.</summary>
     };
-    
+
     self.getItemDetails = function (item) {
         /// <summary>Get item details.</summary>
     };
@@ -149,8 +178,8 @@ function Order(serverModel) {
     // order view model properties
     self.id = ko.observable(serverModel.Id);
     self.retailerUrl = ko.observable(serverModel.RetailerUrl);
-    self.orderNumber = ko.observable(serverModel.OrderNumber).extend({ defaultIfNull: "not set" });
-    self.trackingNumber = ko.observable(serverModel.TrackingNumber).extend({ defaultIfNull: "not set" });
+    self.orderNumber = ko.observable(serverModel.OrderNumber);
+    self.trackingNumber = ko.observable(serverModel.TrackingNumber);
     self.createdDate = ko.observable(serverModel.CreatedDate);
     self.receivedDate = ko.observable(serverModel.ReceivedDate);
     self.status = ko.observable(serverModel.Status);
@@ -176,6 +205,24 @@ function Order(serverModel) {
         return total;
     });
 
+    self.totalItemsQuantity = ko.computed(function () {
+        /// <summary>Determines the total number of items in the order.</summary>
+        var total = 0;
+        for (var i = 0; i < self.items().length; i++) {
+            total = total + self.items()[i].quantity();
+        }
+        return total;
+    });
+
+    self.totalItemsWeight = ko.computed(function () {
+        /// <summary>Determines the total weight of items in the order.</summary>
+        var total = 0;
+        for (var i = 0; i < self.items().length; i++) {
+            total = total + self.items()[i].weight();
+        }
+        return total;
+    });
+    
     self.hasItems = ko.computed(function() {
         /// <summary>Determines whether order has items.</summary>
         return self.items().length > 0;
@@ -197,7 +244,7 @@ function Order(serverModel) {
 
     self.loadItems = function() {
         /// <summary>Get collection of items for the order.</summary>
-        $.post("/tdservice/items/getorderitems", { "orderId": self.id() }, function (data) {
+        $.post("/items/getorderitems", { "orderId": self.id() }, function (data) {
             var items = ko.toJS(data);
             self.items.removeAll();
             $.each(items, function (index, value) {
@@ -225,7 +272,7 @@ function Order(serverModel) {
                 "Weight": self.itemViewModel.Weight(),
                 "Color": self.itemViewModel.Color()
             };
-        $.post("/tdservice/items/additemtoorder", params, function (data) {
+        $.post("/items/additemtoorder", params, function (data) {
             var model = ko.toJS(data);
             if (model.MessageType == "Success") {
                 var item = new Item(model);
@@ -240,7 +287,7 @@ function Order(serverModel) {
 
     self.removeItem = function(item) {
         /// <summary>Remove item from order.</summary>
-        $.post("/tdservice/items/removeitemfromorder", ko.toJSON(item.id), function (data) {
+        $.post("/items/removeitemfromorder", ko.toJSON(item.id), function (data) {
             var model = ko.toJS(data);
             if (model.MessageType == "Success") {
                 self.items.remove(item);
@@ -253,7 +300,11 @@ function Order(serverModel) {
 }
 
 function Retailer(serverModel) {
+    /// <summary>Retailer view model.</summary>
     var self = this;
+
+    self.url = ko.observable(serverModel.Url);
+    self.description = ko.observable(serverModel.Description);
 }
 
 function DashboardViewModel(serverModel) {
@@ -286,24 +337,25 @@ function DashboardViewModel(serverModel) {
         return self.newPackageField() === undefined || self.newPackageField() == '';
     });
 
-    self.suggestRetailers = function() {
+    self.suggestRetailers = function () {
         /// <summary>Load shops from db to autosuggest them for user.</summary>
-        if (!self.newOrderField.isValid()) {
-            return;
-        }
-        $.post("/tdservice/retailers/suggest", { "searchText": self.newOrderField() }, function (data) {
+        //if (!self.newOrderField.isValid()) {
+        //    return;
+        //}
+        $.post("/retailers/get", { "searchText": self.newOrderField() }, function (data) {
             var retailers = ko.toJS(data);
             self.retailers.removeAll();
             $.each(retailers, function (index, value) {
                 var retailer = new Retailer(value);
-                self.retailers.unshift(retailer);
+                self.retailers.unshift(retailer.url);
             });
         });
     };
+    self.suggestRetailers();
 
     self.getRecentOrders = function() {
         /// <summary>Load recent orders from server.</summary>
-        $.post("/tdservice/orders/recent", function (data) {
+        $.post("/orders/recent", function (data) {
             var orders = ko.toJS(data);
             self.orders.removeAll();
             $.each(orders, function(index, value) {
@@ -318,7 +370,7 @@ function DashboardViewModel(serverModel) {
         /// <summary>Add new order.</summary>
         $("#addNewOrderButton").button('toggle').button('loading');
         if (self.newOrderField.isValid()) {
-            $.post("/tdservice/orders/add", { "retailerUrl": self.newOrderField() }, function (data) {
+            $.post("/orders/add", { "retailerUrl": self.newOrderField() }, function (data) {
                 var model = ko.toJS(data);
                 if (model.MessageType == "Success") {
                     var order = new Order(model);
@@ -326,7 +378,6 @@ function DashboardViewModel(serverModel) {
                     window.showNotice(data.Message, data.MessageType);
                     $('#' + order.id()).show("blind", {}, "normal", function () {
                         self.newOrderField("");
-
                     });
                 }
                 $("#addNewOrderButton").button('toggle').button('reset');
@@ -339,7 +390,7 @@ function DashboardViewModel(serverModel) {
 
     self.removeOrder = function(order) {
         /// <summary>Remove order.</summary>
-        $.post("/tdservice/orders/remove", { "orderId": order.id }, function (data) {
+        $.post("/orders/remove", { "orderId": order.id }, function (data) {
             var model = ko.toJS(data);
             if (model.MessageType == "Success") {
                 window.showNotice(data.Message, data.MessageType);
@@ -352,7 +403,7 @@ function DashboardViewModel(serverModel) {
 
     self.getRecentPackages = function () {
         /// <summary>Load recent packages from server.</summary>
-        $.post("/tdservice/packages/recent", function (data) {
+        $.post("/packages/recent", function (data) {
             var packages = ko.toJS(data);
             self.packages.removeAll();
             $.each(packages, function (index, value) {
@@ -370,7 +421,7 @@ function DashboardViewModel(serverModel) {
     self.createPackage = function() {
         /// <summary>Create package.</summary>
         if (self.newPackageField.isValid()) {
-            $.post("/tdservice/packages/add", { "packageName": self.newPackageField() }, function (data) {
+            $.post("/packages/add", { "packageName": self.newPackageField() }, function (data) {
                 var model = ko.toJS(data);
                 if (model.MessageType == "Success") {
                     var newPackage = new Package(model);
@@ -387,7 +438,7 @@ function DashboardViewModel(serverModel) {
 
     self.removePackage = function(currentPackage) {
         /// <summary>Remove package.</summary>
-        $.post("/tdservice/packages/remove", { "packageId": currentPackage.id }, function (data) {
+        $.post("/packages/remove", { "packageId": currentPackage.id }, function (data) {
             var model = ko.toJS(data);
             if (model.MessageType == "Success") {
                 window.showNotice(data.Message, data.MessageType);
@@ -396,5 +447,23 @@ function DashboardViewModel(serverModel) {
                 });
             }
         });
+    };
+    
+    ko.bindingHandlers.autosuggest = {
+        init: function (element, valueAccessor, allBindingAccessors, model) {
+            $.post("/retailers/get", { "searchText": self.newOrderField() }, function (data) {
+                var retailers = ko.toJS(data);
+                self.retailers.removeAll();
+                $.each(retailers, function (index, value) {
+                    var retailer = new Retailer(value);
+                    self.retailers.unshift(retailer.url);
+                });
+                var retailerUrls = $.map(retailers, function (n) {
+                    return n.Url;
+                });
+                $(element).typeahead({ source: retailerUrls });
+            });
+            
+        }
     };
 }

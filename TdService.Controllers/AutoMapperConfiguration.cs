@@ -18,9 +18,12 @@ namespace TdService
     using TdService.Services.Messaging.Item;
     using TdService.Services.Messaging.Order;
     using TdService.Services.Messaging.Package;
+    using TdService.Services.Messaging.Retailer;
+    using TdService.Services.ViewModels;
     using TdService.Services.ViewModels.Item;
     using TdService.Services.ViewModels.Order;
     using TdService.Services.ViewModels.Package;
+    using TdService.Services.ViewModels.Retailer;
 
     /// <summary>
     /// The auto mapper configuration.
@@ -32,14 +35,20 @@ namespace TdService
         /// </summary>
         public static void Configure()
         {
-            // mapping orders
+            // get recent orders
             Mapper.CreateMap<GetRecentOrdersResponse, OrderViewModel>();
             Mapper.CreateMap<Order, GetRecentOrdersResponse>();
+
+            // add order
             Mapper.CreateMap<AddOrderResponse, OrderViewModel>();
             Mapper.CreateMap<OrderViewModel, AddOrderRequest>();
-            Mapper.CreateMap<string, Retailer>().ConvertUsing<RetailerConverter>();
             Mapper.CreateMap<AddOrderRequest, Order>();
             Mapper.CreateMap<Order, AddOrderResponse>();
+
+            // retailer
+            Mapper.CreateMap<string, Retailer>().ConvertUsing<RetailerConverter>();
+            Mapper.CreateMap<Retailer, GetRetailersResponse>();
+            Mapper.CreateMap<GetRetailersResponse, RetailerViewModel>();
 
             // add order item
             Mapper.CreateMap<OrderItemViewModel, AddItemToOrderRequest>();
@@ -51,11 +60,19 @@ namespace TdService
             Mapper.CreateMap<Item, GetOrderItemsResponse>();
             Mapper.CreateMap<GetOrderItemsResponse, OrderItemViewModel>();
 
-            // packages
+            // add item to package
+
+            // get package items
+            Mapper.CreateMap<Item, GetPackageItemsResponse>();
+            Mapper.CreateMap<GetPackageItemsResponse, PackageItemViewModel>();
+
+            // get recent packages
             Mapper.CreateMap<Package, GetRecentPackagesResponse>();
+            Mapper.CreateMap<GetRecentPackagesResponse, PackageViewModel>();
+
+            // add package
             Mapper.CreateMap<Package, AddPackageResponse>();
             Mapper.CreateMap<AddPackageResponse, PackageViewModel>();
-            Mapper.CreateMap<GetRecentPackagesResponse, PackageViewModel>();
         }
 
         /// <summary>

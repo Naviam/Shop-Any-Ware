@@ -50,5 +50,16 @@ namespace TdService.Services.Interfaces
         /// The get order items response message collection.
         /// </returns>
         List<GetOrderItemsResponse> GetOrderItems(GetOrderItemsRequest request);
+
+        /// <summary>
+        /// Get package items.
+        /// </summary>
+        /// <param name="request">
+        /// The get package items request message.
+        /// </param>
+        /// <returns>
+        /// The get package items response.
+        /// </returns>
+        List<GetPackageItemsResponse> GetPackageItems(GetPackageItemsRequest request);
     }
 }

@@ -63,6 +63,7 @@ namespace TdService.UI.Web.MVC.App_Start
             container.Register<IOrderService, OrderService>();
             container.Register<IPackagesService, PackagesService>();
             container.Register<IItemsService, ItemsService>();
+            container.Register<IRetailersService, RetailersService>();
 
             // repositories
             container.Register<IOrderRepository, OrderRepository>();

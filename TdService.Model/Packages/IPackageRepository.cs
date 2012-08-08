@@ -15,6 +15,17 @@ namespace TdService.Model.Packages
     public interface IPackageRepository
     {
         /// <summary>
+        /// Get package with items by Id.
+        /// </summary>
+        /// <param name="packageId">
+        /// The package Id.
+        /// </param>
+        /// <returns>
+        /// The package.
+        /// </returns>
+        Package GetPackageWithItemsById(int packageId);
+
+        /// <summary>
         /// Add new package
         /// </summary>
         /// <param name="package">

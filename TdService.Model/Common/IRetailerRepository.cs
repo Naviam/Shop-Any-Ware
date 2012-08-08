@@ -9,11 +9,21 @@
 
 namespace TdService.Model.Common
 {
+    using System.Collections.Generic;
+
     /// <summary>
     /// Interface for retailer repository.
     /// </summary>
     public interface IRetailerRepository
     {
+        /// <summary>
+        /// Get all retailers.
+        /// </summary>
+        /// <returns>
+        /// The System.Collections.Generic.List`1[T -&gt; TdService.Model.Common.Retailer].
+        /// </returns>
+        List<Retailer> GetAll();
+
         /// <summary>
         /// Find or add retailer.
         /// </summary>

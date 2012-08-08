@@ -14,6 +14,7 @@ namespace TdService.Services.Implementations
     using System.Text;
 
     using TdService.Model.Items;
+    using TdService.Model.Packages;
     using TdService.Services.Interfaces;
     using TdService.Services.Mapping;
     using TdService.Services.Messaging;
@@ -30,14 +31,23 @@ namespace TdService.Services.Implementations
         private readonly IItemsRepository itemsRepository;
 
         /// <summary>
+        /// The package repository.
+        /// </summary>
+        private readonly IPackageRepository packageRepository;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="ItemsService"/> class.
         /// </summary>
         /// <param name="itemsRepository">
         /// The items repository.
         /// </param>
-        public ItemsService(IItemsRepository itemsRepository)
+        /// <param name="packageRepository">
+        /// The package repository.
+        /// </param>
+        public ItemsService(IItemsRepository itemsRepository, IPackageRepository packageRepository)
         {
             this.itemsRepository = itemsRepository;
+            this.packageRepository = packageRepository;
         }
 
         /// <summary>
@@ -74,7 +84,7 @@ namespace TdService.Services.Implementations
             var addedItem = this.itemsRepository.AddItemToOrder(request.OrderId, item);
             this.itemsRepository.SaveChanges();
             var response = addedItem.ConvertToAddItemToOrderResponse();
-            response.MessageType = MessageType.Success;
+            response.MessageType = MessageType.Warning;
             response.Message = "The item has been added successfully.";
             return response;
         }
@@ -90,7 +100,17 @@ namespace TdService.Services.Implementations
         /// </returns>
         public AddItemToPackageResponse AddItemToPackage(AddItemToPackageRequest request)
         {
-            return null;
+            var item = this.itemsRepository.GetItemById(request.ItemId);
+            var package = this.packageRepository.GetPackageWithItemsById(request.PackageId);
+            package.Items.Add(item);
+
+            this.packageRepository.SaveChanges();
+
+            return new AddItemToPackageResponse
+                {
+                    MessageType = MessageType.Warning,
+                    Message = string.Format("The item has been moved to package {0}, id: {1}", package.Name, package.Id)
+                };
         }
 
         /// <summary>
@@ -106,6 +126,21 @@ namespace TdService.Services.Implementations
         {
             var orderItems = this.itemsRepository.GetOrderItems(request.OrderId).ToList();
             return orderItems.ConvertToGetOrderItemsResponse();
+        }
+
+        /// <summary>
+        /// Get package items.
+        /// </summary>
+        /// <param name="request">
+        /// The get package items request message.
+        /// </param>
+        /// <returns>
+        /// The collection of get package items responses.
+        /// </returns>
+        public List<GetPackageItemsResponse> GetPackageItems(GetPackageItemsRequest request)
+        {
+            var packageItems = this.itemsRepository.GetPackageItems(request.PackageId);
+            return packageItems.ConvertToGetPackageItemsResponse();
         }
     }
 }

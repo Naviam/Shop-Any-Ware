@@ -1,18 +1,18 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="AddItemToPackageResponse.cs" company="TdService">
+// <copyright file="GetPackageItemsResponse.cs" company="TdService">
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
-//   The add item to package response.
+//   The get package items response.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace TdService.Services.Messaging.Item
 {
     /// <summary>
-    /// The add item to package response.
+    /// The get package items response.
     /// </summary>
-    public class AddItemToPackageResponse : ResponseBase
+    public class GetPackageItemsResponse : ItemDto
     {
     }
 }

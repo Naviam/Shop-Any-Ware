@@ -20,7 +20,7 @@ namespace TdService.Repository.MsSql.Configurations
         /// </summary>
         public RetailerConfiguration()
         {
-            this.Property(r => r.Name).IsRequired().HasMaxLength(64);
+            this.Property(r => r.Name).HasMaxLength(63);
             this.Property(r => r.Category).HasMaxLength(64);
             this.Property(r => r.Url).IsRequired().HasMaxLength(256);
             this.Property(r => r.Description).HasMaxLength(1000);

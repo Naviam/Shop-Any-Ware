@@ -133,11 +133,38 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Customs Declaration.
+        /// </summary>
+        public static string CustomsDeclaration {
+            get {
+                return ResourceManager.GetString("CustomsDeclaration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Shop Any Ware - Dashboard.
         /// </summary>
         public static string DashboardPageTitle {
             get {
                 return ResourceManager.GetString("DashboardPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delivery.
+        /// </summary>
+        public static string DeliveryHeader {
+            get {
+                return ResourceManager.GetString("DeliveryHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Example.
+        /// </summary>
+        public static string ExampleHeader {
+            get {
+                return ResourceManager.GetString("ExampleHeader", resourceCulture);
             }
         }
         
@@ -151,7 +178,16 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Item Name.
+        ///   Looks up a localized string similar to IN STOCK.
+        /// </summary>
+        public static string InStockButton {
+            get {
+                return ResourceManager.GetString("InStockButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item.
         /// </summary>
         public static string ItemNameHeader {
             get {
@@ -214,6 +250,15 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Created.
+        /// </summary>
+        public static string OrderCreatedDateHeader {
+            get {
+                return ResourceManager.GetString("OrderCreatedDateHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The order has been successfully created..
         /// </summary>
         public static string OrderCreatedSuccess {
@@ -259,6 +304,15 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Received.
+        /// </summary>
+        public static string OrderReceivedDateHeader {
+            get {
+                return ResourceManager.GetString("OrderReceivedDateHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The order has been successfully removed..
         /// </summary>
         public static string OrderRemovedSuccess {
@@ -291,6 +345,24 @@ namespace TdService.Resources.Views {
         public static string PriceHeader {
             get {
                 return ResourceManager.GetString("PriceHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Click to edit item price..
+        /// </summary>
+        public static string PriceTitle {
+            get {
+                return ResourceManager.GetString("PriceTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Qty.
+        /// </summary>
+        public static string QuantityHeader {
+            get {
+                return ResourceManager.GetString("QuantityHeader", resourceCulture);
             }
         }
         
@@ -372,6 +444,15 @@ namespace TdService.Resources.Views {
         public static string TrackingNumberHeader {
             get {
                 return ResourceManager.GetString("TrackingNumberHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Weight.
+        /// </summary>
+        public static string WeightHeader {
+            get {
+                return ResourceManager.GetString("WeightHeader", resourceCulture);
             }
         }
     }

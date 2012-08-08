@@ -141,14 +141,26 @@
   <data name="CancelButton" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="CustomsDeclaration" xml:space="preserve">
+    <value>Customs Declaration</value>
+  </data>
   <data name="DashboardPageTitle" xml:space="preserve">
     <value>Shop Any Ware - Dashboard</value>
+  </data>
+  <data name="DeliveryHeader" xml:space="preserve">
+    <value>Delivery</value>
+  </data>
+  <data name="ExampleHeader" xml:space="preserve">
+    <value>Example</value>
   </data>
   <data name="HistoryPackagesTabHeader" xml:space="preserve">
     <value>History</value>
   </data>
+  <data name="InStockButton" xml:space="preserve">
+    <value>IN STOCK</value>
+  </data>
   <data name="ItemNameHeader" xml:space="preserve">
-    <value>Item Name</value>
+    <value>Item</value>
   </data>
   <data name="ItemsTotalHeader" xml:space="preserve">
     <value>Total</value>
@@ -168,6 +180,9 @@
   <data name="NoOrdersMessage" xml:space="preserve">
     <value>There are no active orders right now. Please create a new one.</value>
   </data>
+  <data name="OrderCreatedDateHeader" xml:space="preserve">
+    <value>Created</value>
+  </data>
   <data name="OrderCreatedSuccess" xml:space="preserve">
     <value>The order has been successfully created.</value>
   </data>
@@ -183,6 +198,9 @@
   <data name="OrderOption2" xml:space="preserve">
     <value>Вы покупаете и мы пересылаем</value>
   </data>
+  <data name="OrderReceivedDateHeader" xml:space="preserve">
+    <value>Received</value>
+  </data>
   <data name="OrderRemovedSuccess" xml:space="preserve">
     <value>The order has been successfully removed.</value>
   </data>
@@ -194,6 +212,12 @@
   </data>
   <data name="PriceHeader" xml:space="preserve">
     <value>Price</value>
+  </data>
+  <data name="PriceTitle" xml:space="preserve">
+    <value>Click to edit item price.</value>
+  </data>
+  <data name="QuantityHeader" xml:space="preserve">
+    <value>Qty</value>
   </data>
   <data name="RecentPackagesTabHeader" xml:space="preserve">
     <value>Recent</value>
@@ -221,5 +245,8 @@
   </data>
   <data name="TrackingNumberHeader" xml:space="preserve">
     <value>Tracking #</value>
+  </data>
+  <data name="WeightHeader" xml:space="preserve">
+    <value>Weight</value>
   </data>
 </root>
