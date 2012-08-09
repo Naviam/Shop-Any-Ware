@@ -64,6 +64,7 @@ footer{color:#999;text-align:right}
 .package{margin:12px}
     .add-order{padding:8px;font-size:16px}
     .box{/*background:url(img/box_bg.jpg);*/background-color:#E6DCAE;border:1px solid #aa9985;border-radius:4px;padding:4px 8px}
+        .box .alert{margin:0}
         .box .name{font-weight:bold;vertical-align:middle}
         .box .white{/*background:url(img/white_bg.jpg);*/background-color:#F7F3E5;border-radius:2px;margin:4px 0}
         .box .white .border{padding:4px}
