@@ -62,10 +62,10 @@ namespace TdService.Model.Orders
         {
             get
             {
-                return false;
+                return true;
             }
         }
-
+        
         /// <summary>
         /// Flag that says whether this order can be disposed.
         /// </summary>
