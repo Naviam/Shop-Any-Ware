@@ -52,10 +52,10 @@ namespace TdService.ShopAnyWare.Tests.Orders
             var retailerRepository = new RetailerRepository(this.context);
             var retailer = new Retailer
             {
-                Name = "Apple, Inc.",
-                Url = "apple.com",
+                Name = "Amazon, Inc.",
+                Url = "amazon.com",
                 Category = "Computers",
-                Description = "Apple"
+                Description = "Amazon"
             };
 
             // act
@@ -63,8 +63,8 @@ namespace TdService.ShopAnyWare.Tests.Orders
             retailerRepository.SaveChanges();
 
             // assert
-            Assert.That(actual.Name, Is.EqualTo("Apple, Inc."));
-            Assert.That(actual.Id, Is.EqualTo(1));
+            Assert.That(actual.Url, Is.EqualTo("amazon.com"));
+            Assert.That(actual.Id, Is.GreaterThan(0));
         }
 
         /// <summary>
@@ -111,11 +111,11 @@ namespace TdService.ShopAnyWare.Tests.Orders
             // arrange
             var repository = new OrderRepository(this.context);
             const int OrderId = 1;
-            var order = repository.GetOrderById(OrderId);
-            if (order == null)
-            {
-                Assert.Fail("order with ID = 1 was not found in db");
-            }
+            //var order = repository.GetOrderById(OrderId);
+            //if (order == null)
+            //{
+            //    Assert.Fail("order with ID = 1 was not found in db");
+            //}
 
             // act
             repository.RemoveOrder(OrderId);
@@ -136,8 +136,8 @@ namespace TdService.ShopAnyWare.Tests.Orders
             var orderRepository = new OrderRepository(this.context);
             var retailerRepository = new RetailerRepository(this.context);
 
-            const string ShopName = "apple.com";
-            var retailer = new Retailer(ShopName);
+            const string Retailer = "amazon.com";
+            var retailer = new Retailer(Retailer);
             retailer = retailerRepository.FindOrAdd(retailer);
             retailerRepository.SaveChanges();
 

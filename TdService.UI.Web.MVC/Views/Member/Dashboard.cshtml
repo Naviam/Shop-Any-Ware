@@ -82,11 +82,8 @@
                                         <div class="btn-group">
                                             <button class="btn btn-mini" title="Edit"><i class="icon icon-edit"></i></button>
                                             <button class="btn btn-mini dropdown-toggle" title="Move" data-toggle="dropdown"><i class="icon icon-move"></i>@*@DashboardViewResources.ActionMoveHeader*@ <span class="caret"></span></button>
-                                            <ul class="dropdown-menu">
-                                                <li><i class="icon-plus"></i>@DashboardViewResources.MoveToNewPackage</li>
-                                                <li class="divider"></li>
-                                                <li><i class="icon-gift"></i>Package name</li>
-                                                <li><i class="icon-gift"></i>My Gifts</li>
+                                            <ul class="dropdown-menu" data-bind="foreach: $root.packages()">
+                                                <li><i class="icon-gift"></i><span data-bind="text: name()"></span> (id:<span data-bind="text: id"></span>)</li>
                                             </ul>
                                             <button class="btn btn-mini" title="Delete"><i class="icon icon-trash"></i></button>
                                         </div>
@@ -104,13 +101,15 @@
                                     <td><span data-bind="text: totalItemsWeight"></span> lbs</td>
                                     <td>$<span data-bind="text: totalItemsAmount"></span></td>
                                     <td>
-                                        <button class="btn btn-mini dropdown-toggle" title="Move All Items" data-toggle="dropdown"><i class="icon icon-move"></i><span class="caret"></span></button>
-                                        <ul class="dropdown-menu">
-                                            <li><i class="icon-plus"></i>@DashboardViewResources.MoveToNewPackage</li>
-                                            <li class="divider"></li>
-                                            <li><i class="icon-gift"></i>Package name</li>
-                                            <li><i class="icon-gift"></i>My Gifts</li>
-                                        </ul>
+                                        <div data-bind="visible: items().length > 1">
+                                            <button class="btn btn-mini dropdown-toggle" title="Move All Items" data-toggle="dropdown"><i class="icon icon-move"></i><span class="caret"></span></button>
+                                            <ul class="dropdown-menu">
+                                                <li><i class="icon-plus"></i>@DashboardViewResources.MoveToNewPackage</li>
+                                                <li class="divider"></li>
+                                                <li><i class="icon-gift"></i>Package name</li>
+                                                <li><i class="icon-gift"></i>My Gifts</li>
+                                            </ul>
+                                        </div>
                                     </td>
                                     @*<td>
                                         <div></div>

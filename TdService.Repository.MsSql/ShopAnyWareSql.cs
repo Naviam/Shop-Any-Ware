@@ -10,6 +10,7 @@ namespace TdService.Repository.MsSql
 
     using Configurations;
 
+    using TdService.Infrastructure.FileSystem;
     using TdService.Model.Addresses;
     using TdService.Model.Balance;
     using TdService.Model.Common;
@@ -136,7 +137,7 @@ namespace TdService.Repository.MsSql
                 context.Database.ExecuteSqlCommand("ALTER TABLE Retailers ADD CONSTRAINT rc_Url UNIQUE(Url)");
                 SeedMembership.Populate(context);
                 SeedCurrencies.Populate(context);
-                SeedRetailers.Populate(context);
+                SeedRetailers.Populate(context, new FileWebStorage());
                 SeedOrders.Populate(context);
                 SeedPackages.Populate(context);
 

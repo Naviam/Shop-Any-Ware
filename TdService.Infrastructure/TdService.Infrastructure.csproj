@@ -92,6 +92,9 @@
     <Compile Include="Email\EmailServiceFactory.cs" />
     <Compile Include="Email\IEmailService.cs" />
     <Compile Include="Email\SMTPService.cs" />
+    <Compile Include="FileSystem\FileStorage.cs" />
+    <Compile Include="FileSystem\FileWebStorage.cs" />
+    <Compile Include="FileSystem\IFileStorage.cs" />
     <Compile Include="Helpers\ExcelHelper.cs" />
     <Compile Include="Helpers\PriceHelper.cs" />
     <Compile Include="Helpers\RetailersSource.cs" />

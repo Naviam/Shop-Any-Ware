@@ -10,6 +10,14 @@ function getUrl(methodUrl) {
     return window.location.host + methodUrl;
 }
 
+function formatDate(dateUtcString) {
+    var date = new Date(dateUtcString);
+    var currDate = date.getDate();
+    var currMonth = date.getMonth() + 1; //Months are zero based
+    var currYear = date.getFullYear();
+    return currDate + "-" + currMonth + "-" + currYear;
+}
+
 ko.extenders.defaultIfNull = function (target, defaultValue) {
     var result = ko.computed({
         read: target,
@@ -180,8 +188,8 @@ function Order(serverModel) {
     self.retailerUrl = ko.observable(serverModel.RetailerUrl);
     self.orderNumber = ko.observable(serverModel.OrderNumber);
     self.trackingNumber = ko.observable(serverModel.TrackingNumber);
-    self.createdDate = ko.observable(new Date(serverModel.CreatedDate).toLocaleDateString());
-    self.receivedDate = ko.observable(serverModel.ReceivedDate);
+    self.createdDate = ko.observable(formatDate(serverModel.CreatedDate));
+    self.receivedDate = ko.observable(formatDate(serverModel.ReceivedDate));
     self.status = ko.observable(serverModel.Status);
 
     // order view model collections
@@ -368,8 +376,8 @@ function DashboardViewModel(serverModel) {
 
     self.createOrder = function() {
         /// <summary>Add new order.</summary>
-        $("#addNewOrderButton").button('toggle').button('loading');
         if (self.newOrderField.isValid()) {
+            $("#addNewOrderButton").button('toggle').button('loading');
             $.post("/orders/add", { "retailerUrl": self.newOrderField() }, function (data) {
                 var model = ko.toJS(data);
                 if (model.MessageType == "Success") {
@@ -448,7 +456,7 @@ function DashboardViewModel(serverModel) {
             }
         });
     };
-    
+
     ko.bindingHandlers.autosuggest = {
         init: function (element, valueAccessor, allBindingAccessors, model) {
             $.post("/retailers/get", { "searchText": self.newOrderField() }, function (data) {

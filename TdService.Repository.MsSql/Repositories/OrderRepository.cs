@@ -91,11 +91,9 @@ namespace TdService.Repository.MsSql.Repositories
         /// </param>
         public void RemoveOrder(int orderId)
         {
-            var order = this.context.Orders.Find(orderId);
-            if (order != null)
-            {
-                this.context.Orders.Remove(order);
-            }
+            var order = new Order { Id = orderId };
+            this.context.Orders.Attach(order);
+            this.context.Orders.Remove(order);
         }
 
         /// <summary>

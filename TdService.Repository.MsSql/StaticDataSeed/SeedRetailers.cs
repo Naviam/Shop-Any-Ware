@@ -9,11 +9,10 @@
 
 namespace TdService.Repository.MsSql.StaticDataSeed
 {
-    using System.Collections.Generic;
-    using System.IO;
     using System.Linq;
     using System.Web;
 
+    using TdService.Infrastructure.FileSystem;
     using TdService.Infrastructure.Helpers;
     using TdService.Model.Common;
 
@@ -28,9 +27,12 @@ namespace TdService.Repository.MsSql.StaticDataSeed
         /// <param name="context">
         /// The context.
         /// </param>
-        public static void Populate(ShopAnyWareSql context)
+        /// <param name="fileStorage">
+        /// The file storage.
+        /// </param>
+        public static void Populate(ShopAnyWareSql context, IFileStorage fileStorage)
         {
-            var path = HttpContext.Current.Server.MapPath("~/App_Data/retailers.xls");
+            var path = fileStorage.MapPath("~/App_Data/retailers.xls");
             var retailersExcel = ExcelHelper.LoadRetailersFromExcelFile(path);
             var retailers = retailersExcel.Select(r => new Retailer(r.Url)).ToList();
             var retailers2 = retailers.Where(r => string.IsNullOrWhiteSpace(r.Url) == false).ToList();

@@ -11,6 +11,8 @@ namespace TdService.Specs
 {
     using System.Data.Entity;
 
+    using TdService.Infrastructure.FileSystem;
+    using TdService.Model.Common;
     using TdService.Repository.MsSql;
     using TdService.Repository.MsSql.StaticDataSeed;
 
@@ -29,7 +31,11 @@ namespace TdService.Specs
         {
             SeedMembership.Populate(context);
             SeedCurrencies.Populate(context);
-            SeedRetailers.Populate(context);
+
+            // SeedRetailers.Populate(context, new FileStorage());
+            context.Retailers.Add(new Retailer("amazon.com"));
+            context.Retailers.Add(new Retailer("apple.com"));
+            context.SaveChanges();
             SeedOrders.Populate(context);
             SeedPackages.Populate(context);
 
