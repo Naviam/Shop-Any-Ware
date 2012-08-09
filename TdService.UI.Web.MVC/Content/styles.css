@@ -1,7 +1,7 @@
 /* start reset bootstrap's css */
 input,textarea,select,.uneditable-input{margin-bottom:0}
-.row-fluid > [class*="span"]{margin-left:0}
-.row-fluid > .span4{width:33.33%}
+/*.row-fluid > [class*="span"]{margin-left:0}
+.row-fluid > .span4{width:33.33%}*/
 .navbar-inner {
     background-color: #5E504C;
     background-image: -moz-linear-gradient(top, #5E504C, #302726);
@@ -16,6 +16,7 @@ input,textarea,select,.uneditable-input{margin-bottom:0}
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
     }
 .navbar .nav > li > a{color:#b9b9b9}
+.nav-pills > li > a{margin:1px}
 /* end reset bootstrap's css */
 
 html{overflow-y:scroll}
@@ -65,6 +66,7 @@ footer{color:#999;text-align:right}
     .box{/*background:url(img/box_bg.jpg);*/background-color:#E6DCAE;border:1px solid #aa9985;border-radius:4px;padding:4px 8px}
         .box .name{font-weight:bold;vertical-align:middle}
         .box .white{/*background:url(img/white_bg.jpg);*/background-color:#F7F3E5;border-radius:2px;margin:4px 0}
+        .box .white .border{padding:4px}
         .box table{border:0;width:100%}
             .box table th{background-color:#eee;padding:2px 4px}
             .box table td{border-top:1px dashed #ccc;padding:2px 4px;text-align:center}
@@ -77,6 +79,7 @@ footer{color:#999;text-align:right}
             /*.box table tfoot td{background-color:#eee;font-weight:bold}*/
         .box .details td{vertical-align:top}
             .details p{margin:2px 4px}
+        .box .type th{background-color:transparent;text-align:left}
         .box .left{text-align:left}
         .box .right{text-align:right}
         .box table .btn-group .btn{float:none}
@@ -86,6 +89,10 @@ footer{color:#999;text-align:right}
     .box .header{width:auto}
     .box .header td{border:0}
     .box table tfoot{border-top:1px solid #ccc}
+    .status_new{background-color:#B2D1FF}
+    /*.status_new{background-color:#BAF5B9}
+    .status_new{background-color:#F5F5B9}
+    .status_new{background-color:#F5B5B9}*/
     .from{color:#999;font-style:italic}
     .label-photo{border-radius:3px 0 0 3px}
     .badge-photo{background-color:#ff9900;border-radius:0 3px 3px 0;font-size:10.998px}
