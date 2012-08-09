@@ -22,7 +22,7 @@
         <div class="alert alert-info package" data-bind="visible: shouldShowOrdersEmptyMessage">@DashboardViewResources.NoOrdersMessage</div>
         <div id="orders" data-bind="foreach: orders">
             <div data-bind="attr: { id: id }" class="package action">
-                <div class="box">
+                <div class="box status_new">
                     <table class="title">
                         <tr>
                             <td>
@@ -212,70 +212,72 @@
                         </tr>
                     </table>
                     <div data-bind="attr: { id: packageItemsId }" class="white collapse in">
-                        <table>
-                            <thead>
-                                <tr class="left">
-                                    <th colspan="4">
-                                        <h4>@DashboardViewResources.CustomsDeclaration</h4>
-                                    </th>
-                                </tr>
-                                <tr>
-                                    <th class="left">@DashboardViewResources.ItemNameHeader</th>
-                                    <th>@DashboardViewResources.QuantityHeader</th>
-                                    <th>@DashboardViewResources.WeightHeader</th>
-                                    <th class="span2">@DashboardViewResources.PriceHeader</th>
-                                </tr>
-                            </thead>
-                            <tbody id="package_items" data-bind="foreach: {data: items}">
-                                <tr>
-                                    <td class="left"><a href="#" title="Return item to package name_here"><i class="icon-arrow-left"></i></a>&nbsp;<i class="icon-camera"></i>&nbsp;<span data-bind="text: name"></span></td>
-                                    <td><span data-bind="text: quantity"></span></td>
-                                    <td><span data-bind="text: weight"></span> lbs</td>
-                                    <td><span data-bind="text: price"></span></td>
-                                </tr>
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <td class="right">@DashboardViewResources.ItemsTotalHeader</td>
-                                    <td><span data-bind="text: totalItemsQuantity"></span></td>
-                                    <td><span data-bind="text: totalItemsWeight"></span> lbs</td>
-                                    <td>$<span data-bind="text: totalItemsAmount"></span></td>
-                                </tr>
-                                @*<tr>
-                                    <td class="right">@DashboardViewResources.TotalWeightHeader:</td>
-                                    <td>1.23 kg</td>
-                                </tr>*@
-                            </tfoot>
-                        </table>
-                        <table>
-                            <thead>
-                                <tr class="left">
-                                    <th colspan="4">
-                                        <h4>@DashboardViewResources.DeliveryHeader</h4>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td colspan="2" style="text-align: left">
-                                        <select id="selectError" class="span3">
-                                            <option>Мой адрес 1</option>
-                                            <option>Мой адрес 2</option>
-                                            <option>Добавить адрес</option>
-                                        </select>
-                                        <select id="selectError" class="span3">
-                                            <option>Standart Delivery</option>
-                                            <option>Express Delivery</option>
-                                        </select></td>
-                                </tr>
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <td class="right">@DashboardViewResources.TotalCostHeader:</td>
-                                    <td class="span2">$1234</td>
-                                </tr>
-                            </tfoot>
-                        </table>
+                        <div class="border">
+                            <table>
+                                <thead>
+                                    <tr class="type">
+                                        <th colspan="4">
+                                            <h4>@DashboardViewResources.DeliveryHeader</h4>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="2" style="text-align: left">
+                                            <select id="selectError" class="span3">
+                                                <option>Мой адрес 1</option>
+                                                <option>Мой адрес 2</option>
+                                                <option>Добавить адрес</option>
+                                            </select>
+                                            <select id="selectError" class="span3">
+                                                <option>Standart Delivery</option>
+                                                <option>Express Delivery</option>
+                                            </select></td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td class="right">@DashboardViewResources.TotalCostHeader:</td>
+                                        <td class="span2">$1234</td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                            <table>
+                                <thead>
+                                    <tr class="type">
+                                        <th colspan="4">
+                                            <h4>@DashboardViewResources.CustomsDeclaration</h4>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th class="left">@DashboardViewResources.ItemNameHeader</th>
+                                        <th>@DashboardViewResources.QuantityHeader</th>
+                                        <th>@DashboardViewResources.WeightHeader</th>
+                                        <th class="span2">@DashboardViewResources.PriceHeader</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="package_items" data-bind="foreach: {data: items}">
+                                    <tr>
+                                        <td class="left"><a href="#" title="Return item to package name_here"><i class="icon-arrow-left"></i></a>&nbsp;<i class="icon-camera"></i>&nbsp;<span data-bind="text: name"></span></td>
+                                        <td><span data-bind="text: quantity"></span></td>
+                                        <td><span data-bind="text: weight"></span> lbs</td>
+                                        <td><span data-bind="text: price"></span></td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td class="right">@DashboardViewResources.ItemsTotalHeader</td>
+                                        <td><span data-bind="text: totalItemsQuantity"></span></td>
+                                        <td><span data-bind="text: totalItemsWeight"></span> lbs</td>
+                                        <td>$<span data-bind="text: totalItemsAmount"></span></td>
+                                    </tr>
+                                    @*<tr>
+                                        <td class="right">@DashboardViewResources.TotalWeightHeader:</td>
+                                        <td>1.23 kg</td>
+                                    </tr>*@
+                                </tfoot>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
