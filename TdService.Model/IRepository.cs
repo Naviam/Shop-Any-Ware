@@ -35,13 +35,13 @@ namespace TdService.Model
         /// <param name="predicate">
         /// Specified a filter.
         /// </param>
-        /// <typeparam name="T">
+        /// <typeparam name="TE">
         /// Domain entity.
         /// </typeparam>
         /// <returns>
         /// Collection of objects.
         /// </returns>
-        IQueryable<T> Filter<T>(Expression<Func<T, bool>> predicate);
+        IQueryable<TE> Filter<TE>(Expression<Func<TE, bool>> predicate);
 
         /// <summary>
         /// Find object by keys.
@@ -71,13 +71,13 @@ namespace TdService.Model
         /// <param name="entity">
         /// The entity.
         /// </param>
-        /// <typeparam name="T">
+        /// <typeparam name="TE">
         /// Entity type.
         /// </typeparam>
         /// <returns>
         /// Added or found entity.
         /// </returns>
-        T FindOrAdd<T>(T entity);
+        TE FindOrAdd<TE>(TE entity);
 
         /// <summary>
         /// Update entity.
@@ -85,13 +85,13 @@ namespace TdService.Model
         /// <param name="entity">
         /// The entity.
         /// </param>
-        /// <typeparam name="T">
+        /// <typeparam name="TE">
         /// Entity type.
         /// </typeparam>
         /// <returns>
         /// Updated entity.
         /// </returns>
-        T Update<T>(T entity);
+        TE Update<TE>(TE entity);
 
         /// <summary>
         /// Remove entity.
