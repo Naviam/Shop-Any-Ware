@@ -111,5 +111,40 @@ namespace TdService.Specs
                 Assert.That(actual.RouteValues["controller"], Is.EqualTo("Member"));
             }
         }
+
+        /// <summary>
+        /// Should be able to sign up.
+        /// </summary>
+        [Test]
+        public void ShouldBeAbleToSignUp()
+        {
+            // arrange
+            var membershipService = new MembershipService(this.userRepository, this.roleRepository, this.profileRepository);
+            var controller = new AccountController(
+                membershipService,
+                this.emailService,
+                this.cookieStorageService,
+                this.formsAuthentication);
+
+            var view = new SignUpView
+                {
+                    Email = "vhatalski_unique@naviam.com",
+                    FirstName = "Vitali",
+                    LastName = "Hatalski",
+                    Password = "ruinruin",
+                    PasswordConfirm = "ruinruin"
+                };
+
+            // act
+            var actual = controller.SignUp(view) as RedirectToRouteResult;
+
+            // assert
+            Assert.That(actual, Is.Not.Null);
+            if (actual != null)
+            {
+                Assert.That(actual.RouteValues["action"], Is.EqualTo("Dashboard"));
+                Assert.That(actual.RouteValues["controller"], Is.EqualTo("Member"));
+            }
+        }
     }
 }
