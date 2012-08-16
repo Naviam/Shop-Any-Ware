@@ -4,21 +4,27 @@
 }
 <div class="row-fluid">
     <div class="span6">
+        <h3>Покупка</h3>
         <div id="addOrderForm" class="package">
             <ul class="nav nav-tabs">
                 <li><a href="#">@DashboardViewResources.OrderOption1</a></li>
                 <li class="active"><a href="#">@DashboardViewResources.OrderOption2</a></li>
+                <li><a href="#">@DashboardViewResources.HistoryPackagesTabHeader</a></li>
             </ul>
             <div class="control-group" data-bind="css: { error: !newOrderField.isValid() }, validationOptions: { insertMessages: false, decorateElement: true, errorClass: 'error', parseInputAttributes: false, errorElementClass: 'error' }">
                 <div class="controls">
                     <div class="input-prepend input-append">
                         @*<span class="add-on btn-large btn-success grey"><i class="icon icon-plus"></i></span>*@
                         <input class="add-order" style="width:66%" data-bind="value: newOrderField, valueUpdate: 'afterkeydown', executeOnEnter: createOrder, autosuggest: retailers" title="@DashboardViewResources.NewOrderPlaceholder" placeholder="@DashboardViewResources.NewOrderPlaceholder"/><button id="addNewOrderButton" class="btn btn-large btn-success" type="button" data-loading-text="@DashboardViewResources.AddOrderButtonLoadingMessage" data-bind="click: createOrder, disable: disableAddOrderButton">@DashboardViewResources.AddOrderButton</button>
-                        <div class="link_example">@DashboardViewResources.ExampleHeader: <a href="#">amazon.com</a></div>
+                        <div class="sub">
+                            <div class="link_example">@DashboardViewResources.ExampleHeader: <a href="#">amazon.com</a></div>
+                            <div class="link_expand"><a href="#">Expand All</a></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div style="clear:left"></div>
         <div class="alert alert-info package" data-bind="visible: shouldShowOrdersEmptyMessage">@DashboardViewResources.NoOrdersMessage</div>
         <div id="orders" data-bind="foreach: orders">
             <div data-bind="attr: { id: id }" class="package action">
@@ -177,6 +183,7 @@
         </div>
     </div>
     <div class="span6" style="float: right">
+        <h3>Пересылка</h3>
         <div class="package">
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#">@DashboardViewResources.RecentPackagesTabHeader</a></li>
@@ -188,11 +195,15 @@
                         @*<span class="add-on btn-large btn-success grey"><i class="icon icon-gift"></i></span>*@
                         <input class="add-order" style="width:66%" data-bind="value: newPackageField, valueUpdate: 'afterkeydown'" placeholder="@DashboardViewResources.NewPackagePlaceholder"/>
                         <button class="btn btn-large btn-success" type="button" data-bind="click: createPackage, disable: disableCreatePackageButton">@DashboardViewResources.AddPackageButton</button>
-                        <div class="link_example">@DashboardViewResources.ExampleHeader: <a href="#">my package</a></div>
+                        <div class="sub">
+                            <div class="link_example">@DashboardViewResources.ExampleHeader: <a href="#">my package</a></div>
+                            <div class="link_expand"><a href="#">Expand All</a></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div style="clear:left"></div>
         <div id="packages" data-bind="foreach: packages">
             <div data-bind="attr: { id: 'package' + id }" class="package action">
                 <div class="box">

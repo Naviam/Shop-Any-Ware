@@ -52,19 +52,23 @@
                             <li><a href="#" class="ru" onclick="click: changeCulture('ru');"></a></li>
                             <li id="fat-menu" class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    @LayoutViewResources.BalanceMenuHeader: $100 <b class="caret"></b></a>
+                                    @*@LayoutViewResources.BalanceMenuHeader:*@<i class="icon-white icon-shopping-cart"></i> $100 <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     @{Html.RenderPartial("transactions", true);}
                                 </ul>
                             </li>
                             <li id="fat-menu" class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    @LayoutViewResources.YourUsAddressMenuHeader <b class="caret"></b></a>
+                                    <i class="icon-white icon-home"></i> @LayoutViewResources.YourUsAddressMenuHeader <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     @{Html.RenderPartial("storeAddress", true);}
                                 </ul>
                             </li>
-                            <li id="fat-menu" class="dropdown">
+                            <li><a href="@Url.Action("Index", "Profile")"><i class="icon-white icon-user"></i> @LayoutViewResources.ProfileMenuHeader</a></li>
+                            <li><a href="@Url.Action("Index", "Address")"><i class="icon-white icon-th-list"></i> @LayoutViewResources.DeliveryAddressesMenuHeader</a></li>
+                            <li><a href="@Url.Action("Dashboard", "Admin")"><i class="icon-white icon-cog"></i> @LayoutViewResources.AdministrationMenuHeader</a></li>
+                            <li><a href="@Url.Action("SignOut", "Account")"><i class="icon-white icon-off"></i> @LayoutViewResources.SignOutMenuHeader</a></li>
+                            @*<li id="fat-menu" class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     @HttpContext.Current.User.Identity.Name <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
@@ -75,7 +79,7 @@
                                     <li class="divider"></li>
                                     <li><a href="@Url.Action("SignOut", "Account")"><i class="icon-off"></i> @LayoutViewResources.SignOutMenuHeader</a></li>
                                 </ul>
-                            </li>
+                            </li>*@
                             @*<li><a href="@Url.Action("SignOut", "Account")"><i class="icon-white icon-off"></i> Sign Out</a></li>*@
                         </ul>
                     }

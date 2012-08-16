@@ -18,6 +18,8 @@ input,textarea,select,.uneditable-input{margin-bottom:0}
 .navbar .nav > li > a{color:#b9b9b9}
 .nav-pills > li > a{margin:1px}
 /* end reset bootstrap's css */
+.navbar .nav > li > a{padding:12px 10px 11px;line-height:normal}
+.navbar .brand{padding:10px 20px 12px}
 
 html{overflow-y:scroll}
 
@@ -58,9 +60,11 @@ footer{color:#999;text-align:right}
   background-image: linear-gradient(top, #E6E6E6, #ccc);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#E6E6E6', endColorstr='#ccc', GradientType=0);
   border-color: #ccc #ccc #E6E6E6;}*/
-.link_example{margin:4px}
-    .link_example a{border-bottom:1px dotted #999;color:#999;text-decoration:none}
-        .link_example a:hover{border-bottom:1px dotted #333;color:#333;text-decoration:none}
+.sub{margin:4px;display:block}
+    .sub .link_example{float:left}
+        .sub .link_example a{border-bottom:1px dotted #999;color:#999;text-decoration:none}
+            .sub .link_example a:hover{border-bottom:1px dotted #333;color:#333;text-decoration:none}
+    .sub .link_expand{float:right}
 .package{margin:12px}
     .add-order{padding:8px;font-size:16px}
     .box{/*background:url(img/box_bg.jpg);*/background-color:#E6DCAE;border:1px solid #aa9985;border-radius:4px;padding:4px 8px}
