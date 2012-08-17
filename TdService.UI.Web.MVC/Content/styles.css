@@ -17,9 +17,9 @@ input,textarea,select,.uneditable-input{margin-bottom:0}
     }
 .navbar .nav > li > a{color:#b9b9b9}
 .nav-pills > li > a{margin:1px}
-/* end reset bootstrap's css */
 .navbar .nav > li > a{padding:12px 10px 11px;line-height:normal}
 .navbar .brand{padding:10px 20px 12px}
+/* end reset bootstrap's css */
 
 html{overflow-y:scroll}
 
@@ -41,6 +41,7 @@ footer{color:#999;text-align:right}
 .en,.ru{margin:10px 8px;border:2px solid #473c39;padding:0 !important;height:16px;width:24px}
     .en{background:url(img/en.png)}
     .ru{background:url(img/ru.png)}
+.dollar{color:#fff;font:bold 16px Verdana;line-height:14px}
 .choosen_culture,.choosen_culture:hover{border:2px solid #473c39;outline:1px solid #ff9900}
 .filter{display:table;list-style:none}
     .filter li{margin:8px 0}
@@ -48,6 +49,8 @@ footer{color:#999;text-align:right}
 .float_right{float:right}
 .header{clear:both}
     .header th{background-color:#F9F9F9}
+.in{padding:4px}
+    .in{padding:4px}
 .new{border:1px dashed #ccc}
     .new div{font-size:32px;color:#ccc;margin:8px auto;text-align:center}
 /*.input-append .grey{margin-right:-4px !important;line-height:26px;height:26px;width:26px;
@@ -65,10 +68,13 @@ footer{color:#999;text-align:right}
         .sub .link_example a{border-bottom:1px dotted #999;color:#999;text-decoration:none}
             .sub .link_example a:hover{border-bottom:1px dotted #333;color:#333;text-decoration:none}
     .sub .link_expand{float:right}
-.package{margin:12px}
+.package{margin:12px 0}
     .add-order{padding:8px;font-size:16px}
     .box{/*background:url(img/box_bg.jpg);*/background-color:#E6DCAE;border:1px solid #aa9985;border-radius:4px;padding:4px 8px}
         .box .alert{margin:0}
+        .box .label,box .label:hover{background-color:#aa9985;cursor:default;text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25)}
+        .box .status-new,.box .status-new:hover{background-color:#339933}
+        .box .status-return,.box .status-return:hover{background-color:#CC3333}
         .box .name{font-weight:bold;vertical-align:middle}
         .box .white{/*background:url(img/white_bg.jpg);*/background-color:#F7F3E5;border-radius:2px;margin:4px 0}
         .box .white .border{padding:4px}
@@ -103,7 +109,8 @@ footer{color:#999;text-align:right}
         .package .title .right{text-align:right}
         .package .title td{border:0;padding:0;margin:0;text-align:left}
         .package .title td .label{line-height:normal;margin:0}
-        .package .title .icon-white{margin:2px}
+        .package .title .icon,.package .title .icon-white{margin:2px}
+            .package .title .btn-mini .caret{margin-top:8px}
         .package .title .icon-chevron-right{cursor:pointer;margin:2px}
     .package .btn-group{margin:0;padding:0}
     .package .btn-large{font-size:14px}

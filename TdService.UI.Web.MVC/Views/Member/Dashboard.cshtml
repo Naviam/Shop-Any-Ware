@@ -34,15 +34,22 @@
                             <td>
                                 <span data-bind="attr: { 'data-target': orderItemsIdWithNumberSign }" data-toggle="collapse"><i class="icon-chevron-right"></i></span>
                                 <span data-bind="text: retailerUrl" class="name"></span>
-                                <span class="label label-info">@DashboardViewResources.OrderIdHeader: <span data-bind="text: id"></span></span>
-                                <span class="label label-info">@DashboardViewResources.OrderCreatedDateHeader: <span data-bind="text: orderDate"></span></span>
-                                <span class="label label-info">@DashboardViewResources.StatusHeader: <span data-bind="text: status"></span></span>
+                                <span class="label">@DashboardViewResources.OrderIdHeader: <span data-bind="text: id"></span></span>
+                                <span class="label">@DashboardViewResources.OrderCreatedDateHeader: <span data-bind="text: orderDate"></span></span>
+                                <span class="label status-return">@DashboardViewResources.StatusHeader: <span data-bind="text: status"></span></span>
                             </td>
                             <td class="right">
                                 <button class="btn btn-mini btn-primary" title="@DashboardViewResources.AddItemButton" data-bind="visible: canItemsBeModified" data-toggle="modal" href="#itemFormModal"><i class="icon-white icon-plus-sign"></i></button>
                                 <button class="btn btn-mini btn-danger" title="@DashboardViewResources.RemoveOrderButton" data-bind="click: $parent.removeOrder, visible: canBeRemoved"><i class="icon-white icon-trash"></i></button>
                                 <button class="btn btn-mini btn-success" title="@DashboardViewResources.InStockButton"><i class="icon-white icon-inbox"></i></button>
                                 <button class="btn btn-mini" title="@DashboardViewResources.ReturnOrderButton" data-toggle="modal" data-bind="visible: canBeRequestedForReturn"><i class="icon-retweet"></i></button>
+                                <button class="btn btn-mini dropdown-toggle" title="Move All Items" data-toggle="dropdown"><i class="icon icon-move"></i><span class="caret"></span></button>
+                                <ul class="dropdown-menu">
+                                    <li><i class="icon-plus"></i>@DashboardViewResources.MoveToNewPackage</li>
+                                    <li class="divider"></li>
+                                    <li><i class="icon-gift"></i>Package name</li>
+                                    <li><i class="icon-gift"></i>My Gifts</li>
+                                </ul>
                             </td>
                         </tr>
                     </table>
@@ -50,7 +57,7 @@
                         <table class="header">
                             <tbody>
                                 <tr>
-                                    <td>@DashboardViewResources.OrderNumberHeader</td>
+                                    <td style="text-align:right">@DashboardViewResources.OrderNumberHeader</td>
                                     <td>
                                         <input class="input" type="text" data-bind="value: orderNumber">
                                     </td>
@@ -62,17 +69,15 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <span data-bind="visible: items().length == 0">@DashboardViewResources.NoItemsMessage</span>
+                        <div class="alert alert-info" data-bind="visible: items().length == 0">@DashboardViewResources.NoItemsMessage</div>
                         <table data-bind="visible: hasItems" class="info">
                             <thead>
                                 <tr>
-                                    @*<th></th>*@
                                     <th class="left">@DashboardViewResources.ItemNameHeader</th>
                                     <th>@DashboardViewResources.QuantityHeader</th>
                                     <th>@DashboardViewResources.WeightHeader</th>
                                     <th>@DashboardViewResources.PriceHeader</th>
-                                    <th>@DashboardViewResources.ActionHeader</th>
-                                    @*<th></th>*@
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody id="order_items" data-bind="foreach: {data: items}">
@@ -87,11 +92,11 @@
                                     <td>
                                         <div class="btn-group">
                                             <button class="btn btn-mini" title="Edit"><i class="icon icon-edit"></i></button>
+                                            <button class="btn btn-mini" title="Delete"><i class="icon icon-trash"></i></button>
                                             <button class="btn btn-mini dropdown-toggle" title="Move" data-toggle="dropdown"><i class="icon icon-move"></i>@*@DashboardViewResources.ActionMoveHeader*@ <span class="caret"></span></button>
                                             <ul class="dropdown-menu" data-bind="foreach: $root.packages()">
                                                 <li><i class="icon-gift"></i><span data-bind="text: name()"></span> (id:<span data-bind="text: id"></span>)</li>
                                             </ul>
-                                            <button class="btn btn-mini" title="Delete"><i class="icon icon-trash"></i></button>
                                         </div>
                                     </td>
                                     @*<td class="draggable">
@@ -101,25 +106,12 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    @*<td></td>*@
                                     <td class="right">@DashboardViewResources.ItemsTotalHeader</td>
                                     <td><span data-bind="text: totalItemsQuantity"></span></td>
                                     <td><span data-bind="text: totalItemsWeight"></span> lbs</td>
                                     <td>$<span data-bind="text: totalItemsAmount"></span></td>
                                     <td>
-                                        <div data-bind="visible: items().length > 1">
-                                            <button class="btn btn-mini dropdown-toggle" title="Move All Items" data-toggle="dropdown"><i class="icon icon-move"></i><span class="caret"></span></button>
-                                            <ul class="dropdown-menu">
-                                                <li><i class="icon-plus"></i>@DashboardViewResources.MoveToNewPackage</li>
-                                                <li class="divider"></li>
-                                                <li><i class="icon-gift"></i>Package name</li>
-                                                <li><i class="icon-gift"></i>My Gifts</li>
-                                            </ul>
-                                        </div>
                                     </td>
-                                    @*<td>
-                                        <div></div>
-                                    </td>*@
                                 </tr>
                             </tfoot>
                         </table>
@@ -151,19 +143,7 @@
                                     <div class="controls">
                                         <input class="input-xlarge focused" data-bind="value: Quantity" id="itemQuantity" type="text">
                                     </div>
-                                </div>@*
-                                    <div class="control-group">
-                                        <label class="control-label" for="itemColor">Color</label>
-                                        <div class="controls">
-                                            <input class="input-xlarge focused" data-bind="value: Color" id="itemColor" type="text">
-                                        </div>
-                                    </div>
-                                    <div class="control-group">
-                                        <label class="control-label" for="itemSize">Size</label>
-                                        <div class="controls">
-                                            <input class="input-xlarge focused" data-bind="value: Size" id="itemSize" type="text">
-                                        </div>
-                                    </div>*@
+                                </div>
                                 <div class="control-group">
                                     <label class="control-label" for="itemWeight">@DashboardViewResources.WeightHeader</label>
                                     <div class="controls">
@@ -212,9 +192,9 @@
                             <td>
                                 <span data-bind="attr: { 'data-target': packageItemsIdWithNumberSign }" data-toggle="collapse"><i class="icon-chevron-right"></i></span>
                                 @*@DashboardViewResources.PackageNameHeader: *@ <span data-bind="text: name" class="name"></span>
-                                <span class="label label-info">@DashboardViewResources.OrderIdHeader: <span data-bind="text: id"></span></span>
-                                <span class="label label-info">@DashboardViewResources.StatusHeader: <span data-bind="text: status"></span></span>
-                                <span class="label label-info">@DashboardViewResources.PackageCreatedDateHeader: <span data-bind="text: createdDate"></span></span>
+                                <span class="label">@DashboardViewResources.OrderIdHeader: <span data-bind="text: id"></span></span>
+                                <span class="label">@DashboardViewResources.PackageCreatedDateHeader: <span data-bind="text: createdDate"></span></span>
+                                <span class="label status-new">@DashboardViewResources.StatusHeader: <span data-bind="text: status"></span></span>
                             </td>
                             <td class="right">
                                 <button class="btn btn-mini btn-primary right" title="@DashboardViewResources.SendPackageButton" data-bind="click: sendPackage, visible: canBeSent"><i class="icon-white icon-plane"></i></button>
@@ -243,7 +223,8 @@
                                             <select id="selectError" class="span3">
                                                 <option>Standart Delivery</option>
                                                 <option>Express Delivery</option>
-                                            </select></td>
+                                            </select>
+                                        </td>
                                     </tr>
                                 </tbody>
                                 <tfoot>
@@ -265,14 +246,26 @@
                                         <th>@DashboardViewResources.QuantityHeader</th>
                                         <th>@DashboardViewResources.WeightHeader</th>
                                         <th class="span2">@DashboardViewResources.PriceHeader</th>
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody id="package_items" data-bind="foreach: {data: items}">
                                     <tr>
-                                        <td class="left"><a href="#" title="Return item to package name_here"><i class="icon-arrow-left"></i></a>&nbsp;<i class="icon-camera"></i>&nbsp;<span data-bind="text: name"></span></td>
+                                        <td class="left"><i class="icon-camera"></i>&nbsp;<span data-bind="text: name"></span></td>
                                         <td><span data-bind="text: quantity"></span></td>
                                         <td><span data-bind="text: weight"></span> lbs</td>
                                         <td><span data-bind="text: price"></span></td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button class="btn btn-mini" title="Return item to package name_here"><i class="icon-arrow-left"></i></button>
+                                                <button class="btn btn-mini" title="Edit"><i class="icon icon-edit"></i></button>
+                                                <button class="btn btn-mini" title="Delete"><i class="icon icon-trash"></i></button>
+                                                <button class="btn btn-mini dropdown-toggle" title="Move" data-toggle="dropdown"><i class="icon icon-move"></i>@*@DashboardViewResources.ActionMoveHeader*@ <span class="caret"></span></button>
+                                                <ul class="dropdown-menu" data-bind="foreach: $root.packages()">
+                                                    <li><i class="icon-gift"></i><span data-bind="text: name()"></span> (id:<span data-bind="text: id"></span>)</li>
+                                                </ul>
+                                            </div>
+                                        </td>
                                     </tr>
                                 </tbody>
                                 <tfoot>
@@ -281,6 +274,7 @@
                                         <td><span data-bind="text: totalItemsQuantity"></span></td>
                                         <td><span data-bind="text: totalItemsWeight"></span> lbs</td>
                                         <td>$<span data-bind="text: totalItemsAmount"></span></td>
+                                        <td colspan="2"></td>
                                     </tr>
                                     @*<tr>
                                         <td class="right">@DashboardViewResources.TotalWeightHeader:</td>
