@@ -5,6 +5,7 @@
 /// <reference path="../knockout.mapping-latest.debug.js" />
 /// <reference path="../knockout.validation.debug.js" />
 /// <reference path="../knockout-sortable.js" />
+/// <reference path="../bootstrap/bootstrap-collapse.js" />
 
 function getUrl(methodUrl) {
     return window.location.host + methodUrl;
@@ -47,6 +48,22 @@ ko.bindingHandlers.executeOnEnter = {
     }
 };
 
+ko.bindingHandlers.collapsed = {
+    init: function (element, valueAccessor, allBindingsAccessor, viewModel) {
+        var value = ko.utils.unwrapObservable(valueAccessor());
+        $(element).collapse();
+    },
+    update: function (element, valueAccessor, allBindingsAccessor, viewModel) {
+        var value = ko.utils.unwrapObservable(valueAccessor());
+        if (value) {
+            $(element).collapse('hide');
+        }
+        else {
+            $(element).collapse('show');
+        }
+    }
+};
+
 function Item(serverModel) {
     /// <summary>Item view model.</summary>
     var self = this;
@@ -83,6 +100,7 @@ function Package(serverModel) {
     self.dispatchedDate = ko.observable(serverModel.DispatchedDate);
     self.deliveredDate = ko.observable(serverModel.DeliveredDate);
     self.status = ko.observable(serverModel.Status);
+    self.isCollapsed = ko.observable(false);
 
     // package view model collections
     self.items = ko.observableArray();
@@ -134,15 +152,14 @@ function Package(serverModel) {
     });
     self.loadItems();
 
-    self.packageItemsId = ko.computed(function () {
-        /// <summary>This id is used for collapse / expand feature.</summary>
-        return 'package_items_' + self.id().toString();
+    self.isExpanded = ko.computed(function () {
+        return !self.isCollapsed();
     });
 
-    self.packageItemsIdWithNumberSign = ko.computed(function () {
-        /// <summary>This id is used for collapse / expand feature.</summary>
-        return '#' + self.packageItemsId();
-    });
+    self.toggleCollapse = function () {
+        var currentValue = self.isCollapsed();
+        self.isCollapsed(!currentValue);
+    };
 
     self.sendPackage = function(pack) {
         /// <summary>Send package.</summary>
@@ -191,6 +208,7 @@ function Order(serverModel) {
     self.createdDate = ko.observable(formatDate(serverModel.CreatedDate));
     self.receivedDate = ko.observable(formatDate(serverModel.ReceivedDate));
     self.status = ko.observable(serverModel.Status);
+    self.isCollapsed = ko.observable(false);
 
     // order view model collections
     self.items = ko.observableArray();
@@ -239,16 +257,15 @@ function Order(serverModel) {
     self.orderDate = ko.computed(function() {
         return self.receivedDate() == null ? self.createdDate() : self.receivedDate();
     });
-    
-    self.orderItemsId = ko.computed(function () {
-        /// <summary>Determines the total amount of the order.</summary>
-        return 'order_items_' + self.id().toString();
+
+    self.isExpanded = ko.computed(function () {
+        return !self.isCollapsed();
     });
-    
-    self.orderItemsIdWithNumberSign = ko.computed(function () {
-        /// <summary>Determines the total amount of the order.</summary>
-        return '#' + self.orderItemsId();
-    });
+
+    self.toggleCollapse = function () {
+        var currentValue = self.isCollapsed();
+        self.isCollapsed(!currentValue);
+    };
 
     self.loadItems = function() {
         /// <summary>Get collection of items for the order.</summary>
@@ -344,6 +361,18 @@ function DashboardViewModel(serverModel) {
         /// <summary>Determines whether create package button should be disabled.</summary>
         return self.newPackageField() === undefined || self.newPackageField() == '';
     });
+
+    self.collapseAllOrders = function () {
+        $.each(self.orders(), function (index, order) {
+            order.isCollapsed(true);
+        });
+    };
+
+    self.collapseAllPackages = function () {
+        $.each(self.packages(), function (index, pack) {
+            pack.isCollapsed(true);
+        });
+    };
 
     self.suggestRetailers = function () {
         /// <summary>Load shops from db to autosuggest them for user.</summary>
