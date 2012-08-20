@@ -4,7 +4,7 @@
 }
 <div class="row-fluid">
     <div class="span6">
-        <h3>Покупка</h3>
+        <h3>Заказы</h3>
         <div id="addOrderForm" class="package">
             <ul class="nav nav-tabs">
                 <li><a href="#">@DashboardViewResources.OrderOption1</a></li>
@@ -18,7 +18,7 @@
                         <input class="add-order" style="width:66%" data-bind="value: newOrderField, valueUpdate: 'afterkeydown', executeOnEnter: createOrder, autosuggest: retailers" title="@DashboardViewResources.NewOrderPlaceholder" placeholder="@DashboardViewResources.NewOrderPlaceholder"/><button id="addNewOrderButton" class="btn btn-large btn-success" type="button" data-loading-text="@DashboardViewResources.AddOrderButtonLoadingMessage" data-bind="click: createOrder, disable: disableAddOrderButton">@DashboardViewResources.AddOrderButton</button>
                         <div class="sub">
                             <div class="link_example">@DashboardViewResources.ExampleHeader: <a href="#">amazon.com</a></div>
-                            <div class="link_expand"><a href="#">Expand All</a></div>
+                            <div class="link_expand"><a href="#" data-bind="click: collapseAllOrders">свернуть все заказы</a></div>
                         </div>
                     </div>
                 </div>
@@ -32,7 +32,7 @@
                     <table class="title">
                         <tr>
                             <td>
-                                <span data-bind="attr: { 'data-target': orderItemsIdWithNumberSign }" data-toggle="collapse"><i class="icon-chevron-right"></i></span>
+                                <span data-bind="click: toggleCollapse"><i data-bind="css: { 'icon-chevron-right': isCollapsed, 'icon-chevron-down': isExpanded }"></i></span>
                                 <span data-bind="text: retailerUrl" class="name"></span>
                                 <span class="label">@DashboardViewResources.OrderIdHeader: <span data-bind="text: id"></span></span>
                                 <span class="label">@DashboardViewResources.OrderCreatedDateHeader: <span data-bind="text: orderDate"></span></span>
@@ -53,7 +53,7 @@
                             </td>
                         </tr>
                     </table>
-                    <div data-bind="attr: { id: orderItemsId }" class="white collapse in">
+                    <div data-bind="collapsed: isCollapsed" class="white collapse in">
                         <table class="header">
                             <tbody>
                                 <tr>
@@ -163,7 +163,7 @@
         </div>
     </div>
     <div class="span6" style="float: right">
-        <h3>Пересылка</h3>
+        <h3>Посылки</h3>
         <div class="package">
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#">@DashboardViewResources.RecentPackagesTabHeader</a></li>
@@ -177,7 +177,7 @@
                         <button class="btn btn-large btn-success" type="button" data-bind="click: createPackage, disable: disableCreatePackageButton">@DashboardViewResources.AddPackageButton</button>
                         <div class="sub">
                             <div class="link_example">@DashboardViewResources.ExampleHeader: <a href="#">my package</a></div>
-                            <div class="link_expand"><a href="#">Expand All</a></div>
+                            <div class="link_expand"><a href="#" data-bind="click: collapseAllPackages">свернуть все посылки</a></div>
                         </div>
                     </div>
                 </div>
@@ -190,7 +190,7 @@
                     <table class="title">
                         <tr>
                             <td>
-                                <span data-bind="attr: { 'data-target': packageItemsIdWithNumberSign }" data-toggle="collapse"><i class="icon-chevron-right"></i></span>
+                                <span data-bind="click: toggleCollapse"><i data-bind="css: { 'icon-chevron-right': isCollapsed, 'icon-chevron-down': isExpanded }"></i></span>
                                 @*@DashboardViewResources.PackageNameHeader: *@ <span data-bind="text: name" class="name"></span>
                                 <span class="label">@DashboardViewResources.OrderIdHeader: <span data-bind="text: id"></span></span>
                                 <span class="label">@DashboardViewResources.PackageCreatedDateHeader: <span data-bind="text: createdDate"></span></span>
@@ -202,7 +202,7 @@
                             </td>
                         </tr>
                     </table>
-                    <div data-bind="attr: { id: packageItemsId }" class="white collapse in">
+                    <div data-bind="collapsed: isCollapsed" class="white collapse">
                         <div class="border">
                             <table>
                                 <thead>
