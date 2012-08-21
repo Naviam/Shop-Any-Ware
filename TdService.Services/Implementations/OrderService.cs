@@ -17,6 +17,7 @@ namespace TdService.Services.Implementations
     using TdService.Model.Common;
     using TdService.Model.Membership;
     using TdService.Model.Orders;
+    using TdService.Resources.Views;
     using TdService.Services.Interfaces;
     using TdService.Services.Mapping;
     using TdService.Services.Messaging;
@@ -150,7 +151,7 @@ namespace TdService.Services.Implementations
                     else
                     {
                         response.MessageType = MessageType.Warning;
-                        response.Message = "The order cannot be removed in current state.";
+                        response.Message = DashboardViewResources.OrderCannotBeRemoved;
                     }
                 }
                 catch (Exception ex)
