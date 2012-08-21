@@ -133,6 +133,24 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to collapse all orders.
+        /// </summary>
+        public static string CollapseAllOrders {
+            get {
+                return ResourceManager.GetString("CollapseAllOrders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to collapse all packages.
+        /// </summary>
+        public static string CollapseAllPackages {
+            get {
+                return ResourceManager.GetString("CollapseAllPackages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Customs Declaration.
         /// </summary>
         public static string CustomsDeclaration {
@@ -286,6 +304,15 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The order cannot be removed in current state..
+        /// </summary>
+        public static string OrderCannotBeRemoved {
+            get {
+                return ResourceManager.GetString("OrderCannotBeRemoved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Created.
         /// </summary>
         public static string OrderCreatedDateHeader {
@@ -360,9 +387,9 @@ namespace TdService.Resources.Views {
         /// <summary>
         ///   Looks up a localized string similar to The package cannot be removed in current state..
         /// </summary>
-        public static string PackageCannotRemove {
+        public static string PackageCannotBeRemoved {
             get {
-                return ResourceManager.GetString("PackageCannotRemove", resourceCulture);
+                return ResourceManager.GetString("PackageCannotBeRemoved", resourceCulture);
             }
         }
         

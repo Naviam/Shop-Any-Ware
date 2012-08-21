@@ -141,6 +141,12 @@
   <data name="CancelButton" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="CollapseAllOrders" xml:space="preserve">
+    <value>collapse all orders</value>
+  </data>
+  <data name="CollapseAllPackages" xml:space="preserve">
+    <value>collapse all packages</value>
+  </data>
   <data name="CustomsDeclaration" xml:space="preserve">
     <value>Customs Declaration</value>
   </data>
@@ -192,6 +198,9 @@
   <data name="NoOrdersMessage" xml:space="preserve">
     <value>There are no active orders right now. Please create a new one.</value>
   </data>
+  <data name="OrderCannotBeRemoved" xml:space="preserve">
+    <value>The order cannot be removed in current state.</value>
+  </data>
   <data name="OrderCreatedDateHeader" xml:space="preserve">
     <value>Created</value>
   </data>
@@ -216,7 +225,7 @@
   <data name="OrderRemovedSuccess" xml:space="preserve">
     <value>The order has been successfully removed.</value>
   </data>
-  <data name="PackageCannotRemove" xml:space="preserve">
+  <data name="PackageCannotBeRemoved" xml:space="preserve">
     <value>The package cannot be removed in current state.</value>
   </data>
   <data name="PackageCreatedDateHeader" xml:space="preserve">

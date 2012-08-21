@@ -12,6 +12,9 @@ function getUrl(methodUrl) {
 }
 
 function formatDate(dateUtcString) {
+    if (dateUtcString == null || dateUtcString === undefined)
+        return null;
+
     var date = new Date(dateUtcString);
     var currDate = date.getDate();
     var currMonth = date.getMonth() + 1; //Months are zero based
@@ -94,11 +97,11 @@ function Package(serverModel) {
     self.id = ko.observable(serverModel.Id);
     self.name = ko.observable(serverModel.Name);
     self.deliveryAddressId = ko.observable(serverModel.DeliveryAddressId);
-    self.deliveryAddressName = ko.observable(serverModel.deliveryAddressName).extend({ defaultIfNull: "not set" });
+    self.deliveryAddressName = ko.observable(serverModel.DeliveryAddressName).extend({ defaultIfNull: "not set" });
     self.dispatchMethod = ko.observable(serverModel.DispatchMethod).extend({ defaultIfNull: "not set" });
-    self.createdDate = ko.observable(serverModel.CreatedDate);
-    self.dispatchedDate = ko.observable(serverModel.DispatchedDate);
-    self.deliveredDate = ko.observable(serverModel.DeliveredDate);
+    self.createdDate = ko.observable(formatDate(serverModel.CreatedDate));
+    self.dispatchedDate = ko.observable(formatDate(serverModel.DispatchedDate));
+    self.deliveredDate = ko.observable(formatDate(serverModel.DeliveredDate));
     self.status = ko.observable(serverModel.Status);
     self.isCollapsed = ko.observable(false);
 

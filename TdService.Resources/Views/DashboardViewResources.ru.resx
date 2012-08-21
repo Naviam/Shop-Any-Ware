@@ -141,6 +141,12 @@
   <data name="CancelButton" xml:space="preserve">
     <value>Отменить</value>
   </data>
+  <data name="CollapseAllOrders" xml:space="preserve">
+    <value>свернуть все заказы</value>
+  </data>
+  <data name="CollapseAllPackages" xml:space="preserve">
+    <value>свернуть все посылки</value>
+  </data>
   <data name="CustomsDeclaration" xml:space="preserve">
     <value>Таможенная декларация</value>
   </data>
@@ -192,6 +198,9 @@
   <data name="NoOrdersMessage" xml:space="preserve">
     <value>На данный момент у Вас отсутствуют активные заказы. Добавьте новый заказ.</value>
   </data>
+  <data name="OrderCannotBeRemoved" xml:space="preserve">
+    <value>Заказ не может быть удален в текущем состоянии.</value>
+  </data>
   <data name="OrderCreatedDateHeader" xml:space="preserve">
     <value>Создан</value>
   </data>
@@ -216,7 +225,7 @@
   <data name="OrderRemovedSuccess" xml:space="preserve">
     <value>Заказ был успешно удален.</value>
   </data>
-  <data name="PackageCannotRemove" xml:space="preserve">
+  <data name="PackageCannotBeRemoved" xml:space="preserve">
     <value>Посылка не может быть удалена в текущем состоянии.</value>
   </data>
   <data name="PackageCreatedDateHeader" xml:space="preserve">
