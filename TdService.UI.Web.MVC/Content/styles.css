@@ -83,7 +83,11 @@ footer{color:#999;text-align:right}
             .box table td{border-top:1px dashed #ccc;padding:2px 4px;text-align:center}
                 .box table td .dropdown-menu li{margin:4px 8px;text-align:left}
             /*.action table tr span{padding:2px 4px}*/
-                .action table.info tbody tr span:hover{background-color:#FFEEA8;cursor:text}
+                .action .info .editable{padding:2px 4px}
+                    .action .info .editable:hover{background-color:#FFEEA8;cursor:text}
+                .action .info .dropdown-menu li{}
+                    .action .info .dropdown-menu a:hover{background-color:#FFEEA8;color:#000}
+                .action .info .dropdown-menu li .label{display:inline-block;line-height:12px;margin:-2px -2px 0 0}
             .box table td.draggable{padding:0;width:9px}
                 .box table td.draggable div{background:url(img/draggable.png) repeat-y;padding:4px 0;height:12px;width:9px}
             .box table .sortable tr:hover{background-color:#eee;cursor:move}
@@ -111,7 +115,7 @@ footer{color:#999;text-align:right}
         .package .title td .label{line-height:normal;margin:0}
         .package .title .icon,.package .title .icon-white{margin:2px}
             .package .title .btn-mini .caret{margin-top:8px}
-        .package .title .icon-chevron-right{cursor:pointer;margin:2px}
+        .package .title .icon-chevron-right,.package .title .icon-chevron-down{cursor:pointer;margin:2px}
     .package .btn-group{margin:0;padding:0}
     .package .btn-large{font-size:14px}
     .pac{border-collapse:collapse;margin:0;padding:0;width:100%}
@@ -141,7 +145,7 @@ footer{color:#999;text-align:right}
     .form_login input, .form_registration textarea, .form_registration select, .form_registration .uneditable-input{border:1px solid #0068b8 !important}
     .form_login input:focus:required:invalid:focus, .form_registration textarea:focus:required:invalid:focus, .form_registration select:focus:required:invalid:focus{-webkit-box-shadow:0 0 6px #0068b8;-moz-box-shadow:0 0 6px #0068b8;box-shadow:0 0 6px #0068b8}
 .transaction{margin:8px 12px;width:500px}
-    .transaction td{text-align:center}one
+    .transaction td{text-align:center}
     .transaction tr>td:first-child{text-align:left}
     .transaction tr>th:first-child{text-align:left}
     .transaction a{color:#fff}
