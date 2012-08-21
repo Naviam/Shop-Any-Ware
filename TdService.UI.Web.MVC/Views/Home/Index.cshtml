@@ -17,16 +17,13 @@
     <div class="span4 form_registration">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#signup" data-toggle="tab">Регистрация</a></li>
-            <li><a href="#signin" data-toggle="tab">Войти на сайт</a></li>
+            <li><a href="#signin" data-toggle="tab">Вход на сайт</a></li>
         </ul>
         <div class="tab-content">
             <div id="signup" class="tab-pane active">
                 <form class="form-horizontal">
                     @Html.AntiForgeryToken("signup")
                     <fieldset>
-                        @*<div class="control-group">
-                            <h2>@AccountViewResources.SignUpPageHeader</h2>
-                        </div>*@
                         <div class="control-group">
                             <label class="control-label">@AccountViewResources.EmailFormLabel:</label>
                             <div class="controls">
@@ -67,9 +64,6 @@
                 <form class="form-horizontal">
                     @Html.AntiForgeryToken("signin")
                     <fieldset>
-                        @*<div class="control-group">
-                            <h2>@AccountViewResources.SignInPageHeader</h2>
-                        </div>*@
                         <div class="control-group">
                             <label class="control-label">@AccountViewResources.EmailFormLabel:</label>
                             <div class="controls">
@@ -123,3 +117,19 @@
         @*<p><a class="btn" href="#">More &raquo;</a></p>*@
     </div>
 </div>
+@section Scripts
+{
+    <script type="text/javascript" src="@Url.Content("~/Scripts/ViewModels/SignUpViewModel.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/ViewModels/SignInViewModel.js")"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var signUpViewModel = new SignUpViewModel();
+            ko.applyBindings(signUpViewModel, document.getElementById('signup'));
+            ko.validation.init(signUpViewModel, { insertMessages: false, decorateElement: true, errorClass: 'error', parseInputAttributes: true });
+
+            var signInViewModel = new SignInViewModel();
+            ko.applyBindings(signInViewModel, document.getElementById('signin'));
+            ko.validation.init(signInViewModel, { insertMessages: false, decorateElement: true, errorClass: 'error', parseInputAttributes: true });
+        });
+    </script>
+}
