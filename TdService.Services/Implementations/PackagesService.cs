@@ -119,7 +119,7 @@ namespace TdService.Services.Implementations
                     else
                     {
                         response.MessageType = MessageType.Warning;
-                        response.Message = DashboardViewResources.PackageCannotRemove;
+                        response.Message = DashboardViewResources.PackageCannotBeRemoved;
                     }
                 }
                 catch (Exception ex)
