@@ -374,6 +374,14 @@ function DashboardViewModel(serverModel) {
         });
     };
 
+    self.addOrderExample = function (link) {
+        self.newOrderField(link);
+    };
+
+    self.addPackageExample = function (link) {
+        self.newPackageField(link);
+    };
+
     self.suggestRetailers = function () {
         /// <summary>Load shops from db to autosuggest them for user.</summary>
         //if (!self.newOrderField.isValid()) {
