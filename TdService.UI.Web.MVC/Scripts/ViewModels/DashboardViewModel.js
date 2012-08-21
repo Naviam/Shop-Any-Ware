@@ -113,6 +113,10 @@ function Package(serverModel) {
     self.canBeDisposed = serverModel.CanBeDisposed;
 
     // package view model computed properties
+    self.domPackageId = ko.computed(function () {
+        return "package" + self.id();
+    });
+
     self.totalItemsAmount = ko.computed(function () {
         /// <summary>Determines the total amount of items in te the package.</summary>
         var total = 0;
@@ -222,6 +226,10 @@ function Order(serverModel) {
     self.canBeRequestedForReturn = serverModel.CanBeRequestedForReturn;
 
     // order view model computed properties
+    self.domOrderId = ko.computed(function () {
+        return "order" + self.id();
+    });
+
     self.totalItemsAmount = ko.computed(function () {
         /// <summary>Determines the total amount of the order.</summary>
         var total = 0;
@@ -421,7 +429,7 @@ function DashboardViewModel(serverModel) {
                     var order = new Order(model);
                     self.orders.unshift(order);
                     window.showNotice(data.Message, data.MessageType);
-                    $('#' + order.id()).show("blind", {}, "normal", function () {
+                    $('#' + order.domOrderId()).show("blind", {}, "normal", function () {
                         self.newOrderField("");
                     });
                 }
@@ -439,7 +447,7 @@ function DashboardViewModel(serverModel) {
             var model = ko.toJS(data);
             if (model.MessageType == "Success") {
                 window.showNotice(data.Message, data.MessageType);
-                $('#' + order.id()).hide("explode", {}, "normal", function () {
+                $('#' + order.domOrderId()).hide("explode", {}, "normal", function () {
                     self.orders.remove(order);
                 });
             }
@@ -466,28 +474,32 @@ function DashboardViewModel(serverModel) {
     self.createPackage = function() {
         /// <summary>Create package.</summary>
         if (self.newPackageField.isValid()) {
+            $("#addNewPackageButton").button('toggle').button('loading');
             $.post("/packages/add", { "packageName": self.newPackageField() }, function (data) {
                 var model = ko.toJS(data);
                 if (model.MessageType == "Success") {
                     var newPackage = new Package(model);
                     self.packages.unshift(newPackage);
                     window.showNotice(data.Message, data.MessageType);
-                    $('#package' + newPackage.id()).show("blind", {}, "normal", function () {
+                    $('#' + newPackage.domPackageId()).show("blind", {}, "normal", function () {
                         self.newPackageField("");
                     });
                 }
+                $("#addNewPackageButton").button('toggle').button('reset');
             });
             return;
         }
+        $(event.target).tooltip({ trigger: 'manual' });
+        $(event.target).tooltip('show');
     };
 
     self.removePackage = function(currentPackage) {
         /// <summary>Remove package.</summary>
-        $.post("/packages/remove", { "packageId": currentPackage.id }, function (data) {
+        $.post("/packages/remove", { "packageId": currentPackage.id() }, function (data) {
             var model = ko.toJS(data);
             if (model.MessageType == "Success") {
                 window.showNotice(data.Message, data.MessageType);
-                $('#' + currentPackage.id()).hide("explode", {}, "normal", function () {
+                $('#' + currentPackage.domPackageId()).hide("explode", {}, "normal", function () {
                     self.packages.remove(currentPackage);
                 });
             }

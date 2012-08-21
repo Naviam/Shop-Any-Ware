@@ -10,11 +10,13 @@
 namespace TdService.Controllers
 {
     using System.Web.Mvc;
-
     using TdService.Infrastructure.Authentication;
+    using TdService.Resources.Views;
     using TdService.Services.Interfaces;
     using TdService.Services.Mapping;
+    using TdService.Services.Messaging;
     using TdService.Services.Messaging.Package;
+    using TdService.Services.ViewModels.Package;
 
     using Formatting = System.Xml.Formatting;
 
@@ -61,11 +63,14 @@ namespace TdService.Controllers
             var request = new AddPackageRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken(), Name = packageName };
 
             var response = this.packagesService.AddPackage(request);
+            var result = response.ConvertToPackageViewModel();
+            result.Message = DashboardViewResources.PackageCreatedSuccessMessage;
+            result.MessageType = MessageType.Success.ToString();
 
             var jsonNetResult = new JsonNetResult
             {
                 Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
-                Data = response.ConvertToPackageViewModel()
+                Data = result
             };
             return jsonNetResult;
         }
@@ -83,6 +88,40 @@ namespace TdService.Controllers
             var request = new GetRecentPackagesRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() };
             var response = this.packagesService.GetRecent(request);
             var result = response.ConvertToPackageViewModelCollection();
+
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = result
+            };
+            return jsonNetResult;
+        }
+
+        /// <summary>
+        /// Remove package in new status.
+        /// </summary>
+        /// <param name="packageId">
+        /// The package ID to remove.
+        /// </param>
+        /// <returns>
+        /// Json result.
+        /// </returns>
+        [Authorize(Roles = "Shopper")]
+        [HttpPost]
+        public ActionResult Remove(int packageId)
+        {
+            var request = new RemovePackageRequest
+            {
+                IdentityToken = this.FormsAuthentication.GetAuthenticationToken(),
+                Id = packageId
+            };
+            var response = this.packagesService.RemovePackage(request);
+            var result = new PackageViewModel
+            {
+                Id = packageId,
+                Message = response.Message ?? DashboardViewResources.PackageRemovedSuccess,
+                MessageType = response.MessageType.ToString()
+            };
 
             var jsonNetResult = new JsonNetResult
             {

@@ -14,7 +14,6 @@
             <div class="control-group" data-bind="css: { error: !newOrderField.isValid() }, validationOptions: { insertMessages: false, decorateElement: true, errorClass: 'error', parseInputAttributes: false, errorElementClass: 'error' }">
                 <div class="controls">
                     <div class="input-prepend input-append">
-                        @*<span class="add-on btn-large btn-success grey"><i class="icon icon-plus"></i></span>*@
                         <input class="add-order" style="width:66%" data-bind="value: newOrderField, valueUpdate: 'afterkeydown', executeOnEnter: createOrder, autosuggest: retailers" title="@DashboardViewResources.NewOrderPlaceholder" placeholder="@DashboardViewResources.NewOrderPlaceholder"/><button id="addNewOrderButton" class="btn btn-large btn-success" type="button" data-loading-text="@DashboardViewResources.AddOrderButtonLoadingMessage" data-bind="click: createOrder, disable: disableAddOrderButton">@DashboardViewResources.AddOrderButton</button>
                         <div class="sub">
                             <div class="link_example">@DashboardViewResources.ExampleHeader: <a href="#" data-bind="click: addOrderExample.bind($data, 'amazon.com')">amazon.com</a>, <a href="#" data-bind="click: addOrderExample.bind($data, 'gap.com')">gap.com</a>, <a href="#" data-bind="click: addOrderExample.bind($data, 'macys.com')">macys.com</a></div>
@@ -27,7 +26,7 @@
         <div style="clear:left"></div>
         <div class="alert alert-info package" data-bind="visible: shouldShowOrdersEmptyMessage">@DashboardViewResources.NoOrdersMessage</div>
         <div id="orders" data-bind="foreach: orders">
-            <div data-bind="attr: { id: id }" class="package action">
+            <div data-bind="attr: { id: domOrderId }" class="package action">
                 <div class="box">
                     <table class="title">
                         <tr>
@@ -43,7 +42,7 @@
                                 <button class="btn btn-mini btn-danger" title="@DashboardViewResources.RemoveOrderButton" data-bind="click: $parent.removeOrder, visible: canBeRemoved"><i class="icon-white icon-trash"></i></button>
                                 <button class="btn btn-mini btn-success" title="@DashboardViewResources.InStockButton"><i class="icon-white icon-inbox"></i></button>
                                 <button class="btn btn-mini" title="@DashboardViewResources.ReturnOrderButton" data-toggle="modal" data-bind="visible: canBeRequestedForReturn"><i class="icon-retweet"></i></button>
-                                <button class="btn btn-mini dropdown-toggle" title="Move All Items" data-toggle="dropdown"><i class="icon icon-move"></i><span class="caret"></span></button>
+                                <button class="btn btn-mini dropdown-toggle" title="@DashboardViewResources.MoveAllItemsTitle" data-toggle="dropdown"><i class="icon icon-move"></i><span class="caret"></span></button>
                                 <ul class="dropdown-menu">
                                     <li><i class="icon-plus"></i>@DashboardViewResources.MoveToNewPackage</li>
                                     <li class="divider"></li>
@@ -77,7 +76,7 @@
                                     <th>@DashboardViewResources.QuantityHeader</th>
                                     <th>@DashboardViewResources.WeightHeader</th>
                                     <th>@DashboardViewResources.PriceHeader</th>
-                                    <th>Actions</th>
+                                    <th>@DashboardViewResources.ActionsHeader</th>
                                 </tr>
                             </thead>
                             <tbody id="order_items" data-bind="foreach: {data: items}">
@@ -91,17 +90,14 @@
                                     <td>$<span class="editable" title="@DashboardViewResources.PriceTitle" data-bind="text: price"></span></td>
                                     <td>
                                         <div class="btn-group">
-                                            <button class="btn btn-mini" title="Edit"><i class="icon icon-edit"></i></button>
-                                            <button class="btn btn-mini" title="Delete"><i class="icon icon-trash"></i></button>
-                                            <button class="btn btn-mini dropdown-toggle" title="Move" data-toggle="dropdown"><i class="icon icon-move"></i>@*@DashboardViewResources.ActionMoveHeader*@ <span class="caret"></span></button>
+                                            <button class="btn btn-mini" title="@DashboardViewResources.EditItemTitle"><i class="icon icon-edit"></i></button>
+                                            <button class="btn btn-mini" title="@DashboardViewResources.DeleteItemTitle"><i class="icon icon-trash"></i></button>
+                                            <button class="btn btn-mini dropdown-toggle" title="@DashboardViewResources.MoveItemTitle" data-toggle="dropdown"><i class="icon icon-move"></i>@*@DashboardViewResources.ActionMoveHeader*@ <span class="caret"></span></button>
                                             <ul class="dropdown-menu" data-bind="foreach: $root.packages()">
                                                 <li><a href="#"><span data-bind="text: name()"></span> <span class="label">ID: <span data-bind="text: id">6</span></span></a></li>
                                             </ul>
                                         </div>
                                     </td>
-                                    @*<td class="draggable">
-                                        <div></div>
-                                    </td>*@
                                 </tr>
                             </tbody>
                             <tfoot>
@@ -110,8 +106,7 @@
                                     <td><span data-bind="text: totalItemsQuantity"></span></td>
                                     <td><span data-bind="text: totalItemsWeight"></span> lbs</td>
                                     <td>$<span data-bind="text: totalItemsAmount"></span></td>
-                                    <td>
-                                    </td>
+                                    <td></td>
                                 </tr>
                             </tfoot>
                         </table>
@@ -169,12 +164,10 @@
                 <li class="active"><a href="#">@DashboardViewResources.RecentPackagesTabHeader</a></li>
                 <li><a href="#">@DashboardViewResources.HistoryPackagesTabHeader</a></li>
             </ul>
-            <div class="control-group">
+            <div class="control-group" data-bind="css: { error: !newPackageField.isValid() }, validationOptions: { insertMessages: false, decorateElement: true, errorClass: 'error', parseInputAttributes: false, errorElementClass: 'error' }">
                 <div class="controls">
                     <div class="input-prepend input-append">
-                        @*<span class="add-on btn-large btn-success grey"><i class="icon icon-gift"></i></span>*@
-                        <input class="add-order" style="width:66%" data-bind="value: newPackageField, valueUpdate: 'afterkeydown'" placeholder="@DashboardViewResources.NewPackagePlaceholder"/>
-                        <button class="btn btn-large btn-success" type="button" data-bind="click: createPackage, disable: disableCreatePackageButton">@DashboardViewResources.AddPackageButton</button>
+                        <input class="add-order" style="width:66%" data-bind="value: newPackageField, valueUpdate: 'afterkeydown', executeOnEnter: createPackage" title="@DashboardViewResources.NewPackagePlaceholder" placeholder="@DashboardViewResources.NewPackagePlaceholder"/><button id="addNewPackageButton" class="btn btn-large btn-success" type="button" data-loading-text="@DashboardViewResources.AddPackageButtonLoadingMessage" data-bind="click: createPackage, disable: disableCreatePackageButton">@DashboardViewResources.AddPackageButton</button>
                         <div class="sub">
                             <div class="link_example">@DashboardViewResources.ExampleHeader: <a href="#" data-bind="click: addPackageExample.bind($data, 'моя посылка')">моя посылка</a></div>
                             <div class="link_expand"><a href="#" data-bind="click: collapseAllPackages">свернуть все посылки</a></div>
@@ -185,7 +178,7 @@
         </div>
         <div style="clear:left"></div>
         <div id="packages" data-bind="foreach: packages">
-            <div data-bind="attr: { id: 'package' + id }" class="package action">
+            <div data-bind="attr: { id: domPackageId }" class="package action">
                 <div class="box">
                     <table class="title">
                         <tr>
@@ -198,7 +191,7 @@
                             </td>
                             <td class="right">
                                 <button class="btn btn-mini btn-primary right" title="@DashboardViewResources.SendPackageButton" data-bind="click: sendPackage, visible: canBeSent"><i class="icon-white icon-plane"></i></button>
-                                <button class="btn btn-mini btn-danger" title="@DashboardViewResources.RemoveOrderButton" data-bind="click: $parent.removeOrder, visible: canBeRemoved"><i class="icon-white icon-trash"></i></button>
+                                <button class="btn btn-mini btn-danger" title="@DashboardViewResources.RemoveOrderButton" data-bind="click: $parent.removePackage, visible: canBeRemoved"><i class="icon-white icon-trash"></i></button>
                             </td>
                         </tr>
                     </table>
@@ -246,7 +239,7 @@
                                         <th>@DashboardViewResources.QuantityHeader</th>
                                         <th>@DashboardViewResources.WeightHeader</th>
                                         <th class="span2">@DashboardViewResources.PriceHeader</th>
-                                        <th>Actions</th>
+                                        <th>@DashboardViewResources.ActionsHeader</th>
                                     </tr>
                                 </thead>
                                 <tbody id="package_items" data-bind="foreach: {data: items}">
@@ -254,13 +247,11 @@
                                         <td class="left"><i class="icon-camera"></i>&nbsp;<span data-bind="text: name"></span></td>
                                         <td><span data-bind="text: quantity"></span></td>
                                         <td><span data-bind="text: weight"></span> lbs</td>
-                                        <td><span data-bind="text: price"></span></td>
+                                        <td>$<span data-bind="text: price"></span></td>
                                         <td>
                                             <div class="btn-group">
-                                                <button class="btn btn-mini" title="Return item to package name_here"><i class="icon-arrow-left"></i></button>
-                                                <button class="btn btn-mini" title="Edit"><i class="icon icon-edit"></i></button>
-                                                <button class="btn btn-mini" title="Delete"><i class="icon icon-trash"></i></button>
-                                                <button class="btn btn-mini dropdown-toggle" title="Move" data-toggle="dropdown"><i class="icon icon-move"></i>@*@DashboardViewResources.ActionMoveHeader*@ <span class="caret"></span></button>
+                                                <button class="btn btn-mini" title="@DashboardViewResources.ReturnItemBackTitle"><i class="icon-arrow-left"></i></button>
+                                                <button class="btn btn-mini" title="@DashboardViewResources.EditItemTitle"><i class="icon icon-edit"></i></button>
                                                 <ul class="dropdown-menu" data-bind="foreach: $root.packages()">
                                                     <li><i class="icon-gift"></i><span data-bind="text: name()"></span> (id:<span data-bind="text: id"></span>)</li>
                                                 </ul>
@@ -276,10 +267,6 @@
                                         <td>$<span data-bind="text: totalItemsAmount"></span></td>
                                         <td colspan="2"></td>
                                     </tr>
-                                    @*<tr>
-                                        <td class="right">@DashboardViewResources.TotalWeightHeader:</td>
-                                        <td>1.23 kg</td>
-                                    </tr>*@
                                 </tfoot>
                             </table>
                         </div>
@@ -298,12 +285,6 @@
             ko.applyBindings(mainViewModel);
             ko.validation.init(mainViewModel, { insertMessages: false, decorateElement: true, errorClass: 'error', parseInputAttributes: true });
             // $(".tn").popover();
-            // $("table, tr").disableSelection();
-            //$("html").niceScroll();
-            //            var columnHeight = $(window).height() - $("#actionPanel").height() - $("#topmenu").height() - $(".modal-footer").height() - 90;
-            //            $("#orders").height(columnHeight - 100);
-            //            $("#packages").height(columnHeight - 55);
-            // $([]).add("#orders").add("#packages").niceScroll({ cursorborder: "", cursorcolor: "#A67852", boxzoom: false });
         });
     </script>
 }
