@@ -37,8 +37,7 @@ namespace TdService.Infrastructure.Helpers
 
             return sheet.Select(row => new RetailersSource
             {
-                Url = row[1],
-                Description = row[2]
+                Url = row[1]
             }).ToList();
         }
     }
