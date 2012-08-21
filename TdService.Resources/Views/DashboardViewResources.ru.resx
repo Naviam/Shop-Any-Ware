@@ -117,11 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ActionHeader" xml:space="preserve">
-    <value />
-  </data>
-  <data name="ActionMoveHeader" xml:space="preserve">
-    <value>Переместить</value>
+  <data name="ActionsHeader" xml:space="preserve">
+    <value>Действие</value>
   </data>
   <data name="AddItemButton" xml:space="preserve">
     <value>Добавить товар</value>
@@ -138,6 +135,9 @@
   <data name="AddPackageButton" xml:space="preserve">
     <value>Создать посылку</value>
   </data>
+  <data name="AddPackageButtonLoadingMessage" xml:space="preserve">
+    <value>Создаем посылку...</value>
+  </data>
   <data name="CancelButton" xml:space="preserve">
     <value>Отменить</value>
   </data>
@@ -147,8 +147,14 @@
   <data name="DashboardPageTitle" xml:space="preserve">
     <value>Shop Any Ware - Главная</value>
   </data>
+  <data name="DeleteItemTitle" xml:space="preserve">
+    <value>Удалить  товар</value>
+  </data>
   <data name="DeliveryHeader" xml:space="preserve">
     <value>Доставка</value>
+  </data>
+  <data name="EditItemTitle" xml:space="preserve">
+    <value>Редактировать товар</value>
   </data>
   <data name="ExampleHeader" xml:space="preserve">
     <value>Пример</value>
@@ -164,6 +170,12 @@
   </data>
   <data name="ItemsTotalHeader" xml:space="preserve">
     <value>Всего</value>
+  </data>
+  <data name="MoveAllItemsTitle" xml:space="preserve">
+    <value>Переместить все товары из заказа в посылку</value>
+  </data>
+  <data name="MoveItemTitle" xml:space="preserve">
+    <value>Переместить товар в посылку</value>
   </data>
   <data name="MoveToNewPackage" xml:space="preserve">
     <value>Переместить в новую посылку</value>
@@ -204,11 +216,20 @@
   <data name="OrderRemovedSuccess" xml:space="preserve">
     <value>Заказ был успешно удален.</value>
   </data>
+  <data name="PackageCannotRemove" xml:space="preserve">
+    <value>Посылка не может быть удалена в текущем состоянии.</value>
+  </data>
   <data name="PackageCreatedDateHeader" xml:space="preserve">
     <value>Создана</value>
   </data>
+  <data name="PackageCreatedSuccessMessage" xml:space="preserve">
+    <value>Посылка была успешно создана.</value>
+  </data>
   <data name="PackageNameHeader" xml:space="preserve">
     <value>Название</value>
+  </data>
+  <data name="PackageRemovedSuccess" xml:space="preserve">
+    <value>Посылка была успешно удалена.</value>
   </data>
   <data name="PriceHeader" xml:space="preserve">
     <value>Цена</value>
@@ -224,6 +245,9 @@
   </data>
   <data name="RemoveOrderButton" xml:space="preserve">
     <value>Удалить посылку</value>
+  </data>
+  <data name="ReturnItemBackTitle" xml:space="preserve">
+    <value>Вернуть товар назад в заказ</value>
   </data>
   <data name="ReturnOrderButton" xml:space="preserve">
     <value>Вернуть</value>

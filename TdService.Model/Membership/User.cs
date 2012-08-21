@@ -125,11 +125,25 @@ namespace TdService.Model.Membership
         /// The order ID to look for.
         /// </param>
         /// <returns>
-        /// The boolean result.
+        /// The order.
         /// </returns>
         public Order GetOrderById(int orderId)
         {
             return this.Orders.FirstOrDefault(o => o.Id == orderId);
+        }
+
+        /// <summary>
+        /// Get package by id.
+        /// </summary>
+        /// <param name="packageId">
+        /// The package id.
+        /// </param>
+        /// <returns>
+        /// The TdService.Model.Packages.Package.
+        /// </returns>
+        public Package GetPackageById(int packageId)
+        {
+            return this.Packages.FirstOrDefault(p => p.Id == packageId);
         }
 
         /// <summary>
@@ -181,15 +195,35 @@ namespace TdService.Model.Membership
                 if (order.CanBeRemoved)
                 {
                     this.Orders.Remove(order);
-                }
-                else
-                {
-                    return false;
+                    return true;
                 }
             }
 
-            // return true if order was not found (than we may think it is already removed)
-            return true;
+            return false;
+        }
+
+        /// <summary>
+        /// The remove package.
+        /// </summary>
+        /// <param name="id">
+        /// The package id.
+        /// </param>
+        /// <returns>
+        /// The System.Boolean.
+        /// </returns>
+        public bool RemovePackage(int id)
+        {
+            var package = this.GetPackageById(id);
+            if (package != null)
+            {
+                if (package.CanBeRemoved)
+                {
+                    this.Packages.Remove(package);
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         /// <summary>

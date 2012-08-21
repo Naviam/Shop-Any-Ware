@@ -3,7 +3,7 @@
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
-//   The PackagesService interface.
+//   The Packages Service interface.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -14,7 +14,7 @@ namespace TdService.Services.Interfaces
     using TdService.Services.Messaging.Package;
 
     /// <summary>
-    /// The PackagesService interface.
+    /// The Packages Service interface.
     /// </summary>
     public interface IPackagesService
     {
@@ -39,5 +39,16 @@ namespace TdService.Services.Interfaces
         /// The add package response message.
         /// </returns>
         AddPackageResponse AddPackage(AddPackageRequest request);
+
+        /// <summary>
+        /// Remove package completely.
+        /// </summary>
+        /// <param name="request">
+        /// The remove package request.
+        /// </param>
+        /// <returns>
+        /// The remove package response.
+        /// </returns>
+        RemovePackageResponse RemovePackage(RemovePackageRequest request);
     }
 }

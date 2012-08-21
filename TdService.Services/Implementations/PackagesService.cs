@@ -13,8 +13,10 @@ namespace TdService.Services.Implementations
     using System.Collections.Generic;
     using TdService.Model.Membership;
     using TdService.Model.Packages;
+    using TdService.Resources.Views;
     using TdService.Services.Interfaces;
     using TdService.Services.Mapping;
+    using TdService.Services.Messaging;
     using TdService.Services.Messaging.Package;
 
     /// <summary>
@@ -87,6 +89,47 @@ namespace TdService.Services.Implementations
             this.userRepository.SaveChanges();
 
             return packageResult.ConvertToAddPackageResponse();
+        }
+
+        /// <summary>
+        /// Remove package completely.
+        /// </summary>
+        /// <param name="request">
+        /// The remove package request.
+        /// </param>
+        /// <returns>
+        /// The remove package response.
+        /// </returns>
+        public RemovePackageResponse RemovePackage(RemovePackageRequest request)
+        {
+            var response = new RemovePackageResponse { MessageType = MessageType.Success };
+
+            var user = this.userRepository.GetUserWithPackagesByEmail(request.IdentityToken);
+
+            if (user != null)
+            {
+                try
+                {
+                    var result = user.RemovePackage(request.Id);
+                    if (result)
+                    {
+                        this.packageRepository.RemovePackage(request.Id);
+                        this.packageRepository.SaveChanges();
+                    }
+                    else
+                    {
+                        response.MessageType = MessageType.Warning;
+                        response.Message = DashboardViewResources.PackageCannotRemove;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    response.MessageType = MessageType.Error;
+                    response.Message = ex.Message;
+                }
+            }
+
+            return response;
         }
     }
 }

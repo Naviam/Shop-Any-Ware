@@ -107,6 +107,8 @@
     <Compile Include="Messaging\Package\AddPackageResponse.cs" />
     <Compile Include="Messaging\Package\GetRecentPackagesRequest.cs" />
     <Compile Include="Messaging\Package\GetRecentPackagesResponse.cs" />
+    <Compile Include="Messaging\Package\RemovePackageRequest.cs" />
+    <Compile Include="Messaging\Package\RemovePackageResponse.cs" />
     <Compile Include="Messaging\RequestBase.cs" />
     <Compile Include="Messaging\ResponseBase.cs" />
     <Compile Include="Messaging\Retailer\GetRetailersRequest.cs" />
