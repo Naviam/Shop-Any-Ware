@@ -116,8 +116,32 @@ footer{color:#999;text-align:right}
     .package .btn-large{font-size:14px}
     .pac{border-collapse:collapse;margin:0;padding:0;width:100%}
     .pac td{margin:0;padding:0}
+.form_registration{margin:0 0 20px 0}
+    .form_registration .nav{margin:0}
+    .form_registration .nav-tabs{border-bottom: 1px solid #52a552}
+    .form_registration .nav-tabs li{margin-bottom:-2px}
+        .form_registration .nav-tabs li a:hover{border-color:transparent;background-color:transparent;text-decoration:underline}
+    .form_registration .tab-content{background-color:#e6f5e6;border:1px solid #52a552;border-top:transparent;padding-top:18px}
+    .form_registration .form-actions,.form_registration form{margin:0}
+    .form_registration .form-actions{background-color:#81ce81;border-top:transparent}
+    .form_registration a{color:#0068b8 !important}
+    .form_registration .active > a{background-color:#e6f5e6 !important;border:1px solid #52a552 !important;border-bottom:transparent !important;color:#333 !important;text-decoration:none !important}
+    .form_registration input, .form_registration textarea, .form_registration select, .form_registration .uneditable-input{border:1px solid #52a552 !important}
+    .form_registration input:focus:required:invalid:focus, .form_registration textarea:focus:required:invalid:focus, .form_registration select:focus:required:invalid:focus{-webkit-box-shadow:0 0 6px #52a552;-moz-box-shadow:0 0 6px #52a552;box-shadow:0 0 6px #52a552}
+.form_login{margin:0 0 20px 0}
+    .form_login .nav{margin:0}
+    .form_login .nav-tabs{border-bottom: 1px solid #0068b8}
+    .form_login .nav-tabs li{margin-bottom:-2px}
+        .form_login .nav-tabs li a:hover{border-color:transparent;background-color:transparent;text-decoration:underline}
+    .form_login .tab-content{background-color:#d6ecf7;border:1px solid #0068b8;border-top:transparent;padding-top:18px}
+    .form_login .form-actions,.form_login form{margin:0}
+    .form_login .form-actions{background-color:#339ed5;border-top:transparent}
+    .form_login a{color:#52a552 !important}
+    .form_login .active > a{background-color:#d6ecf7 !important;border:1px solid #0068b8 !important;border-bottom:transparent !important;color:#333 !important;text-decoration:none !important}
+    .form_login input, .form_registration textarea, .form_registration select, .form_registration .uneditable-input{border:1px solid #0068b8 !important}
+    .form_login input:focus:required:invalid:focus, .form_registration textarea:focus:required:invalid:focus, .form_registration select:focus:required:invalid:focus{-webkit-box-shadow:0 0 6px #0068b8;-moz-box-shadow:0 0 6px #0068b8;box-shadow:0 0 6px #0068b8}
 .transaction{margin:8px 12px;width:500px}
-    .transaction td{text-align:center}
+    .transaction td{text-align:center}one
     .transaction tr>td:first-child{text-align:left}
     .transaction tr>th:first-child{text-align:left}
     .transaction a{color:#fff}
