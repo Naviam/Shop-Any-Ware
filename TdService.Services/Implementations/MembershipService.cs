@@ -6,6 +6,7 @@
 
 namespace TdService.Services.Implementations
 {
+    using System.Collections.Generic;
     using System.Linq;
     using System.Text;
 
@@ -87,10 +88,11 @@ namespace TdService.Services.Implementations
             try
             {
                 ThrowExceptionIfUserIsInvalid(user);
-                var createdUser = this.userRepository.CreateUser(user);
-                this.profileRepository.FindOrAddProfile(user.Profile);
-                this.userRepository.SaveChanges();
+                user.Profile = this.profileRepository.FindOrAddProfile(user.Profile);
+
+                this.userRepository.CreateUser(user);
                 this.profileRepository.SaveChanges();
+                this.userRepository.SaveChanges();
 
                 var role = this.roleRepository.GetRoleByName(request.RoleName);
                 if (role == null)
@@ -100,7 +102,7 @@ namespace TdService.Services.Implementations
                     role = this.roleRepository.GetRoleByName(request.RoleName);
                 }
 
-                createdUser.Roles.Add(role);
+                user.Roles = new List<Role> { role };
                 this.userRepository.SaveChanges();
             }
             catch (InvalidUserException)

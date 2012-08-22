@@ -7,9 +7,16 @@
 /// <reference path="../knockout-sortable.js" />
 /// <reference path="../bootstrap/bootstrap-collapse.js" />
 
-function SignInViewModel(serverModel) {
+function SignInViewModel() {
     var self = this;
 
-    self.email = ko.observable('');
-    self.password = ko.observable('');
+    self.email = ko.observable('').extend({ required: true }).extend({ email: true });
+    self.password = ko.observable('').extend({ required: true });
+    self.rememberMe = ko.observable(false);
+
+    self.submit = function () {
+        if (self.isValid()) {
+            $("#signInForm").submit();
+        }
+    };
 }

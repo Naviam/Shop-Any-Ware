@@ -11,6 +11,9 @@ namespace TdService.ShopAnyWare.Tests.Orders
 {
     using NUnit.Framework;
 
+    /// <summary>
+    /// The order entity tests.
+    /// </summary>
     [TestFixture]
     public class OrderEntityTests
     {

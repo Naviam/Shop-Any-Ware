@@ -162,7 +162,8 @@ namespace TdService.Controllers
                     Email = view.Email,
                     Password = view.Password,
                     FirstName = view.FirstName,
-                    LastName = view.LastName
+                    LastName = view.LastName,
+                    RoleName = "Shopper"
                 };
 
                 var response = this.membershipService.RegisterUser(request);

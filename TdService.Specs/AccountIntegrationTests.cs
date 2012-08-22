@@ -142,7 +142,7 @@ namespace TdService.Specs
             Assert.That(actual, Is.Not.Null);
             if (actual != null)
             {
-                Assert.That(actual.RouteValues["action"], Is.EqualTo("Dashboard"));
+                Assert.That(actual.RouteValues["action"], Is.EqualTo("Welcome"));
                 Assert.That(actual.RouteValues["controller"], Is.EqualTo("Member"));
             }
         }

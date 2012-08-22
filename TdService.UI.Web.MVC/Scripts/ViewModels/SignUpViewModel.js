@@ -7,12 +7,35 @@
 /// <reference path="../knockout-sortable.js" />
 /// <reference path="../bootstrap/bootstrap-collapse.js" />
 
-function SignUpViewModel(serverModel) {
+ko.validation.configure({
+    registerExtenders: true,
+    messagesOnModified: true,
+    insertMessages: true,
+    parseInputAttributes: true,
+    messageTemplate: null,
+    decorateElement: true,
+    errorClass: 'error'
+});
+
+var SignUpViewModel = function () {
     var self = this;
 
-    self.email = ko.observable('');
-    self.password = ko.observable('');
-    self.passwordConfirm = ko.observable('');
-    self.firstName = ko.observable('');
-    self.lastName = ko.observable('');
-}
+    self.email = ko.observable('').extend({ required: true }).extend({ email: true });
+    self.password = ko.observable('').extend({ required: true, minLength: 7, maxLength: 21 });
+    self.passwordConfirm = ko.observable('').extend({ required: true });
+    self.firstName = ko.observable('').extend({ required: true });
+    self.lastName = ko.observable('').extend({ required: true });
+
+    self.submit = function () {
+        if (self.errors().length == 0) {
+            $("#signUpForm").submit();
+        } else {
+            alert('Please check your submission.');
+            self.errors.showAllMessages();
+        }
+    };
+};
+
+var model = new SignUpViewModel();
+model.errors = ko.validation.group(model);
+ko.applyBindings(model, document.getElementById('signup'));
