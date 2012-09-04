@@ -11,7 +11,6 @@ namespace TdService.Specs
 {
     using System.Data.Entity;
 
-    using TdService.Infrastructure.FileSystem;
     using TdService.Model.Common;
     using TdService.Repository.MsSql;
     using TdService.Repository.MsSql.StaticDataSeed;
