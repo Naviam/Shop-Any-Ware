@@ -90,9 +90,9 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
-    <Reference Include="MvcSiteMapProvider, Version=3.2.3.0, Culture=neutral, PublicKeyToken=1923abe4657913cc, processorArchitecture=MSIL">
+    <Reference Include="MvcSiteMapProvider, Version=3.3.3.0, Culture=neutral, PublicKeyToken=1923abe4657913cc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\MvcSiteMapProvider.3.2.3.0\lib\net40\MvcSiteMapProvider.dll</HintPath>
+      <HintPath>..\packages\MvcSiteMapProvider.3.3.3.0\lib\net40\MvcSiteMapProvider.dll</HintPath>
     </Reference>
     <Reference Include="SimpleInjector, Version=1.5.0.12199, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -159,6 +159,8 @@
     <Content Include="Content\css\font-awesome.css" />
     <Content Include="Content\font\fontawesome-webfont.svg" />
     <Content Include="Content\ico\favicon.ico" />
+    <Content Include="Content\images\glyphicons-halflings-white.png" />
+    <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Content\img\apple-touch-icon-114-precomposed.png" />
     <Content Include="Content\img\apple-touch-icon-57-precomposed.png" />
     <Content Include="Content\img\apple-touch-icon-72-precomposed.png" />
@@ -237,12 +239,16 @@
     <Content Include="Scripts\knockout.mapping-latest.js" />
     <Content Include="Scripts\knockout.validation.debug.js" />
     <Content Include="Scripts\knockout.validation.js" />
-    <Content Include="Scripts\less.min.js" />
     <Content Include="App_Data\retailers.xls">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Mvc.sitemap" />
+    <None Include="MvcSiteMapSchema.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\PublishProfiles\ShopAnyWare.pubxml" />
     <None Include="Scripts\linq-vsdoc.js" />
+    <Content Include="Scripts\less.min.js" />
     <Content Include="Scripts\linq.jquery.js" />
     <Content Include="Scripts\linq.js" />
     <Content Include="Scripts\linq.min.js">
@@ -328,6 +334,12 @@
     <Content Include="Scripts\ViewModels\SignInViewModel.js" />
     <Content Include="Scripts\ViewModels\SignUpViewModel.js" />
     <Content Include="Scripts\ViewModels\DashboardViewModel.js" />
+    <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapHelperModel.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModel.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModelList.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapPathHelperModel.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapTitleHelperModel.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -346,6 +358,8 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapPathHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Scripts\MVVM\Model\" />
@@ -557,9 +571,6 @@
     <None Include="Content\less\wells.less" />
     <None Include="Content\sass\font-awesome.sass" />
     <None Include="Content\sass\font-awesome.scss" />
-    <None Include="MvcSiteMapSchema.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Scripts\bootstrap\README.md" />
     <Content Include="Views\Account\SignUp.cshtml" />
     <Content Include="Views\Order\UserOrders.cshtml" />
@@ -596,7 +607,6 @@
     <Content Include="Views\Shared\addMoneyForm.cshtml" />
     <Content Include="Views\Shared\profileForm.cshtml" />
     <Content Include="Views\Member\Dashboard.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\SiteMapPathHelperModel.cshtml" />
     <Content Include="Views\Admin\Dashboard.cshtml" />
     <Content Include="Views\Account\Forgot.cshtml" />
     <Content Include="Views\Shared\deliveryAddressDetails.cshtml" />
