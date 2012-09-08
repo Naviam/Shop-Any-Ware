@@ -91,6 +91,10 @@
       <Project>{A9DEDA99-A27D-4687-B912-46F339EA36A4}</Project>
       <Name>TdService.Services</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TdService.UI.Web.ViewModels\TdService.UI.Web.ViewModels.csproj">
+      <Project>{c79cc22d-53ba-4685-8e3c-d74a3cd7b1cf}</Project>
+      <Name>TdService.UI.Web.ViewModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
