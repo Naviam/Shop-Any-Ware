@@ -20,6 +20,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
     using TdService.Services.Implementations;
     using TdService.Services.Messaging;
     using TdService.Services.Messaging.Order;
+    using TdService.UI.Web;
 
     /// <summary>
     /// The order service tests.

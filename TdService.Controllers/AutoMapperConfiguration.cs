@@ -7,23 +7,27 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService
+namespace TdService.UI.Web
 {
     using AutoMapper;
 
+    using TdService.Model.Addresses;
     using TdService.Model.Common;
     using TdService.Model.Items;
     using TdService.Model.Orders;
     using TdService.Model.Packages;
+    using TdService.Services.Messaging.Address;
     using TdService.Services.Messaging.Item;
+    using TdService.Services.Messaging.Membership;
     using TdService.Services.Messaging.Order;
     using TdService.Services.Messaging.Package;
     using TdService.Services.Messaging.Retailer;
-    using TdService.Services.ViewModels;
-    using TdService.Services.ViewModels.Item;
-    using TdService.Services.ViewModels.Order;
-    using TdService.Services.ViewModels.Package;
-    using TdService.Services.ViewModels.Retailer;
+    using TdService.UI.Web.ViewModels;
+    using TdService.UI.Web.ViewModels.Account;
+    using TdService.UI.Web.ViewModels.Item;
+    using TdService.UI.Web.ViewModels.Order;
+    using TdService.UI.Web.ViewModels.Package;
+    using TdService.UI.Web.ViewModels.Retailer;
 
     /// <summary>
     /// The auto mapper configuration.
@@ -35,6 +39,15 @@ namespace TdService
         /// </summary>
         public static void Configure()
         {
+            // profile
+            Mapper.CreateMap<ProfileViewModel, UpdateProfileRequest>();
+            Mapper.CreateMap<UpdateProfileRequest, Profile>();
+
+            // delivery address
+            Mapper.CreateMap<DeliveryAddress, GetDeliveryAddressesResponse>();
+            Mapper.CreateMap<GetDeliveryAddressesResponse, DeliveryAddressViewModel>();
+            Mapper.CreateMap<AddDeliveryAddressRequest, DeliveryAddress>();
+
             // get recent orders
             Mapper.CreateMap<GetRecentOrdersResponse, OrderViewModel>();
             Mapper.CreateMap<Order, GetRecentOrdersResponse>();

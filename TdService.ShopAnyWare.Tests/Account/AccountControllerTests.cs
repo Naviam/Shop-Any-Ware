@@ -10,14 +10,14 @@ namespace TdService.ShopAnyWare.Tests.Account
 
     using NUnit.Framework;
 
-    using TdService.Controllers;
     using TdService.Infrastructure.Authentication;
     using TdService.Infrastructure.CookieStorage;
     using TdService.Infrastructure.Email;
     using TdService.Services.Interfaces;
-    using TdService.Services.ViewModels.Account;
     using TdService.ShopAnyWare.Tests.Helpers;
     using TdService.ShopAnyWare.Tests.Mocks;
+    using TdService.UI.Web.Controllers;
+    using TdService.UI.Web.ViewModels.Account;
 
     /// <summary>
     /// This class contains unit tests for account controller methods.

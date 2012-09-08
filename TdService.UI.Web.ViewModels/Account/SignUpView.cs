@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TdService.Services.ViewModels.Account
+namespace TdService.UI.Web.ViewModels.Account
 {
     using System.ComponentModel.DataAnnotations;
 

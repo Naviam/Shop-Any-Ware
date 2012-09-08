@@ -7,11 +7,9 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Services.ViewModels.Package
+namespace TdService.UI.Web.ViewModels.Package
 {
     using System;
-
-    using TdService.Services.ViewModels;
 
     /// <summary>
     /// The package view model.

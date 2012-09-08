@@ -14,11 +14,9 @@ namespace TdService.Specs
     using System.Data.Entity;
     using System.Diagnostics;
     using System.Linq;
-    using System.Web.Mvc;
 
     using NUnit.Framework;
 
-    using TdService.Controllers;
     using TdService.Infrastructure.Authentication;
     using TdService.Model.Common;
     using TdService.Model.Membership;
@@ -27,7 +25,9 @@ namespace TdService.Specs
     using TdService.Repository.MsSql.Repositories;
     using TdService.Services.Implementations;
     using TdService.Services.Interfaces;
-    using TdService.Services.ViewModels.Order;
+    using TdService.UI.Web;
+    using TdService.UI.Web.Controllers;
+    using TdService.UI.Web.ViewModels.Order;
 
     /// <summary>
     /// The orders integration tests.

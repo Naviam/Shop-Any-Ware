@@ -8,7 +8,7 @@ namespace TdService.Services.Mapping
 {
     using AutoMapper;
 
-    using TdService.Services.ViewModels.Account;
+    using TdService.Services.Messaging.Membership;
 
     using Profile = TdService.Model.Membership.Profile;
 
@@ -18,17 +18,17 @@ namespace TdService.Services.Mapping
     public static class ProfileMapper
     {
         /// <summary>
-        /// Convert profile view to profile domain object.
+        /// Convert update profile request message to profile domain model.
         /// </summary>
-        /// <param name="profileView">
-        /// The profile view.
+        /// <param name="request">
+        /// The update profile request message.
         /// </param>
         /// <returns>
-        /// Profile object.
+        /// The profile domain model.
         /// </returns>
-        public static Profile ConvertToProfile(this ProfileView profileView)
+        public static Profile ConvertToProfile(this UpdateProfileRequest request)
         {
-            return Mapper.Map<ProfileView, Profile>(profileView);
+            return Mapper.Map<UpdateProfileRequest, Profile>(request);
         }
     }
 }

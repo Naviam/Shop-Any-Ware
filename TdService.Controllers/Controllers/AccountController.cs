@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Controllers
+namespace TdService.UI.Web.Controllers
 {
     using System;
     using System.Collections.Specialized;
@@ -20,7 +20,7 @@ namespace TdService.Controllers
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging;
     using TdService.Services.Messaging.Membership;
-    using TdService.Services.ViewModels.Account;
+    using TdService.UI.Web.ViewModels.Account;
 
     /// <summary>
     /// This controller is responsible for authentication and authorization of user.
@@ -79,7 +79,7 @@ namespace TdService.Controllers
         {
             var model = new SignInView();
             this.SetCredentialsFromCookie(ref model);
-            ViewData.Model = model;
+            this.ViewData.Model = model;
             return this.View();
         }
 
@@ -96,7 +96,7 @@ namespace TdService.Controllers
         [ValidateAntiForgeryToken(Salt = "signin")]
         public ActionResult SignIn(SignInView view)
         {
-            if (ModelState.IsValid)
+            if (this.ModelState.IsValid)
             {
                 var validateUserRequest = new ValidateUserRequest
                 {
@@ -123,7 +123,7 @@ namespace TdService.Controllers
                         (new ResourceManager(typeof(Resources.ErrorCodeResources))).GetString(response.ErrorCode);
                 }
 
-                ViewData.Model = model;
+                this.ViewData.Model = model;
             }
 
             return this.View();
@@ -137,7 +137,7 @@ namespace TdService.Controllers
         /// </returns>
         public ActionResult SignUp()
         {
-            ViewData.Model = new SignUpView();
+            this.ViewData.Model = new SignUpView();
             return this.View();
         }
 
@@ -154,7 +154,7 @@ namespace TdService.Controllers
         [ValidateAntiForgeryToken(Salt = "signup")]
         public ActionResult SignUp(SignUpView view)
         {
-            if (ModelState.IsValid)
+            if (this.ModelState.IsValid)
             {
                 var request = new RegisterUserRequest
                 {
@@ -173,7 +173,7 @@ namespace TdService.Controllers
 
                 if (response.MessageType == MessageType.Error && response.ErrorCode == "EmailExists")
                 {
-                    ModelState.AddModelError("Email", (new ResourceManager(typeof(Resources.ErrorCodeResources))).GetString(response.ErrorCode));
+                    this.ModelState.AddModelError("Email", (new ResourceManager(typeof(Resources.ErrorCodeResources))).GetString(response.ErrorCode));
                 }
 
                 view.MessageType = response.MessageType.ToString();
@@ -213,7 +213,7 @@ namespace TdService.Controllers
         /// </returns>
         public ActionResult Forgot()
         {
-            ViewData.Model = new ForgotPasswordView();
+            this.ViewData.Model = new ForgotPasswordView();
             return this.View();
         }
 
@@ -230,7 +230,7 @@ namespace TdService.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Forgot(ForgotPasswordView view)
         {
-            if (ModelState.IsValid)
+            if (this.ModelState.IsValid)
             {
                 var request = new ChangePasswordLinkRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() };
                 this.membershipService.GenerateChangePasswordLink(request);

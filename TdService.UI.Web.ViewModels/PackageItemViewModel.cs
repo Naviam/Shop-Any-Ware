@@ -1,22 +1,24 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="OrderItemViewModel.cs" company="TdService">
+// <copyright file="PackageItemViewModel.cs" company="TdService">
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
-//   The order item view model.
+//   The package item view model.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Services.ViewModels.Item
+namespace TdService.UI.Web.ViewModels
 {
+    using TdService.UI.Web.ViewModels.Item;
+
     /// <summary>
-    /// The order item view model.
+    /// The package item view model.
     /// </summary>
-    public class OrderItemViewModel : ItemViewModel
+    public class PackageItemViewModel : ItemViewModel
     {
         /// <summary>
-        /// Gets or sets the order id.
+        /// Gets or sets the package id.
         /// </summary>
-        public int OrderId { get; set; }
+        public int PackageId { get; set; }
     }
 }

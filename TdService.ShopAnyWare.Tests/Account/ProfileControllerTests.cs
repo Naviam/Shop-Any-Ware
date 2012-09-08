@@ -10,10 +10,10 @@ namespace TdService.ShopAnyWare.Tests.Account
 
     using NUnit.Framework;
 
-    using TdService.Controllers;
     using TdService.Infrastructure.Authentication;
     using TdService.Services.Interfaces;
-    using TdService.Services.ViewModels.Account;
+    using TdService.UI.Web.Controllers;
+    using TdService.UI.Web.ViewModels.Account;
 
     /// <summary>
     /// Profile controller tests.
@@ -55,7 +55,7 @@ namespace TdService.ShopAnyWare.Tests.Account
 
             // assert
             Assert.That(actual.ViewName, Is.EqualTo(string.Empty));
-            Assert.That(actual.Model, Is.TypeOf(typeof(ProfileView)));
+            Assert.That(actual.Model, Is.TypeOf(typeof(ProfileViewModel)));
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace TdService.ShopAnyWare.Tests.Account
         {
             // arrange
             var controller = new ProfileController(this.MembershipService, this.FormsAuthentication);
-            var profileView = new ProfileView
+            var profileView = new ProfileViewModel
                 {
                     FirstName = "Vitali",
                     LastName = "Hatalski",
@@ -75,7 +75,7 @@ namespace TdService.ShopAnyWare.Tests.Account
                 };
 
             // act
-            var actual = ((JsonResult)controller.Save(profileView)).Data as ProfileView;
+            var actual = ((JsonResult)controller.Save(profileView)).Data as ProfileViewModel;
 
             // assert
             Assert.That(actual, Is.Not.Null);
@@ -93,7 +93,7 @@ namespace TdService.ShopAnyWare.Tests.Account
         {
             // arrange
             var controller = new ProfileController(this.MembershipService, this.FormsAuthentication);
-            var profileView = new ProfileView
+            var profileView = new ProfileViewModel
             {
                 FirstName = "Vitali",
                 LastName = string.Empty,
@@ -104,7 +104,7 @@ namespace TdService.ShopAnyWare.Tests.Account
             controller.ModelState.AddModelError("key", "model is invalid");
 
             // act
-            var actual = ((JsonResult)controller.Save(profileView)).Data as ProfileView;
+            var actual = ((JsonResult)controller.Save(profileView)).Data as ProfileViewModel;
 
             // assert
             Assert.That(actual, Is.Not.Null);

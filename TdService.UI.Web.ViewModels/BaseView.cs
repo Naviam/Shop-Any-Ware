@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TdService.Services.ViewModels
+namespace TdService.UI.Web.ViewModels
 {
     /// <summary>
     /// Base class for view models.

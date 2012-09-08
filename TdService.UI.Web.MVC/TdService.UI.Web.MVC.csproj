@@ -367,9 +367,9 @@
       <Project>{4E87BDA7-4AF2-4D94-9A40-68B161FBB71A}</Project>
       <Name>TdService.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TdService.Controllers\TdService.Controllers.csproj">
+    <ProjectReference Include="..\TdService.Controllers\TdService.UI.Web.Controllers.csproj">
       <Project>{8C23E268-EACF-4E5F-B96A-3BB48238AADC}</Project>
-      <Name>TdService.Controllers</Name>
+      <Name>TdService.UI.Web.Controllers</Name>
     </ProjectReference>
     <ProjectReference Include="..\TdService.Providers\TdService.Providers.csproj">
       <Project>{86c4c56e-4f69-478d-bc73-d0c054d701aa}</Project>

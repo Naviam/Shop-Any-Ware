@@ -30,7 +30,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TdService.Repository.MsSql"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TdService.Model", "TdService.Model\TdService.Model.csproj", "{4E87BDA7-4AF2-4D94-9A40-68B161FBB71A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TdService.Controllers", "TdService.Controllers\TdService.Controllers.csproj", "{8C23E268-EACF-4E5F-B96A-3BB48238AADC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TdService.UI.Web.Controllers", "TdService.Controllers\TdService.UI.Web.Controllers.csproj", "{8C23E268-EACF-4E5F-B96A-3BB48238AADC}"
 EndProject
 Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "TdService.Modeling", "TdService.Modeling\TdService.Modeling.modelproj", "{468BBD3F-058E-4C14-932A-8E15234411DA}"
 EndProject

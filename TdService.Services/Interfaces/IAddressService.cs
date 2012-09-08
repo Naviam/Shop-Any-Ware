@@ -6,6 +6,8 @@
 
 namespace TdService.Services.Interfaces
 {
+    using System.Collections.Generic;
+
     using TdService.Services.Messaging.Address;
 
     /// <summary>
@@ -22,7 +24,7 @@ namespace TdService.Services.Interfaces
         /// <returns>
         /// Collection of user's delivery addresses.
         /// </returns>
-        GetDeliveryAddressesResponse GetDeliveryAddresses(GetDeliveryAddressesRequest request);
+        List<GetDeliveryAddressesResponse> GetDeliveryAddresses(GetDeliveryAddressesRequest request);
 
         /// <summary>
         /// Add or update delivery address.

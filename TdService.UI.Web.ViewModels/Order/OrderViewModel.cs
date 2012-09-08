@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Services.ViewModels.Order
+namespace TdService.UI.Web.ViewModels.Order
 {
     using System;
 

@@ -17,13 +17,14 @@ namespace TdService.ShopAnyWare.Tests.Orders
 
     using NUnit.Framework;
 
-    using TdService.Controllers;
     using TdService.Infrastructure.Authentication;
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging.Order;
-    using TdService.Services.ViewModels.Order;
     using TdService.ShopAnyWare.Tests.Account;
     using TdService.ShopAnyWare.Tests.Helpers;
+    using TdService.UI.Web;
+    using TdService.UI.Web.Controllers;
+    using TdService.UI.Web.ViewModels.Order;
 
     /// <summary>
     /// The order controller tests.

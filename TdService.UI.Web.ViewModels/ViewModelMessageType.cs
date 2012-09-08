@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TdService.Services.ViewModels
+namespace TdService.UI.Web.ViewModels
 {
     /// <summary>
     /// The view model message types.

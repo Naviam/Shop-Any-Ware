@@ -14,7 +14,6 @@ namespace TdService.Specs
 
     using NUnit.Framework;
 
-    using TdService.Controllers;
     using TdService.Infrastructure.Authentication;
     using TdService.Infrastructure.CookieStorage;
     using TdService.Infrastructure.Email;
@@ -22,8 +21,10 @@ namespace TdService.Specs
     using TdService.Repository.MsSql;
     using TdService.Repository.MsSql.Repositories;
     using TdService.Services.Implementations;
-    using TdService.Services.ViewModels.Account;
     using TdService.Specs.Infrastructure;
+    using TdService.UI.Web;
+    using TdService.UI.Web.Controllers;
+    using TdService.UI.Web.ViewModels.Account;
 
     /// <summary>
     /// The account integration tests.

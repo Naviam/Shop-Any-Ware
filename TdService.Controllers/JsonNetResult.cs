@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService
+namespace TdService.UI.Web
 {
     using System;
     using System.Text;

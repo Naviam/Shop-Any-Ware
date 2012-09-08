@@ -114,20 +114,6 @@
     <Compile Include="Messaging\Retailer\GetRetailersRequest.cs" />
     <Compile Include="Messaging\Retailer\GetRetailersResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\Account\DeliveryAddressesView.cs" />
-    <Compile Include="ViewModels\Account\DeliveryAddressDetails.cs" />
-    <Compile Include="ViewModels\Account\ForgotPasswordView.cs" />
-    <Compile Include="ViewModels\Account\ProfileView.cs" />
-    <Compile Include="ViewModels\Account\SignInView.cs" />
-    <Compile Include="ViewModels\Account\SignUpView.cs" />
-    <Compile Include="ViewModels\BaseView.cs" />
-    <Compile Include="ViewModels\Item\ItemViewModel.cs" />
-    <Compile Include="ViewModels\Item\OrderItemViewModel.cs" />
-    <Compile Include="ViewModels\Order\OrderViewModel.cs" />
-    <Compile Include="ViewModels\PackageItemViewModel.cs" />
-    <Compile Include="ViewModels\Package\PackageViewModel.cs" />
-    <Compile Include="ViewModels\Retailer\RetailerViewModel.cs" />
-    <Compile Include="ViewModels\ViewModelMessageType.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TdService.Infrastructure\TdService.Infrastructure.csproj">

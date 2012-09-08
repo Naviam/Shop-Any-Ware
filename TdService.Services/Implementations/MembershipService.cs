@@ -12,6 +12,7 @@ namespace TdService.Services.Implementations
     using TdService.Model.Membership;
     using TdService.Resources;
     using TdService.Services.Interfaces;
+    using TdService.Services.Mapping;
     using TdService.Services.Messaging;
     using TdService.Services.Messaging.Membership;
 
@@ -215,22 +216,16 @@ namespace TdService.Services.Implementations
         public UpdateProfileResponse UpdateProfile(UpdateProfileRequest request)
         {
             var response = new UpdateProfileResponse();
-            var profile = new Profile
-                {
-                    FirstName = request.FirstName,
-                    LastName = request.LastName,
-                    NotifyOnOrderStatusChanged = request.NotifyOnOrderStatusChanged,
-                    NotifyOnPackageStatusChanged = request.NotifyOnPackageStatusChanged
-                };
+            var profile = request.ConvertToProfile();
 
             ThrowExceptionIfProfileIsInvalid(profile);
 
             var user = this.userRepository.GetUserByEmail(request.IdentityToken);
-            // this.profileRepository.UpdateProfile();
-            user.Profile.FirstName = request.FirstName;
-            user.Profile.LastName = request.LastName;
-            user.Profile.NotifyOnOrderStatusChanged = request.NotifyOnOrderStatusChanged;
-            user.Profile.NotifyOnPackageStatusChanged = request.NotifyOnPackageStatusChanged;
+
+            user.Profile.FirstName = profile.FirstName;
+            user.Profile.LastName = profile.LastName;
+            user.Profile.NotifyOnOrderStatusChanged = profile.NotifyOnOrderStatusChanged;
+            user.Profile.NotifyOnPackageStatusChanged = profile.NotifyOnPackageStatusChanged;
 
             this.userRepository.SaveChanges();
 

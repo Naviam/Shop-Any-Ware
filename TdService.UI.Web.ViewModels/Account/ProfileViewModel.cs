@@ -1,17 +1,17 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="ProfileView.cs" company="TdService">
+// <copyright file="ProfileViewModel.cs" company="TdService">
 // Vitali Hatalski. 2012.
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TdService.Services.ViewModels.Account
+namespace TdService.UI.Web.ViewModels.Account
 {
     using System.ComponentModel.DataAnnotations;
 
     /// <summary>
     /// This is the profile model for web form.
     /// </summary>
-    public class ProfileView : BaseView
+    public class ProfileViewModel : BaseView
     {
         /// <summary>
         /// Gets or sets Id.

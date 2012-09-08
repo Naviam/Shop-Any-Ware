@@ -7,17 +7,16 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Controllers
+namespace TdService.UI.Web.Controllers
 {
     using System.Web.Mvc;
+    using System.Xml;
 
     using TdService.Infrastructure.Authentication;
     using TdService.Services.Interfaces;
-    using TdService.Services.Mapping;
     using TdService.Services.Messaging.Item;
-    using TdService.Services.ViewModels.Item;
-
-    using Formatting = System.Xml.Formatting;
+    using TdService.UI.Web.Mapping;
+    using TdService.UI.Web.ViewModels.Item;
 
     /// <summary>
     /// The items controller.

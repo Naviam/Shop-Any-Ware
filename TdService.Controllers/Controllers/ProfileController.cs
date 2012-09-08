@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Controllers
+namespace TdService.UI.Web.Controllers
 {
     using System;
     using System.Resources;
@@ -17,8 +17,8 @@ namespace TdService.Controllers
     using TdService.Resources;
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging.Membership;
-    using TdService.Services.ViewModels;
-    using TdService.Services.ViewModels.Account;
+    using TdService.UI.Web.ViewModels;
+    using TdService.UI.Web.ViewModels.Account;
 
     /// <summary>
     /// Profile controller contains methods to work with user's profile.
@@ -53,7 +53,7 @@ namespace TdService.Controllers
         /// </returns>
         public ActionResult Index()
         {
-            var profileView = new ProfileView();
+            var profileView = new ProfileViewModel();
             try
             {
                 var response = this.membershipService.GetProfile(
@@ -63,7 +63,7 @@ namespace TdService.Controllers
                     });
                 if (response != null)
                 {
-                    profileView = new ProfileView
+                    profileView = new ProfileViewModel
                         {
                             Email = response.Email,
                             Id = response.Id,
@@ -83,7 +83,7 @@ namespace TdService.Controllers
                             (new ResourceManager(typeof(ErrorCodeResources))).GetString(response.ErrorCode);
                     }
 
-                    ViewData.Model = profileView;
+                    this.ViewData.Model = profileView;
                     return this.View();
                 }
             }
@@ -91,14 +91,14 @@ namespace TdService.Controllers
             {
                 profileView.Message = e.Message;
                 profileView.MessageType = ViewModelMessageType.Error.ToString().ToLower();
-                ViewData.Model = profileView;
+                this.ViewData.Model = profileView;
 
                 return this.View();
             }
 
             profileView.MessageType = ViewModelMessageType.Error.ToString().ToLower();
             profileView.Message = ErrorCodeResources.ProfileNotFound;
-            ViewData.Model = profileView;
+            this.ViewData.Model = profileView;
             return this.View();
         }
 
@@ -113,9 +113,9 @@ namespace TdService.Controllers
         /// </returns>
         [HttpPost]
         [ValidateAntiForgeryToken(Salt = "Profile")]
-        public ActionResult Save(ProfileView profileView)
+        public ActionResult Save(ProfileViewModel profileView)
         {
-            if (ModelState.IsValid)
+            if (this.ModelState.IsValid)
             {
                 try
                 {

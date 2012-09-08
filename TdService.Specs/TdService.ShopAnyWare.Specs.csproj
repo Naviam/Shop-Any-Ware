@@ -138,9 +138,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TdService.Controllers\TdService.Controllers.csproj">
+    <ProjectReference Include="..\TdService.Controllers\TdService.UI.Web.Controllers.csproj">
       <Project>{8c23e268-eacf-4e5f-b96a-3bb48238aadc}</Project>
-      <Name>TdService.Controllers</Name>
+      <Name>TdService.UI.Web.Controllers</Name>
     </ProjectReference>
     <ProjectReference Include="..\TdService.Infrastructure\TdService.Infrastructure.csproj">
       <Project>{81b36459-f01a-4f69-869b-ea585bee2005}</Project>
@@ -165,6 +165,10 @@
     <ProjectReference Include="..\TdService.Services\TdService.Services.csproj">
       <Project>{a9deda99-a27d-4687-b912-46f339ea36a4}</Project>
       <Name>TdService.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TdService.UI.Web.ViewModels\TdService.UI.Web.ViewModels.csproj">
+      <Project>{C79CC22D-53BA-4685-8E3C-D74A3CD7B1CF}</Project>
+      <Name>TdService.UI.Web.ViewModels</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

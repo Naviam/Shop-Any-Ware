@@ -7,20 +7,19 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Controllers
+namespace TdService.UI.Web.Controllers
 {
     using System;
     using System.Web.Mvc;
+    using System.Xml;
 
     using TdService.Infrastructure.Authentication;
     using TdService.Resources.Views;
     using TdService.Services.Interfaces;
-    using TdService.Services.Mapping;
     using TdService.Services.Messaging;
     using TdService.Services.Messaging.Order;
-    using TdService.Services.ViewModels.Order;
-
-    using Formatting = System.Xml.Formatting;
+    using TdService.UI.Web.Mapping;
+    using TdService.UI.Web.ViewModels.Order;
 
     /// <summary>
     /// This controller contains methods to work with orders.

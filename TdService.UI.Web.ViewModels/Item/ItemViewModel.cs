@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Services.ViewModels.Item
+namespace TdService.UI.Web.ViewModels.Item
 {
     /// <summary>
     /// The item view model.

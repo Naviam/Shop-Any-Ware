@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Services.ViewModels.Retailer
+namespace TdService.UI.Web.ViewModels.Retailer
 {
     /// <summary>
     /// The retailer view model.

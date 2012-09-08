@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Controllers
+namespace TdService.UI.Web.Controllers
 {
     using System.Web.Mvc;
     using System.Xml;
@@ -16,6 +16,7 @@ namespace TdService.Controllers
     using TdService.Services.Interfaces;
     using TdService.Services.Mapping;
     using TdService.Services.Messaging.Retailer;
+    using TdService.UI.Web.Mapping;
 
     /// <summary>
     /// The retailers controller.

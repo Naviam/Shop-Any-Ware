@@ -15,7 +15,7 @@ namespace TdService.Specs
     using System.Linq;
 
     using NUnit.Framework;
-    using TdService.Controllers;
+
     using TdService.Infrastructure.Authentication;
     using TdService.Model.Items;
     using TdService.Model.Packages;
@@ -23,7 +23,9 @@ namespace TdService.Specs
     using TdService.Repository.MsSql.Repositories;
     using TdService.Services.Implementations;
     using TdService.Services.Interfaces;
-    using TdService.Services.ViewModels.Item;
+    using TdService.UI.Web;
+    using TdService.UI.Web.Controllers;
+    using TdService.UI.Web.ViewModels.Item;
 
     /// <summary>
     /// The items integration tests.

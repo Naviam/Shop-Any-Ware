@@ -6,31 +6,26 @@
 
 namespace TdService.Services.Mapping
 {
+    using System.Collections.Generic;
+
     using AutoMapper;
 
     using TdService.Model.Addresses;
-    using TdService.Services.ViewModels.Account;
+    using TdService.Services.Messaging.Address;
 
     /// <summary>
     /// Delivery address auto mapper.
     /// </summary>
     public static class DeliveryAddressMapper
     {
-        /// <summary>
-        /// Convert to delivery address.
-        /// </summary>
-        /// <param name="deliveryAddressView">
-        /// The delivery address view.
-        /// </param>
-        /// <returns>
-        /// Delivery address.
-        /// </returns>
-        public static DeliveryAddress ConvertToDeliveryAddress(this DeliveryAddressDetails deliveryAddressView)
+        public static List<GetDeliveryAddressesResponse> ConvertToGetDeliveryAddressesResponse(this List<DeliveryAddress> addresses)
         {
-            // Configure AutoMapper
-            Mapper.CreateMap<DeliveryAddress, DeliveryAddressDetails>();
-            Mapper.AssertConfigurationIsValid();
-            return Mapper.Map<DeliveryAddressDetails, DeliveryAddress>(deliveryAddressView);
+            return Mapper.Map<List<DeliveryAddress>, List<GetDeliveryAddressesResponse>>(addresses);
+        }
+
+        public static DeliveryAddress ConvertToDeliveryAddress(this AddDeliveryAddressRequest request)
+        {
+            return Mapper.Map<AddDeliveryAddressRequest, DeliveryAddress>(request);
         }
     }
 }

@@ -12,11 +12,7 @@ namespace TdService.Services.Messaging.Address
     /// <summary>
     /// Get delivery addresses request object.
     /// </summary>
-    public class GetDeliveryAddressesRequest
+    public class GetDeliveryAddressesRequest : RequestBase
     {
-        /// <summary>
-        /// Gets or sets Email.
-        /// </summary>
-        public string Email { get; set; }
     }
 }

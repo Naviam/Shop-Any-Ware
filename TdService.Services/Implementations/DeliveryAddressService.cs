@@ -6,13 +6,14 @@
 
 namespace TdService.Services.Implementations
 {
+    using System.Collections.Generic;
     using System.Linq;
     using System.Text;
 
     using TdService.Model.Addresses;
     using TdService.Services.Interfaces;
+    using TdService.Services.Mapping;
     using TdService.Services.Messaging.Address;
-    using TdService.Services.ViewModels.Account;
 
     /// <summary>
     /// This class contains service methods to work with delivery addresses.
@@ -44,12 +45,10 @@ namespace TdService.Services.Implementations
         /// <returns>
         /// Delivery addresses.
         /// </returns>
-        public GetDeliveryAddressesResponse GetDeliveryAddresses(GetDeliveryAddressesRequest request)
+        public List<GetDeliveryAddressesResponse> GetDeliveryAddresses(GetDeliveryAddressesRequest request)
         {
-            var response = new GetDeliveryAddressesResponse { DeliveryAddressesView = new DeliveryAddressesView() };
-            response.DeliveryAddressesView.DeliveryAddressBook =
-                this.addressRepository.GetDeliveryAddresses(request.Email);
-            return response;
+            var deliveryAddresses = this.addressRepository.GetDeliveryAddresses(request.IdentityToken);
+            return deliveryAddresses.ConvertToGetDeliveryAddressesResponse();
         }
 
         /// <summary>
@@ -64,26 +63,11 @@ namespace TdService.Services.Implementations
         public AddDeliveryAddressResponse AddDeliveryAddress(AddDeliveryAddressRequest request)
         {
             var response = new AddDeliveryAddressResponse();
-            var deliveryAddress = new DeliveryAddress
-                {
-                    Id = 0,
-                    FirstName = request.DeliveryAddressDetails.FirstName,
-                    LastName = request.DeliveryAddressDetails.LastName,
-                    AddressName = request.DeliveryAddressDetails.AddressName,
-                    Region = request.DeliveryAddressDetails.Region,
-                    Phone = request.DeliveryAddressDetails.Phone,
-                    State = request.DeliveryAddressDetails.State,
-                    City = request.DeliveryAddressDetails.City,
-                    Country = request.DeliveryAddressDetails.Country,
-                    ZipCode = request.DeliveryAddressDetails.ZipCode,
-                    AddressLine1 = request.DeliveryAddressDetails.AddressLine1,
-                    AddressLine2 = request.DeliveryAddressDetails.AddressLine2,
-                    AddressLine3 = request.DeliveryAddressDetails.AddressLine3
-                };
+            var deliveryAddress = request.ConvertToDeliveryAddress();
 
             ThrowExceptionIfDeliveryAddressIsInvalid(deliveryAddress);
 
-            this.addressRepository.AddOrUpdateDeliveryAddress(request.Email, deliveryAddress);
+            this.addressRepository.AddOrUpdateDeliveryAddress(request.IdentityToken, deliveryAddress);
 
             return response;
         }

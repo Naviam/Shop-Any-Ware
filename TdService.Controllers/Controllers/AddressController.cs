@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Controllers
+namespace TdService.UI.Web.Controllers
 {
     using System.Web.Mvc;
 
@@ -15,8 +15,9 @@ namespace TdService.Controllers
     using TdService.Resources.Views;
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging.Address;
-    using TdService.Services.ViewModels;
-    using TdService.Services.ViewModels.Account;
+    using TdService.UI.Web.Mapping;
+    using TdService.UI.Web.ViewModels;
+    using TdService.UI.Web.ViewModels.Account;
 
     /// <summary>
     /// The controller contains methods to work with the addresses.
@@ -53,10 +54,10 @@ namespace TdService.Controllers
         {
             var request = new GetDeliveryAddressesRequest
                 {
-                    Email = FormsAuthentication.GetAuthenticationToken()
+                    IdentityToken = this.FormsAuthentication.GetAuthenticationToken()
                 };
             var response = this.addressService.GetDeliveryAddresses(request);
-            return this.View("Index", response.DeliveryAddressesView);
+            return this.View("Index", response.ConvertToDeliveryAddressViewModel());
         }
 
         /// <summary>
@@ -81,7 +82,7 @@ namespace TdService.Controllers
         /// </returns>
         public ActionResult Details(int addressId)
         {
-            var details = new DeliveryAddressDetails
+            var details = new DeliveryAddressViewModel
                 {
                     Id = 1,
                     ZipCode = "220113",
@@ -106,16 +107,12 @@ namespace TdService.Controllers
         /// Returns view with delivery addresses.
         /// </returns>
         [HttpPost]
-        public JsonResult Add(DeliveryAddressDetails view)
+        public JsonResult Add(DeliveryAddressViewModel view)
         {
             try
             {
-                this.addressService.AddDeliveryAddress(
-                        new AddDeliveryAddressRequest
-                            {
-                                Email = HttpContext.User.Identity.Name,
-                                DeliveryAddressDetails = view
-                            });
+                var request = view.ConvertToAddDeliveryAddressRequest();
+                var response = this.addressService.AddDeliveryAddress(request);
                 view.Message = AddressViewResources.AddDeliveryAddressSuccessMessage;
                 view.MessageType = ViewModelMessageType.Success.ToString().ToLower();
             }
