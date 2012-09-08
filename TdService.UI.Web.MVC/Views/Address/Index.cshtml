@@ -15,7 +15,7 @@
     <li class="active">@BreadcrumbResources.DeliveryAddresses</li>
 </ul>
 <a class="btn btn-success" data-toggle="modal" href="#deliveryAddressModel" >Add Delivery Address</a>
-<input id="model" type="hidden" value="@(new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(Model.DeliveryAddressBook))" />
+<input id="model" type="hidden" value="@(new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(Model))" />
 <div class="row-fluid">
     <div class="span12">
         <table id="dashboardModel" class="table table-striped table-condensed">
