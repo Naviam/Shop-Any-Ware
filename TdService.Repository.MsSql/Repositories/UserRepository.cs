@@ -14,6 +14,7 @@ namespace TdService.Repository.MsSql.Repositories
     using System.Data;
     using System.Linq;
 
+    using TdService.Model.Addresses;
     using TdService.Model.Membership;
     using TdService.Model.Orders;
     using TdService.Model.Packages;
@@ -87,6 +88,33 @@ namespace TdService.Repository.MsSql.Repositories
                 else
                 {
                     user.Packages.Add(package);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Attach address to user.
+        /// </summary>
+        /// <param name="email">
+        /// The user email.
+        /// </param>
+        /// <param name="addressId">
+        /// The addresss id to attach.
+        /// </param>
+        public void AttachAddress(string email, int addressId)
+        {
+            var user = this.context.Users.SingleOrDefault(user1 => user1.Email == email);
+            var address = this.context.DeliveryAddresses.Find(addressId);
+
+            if (user != null)
+            {
+                if (user.DeliveryAddresses == null)
+                {
+                    user.DeliveryAddresses = new List<DeliveryAddress> { address };
+                }
+                else
+                {
+                    user.DeliveryAddresses.Add(address);
                 }
             }
         }

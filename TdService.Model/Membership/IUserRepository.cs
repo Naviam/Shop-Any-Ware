@@ -26,6 +26,28 @@ namespace TdService.Model.Membership
         void AttachOrder(string email, int orderId);
 
         /// <summary>
+        /// Attach package to user.
+        /// </summary>
+        /// <param name="email">
+        /// The user email.
+        /// </param>
+        /// <param name="packageId">
+        /// The package id to attach.
+        /// </param>
+        void AttachPackage(string email, int packageId);
+
+        /// <summary>
+        /// Attach address to user.
+        /// </summary>
+        /// <param name="email">
+        /// The user email.
+        /// </param>
+        /// <param name="addressId">
+        /// The addresss id to attach.
+        /// </param>
+        void AttachAddress(string email, int addressId);
+
+        /// <summary>
         /// Get user by email.
         /// </summary>
         /// <param name="email">
@@ -114,16 +136,5 @@ namespace TdService.Model.Membership
         /// Save changes to db.
         /// </summary>
         void SaveChanges();
-
-        /// <summary>
-        /// Attach package to user.
-        /// </summary>
-        /// <param name="email">
-        /// The user email.
-        /// </param>
-        /// <param name="packageId">
-        /// The package id to attach.
-        /// </param>
-        void AttachPackage(string email, int packageId);
     }
 }

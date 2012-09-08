@@ -35,6 +35,17 @@ namespace TdService.Services.Interfaces
         /// <returns>
         /// Service response.
         /// </returns>
-        AddDeliveryAddressResponse AddDeliveryAddress(AddDeliveryAddressRequest request);
+        AddOrUpdateDeliveryAddressResponse AddOrUpdateDeliveryAddress(AddOrUpdateDeliveryAddressRequest request);
+
+        /// <summary>
+        /// Remove delivery address.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The response.
+        /// </returns>
+        RemoveDeliveryRequestResponse RemoveAddress(RemoveDeliveryAddressRequest request);
     }
 }

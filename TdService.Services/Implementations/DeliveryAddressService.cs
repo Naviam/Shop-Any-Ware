@@ -11,6 +11,7 @@ namespace TdService.Services.Implementations
     using System.Text;
 
     using TdService.Model.Addresses;
+    using TdService.Model.Membership;
     using TdService.Services.Interfaces;
     using TdService.Services.Mapping;
     using TdService.Services.Messaging.Address;
@@ -26,14 +27,23 @@ namespace TdService.Services.Implementations
         private readonly IAddressRepository addressRepository;
 
         /// <summary>
+        /// User repository.
+        /// </summary>
+        private readonly IUserRepository userRepository;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="DeliveryAddressService"/> class.
         /// </summary>
         /// <param name="addressRepository">
         /// The address repository.
         /// </param>
-        public DeliveryAddressService(IAddressRepository addressRepository)
+        /// <param name="userRepository">
+        /// The user repository.
+        /// </param>
+        public DeliveryAddressService(IAddressRepository addressRepository, IUserRepository userRepository)
         {
             this.addressRepository = addressRepository;
+            this.userRepository = userRepository;
         }
 
         /// <summary>
@@ -60,15 +70,25 @@ namespace TdService.Services.Implementations
         /// <returns>
         /// Add or update delivery address response.
         /// </returns>
-        public AddDeliveryAddressResponse AddDeliveryAddress(AddDeliveryAddressRequest request)
+        public AddOrUpdateDeliveryAddressResponse AddOrUpdateDeliveryAddress(AddOrUpdateDeliveryAddressRequest request)
         {
-            var response = new AddDeliveryAddressResponse();
             var deliveryAddress = request.ConvertToDeliveryAddress();
 
             ThrowExceptionIfDeliveryAddressIsInvalid(deliveryAddress);
 
-            this.addressRepository.AddOrUpdateDeliveryAddress(request.IdentityToken, deliveryAddress);
+            var address = this.addressRepository.AddOrUpdateDeliveryAddress(deliveryAddress);
+            this.addressRepository.SaveChanges();
 
+            this.userRepository.AttachAddress(request.IdentityToken, address.Id);
+            this.userRepository.SaveChanges();
+
+            return address.ConvertToAddDeliveryAddressResponse();
+        }
+
+        public RemoveDeliveryRequestResponse RemoveAddress(RemoveDeliveryAddressRequest request)
+        {
+            var removedAddress = this.addressRepository.RemoveDeliveryAddress(new DeliveryAddress { Id = request.Id });
+            var response = new RemoveDeliveryRequestResponse { Id = removedAddress.Id };
             return response;
         }
 

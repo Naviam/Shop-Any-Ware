@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright file="AddDeliveryAddressRequest.cs" company="TdService">
+// <copyright file="AddOrUpdateDeliveryAddressRequest.cs" company="TdService">
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
@@ -12,7 +12,7 @@ namespace TdService.Services.Messaging.Address
     /// <summary>
     /// Add or update delivery address request.
     /// </summary>
-    public class AddDeliveryAddressRequest : RequestBase
+    public class AddOrUpdateDeliveryAddressRequest : RequestBase
     {
         /// <summary>
         /// Gets or sets Id.

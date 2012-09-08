@@ -18,9 +18,9 @@
         /// <returns>
         /// The add delivery address request.
         /// </returns>
-        public static AddDeliveryAddressRequest ConvertToAddDeliveryAddressRequest(this DeliveryAddressViewModel model)
+        public static AddOrUpdateDeliveryAddressRequest ConvertToAddDeliveryAddressRequest(this DeliveryAddressViewModel model)
         {
-            return Mapper.Map<DeliveryAddressViewModel, AddDeliveryAddressRequest>(model);
+            return Mapper.Map<DeliveryAddressViewModel, AddOrUpdateDeliveryAddressRequest>(model);
         }
 
         public static List<DeliveryAddressViewModel> ConvertToDeliveryAddressViewModel(this List<GetDeliveryAddressesResponse> responses)
@@ -28,9 +28,14 @@
             return Mapper.Map<List<GetDeliveryAddressesResponse>, List<DeliveryAddressViewModel>>(responses);
         }
 
-        public static DeliveryAddressViewModel ConvertToDeliveryAddressViewModel(this AddDeliveryAddressResponse response)
+        public static DeliveryAddressViewModel ConvertToDeliveryAddressViewModel(this AddOrUpdateDeliveryAddressResponse response)
         {
-            return Mapper.Map<AddDeliveryAddressResponse, DeliveryAddressViewModel>(response);
+            return Mapper.Map<AddOrUpdateDeliveryAddressResponse, DeliveryAddressViewModel>(response);
+        }
+
+        public static DeliveryAddressViewModel ConvertToDeliveryAddressViewModel(this RemoveDeliveryRequestResponse response)
+        {
+            return Mapper.Map<RemoveDeliveryRequestResponse, DeliveryAddressViewModel>(response);
         }
     }
 }

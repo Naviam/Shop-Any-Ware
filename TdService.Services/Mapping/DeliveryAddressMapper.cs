@@ -23,9 +23,14 @@ namespace TdService.Services.Mapping
             return Mapper.Map<List<DeliveryAddress>, List<GetDeliveryAddressesResponse>>(addresses);
         }
 
-        public static DeliveryAddress ConvertToDeliveryAddress(this AddDeliveryAddressRequest request)
+        public static DeliveryAddress ConvertToDeliveryAddress(this AddOrUpdateDeliveryAddressRequest request)
         {
-            return Mapper.Map<AddDeliveryAddressRequest, DeliveryAddress>(request);
+            return Mapper.Map<AddOrUpdateDeliveryAddressRequest, DeliveryAddress>(request);
+        }
+
+        public static AddOrUpdateDeliveryAddressResponse ConvertToAddDeliveryAddressResponse(this DeliveryAddress deliveryAddress)
+        {
+            return Mapper.Map<DeliveryAddress, AddOrUpdateDeliveryAddressResponse>(deliveryAddress);
         }
     }
 }

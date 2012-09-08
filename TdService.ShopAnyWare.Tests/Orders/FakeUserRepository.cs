@@ -49,6 +49,10 @@ namespace TdService.ShopAnyWare.Tests.Orders
         {
         }
 
+        public void AttachAddress(string email, int addressId)
+        {
+        }
+
         /// <summary>
         /// Get user by email.
         /// </summary>

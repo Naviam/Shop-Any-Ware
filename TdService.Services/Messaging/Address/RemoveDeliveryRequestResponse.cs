@@ -2,5 +2,6 @@
 {
     public class RemoveDeliveryRequestResponse : ResponseBase
     {
+        public int Id { get; set; }
     }
 }

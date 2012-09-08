@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright file="AddDeliveryAddressResponse.cs" company="TdService">
+// <copyright file="AddOrUpdateDeliveryAddressResponse.cs" company="TdService">
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
@@ -12,7 +12,7 @@ namespace TdService.Services.Messaging.Address
     /// <summary>
     /// Add Delivery Address Response
     /// </summary>
-    public class AddDeliveryAddressResponse : ResponseBase
+    public class AddOrUpdateDeliveryAddressResponse : ResponseBase
     {
         /// <summary>
         /// Gets or sets Id.

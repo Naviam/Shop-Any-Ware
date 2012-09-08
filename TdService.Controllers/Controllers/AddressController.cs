@@ -77,7 +77,7 @@ namespace TdService.UI.Web.Controllers
             try
             {
                 var request = view.ConvertToAddDeliveryAddressRequest();
-                var response = this.addressService.AddDeliveryAddress(request);
+                var response = this.addressService.AddOrUpdateDeliveryAddress(request);
                 model = response.ConvertToDeliveryAddressViewModel();
                 model.Message = AddressViewResources.AddDeliveryAddressSuccessMessage;
                 model.MessageType = ViewModelMessageType.Success.ToString().ToLower();
@@ -97,23 +97,6 @@ namespace TdService.UI.Web.Controllers
         }
 
         /// <summary>
-        /// Remove delivery address.
-        /// </summary>
-        /// <returns>
-        /// Returns view with delivery addresses.
-        /// </returns>
-        [HttpPost]
-        public ActionResult Remove(int addressId)
-        {
-            var jsonNetResult = new JsonNetResult
-            {
-                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
-                Data = string.Empty
-            };
-            return jsonNetResult;
-        }
-
-        /// <summary>
         /// Update delivery address.
         /// </summary>
         /// <returns>
@@ -122,10 +105,38 @@ namespace TdService.UI.Web.Controllers
         [HttpPost]
         public ActionResult Update(int addressId, DeliveryAddressViewModel model)
         {
+            var request = model.ConvertToAddDeliveryAddressRequest();
+            var response = this.addressService.AddOrUpdateDeliveryAddress(request);
+
             var jsonNetResult = new JsonNetResult
             {
                 Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
-                Data = string.Empty
+                Data = response.ConvertToDeliveryAddressViewModel()
+            };
+            return jsonNetResult;
+        }
+
+        /// <summary>
+        /// Remove delivery address.
+        /// </summary>
+        /// <returns>
+        /// Returns view with delivery addresses.
+        /// </returns>
+        [HttpPost]
+        public ActionResult Remove(int addressId)
+        {
+            var request = new RemoveDeliveryAddressRequest
+                {
+                    IdentityToken = this.FormsAuthentication.GetAuthenticationToken(),
+                    Id = addressId
+                };
+
+            var response = this.addressService.RemoveAddress(request);
+
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = response.ConvertToDeliveryAddressViewModel()
             };
             return jsonNetResult;
         }
