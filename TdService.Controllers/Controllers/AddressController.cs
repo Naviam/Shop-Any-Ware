@@ -10,6 +10,7 @@
 namespace TdService.UI.Web.Controllers
 {
     using System.Web.Mvc;
+    using System.Xml;
 
     using TdService.Infrastructure.Authentication;
     using TdService.Resources.Views;
@@ -70,22 +71,29 @@ namespace TdService.UI.Web.Controllers
         /// Returns view with delivery addresses.
         /// </returns>
         [HttpPost]
-        public JsonResult Add(DeliveryAddressViewModel view)
+        public ActionResult Add(DeliveryAddressViewModel view)
         {
+            DeliveryAddressViewModel model;
             try
             {
                 var request = view.ConvertToAddDeliveryAddressRequest();
                 var response = this.addressService.AddDeliveryAddress(request);
-                view.Message = AddressViewResources.AddDeliveryAddressSuccessMessage;
-                view.MessageType = ViewModelMessageType.Success.ToString().ToLower();
+                model = response.ConvertToDeliveryAddressViewModel();
+                model.Message = AddressViewResources.AddDeliveryAddressSuccessMessage;
+                model.MessageType = ViewModelMessageType.Success.ToString().ToLower();
             }
             catch (System.Exception e)
             {
-                view.Message = e.Message;
-                view.MessageType = ViewModelMessageType.Error.ToString().ToLower();
+                model = new DeliveryAddressViewModel
+                    { Message = e.Message, MessageType = ViewModelMessageType.Error.ToString().ToLower() };
             }
 
-            return this.Json(view);
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = model
+            };
+            return jsonNetResult;
         }
 
         /// <summary>
@@ -95,9 +103,14 @@ namespace TdService.UI.Web.Controllers
         /// Returns view with delivery addresses.
         /// </returns>
         [HttpPost]
-        public JsonResult Remove()
+        public ActionResult Remove(int id)
         {
-            return this.Json(string.Empty);
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = string.Empty
+            };
+            return jsonNetResult;
         }
 
         /// <summary>
@@ -107,9 +120,14 @@ namespace TdService.UI.Web.Controllers
         /// Returns view with delivery addresses.
         /// </returns>
         [HttpPost]
-        public JsonResult Update()
+        public ActionResult Update(int id, DeliveryAddressViewModel model)
         {
-            return this.Json(string.Empty);
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = string.Empty
+            };
+            return jsonNetResult;
         }
     }
 }

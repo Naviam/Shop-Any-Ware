@@ -47,10 +47,6 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -84,10 +80,6 @@
     <ProjectReference Include="..\TdService.Model\TdService.Model.csproj">
       <Project>{4E87BDA7-4AF2-4D94-9A40-68B161FBB71A}</Project>
       <Name>TdService.Model</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TdService.Providers\TdService.Providers.csproj">
-      <Project>{86c4c56e-4f69-478d-bc73-d0c054d701aa}</Project>
-      <Name>TdService.Providers</Name>
     </ProjectReference>
     <ProjectReference Include="..\TdService.Resources\TdService.Resources.csproj">
       <Project>{9DC0E782-6E6B-4FA4-A7C1-728ED25CE063}</Project>

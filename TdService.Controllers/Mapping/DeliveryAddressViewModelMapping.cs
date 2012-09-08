@@ -27,5 +27,10 @@
         {
             return Mapper.Map<List<GetDeliveryAddressesResponse>, List<DeliveryAddressViewModel>>(responses);
         }
+
+        public static DeliveryAddressViewModel ConvertToDeliveryAddressViewModel(this AddDeliveryAddressResponse response)
+        {
+            return Mapper.Map<AddDeliveryAddressResponse, DeliveryAddressViewModel>(response);
+        }
     }
 }
