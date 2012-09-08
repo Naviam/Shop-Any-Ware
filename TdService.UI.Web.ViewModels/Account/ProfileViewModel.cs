@@ -11,7 +11,7 @@ namespace TdService.UI.Web.ViewModels.Account
     /// <summary>
     /// This is the profile model for web form.
     /// </summary>
-    public class ProfileViewModel : BaseView
+    public class ProfileViewModel : ViewModelBase
     {
         /// <summary>
         /// Gets or sets Id.

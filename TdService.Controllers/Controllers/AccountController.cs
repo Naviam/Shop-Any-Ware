@@ -77,7 +77,7 @@ namespace TdService.UI.Web.Controllers
         /// </returns>
         public ActionResult SignIn()
         {
-            var model = new SignInView();
+            var model = new SignInViewModel();
             this.SetCredentialsFromCookie(ref model);
             this.ViewData.Model = model;
             return this.View();
@@ -94,7 +94,7 @@ namespace TdService.UI.Web.Controllers
         /// </returns>
         [HttpPost]
         [ValidateAntiForgeryToken(Salt = "signin")]
-        public ActionResult SignIn(SignInView view)
+        public ActionResult SignIn(SignInViewModel view)
         {
             if (this.ModelState.IsValid)
             {
@@ -112,7 +112,7 @@ namespace TdService.UI.Web.Controllers
                     return this.RedirectToAction("Dashboard", "Member");
                 }
 
-                var model = new SignInView
+                var model = new SignInViewModel
                 {
                     MessageType = response.MessageType.ToString(),
                     Message = response.Message ?? string.Empty
@@ -137,7 +137,7 @@ namespace TdService.UI.Web.Controllers
         /// </returns>
         public ActionResult SignUp()
         {
-            this.ViewData.Model = new SignUpView();
+            this.ViewData.Model = new SignUpViewModel();
             return this.View();
         }
 
@@ -152,7 +152,7 @@ namespace TdService.UI.Web.Controllers
         /// </returns>
         [HttpPost]
         [ValidateAntiForgeryToken(Salt = "signup")]
-        public ActionResult SignUp(SignUpView view)
+        public ActionResult SignUp(SignUpViewModel view)
         {
             if (this.ModelState.IsValid)
             {
@@ -213,7 +213,7 @@ namespace TdService.UI.Web.Controllers
         /// </returns>
         public ActionResult Forgot()
         {
-            this.ViewData.Model = new ForgotPasswordView();
+            this.ViewData.Model = new ForgotPasswordViewModel();
             return this.View();
         }
 
@@ -228,7 +228,7 @@ namespace TdService.UI.Web.Controllers
         /// </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Forgot(ForgotPasswordView view)
+        public ActionResult Forgot(ForgotPasswordViewModel view)
         {
             if (this.ModelState.IsValid)
             {
@@ -263,7 +263,7 @@ namespace TdService.UI.Web.Controllers
         /// <param name="view">
         /// The view.
         /// </param>
-        private void SaveCredentialsToCookie(SignInView view)
+        private void SaveCredentialsToCookie(SignInViewModel view)
         {
             if (view.RememberMe)
             {
@@ -291,7 +291,7 @@ namespace TdService.UI.Web.Controllers
         /// <param name="view">
         /// The view.
         /// </param>
-        private void SetCredentialsFromCookie(ref SignInView view)
+        private void SetCredentialsFromCookie(ref SignInViewModel view)
         {
             var values = this.cookieStorageService.RetrieveCollection("shopanyware_login");
             view.Email = values["Email"];

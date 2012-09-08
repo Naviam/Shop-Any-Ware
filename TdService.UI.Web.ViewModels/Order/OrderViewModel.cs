@@ -14,7 +14,7 @@ namespace TdService.UI.Web.ViewModels.Order
     /// <summary>
     /// Order view model to display order on a view.
     /// </summary>
-    public class OrderViewModel : BaseView
+    public class OrderViewModel : ViewModelBase
     {
         /// <summary>
         /// Gets or sets order ID.

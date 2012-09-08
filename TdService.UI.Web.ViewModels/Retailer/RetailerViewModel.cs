@@ -12,7 +12,7 @@ namespace TdService.UI.Web.ViewModels.Retailer
     /// <summary>
     /// The retailer view model.
     /// </summary>
-    public class RetailerViewModel : BaseView
+    public class RetailerViewModel : ViewModelBase
     {
         /// <summary>
         /// Gets or sets the id.

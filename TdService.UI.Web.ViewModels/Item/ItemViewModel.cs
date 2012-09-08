@@ -12,7 +12,7 @@ namespace TdService.UI.Web.ViewModels.Item
     /// <summary>
     /// The item view model.
     /// </summary>
-    public class ItemViewModel : BaseView
+    public class ItemViewModel : ViewModelBase
     {
         /// <summary>
         /// Gets or sets the id.

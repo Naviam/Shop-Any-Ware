@@ -1,5 +1,5 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="SignInView.cs" company="TdService">
+// <copyright file="SignInViewModel.cs" company="TdService">
 // Vitali Hatalski. 2012.
 // </copyright>
 // -----------------------------------------------------------------------
@@ -11,7 +11,7 @@ namespace TdService.UI.Web.ViewModels.Account
     /// <summary>
     /// This class describes the view model for sign in page.
     /// </summary>
-    public class SignInView : BaseView
+    public class SignInViewModel : ViewModelBase
     {
         /// <summary>
         /// Gets or sets Email.

@@ -1,5 +1,5 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="BaseView.cs" company="TdService">
+// <copyright file="ViewModelBase.cs" company="TdService">
 // Vitali Hatalski. 2012.
 // </copyright>
 // -----------------------------------------------------------------------
@@ -9,7 +9,7 @@ namespace TdService.UI.Web.ViewModels
     /// <summary>
     /// Base class for view models.
     /// </summary>
-    public class BaseView
+    public class ViewModelBase
     {
         /// <summary>
         /// Gets or sets Message.

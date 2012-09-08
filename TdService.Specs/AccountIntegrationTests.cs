@@ -99,7 +99,7 @@ namespace TdService.Specs
                 this.cookieStorageService,
                 this.formsAuthentication);
 
-            var view = new SignInView { Email = "vhatalski@naviam.com", Password = "ruinruin", RememberMe = true };
+            var view = new SignInViewModel { Email = "vhatalski@naviam.com", Password = "ruinruin", RememberMe = true };
 
             // act
             var actual = controller.SignIn(view) as RedirectToRouteResult;
@@ -127,7 +127,7 @@ namespace TdService.Specs
                 this.cookieStorageService,
                 this.formsAuthentication);
 
-            var view = new SignUpView
+            var view = new SignUpViewModel
                 {
                     Email = "vhatalski_unique@naviam.com",
                     FirstName = "Vitali",

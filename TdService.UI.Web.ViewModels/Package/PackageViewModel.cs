@@ -14,7 +14,7 @@ namespace TdService.UI.Web.ViewModels.Package
     /// <summary>
     /// The package view model.
     /// </summary>
-    public class PackageViewModel : BaseView
+    public class PackageViewModel : ViewModelBase
     {
         /// <summary>
         /// Gets or sets package ID.

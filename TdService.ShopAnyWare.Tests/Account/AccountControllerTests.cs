@@ -76,7 +76,7 @@ namespace TdService.ShopAnyWare.Tests.Account
 
             // asset
             Assert.That(actual.ViewName, Is.EqualTo(expected));
-            Assert.That(actual.Model, Is.TypeOf(typeof(SignInView)));
+            Assert.That(actual.Model, Is.TypeOf(typeof(SignInViewModel)));
         }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace TdService.ShopAnyWare.Tests.Account
 
             // assert
             Assert.That(actual.ViewName, Is.EqualTo(expected));
-            Assert.That(actual.Model, Is.TypeOf(typeof(SignUpView)));
+            Assert.That(actual.Model, Is.TypeOf(typeof(SignUpViewModel)));
         }
 
         /// <summary>
@@ -120,7 +120,7 @@ namespace TdService.ShopAnyWare.Tests.Account
 
             // assert
             Assert.That(actual.ViewName, Is.EqualTo(expected));
-            Assert.That(actual.Model, Is.TypeOf(typeof(ForgotPasswordView)));
+            Assert.That(actual.Model, Is.TypeOf(typeof(ForgotPasswordViewModel)));
         }
 
         /// <summary>
@@ -135,11 +135,11 @@ namespace TdService.ShopAnyWare.Tests.Account
                 this.EmailService,
                 this.CookieStorageService,
                 this.FormsAuthentication);
-            var view = new ForgotPasswordView { Email = "vhatalski@naviam.com" };
+            var view = new ForgotPasswordViewModel { Email = "vhatalski@naviam.com" };
 
             // act
             var actual = (ViewResult)controller.Forgot(view);
-            var model = (ForgotPasswordView)actual.ViewData.Model;
+            var model = (ForgotPasswordViewModel)actual.ViewData.Model;
 
             // assert
             Assert.That(model.MessageType, Is.EqualTo("success"));
@@ -157,11 +157,11 @@ namespace TdService.ShopAnyWare.Tests.Account
                 this.EmailService,
                 this.CookieStorageService,
                 this.FormsAuthentication);
-            var view = new ForgotPasswordView { Email = "vhatalski@invalid" };
+            var view = new ForgotPasswordViewModel { Email = "vhatalski@invalid" };
 
             // act
             var actual = (ViewResult)controller.Forgot(view);
-            var model = (ForgotPasswordView)actual.ViewData.Model;
+            var model = (ForgotPasswordViewModel)actual.ViewData.Model;
 
             // assert
             Assert.That(model.MessageType, Is.EqualTo("error"));

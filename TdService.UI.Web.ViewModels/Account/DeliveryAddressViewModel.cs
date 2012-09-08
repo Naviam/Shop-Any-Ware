@@ -3,7 +3,7 @@
     /// <summary>
     /// The delivery address view model.
     /// </summary>
-    public class DeliveryAddressViewModel : BaseView
+    public class DeliveryAddressViewModel : ViewModelBase
     {
         /// <summary>
         /// Gets or sets Id.

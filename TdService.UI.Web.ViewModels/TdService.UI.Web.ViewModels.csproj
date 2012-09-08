@@ -41,11 +41,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account\DeliveryAddressViewModel.cs" />
-    <Compile Include="Account\ForgotPasswordView.cs" />
+    <Compile Include="Account\ForgotPasswordViewModel.cs" />
+    <Compile Include="Account\MainViewModel.cs" />
     <Compile Include="Account\ProfileViewModel.cs" />
-    <Compile Include="Account\SignInView.cs" />
-    <Compile Include="Account\SignUpView.cs" />
-    <Compile Include="BaseView.cs" />
+    <Compile Include="Account\SignInViewModel.cs" />
+    <Compile Include="Account\SignUpViewModel.cs" />
+    <Compile Include="ViewModelBase.cs" />
     <Compile Include="Item\ItemViewModel.cs" />
     <Compile Include="Item\OrderItemViewModel.cs" />
     <Compile Include="Order\OrderViewModel.cs" />
