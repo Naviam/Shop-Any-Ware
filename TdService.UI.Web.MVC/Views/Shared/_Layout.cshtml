@@ -1,4 +1,4 @@
-﻿@using Combres.Mvc;
+﻿@using System.Web.Optimization
 @using TdService.Resources.Views
 <!DOCTYPE html>
 <html lang="en">
@@ -7,13 +7,14 @@
     <title>@ViewBag.Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="author" content="TD Service">
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <!-- Le styles -->
-    @Html.CombresLink("siteCss")
+    @Styles.Render("~/Content/sitecss")
+    @*@Html.CombresLink("siteCss")*@
     <style>
         body
         {
@@ -37,14 +38,9 @@
                 </a>
                 <a class="brand" href="@Url.Action("Index", "Home")">@LayoutViewResources.PageHeader</a>
                 <div class="nav-collapse">
-                    @if (!User.Identity.IsAuthenticated)
-                    {
-                        @Html.MvcSiteMap("TopMenu").Menu("TopMenuHelperModel", true)
-                    }
-                    else
-                    {
-                        @Html.MvcSiteMap("Shopper").Menu("PillsMenuHelperModel", false);
-                    }
+                    @(!this.User.Identity.IsAuthenticated ? 
+                      this.Html.MvcSiteMap("TopMenu").Menu("TopMenuHelperModel", true) : 
+                      this.Html.MvcSiteMap("Shopper").Menu("PillsMenuHelperModel", false))
                     @if (User.Identity.IsAuthenticated)
                     {
                         <ul class="nav pull-right">
@@ -104,7 +100,8 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    @Html.CombresLink("siteJs")
+    @Scripts.Render("~/bundles/jquery", "~/bundles/bootstrap", "~/bundles/noty", "~/bundles/knockout", "~/bundles/common")
+    @*@Html.CombresLink("siteJs")*@
     @RenderSection("Scripts", false)
 </body>
 </html>
