@@ -103,7 +103,7 @@ namespace TdService.UI.Web.Controllers
         /// Returns view with delivery addresses.
         /// </returns>
         [HttpPost]
-        public ActionResult Remove(int id)
+        public ActionResult Remove(int addressId)
         {
             var jsonNetResult = new JsonNetResult
             {
@@ -120,7 +120,7 @@ namespace TdService.UI.Web.Controllers
         /// Returns view with delivery addresses.
         /// </returns>
         [HttpPost]
-        public ActionResult Update(int id, DeliveryAddressViewModel model)
+        public ActionResult Update(int addressId, DeliveryAddressViewModel model)
         {
             var jsonNetResult = new JsonNetResult
             {
