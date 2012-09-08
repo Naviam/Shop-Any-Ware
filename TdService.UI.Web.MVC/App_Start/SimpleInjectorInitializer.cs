@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright file="SimpleInjectorInitializer.cs" company="SimpleInjector">
-//   Copyright (c) 2010 S. van Deursen
+// <copyright file="SimpleInjectorInitializer.cs" company="TdService">
+//   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
 //   This class is for Simple Injector Dependency Injection initialization.
