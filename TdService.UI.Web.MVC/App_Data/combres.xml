@@ -17,7 +17,7 @@
                 remoteChangeMonitorInterval="60"
                 >
     <resourceSet name="jqueryJs" type="js">
-      <resource path="~/scripts/jquery-1.7.1.min.js" minifierRef="off" />
+      <resource path="~/scripts/jquery-1.8.1.min.js" minifierRef="off" />
       <resource path="~/Scripts/json2.js" />
       <resource path="~/scripts/linq.min.js" minifierRef="off" />
       <resource path="~/scripts/jquery.validate.min.js" minifierRef="off" />
