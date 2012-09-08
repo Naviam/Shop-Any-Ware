@@ -61,43 +61,6 @@ namespace TdService.UI.Web.Controllers
         }
 
         /// <summary>
-        /// Get own warehouse address in USA.
-        /// </summary>
-        /// <returns>
-        /// Returns view with the warehouse address details.
-        /// </returns>
-        public ActionResult Warehouse()
-        {
-            return this.View();
-        }
-
-        /// <summary>
-        /// Get delivery address details.
-        /// </summary>
-        /// <param name="addressId">
-        /// The address Id.
-        /// </param>
-        /// <returns>
-        /// Returns view with delivery address details.
-        /// </returns>
-        public ActionResult Details(int addressId)
-        {
-            var details = new DeliveryAddressViewModel
-                {
-                    Id = 1,
-                    ZipCode = "220113",
-                    City = "Minsk",
-                    Country = "Belarus",
-                    AddressLine1 = "Novovilenskaya street",
-                    AddressLine2 = "10, 41",
-                    State = "Minsk",
-                    Region = "Minsk",
-                    Phone = "+375295067630"
-                };
-            return this.View(details);
-        }
-
-        /// <summary>
         /// Add delivery address.
         /// </summary>
         /// <param name="view">

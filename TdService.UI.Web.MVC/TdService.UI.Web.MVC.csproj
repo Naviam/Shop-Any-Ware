@@ -548,11 +548,8 @@
     </None>
     <None Include="Scripts\bootstrap\README.md" />
     <Content Include="Views\Account\SignUp.cshtml" />
-    <Content Include="Views\Order\UserOrders.cshtml" />
     <Content Include="Views\Member\Home.cshtml" />
-    <Content Include="Views\Address\Warehouse.cshtml" />
     <Content Include="Views\Address\Index.cshtml" />
-    <Content Include="Views\Address\Details.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Parcel\Index.cshtml" />
