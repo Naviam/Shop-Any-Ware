@@ -52,25 +52,25 @@ namespace TdService.Repository.MsSql.StaticDataSeed
 
             context.SaveChanges();
 
-            user.DeliveryAddresses = new List<DeliveryAddress>
-             {
-                 new DeliveryAddress
-                 {
-                     AddressLine1 = "Novovilenskaya street",
-                     AddressLine2 = "10, 41",
-                     AddressLine3 = string.Empty,
-                     AddressName = "Minsk - Novovilenskaya",
-                     City = "Minsk",
-                     Country = "Russia",
-                     FirstName = "Vitali",
-                     LastName = "Hatalski",
-                     Phone = "+375295067630",
-                     ZipCode = "220053"
-                 }
-             };
+            ////user.DeliveryAddresses = new List<DeliveryAddress>
+            //// {
+            ////     new DeliveryAddress
+            ////     {
+            ////         AddressLine1 = "Novovilenskaya street",
+            ////         AddressLine2 = "10, 41",
+            ////         AddressLine3 = string.Empty,
+            ////         AddressName = "Minsk - Novovilenskaya",
+            ////         City = "Minsk",
+            ////         Country = "Russia",
+            ////         FirstName = "Vitali",
+            ////         LastName = "Hatalski",
+            ////         Phone = "+375295067630",
+            ////         ZipCode = "220053"
+            ////     }
+            //// };
 
-            context.Entry(user).State = EntityState.Modified;
-            context.SaveChanges();
+            ////context.Entry(user).State = EntityState.Modified;
+            ////context.SaveChanges();
 
             user.Profile = new Profile
             {
@@ -108,7 +108,7 @@ namespace TdService.Repository.MsSql.StaticDataSeed
             // shopper
             var shopper = new User
             {
-                Email = "shopper@shopanyware.ru",
+                Email = "v.hatalski@gmail.com",
                 Password = "1",
                 Roles = new List<Role>(),
                 Wallet = new Wallet { Amount = 88.00m }

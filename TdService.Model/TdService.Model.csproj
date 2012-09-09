@@ -57,6 +57,7 @@
     <Compile Include="Common\InvalidRetailerException.cs" />
     <Compile Include="Common\IRetailerRepository.cs" />
     <Compile Include="Common\RetailerBusinessRules.cs" />
+    <Compile Include="DomainErrors.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="Items\InvalidItemException.cs" />
     <Compile Include="Items\ItemBussinessRules.cs" />

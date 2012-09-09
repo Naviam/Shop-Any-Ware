@@ -12,10 +12,10 @@ namespace TdService.Specs.Features
     using System.Collections.Generic;
     using System.Data.Entity;
     using System.Diagnostics;
+    using System.Linq;
 
     using NUnit.Framework;
 
-    using TdService.Repository.MsSql;
     using TdService.Repository.MsSql.Repositories;
     using TdService.Services.Implementations;
     using TdService.Specs.Fakes;
@@ -24,6 +24,7 @@ namespace TdService.Specs.Features
     using TdService.UI.Web.ViewModels.Account;
 
     using TechTalk.SpecFlow;
+    using TechTalk.SpecFlow.Assist;
 
     /// <summary>
     /// The add delivery address steps.
@@ -49,7 +50,7 @@ namespace TdService.Specs.Features
         /// <summary>
         /// The address controller.
         /// </summary>
-        private readonly AddressController addressController;
+        private AddressController addressController;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AddDeliveryAddressSteps"/> class.
@@ -61,12 +62,26 @@ namespace TdService.Specs.Features
             this.actualDeliveryAddressViewModels = new List<DeliveryAddressViewModel>();
             this.initialDeliveryAddressViewModels = new List<DeliveryAddressViewModel>();
             Database.SetInitializer(new ShopAnyWareTestInitilizer());
-            var context = new ShopAnyWareSql();
-            var addressRepository = new AddressRepository(context);
-            var userRepository = new UserRepository(context);
-            var addressService = new DeliveryAddressService(addressRepository, userRepository);
-            this.addressController = new AddressController(new FakeFormsAuthentication(), addressService);
         }
+
+        /// <summary>
+        /// The given i am a shopper with email address.
+        /// </summary>
+        /// <param name="email">
+        /// The email.
+        /// </param>
+        [Given(@"I am a shopper with '(.*)' email address")]
+// ReSharper disable InconsistentNaming
+        public void GivenIAmAShopperWithEmailAddress(string email)
+// ReSharper restore InconsistentNaming
+        {
+            var addressRepository = new AddressRepository();
+            var addressService = new DeliveryAddressService(addressRepository);
+            var formsAuthentication = new FakeFormsAuthentication();
+            formsAuthentication.SetAuthenticationToken(email, true);
+            this.addressController = new AddressController(formsAuthentication, addressService);
+        }
+
 
         /// <summary>
         /// The given i have entered the following delivery addresses.
@@ -77,26 +92,41 @@ namespace TdService.Specs.Features
         [Given(@"I have entered the following delivery addresses")]
         public void GivenIHaveEnteredTheFollowingDeliveryAddresses(Table table)
         {
-            foreach (var tableRow in table.Rows)
-            {
-                var address = new DeliveryAddressViewModel
-                    {
-                        Id = int.Parse(tableRow["Id"]),
-                        AddressName = tableRow["AddressName"],
-                        FirstName = tableRow["FirstName"],
-                        LastName = tableRow["LastName"],
-                        AddressLine1 = tableRow["AddressLine1"],
-                        AddressLine2 = tableRow["AddressLine2"],
-                        AddressLine3 = tableRow["AddressLine3"],
-                        City = tableRow["City"],
-                        Country = tableRow["Country"],
-                        State = tableRow["State"],
-                        Region = tableRow["Region"],
-                        ZipCode = tableRow["ZipCode"],
-                        Phone = tableRow["Phone"]
-                    };
-                this.initialDeliveryAddressViewModels.Add(address);
-            }
+            var addresses = table.CreateSet<DeliveryAddressViewModel>();
+            this.initialDeliveryAddressViewModels.AddRange(addresses);
+            ////foreach (var tableRow in table.Rows)
+            ////{
+            ////    var address = new DeliveryAddressViewModel
+            ////        {
+            ////            AddressName = tableRow["AddressName"],
+            ////            FirstName = tableRow["FirstName"],
+            ////            LastName = tableRow["LastName"],
+            ////            AddressLine1 = tableRow["AddressLine1"],
+            ////            AddressLine2 = tableRow["AddressLine2"],
+            ////            AddressLine3 = tableRow["AddressLine3"],
+            ////            City = tableRow["City"],
+            ////            Country = tableRow["Country"],
+            ////            State = tableRow["State"],
+            ////            Region = tableRow["Region"],
+            ////            ZipCode = tableRow["ZipCode"],
+            ////            Phone = tableRow["Phone"],
+            ////            MessageType = tableRow["MessageType"]
+            ////        };
+            ////    this.initialDeliveryAddressViewModels.Add(address);
+            ////}
+        }
+
+        /// <summary>
+        /// The given i have the following delivery addresses.
+        /// </summary>
+        /// <param name="table">
+        /// The table.
+        /// </param>
+        [Given(@"I have the following delivery addresses")]
+        public void GivenIHaveTheFollowingDeliveryAddresses(Table table)
+        {
+            var addresses = table.CreateSet<DeliveryAddressViewModel>();
+            this.initialDeliveryAddressViewModels.AddRange(addresses);
         }
 
         /// <summary>
@@ -127,7 +157,6 @@ namespace TdService.Specs.Features
             {
                 var address = new DeliveryAddressViewModel
                 {
-                    Id = int.Parse(tableRow["Id"]),
                     AddressName = tableRow["AddressName"],
                     FirstName = tableRow["FirstName"],
                     LastName = tableRow["LastName"],
@@ -139,14 +168,23 @@ namespace TdService.Specs.Features
                     State = tableRow["State"],
                     Region = tableRow["Region"],
                     ZipCode = tableRow["ZipCode"],
-                    Phone = tableRow["Phone"]
+                    Phone = tableRow["Phone"],
+                    MessageType = tableRow["MessageType"]
                 };
                 this.expectedDeliveryAddressViewModels.Add(address);
             }
 
             CollectionAssert.IsNotEmpty(this.actualDeliveryAddressViewModels);
 
-            CollectionAssert.AreEquivalent(this.expectedDeliveryAddressViewModels, this.actualDeliveryAddressViewModels);
+            foreach (var actualDeliveryAddressViewModel in this.actualDeliveryAddressViewModels)
+            {
+                Assert.That(actualDeliveryAddressViewModel.Id, Is.GreaterThan(0));
+            }
+
+            CollectionAssert.AreEqual(
+                this.expectedDeliveryAddressViewModels,
+                this.actualDeliveryAddressViewModels,
+                new DeliveryAddressViewModelComparer());
         }
     }
 }

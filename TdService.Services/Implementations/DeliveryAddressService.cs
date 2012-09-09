@@ -11,7 +11,6 @@ namespace TdService.Services.Implementations
     using System.Text;
 
     using TdService.Model.Addresses;
-    using TdService.Model.Membership;
     using TdService.Services.Interfaces;
     using TdService.Services.Mapping;
     using TdService.Services.Messaging.Address;
@@ -27,23 +26,14 @@ namespace TdService.Services.Implementations
         private readonly IAddressRepository addressRepository;
 
         /// <summary>
-        /// User repository.
-        /// </summary>
-        private readonly IUserRepository userRepository;
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="DeliveryAddressService"/> class.
         /// </summary>
         /// <param name="addressRepository">
         /// The address repository.
         /// </param>
-        /// <param name="userRepository">
-        /// The user repository.
-        /// </param>
-        public DeliveryAddressService(IAddressRepository addressRepository, IUserRepository userRepository)
+        public DeliveryAddressService(IAddressRepository addressRepository)
         {
             this.addressRepository = addressRepository;
-            this.userRepository = userRepository;
         }
 
         /// <summary>
@@ -76,18 +66,22 @@ namespace TdService.Services.Implementations
 
             ThrowExceptionIfDeliveryAddressIsInvalid(deliveryAddress);
 
-            var address = this.addressRepository.AddOrUpdateDeliveryAddress(deliveryAddress);
-            this.addressRepository.SaveChanges();
-
-            this.userRepository.AttachAddress(request.IdentityToken, address.Id);
-            this.userRepository.SaveChanges();
-
+            var address = this.addressRepository.AddOrUpdateDeliveryAddress(request.IdentityToken, deliveryAddress);
             return address.ConvertToAddDeliveryAddressResponse();
         }
 
+        /// <summary>
+        /// The remove address.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The TdService.Services.Messaging.Address.RemoveDeliveryRequestResponse.
+        /// </returns>
         public RemoveDeliveryRequestResponse RemoveAddress(RemoveDeliveryAddressRequest request)
         {
-            var removedAddress = this.addressRepository.RemoveDeliveryAddress(new DeliveryAddress { Id = request.Id });
+            var removedAddress = this.addressRepository.RemoveDeliveryAddress(request.IdentityToken, new DeliveryAddress { Id = request.Id });
             var response = new RemoveDeliveryRequestResponse { Id = removedAddress.Id };
             return response;
         }

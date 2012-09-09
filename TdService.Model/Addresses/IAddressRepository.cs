@@ -52,19 +52,37 @@ namespace TdService.Model.Addresses
         /// <summary>
         /// Add user's delivery address.
         /// </summary>
+        /// <param name="email">
+        /// The email.
+        /// </param>
         /// <param name="address">
         /// The address.
         /// </param>
-        DeliveryAddress AddOrUpdateDeliveryAddress(DeliveryAddress address);
+        /// <returns>
+        /// The TdService.Model.Addresses.DeliveryAddress.
+        /// </returns>
+        DeliveryAddress AddOrUpdateDeliveryAddress(string email, DeliveryAddress address);
 
         /// <summary>
         /// Remove user's delivery address.
         /// </summary>
+        /// <param name="email">
+        /// The email.
+        /// </param>
         /// <param name="address">
         /// The address.
         /// </param>
-        DeliveryAddress RemoveDeliveryAddress(DeliveryAddress address);
+        /// <returns>
+        /// The TdService.Model.Addresses.DeliveryAddress.
+        /// </returns>
+        DeliveryAddress RemoveDeliveryAddress(string email, DeliveryAddress address);
 
+        /// <summary>
+        /// The save changes.
+        /// </summary>
+        /// <returns>
+        /// The System.Int32.
+        /// </returns>
         int SaveChanges();
     }
 }

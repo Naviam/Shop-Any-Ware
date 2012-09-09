@@ -19,8 +19,8 @@ namespace TdService.Specs.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "1.9.0.77")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("AddDeliveryAddress")]
-    public partial class AddDeliveryAddressFeature
+    [NUnit.Framework.DescriptionAttribute("Delivery Addresses")]
+    public partial class DeliveryAddressesFeature
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -32,8 +32,8 @@ namespace TdService.Specs.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "AddDeliveryAddress", "In order to choose delivery address for my packages\r\nAs a shopper\r\nI want to be a" +
-                    "ble to add my delivery address", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Delivery Addresses", "In order to choose delivery address for my packages\r\nAs a shopper\r\nI want to be a" +
+                    "ble to add, edit and remove my delivery addresses", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -66,14 +66,16 @@ namespace TdService.Specs.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Adding valid delivery addresses")]
+        [NUnit.Framework.DescriptionAttribute("Get delivery addresses")]
         [NUnit.Framework.CategoryAttribute("address")]
-        public virtual void AddingValidDeliveryAddresses()
+        public virtual void GetDeliveryAddresses()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Adding valid delivery addresses", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get delivery addresses", new string[] {
                         "address"});
 #line 8
 this.ScenarioSetup(scenarioInfo);
+#line 9
+ testRunner.Given("I am a shopper with \'v.hatalski@gmail.com\' email address", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
@@ -88,39 +90,12 @@ this.ScenarioSetup(scenarioInfo);
                         "State",
                         "Region",
                         "ZipCode",
-                        "Phone"});
-            table1.AddRow(new string[] {
-                        "0",
-                        "Vitali",
-                        "Hatalski",
-                        "My first",
-                        "Nekrasova 8",
-                        "flat 14",
-                        "",
-                        "Minsk",
-                        "Belarus",
-                        "",
-                        "",
-                        "220040",
-                        ""});
-            table1.AddRow(new string[] {
-                        "0",
-                        "Vitali",
-                        "Hatalski",
-                        "My second",
-                        "Novovilenskaya 10",
-                        "flat 41",
-                        "",
-                        "Minsk",
-                        "Belarus",
-                        "",
-                        "",
-                        "220053",
-                        "+375295067630"});
-#line 9
- testRunner.Given("I have entered the following delivery addresses", ((string)(null)), table1, "Given ");
-#line 13
- testRunner.When("addresses go to conroller", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+                        "Phone",
+                        "MessageType"});
+#line 10
+ testRunner.And("I have the following delivery addresses", ((string)(null)), table1, "And ");
+#line 12
+ testRunner.When("I open the delivery addresses web page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
@@ -135,9 +110,59 @@ this.ScenarioSetup(scenarioInfo);
                         "State",
                         "Region",
                         "ZipCode",
-                        "Phone"});
-            table2.AddRow(new string[] {
-                        "1",
+                        "Phone",
+                        "MessageType"});
+#line 13
+ testRunner.Then("I should see my delivery addresses on it", ((string)(null)), table2, "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Add delivery address")]
+        public virtual void AddDeliveryAddress()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add delivery address", ((string[])(null)));
+#line 16
+this.ScenarioSetup(scenarioInfo);
+#line 17
+ testRunner.Given("I am a shopper with \'v.hatalski@gmail.com\' email address", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id",
+                        "FirstName",
+                        "LastName",
+                        "AddressName",
+                        "AddressLine1",
+                        "AddressLine2",
+                        "AddressLine3",
+                        "City",
+                        "Country",
+                        "State",
+                        "Region",
+                        "ZipCode",
+                        "Phone",
+                        "MessageType"});
+#line 18
+ testRunner.And("I have the following delivery addresses", ((string)(null)), table3, "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id",
+                        "FirstName",
+                        "LastName",
+                        "AddressName",
+                        "AddressLine1",
+                        "AddressLine2",
+                        "AddressLine3",
+                        "City",
+                        "Country",
+                        "State",
+                        "Region",
+                        "ZipCode",
+                        "Phone",
+                        "MessageType"});
+            table4.AddRow(new string[] {
+                        "",
                         "Vitali",
                         "Hatalski",
                         "My first",
@@ -149,9 +174,10 @@ this.ScenarioSetup(scenarioInfo);
                         "",
                         "",
                         "220040",
+                        "",
                         ""});
-            table2.AddRow(new string[] {
-                        "2",
+            table4.AddRow(new string[] {
+                        "",
                         "Vitali",
                         "Hatalski",
                         "My second",
@@ -163,9 +189,348 @@ this.ScenarioSetup(scenarioInfo);
                         "",
                         "",
                         "220053",
-                        "+375295067630"});
-#line 14
- testRunner.Then("the result should be as the following", ((string)(null)), table2, "Then ");
+                        "+375295067630",
+                        ""});
+            table4.AddRow(new string[] {
+                        "",
+                        "",
+                        "",
+                        "My second",
+                        "Novovilenskaya 10",
+                        "flat 41",
+                        "",
+                        "Minsk",
+                        "Belarus",
+                        "",
+                        "",
+                        "220053",
+                        "+375295067630",
+                        ""});
+#line 20
+ testRunner.When("I add the following delivery addresses", ((string)(null)), table4, "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id",
+                        "FirstName",
+                        "LastName",
+                        "AddressName",
+                        "AddressLine1",
+                        "AddressLine2",
+                        "AddressLine3",
+                        "City",
+                        "Country",
+                        "State",
+                        "Region",
+                        "ZipCode",
+                        "Phone",
+                        "MessageType"});
+            table5.AddRow(new string[] {
+                        "",
+                        "Vitali",
+                        "Hatalski",
+                        "My first",
+                        "Nekrasova 8",
+                        "flat 14",
+                        "",
+                        "Minsk",
+                        "Belarus",
+                        "",
+                        "",
+                        "220040",
+                        "",
+                        "Success"});
+            table5.AddRow(new string[] {
+                        "",
+                        "Vitali",
+                        "Hatalski",
+                        "My second",
+                        "Novovilenskaya 10",
+                        "flat 41",
+                        "",
+                        "Minsk",
+                        "Belarus",
+                        "",
+                        "",
+                        "220053",
+                        "+375295067630",
+                        "Success"});
+            table5.AddRow(new string[] {
+                        "0",
+                        "",
+                        "",
+                        "My second",
+                        "Novovilenskaya 10",
+                        "flat 41",
+                        "",
+                        "Minsk",
+                        "Belarus",
+                        "",
+                        "",
+                        "220053",
+                        "+375295067630",
+                        "Error"});
+#line 25
+ testRunner.Then("I should have the following delivery addresses as a result", ((string)(null)), table5, "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Update delivery address")]
+        public virtual void UpdateDeliveryAddress()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Update delivery address", ((string[])(null)));
+#line 31
+this.ScenarioSetup(scenarioInfo);
+#line 32
+ testRunner.Given("I am a shopper with \'v.hatalski@gmail.com\' email address", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id",
+                        "FirstName",
+                        "LastName",
+                        "AddressName",
+                        "AddressLine1",
+                        "AddressLine2",
+                        "AddressLine3",
+                        "City",
+                        "Country",
+                        "State",
+                        "Region",
+                        "ZipCode",
+                        "Phone",
+                        "MessageType"});
+            table6.AddRow(new string[] {
+                        "2",
+                        "Vitali",
+                        "Hatalski",
+                        "My first",
+                        "Nekrasova 8",
+                        "flat 14",
+                        "",
+                        "Minsk",
+                        "Belarus",
+                        "",
+                        "",
+                        "220040",
+                        "",
+                        ""});
+            table6.AddRow(new string[] {
+                        "3",
+                        "Vitali",
+                        "Hatalski",
+                        "My second",
+                        "Novovilenskaya 10",
+                        "flat 41",
+                        "",
+                        "Minsk",
+                        "Belarus",
+                        "",
+                        "",
+                        "220053",
+                        "+375295067630",
+                        ""});
+#line 33
+ testRunner.And("I have the following delivery addresses", ((string)(null)), table6, "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id",
+                        "FirstName",
+                        "LastName",
+                        "AddressName",
+                        "AddressLine1",
+                        "AddressLine2",
+                        "AddressLine3",
+                        "City",
+                        "Country",
+                        "State",
+                        "Region",
+                        "ZipCode",
+                        "Phone",
+                        "MessageType"});
+            table7.AddRow(new string[] {
+                        "2",
+                        "Alex",
+                        "Hatalski",
+                        "Main address",
+                        "Nekrasova 8",
+                        "flat 14",
+                        "",
+                        "Minsk",
+                        "Belarus",
+                        "",
+                        "",
+                        "220040",
+                        "",
+                        ""});
+#line 37
+ testRunner.When("I edit the following delivery addresses", ((string)(null)), table7, "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id",
+                        "FirstName",
+                        "LastName",
+                        "AddressName",
+                        "AddressLine1",
+                        "AddressLine2",
+                        "AddressLine3",
+                        "City",
+                        "Country",
+                        "State",
+                        "Region",
+                        "ZipCode",
+                        "Phone",
+                        "MessageType"});
+            table8.AddRow(new string[] {
+                        "2",
+                        "Alex",
+                        "Hatalski",
+                        "Main address",
+                        "Nekrasova 8",
+                        "flat 14",
+                        "",
+                        "Minsk",
+                        "Belarus",
+                        "",
+                        "",
+                        "220040",
+                        "",
+                        ""});
+            table8.AddRow(new string[] {
+                        "3",
+                        "Vitali",
+                        "Hatalski",
+                        "My second",
+                        "Novovilenskaya 10",
+                        "flat 41",
+                        "",
+                        "Minsk",
+                        "Belarus",
+                        "",
+                        "",
+                        "220053",
+                        "+375295067630",
+                        ""});
+#line 40
+ testRunner.Then("I should have the following delivery addresses as a result", ((string)(null)), table8, "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Remove delivery address")]
+        public virtual void RemoveDeliveryAddress()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Remove delivery address", ((string[])(null)));
+#line 45
+this.ScenarioSetup(scenarioInfo);
+#line 46
+ testRunner.Given("I am a shopper with \'v.hatalski@gmail.com\' email address", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id",
+                        "FirstName",
+                        "LastName",
+                        "AddressName",
+                        "AddressLine1",
+                        "AddressLine2",
+                        "AddressLine3",
+                        "City",
+                        "Country",
+                        "State",
+                        "Region",
+                        "ZipCode",
+                        "Phone",
+                        "MessageType"});
+            table9.AddRow(new string[] {
+                        "2",
+                        "Vitali",
+                        "Hatalski",
+                        "My first",
+                        "Nekrasova 8",
+                        "flat 14",
+                        "",
+                        "Minsk",
+                        "Belarus",
+                        "",
+                        "",
+                        "220040",
+                        "",
+                        ""});
+            table9.AddRow(new string[] {
+                        "3",
+                        "Vitali",
+                        "Hatalski",
+                        "My second",
+                        "Novovilenskaya 10",
+                        "flat 41",
+                        "",
+                        "Minsk",
+                        "Belarus",
+                        "",
+                        "",
+                        "220053",
+                        "+375295067630",
+                        ""});
+#line 47
+ testRunner.And("I have the following delivery addresses", ((string)(null)), table9, "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id"});
+            table10.AddRow(new string[] {
+                        "2"});
+            table10.AddRow(new string[] {
+                        "5"});
+#line 51
+ testRunner.When("I click to remove the following delivery addresses ids", ((string)(null)), table10, "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id",
+                        "FirstName",
+                        "LastName",
+                        "AddressName",
+                        "AddressLine1",
+                        "AddressLine2",
+                        "AddressLine3",
+                        "City",
+                        "Country",
+                        "State",
+                        "Region",
+                        "ZipCode",
+                        "Phone",
+                        "MessageType"});
+            table11.AddRow(new string[] {
+                        "2",
+                        "Vitali",
+                        "Hatalski",
+                        "My first",
+                        "Nekrasova 8",
+                        "flat 14",
+                        "",
+                        "Minsk",
+                        "Belarus",
+                        "",
+                        "",
+                        "220040",
+                        "",
+                        ""});
+            table11.AddRow(new string[] {
+                        "5",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "Error"});
+#line 55
+ testRunner.Then("I should have the following delivery addresses as a result", ((string)(null)), table11, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
