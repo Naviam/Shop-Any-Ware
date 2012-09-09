@@ -232,7 +232,7 @@ namespace TdService.UI.Web.Controllers
         {
             if (this.ModelState.IsValid)
             {
-                var request = new ChangePasswordLinkRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() };
+                var request = new ChangePasswordLinkRequest { IdentityToken = view.Email };
                 this.membershipService.GenerateChangePasswordLink(request);
                 this.emailService.SendMail(
                     "noreply@shopanyware.com",
@@ -241,7 +241,7 @@ namespace TdService.UI.Web.Controllers
                     Resources.EmailResources.ResetPasswordBody);
             }
 
-            return this.View();
+            return this.View(view);
         }
 
         /// <summary>
@@ -294,9 +294,12 @@ namespace TdService.UI.Web.Controllers
         private void SetCredentialsFromCookie(ref SignInViewModel view)
         {
             var values = this.cookieStorageService.RetrieveCollection("shopanyware_login");
-            view.Email = values["Email"];
-            view.Password = values["Password"];
-            view.RememberMe = values["RememberMe"] == "yes";
+            if (values != null)
+            {
+                view.Email = values["Email"];
+                view.Password = values["Password"];
+                view.RememberMe = values["RememberMe"] == "yes";
+            }
         }
     }
 }

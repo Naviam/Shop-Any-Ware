@@ -10,6 +10,7 @@
 namespace TdService.ShopAnyWare.Tests.Mocks
 {
     using System;
+    using System.Collections.Generic;
     using System.Collections.Specialized;
 
     using TdService.Infrastructure.CookieStorage;
@@ -19,6 +20,10 @@ namespace TdService.ShopAnyWare.Tests.Mocks
     /// </summary>
     public class FakeCookieProvider : ICookieStorageService
     {
+        private readonly Dictionary<string, string> cookies = new Dictionary<string, string>();
+
+        private readonly Dictionary<string, NameValueCollection> collections = new Dictionary<string, NameValueCollection>();
+
         /// <summary>
         /// Save cookie.
         /// </summary>
@@ -33,6 +38,7 @@ namespace TdService.ShopAnyWare.Tests.Mocks
         /// </param>
         public void Save(string key, string value, DateTime expires)
         {
+            this.cookies.Add(key, value);
         }
 
         /// <summary>
@@ -49,6 +55,7 @@ namespace TdService.ShopAnyWare.Tests.Mocks
         /// </param>
         public void SaveCollection(string key, NameValueCollection values, DateTime expires)
         {
+            this.collections.Add(key, values);
         }
 
         /// <summary>
@@ -62,7 +69,8 @@ namespace TdService.ShopAnyWare.Tests.Mocks
         /// </returns>
         public string Retrieve(string key)
         {
-            return null;
+            string value;
+            return this.cookies.TryGetValue(key, out value) ? value : null;
         }
 
         /// <summary>
@@ -76,7 +84,8 @@ namespace TdService.ShopAnyWare.Tests.Mocks
         /// </returns>
         public NameValueCollection RetrieveCollection(string key)
         {
-            return null;
+            NameValueCollection value;
+            return this.collections.TryGetValue(key, out value) ? value : null;
         }
     }
 }

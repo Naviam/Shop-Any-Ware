@@ -10,6 +10,7 @@ namespace TdService.ShopAnyWare.Tests.Account
 
     using TdService.Model.Membership;
     using TdService.Services.Implementations;
+    using TdService.Services.Messaging;
     using TdService.Services.Messaging.Membership;
     using TdService.ShopAnyWare.Tests.Orders;
 
@@ -76,7 +77,7 @@ namespace TdService.ShopAnyWare.Tests.Account
             var profile = service.GetProfile(request);
 
             // assert
-            Assert.That(profile, Is.Null);
+            Assert.That(profile.MessageType, Is.EqualTo(MessageType.Error));
         }
     }
 }

@@ -187,7 +187,7 @@ namespace TdService.Specs
             var model = new OrderViewModel
             {
                 Id = 0,
-                RetailerUrl = "apple.com",
+                RetailerUrl = "amazon.com",
                 CreatedDate = DateTime.UtcNow,
                 ReceivedDate = null,
                 OrderNumber = null,
@@ -196,8 +196,11 @@ namespace TdService.Specs
             };
 
             // act
-            var createdOrder = (controller.Add(model.RetailerUrl) as JsonNetResult).Data as OrderViewModel;
-            var actual = controller.Remove(createdOrder.Id) as JsonNetResult;
+            var createdOrder = controller.Add(model.RetailerUrl) as JsonNetResult;
+            Debug.Assert(createdOrder != null, "createdOrder != null");
+            var m = createdOrder.Data as OrderViewModel;
+            Debug.Assert(m != null, "m != null");
+            var actual = controller.Remove(m.Id) as JsonNetResult;
 
             // assert
             Assert.That(actual, Is.Not.Null);
@@ -205,7 +208,7 @@ namespace TdService.Specs
             var result = actual.Data as OrderViewModel;
             Assert.That(result, Is.Not.Null);
             Debug.Assert(result != null, "result != null");
-            Assert.That(result.Id, Is.EqualTo(createdOrder.Id));
+            Assert.That(result.Id, Is.EqualTo(m.Id));
             Assert.That(result.MessageType, Is.EqualTo("Success"));
         }
     }

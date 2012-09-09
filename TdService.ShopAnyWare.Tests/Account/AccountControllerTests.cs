@@ -54,7 +54,7 @@ namespace TdService.ShopAnyWare.Tests.Account
             this.MembershipService = new FakeMembershipService();
             this.FormsAuthentication = new FakeFormsAuthentication();
             this.EmailService = new FakeEmailService();
-            this.CookieStorageService = new CookieStorageService();
+            this.CookieStorageService = new FakeCookieProvider();
         }
 
         /// <summary>

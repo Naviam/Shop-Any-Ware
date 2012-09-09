@@ -12,6 +12,7 @@ namespace TdService.UI.Web.Controllers
     using System;
     using System.Resources;
     using System.Web.Mvc;
+    using System.Xml;
 
     using TdService.Infrastructure.Authentication;
     using TdService.Resources;
@@ -139,7 +140,12 @@ namespace TdService.UI.Web.Controllers
                 }
             }
 
-            return this.Json(profileView);
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = profileView
+            };
+            return jsonNetResult;
         }
     }
 }

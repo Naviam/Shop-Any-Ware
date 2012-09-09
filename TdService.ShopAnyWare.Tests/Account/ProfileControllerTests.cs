@@ -6,12 +6,16 @@
 
 namespace TdService.ShopAnyWare.Tests.Account
 {
+    using System.Collections.Specialized;
+    using System.Diagnostics;
+    using System.Globalization;
     using System.Web.Mvc;
 
     using NUnit.Framework;
 
     using TdService.Infrastructure.Authentication;
     using TdService.Services.Interfaces;
+    using TdService.UI.Web;
     using TdService.UI.Web.Controllers;
     using TdService.UI.Web.ViewModels.Account;
 
@@ -75,7 +79,7 @@ namespace TdService.ShopAnyWare.Tests.Account
                 };
 
             // act
-            var actual = ((JsonResult)controller.Save(profileView)).Data as ProfileViewModel;
+            var actual = ((JsonNetResult)controller.Save(profileView)).Data as ProfileViewModel;
 
             // assert
             Assert.That(actual, Is.Not.Null);
@@ -93,7 +97,9 @@ namespace TdService.ShopAnyWare.Tests.Account
         {
             // arrange
             var controller = new ProfileController(this.MembershipService, this.FormsAuthentication);
-            var profileView = new ProfileViewModel
+            controller.ViewData.ModelState.Clear();
+
+            var profileViewModel = new ProfileViewModel
             {
                 FirstName = "Vitali",
                 LastName = string.Empty,
@@ -101,16 +107,16 @@ namespace TdService.ShopAnyWare.Tests.Account
                 NotifyOnPackageStatusChange = true
             };
 
-            controller.ModelState.AddModelError("key", "model is invalid");
-
             // act
-            var actual = ((JsonResult)controller.Save(profileView)).Data as ProfileViewModel;
+            var actual = controller.Save(profileViewModel) as JsonNetResult;
 
             // assert
             Assert.That(actual, Is.Not.Null);
             if (actual != null)
             {
-                Assert.That(actual.MessageType, Is.EqualTo("error"));
+                var model = actual.Data as ProfileViewModel;
+                Debug.Assert(model != null, "model != null");
+                Assert.That(model.MessageType, Is.EqualTo("Error"));
             }
         }
     }

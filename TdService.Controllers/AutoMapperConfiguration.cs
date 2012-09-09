@@ -47,8 +47,10 @@ namespace TdService.UI.Web
             Mapper.CreateMap<DeliveryAddress, GetDeliveryAddressesResponse>();
             Mapper.CreateMap<GetDeliveryAddressesResponse, DeliveryAddressViewModel>();
             Mapper.CreateMap<AddOrUpdateDeliveryAddressResponse, DeliveryAddressViewModel>();
+            Mapper.CreateMap<DeliveryAddressViewModel, AddOrUpdateDeliveryAddressRequest>();
             Mapper.CreateMap<AddOrUpdateDeliveryAddressRequest, DeliveryAddress>();
             Mapper.CreateMap<DeliveryAddress, AddOrUpdateDeliveryAddressResponse>();
+            Mapper.CreateMap<RemoveDeliveryRequestResponse, DeliveryAddressViewModel>();
 
             // get recent orders
             Mapper.CreateMap<GetRecentOrdersResponse, OrderViewModel>();

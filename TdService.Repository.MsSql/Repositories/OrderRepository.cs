@@ -93,6 +93,7 @@ namespace TdService.Repository.MsSql.Repositories
         {
             var order = new Order { Id = orderId };
             this.context.Orders.Attach(order);
+            this.context.Entry(order).Collection(o => o.Items).Load();
             this.context.Orders.Remove(order);
         }
 

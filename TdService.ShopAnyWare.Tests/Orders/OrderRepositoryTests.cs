@@ -111,11 +111,6 @@ namespace TdService.ShopAnyWare.Tests.Orders
             // arrange
             var repository = new OrderRepository(this.context);
             const int OrderId = 1;
-            //var order = repository.GetOrderById(OrderId);
-            //if (order == null)
-            //{
-            //    Assert.Fail("order with ID = 1 was not found in db");
-            //}
 
             // act
             repository.RemoveOrder(OrderId);
