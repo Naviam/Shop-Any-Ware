@@ -219,7 +219,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
                 {
                     CreatedDate = currentDate,
                     ReceivedDate = null,
-                    RetailerUrl = "apple.com",
+                    RetailerUrl = "amazon.com",
                     Id = 0,
                     OrderNumber = string.Empty,
                     Status = "New",
