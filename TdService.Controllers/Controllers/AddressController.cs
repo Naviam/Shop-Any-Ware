@@ -103,6 +103,7 @@ namespace TdService.UI.Web.Controllers
             {
                 throw new ArgumentNullException("model");
             }
+
             DeliveryAddressViewModel result;
             try
             {
@@ -115,7 +116,9 @@ namespace TdService.UI.Web.Controllers
             catch (Exception e)
             {
                 result = new DeliveryAddressViewModel
-                    { Message = e.Message, MessageType = ViewModelMessageType.Error.ToString() };
+                    {
+                        Message = e.Message, MessageType = ViewModelMessageType.Error.ToString() 
+                    };
             }
 
             var jsonNetResult = new JsonNetResult
@@ -143,6 +146,7 @@ namespace TdService.UI.Web.Controllers
             {
                 throw new ArgumentNullException("model");
             }
+
             var request = model.ConvertToAddDeliveryAddressRequest();
             request.IdentityToken = this.FormsAuthentication.GetAuthenticationToken();
             var response = this.addressService.AddOrUpdateDeliveryAddress(request);
@@ -158,6 +162,9 @@ namespace TdService.UI.Web.Controllers
         /// <summary>
         /// Remove delivery address.
         /// </summary>
+        /// <param name="addressId">
+        /// The address Id.
+        /// </param>
         /// <returns>
         /// Returns view with delivery addresses.
         /// </returns>

@@ -21,7 +21,7 @@ namespace TdService.Specs
     using TdService.Repository.MsSql;
     using TdService.Repository.MsSql.Repositories;
     using TdService.Services.Implementations;
-    using TdService.Specs.Infrastructure;
+    using TdService.Specs.Fakes;
     using TdService.UI.Web;
     using TdService.UI.Web.Controllers;
     using TdService.UI.Web.ViewModels.Account;

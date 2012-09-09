@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="OrderRepositoryTests.cs" company="ServiceChannel">
+// <copyright file="OrderRepositoryTests.cs" company="TdService">
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>

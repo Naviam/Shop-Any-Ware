@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Specs.Infrastructure
+namespace TdService.Specs.Fakes
 {
     using System;
     using System.Collections.Specialized;

@@ -20,8 +20,14 @@ namespace TdService.ShopAnyWare.Tests.Mocks
     /// </summary>
     public class FakeCookieProvider : ICookieStorageService
     {
+        /// <summary>
+        /// The cookies.
+        /// </summary>
         private readonly Dictionary<string, string> cookies = new Dictionary<string, string>();
 
+        /// <summary>
+        /// The collections.
+        /// </summary>
         private readonly Dictionary<string, NameValueCollection> collections = new Dictionary<string, NameValueCollection>();
 
         /// <summary>

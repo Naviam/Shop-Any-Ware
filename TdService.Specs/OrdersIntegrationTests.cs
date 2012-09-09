@@ -25,6 +25,7 @@ namespace TdService.Specs
     using TdService.Repository.MsSql.Repositories;
     using TdService.Services.Implementations;
     using TdService.Services.Interfaces;
+    using TdService.Specs.Fakes;
     using TdService.UI.Web;
     using TdService.UI.Web.Controllers;
     using TdService.UI.Web.ViewModels.Order;
@@ -171,7 +172,9 @@ namespace TdService.Specs
             Assert.That(result.Id, Is.GreaterThan(0));
             Assert.That(result.RetailerUrl, Is.EqualTo("test"));
             Assert.That(result.Status, Is.EqualTo("New"));
+            Debug.Assert(actual2 != null, "actual2 != null");
             var result2 = actual2.Data as OrderViewModel;
+            Debug.Assert(result2 != null, "result2 != null");
             Assert.That(result2.Id, Is.GreaterThan(0));
         }
 

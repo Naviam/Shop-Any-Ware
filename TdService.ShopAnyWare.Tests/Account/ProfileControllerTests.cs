@@ -6,9 +6,7 @@
 
 namespace TdService.ShopAnyWare.Tests.Account
 {
-    using System.Collections.Specialized;
     using System.Diagnostics;
-    using System.Globalization;
     using System.Web.Mvc;
 
     using NUnit.Framework;

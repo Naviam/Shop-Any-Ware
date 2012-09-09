@@ -1,4 +1,13 @@
-﻿namespace TdService.UI.Web.ViewModels.Account
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="DeliveryAddressViewModel.cs" company="TdService">
+//   Vitali Hatalski. 2012.
+// </copyright>
+// <summary>
+//   The delivery address view model.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace TdService.UI.Web.ViewModels.Account
 {
     /// <summary>
     /// The delivery address view model.

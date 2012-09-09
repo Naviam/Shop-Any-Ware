@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.ShopAnyWare.Tests.Addresses
+namespace TdService.Specs.Fakes
 {
     using System.Collections.Generic;
 
@@ -89,7 +89,7 @@ namespace TdService.ShopAnyWare.Tests.Addresses
             var address = this.addresses.Find(a => a.Id == request.Id);
             if (address == null)
             {
-                newAddress.Id = this.addresses.Count;
+                newAddress.Id = this.addresses.Count + 1;
                 this.addresses.Add(newAddress);
                 return newAddress.ConvertToAddDeliveryAddressResponse();
             }
@@ -113,6 +113,14 @@ namespace TdService.ShopAnyWare.Tests.Addresses
         {
             var result = this.addresses.RemoveAll(a => a.Id == request.Id);
             return new RemoveDeliveryRequestResponse { Id = result == 1 ? request.Id : 0 };
+        }
+
+        /// <summary>
+        /// The clean.
+        /// </summary>
+        public void Clean()
+        {
+            this.addresses.Clear();
         }
     }
 }
