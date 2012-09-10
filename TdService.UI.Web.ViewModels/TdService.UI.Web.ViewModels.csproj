@@ -51,6 +51,7 @@
     <Compile Include="Account\ProfileViewModel.cs" />
     <Compile Include="Account\SignInViewModel.cs" />
     <Compile Include="Account\SignUpViewModel.cs" />
+    <Compile Include="ModelError.cs" />
     <Compile Include="ViewModelBase.cs" />
     <Compile Include="Item\ItemViewModel.cs" />
     <Compile Include="Item\OrderItemViewModel.cs" />

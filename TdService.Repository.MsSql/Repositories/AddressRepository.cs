@@ -176,7 +176,7 @@ namespace TdService.Repository.MsSql.Repositories
                     user.DeliveryAddresses.Remove(addressToRemove);
                 }
 
-                var removedAddress = context.DeliveryAddresses.Remove(address);
+                var removedAddress = context.DeliveryAddresses.Remove(addressToRemove);
                 context.SaveChanges();
                 return removedAddress;
             }

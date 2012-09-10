@@ -117,7 +117,8 @@ namespace TdService.UI.Web.Controllers
             {
                 result = new DeliveryAddressViewModel
                     {
-                        Message = e.Message, MessageType = ViewModelMessageType.Error.ToString() 
+                        Message = e.Message, 
+                        MessageType = ViewModelMessageType.Error.ToString() 
                     };
             }
 
@@ -147,14 +148,28 @@ namespace TdService.UI.Web.Controllers
                 throw new ArgumentNullException("model");
             }
 
-            var request = model.ConvertToAddDeliveryAddressRequest();
-            request.IdentityToken = this.FormsAuthentication.GetAuthenticationToken();
-            var response = this.addressService.AddOrUpdateDeliveryAddress(request);
+            DeliveryAddressViewModel result;
+            try
+            {
+                var request = model.ConvertToAddDeliveryAddressRequest();
+                request.IdentityToken = this.FormsAuthentication.GetAuthenticationToken();
+                var response = this.addressService.AddOrUpdateDeliveryAddress(request);
+                result = response.ConvertToDeliveryAddressViewModel();
+            }
+            catch (Exception e)
+            {
+                result = new DeliveryAddressViewModel
+                {
+                    Id = model.Id,
+                    Message = e.Message,
+                    MessageType = ViewModelMessageType.Error.ToString()
+                };
+            }
 
             var jsonNetResult = new JsonNetResult
             {
                 Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
-                Data = response.ConvertToDeliveryAddressViewModel()
+                Data = result
             };
             return jsonNetResult;
         }

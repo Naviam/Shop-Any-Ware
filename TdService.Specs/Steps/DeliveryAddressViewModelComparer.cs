@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Specs.Features
+namespace TdService.Specs.Steps
 {
     using System;
     using System.Collections;

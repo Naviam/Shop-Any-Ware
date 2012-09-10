@@ -6,6 +6,8 @@
 
 namespace TdService.UI.Web.ViewModels
 {
+    using System.Collections.Generic;
+
     /// <summary>
     /// Base class for view models.
     /// </summary>
@@ -20,5 +22,10 @@ namespace TdService.UI.Web.ViewModels
         /// Gets or sets Message Type.
         /// </summary>
         public string MessageType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the model errors.
+        /// </summary>
+        public Dictionary<string, ModelError> Errors { get; set; }
     }
 }

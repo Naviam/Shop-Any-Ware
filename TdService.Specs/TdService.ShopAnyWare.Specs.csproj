@@ -69,17 +69,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountIntegrationTests.cs" />
-    <Compile Include="Features\AddDeliveryAddress.feature.cs">
+    <Compile Include="Features\UserAccount.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AddDeliveryAddress.feature</DependentUpon>
+      <DependentUpon>UserAccount.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\AddDeliveryAddressSteps.cs" />
+    <Compile Include="Features\DeliveryAddresses.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DeliveryAddresses.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Steps\DeliveryAddressesFeatureSteps.cs" />
     <Compile Include="Fakes\FakeAddressService.cs" />
     <Compile Include="Fakes\FakeCookieProvider.cs" />
     <Compile Include="Fakes\FakeEmailService.cs" />
     <Compile Include="Fakes\FakeFormsAuthentication.cs" />
-    <Compile Include="Features\DeliveryAddressViewModelComparer.cs" />
+    <Compile Include="Steps\DeliveryAddressViewModelComparer.cs" />
     <Compile Include="ItemsIntegrationTests.cs" />
     <Compile Include="OrdersIntegrationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -90,9 +95,13 @@
     <Content Include="App_Data\retailers.xls">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Features\AddDeliveryAddress.feature">
+    <None Include="Features\UserAccount.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>AddDeliveryAddress.feature.cs</LastGenOutput>
+      <LastGenOutput>UserAccount.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\DeliveryAddresses.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>DeliveryAddresses.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -132,7 +141,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Infrastructure\" />
-    <Folder Include="Steps\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
