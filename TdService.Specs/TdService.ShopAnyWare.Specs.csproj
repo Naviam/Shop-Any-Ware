@@ -69,10 +69,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountIntegrationTests.cs" />
-    <Compile Include="Features\UserAccount.feature.cs">
+    <Compile Include="Features\ShopperAccountCreation.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>UserAccount.feature</DependentUpon>
+      <DependentUpon>ShopperAccountCreation.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\DeliveryAddresses.feature.cs">
       <AutoGen>True</AutoGen>
@@ -89,15 +89,16 @@
     <Compile Include="OrdersIntegrationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShopAnyWareTestInitilizer.cs" />
+    <Compile Include="Steps\ShopperAccountCreation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <Content Include="App_Data\retailers.xls">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Features\UserAccount.feature">
+    <None Include="Features\ShopperAccountCreation.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>UserAccount.feature.cs</LastGenOutput>
+      <LastGenOutput>ShopperAccountCreation.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\DeliveryAddresses.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
