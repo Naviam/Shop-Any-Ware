@@ -89,7 +89,7 @@
     <Compile Include="OrdersIntegrationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShopAnyWareTestInitilizer.cs" />
-    <Compile Include="Steps\ShopperAccountCreation.cs" />
+    <Compile Include="Steps\ShopperAccountCreationSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

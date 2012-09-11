@@ -6,6 +6,8 @@
 
 namespace TdService.Infrastructure.Domain
 {
+    using System.Resources;
+
     /// <summary>
     /// This class is used to check the validity of a domain entity prior to persistence.
     /// </summary>
@@ -17,13 +19,13 @@ namespace TdService.Infrastructure.Domain
         /// <param name="property">
         /// The property.
         /// </param>
-        /// <param name="rule">
-        /// The rule.
+        /// <param name="errorCode">
+        /// The error code.
         /// </param>
-        public BusinessRule(string property, string rule)
+        public BusinessRule(string property, string errorCode)
         {
             this.Property = property;
-            this.Rule = rule;
+            this.ErrorCode = errorCode;
         }
 
         /// <summary>
@@ -32,8 +34,19 @@ namespace TdService.Infrastructure.Domain
         public string Property { get; set; }
 
         /// <summary>
-        /// Gets or sets Rule.
+        /// Gets or sets Error Code.
         /// </summary>
-        public string Rule { get; set; }
+        public string ErrorCode { get; set; }
+
+        /// <summary>
+        /// Gets the rule.
+        /// </summary>
+        public string Rule
+        {
+            get
+            {
+                return new ResourceManager(typeof(Resources.ErrorCodeResources)).GetString(this.ErrorCode);
+            }
+        }
     }
 }

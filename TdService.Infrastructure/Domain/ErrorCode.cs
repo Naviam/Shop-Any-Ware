@@ -1,0 +1,70 @@
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="ErrorCode.cs" company="TdService">
+//   Vitali Hatalski. 2012.
+// </copyright>
+// <summary>
+//   The domain errors.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace TdService.Infrastructure.Domain
+{
+    using System.Diagnostics.CodeAnalysis;
+
+    /// <summary>
+    /// The domain errors.
+    /// </summary>
+    [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1602:EnumerationItemsMustBeDocumented", Justification = "Reviewed. Suppression is OK here.")]
+    public enum ErrorCode
+    {
+        UserEmailExists,
+        UserEmailInvalid,
+        UserEmailMaxLength,
+        UserEmailRequired,
+        UserNotValid,
+        UserNotFound,
+        UserPasswordMaxLength,
+        UserPasswordMinLength,
+        UserPasswordRequired,
+        UserPasswordConfirmRequired,
+        UserPasswordConfirmNotEqual,
+        RoleDescriptionMaxLength,
+        RoleNameMaxLength,
+        RoleNameRequired,
+        ProfileFirstNameMaxLength,
+        ProfileFirstNameRequired,
+        ProfileLastNameMaxLength,
+        ProfileLastNameRequired,
+        ProfileNotFound,
+        AddressAddressLine1Required,
+        AddressCityRequired,
+        AddressCountryRequired,
+        AddressZipCodeRequired,
+        DeliveryAddressAddressNameRequired,
+        DeliveryAddressFirstNameRequired,
+        DeliveryAddressLastNameRequired,
+        OrderCreatedDateRequired,
+        OrderOrderNumberMaxLength,
+        OrderReceivedDateRequired,
+        OrderRetailerRequired,
+        OrderStatusExtendedMaxLength,
+        OrderTrackingNumberMaxLength,
+        OrderWeightRequired,
+        PackageNameMaxLength,
+        PackageNameRequired,
+        ItemNameMaxLength,
+        ItemNameRequired,
+        ItemPriceRequired,
+        ItemQuantityRequired,
+        ItemWeightRequired,
+        CourierNameMaxLength,
+        CourierNameRequired,
+        RetailerCategoryMaxLength,
+        RetailerCategoryRequired,
+        RetailerDescriptionMaxLength,
+        RetailerNameMaxLength,
+        RetailerNameRequired,
+        RetailerUrlMaxLength,
+        RetailerUrlRequired
+    }
+}

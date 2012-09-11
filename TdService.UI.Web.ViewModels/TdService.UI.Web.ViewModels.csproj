@@ -51,6 +51,7 @@
     <Compile Include="Account\ProfileViewModel.cs" />
     <Compile Include="Account\SignInViewModel.cs" />
     <Compile Include="Account\SignUpViewModel.cs" />
+    <Compile Include="Account\SignUpViewModelValidator.cs" />
     <Compile Include="ModelError.cs" />
     <Compile Include="ViewModelBase.cs" />
     <Compile Include="Item\ItemViewModel.cs" />
@@ -63,6 +64,10 @@
     <Compile Include="ViewModelMessageType.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TdService.Infrastructure\TdService.Infrastructure.csproj">
+      <Project>{81B36459-F01A-4F69-869B-EA585BEE2005}</Project>
+      <Name>TdService.Infrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TdService.Resources\TdService.Resources.csproj">
       <Project>{9dc0e782-6e6b-4fa4-a7c1-728ed25ce063}</Project>
       <Name>TdService.Resources</Name>

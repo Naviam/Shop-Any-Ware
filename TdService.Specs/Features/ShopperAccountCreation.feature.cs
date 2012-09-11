@@ -80,7 +80,7 @@ this.ScenarioSetup(scenarioInfo);
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                         "Email",
                         "Password",
-                        "Confirm Password",
+                        "Password Confirm",
                         "First Name",
                         "Last Name"});
             table1.AddRow(new string[] {
@@ -94,20 +94,20 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         "Email",
-                        "Password",
-                        "Confirm Password",
                         "First Name",
                         "Last Name",
-                        "MessageType"});
+                        "Activated",
+                        "Message Type"});
             table2.AddRow(new string[] {
                         "hautama@tut.by",
-                        "ruinruin",
-                        "ruinruin",
                         "Vitali",
                         "Hatalski",
+                        "false",
                         "Success"});
 #line 12
  testRunner.Then("I should have the result as follows", ((string)(null)), table2, "Then ");
+#line 15
+ testRunner.And("activation code should be generated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -117,17 +117,17 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void AccountAlreadyExists()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Account already exists", ((string[])(null)));
-#line 16
-this.ScenarioSetup(scenarioInfo);
 #line 17
- testRunner.Given("The \'vhatalski@naviam.com\' account already exists", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+this.ScenarioSetup(scenarioInfo);
 #line 18
- testRunner.And("I have not been authenticated yet", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("I have not been authenticated yet", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 19
+ testRunner.And("The \'vhatalski@naviam.com\' account already exists", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                         "Email",
                         "Password",
-                        "Confirm Password",
+                        "Password Confirm",
                         "First Name",
                         "Last Name"});
             table3.AddRow(new string[] {
@@ -136,13 +136,13 @@ this.ScenarioSetup(scenarioInfo);
                         "ruinruin",
                         "Vitali",
                         "Hatalski"});
-#line 19
+#line 20
  testRunner.When("I fill sign up form with the following data", ((string)(null)), table3, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
                         "Email",
                         "Password",
-                        "Confirm Password",
+                        "Password Confirm",
                         "First Name",
                         "Last Name",
                         "Message Type"});
@@ -153,16 +153,16 @@ this.ScenarioSetup(scenarioInfo);
                         "",
                         "",
                         "Error"});
-#line 22
+#line 23
  testRunner.Then("I should have the result as follows", ((string)(null)), table4, "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Property Name",
+                        "Property",
                         "Error Code"});
             table5.AddRow(new string[] {
                         "Email",
-                        "AccountExists"});
-#line 25
+                        "UserEmailExists"});
+#line 26
  testRunner.And("I should have the following model errors", ((string)(null)), table5, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -173,15 +173,15 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void PasswordAndConfirmPasswordDoNotMatch()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Password and confirm password do not match", ((string[])(null)));
-#line 29
-this.ScenarioSetup(scenarioInfo);
 #line 30
+this.ScenarioSetup(scenarioInfo);
+#line 31
  testRunner.Given("I have not been authenticated yet", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
                         "Email",
                         "Password",
-                        "Confirm Password",
+                        "Password Confirm",
                         "First Name",
                         "Last Name"});
             table6.AddRow(new string[] {
@@ -190,13 +190,13 @@ this.ScenarioSetup(scenarioInfo);
                         "ruinruin1",
                         "Vitali",
                         "Hatalski"});
-#line 31
+#line 32
  testRunner.When("I fill sign up form with the following data", ((string)(null)), table6, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
                         "Email",
                         "Password",
-                        "Confirm Password",
+                        "Password Confirm",
                         "First Name",
                         "Last Name",
                         "Message Type"});
@@ -207,16 +207,16 @@ this.ScenarioSetup(scenarioInfo);
                         "",
                         "",
                         "Error"});
-#line 34
+#line 35
  testRunner.Then("I should have the result as follows", ((string)(null)), table7, "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Property Name",
+                        "Property",
                         "Error Code"});
             table8.AddRow(new string[] {
-                        "Confirm Password",
-                        "AccountExists"});
-#line 37
+                        "PasswordConfirm",
+                        "UserPasswordConfirmNotEqual"});
+#line 38
  testRunner.And("I should have the following model errors", ((string)(null)), table8, "And ");
 #line hidden
             this.ScenarioCleanup();

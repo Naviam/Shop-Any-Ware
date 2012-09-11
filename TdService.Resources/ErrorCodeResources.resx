@@ -117,46 +117,151 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="EmailExists" xml:space="preserve">
-    <value>An account already exists with this e-mail.</value>
+  <data name="AddressAddressLine1Required" xml:space="preserve">
+    <value>The 1st line of an Address is required.</value>
   </data>
-  <data name="InvalidEmail" xml:space="preserve">
-    <value>Please type a valid email address.</value>
+  <data name="AddressCityRequired" xml:space="preserve">
+    <value>An address must have a city.</value>
   </data>
-  <data name="MaxLengthEmail" xml:space="preserve">
-    <value>Email can't be more than 256 chars length.</value>
+  <data name="AddressCountryRequired" xml:space="preserve">
+    <value>An address must have a country.</value>
   </data>
-  <data name="MaxLengthFirstName" xml:space="preserve">
-    <value>First name can't be more than 64 chars length.</value>
+  <data name="AddressZipCodeRequired" xml:space="preserve">
+    <value>An address must have a zip code.</value>
   </data>
-  <data name="MaxLengthLastName" xml:space="preserve">
-    <value>Last name can't be more than 64 chars length.</value>
+  <data name="CourierNameMaxLength" xml:space="preserve">
+    <value>Courier name must be a string with a maximum length of 64.</value>
   </data>
-  <data name="MaxLengthPassword" xml:space="preserve">
-    <value>Password can't be more than 21 chars length.</value>
+  <data name="CourierNameRequired" xml:space="preserve">
+    <value>A courier must have a name.</value>
   </data>
-  <data name="NotValidUser" xml:space="preserve">
-    <value>Email or password are incorrect.</value>
+  <data name="DeliveryAddressAddressNameRequired" xml:space="preserve">
+    <value>A delivery address must have a name.</value>
+  </data>
+  <data name="DeliveryAddressFirstNameRequired" xml:space="preserve">
+    <value>A delivery address must contain your first name.</value>
+  </data>
+  <data name="DeliveryAddressLastNameRequired" xml:space="preserve">
+    <value>A delivery address must contain your last name.</value>
+  </data>
+  <data name="ItemNameMaxLength" xml:space="preserve">
+    <value>An item name must be a string with a maximum length of 64.</value>
+  </data>
+  <data name="ItemNameRequired" xml:space="preserve">
+    <value>An item must have a name.</value>
+  </data>
+  <data name="ItemPriceRequired" xml:space="preserve">
+    <value>An item must have a price.</value>
+  </data>
+  <data name="ItemQuantityRequired" xml:space="preserve">
+    <value>An item must have a quantity.</value>
+  </data>
+  <data name="ItemWeightRequired" xml:space="preserve">
+    <value>An item must have a weight.</value>
+  </data>
+  <data name="OrderCreatedDateRequired" xml:space="preserve">
+    <value>Order must have a created date.</value>
+  </data>
+  <data name="OrderOrderNumberMaxLength" xml:space="preserve">
+    <value>Order number must be a string with a maximum length of 64.</value>
+  </data>
+  <data name="OrderReceivedDateRequired" xml:space="preserve">
+    <value>Order in Received status must have a received date.</value>
+  </data>
+  <data name="OrderRetailerRequired" xml:space="preserve">
+    <value>Order must have a retailer.</value>
+  </data>
+  <data name="OrderStatusExtendedMaxLength" xml:space="preserve">
+    <value>Order extended status must be a string with a maximum length of 64.</value>
+  </data>
+  <data name="OrderTrackingNumberMaxLength" xml:space="preserve">
+    <value>Tracking number must be a string with a maximum length of 64.</value>
+  </data>
+  <data name="OrderWeightRequired" xml:space="preserve">
+    <value>Order in Received status must have a weight.</value>
+  </data>
+  <data name="PackageNameMaxLength" xml:space="preserve">
+    <value>Package name must be a string with a maximum length of 64.</value>
+  </data>
+  <data name="PackageNameRequired" xml:space="preserve">
+    <value>A package must have a name.</value>
+  </data>
+  <data name="ProfileFirstNameMaxLength" xml:space="preserve">
+    <value>First name must be a string with a maximum length of 64.</value>
+  </data>
+  <data name="ProfileFirstNameRequired" xml:space="preserve">
+    <value>First name is a required field.</value>
+  </data>
+  <data name="ProfileLastNameMaxLength" xml:space="preserve">
+    <value>Last name must be a string with a maximum length of 64.</value>
+  </data>
+  <data name="ProfileLastNameRequired" xml:space="preserve">
+    <value>Last name is a required field.</value>
   </data>
   <data name="ProfileNotFound" xml:space="preserve">
     <value>Can't retrieve user profile. Profile has not been found.</value>
   </data>
-  <data name="RequiredEmail" xml:space="preserve">
-    <value>Email is required.</value>
+  <data name="RetailerCategoryMaxLength" xml:space="preserve">
+    <value>Retailer category must be a string with a maximum length of 64.</value>
   </data>
-  <data name="RequiredFirstName" xml:space="preserve">
-    <value>First name is required to get U.S. address.</value>
+  <data name="RetailerCategoryRequired" xml:space="preserve">
+    <value>A retailer must have a category.</value>
   </data>
-  <data name="RequiredLastName" xml:space="preserve">
-    <value>Last name is required to get U.S. address.</value>
+  <data name="RetailerDescriptionMaxLength" xml:space="preserve">
+    <value>Retailer description must be a string with a maximum length of 1024.</value>
   </data>
-  <data name="RequiredPassword" xml:space="preserve">
-    <value>Password is required.</value>
+  <data name="RetailerNameMaxLength" xml:space="preserve">
+    <value>Retailer name must be a string with a maximum length of 64.</value>
   </data>
-  <data name="RequiredPasswordConfirmation" xml:space="preserve">
-    <value>Re-enter password to avoid mistakes.</value>
+  <data name="RetailerNameRequired" xml:space="preserve">
+    <value>A retailer must have a name.</value>
+  </data>
+  <data name="RetailerUrlMaxLength" xml:space="preserve">
+    <value>Retailer url must be a string with a maximum length of 256.</value>
+  </data>
+  <data name="RetailerUrlRequired" xml:space="preserve">
+    <value>A retailer must have a url.</value>
+  </data>
+  <data name="RoleDescriptionMaxLength" xml:space="preserve">
+    <value>Description must be a string with a maximum length of 64.</value>
+  </data>
+  <data name="RoleNameMaxLength" xml:space="preserve">
+    <value>Name must be a string with a maximum length of 64.</value>
+  </data>
+  <data name="RoleNameRequired" xml:space="preserve">
+    <value>A role must have a name.</value>
+  </data>
+  <data name="UserEmailExists" xml:space="preserve">
+    <value>The user with this email already exists.</value>
+  </data>
+  <data name="UserEmailInvalid" xml:space="preserve">
+    <value>Please type a valid email address.</value>
+  </data>
+  <data name="UserEmailMaxLength" xml:space="preserve">
+    <value>Email must be a string with a maximum length of 256.</value>
+  </data>
+  <data name="UserEmailRequired" xml:space="preserve">
+    <value>An user must have an email.</value>
   </data>
   <data name="UserNotFound" xml:space="preserve">
     <value>Can't retrieve user details. Such user has not been found.</value>
+  </data>
+  <data name="UserNotValid" xml:space="preserve">
+    <value>Email or password are incorrect.</value>
+  </data>
+  <data name="UserPasswordConfirmNotEqual" xml:space="preserve">
+    <value>Please check that your passwords match and try again.</value>
+  </data>
+  <data name="UserPasswordConfirmRequired" xml:space="preserve">
+    <value>Re-enter password to avoid mistakes.</value>
+  </data>
+  <data name="UserPasswordMaxLength" xml:space="preserve">
+    <value>Password must be a string with a maximum length of 21.</value>
+  </data>
+  <data name="UserPasswordMinLength" xml:space="preserve">
+    <value>Password must be a string with a minimum length of 7.</value>
+  </data>
+  <data name="UserPasswordRequired" xml:space="preserve">
+    <value>An user must have a password.</value>
   </data>
 </root>

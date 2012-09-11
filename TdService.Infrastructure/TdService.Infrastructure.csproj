@@ -91,6 +91,7 @@
     <Compile Include="CookieStorage\CookieStorageService.cs" />
     <Compile Include="CookieStorage\ICookieStorageService.cs" />
     <Compile Include="Domain\BusinessRule.cs" />
+    <Compile Include="Domain\ErrorCode.cs" />
     <Compile Include="Domain\EntityBase.cs" />
     <Compile Include="Domain\IAggregateRoot.cs" />
     <Compile Include="Domain\IReadOnlyRepository.cs" />
@@ -127,6 +128,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Payments\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TdService.Resources\TdService.Resources.csproj">
+      <Project>{9dc0e782-6e6b-4fa4-a7c1-728ed25ce063}</Project>
+      <Name>TdService.Resources</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />

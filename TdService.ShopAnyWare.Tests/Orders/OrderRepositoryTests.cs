@@ -88,7 +88,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
                 var message = new StringBuilder();
                 foreach (var rule in retailer.GetBrokenRules())
                 {
-                    message.Append(rule.Rule);
+                    message.Append(rule.ErrorCode);
                 }
 
                 Assert.Fail(message.ToString());
@@ -143,7 +143,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
                 var message = new StringBuilder();
                 foreach (var rule in newOrder.GetBrokenRules())
                 {
-                    message.Append(rule.Rule);
+                    message.Append(rule.ErrorCode);
                 }
 
                 Assert.Fail(message.ToString());

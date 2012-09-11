@@ -16,6 +16,20 @@ namespace TdService.ShopAnyWare.Tests.Account
     public class FakeMembershipService : IMembershipService
     {
         /// <summary>
+        /// The sign up shopper.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The TdService.Services.Messaging.Membership.RegisterUserResponse.
+        /// </returns>
+        public RegisterUserResponse SignUpShopper(RegisterUserRequest request)
+        {
+            return null;
+        }
+
+        /// <summary>
         /// Register user.
         /// </summary>
         /// <param name="request">
@@ -26,7 +40,7 @@ namespace TdService.ShopAnyWare.Tests.Account
         /// </returns>
         public RegisterUserResponse RegisterUser(RegisterUserRequest request)
         {
-            var response = new RegisterUserResponse { IdentityToken = "1", MessageType = MessageType.Success };
+            var response = new RegisterUserResponse { Email = "1", MessageType = MessageType.Success };
             return response;
         }
 

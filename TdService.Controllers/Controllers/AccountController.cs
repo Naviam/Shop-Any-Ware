@@ -10,16 +10,20 @@
 namespace TdService.UI.Web.Controllers
 {
     using System;
+    using System.Collections.Generic;
     using System.Collections.Specialized;
     using System.Resources;
     using System.Web.Mvc;
+    using System.Xml;
 
     using TdService.Infrastructure.Authentication;
     using TdService.Infrastructure.CookieStorage;
+    using TdService.Infrastructure.Domain;
     using TdService.Infrastructure.Email;
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging;
     using TdService.Services.Messaging.Membership;
+    using TdService.UI.Web.Mapping;
     using TdService.UI.Web.ViewModels.Account;
 
     /// <summary>
@@ -154,7 +158,10 @@ namespace TdService.UI.Web.Controllers
         [ValidateAntiForgeryToken(Salt = "signup")]
         public ActionResult SignUp(SignUpViewModel view)
         {
-            if (this.ModelState.IsValid)
+            var result = new SignUpViewModel();
+            var validator = new SignUpViewModelValidator();
+            var validationResult = validator.Validate(view);
+            if (validationResult.IsValid)
             {
                 var request = new RegisterUserRequest
                 {
@@ -165,23 +172,25 @@ namespace TdService.UI.Web.Controllers
                     LastName = view.LastName
                 };
 
-                var response = this.membershipService.RegisterUser(request);
-                if (response.MessageType != MessageType.Error)
+                var response = this.membershipService.SignUpShopper(request);
+                result = response.ConvertToSignUpViewModel();
+            }
+            else
+            {
+                result.MessageType = MessageType.Error.ToString();
+                result.BrokenRules = new List<BusinessRule>();
+                foreach (var failure in validationResult.Errors)
                 {
-                    return this.RedirectToAction("Welcome", "Member");
+                    result.BrokenRules.Add(new BusinessRule(failure.PropertyName, failure.ErrorMessage));
                 }
-
-                if (response.MessageType == MessageType.Error && response.ErrorCode == "EmailExists")
-                {
-                    this.ModelState.AddModelError("Email", (new ResourceManager(typeof(Resources.ErrorCodeResources))).GetString(response.ErrorCode));
-                }
-
-                view.MessageType = response.MessageType.ToString();
-                view.Message = (response.Message
-                               ?? (new ResourceManager(typeof(Resources.ErrorCodeResources))).GetString(response.ErrorCode)) ?? string.Empty;
             }
 
-            return this.View(view);
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = result
+            };
+            return jsonNetResult;
         }
 
         /// <summary>

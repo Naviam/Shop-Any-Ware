@@ -9,6 +9,7 @@ namespace TdService.ShopAnyWare.Tests.Account
     using NUnit.Framework;
 
     using TdService.Model.Membership;
+    using TdService.Repository.MsSql.Repositories;
     using TdService.Services.Implementations;
     using TdService.Services.Messaging;
     using TdService.Services.Messaging.Membership;
@@ -31,6 +32,11 @@ namespace TdService.ShopAnyWare.Tests.Account
         private IRoleRepository roleRepository;
 
         /// <summary>
+        /// The membership repository.
+        /// </summary>
+        private IMembershipRepository membershipRepository;
+
+        /// <summary>
         /// The profile repository.
         /// </summary>
         private IProfileRepository profileRepository;
@@ -44,6 +50,7 @@ namespace TdService.ShopAnyWare.Tests.Account
             this.userRepository = new FakeUserRepository();
             this.profileRepository = new FakeProfileRepository();
             this.roleRepository = new FakeRoleRepository();
+            this.membershipRepository = new MembershipRepository();
         }
 
         /// <summary>
@@ -53,7 +60,7 @@ namespace TdService.ShopAnyWare.Tests.Account
         public void ShouldBeAbleToGetProfileIfEmailExists()
         {
             // arrange
-            var service = new MembershipService(this.userRepository, this.roleRepository, this.profileRepository);
+            var service = new MembershipService(this.userRepository, this.roleRepository, this.profileRepository, this.membershipRepository);
             var request = new GetProfileRequest { IdentityToken = "vhatalski@naviam.com" };
 
             // act
@@ -70,7 +77,7 @@ namespace TdService.ShopAnyWare.Tests.Account
         public void ShouldNotBeAbleToGetProfileIfEmailDoesNotExist()
         {
             // arrange
-            var service = new MembershipService(this.userRepository, this.roleRepository, this.profileRepository);
+            var service = new MembershipService(this.userRepository, this.roleRepository, this.profileRepository, this.membershipRepository);
             var request = new GetProfileRequest { IdentityToken = "vhatalski2@naviam.com" };
 
             // act

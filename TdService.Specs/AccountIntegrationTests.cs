@@ -53,6 +53,11 @@ namespace TdService.Specs
         private IProfileRepository profileRepository;
 
         /// <summary>
+        /// The membership repository.
+        /// </summary>
+        private IMembershipRepository membershipRepository;
+
+        /// <summary>
         /// The forms authentication.
         /// </summary>
         private IFormsAuthentication formsAuthentication;
@@ -81,6 +86,7 @@ namespace TdService.Specs
             this.userRepository = new UserRepository(this.context);
             this.roleRepository = new RoleRepository(this.context);
             this.profileRepository = new ProfileRepository(this.context);
+            this.membershipRepository = new MembershipRepository();
             this.emailService = new SmtpService();
             this.cookieStorageService = new FakeCookieProvider();
         }
@@ -92,7 +98,7 @@ namespace TdService.Specs
         public void ShouldBeAbleToSignIn()
         {
             // arrange
-            var membershipService = new MembershipService(this.userRepository, this.roleRepository, this.profileRepository);
+            var membershipService = new MembershipService(this.userRepository, this.roleRepository, this.profileRepository, this.membershipRepository);
             var controller = new AccountController(
                 membershipService,
                 this.emailService,
@@ -120,7 +126,7 @@ namespace TdService.Specs
         public void ShouldBeAbleToSignUp()
         {
             // arrange
-            var membershipService = new MembershipService(this.userRepository, this.roleRepository, this.profileRepository);
+            var membershipService = new MembershipService(this.userRepository, this.roleRepository, this.profileRepository, this.membershipRepository);
             var controller = new AccountController(
                 membershipService,
                 this.emailService,

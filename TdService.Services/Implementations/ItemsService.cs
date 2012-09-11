@@ -70,7 +70,7 @@ namespace TdService.Services.Implementations
                 {
                     sb.Append(rule.Property);
                     sb.Append(": ");
-                    sb.Append(rule.Rule);
+                    sb.Append(rule.ErrorCode);
                     sb.Append(" ");
                 }
 

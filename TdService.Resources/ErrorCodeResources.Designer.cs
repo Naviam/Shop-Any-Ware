@@ -61,65 +61,245 @@ namespace TdService.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An account already exists with this e-mail..
+        ///   Looks up a localized string similar to The 1st line of an Address is required..
         /// </summary>
-        public static string EmailExists {
+        public static string AddressAddressLine1Required {
             get {
-                return ResourceManager.GetString("EmailExists", resourceCulture);
+                return ResourceManager.GetString("AddressAddressLine1Required", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please type a valid email address..
+        ///   Looks up a localized string similar to An address must have a city..
         /// </summary>
-        public static string InvalidEmail {
+        public static string AddressCityRequired {
             get {
-                return ResourceManager.GetString("InvalidEmail", resourceCulture);
+                return ResourceManager.GetString("AddressCityRequired", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Email can&apos;t be more than 256 chars length..
+        ///   Looks up a localized string similar to An address must have a country..
         /// </summary>
-        public static string MaxLengthEmail {
+        public static string AddressCountryRequired {
             get {
-                return ResourceManager.GetString("MaxLengthEmail", resourceCulture);
+                return ResourceManager.GetString("AddressCountryRequired", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to First name can&apos;t be more than 64 chars length..
+        ///   Looks up a localized string similar to An address must have a zip code..
         /// </summary>
-        public static string MaxLengthFirstName {
+        public static string AddressZipCodeRequired {
             get {
-                return ResourceManager.GetString("MaxLengthFirstName", resourceCulture);
+                return ResourceManager.GetString("AddressZipCodeRequired", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Last name can&apos;t be more than 64 chars length..
+        ///   Looks up a localized string similar to Courier name must be a string with a maximum length of 64..
         /// </summary>
-        public static string MaxLengthLastName {
+        public static string CourierNameMaxLength {
             get {
-                return ResourceManager.GetString("MaxLengthLastName", resourceCulture);
+                return ResourceManager.GetString("CourierNameMaxLength", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Password can&apos;t be more than 21 chars length..
+        ///   Looks up a localized string similar to A courier must have a name..
         /// </summary>
-        public static string MaxLengthPassword {
+        public static string CourierNameRequired {
             get {
-                return ResourceManager.GetString("MaxLengthPassword", resourceCulture);
+                return ResourceManager.GetString("CourierNameRequired", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Email or password are incorrect..
+        ///   Looks up a localized string similar to A delivery address must have a name..
         /// </summary>
-        public static string NotValidUser {
+        public static string DeliveryAddressAddressNameRequired {
             get {
-                return ResourceManager.GetString("NotValidUser", resourceCulture);
+                return ResourceManager.GetString("DeliveryAddressAddressNameRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A delivery address must contain your first name..
+        /// </summary>
+        public static string DeliveryAddressFirstNameRequired {
+            get {
+                return ResourceManager.GetString("DeliveryAddressFirstNameRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A delivery address must contain your last name..
+        /// </summary>
+        public static string DeliveryAddressLastNameRequired {
+            get {
+                return ResourceManager.GetString("DeliveryAddressLastNameRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An item name must be a string with a maximum length of 64..
+        /// </summary>
+        public static string ItemNameMaxLength {
+            get {
+                return ResourceManager.GetString("ItemNameMaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An item must have a name..
+        /// </summary>
+        public static string ItemNameRequired {
+            get {
+                return ResourceManager.GetString("ItemNameRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An item must have a price..
+        /// </summary>
+        public static string ItemPriceRequired {
+            get {
+                return ResourceManager.GetString("ItemPriceRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An item must have a quantity..
+        /// </summary>
+        public static string ItemQuantityRequired {
+            get {
+                return ResourceManager.GetString("ItemQuantityRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An item must have a weight..
+        /// </summary>
+        public static string ItemWeightRequired {
+            get {
+                return ResourceManager.GetString("ItemWeightRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Order must have a created date..
+        /// </summary>
+        public static string OrderCreatedDateRequired {
+            get {
+                return ResourceManager.GetString("OrderCreatedDateRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Order number must be a string with a maximum length of 64..
+        /// </summary>
+        public static string OrderOrderNumberMaxLength {
+            get {
+                return ResourceManager.GetString("OrderOrderNumberMaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Order in Received status must have a received date..
+        /// </summary>
+        public static string OrderReceivedDateRequired {
+            get {
+                return ResourceManager.GetString("OrderReceivedDateRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Order must have a retailer..
+        /// </summary>
+        public static string OrderRetailerRequired {
+            get {
+                return ResourceManager.GetString("OrderRetailerRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Order extended status must be a string with a maximum length of 64..
+        /// </summary>
+        public static string OrderStatusExtendedMaxLength {
+            get {
+                return ResourceManager.GetString("OrderStatusExtendedMaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tracking number must be a string with a maximum length of 64..
+        /// </summary>
+        public static string OrderTrackingNumberMaxLength {
+            get {
+                return ResourceManager.GetString("OrderTrackingNumberMaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Order in Received status must have a weight..
+        /// </summary>
+        public static string OrderWeightRequired {
+            get {
+                return ResourceManager.GetString("OrderWeightRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Package name must be a string with a maximum length of 64..
+        /// </summary>
+        public static string PackageNameMaxLength {
+            get {
+                return ResourceManager.GetString("PackageNameMaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A package must have a name..
+        /// </summary>
+        public static string PackageNameRequired {
+            get {
+                return ResourceManager.GetString("PackageNameRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to First name must be a string with a maximum length of 64..
+        /// </summary>
+        public static string ProfileFirstNameMaxLength {
+            get {
+                return ResourceManager.GetString("ProfileFirstNameMaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to First name is a required field..
+        /// </summary>
+        public static string ProfileFirstNameRequired {
+            get {
+                return ResourceManager.GetString("ProfileFirstNameRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last name must be a string with a maximum length of 64..
+        /// </summary>
+        public static string ProfileLastNameMaxLength {
+            get {
+                return ResourceManager.GetString("ProfileLastNameMaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last name is a required field..
+        /// </summary>
+        public static string ProfileLastNameRequired {
+            get {
+                return ResourceManager.GetString("ProfileLastNameRequired", resourceCulture);
             }
         }
         
@@ -133,47 +313,128 @@ namespace TdService.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Email is required..
+        ///   Looks up a localized string similar to Retailer category must be a string with a maximum length of 64..
         /// </summary>
-        public static string RequiredEmail {
+        public static string RetailerCategoryMaxLength {
             get {
-                return ResourceManager.GetString("RequiredEmail", resourceCulture);
+                return ResourceManager.GetString("RetailerCategoryMaxLength", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to First name is required to get U.S. address..
+        ///   Looks up a localized string similar to A retailer must have a category..
         /// </summary>
-        public static string RequiredFirstName {
+        public static string RetailerCategoryRequired {
             get {
-                return ResourceManager.GetString("RequiredFirstName", resourceCulture);
+                return ResourceManager.GetString("RetailerCategoryRequired", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Last name is required to get U.S. address..
+        ///   Looks up a localized string similar to Retailer description must be a string with a maximum length of 1024..
         /// </summary>
-        public static string RequiredLastName {
+        public static string RetailerDescriptionMaxLength {
             get {
-                return ResourceManager.GetString("RequiredLastName", resourceCulture);
+                return ResourceManager.GetString("RetailerDescriptionMaxLength", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Password is required..
+        ///   Looks up a localized string similar to Retailer name must be a string with a maximum length of 64..
         /// </summary>
-        public static string RequiredPassword {
+        public static string RetailerNameMaxLength {
             get {
-                return ResourceManager.GetString("RequiredPassword", resourceCulture);
+                return ResourceManager.GetString("RetailerNameMaxLength", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Re-enter password to avoid mistakes..
+        ///   Looks up a localized string similar to A retailer must have a name..
         /// </summary>
-        public static string RequiredPasswordConfirmation {
+        public static string RetailerNameRequired {
             get {
-                return ResourceManager.GetString("RequiredPasswordConfirmation", resourceCulture);
+                return ResourceManager.GetString("RetailerNameRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Retailer url must be a string with a maximum length of 256..
+        /// </summary>
+        public static string RetailerUrlMaxLength {
+            get {
+                return ResourceManager.GetString("RetailerUrlMaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A retailer must have a url..
+        /// </summary>
+        public static string RetailerUrlRequired {
+            get {
+                return ResourceManager.GetString("RetailerUrlRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description must be a string with a maximum length of 64..
+        /// </summary>
+        public static string RoleDescriptionMaxLength {
+            get {
+                return ResourceManager.GetString("RoleDescriptionMaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name must be a string with a maximum length of 64..
+        /// </summary>
+        public static string RoleNameMaxLength {
+            get {
+                return ResourceManager.GetString("RoleNameMaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A role must have a name..
+        /// </summary>
+        public static string RoleNameRequired {
+            get {
+                return ResourceManager.GetString("RoleNameRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The user with this email already exists..
+        /// </summary>
+        public static string UserEmailExists {
+            get {
+                return ResourceManager.GetString("UserEmailExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please type a valid email address..
+        /// </summary>
+        public static string UserEmailInvalid {
+            get {
+                return ResourceManager.GetString("UserEmailInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email must be a string with a maximum length of 256..
+        /// </summary>
+        public static string UserEmailMaxLength {
+            get {
+                return ResourceManager.GetString("UserEmailMaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An user must have an email..
+        /// </summary>
+        public static string UserEmailRequired {
+            get {
+                return ResourceManager.GetString("UserEmailRequired", resourceCulture);
             }
         }
         
@@ -183,6 +444,60 @@ namespace TdService.Resources {
         public static string UserNotFound {
             get {
                 return ResourceManager.GetString("UserNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email or password are incorrect..
+        /// </summary>
+        public static string UserNotValid {
+            get {
+                return ResourceManager.GetString("UserNotValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please check that your passwords match and try again..
+        /// </summary>
+        public static string UserPasswordConfirmNotEqual {
+            get {
+                return ResourceManager.GetString("UserPasswordConfirmNotEqual", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Re-enter password to avoid mistakes..
+        /// </summary>
+        public static string UserPasswordConfirmRequired {
+            get {
+                return ResourceManager.GetString("UserPasswordConfirmRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password must be a string with a maximum length of 21..
+        /// </summary>
+        public static string UserPasswordMaxLength {
+            get {
+                return ResourceManager.GetString("UserPasswordMaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password must be a string with a minimum length of 7..
+        /// </summary>
+        public static string UserPasswordMinLength {
+            get {
+                return ResourceManager.GetString("UserPasswordMinLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An user must have a password..
+        /// </summary>
+        public static string UserPasswordRequired {
+            get {
+                return ResourceManager.GetString("UserPasswordRequired", resourceCulture);
             }
         }
     }

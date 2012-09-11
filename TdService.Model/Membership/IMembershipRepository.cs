@@ -178,7 +178,13 @@ namespace TdService.Model.Membership
         /// <param name="user">
         /// The user.
         /// </param>
-        void AddShopper(User user);
+        /// <param name="role">
+        /// The role.
+        /// </param>
+        /// <returns>
+        /// The TdService.Model.Membership.User.
+        /// </returns>
+        User CreateUser(User user, Role role);
 
         /// <summary>
         /// Update user's email in the database.
@@ -190,25 +196,6 @@ namespace TdService.Model.Membership
         /// The new Email.
         /// </param>
         void UpdateUserEmail(string oldEmail, string newEmail);
-
-        /// <summary>
-        /// Get users sorted by email ascending.
-        /// </summary>
-        /// <param name="pageSize">
-        /// The page size.
-        /// </param>
-        /// <returns>
-        /// Collection of users.
-        /// </returns>
-        IEnumerable<User> GetUsersSortedByEmailAsc(int pageSize = 20);
-
-        /// <summary>
-        /// Remove user.
-        /// </summary>
-        /// <param name="email">
-        /// The email.
-        /// </param>
-        void RemoveUser(string email);
 
         #endregion
     }

@@ -68,27 +68,48 @@ namespace TdService.Repository.MsSql.Repositories
         /// <param name="user">
         /// The user.
         /// </param>
-        public void AddShopper(User user)
+        /// <param name="role">
+        /// The role.
+        /// </param>
+        /// <returns>
+        /// The TdService.Model.Membership.User.
+        /// </returns>
+        public User CreateUser(User user, Role role)
         {
             using (var context = new ShopAnyWareSql())
             {
-                var role = context.Roles.SingleOrDefault(r => r.Name == "Shopper");
-                if (role == null)
-                {
-                    context.Roles.Add(new Role { Description = string.Empty, Name = "Shopper" });
-                    context.SaveChanges();
-                }
-                else
-                {
-                    context.Roles.Attach(role);
-                }
-
-                context.Users.Add(user);
+                // add profile first
+                var profile = context.Profiles.Add(user.Profile);
                 context.SaveChanges();
 
+                // add user with profile
+                context.Users.Add(user);
+                user.Profile = profile;
+                context.SaveChanges();
+
+                // add to shopper role
+                var roleInDb = context.Roles.SingleOrDefault(r => r.Name == role.Name);
+                if (roleInDb == null)
+                {
+                    roleInDb = context.Roles.Add(role);
+                    context.SaveChanges();
+                }
+
+                if (user.Roles == null)
+                {
+                    user.Roles = new List<Role>();
+                }
+
+                user.Roles.Add(roleInDb);
+                context.Entry(user).State = EntityState.Modified;
+                context.SaveChanges();
+
+                // add wallet
                 user.Wallet = new Wallet { Amount = 0.00m };
                 context.Entry(user).State = EntityState.Modified;
                 context.SaveChanges();
+
+                return user;
             }
         }
 

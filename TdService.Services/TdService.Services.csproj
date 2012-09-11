@@ -40,6 +40,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\AutoMapper.2.1.267\lib\net40\AutoMapper.dll</HintPath>
     </Reference>
+    <Reference Include="FluentValidation">
+      <HintPath>..\packages\FluentValidation.3.4.6.0\lib\Net40\FluentValidation.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -63,6 +66,7 @@
     <Compile Include="Mapping\ItemMapping.cs" />
     <Compile Include="Mapping\PackageMapping.cs" />
     <Compile Include="Mapping\RetailerMapping.cs" />
+    <Compile Include="Mapping\UserMapper.cs" />
     <Compile Include="Messaging\Address\RemoveDeliveryAddressRequest.cs" />
     <Compile Include="Messaging\Address\RemoveDeliveryRequestResponse.cs" />
     <Compile Include="Messaging\Address\UpdateDeliveryAddressRequest.cs" />

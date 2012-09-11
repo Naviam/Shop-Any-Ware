@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ShopperAccountCreation.cs" company="TdService">
+// <copyright file="ShopperAccountCreationSteps.cs" company="TdService">
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
@@ -31,14 +31,15 @@ namespace TdService.Specs.Steps
     /// The shopper account creation.
     /// </summary>
     [Binding]
-    public class ShopperAccountCreation
+    public class ShopperAccountCreationSteps
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ShopperAccountCreation"/> class.
+        /// Initializes a new instance of the <see cref="ShopperAccountCreationSteps"/> class.
         /// </summary>
-        public ShopperAccountCreation()
+        public ShopperAccountCreationSteps()
         {
             AutoMapperConfiguration.Configure();
+            ////Mapper.AssertConfigurationIsValid();
         }
 
         /// <summary>
@@ -51,7 +52,8 @@ namespace TdService.Specs.Steps
             var userRepository = new UserRepository(context);
             var roleRepository = new RoleRepository(context);
             var profileRepository = new ProfileRepository(context);
-            var membershipService = new MembershipService(userRepository, roleRepository, profileRepository);
+            var membershipRepository = new MembershipRepository();
+            var membershipService = new MembershipService(userRepository, roleRepository, profileRepository, membershipRepository);
 
             var fakeFormsAuthentication = new FakeFormsAuthentication();
             var emailService = new SmtpService();
@@ -97,7 +99,14 @@ namespace TdService.Specs.Steps
                     return;
                 }
 
-                context.Users.Add(new User { Email = p0, Password = "1" });
+                var profile = new Profile { FirstName = "Vitali", LastName = "Hatalski" };
+
+                context.Profiles.Add(profile);
+                context.SaveChanges();
+
+                user = new User { Email = p0, Password = "11111111", Profile = profile };
+
+                context.Users.Add(user);
                 context.SaveChanges();
             }
         }
@@ -123,8 +132,9 @@ namespace TdService.Specs.Steps
             var controller = ScenarioContext.Current.Get<AccountController>();
             var signUpModel = table.CreateInstance<SignUpViewModel>();
             var result = controller.SignUp(signUpModel) as JsonNetResult;
+            Assert.That(result, Is.Not.Null);
             Debug.Assert(result != null, "result != null");
-            var model = result.Data as DeliveryAddressViewModel;
+            var model = result.Data as SignUpViewModel;
 
             ScenarioContext.Current.Set(model, "actual");
         }
@@ -139,7 +149,7 @@ namespace TdService.Specs.Steps
         public void ThenIShouldHaveTheResultAsFollows(Table table)
         {
             var actual = ScenarioContext.Current.Get<SignUpViewModel>("actual");
-            Assert.That(actual, Is.Not.Empty);
+            Assert.That(actual, Is.Not.Null);
             table.CompareToInstance(actual);
         }
 
@@ -153,8 +163,18 @@ namespace TdService.Specs.Steps
         public void ThenIShouldHaveTheFollowingModelErrors(Table table)
         {
             var actual = ScenarioContext.Current.Get<SignUpViewModel>("actual");
-            Assert.That(actual, Is.Not.Empty);
-            table.CompareToSet(actual.Errors);
+            Assert.That(actual, Is.Not.Null);
+            table.CompareToSet(actual.BrokenRules);
+        }
+
+        /// <summary>
+        /// The then activation code should be generated.
+        /// </summary>
+        [Then(@"activation code should be generated")]
+        public void ThenActivationCodeShouldBeGenerated()
+        {
+            var actual = ScenarioContext.Current.Get<SignUpViewModel>("actual");
+            Assert.That(actual.ActivationCode, Is.Not.Empty);
         }
     }
 }

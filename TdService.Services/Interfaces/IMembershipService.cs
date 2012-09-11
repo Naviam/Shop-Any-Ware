@@ -14,6 +14,17 @@ namespace TdService.Services.Interfaces
     public interface IMembershipService
     {
         /// <summary>
+        /// Sign up shopper.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// Sign up shopper response.
+        /// </returns>
+        RegisterUserResponse SignUpShopper(RegisterUserRequest request);
+
+        /// <summary>
         /// Register user.
         /// </summary>
         /// <param name="request">

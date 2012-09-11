@@ -11,7 +11,7 @@ namespace TdService.Repository.MsSql.Repositories
     using System.Data;
     using System.Linq;
 
-    using TdService.Model;
+    using TdService.Infrastructure.Domain;
     using TdService.Model.Addresses;
     using TdService.Model.Membership;
 
@@ -106,15 +106,24 @@ namespace TdService.Repository.MsSql.Repositories
                 var user = context.Users.Include("DeliveryAddresses").SingleOrDefault(u => u.Email == email);
                 if (user == null)
                 {
-                    throw new InvalidUserException(DomainErrors.UserNotFound.ToString());
+                    throw new InvalidUserException(ErrorCode.UserNotFound.ToString());
                 }
 
-                var addressInDb = user.DeliveryAddresses.SingleOrDefault(a => a.Id == address.Id);
-                //// var addressInDb = address.Id == 0 ? null : context.DeliveryAddresses.Find(address.Id);
+                ////var addressInDb = user.DeliveryAddresses.SingleOrDefault(a => a.Id == address.Id);
+                var addressInDb = address.Id == 0 ? null : context.DeliveryAddresses.Find(address.Id);
                 if (addressInDb == null)
                 {
                     addressInDb = context.DeliveryAddresses.Add(address);
+                    context.SaveChanges();
+
+                    if (user.DeliveryAddresses == null)
+                    {
+                        user.DeliveryAddresses = new List<DeliveryAddress>();
+                    }
+
                     user.DeliveryAddresses.Add(addressInDb);
+                    context.Entry(user).State = EntityState.Modified;
+                    context.SaveChanges();
                 }
                 else
                 {
@@ -130,9 +139,8 @@ namespace TdService.Repository.MsSql.Repositories
                     addressInDb.AddressLine3 = address.AddressLine3;
 
                     context.Entry(addressInDb).State = EntityState.Modified;
+                    context.SaveChanges();
                 }
-
-                context.SaveChanges();
 
                 return addressInDb;
             }
@@ -167,7 +175,7 @@ namespace TdService.Repository.MsSql.Repositories
                 var user = context.Users.Include("DeliveryAddresses").SingleOrDefault(u => u.Email == email);
                 if (user == null)
                 {
-                    throw new InvalidUserException(DomainErrors.UserNotFound.ToString());
+                    throw new InvalidUserException(ErrorCode.UserNotFound.ToString());
                 }
 
                 var addressToRemove = user.DeliveryAddresses.Find(a => a.Id == address.Id);
@@ -180,17 +188,6 @@ namespace TdService.Repository.MsSql.Repositories
                 context.SaveChanges();
                 return removedAddress;
             }
-        }
-
-        /// <summary>
-        /// The save changes.
-        /// </summary>
-        /// <returns>
-        /// The System.Int32.
-        /// </returns>
-        public int SaveChanges()
-        {
-            return 0;
         }
     }
 }

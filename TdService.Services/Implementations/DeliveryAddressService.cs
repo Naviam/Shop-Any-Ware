@@ -104,7 +104,7 @@ namespace TdService.Services.Implementations
 
                 foreach (var rule in address.GetBrokenRules())
                 {
-                    addressIssues.AppendLine(rule.Rule);
+                    addressIssues.AppendLine(rule.ErrorCode);
                 }
 
                 throw new InvalidDeliveryAddressException(addressIssues.ToString());

@@ -76,13 +76,5 @@ namespace TdService.Model.Addresses
         /// The TdService.Model.Addresses.DeliveryAddress.
         /// </returns>
         DeliveryAddress RemoveDeliveryAddress(string email, DeliveryAddress address);
-
-        /// <summary>
-        /// The save changes.
-        /// </summary>
-        /// <returns>
-        /// The System.Int32.
-        /// </returns>
-        int SaveChanges();
     }
 }

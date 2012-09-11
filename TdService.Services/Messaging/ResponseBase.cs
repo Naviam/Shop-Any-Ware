@@ -6,6 +6,10 @@
 
 namespace TdService.Services.Messaging
 {
+    using System.Collections.Generic;
+
+    using TdService.Infrastructure.Domain;
+
     /// <summary>
     /// The base class for service response.
     /// </summary>
@@ -25,5 +29,10 @@ namespace TdService.Services.Messaging
         /// Gets or sets Error Code.
         /// </summary>
         public string ErrorCode { get; set; }
+
+        /// <summary>
+        /// Gets or sets the broken rules.
+        /// </summary>
+        public List<BusinessRule> BrokenRules { get; set; }
     }
 }

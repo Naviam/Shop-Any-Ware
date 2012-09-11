@@ -17,6 +17,7 @@ namespace TdService.Specs.Steps
     using NUnit.Framework;
 
     using TdService.Model.Addresses;
+    using TdService.Model.Balance;
     using TdService.Model.Membership;
     using TdService.Repository.MsSql;
     using TdService.Repository.MsSql.Repositories;
@@ -72,12 +73,32 @@ namespace TdService.Specs.Steps
                 var shopper = context.Users.Include("DeliveryAddresses").SingleOrDefault(u => u.Email == email);
                 if (shopper == null)
                 {
-                    shopper = context.Users.Add(new User { Email = email, Password = "1" });
+                    var profile = new Profile { FirstName = "Vitali", LastName = "Hatalski" };
+
+                    context.Profiles.Add(profile);
+                    context.SaveChanges();
+
+                    shopper = new User { Email = email, Password = "11111111", Profile = profile };
+
+                    context.Users.Add(shopper);
+                    context.SaveChanges();
+
+                    var wallet = new Wallet { Amount = 0m };
+                    context.Wallets.Add(wallet);
+                    context.SaveChanges();
+
+                    shopper.Wallet = wallet;
+                    context.Entry(shopper).State = EntityState.Modified;
                     context.SaveChanges();
                 }
 
                 Debug.Assert(shopper != null, "shopper != null");
-                shopper.DeliveryAddresses = addresses.ToList();
+                if (shopper.DeliveryAddresses == null)
+                {
+                    shopper.DeliveryAddresses = new List<DeliveryAddress>();
+                }
+
+                shopper.DeliveryAddresses.AddRange(addresses.ToList());
                 context.Entry(shopper).State = EntityState.Modified;
                 context.SaveChanges();
             }

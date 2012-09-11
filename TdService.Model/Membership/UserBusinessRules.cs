@@ -7,7 +7,6 @@
 namespace TdService.Model.Membership
 {
     using TdService.Infrastructure.Domain;
-    using TdService.Resources;
 
     /// <summary>
     /// User business rules.
@@ -18,36 +17,36 @@ namespace TdService.Model.Membership
         /// This rule ensures that email for user is set.
         /// </summary>
         public static readonly BusinessRule EmailRequired =
-            new BusinessRule("Email", BusinessRules.User_EmailRequired);
+            new BusinessRule("Email", ErrorCode.UserEmailRequired.ToString());
 
         /// <summary>
         /// This rule ensures that email for user is within max length.
         /// </summary>
         public static readonly BusinessRule EmailLength =
-            new BusinessRule("Email", BusinessRules.User_EmailLength);
+            new BusinessRule("Email", ErrorCode.UserEmailMaxLength.ToString());
 
         /// <summary>
         /// This rule ensures that email already exists in repository.
         /// </summary>
         public static readonly BusinessRule EmailExists =
-            new BusinessRule("Email", BusinessRules.User_EmailExists);
+            new BusinessRule("Email", ErrorCode.UserEmailExists.ToString());
 
         /// <summary>
         /// This rule ensures that password for user is set.
         /// </summary>
         public static readonly BusinessRule PasswordRequired =
-            new BusinessRule("Password", BusinessRules.User_PasswordRequired);
+            new BusinessRule("Password", ErrorCode.UserPasswordRequired.ToString());
 
         /// <summary>
-        /// This rule ensures that password for user is within max length.
+        /// This rule ensures that password for user has less chars than max length.
         /// </summary>
         public static readonly BusinessRule PasswordLength =
-            new BusinessRule("Password", BusinessRules.User_PasswordLength);
+            new BusinessRule("Password", ErrorCode.UserPasswordMaxLength.ToString());
 
         /// <summary>
-        /// This rule ensures that password for user is within max length.
+        /// This rule ensures that password for user has more chars than min length.
         /// </summary>
         public static readonly BusinessRule PasswordMinLength =
-            new BusinessRule("Password", BusinessRules.User_PasswordMinLength);
+            new BusinessRule("Password", ErrorCode.UserPasswordMinLength.ToString());
     }
 }

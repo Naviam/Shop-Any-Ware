@@ -37,7 +37,7 @@ namespace TdService.Infrastructure.Domain
                 var issues = new StringBuilder();
                 foreach (var businessRule in this.brokenRules)
                 {
-                    issues.AppendLine(businessRule.Rule);
+                    issues.AppendLine(businessRule.ErrorCode);
                 }
 
                 throw new ValueObjectIsInvalidException(issues.ToString());

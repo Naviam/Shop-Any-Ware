@@ -14,6 +14,7 @@ namespace TdService.UI.Web
     using TdService.Model.Addresses;
     using TdService.Model.Common;
     using TdService.Model.Items;
+    using TdService.Model.Membership;
     using TdService.Model.Orders;
     using TdService.Model.Packages;
     using TdService.Services.Messaging.Address;
@@ -29,6 +30,8 @@ namespace TdService.UI.Web
     using TdService.UI.Web.ViewModels.Package;
     using TdService.UI.Web.ViewModels.Retailer;
 
+    using Profile = AutoMapper.Profile;
+
     /// <summary>
     /// The auto mapper configuration.
     /// </summary>
@@ -39,6 +42,15 @@ namespace TdService.UI.Web
         /// </summary>
         public static void Configure()
         {
+            // user
+            Mapper.CreateMap<User, RegisterUserResponse>()
+                .ForMember(r => r.FirstName, opt => opt.MapFrom(u => u.Profile.FirstName))
+                .ForMember(r => r.LastName, opt => opt.MapFrom(u => u.Profile.LastName))
+                .ForMember(r => r.NotifyOnOrderStatusChanged, opt => opt.MapFrom(u => u.Profile.NotifyOnOrderStatusChanged))
+                .ForMember(r => r.NotifyOnPackageStatusChanged, opt => opt.MapFrom(u => u.Profile.NotifyOnPackageStatusChanged));
+            Mapper.CreateMap<RegisterUserResponse, SignUpViewModel>();
+            ////Mapper.CreateMap<RegisterUserRequest, User>();
+
             // profile
             Mapper.CreateMap<ProfileViewModel, UpdateProfileRequest>();
             Mapper.CreateMap<UpdateProfileRequest, Profile>();

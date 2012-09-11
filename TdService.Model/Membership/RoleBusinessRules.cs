@@ -7,7 +7,6 @@
 namespace TdService.Model.Membership
 {
     using TdService.Infrastructure.Domain;
-    using TdService.Resources;
 
     /// <summary>
     /// Role business rules.
@@ -18,18 +17,18 @@ namespace TdService.Model.Membership
         /// This rule ensures that name is set.
         /// </summary>
         public static readonly BusinessRule NameRequired =
-            new BusinessRule("Name", BusinessRules.Role_NameRequired);
+            new BusinessRule("Name", ErrorCode.RoleNameRequired.ToString());
 
         /// <summary>
         /// This rule ensures that name is within max length.
         /// </summary>
         public static readonly BusinessRule NameLength =
-            new BusinessRule("Name", BusinessRules.Role_NameLength);
+            new BusinessRule("Name", ErrorCode.RoleNameMaxLength.ToString());
 
         /// <summary>
         /// This rule ensures that description is within max length.
         /// </summary>
         public static readonly BusinessRule DescriptionLength =
-            new BusinessRule("Description", BusinessRules.Role_DescriptionLength);
+            new BusinessRule("Description", ErrorCode.RoleDescriptionMaxLength.ToString());
     }
 }

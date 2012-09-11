@@ -107,7 +107,7 @@ namespace TdService.Services.Implementations
                 var message = new StringBuilder();
                 foreach (var rule in newOrder.GetBrokenRules())
                 {
-                    message.Append(rule.Rule);
+                    message.Append(rule.ErrorCode);
                 }
 
                 throw new InvalidOrderException(message.ToString());

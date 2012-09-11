@@ -6,9 +6,11 @@
 
 namespace TdService.Services.Implementations
 {
+    using System;
     using System.Linq;
     using System.Text;
 
+    using TdService.Model;
     using TdService.Model.Membership;
     using TdService.Resources;
     using TdService.Services.Interfaces;
@@ -39,6 +41,11 @@ namespace TdService.Services.Implementations
         private readonly IProfileRepository profileRepository;
 
         /// <summary>
+        /// The membership repository.
+        /// </summary>
+        private readonly IMembershipRepository membershipRepository;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="MembershipService"/> class.
         /// </summary>
         /// <param name="userRepository">
@@ -50,14 +57,67 @@ namespace TdService.Services.Implementations
         /// <param name="profileRepository">
         /// The profile Repository.
         /// </param>
+        /// <param name="membershipRepository">
+        /// The membership Repository.
+        /// </param>
         public MembershipService(
             IUserRepository userRepository,
             IRoleRepository roleRepository,
-            IProfileRepository profileRepository)
+            IProfileRepository profileRepository,
+            IMembershipRepository membershipRepository)
         {
             this.userRepository = userRepository;
             this.roleRepository = roleRepository;
             this.profileRepository = profileRepository;
+            this.membershipRepository = membershipRepository;
+        }
+
+        /// <summary>
+        /// Sign up shopper.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// Sign up shopper response.
+        /// </returns>
+        public RegisterUserResponse SignUpShopper(RegisterUserRequest request)
+        {
+            //// var user = request.ConvertToUser();
+            var role = new Role { Name = StandardRole.Shopper.ToString(), Description = string.Empty };
+            var user = new User
+            {
+                Email = request.Email,
+                Password = request.Password,
+                Profile = new Profile
+                {
+                    FirstName = request.FirstName,
+                    LastName = request.LastName,
+                    NotifyOnOrderStatusChanged = true,
+                    NotifyOnPackageStatusChanged = true
+                },
+                ActivationCode = Guid.NewGuid()
+            };
+            var response = new RegisterUserResponse { BrokenRules = user.Profile.GetBrokenRules().ToList() };
+            response.BrokenRules.AddRange(role.GetBrokenRules());
+            response.BrokenRules.AddRange(user.GetBrokenRules());
+
+            if (response.BrokenRules.Any())
+            {
+                response.MessageType = MessageType.Error;
+                return response;
+            }
+
+            var userExists = this.membershipRepository.GetUser(request.Email);
+            if (userExists != null)
+            {
+                response.MessageType = MessageType.Error;
+                response.BrokenRules.Add(UserBusinessRules.EmailExists);
+                return response;
+            }
+
+            var result = this.membershipRepository.CreateUser(user, role);
+            return result.ConvertToRegisterUserResponse();
         }
 
         /// <summary>
@@ -72,7 +132,7 @@ namespace TdService.Services.Implementations
         public RegisterUserResponse RegisterUser(RegisterUserRequest request)
         {
             var response = new RegisterUserResponse();
-            var user = new User(this.userRepository)
+            var user = new User
                 {
                     Email = request.Email,
                     Password = request.Password,
@@ -267,7 +327,7 @@ namespace TdService.Services.Implementations
 
                 foreach (var rule in profile.GetBrokenRules())
                 {
-                    profileIssues.AppendLine(rule.Rule);
+                    profileIssues.AppendLine(rule.ErrorCode);
                 }
 
                 throw new InvalidProfileException(profileIssues.ToString());
@@ -292,7 +352,7 @@ namespace TdService.Services.Implementations
                 // issues.AppendLine("There were some issues.");
                 foreach (var rule in user.GetBrokenRules())
                 {
-                    issues.AppendLine(rule.Rule);
+                    issues.AppendLine(rule.ErrorCode);
                 }
 
                 throw new InvalidUserException(issues.ToString());

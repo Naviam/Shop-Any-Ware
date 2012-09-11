@@ -8,6 +8,8 @@ namespace TdService.UI.Web.ViewModels
 {
     using System.Collections.Generic;
 
+    using TdService.Infrastructure.Domain;
+
     /// <summary>
     /// Base class for view models.
     /// </summary>
@@ -26,6 +28,6 @@ namespace TdService.UI.Web.ViewModels
         /// <summary>
         /// Gets or sets the model errors.
         /// </summary>
-        public Dictionary<string, ModelError> Errors { get; set; }
+        public List<BusinessRule> BrokenRules { get; set; }
     }
 }
