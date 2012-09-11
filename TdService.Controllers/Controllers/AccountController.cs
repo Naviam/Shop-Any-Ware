@@ -185,6 +185,21 @@ namespace TdService.UI.Web.Controllers
                 }
             }
 
+            if (string.IsNullOrWhiteSpace(result.Email))
+            {
+                result.Email = view.Email;
+            }
+
+            if (string.IsNullOrWhiteSpace(result.FirstName))
+            {
+                result.FirstName = view.FirstName;
+            }
+
+            if (string.IsNullOrWhiteSpace(result.LastName))
+            {
+                result.LastName = view.LastName;
+            }
+
             var jsonNetResult = new JsonNetResult
             {
                 Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,

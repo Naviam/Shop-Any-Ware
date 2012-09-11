@@ -21,8 +21,8 @@ Scenario: Account already exists
 	| Email                | Password | Password Confirm | First Name | Last Name |
 	| vhatalski@naviam.com | ruinruin | ruinruin         | Vitali     | Hatalski  |
 	Then I should have the result as follows
-	| Email | Password | Password Confirm | First Name | Last Name | Message Type |
-	|       |          |                  |            |           | Error        |
+	| Email                | First Name | Last Name | Message Type |
+	| vhatalski@naviam.com | Vitali     | Hatalski  | Error        |
 	And I should have the following model errors
 	| Property | Error Code      |
 	| Email    | UserEmailExists |
@@ -33,8 +33,45 @@ Scenario: Password and confirm password do not match
 	| Email          | Password | Password Confirm | First Name | Last Name |
 	| hautama@tut.by | ruinruin | ruinruin1        | Vitali     | Hatalski  |
 	Then I should have the result as follows
-	| Email          | Password | Password Confirm | First Name | Last Name | Message Type |
-	|                |          |                  |            |           | Error        |
+	| Email          | First Name | Last Name | Message Type |
+	| hautama@tut.by | Vitali     | Hatalski  | Error        |
 	And I should have the following model errors
 	| Property        | Error Code                  |
+	| PasswordConfirm | UserPasswordConfirmNotEqual |
+
+Scenario: Password length cannot be less than 7 chars
+	Given I have not been authenticated yet
+	When I fill sign up form with the following data
+	| Email          | Password | Password Confirm | First Name | Last Name |
+	| hautama@tut.by | ruin     | ruin             | Vitali     | Hatalski  |
+	Then I should have the result as follows
+	| Email          | First Name | Last Name | Message Type |
+	| hautama@tut.by | Vitali     | Hatalski  | Error        |
+	And I should have the following model errors
+	| Property | Error Code            |
+	| Password | UserPasswordMinLength |
+
+Scenario: Password length cannot be more than 21 chars
+	Given I have not been authenticated yet
+	When I fill sign up form with the following data
+	| Email          | Password                    | Password Confirm            | First Name | Last Name |
+	| hautama@tut.by | passwordwithmorethan21chars | passwordwithmorethan21chars | Vitali     | Hatalski  |
+	Then I should have the result as follows
+	| Email          | First Name | Last Name | Message Type |
+	| hautama@tut.by | Vitali     | Hatalski  | Error        |
+	And I should have the following model errors
+	| Property | Error Code            |
+	| Password | UserPasswordMaxLength |
+
+Scenario: Password is required
+	Given I have not been authenticated yet
+	When I fill sign up form with the following data
+	| Email          | Password | Password Confirm | First Name | Last Name |
+	| hautama@tut.by |          | ruinruin         | Vitali     | Hatalski  |
+	Then I should have the result as follows
+	| Email          | First Name | Last Name | Message Type |
+	| hautama@tut.by | Vitali     | Hatalski  | Error        |
+	And I should have the following model errors
+	| Property        | Error Code                  |
+	| Password        | UserPasswordRequired        |
 	| PasswordConfirm | UserPasswordConfirmNotEqual |
