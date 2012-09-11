@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account\DeliveryAddressViewModel.cs" />
+    <Compile Include="Account\DeliveryAddressViewModelValidator.cs" />
     <Compile Include="Account\ForgotPasswordViewModel.cs" />
     <Compile Include="Account\MainViewModel.cs" />
     <Compile Include="Account\ProfileViewModel.cs" />

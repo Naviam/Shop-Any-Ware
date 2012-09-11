@@ -117,14 +117,38 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddressAddressLine1MaxLength" xml:space="preserve">
+    <value>The 1st line of an Address must be a string with a maximum length of 256.</value>
+  </data>
   <data name="AddressAddressLine1Required" xml:space="preserve">
     <value>The 1st line of an Address is required.</value>
+  </data>
+  <data name="AddressAddressLine2MaxLength" xml:space="preserve">
+    <value>The 2nd line of an Address must be a string with a maximum length of 256.</value>
+  </data>
+  <data name="AddressCityMaxLength" xml:space="preserve">
+    <value>An address city must be a string with a maximum length of 64.</value>
   </data>
   <data name="AddressCityRequired" xml:space="preserve">
     <value>An address must have a city.</value>
   </data>
+  <data name="AddressCountryMaxLength" xml:space="preserve">
+    <value>An address country must be a string with a maximum length of 64.</value>
+  </data>
   <data name="AddressCountryRequired" xml:space="preserve">
     <value>An address must have a country.</value>
+  </data>
+  <data name="AddressPhoneMaxLength" xml:space="preserve">
+    <value>An address phone number must be a string with a maximum length of 21.</value>
+  </data>
+  <data name="AddressRegionMaxLength" xml:space="preserve">
+    <value>An address region must be a string with a maximum length of 64.</value>
+  </data>
+  <data name="AddressStateMaxLength" xml:space="preserve">
+    <value>An address state must be a string with a maximum length of 64.</value>
+  </data>
+  <data name="AddressZipCodeMaxLength" xml:space="preserve">
+    <value>An address zip code must be a string with a maximum length of 10.</value>
   </data>
   <data name="AddressZipCodeRequired" xml:space="preserve">
     <value>An address must have a zip code.</value>
@@ -135,11 +159,20 @@
   <data name="CourierNameRequired" xml:space="preserve">
     <value>A courier must have a name.</value>
   </data>
+  <data name="DeliveryAddressAddressNameMaxLength" xml:space="preserve">
+    <value>Address name must be a string with a maximum length of 40.</value>
+  </data>
   <data name="DeliveryAddressAddressNameRequired" xml:space="preserve">
     <value>A delivery address must have a name.</value>
   </data>
+  <data name="DeliveryAddressFirstNameMaxLength" xml:space="preserve">
+    <value>First name must be a string with a maximum length of 21.</value>
+  </data>
   <data name="DeliveryAddressFirstNameRequired" xml:space="preserve">
     <value>A delivery address must contain your first name.</value>
+  </data>
+  <data name="DeliveryAddressLastNameMaxLength" xml:space="preserve">
+    <value>Last name must be a string with a maximum length of 21.</value>
   </data>
   <data name="DeliveryAddressLastNameRequired" xml:space="preserve">
     <value>A delivery address must contain your last name.</value>
@@ -187,13 +220,13 @@
     <value>A package must have a name.</value>
   </data>
   <data name="ProfileFirstNameMaxLength" xml:space="preserve">
-    <value>First name must be a string with a maximum length of 64.</value>
+    <value>First name must be a string with a maximum length of 21.</value>
   </data>
   <data name="ProfileFirstNameRequired" xml:space="preserve">
     <value>First name is a required field.</value>
   </data>
   <data name="ProfileLastNameMaxLength" xml:space="preserve">
-    <value>Last name must be a string with a maximum length of 64.</value>
+    <value>Last name must be a string with a maximum length of 21.</value>
   </data>
   <data name="ProfileLastNameRequired" xml:space="preserve">
     <value>Last name is a required field.</value>

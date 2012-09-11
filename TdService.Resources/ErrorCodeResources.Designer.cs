@@ -61,11 +61,38 @@ namespace TdService.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The 1st line of an Address must be a string with a maximum length of 256..
+        /// </summary>
+        public static string AddressAddressLine1MaxLength {
+            get {
+                return ResourceManager.GetString("AddressAddressLine1MaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The 1st line of an Address is required..
         /// </summary>
         public static string AddressAddressLine1Required {
             get {
                 return ResourceManager.GetString("AddressAddressLine1Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The 2nd line of an Address must be a string with a maximum length of 256..
+        /// </summary>
+        public static string AddressAddressLine2MaxLength {
+            get {
+                return ResourceManager.GetString("AddressAddressLine2MaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An address city must be a string with a maximum length of 64..
+        /// </summary>
+        public static string AddressCityMaxLength {
+            get {
+                return ResourceManager.GetString("AddressCityMaxLength", resourceCulture);
             }
         }
         
@@ -79,11 +106,56 @@ namespace TdService.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An address country must be a string with a maximum length of 64..
+        /// </summary>
+        public static string AddressCountryMaxLength {
+            get {
+                return ResourceManager.GetString("AddressCountryMaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An address must have a country..
         /// </summary>
         public static string AddressCountryRequired {
             get {
                 return ResourceManager.GetString("AddressCountryRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An address phone number must be a string with a maximum length of 21..
+        /// </summary>
+        public static string AddressPhoneMaxLength {
+            get {
+                return ResourceManager.GetString("AddressPhoneMaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An address region must be a string with a maximum length of 64..
+        /// </summary>
+        public static string AddressRegionMaxLength {
+            get {
+                return ResourceManager.GetString("AddressRegionMaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An address state must be a string with a maximum length of 64..
+        /// </summary>
+        public static string AddressStateMaxLength {
+            get {
+                return ResourceManager.GetString("AddressStateMaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An address zip code must be a string with a maximum length of 10..
+        /// </summary>
+        public static string AddressZipCodeMaxLength {
+            get {
+                return ResourceManager.GetString("AddressZipCodeMaxLength", resourceCulture);
             }
         }
         
@@ -115,6 +187,15 @@ namespace TdService.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Address name must be a string with a maximum length of 40..
+        /// </summary>
+        public static string DeliveryAddressAddressNameMaxLength {
+            get {
+                return ResourceManager.GetString("DeliveryAddressAddressNameMaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A delivery address must have a name..
         /// </summary>
         public static string DeliveryAddressAddressNameRequired {
@@ -124,11 +205,29 @@ namespace TdService.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to First name must be a string with a maximum length of 21..
+        /// </summary>
+        public static string DeliveryAddressFirstNameMaxLength {
+            get {
+                return ResourceManager.GetString("DeliveryAddressFirstNameMaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A delivery address must contain your first name..
         /// </summary>
         public static string DeliveryAddressFirstNameRequired {
             get {
                 return ResourceManager.GetString("DeliveryAddressFirstNameRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last name must be a string with a maximum length of 21..
+        /// </summary>
+        public static string DeliveryAddressLastNameMaxLength {
+            get {
+                return ResourceManager.GetString("DeliveryAddressLastNameMaxLength", resourceCulture);
             }
         }
         
@@ -268,7 +367,7 @@ namespace TdService.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to First name must be a string with a maximum length of 64..
+        ///   Looks up a localized string similar to First name must be a string with a maximum length of 21..
         /// </summary>
         public static string ProfileFirstNameMaxLength {
             get {
@@ -286,7 +385,7 @@ namespace TdService.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Last name must be a string with a maximum length of 64..
+        ///   Looks up a localized string similar to Last name must be a string with a maximum length of 21..
         /// </summary>
         public static string ProfileLastNameMaxLength {
             get {

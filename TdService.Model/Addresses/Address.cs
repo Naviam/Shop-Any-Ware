@@ -75,20 +75,56 @@ namespace TdService.Model.Addresses
             {
                 this.AddBrokenRule(AddressBusinessRules.AddressLine1Required);
             }
+            else if (this.AddressLine1.Length > 256)
+            {
+                this.AddBrokenRule(AddressBusinessRules.AddressLine1MaxLength);
+            }
+
+            if (this.AddressLine2.Length > 256)
+            {
+                this.AddBrokenRule(AddressBusinessRules.AddressLine2MaxLength);
+            }
 
             if (string.IsNullOrEmpty(this.ZipCode))
             {
                 this.AddBrokenRule(AddressBusinessRules.ZipCodeRequired);
+            }
+            else if (this.ZipCode.Length > 10)
+            {
+                this.AddBrokenRule(AddressBusinessRules.ZipCodeMaxLength);
             }
 
             if (string.IsNullOrEmpty(this.City))
             {
                 this.AddBrokenRule(AddressBusinessRules.CityRequired);
             }
+            else if (this.City.Length > 64)
+            {
+                this.AddBrokenRule(AddressBusinessRules.CityMaxLength);
+            }
 
             if (string.IsNullOrEmpty(this.Country))
             {
                 this.AddBrokenRule(AddressBusinessRules.CountryRequired);
+            }
+            else if (this.Country.Length > 64)
+            {
+                this.AddBrokenRule(AddressBusinessRules.CountryMaxLength);
+            }
+
+            if (this.Phone.Length > 21)
+            {
+                this.AddBrokenRule(AddressBusinessRules.PhoneMaxLength);
+            }
+
+            if (this.State.Length > 64)
+            {
+                this.AddBrokenRule(AddressBusinessRules.StateMaxLength);
+            }
+
+            if (this.Region.Length > 64)
+            {
+                this.AddBrokenRule(AddressBusinessRules.RegionMaxLength);
             }
         }
     }

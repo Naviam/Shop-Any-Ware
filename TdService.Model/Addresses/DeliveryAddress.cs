@@ -40,15 +40,27 @@ namespace TdService.Model.Addresses
             {
                 this.AddBrokenRule(DeliveryAddressBusinessRules.AddressNameRequired);
             }
+            else if (this.AddressName.Length > 40)
+            {
+                this.AddBrokenRule(DeliveryAddressBusinessRules.AddressNameMaxLength);
+            }
 
             if (string.IsNullOrEmpty(this.FirstName))
             {
                 this.AddBrokenRule(DeliveryAddressBusinessRules.FirstNameRequired);
             }
+            else if (this.FirstName.Length > 21)
+            {
+                this.AddBrokenRule(DeliveryAddressBusinessRules.FirstNameMaxLength);
+            }
 
             if (string.IsNullOrEmpty(this.LastName))
             {
                 this.AddBrokenRule(DeliveryAddressBusinessRules.LastNameRequired);
+            }
+            else if (this.LastName.Length > 21)
+            {
+                this.AddBrokenRule(DeliveryAddressBusinessRules.LastNameMaxLength);
             }
         }
     }

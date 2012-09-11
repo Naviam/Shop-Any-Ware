@@ -20,7 +20,7 @@ namespace TdService.Repository.MsSql.Configurations
         /// </summary>
         public DeliveryAddressConfiguration()
         {
-            this.Property(a => a.AddressName).HasMaxLength(64).IsRequired();
+            this.Property(a => a.AddressName).HasMaxLength(40).IsRequired();
             this.Property(a => a.Country).HasMaxLength(64).IsRequired();
             this.Property(a => a.City).HasMaxLength(64).IsRequired();
             this.Property(a => a.State).HasMaxLength(64);
@@ -29,8 +29,8 @@ namespace TdService.Repository.MsSql.Configurations
             this.Property(a => a.AddressLine1).HasMaxLength(256).IsRequired();
             this.Property(a => a.AddressLine2).HasMaxLength(256);
             this.Property(a => a.AddressLine3).HasMaxLength(256);
-            this.Property(a => a.FirstName).HasMaxLength(64).IsRequired();
-            this.Property(a => a.LastName).HasMaxLength(64).IsRequired();
+            this.Property(a => a.FirstName).HasMaxLength(21).IsRequired();
+            this.Property(a => a.LastName).HasMaxLength(21).IsRequired();
             this.Property(a => a.Phone).HasMaxLength(21);
             this.Property(a => a.RowVersion).IsRowVersion();
         }
