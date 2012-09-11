@@ -6,13 +6,16 @@
 
 namespace TdService.Services.Implementations
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
 
+    using TdService.Infrastructure.Logging;
     using TdService.Model.Addresses;
+    using TdService.Resources;
     using TdService.Services.Interfaces;
     using TdService.Services.Mapping;
+    using TdService.Services.Messaging;
     using TdService.Services.Messaging.Address;
 
     /// <summary>
@@ -26,14 +29,23 @@ namespace TdService.Services.Implementations
         private readonly IAddressRepository addressRepository;
 
         /// <summary>
+        /// The logger.
+        /// </summary>
+        private readonly ILogger logger;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="DeliveryAddressService"/> class.
         /// </summary>
         /// <param name="addressRepository">
         /// The address repository.
         /// </param>
-        public DeliveryAddressService(IAddressRepository addressRepository)
+        /// <param name="logger">
+        /// The logger.
+        /// </param>
+        public DeliveryAddressService(IAddressRepository addressRepository, ILogger logger)
         {
             this.addressRepository = addressRepository;
+            this.logger = logger;
         }
 
         /// <summary>
@@ -64,10 +76,28 @@ namespace TdService.Services.Implementations
         {
             var deliveryAddress = request.ConvertToDeliveryAddress();
 
-            ThrowExceptionIfDeliveryAddressIsInvalid(deliveryAddress);
+            var response = new AddOrUpdateDeliveryAddressResponse { BrokenRules = deliveryAddress.GetBrokenRules().ToList() };
+            if (response.BrokenRules.Any())
+            {
+                response.MessageType = MessageType.Error;
+                response.Message = CommonResources.DeliveryAddressAddOrUpdateErrorMessage;
+                return response;
+            }
 
-            var address = this.addressRepository.AddOrUpdateDeliveryAddress(request.IdentityToken, deliveryAddress);
-            return address.ConvertToAddDeliveryAddressResponse();
+            try
+            {
+                var address = this.addressRepository.AddOrUpdateDeliveryAddress(request.IdentityToken, deliveryAddress);
+                response = address.ConvertToAddDeliveryAddressResponse();
+                response.Message = CommonResources.DeliveryAddressAddOrUpdateSuccessMessage;
+            }
+            catch (Exception e)
+            {
+                response.MessageType = MessageType.Error;
+                response.Message = CommonResources.DeliveryAddressAddOrUpdateErrorMessage;
+                this.logger.Error(CommonResources.DeliveryAddressAddOrUpdateErrorMessage, e);
+            }
+
+            return response;
         }
 
         /// <summary>
@@ -81,34 +111,27 @@ namespace TdService.Services.Implementations
         /// </returns>
         public RemoveDeliveryRequestResponse RemoveAddress(RemoveDeliveryAddressRequest request)
         {
-            var removedAddress = this.addressRepository.RemoveDeliveryAddress(request.IdentityToken, new DeliveryAddress { Id = request.Id });
-            var response = new RemoveDeliveryRequestResponse { Id = removedAddress.Id };
-            return response;
-        }
-
-        /// <summary>
-        /// Validates delivery address.
-        /// </summary>
-        /// <param name="address">
-        /// The profile.
-        /// </param>
-        /// <exception cref="InvalidDeliveryAddressException">
-        /// Thrown when business rules are broken.
-        /// </exception>
-        private static void ThrowExceptionIfDeliveryAddressIsInvalid(DeliveryAddress address)
-        {
-            if (address.GetBrokenRules().Any())
+            if (request == null)
             {
-                var addressIssues = new StringBuilder();
-                addressIssues.AppendLine("There were some issues with the delivery address you are adding or editing.");
-
-                foreach (var rule in address.GetBrokenRules())
-                {
-                    addressIssues.AppendLine(rule.ErrorCode);
-                }
-
-                throw new InvalidDeliveryAddressException(addressIssues.ToString());
+                throw new ArgumentNullException("request");
             }
+
+            var response = new RemoveDeliveryRequestResponse();
+
+            try
+            {
+                var removedAddress = this.addressRepository.RemoveDeliveryAddress(request.IdentityToken, new DeliveryAddress { Id = request.Id });
+                response.Id = removedAddress.Id;
+                response.Message = CommonResources.DeliveryAddressRemoveSuccessMessage;
+            }
+            catch (Exception e)
+            {
+                response.MessageType = MessageType.Error;
+                response.Message = CommonResources.DeliveryAddressRemoveErrorMessage;
+                this.logger.Error(CommonResources.DeliveryAddressRemoveErrorMessage, e);
+            }
+
+            return response;
         }
     }
 }

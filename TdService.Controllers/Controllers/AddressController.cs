@@ -10,15 +10,16 @@
 namespace TdService.UI.Web.Controllers
 {
     using System;
+    using System.Collections.Generic;
     using System.Web.Mvc;
     using System.Xml;
 
     using TdService.Infrastructure.Authentication;
-    using TdService.Resources.Views;
+    using TdService.Infrastructure.Domain;
     using TdService.Services.Interfaces;
+    using TdService.Services.Messaging;
     using TdService.Services.Messaging.Address;
     using TdService.UI.Web.Mapping;
-    using TdService.UI.Web.ViewModels;
     using TdService.UI.Web.ViewModels.Account;
 
     /// <summary>
@@ -44,6 +45,84 @@ namespace TdService.UI.Web.Controllers
             : base(formsAuthentication)
         {
             this.addressService = addressService;
+        }
+
+        /// <summary>
+        /// The copy delivery address view model.
+        /// </summary>
+        /// <param name="source">
+        /// The source.
+        /// </param>
+        /// <param name="destination">
+        /// The destination.
+        /// </param>
+        /// <returns>
+        /// The TdService.UI.Web.ViewModels.Account.DeliveryAddressViewModel.
+        /// </returns>
+        public static DeliveryAddressViewModel CopyDeliveryAddressViewModel(
+            DeliveryAddressViewModel source, DeliveryAddressViewModel destination)
+        {
+            if (destination.Id == 0)
+            {
+                destination.Id = source.Id;
+            }
+
+            if (string.IsNullOrWhiteSpace(destination.AddressName))
+            {
+                destination.AddressName = source.AddressName;
+            }
+
+            if (string.IsNullOrWhiteSpace(destination.FirstName))
+            {
+                destination.FirstName = source.FirstName;
+            }
+
+            if (string.IsNullOrWhiteSpace(destination.LastName))
+            {
+                destination.LastName = source.LastName;
+            }
+
+            if (string.IsNullOrWhiteSpace(destination.AddressLine1))
+            {
+                destination.AddressLine1 = source.AddressLine1;
+            }
+
+            if (string.IsNullOrWhiteSpace(destination.AddressLine2))
+            {
+                destination.AddressLine2 = source.AddressLine2;
+            }
+
+            if (string.IsNullOrWhiteSpace(destination.City))
+            {
+                destination.City = source.City;
+            }
+
+            if (string.IsNullOrWhiteSpace(destination.Country))
+            {
+                destination.Country = source.Country;
+            }
+
+            if (string.IsNullOrWhiteSpace(destination.State))
+            {
+                destination.State = source.State;
+            }
+
+            if (string.IsNullOrWhiteSpace(destination.Region))
+            {
+                destination.Region = source.Region;
+            }
+
+            if (string.IsNullOrWhiteSpace(destination.ZipCode))
+            {
+                destination.ZipCode = source.ZipCode;
+            }
+
+            if (string.IsNullOrWhiteSpace(destination.Phone))
+            {
+                destination.Phone = source.Phone;
+            }
+
+            return destination;
         }
 
         /// <summary>
@@ -104,23 +183,27 @@ namespace TdService.UI.Web.Controllers
                 throw new ArgumentNullException("model");
             }
 
-            DeliveryAddressViewModel result;
-            try
+            var result = new DeliveryAddressViewModel();
+            var validator = new DeliveryAddressViewModelValidator();
+            var validationResult = validator.Validate(model);
+            if (validationResult.IsValid)
             {
                 var request = model.ConvertToAddDeliveryAddressRequest();
                 request.IdentityToken = this.FormsAuthentication.GetAuthenticationToken();
                 var response = this.addressService.AddOrUpdateDeliveryAddress(request);
                 result = response.ConvertToDeliveryAddressViewModel();
-                result.Message = AddressViewResources.AddDeliveryAddressSuccessMessage;
             }
-            catch (Exception e)
+            else
             {
-                result = new DeliveryAddressViewModel
-                    {
-                        Message = e.Message, 
-                        MessageType = ViewModelMessageType.Error.ToString() 
-                    };
+                result.MessageType = MessageType.Error.ToString();
+                result.BrokenRules = new List<BusinessRule>();
+                foreach (var failure in validationResult.Errors)
+                {
+                    result.BrokenRules.Add(new BusinessRule(failure.PropertyName, failure.ErrorMessage));
+                }
             }
+
+            result = CopyDeliveryAddressViewModel(model, result);
 
             var jsonNetResult = new JsonNetResult
             {
@@ -148,23 +231,27 @@ namespace TdService.UI.Web.Controllers
                 throw new ArgumentNullException("model");
             }
 
-            DeliveryAddressViewModel result;
-            try
+            var result = new DeliveryAddressViewModel();
+            var validator = new DeliveryAddressViewModelValidator();
+            var validationResult = validator.Validate(model);
+            if (validationResult.IsValid)
             {
                 var request = model.ConvertToAddDeliveryAddressRequest();
                 request.IdentityToken = this.FormsAuthentication.GetAuthenticationToken();
                 var response = this.addressService.AddOrUpdateDeliveryAddress(request);
                 result = response.ConvertToDeliveryAddressViewModel();
             }
-            catch (Exception e)
+            else
             {
-                result = new DeliveryAddressViewModel
+                result.MessageType = MessageType.Error.ToString();
+                result.BrokenRules = new List<BusinessRule>();
+                foreach (var failure in validationResult.Errors)
                 {
-                    Id = model.Id,
-                    Message = e.Message,
-                    MessageType = ViewModelMessageType.Error.ToString()
-                };
+                    result.BrokenRules.Add(new BusinessRule(failure.PropertyName, failure.ErrorMessage));
+                }
             }
+
+            result = CopyDeliveryAddressViewModel(model, result);
 
             var jsonNetResult = new JsonNetResult
             {

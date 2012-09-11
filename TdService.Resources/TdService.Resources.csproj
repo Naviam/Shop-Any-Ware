@@ -53,10 +53,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BusinessRules.resx</DependentUpon>
     </Compile>
-    <Compile Include="Common.Designer.cs">
+    <Compile Include="CommonResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Common.resx</DependentUpon>
+      <DependentUpon>CommonResources.resx</DependentUpon>
     </Compile>
     <Compile Include="EmailResources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -109,9 +109,9 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>BusinessRules.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Common.resx">
+    <EmbeddedResource Include="CommonResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Common.Designer.cs</LastGenOutput>
+      <LastGenOutput>CommonResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="EmailResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -129,6 +129,7 @@
     <EmbeddedResource Include="Views\AddressViewResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AddressViewResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\AddressViewResources.ru.resx" />
     <EmbeddedResource Include="Views\DashboardViewResources.resx">

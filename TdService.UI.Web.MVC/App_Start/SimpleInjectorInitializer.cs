@@ -20,6 +20,7 @@ namespace TdService.UI.Web.MVC.App_Start
     using TdService.Infrastructure.Authentication;
     using TdService.Infrastructure.CookieStorage;
     using TdService.Infrastructure.Email;
+    using TdService.Infrastructure.Logging;
     using TdService.Model.Addresses;
     using TdService.Model.Common;
     using TdService.Model.Items;
@@ -54,6 +55,8 @@ namespace TdService.UI.Web.MVC.App_Start
         /// </param>
         private static void InitializeContainer(Container container)
         {
+            container.Register<ILogger, Log4NetAdapter>();
+
             // services
             container.Register<IFormsAuthentication, AspFormsAuthentication>();
             container.Register<IMembershipService, MembershipService>();

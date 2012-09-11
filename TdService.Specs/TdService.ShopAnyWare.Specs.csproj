@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountIntegrationTests.cs" />
+    <Compile Include="Fakes\FakeLogger.cs" />
     <Compile Include="Features\ShopperAccountCreation.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -84,7 +85,6 @@
     <Compile Include="Fakes\FakeCookieProvider.cs" />
     <Compile Include="Fakes\FakeEmailService.cs" />
     <Compile Include="Fakes\FakeFormsAuthentication.cs" />
-    <Compile Include="Steps\DeliveryAddressViewModelComparer.cs" />
     <Compile Include="ItemsIntegrationTests.cs" />
     <Compile Include="OrdersIntegrationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

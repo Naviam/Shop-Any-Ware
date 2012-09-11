@@ -93,9 +93,7 @@ namespace TdService.Specs.Steps
                 }
 
                 var addedAddresses = addresses.Select(deliveryAddress => context.DeliveryAddresses.Add(deliveryAddress)).ToList();
-                var errors = context.GetValidationErrors();
                 context.SaveChanges();
-                var errors2 = context.GetValidationErrors();
 
                 shopper.DeliveryAddresses.AddRange(addedAddresses.ToList());
                 context.Entry(shopper).State = EntityState.Modified;
@@ -114,7 +112,8 @@ namespace TdService.Specs.Steps
         {
             this.ReinitDatabase();
             var addressRepository = new AddressRepository();
-            var addressService = new DeliveryAddressService(addressRepository);
+            var logger = new FakeLogger();
+            var addressService = new DeliveryAddressService(addressRepository, logger);
             var fakeFormsAuthentication = new FakeFormsAuthentication();
             fakeFormsAuthentication.SetAuthenticationToken(p0, true);
             ScenarioContext.Current.Set(p0, "email");
@@ -136,6 +135,20 @@ namespace TdService.Specs.Steps
         }
 
         /// <summary>
+        /// The then i should have the following delivery address as a result.
+        /// </summary>
+        /// <param name="table">
+        /// The table.
+        /// </param>
+        [Then(@"I should have the following delivery address as a result")]
+        public void ThenIShouldHaveTheFollowingDeliveryAddressAsAResult(Table table)
+        {
+            var actual = ScenarioContext.Current.Get<DeliveryAddressViewModel>("actualInstance");
+            Assert.That(actual, Is.Not.Null);
+            table.CompareToInstance(actual);
+        }
+
+        /// <summary>
         /// The then i should have the following delivery addresses as a result.
         /// </summary>
         /// <param name="table">
@@ -147,6 +160,21 @@ namespace TdService.Specs.Steps
             var actual = ScenarioContext.Current.Get<List<DeliveryAddressViewModel>>("actual");
             Assert.That(actual, Is.Not.Empty);
             table.CompareToSet(actual);
+        }
+
+        /// <summary>
+        /// The then the delivery address view model should have following errors.
+        /// </summary>
+        /// <param name="table">
+        /// The table.
+        /// </param>
+        [Then(@"the delivery address view model should have following errors")]
+        public void ThenTheDeliveryAddressViewModelShouldHaveFollowingErrors(Table table)
+        {
+            var actual = ScenarioContext.Current.Get<DeliveryAddressViewModel>("actualInstance");
+            Assert.That(actual, Is.Not.Null);
+            Assert.That(actual.BrokenRules, Is.Not.Null);
+            table.CompareToSet(actual.BrokenRules);
         }
 
         /// <summary>
@@ -187,6 +215,25 @@ namespace TdService.Specs.Steps
             }
 
             ScenarioContext.Current.Set(actual, "actual");
+        }
+
+        /// <summary>
+        /// The when i add the following delivery address.
+        /// </summary>
+        /// <param name="table">
+        /// The table.
+        /// </param>
+        [When(@"I add the following delivery address")]
+        public void WhenIAddTheFollowingDeliveryAddress(Table table)
+        {
+            var controller = ScenarioContext.Current.Get<AddressController>();
+            var addressToAdd = table.CreateInstance<DeliveryAddressViewModel>();
+
+            var result = controller.Add(addressToAdd) as JsonNetResult;
+            Debug.Assert(result != null, "result != null");
+            var actual = result.Data as DeliveryAddressViewModel;
+
+            ScenarioContext.Current.Set(actual, "actualInstance");
         }
 
         /// <summary>

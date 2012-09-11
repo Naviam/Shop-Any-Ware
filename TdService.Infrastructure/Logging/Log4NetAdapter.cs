@@ -6,12 +6,14 @@
 
 namespace TdService.Infrastructure.Logging
 {
+    using System;
+
     using Configuration;
     using log4net;
     using log4net.Config;
 
     /// <summary>
-    /// TODO: Update summary.
+    /// Log4net adapter.
     /// </summary>
     public class Log4NetAdapter : ILogger
     {
@@ -38,6 +40,20 @@ namespace TdService.Infrastructure.Logging
         public void Log(string message)
         {
             this.log.Info(message);
+        }
+
+        /// <summary>
+        /// Log the exception.
+        /// </summary>
+        /// <param name="message">
+        /// The message.
+        /// </param>
+        /// <param name="exception">
+        /// The exception.
+        /// </param>
+        public void Error(string message, Exception exception)
+        {
+            this.log.Error(message, exception);
         }
     }
 }

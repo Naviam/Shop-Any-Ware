@@ -159,7 +159,7 @@ this.ScenarioSetup(scenarioInfo);
                         "Email",
                         "UserEmailExists"});
 #line 26
- testRunner.And("I should have the following model errors", ((string)(null)), table5, "And ");
+ testRunner.And("the signup view model should have following errors", ((string)(null)), table5, "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -215,7 +215,7 @@ this.ScenarioSetup(scenarioInfo);
                         "PasswordConfirm",
                         "UserPasswordConfirmRequired"});
 #line 38
- testRunner.And("I should have the following model errors", ((string)(null)), table8, "And ");
+ testRunner.And("the signup view model should have following errors", ((string)(null)), table8, "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -268,7 +268,7 @@ this.ScenarioSetup(scenarioInfo);
                         "LastName",
                         "ProfileLastNameRequired"});
 #line 52
- testRunner.And("I should have the following model errors", ((string)(null)), table11, "And ");
+ testRunner.And("the signup view model should have following errors", ((string)(null)), table11, "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -321,7 +321,7 @@ this.ScenarioSetup(scenarioInfo);
                         "LastName",
                         "ProfileLastNameMaxLength"});
 #line 65
- testRunner.And("I should have the following model errors", ((string)(null)), table14, "And ");
+ testRunner.And("the signup view model should have following errors", ((string)(null)), table14, "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -371,7 +371,7 @@ this.ScenarioSetup(scenarioInfo);
                         "Email",
                         "UserEmailInvalid"});
 #line 78
- testRunner.And("I should have the following model errors", ((string)(null)), table17, "And ");
+ testRunner.And("the signup view model should have following errors", ((string)(null)), table17, "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -421,7 +421,7 @@ this.ScenarioSetup(scenarioInfo);
                         "PasswordConfirm",
                         "UserPasswordConfirmNotEqual"});
 #line 90
- testRunner.And("I should have the following model errors", ((string)(null)), table20, "And ");
+ testRunner.And("the signup view model should have following errors", ((string)(null)), table20, "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -471,7 +471,7 @@ this.ScenarioSetup(scenarioInfo);
                         "Password",
                         "UserPasswordMinLength"});
 #line 102
- testRunner.And("I should have the following model errors", ((string)(null)), table23, "And ");
+ testRunner.And("the signup view model should have following errors", ((string)(null)), table23, "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -521,7 +521,7 @@ this.ScenarioSetup(scenarioInfo);
                         "Password",
                         "UserPasswordMaxLength"});
 #line 114
- testRunner.And("I should have the following model errors", ((string)(null)), table26, "And ");
+ testRunner.And("the signup view model should have following errors", ((string)(null)), table26, "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -574,7 +574,7 @@ this.ScenarioSetup(scenarioInfo);
                         "PasswordConfirm",
                         "UserPasswordConfirmNotEqual"});
 #line 126
- testRunner.And("I should have the following model errors", ((string)(null)), table29, "And ");
+ testRunner.And("the signup view model should have following errors", ((string)(null)), table29, "And ");
 #line hidden
             this.ScenarioCleanup();
         }

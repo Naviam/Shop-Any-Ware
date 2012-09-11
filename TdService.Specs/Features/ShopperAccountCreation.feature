@@ -23,7 +23,7 @@ Scenario: Account already exists
 	Then I should have the result as follows
 	| Email                | First Name | Last Name | Message Type |
 	| vhatalski@naviam.com | Vitali     | Hatalski  | Error        |
-	And I should have the following model errors
+	And the signup view model should have following errors
 	| Property | Error Code      |
 	| Email    | UserEmailExists |
 
@@ -35,7 +35,7 @@ Scenario: Email and password are required
 	Then I should have the result as follows
 	| Email | First Name | Last Name | Message Type |
 	|       | Vitali     | Hatalski  | Error        |
-	And I should have the following model errors
+	And the signup view model should have following errors
 	| Property        | Error Code                  |
 	| Password        | UserPasswordRequired        |
 	| Email           | UserEmailRequired           |
@@ -49,7 +49,7 @@ Scenario: First and Last names are required
 	Then I should have the result as follows
 	| Email          | First Name | Last Name | Message Type |
 	| hautama@tut.by |            |           | Error        |
-	And I should have the following model errors
+	And the signup view model should have following errors
 	| Property  | Error Code               |
 	| FirstName | ProfileFirstNameRequired |
 	| LastName  | ProfileLastNameRequired  |
@@ -62,7 +62,7 @@ Scenario: First and Last names should be less than 21 chars
 	Then I should have the result as follows
 	| Email          | First Name                      | Last Name                      | Message Type |
 	| hautama@tut.by | First name longer than 21 chars | Last name longer than 21 chars | Error        |
-	And I should have the following model errors
+	And the signup view model should have following errors
 	| Property  | Error Code                |
 	| FirstName | ProfileFirstNameMaxLength |
 	| LastName  | ProfileLastNameMaxLength  |
@@ -75,7 +75,7 @@ Scenario: Email is invalid
 	Then I should have the result as follows
 	| Email         | First Name | Last Name | Message Type |
 	| hautamatut.by | Vitali     | Hatalski  | Error        |
-	And I should have the following model errors
+	And the signup view model should have following errors
 	| Property | Error Code       |
 	| Email    | UserEmailInvalid |
 
@@ -87,7 +87,7 @@ Scenario: Password Confirm does not match
 	Then I should have the result as follows
 	| Email          | First Name | Last Name | Message Type |
 	| hautama@tut.by | Vitali     | Hatalski  | Error        |
-	And I should have the following model errors
+	And the signup view model should have following errors
 	| Property        | Error Code                  |
 	| PasswordConfirm | UserPasswordConfirmNotEqual |
 
@@ -99,7 +99,7 @@ Scenario: Password length cannot be less than 7 chars
 	Then I should have the result as follows
 	| Email          | First Name | Last Name | Message Type |
 	| hautama@tut.by | Vitali     | Hatalski  | Error        |
-	And I should have the following model errors
+	And the signup view model should have following errors
 	| Property | Error Code            |
 	| Password | UserPasswordMinLength |
 
@@ -111,7 +111,7 @@ Scenario: Password length cannot be more than 21 chars
 	Then I should have the result as follows
 	| Email          | First Name | Last Name | Message Type |
 	| hautama@tut.by | Vitali     | Hatalski  | Error        |
-	And I should have the following model errors
+	And the signup view model should have following errors
 	| Property | Error Code            |
 	| Password | UserPasswordMaxLength |
 
@@ -123,7 +123,7 @@ Scenario: Password is required and Password Confirm does not match
 	Then I should have the result as follows
 	| Email          | First Name | Last Name | Message Type |
 	| hautama@tut.by | Vitali     | Hatalski  | Error        |
-	And I should have the following model errors
+	And the signup view model should have following errors
 	| Property        | Error Code                  |
 	| Password        | UserPasswordRequired        |
 	| PasswordConfirm | UserPasswordConfirmNotEqual |

@@ -155,16 +155,17 @@ namespace TdService.Specs.Steps
         }
 
         /// <summary>
-        /// The then i should have the following model errors.
+        /// The then the signup view model should have following errors.
         /// </summary>
         /// <param name="table">
         /// The table.
         /// </param>
-        [Then(@"I should have the following model errors")]
-        public void ThenIShouldHaveTheFollowingModelErrors(Table table)
+        [Then(@"the signup view model should have following errors")]
+        public void ThenTheSignupViewModelShouldHaveFollowingErrors(Table table)
         {
             var actual = ScenarioContext.Current.Get<SignUpViewModel>("actual");
             Assert.That(actual, Is.Not.Null);
+            Assert.That(actual.BrokenRules, Is.Not.Null);
             table.CompareToSet(actual.BrokenRules);
         }
 

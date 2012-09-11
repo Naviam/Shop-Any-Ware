@@ -274,8 +274,8 @@ this.ScenarioSetup(scenarioInfo);
                         "flat 41",
                         "Minsk",
                         "Belarus",
-                        "",
-                        "",
+                        "Minsk",
+                        "Minsk",
                         "220053",
                         "+375295067630",
                         ""});
@@ -333,8 +333,8 @@ this.ScenarioSetup(scenarioInfo);
                         "flat 41",
                         "Minsk",
                         "Belarus",
-                        "",
-                        "",
+                        "Minsk",
+                        "Minsk",
                         "220053",
                         "+375295067630",
                         "Success"});
@@ -342,15 +342,15 @@ this.ScenarioSetup(scenarioInfo);
                         "0",
                         "",
                         "",
+                        "My second",
+                        "Novovilenskaya 10",
+                        "flat 41",
+                        "Minsk",
+                        "Belarus",
                         "",
                         "",
-                        "",
-                        "",
-                        "",
-                        "",
-                        "",
-                        "",
-                        "",
+                        "220053",
+                        "+375295067630",
                         "Error"});
 #line 33
  testRunner.Then("I should have the following delivery addresses as a result", ((string)(null)), table5, "Then ");
@@ -359,12 +359,12 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Edit delivery address")]
-        [NUnit.Framework.CategoryAttribute("editdeliveryaddress")]
-        public virtual void EditDeliveryAddress()
+        [NUnit.Framework.DescriptionAttribute("Validate required fields when adding delivery address")]
+        [NUnit.Framework.CategoryAttribute("adddeliveryaddress")]
+        public virtual void ValidateRequiredFieldsWhenAddingDeliveryAddress()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Edit delivery address", new string[] {
-                        "editdeliveryaddress"});
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate required fields when adding delivery address", new string[] {
+                        "adddeliveryaddress"});
 #line 40
 this.ScenarioSetup(scenarioInfo);
 #line 41
@@ -382,13 +382,12 @@ this.ScenarioSetup(scenarioInfo);
                         "State",
                         "Region",
                         "ZipCode",
-                        "Phone",
-                        "MessageType"});
+                        "Phone"});
             table6.AddRow(new string[] {
                         "1",
                         "Vitali",
                         "Hatalski",
-                        "My first",
+                        "Initial",
                         "Nekrasova 8",
                         "flat 14",
                         "Minsk",
@@ -396,21 +395,6 @@ this.ScenarioSetup(scenarioInfo);
                         "",
                         "",
                         "220040",
-                        "",
-                        ""});
-            table6.AddRow(new string[] {
-                        "2",
-                        "Vitali",
-                        "Hatalski",
-                        "My second",
-                        "Novovilenskaya 10",
-                        "flat 41",
-                        "Minsk",
-                        "Belarus",
-                        "",
-                        "",
-                        "220053",
-                        "+375295067630",
                         ""});
 #line 42
  testRunner.And("I have the following delivery addresses", ((string)(null)), table6, "And ");
@@ -427,38 +411,22 @@ this.ScenarioSetup(scenarioInfo);
                         "State",
                         "Region",
                         "ZipCode",
-                        "Phone",
-                        "MessageType"});
+                        "Phone"});
             table7.AddRow(new string[] {
-                        "1",
-                        "",
-                        "Hatalski",
-                        "My first",
-                        "Nekrasova 8",
-                        "flat 14",
-                        "Minsk",
-                        "Belarus",
                         "",
                         "",
-                        "220040",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
                         "",
                         ""});
-            table7.AddRow(new string[] {
-                        "2",
-                        "Alex",
-                        "Hatalski",
-                        "Main address",
-                        "Nekrasova 8",
-                        "flat 14",
-                        "Minsk",
-                        "Belarus",
-                        "",
-                        "",
-                        "220040",
-                        "",
-                        ""});
-#line 46
- testRunner.When("I edit the following delivery addresses", ((string)(null)), table7, "When ");
+#line 45
+ testRunner.When("I add the following delivery address", ((string)(null)), table7, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
@@ -475,7 +443,7 @@ this.ScenarioSetup(scenarioInfo);
                         "Phone",
                         "MessageType"});
             table8.AddRow(new string[] {
-                        "1",
+                        "0",
                         "",
                         "",
                         "",
@@ -488,39 +456,52 @@ this.ScenarioSetup(scenarioInfo);
                         "",
                         "",
                         "Error"});
-            table8.AddRow(new string[] {
-                        "2",
-                        "Alex",
-                        "Hatalski",
-                        "Main address",
-                        "Nekrasova 8",
-                        "flat 14",
-                        "Minsk",
-                        "Belarus",
-                        "",
-                        "",
-                        "220040",
-                        "",
-                        "Success"});
-#line 50
- testRunner.Then("I should have the following delivery addresses as a result", ((string)(null)), table8, "Then ");
+#line 48
+ testRunner.Then("I should have the following delivery address as a result", ((string)(null)), table8, "Then ");
+#line hidden
+            TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Property",
+                        "Error Code"});
+            table9.AddRow(new string[] {
+                        "FirstName",
+                        "DeliveryAddressFirstNameRequired"});
+            table9.AddRow(new string[] {
+                        "LastName",
+                        "DeliveryAddressLastNameRequired"});
+            table9.AddRow(new string[] {
+                        "AddressName",
+                        "DeliveryAddressAddressNameRequired"});
+            table9.AddRow(new string[] {
+                        "AddressLine1",
+                        "AddressAddressLine1Required"});
+            table9.AddRow(new string[] {
+                        "City",
+                        "AddressCityRequired"});
+            table9.AddRow(new string[] {
+                        "Country",
+                        "AddressCountryRequired"});
+            table9.AddRow(new string[] {
+                        "ZipCode",
+                        "AddressZipCodeRequired"});
+#line 51
+ testRunner.And("the delivery address view model should have following errors", ((string)(null)), table9, "And ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Remove delivery address")]
-        [NUnit.Framework.CategoryAttribute("removedeliveryaddress")]
-        public virtual void RemoveDeliveryAddress()
+        [NUnit.Framework.DescriptionAttribute("Validate max char length of fields when adding delivery address")]
+        [NUnit.Framework.CategoryAttribute("adddeliveryaddress")]
+        public virtual void ValidateMaxCharLengthOfFieldsWhenAddingDeliveryAddress()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Remove delivery address", new string[] {
-                        "removedeliveryaddress"});
-#line 56
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate max char length of fields when adding delivery address", new string[] {
+                        "adddeliveryaddress"});
+#line 62
 this.ScenarioSetup(scenarioInfo);
-#line 57
+#line 63
  testRunner.Given("I have \'v.hatalski@gmail.com\' email address", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-            TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
                         "FirstName",
                         "LastName",
@@ -532,13 +513,12 @@ this.ScenarioSetup(scenarioInfo);
                         "State",
                         "Region",
                         "ZipCode",
-                        "Phone",
-                        "MessageType"});
-            table9.AddRow(new string[] {
+                        "Phone"});
+            table10.AddRow(new string[] {
                         "1",
                         "Vitali",
                         "Hatalski",
-                        "My first",
+                        "Initial",
                         "Nekrasova 8",
                         "flat 14",
                         "Minsk",
@@ -546,31 +526,9 @@ this.ScenarioSetup(scenarioInfo);
                         "",
                         "",
                         "220040",
-                        "",
                         ""});
-            table9.AddRow(new string[] {
-                        "2",
-                        "Vitali",
-                        "Hatalski",
-                        "My second",
-                        "Novovilenskaya 10",
-                        "flat 41",
-                        "Minsk",
-                        "Belarus",
-                        "",
-                        "",
-                        "220053",
-                        "+375295067630",
-                        ""});
-#line 58
- testRunner.And("I have the following delivery addresses", ((string)(null)), table9, "And ");
-#line hidden
-            TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Id"});
-            table10.AddRow(new string[] {
-                        "1"});
-#line 62
- testRunner.When("I remove the following delivery addresses", ((string)(null)), table10, "When ");
+#line 64
+ testRunner.And("I have the following delivery addresses", ((string)(null)), table10, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
@@ -584,9 +542,325 @@ this.ScenarioSetup(scenarioInfo);
                         "State",
                         "Region",
                         "ZipCode",
+                        "Phone"});
+            table11.AddRow(new string[] {
+                        "",
+                        "first name that is longer 21 chars",
+                        "last name that is longer 21 chars",
+                        "The maximum allowed length of address name is 40 chars.",
+                        @"This is an optional credential that allows you to increase the level of your account security. To add this security option to your account, you will need to purchase a compatible authentication device from Gemalto, a third-party provider. Click the button below to purchase a device from the Gemalto website.",
+                        @"This is an optional credential that allows you to increase the level of your account security. To add this security option to your account, you will need to purchase a compatible authentication device from Gemalto, a third-party provider. Click the button below to purchase a device from the Gemalto website.",
+                        "Taumatawhakatangihangakoauauotamateapokaiwhenuakitanatahuwhenuakitanatahu",
+                        "Taumatawhakatangihangakoauauotamateapokaiwhenuakitanatahuwhenuakitanatahu",
+                        "Taumatawhakatangihangakoauauotamateapokaiwhenuakitanatahuwhenuakitanatahu",
+                        "Taumatawhakatangihangakoauauotamateapokaiwhenuakitanatahuwhenuakitanatahu",
+                        "123456789012",
+                        "+375295067630506763050676305067630"});
+#line 67
+ testRunner.When("I add the following delivery address", ((string)(null)), table11, "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id",
+                        "FirstName",
+                        "LastName",
+                        "AddressName",
+                        "AddressLine1",
+                        "AddressLine2",
+                        "City",
+                        "Country",
+                        "State",
+                        "Region",
+                        "ZipCode",
                         "Phone",
                         "MessageType"});
-            table11.AddRow(new string[] {
+            table12.AddRow(new string[] {
+                        "0",
+                        "first name that is longer 21 chars",
+                        "last name that is longer 21 chars",
+                        "The maximum allowed length of address name is 40 chars.",
+                        @"This is an optional credential that allows you to increase the level of your account security. To add this security option to your account, you will need to purchase a compatible authentication device from Gemalto, a third-party provider. Click the button below to purchase a device from the Gemalto website.",
+                        @"This is an optional credential that allows you to increase the level of your account security. To add this security option to your account, you will need to purchase a compatible authentication device from Gemalto, a third-party provider. Click the button below to purchase a device from the Gemalto website.",
+                        "Taumatawhakatangihangakoauauotamateapokaiwhenuakitanatahuwhenuakitanatahu",
+                        "Taumatawhakatangihangakoauauotamateapokaiwhenuakitanatahuwhenuakitanatahu",
+                        "Taumatawhakatangihangakoauauotamateapokaiwhenuakitanatahuwhenuakitanatahu",
+                        "Taumatawhakatangihangakoauauotamateapokaiwhenuakitanatahuwhenuakitanatahu",
+                        "123456789012",
+                        "+375295067630506763050676305067630",
+                        "Error"});
+#line 70
+ testRunner.Then("I should have the following delivery address as a result", ((string)(null)), table12, "Then ");
+#line hidden
+            TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Property",
+                        "Error Code"});
+            table13.AddRow(new string[] {
+                        "FirstName",
+                        "DeliveryAddressFirstNameMaxLength"});
+            table13.AddRow(new string[] {
+                        "LastName",
+                        "DeliveryAddressLastNameMaxLength"});
+            table13.AddRow(new string[] {
+                        "AddressName",
+                        "DeliveryAddressAddressNameMaxLength"});
+            table13.AddRow(new string[] {
+                        "AddressLine1",
+                        "AddressAddressLine1MaxLength"});
+            table13.AddRow(new string[] {
+                        "AddressLine2",
+                        "AddressAddressLine2MaxLength"});
+            table13.AddRow(new string[] {
+                        "City",
+                        "AddressCityMaxLength"});
+            table13.AddRow(new string[] {
+                        "Country",
+                        "AddressCountryMaxLength"});
+            table13.AddRow(new string[] {
+                        "State",
+                        "AddressStateMaxLength"});
+            table13.AddRow(new string[] {
+                        "Region",
+                        "AddressRegionMaxLength"});
+            table13.AddRow(new string[] {
+                        "ZipCode",
+                        "AddressZipCodeMaxLength"});
+            table13.AddRow(new string[] {
+                        "Phone",
+                        "AddressPhoneMaxLength"});
+#line 73
+ testRunner.And("the delivery address view model should have following errors", ((string)(null)), table13, "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Edit delivery address")]
+        [NUnit.Framework.CategoryAttribute("editdeliveryaddress")]
+        public virtual void EditDeliveryAddress()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Edit delivery address", new string[] {
+                        "editdeliveryaddress"});
+#line 88
+this.ScenarioSetup(scenarioInfo);
+#line 89
+ testRunner.Given("I have \'v.hatalski@gmail.com\' email address", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id",
+                        "FirstName",
+                        "LastName",
+                        "AddressName",
+                        "AddressLine1",
+                        "AddressLine2",
+                        "City",
+                        "Country",
+                        "State",
+                        "Region",
+                        "ZipCode",
+                        "Phone",
+                        "MessageType"});
+            table14.AddRow(new string[] {
+                        "1",
+                        "Vitali",
+                        "Hatalski",
+                        "My first",
+                        "Nekrasova 8",
+                        "flat 14",
+                        "Minsk",
+                        "Belarus",
+                        "",
+                        "",
+                        "220040",
+                        "",
+                        ""});
+            table14.AddRow(new string[] {
+                        "2",
+                        "Vitali",
+                        "Hatalski",
+                        "My second",
+                        "Novovilenskaya 10",
+                        "flat 41",
+                        "Minsk",
+                        "Belarus",
+                        "",
+                        "",
+                        "220053",
+                        "+375295067630",
+                        ""});
+#line 90
+ testRunner.And("I have the following delivery addresses", ((string)(null)), table14, "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id",
+                        "FirstName",
+                        "LastName",
+                        "AddressName",
+                        "AddressLine1",
+                        "AddressLine2",
+                        "City",
+                        "Country",
+                        "State",
+                        "Region",
+                        "ZipCode",
+                        "Phone",
+                        "MessageType"});
+            table15.AddRow(new string[] {
+                        "1",
+                        "",
+                        "Hatalski",
+                        "My first",
+                        "Nekrasova 8",
+                        "flat 14",
+                        "Minsk",
+                        "Belarus",
+                        "",
+                        "",
+                        "220040",
+                        "",
+                        ""});
+            table15.AddRow(new string[] {
+                        "2",
+                        "Alex",
+                        "Hatalski",
+                        "Main address",
+                        "Nekrasova 8",
+                        "flat 14",
+                        "Minsk",
+                        "Belarus",
+                        "",
+                        "",
+                        "220040",
+                        "",
+                        ""});
+#line 94
+ testRunner.When("I edit the following delivery addresses", ((string)(null)), table15, "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id",
+                        "FirstName",
+                        "LastName",
+                        "AddressName",
+                        "AddressLine1",
+                        "AddressLine2",
+                        "City",
+                        "Country",
+                        "State",
+                        "Region",
+                        "ZipCode",
+                        "Phone",
+                        "MessageType"});
+            table16.AddRow(new string[] {
+                        "1",
+                        "",
+                        "Hatalski",
+                        "My first",
+                        "Nekrasova 8",
+                        "flat 14",
+                        "Minsk",
+                        "Belarus",
+                        "",
+                        "",
+                        "220040",
+                        "",
+                        "Error"});
+            table16.AddRow(new string[] {
+                        "2",
+                        "Alex",
+                        "Hatalski",
+                        "Main address",
+                        "Nekrasova 8",
+                        "flat 14",
+                        "Minsk",
+                        "Belarus",
+                        "",
+                        "",
+                        "220040",
+                        "",
+                        "Success"});
+#line 98
+ testRunner.Then("I should have the following delivery addresses as a result", ((string)(null)), table16, "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Remove delivery address")]
+        [NUnit.Framework.CategoryAttribute("removedeliveryaddress")]
+        public virtual void RemoveDeliveryAddress()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Remove delivery address", new string[] {
+                        "removedeliveryaddress"});
+#line 104
+this.ScenarioSetup(scenarioInfo);
+#line 105
+ testRunner.Given("I have \'v.hatalski@gmail.com\' email address", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id",
+                        "FirstName",
+                        "LastName",
+                        "AddressName",
+                        "AddressLine1",
+                        "AddressLine2",
+                        "City",
+                        "Country",
+                        "State",
+                        "Region",
+                        "ZipCode",
+                        "Phone",
+                        "MessageType"});
+            table17.AddRow(new string[] {
+                        "1",
+                        "Vitali",
+                        "Hatalski",
+                        "My first",
+                        "Nekrasova 8",
+                        "flat 14",
+                        "Minsk",
+                        "Belarus",
+                        "",
+                        "",
+                        "220040",
+                        "",
+                        ""});
+            table17.AddRow(new string[] {
+                        "2",
+                        "Vitali",
+                        "Hatalski",
+                        "My second",
+                        "Novovilenskaya 10",
+                        "flat 41",
+                        "Minsk",
+                        "Belarus",
+                        "",
+                        "",
+                        "220053",
+                        "+375295067630",
+                        ""});
+#line 106
+ testRunner.And("I have the following delivery addresses", ((string)(null)), table17, "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id"});
+            table18.AddRow(new string[] {
+                        "1"});
+#line 110
+ testRunner.When("I remove the following delivery addresses", ((string)(null)), table18, "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id",
+                        "FirstName",
+                        "LastName",
+                        "AddressName",
+                        "AddressLine1",
+                        "AddressLine2",
+                        "City",
+                        "Country",
+                        "State",
+                        "Region",
+                        "ZipCode",
+                        "Phone",
+                        "MessageType"});
+            table19.AddRow(new string[] {
                         "1",
                         "",
                         "",
@@ -600,8 +874,8 @@ this.ScenarioSetup(scenarioInfo);
                         "",
                         "",
                         "Success"});
-#line 65
- testRunner.Then("I should have the following delivery addresses as a result", ((string)(null)), table11, "Then ");
+#line 113
+ testRunner.Then("I should have the following delivery addresses as a result", ((string)(null)), table19, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
