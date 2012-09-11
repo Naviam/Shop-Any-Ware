@@ -35,9 +35,9 @@ namespace TdService.UI.Web.ViewModels.Account
             RuleFor(su => su.PasswordConfirm).NotEmpty().WithMessage(ErrorCode.UserPasswordConfirmRequired.ToString())
                 .Equal(u => u.Password).WithMessage(ErrorCode.UserPasswordConfirmNotEqual.ToString());
             RuleFor(su => su.FirstName).NotEmpty().WithMessage(ErrorCode.ProfileFirstNameRequired.ToString())
-                .Length(1, 64).WithMessage(ErrorCode.ProfileFirstNameMaxLength.ToString());
+                .Length(1, 21).WithMessage(ErrorCode.ProfileFirstNameMaxLength.ToString());
             RuleFor(su => su.LastName).NotEmpty().WithMessage(ErrorCode.ProfileLastNameRequired.ToString())
-                .Length(1, 64).WithMessage(ErrorCode.ProfileLastNameMaxLength.ToString());
+                .Length(1, 21).WithMessage(ErrorCode.ProfileLastNameMaxLength.ToString());
         }
     }
 }

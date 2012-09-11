@@ -20,8 +20,8 @@ namespace TdService.Repository.MsSql.Configurations
         /// </summary>
         public ProfileConfiguration()
         {
-            this.Property(p => p.FirstName).HasMaxLength(64).IsRequired();
-            this.Property(p => p.LastName).HasMaxLength(64).IsRequired();
+            this.Property(p => p.FirstName).HasMaxLength(21).IsRequired();
+            this.Property(p => p.LastName).HasMaxLength(21).IsRequired();
             this.Property(p => p.RowVersion).IsRowVersion();
         }
     }

@@ -27,7 +27,59 @@ Scenario: Account already exists
 	| Property | Error Code      |
 	| Email    | UserEmailExists |
 
-Scenario: Password and confirm password do not match
+Scenario: Email and password are required
+	Given I have not been authenticated yet
+	When I fill sign up form with the following data
+	| Email | Password | Password Confirm | First Name | Last Name |
+	|       |          |                  | Vitali     | Hatalski  |
+	Then I should have the result as follows
+	| Email | First Name | Last Name | Message Type |
+	|       | Vitali     | Hatalski  | Error        |
+	And I should have the following model errors
+	| Property        | Error Code                  |
+	| Password        | UserPasswordRequired        |
+	| Email           | UserEmailRequired           |
+	| PasswordConfirm | UserPasswordConfirmRequired |
+
+Scenario: First and Last names are required
+	Given I have not been authenticated yet
+	When I fill sign up form with the following data
+	| Email          | Password | Password Confirm | First Name | Last Name |
+	| hautama@tut.by | ruinruin | ruinruin         |            |           |
+	Then I should have the result as follows
+	| Email          | First Name | Last Name | Message Type |
+	| hautama@tut.by |            |           | Error        |
+	And I should have the following model errors
+	| Property  | Error Code               |
+	| FirstName | ProfileFirstNameRequired |
+	| LastName  | ProfileLastNameRequired  |
+
+Scenario: First and Last names should be less than 21 chars
+	Given I have not been authenticated yet
+	When I fill sign up form with the following data
+	| Email          | Password | Password Confirm | First Name                      | Last Name                      |
+	| hautama@tut.by | ruinruin | ruinruin         | First name longer than 21 chars | Last name longer than 21 chars |
+	Then I should have the result as follows
+	| Email          | First Name                      | Last Name                      | Message Type |
+	| hautama@tut.by | First name longer than 21 chars | Last name longer than 21 chars | Error        |
+	And I should have the following model errors
+	| Property  | Error Code                |
+	| FirstName | ProfileFirstNameMaxLength |
+	| LastName  | ProfileLastNameMaxLength  |
+
+Scenario: Email is invalid
+	Given I have not been authenticated yet
+	When I fill sign up form with the following data
+	| Email         | Password | Password Confirm | First Name | Last Name |
+	| hautamatut.by | ruinruin | ruinruin         | Vitali     | Hatalski  |
+	Then I should have the result as follows
+	| Email         | First Name | Last Name | Message Type |
+	| hautamatut.by | Vitali     | Hatalski  | Error        |
+	And I should have the following model errors
+	| Property | Error Code       |
+	| Email    | UserEmailInvalid |
+
+Scenario: Password Confirm does not match
 	Given I have not been authenticated yet
 	When I fill sign up form with the following data
 	| Email          | Password | Password Confirm | First Name | Last Name |
@@ -63,7 +115,7 @@ Scenario: Password length cannot be more than 21 chars
 	| Property | Error Code            |
 	| Password | UserPasswordMaxLength |
 
-Scenario: Password is required
+Scenario: Password is required and Password Confirm does not match
 	Given I have not been authenticated yet
 	When I fill sign up form with the following data
 	| Email          | Password | Password Confirm | First Name | Last Name |
