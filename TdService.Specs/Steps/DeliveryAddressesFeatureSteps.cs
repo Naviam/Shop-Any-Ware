@@ -11,6 +11,7 @@ namespace TdService.Specs.Steps
 {
     using System.Collections.Generic;
     using System.Data;
+    using System.Data.Entity;
     using System.Diagnostics;
     using System.Linq;
 
@@ -49,6 +50,7 @@ namespace TdService.Specs.Steps
         /// </summary>
         public void ReinitDatabase()
         {
+            Database.SetInitializer(new ShopAnyWareTestInitilizer());
             using (var context = new ShopAnyWareSql())
             {
                 context.Database.Delete();
@@ -70,7 +72,7 @@ namespace TdService.Specs.Steps
         {
             using (var context = new ShopAnyWareSql())
             {
-                var shopper = context.Users.Include("DeliveryAddresses").SingleOrDefault(u => u.Email == email);
+                var shopper = context.Users.Include("DeliveryAddresses").Include("Profile").Include("Wallet").Include("Roles").SingleOrDefault(u => u.Email == email);
                 if (shopper == null)
                 {
                     var profile = new Profile { FirstName = "Vitali", LastName = "Hatalski" };
@@ -78,17 +80,9 @@ namespace TdService.Specs.Steps
                     context.Profiles.Add(profile);
                     context.SaveChanges();
 
-                    shopper = new User { Email = email, Password = "11111111", Profile = profile };
+                    shopper = new User { Email = email, Password = "11111111", Profile = profile, Wallet = new Wallet { Amount = 0m } };
 
-                    context.Users.Add(shopper);
-                    context.SaveChanges();
-
-                    var wallet = new Wallet { Amount = 0m };
-                    context.Wallets.Add(wallet);
-                    context.SaveChanges();
-
-                    shopper.Wallet = wallet;
-                    context.Entry(shopper).State = EntityState.Modified;
+                    shopper = context.Users.Add(shopper);
                     context.SaveChanges();
                 }
 
@@ -98,7 +92,12 @@ namespace TdService.Specs.Steps
                     shopper.DeliveryAddresses = new List<DeliveryAddress>();
                 }
 
-                shopper.DeliveryAddresses.AddRange(addresses.ToList());
+                var addedAddresses = addresses.Select(deliveryAddress => context.DeliveryAddresses.Add(deliveryAddress)).ToList();
+                var errors = context.GetValidationErrors();
+                context.SaveChanges();
+                var errors2 = context.GetValidationErrors();
+
+                shopper.DeliveryAddresses.AddRange(addedAddresses.ToList());
                 context.Entry(shopper).State = EntityState.Modified;
                 context.SaveChanges();
             }

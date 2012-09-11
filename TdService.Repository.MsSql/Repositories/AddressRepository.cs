@@ -103,7 +103,7 @@ namespace TdService.Repository.MsSql.Repositories
 
             using (var context = new ShopAnyWareSql())
             {
-                var user = context.Users.Include("DeliveryAddresses").SingleOrDefault(u => u.Email == email);
+                var user = context.Users.Include("DeliveryAddresses").Include("Profile").Include("Wallet").Include("Roles").SingleOrDefault(u => u.Email == email);
                 if (user == null)
                 {
                     throw new InvalidUserException(ErrorCode.UserNotFound.ToString());
@@ -172,7 +172,7 @@ namespace TdService.Repository.MsSql.Repositories
 
             using (var context = new ShopAnyWareSql())
             {
-                var user = context.Users.Include("DeliveryAddresses").SingleOrDefault(u => u.Email == email);
+                var user = context.Users.Include("DeliveryAddresses").Include("Profile").Include("Wallet").Include("Roles").SingleOrDefault(u => u.Email == email);
                 if (user == null)
                 {
                     throw new InvalidUserException(ErrorCode.UserNotFound.ToString());

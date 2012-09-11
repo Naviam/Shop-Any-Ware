@@ -15,6 +15,7 @@ namespace TdService.Specs.Steps
     using NUnit.Framework;
 
     using TdService.Infrastructure.Email;
+    using TdService.Model.Balance;
     using TdService.Model.Membership;
     using TdService.Repository.MsSql;
     using TdService.Repository.MsSql.Repositories;
@@ -104,7 +105,7 @@ namespace TdService.Specs.Steps
                 context.Profiles.Add(profile);
                 context.SaveChanges();
 
-                user = new User { Email = p0, Password = "11111111", Profile = profile };
+                user = new User { Email = p0, Password = "11111111", Profile = profile, Wallet = new Wallet { Amount = 0m }};
 
                 context.Users.Add(user);
                 context.SaveChanges();

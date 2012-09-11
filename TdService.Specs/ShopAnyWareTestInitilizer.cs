@@ -44,49 +44,49 @@ namespace TdService.Specs
             context.SaveChanges();
 
             // vitali
-            var user = new User
-            {
-                Email = "vhatalski@naviam.com",
-                Password = "ruinruin",
-                Roles = new List<Role> { adminRole, shopperRole, operatorRole },
-                Wallet = new Wallet { Amount = 1003.23m }
-            };
-            user = context.Users.Add(user);
-
-            context.SaveChanges();
-
-            user.Profile = new Profile
+            var profile = new Profile
             {
                 FirstName = "Vitali",
                 LastName = "Hatalski",
                 NotifyOnOrderStatusChanged = true,
                 NotifyOnPackageStatusChanged = true
             };
-            context.Entry(user).State = EntityState.Modified;
+
+            context.Profiles.Add(profile);
+
+            var user = new User
+            {
+                Email = "vhatalski@naviam.com",
+                Password = "ruinruin",
+                Profile = profile,
+                Roles = new List<Role> { adminRole, shopperRole, operatorRole },
+                Wallet = new Wallet { Amount = 1003.23m }
+            };
+            context.Users.Add(user);
+
             context.SaveChanges();
 
             // shopper
-            var shopper = new User
-            {
-                Email = "v.hatalski@gmail.com",
-                Password = "1",
-                Roles = new List<Role>(),
-                Wallet = new Wallet { Amount = 88.00m }
-            };
-            shopper.Roles.Add(shopperRole);
-            context.Users.Add(shopper);
-            context.SaveChanges();
-
-            shopper.Profile = new Profile
+            var profile2 = new Profile
             {
                 FirstName = "Shopper Name",
                 LastName = "Surname",
                 NotifyOnOrderStatusChanged = true,
                 NotifyOnPackageStatusChanged = true
             };
-            context.Entry(shopper).State = EntityState.Modified;
-            context.SaveChanges();
+            context.Profiles.Add(profile2);
 
+            var shopper = new User
+            {
+                Email = "v.hatalski@gmail.com",
+                Password = "1111111111",
+                Profile = profile2,
+                Roles = new List<Role> { shopperRole },
+                Wallet = new Wallet { Amount = 88.00m }
+            };
+            context.Users.Add(shopper);
+            context.SaveChanges();
+            
             //// SeedMembership.Populate(context);
             SeedCurrencies.Populate(context);
 

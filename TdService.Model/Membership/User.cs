@@ -34,6 +34,8 @@ namespace TdService.Model.Membership
             this.Orders = new List<Order>();
             this.Packages = new List<Package>();
             this.Wallet = new Wallet();
+            this.DeliveryAddresses = new List<DeliveryAddress>();
+            this.Roles = new List<Role>();
             this.Profile = new Profile();
         }
 
