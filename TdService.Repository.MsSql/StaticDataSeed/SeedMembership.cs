@@ -9,10 +9,9 @@
 
 namespace TdService.Repository.MsSql.StaticDataSeed
 {
+    using System;
     using System.Collections.Generic;
-    using System.Data;
 
-    using TdService.Model.Addresses;
     using TdService.Model.Balance;
     using TdService.Model.Membership;
 
@@ -41,134 +40,117 @@ namespace TdService.Repository.MsSql.StaticDataSeed
             context.SaveChanges();
 
             // vitali
-            var user = new User
-            {
-                Email = "vhatalski@naviam.com",
-                Password = "ruinruin",
-                Roles = new List<Role> { adminRole, shopperRole, operatorRole },
-                Wallet = new Wallet { Amount = 1003.23m }
-            };
-            user = context.Users.Add(user);
-
-            context.SaveChanges();
-
-            user.DeliveryAddresses = new List<DeliveryAddress>
-             {
-                 new DeliveryAddress
-                 {
-                     AddressLine1 = "Novovilenskaya street",
-                     AddressLine2 = "10, 41",
-                     AddressLine3 = string.Empty,
-                     AddressName = "Minsk - Novovilenskaya",
-                     City = "Minsk",
-                     Country = "Russia",
-                     FirstName = "Vitali",
-                     LastName = "Hatalski",
-                     Phone = "+375295067630",
-                     ZipCode = "220053"
-                 }
-             };
-
-            context.Entry(user).State = EntityState.Modified;
-            context.SaveChanges();
-
-            user.Profile = new Profile
+            var profile = new Profile
             {
                 FirstName = "Vitali",
                 LastName = "Hatalski",
                 NotifyOnOrderStatusChanged = true,
                 NotifyOnPackageStatusChanged = true
             };
-            context.Entry(user).State = EntityState.Modified;
+            context.Profiles.Add(profile);
+            context.SaveChanges();
+
+            var user = new User
+            {
+                Email = "vhatalski@naviam.com",
+                Password = "ruinruin",
+                Profile = profile,
+                Roles = new List<Role> { adminRole, shopperRole, operatorRole },
+                Wallet = new Wallet { Amount = 1003.23m }
+            };
+            context.Users.Add(user);
             context.SaveChanges();
 
             // oleg
-            var user2 = new User
-            {
-                Email = "tdservice@mail.ru",
-                Password = "1",
-                Roles = new List<Role>(),
-                Wallet = new Wallet { Amount = 988.00m }
-            };
-            user2.Roles.Add(adminRole);
-            user2.Roles.Add(operatorRole);
-            context.Users.Add(user2);
-            context.SaveChanges();
-
-            user2.Profile = new Profile
+            var profileOleg = new Profile
             {
                 FirstName = "Oleg",
                 LastName = "Voronin",
                 NotifyOnOrderStatusChanged = true,
                 NotifyOnPackageStatusChanged = true
             };
-            context.Entry(user2).State = EntityState.Modified;
+            context.Profiles.Add(profileOleg);
+            context.SaveChanges();
+
+            var userOleg = new User
+            {
+                Email = "tdservice@mail.ru",
+                Password = "1111111",
+                Roles = new List<Role> { adminRole },
+                Wallet = new Wallet { Amount = 988.00m },
+                Profile = profileOleg,
+                ActivationCode = Guid.NewGuid()
+            };
+            context.Users.Add(userOleg);
             context.SaveChanges();
 
             // shopper
+            var profileShopper = new Profile
+            {
+                FirstName = "Shopper First name",
+                LastName = "Shopper Last name",
+                NotifyOnOrderStatusChanged = true,
+                NotifyOnPackageStatusChanged = true
+            };
+            context.Profiles.Add(profileShopper);
+            context.SaveChanges();
+
             var shopper = new User
             {
                 Email = "v.hatalski@gmail.com",
-                Password = "1",
-                Roles = new List<Role>(),
-                Wallet = new Wallet { Amount = 88.00m }
+                Password = "1111111111",
+                Profile = profileShopper,
+                Roles = new List<Role> { shopperRole },
+                Wallet = new Wallet { Amount = 88.00m },
+                ActivationCode = Guid.NewGuid()
             };
-            shopper.Roles.Add(shopperRole);
             context.Users.Add(shopper);
             context.SaveChanges();
 
-            shopper.Profile = new Profile
+            // operator
+            var profileOperator = new Profile
             {
-                FirstName = "Shopper Name",
-                LastName = "Surname",
+                FirstName = "Operator First name",
+                LastName = "Operator Last name",
                 NotifyOnOrderStatusChanged = true,
                 NotifyOnPackageStatusChanged = true
             };
-            context.Entry(shopper).State = EntityState.Modified;
+            context.Profiles.Add(profileOperator);
             context.SaveChanges();
 
-            // operator
             var operatorUser = new User
             {
                 Email = "operator@shopanyware.ru",
-                Password = "1",
-                Roles = new List<Role>(),
-                Wallet = new Wallet { Amount = 0.00m }
+                Password = "1111111111",
+                Profile = profileOperator,
+                Roles = new List<Role> { operatorRole },
+                Wallet = new Wallet { Amount = 0.00m },
+                ActivationCode = Guid.NewGuid()
             };
-            operatorUser.Roles.Add(operatorRole);
             context.Users.Add(operatorUser);
             context.SaveChanges();
 
-            operatorUser.Profile = new Profile
+            // consultant
+            var profileConsultant = new Profile
             {
-                FirstName = "Operator Name",
-                LastName = "Surname",
+                FirstName = "Consultant First name",
+                LastName = "Consultant Last name",
                 NotifyOnOrderStatusChanged = true,
                 NotifyOnPackageStatusChanged = true
             };
-            context.Entry(operatorUser).State = EntityState.Modified;
+            context.Profiles.Add(profileConsultant);
             context.SaveChanges();
 
-            // consultant
             var consultant = new User
             {
                 Email = "consultant@shopanyware.ru",
-                Password = "1",
-                Roles = new List<Role>(),
-                Wallet = new Wallet { Amount = 0.00m }
+                Password = "1111111111",
+                Profile = profileConsultant,
+                Roles = new List<Role> { consultantRole },
+                Wallet = new Wallet { Amount = 0.00m },
+                ActivationCode = Guid.NewGuid()
             };
-            consultant.Roles.Add(consultantRole);
             context.Users.Add(consultant);
-            context.SaveChanges();
-
-            consultant.Profile = new Profile
-            {
-                FirstName = "Consultant Name",
-                LastName = "Surname",
-                NotifyOnOrderStatusChanged = true,
-                NotifyOnPackageStatusChanged = true
-            };
-            context.Entry(consultant).State = EntityState.Modified;
             context.SaveChanges();
         }
     }
