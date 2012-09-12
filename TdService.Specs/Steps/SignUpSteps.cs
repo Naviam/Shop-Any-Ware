@@ -122,6 +122,7 @@ namespace TdService.Specs.Steps
                 context.Users.Add(user);
                 context.SaveChanges();
             }
+            ScenarioContext.Current.Set(p0, "email");
         }
 
         /// <summary>

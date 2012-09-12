@@ -8,6 +8,7 @@ Feature: Sign In
 Scenario: Shopper sign in
 	Given I have not been authenticated yet
 	And The 'vhatalski@naviam.com' account already exists
+	And I am in 'Shopper' role
 	When I fill sign in form with the following data
 	| Email                | Password | Remember Me |
 	| vhatalski@naviam.com | ruinruin | false       |
@@ -17,6 +18,7 @@ Scenario: Shopper sign in
 Scenario: Shopper invalid credentials
 	Given I have not been authenticated yet
 	And The 'vhatalski@naviam.com' account already exists
+	And I am in 'Shopper' role
 	When I fill sign in form with the following data
 	| Email                | Password  | Remember Me |
 	| vhatalski@naviam.com | ruinruin3 | false       |
@@ -28,6 +30,7 @@ Scenario: Shopper invalid credentials
 Scenario: Shopper validate required fields
 	Given I have not been authenticated yet
 	And The 'vhatalski@naviam.com' account already exists
+	And I am in 'Shopper' role
 	When I fill sign in form with the following data
 	| Email                | Password | Remember Me |
 	| vhatalski@naviam.com |          | false       |
@@ -42,6 +45,7 @@ Scenario: Shopper validate required fields
 Scenario: Operator sign in
 	Given I have not been authenticated yet
 	And The 'vhatalski@naviam.com' account already exists
+	And I am in 'Operator' role
 	When I fill sign in form with the following data
 	| Email                | Password | Remember Me |
 	| vhatalski@naviam.com | ruinruin | false       |

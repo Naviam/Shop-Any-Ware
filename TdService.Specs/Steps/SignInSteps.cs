@@ -9,11 +9,16 @@
 
 namespace TdService.Specs.Steps
 {
+    using System.Collections.Generic;
+    using System.Data;
     using System.Diagnostics;
+    using System.Linq;
     using System.Web.Mvc;
 
     using NUnit.Framework;
 
+    using TdService.Model.Membership;
+    using TdService.Repository.MsSql;
     using TdService.UI.Web;
     using TdService.UI.Web.Controllers;
     using TdService.UI.Web.ViewModels.Account;
@@ -27,6 +32,38 @@ namespace TdService.Specs.Steps
     [Binding]
     public class SignInSteps
     {
+        /// <summary>
+        /// The given i am in role.
+        /// </summary>
+        /// <param name="p0">
+        /// The p 0.
+        /// </param>
+        [Given(@"I am in '(.*)' role")]
+        public void GivenIAmInRole(string p0)
+        {
+            var email = ScenarioContext.Current.Get<string>("email");
+            using (var context = new ShopAnyWareSql())
+            {
+                var user = context.Users.Include("Profile").Include("Roles").SingleOrDefault(u => u.Email == email);
+                Debug.Assert(user != null, "user != null");
+                var role = context.Roles.SingleOrDefault(r => r.Name == p0);
+                if (role == null)
+                {
+                    // create role
+                    role = context.Roles.Add(new Role { Name = p0 });
+                    context.SaveChanges();
+                }
+
+                user.Roles = null;
+                context.Entry(user).State = EntityState.Modified;
+                context.SaveChanges();
+
+                user.Roles = new List<Role> { role };
+                context.Entry(user).State = EntityState.Modified;
+                context.SaveChanges();
+            }
+        }
+
         /// <summary>
         /// The when i fill sign in form with the following data.
         /// </summary>
@@ -99,7 +136,7 @@ namespace TdService.Specs.Steps
 
             Assert.That(result, Is.Not.Null);
             Assert.That(result.RouteValues["action"], Is.EqualTo("Dashboard"));
-            Assert.That(result.RouteValues["controller"], Is.EqualTo("Operator"));
+            Assert.That(result.RouteValues["controller"], Is.EqualTo("Admin"));
         }
     }
 }
