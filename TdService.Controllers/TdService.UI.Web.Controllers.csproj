@@ -73,6 +73,8 @@
     <Compile Include="Mapping\PackageViewModelMapping.cs" />
     <Compile Include="Mapping\ProfileViewModelMapping.cs" />
     <Compile Include="Mapping\RetailerViewModelMapping.cs" />
+    <Compile Include="Mapping\RoleViewModelMapper.cs" />
+    <Compile Include="Mapping\SignInViewModelMapper.cs" />
     <Compile Include="Mapping\SignUpViewModelMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

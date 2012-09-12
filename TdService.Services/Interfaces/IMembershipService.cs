@@ -6,6 +6,8 @@
 
 namespace TdService.Services.Interfaces
 {
+    using System.Collections.Generic;
+
     using TdService.Services.Messaging.Membership;
 
     /// <summary>
@@ -22,7 +24,7 @@ namespace TdService.Services.Interfaces
         /// <returns>
         /// Sign up shopper response.
         /// </returns>
-        RegisterUserResponse SignUpShopper(RegisterUserRequest request);
+        SignUpResponse SignUpShopper(SignUpRequest request);
 
         /// <summary>
         /// Register user.
@@ -33,7 +35,7 @@ namespace TdService.Services.Interfaces
         /// <returns>
         /// Register user response.
         /// </returns>
-        RegisterUserResponse RegisterUser(RegisterUserRequest request);
+        SignUpResponse RegisterUser(SignUpRequest request);
 
         /// <summary>
         /// Validate user.
@@ -44,7 +46,7 @@ namespace TdService.Services.Interfaces
         /// <returns>
         /// True if user valid.
         /// </returns>
-        ValidateUserResponse ValidateUser(ValidateUserRequest request);
+        SignInResponse SignIn(SignInRequest request);
 
         /// <summary>
         /// Get user.
@@ -56,6 +58,17 @@ namespace TdService.Services.Interfaces
         /// Get user response object.
         /// </returns>
         GetUserResponse GetUser(GetUserRequest request);
+
+        /// <summary>
+        /// The get user roles.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The Get user roles response collection.
+        /// </returns>
+        List<GetUserRolesResponse> GetUserRoles(GetUserRolesRequest request);
 
         /// <summary>
         /// Get user's profile.
@@ -80,13 +93,13 @@ namespace TdService.Services.Interfaces
         UpdateProfileResponse UpdateProfile(UpdateProfileRequest request);
 
         /// <summary>
-        /// Generate change password link.
+        /// The generate change password link.
         /// </summary>
         /// <param name="request">
-        /// The generate change pasword link request.
+        /// The request.
         /// </param>
         /// <returns>
-        /// The response with generated link.
+        /// The TdService.Services.Messaging.Membership.ChangePasswordLinkResponse.
         /// </returns>
         ChangePasswordLinkResponse GenerateChangePasswordLink(ChangePasswordLinkRequest request);
     }

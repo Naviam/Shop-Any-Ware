@@ -1,22 +1,18 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ForgotPasswordViewModel.cs" company="TdService">
+// <copyright file="GetUserRolesRequest.cs" company="TdService">
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
-//   Forgot Password View Model.
+//   The get user roles request.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.UI.Web.ViewModels.Account
+namespace TdService.Services.Messaging.Membership
 {
     /// <summary>
-    /// Forgot Password View Model.
+    /// The get user roles request.
     /// </summary>
-    public class ForgotPasswordViewModel : ViewModelBase
+    public class GetUserRolesRequest : RequestBase
     {
-        /// <summary>
-        /// Gets or sets Email.
-        /// </summary>
-        public string Email { get; set; }
     }
 }

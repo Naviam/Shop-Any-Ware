@@ -6,6 +6,8 @@
 
 namespace TdService.ShopAnyWare.Tests.Account
 {
+    using System.Collections.Generic;
+
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging;
     using TdService.Services.Messaging.Membership;
@@ -24,7 +26,7 @@ namespace TdService.ShopAnyWare.Tests.Account
         /// <returns>
         /// The TdService.Services.Messaging.Membership.RegisterUserResponse.
         /// </returns>
-        public RegisterUserResponse SignUpShopper(RegisterUserRequest request)
+        public SignUpResponse SignUpShopper(SignUpRequest request)
         {
             return null;
         }
@@ -38,9 +40,9 @@ namespace TdService.ShopAnyWare.Tests.Account
         /// <returns>
         /// Register user response.
         /// </returns>
-        public RegisterUserResponse RegisterUser(RegisterUserRequest request)
+        public SignUpResponse RegisterUser(SignUpRequest request)
         {
-            var response = new RegisterUserResponse { Email = "1", MessageType = MessageType.Success };
+            var response = new SignUpResponse { Email = "1", MessageType = MessageType.Success };
             return response;
         }
 
@@ -67,9 +69,9 @@ namespace TdService.ShopAnyWare.Tests.Account
         /// <returns>
         /// True if user valid.
         /// </returns>
-        public ValidateUserResponse ValidateUser(ValidateUserRequest request)
+        public SignInResponse SignIn(SignInRequest request)
         {
-            return new ValidateUserResponse();
+            return new SignInResponse();
         }
 
         /// <summary>
@@ -84,6 +86,11 @@ namespace TdService.ShopAnyWare.Tests.Account
         public GetUserResponse GetUser(GetUserRequest request)
         {
             return new GetUserResponse();
+        }
+
+        List<GetUserRolesResponse> IMembershipService.GetUserRoles(GetUserRolesRequest request)
+        {
+            return null;
         }
 
         /// <summary>

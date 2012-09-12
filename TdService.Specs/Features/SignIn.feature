@@ -21,11 +21,22 @@ Scenario: Shopper invalid credentials
 	| Email                | Password  | Remember Me |
 	| vhatalski@naviam.com | ruinruin3 | false       |
 	Then the signin result should be as follows
-	| Email                | Password  | Remember Me |
-	| vhatalski@naviam.com |           | false       |
+	| Email                | Password | Remember Me | Message Type | Error Code   |
+	| vhatalski@naviam.com |          | false       | Error        | UserNotValid |
+
+@shopper
+Scenario: Shopper validate required fields
+	Given I have not been authenticated yet
+	And The 'vhatalski@naviam.com' account already exists
+	When I fill sign in form with the following data
+	| Email                | Password | Remember Me |
+	| vhatalski@naviam.com |          | false       |
+	Then the signin result should be as follows
+	| Email                | Password | Remember Me | Message Type |
+	| vhatalski@naviam.com |          | false       | Warning      |
 	And the signin view model should have following errors
-	| Property | Error Code      |
-	| Email    | UserNotValid    |
+	| Property | Error Code           |
+	| Password | UserPasswordRequired |
 
 @operator
 Scenario: Operator sign in

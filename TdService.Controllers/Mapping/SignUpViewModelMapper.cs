@@ -28,9 +28,9 @@ namespace TdService.UI.Web.Mapping
         /// <returns>
         /// The TdService.UI.Web.ViewModels.Account.SignUpViewModel.
         /// </returns>
-        public static SignUpViewModel ConvertToSignUpViewModel(this RegisterUserResponse response)
+        public static SignUpViewModel ConvertToSignUpViewModel(this SignUpResponse response)
         {
-            return Mapper.Map<RegisterUserResponse, SignUpViewModel>(response);
+            return Mapper.Map<SignUpResponse, SignUpViewModel>(response);
         }
     }
 }

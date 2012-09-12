@@ -1,18 +1,18 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright file="RegisterUserRequest.cs" company="TdService">
+// <copyright file="SignUpRequest.cs" company="TdService">
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
-//   Defines the RegisterUserRequest type.
+//   The sign up request.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace TdService.Services.Messaging.Membership
 {
     /// <summary>
-    /// Register user request for service.
+    /// The sign up request.
     /// </summary>
-    public class RegisterUserRequest : RequestBase
+    public class SignUpRequest : RequestBase
     {
         /// <summary>
         /// Gets or sets Email.

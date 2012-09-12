@@ -42,14 +42,22 @@ namespace TdService.UI.Web
         /// </summary>
         public static void Configure()
         {
-            // user
-            Mapper.CreateMap<User, RegisterUserResponse>()
+            // sign up
+            Mapper.CreateMap<User, SignUpResponse>()
                 .ForMember(r => r.FirstName, opt => opt.MapFrom(u => u.Profile.FirstName))
                 .ForMember(r => r.LastName, opt => opt.MapFrom(u => u.Profile.LastName))
                 .ForMember(r => r.NotifyOnOrderStatusChanged, opt => opt.MapFrom(u => u.Profile.NotifyOnOrderStatusChanged))
                 .ForMember(r => r.NotifyOnPackageStatusChanged, opt => opt.MapFrom(u => u.Profile.NotifyOnPackageStatusChanged));
-            Mapper.CreateMap<RegisterUserResponse, SignUpViewModel>();
-            ////Mapper.CreateMap<RegisterUserRequest, User>();
+            Mapper.CreateMap<SignUpResponse, SignUpViewModel>();
+
+            // sign in
+            Mapper.CreateMap<SignInViewModel, SignInRequest>();
+            Mapper.CreateMap<SignInResponse, SignInViewModel>();
+            ////Mapper.CreateMap<SignUpRequest, User>();
+
+            // roles
+            Mapper.CreateMap<Role, GetUserRolesResponse>();
+            Mapper.CreateMap<GetUserRolesResponse, RoleViewModel>();
 
             // profile
             Mapper.CreateMap<ProfileViewModel, UpdateProfileRequest>();

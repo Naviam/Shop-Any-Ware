@@ -12,7 +12,6 @@ namespace TdService.UI.Web.Controllers
     using System;
     using System.Collections.Generic;
     using System.Collections.Specialized;
-    using System.Resources;
     using System.Web.Mvc;
     using System.Xml;
 
@@ -20,6 +19,8 @@ namespace TdService.UI.Web.Controllers
     using TdService.Infrastructure.CookieStorage;
     using TdService.Infrastructure.Domain;
     using TdService.Infrastructure.Email;
+    using TdService.Model;
+    using TdService.Resources;
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging;
     using TdService.Services.Messaging.Membership;
@@ -90,7 +91,7 @@ namespace TdService.UI.Web.Controllers
         /// <summary>
         /// Defines a POST interface for submiting the SignIn form.
         /// </summary>
-        /// <param name="view">
+        /// <param name="model">
         /// Sign In Request object with username, password and remember me fields.
         /// </param>
         /// <returns>
@@ -98,39 +99,52 @@ namespace TdService.UI.Web.Controllers
         /// </returns>
         [HttpPost]
         [ValidateAntiForgeryToken(Salt = "signin")]
-        public ActionResult SignIn(SignInViewModel view)
+        public ActionResult SignIn(SignInViewModel model)
         {
-            if (this.ModelState.IsValid)
+            var result = new SignInViewModel();
+            var validator = new SignInViewModelValidator();
+            var validationResult = validator.Validate(model);
+            if (validationResult.IsValid)
             {
-                var validateUserRequest = new ValidateUserRequest
+                var validateUserRequest = model.ConvertToSignInRequest();
+                var response = this.membershipService.SignIn(validateUserRequest);
+                if (response.MessageType == MessageType.Success)
                 {
-                    Email = view.Email,
-                    Password = view.Password
-                };
-                var response = this.membershipService.ValidateUser(validateUserRequest);
+                    this.FormsAuthentication.SetAuthenticationToken(model.Email, false);
+                    this.SaveCredentialsToCookie(model);
+                    var userRolesResponse = this.membershipService.GetUserRoles(new GetUserRolesRequest { IdentityToken = model.Email });
+                    var roles = userRolesResponse.ConvertToRoleViewModelCollection();
+                    if (roles.Exists(r => r.Name == StandardRole.Shopper.ToString()))
+                    {
+                        return this.RedirectToAction("Dashboard", "Member");
+                    }
 
-                if (response.MessageType != MessageType.Error)
-                {
-                    this.FormsAuthentication.SetAuthenticationToken(view.Email, false);
-                    this.SaveCredentialsToCookie(view);
-                    return this.RedirectToAction("Dashboard", "Member");
+                    return this.RedirectToAction("Dashboard", "Admin");
                 }
 
-                var model = new SignInViewModel
+                result = response.ConvertToSignInViewModel();
+            }
+            else
+            {
+                result.MessageType = MessageType.Warning.ToString();
+                result.BrokenRules = new List<BusinessRule>();
+                foreach (var failure in validationResult.Errors)
                 {
-                    MessageType = response.MessageType.ToString(),
-                    Message = response.Message ?? string.Empty
-                };
-                if (response.ErrorCode != null)
-                {
-                    model.Message =
-                        (new ResourceManager(typeof(Resources.ErrorCodeResources))).GetString(response.ErrorCode);
+                    result.BrokenRules.Add(new BusinessRule(failure.PropertyName, failure.ErrorMessage));
                 }
-
-                this.ViewData.Model = model;
             }
 
-            return this.View();
+            if (string.IsNullOrWhiteSpace(result.Email))
+            {
+                result.Email = model.Email;
+            }
+
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = result
+            };
+            return jsonNetResult;
         }
 
         /// <summary>
@@ -148,7 +162,7 @@ namespace TdService.UI.Web.Controllers
         /// <summary>
         /// Process registration form data and create user's account
         /// </summary>
-        /// <param name="view">
+        /// <param name="model">
         /// The view model.
         /// </param>
         /// <returns>
@@ -156,20 +170,20 @@ namespace TdService.UI.Web.Controllers
         /// </returns>
         [HttpPost]
         [ValidateAntiForgeryToken(Salt = "signup")]
-        public ActionResult SignUp(SignUpViewModel view)
+        public ActionResult SignUp(SignUpViewModel model)
         {
             var result = new SignUpViewModel();
             var validator = new SignUpViewModelValidator();
-            var validationResult = validator.Validate(view);
+            var validationResult = validator.Validate(model);
             if (validationResult.IsValid)
             {
-                var request = new RegisterUserRequest
+                var request = new SignUpRequest
                 {
                     IdentityToken = null,
-                    Email = view.Email,
-                    Password = view.Password,
-                    FirstName = view.FirstName,
-                    LastName = view.LastName
+                    Email = model.Email,
+                    Password = model.Password,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName
                 };
 
                 var response = this.membershipService.SignUpShopper(request);
@@ -187,17 +201,17 @@ namespace TdService.UI.Web.Controllers
 
             if (string.IsNullOrWhiteSpace(result.Email))
             {
-                result.Email = view.Email;
+                result.Email = model.Email;
             }
 
             if (string.IsNullOrWhiteSpace(result.FirstName))
             {
-                result.FirstName = view.FirstName;
+                result.FirstName = model.FirstName;
             }
 
             if (string.IsNullOrWhiteSpace(result.LastName))
             {
-                result.LastName = view.LastName;
+                result.LastName = model.LastName;
             }
 
             var jsonNetResult = new JsonNetResult
@@ -218,7 +232,7 @@ namespace TdService.UI.Web.Controllers
         /// View with
         /// </returns>
         [HttpPost]
-        public JsonResult VerifyEmail(string email)
+        public ActionResult VerifyEmail(string email)
         {
             var response = this.membershipService.GetUser(new GetUserRequest { IdentityToken = email });
             if (response.User != null)
@@ -226,7 +240,12 @@ namespace TdService.UI.Web.Controllers
                 response.Message = Resources.Views.AccountViewResources.SignUpEmailOk;
             }
 
-            return this.Json(response);
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = response
+            };
+            return jsonNetResult;
         }
 
         /// <summary>
@@ -259,10 +278,10 @@ namespace TdService.UI.Web.Controllers
                 var request = new ChangePasswordLinkRequest { IdentityToken = view.Email };
                 this.membershipService.GenerateChangePasswordLink(request);
                 this.emailService.SendMail(
-                    "noreply@shopanyware.com",
+                    EmailResources.EmailActivationFrom,
                     view.Email,
-                    Resources.EmailResources.ResetPasswordSubject,
-                    Resources.EmailResources.ResetPasswordBody);
+                    EmailResources.ResetPasswordSubject,
+                    EmailResources.ResetPasswordBody);
             }
 
             return this.View(view);
@@ -293,7 +312,7 @@ namespace TdService.UI.Web.Controllers
             {
                 var values = new NameValueCollection(3);
                 values["Email"] = view.Email;
-                values["Password"] = view.Password;
+                ////values["Password"] = view.Password;
                 values["RememberMe"] = view.RememberMe ? "yes" : "no";
                 this.cookieStorageService.SaveCollection(
                     "shopanyware_login", values, DateTime.UtcNow.AddYears(20));
@@ -302,7 +321,7 @@ namespace TdService.UI.Web.Controllers
             {
                 var values = new NameValueCollection(3);
                 values["Email"] = string.Empty;
-                values["Password"] = string.Empty;
+                ////values["Password"] = string.Empty;
                 values["RememberMe"] = string.Empty;
                 this.cookieStorageService.SaveCollection(
                     "shopanyware_login", values, DateTime.UtcNow.AddDays(-2));
@@ -321,7 +340,7 @@ namespace TdService.UI.Web.Controllers
             if (values != null)
             {
                 view.Email = values["Email"];
-                view.Password = values["Password"];
+                ////view.Password = values["Password"];
                 view.RememberMe = values["RememberMe"] == "yes";
             }
         }

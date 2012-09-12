@@ -14,6 +14,12 @@ namespace TdService.Model.Membership
     public static class UserBusinessRules
     {
         /// <summary>
+        /// This rule ensures that user is valid.
+        /// </summary>
+        public static readonly BusinessRule UserNotValid =
+            new BusinessRule("Email", ErrorCode.UserNotValid.ToString());
+
+        /// <summary>
         /// This rule ensures that email for user is set.
         /// </summary>
         public static readonly BusinessRule EmailRequired =

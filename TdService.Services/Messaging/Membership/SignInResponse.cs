@@ -1,22 +1,18 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ForgotPasswordViewModel.cs" company="TdService">
+// <copyright file="SignInResponse.cs" company="TdService">
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
-//   Forgot Password View Model.
+//   Validate user response.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.UI.Web.ViewModels.Account
+namespace TdService.Services.Messaging.Membership
 {
     /// <summary>
-    /// Forgot Password View Model.
+    /// Validate user response.
     /// </summary>
-    public class ForgotPasswordViewModel : ViewModelBase
+    public class SignInResponse : ResponseBase
     {
-        /// <summary>
-        /// Gets or sets Email.
-        /// </summary>
-        public string Email { get; set; }
     }
 }

@@ -80,6 +80,8 @@
     <Compile Include="Messaging\Item\GetPackageItemsRequest.cs" />
     <Compile Include="Messaging\Item\GetPackageItemsResponse.cs" />
     <Compile Include="Messaging\Item\ItemDto.cs" />
+    <Compile Include="Messaging\Membership\GetUserRolesRequest.cs" />
+    <Compile Include="Messaging\Membership\GetUserRolesResponse.cs" />
     <Compile Include="Messaging\Order\RemoveOrderRequest.cs" />
     <Compile Include="Messaging\Order\RemoveOrderResponse.cs" />
     <Compile Include="Interfaces\IOrderService.cs" />
@@ -95,7 +97,7 @@
     <Compile Include="Messaging\Membership\GetProfileRequest.cs" />
     <Compile Include="Messaging\Membership\LoginUserResponse.cs" />
     <Compile Include="Messaging\Membership\UpdateProfileResponse.cs" />
-    <Compile Include="Messaging\Membership\ValidateUserRequest.cs" />
+    <Compile Include="Messaging\Membership\SignInRequest.cs" />
     <Compile Include="Messaging\Address\GetDeliveryAddressesRequest.cs" />
     <Compile Include="Messaging\Address\GetDeliveryAddressesResponse.cs" />
     <Compile Include="Interfaces\IAddressService.cs" />
@@ -103,9 +105,9 @@
     <Compile Include="Messaging\Membership\GetUserResponse.cs" />
     <Compile Include="Interfaces\IMembershipService.cs" />
     <Compile Include="Messaging\Membership\LoginUserRequest.cs" />
-    <Compile Include="Messaging\Membership\RegisterUserRequest.cs" />
-    <Compile Include="Messaging\Membership\RegisterUserResponse.cs" />
-    <Compile Include="Messaging\Membership\ValidateUserResponse.cs" />
+    <Compile Include="Messaging\Membership\SignUpRequest.cs" />
+    <Compile Include="Messaging\Membership\SignUpResponse.cs" />
+    <Compile Include="Messaging\Membership\SignInResponse.cs" />
     <Compile Include="Messaging\MessageType.cs" />
     <Compile Include="Messaging\Order\AddOrderRequest.cs" />
     <Compile Include="Messaging\Order\AddOrderResponse.cs" />

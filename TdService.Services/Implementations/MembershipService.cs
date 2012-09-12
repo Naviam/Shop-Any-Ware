@@ -7,9 +7,11 @@
 namespace TdService.Services.Implementations
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Text;
 
+    using TdService.Infrastructure.Domain;
     using TdService.Infrastructure.Email;
     using TdService.Infrastructure.Logging;
     using TdService.Model;
@@ -103,9 +105,8 @@ namespace TdService.Services.Implementations
         /// <returns>
         /// Sign up shopper response.
         /// </returns>
-        public RegisterUserResponse SignUpShopper(RegisterUserRequest request)
+        public SignUpResponse SignUpShopper(SignUpRequest request)
         {
-            //// var user = request.ConvertToUser();
             var role = new Role { Name = StandardRole.Shopper.ToString(), Description = string.Empty };
             var user = new User
             {
@@ -120,7 +121,7 @@ namespace TdService.Services.Implementations
                 },
                 ActivationCode = Guid.NewGuid()
             };
-            var response = new RegisterUserResponse { BrokenRules = user.Profile.GetBrokenRules().ToList() };
+            var response = new SignUpResponse { BrokenRules = user.Profile.GetBrokenRules().ToList() };
             response.BrokenRules.AddRange(role.GetBrokenRules());
             response.BrokenRules.AddRange(user.GetBrokenRules());
 
@@ -166,9 +167,9 @@ namespace TdService.Services.Implementations
         /// <returns>
         /// Register user response.
         /// </returns>
-        public RegisterUserResponse RegisterUser(RegisterUserRequest request)
+        public SignUpResponse RegisterUser(SignUpRequest request)
         {
-            var response = new RegisterUserResponse();
+            var response = new SignUpResponse();
             var user = new User
                 {
                     Email = request.Email,
@@ -204,7 +205,7 @@ namespace TdService.Services.Implementations
             catch (InvalidUserException)
             {
                 response.MessageType = MessageType.Error;
-                response.ErrorCode = "EmailExists";
+                response.ErrorCode = ErrorCode.UserEmailExists.ToString();
             }
 
             return response;
@@ -219,17 +220,17 @@ namespace TdService.Services.Implementations
         /// <returns>
         /// True if user exists in db, otherwise false.
         /// </returns>
-        public ValidateUserResponse ValidateUser(ValidateUserRequest request)
+        public SignInResponse SignIn(SignInRequest request)
         {
-            var response = new ValidateUserResponse();
+            var response = new SignInResponse();
             if (this.userRepository.ValidateUser(request.Email, request.Password))
             {
-                response.MessageType = MessageType.Success;
                 response.Message = MembershipResources.ValidationSuccess;
                 return response;
             }
 
-            response.ErrorCode = "NotValidUser";
+            response.MessageType = MessageType.Error;
+            response.ErrorCode = ErrorCode.UserNotValid.ToString();
             return response;
         }
 
@@ -252,10 +253,33 @@ namespace TdService.Services.Implementations
             if (response.User == null)
             {
                 response.MessageType = MessageType.Error;
-                response.ErrorCode = "UserNotFound";
+                response.ErrorCode = ErrorCode.UserNotFound.ToString();
             }
 
             return response;
+        }
+
+        /// <summary>
+        /// The get user roles.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The Get user roles response collection.
+        /// </returns>
+        public List<GetUserRolesResponse> GetUserRoles(GetUserRolesRequest request)
+        {
+            var user = this.userRepository.GetUserByEmail(request.IdentityToken);
+            if (user != null)
+            {
+                if (user.Roles != null)
+                {
+                    return user.Roles.ConvertToGetUserRolesResponseCollection();
+                }
+            }
+
+            return new List<GetUserRolesResponse>();
         }
 
         /// <summary>
@@ -292,12 +316,12 @@ namespace TdService.Services.Implementations
                 }
 
                 response.MessageType = MessageType.Error;
-                response.ErrorCode = "ProfileNotFound";
+                response.ErrorCode = ErrorCode.ProfileNotFound.ToString();
                 return response;
             }
 
             response.MessageType = MessageType.Error;
-            response.ErrorCode = "UserNotFound";
+            response.ErrorCode = ErrorCode.UserNotFound.ToString();
             return response;
         }
 
@@ -332,13 +356,13 @@ namespace TdService.Services.Implementations
         }
 
         /// <summary>
-        /// Generate change password link.
+        /// The generate change password link.
         /// </summary>
         /// <param name="request">
-        /// The generate change pasword link request.
+        /// The request.
         /// </param>
         /// <returns>
-        /// The response with generated link.
+        /// The TdService.Services.Messaging.Membership.ChangePasswordLinkResponse.
         /// </returns>
         public ChangePasswordLinkResponse GenerateChangePasswordLink(ChangePasswordLinkRequest request)
         {

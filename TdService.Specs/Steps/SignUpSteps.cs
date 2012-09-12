@@ -9,6 +9,7 @@
 
 namespace TdService.Specs.Steps
 {
+    using System.Collections.Generic;
     using System.Diagnostics;
     using System.Linq;
 
@@ -106,9 +107,16 @@ namespace TdService.Specs.Steps
                 context.Profiles.Add(profile);
                 context.SaveChanges();
 
+                var role = context.Roles.SingleOrDefault(r => r.Name == "Shopper")
+                           ?? context.Roles.Add(new Role { Name = "Shopper" });
+
                 user = new User
                     {
-                        Email = p0, Password = "11111111", Profile = profile, Wallet = new Wallet { Amount = 0m } 
+                        Email = p0,
+                        Password = "ruinruin",
+                        Profile = profile,
+                        Wallet = new Wallet { Amount = 0m },
+                        Roles = new List<Role> { role }
                     };
 
                 context.Users.Add(user);

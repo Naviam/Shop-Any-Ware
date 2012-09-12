@@ -26,6 +26,11 @@ namespace TdService.UI.Web.ViewModels
         public string MessageType { get; set; }
 
         /// <summary>
+        /// Gets or sets the error code.
+        /// </summary>
+        public string ErrorCode { get; set; }
+
+        /// <summary>
         /// Gets or sets the model errors.
         /// </summary>
         public List<BusinessRule> BrokenRules { get; set; }

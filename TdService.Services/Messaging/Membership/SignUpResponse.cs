@@ -1,18 +1,18 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright file="RegisterUserResponse.cs" company="TdService">
+// <copyright file="SignUpResponse.cs" company="TdService">
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
-//   Defines the RegisterUserResponse type.
+//   The sign up response.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace TdService.Services.Messaging.Membership
 {
     /// <summary>
-    /// Register user response for service.
+    /// The sign up response.
     /// </summary>
-    public class RegisterUserResponse : ResponseBase
+    public class SignUpResponse : ResponseBase
     {
         /// <summary>
         /// Gets or sets the id.

@@ -1,22 +1,27 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ForgotPasswordViewModel.cs" company="TdService">
+// <copyright file="RoleViewModel.cs" company="TdService">
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
-//   Forgot Password View Model.
+//   The role view model.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace TdService.UI.Web.ViewModels.Account
 {
     /// <summary>
-    /// Forgot Password View Model.
+    /// The role view model.
     /// </summary>
-    public class ForgotPasswordViewModel : ViewModelBase
+    public class RoleViewModel : ViewModelBase
     {
         /// <summary>
-        /// Gets or sets Email.
+        /// Gets or sets the id.
         /// </summary>
-        public string Email { get; set; }
+        public int Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets the role name.
+        /// </summary>
+        public string Name { get; set; }
     }
 }

@@ -1,9 +1,9 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ValidateUserRequest.cs" company="TdService">
+// <copyright file="SignInRequest.cs" company="TdService">
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
-//   Defines the ValidateUserRequest type.
+//   Validate user request object.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -12,7 +12,7 @@ namespace TdService.Services.Messaging.Membership
     /// <summary>
     /// Validate user request object.
     /// </summary>
-    public class ValidateUserRequest : RequestBase
+    public class SignInRequest : RequestBase
     {
         /// <summary>
         /// Gets or sets Email.
