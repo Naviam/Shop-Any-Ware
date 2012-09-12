@@ -31,15 +31,11 @@ namespace TdService.UI.Web.ViewModels.Account
         /// <summary>
         /// Gets or sets First Name.
         /// </summary>
-        [Required(ErrorMessageResourceName = "RequiredFirstName", ErrorMessageResourceType = typeof(Resources.ErrorCodeResources))]
-        [StringLength(64, ErrorMessageResourceName = "MaxLengthFirstName", ErrorMessageResourceType = typeof(Resources.ErrorCodeResources))]
         public string FirstName { get; set; }
 
         /// <summary>
         /// Gets or sets Last Name.
         /// </summary>
-        [Required(ErrorMessageResourceName = "RequiredLastName", ErrorMessageResourceType = typeof(Resources.ErrorCodeResources))]
-        [StringLength(64, ErrorMessageResourceName = "MaxLengthLastName", ErrorMessageResourceType = typeof(Resources.ErrorCodeResources))]
         public string LastName { get; set; }
 
         /// <summary>
