@@ -55,7 +55,7 @@ namespace TdService.UI.Web.MVC.App_Start
         /// </param>
         private static void InitializeContainer(Container container)
         {
-            container.Register<ILogger, Log4NetAdapter>();
+            container.Register<ILogger, DummyLogger>();
 
             // services
             container.Register<IFormsAuthentication, AspFormsAuthentication>();
