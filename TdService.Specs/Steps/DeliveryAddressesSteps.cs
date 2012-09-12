@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="DeliveryAddressesFeatureSteps.cs" company="TdService">
+// <copyright file="DeliveryAddressesSteps.cs" company="TdService">
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
@@ -35,12 +35,12 @@ namespace TdService.Specs.Steps
     /// The delivery addresses feature steps.
     /// </summary>
     [Binding]
-    public class DeliveryAddressesFeatureSteps
+    public class DeliveryAddressesSteps
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="DeliveryAddressesFeatureSteps"/> class.
+        /// Initializes a new instance of the <see cref="DeliveryAddressesSteps"/> class.
         /// </summary>
-        public DeliveryAddressesFeatureSteps()
+        public DeliveryAddressesSteps()
         {
             AutoMapperConfiguration.Configure();
         }

@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ShopperAccountCreationSteps.cs" company="TdService">
+// <copyright file="SignUpSteps.cs" company="TdService">
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
@@ -31,12 +31,12 @@ namespace TdService.Specs.Steps
     /// The shopper account creation.
     /// </summary>
     [Binding]
-    public class ShopperAccountCreationSteps
+    public class SignUpSteps
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ShopperAccountCreationSteps"/> class.
+        /// Initializes a new instance of the <see cref="SignUpSteps"/> class.
         /// </summary>
-        public ShopperAccountCreationSteps()
+        public SignUpSteps()
         {
             AutoMapperConfiguration.Configure();
             ////Mapper.AssertConfigurationIsValid();

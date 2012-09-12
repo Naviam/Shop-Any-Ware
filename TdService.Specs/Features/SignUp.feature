@@ -1,10 +1,10 @@
 ﻿@signup
-Feature: Shopper Account Creation
+Feature: Sign Up
 	In order to start using ShopAnyWare service
 	As an anonymous user
 	I want to be able to register as a shopper and activate my personal account
 
-Scenario: Create new account
+Scenario: Shoppers sign up
 	Given I have not been authenticated yet
 	When I fill sign up form with the following data
 	| Email          | Password | Password Confirm | First Name | Last Name |

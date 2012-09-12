@@ -71,17 +71,22 @@
     <Compile Include="AccountIntegrationTests.cs" />
     <Compile Include="Fakes\FakeLogger.cs" />
     <Compile Include="Fakes\Mail.cs" />
-    <Compile Include="Features\ShopperAccountCreation.feature.cs">
+    <Compile Include="Features\SignIn.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ShopperAccountCreation.feature</DependentUpon>
+      <DependentUpon>SignIn.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\SignUp.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SignUp.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\DeliveryAddresses.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DeliveryAddresses.feature</DependentUpon>
     </Compile>
-    <Compile Include="Steps\DeliveryAddressesFeatureSteps.cs" />
+    <Compile Include="Steps\DeliveryAddressesSteps.cs" />
     <Compile Include="Fakes\FakeAddressService.cs" />
     <Compile Include="Fakes\FakeCookieProvider.cs" />
     <Compile Include="Fakes\FakeEmailService.cs" />
@@ -90,16 +95,21 @@
     <Compile Include="OrdersIntegrationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShopAnyWareTestInitilizer.cs" />
-    <Compile Include="Steps\ShopperAccountCreationSteps.cs" />
+    <Compile Include="Steps\SignInSteps.cs" />
+    <Compile Include="Steps\SignUpSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <Content Include="App_Data\retailers.xls">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Features\ShopperAccountCreation.feature">
+    <None Include="Features\SignIn.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>ShopperAccountCreation.feature.cs</LastGenOutput>
+      <LastGenOutput>SignIn.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\SignUp.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>SignUp.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\DeliveryAddresses.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

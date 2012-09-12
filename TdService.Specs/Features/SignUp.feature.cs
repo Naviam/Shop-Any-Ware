@@ -19,21 +19,21 @@ namespace TdService.Specs.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "1.9.0.77")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Shopper Account Creation")]
+    [NUnit.Framework.DescriptionAttribute("Sign Up")]
     [NUnit.Framework.CategoryAttribute("signup")]
-    public partial class ShopperAccountCreationFeature
+    public partial class SignUpFeature
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "ShopperAccountCreation.feature"
+#line 1 "SignUp.feature"
 #line hidden
         
         [NUnit.Framework.TestFixtureSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Shopper Account Creation", "In order to start using ShopAnyWare service\r\nAs an anonymous user\r\nI want to be a" +
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Sign Up", "In order to start using ShopAnyWare service\r\nAs an anonymous user\r\nI want to be a" +
                     "ble to register as a shopper and activate my personal account", ProgrammingLanguage.CSharp, new string[] {
                         "signup"});
             testRunner.OnFeatureStart(featureInfo);
@@ -68,10 +68,10 @@ namespace TdService.Specs.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Create new account")]
-        public virtual void CreateNewAccount()
+        [NUnit.Framework.DescriptionAttribute("Shoppers sign up")]
+        public virtual void ShoppersSignUp()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create new account", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Shoppers sign up", ((string[])(null)));
 #line 7
 this.ScenarioSetup(scenarioInfo);
 #line 8
