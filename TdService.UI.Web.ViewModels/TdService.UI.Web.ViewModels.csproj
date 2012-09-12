@@ -51,6 +51,7 @@
     <Compile Include="Account\MainViewModel.cs" />
     <Compile Include="Account\ProfileViewModel.cs" />
     <Compile Include="Account\SignInViewModel.cs" />
+    <Compile Include="Account\SignInViewModelValidator.cs" />
     <Compile Include="Account\SignUpViewModel.cs" />
     <Compile Include="Account\SignUpViewModelValidator.cs" />
     <Compile Include="ModelError.cs" />

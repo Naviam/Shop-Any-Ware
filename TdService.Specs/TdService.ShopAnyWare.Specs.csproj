@@ -68,7 +68,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountIntegrationTests.cs" />
     <Compile Include="Fakes\FakeLogger.cs" />
     <Compile Include="Fakes\Mail.cs" />
     <Compile Include="Features\SignIn.feature.cs">
