@@ -17,6 +17,7 @@ namespace TdService.Specs
     using TdService.Infrastructure.Authentication;
     using TdService.Infrastructure.CookieStorage;
     using TdService.Infrastructure.Email;
+    using TdService.Infrastructure.Logging;
     using TdService.Model.Membership;
     using TdService.Repository.MsSql;
     using TdService.Repository.MsSql.Repositories;
@@ -68,6 +69,11 @@ namespace TdService.Specs
         private IEmailService emailService;
 
         /// <summary>
+        /// The logger.
+        /// </summary>
+        private ILogger logger;
+
+        /// <summary>
         /// The cookie storage service.
         /// </summary>
         private ICookieStorageService cookieStorageService;
@@ -87,7 +93,8 @@ namespace TdService.Specs
             this.roleRepository = new RoleRepository(this.context);
             this.profileRepository = new ProfileRepository(this.context);
             this.membershipRepository = new MembershipRepository();
-            this.emailService = new SmtpService();
+            this.emailService = new FakeEmailService();
+            this.logger = new FakeLogger();
             this.cookieStorageService = new FakeCookieProvider();
         }
 
@@ -98,7 +105,7 @@ namespace TdService.Specs
         public void ShouldBeAbleToSignIn()
         {
             // arrange
-            var membershipService = new MembershipService(this.userRepository, this.roleRepository, this.profileRepository, this.membershipRepository);
+            var membershipService = new MembershipService(this.logger, this.emailService, this.userRepository, this.roleRepository, this.profileRepository, this.membershipRepository);
             var controller = new AccountController(
                 membershipService,
                 this.emailService,
@@ -126,7 +133,7 @@ namespace TdService.Specs
         public void ShouldBeAbleToSignUp()
         {
             // arrange
-            var membershipService = new MembershipService(this.userRepository, this.roleRepository, this.profileRepository, this.membershipRepository);
+            var membershipService = new MembershipService(this.logger, this.emailService, this.userRepository, this.roleRepository, this.profileRepository, this.membershipRepository);
             var controller = new AccountController(
                 membershipService,
                 this.emailService,

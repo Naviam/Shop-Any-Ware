@@ -121,17 +121,17 @@
     <value>http://{0}/account/activate/{1}/{2}</value>
   </data>
   <data name="EmailActivationFrom" xml:space="preserve">
-    <value>noreply@shopanyware.com</value>
+    <value>noreply@shopanyware.ru</value>
   </data>
   <data name="EmailActivationSubject" xml:space="preserve">
-    <value>Email address confirmation</value>
+    <value>Пожалуйста, подтвердите Ваш e-mail адрес</value>
   </data>
   <data name="ResetPasswordBody" xml:space="preserve">
-    <value>To reset your password on ShopAnyWare.com please follow instructions on this link: http://shopfans.ru/user/password.html?rp=9fa3db5b4b29f0463cf34432ef7d0feea33b4212
+    <value>To reset your password on ShopAnyWare.com please follow instructions on this link: http://{0}/account/resetpassword/{9fa3db5b4b29f0463cf34432ef7d0feea33b4212}
 
 Please note that this link will be valid for 30 minutes only.</value>
   </data>
   <data name="ResetPasswordSubject" xml:space="preserve">
-    <value>Password recovery for ShopAnyWare.com</value>
+    <value>Восстановление пароля для ShopAnyWare.com</value>
   </data>
 </root>

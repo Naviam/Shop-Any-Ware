@@ -843,6 +843,8 @@ this.ScenarioSetup(scenarioInfo);
                         "Id"});
             table18.AddRow(new string[] {
                         "1"});
+            table18.AddRow(new string[] {
+                        "5"});
 #line 110
  testRunner.When("I remove the following delivery addresses", ((string)(null)), table18, "When ");
 #line hidden
@@ -874,7 +876,21 @@ this.ScenarioSetup(scenarioInfo);
                         "",
                         "",
                         "Success"});
-#line 113
+            table19.AddRow(new string[] {
+                        "0",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "Error"});
+#line 114
  testRunner.Then("I should have the following delivery addresses as a result", ((string)(null)), table19, "Then ");
 #line hidden
             this.ScenarioCleanup();

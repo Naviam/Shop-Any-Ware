@@ -110,6 +110,8 @@ Scenario: Remove delivery address
 	When I remove the following delivery addresses
 	| Id |
 	| 1  |
+	| 5  |
 	Then I should have the following delivery addresses as a result
-	| Id | FirstName | LastName | AddressName | AddressLine1      | AddressLine2 | City  | Country | State | Region | ZipCode | Phone         | MessageType |
-	| 1  |           |          |             |                   |              |       |         |       |        |         |               | Success     |
+	| Id | FirstName | LastName | AddressName | AddressLine1 | AddressLine2 | City | Country | State | Region | ZipCode | Phone | MessageType |
+	| 1  |           |          |             |              |              |      |         |       |        |         |       | Success     |
+	| 0  |           |          |             |              |              |      |         |       |        |         |       | Error       |

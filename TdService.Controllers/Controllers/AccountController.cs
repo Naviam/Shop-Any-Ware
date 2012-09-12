@@ -177,7 +177,7 @@ namespace TdService.UI.Web.Controllers
             }
             else
             {
-                result.MessageType = MessageType.Error.ToString();
+                result.MessageType = MessageType.Warning.ToString();
                 result.BrokenRules = new List<BusinessRule>();
                 foreach (var failure in validationResult.Errors)
                 {

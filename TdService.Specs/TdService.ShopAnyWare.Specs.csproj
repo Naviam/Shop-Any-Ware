@@ -70,6 +70,7 @@
   <ItemGroup>
     <Compile Include="AccountIntegrationTests.cs" />
     <Compile Include="Fakes\FakeLogger.cs" />
+    <Compile Include="Fakes\Mail.cs" />
     <Compile Include="Features\ShopperAccountCreation.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

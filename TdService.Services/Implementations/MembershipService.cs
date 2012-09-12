@@ -10,6 +10,8 @@ namespace TdService.Services.Implementations
     using System.Linq;
     using System.Text;
 
+    using TdService.Infrastructure.Email;
+    using TdService.Infrastructure.Logging;
     using TdService.Model;
     using TdService.Model.Membership;
     using TdService.Resources;
@@ -46,8 +48,24 @@ namespace TdService.Services.Implementations
         private readonly IMembershipRepository membershipRepository;
 
         /// <summary>
+        /// The logger.
+        /// </summary>
+        private readonly ILogger logger;
+
+        /// <summary>
+        /// The email service.
+        /// </summary>
+        private readonly IEmailService emailService;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="MembershipService"/> class.
         /// </summary>
+        /// <param name="logger">
+        /// The logger.
+        /// </param>
+        /// <param name="emailService">
+        /// The email Service.
+        /// </param>
         /// <param name="userRepository">
         /// The user repository.
         /// </param>
@@ -61,11 +79,15 @@ namespace TdService.Services.Implementations
         /// The membership Repository.
         /// </param>
         public MembershipService(
+            ILogger logger,
+            IEmailService emailService,
             IUserRepository userRepository,
             IRoleRepository roleRepository,
             IProfileRepository profileRepository,
             IMembershipRepository membershipRepository)
         {
+            this.logger = logger;
+            this.emailService = emailService;
             this.userRepository = userRepository;
             this.roleRepository = roleRepository;
             this.profileRepository = profileRepository;
@@ -104,20 +126,35 @@ namespace TdService.Services.Implementations
 
             if (response.BrokenRules.Any())
             {
-                response.MessageType = MessageType.Error;
+                response.MessageType = MessageType.Warning;
                 return response;
             }
 
             var userExists = this.membershipRepository.GetUser(request.Email);
             if (userExists != null)
             {
-                response.MessageType = MessageType.Error;
+                response.MessageType = MessageType.Warning;
                 response.BrokenRules.Add(UserBusinessRules.EmailExists);
                 return response;
             }
 
-            var result = this.membershipRepository.CreateUser(user, role);
-            return result.ConvertToRegisterUserResponse();
+            try
+            {
+                var result = this.membershipRepository.CreateUser(user, role);
+                this.emailService.SendMail(
+                    EmailResources.EmailActivationFrom,
+                    result.Email,
+                    EmailResources.EmailActivationSubject,
+                    string.Format(EmailResources.EmailActivationBody, "shopanyware.com", result.Id, result.ActivationCode));
+                return result.ConvertToRegisterUserResponse();
+            }
+            catch (Exception e)
+            {
+                response.MessageType = MessageType.Error;
+                response.Message = CommonResources.DeliveryAddressRemoveErrorMessage;
+                this.logger.Error(CommonResources.DeliveryAddressRemoveErrorMessage, e);
+                return response;
+            }
         }
 
         /// <summary>

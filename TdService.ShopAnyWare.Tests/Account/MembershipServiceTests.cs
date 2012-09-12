@@ -8,11 +8,14 @@ namespace TdService.ShopAnyWare.Tests.Account
 {
     using NUnit.Framework;
 
+    using TdService.Infrastructure.Email;
+    using TdService.Infrastructure.Logging;
     using TdService.Model.Membership;
     using TdService.Repository.MsSql.Repositories;
     using TdService.Services.Implementations;
     using TdService.Services.Messaging;
     using TdService.Services.Messaging.Membership;
+    using TdService.ShopAnyWare.Tests.Mocks;
     using TdService.ShopAnyWare.Tests.Orders;
 
     /// <summary>
@@ -42,6 +45,16 @@ namespace TdService.ShopAnyWare.Tests.Account
         private IProfileRepository profileRepository;
 
         /// <summary>
+        /// The logger.
+        /// </summary>
+        private ILogger logger;
+
+        /// <summary>
+        /// The email service.
+        /// </summary>
+        private IEmailService emailService;
+
+        /// <summary>
         /// Initial setup for membership service tests.
         /// </summary>
         [TestFixtureSetUp]
@@ -51,6 +64,8 @@ namespace TdService.ShopAnyWare.Tests.Account
             this.profileRepository = new FakeProfileRepository();
             this.roleRepository = new FakeRoleRepository();
             this.membershipRepository = new MembershipRepository();
+            this.emailService = new FakeEmailService();
+            this.logger = new FakeLogger();
         }
 
         /// <summary>
@@ -60,7 +75,7 @@ namespace TdService.ShopAnyWare.Tests.Account
         public void ShouldBeAbleToGetProfileIfEmailExists()
         {
             // arrange
-            var service = new MembershipService(this.userRepository, this.roleRepository, this.profileRepository, this.membershipRepository);
+            var service = new MembershipService(this.logger, this.emailService, this.userRepository, this.roleRepository, this.profileRepository, this.membershipRepository);
             var request = new GetProfileRequest { IdentityToken = "vhatalski@naviam.com" };
 
             // act
@@ -77,7 +92,7 @@ namespace TdService.ShopAnyWare.Tests.Account
         public void ShouldNotBeAbleToGetProfileIfEmailDoesNotExist()
         {
             // arrange
-            var service = new MembershipService(this.userRepository, this.roleRepository, this.profileRepository, this.membershipRepository);
+            var service = new MembershipService(this.logger, this.emailService, this.userRepository, this.roleRepository, this.profileRepository, this.membershipRepository);
             var request = new GetProfileRequest { IdentityToken = "vhatalski2@naviam.com" };
 
             // act

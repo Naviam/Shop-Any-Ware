@@ -108,6 +108,8 @@ this.ScenarioSetup(scenarioInfo);
  testRunner.Then("I should have the result as follows", ((string)(null)), table2, "Then ");
 #line 15
  testRunner.And("activation code should be generated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 16
+ testRunner.And("email with activation code should be sent to registration email address", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -117,11 +119,11 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void AccountAlreadyExists()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Account already exists", ((string[])(null)));
-#line 17
-this.ScenarioSetup(scenarioInfo);
 #line 18
- testRunner.Given("I have not been authenticated yet", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+this.ScenarioSetup(scenarioInfo);
 #line 19
+ testRunner.Given("I have not been authenticated yet", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 20
  testRunner.And("The \'vhatalski@naviam.com\' account already exists", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -136,7 +138,7 @@ this.ScenarioSetup(scenarioInfo);
                         "ruinruin",
                         "Vitali",
                         "Hatalski"});
-#line 20
+#line 21
  testRunner.When("I fill sign up form with the following data", ((string)(null)), table3, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
@@ -148,8 +150,8 @@ this.ScenarioSetup(scenarioInfo);
                         "vhatalski@naviam.com",
                         "Vitali",
                         "Hatalski",
-                        "Error"});
-#line 23
+                        "Warning"});
+#line 24
  testRunner.Then("I should have the result as follows", ((string)(null)), table4, "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -158,7 +160,7 @@ this.ScenarioSetup(scenarioInfo);
             table5.AddRow(new string[] {
                         "Email",
                         "UserEmailExists"});
-#line 26
+#line 27
  testRunner.And("the signup view model should have following errors", ((string)(null)), table5, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -169,9 +171,9 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void EmailAndPasswordAreRequired()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Email and password are required", ((string[])(null)));
-#line 30
-this.ScenarioSetup(scenarioInfo);
 #line 31
+this.ScenarioSetup(scenarioInfo);
+#line 32
  testRunner.Given("I have not been authenticated yet", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
@@ -186,7 +188,7 @@ this.ScenarioSetup(scenarioInfo);
                         "",
                         "Vitali",
                         "Hatalski"});
-#line 32
+#line 33
  testRunner.When("I fill sign up form with the following data", ((string)(null)), table6, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
@@ -198,8 +200,8 @@ this.ScenarioSetup(scenarioInfo);
                         "",
                         "Vitali",
                         "Hatalski",
-                        "Error"});
-#line 35
+                        "Warning"});
+#line 36
  testRunner.Then("I should have the result as follows", ((string)(null)), table7, "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
@@ -214,7 +216,7 @@ this.ScenarioSetup(scenarioInfo);
             table8.AddRow(new string[] {
                         "PasswordConfirm",
                         "UserPasswordConfirmRequired"});
-#line 38
+#line 39
  testRunner.And("the signup view model should have following errors", ((string)(null)), table8, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -225,9 +227,9 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void FirstAndLastNamesAreRequired()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("First and Last names are required", ((string[])(null)));
-#line 44
-this.ScenarioSetup(scenarioInfo);
 #line 45
+this.ScenarioSetup(scenarioInfo);
+#line 46
  testRunner.Given("I have not been authenticated yet", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
@@ -242,7 +244,7 @@ this.ScenarioSetup(scenarioInfo);
                         "ruinruin",
                         "",
                         ""});
-#line 46
+#line 47
  testRunner.When("I fill sign up form with the following data", ((string)(null)), table9, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
@@ -254,8 +256,8 @@ this.ScenarioSetup(scenarioInfo);
                         "hautama@tut.by",
                         "",
                         "",
-                        "Error"});
-#line 49
+                        "Warning"});
+#line 50
  testRunner.Then("I should have the result as follows", ((string)(null)), table10, "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
@@ -267,7 +269,7 @@ this.ScenarioSetup(scenarioInfo);
             table11.AddRow(new string[] {
                         "LastName",
                         "ProfileLastNameRequired"});
-#line 52
+#line 53
  testRunner.And("the signup view model should have following errors", ((string)(null)), table11, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -278,9 +280,9 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void FirstAndLastNamesShouldBeLessThan21Chars()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("First and Last names should be less than 21 chars", ((string[])(null)));
-#line 57
-this.ScenarioSetup(scenarioInfo);
 #line 58
+this.ScenarioSetup(scenarioInfo);
+#line 59
  testRunner.Given("I have not been authenticated yet", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
@@ -295,7 +297,7 @@ this.ScenarioSetup(scenarioInfo);
                         "ruinruin",
                         "First name longer than 21 chars",
                         "Last name longer than 21 chars"});
-#line 59
+#line 60
  testRunner.When("I fill sign up form with the following data", ((string)(null)), table12, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
@@ -307,8 +309,8 @@ this.ScenarioSetup(scenarioInfo);
                         "hautama@tut.by",
                         "First name longer than 21 chars",
                         "Last name longer than 21 chars",
-                        "Error"});
-#line 62
+                        "Warning"});
+#line 63
  testRunner.Then("I should have the result as follows", ((string)(null)), table13, "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
@@ -320,7 +322,7 @@ this.ScenarioSetup(scenarioInfo);
             table14.AddRow(new string[] {
                         "LastName",
                         "ProfileLastNameMaxLength"});
-#line 65
+#line 66
  testRunner.And("the signup view model should have following errors", ((string)(null)), table14, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -331,9 +333,9 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void EmailIsInvalid()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Email is invalid", ((string[])(null)));
-#line 70
-this.ScenarioSetup(scenarioInfo);
 #line 71
+this.ScenarioSetup(scenarioInfo);
+#line 72
  testRunner.Given("I have not been authenticated yet", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
@@ -348,7 +350,7 @@ this.ScenarioSetup(scenarioInfo);
                         "ruinruin",
                         "Vitali",
                         "Hatalski"});
-#line 72
+#line 73
  testRunner.When("I fill sign up form with the following data", ((string)(null)), table15, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
@@ -360,8 +362,8 @@ this.ScenarioSetup(scenarioInfo);
                         "hautamatut.by",
                         "Vitali",
                         "Hatalski",
-                        "Error"});
-#line 75
+                        "Warning"});
+#line 76
  testRunner.Then("I should have the result as follows", ((string)(null)), table16, "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
@@ -370,7 +372,7 @@ this.ScenarioSetup(scenarioInfo);
             table17.AddRow(new string[] {
                         "Email",
                         "UserEmailInvalid"});
-#line 78
+#line 79
  testRunner.And("the signup view model should have following errors", ((string)(null)), table17, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -381,9 +383,9 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void PasswordConfirmDoesNotMatch()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Password Confirm does not match", ((string[])(null)));
-#line 82
-this.ScenarioSetup(scenarioInfo);
 #line 83
+this.ScenarioSetup(scenarioInfo);
+#line 84
  testRunner.Given("I have not been authenticated yet", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
@@ -398,7 +400,7 @@ this.ScenarioSetup(scenarioInfo);
                         "ruinruin1",
                         "Vitali",
                         "Hatalski"});
-#line 84
+#line 85
  testRunner.When("I fill sign up form with the following data", ((string)(null)), table18, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
@@ -410,8 +412,8 @@ this.ScenarioSetup(scenarioInfo);
                         "hautama@tut.by",
                         "Vitali",
                         "Hatalski",
-                        "Error"});
-#line 87
+                        "Warning"});
+#line 88
  testRunner.Then("I should have the result as follows", ((string)(null)), table19, "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
@@ -420,7 +422,7 @@ this.ScenarioSetup(scenarioInfo);
             table20.AddRow(new string[] {
                         "PasswordConfirm",
                         "UserPasswordConfirmNotEqual"});
-#line 90
+#line 91
  testRunner.And("the signup view model should have following errors", ((string)(null)), table20, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -431,9 +433,9 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void PasswordLengthCannotBeLessThan7Chars()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Password length cannot be less than 7 chars", ((string[])(null)));
-#line 94
-this.ScenarioSetup(scenarioInfo);
 #line 95
+this.ScenarioSetup(scenarioInfo);
+#line 96
  testRunner.Given("I have not been authenticated yet", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
@@ -448,7 +450,7 @@ this.ScenarioSetup(scenarioInfo);
                         "ruin",
                         "Vitali",
                         "Hatalski"});
-#line 96
+#line 97
  testRunner.When("I fill sign up form with the following data", ((string)(null)), table21, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table22 = new TechTalk.SpecFlow.Table(new string[] {
@@ -460,8 +462,8 @@ this.ScenarioSetup(scenarioInfo);
                         "hautama@tut.by",
                         "Vitali",
                         "Hatalski",
-                        "Error"});
-#line 99
+                        "Warning"});
+#line 100
  testRunner.Then("I should have the result as follows", ((string)(null)), table22, "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table23 = new TechTalk.SpecFlow.Table(new string[] {
@@ -470,7 +472,7 @@ this.ScenarioSetup(scenarioInfo);
             table23.AddRow(new string[] {
                         "Password",
                         "UserPasswordMinLength"});
-#line 102
+#line 103
  testRunner.And("the signup view model should have following errors", ((string)(null)), table23, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -481,9 +483,9 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void PasswordLengthCannotBeMoreThan21Chars()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Password length cannot be more than 21 chars", ((string[])(null)));
-#line 106
-this.ScenarioSetup(scenarioInfo);
 #line 107
+this.ScenarioSetup(scenarioInfo);
+#line 108
  testRunner.Given("I have not been authenticated yet", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table24 = new TechTalk.SpecFlow.Table(new string[] {
@@ -498,7 +500,7 @@ this.ScenarioSetup(scenarioInfo);
                         "passwordwithmorethan21chars",
                         "Vitali",
                         "Hatalski"});
-#line 108
+#line 109
  testRunner.When("I fill sign up form with the following data", ((string)(null)), table24, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table25 = new TechTalk.SpecFlow.Table(new string[] {
@@ -510,8 +512,8 @@ this.ScenarioSetup(scenarioInfo);
                         "hautama@tut.by",
                         "Vitali",
                         "Hatalski",
-                        "Error"});
-#line 111
+                        "Warning"});
+#line 112
  testRunner.Then("I should have the result as follows", ((string)(null)), table25, "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table26 = new TechTalk.SpecFlow.Table(new string[] {
@@ -520,7 +522,7 @@ this.ScenarioSetup(scenarioInfo);
             table26.AddRow(new string[] {
                         "Password",
                         "UserPasswordMaxLength"});
-#line 114
+#line 115
  testRunner.And("the signup view model should have following errors", ((string)(null)), table26, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -531,9 +533,9 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void PasswordIsRequiredAndPasswordConfirmDoesNotMatch()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Password is required and Password Confirm does not match", ((string[])(null)));
-#line 118
-this.ScenarioSetup(scenarioInfo);
 #line 119
+this.ScenarioSetup(scenarioInfo);
+#line 120
  testRunner.Given("I have not been authenticated yet", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table27 = new TechTalk.SpecFlow.Table(new string[] {
@@ -548,7 +550,7 @@ this.ScenarioSetup(scenarioInfo);
                         "ruinruin",
                         "Vitali",
                         "Hatalski"});
-#line 120
+#line 121
  testRunner.When("I fill sign up form with the following data", ((string)(null)), table27, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table28 = new TechTalk.SpecFlow.Table(new string[] {
@@ -560,8 +562,8 @@ this.ScenarioSetup(scenarioInfo);
                         "hautama@tut.by",
                         "Vitali",
                         "Hatalski",
-                        "Error"});
-#line 123
+                        "Warning"});
+#line 124
  testRunner.Then("I should have the result as follows", ((string)(null)), table28, "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table29 = new TechTalk.SpecFlow.Table(new string[] {
@@ -573,7 +575,7 @@ this.ScenarioSetup(scenarioInfo);
             table29.AddRow(new string[] {
                         "PasswordConfirm",
                         "UserPasswordConfirmNotEqual"});
-#line 126
+#line 127
  testRunner.And("the signup view model should have following errors", ((string)(null)), table29, "And ");
 #line hidden
             this.ScenarioCleanup();

@@ -14,7 +14,6 @@ namespace TdService.Specs.Steps
 
     using NUnit.Framework;
 
-    using TdService.Infrastructure.Email;
     using TdService.Model.Balance;
     using TdService.Model.Membership;
     using TdService.Repository.MsSql;
@@ -54,10 +53,12 @@ namespace TdService.Specs.Steps
             var roleRepository = new RoleRepository(context);
             var profileRepository = new ProfileRepository(context);
             var membershipRepository = new MembershipRepository();
-            var membershipService = new MembershipService(userRepository, roleRepository, profileRepository, membershipRepository);
+            var emailService = new FakeEmailService();
+            ScenarioContext.Current.Set(emailService);
+            var logger = new FakeLogger();
+            var membershipService = new MembershipService(logger, emailService, userRepository, roleRepository, profileRepository, membershipRepository);
 
             var fakeFormsAuthentication = new FakeFormsAuthentication();
-            var emailService = new SmtpService();
             var cookieStorage = new FakeCookieProvider();
 
             var accountController = new AccountController(
@@ -105,7 +106,10 @@ namespace TdService.Specs.Steps
                 context.Profiles.Add(profile);
                 context.SaveChanges();
 
-                user = new User { Email = p0, Password = "11111111", Profile = profile, Wallet = new Wallet { Amount = 0m }};
+                user = new User
+                    {
+                        Email = p0, Password = "11111111", Profile = profile, Wallet = new Wallet { Amount = 0m } 
+                    };
 
                 context.Users.Add(user);
                 context.SaveChanges();
@@ -177,6 +181,20 @@ namespace TdService.Specs.Steps
         {
             var actual = ScenarioContext.Current.Get<SignUpViewModel>("actual");
             Assert.That(actual.ActivationCode, Is.Not.Empty);
+        }
+
+        /// <summary>
+        /// The then email with activation code should be sent to registration email address.
+        /// </summary>
+        [Then(@"email with activation code should be sent to registration email address")]
+        public void ThenEmailWithActivationCodeShouldBeSentToRegistrationEmailAddress()
+        {
+            var actual = ScenarioContext.Current.Get<SignUpViewModel>("actual");
+            var emailService = ScenarioContext.Current.Get<FakeEmailService>();
+            Assert.That(emailService.SentMails.Any(), Is.True);
+            var sentEmail = emailService.SentMails.First();
+            Assert.That(sentEmail.To, Is.EqualTo(actual.Email));
+            Assert.That(sentEmail.Body, Contains.Substring(actual.ActivationCode));
         }
     }
 }
