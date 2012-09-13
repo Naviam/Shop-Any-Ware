@@ -36,20 +36,6 @@ namespace TdService.Services.Mapping
         }
 
         /// <summary>
-        /// Convert add order request to order.
-        /// </summary>
-        /// <param name="request">
-        /// The add order request.
-        /// </param>
-        /// <returns>
-        /// The order.
-        /// </returns>
-        public static Order ConvertToOrder(this AddOrderRequest request)
-        {
-            return Mapper.Map<AddOrderRequest, Order>(request);
-        }
-
-        /// <summary>
         /// Convert order to add order response.
         /// </summary>
         /// <param name="order">

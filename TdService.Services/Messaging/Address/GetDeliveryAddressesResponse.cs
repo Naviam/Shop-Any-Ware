@@ -12,7 +12,7 @@ namespace TdService.Services.Messaging.Address
     /// <summary>
     /// Get delivery addresses response object.
     /// </summary>
-    public class GetDeliveryAddressesResponse
+    public class GetDeliveryAddressesResponse : ResponseBase
     {
         /// <summary>
         /// Gets or sets Id.

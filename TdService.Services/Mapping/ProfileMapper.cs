@@ -10,8 +10,6 @@ namespace TdService.Services.Mapping
 
     using TdService.Services.Messaging.Membership;
 
-    using Profile = TdService.Model.Membership.Profile;
-
     /// <summary>
     /// Profile mapper.
     /// </summary>
@@ -26,9 +24,37 @@ namespace TdService.Services.Mapping
         /// <returns>
         /// The profile domain model.
         /// </returns>
-        public static Profile ConvertToProfile(this UpdateProfileRequest request)
+        public static Model.Membership.Profile ConvertToProfile(this UpdateProfileRequest request)
         {
-            return Mapper.Map<UpdateProfileRequest, Profile>(request);
+            return Mapper.Map<UpdateProfileRequest, Model.Membership.Profile>(request);
+        }
+
+        /// <summary>
+        /// The convert to update profile response.
+        /// </summary>
+        /// <param name="profile">
+        /// The profile.
+        /// </param>
+        /// <returns>
+        /// The TdService.Services.Messaging.Membership.UpdateProfileResponse.
+        /// </returns>
+        public static UpdateProfileResponse ConvertToUpdateProfileResponse(this Model.Membership.Profile profile)
+        {
+            return Mapper.Map<Model.Membership.Profile, UpdateProfileResponse>(profile);
+        }
+
+        /// <summary>
+        /// The convert to get profile response.
+        /// </summary>
+        /// <param name="profile">
+        /// The profile.
+        /// </param>
+        /// <returns>
+        /// The TdService.Services.Messaging.Membership.GetProfileResponse.
+        /// </returns>
+        public static GetProfileResponse ConvertToGetProfileResponse(this Model.Membership.Profile profile)
+        {
+            return Mapper.Map<Model.Membership.Profile, GetProfileResponse>(profile);
         }
     }
 }

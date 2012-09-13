@@ -72,8 +72,8 @@ namespace TdService.ShopAnyWare.Tests.Account
                 {
                     FirstName = "Vitali",
                     LastName = "Hatalski",
-                    NotifyOnOrderStatusChange = true,
-                    NotifyOnPackageStatusChange = true
+                    NotifyOnOrderStatusChanged = true,
+                    NotifyOnPackageStatusChanged = true
                 };
 
             // act
@@ -101,8 +101,8 @@ namespace TdService.ShopAnyWare.Tests.Account
             {
                 FirstName = "Vitali",
                 LastName = string.Empty,
-                NotifyOnOrderStatusChange = true,
-                NotifyOnPackageStatusChange = true
+                NotifyOnOrderStatusChanged = true,
+                NotifyOnPackageStatusChanged = true
             };
 
             // act

@@ -134,12 +134,7 @@ namespace TdService.UI.Web.Controllers
         [Authorize(Roles = "Shopper")]
         public ActionResult Index()
         {
-            var request = new GetDeliveryAddressesRequest
-                {
-                    IdentityToken = this.FormsAuthentication.GetAuthenticationToken()
-                };
-            var response = this.addressService.GetDeliveryAddresses(request);
-            return this.View("Index", response.ConvertToDeliveryAddressViewModel());
+            return this.View("Index");
         }
 
         /// <summary>

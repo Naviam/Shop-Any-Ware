@@ -247,12 +247,15 @@ namespace TdService.Repository.MsSql.Repositories
         /// <param name="profile">
         /// The profile.
         /// </param>
-        public void UpdateProfile(string email, Profile profile)
+        /// <returns>
+        /// The TdService.Model.Membership.Profile.
+        /// </returns>
+        public Profile UpdateProfile(string email, Profile profile)
         {
             using (var context = new ShopAnyWareSql())
             {
                 var profileDb = context.Users
-                    .Where(u => string.Compare(u.Email, email, StringComparison.OrdinalIgnoreCase) == 0)
+                    .Where(u => u.Email == email)
                     .Select(u => u.Profile).SingleOrDefault();
                 if (profileDb != null)
                 {
@@ -263,6 +266,8 @@ namespace TdService.Repository.MsSql.Repositories
 
                     context.SaveChanges();
                 }
+
+                return profileDb;
             }
         }
         #endregion

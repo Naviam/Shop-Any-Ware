@@ -17,6 +17,11 @@ namespace TdService.Services.Messaging.Membership
     public class UpdateProfileRequest : RequestBase
     {
         /// <summary>
+        /// Gets or sets the id.
+        /// </summary>
+        public int Id { get; set; }
+
+        /// <summary>
         /// Gets or sets First Name.
         /// </summary>
         public string FirstName { get; set; }

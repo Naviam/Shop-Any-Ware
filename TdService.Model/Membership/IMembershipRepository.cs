@@ -8,8 +8,6 @@ namespace TdService.Model.Membership
 {
     using System.Collections.Generic;
 
-    using TdService.Model.Addresses;
-
     /// <summary>
     /// Interface for membership repository (roles, users and profile).
     /// </summary>
@@ -53,7 +51,11 @@ namespace TdService.Model.Membership
         /// <param name="profile">
         /// The profile.
         /// </param>
-        void UpdateProfile(string email, Profile profile);
+        /// <returns>
+        /// The TdService.Model.Membership.Profile.
+        /// </returns>
+        Profile UpdateProfile(string email, Profile profile);
+
         #endregion
 
         #region Roles

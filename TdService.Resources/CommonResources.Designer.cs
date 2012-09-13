@@ -97,6 +97,24 @@ namespace TdService.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There were some issues with the profile you are updating..
+        /// </summary>
+        public static string ProfileUpdateErrorMessage {
+            get {
+                return ResourceManager.GetString("ProfileUpdateErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your profile has been successfully updated..
+        /// </summary>
+        public static string ProfileUpdateSuccessMessage {
+            get {
+                return ResourceManager.GetString("ProfileUpdateSuccessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This e-mail is already used..
         /// </summary>
         public static string VerifyEmailExistsMessage {

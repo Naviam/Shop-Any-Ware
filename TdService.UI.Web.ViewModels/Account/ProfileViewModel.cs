@@ -6,8 +6,6 @@
 
 namespace TdService.UI.Web.ViewModels.Account
 {
-    using System.ComponentModel.DataAnnotations;
-
     /// <summary>
     /// This is the profile model for web form.
     /// </summary>
@@ -17,16 +15,6 @@ namespace TdService.UI.Web.ViewModels.Account
         /// Gets or sets Id.
         /// </summary>
         public int Id { get; set; }
-
-        /// <summary>
-        /// Gets or sets Email.
-        /// </summary>
-        public string Email { get; set; }
-
-        /// <summary>
-        /// Gets or sets Current Password.
-        /// </summary>
-        public string CurrentPassword { get; set; }
 
         /// <summary>
         /// Gets or sets First Name.
@@ -39,13 +27,13 @@ namespace TdService.UI.Web.ViewModels.Account
         public string LastName { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether Notify On Order Status Change.
+        /// Gets or sets a value indicating whether Notify On Order Status Changed.
         /// </summary>
-        public bool NotifyOnOrderStatusChange { get; set; }
+        public bool NotifyOnOrderStatusChanged { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether Notify On Package Status Change.
+        /// Gets or sets a value indicating whether Notify On Package Status Changed.
         /// </summary>
-        public bool NotifyOnPackageStatusChange { get; set; }
+        public bool NotifyOnPackageStatusChanged { get; set; }
     }
 }

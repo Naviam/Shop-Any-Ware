@@ -27,9 +27,24 @@ namespace TdService.Services.Messaging.Order
         public string RetailerUrl { get; set; }
 
         /// <summary>
+        /// Gets or sets the order number.
+        /// </summary>
+        public string OrderNumber { get; set; }
+
+        /// <summary>
+        /// Gets or sets the tracking number.
+        /// </summary>
+        public string TrackingNumber { get; set; }
+
+        /// <summary>
         /// Gets or sets created date.
         /// </summary>
         public DateTime CreatedDate { get; set; }
+
+        /// <summary>
+        /// Gets or sets the received date.
+        /// </summary>
+        public DateTime? ReceivedDate { get; set; }
 
         /// <summary>
         /// Gets or sets the status.

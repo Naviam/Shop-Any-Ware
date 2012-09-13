@@ -30,23 +30,13 @@ namespace TdService.Services.Messaging.Membership
         public string LastName { get; set; }
 
         /// <summary>
-        /// Gets or sets Email.
+        /// Gets or sets a value indicating whether NotifyOnOrderStatusChanged.
         /// </summary>
-        public string Email { get; set; }
+        public bool NotifyOnOrderStatusChanged { get; set; }
 
         /// <summary>
-        /// Gets or sets Current Password.
+        /// Gets or sets a value indicating whether NotifyOnPackageStatusChanged.
         /// </summary>
-        public string CurrentPassword { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether NotifyOnOrderStatusChange.
-        /// </summary>
-        public bool NotifyOnOrderStatusChange { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether NotifyOnPackageStatusChange.
-        /// </summary>
-        public bool NotifyOnPackageStatusChange { get; set; }
+        public bool NotifyOnPackageStatusChanged { get; set; }
     }
 }

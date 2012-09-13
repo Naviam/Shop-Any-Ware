@@ -9,16 +9,16 @@
 
 namespace TdService.UI.Web.Controllers
 {
-    using System;
-    using System.Resources;
+    using System.Collections.Generic;
     using System.Web.Mvc;
     using System.Xml;
 
     using TdService.Infrastructure.Authentication;
-    using TdService.Resources;
+    using TdService.Infrastructure.Domain;
     using TdService.Services.Interfaces;
+    using TdService.Services.Messaging;
     using TdService.Services.Messaging.Membership;
-    using TdService.UI.Web.ViewModels;
+    using TdService.UI.Web.Mapping;
     using TdService.UI.Web.ViewModels.Account;
 
     /// <summary>
@@ -52,61 +52,23 @@ namespace TdService.UI.Web.Controllers
         /// <returns>
         /// Returns view with the profile details.
         /// </returns>
+        [Authorize]
         public ActionResult Index()
         {
-            var profileView = new ProfileViewModel();
-            try
-            {
-                var response = this.membershipService.GetProfile(
+            var response = this.membershipService.GetProfile(
                 new GetProfileRequest
-                    {
-                        IdentityToken = this.FormsAuthentication.GetAuthenticationToken()
-                    });
-                if (response != null)
                 {
-                    profileView = new ProfileViewModel
-                        {
-                            Email = response.Email,
-                            Id = response.Id,
-                            CurrentPassword = response.CurrentPassword,
-                            FirstName = response.FirstName,
-                            LastName = response.LastName,
-                            NotifyOnOrderStatusChange = response.NotifyOnOrderStatusChange,
-                            NotifyOnPackageStatusChange = response.NotifyOnPackageStatusChange,
-                            MessageType = response.MessageType.ToString().ToLower(),
-                            Message = response.Message ?? string.Empty
-                        };
-
-                    if (!string.IsNullOrEmpty(response.ErrorCode))
-                    {
-                        profileView.MessageType = response.MessageType.ToString();
-                        profileView.Message =
-                            (new ResourceManager(typeof(ErrorCodeResources))).GetString(response.ErrorCode);
-                    }
-
-                    this.ViewData.Model = profileView;
-                    return this.View();
-                }
-            }
-            catch (Exception e)
-            {
-                profileView.Message = e.Message;
-                profileView.MessageType = ViewModelMessageType.Error.ToString().ToLower();
-                this.ViewData.Model = profileView;
-
-                return this.View();
-            }
-
-            profileView.MessageType = ViewModelMessageType.Error.ToString().ToLower();
-            profileView.Message = ErrorCodeResources.ProfileNotFound;
-            this.ViewData.Model = profileView;
+                    IdentityToken = this.FormsAuthentication.GetAuthenticationToken()
+                });
+            var result = response.ConvertToProfileViewModel();
+            this.ViewData.Model = result;
             return this.View();
         }
 
         /// <summary>
         /// Save profile.
         /// </summary>
-        /// <param name="profileView">
+        /// <param name="model">
         /// The profile View.
         /// </param>
         /// <returns>
@@ -114,36 +76,33 @@ namespace TdService.UI.Web.Controllers
         /// </returns>
         [HttpPost]
         [ValidateAntiForgeryToken(Salt = "Profile")]
-        public ActionResult Save(ProfileViewModel profileView)
+        public ActionResult Save(ProfileViewModel model)
         {
-            if (this.ModelState.IsValid)
-            {
-                try
-                {
-                    var request = new UpdateProfileRequest
-                    {
-                        FirstName = profileView.FirstName,
-                        LastName = profileView.LastName,
-                        NotifyOnOrderStatusChanged = profileView.NotifyOnOrderStatusChange,
-                        NotifyOnPackageStatusChanged = profileView.NotifyOnPackageStatusChange,
-                        IdentityToken = this.FormsAuthentication.GetAuthenticationToken()
-                    };
+            var result = new ProfileViewModel();
+            var validator = new ProfileViewModelValidator();
+            var validationResult = validator.Validate(model);
 
-                    var response = this.membershipService.UpdateProfile(request);
-                    profileView.Message = response.Message; // ProfileViewResources.UpdateProfileSuccessMessage
-                    profileView.MessageType = ViewModelMessageType.Success.ToString().ToLower();
-                }
-                catch (Exception e)
+            if (validationResult.IsValid)
+            {
+                var request = model.ConvertToUpdateProfileRequest();
+                request.IdentityToken = this.FormsAuthentication.GetAuthenticationToken();
+                var response = this.membershipService.UpdateProfile(request);
+                result = response.ConvertToProfileViewModel();
+            }
+            else
+            {
+                result.MessageType = MessageType.Warning.ToString();
+                result.BrokenRules = new List<BusinessRule>();
+                foreach (var failure in validationResult.Errors)
                 {
-                    profileView.Message = e.Message;
-                    profileView.MessageType = ViewModelMessageType.Error.ToString().ToLower();
+                    result.BrokenRules.Add(new BusinessRule(failure.PropertyName, failure.ErrorMessage));
                 }
             }
 
             var jsonNetResult = new JsonNetResult
             {
                 Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
-                Data = profileView
+                Data = result
             };
             return jsonNetResult;
         }

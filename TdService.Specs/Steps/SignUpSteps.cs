@@ -9,16 +9,11 @@
 
 namespace TdService.Specs.Steps
 {
-    using System.Collections.Generic;
     using System.Diagnostics;
     using System.Linq;
 
     using NUnit.Framework;
 
-    using TdService.Model.Balance;
-    using TdService.Model.Membership;
-    using TdService.Repository.MsSql;
-    using TdService.Repository.MsSql.Repositories;
     using TdService.Services.Implementations;
     using TdService.Specs.Fakes;
     using TdService.UI.Web;
@@ -35,104 +30,18 @@ namespace TdService.Specs.Steps
     public class SignUpSteps
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SignUpSteps"/> class.
+        /// The get account controller.
         /// </summary>
-        public SignUpSteps()
+        /// <returns>
+        /// The TdService.UI.Web.Controllers.AccountController.
+        /// </returns>
+        public AccountController GetAccountController()
         {
-            AutoMapperConfiguration.Configure();
-            ////Mapper.AssertConfigurationIsValid();
-        }
-
-        /// <summary>
-        /// The before scenario code execution.
-        /// </summary>
-        public void BeforeScenario()
-        {
-            this.ReinitDatabase();
-            var context = new ShopAnyWareSql();
-            var userRepository = new UserRepository(context);
-            var roleRepository = new RoleRepository(context);
-            var profileRepository = new ProfileRepository(context);
-            var membershipRepository = new MembershipRepository();
-            var emailService = new FakeEmailService();
-            ScenarioContext.Current.Set(emailService);
-            var logger = new FakeLogger();
-            var membershipService = new MembershipService(logger, emailService, userRepository, roleRepository, profileRepository, membershipRepository);
-
-            var fakeFormsAuthentication = new FakeFormsAuthentication();
-            var cookieStorage = new FakeCookieProvider();
-
-            var accountController = new AccountController(
-                membershipService,
-                emailService,
-                cookieStorage,
-                fakeFormsAuthentication);
-
-            ScenarioContext.Current.Set(accountController);
-        }
-
-        /// <summary>
-        /// The reset database.
-        /// </summary>
-        [BeforeScenario("signup")]
-        public void ReinitDatabase()
-        {
-            using (var context = new ShopAnyWareSql())
-            {
-                context.Database.Delete();
-                context.Database.Initialize(true);
-                context.Database.CreateIfNotExists();
-            }
-        }
-
-        /// <summary>
-        /// The given the account already exists.
-        /// </summary>
-        /// <param name="p0">
-        /// The p 0.
-        /// </param>
-        [Given(@"The '(.*)' account already exists")]
-        public void GivenTheAccountAlreadyExists(string p0)
-        {
-            using (var context = new ShopAnyWareSql())
-            {
-                var user = context.Users.SingleOrDefault(u => u.Email == p0);
-                if (user != null)
-                {
-                    return;
-                }
-
-                var profile = new Profile { FirstName = "Vitali", LastName = "Hatalski" };
-
-                context.Profiles.Add(profile);
-                context.SaveChanges();
-
-                var role = context.Roles.SingleOrDefault(r => r.Name == "Shopper")
-                           ?? context.Roles.Add(new Role { Name = "Shopper" });
-
-                user = new User
-                    {
-                        Email = p0,
-                        Password = "ruinruin",
-                        Profile = profile,
-                        Wallet = new Wallet { Amount = 0m },
-                        Roles = new List<Role> { role }
-                    };
-
-                context.Users.Add(user);
-                context.SaveChanges();
-            }
-
-            ScenarioContext.Current.Set(p0, "email");
-        }
-
-        /// <summary>
-        /// The given i have not been authenticated yet.
-        /// </summary>
-        [Given(@"I have not been authenticated yet")]
-        public void GivenIHaveNotBeenAuthenticatedYet()
-        {
-            this.BeforeScenario();
+            return new AccountController(
+                ScenarioContext.Current.Get<MembershipService>(),
+                ScenarioContext.Current.Get<FakeEmailService>(),
+                new FakeCookieProvider(),
+                ScenarioContext.Current.Get<FakeFormsAuthentication>());
         }
 
         /// <summary>
@@ -144,8 +53,8 @@ namespace TdService.Specs.Steps
         [When(@"I fill sign up form with the following data")]
         public void WhenIFillSignUpFormWithTheFollowingData(Table table)
         {
-            var controller = ScenarioContext.Current.Get<AccountController>();
             var signUpModel = table.CreateInstance<SignUpViewModel>();
+            var controller = this.GetAccountController();
             var result = controller.SignUp(signUpModel) as JsonNetResult;
             Assert.That(result, Is.Not.Null);
             Debug.Assert(result != null, "result != null");
@@ -163,7 +72,7 @@ namespace TdService.Specs.Steps
         [When(@"I enter email '(.*)' to verify existence")]
         public void WhenIEnterEmailToVerifyExistence(string email)
         {
-            var controller = ScenarioContext.Current.Get<AccountController>();
+            var controller = this.GetAccountController();
             var result = controller.VerifyEmail(email) as JsonNetResult;
             Assert.That(result, Is.Not.Null);
             Debug.Assert(result != null, "result != null");

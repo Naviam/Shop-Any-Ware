@@ -151,6 +151,7 @@
     <EmbeddedResource Include="Views\ProfileViewResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ProfileViewResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ProfileViewResources.ru.resx" />
   </ItemGroup>

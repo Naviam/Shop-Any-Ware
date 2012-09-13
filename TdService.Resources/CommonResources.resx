@@ -129,6 +129,12 @@
   <data name="DeliveryAddressRemoveSuccessMessage" xml:space="preserve">
     <value>Delivery address has been successfully removed.</value>
   </data>
+  <data name="ProfileUpdateErrorMessage" xml:space="preserve">
+    <value>There were some issues with the profile you are updating.</value>
+  </data>
+  <data name="ProfileUpdateSuccessMessage" xml:space="preserve">
+    <value>Your profile has been successfully updated.</value>
+  </data>
   <data name="VerifyEmailExistsMessage" xml:space="preserve">
     <value>This e-mail is already used.</value>
   </data>

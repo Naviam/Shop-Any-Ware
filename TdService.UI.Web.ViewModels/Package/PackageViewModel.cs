@@ -32,11 +32,6 @@ namespace TdService.UI.Web.ViewModels.Package
         public int DeliveryAddressId { get; set; }
 
         /// <summary>
-        /// Gets or sets the delivery address name.
-        /// </summary>
-        public string DeliveryAddressName { get; set; }
-
-        /// <summary>
         /// Gets or sets the dispatch method.
         /// </summary>
         public string DispatchMethod { get; set; }

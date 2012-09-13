@@ -9,7 +9,6 @@ namespace TdService.Services.Implementations
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
 
     using TdService.Infrastructure.Domain;
     using TdService.Infrastructure.Email;
@@ -109,18 +108,19 @@ namespace TdService.Services.Implementations
         {
             var role = new Role { Name = StandardRole.Shopper.ToString(), Description = string.Empty };
             var user = new User
-            {
-                Email = request.Email,
-                Password = request.Password,
-                Profile = new Profile
                 {
-                    FirstName = request.FirstName,
-                    LastName = request.LastName,
-                    NotifyOnOrderStatusChanged = true,
-                    NotifyOnPackageStatusChanged = true
-                },
-                ActivationCode = Guid.NewGuid()
-            };
+                    Email = request.Email,
+                    Password = request.Password,
+                    Profile =
+                        new Profile
+                            {
+                                FirstName = request.FirstName,
+                                LastName = request.LastName,
+                                NotifyOnOrderStatusChanged = true,
+                                NotifyOnPackageStatusChanged = true
+                            },
+                    ActivationCode = Guid.NewGuid()
+                };
             var response = new SignUpResponse { BrokenRules = user.Profile.GetBrokenRules().ToList() };
             response.BrokenRules.AddRange(role.GetBrokenRules());
             response.BrokenRules.AddRange(user.GetBrokenRules());
@@ -174,18 +174,19 @@ namespace TdService.Services.Implementations
                 {
                     Email = request.Email,
                     Password = request.Password,
-                    Profile = new Profile
-                        {
-                            FirstName = request.FirstName,
-                            LastName = request.LastName,
-                            NotifyOnOrderStatusChanged = true,
-                            NotifyOnPackageStatusChanged = true
-                        }
+                    Profile =
+                        new Profile
+                            {
+                                FirstName = request.FirstName,
+                                LastName = request.LastName,
+                                NotifyOnOrderStatusChanged = true,
+                                NotifyOnPackageStatusChanged = true
+                            }
                 };
 
             try
             {
-                ThrowExceptionIfUserIsInvalid(user);
+                ////ThrowExceptionIfUserIsInvalid(user);
                 var createdUser = this.userRepository.CreateUser(user);
                 this.profileRepository.FindOrAddProfile(user.Profile);
                 this.userRepository.SaveChanges();
@@ -270,34 +271,22 @@ namespace TdService.Services.Implementations
         {
             var response = new GetProfileResponse();
             var user = this.userRepository.GetUserByEmail(request.IdentityToken);
-            if (user != null)
+            if (user == null)
             {
-                var profile = user.Profile;
-                if (profile != null)
-                {
-                    response = new GetProfileResponse
-                        {
-                            FirstName = profile.FirstName,
-                            LastName = profile.LastName,
-                            Id = profile.Id,
-                            Email = user.Email,
-                            CurrentPassword = user.Password,
-                            NotifyOnOrderStatusChange = profile.NotifyOnOrderStatusChanged,
-                            NotifyOnPackageStatusChange = profile.NotifyOnPackageStatusChanged,
-                            MessageType = MessageType.Success
-                        };
+                response.MessageType = MessageType.Error;
+                response.ErrorCode = ErrorCode.UserNotFound.ToString();
+                return response;
+            }
 
-                    return response;
-                }
-
+            var profile = user.Profile;
+            if (profile == null)
+            {
                 response.MessageType = MessageType.Error;
                 response.ErrorCode = ErrorCode.ProfileNotFound.ToString();
                 return response;
             }
 
-            response.MessageType = MessageType.Error;
-            response.ErrorCode = ErrorCode.UserNotFound.ToString();
-            return response;
+            return profile.ConvertToGetProfileResponse();
         }
 
         /// <summary>
@@ -311,23 +300,30 @@ namespace TdService.Services.Implementations
         /// </returns>
         public UpdateProfileResponse UpdateProfile(UpdateProfileRequest request)
         {
-            var response = new UpdateProfileResponse();
             var profile = request.ConvertToProfile();
 
-            ThrowExceptionIfProfileIsInvalid(profile);
+            var response = new UpdateProfileResponse { BrokenRules = profile.GetBrokenRules().ToList() };
 
-            var user = this.userRepository.GetUserByEmail(request.IdentityToken);
+            if (response.BrokenRules.Any())
+            {
+                response.MessageType = MessageType.Warning;
+                return response;
+            }
 
-            user.Profile.FirstName = profile.FirstName;
-            user.Profile.LastName = profile.LastName;
-            user.Profile.NotifyOnOrderStatusChanged = profile.NotifyOnOrderStatusChanged;
-            user.Profile.NotifyOnPackageStatusChanged = profile.NotifyOnPackageStatusChanged;
-
-            this.userRepository.SaveChanges();
-
-            response.MessageType = MessageType.Success;
-            response.Message = Resources.Views.ProfileViewResources.UpdateProfileSuccessMessage;
-            return response;
+            try
+            {
+                var updatedProfile = this.membershipRepository.UpdateProfile(request.IdentityToken, profile);
+                response = updatedProfile.ConvertToUpdateProfileResponse();
+                response.Message = CommonResources.ProfileUpdateSuccessMessage;
+                return response;
+            }
+            catch (Exception e)
+            {
+                response.MessageType = MessageType.Error;
+                response.Message = CommonResources.ProfileUpdateErrorMessage;
+                this.logger.Error(CommonResources.ProfileUpdateErrorMessage, e);
+                return response;
+            }
         }
 
         /// <summary>
@@ -342,57 +338,6 @@ namespace TdService.Services.Implementations
         public ChangePasswordLinkResponse GenerateChangePasswordLink(ChangePasswordLinkRequest request)
         {
             return null;
-        }
-
-        /// <summary>
-        /// Validates profile.
-        /// </summary>
-        /// <param name="profile">
-        /// The profile.
-        /// </param>
-        /// <exception cref="InvalidProfileException">
-        /// Thrown when business rules are broken.
-        /// </exception>
-        private static void ThrowExceptionIfProfileIsInvalid(Profile profile)
-        {
-            if (profile.GetBrokenRules().Any())
-            {
-                var profileIssues = new StringBuilder();
-                profileIssues.AppendLine(
-                    "There were some issues with the profile you are editing.");
-
-                foreach (var rule in profile.GetBrokenRules())
-                {
-                    profileIssues.AppendLine(rule.ErrorCode);
-                }
-
-                throw new InvalidProfileException(profileIssues.ToString());
-            }
-        }
-
-        /// <summary>
-        /// Throw exception if user is invalid.
-        /// </summary>
-        /// <param name="user">
-        /// The user.
-        /// </param>
-        /// <exception cref="InvalidUserException">
-        /// Thrown when business rules are broken.
-        /// </exception>
-        private static void ThrowExceptionIfUserIsInvalid(User user)
-        {
-            if (user.GetBrokenRules().Any())
-            {
-                var issues = new StringBuilder();
-
-                // issues.AppendLine("There were some issues.");
-                foreach (var rule in user.GetBrokenRules())
-                {
-                    issues.AppendLine(rule.ErrorCode);
-                }
-
-                throw new InvalidUserException(issues.ToString());
-            }
         }
     }
 }

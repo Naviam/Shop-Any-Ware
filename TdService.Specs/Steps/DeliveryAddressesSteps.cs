@@ -10,18 +10,10 @@
 namespace TdService.Specs.Steps
 {
     using System.Collections.Generic;
-    using System.Data;
-    using System.Data.Entity;
     using System.Diagnostics;
-    using System.Linq;
 
     using NUnit.Framework;
 
-    using TdService.Model.Addresses;
-    using TdService.Model.Balance;
-    using TdService.Model.Membership;
-    using TdService.Repository.MsSql;
-    using TdService.Repository.MsSql.Repositories;
     using TdService.Services.Implementations;
     using TdService.Specs.Fakes;
     using TdService.UI.Web;
@@ -38,100 +30,15 @@ namespace TdService.Specs.Steps
     public class DeliveryAddressesSteps
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="DeliveryAddressesSteps"/> class.
+        /// The get address controller.
         /// </summary>
-        public DeliveryAddressesSteps()
+        /// <returns>
+        /// The TdService.UI.Web.Controllers.AddressController.
+        /// </returns>
+        public AddressController GetAddressController()
         {
-            AutoMapperConfiguration.Configure();
-        }
-
-        /// <summary>
-        /// The reset database.
-        /// </summary>
-        public void ReinitDatabase()
-        {
-            Database.SetInitializer(new ShopAnyWareTestInitilizer());
-            using (var context = new ShopAnyWareSql())
-            {
-                context.Database.Delete();
-                context.Database.Initialize(true);
-                context.Database.CreateIfNotExists();
-            }
-        }
-
-        /// <summary>
-        /// The populate with addresses.
-        /// </summary>
-        /// <param name="email">
-        /// The email.
-        /// </param>
-        /// <param name="addresses">
-        /// The addresses.
-        /// </param>
-        public void PopulateWithAddresses(string email, IEnumerable<DeliveryAddress> addresses)
-        {
-            using (var context = new ShopAnyWareSql())
-            {
-                var shopper = context.Users.Include("DeliveryAddresses").Include("Profile").Include("Wallet").Include("Roles").SingleOrDefault(u => u.Email == email);
-                if (shopper == null)
-                {
-                    var profile = new Profile { FirstName = "Vitali", LastName = "Hatalski" };
-
-                    context.Profiles.Add(profile);
-                    context.SaveChanges();
-
-                    shopper = new User { Email = email, Password = "11111111", Profile = profile, Wallet = new Wallet { Amount = 0m } };
-
-                    shopper = context.Users.Add(shopper);
-                    context.SaveChanges();
-                }
-
-                Debug.Assert(shopper != null, "shopper != null");
-                if (shopper.DeliveryAddresses == null)
-                {
-                    shopper.DeliveryAddresses = new List<DeliveryAddress>();
-                }
-
-                var addedAddresses = addresses.Select(deliveryAddress => context.DeliveryAddresses.Add(deliveryAddress)).ToList();
-                context.SaveChanges();
-
-                shopper.DeliveryAddresses.AddRange(addedAddresses.ToList());
-                context.Entry(shopper).State = EntityState.Modified;
-                context.SaveChanges();
-            }
-        }
-
-        /// <summary>
-        /// The given i have email address.
-        /// </summary>
-        /// <param name="p0">
-        /// The p 0.
-        /// </param>
-        [Given(@"I have '(.*)' email address")]
-        public void GivenIHaveEmailAddress(string p0)
-        {
-            this.ReinitDatabase();
-            var addressRepository = new AddressRepository();
-            var logger = new FakeLogger();
-            var addressService = new DeliveryAddressService(addressRepository, logger);
-            var fakeFormsAuthentication = new FakeFormsAuthentication();
-            fakeFormsAuthentication.SetAuthenticationToken(p0, true);
-            ScenarioContext.Current.Set(p0, "email");
-            var addressController = new AddressController(fakeFormsAuthentication, addressService);
-            ScenarioContext.Current.Set(addressController);
-        }
-
-        /// <summary>
-        /// The given i have the following delivery addresses.
-        /// </summary>
-        /// <param name="table">
-        /// The table.
-        /// </param>
-        [Given(@"I have the following delivery addresses")]
-        public void GivenIHaveTheFollowingDeliveryAddresses(Table table)
-        {
-            var addresses = table.CreateSet<DeliveryAddress>();
-            this.PopulateWithAddresses(ScenarioContext.Current.Get<string>("email"), addresses);
+            return new AddressController(
+                ScenarioContext.Current.Get<FakeFormsAuthentication>(), ScenarioContext.Current.Get<DeliveryAddressService>());
         }
 
         /// <summary>
@@ -183,7 +90,7 @@ namespace TdService.Specs.Steps
         [When(@"I get my own delivery addresses")]
         public void WhenIGetMyOwnDeliveryAddresses()
         {
-            var controller = ScenarioContext.Current.Get<AddressController>();
+            var controller = this.GetAddressController();
             var result = controller.Get() as JsonNetResult;
             Assert.That(result, Is.Not.Null);
             if (result != null)
@@ -202,7 +109,7 @@ namespace TdService.Specs.Steps
         [When(@"I add the following delivery addresses")]
         public void WhenIAddTheFollowingDeliveryAddresses(Table table)
         {
-            var controller = ScenarioContext.Current.Get<AddressController>();
+            var controller = this.GetAddressController();
             var addressesToAdd = table.CreateSet<DeliveryAddressViewModel>();
             var actual = new List<DeliveryAddressViewModel>();
 
@@ -226,7 +133,7 @@ namespace TdService.Specs.Steps
         [When(@"I add the following delivery address")]
         public void WhenIAddTheFollowingDeliveryAddress(Table table)
         {
-            var controller = ScenarioContext.Current.Get<AddressController>();
+            var controller = this.GetAddressController();
             var addressToAdd = table.CreateInstance<DeliveryAddressViewModel>();
 
             var result = controller.Add(addressToAdd) as JsonNetResult;
@@ -245,7 +152,7 @@ namespace TdService.Specs.Steps
         [When(@"I edit the following delivery addresses")]
         public void WhenIEditTheFollowingDeliveryAddresses(Table table)
         {
-            var controller = ScenarioContext.Current.Get<AddressController>();
+            var controller = this.GetAddressController();
             var addressesToEdit = table.CreateSet<DeliveryAddressViewModel>();
             var actual = new List<DeliveryAddressViewModel>();
 
@@ -269,7 +176,7 @@ namespace TdService.Specs.Steps
         [When(@"I remove the following delivery addresses")]
         public void WhenIRemoveTheFollowingDeliveryAddresses(Table table)
         {
-            var controller = ScenarioContext.Current.Get<AddressController>();
+            var controller = this.GetAddressController();
             var actual = new List<DeliveryAddressViewModel>();
 
             foreach (var row in table.Rows)

@@ -48,5 +48,10 @@ namespace TdService.Services.Messaging.Membership
         /// Gets or sets the activation code.
         /// </summary>
         public string ActivationCode { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether activated.
+        /// </summary>
+        public bool Activated { get; set; }
     }
 }

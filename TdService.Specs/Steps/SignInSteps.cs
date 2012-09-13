@@ -33,38 +33,6 @@ namespace TdService.Specs.Steps
     public class SignInSteps
     {
         /// <summary>
-        /// The given i am in role.
-        /// </summary>
-        /// <param name="p0">
-        /// The p 0.
-        /// </param>
-        [Given(@"I am in '(.*)' role")]
-        public void GivenIAmInRole(string p0)
-        {
-            var email = ScenarioContext.Current.Get<string>("email");
-            using (var context = new ShopAnyWareSql())
-            {
-                var user = context.Users.Include("Profile").Include("Roles").SingleOrDefault(u => u.Email == email);
-                Debug.Assert(user != null, "user != null");
-                var role = context.Roles.SingleOrDefault(r => r.Name == p0);
-                if (role == null)
-                {
-                    // create role
-                    role = context.Roles.Add(new Role { Name = p0 });
-                    context.SaveChanges();
-                }
-
-                user.Roles = null;
-                context.Entry(user).State = EntityState.Modified;
-                context.SaveChanges();
-
-                user.Roles = new List<Role> { role };
-                context.Entry(user).State = EntityState.Modified;
-                context.SaveChanges();
-            }
-        }
-
-        /// <summary>
         /// The when i fill sign in form with the following data.
         /// </summary>
         /// <param name="table">
