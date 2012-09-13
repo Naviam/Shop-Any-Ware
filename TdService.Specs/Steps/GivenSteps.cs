@@ -87,43 +87,13 @@ namespace TdService.Specs.Steps
         /// <summary>
         /// The before delivery address scenarios.
         /// </summary>
-        [BeforeScenario("deliveryaddress")]
+        [BeforeScenario("deliveryaddresses")]
         public static void BeforeDeliveryAddressScenarios()
         {
             var addressRepository = new AddressRepository();
             var logger = new FakeLogger();
             var addressService = new DeliveryAddressService(addressRepository, logger);
             ScenarioContext.Current.Set(addressService);
-        }
-
-        /// <summary>
-        /// The given i have the following delivery addresses.
-        /// </summary>
-        /// <param name="table">
-        /// The table.
-        /// </param>
-        [Given(@"I have the following delivery addresses")]
-        public void GivenIHaveTheFollowingDeliveryAddresses(Table table)
-        {
-            var addresses = table.CreateSet<DeliveryAddress>();
-            var user = ScenarioContext.Current.Get<User>();
-            using (var context = new ShopAnyWareSql())
-            {
-                context.Users.Attach(user);
-                if (user.DeliveryAddresses == null)
-                {
-                    user.DeliveryAddresses = new List<DeliveryAddress>();
-                }
-
-                var addedAddresses = addresses.Select(deliveryAddress => context.DeliveryAddresses.Add(deliveryAddress)).ToList();
-                context.SaveChanges();
-
-                user.DeliveryAddresses.AddRange(addedAddresses.ToList());
-                context.Entry(user).State = EntityState.Modified;
-                context.SaveChanges();
-
-                ScenarioContext.Current.Set(user);
-            }
         }
 
         /// <summary>
@@ -202,6 +172,38 @@ namespace TdService.Specs.Steps
             var formsAuthentication = new FakeFormsAuthentication();
             formsAuthentication.SetAuthenticationToken(email, true);
             ScenarioContext.Current.Set(formsAuthentication);
+        }
+
+        /// <summary>
+        /// The given i have the following delivery addresses.
+        /// </summary>
+        /// <param name="table">
+        /// The table.
+        /// </param>
+        [Given(@"I have the following delivery addresses")]
+        public void GivenIHaveTheFollowingDeliveryAddresses(Table table)
+        {
+            var addresses = table.CreateSet<DeliveryAddress>();
+            var user = ScenarioContext.Current.Get<User>();
+            using (var context = new ShopAnyWareSql())
+            {
+                context.Wallets.Attach(user.Wallet);
+                context.Profiles.Attach(user.Profile);
+                context.Users.Attach(user);
+                if (user.DeliveryAddresses == null)
+                {
+                    user.DeliveryAddresses = new List<DeliveryAddress>();
+                }
+
+                var addedAddresses = addresses.Select(deliveryAddress => context.DeliveryAddresses.Add(deliveryAddress)).ToList();
+                context.SaveChanges();
+
+                user.DeliveryAddresses.AddRange(addedAddresses.ToList());
+                context.Entry(user).State = EntityState.Modified;
+                context.SaveChanges();
+
+                ScenarioContext.Current.Set(user);
+            }
         }
     }
 }

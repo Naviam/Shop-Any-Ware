@@ -37,8 +37,9 @@ namespace TdService.Specs.Steps
         /// </returns>
         public AddressController GetAddressController()
         {
-            return new AddressController(
-                ScenarioContext.Current.Get<FakeFormsAuthentication>(), ScenarioContext.Current.Get<DeliveryAddressService>());
+            var formsAuthentication = ScenarioContext.Current.Get<FakeFormsAuthentication>();
+            var addressService = ScenarioContext.Current.Get<DeliveryAddressService>();
+            return new AddressController(formsAuthentication, addressService);
         }
 
         /// <summary>

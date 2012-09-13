@@ -6,7 +6,8 @@ Feature: Delivery Addresses
 
 @viewdeliveryaddresses
 Scenario: View own delivery addresses
-	Given I have 'v.hatalski@gmail.com' email address
+	Given there is 'v.hatalski@gmail.com' account with 'ruinruin' password in role 'Shopper' with fullname 'Vitali' and 'Hatalski'
+	And I am authenticated as 'v.hatalski@gmail.com'
 	And I have the following delivery addresses
 	| Id | FirstName | LastName | AddressName            | AddressLine1          | AddressLine2 | City  | Country | State | Region | ZipCode | Phone         |
 	| 1  | Vitali    | Hatalski | Minsk - Novovilenskaya | Novovilenskaya street | 10, 41       | Minsk | Belarus |       |        | 220053  | +375295067630 |
@@ -21,7 +22,8 @@ Scenario: View own delivery addresses
 
 @adddeliveryaddress
 Scenario: Add delivery address
-	Given I have 'v.hatalski@gmail.com' email address
+	Given there is 'v.hatalski@gmail.com' account with 'ruinruin' password in role 'Shopper' with fullname 'Vitali' and 'Hatalski'
+	And I am authenticated as 'v.hatalski@gmail.com'
 	And I have the following delivery addresses
 	| Id | FirstName | LastName | AddressName | AddressLine1      | AddressLine2 | City  | Country | State | Region | ZipCode | Phone         | MessageType |
 	| 1  | Vitali    | Hatalski | Initial     | Nekrasova 8       | flat 14      | Minsk | Belarus |       |        | 220040  |               |             |
@@ -38,7 +40,8 @@ Scenario: Add delivery address
 
 @adddeliveryaddress
 Scenario: Validate required fields when adding delivery address
-	Given I have 'v.hatalski@gmail.com' email address
+	Given there is 'v.hatalski@gmail.com' account with 'ruinruin' password in role 'Shopper' with fullname 'Vitali' and 'Hatalski'
+	And I am authenticated as 'v.hatalski@gmail.com'
 	And I have the following delivery addresses
 	| Id | FirstName | LastName | AddressName | AddressLine1      | AddressLine2 | City  | Country | State | Region | ZipCode | Phone         |
 	| 1  | Vitali    | Hatalski | Initial     | Nekrasova 8       | flat 14      | Minsk | Belarus |       |        | 220040  |               |
@@ -60,7 +63,8 @@ Scenario: Validate required fields when adding delivery address
 
 @adddeliveryaddress
 Scenario: Validate max char length of fields when adding delivery address
-	Given I have 'v.hatalski@gmail.com' email address
+	Given there is 'v.hatalski@gmail.com' account with 'ruinruin' password in role 'Shopper' with fullname 'Vitali' and 'Hatalski'
+	And I am authenticated as 'v.hatalski@gmail.com'
 	And I have the following delivery addresses
 	| Id | FirstName | LastName | AddressName | AddressLine1      | AddressLine2 | City  | Country | State | Region | ZipCode | Phone         |
 	| 1  | Vitali    | Hatalski | Initial     | Nekrasova 8       | flat 14      | Minsk | Belarus |       |        | 220040  |               |
@@ -86,7 +90,8 @@ Scenario: Validate max char length of fields when adding delivery address
 
 @editdeliveryaddress
 Scenario: Edit delivery address
-	Given I have 'v.hatalski@gmail.com' email address
+	Given there is 'v.hatalski@gmail.com' account with 'ruinruin' password in role 'Shopper' with fullname 'Vitali' and 'Hatalski'
+	And I am authenticated as 'v.hatalski@gmail.com'
 	And I have the following delivery addresses
 	| Id | FirstName | LastName | AddressName  | AddressLine1      | AddressLine2 | City  | Country | State | Region | ZipCode | Phone         | MessageType |
 	| 1  | Vitali    | Hatalski | My first     | Nekrasova 8       | flat 14      | Minsk | Belarus |       |        | 220040  |               |             |
@@ -102,7 +107,8 @@ Scenario: Edit delivery address
 
 @removedeliveryaddress
 Scenario: Remove delivery address
-	Given I have 'v.hatalski@gmail.com' email address
+	Given there is 'v.hatalski@gmail.com' account with 'ruinruin' password in role 'Shopper' with fullname 'Vitali' and 'Hatalski'
+	And I am authenticated as 'v.hatalski@gmail.com'
 	And I have the following delivery addresses
 	| Id | FirstName | LastName | AddressName | AddressLine1      | AddressLine2 | City  | Country | State | Region | ZipCode | Phone         | MessageType |
 	| 1  | Vitali    | Hatalski | My first    | Nekrasova 8       | flat 14      | Minsk | Belarus |       |        | 220040  |               |             |

@@ -77,7 +77,10 @@ namespace TdService.Specs.Features
 #line 8
 this.ScenarioSetup(scenarioInfo);
 #line 9
- testRunner.Given("I have \'v.hatalski@gmail.com\' email address", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("there is \'v.hatalski@gmail.com\' account with \'ruinruin\' password in role \'Shopper" +
+                    "\' with fullname \'Vitali\' and \'Hatalski\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 10
+ testRunner.And("I am authenticated as \'v.hatalski@gmail.com\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
@@ -131,9 +134,9 @@ this.ScenarioSetup(scenarioInfo);
                         "",
                         "12040",
                         "+455295067630"});
-#line 10
+#line 11
  testRunner.And("I have the following delivery addresses", ((string)(null)), table1, "And ");
-#line 15
+#line 16
  testRunner.When("I get my own delivery addresses", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
@@ -188,7 +191,7 @@ this.ScenarioSetup(scenarioInfo);
                         "",
                         "12040",
                         "+455295067630"});
-#line 16
+#line 17
  testRunner.Then("I should have the following delivery addresses as a result", ((string)(null)), table2, "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -201,10 +204,13 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add delivery address", new string[] {
                         "adddeliveryaddress"});
-#line 23
-this.ScenarioSetup(scenarioInfo);
 #line 24
- testRunner.Given("I have \'v.hatalski@gmail.com\' email address", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+this.ScenarioSetup(scenarioInfo);
+#line 25
+ testRunner.Given("there is \'v.hatalski@gmail.com\' account with \'ruinruin\' password in role \'Shopper" +
+                    "\' with fullname \'Vitali\' and \'Hatalski\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 26
+ testRunner.And("I am authenticated as \'v.hatalski@gmail.com\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
@@ -234,7 +240,7 @@ this.ScenarioSetup(scenarioInfo);
                         "220040",
                         "",
                         ""});
-#line 25
+#line 27
  testRunner.And("I have the following delivery addresses", ((string)(null)), table3, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
@@ -293,7 +299,7 @@ this.ScenarioSetup(scenarioInfo);
                         "220053",
                         "+375295067630",
                         ""});
-#line 28
+#line 30
  testRunner.When("I add the following delivery addresses", ((string)(null)), table4, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -352,7 +358,7 @@ this.ScenarioSetup(scenarioInfo);
                         "220053",
                         "+375295067630",
                         "Error"});
-#line 33
+#line 35
  testRunner.Then("I should have the following delivery addresses as a result", ((string)(null)), table5, "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -365,10 +371,13 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate required fields when adding delivery address", new string[] {
                         "adddeliveryaddress"});
-#line 40
+#line 42
 this.ScenarioSetup(scenarioInfo);
-#line 41
- testRunner.Given("I have \'v.hatalski@gmail.com\' email address", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 43
+ testRunner.Given("there is \'v.hatalski@gmail.com\' account with \'ruinruin\' password in role \'Shopper" +
+                    "\' with fullname \'Vitali\' and \'Hatalski\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 44
+ testRunner.And("I am authenticated as \'v.hatalski@gmail.com\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
@@ -396,7 +405,7 @@ this.ScenarioSetup(scenarioInfo);
                         "",
                         "220040",
                         ""});
-#line 42
+#line 45
  testRunner.And("I have the following delivery addresses", ((string)(null)), table6, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
@@ -425,7 +434,7 @@ this.ScenarioSetup(scenarioInfo);
                         "",
                         "",
                         ""});
-#line 45
+#line 48
  testRunner.When("I add the following delivery address", ((string)(null)), table7, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
@@ -456,7 +465,7 @@ this.ScenarioSetup(scenarioInfo);
                         "",
                         "",
                         "Error"});
-#line 48
+#line 51
  testRunner.Then("I should have the following delivery address as a result", ((string)(null)), table8, "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
@@ -483,7 +492,7 @@ this.ScenarioSetup(scenarioInfo);
             table9.AddRow(new string[] {
                         "ZipCode",
                         "AddressZipCodeRequired"});
-#line 51
+#line 54
  testRunner.And("the delivery address view model should have following errors", ((string)(null)), table9, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -496,10 +505,13 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate max char length of fields when adding delivery address", new string[] {
                         "adddeliveryaddress"});
-#line 62
+#line 65
 this.ScenarioSetup(scenarioInfo);
-#line 63
- testRunner.Given("I have \'v.hatalski@gmail.com\' email address", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 66
+ testRunner.Given("there is \'v.hatalski@gmail.com\' account with \'ruinruin\' password in role \'Shopper" +
+                    "\' with fullname \'Vitali\' and \'Hatalski\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 67
+ testRunner.And("I am authenticated as \'v.hatalski@gmail.com\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
@@ -527,7 +539,7 @@ this.ScenarioSetup(scenarioInfo);
                         "",
                         "220040",
                         ""});
-#line 64
+#line 68
  testRunner.And("I have the following delivery addresses", ((string)(null)), table10, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
@@ -556,7 +568,7 @@ this.ScenarioSetup(scenarioInfo);
                         "Taumatawhakatangihangakoauauotamateapokaiwhenuakitanatahuwhenuakitanatahu",
                         "123456789012",
                         "+375295067630506763050676305067630"});
-#line 67
+#line 71
  testRunner.When("I add the following delivery address", ((string)(null)), table11, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
@@ -587,7 +599,7 @@ this.ScenarioSetup(scenarioInfo);
                         "123456789012",
                         "+375295067630506763050676305067630",
                         "Error"});
-#line 70
+#line 74
  testRunner.Then("I should have the following delivery address as a result", ((string)(null)), table12, "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
@@ -626,7 +638,7 @@ this.ScenarioSetup(scenarioInfo);
             table13.AddRow(new string[] {
                         "Phone",
                         "AddressPhoneMaxLength"});
-#line 73
+#line 77
  testRunner.And("the delivery address view model should have following errors", ((string)(null)), table13, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -639,10 +651,13 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Edit delivery address", new string[] {
                         "editdeliveryaddress"});
-#line 88
+#line 92
 this.ScenarioSetup(scenarioInfo);
-#line 89
- testRunner.Given("I have \'v.hatalski@gmail.com\' email address", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 93
+ testRunner.Given("there is \'v.hatalski@gmail.com\' account with \'ruinruin\' password in role \'Shopper" +
+                    "\' with fullname \'Vitali\' and \'Hatalski\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 94
+ testRunner.And("I am authenticated as \'v.hatalski@gmail.com\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
@@ -686,7 +701,7 @@ this.ScenarioSetup(scenarioInfo);
                         "220053",
                         "+375295067630",
                         ""});
-#line 90
+#line 95
  testRunner.And("I have the following delivery addresses", ((string)(null)), table14, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
@@ -731,7 +746,7 @@ this.ScenarioSetup(scenarioInfo);
                         "220040",
                         "",
                         ""});
-#line 94
+#line 99
  testRunner.When("I edit the following delivery addresses", ((string)(null)), table15, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
@@ -776,7 +791,7 @@ this.ScenarioSetup(scenarioInfo);
                         "220040",
                         "",
                         "Success"});
-#line 98
+#line 103
  testRunner.Then("I should have the following delivery addresses as a result", ((string)(null)), table16, "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -789,10 +804,13 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Remove delivery address", new string[] {
                         "removedeliveryaddress"});
-#line 104
+#line 109
 this.ScenarioSetup(scenarioInfo);
-#line 105
- testRunner.Given("I have \'v.hatalski@gmail.com\' email address", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 110
+ testRunner.Given("there is \'v.hatalski@gmail.com\' account with \'ruinruin\' password in role \'Shopper" +
+                    "\' with fullname \'Vitali\' and \'Hatalski\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 111
+ testRunner.And("I am authenticated as \'v.hatalski@gmail.com\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
@@ -836,7 +854,7 @@ this.ScenarioSetup(scenarioInfo);
                         "220053",
                         "+375295067630",
                         ""});
-#line 106
+#line 112
  testRunner.And("I have the following delivery addresses", ((string)(null)), table17, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
@@ -845,7 +863,7 @@ this.ScenarioSetup(scenarioInfo);
                         "1"});
             table18.AddRow(new string[] {
                         "5"});
-#line 110
+#line 116
  testRunner.When("I remove the following delivery addresses", ((string)(null)), table18, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
@@ -890,7 +908,7 @@ this.ScenarioSetup(scenarioInfo);
                         "",
                         "",
                         "Error"});
-#line 114
+#line 120
  testRunner.Then("I should have the following delivery addresses as a result", ((string)(null)), table19, "Then ");
 #line hidden
             this.ScenarioCleanup();
