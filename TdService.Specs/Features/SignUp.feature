@@ -16,8 +16,8 @@ Scenario: Shoppers sign up
 	And email with activation code should be sent to registration email address
 
 Scenario: Account already exists
-	Given I have not been authenticated yet
-	And The 'vhatalski@naviam.com' account already exists
+	Given there is 'vhatalski@naviam.com' account with 'ruinruin' password in role 'Shopper' with fullname 'Vitali' and 'Hatalski'
+	And I have not been authenticated yet
 	When I fill sign up form with the following data
 	| Email                | Password | Password Confirm | First Name | Last Name |
 	| vhatalski@naviam.com | ruinruin | ruinruin         | Vitali     | Hatalski  |
@@ -29,8 +29,8 @@ Scenario: Account already exists
 	| Email    | UserEmailExists |
 
 Scenario: Verify email existence when it should exist
-	Given I have not been authenticated yet
-	And The 'vhatalski@naviam.com' account already exists
+	Given there is 'vhatalski@naviam.com' account with 'ruinruin' password in role 'Shopper' with fullname 'Vitali' and 'Hatalski'
+	And I have not been authenticated yet
 	When I enter email 'vhatalski@naviam.com' to verify existence
 	Then the verify email view model should be as follows
 	| EmailExists | Message Type |

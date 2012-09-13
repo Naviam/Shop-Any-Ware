@@ -122,9 +122,10 @@ this.ScenarioSetup(scenarioInfo);
 #line 18
 this.ScenarioSetup(scenarioInfo);
 #line 19
- testRunner.Given("I have not been authenticated yet", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("there is \'vhatalski@naviam.com\' account with \'ruinruin\' password in role \'Shopper" +
+                    "\' with fullname \'Vitali\' and \'Hatalski\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 20
- testRunner.And("The \'vhatalski@naviam.com\' account already exists", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I have not been authenticated yet", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                         "Email",
@@ -174,9 +175,10 @@ this.ScenarioSetup(scenarioInfo);
 #line 31
 this.ScenarioSetup(scenarioInfo);
 #line 32
- testRunner.Given("I have not been authenticated yet", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("there is \'vhatalski@naviam.com\' account with \'ruinruin\' password in role \'Shopper" +
+                    "\' with fullname \'Vitali\' and \'Hatalski\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 33
- testRunner.And("The \'vhatalski@naviam.com\' account already exists", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I have not been authenticated yet", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 34
  testRunner.When("I enter email \'vhatalski@naviam.com\' to verify existence", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden

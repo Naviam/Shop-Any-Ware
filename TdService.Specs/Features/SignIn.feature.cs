@@ -77,53 +77,51 @@ namespace TdService.Specs.Features
 #line 8
 this.ScenarioSetup(scenarioInfo);
 #line 9
- testRunner.Given("I have not been authenticated yet", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("there is \'v.hatalski@gmail.com\' account with \'ruinruin\' password in role \'Shopper" +
+                    "\' with fullname \'Vitali\' and \'Hatalski\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 10
- testRunner.And("The \'vhatalski@naviam.com\' account already exists", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 11
- testRunner.And("I am in \'Shopper\' role", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I have not been authenticated yet", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                         "Email",
                         "Password",
                         "Remember Me"});
             table1.AddRow(new string[] {
-                        "vhatalski@naviam.com",
+                        "v.hatalski@gmail.com",
                         "ruinruin",
                         "false"});
-#line 12
+#line 11
  testRunner.When("I fill sign in form with the following data", ((string)(null)), table1, "When ");
-#line 15
+#line 14
  testRunner.Then("I should be redirected to controller \'Member\' and action \'Dashboard\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Shopper invalid credentials")]
+        [NUnit.Framework.DescriptionAttribute("Shopper invalid password")]
         [NUnit.Framework.CategoryAttribute("shopper")]
-        public virtual void ShopperInvalidCredentials()
+        public virtual void ShopperInvalidPassword()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Shopper invalid credentials", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Shopper invalid password", new string[] {
                         "shopper"});
-#line 18
+#line 17
 this.ScenarioSetup(scenarioInfo);
+#line 18
+ testRunner.Given("there is \'v.hatalski@gmail.com\' account with \'ruinruin\' password in role \'Shopper" +
+                    "\' with fullname \'Vitali\' and \'Hatalski\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 19
- testRunner.Given("I have not been authenticated yet", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 20
- testRunner.And("The \'vhatalski@naviam.com\' account already exists", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 21
- testRunner.And("I am in \'Shopper\' role", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I have not been authenticated yet", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         "Email",
                         "Password",
                         "Remember Me"});
             table2.AddRow(new string[] {
-                        "vhatalski@naviam.com",
+                        "v.hatalski@gmail.com",
                         "ruinruin3",
                         "false"});
-#line 22
+#line 20
  testRunner.When("I fill sign in form with the following data", ((string)(null)), table2, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -133,13 +131,57 @@ this.ScenarioSetup(scenarioInfo);
                         "Message Type",
                         "Error Code"});
             table3.AddRow(new string[] {
-                        "vhatalski@naviam.com",
+                        "v.hatalski@gmail.com",
                         "",
                         "false",
                         "Error",
                         "UserNotValid"});
-#line 25
+#line 23
  testRunner.Then("the signin result should be as follows", ((string)(null)), table3, "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Shopper invalid email")]
+        [NUnit.Framework.CategoryAttribute("shopper")]
+        public virtual void ShopperInvalidEmail()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Shopper invalid email", new string[] {
+                        "shopper"});
+#line 28
+this.ScenarioSetup(scenarioInfo);
+#line 29
+ testRunner.Given("there is \'v.hatalski@gmail.com\' account with \'ruinruin\' password in role \'Shopper" +
+                    "\' with fullname \'Vitali\' and \'Hatalski\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 30
+ testRunner.And("I have not been authenticated yet", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Email",
+                        "Password",
+                        "Remember Me"});
+            table4.AddRow(new string[] {
+                        "vhatalski@gmail.com",
+                        "ruinruin",
+                        "false"});
+#line 31
+ testRunner.When("I fill sign in form with the following data", ((string)(null)), table4, "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Email",
+                        "Password",
+                        "Remember Me",
+                        "Message Type",
+                        "Error Code"});
+            table5.AddRow(new string[] {
+                        "vhatalski@gmail.com",
+                        "",
+                        "false",
+                        "Error",
+                        "UserNotValid"});
+#line 34
+ testRunner.Then("the signin result should be as follows", ((string)(null)), table5, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -151,50 +193,49 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Shopper validate required fields", new string[] {
                         "shopper"});
-#line 30
+#line 39
 this.ScenarioSetup(scenarioInfo);
-#line 31
- testRunner.Given("I have not been authenticated yet", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 32
- testRunner.And("The \'vhatalski@naviam.com\' account already exists", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 33
- testRunner.And("I am in \'Shopper\' role", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 40
+ testRunner.Given("there is \'v.hatalski@gmail.com\' account with \'ruinruin\' password in role \'Shopper" +
+                    "\' with fullname \'Vitali\' and \'Hatalski\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 41
+ testRunner.And("I have not been authenticated yet", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
                         "Email",
                         "Password",
                         "Remember Me"});
-            table4.AddRow(new string[] {
+            table6.AddRow(new string[] {
                         "",
                         "",
                         "false"});
-#line 34
- testRunner.When("I fill sign in form with the following data", ((string)(null)), table4, "When ");
+#line 42
+ testRunner.When("I fill sign in form with the following data", ((string)(null)), table6, "When ");
 #line hidden
-            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
                         "Email",
                         "Password",
                         "Remember Me",
                         "Message Type"});
-            table5.AddRow(new string[] {
+            table7.AddRow(new string[] {
                         "",
                         "",
                         "false",
                         "Warning"});
-#line 37
- testRunner.Then("the signin result should be as follows", ((string)(null)), table5, "Then ");
+#line 45
+ testRunner.Then("the signin result should be as follows", ((string)(null)), table7, "Then ");
 #line hidden
-            TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
                         "Property",
                         "Error Code"});
-            table6.AddRow(new string[] {
+            table8.AddRow(new string[] {
                         "Email",
                         "UserEmailRequired"});
-            table6.AddRow(new string[] {
+            table8.AddRow(new string[] {
                         "Password",
                         "UserPasswordRequired"});
-#line 40
- testRunner.And("the signin view model should have following errors", ((string)(null)), table6, "And ");
+#line 48
+ testRunner.And("the signin view model should have following errors", ((string)(null)), table8, "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -206,58 +247,56 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Sign in operator", new string[] {
                         "operator"});
-#line 46
+#line 54
 this.ScenarioSetup(scenarioInfo);
-#line 47
- testRunner.Given("I have not been authenticated yet", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 48
- testRunner.And("The \'vhatalski@naviam.com\' account already exists", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 49
- testRunner.And("I am in \'Operator\' role", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 55
+ testRunner.Given("there is \'v.hatalski@gmail.com\' account with \'ruinruin\' password in role \'Operato" +
+                    "r\' with fullname \'Vitali\' and \'Hatalski\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 56
+ testRunner.And("I have not been authenticated yet", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-            TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
                         "Email",
                         "Password",
                         "Remember Me"});
-            table7.AddRow(new string[] {
-                        "vhatalski@naviam.com",
+            table9.AddRow(new string[] {
+                        "v.hatalski@gmail.com",
                         "ruinruin",
                         "false"});
-#line 50
- testRunner.When("I fill sign in form with the following data", ((string)(null)), table7, "When ");
-#line 53
+#line 57
+ testRunner.When("I fill sign in form with the following data", ((string)(null)), table9, "When ");
+#line 60
  testRunner.Then("I should be redirected to controller \'Admin\' and action \'Dashboard\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Sign in conslutant")]
+        [NUnit.Framework.DescriptionAttribute("Sign in consultant")]
         [NUnit.Framework.CategoryAttribute("consultant")]
-        public virtual void SignInConslutant()
+        public virtual void SignInConsultant()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Sign in conslutant", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Sign in consultant", new string[] {
                         "consultant"});
-#line 56
+#line 63
 this.ScenarioSetup(scenarioInfo);
-#line 57
- testRunner.Given("I have not been authenticated yet", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 58
- testRunner.And("The \'vhatalski@naviam.com\' account already exists", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 59
- testRunner.And("I am in \'Consultant\' role", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 64
+ testRunner.Given("there is \'v.hatalski@gmail.com\' account with \'ruinruin\' password in role \'Consult" +
+                    "ant\' with fullname \'Vitali\' and \'Hatalski\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 65
+ testRunner.And("I have not been authenticated yet", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-            TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
                         "Email",
                         "Password",
                         "Remember Me"});
-            table8.AddRow(new string[] {
-                        "vhatalski@naviam.com",
+            table10.AddRow(new string[] {
+                        "v.hatalski@gmail.com",
                         "ruinruin",
                         "false"});
-#line 60
- testRunner.When("I fill sign in form with the following data", ((string)(null)), table8, "When ");
-#line 63
+#line 66
+ testRunner.When("I fill sign in form with the following data", ((string)(null)), table10, "When ");
+#line 69
  testRunner.Then("I should be redirected to controller \'Admin\' and action \'Dashboard\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -270,26 +309,25 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Sign in admin", new string[] {
                         "admin"});
-#line 66
+#line 72
 this.ScenarioSetup(scenarioInfo);
-#line 67
- testRunner.Given("I have not been authenticated yet", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 68
- testRunner.And("The \'vhatalski@naviam.com\' account already exists", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 69
- testRunner.And("I am in \'Admin\' role", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 73
+ testRunner.Given("there is \'v.hatalski@gmail.com\' account with \'ruinruin\' password in role \'Consult" +
+                    "ant\' with fullname \'Vitali\' and \'Hatalski\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 74
+ testRunner.And("I have not been authenticated yet", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-            TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
                         "Email",
                         "Password",
                         "Remember Me"});
-            table9.AddRow(new string[] {
-                        "vhatalski@naviam.com",
+            table11.AddRow(new string[] {
+                        "v.hatalski@gmail.com",
                         "ruinruin",
                         "false"});
-#line 70
- testRunner.When("I fill sign in form with the following data", ((string)(null)), table9, "When ");
-#line 73
+#line 75
+ testRunner.When("I fill sign in form with the following data", ((string)(null)), table11, "When ");
+#line 78
  testRunner.Then("I should be redirected to controller \'Admin\' and action \'Dashboard\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

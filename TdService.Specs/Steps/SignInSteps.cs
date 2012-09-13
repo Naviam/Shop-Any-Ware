@@ -19,6 +19,8 @@ namespace TdService.Specs.Steps
 
     using TdService.Model.Membership;
     using TdService.Repository.MsSql;
+    using TdService.Services.Implementations;
+    using TdService.Specs.Fakes;
     using TdService.UI.Web;
     using TdService.UI.Web.Controllers;
     using TdService.UI.Web.ViewModels.Account;
@@ -33,6 +35,21 @@ namespace TdService.Specs.Steps
     public class SignInSteps
     {
         /// <summary>
+        /// The get account controller.
+        /// </summary>
+        /// <returns>
+        /// The TdService.UI.Web.Controllers.AccountController.
+        /// </returns>
+        public AccountController GetAccountController()
+        {
+            return new AccountController(
+                ScenarioContext.Current.Get<MembershipService>(),
+                ScenarioContext.Current.Get<FakeEmailService>(),
+                new FakeCookieProvider(),
+                ScenarioContext.Current.Get<FakeFormsAuthentication>());
+        }
+
+        /// <summary>
         /// The when i fill sign in form with the following data.
         /// </summary>
         /// <param name="table">
@@ -41,7 +58,7 @@ namespace TdService.Specs.Steps
         [When(@"I fill sign in form with the following data")]
         public void WhenIFillSignInFormWithTheFollowingData(Table table)
         {
-            var controller = ScenarioContext.Current.Get<AccountController>();
+            var controller = this.GetAccountController();
             var signInModel = table.CreateInstance<SignInViewModel>();
             var result = controller.SignIn(signInModel);
             ScenarioContext.Current.Set(result, "controllerResponse");

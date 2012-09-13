@@ -6,31 +6,39 @@ Feature: Sign In
 
 @shopper
 Scenario: Sign in shopper
-	Given I have not been authenticated yet
-	And The 'vhatalski@naviam.com' account already exists
-	And I am in 'Shopper' role
+	Given there is 'v.hatalski@gmail.com' account with 'ruinruin' password in role 'Shopper' with fullname 'Vitali' and 'Hatalski'
+	And I have not been authenticated yet
 	When I fill sign in form with the following data
 	| Email                | Password | Remember Me |
-	| vhatalski@naviam.com | ruinruin | false       |
+	| v.hatalski@gmail.com | ruinruin | false       |
 	Then I should be redirected to controller 'Member' and action 'Dashboard'
 
 @shopper
-Scenario: Shopper invalid credentials
-	Given I have not been authenticated yet
-	And The 'vhatalski@naviam.com' account already exists
-	And I am in 'Shopper' role
+Scenario: Shopper invalid password
+	Given there is 'v.hatalski@gmail.com' account with 'ruinruin' password in role 'Shopper' with fullname 'Vitali' and 'Hatalski'
+	And I have not been authenticated yet
 	When I fill sign in form with the following data
 	| Email                | Password  | Remember Me |
-	| vhatalski@naviam.com | ruinruin3 | false       |
+	| v.hatalski@gmail.com | ruinruin3 | false       |
 	Then the signin result should be as follows
 	| Email                | Password | Remember Me | Message Type | Error Code   |
-	| vhatalski@naviam.com |          | false       | Error        | UserNotValid |
+	| v.hatalski@gmail.com |          | false       | Error        | UserNotValid |
+
+@shopper
+Scenario: Shopper invalid email
+	Given there is 'v.hatalski@gmail.com' account with 'ruinruin' password in role 'Shopper' with fullname 'Vitali' and 'Hatalski'
+	And I have not been authenticated yet
+	When I fill sign in form with the following data
+	| Email                | Password  | Remember Me |
+	| vhatalski@gmail.com | ruinruin | false       |
+	Then the signin result should be as follows
+	| Email                | Password | Remember Me | Message Type | Error Code   |
+	| vhatalski@gmail.com |          | false       | Error        | UserNotValid |
 
 @shopper
 Scenario: Shopper validate required fields
-	Given I have not been authenticated yet
-	And The 'vhatalski@naviam.com' account already exists
-	And I am in 'Shopper' role
+	Given there is 'v.hatalski@gmail.com' account with 'ruinruin' password in role 'Shopper' with fullname 'Vitali' and 'Hatalski'
+	And I have not been authenticated yet
 	When I fill sign in form with the following data
 	| Email | Password | Remember Me |
 	|       |          | false       |
@@ -44,30 +52,27 @@ Scenario: Shopper validate required fields
 
 @operator
 Scenario: Sign in operator
-	Given I have not been authenticated yet
-	And The 'vhatalski@naviam.com' account already exists
-	And I am in 'Operator' role
+	Given there is 'v.hatalski@gmail.com' account with 'ruinruin' password in role 'Operator' with fullname 'Vitali' and 'Hatalski'
+	And I have not been authenticated yet
 	When I fill sign in form with the following data
 	| Email                | Password | Remember Me |
-	| vhatalski@naviam.com | ruinruin | false       |
+	| v.hatalski@gmail.com | ruinruin | false       |
 	Then I should be redirected to controller 'Admin' and action 'Dashboard'
 
 @consultant
-Scenario: Sign in conslutant
-	Given I have not been authenticated yet
-	And The 'vhatalski@naviam.com' account already exists
-	And I am in 'Consultant' role
+Scenario: Sign in consultant
+	Given there is 'v.hatalski@gmail.com' account with 'ruinruin' password in role 'Consultant' with fullname 'Vitali' and 'Hatalski'
+	And I have not been authenticated yet
 	When I fill sign in form with the following data
 	| Email                | Password | Remember Me |
-	| vhatalski@naviam.com | ruinruin | false       |
+	| v.hatalski@gmail.com | ruinruin | false       |
 	Then I should be redirected to controller 'Admin' and action 'Dashboard'
 	
 @admin
 Scenario: Sign in admin
-	Given I have not been authenticated yet
-	And The 'vhatalski@naviam.com' account already exists
-	And I am in 'Admin' role
+	Given there is 'v.hatalski@gmail.com' account with 'ruinruin' password in role 'Consultant' with fullname 'Vitali' and 'Hatalski'
+	And I have not been authenticated yet
 	When I fill sign in form with the following data
 	| Email                | Password | Remember Me |
-	| vhatalski@naviam.com | ruinruin | false       |
+	| v.hatalski@gmail.com | ruinruin | false       |
 	Then I should be redirected to controller 'Admin' and action 'Dashboard'

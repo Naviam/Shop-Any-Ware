@@ -20,7 +20,6 @@ namespace TdService.Specs.Steps
     using TdService.Model.Membership;
     using TdService.Repository.MsSql;
     using TdService.Repository.MsSql.Repositories;
-    using TdService.Repository.MsSql.StaticDataSeed;
     using TdService.Services.Implementations;
     using TdService.Specs.Fakes;
     using TdService.UI.Web;
@@ -60,7 +59,6 @@ namespace TdService.Specs.Steps
 
                 context.Database.Initialize(true);
                 context.Database.CreateIfNotExists();
-                ////SeedMembership.Populate(context);
             }
         }
 
@@ -121,7 +119,7 @@ namespace TdService.Specs.Steps
             Mapper.AssertConfigurationIsValid();
             using (var context = new ShopAnyWareSql())
             {
-                var user = context.Users.Include("Profile").Include("Roles").SingleOrDefault(u => u.Email == email);
+                var user = context.Users.Include("Profile").Include("Wallet").Include("Roles").SingleOrDefault(u => u.Email == email);
                 if (user != null)
                 {
                     context.Users.Remove(user);
