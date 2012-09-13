@@ -17,6 +17,11 @@ namespace TdService.UI.Web.ViewModels.Account
         public int Id { get; set; }
 
         /// <summary>
+        /// Gets or sets the email.
+        /// </summary>
+        public string Email { get; set; }
+
+        /// <summary>
         /// Gets or sets First Name.
         /// </summary>
         public string FirstName { get; set; }

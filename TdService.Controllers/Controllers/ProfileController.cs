@@ -61,6 +61,7 @@ namespace TdService.UI.Web.Controllers
                     IdentityToken = this.FormsAuthentication.GetAuthenticationToken()
                 });
             var result = response.ConvertToProfileViewModel();
+            result.Email = this.FormsAuthentication.GetAuthenticationToken();
             this.ViewData.Model = result;
             return this.View();
         }
@@ -92,12 +93,18 @@ namespace TdService.UI.Web.Controllers
             else
             {
                 result.MessageType = MessageType.Warning.ToString();
+                result.FirstName = model.FirstName;
+                result.LastName = model.LastName;
+                result.NotifyOnOrderStatusChanged = model.NotifyOnOrderStatusChanged;
+                result.NotifyOnPackageStatusChanged = model.NotifyOnPackageStatusChanged;
                 result.BrokenRules = new List<BusinessRule>();
                 foreach (var failure in validationResult.Errors)
                 {
                     result.BrokenRules.Add(new BusinessRule(failure.PropertyName, failure.ErrorMessage));
                 }
             }
+
+            result.Email = this.FormsAuthentication.GetAuthenticationToken();
 
             var jsonNetResult = new JsonNetResult
             {

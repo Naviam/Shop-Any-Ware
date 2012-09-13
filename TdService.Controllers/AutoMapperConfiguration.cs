@@ -72,14 +72,16 @@ namespace TdService.UI.Web
             // profile
             Mapper.CreateMap<ProfileViewModel, UpdateProfileRequest>()
                 .ForMember(m => m.IdentityToken, opt => opt.Ignore());
-            Mapper.CreateMap<UpdateProfileResponse, ProfileViewModel>();
+            Mapper.CreateMap<UpdateProfileResponse, ProfileViewModel>()
+                .ForMember(m => m.Email, opt => opt.Ignore());
             Mapper.CreateMap<UpdateProfileRequest, Model.Membership.Profile>()
                 .ForMember(m => m.RowVersion, opt => opt.Ignore());
             Mapper.CreateMap<Model.Membership.Profile, UpdateProfileResponse>()
                 .ForMember(r => r.Message, opt => opt.Ignore())
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
-            Mapper.CreateMap<GetProfileResponse, ProfileViewModel>();
+            Mapper.CreateMap<GetProfileResponse, ProfileViewModel>()
+                .ForMember(m => m.Email, opt => opt.Ignore());
             Mapper.CreateMap<Model.Membership.Profile, GetProfileResponse>()
                 .ForMember(r => r.Message, opt => opt.Ignore())
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())

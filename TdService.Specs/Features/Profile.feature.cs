@@ -85,7 +85,7 @@ this.ScenarioSetup(scenarioInfo);
  testRunner.When("I go to my profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Identity Token",
+                        "Email",
                         "First Name",
                         "Last Name",
                         "Notify On Order Status Changed",
@@ -133,7 +133,7 @@ this.ScenarioSetup(scenarioInfo);
  testRunner.When("I fill the profile form with following data", ((string)(null)), table2, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Identity Token",
+                        "Email",
                         "First Name",
                         "Last Name",
                         "Notify On Order Status Changed",
@@ -175,13 +175,13 @@ this.ScenarioSetup(scenarioInfo);
             table4.AddRow(new string[] {
                         "",
                         "",
-                        "False",
+                        "True",
                         "False"});
 #line 31
  testRunner.When("I fill the profile form with following data", ((string)(null)), table4, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Identity Token",
+                        "Email",
                         "First Name",
                         "Last Name",
                         "Notify On Order Status Changed",
@@ -191,7 +191,7 @@ this.ScenarioSetup(scenarioInfo);
                         "v.hatalski@gmail.com",
                         "",
                         "",
-                        "False",
+                        "True",
                         "False",
                         "Warning"});
 #line 34
@@ -201,13 +201,73 @@ this.ScenarioSetup(scenarioInfo);
                         "Property",
                         "Error Code"});
             table6.AddRow(new string[] {
-                        "ProfileFirstName",
+                        "FirstName",
                         "ProfileFirstNameRequired"});
             table6.AddRow(new string[] {
-                        "ProfileLastName",
+                        "LastName",
                         "ProfileLastNameRequired"});
 #line 37
  testRunner.And("the profile view model should have following errors", ((string)(null)), table6, "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Validate max fields length when updating my profile")]
+        [NUnit.Framework.CategoryAttribute("updateprofile")]
+        public virtual void ValidateMaxFieldsLengthWhenUpdatingMyProfile()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate max fields length when updating my profile", new string[] {
+                        "updateprofile"});
+#line 43
+this.ScenarioSetup(scenarioInfo);
+#line 44
+ testRunner.Given("there is \'v.hatalski@gmail.com\' account with \'ruinruin\' password in role \'Shopper" +
+                    "\' with fullname \'Vitali\' and \'Hatalski\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 45
+ testRunner.And("I am authenticated as \'v.hatalski@gmail.com\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+                        "First Name",
+                        "Last Name",
+                        "Notify On Order Status Changed",
+                        "Notify On Package Status Changed"});
+            table7.AddRow(new string[] {
+                        "First name must not exceed 21 chars length",
+                        "Last name must not exceed 21 chars length",
+                        "False",
+                        "True"});
+#line 46
+ testRunner.When("I fill the profile form with following data", ((string)(null)), table7, "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Email",
+                        "First Name",
+                        "Last Name",
+                        "Notify On Order Status Changed",
+                        "Notify On Package Status Changed",
+                        "Message Type"});
+            table8.AddRow(new string[] {
+                        "v.hatalski@gmail.com",
+                        "First name must not exceed 21 chars length",
+                        "Last name must not exceed 21 chars length",
+                        "False",
+                        "True",
+                        "Warning"});
+#line 49
+ testRunner.Then("the profile view model should be as follows", ((string)(null)), table8, "Then ");
+#line hidden
+            TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Property",
+                        "Error Code"});
+            table9.AddRow(new string[] {
+                        "FirstName",
+                        "ProfileFirstNameMaxLength"});
+            table9.AddRow(new string[] {
+                        "LastName",
+                        "ProfileLastNameMaxLength"});
+#line 52
+ testRunner.And("the profile view model should have following errors", ((string)(null)), table9, "And ");
 #line hidden
             this.ScenarioCleanup();
         }
