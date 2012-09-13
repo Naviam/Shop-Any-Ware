@@ -49,17 +49,6 @@ namespace TdService.Services.Interfaces
         SignInResponse SignIn(SignInRequest request);
 
         /// <summary>
-        /// Get user.
-        /// </summary>
-        /// <param name="request">
-        /// The request.
-        /// </param>
-        /// <returns>
-        /// Get user response object.
-        /// </returns>
-        GetUserResponse GetUser(GetUserRequest request);
-
-        /// <summary>
         /// The get user roles.
         /// </summary>
         /// <param name="request">

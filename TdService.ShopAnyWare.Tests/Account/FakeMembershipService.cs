@@ -74,20 +74,6 @@ namespace TdService.ShopAnyWare.Tests.Account
             return new SignInResponse();
         }
 
-        /// <summary>
-        /// Get user.
-        /// </summary>
-        /// <param name="request">
-        /// The request.
-        /// </param>
-        /// <returns>
-        /// Get user response object.
-        /// </returns>
-        public GetUserResponse GetUser(GetUserRequest request)
-        {
-            return new GetUserResponse();
-        }
-
         List<GetUserRolesResponse> IMembershipService.GetUserRoles(GetUserRolesRequest request)
         {
             return null;

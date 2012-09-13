@@ -235,31 +235,6 @@ namespace TdService.Services.Implementations
         }
 
         /// <summary>
-        /// Get user.
-        /// </summary>
-        /// <param name="request">
-        /// The request.
-        /// </param>
-        /// <returns>
-        /// Get user response object.
-        /// </returns>
-        public GetUserResponse GetUser(GetUserRequest request)
-        {
-            var response = new GetUserResponse
-                {
-                    User = this.userRepository.GetUserByEmail(request.IdentityToken),
-                    MessageType = MessageType.Success
-                };
-            if (response.User == null)
-            {
-                response.MessageType = MessageType.Error;
-                response.ErrorCode = ErrorCode.UserNotFound.ToString();
-            }
-
-            return response;
-        }
-
-        /// <summary>
         /// The get user roles.
         /// </summary>
         /// <param name="request">

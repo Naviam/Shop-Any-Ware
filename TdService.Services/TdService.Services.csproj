@@ -101,8 +101,6 @@
     <Compile Include="Messaging\Address\GetDeliveryAddressesRequest.cs" />
     <Compile Include="Messaging\Address\GetDeliveryAddressesResponse.cs" />
     <Compile Include="Interfaces\IAddressService.cs" />
-    <Compile Include="Messaging\Membership\GetUserRequest.cs" />
-    <Compile Include="Messaging\Membership\GetUserResponse.cs" />
     <Compile Include="Interfaces\IMembershipService.cs" />
     <Compile Include="Messaging\Membership\LoginUserRequest.cs" />
     <Compile Include="Messaging\Membership\SignUpRequest.cs" />
