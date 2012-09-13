@@ -237,14 +237,14 @@ namespace TdService.UI.Web.Controllers
             var result = new VerifyEmailViewModel();
 
             var response = this.membershipService.GetProfile(new GetProfileRequest { IdentityToken = email });
-            if (response.Id > 0)
+            if (response.Id == 0)
             {
-                result.EmailExists = true;
                 result.MessageType = MessageType.Success.ToString();
                 result.Message = CommonResources.VerifyEmailOkMessage;
             }
             else
             {
+                result.EmailExists = true;
                 result.MessageType = MessageType.Warning.ToString();
                 result.Message = CommonResources.VerifyEmailExistsMessage;
             }
