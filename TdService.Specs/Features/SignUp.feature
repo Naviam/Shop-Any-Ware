@@ -28,6 +28,21 @@ Scenario: Account already exists
 	| Property | Error Code      |
 	| Email    | UserEmailExists |
 
+Scenario: Verify email existence when it should exist
+	Given I have not been authenticated yet
+	And The 'vhatalski@naviam.com' account already exists
+	When I enter email 'vhatalski@naviam.com' to verify existence
+	Then the verify email view model should be as follows
+	| EmailExists | Message Type |
+	| True        | Warning      |
+
+Scenario: Verify email existence when it should not exist
+	Given I have not been authenticated yet
+	When I enter email 'nosuchmail@naviam.com' to verify existence
+	Then the verify email view model should be as follows
+	| EmailExists | Message Type |
+	| False       | Success      |
+
 Scenario: Email and password are required
 	Given I have not been authenticated yet
 	When I fill sign up form with the following data

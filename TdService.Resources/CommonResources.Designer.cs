@@ -95,5 +95,23 @@ namespace TdService.Resources {
                 return ResourceManager.GetString("DeliveryAddressRemoveSuccessMessage", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This e-mail is already used..
+        /// </summary>
+        public static string VerifyEmailExistsMessage {
+            get {
+                return ResourceManager.GetString("VerifyEmailExistsMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E-mail is OK..
+        /// </summary>
+        public static string VerifyEmailOkMessage {
+            get {
+                return ResourceManager.GetString("VerifyEmailOkMessage", resourceCulture);
+            }
+        }
     }
 }

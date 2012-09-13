@@ -122,6 +122,7 @@ namespace TdService.Specs.Steps
                 context.Users.Add(user);
                 context.SaveChanges();
             }
+
             ScenarioContext.Current.Set(p0, "email");
         }
 
@@ -151,6 +152,38 @@ namespace TdService.Specs.Steps
             var model = result.Data as SignUpViewModel;
 
             ScenarioContext.Current.Set(model, "actual");
+        }
+
+        /// <summary>
+        /// The when i enter email to verify existence.
+        /// </summary>
+        /// <param name="email">
+        /// The email.
+        /// </param>
+        [When(@"I enter email '(.*)' to verify existence")]
+        public void WhenIEnterEmailToVerifyExistence(string email)
+        {
+            var controller = ScenarioContext.Current.Get<AccountController>();
+            var result = controller.VerifyEmail(email) as JsonNetResult;
+            Assert.That(result, Is.Not.Null);
+            Debug.Assert(result != null, "result != null");
+            var model = result.Data as VerifyEmailViewModel;
+
+            ScenarioContext.Current.Set(model, "actual");
+        }
+
+        /// <summary>
+        /// The then the verify email view model should be as follows.
+        /// </summary>
+        /// <param name="table">
+        /// The table.
+        /// </param>
+        [Then(@"the verify email view model should be as follows")]
+        public void ThenTheVerifyEmailViewModelShouldBeAsFollows(Table table)
+        {
+            var actual = ScenarioContext.Current.Get<VerifyEmailViewModel>("actual");
+            Assert.That(actual, Is.Not.Null);
+            table.CompareToInstance(actual);
         }
 
         /// <summary>

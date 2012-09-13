@@ -68,11 +68,11 @@ namespace TdService.Specs.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Shopper sign in")]
+        [NUnit.Framework.DescriptionAttribute("Sign in shopper")]
         [NUnit.Framework.CategoryAttribute("shopper")]
-        public virtual void ShopperSignIn()
+        public virtual void SignInShopper()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Shopper sign in", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Sign in shopper", new string[] {
                         "shopper"});
 #line 8
 this.ScenarioSetup(scenarioInfo);
@@ -94,7 +94,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 12
  testRunner.When("I fill sign in form with the following data", ((string)(null)), table1, "When ");
 #line 15
- testRunner.Then("I should be redirected to shopper dashbord page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I should be redirected to controller \'Member\' and action \'Dashboard\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -165,7 +165,7 @@ this.ScenarioSetup(scenarioInfo);
                         "Password",
                         "Remember Me"});
             table4.AddRow(new string[] {
-                        "vhatalski@naviam.com",
+                        "",
                         "",
                         "false"});
 #line 34
@@ -177,7 +177,7 @@ this.ScenarioSetup(scenarioInfo);
                         "Remember Me",
                         "Message Type"});
             table5.AddRow(new string[] {
-                        "vhatalski@naviam.com",
+                        "",
                         "",
                         "false",
                         "Warning"});
@@ -188,6 +188,9 @@ this.ScenarioSetup(scenarioInfo);
                         "Property",
                         "Error Code"});
             table6.AddRow(new string[] {
+                        "Email",
+                        "UserEmailRequired"});
+            table6.AddRow(new string[] {
                         "Password",
                         "UserPasswordRequired"});
 #line 40
@@ -197,19 +200,19 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Operator sign in")]
+        [NUnit.Framework.DescriptionAttribute("Sign in operator")]
         [NUnit.Framework.CategoryAttribute("operator")]
-        public virtual void OperatorSignIn()
+        public virtual void SignInOperator()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Operator sign in", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Sign in operator", new string[] {
                         "operator"});
-#line 45
-this.ScenarioSetup(scenarioInfo);
 #line 46
- testRunner.Given("I have not been authenticated yet", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+this.ScenarioSetup(scenarioInfo);
 #line 47
- testRunner.And("The \'vhatalski@naviam.com\' account already exists", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("I have not been authenticated yet", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 48
+ testRunner.And("The \'vhatalski@naviam.com\' account already exists", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 49
  testRunner.And("I am in \'Operator\' role", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
@@ -220,10 +223,74 @@ this.ScenarioSetup(scenarioInfo);
                         "vhatalski@naviam.com",
                         "ruinruin",
                         "false"});
-#line 49
+#line 50
  testRunner.When("I fill sign in form with the following data", ((string)(null)), table7, "When ");
-#line 52
- testRunner.Then("I should be redirected to operator dashbord page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 53
+ testRunner.Then("I should be redirected to controller \'Admin\' and action \'Dashboard\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Sign in conslutant")]
+        [NUnit.Framework.CategoryAttribute("consultant")]
+        public virtual void SignInConslutant()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Sign in conslutant", new string[] {
+                        "consultant"});
+#line 56
+this.ScenarioSetup(scenarioInfo);
+#line 57
+ testRunner.Given("I have not been authenticated yet", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 58
+ testRunner.And("The \'vhatalski@naviam.com\' account already exists", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 59
+ testRunner.And("I am in \'Consultant\' role", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Email",
+                        "Password",
+                        "Remember Me"});
+            table8.AddRow(new string[] {
+                        "vhatalski@naviam.com",
+                        "ruinruin",
+                        "false"});
+#line 60
+ testRunner.When("I fill sign in form with the following data", ((string)(null)), table8, "When ");
+#line 63
+ testRunner.Then("I should be redirected to controller \'Admin\' and action \'Dashboard\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Sign in admin")]
+        [NUnit.Framework.CategoryAttribute("admin")]
+        public virtual void SignInAdmin()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Sign in admin", new string[] {
+                        "admin"});
+#line 66
+this.ScenarioSetup(scenarioInfo);
+#line 67
+ testRunner.Given("I have not been authenticated yet", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 68
+ testRunner.And("The \'vhatalski@naviam.com\' account already exists", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 69
+ testRunner.And("I am in \'Admin\' role", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Email",
+                        "Password",
+                        "Remember Me"});
+            table9.AddRow(new string[] {
+                        "vhatalski@naviam.com",
+                        "ruinruin",
+                        "false"});
+#line 70
+ testRunner.When("I fill sign in form with the following data", ((string)(null)), table9, "When ");
+#line 73
+ testRunner.Then("I should be redirected to controller \'Admin\' and action \'Dashboard\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

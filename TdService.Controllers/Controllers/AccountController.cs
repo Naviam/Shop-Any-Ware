@@ -234,16 +234,25 @@ namespace TdService.UI.Web.Controllers
         [HttpPost]
         public ActionResult VerifyEmail(string email)
         {
-            var response = this.membershipService.GetUser(new GetUserRequest { IdentityToken = email });
-            if (response.User != null)
+            var result = new VerifyEmailViewModel();
+
+            var response = this.membershipService.GetProfile(new GetProfileRequest { IdentityToken = email });
+            if (response.Id > 0)
             {
-                response.Message = Resources.Views.AccountViewResources.SignUpEmailOk;
+                result.EmailExists = true;
+                result.MessageType = MessageType.Success.ToString();
+                result.Message = CommonResources.VerifyEmailOkMessage;
+            }
+            else
+            {
+                result.MessageType = MessageType.Warning.ToString();
+                result.Message = CommonResources.VerifyEmailExistsMessage;
             }
 
             var jsonNetResult = new JsonNetResult
             {
                 Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
-                Data = response
+                Data = result
             };
             return jsonNetResult;
         }

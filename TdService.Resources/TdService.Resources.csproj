@@ -125,6 +125,7 @@
     <EmbeddedResource Include="Views\AccountViewResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AccountViewResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\AccountViewResources.ru.resx" />
     <EmbeddedResource Include="Views\AddressViewResources.resx">

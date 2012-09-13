@@ -80,19 +80,6 @@ namespace TdService.Specs.Steps
         }
 
         /// <summary>
-        /// The then i should be redirected to shopper dashbord page.
-        /// </summary>
-        [Then(@"I should be redirected to shopper dashbord page")]
-        public void ThenIShouldBeRedirectedToShopperDashbordPage()
-        {
-            var result = ScenarioContext.Current.Get<RedirectToRouteResult>("controllerResponse");
-
-            Assert.That(result, Is.Not.Null);
-            Assert.That(result.RouteValues["action"], Is.EqualTo("Dashboard"));
-            Assert.That(result.RouteValues["controller"], Is.EqualTo("Member"));
-        }
-
-        /// <summary>
         /// The then the signin result should be as follows.
         /// </summary>
         /// <param name="table">
@@ -127,16 +114,22 @@ namespace TdService.Specs.Steps
         }
 
         /// <summary>
-        /// The then i should be redirected to operator dashbord page.
+        /// The then i should be redirected to controller and action.
         /// </summary>
-        [Then(@"I should be redirected to operator dashbord page")]
-        public void ThenIShouldBeRedirectedToOperatorDashbordPage()
+        /// <param name="controller">
+        /// The controller.
+        /// </param>
+        /// <param name="action">
+        /// The action.
+        /// </param>
+        [Then(@"I should be redirected to controller '(.*)' and action '(.*)'")]
+        public void ThenIShouldBeRedirectedToControllerAndAction(string controller, string action)
         {
             var result = ScenarioContext.Current.Get<RedirectToRouteResult>("controllerResponse");
 
             Assert.That(result, Is.Not.Null);
-            Assert.That(result.RouteValues["action"], Is.EqualTo("Dashboard"));
-            Assert.That(result.RouteValues["controller"], Is.EqualTo("Admin"));
+            Assert.That(result.RouteValues["action"], Is.EqualTo(action));
+            Assert.That(result.RouteValues["controller"], Is.EqualTo(controller));
         }
     }
 }

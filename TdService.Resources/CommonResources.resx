@@ -129,4 +129,10 @@
   <data name="DeliveryAddressRemoveSuccessMessage" xml:space="preserve">
     <value>Delivery address has been successfully removed.</value>
   </data>
+  <data name="VerifyEmailExistsMessage" xml:space="preserve">
+    <value>This e-mail is already used.</value>
+  </data>
+  <data name="VerifyEmailOkMessage" xml:space="preserve">
+    <value>E-mail is OK.</value>
+  </data>
 </root>
