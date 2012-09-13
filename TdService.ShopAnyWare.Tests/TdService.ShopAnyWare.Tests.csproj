@@ -83,11 +83,9 @@
     <Compile Include="Mocks\FakeEmailService.cs" />
     <Compile Include="Account\FakeFormsAuthentication.cs" />
     <Compile Include="Account\FakeMembershipService.cs" />
-    <Compile Include="Orders\OrderEntityTests.cs" />
     <Compile Include="Orders\OrderControllerTests.cs" />
     <Compile Include="Orders\OrderServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Orders\OrderRepositoryTests.cs" />
     <Compile Include="Repository\ShopAnyWareTestInitilizer.cs">
       <SubType>Code</SubType>
     </Compile>

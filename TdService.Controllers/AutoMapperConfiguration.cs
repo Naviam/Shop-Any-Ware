@@ -46,6 +46,7 @@ namespace TdService.UI.Web
                 .ForMember(r => r.LastName, opt => opt.MapFrom(u => u.Profile.LastName))
                 .ForMember(r => r.NotifyOnOrderStatusChanged, opt => opt.MapFrom(u => u.Profile.NotifyOnOrderStatusChanged))
                 .ForMember(r => r.NotifyOnPackageStatusChanged, opt => opt.MapFrom(u => u.Profile.NotifyOnPackageStatusChanged))
+                .ForMember(r => r.BrokenRules, opt => opt.Ignore())
                 .ForMember(r => r.Message, opt => opt.Ignore())
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
@@ -64,6 +65,7 @@ namespace TdService.UI.Web
 
             // roles
             Mapper.CreateMap<Role, GetUserRolesResponse>()
+                .ForMember(r => r.BrokenRules, opt => opt.Ignore())
                 .ForMember(r => r.Message, opt => opt.Ignore())
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
@@ -77,6 +79,7 @@ namespace TdService.UI.Web
             Mapper.CreateMap<UpdateProfileRequest, Model.Membership.Profile>()
                 .ForMember(m => m.RowVersion, opt => opt.Ignore());
             Mapper.CreateMap<Model.Membership.Profile, UpdateProfileResponse>()
+                .ForMember(r => r.BrokenRules, opt => opt.Ignore())
                 .ForMember(r => r.Message, opt => opt.Ignore())
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
@@ -85,11 +88,13 @@ namespace TdService.UI.Web
             Mapper.CreateMap<Model.Membership.Profile, GetProfileResponse>()
                 .ForMember(r => r.Message, opt => opt.Ignore())
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())
+                .ForMember(r => r.BrokenRules, opt => opt.Ignore())
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
 
             // delivery address
             Mapper.CreateMap<DeliveryAddress, GetDeliveryAddressesResponse>()
                 .ForMember(r => r.Message, opt => opt.Ignore())
+                .ForMember(r => r.BrokenRules, opt => opt.Ignore())
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
             Mapper.CreateMap<GetDeliveryAddressesResponse, DeliveryAddressViewModel>();
@@ -100,6 +105,7 @@ namespace TdService.UI.Web
                 .ForMember(m => m.RowVersion, opt => opt.Ignore());
             Mapper.CreateMap<DeliveryAddress, AddOrUpdateDeliveryAddressResponse>()
                 .ForMember(r => r.Message, opt => opt.Ignore())
+                .ForMember(r => r.BrokenRules, opt => opt.Ignore())
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
             Mapper.CreateMap<RemoveDeliveryRequestResponse, DeliveryAddressViewModel>()
@@ -119,6 +125,7 @@ namespace TdService.UI.Web
             // get recent orders
             Mapper.CreateMap<GetRecentOrdersResponse, OrderViewModel>();
             Mapper.CreateMap<Order, GetRecentOrdersResponse>()
+                .ForMember(r => r.BrokenRules, opt => opt.Ignore())
                 .ForMember(r => r.Message, opt => opt.Ignore())
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
@@ -128,6 +135,7 @@ namespace TdService.UI.Web
             Mapper.CreateMap<OrderViewModel, AddOrderRequest>()
                 .ForMember(m => m.IdentityToken, opt => opt.Ignore());
             Mapper.CreateMap<Order, AddOrderResponse>()
+                .ForMember(r => r.BrokenRules, opt => opt.Ignore())
                 .ForMember(r => r.Message, opt => opt.Ignore())
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
@@ -135,6 +143,7 @@ namespace TdService.UI.Web
             // retailer
             Mapper.CreateMap<string, Retailer>().ConvertUsing<RetailerConverter>();
             Mapper.CreateMap<Retailer, GetRetailersResponse>()
+                .ForMember(r => r.BrokenRules, opt => opt.Ignore())
                 .ForMember(r => r.Message, opt => opt.Ignore())
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
@@ -144,6 +153,7 @@ namespace TdService.UI.Web
             Mapper.CreateMap<OrderItemViewModel, AddItemToOrderRequest>();
             Mapper.CreateMap<AddItemToOrderRequest, Item>();
             Mapper.CreateMap<Item, AddItemToOrderResponse>()
+                .ForMember(r => r.BrokenRules, opt => opt.Ignore())
                 .ForMember(r => r.Message, opt => opt.Ignore())
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
@@ -152,6 +162,7 @@ namespace TdService.UI.Web
 
             // get order items
             Mapper.CreateMap<Item, GetOrderItemsResponse>()
+                .ForMember(r => r.BrokenRules, opt => opt.Ignore())
                 .ForMember(r => r.Message, opt => opt.Ignore())
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
@@ -162,6 +173,7 @@ namespace TdService.UI.Web
 
             // get package items
             Mapper.CreateMap<Item, GetPackageItemsResponse>()
+                .ForMember(r => r.BrokenRules, opt => opt.Ignore())
                 .ForMember(r => r.Message, opt => opt.Ignore())
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
@@ -170,6 +182,7 @@ namespace TdService.UI.Web
 
             // get recent packages
             Mapper.CreateMap<Package, GetRecentPackagesResponse>()
+                .ForMember(r => r.BrokenRules, opt => opt.Ignore())
                 .ForMember(r => r.Message, opt => opt.Ignore())
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
@@ -177,6 +190,7 @@ namespace TdService.UI.Web
 
             // add package
             Mapper.CreateMap<Package, AddPackageResponse>()
+                .ForMember(r => r.BrokenRules, opt => opt.Ignore())
                 .ForMember(r => r.Message, opt => opt.Ignore())
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())
                 .ForMember(r => r.MessageType, opt => opt.Ignore());

@@ -6,6 +6,8 @@
 
 namespace TdService.ShopAnyWare.Tests.Account
 {
+    using AutoMapper;
+
     using NUnit.Framework;
 
     using TdService.Infrastructure.Email;
@@ -17,6 +19,7 @@ namespace TdService.ShopAnyWare.Tests.Account
     using TdService.Services.Messaging.Membership;
     using TdService.ShopAnyWare.Tests.Mocks;
     using TdService.ShopAnyWare.Tests.Orders;
+    using TdService.UI.Web;
 
     /// <summary>
     /// This class contains membership service tests.
@@ -60,6 +63,9 @@ namespace TdService.ShopAnyWare.Tests.Account
         [TestFixtureSetUp]
         public void SetUp()
         {
+            AutoMapperConfiguration.Configure();
+            Mapper.AssertConfigurationIsValid();
+
             this.userRepository = new FakeUserRepository();
             this.profileRepository = new FakeProfileRepository();
             this.roleRepository = new FakeRoleRepository();

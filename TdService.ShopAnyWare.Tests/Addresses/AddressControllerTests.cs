@@ -3,6 +3,8 @@
     using System.Collections.Generic;
     using System.Diagnostics;
 
+    using AutoMapper;
+
     using NUnit.Framework;
 
     using TdService.Infrastructure.Authentication;
@@ -27,39 +29,59 @@
         /// </summary>
         private IAddressService addressService;
 
+        /// <summary>
+        /// The setup.
+        /// </summary>
         [SetUp]
         public void Setup()
         {
             AutoMapperConfiguration.Configure();
+            Mapper.AssertConfigurationIsValid();
+
             this.formsAuthentication = new FakeFormsAuthentication();
             this.formsAuthentication.SetAuthenticationToken("vhatalski@naviam.com", true);
             this.addressService = new FakeAddressService();
         }
 
+        /// <summary>
+        /// The should be able to call get delivery addresses only if authorized.
+        /// </summary>
         [Test]
         public void ShouldBeAbleToCallGetDeliveryAddressesOnlyIfAuthorized()
         {
             TestHelper.AssertIsAuthorized(typeof(AddressController), "Get");
         }
 
+        /// <summary>
+        /// The should be able to call add delivery address only if authorized.
+        /// </summary>
         [Test]
         public void ShouldBeAbleToCallAddDeliveryAddressOnlyIfAuthorized()
         {
             TestHelper.AssertIsAuthorized(typeof(AddressController), "Add", typeof(DeliveryAddressViewModel));
         }
 
+        /// <summary>
+        /// The should be able to call remove delivery address only if authorized.
+        /// </summary>
         [Test]
         public void ShouldBeAbleToCallRemoveDeliveryAddressOnlyIfAuthorized()
         {
             TestHelper.AssertIsAuthorized(typeof(AddressController), "Remove", typeof(int));
         }
 
+        /// <summary>
+        /// The should be able to call update delivery address only if authorized.
+        /// </summary>
         [Test]
         public void ShouldBeAbleToCallUpdateDeliveryAddressOnlyIfAuthorized()
         {
             TestHelper.AssertIsAuthorized(typeof(AddressController), "Update", typeof(DeliveryAddressViewModel));
         }
 
+        /// <summary>
+        /// The should return json collection of user addresses.
+        /// </summary>
         [Test]
         public void ShouldReturnJsonCollectionOfUserAddresses()
         {
@@ -77,6 +99,9 @@
             Assert.That(model.Count, Is.GreaterThan(0));
         }
 
+        /// <summary>
+        /// The should be able to add delivery address.
+        /// </summary>
         [Test]
         public void ShouldBeAbleToAddDeliveryAddress()
         {
@@ -123,6 +148,9 @@
             Assert.That(model.ZipCode, Is.EqualTo("1233"));
         }
 
+        /// <summary>
+        /// The should be able to update delivery address.
+        /// </summary>
         [Test]
         public void ShouldBeAbleToUpdateDeliveryAddress()
         {
@@ -169,6 +197,9 @@
             Assert.That(model.ZipCode, Is.EqualTo("1233"));
         }
 
+        /// <summary>
+        /// The should be able to remove delivery address.
+        /// </summary>
         [Test]
         public void ShouldBeAbleToRemoveDeliveryAddress()
         {
@@ -178,16 +209,6 @@
 
             // act
             var actual = controller.Remove(AddressIdToRemove) as JsonNetResult;
-            DeliveryAddressViewModel found = null;
-            var jsonNetResult = controller.Get() as JsonNetResult;
-            if (jsonNetResult != null)
-            {
-                var deliveryAddressViewModels = jsonNetResult.Data as List<DeliveryAddressViewModel>;
-                if (deliveryAddressViewModels != null)
-                {
-                    found = deliveryAddressViewModels.Find(a => a.Id == AddressIdToRemove);
-                }
-            }
 
             // assert
             Assert.That(actual, Is.Not.Null);
@@ -196,7 +217,6 @@
             Debug.Assert(model != null, "model != null");
             Assert.That(model.MessageType, Is.EqualTo("Success"));
             Assert.That(model.Id, Is.EqualTo(1));
-            Assert.That(found, Is.Null);
         }
     }
 }

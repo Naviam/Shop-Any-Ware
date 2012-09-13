@@ -9,10 +9,13 @@ namespace TdService.ShopAnyWare.Tests.Account
     using System.Diagnostics;
     using System.Web.Mvc;
 
+    using AutoMapper;
+
     using NUnit.Framework;
 
     using TdService.Infrastructure.Authentication;
     using TdService.Services.Interfaces;
+    using TdService.Services.Messaging;
     using TdService.UI.Web;
     using TdService.UI.Web.Controllers;
     using TdService.UI.Web.ViewModels.Account;
@@ -39,6 +42,9 @@ namespace TdService.ShopAnyWare.Tests.Account
         [TestFixtureSetUp]
         public void SetUp()
         {
+            AutoMapperConfiguration.Configure();
+            Mapper.AssertConfigurationIsValid();
+
             this.MembershipService = new FakeMembershipService();
             this.FormsAuthentication = new FakeFormsAuthentication();
         }
@@ -83,7 +89,7 @@ namespace TdService.ShopAnyWare.Tests.Account
             Assert.That(actual, Is.Not.Null);
             if (actual != null)
             {
-                Assert.That(actual.MessageType, Is.EqualTo("success"));
+                Assert.That(actual.MessageType, Is.EqualTo(MessageType.Success.ToString()));
             }
         }
 
@@ -114,7 +120,7 @@ namespace TdService.ShopAnyWare.Tests.Account
             {
                 var model = actual.Data as ProfileViewModel;
                 Debug.Assert(model != null, "model != null");
-                Assert.That(model.MessageType, Is.EqualTo("Error"));
+                Assert.That(model.MessageType, Is.EqualTo(MessageType.Warning.ToString()));
             }
         }
     }

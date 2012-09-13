@@ -85,7 +85,7 @@ namespace TdService.ShopAnyWare.Tests.Addresses
         /// </returns>
         public AddOrUpdateDeliveryAddressResponse AddOrUpdateDeliveryAddress(AddOrUpdateDeliveryAddressRequest request)
         {
-            var newAddress = Mapper.Map<AddOrUpdateDeliveryAddressRequest, DeliveryAddress>(request);
+            var newAddress = request.ConvertToDeliveryAddress();
             var address = this.addresses.Find(a => a.Id == request.Id);
             if (address == null)
             {
