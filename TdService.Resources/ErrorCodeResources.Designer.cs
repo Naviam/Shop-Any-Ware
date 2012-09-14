@@ -304,7 +304,7 @@ namespace TdService.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The order does not belong to you or not found..
+        ///   Looks up a localized string similar to The order has not been found..
         /// </summary>
         public static string OrderNotBelongToUser {
             get {

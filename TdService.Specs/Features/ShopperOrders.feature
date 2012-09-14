@@ -37,3 +37,15 @@ Scenario: Remove order in new status
 	Then the order view model should be as follows
 	| Id | Retailer Url | Order Number | Tracking Number | Received Date | Status | Message Type |
 	| 1  |              |              |                 |               |        | Success      |
+
+@removeorder
+Scenario: Remove order that does not exist
+	Given there is 'v.hatalski@gmail.com' account with 'ruinruin' password in role 'Shopper' with fullname 'Vitali' and 'Hatalski'
+	And I am authenticated as 'v.hatalski@gmail.com'
+	And I have the following orders
+	| Id | Retailer Url | Order Number | Tracking Number | Received Date | Status |
+	| 1  | amazon.com   |              |                 |               | New    |
+	When I remove order with id '2'
+	Then the order view model should be as follows
+	| Id | Retailer Url | Order Number | Tracking Number | Received Date | Status | Message Type | Error Code           |
+	| 2  |              |              |                 |               |        | Error        | OrderNotBelongToUser |

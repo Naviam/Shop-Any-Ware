@@ -160,6 +160,24 @@ namespace TdService.UI.Web
             Mapper.CreateMap<AddItemToOrderResponse, OrderItemViewModel>()
                 .ForMember(r => r.OrderId, opt => opt.Ignore());
 
+            // remove order
+            Mapper.CreateMap<Order, RemoveOrderResponse>()
+                .ForMember(r => r.BrokenRules, opt => opt.Ignore())
+                .ForMember(r => r.Message, opt => opt.Ignore())
+                .ForMember(r => r.ErrorCode, opt => opt.Ignore())
+                .ForMember(r => r.MessageType, opt => opt.Ignore());
+            Mapper.CreateMap<RemoveOrderResponse, OrderViewModel>()
+                .ForMember(r => r.RetailerUrl, opt => opt.Ignore())
+                .ForMember(r => r.OrderNumber, opt => opt.Ignore())
+                .ForMember(r => r.TrackingNumber, opt => opt.Ignore())
+                .ForMember(r => r.CreatedDate, opt => opt.Ignore())
+                .ForMember(r => r.ReceivedDate, opt => opt.Ignore())
+                .ForMember(r => r.Status, opt => opt.Ignore())
+                .ForMember(r => r.CanBeModified, opt => opt.Ignore())
+                .ForMember(r => r.CanBeRemoved, opt => opt.Ignore())
+                .ForMember(r => r.CanBeRequestedForReturn, opt => opt.Ignore())
+                .ForMember(r => r.CanItemsBeModified, opt => opt.Ignore());
+
             // get order items
             Mapper.CreateMap<Item, GetOrderItemsResponse>()
                 .ForMember(r => r.BrokenRules, opt => opt.Ignore())

@@ -229,6 +229,64 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Remove order that does not exist")]
+        [NUnit.Framework.CategoryAttribute("removeorder")]
+        public virtual void RemoveOrderThatDoesNotExist()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Remove order that does not exist", new string[] {
+                        "removeorder"});
+#line 42
+this.ScenarioSetup(scenarioInfo);
+#line 43
+ testRunner.Given("there is \'v.hatalski@gmail.com\' account with \'ruinruin\' password in role \'Shopper" +
+                    "\' with fullname \'Vitali\' and \'Hatalski\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 44
+ testRunner.And("I am authenticated as \'v.hatalski@gmail.com\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id",
+                        "Retailer Url",
+                        "Order Number",
+                        "Tracking Number",
+                        "Received Date",
+                        "Status"});
+            table6.AddRow(new string[] {
+                        "1",
+                        "amazon.com",
+                        "",
+                        "",
+                        "",
+                        "New"});
+#line 45
+ testRunner.And("I have the following orders", ((string)(null)), table6, "And ");
+#line 48
+ testRunner.When("I remove order with id \'2\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id",
+                        "Retailer Url",
+                        "Order Number",
+                        "Tracking Number",
+                        "Received Date",
+                        "Status",
+                        "Message Type",
+                        "Error Code"});
+            table7.AddRow(new string[] {
+                        "2",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "Error",
+                        "OrderNotBelongToUser"});
+#line 49
+ testRunner.Then("the order view model should be as follows", ((string)(null)), table7, "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore

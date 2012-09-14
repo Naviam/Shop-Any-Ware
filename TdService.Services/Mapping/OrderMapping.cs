@@ -48,5 +48,19 @@ namespace TdService.Services.Mapping
         {
             return Mapper.Map<Order, AddOrderResponse>(order);
         }
+
+        /// <summary>
+        /// The convert to remove order response.
+        /// </summary>
+        /// <param name="order">
+        /// The order.
+        /// </param>
+        /// <returns>
+        /// The TdService.Services.Messaging.Order.RemoveOrderResponse.
+        /// </returns>
+        public static RemoveOrderResponse ConvertToRemoveOrderResponse(this Order order)
+        {
+            return Mapper.Map<Order, RemoveOrderResponse>(order);
+        }
     }
 }

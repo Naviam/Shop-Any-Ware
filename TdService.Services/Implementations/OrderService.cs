@@ -138,12 +138,14 @@ namespace TdService.Services.Implementations
 
             try
             {
-                this.orderRepository.RemoveOrder(request.IdentityToken, request.Id);
+                var order = this.orderRepository.RemoveOrder(request.IdentityToken, request.Id);
+                response = order.ConvertToRemoveOrderResponse();
             }
             catch (Exception ex)
             {
+                response.Id = request.Id;
                 response.MessageType = MessageType.Error;
-                response.Message = ex.Message;
+                response.ErrorCode = ex.Message;
             }
 
             return response;

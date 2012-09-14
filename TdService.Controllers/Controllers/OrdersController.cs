@@ -99,7 +99,6 @@ namespace TdService.UI.Web.Controllers
                 };
                 var response = this.orderService.AddOrder(request);
                 result = response.ConverToOrderViewModel();
-                result.MessageType = MessageType.Success.ToString();
             }
             else
             {
@@ -138,12 +137,7 @@ namespace TdService.UI.Web.Controllers
                     Id = orderId
                 };
             var response = this.orderService.RemoveOrder(request);
-            var result = new OrderViewModel
-                {
-                    Id = orderId,
-                    Message = response.Message ?? DashboardViewResources.OrderRemovedSuccess,
-                    MessageType = response.MessageType.ToString()
-                };
+            var result = response.ConvertToOrderViewModel();
 
             var jsonNetResult = new JsonNetResult
             {

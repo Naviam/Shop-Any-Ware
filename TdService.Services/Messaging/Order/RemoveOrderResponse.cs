@@ -14,5 +14,9 @@ namespace TdService.Services.Messaging.Order
     /// </summary>
     public class RemoveOrderResponse : ResponseBase
     {
+        /// <summary>
+        /// Gets or sets the id.
+        /// </summary>
+        public int Id { get; set; }
     }
 }

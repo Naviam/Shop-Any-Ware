@@ -16,9 +16,27 @@ namespace TdService.UI.Web.ViewModels
     public class ViewModelBase
     {
         /// <summary>
+        /// The message.
+        /// </summary>
+        private string message;
+
+        /// <summary>
         /// Gets or sets Message.
         /// </summary>
-        public string Message { get; set; }
+        public string Message
+        {
+            get
+            {
+                return string.IsNullOrWhiteSpace(this.message) ? 
+                    (string.IsNullOrWhiteSpace(this.ErrorCode) ? this.message : Resources.ErrorCodeResources.ResourceManager.GetString(this.ErrorCode))
+                    : this.message;
+            }
+
+            set
+            {
+                this.message = value;
+            }
+        }
 
         /// <summary>
         /// Gets or sets Message Type.
