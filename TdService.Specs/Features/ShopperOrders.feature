@@ -21,19 +21,19 @@ Scenario: Validate retailer url is required when adding new order
 	When I set retailer url as '' and press add order button on shopper dashboard page
 	Then the order view model should be as follows
 	| Id | Retailer Url | Order Number | Tracking Number | Received Date | Status | Can Be Modified | Can Be Removed | Can Be Requested For Return | Can Items Be Modified | Message Type |
-	| 0  |              |              |                 |               |        | False           | False          | False                       | False                 | Warning      |
+	| 0  |              |              |                 |               | New    | False           | False          | False                       | False                 | Warning      |
 	And the order view model should have the following errors
-	| Property    | Error Code               |
-	| RetailerUrl | OrderRetailerUrlRequired |
+	| Property    | Error Code            |
+	| RetailerUrl | OrderRetailerRequired |
 
 @removeorder
 Scenario: Remove order in new status
 	Given there is 'v.hatalski@gmail.com' account with 'ruinruin' password in role 'Shopper' with fullname 'Vitali' and 'Hatalski'
 	And I am authenticated as 'v.hatalski@gmail.com'
 	And I have the following orders
-	| Id | Retailer Url | Order Number | Tracking Number | Created Date | Received Date | Status |
-	| 1  | amazon.com   |              |                 |              |               | New    |
+	| Id | Retailer Url | Order Number | Tracking Number | Received Date | Status |
+	| 1  | amazon.com   |              |                 |               | New    |
 	When I remove order with id '1'
 	Then the order view model should be as follows
-	| Id | Retailer Url | Order Number | Tracking Number | Created Date | Received Date | Status | Message Type |
-	| 1  |              |              |                 |              |               |        | Success      |
+	| Id | Retailer Url | Order Number | Tracking Number | Received Date | Status | Message Type |
+	| 1  |              |              |                 |               |        | Success      |

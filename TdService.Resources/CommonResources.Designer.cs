@@ -97,6 +97,24 @@ namespace TdService.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There were some issues with the order you are adding..
+        /// </summary>
+        public static string OrderAddErrorMessage {
+            get {
+                return ResourceManager.GetString("OrderAddErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The order has been successfully added..
+        /// </summary>
+        public static string OrderAddSuccessMessage {
+            get {
+                return ResourceManager.GetString("OrderAddSuccessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There were some issues with the profile you are updating..
         /// </summary>
         public static string ProfileUpdateErrorMessage {

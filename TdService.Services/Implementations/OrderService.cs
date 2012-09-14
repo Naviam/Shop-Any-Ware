@@ -12,12 +12,12 @@ namespace TdService.Services.Implementations
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
 
+    using TdService.Infrastructure.Logging;
     using TdService.Model.Common;
     using TdService.Model.Membership;
     using TdService.Model.Orders;
-    using TdService.Resources.Views;
+    using TdService.Resources;
     using TdService.Services.Interfaces;
     using TdService.Services.Mapping;
     using TdService.Services.Messaging;
@@ -39,10 +39,10 @@ namespace TdService.Services.Implementations
         private readonly IUserRepository userRepository;
 
         /// <summary>
-        /// The retailer repository.
+        /// The logger.
         /// </summary>
-        private readonly IRetailerRepository retailerRepository;
-        
+        private readonly ILogger logger;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="OrderService"/> class.
         /// </summary>
@@ -52,17 +52,17 @@ namespace TdService.Services.Implementations
         /// <param name="orderRepository">
         /// Order repository.
         /// </param>
-        /// <param name="retailerRepository">
-        /// The retailer Repository.
+        /// <param name="logger">
+        /// The logger.
         /// </param>
         public OrderService(
             IUserRepository userRepository,
             IOrderRepository orderRepository,
-            IRetailerRepository retailerRepository)
+            ILogger logger)
         {
             this.userRepository = userRepository;
             this.orderRepository = orderRepository;
-            this.retailerRepository = retailerRepository;
+            this.logger = logger;
         }
 
         /// <summary>
@@ -98,30 +98,29 @@ namespace TdService.Services.Implementations
         public AddOrderResponse AddOrder(AddOrderRequest request)
         {
             var retailer = new Retailer(request.RetailerUrl);
-            retailer = this.retailerRepository.FindOrAdd(retailer);
-            this.retailerRepository.SaveChanges();
-
-            var newOrder = new Order(OrderStatus.New) { CreatedDate = DateTime.UtcNow };
-            if (newOrder.GetBrokenRules().Any())
+            var newOrder = new Order(OrderStatus.New) { CreatedDate = DateTime.UtcNow, Retailer = retailer };
+            var response = new AddOrderResponse { BrokenRules = retailer.GetBrokenRules().ToList() };
+            response.BrokenRules.AddRange(newOrder.GetBrokenRules().ToList());
+            if (response.BrokenRules.Any())
             {
-                var message = new StringBuilder();
-                foreach (var rule in newOrder.GetBrokenRules())
-                {
-                    message.Append(rule.ErrorCode);
-                }
-
-                throw new InvalidOrderException(message.ToString());
+                response.MessageType = MessageType.Warning;
+                return response;
             }
 
-            var orderResult = this.orderRepository.AddOrder(newOrder);
-            this.orderRepository.AttachRetailer(retailer);
-            orderResult.Retailer = retailer;
-            this.orderRepository.SaveChanges();
+            try
+            {
+                var orderResult = this.orderRepository.AddOrder(request.IdentityToken, newOrder);
+                response = orderResult.ConvertToAddOrderResponse();
+                response.Message = CommonResources.OrderAddSuccessMessage;
+            }
+            catch (Exception e)
+            {
+                response.MessageType = MessageType.Error;
+                response.Message = CommonResources.OrderAddErrorMessage;
+                this.logger.Error(CommonResources.OrderAddErrorMessage, e);
+            }
 
-            this.userRepository.AttachOrder(request.IdentityToken, orderResult.Id);
-            this.userRepository.SaveChanges();
-
-            return orderResult.ConvertToAddOrderResponse();
+            return response;
         }
 
         /// <summary>
@@ -137,28 +136,14 @@ namespace TdService.Services.Implementations
         {
             var response = new RemoveOrderResponse { MessageType = MessageType.Success };
 
-            var user = this.userRepository.GetUserWithOrdersByEmail(request.IdentityToken);
-            if (user != null)
+            try
             {
-                try
-                {
-                    var result = user.RemoveOrder(request.Id);
-                    if (result)
-                    {
-                        this.orderRepository.RemoveOrder(request.Id);
-                        this.orderRepository.SaveChanges();
-                    }
-                    else
-                    {
-                        response.MessageType = MessageType.Warning;
-                        response.Message = DashboardViewResources.OrderCannotBeRemoved;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    response.MessageType = MessageType.Error;
-                    response.Message = ex.Message;
-                }
+                this.orderRepository.RemoveOrder(request.IdentityToken, request.Id);
+            }
+            catch (Exception ex)
+            {
+                response.MessageType = MessageType.Error;
+                response.Message = ex.Message;
             }
 
             return response;

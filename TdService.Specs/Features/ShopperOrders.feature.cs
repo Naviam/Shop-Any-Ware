@@ -153,7 +153,7 @@ this.ScenarioSetup(scenarioInfo);
                         "",
                         "",
                         "",
-                        "",
+                        "New",
                         "False",
                         "False",
                         "False",
@@ -167,7 +167,7 @@ this.ScenarioSetup(scenarioInfo);
                         "Error Code"});
             table3.AddRow(new string[] {
                         "RetailerUrl",
-                        "OrderRetailerUrlRequired"});
+                        "OrderRetailerRequired"});
 #line 25
  testRunner.And("the order view model should have the following errors", ((string)(null)), table3, "And ");
 #line hidden
@@ -194,13 +194,11 @@ this.ScenarioSetup(scenarioInfo);
                         "Retailer Url",
                         "Order Number",
                         "Tracking Number",
-                        "Created Date",
                         "Received Date",
                         "Status"});
             table4.AddRow(new string[] {
                         "1",
                         "amazon.com",
-                        "",
                         "",
                         "",
                         "",
@@ -215,13 +213,11 @@ this.ScenarioSetup(scenarioInfo);
                         "Retailer Url",
                         "Order Number",
                         "Tracking Number",
-                        "Created Date",
                         "Received Date",
                         "Status",
                         "Message Type"});
             table5.AddRow(new string[] {
                         "1",
-                        "",
                         "",
                         "",
                         "",

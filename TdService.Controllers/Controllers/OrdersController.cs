@@ -99,12 +99,11 @@ namespace TdService.UI.Web.Controllers
                 };
                 var response = this.orderService.AddOrder(request);
                 result = response.ConverToOrderViewModel();
-                result.Message = DashboardViewResources.OrderCreatedSuccess;
                 result.MessageType = MessageType.Success.ToString();
             }
             else
             {
-                result.MessageType = MessageType.Error.ToString();
+                result.MessageType = MessageType.Warning.ToString();
                 result.BrokenRules = new List<BusinessRule>();
                 foreach (var failure in validationResult.Errors)
                 {

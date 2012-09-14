@@ -7,32 +7,18 @@
 namespace TdService.Repository.MsSql.Repositories
 {
     using System;
+    using System.Collections.Generic;
     using System.Data;
+    using System.Linq;
 
-    using TdService.Model.Common;
+    using TdService.Infrastructure.Domain;
     using TdService.Model.Orders;
 
     /// <summary>
     /// Order repository to work with orders in database.
     /// </summary>
-    public class OrderRepository : IOrderRepository, IDisposable
+    public class OrderRepository : IOrderRepository
     {
-        /// <summary>
-        /// The context.
-        /// </summary>
-        private readonly ShopAnyWareSql context;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="OrderRepository"/> class.
-        /// </summary>
-        /// <param name="context">
-        /// The context.
-        /// </param>
-        public OrderRepository(ShopAnyWareSql context)
-        {
-            this.context = context;
-        }
-
         /// <summary>
         /// Get order details.
         /// </summary>
@@ -44,32 +30,49 @@ namespace TdService.Repository.MsSql.Repositories
         /// </returns>
         public Order GetOrderById(int orderId)
         {
-            return this.context.Orders.Find(orderId);
-        }
-
-        /// <summary>
-        /// Attach retailer.
-        /// </summary>
-        /// <param name="retailer">
-        /// The retailer.
-        /// </param>
-        public void AttachRetailer(Retailer retailer)
-        {
-            this.context.Retailers.Attach(retailer);
+            using (var context = new ShopAnyWareSql())
+            {
+                return context.Orders.Find(orderId);
+            }
         }
 
         /// <summary>
         /// Add order.
         /// </summary>
+        /// <param name="email">
+        /// The email.
+        /// </param>
         /// <param name="order">
         /// The order to add.
         /// </param>
         /// <returns>
         /// The TdService.Model.Orders.Order.
         /// </returns>
-        public Order AddOrder(Order order)
+        public Order AddOrder(string email, Order order)
         {
-            return this.context.Orders.Add(order);
+            using (var context = new ShopAnyWareSql())
+            {
+                var user = context.Users.Include("Profile").Include("Wallet").Include("Roles").Include("Orders")
+                    .SingleOrDefault(u => u.Email == email);
+                if (user == null)
+                {
+                    throw new ArgumentNullException(ErrorCode.UserNotFound.ToString());
+                }
+
+                order.Retailer = context.Retailers.SingleOrDefault(r => r.Url == order.Retailer.Url)
+                               ?? context.Retailers.Add(order.Retailer);
+                context.Orders.Add(order);
+                if (user.Orders == null)
+                {
+                    user.Orders = new List<Order>();
+                }
+
+                user.Orders.Add(order);
+                context.Entry(user).State = EntityState.Modified;
+                context.SaveChanges();
+
+                return order;
+            }
         }
 
         /// <summary>
@@ -80,38 +83,44 @@ namespace TdService.Repository.MsSql.Repositories
         /// </param>
         public void UpdateOrder(Order order)
         {
-            this.context.Entry(order).State = EntityState.Modified;
+            using (var context = new ShopAnyWareSql())
+            {
+                context.Orders.Attach(order);
+                context.Entry(order).State = EntityState.Modified;
+                context.SaveChanges();
+            }
         }
 
         /// <summary>
         /// Remove an order.
         /// </summary>
+        /// <param name="email">
+        /// The email.
+        /// </param>
         /// <param name="orderId">
         /// The order ID to remove.
         /// </param>
-        public void RemoveOrder(int orderId)
+        /// <returns>
+        /// The TdService.Model.Orders.Order.
+        /// </returns>
+        public Order RemoveOrder(string email, int orderId)
         {
-            var order = new Order { Id = orderId };
-            this.context.Orders.Attach(order);
-            this.context.Entry(order).Collection(o => o.Items).Load();
-            this.context.Orders.Remove(order);
-        }
+            using (var context = new ShopAnyWareSql())
+            {
+                var user = context.Users.Include("Profile").Include("Wallet").Include("Orders").Include("Roles").SingleOrDefault(u => u.Email == email);
+                if (user == null)
+                {
+                    throw new ArgumentNullException(ErrorCode.UserNotFound.ToString());
+                }
 
-        /// <summary>
-        /// Save changes to db.
-        /// </summary>
-        public void SaveChanges()
-        {
-            this.context.SaveChanges();
-        }
-
-        /// <summary>
-        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-        /// </summary>
-        /// <filterpriority>2</filterpriority>
-        public void Dispose()
-        {
-            this.context.Dispose();
+                var order = user.RemoveOrder(orderId);
+                context.Orders.Attach(order);
+                //// TODO : make a cascading delete in the database
+                context.Entry(order).Collection(o => o.Items).Load();
+                context.Orders.Remove(order);
+                context.SaveChanges();
+                return order;
+            }
         }
     }
 }

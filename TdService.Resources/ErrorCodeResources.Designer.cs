@@ -286,11 +286,29 @@ namespace TdService.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The order cannot be removed in current state..
+        /// </summary>
+        public static string OrderCannotBeRemoved {
+            get {
+                return ResourceManager.GetString("OrderCannotBeRemoved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Order must have a created date..
         /// </summary>
         public static string OrderCreatedDateRequired {
             get {
                 return ResourceManager.GetString("OrderCreatedDateRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The order does not belong to you or not found..
+        /// </summary>
+        public static string OrderNotBelongToUser {
+            get {
+                return ResourceManager.GetString("OrderNotBelongToUser", resourceCulture);
             }
         }
         

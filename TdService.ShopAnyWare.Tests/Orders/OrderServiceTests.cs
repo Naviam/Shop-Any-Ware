@@ -14,6 +14,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
 
     using NUnit.Framework;
 
+    using TdService.Infrastructure.Logging;
     using TdService.Model.Common;
     using TdService.Model.Membership;
     using TdService.Model.Orders;
@@ -39,9 +40,9 @@ namespace TdService.ShopAnyWare.Tests.Orders
         private IOrderRepository orderRepository;
 
         /// <summary>
-        /// The retailer repository.
+        /// The logger.
         /// </summary>
-        private IRetailerRepository retailerRepository;
+        private ILogger logger;
 
         /// <summary>
         /// Make necessary preparation to test order service.
@@ -66,7 +67,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
                 };
             this.orderRepository = new FakeOrderRepository(orders);
             this.userRepository = new FakeUserRepository();
-            this.retailerRepository = new FakeRetailerRepository();
+            this.logger = new DummyLogger();
         }
 
         /// <summary>
@@ -76,7 +77,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
         public void ShouldBeAbleToAddNewOrder()
         {
             // arrange
-            var service = new OrderService(this.userRepository, this.orderRepository, this.retailerRepository);
+            var service = new OrderService(this.userRepository, this.orderRepository, this.logger);
             var request = new AddOrderRequest
                 {
                     IdentityToken = "vhatalski@naviam.com",
@@ -100,7 +101,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
         public void ShouldBeAbleToGetListOfOrders()
         {
             // arrange
-            var service = new OrderService(this.userRepository, this.orderRepository, this.retailerRepository);
+            var service = new OrderService(this.userRepository, this.orderRepository, this.logger);
             var request = new GetRecentOrdersRequest { IdentityToken = "vhatalski@naviam.com" };
             var expected = new List<GetRecentOrdersResponse>
                 {
@@ -163,7 +164,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
         public void ShouldBeAbleToRemoveOrder()
         {
             // arrange
-            var service = new OrderService(this.userRepository, this.orderRepository, this.retailerRepository);
+            var service = new OrderService(this.userRepository, this.orderRepository, this.logger);
             var request = new RemoveOrderRequest { IdentityToken = "vhatalski@naviam.com", Id = 1 };
 
             // act
@@ -181,7 +182,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
         public void ShouldNotBeAbleToRemoveOrderInStateOtherThanNew()
         {
             // arrange
-            var service = new OrderService(this.userRepository, this.orderRepository, this.retailerRepository);
+            var service = new OrderService(this.userRepository, this.orderRepository, this.logger);
             var request = new RemoveOrderRequest { IdentityToken = "vhatalski@naviam.com", Id = 2 };
 
             // act

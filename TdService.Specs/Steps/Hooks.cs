@@ -90,9 +90,9 @@ namespace TdService.Specs.Steps
         {
             var context = new ShopAnyWareSql();
             var userRepository = new UserRepository(context);
-            var orderRepository = new OrderRepository(context);
-            var retailerRepository = new RetailerRepository(context);
-            var orderService = new OrderService(userRepository, orderRepository, retailerRepository);
+            var orderRepository = new OrderRepository();
+            var logger = new FakeLogger();
+            var orderService = new OrderService(userRepository, orderRepository, logger);
             ScenarioContext.Current.Set(orderService);
         }
     }

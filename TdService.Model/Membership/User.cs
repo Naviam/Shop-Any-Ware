@@ -181,9 +181,9 @@ namespace TdService.Model.Membership
         /// The order ID to remove.
         /// </param>
         /// <returns>
-        /// The System.Boolean.
+        /// The TdService.Model.Orders.Order.
         /// </returns>
-        public bool RemoveOrder(int orderId)
+        public Order RemoveOrder(int orderId)
         {
             var order = this.GetOrderById(orderId);
             if (order != null)
@@ -191,11 +191,13 @@ namespace TdService.Model.Membership
                 if (order.CanBeRemoved)
                 {
                     this.Orders.Remove(order);
-                    return true;
+                    return order;
                 }
+
+                throw new InvalidOrderException(ErrorCode.OrderCannotBeRemoved.ToString());
             }
 
-            return false;
+            throw new InvalidOrderException(ErrorCode.OrderNotBelongToUser.ToString());
         }
 
         /// <summary>
@@ -240,7 +242,7 @@ namespace TdService.Model.Membership
             {
                 this.AddBrokenRule(UserBusinessRules.PasswordRequired);
             }
-            else if (this.Password.Length > 64)
+            else if (this.Password.Length > 21)
             {
                 this.AddBrokenRule(UserBusinessRules.PasswordLength);
             }

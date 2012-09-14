@@ -9,39 +9,38 @@
 
 namespace TdService.Model.Orders
 {
-    using TdService.Model.Common;
-
     /// <summary>
     /// Interface for order repository.
     /// </summary>
     public interface IOrderRepository
     {
         /// <summary>
-        /// Attach retailer.
-        /// </summary>
-        /// <param name="retailer">
-        /// The retailer.
-        /// </param>
-        void AttachRetailer(Retailer retailer);
-
-        /// <summary>
         /// Add order.
         /// </summary>
+        /// <param name="email">
+        /// The email.
+        /// </param>
         /// <param name="order">
         /// The order to add.
         /// </param>
         /// <returns>
         /// The TdService.Model.Orders.Order.
         /// </returns>
-        Order AddOrder(Order order);
+        Order AddOrder(string email, Order order);
 
         /// <summary>
         /// Remove order.
         /// </summary>
+        /// <param name="email">
+        /// The email.
+        /// </param>
         /// <param name="orderId">
         /// The order ID to remove.
         /// </param>
-        void RemoveOrder(int orderId);
+        /// <returns>
+        /// The TdService.Model.Orders.Order.
+        /// </returns>
+        Order RemoveOrder(string email, int orderId);
 
         /// <summary>
         /// Update order.
@@ -61,10 +60,5 @@ namespace TdService.Model.Orders
         /// Order details.
         /// </returns>
         Order GetOrderById(int orderId);
-
-        /// <summary>
-        /// Save changes to db.
-        /// </summary>
-        void SaveChanges();
     }
 }

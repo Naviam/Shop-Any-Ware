@@ -86,7 +86,6 @@
     <Compile Include="RFO\RequestForOrderStatus.cs" />
     <Compile Include="Balance\Wallet.cs" />
     <Compile Include="Addresses\DeliveryAddress.cs" />
-    <Compile Include="DomainServices\OrderDomainService.cs" />
     <Compile Include="Shipping\Courier.cs" />
     <Compile Include="Shipping\CourierBusinessRules.cs" />
     <Compile Include="Shipping\DispatchMethod.cs" />

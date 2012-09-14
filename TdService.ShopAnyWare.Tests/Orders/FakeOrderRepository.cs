@@ -48,13 +48,16 @@ namespace TdService.ShopAnyWare.Tests.Orders
         /// <summary>
         /// Add order.
         /// </summary>
+        /// <param name="email">
+        /// The email.
+        /// </param>
         /// <param name="order">
         /// The order to add.
         /// </param>
         /// <returns>
         /// The TdService.Model.Orders.Order.
         /// </returns>
-        public Order AddOrder(Order order)
+        public Order AddOrder(string email, Order order)
         {
             this.orders.Add(order);
             order.Id = this.orders.IndexOf(order);
@@ -64,13 +67,20 @@ namespace TdService.ShopAnyWare.Tests.Orders
         /// <summary>
         /// Remove order.
         /// </summary>
+        /// <param name="email">
+        /// The email.
+        /// </param>
         /// <param name="orderId">
         /// The order ID to remove.
         /// </param>
-        public void RemoveOrder(int orderId)
+        /// <returns>
+        /// The TdService.Model.Orders.Order.
+        /// </returns>
+        public Order RemoveOrder(string email, int orderId)
         {
             var order = this.orders.Find(o => o.Id == orderId);
             this.orders.Remove(order);
+            return order;
         }
 
         /// <summary>

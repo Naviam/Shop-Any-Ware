@@ -192,8 +192,14 @@
   <data name="ItemWeightRequired" xml:space="preserve">
     <value>An item must have a weight.</value>
   </data>
+  <data name="OrderCannotBeRemoved" xml:space="preserve">
+    <value>The order cannot be removed in current state.</value>
+  </data>
   <data name="OrderCreatedDateRequired" xml:space="preserve">
     <value>Order must have a created date.</value>
+  </data>
+  <data name="OrderNotBelongToUser" xml:space="preserve">
+    <value>The order does not belong to you or not found.</value>
   </data>
   <data name="OrderOrderNumberMaxLength" xml:space="preserve">
     <value>Order number must be a string with a maximum length of 64.</value>

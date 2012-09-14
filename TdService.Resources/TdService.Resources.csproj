@@ -137,6 +137,7 @@
     <EmbeddedResource Include="Views\DashboardViewResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>DashboardViewResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="MembershipResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

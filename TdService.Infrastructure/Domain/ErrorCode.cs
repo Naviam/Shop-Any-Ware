@@ -62,6 +62,8 @@ namespace TdService.Infrastructure.Domain
         OrderStatusExtendedMaxLength,
         OrderTrackingNumberMaxLength,
         OrderWeightRequired,
+        OrderNotBelongToUser,
+        OrderCannotBeRemoved,
         PackageNameMaxLength,
         PackageNameRequired,
         ItemNameMaxLength,

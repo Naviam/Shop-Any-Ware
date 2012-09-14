@@ -34,6 +34,7 @@ namespace TdService.Model.Orders
         {
             this.orderState = new OrderNewState();
             this.Status = OrderStatus.New;
+            this.CreatedDate = DateTime.UtcNow;
         }
 
         /// <summary>

@@ -18,6 +18,7 @@ namespace TdService.Specs
     using NUnit.Framework;
 
     using TdService.Infrastructure.Authentication;
+    using TdService.Infrastructure.Logging;
     using TdService.Model.Common;
     using TdService.Model.Membership;
     using TdService.Model.Orders;
@@ -78,9 +79,9 @@ namespace TdService.Specs
             Database.SetInitializer(new ShopAnyWareTestInitilizer());
             this.context = new ShopAnyWareSql();
             this.userRepository = new UserRepository(this.context);
-            this.orderRepository = new OrderRepository(this.context);
+            this.orderRepository = new OrderRepository();
             this.retailerRepository = new RetailerRepository(this.context);
-            this.orderService = new OrderService(this.userRepository, this.orderRepository, this.retailerRepository);
+            this.orderService = new OrderService(this.userRepository, this.orderRepository, new DummyLogger());
         }
 
         /// <summary>
