@@ -50,5 +50,16 @@ namespace TdService.Services.Interfaces
         /// The remove order response.
         /// </returns>
         RemoveOrderResponse RemoveOrder(RemoveOrderRequest request);
+
+        /// <summary>
+        /// The update order.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The TdService.Services.Messaging.Order.UpdateOrderResponse.
+        /// </returns>
+        UpdateOrderResponse UpdateOrder(UpdateOrderRequest request);
     }
 }

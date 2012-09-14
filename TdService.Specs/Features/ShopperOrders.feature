@@ -15,7 +15,7 @@ Scenario: Add new order
 	And the order view model should have Created Date that is earlier than UTC Now
 
 @addorder
-Scenario: Validate retailer url is required when adding new order
+Scenario: Add new order validate retailer url is required
 	Given there is 'v.hatalski@gmail.com' account with 'ruinruin' password in role 'Shopper' with fullname 'Vitali' and 'Hatalski'
 	And I am authenticated as 'v.hatalski@gmail.com'
 	When I set retailer url as '' and press add order button on shopper dashboard page
@@ -25,6 +25,20 @@ Scenario: Validate retailer url is required when adding new order
 	And the order view model should have the following errors
 	| Property    | Error Code            |
 	| RetailerUrl | OrderRetailerRequired |
+
+@updateorder
+Scenario: Update order in new status
+	Given there is 'v.hatalski@gmail.com' account with 'ruinruin' password in role 'Shopper' with fullname 'Vitali' and 'Hatalski'
+	And I am authenticated as 'v.hatalski@gmail.com'
+	And I have the following orders
+	| Id | Order Number | Tracking Number | Status |
+	| 1  |              | 123456789012345 | New    |
+	When I update order as follows
+	| Id | Order Number | Tracking Number | Status |
+	| 1  | 098765432109 | 1234            | New    |
+	Then the order view model should be as follows
+	| Id | Order Number | Tracking Number | Status | Message Type |
+	| 1  | 098765432109 | 1234            | New    | Success      |
 
 @removeorder
 Scenario: Remove order in new status

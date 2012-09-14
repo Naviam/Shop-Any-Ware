@@ -50,6 +50,20 @@ namespace TdService.Services.Mapping
         }
 
         /// <summary>
+        /// The convert to update order response.
+        /// </summary>
+        /// <param name="order">
+        /// The order.
+        /// </param>
+        /// <returns>
+        /// The TdService.Services.Messaging.Order.UpdateOrderResponse.
+        /// </returns>
+        public static UpdateOrderResponse ConvertToUpdateOrderResponse(this Order order)
+        {
+            return Mapper.Map<Order, UpdateOrderResponse>(order);
+        }
+
+        /// <summary>
         /// The convert to remove order response.
         /// </summary>
         /// <param name="order">

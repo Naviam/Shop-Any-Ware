@@ -58,6 +58,20 @@ namespace TdService.UI.Web.Mapping
         /// <returns>
         /// The TdService.UI.Web.ViewModels.Order.OrderViewModel.
         /// </returns>
+        public static OrderViewModel ConvertToOrderViewModel(this UpdateOrderResponse response)
+        {
+            return Mapper.Map<UpdateOrderResponse, OrderViewModel>(response);
+        }
+
+        /// <summary>
+        /// The convert to order view model.
+        /// </summary>
+        /// <param name="response">
+        /// The response.
+        /// </param>
+        /// <returns>
+        /// The TdService.UI.Web.ViewModels.Order.OrderViewModel.
+        /// </returns>
         public static OrderViewModel ConvertToOrderViewModel(this RemoveOrderResponse response)
         {
             return Mapper.Map<RemoveOrderResponse, OrderViewModel>(response);
@@ -75,6 +89,20 @@ namespace TdService.UI.Web.Mapping
         public static AddOrderRequest ConvertToAddOrderRequest(this OrderViewModel model)
         {
             return Mapper.Map<OrderViewModel, AddOrderRequest>(model);
+        }
+
+        /// <summary>
+        /// The convert to update order request.
+        /// </summary>
+        /// <param name="model">
+        /// The model.
+        /// </param>
+        /// <returns>
+        /// The TdService.Services.Messaging.Order.UpdateOrderRequest.
+        /// </returns>
+        public static UpdateOrderRequest ConvertToUpdateOrderRequest(this OrderViewModel model)
+        {
+            return Mapper.Map<OrderViewModel, UpdateOrderRequest>(model);
         }
     }
 }

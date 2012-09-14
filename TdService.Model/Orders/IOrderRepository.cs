@@ -48,7 +48,10 @@ namespace TdService.Model.Orders
         /// <param name="order">
         /// The order.
         /// </param>
-        void UpdateOrder(Order order);
+        /// <returns>
+        /// The TdService.Model.Orders.Order.
+        /// </returns>
+        Order UpdateOrder(Order order);
 
         /// <summary>
         /// Get order details.

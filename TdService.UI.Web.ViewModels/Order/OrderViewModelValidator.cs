@@ -28,6 +28,21 @@ namespace TdService.UI.Web.ViewModels.Order
             // First set the cascade mode
             this.CascadeMode = CascadeMode.StopOnFirstFailure;
 
+            this.RuleSet(
+                "insert",
+                () => this.RuleFor(order => order.RetailerUrl)
+                    .NotEmpty().WithMessage(ErrorCode.OrderRetailerRequired.ToString())
+                    .Length(1, 256).WithMessage(ErrorCode.RetailerUrlMaxLength.ToString()));
+
+            this.RuleSet(
+                "update",
+                () =>
+                    {
+                        RuleFor(x => x.Id).NotEqual(0);
+                        RuleFor(order => order.OrderNumber).Length(0, 40).WithMessage(ErrorCode.OrderOrderNumberMaxLength.ToString());
+                        RuleFor(order => order.TrackingNumber).Length(0, 40).WithMessage(ErrorCode.OrderTrackingNumberMaxLength.ToString());
+                    });
+
             RuleFor(order => order.Status).NotEmpty().WithMessage(ErrorCode.OrderStatusRequired.ToString());
             RuleFor(order => order.RetailerUrl).NotEmpty().WithMessage(ErrorCode.OrderRetailerRequired.ToString())
                             .Length(1, 256).WithMessage(ErrorCode.RetailerUrlMaxLength.ToString());
@@ -37,11 +52,8 @@ namespace TdService.UI.Web.ViewModels.Order
 
             this.When(
                 order => order.Status == "Received",
-                () =>
-                    {
-                        RuleFor(order => order.ReceivedDate)
-                            .LessThanOrEqualTo(DateTime.UtcNow).WithMessage(ErrorCode.OrderReceivedDateRequired.ToString());
-                    });
+                () => this.RuleFor(order => order.ReceivedDate)
+                          .LessThanOrEqualTo(DateTime.UtcNow).WithMessage(ErrorCode.OrderReceivedDateRequired.ToString()));
         }
     }
 }

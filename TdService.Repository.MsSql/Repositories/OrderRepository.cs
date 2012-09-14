@@ -81,13 +81,17 @@ namespace TdService.Repository.MsSql.Repositories
         /// <param name="order">
         /// The order to update.
         /// </param>
-        public void UpdateOrder(Order order)
+        /// <returns>
+        /// The TdService.Model.Orders.Order.
+        /// </returns>
+        public Order UpdateOrder(Order order)
         {
             using (var context = new ShopAnyWareSql())
             {
                 context.Orders.Attach(order);
                 context.Entry(order).State = EntityState.Modified;
                 context.SaveChanges();
+                return order;
             }
         }
 

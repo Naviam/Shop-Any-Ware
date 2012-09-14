@@ -80,6 +80,26 @@ namespace TdService.Specs.Steps
         }
 
         /// <summary>
+        /// The when i update order as follows.
+        /// </summary>
+        /// <param name="table">
+        /// The table.
+        /// </param>
+        [When(@"I update order as follows")]
+        public void WhenIUpdateOrderAsFollows(Table table)
+        {
+            var model = table.CreateInstance<OrderViewModel>();
+            var contoller = this.GetOrdersController();
+            var result = contoller.Update(model) as JsonNetResult;
+            Assert.That(result, Is.Not.Null);
+            if (result != null)
+            {
+                var actual = result.Data as OrderViewModel;
+                ScenarioContext.Current.Set(actual);
+            }
+        }
+
+        /// <summary>
         /// The then the order view model should be as follows.
         /// </summary>
         /// <param name="table">

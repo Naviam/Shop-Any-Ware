@@ -134,7 +134,7 @@ namespace TdService.Services.Implementations
         /// </returns>
         public RemoveOrderResponse RemoveOrder(RemoveOrderRequest request)
         {
-            var response = new RemoveOrderResponse { MessageType = MessageType.Success };
+            var response = new RemoveOrderResponse();
 
             try
             {
@@ -146,6 +146,52 @@ namespace TdService.Services.Implementations
                 response.Id = request.Id;
                 response.MessageType = MessageType.Error;
                 response.ErrorCode = ex.Message;
+            }
+
+            return response;
+        }
+
+        /// <summary>
+        /// The update order.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The TdService.Services.Messaging.Order.UpdateOrderResponse.
+        /// </returns>
+        public UpdateOrderResponse UpdateOrder(UpdateOrderRequest request)
+        {
+            OrderStatus orderStatus;
+            Enum.TryParse(request.Status, true, out orderStatus);
+            var order = new Order(orderStatus)
+                {
+                    Id = request.Id,
+                    CreatedDate = DateTime.UtcNow,
+                    OrderNumber = request.OrderNumber,
+                    TrackingNumber = request.TrackingNumber
+                };
+            var response = new UpdateOrderResponse { BrokenRules = order.GetBrokenRules().ToList() };
+            if (response.BrokenRules.Any())
+            {
+                response.MessageType = MessageType.Warning;
+                return response;
+            }
+
+            try
+            {
+                var orderToUpdate = this.orderRepository.GetOrderById(order.Id);
+                orderToUpdate.OrderNumber = order.OrderNumber;
+                orderToUpdate.TrackingNumber = order.TrackingNumber;
+                var updatedOrder = this.orderRepository.UpdateOrder(order);
+                response = updatedOrder.ConvertToUpdateOrderResponse();
+                response.Message = CommonResources.OrderUpdateSuccessMessage;
+            }
+            catch (Exception e)
+            {
+                response.MessageType = MessageType.Error;
+                response.Message = CommonResources.OrderUpdateErrorMessage;
+                this.logger.Error(CommonResources.OrderUpdateErrorMessage, e);
             }
 
             return response;

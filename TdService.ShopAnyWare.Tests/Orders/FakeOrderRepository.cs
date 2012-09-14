@@ -89,11 +89,15 @@ namespace TdService.ShopAnyWare.Tests.Orders
         /// <param name="order">
         /// The order.
         /// </param>
-        public void UpdateOrder(Order order)
+        /// <returns>
+        /// The TdService.Model.Orders.Order.
+        /// </returns>
+        public Order UpdateOrder(Order order)
         {
             var orderToUpdate = this.orders.Find(order1 => order1.Id == order.Id);
             this.orders.RemoveAt(orderToUpdate.Id);
             this.orders.Insert(orderToUpdate.Id, order);
+            return order;
         }
 
         /// <summary>

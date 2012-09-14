@@ -102,5 +102,19 @@ namespace TdService.ShopAnyWare.Tests.Orders
         {
             return new RemoveOrderResponse { MessageType = MessageType.Success };
         }
+
+        /// <summary>
+        /// The update order.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The TdService.Services.Messaging.Order.UpdateOrderResponse.
+        /// </returns>
+        public UpdateOrderResponse UpdateOrder(UpdateOrderRequest request)
+        {
+            return null;
+        }
     }
 }

@@ -122,13 +122,15 @@ namespace TdService.UI.Web
                 .ForMember(r => r.AddressLine2, opt => opt.Ignore())
                 .ForMember(r => r.AddressLine3, opt => opt.Ignore());
 
-            // get recent orders
+            // get my recent orders
             Mapper.CreateMap<GetRecentOrdersResponse, OrderViewModel>();
             Mapper.CreateMap<Order, GetRecentOrdersResponse>()
                 .ForMember(r => r.BrokenRules, opt => opt.Ignore())
                 .ForMember(r => r.Message, opt => opt.Ignore())
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
+
+            // get my history orders
 
             // add order
             Mapper.CreateMap<AddOrderResponse, OrderViewModel>();
@@ -139,6 +141,40 @@ namespace TdService.UI.Web
                 .ForMember(r => r.Message, opt => opt.Ignore())
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
+
+            // update order
+            Mapper.CreateMap<OrderViewModel, UpdateOrderRequest>()
+                .ForMember(m => m.IdentityToken, opt => opt.Ignore());
+            Mapper.CreateMap<UpdateOrderResponse, OrderViewModel>()
+                .ForMember(r => r.CreatedDate, opt => opt.Ignore())
+                .ForMember(r => r.ReceivedDate, opt => opt.Ignore())
+                .ForMember(r => r.CanBeModified, opt => opt.Ignore())
+                .ForMember(r => r.CanBeRemoved, opt => opt.Ignore())
+                .ForMember(r => r.CanBeRequestedForReturn, opt => opt.Ignore())
+                .ForMember(r => r.CanItemsBeModified, opt => opt.Ignore());
+            Mapper.CreateMap<Order, UpdateOrderResponse>()
+                .ForMember(r => r.BrokenRules, opt => opt.Ignore())
+                .ForMember(r => r.Message, opt => opt.Ignore())
+                .ForMember(r => r.ErrorCode, opt => opt.Ignore())
+                .ForMember(r => r.MessageType, opt => opt.Ignore());
+
+            // remove order
+            Mapper.CreateMap<Order, RemoveOrderResponse>()
+                .ForMember(r => r.BrokenRules, opt => opt.Ignore())
+                .ForMember(r => r.Message, opt => opt.Ignore())
+                .ForMember(r => r.ErrorCode, opt => opt.Ignore())
+                .ForMember(r => r.MessageType, opt => opt.Ignore());
+            Mapper.CreateMap<RemoveOrderResponse, OrderViewModel>()
+                .ForMember(r => r.RetailerUrl, opt => opt.Ignore())
+                .ForMember(r => r.OrderNumber, opt => opt.Ignore())
+                .ForMember(r => r.TrackingNumber, opt => opt.Ignore())
+                .ForMember(r => r.CreatedDate, opt => opt.Ignore())
+                .ForMember(r => r.ReceivedDate, opt => opt.Ignore())
+                .ForMember(r => r.Status, opt => opt.Ignore())
+                .ForMember(r => r.CanBeModified, opt => opt.Ignore())
+                .ForMember(r => r.CanBeRemoved, opt => opt.Ignore())
+                .ForMember(r => r.CanBeRequestedForReturn, opt => opt.Ignore())
+                .ForMember(r => r.CanItemsBeModified, opt => opt.Ignore());
 
             // retailer
             Mapper.CreateMap<string, Retailer>().ConvertUsing<RetailerConverter>();
@@ -159,24 +195,6 @@ namespace TdService.UI.Web
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
             Mapper.CreateMap<AddItemToOrderResponse, OrderItemViewModel>()
                 .ForMember(r => r.OrderId, opt => opt.Ignore());
-
-            // remove order
-            Mapper.CreateMap<Order, RemoveOrderResponse>()
-                .ForMember(r => r.BrokenRules, opt => opt.Ignore())
-                .ForMember(r => r.Message, opt => opt.Ignore())
-                .ForMember(r => r.ErrorCode, opt => opt.Ignore())
-                .ForMember(r => r.MessageType, opt => opt.Ignore());
-            Mapper.CreateMap<RemoveOrderResponse, OrderViewModel>()
-                .ForMember(r => r.RetailerUrl, opt => opt.Ignore())
-                .ForMember(r => r.OrderNumber, opt => opt.Ignore())
-                .ForMember(r => r.TrackingNumber, opt => opt.Ignore())
-                .ForMember(r => r.CreatedDate, opt => opt.Ignore())
-                .ForMember(r => r.ReceivedDate, opt => opt.Ignore())
-                .ForMember(r => r.Status, opt => opt.Ignore())
-                .ForMember(r => r.CanBeModified, opt => opt.Ignore())
-                .ForMember(r => r.CanBeRemoved, opt => opt.Ignore())
-                .ForMember(r => r.CanBeRequestedForReturn, opt => opt.Ignore())
-                .ForMember(r => r.CanItemsBeModified, opt => opt.Ignore());
 
             // get order items
             Mapper.CreateMap<Item, GetOrderItemsResponse>()

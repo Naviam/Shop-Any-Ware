@@ -111,6 +111,8 @@
     <Compile Include="Messaging\Order\AddOrderResponse.cs" />
     <Compile Include="Messaging\Order\GetRecentOrdersRequest.cs" />
     <Compile Include="Messaging\Order\GetRecentOrdersResponse.cs" />
+    <Compile Include="Messaging\Order\UpdateOrderRequest.cs" />
+    <Compile Include="Messaging\Order\UpdateOrderResponse.cs" />
     <Compile Include="Messaging\Package\AddPackageRequest.cs" />
     <Compile Include="Messaging\Package\AddPackageResponse.cs" />
     <Compile Include="Messaging\Package\GetRecentPackagesRequest.cs" />

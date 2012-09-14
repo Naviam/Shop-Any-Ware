@@ -14,9 +14,11 @@ namespace TdService.UI.Web.Controllers
     using System.Web.Mvc;
     using System.Xml;
 
+    using FluentValidation;
+    using FluentValidation.Internal;
+
     using TdService.Infrastructure.Authentication;
     using TdService.Infrastructure.Domain;
-    using TdService.Resources.Views;
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging;
     using TdService.Services.Messaging.Order;
@@ -138,6 +140,47 @@ namespace TdService.UI.Web.Controllers
                 };
             var response = this.orderService.RemoveOrder(request);
             var result = response.ConvertToOrderViewModel();
+
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = result
+            };
+            return jsonNetResult;
+        }
+
+        /// <summary>
+        /// The update.
+        /// </summary>
+        /// <param name="model">
+        /// The model.
+        /// </param>
+        /// <returns>
+        /// The System.Web.Mvc.ActionResult.
+        /// </returns>
+        [Authorize(Roles = "Shopper, Operator")]
+        [HttpPost]
+        public ActionResult Update(OrderViewModel model)
+        {
+            var result = new OrderViewModel();
+            var validator = new OrderViewModelValidator();
+            var validationResult = validator.Validate(new ValidationContext<OrderViewModel>(model, new PropertyChain(), new RulesetValidatorSelector("update")));
+            if (validationResult.IsValid)
+            {
+                var request = model.ConvertToUpdateOrderRequest();
+                request.IdentityToken = this.FormsAuthentication.GetAuthenticationToken();
+                var response = this.orderService.UpdateOrder(request);
+                result = response.ConvertToOrderViewModel();
+            }
+            else
+            {
+                result.MessageType = MessageType.Warning.ToString();
+                result.BrokenRules = new List<BusinessRule>();
+                foreach (var failure in validationResult.Errors)
+                {
+                    result.BrokenRules.Add(new BusinessRule(failure.PropertyName, failure.ErrorMessage));
+                }
+            }
 
             var jsonNetResult = new JsonNetResult
             {
