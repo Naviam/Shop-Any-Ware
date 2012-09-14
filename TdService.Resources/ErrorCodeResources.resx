@@ -207,6 +207,9 @@
   <data name="OrderStatusExtendedMaxLength" xml:space="preserve">
     <value>Order extended status must be a string with a maximum length of 64.</value>
   </data>
+  <data name="OrderStatusRequired" xml:space="preserve">
+    <value>An order must have a status.</value>
+  </data>
   <data name="OrderTrackingNumberMaxLength" xml:space="preserve">
     <value>Tracking number must be a string with a maximum length of 64.</value>
   </data>

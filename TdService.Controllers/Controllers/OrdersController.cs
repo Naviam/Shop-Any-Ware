@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="OrderController.cs" company="TdService">
+// <copyright file="OrdersController.cs" company="TdService">
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
@@ -10,10 +10,12 @@
 namespace TdService.UI.Web.Controllers
 {
     using System;
+    using System.Collections.Generic;
     using System.Web.Mvc;
     using System.Xml;
 
     using TdService.Infrastructure.Authentication;
+    using TdService.Infrastructure.Domain;
     using TdService.Resources.Views;
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging;
@@ -84,16 +86,31 @@ namespace TdService.UI.Web.Controllers
         [HttpPost]
         public ActionResult Add([Bind]string retailerUrl)
         {
-            var request = new AddOrderRequest
+            var result = new OrderViewModel { Status = "New", RetailerUrl = retailerUrl };
+            var validator = new OrderViewModelValidator();
+            var validationResult = validator.Validate(result);
+            if (validationResult.IsValid)
+            {
+                var request = new AddOrderRequest
                 {
                     RetailerUrl = retailerUrl,
                     CreatedDate = DateTime.UtcNow,
                     IdentityToken = this.FormsAuthentication.GetAuthenticationToken()
                 };
-            var response = this.orderService.AddOrder(request);
-            var result = response.ConverToOrderViewModel();
-            result.Message = DashboardViewResources.OrderCreatedSuccess;
-            result.MessageType = MessageType.Success.ToString();
+                var response = this.orderService.AddOrder(request);
+                result = response.ConverToOrderViewModel();
+                result.Message = DashboardViewResources.OrderCreatedSuccess;
+                result.MessageType = MessageType.Success.ToString();
+            }
+            else
+            {
+                result.MessageType = MessageType.Error.ToString();
+                result.BrokenRules = new List<BusinessRule>();
+                foreach (var failure in validationResult.Errors)
+                {
+                    result.BrokenRules.Add(new BusinessRule(failure.PropertyName, failure.ErrorMessage));
+                }
+            }
 
             var jsonNetResult = new JsonNetResult
                 {

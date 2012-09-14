@@ -9,16 +9,11 @@
 
 namespace TdService.Specs.Steps
 {
-    using System.Collections.Generic;
-    using System.Data;
     using System.Diagnostics;
-    using System.Linq;
     using System.Web.Mvc;
 
     using NUnit.Framework;
 
-    using TdService.Model.Membership;
-    using TdService.Repository.MsSql;
     using TdService.Services.Implementations;
     using TdService.Specs.Fakes;
     using TdService.UI.Web;

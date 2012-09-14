@@ -331,6 +331,15 @@ namespace TdService.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An order must have a status..
+        /// </summary>
+        public static string OrderStatusRequired {
+            get {
+                return ResourceManager.GetString("OrderStatusRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tracking number must be a string with a maximum length of 64..
         /// </summary>
         public static string OrderTrackingNumberMaxLength {

@@ -20,9 +20,8 @@ namespace TdService.Repository.MsSql.Configurations
         /// </summary>
         public OrderConfiguration()
         {
-            this.Property(o => o.OrderNumber).HasMaxLength(64);
-            // this.Property(o => o.StatusExtended).HasMaxLength(64);
-            this.Property(o => o.TrackingNumber).HasMaxLength(64);
+            this.Property(o => o.OrderNumber).HasMaxLength(40);
+            this.Property(o => o.TrackingNumber).HasMaxLength(40);
         }
     }
 }

@@ -70,10 +70,20 @@
   <ItemGroup>
     <Compile Include="Fakes\FakeLogger.cs" />
     <Compile Include="Fakes\Mail.cs" />
+    <Compile Include="Features\OrderItems.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OrderItems.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\Profile.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Profile.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\ShopperOrders.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShopperOrders.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\SignIn.feature.cs">
       <AutoGen>True</AutoGen>
@@ -100,7 +110,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShopAnyWareTestInitilizer.cs" />
     <Compile Include="Steps\GivenSteps.cs" />
+    <Compile Include="Steps\Hooks.cs" />
     <Compile Include="Steps\ProfileSteps.cs" />
+    <Compile Include="Steps\ShopperOrdersSteps.cs" />
     <Compile Include="Steps\SignInSteps.cs" />
     <Compile Include="Steps\SignUpSteps.cs" />
   </ItemGroup>
@@ -109,9 +121,17 @@
     <Content Include="App_Data\retailers.xls">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Features\OrderItems.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>OrderItems.feature.cs</LastGenOutput>
+    </None>
     <None Include="Features\Profile.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Profile.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\ShopperOrders.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ShopperOrders.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\SignIn.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

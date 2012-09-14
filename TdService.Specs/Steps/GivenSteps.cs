@@ -18,11 +18,9 @@ namespace TdService.Specs.Steps
     using TdService.Model.Addresses;
     using TdService.Model.Balance;
     using TdService.Model.Membership;
+    using TdService.Model.Orders;
     using TdService.Repository.MsSql;
-    using TdService.Repository.MsSql.Repositories;
-    using TdService.Services.Implementations;
     using TdService.Specs.Fakes;
-    using TdService.UI.Web;
 
     using TechTalk.SpecFlow;
     using TechTalk.SpecFlow.Assist;
@@ -35,65 +33,6 @@ namespace TdService.Specs.Steps
     [Binding]
     public class GivenSteps
     {
-        /// <summary>
-        /// The before feauture.
-        /// </summary>
-        [BeforeFeature]
-        public static void BeforeEachFeature()
-        {
-            AutoMapperConfiguration.Configure();
-        }
-
-        /// <summary>
-        /// The before each scenario.
-        /// </summary>
-        [BeforeScenario]
-        public static void BeforeEachScenario()
-        {
-            using (var context = new ShopAnyWareSql())
-            {
-                if (context.Database.Exists())
-                {
-                    context.Database.Delete();
-                }
-
-                context.Database.Initialize(true);
-                context.Database.CreateIfNotExists();
-            }
-        }
-
-        /// <summary>
-        /// The before sign up scenarios.
-        /// </summary>
-        [BeforeScenario("signup", "signin", "profile")]
-        public static void BeforeMembershipScenarios()
-        {
-            var context = new ShopAnyWareSql();
-            var userRepository = new UserRepository(context);
-            var roleRepository = new RoleRepository(context);
-            var profileRepository = new ProfileRepository(context);
-            var membershipRepository = new MembershipRepository();
-
-            var logger = new FakeLogger();
-            var emailService = new FakeEmailService();
-            ScenarioContext.Current.Set(emailService);
-            
-            var membershipService = new MembershipService(logger, emailService, userRepository, roleRepository, profileRepository, membershipRepository);
-            ScenarioContext.Current.Set(membershipService);
-        }
-
-        /// <summary>
-        /// The before delivery address scenarios.
-        /// </summary>
-        [BeforeScenario("deliveryaddresses")]
-        public static void BeforeDeliveryAddressScenarios()
-        {
-            var addressRepository = new AddressRepository();
-            var logger = new FakeLogger();
-            var addressService = new DeliveryAddressService(addressRepository, logger);
-            ScenarioContext.Current.Set(addressService);
-        }
-
         /// <summary>
         /// The given there is account with password in role with fullname and.
         /// </summary>
@@ -197,6 +136,39 @@ namespace TdService.Specs.Steps
                 context.SaveChanges();
 
                 user.DeliveryAddresses.AddRange(addedAddresses.ToList());
+                context.Entry(user).State = EntityState.Modified;
+                context.SaveChanges();
+
+                ScenarioContext.Current.Set(user);
+            }
+        }
+
+        /// <summary>
+        /// The given i have the following orders.
+        /// </summary>
+        /// <param name="table">
+        /// The table.
+        /// </param>
+        [Given(@"I have the following orders")]
+        public void GivenIHaveTheFollowingOrders(Table table)
+        {
+            var orders = table.CreateSet<Order>();
+            var user = ScenarioContext.Current.Get<User>();
+
+            using (var context = new ShopAnyWareSql())
+            {
+                context.Wallets.Attach(user.Wallet);
+                context.Profiles.Attach(user.Profile);
+                context.Users.Attach(user);
+                if (user.Orders == null)
+                {
+                    user.Orders = new List<Order>();
+                }
+
+                var addedOrders = orders.Select(order => context.Orders.Add(order)).ToList();
+                context.SaveChanges();
+
+                user.Orders.AddRange(addedOrders.ToList());
                 context.Entry(user).State = EntityState.Modified;
                 context.SaveChanges();
 

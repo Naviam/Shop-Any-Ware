@@ -58,6 +58,7 @@ namespace TdService.Infrastructure.Domain
         OrderOrderNumberMaxLength,
         OrderReceivedDateRequired,
         OrderRetailerRequired,
+        OrderStatusRequired,
         OrderStatusExtendedMaxLength,
         OrderTrackingNumberMaxLength,
         OrderWeightRequired,
