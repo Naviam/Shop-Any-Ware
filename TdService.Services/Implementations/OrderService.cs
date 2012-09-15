@@ -68,6 +68,21 @@ namespace TdService.Services.Implementations
         }
 
         /// <summary>
+        /// The get history.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The collection of response messages.
+        /// </returns>
+        public List<GetRecentOrdersResponse> GetHistory(GetRecentOrdersRequest request)
+        {
+            var history = this.orderRepository.GetMyHistory(request.IdentityToken);
+            return history.ConvertToRecentOrdersResponseCollection();
+        }
+
+        /// <summary>
         /// Add new order.
         /// </summary>
         /// <param name="request">

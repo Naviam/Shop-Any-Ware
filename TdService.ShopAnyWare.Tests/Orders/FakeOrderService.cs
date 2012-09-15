@@ -70,6 +70,20 @@ namespace TdService.ShopAnyWare.Tests.Orders
         }
 
         /// <summary>
+        /// The get history.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The collection of response messages.
+        /// </returns>
+        public List<GetRecentOrdersResponse> GetHistory(GetRecentOrdersRequest request)
+        {
+            return null;
+        }
+
+        /// <summary>
         /// Add new order.
         /// </summary>
         /// <param name="request">

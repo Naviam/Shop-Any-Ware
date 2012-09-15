@@ -76,6 +76,28 @@ namespace TdService.UI.Web.Controllers
         }
 
         /// <summary>
+        /// The history.
+        /// </summary>
+        /// <returns>
+        /// The System.Web.Mvc.ActionResult.
+        /// </returns>
+        [Authorize(Roles = "Shopper")]
+        [HttpPost]
+        public ActionResult History()
+        {
+            var request = new GetRecentOrdersRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() };
+            var response = this.orderService.GetHistory(request);
+            var result = response.ConvertToOrderViewModelCollection();
+
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = result
+            };
+            return jsonNetResult;
+        }
+
+        /// <summary>
         /// Add new order.
         /// </summary>
         /// <param name="retailerUrl">

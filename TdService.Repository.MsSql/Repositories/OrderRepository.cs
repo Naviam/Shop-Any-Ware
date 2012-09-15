@@ -58,14 +58,30 @@ namespace TdService.Repository.MsSql.Repositories
                             orderby o.CreatedDate descending
                             select o;
                 return query.ToList();
+            }
+        }
 
-                ////var user = context.Users.Include("Profile").Include("Orders").Include("Roles").SingleOrDefault(u => u.Email == email);
-                ////if (user == null)
-                ////{
-                ////    throw new ArgumentNullException(ErrorCode.UserNotFound.ToString());
-                ////}
-
-                ////return user.GetRecentOrders();
+        /// <summary>
+        /// The get my history.
+        /// </summary>
+        /// <param name="email">
+        /// The email.
+        /// </param>
+        /// <returns>
+        /// The collection of orders.
+        /// </returns>
+        public List<Order> GetMyHistory(string email)
+        {
+            using (var context = new ShopAnyWareSql())
+            {
+                var query = from o in context.Orders.Include("Retailer")
+                            where
+                                o.User.Email == email
+                                &&
+                                (o.Status == OrderStatus.Returned || o.Status == OrderStatus.Disposed)
+                            orderby o.CreatedDate descending
+                            select o;
+                return query.ToList();
             }
         }
 

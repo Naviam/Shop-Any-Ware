@@ -24,6 +24,24 @@ Scenario: View my recent orders
 	| 5  | zappos.com   | 234345454433 | 123456789012345 | Received        | False           | False          | True                        | False                 | Success      |
 	| 6  | zappos.com   | 453656457544 | 245763453445463 | ReturnRequested | False           | False          | False                       | False                 | Success      |
 
+@viewrecentorders
+Scenario: View my history orders
+	Given there is 'v.hatalski@gmail.com' account with 'ruinruin' password in role 'Shopper' with fullname 'Vitali' and 'Hatalski'
+	And I am authenticated as 'v.hatalski@gmail.com'
+	And I have the following orders
+	| Id | Retailer   | Order Number | Tracking Number | Status   |
+	| 1  | amazon.com |              | 773456789012345 | New      |
+	| 2  | 6pm.com    | 123453453455 | 673456789012345 | Received |
+	| 3  | zazzle.com | 125675575445 | 344567895675664 | Returned |
+	| 4  | yoox.com   | 455367456655 | 34567893442345  | Disposed |
+	| 5  | zappos.com | 234345454433 | 123456789012345 | Received |
+	| 6  | zappos.com | 453656457544 | 245763453445463 | ReturnRequested |
+	When I go to my history orders tab
+	Then the order view models should be as follows
+	| Id | Retailer Url | Order Number | Tracking Number | Status          | Can Be Modified | Can Be Removed | Can Be Requested For Return | Can Items Be Modified | Message Type |
+	| 3  | zazzle.com   | 125675575445 | 344567895675664 | Returned        | False           | False          | False                       | False                 | Success      |
+	| 4  | yoox.com     | 455367456655 | 34567893442345  | Disposed        | False           | False          | False                       | False                 | Success      |
+
 @addorder
 Scenario: Add new order
 	Given there is 'v.hatalski@gmail.com' account with 'ruinruin' password in role 'Shopper' with fullname 'Vitali' and 'Hatalski'

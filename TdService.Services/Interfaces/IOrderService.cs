@@ -30,6 +30,17 @@ namespace TdService.Services.Interfaces
         List<GetRecentOrdersResponse> GetRecent(GetRecentOrdersRequest request);
 
         /// <summary>
+        /// The get history.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The collection of response messages.
+        /// </returns>
+        List<GetRecentOrdersResponse> GetHistory(GetRecentOrdersRequest request);
+
+        /// <summary>
         /// Add new order.
         /// </summary>
         /// <param name="request">

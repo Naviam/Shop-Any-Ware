@@ -129,6 +129,20 @@ namespace TdService.ShopAnyWare.Tests.Orders
         }
 
         /// <summary>
+        /// The get my history.
+        /// </summary>
+        /// <param name="email">
+        /// The email.
+        /// </param>
+        /// <returns>
+        /// The collection of orders.
+        /// </returns>
+        public List<Order> GetMyHistory(string email)
+        {
+            return null;
+        }
+
+        /// <summary>
         /// Save changes to db.
         /// </summary>
         public void SaveChanges()

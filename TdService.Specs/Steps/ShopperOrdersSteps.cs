@@ -144,6 +144,22 @@ namespace TdService.Specs.Steps
         }
 
         /// <summary>
+        /// The when i go to my history orders tab.
+        /// </summary>
+        [When(@"I go to my history orders tab")]
+        public void WhenIGoToMyHistoryOrdersTab()
+        {
+            var contoller = this.GetOrdersController();
+            var result = contoller.History() as JsonNetResult;
+            Assert.That(result, Is.Not.Null);
+            if (result != null)
+            {
+                var actual = result.Data as List<OrderViewModel>;
+                ScenarioContext.Current.Set(actual);
+            }
+        }
+
+        /// <summary>
         /// The then there must be only one db record with retailer url.
         /// </summary>
         /// <param name="retailerUrl">

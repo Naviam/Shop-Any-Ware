@@ -76,5 +76,16 @@ namespace TdService.Model.Orders
         /// The System.Collections.Generic.List`1[T -&gt; TdService.Model.Orders.Order].
         /// </returns>
         List<Order> GetMyRecent(string email);
+
+        /// <summary>
+        /// The get my history.
+        /// </summary>
+        /// <param name="email">
+        /// The email.
+        /// </param>
+        /// <returns>
+        /// The collection of orders.
+        /// </returns>
+        List<Order> GetMyHistory(string email);
     }
 }
