@@ -37,6 +37,39 @@ namespace TdService.Repository.MsSql.Repositories
         }
 
         /// <summary>
+        /// The get my recent.
+        /// </summary>
+        /// <param name="email">
+        /// The email.
+        /// </param>
+        /// <returns>
+        /// The collection of orders.
+        /// </returns>
+        public List<Order> GetMyRecent(string email)
+        {
+            using (var context = new ShopAnyWareSql())
+            {
+                var query = from o in context.Orders.Include("Retailer")
+                            where
+                                o.User.Email == email
+                                &&
+                                (o.Status == OrderStatus.New || o.Status == OrderStatus.Received
+                                 || o.Status == OrderStatus.ReturnRequested)
+                            orderby o.CreatedDate descending
+                            select o;
+                return query.ToList();
+
+                ////var user = context.Users.Include("Profile").Include("Orders").Include("Roles").SingleOrDefault(u => u.Email == email);
+                ////if (user == null)
+                ////{
+                ////    throw new ArgumentNullException(ErrorCode.UserNotFound.ToString());
+                ////}
+
+                ////return user.GetRecentOrders();
+            }
+        }
+
+        /// <summary>
         /// Add order.
         /// </summary>
         /// <param name="email">

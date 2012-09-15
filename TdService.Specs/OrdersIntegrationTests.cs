@@ -81,7 +81,7 @@ namespace TdService.Specs
             this.userRepository = new UserRepository(this.context);
             this.orderRepository = new OrderRepository();
             this.retailerRepository = new RetailerRepository(this.context);
-            this.orderService = new OrderService(this.userRepository, this.orderRepository, new DummyLogger());
+            this.orderService = new OrderService(this.orderRepository, new DummyLogger());
         }
 
         /// <summary>

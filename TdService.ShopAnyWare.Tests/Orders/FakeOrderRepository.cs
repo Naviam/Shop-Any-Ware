@@ -115,6 +115,20 @@ namespace TdService.ShopAnyWare.Tests.Orders
         }
 
         /// <summary>
+        /// The get my recent.
+        /// </summary>
+        /// <param name="email">
+        /// The email.
+        /// </param>
+        /// <returns>
+        /// The System.Collections.Generic.List`1[T -&gt; TdService.Model.Orders.Order].
+        /// </returns>
+        public List<Order> GetMyRecent(string email)
+        {
+            return new List<Order>();
+        }
+
+        /// <summary>
         /// Save changes to db.
         /// </summary>
         public void SaveChanges()

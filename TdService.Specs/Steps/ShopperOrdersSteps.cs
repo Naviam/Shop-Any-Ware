@@ -10,15 +10,17 @@
 namespace TdService.Specs.Steps
 {
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
 
     using NUnit.Framework;
 
+    using TdService.Repository.MsSql;
     using TdService.Services.Implementations;
     using TdService.Specs.Fakes;
     using TdService.UI.Web;
     using TdService.UI.Web.Controllers;
     using TdService.UI.Web.ViewModels.Order;
-
     using TechTalk.SpecFlow;
     using TechTalk.SpecFlow.Assist;
 
@@ -80,6 +82,32 @@ namespace TdService.Specs.Steps
         }
 
         /// <summary>
+        /// The when i remove the following orders.
+        /// </summary>
+        /// <param name="table">
+        /// The table.
+        /// </param>
+        [When(@"I remove the following orders")]
+        public void WhenIRemoveTheFollowingOrders(Table table)
+        {
+            var orderIdsToRemove = table.CreateSet<OrderViewModel>();
+            var contoller = this.GetOrdersController();
+
+            var models = new List<OrderViewModel>();
+            foreach (var id in orderIdsToRemove)
+            {
+                var result = contoller.Remove(id.Id) as JsonNetResult;
+                Assert.That(result, Is.Not.Null);
+                if (result != null)
+                {
+                    var actual = result.Data as OrderViewModel;
+                    models.Add(actual);
+                }
+            }
+            ScenarioContext.Current.Set(models);
+        }
+
+        /// <summary>
         /// The when i update order as follows.
         /// </summary>
         /// <param name="table">
@@ -97,6 +125,52 @@ namespace TdService.Specs.Steps
                 var actual = result.Data as OrderViewModel;
                 ScenarioContext.Current.Set(actual);
             }
+        }
+
+        /// <summary>
+        /// The when i go to my recent orders tab.
+        /// </summary>
+        [When(@"I go to my recent orders tab")]
+        public void WhenIGoToMyRecentOrdersTab()
+        {
+            var contoller = this.GetOrdersController();
+            var result = contoller.Recent() as JsonNetResult;
+            Assert.That(result, Is.Not.Null);
+            if (result != null)
+            {
+                var actual = result.Data as List<OrderViewModel>;
+                ScenarioContext.Current.Set(actual);
+            }
+        }
+
+        /// <summary>
+        /// The then there must be only one db record with retailer url.
+        /// </summary>
+        /// <param name="retailerUrl">
+        /// The retailer url.
+        /// </param>
+        [Then(@"there must be only one db record with '(.*)' retailer url")]
+        public void ThenThereMustBeOnlyOneDbRecordWithRetailerUrl(string retailerUrl)
+        {
+            using (var context = new ShopAnyWareSql())
+            {
+                var retailers = context.Retailers.Where(r => r.Url == retailerUrl);
+                Assert.That(retailers.Count(), Is.EqualTo(1));
+            }
+        }
+
+        /// <summary>
+        /// The then the order view models should be as follows.
+        /// </summary>
+        /// <param name="table">
+        /// The table.
+        /// </param>
+        [Then(@"the order view models should be as follows")]
+        public void ThenTheOrderViewModelsShouldBeAsFollows(Table table)
+        {
+            var actual = ScenarioContext.Current.Get<List<OrderViewModel>>();
+            Assert.That(actual, Is.Not.Empty);
+            table.CompareToSet(actual);
         }
 
         /// <summary>

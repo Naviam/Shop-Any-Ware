@@ -9,6 +9,8 @@
 
 namespace TdService.Model.Orders
 {
+    using System.Collections.Generic;
+
     /// <summary>
     /// Interface for order repository.
     /// </summary>
@@ -63,5 +65,16 @@ namespace TdService.Model.Orders
         /// Order details.
         /// </returns>
         Order GetOrderById(int orderId);
+
+        /// <summary>
+        /// The get my recent.
+        /// </summary>
+        /// <param name="email">
+        /// The email.
+        /// </param>
+        /// <returns>
+        /// The System.Collections.Generic.List`1[T -&gt; TdService.Model.Orders.Order].
+        /// </returns>
+        List<Order> GetMyRecent(string email);
     }
 }

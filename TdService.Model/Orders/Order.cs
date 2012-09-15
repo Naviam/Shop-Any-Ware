@@ -28,11 +28,15 @@ namespace TdService.Model.Orders
         private IOrderState orderState;
 
         /// <summary>
+        /// The status.
+        /// </summary>
+        private OrderStatus status;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="Order"/> class.
         /// </summary>
         public Order()
         {
-            this.orderState = new OrderNewState();
             this.Status = OrderStatus.New;
             this.CreatedDate = DateTime.UtcNow;
         }
@@ -46,24 +50,6 @@ namespace TdService.Model.Orders
         public Order(OrderStatus orderStatus)
         {
             this.Status = orderStatus;
-            switch (this.Status)
-            {
-                case OrderStatus.New:
-                    this.orderState = new OrderNewState();
-                    break;
-                case OrderStatus.Received:
-                    this.orderState = new OrderReceivedState();
-                    break;
-                case OrderStatus.ReturnRequested:
-                    this.orderState = new OrderReturnRequestedState();
-                    break;
-                case OrderStatus.Returned:
-                    this.orderState = new OrderReturnedState();
-                    break;
-                case OrderStatus.Disposed:
-                    this.orderState = new OrderDisposedState();
-                    break;
-            }
         }
 
         /// <summary>
@@ -119,7 +105,36 @@ namespace TdService.Model.Orders
         /// <summary>
         /// Gets Order Status.
         /// </summary>
-        public OrderStatus Status { get; private set; }
+        public OrderStatus Status
+        {
+            get
+            {
+                return this.status;
+            }
+
+            private set
+            {
+                this.status = value;
+                switch (this.Status)
+                {
+                    case OrderStatus.New:
+                        this.orderState = new OrderNewState();
+                        break;
+                    case OrderStatus.Received:
+                        this.orderState = new OrderReceivedState();
+                        break;
+                    case OrderStatus.ReturnRequested:
+                        this.orderState = new OrderReturnRequestedState();
+                        break;
+                    case OrderStatus.Returned:
+                        this.orderState = new OrderReturnedState();
+                        break;
+                    case OrderStatus.Disposed:
+                        this.orderState = new OrderDisposedState();
+                        break;
+                }
+            }
+        }
 
         /// <summary>
         /// Gets a value indicating whether this order can be modified.

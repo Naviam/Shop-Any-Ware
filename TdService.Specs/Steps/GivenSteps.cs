@@ -9,6 +9,7 @@
 
 namespace TdService.Specs.Steps
 {
+    using System;
     using System.Collections.Generic;
     using System.Data;
     using System.Linq;
@@ -17,6 +18,7 @@ namespace TdService.Specs.Steps
 
     using TdService.Model.Addresses;
     using TdService.Model.Balance;
+    using TdService.Model.Common;
     using TdService.Model.Membership;
     using TdService.Model.Orders;
     using TdService.Repository.MsSql;
@@ -152,7 +154,7 @@ namespace TdService.Specs.Steps
         [Given(@"I have the following orders")]
         public void GivenIHaveTheFollowingOrders(Table table)
         {
-            var orders = table.CreateSet<Order>();
+            var orders = this.OrdersTransform(table);
             var user = ScenarioContext.Current.Get<User>();
 
             using (var context = new ShopAnyWareSql())
@@ -173,6 +175,29 @@ namespace TdService.Specs.Steps
                 context.SaveChanges();
 
                 ScenarioContext.Current.Set(user);
+            }
+        }
+
+        /// <summary>
+        /// The orders transform.
+        /// </summary>
+        /// <param name="ordersTable">
+        /// The orders table.
+        /// </param>
+        /// <returns>
+        /// The System.Collections.Generic.IEnumerable`1[T -&gt; TdService.Model.Orders.Order].
+        /// </returns>
+        [StepArgumentTransformation]
+        public IEnumerable<Order> OrdersTransform(Table ordersTable)
+        {
+            foreach (var tableRow in ordersTable.Rows)
+            {
+                var retailer = new Retailer(tableRow["Retailer"]);
+                var orderNumber = tableRow["Order Number"];
+                var trackingNumber = tableRow["Tracking Number"];
+                var statusText = tableRow["Status"];
+                var status = (OrderStatus)Enum.Parse(typeof(OrderStatus), statusText);
+                yield return new Order(status) { Retailer = retailer, OrderNumber = orderNumber, TrackingNumber = trackingNumber, CreatedDate = DateTime.UtcNow };
             }
         }
     }

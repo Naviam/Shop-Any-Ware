@@ -15,7 +15,6 @@ namespace TdService.Services.Implementations
 
     using TdService.Infrastructure.Logging;
     using TdService.Model.Common;
-    using TdService.Model.Membership;
     using TdService.Model.Orders;
     using TdService.Resources;
     using TdService.Services.Interfaces;
@@ -34,11 +33,6 @@ namespace TdService.Services.Implementations
         private readonly IOrderRepository orderRepository;
 
         /// <summary>
-        /// The user repository.
-        /// </summary>
-        private readonly IUserRepository userRepository;
-
-        /// <summary>
         /// The logger.
         /// </summary>
         private readonly ILogger logger;
@@ -46,21 +40,14 @@ namespace TdService.Services.Implementations
         /// <summary>
         /// Initializes a new instance of the <see cref="OrderService"/> class.
         /// </summary>
-        /// <param name="userRepository">
-        /// User repository.
-        /// </param>
         /// <param name="orderRepository">
         /// Order repository.
         /// </param>
         /// <param name="logger">
         /// The logger.
         /// </param>
-        public OrderService(
-            IUserRepository userRepository,
-            IOrderRepository orderRepository,
-            ILogger logger)
+        public OrderService(IOrderRepository orderRepository, ILogger logger)
         {
-            this.userRepository = userRepository;
             this.orderRepository = orderRepository;
             this.logger = logger;
         }
@@ -76,14 +63,8 @@ namespace TdService.Services.Implementations
         /// </returns>
         public List<GetRecentOrdersResponse> GetRecent(GetRecentOrdersRequest request)
         {
-            var user = this.userRepository.GetUserWithOrdersByEmail(request.IdentityToken);
-            if (user != null)
-            {
-                var recentOrders = user.GetRecentOrders();
-                return recentOrders.ConvertToRecentOrdersResponseCollection();
-            }
-
-            return null;
+            var recentOrders = this.orderRepository.GetMyRecent(request.IdentityToken);
+            return recentOrders.ConvertToRecentOrdersResponseCollection();
         }
 
         /// <summary>

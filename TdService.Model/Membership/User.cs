@@ -154,9 +154,13 @@ namespace TdService.Model.Membership
             var orders = this.Orders;
             if (orders != null)
             {
-                return orders.Where(
-                    order => !order.ReceivedDate.HasValue
-                             || order.ReceivedDate.Value > DateTime.UtcNow.AddDays(-30)).ToList();
+                var result = from o in orders
+                             where
+                                 (o.Status == OrderStatus.New || o.Status == OrderStatus.Received
+                                 || o.Status == OrderStatus.ReturnRequested)
+                             orderby o.CreatedDate descending
+                             select o;
+                return result.ToList();
             }
 
             this.Orders = new List<Order>();
