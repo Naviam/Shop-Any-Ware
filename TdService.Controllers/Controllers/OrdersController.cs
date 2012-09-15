@@ -204,6 +204,26 @@ namespace TdService.UI.Web.Controllers
                 }
             }
 
+            if (result.Id == 0)
+            {
+                result.Id = model.Id;
+            }
+
+            if (string.IsNullOrEmpty(result.OrderNumber))
+            {
+                result.OrderNumber = model.OrderNumber;
+            }
+
+            if (string.IsNullOrEmpty(result.TrackingNumber))
+            {
+                result.TrackingNumber = model.TrackingNumber;
+            }
+
+            if (string.IsNullOrEmpty(result.Status))
+            {
+                result.Status = model.Status;
+            }
+
             var jsonNetResult = new JsonNetResult
             {
                 Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,

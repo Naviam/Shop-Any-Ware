@@ -24,7 +24,7 @@ Scenario: View my recent orders
 	| 5  | zappos.com   | 234345454433 | 123456789012345 | Received        | False           | False          | True                        | False                 | Success      |
 	| 6  | zappos.com   | 453656457544 | 245763453445463 | ReturnRequested | False           | False          | False                       | False                 | Success      |
 
-@viewrecentorders
+@viewhistoryorders
 Scenario: View my history orders
 	Given there is 'v.hatalski@gmail.com' account with 'ruinruin' password in role 'Shopper' with fullname 'Vitali' and 'Hatalski'
 	And I am authenticated as 'v.hatalski@gmail.com'
@@ -102,6 +102,24 @@ Scenario: Update order in new status
 	Then the order view model should be as follows
 	| Id | Order Number | Tracking Number | Status | Message Type |
 	| 1  | 098765432109 | 1234            | New    | Success      |
+
+@updateorder
+Scenario: Update order in new status validate fields max length
+	Given there is 'v.hatalski@gmail.com' account with 'ruinruin' password in role 'Shopper' with fullname 'Vitali' and 'Hatalski'
+	And I am authenticated as 'v.hatalski@gmail.com'
+	And I have the following orders
+	| Id | Retailer   | Order Number | Tracking Number | Status |
+	| 1  | amazon.com |              | 123456789012345 | New    |
+	When I update order as follows
+	| Id | Order Number                                     | Tracking Number                                              | Status |
+	| 1  | 098765432109098765432109098765432109098765432109 | 123456789012345123456789012345123456789012345123456789012345 | New    |
+	Then the order view model should be as follows
+	| Id | Order Number                                     | Tracking Number                                              | Status | Message Type |
+	| 1  | 098765432109098765432109098765432109098765432109 | 123456789012345123456789012345123456789012345123456789012345 | New    | Warning      |
+	And the order view model should have the following errors
+	| Property       | Error Code                   |
+	| OrderNumber    | OrderOrderNumberMaxLength    |
+	| TrackingNumber | OrderTrackingNumberMaxLength |
 
 @removeorder
 Scenario: Remove order in new status

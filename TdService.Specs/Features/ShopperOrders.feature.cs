@@ -193,11 +193,11 @@ this.ScenarioSetup(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("View my history orders")]
-        [NUnit.Framework.CategoryAttribute("viewrecentorders")]
+        [NUnit.Framework.CategoryAttribute("viewhistoryorders")]
         public virtual void ViewMyHistoryOrders()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("View my history orders", new string[] {
-                        "viewrecentorders"});
+                        "viewhistoryorders"});
 #line 28
 this.ScenarioSetup(scenarioInfo);
 #line 29
@@ -581,12 +581,12 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Remove order in new status")]
-        [NUnit.Framework.CategoryAttribute("removeorder")]
-        public virtual void RemoveOrderInNewStatus()
+        [NUnit.Framework.DescriptionAttribute("Update order in new status validate fields max length")]
+        [NUnit.Framework.CategoryAttribute("updateorder")]
+        public virtual void UpdateOrderInNewStatusValidateFieldsMaxLength()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Remove order in new status", new string[] {
-                        "removeorder"});
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Update order in new status validate fields max length", new string[] {
+                        "updateorder"});
 #line 107
 this.ScenarioSetup(scenarioInfo);
 #line 108
@@ -600,21 +600,94 @@ this.ScenarioSetup(scenarioInfo);
                         "Retailer",
                         "Order Number",
                         "Tracking Number",
-                        "Received Date",
                         "Status"});
             table15.AddRow(new string[] {
+                        "1",
+                        "amazon.com",
+                        "",
+                        "123456789012345",
+                        "New"});
+#line 110
+ testRunner.And("I have the following orders", ((string)(null)), table15, "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id",
+                        "Order Number",
+                        "Tracking Number",
+                        "Status"});
+            table16.AddRow(new string[] {
+                        "1",
+                        "098765432109098765432109098765432109098765432109",
+                        "123456789012345123456789012345123456789012345123456789012345",
+                        "New"});
+#line 113
+ testRunner.When("I update order as follows", ((string)(null)), table16, "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id",
+                        "Order Number",
+                        "Tracking Number",
+                        "Status",
+                        "Message Type"});
+            table17.AddRow(new string[] {
+                        "1",
+                        "098765432109098765432109098765432109098765432109",
+                        "123456789012345123456789012345123456789012345123456789012345",
+                        "New",
+                        "Warning"});
+#line 116
+ testRunner.Then("the order view model should be as follows", ((string)(null)), table17, "Then ");
+#line hidden
+            TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Property",
+                        "Error Code"});
+            table18.AddRow(new string[] {
+                        "OrderNumber",
+                        "OrderOrderNumberMaxLength"});
+            table18.AddRow(new string[] {
+                        "TrackingNumber",
+                        "OrderTrackingNumberMaxLength"});
+#line 119
+ testRunner.And("the order view model should have the following errors", ((string)(null)), table18, "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Remove order in new status")]
+        [NUnit.Framework.CategoryAttribute("removeorder")]
+        public virtual void RemoveOrderInNewStatus()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Remove order in new status", new string[] {
+                        "removeorder"});
+#line 125
+this.ScenarioSetup(scenarioInfo);
+#line 126
+ testRunner.Given("there is \'v.hatalski@gmail.com\' account with \'ruinruin\' password in role \'Shopper" +
+                    "\' with fullname \'Vitali\' and \'Hatalski\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 127
+ testRunner.And("I am authenticated as \'v.hatalski@gmail.com\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id",
+                        "Retailer",
+                        "Order Number",
+                        "Tracking Number",
+                        "Received Date",
+                        "Status"});
+            table19.AddRow(new string[] {
                         "1",
                         "amazon.com",
                         "",
                         "",
                         "",
                         "New"});
-#line 110
- testRunner.And("I have the following orders", ((string)(null)), table15, "And ");
-#line 113
+#line 128
+ testRunner.And("I have the following orders", ((string)(null)), table19, "And ");
+#line 131
  testRunner.When("I remove order with id \'1\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-            TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
                         "Retailer Url",
                         "Order Number",
@@ -622,7 +695,7 @@ this.ScenarioSetup(scenarioInfo);
                         "Received Date",
                         "Status",
                         "Message Type"});
-            table16.AddRow(new string[] {
+            table20.AddRow(new string[] {
                         "1",
                         "",
                         "",
@@ -630,8 +703,8 @@ this.ScenarioSetup(scenarioInfo);
                         "",
                         "",
                         "Success"});
-#line 114
- testRunner.Then("the order view model should be as follows", ((string)(null)), table16, "Then ");
+#line 132
+ testRunner.Then("the order view model should be as follows", ((string)(null)), table20, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -643,66 +716,66 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Remove order in other status than new should not be possible", new string[] {
                         "removeorder"});
-#line 119
+#line 137
 this.ScenarioSetup(scenarioInfo);
-#line 120
+#line 138
  testRunner.Given("there is \'v.hatalski@gmail.com\' account with \'ruinruin\' password in role \'Shopper" +
                     "\' with fullname \'Vitali\' and \'Hatalski\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 121
+#line 139
  testRunner.And("I am authenticated as \'v.hatalski@gmail.com\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-            TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
                         "Retailer",
                         "Order Number",
                         "Tracking Number",
                         "Received Date",
                         "Status"});
-            table17.AddRow(new string[] {
+            table21.AddRow(new string[] {
                         "1",
                         "amazon.com",
                         "",
                         "",
                         "",
                         "Received"});
-            table17.AddRow(new string[] {
+            table21.AddRow(new string[] {
                         "2",
                         "6pm.com",
                         "",
                         "",
                         "",
                         "Returned"});
-            table17.AddRow(new string[] {
+            table21.AddRow(new string[] {
                         "3",
                         "apple.com",
                         "",
                         "",
                         "",
                         "ReturnRequested"});
-            table17.AddRow(new string[] {
+            table21.AddRow(new string[] {
                         "4",
                         "zappos.com",
                         "",
                         "",
                         "",
                         "Disposed"});
-#line 122
- testRunner.And("I have the following orders", ((string)(null)), table17, "And ");
+#line 140
+ testRunner.And("I have the following orders", ((string)(null)), table21, "And ");
 #line hidden
-            TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table22 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id"});
-            table18.AddRow(new string[] {
+            table22.AddRow(new string[] {
                         "1"});
-            table18.AddRow(new string[] {
+            table22.AddRow(new string[] {
                         "2"});
-            table18.AddRow(new string[] {
+            table22.AddRow(new string[] {
                         "3"});
-            table18.AddRow(new string[] {
+            table22.AddRow(new string[] {
                         "4"});
-#line 128
- testRunner.When("I remove the following orders", ((string)(null)), table18, "When ");
+#line 146
+ testRunner.When("I remove the following orders", ((string)(null)), table22, "When ");
 #line hidden
-            TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table23 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
                         "Retailer Url",
                         "Order Number",
@@ -711,7 +784,7 @@ this.ScenarioSetup(scenarioInfo);
                         "Status",
                         "Message Type",
                         "Error Code"});
-            table19.AddRow(new string[] {
+            table23.AddRow(new string[] {
                         "1",
                         "",
                         "",
@@ -720,7 +793,7 @@ this.ScenarioSetup(scenarioInfo);
                         "",
                         "Error",
                         "OrderCannotBeRemoved"});
-            table19.AddRow(new string[] {
+            table23.AddRow(new string[] {
                         "2",
                         "",
                         "",
@@ -729,7 +802,7 @@ this.ScenarioSetup(scenarioInfo);
                         "",
                         "Error",
                         "OrderCannotBeRemoved"});
-            table19.AddRow(new string[] {
+            table23.AddRow(new string[] {
                         "3",
                         "",
                         "",
@@ -738,7 +811,7 @@ this.ScenarioSetup(scenarioInfo);
                         "",
                         "Error",
                         "OrderCannotBeRemoved"});
-            table19.AddRow(new string[] {
+            table23.AddRow(new string[] {
                         "4",
                         "",
                         "",
@@ -747,8 +820,8 @@ this.ScenarioSetup(scenarioInfo);
                         "",
                         "Error",
                         "OrderCannotBeRemoved"});
-#line 134
- testRunner.Then("the order view models should be as follows", ((string)(null)), table19, "Then ");
+#line 152
+ testRunner.Then("the order view models should be as follows", ((string)(null)), table23, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -760,34 +833,34 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Remove order that does not exist", new string[] {
                         "removeorder"});
-#line 142
+#line 160
 this.ScenarioSetup(scenarioInfo);
-#line 143
+#line 161
  testRunner.Given("there is \'v.hatalski@gmail.com\' account with \'ruinruin\' password in role \'Shopper" +
                     "\' with fullname \'Vitali\' and \'Hatalski\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 144
+#line 162
  testRunner.And("I am authenticated as \'v.hatalski@gmail.com\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-            TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table24 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
                         "Retailer",
                         "Order Number",
                         "Tracking Number",
                         "Received Date",
                         "Status"});
-            table20.AddRow(new string[] {
+            table24.AddRow(new string[] {
                         "1",
                         "amazon.com",
                         "",
                         "",
                         "",
                         "New"});
-#line 145
- testRunner.And("I have the following orders", ((string)(null)), table20, "And ");
-#line 148
+#line 163
+ testRunner.And("I have the following orders", ((string)(null)), table24, "And ");
+#line 166
  testRunner.When("I remove order with id \'2\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-            TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table25 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
                         "Retailer Url",
                         "Order Number",
@@ -796,7 +869,7 @@ this.ScenarioSetup(scenarioInfo);
                         "Status",
                         "Message Type",
                         "Error Code"});
-            table21.AddRow(new string[] {
+            table25.AddRow(new string[] {
                         "2",
                         "",
                         "",
@@ -805,8 +878,8 @@ this.ScenarioSetup(scenarioInfo);
                         "",
                         "Error",
                         "OrderNotBelongToUser"});
-#line 149
- testRunner.Then("the order view model should be as follows", ((string)(null)), table21, "Then ");
+#line 167
+ testRunner.Then("the order view model should be as follows", ((string)(null)), table25, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
