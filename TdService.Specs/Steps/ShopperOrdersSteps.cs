@@ -128,6 +128,56 @@ namespace TdService.Specs.Steps
         }
 
         /// <summary>
+        /// The when i update orders as follows.
+        /// </summary>
+        /// <param name="table">
+        /// The table.
+        /// </param>
+        [When(@"I update orders as follows")]
+        public void WhenIUpdateOrdersAsFollows(Table table)
+        {
+            var models = table.CreateSet<OrderViewModel>();
+            var contoller = this.GetOrdersController();
+            var actuals = new List<OrderViewModel>();
+            foreach (var model in models)
+            {
+                var result = contoller.Update(model) as JsonNetResult;
+                Assert.That(result, Is.Not.Null);
+                if (result != null)
+                {
+                    actuals.Add(result.Data as OrderViewModel);
+                }
+            }
+
+            ScenarioContext.Current.Set(actuals);
+        }
+
+        /// <summary>
+        /// The when i request for following orders return.
+        /// </summary>
+        /// <param name="table">
+        /// The table.
+        /// </param>
+        [When(@"I request for following orders return")]
+        public void WhenIRequestForFollowingOrdersReturn(Table table)
+        {
+            var models = table.CreateSet<OrderViewModel>();
+            var contoller = this.GetOrdersController();
+            var actuals = new List<OrderViewModel>();
+            foreach (var model in models)
+            {
+                var result = contoller.RequestForReturn(model) as JsonNetResult;
+                Assert.That(result, Is.Not.Null);
+                if (result != null)
+                {
+                    actuals.Add(result.Data as OrderViewModel);
+                }
+            }
+
+            ScenarioContext.Current.Set(actuals);
+        }
+
+        /// <summary>
         /// The when i go to my recent orders tab.
         /// </summary>
         [When(@"I go to my recent orders tab")]

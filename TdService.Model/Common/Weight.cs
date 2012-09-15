@@ -21,22 +21,22 @@ namespace TdService.Model.Common
         /// <summary>
         /// Gets or sets Pounds.
         /// </summary>
-        public float Pounds { get; set; }
+        public int Pounds { get; set; }
 
         /// <summary>
         /// Gets or sets Ounces.
         /// </summary>
-        public float Ounces { get; set; }
+        public int Ounces { get; set; }
 
         /// <summary>
         /// Gets or sets Kilograms.
         /// </summary>
-        public float Kilograms { get; set; }
+        public int Kilograms { get; set; }
 
         /// <summary>
         /// Gets or sets Grams.
         /// </summary>
-        public float Grams { get; set; }
+        public int Grams { get; set; }
 
         /// <summary>
         /// Validate business rules.

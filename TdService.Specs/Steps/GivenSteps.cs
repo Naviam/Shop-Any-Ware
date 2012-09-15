@@ -197,7 +197,13 @@ namespace TdService.Specs.Steps
                 var trackingNumber = tableRow["Tracking Number"];
                 var statusText = tableRow["Status"];
                 var status = (OrderStatus)Enum.Parse(typeof(OrderStatus), statusText);
-                yield return new Order(status) { Retailer = retailer, OrderNumber = orderNumber, TrackingNumber = trackingNumber, CreatedDate = DateTime.UtcNow };
+                yield return new Order(status)
+                    {
+                        Retailer = retailer,
+                        OrderNumber = orderNumber,
+                        TrackingNumber = trackingNumber,
+                        CreatedDate = DateTime.UtcNow
+                    };
             }
         }
     }

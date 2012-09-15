@@ -116,7 +116,7 @@ namespace TdService.Repository.MsSql.Repositories
                     user.Orders = new List<Order>();
                 }
 
-                user.Orders.Add(order);
+                user.AddOrder(order);
                 context.Entry(user).State = EntityState.Modified;
                 context.SaveChanges();
 

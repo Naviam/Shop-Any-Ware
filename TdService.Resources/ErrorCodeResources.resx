@@ -192,13 +192,19 @@
   <data name="ItemWeightRequired" xml:space="preserve">
     <value>An item must have a weight.</value>
   </data>
+  <data name="OrderCannotBeAddedByYou" xml:space="preserve">
+    <value>An order cannot be added by you. Only users in 'Shopper' role can do this.</value>
+  </data>
   <data name="OrderCannotBeRemoved" xml:space="preserve">
     <value>The order cannot be removed in current state.</value>
+  </data>
+  <data name="OrderCannotBeUpdated" xml:space="preserve">
+    <value>The order cannot be updated in current state.</value>
   </data>
   <data name="OrderCreatedDateRequired" xml:space="preserve">
     <value>Order must have a created date.</value>
   </data>
-  <data name="OrderNotBelongToUser" xml:space="preserve">
+  <data name="OrderNotFoundForUser" xml:space="preserve">
     <value>The order has not been found.</value>
   </data>
   <data name="OrderOrderNumberMaxLength" xml:space="preserve">
@@ -272,9 +278,6 @@
   </data>
   <data name="RoleNameRequired" xml:space="preserve">
     <value>A role must have a name.</value>
-  </data>
-  <data name="String1" xml:space="preserve">
-    <value />
   </data>
   <data name="UserEmailExists" xml:space="preserve">
     <value>The user with this email already exists.</value>

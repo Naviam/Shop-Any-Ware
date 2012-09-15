@@ -231,5 +231,25 @@ namespace TdService.UI.Web.Controllers
             };
             return jsonNetResult;
         }
+
+        /// <summary>
+        /// The request for return.
+        /// </summary>
+        /// <param name="model">
+        /// The model.
+        /// </param>
+        /// <returns>
+        /// The System.Web.Mvc.ActionResult.
+        /// </returns>
+        public ActionResult RequestForReturn(OrderViewModel model)
+        {
+            var result = new OrderViewModel();
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = result
+            };
+            return jsonNetResult;
+        }
     }
 }

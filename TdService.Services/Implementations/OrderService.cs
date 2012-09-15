@@ -109,11 +109,11 @@ namespace TdService.Services.Implementations
                 response = orderResult.ConvertToAddOrderResponse();
                 response.Message = CommonResources.OrderAddSuccessMessage;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
                 response.MessageType = MessageType.Error;
-                response.Message = CommonResources.OrderAddErrorMessage;
-                this.logger.Error(CommonResources.OrderAddErrorMessage, e);
+                response.ErrorCode = ex.Message;
+                this.logger.Error(CommonResources.OrderAddErrorMessage, ex);
             }
 
             return response;
@@ -142,6 +142,7 @@ namespace TdService.Services.Implementations
                 response.Id = request.Id;
                 response.MessageType = MessageType.Error;
                 response.ErrorCode = ex.Message;
+                this.logger.Error(CommonResources.OrderAddErrorMessage, ex);
             }
 
             return response;
@@ -176,9 +177,8 @@ namespace TdService.Services.Implementations
 
             try
             {
-                var orderToUpdate = this.orderRepository.GetOrderById(order.Id);
-                orderToUpdate.OrderNumber = order.OrderNumber;
-                orderToUpdate.TrackingNumber = order.TrackingNumber;
+                ////var orderToUpdate = this.orderRepository.GetOrderById(order.Id);
+                order.Update(order.OrderNumber, order.TrackingNumber);
                 var updatedOrder = this.orderRepository.UpdateOrder(order);
                 response = updatedOrder.ConvertToUpdateOrderResponse();
                 response.Message = CommonResources.OrderUpdateSuccessMessage;
@@ -186,7 +186,7 @@ namespace TdService.Services.Implementations
             catch (Exception e)
             {
                 response.MessageType = MessageType.Error;
-                response.Message = CommonResources.OrderUpdateErrorMessage;
+                response.ErrorCode = e.Message;
                 this.logger.Error(CommonResources.OrderUpdateErrorMessage, e);
             }
 

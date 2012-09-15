@@ -286,11 +286,29 @@ namespace TdService.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An order cannot be added by you. Only users in &apos;Shopper&apos; role can do this..
+        /// </summary>
+        public static string OrderCannotBeAddedByYou {
+            get {
+                return ResourceManager.GetString("OrderCannotBeAddedByYou", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The order cannot be removed in current state..
         /// </summary>
         public static string OrderCannotBeRemoved {
             get {
                 return ResourceManager.GetString("OrderCannotBeRemoved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The order cannot be updated in current state..
+        /// </summary>
+        public static string OrderCannotBeUpdated {
+            get {
+                return ResourceManager.GetString("OrderCannotBeUpdated", resourceCulture);
             }
         }
         
@@ -306,9 +324,9 @@ namespace TdService.Resources {
         /// <summary>
         ///   Looks up a localized string similar to The order has not been found..
         /// </summary>
-        public static string OrderNotBelongToUser {
+        public static string OrderNotFoundForUser {
             get {
-                return ResourceManager.GetString("OrderNotBelongToUser", resourceCulture);
+                return ResourceManager.GetString("OrderNotFoundForUser", resourceCulture);
             }
         }
         
@@ -525,15 +543,6 @@ namespace TdService.Resources {
         public static string RoleNameRequired {
             get {
                 return ResourceManager.GetString("RoleNameRequired", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string String1 {
-            get {
-                return ResourceManager.GetString("String1", resourceCulture);
             }
         }
         

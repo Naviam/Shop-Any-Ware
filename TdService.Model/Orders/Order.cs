@@ -98,11 +98,6 @@ namespace TdService.Model.Orders
         public DateTime? DisposedDate { get; set; }
 
         /// <summary>
-        /// Gets or sets Weight.
-        /// </summary>lf
-        public Weight Weight { get; set; }
-
-        /// <summary>
         /// Gets Order Status.
         /// </summary>
         public OrderStatus Status
@@ -214,6 +209,27 @@ namespace TdService.Model.Orders
         }
 
         /// <summary>
+        /// The update.
+        /// </summary>
+        /// <param name="orderNumber">
+        /// The order number.
+        /// </param>
+        /// <param name="trackingNumber">
+        /// The tracking number.
+        /// </param>
+        public void Update(string orderNumber, string trackingNumber)
+        {
+            if (this.orderState.CanBeModified)
+            {
+                this.OrderNumber = orderNumber;
+                this.TrackingNumber = trackingNumber;
+                return;
+            }
+
+            throw new InvalidOperationException(ErrorCode.OrderCannotBeUpdated.ToString());
+        }
+
+        /// <summary>
         /// Change state of this order.
         /// </summary>
         /// <param name="newOrderState">
@@ -243,10 +259,10 @@ namespace TdService.Model.Orders
                 this.AddBrokenRule(OrderBusinessRules.ReceivedDateRequired);
             }
 
-            if (this.orderState is OrderReceivedState && this.Weight == null)
-            {
-                this.AddBrokenRule(OrderBusinessRules.WeightRequired);
-            }
+            ////if (this.orderState is OrderReceivedState && this.Weight == null)
+            ////{
+            ////    this.AddBrokenRule(OrderBusinessRules.WeightRequired);
+            ////}
 
             if (!string.IsNullOrEmpty(this.OrderNumber) && this.OrderNumber.Length > 64)
             {

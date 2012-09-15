@@ -175,6 +175,11 @@ namespace TdService.Model.Membership
         /// </param>
         public void AddOrder(Order order)
         {
+            if (this.Roles.Exists(r => r.Name != StandardRole.Shopper.ToString()))
+            {
+                throw new InvalidOrderException(ErrorCode.OrderCannotBeAddedByYou.ToString());
+            }
+
             this.Orders.Add(order);
         }
 
@@ -192,7 +197,8 @@ namespace TdService.Model.Membership
             var order = this.GetOrderById(orderId);
             if (order != null)
             {
-                if (order.CanBeRemoved)
+                if (order.CanBeRemoved 
+                    && this.Roles.Exists(r => r.Name == StandardRole.Shopper.ToString() || r.Name == StandardRole.Admin.ToString()))
                 {
                     this.Orders.Remove(order);
                     return order;
@@ -201,7 +207,7 @@ namespace TdService.Model.Membership
                 throw new InvalidOrderException(ErrorCode.OrderCannotBeRemoved.ToString());
             }
 
-            throw new InvalidOrderException(ErrorCode.OrderNotBelongToUser.ToString());
+            throw new InvalidOrderException(ErrorCode.OrderNotFoundForUser.ToString());
         }
 
         /// <summary>
