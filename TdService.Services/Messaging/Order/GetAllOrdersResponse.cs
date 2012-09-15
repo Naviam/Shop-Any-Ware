@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="GetRecentOrdersResponse.cs" company="TdService">
+// <copyright file="GetAllOrdersResponse.cs" company="TdService">
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
-//   Get recent orders response.
+//   The get all orders response.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -12,9 +12,9 @@ namespace TdService.Services.Messaging.Order
     using System;
 
     /// <summary>
-    /// Get recent orders response.
+    /// The get all orders response.
     /// </summary>
-    public class GetRecentOrdersResponse : ResponseBase
+    public class GetAllOrdersResponse : ResponseBase
     {
         /// <summary>
         /// Gets or sets order id.

@@ -19,6 +19,39 @@ namespace TdService.Services.Interfaces
     public interface IOrderService
     {
         /// <summary>
+        /// The get all new.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The collection of orders.
+        /// </returns>
+        List<GetAllOrdersResponse> GetAllNew(GetAllOrdersRequest request);
+
+        /// <summary>
+        /// The get all received.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The collection of orders.
+        /// </returns>
+        List<GetAllOrdersResponse> GetAllReceived(GetAllOrdersRequest request);
+
+        /// <summary>
+        /// The get all return requested.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The collection of orders.
+        /// </returns>
+        List<GetAllOrdersResponse> GetAllReturnRequested(GetAllOrdersRequest request);
+
+        /// <summary>
         /// Get recent orders (new or received within 30 days)
         /// </summary>
         /// <param name="request">
@@ -27,7 +60,7 @@ namespace TdService.Services.Interfaces
         /// <returns>
         /// Collection of response messages.
         /// </returns>
-        List<GetRecentOrdersResponse> GetRecent(GetRecentOrdersRequest request);
+        List<GetMyOrdersResponse> GetRecent(GetMyOrdersRequest request);
 
         /// <summary>
         /// The get history.
@@ -38,7 +71,7 @@ namespace TdService.Services.Interfaces
         /// <returns>
         /// The collection of response messages.
         /// </returns>
-        List<GetRecentOrdersResponse> GetHistory(GetRecentOrdersRequest request);
+        List<GetMyOrdersResponse> GetHistory(GetMyOrdersRequest request);
 
         /// <summary>
         /// Add new order.

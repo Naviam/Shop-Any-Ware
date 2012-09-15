@@ -143,6 +143,57 @@ namespace TdService.ShopAnyWare.Tests.Orders
         }
 
         /// <summary>
+        /// The get all new orders paged.
+        /// </summary>
+        /// <param name="skip">
+        /// The skip.
+        /// </param>
+        /// <param name="take">
+        /// The take.
+        /// </param>
+        /// <returns>
+        /// The collection of orders.
+        /// </returns>
+        public List<Order> GetAllNewOrdersPaged(int skip, int take)
+        {
+            return null;
+        }
+
+        /// <summary>
+        /// The get all received orders paged.
+        /// </summary>
+        /// <param name="skip">
+        /// The skip.
+        /// </param>
+        /// <param name="take">
+        /// The take.
+        /// </param>
+        /// <returns>
+        /// The collection of orders.
+        /// </returns>
+        public List<Order> GetAllReceivedOrdersPaged(int skip, int take)
+        {
+            return null;
+        }
+
+        /// <summary>
+        /// The get all return requested orders paged.
+        /// </summary>
+        /// <param name="skip">
+        /// The skip.
+        /// </param>
+        /// <param name="take">
+        /// The take.
+        /// </param>
+        /// <returns>
+        /// The collection of orders.
+        /// </returns>
+        public List<Order> GetAllReturnRequestedOrdersPaged(int skip, int take)
+        {
+            return null;
+        }
+
+        /// <summary>
         /// Save changes to db.
         /// </summary>
         public void SaveChanges()

@@ -30,9 +30,23 @@ namespace TdService.Services.Mapping
         /// <returns>
         /// Collection of get recent orders responses.
         /// </returns>
-        public static List<GetRecentOrdersResponse> ConvertToRecentOrdersResponseCollection(this List<Order> orders)
+        public static List<GetMyOrdersResponse> ConvertToMyOrdersResponseCollection(this List<Order> orders)
         {
-            return Mapper.Map<List<Order>, List<GetRecentOrdersResponse>>(orders);
+            return Mapper.Map<List<Order>, List<GetMyOrdersResponse>>(orders);
+        }
+
+        /// <summary>
+        /// The convert to get all orders response collection.
+        /// </summary>
+        /// <param name="orders">
+        /// The orders.
+        /// </param>
+        /// <returns>
+        /// The System.Collections.Generic.List`1[T -&gt; TdService.Services.Messaging.Order.GetAllOrdersResponse].
+        /// </returns>
+        public static List<GetAllOrdersResponse> ConvertToGetAllOrdersResponseCollection(this List<Order> orders)
+        {
+            return Mapper.Map<List<Order>, List<GetAllOrdersResponse>>(orders);
         }
 
         /// <summary>

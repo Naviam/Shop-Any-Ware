@@ -53,33 +53,6 @@ Scenario: Add new order should be possible by shopper
 	And the order view model should have Created Date that is earlier than UTC Now
 
 @addorder
-Scenario: Add new order should not be possible by operator
-	Given there is 'v.hatalski@gmail.com' account with 'ruinruin' password in role 'Operator' with fullname 'Vitali' and 'Hatalski'
-	And I am authenticated as 'v.hatalski@gmail.com'
-	When I set retailer url as 'amazon.com' and press add order button on shopper dashboard page
-	Then the order view model should be as follows
-	| Id | Retailer Url | Order Number | Tracking Number | Received Date | Status | Message Type | Error Code              |
-	| 0  |              |              |                 |               |        | Error        | OrderCannotBeAddedByYou |
-
-@addorder
-Scenario: Add new order should not be possible by consultant
-	Given there is 'v.hatalski@gmail.com' account with 'ruinruin' password in role 'Consultant' with fullname 'Vitali' and 'Hatalski'
-	And I am authenticated as 'v.hatalski@gmail.com'
-	When I set retailer url as 'amazon.com' and press add order button on shopper dashboard page
-	Then the order view model should be as follows
-	| Id | Retailer Url | Order Number | Tracking Number | Received Date | Status | Message Type | Error Code              |
-	| 0  |              |              |                 |               |        | Error        | OrderCannotBeAddedByYou |
-
-@addorder
-Scenario: Add new order should not be possible by admin
-	Given there is 'v.hatalski@gmail.com' account with 'ruinruin' password in role 'Admin' with fullname 'Vitali' and 'Hatalski'
-	And I am authenticated as 'v.hatalski@gmail.com'
-	When I set retailer url as 'amazon.com' and press add order button on shopper dashboard page
-	Then the order view model should be as follows
-	| Id | Retailer Url | Order Number | Tracking Number | Received Date | Status | Message Type | Error Code              |
-	| 0  |              |              |                 |               |        | Error        | OrderCannotBeAddedByYou |
-
-@addorder
 Scenario: Add new order reusing existent retailer instead of creating new one
 	Given there is 'v.hatalski@gmail.com' account with 'ruinruin' password in role 'Shopper' with fullname 'Vitali' and 'Hatalski'
 	And I am authenticated as 'v.hatalski@gmail.com'
@@ -119,20 +92,6 @@ Scenario: Add new order validate retailer max length
 @updateorder
 Scenario: Update order in new status should be possible by shopper
 	Given there is 'v.hatalski@gmail.com' account with 'ruinruin' password in role 'Shopper' with fullname 'Vitali' and 'Hatalski'
-	And I am authenticated as 'v.hatalski@gmail.com'
-	And I have the following orders
-	| Id | Retailer   | Order Number | Tracking Number | Status |
-	| 1  | amazon.com |              | 123456789012345 | New    |
-	When I update order as follows
-	| Id | Order Number | Tracking Number | Status |
-	| 1  | 098765432109 | 1234            | New    |
-	Then the order view model should be as follows
-	| Id | Order Number | Tracking Number | Status | Message Type |
-	| 1  | 098765432109 | 1234            | New    | Success      |
-
-@updateorder
-Scenario: Update order in new status should be possible by operator
-	Given there is 'v.hatalski@gmail.com' account with 'ruinruin' password in role 'Operator' with fullname 'Vitali' and 'Hatalski'
 	And I am authenticated as 'v.hatalski@gmail.com'
 	And I have the following orders
 	| Id | Retailer   | Order Number | Tracking Number | Status |
@@ -198,18 +157,6 @@ Scenario: Remove order in new status should be possible by shopper
 	| 1  |              |              |                 |               |        | Success      |
 
 @removeorder
-Scenario: Remove order in new status should be possible by admin
-	Given there is 'v.hatalski@gmail.com' account with 'ruinruin' password in role 'Admin' with fullname 'Vitali' and 'Hatalski'
-	And I am authenticated as 'v.hatalski@gmail.com'
-	And I have the following orders
-	| Id | Retailer   | Order Number | Tracking Number | Received Date | Status |
-	| 1  | amazon.com |              |                 |               | New    |
-	When I remove order with id '1'
-	Then the order view model should be as follows
-	| Id | Retailer Url | Order Number | Tracking Number | Received Date | Status | Message Type |
-	| 1  |              |              |                 |               |        | Success      |
-
-@removeorder
 Scenario: Remove order in other status than new should not be possible
 	Given there is 'v.hatalski@gmail.com' account with 'ruinruin' password in role 'Shopper' with fullname 'Vitali' and 'Hatalski'
 	And I am authenticated as 'v.hatalski@gmail.com'
@@ -243,30 +190,6 @@ Scenario: Remove order that does not exist
 	Then the order view model should be as follows
 	| Id | Retailer Url | Order Number | Tracking Number | Received Date | Status | Message Type | Error Code           |
 	| 2  |              |              |                 |               |        | Error        | OrderNotFoundForUser |
-
-@removeorder
-Scenario: Remove order should not be possible by operator
-	Given there is 'v.hatalski@gmail.com' account with 'ruinruin' password in role 'Operator' with fullname 'Vitali' and 'Hatalski'
-	And I am authenticated as 'v.hatalski@gmail.com'
-	And I have the following orders
-	| Id | Retailer   | Order Number | Tracking Number | Received Date | Status |
-	| 1  | amazon.com |              |                 |               | New    |
-	When I remove order with id '1'
-	Then the order view model should be as follows
-	| Id | Retailer Url | Order Number | Tracking Number | Received Date | Status | Message Type | Error Code           |
-	| 1  |              |              |                 |               |        | Error        | OrderCannotBeRemoved |
-
-@removeorder
-Scenario: Remove order should not be possible by consultant
-	Given there is 'v.hatalski@gmail.com' account with 'ruinruin' password in role 'Consultant' with fullname 'Vitali' and 'Hatalski'
-	And I am authenticated as 'v.hatalski@gmail.com'
-	And I have the following orders
-	| Id | Retailer   | Order Number | Tracking Number | Received Date | Status |
-	| 1  | amazon.com |              |                 |               | New    |
-	When I remove order with id '1'
-	Then the order view model should be as follows
-	| Id | Retailer Url | Order Number | Tracking Number | Received Date | Status | Message Type | Error Code           |
-	| 1  |              |              |                 |               |        | Error        | OrderCannotBeRemoved |
 
 @requestorderreturn
 Scenario: Request for order return

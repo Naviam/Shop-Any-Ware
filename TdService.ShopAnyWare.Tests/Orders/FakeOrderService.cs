@@ -22,6 +22,48 @@ namespace TdService.ShopAnyWare.Tests.Orders
     public class FakeOrderService : IOrderService
     {
         /// <summary>
+        /// The get all new.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The collection of orders.
+        /// </returns>
+        public List<GetAllOrdersResponse> GetAllNew(GetAllOrdersRequest request)
+        {
+            return null;
+        }
+
+        /// <summary>
+        /// The get all received.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The collection of orders.
+        /// </returns>
+        public List<GetAllOrdersResponse> GetAllReceived(GetAllOrdersRequest request)
+        {
+            return null;
+        }
+
+        /// <summary>
+        /// The get all return requested.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The collection of orders.
+        /// </returns>
+        public List<GetAllOrdersResponse> GetAllReturnRequested(GetAllOrdersRequest request)
+        {
+            return null;
+        }
+
+        /// <summary>
         /// Get recent orders (new or received within 30 days)
         /// </summary>
         /// <param name="request">
@@ -30,11 +72,11 @@ namespace TdService.ShopAnyWare.Tests.Orders
         /// <returns>
         /// Collection of response messages.
         /// </returns>
-        public List<GetRecentOrdersResponse> GetRecent(GetRecentOrdersRequest request)
+        public List<GetMyOrdersResponse> GetRecent(GetMyOrdersRequest request)
         {
-            var result = new List<GetRecentOrdersResponse>
+            var result = new List<GetMyOrdersResponse>
                 {
-                    new GetRecentOrdersResponse
+                    new GetMyOrdersResponse
                         {
                             Id = 1,
                             CreatedDate = DateTime.UtcNow.AddDays(-30),
@@ -44,7 +86,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
                             Status = "Received",
                             RetailerUrl = "Amazon, Inc."
                         },
-                    new GetRecentOrdersResponse
+                    new GetMyOrdersResponse
                         {
                             Id = 2,
                             CreatedDate = DateTime.UtcNow.AddDays(-40),
@@ -54,7 +96,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
                             Status = "Received",
                             RetailerUrl = "Amazon, Inc."
                         },
-                    new GetRecentOrdersResponse
+                    new GetMyOrdersResponse
                         {
                             Id = 3,
                             CreatedDate = DateTime.UtcNow.AddDays(-15),
@@ -78,7 +120,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
         /// <returns>
         /// The collection of response messages.
         /// </returns>
-        public List<GetRecentOrdersResponse> GetHistory(GetRecentOrdersRequest request)
+        public List<GetMyOrdersResponse> GetHistory(GetMyOrdersRequest request)
         {
             return null;
         }

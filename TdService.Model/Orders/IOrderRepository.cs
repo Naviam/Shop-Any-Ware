@@ -87,5 +87,47 @@ namespace TdService.Model.Orders
         /// The collection of orders.
         /// </returns>
         List<Order> GetMyHistory(string email);
+
+        /// <summary>
+        /// The get all new orders paged.
+        /// </summary>
+        /// <param name="skip">
+        /// The skip.
+        /// </param>
+        /// <param name="take">
+        /// The take.
+        /// </param>
+        /// <returns>
+        /// The collection of orders.
+        /// </returns>
+        List<Order> GetAllNewOrdersPaged(int skip, int take);
+
+        /// <summary>
+        /// The get all received orders paged.
+        /// </summary>
+        /// <param name="skip">
+        /// The skip.
+        /// </param>
+        /// <param name="take">
+        /// The take.
+        /// </param>
+        /// <returns>
+        /// The collection of orders.
+        /// </returns>
+        List<Order> GetAllReceivedOrdersPaged(int skip, int take);
+
+        /// <summary>
+        /// The get all return requested orders paged.
+        /// </summary>
+        /// <param name="skip">
+        /// The skip.
+        /// </param>
+        /// <param name="take">
+        /// The take.
+        /// </param>
+        /// <returns>
+        /// The collection of orders.
+        /// </returns>
+        List<Order> GetAllReturnRequestedOrdersPaged(int skip, int take);
     }
 }

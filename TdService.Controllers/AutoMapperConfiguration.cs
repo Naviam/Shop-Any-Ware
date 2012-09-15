@@ -123,8 +123,14 @@ namespace TdService.UI.Web
                 .ForMember(r => r.AddressLine3, opt => opt.Ignore());
 
             // get my recent orders
-            Mapper.CreateMap<GetRecentOrdersResponse, OrderViewModel>();
-            Mapper.CreateMap<Order, GetRecentOrdersResponse>()
+            Mapper.CreateMap<GetMyOrdersResponse, OrderViewModel>();
+            Mapper.CreateMap<GetAllOrdersResponse, OrderViewModel>();
+            Mapper.CreateMap<Order, GetMyOrdersResponse>()
+                .ForMember(r => r.BrokenRules, opt => opt.Ignore())
+                .ForMember(r => r.Message, opt => opt.Ignore())
+                .ForMember(r => r.ErrorCode, opt => opt.Ignore())
+                .ForMember(r => r.MessageType, opt => opt.Ignore());
+            Mapper.CreateMap<Order, GetAllOrdersResponse>()
                 .ForMember(r => r.BrokenRules, opt => opt.Ignore())
                 .ForMember(r => r.Message, opt => opt.Ignore())
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())

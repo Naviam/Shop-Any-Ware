@@ -54,6 +54,68 @@ namespace TdService.UI.Web.Controllers
         }
 
         /// <summary>
+        /// The new orders.
+        /// </summary>
+        /// <returns>
+        /// The System.Web.Mvc.ActionResult.
+        /// </returns>
+        [Authorize(Roles = "Operator")]
+        [HttpPost]
+        public ActionResult NewOrders()
+        {
+            var request = new GetAllOrdersRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() };
+            var response = this.orderService.GetAllNew(request);
+            var result = response.ConvertToOrderViewModelCollection();
+
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = result
+            };
+            return jsonNetResult;
+        }
+
+        /// <summary>
+        /// The received orders.
+        /// </summary>
+        /// <returns>
+        /// The System.Web.Mvc.ActionResult.
+        /// </returns>
+        public ActionResult ReceivedOrders()
+        {
+            var request = new GetAllOrdersRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() };
+            var response = this.orderService.GetAllReceived(request);
+            var result = response.ConvertToOrderViewModelCollection();
+
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = result
+            };
+            return jsonNetResult;
+        }
+
+        /// <summary>
+        /// The return requested orders.
+        /// </summary>
+        /// <returns>
+        /// The System.Web.Mvc.ActionResult.
+        /// </returns>
+        public ActionResult ReturnRequestedOrders()
+        {
+            var request = new GetAllOrdersRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() };
+            var response = this.orderService.GetAllReturnRequested(request);
+            var result = response.ConvertToOrderViewModelCollection();
+
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = result
+            };
+            return jsonNetResult;
+        }
+
+        /// <summary>
         /// Get recent orders.
         /// </summary>
         /// <returns>
@@ -63,7 +125,7 @@ namespace TdService.UI.Web.Controllers
         [HttpPost]
         public ActionResult Recent()
         {
-            var request = new GetRecentOrdersRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() };
+            var request = new GetMyOrdersRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() };
             var response = this.orderService.GetRecent(request);
             var result = response.ConvertToOrderViewModelCollection();
 
@@ -85,7 +147,7 @@ namespace TdService.UI.Web.Controllers
         [HttpPost]
         public ActionResult History()
         {
-            var request = new GetRecentOrdersRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() };
+            var request = new GetMyOrdersRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() };
             var response = this.orderService.GetHistory(request);
             var result = response.ConvertToOrderViewModelCollection();
 

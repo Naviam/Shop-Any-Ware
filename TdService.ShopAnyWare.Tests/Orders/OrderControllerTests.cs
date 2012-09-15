@@ -63,9 +63,9 @@ namespace TdService.ShopAnyWare.Tests.Orders
         public void ShouldMapGetRecentOrderResponseToOrderViewModel()
         {
             // Mapper.CreateMap<IEnumerable<GetRecentOrdersResponse>, IEnumerable<OrderViewModel>>();
-            Mapper.CreateMap<GetRecentOrdersResponse, OrderViewModel>();
+            Mapper.CreateMap<GetMyOrdersResponse, OrderViewModel>();
 
-            var response = new GetRecentOrdersResponse
+            var response = new GetMyOrdersResponse
                 {
                     CreatedDate = DateTime.UtcNow,
                     ReceivedDate = DateTime.UtcNow,
@@ -81,16 +81,16 @@ namespace TdService.ShopAnyWare.Tests.Orders
                 };
             try
             {
-                Mapper.Map<GetRecentOrdersResponse, OrderViewModel>(response);
+                Mapper.Map<GetMyOrdersResponse, OrderViewModel>(response);
             }
             catch (AutoMapperConfigurationException ex)
             {
                 Assert.Fail(ex.Message);
             }
 
-            var collection = new List<GetRecentOrdersResponse>
+            var collection = new List<GetMyOrdersResponse>
                 {
-                    new GetRecentOrdersResponse
+                    new GetMyOrdersResponse
                         {
                             CreatedDate = DateTime.UtcNow,
                             ReceivedDate = DateTime.UtcNow,
@@ -108,7 +108,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
 
             try
             {
-                var orderViewModels = Mapper.Map<List<GetRecentOrdersResponse>, List<OrderViewModel>>(collection);
+                var orderViewModels = Mapper.Map<List<GetMyOrdersResponse>, List<OrderViewModel>>(collection);
             }
             catch (AutoMapperMappingException ex)
             {

@@ -53,6 +53,51 @@ namespace TdService.Services.Implementations
         }
 
         /// <summary>
+        /// The get all return requested.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The collection of orders.
+        /// </returns>
+        public List<GetAllOrdersResponse> GetAllReturnRequested(GetAllOrdersRequest request)
+        {
+            var orders = this.orderRepository.GetAllReturnRequestedOrdersPaged(request.Skip, request.Take);
+            return orders.ConvertToGetAllOrdersResponseCollection();
+        }
+
+        /// <summary>
+        /// The get all new.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The collection of orders.
+        /// </returns>
+        public List<GetAllOrdersResponse> GetAllNew(GetAllOrdersRequest request)
+        {
+            var orders = this.orderRepository.GetAllNewOrdersPaged(request.Skip, request.Take);
+            return orders.ConvertToGetAllOrdersResponseCollection();
+        }
+
+        /// <summary>
+        /// The get all received.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The collection of orders.
+        /// </returns>
+        public List<GetAllOrdersResponse> GetAllReceived(GetAllOrdersRequest request)
+        {
+            var orders = this.orderRepository.GetAllReceivedOrdersPaged(request.Skip, request.Take);
+            return orders.ConvertToGetAllOrdersResponseCollection();
+        }
+
+        /// <summary>
         /// Get recent orders (new or received within 30 days)
         /// </summary>
         /// <param name="request">
@@ -61,10 +106,10 @@ namespace TdService.Services.Implementations
         /// <returns>
         /// The response message.
         /// </returns>
-        public List<GetRecentOrdersResponse> GetRecent(GetRecentOrdersRequest request)
+        public List<GetMyOrdersResponse> GetRecent(GetMyOrdersRequest request)
         {
             var recentOrders = this.orderRepository.GetMyRecent(request.IdentityToken);
-            return recentOrders.ConvertToRecentOrdersResponseCollection();
+            return recentOrders.ConvertToMyOrdersResponseCollection();
         }
 
         /// <summary>
@@ -76,10 +121,10 @@ namespace TdService.Services.Implementations
         /// <returns>
         /// The collection of response messages.
         /// </returns>
-        public List<GetRecentOrdersResponse> GetHistory(GetRecentOrdersRequest request)
+        public List<GetMyOrdersResponse> GetHistory(GetMyOrdersRequest request)
         {
             var history = this.orderRepository.GetMyHistory(request.IdentityToken);
-            return history.ConvertToRecentOrdersResponseCollection();
+            return history.ConvertToMyOrdersResponseCollection();
         }
 
         /// <summary>

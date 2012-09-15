@@ -37,6 +37,72 @@ namespace TdService.Repository.MsSql.Repositories
         }
 
         /// <summary>
+        /// The get all new orders paged.
+        /// </summary>
+        /// <param name="skip">
+        /// The skip.
+        /// </param>
+        /// <param name="take">
+        /// The take.
+        /// </param>
+        /// <returns>
+        /// The collection of orders.
+        /// </returns>
+        public List<Order> GetAllNewOrdersPaged(int skip, int take)
+        {
+            using (var context = new ShopAnyWareSql())
+            {
+                var query = context.Orders.Where(o => o.Status == OrderStatus.New)
+                    .OrderByDescending(o => o.CreatedDate);
+                return query.Skip(skip).Take(take).ToList();
+            }
+        }
+
+        /// <summary>
+        /// The get all received orders paged.
+        /// </summary>
+        /// <param name="skip">
+        /// The skip.
+        /// </param>
+        /// <param name="take">
+        /// The take.
+        /// </param>
+        /// <returns>
+        /// The collection of orders.
+        /// </returns>
+        public List<Order> GetAllReceivedOrdersPaged(int skip, int take)
+        {
+            using (var context = new ShopAnyWareSql())
+            {
+                var query = context.Orders.Where(o => o.Status == OrderStatus.Received)
+                    .OrderByDescending(o => o.CreatedDate);
+                return query.Skip(skip).Take(take).ToList();
+            }
+        }
+
+        /// <summary>
+        /// The get all return requested orders paged.
+        /// </summary>
+        /// <param name="skip">
+        /// The skip.
+        /// </param>
+        /// <param name="take">
+        /// The take.
+        /// </param>
+        /// <returns>
+        /// The collection of orders.
+        /// </returns>
+        public List<Order> GetAllReturnRequestedOrdersPaged(int skip, int take)
+        {
+            using (var context = new ShopAnyWareSql())
+            {
+                var query = context.Orders.Where(o => o.Status == OrderStatus.ReturnRequested)
+                    .OrderByDescending(o => o.CreatedDate);
+                return query.Skip(skip).Take(take).ToList();
+            }
+        }
+
+        /// <summary>
         /// The get my recent.
         /// </summary>
         /// <param name="email">

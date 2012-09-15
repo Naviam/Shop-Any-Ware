@@ -24,15 +24,29 @@ namespace TdService.UI.Web.Mapping
         /// <summary>
         /// Convert profile view to profile domain object.
         /// </summary>
-        /// <param name="getRecentOrdersResponseCollection">
+        /// <param name="getMyOrdersResponses">
         /// The response messages collection.
         /// </param>
         /// <returns>
         /// Order view model collection.
         /// </returns>
-        public static List<OrderViewModel> ConvertToOrderViewModelCollection(this List<GetRecentOrdersResponse> getRecentOrdersResponseCollection)
+        public static List<OrderViewModel> ConvertToOrderViewModelCollection(this List<GetMyOrdersResponse> getMyOrdersResponses)
         {
-            return Mapper.Map<List<GetRecentOrdersResponse>, List<OrderViewModel>>(getRecentOrdersResponseCollection);
+            return Mapper.Map<List<GetMyOrdersResponse>, List<OrderViewModel>>(getMyOrdersResponses);
+        }
+
+        /// <summary>
+        /// The convert to order view model collection.
+        /// </summary>
+        /// <param name="getAllOrdersResponses">
+        /// The get all orders responses.
+        /// </param>
+        /// <returns>
+        /// The System.Collections.Generic.List`1[T -&gt; TdService.UI.Web.ViewModels.Order.OrderViewModel].
+        /// </returns>
+        public static List<OrderViewModel> ConvertToOrderViewModelCollection(this List<GetAllOrdersResponse> getAllOrdersResponses)
+        {
+            return Mapper.Map<List<GetAllOrdersResponse>, List<OrderViewModel>>(getAllOrdersResponses);
         }
 
         /// <summary>

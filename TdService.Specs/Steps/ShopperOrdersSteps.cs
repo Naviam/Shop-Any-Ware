@@ -210,6 +210,54 @@ namespace TdService.Specs.Steps
         }
 
         /// <summary>
+        /// The when i go to new orders tab on operator dashboard page.
+        /// </summary>
+        [When(@"I go to new orders tab on operator dashboard page")]
+        public void WhenIGoToNewOrdersTabOnOperatorDashboardPage()
+        {
+            var contoller = this.GetOrdersController();
+            var result = contoller.NewOrders() as JsonNetResult;
+            Assert.That(result, Is.Not.Null);
+            if (result != null)
+            {
+                var actual = result.Data as List<OrderViewModel>;
+                ScenarioContext.Current.Set(actual);
+            }
+        }
+
+        /// <summary>
+        /// The when i go to received orders tab on operator dashboard page.
+        /// </summary>
+        [When(@"I go to received orders tab on operator dashboard page")]
+        public void WhenIGoToReceivedOrdersTabOnOperatorDashboardPage()
+        {
+            var contoller = this.GetOrdersController();
+            var result = contoller.ReceivedOrders() as JsonNetResult;
+            Assert.That(result, Is.Not.Null);
+            if (result != null)
+            {
+                var actual = result.Data as List<OrderViewModel>;
+                ScenarioContext.Current.Set(actual);
+            }
+        }
+
+        /// <summary>
+        /// The when i go to return requested orders tab on operator dashboard page.
+        /// </summary>
+        [When(@"I go to return requested orders tab on operator dashboard page")]
+        public void WhenIGoToReturnRequestedOrdersTabOnOperatorDashboardPage()
+        {
+            var contoller = this.GetOrdersController();
+            var result = contoller.ReturnRequestedOrders() as JsonNetResult;
+            Assert.That(result, Is.Not.Null);
+            if (result != null)
+            {
+                var actual = result.Data as List<OrderViewModel>;
+                ScenarioContext.Current.Set(actual);
+            }
+        }
+
+        /// <summary>
         /// The then there must be only one db record with retailer url.
         /// </summary>
         /// <param name="retailerUrl">

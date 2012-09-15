@@ -70,6 +70,21 @@
   <ItemGroup>
     <Compile Include="Fakes\FakeLogger.cs" />
     <Compile Include="Fakes\Mail.cs" />
+    <Compile Include="Features\AdminOrders.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AdminOrders.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\ConsultantOrders.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConsultantOrders.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\OperatorOrders.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OperatorOrders.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\OrderItems.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -120,6 +135,18 @@
     <Content Include="App_Data\retailers.xls">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Features\AdminOrders.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>AdminOrders.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\ConsultantOrders.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ConsultantOrders.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\OperatorOrders.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>OperatorOrders.feature.cs</LastGenOutput>
+    </None>
     <None Include="Features\OrderItems.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>OrderItems.feature.cs</LastGenOutput>

@@ -102,10 +102,10 @@ namespace TdService.ShopAnyWare.Tests.Orders
         {
             // arrange
             var service = new OrderService(this.orderRepository, this.logger);
-            var request = new GetRecentOrdersRequest { IdentityToken = "vhatalski@naviam.com" };
-            var expected = new List<GetRecentOrdersResponse>
+            var request = new GetMyOrdersRequest { IdentityToken = "vhatalski@naviam.com" };
+            var expected = new List<GetMyOrdersResponse>
                 {
-                    new GetRecentOrdersResponse
+                    new GetMyOrdersResponse
                         {
                             CreatedDate = DateTime.UtcNow,
                             Id = 1,
@@ -115,7 +115,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
                             ReturnedDate = null,
                             Status = "New"
                         },
-                    new GetRecentOrdersResponse
+                    new GetMyOrdersResponse
                         {
                             CreatedDate = DateTime.UtcNow,
                             Id = 2,
@@ -125,7 +125,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
                             ReturnedDate = null,
                             Status = "Received"
                         },
-                    new GetRecentOrdersResponse
+                    new GetMyOrdersResponse
                         {
                             CreatedDate = DateTime.UtcNow,
                             Id = 3,

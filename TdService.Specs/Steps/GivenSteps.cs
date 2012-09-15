@@ -179,6 +179,24 @@ namespace TdService.Specs.Steps
         }
 
         /// <summary>
+        /// The given there are following orders in database.
+        /// </summary>
+        /// <param name="table">
+        /// The table.
+        /// </param>
+        [Given(@"there are following orders in database")]
+        public void GivenThereAreFollowingOrdersInDatabase(Table table)
+        {
+            var orders = this.OrdersTransform(table);
+            using (var context = new ShopAnyWareSql())
+            {
+                var addedOrders = orders.Select(order => context.Orders.Add(order)).ToList();
+                context.SaveChanges();
+                ScenarioContext.Current.Set(addedOrders);
+            }
+        }
+
+        /// <summary>
         /// The orders transform.
         /// </summary>
         /// <param name="ordersTable">
