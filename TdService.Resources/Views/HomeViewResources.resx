@@ -117,76 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ConfirmPasswordFormLabel" xml:space="preserve">
-    <value>Confirm Password</value>
+  <data name="PageHeroDescription" xml:space="preserve">
+    <value>Buy what you want from the USA and get your merchandise delivered to your home address in CIS countries within a week.</value>
   </data>
-  <data name="EmailFormFieldPlaceholder" xml:space="preserve">
-    <value>Enter email</value>
+  <data name="PageHeroHeader" xml:space="preserve">
+    <value>Shop any ware online in the USA!</value>
   </data>
-  <data name="EmailFormLabel" xml:space="preserve">
-    <value>Email</value>
+  <data name="ServiceDescriptionHeader1" xml:space="preserve">
+    <value>1. Join us &amp; get your USA address</value>
   </data>
-  <data name="FirstNameFormFieldPlaceholder" xml:space="preserve">
-    <value>Enter your first name</value>
+  <data name="ServiceDescriptionHeader2" xml:space="preserve">
+    <value>2. Shop any ware in the USA</value>
   </data>
-  <data name="FirstNameFormLabel" xml:space="preserve">
-    <value>First Name</value>
+  <data name="ServiceDescriptionHeader3" xml:space="preserve">
+    <value>3. Receive your packages</value>
   </data>
-  <data name="ForgotFormHelpMessage" xml:space="preserve">
-    <value>Enter email address you have specified at registration.</value>
+  <data name="ServiceDescriptionValue1" xml:space="preserve">
+    <value>Registration at ShopAnyWare is free. Within minutes of completing your registration, you will receive your new dedicated USA street address in New Jersey, New York.  You will now be able to use this address for all your USA shopping. Its time to start shopping!</value>
   </data>
-  <data name="ForgotPageTitle" xml:space="preserve">
-    <value>ShopAnyWare - Forgot email or password</value>
+  <data name="ServiceDescriptionValue2_1" xml:space="preserve">
+    <value>Shop at thousands of online shopping sites in the USA including auction sites like Ebay.com, famous name brand stores such as Saks Fifth Avenue, and small independent retailers like Etsy.com. It does not matter if the the store only ships inside the USA or only accepts USA credit cards, as a ShopAnyWare Member you can now shop wherever you would like with access to the US merchant's full product offerings as well as the best pricing!</value>
   </data>
-  <data name="ForgotPasswordHeader" xml:space="preserve">
-    <value>Forgot Password?</value>
+  <data name="ServiceDescriptionValue2_2" xml:space="preserve">
+    <value>Shop at US websites like you usually would and use your ShopAnyWare address as your "Ship To" address.</value>
   </data>
-  <data name="LastNameFormFieldPlaceholder" xml:space="preserve">
-    <value>Enter your last name</value>
+  <data name="ServiceDescriptionValue3" xml:space="preserve">
+    <value>You can set a courier preference or we will automatically select the fastest &amp; least expensive courier option (USPS or Major Express) for you on each shipment.</value>
   </data>
-  <data name="LastNameFormLabel" xml:space="preserve">
-    <value>Last Name</value>
+  <data name="ServiceDescriptionValue3_1" xml:space="preserve">
+    <value>Every package is repackaged and where applicable multiple-store orders are consolidated into the same package to save you money.</value>
   </data>
-  <data name="PasswordConfirmFormFieldPlaceholder" xml:space="preserve">
-    <value>Re-enter password</value>
+  <data name="ServiceDescriptionValue3_2" xml:space="preserve">
+    <value>All customs documentation are completed for you.</value>
   </data>
-  <data name="PasswordFormFieldPlaceholder" xml:space="preserve">
-    <value>Enter password</value>
+  <data name="ServiceDescriptionValue3_3" xml:space="preserve">
+    <value>All merchandise is insured unless you prefer otherwise.</value>
   </data>
-  <data name="PasswordFormLabel" xml:space="preserve">
-    <value>Password</value>
-  </data>
-  <data name="RememberMeFormLabel" xml:space="preserve">
-    <value>Remember Me</value>
-  </data>
-  <data name="ResetPasswordButton" xml:space="preserve">
-    <value>Reset Password</value>
-  </data>
-  <data name="SignInButton" xml:space="preserve">
-    <value>Start Shopping!</value>
-  </data>
-  <data name="SignInFormHeader" xml:space="preserve">
-    <value>Sign In</value>
-  </data>
-  <data name="SignInPageHeader" xml:space="preserve">
-    <value>Log in to view your ShopAnyWare Account</value>
-  </data>
-  <data name="SignInPageTitle" xml:space="preserve">
-    <value>Shop Any Ware - Sign In</value>
-  </data>
-  <data name="SignUpButton" xml:space="preserve">
-    <value>Get Your U.S. Address!</value>
-  </data>
-  <data name="SignUpEmailOk" xml:space="preserve">
-    <value>E-mail is OK.</value>
-  </data>
-  <data name="SignUpFormHeader" xml:space="preserve">
-    <value>Registration</value>
-  </data>
-  <data name="SignUpPageHeader" xml:space="preserve">
-    <value>Register and Get Your USA Address</value>
-  </data>
-  <data name="SignUpPageTitle" xml:space="preserve">
-    <value>Shop Any Ware - Registration</value>
+  <data name="ServiceDescriptionValue3_4" xml:space="preserve">
+    <value>A full range of packing options - you can even specify whether to keep or discard original shoe boxes!</value>
   </data>
 </root>

@@ -336,7 +336,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Scripts\MVVM\Model\" />
-    <Folder Include="Sitemaps\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -502,7 +501,7 @@
       <Compile>False</Compile>
       <Minify>False</Minify>
     </None>
-    <Content Include="TopMenu.sitemap">
+    <Content Include="Sitemaps\TopMenu.sitemap">
       <SubType>Designer</SubType>
     </Content>
     <None Include="Content\font\fontawesome-webfont.eot" />
@@ -570,7 +569,7 @@
     <Content Include="Views\Shared\addOrderForm.cshtml" />
     <Content Include="Views\Shared\addParcelForm.cshtml" />
     <Content Include="Views\Shared\parcelTable.cshtml" />
-    <Content Include="Shopper.sitemap">
+    <Content Include="Sitemaps\Shopper.sitemap">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Home\Index.cshtml" />

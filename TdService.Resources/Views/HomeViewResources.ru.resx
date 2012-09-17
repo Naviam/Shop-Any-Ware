@@ -117,76 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ConfirmPasswordFormLabel" xml:space="preserve">
-    <value>Подтвердить пароль</value>
+  <data name="PageHeroDescription" xml:space="preserve">
+    <value>Покупайте в магазинах США и получайте товар на Ваш адрес в России.</value>
   </data>
-  <data name="EmailFormFieldPlaceholder" xml:space="preserve">
-    <value>Введите адрес электронной почты</value>
+  <data name="PageHeroHeader" xml:space="preserve">
+    <value>Покупайте любой товар в онлайн магазинах США!</value>
   </data>
-  <data name="EmailFormLabel" xml:space="preserve">
-    <value>Электронная почта</value>
+  <data name="ServiceDescriptionHeader1" xml:space="preserve">
+    <value>1. Присоединитесь к нам и получите Ваш адрес в США</value>
   </data>
-  <data name="FirstNameFormFieldPlaceholder" xml:space="preserve">
-    <value>Введите имя</value>
+  <data name="ServiceDescriptionHeader2" xml:space="preserve">
+    <value>2. Покупайте любой товар в США</value>
   </data>
-  <data name="FirstNameFormLabel" xml:space="preserve">
-    <value>Имя</value>
+  <data name="ServiceDescriptionHeader3" xml:space="preserve">
+    <value>3. Получайте посылку на Ваш адрес доставки</value>
   </data>
-  <data name="ForgotFormHelpMessage" xml:space="preserve">
-    <value>Enter email address you have specified at registration.</value>
+  <data name="ServiceDescriptionValue1" xml:space="preserve">
+    <value>Регистрация на ShopAnyWare бесплатна. Сразу же после регистрации Вы получите адрес в США в New Jersey, New York. Вы теперь сможете использовать этот адрес для всех Ваших покупок в США. Время начинать шопинг!</value>
   </data>
-  <data name="ForgotPageTitle" xml:space="preserve">
-    <value>ShopAnyWare - Забыли электронный адрес или пароль?</value>
+  <data name="ServiceDescriptionValue2_1" xml:space="preserve">
+    <value>Покупайте в любом магазине США включая аукционы, такие как Ebay.com, а также известные брендовые магазины Saks на Пятой Авенью и маленькие независивые сети магазинов как Etsy.com. Не имеет значение если магазин осуществляет доставку только в пределах США или принимает к оплате только кредитные карты американских банков, как пользователь ShopAnyWare Вы теперь можете покупать где угодно с доступом к полному перечню предложений американских торговцев по лучшим ценам!</value>
   </data>
-  <data name="ForgotPasswordHeader" xml:space="preserve">
-    <value>Забыли пароль?</value>
+  <data name="ServiceDescriptionValue2_2" xml:space="preserve">
+    <value>Покупайте в онлайн магазинах США и используйте Ваш адрес склада ShopAnyWare как "Ship To" адрес.</value>
   </data>
-  <data name="LastNameFormFieldPlaceholder" xml:space="preserve">
-    <value>Введите фамилию</value>
+  <data name="ServiceDescriptionValue3" xml:space="preserve">
+    <value>Вы можете выбрать курьерскую службу для доставки в соответствии с Вашими предпочтениями или мы сами выберем наименее дорогой и быстрый способ доставки (USPS or Major Express) для каждой Вашей посылки.</value>
   </data>
-  <data name="LastNameFormLabel" xml:space="preserve">
-    <value>Фамилия</value>
+  <data name="ServiceDescriptionValue3_1" xml:space="preserve">
+    <value>Каждая полученая нами посылка перепаковывается. При этом Вы полностью контролируется какие товары и по каким посылкам Вы хотите распределить.</value>
   </data>
-  <data name="PasswordConfirmFormFieldPlaceholder" xml:space="preserve">
-    <value>Введите пароль повторно</value>
+  <data name="ServiceDescriptionValue3_2" xml:space="preserve">
+    <value>Таможенная декларация автоматически заполняется нами, но Вы сможете скорректировать ее если захотите.</value>
   </data>
-  <data name="PasswordFormFieldPlaceholder" xml:space="preserve">
-    <value>Введите пароль</value>
+  <data name="ServiceDescriptionValue3_3" xml:space="preserve">
+    <value>Все товары по умолчанию страхуются.</value>
   </data>
-  <data name="PasswordFormLabel" xml:space="preserve">
-    <value>Пароль</value>
-  </data>
-  <data name="RememberMeFormLabel" xml:space="preserve">
-    <value>Запомнить меня</value>
-  </data>
-  <data name="ResetPasswordButton" xml:space="preserve">
-    <value>Сбросить пароль</value>
-  </data>
-  <data name="SignInButton" xml:space="preserve">
-    <value>Войти!</value>
-  </data>
-  <data name="SignInFormHeader" xml:space="preserve">
-    <value>Войти на сайт</value>
-  </data>
-  <data name="SignInPageHeader" xml:space="preserve">
-    <value>Войти в Ваш ShopAnyWare аккаунт</value>
-  </data>
-  <data name="SignInPageTitle" xml:space="preserve">
-    <value>Shop Any Ware - Логин</value>
-  </data>
-  <data name="SignUpButton" xml:space="preserve">
-    <value>Получите Ваш адрес в США!</value>
-  </data>
-  <data name="SignUpEmailOk" xml:space="preserve">
-    <value>Электронный адрес в порядке</value>
-  </data>
-  <data name="SignUpFormHeader" xml:space="preserve">
-    <value>Регистрация</value>
-  </data>
-  <data name="SignUpPageHeader" xml:space="preserve">
-    <value>Зарегистрируйтесь и получите Ваш адрес склада в США!</value>
-  </data>
-  <data name="SignUpPageTitle" xml:space="preserve">
-    <value>Shop Any Ware - Регистрация</value>
+  <data name="ServiceDescriptionValue3_4" xml:space="preserve">
+    <value>Все услуги по упаковке, включая фотографии товара, выброс оригинальной упаковки обуви включены в номинальную стоимость услуги!</value>
   </data>
 </root>

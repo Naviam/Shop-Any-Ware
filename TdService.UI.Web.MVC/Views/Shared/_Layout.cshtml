@@ -80,8 +80,12 @@
                     }
                     else
                     {
-                        <a href="@Url.Action("SignUp", "AccountAuth")" class="btn btn-success" style="margin-top:6px;margin-left: 20px">@LayoutViewResources.JoinUsMenuHeader &raquo;</a>
-                        <a href="@Url.Action("SignIn", "AccountAuth")" class="btn btn-primary" style="margin-top:6px;margin-left: 20px">@LayoutViewResources.SignInMenuHeader &raquo;</a>
+                        <ul class="nav pull-right">
+                            <li><a href="#" class="en choosen_culture" onclick="click: changeCulture('en');"></a></li>
+                            <li><a href="#" class="ru" onclick="click: changeCulture('ru');"></a></li>
+                        </ul>
+                        @*<a href="@Url.Action("SignUp", "AccountAuth")" class="btn btn-success" style="margin-top:6px;margin-left: 20px">@LayoutViewResources.JoinUsMenuHeader &raquo;</a>
+                        <a href="@Url.Action("SignIn", "AccountAuth")" class="btn btn-primary" style="margin-top:6px;margin-left: 20px">@LayoutViewResources.SignInMenuHeader &raquo;</a>*@
                     }
                 </div>
                 <!--/.nav-collapse -->
