@@ -125,7 +125,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
         [Test(Description = "This test verifies that only authorized users can access getrecent orders method.")]
         public void ShouldBeAbleToCallGetRecentOrdersOnlyIfAuthorized()
         {
-            TestHelper.AssertIsAuthorized(typeof(OrdersAuthController), "Recent");
+            TestHelper.AssertIsAuthorized(typeof(OrdersController), "Recent");
         }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
         public void ShouldReturnJsonCollectionOfRecentOrders()
         {
             // arrange
-            var controller = new OrdersAuthController(this.orderService, this.formsAuthentication);
+            var controller = new OrdersController(this.orderService, this.formsAuthentication);
             var currentDate = DateTime.UtcNow;
             var expected = new List<OrderViewModel>
                 {
@@ -202,7 +202,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
         [Test]
         public void ShouldBeAbleToPostNewOrderOnlyIfAuthorized()
         {
-            TestHelper.AssertIsAuthorized(typeof(OrdersAuthController), "Add", typeof(string));
+            TestHelper.AssertIsAuthorized(typeof(OrdersController), "Add", typeof(string));
         }
 
         /// <summary>
@@ -213,7 +213,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
         public void ShouldBeAbleToPostNewOrderAndGetOrderWithIdBack()
         {
             // arrange
-            var controller = new OrdersAuthController(this.orderService, this.formsAuthentication);
+            var controller = new OrdersController(this.orderService, this.formsAuthentication);
             var currentDate = DateTime.UtcNow;
             var expected = new OrderViewModel
                 {
@@ -251,7 +251,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
         [Test]
         public void ShouldBeAbleToRemoveNewOrderOnlyIfAuthorized()
         {
-            TestHelper.AssertIsAuthorized(typeof(OrdersAuthController), "Remove", typeof(int));
+            TestHelper.AssertIsAuthorized(typeof(OrdersController), "Remove", typeof(int));
         }
     }
 }

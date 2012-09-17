@@ -58,7 +58,7 @@ namespace TdService.ShopAnyWare.Tests.Addresses
         [Test]
         public void ShouldBeAbleToCallGetDeliveryAddressesOnlyIfAuthorized()
         {
-            TestHelper.AssertIsAuthorized(typeof(AddressAuthController), "Get");
+            TestHelper.AssertIsAuthorized(typeof(AddressController), "Get");
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace TdService.ShopAnyWare.Tests.Addresses
         [Test]
         public void ShouldBeAbleToCallAddDeliveryAddressOnlyIfAuthorized()
         {
-            TestHelper.AssertIsAuthorized(typeof(AddressAuthController), "Add", typeof(DeliveryAddressViewModel));
+            TestHelper.AssertIsAuthorized(typeof(AddressController), "Add", typeof(DeliveryAddressViewModel));
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace TdService.ShopAnyWare.Tests.Addresses
         [Test]
         public void ShouldBeAbleToCallRemoveDeliveryAddressOnlyIfAuthorized()
         {
-            TestHelper.AssertIsAuthorized(typeof(AddressAuthController), "Remove", typeof(int));
+            TestHelper.AssertIsAuthorized(typeof(AddressController), "Remove", typeof(int));
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace TdService.ShopAnyWare.Tests.Addresses
         [Test]
         public void ShouldBeAbleToCallUpdateDeliveryAddressOnlyIfAuthorized()
         {
-            TestHelper.AssertIsAuthorized(typeof(AddressAuthController), "Update", typeof(DeliveryAddressViewModel));
+            TestHelper.AssertIsAuthorized(typeof(AddressController), "Update", typeof(DeliveryAddressViewModel));
         }
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace TdService.ShopAnyWare.Tests.Addresses
         public void ShouldReturnJsonCollectionOfUserAddresses()
         {
             // arrange
-            var controller = new AddressAuthController(this.formsAuthentication, this.addressService);
+            var controller = new AddressController(this.formsAuthentication, this.addressService);
 
             // act
             var actual = controller.Get() as JsonNetResult;
@@ -115,7 +115,7 @@ namespace TdService.ShopAnyWare.Tests.Addresses
         public void ShouldBeAbleToAddDeliveryAddress()
         {
             // arrange
-            var controller = new AddressAuthController(this.formsAuthentication, this.addressService);
+            var controller = new AddressController(this.formsAuthentication, this.addressService);
             var viewModel = new DeliveryAddressViewModel
                 {
                     Id = 0,
@@ -164,7 +164,7 @@ namespace TdService.ShopAnyWare.Tests.Addresses
         public void ShouldBeAbleToUpdateDeliveryAddress()
         {
             // arrange
-            var controller = new AddressAuthController(this.formsAuthentication, this.addressService);
+            var controller = new AddressController(this.formsAuthentication, this.addressService);
             var viewModel = new DeliveryAddressViewModel
             {
                 Id = 1,
@@ -213,7 +213,7 @@ namespace TdService.ShopAnyWare.Tests.Addresses
         public void ShouldBeAbleToRemoveDeliveryAddress()
         {
             // arrange
-            var controller = new AddressAuthController(this.formsAuthentication, this.addressService);
+            var controller = new AddressController(this.formsAuthentication, this.addressService);
             const int AddressIdToRemove = 1;
 
             // act

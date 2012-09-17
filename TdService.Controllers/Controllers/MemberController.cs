@@ -17,7 +17,7 @@ namespace TdService.UI.Web.Controllers
     /// <summary>
     /// The controller that contains membership methods.
     /// </summary>
-    public class MemberAuthController : BaseAuthController
+    public class MemberController : BaseAuthController
     {
         /// <summary>
         /// Order repository.
@@ -25,7 +25,7 @@ namespace TdService.UI.Web.Controllers
         private readonly IOrderRepository repository;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MemberAuthController"/> class.
+        /// Initializes a new instance of the <see cref="MemberController"/> class.
         /// </summary>
         /// <param name="repo">
         /// The repo.
@@ -33,7 +33,7 @@ namespace TdService.UI.Web.Controllers
         /// <param name="formsAuthentication">
         /// The forms Authentication.
         /// </param>
-        public MemberAuthController(IOrderRepository repo, IFormsAuthentication formsAuthentication)
+        public MemberController(IOrderRepository repo, IFormsAuthentication formsAuthentication)
             : base(formsAuthentication)
         {
             this.repository = repo;

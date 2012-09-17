@@ -43,7 +43,7 @@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <ul class="nav pull-right">
-                            <li><a href="#" class="en choosen_culture" onclick="click: changeCulture('en');"></a></li>
+                            <li><a href="#" class="en" onclick="click: changeCulture('en');"></a></li>
                             <li><a href="#" class="ru" onclick="click: changeCulture('ru');"></a></li>
                             <li id="fat-menu" class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -59,10 +59,10 @@
                                     @{Html.RenderPartial("storeAddress", true);}
                                 </ul>
                             </li>
-                            <li><a href="@Url.Action("Index", "ProfileAuth")"><i class="icon-white icon-user"></i> @LayoutViewResources.ProfileMenuHeader</a></li>
-                            <li><a href="@Url.Action("Index", "AddressAuth")"><i class="icon-white icon-th-list"></i> @LayoutViewResources.DeliveryAddressesMenuHeader</a></li>
-                            <li><a href="@Url.Action("Dashboard", "AdminAuth")"><i class="icon-white icon-cog"></i> @LayoutViewResources.AdministrationMenuHeader</a></li>
-                            <li><a href="@Url.Action("SignOut", "AccountAuth")"><i class="icon-white icon-off"></i> @LayoutViewResources.SignOutMenuHeader</a></li>
+                            <li><a href="@Url.Action("Index", "Profile")"><i class="icon-white icon-user"></i> @LayoutViewResources.ProfileMenuHeader</a></li>
+                            <li><a href="@Url.Action("Index", "Address")"><i class="icon-white icon-th-list"></i> @LayoutViewResources.DeliveryAddressesMenuHeader</a></li>
+                            <li><a href="@Url.Action("Dashboard", "Admin")"><i class="icon-white icon-cog"></i> @LayoutViewResources.AdministrationMenuHeader</a></li>
+                            <li><a href="@Url.Action("SignOut", "Account")"><i class="icon-white icon-off"></i> @LayoutViewResources.SignOutMenuHeader</a></li>
                             @*<li id="fat-menu" class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     @HttpContext.Current.User.Identity.Name <b class="caret"></b></a>
@@ -83,7 +83,7 @@
                         <ul class="nav pull-right">
                             <li><a href="#" class="en" onclick="click: changeCulture('en');"></a></li>
                             <li><a href="#" class="ru" onclick="click: changeCulture('ru');"></a></li>
-                            <li><a href="@Url.Action("SignIn", "AccountAuth")"><i class="icon-white icon-lock"></i> @LayoutViewResources.SignInMenuHeader</a></li>
+                            <li><a href="@Url.Action("SignIn", "Account")"><i class="icon-white icon-lock"></i> @LayoutViewResources.SignInMenuHeader</a></li>
                         </ul>
                         @*<a href="@Url.Action("SignUp", "AccountAuth")" class="btn btn-success" style="margin-top:6px;margin-left: 20px">@LayoutViewResources.JoinUsMenuHeader &raquo;</a>
                         <a href="@Url.Action("SignIn", "AccountAuth")" class="btn btn-primary" style="margin-top:6px;margin-left: 20px">@LayoutViewResources.SignInMenuHeader &raquo;</a>*@
@@ -111,10 +111,10 @@
             var culture = readCookie("culture");
             if (culture != null) {
                 if (culture == "ru") {
-                    $(".en").removeClass("choosen_culture");
+                    ////$(".en").removeClass("choosen_culture");
                     $(".ru").addClass("choosen_culture");
                 } else {
-                    $(".ru").removeClass("choosen_culture");
+                    ////$(".ru").removeClass("choosen_culture");
                     $(".en").addClass("choosen_culture");
                 }
             }

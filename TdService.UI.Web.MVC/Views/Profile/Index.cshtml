@@ -6,7 +6,7 @@
 
 <ul class="breadcrumb">
     <li>
-        <a href="@Url.Action("Dashboard", "MemberAuth")">Dashboard</a> <span class="divider">/</span>
+        <a href="@Url.Action("Dashboard", "Member")">Dashboard</a> <span class="divider">/</span>
     </li>
     <li class="active">Profile</li>
 </ul>
@@ -17,7 +17,7 @@
         <strong>Error: </strong>@Model.Message
     </div>
 }
-@using (Html.BeginForm("Save", "ProfileAuth", FormMethod.Post, new { @class = "form-horizontal" }))
+@using (Html.BeginForm("Save", "Profile", FormMethod.Post, new { @class = "form-horizontal" }))
 {
     @Html.AntiForgeryToken("Profile")
     <input id="model" type="hidden" value="@(new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(Model))" />
@@ -32,12 +32,12 @@
                 @Html.TextBoxFor(m => m.Email, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: email" }, { "readonly", "readonly" } })
             </div>
         </div>
-        <div class="control-group">
+@*        <div class="control-group">
             <label class="control-label">@ProfileViewResources.PasswordHeader:</label>
             <div class="controls">
                 @Html.PasswordFor(m => m.CurrentPassword, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: currentPassword" }, { "readonly", "readonly" } })
             </div>
-        </div>
+        </div>*@
         <div class="control-group">
             <label class="control-label">@ProfileViewResources.FirstNameHeader:</label>
             <div class="controls">
@@ -56,14 +56,14 @@
             <label class="control-label">@ProfileViewResources.NotificationHeader:</label>
             <div class="controls">
                 <label class="checkbox">
-                    @Html.CheckBoxFor(m => m.NotifyOnOrderStatusChange, new Dictionary<string, object> { { "data-bind", "checked: notifyOnOrderStatusChange" } })
-                    @Html.LabelFor(m => m.NotifyOnOrderStatusChange, ProfileViewResources.Notification_OnOrderStatusChange)
+                    @Html.CheckBoxFor(m => m.NotifyOnOrderStatusChanged, new Dictionary<string, object> { { "data-bind", "checked: notifyOnOrderStatusChange" } })
+                    @Html.LabelFor(m => m.NotifyOnOrderStatusChanged, ProfileViewResources.Notification_OnOrderStatusChange)
                 </label>
             </div>
             <div class="controls">
                 <label class="checkbox">
-                    @Html.CheckBoxFor(m => m.NotifyOnPackageStatusChange, new Dictionary<string, object> { { "data-bind", "checked: notifyOnPackageStatusChange" } })
-                    @Html.LabelFor(m => m.NotifyOnPackageStatusChange, ProfileViewResources.Notification_OnPackageStatusChange)
+                    @Html.CheckBoxFor(m => m.NotifyOnPackageStatusChanged, new Dictionary<string, object> { { "data-bind", "checked: notifyOnPackageStatusChange" } })
+                    @Html.LabelFor(m => m.NotifyOnPackageStatusChanged, ProfileViewResources.Notification_OnPackageStatusChange)
                 </label>
             </div>
         </div>

@@ -16,15 +16,15 @@ namespace TdService.UI.Web.Controllers
     /// <summary>
     /// The operator controller.
     /// </summary>
-    public class OperatorAuthController : BaseAuthController
+    public class OperatorController : BaseAuthController
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="OperatorAuthController"/> class.
+        /// Initializes a new instance of the <see cref="OperatorController"/> class.
         /// </summary>
         /// <param name="formsAuthentication">
         /// The forms authentication.
         /// </param>
-        public OperatorAuthController(IFormsAuthentication formsAuthentication)
+        public OperatorController(IFormsAuthentication formsAuthentication)
             : base(formsAuthentication)
         {
         }

@@ -16,15 +16,15 @@ namespace TdService.UI.Web.Controllers
     /// <summary>
     /// This controller contains methods to work with balance.
     /// </summary>
-    public class BalanceAuthController : BaseAuthController
+    public class BalanceController : BaseAuthController
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="BalanceAuthController"/> class.
+        /// Initializes a new instance of the <see cref="BalanceController"/> class.
         /// </summary>
         /// <param name="formsAuthentication">
         /// The forms authentication.
         /// </param>
-        public BalanceAuthController(IFormsAuthentication formsAuthentication)
+        public BalanceController(IFormsAuthentication formsAuthentication)
             : base(formsAuthentication)
         {
         }

@@ -36,11 +36,11 @@ namespace TdService.Specs.Steps
         /// <returns>
         /// The TdService.UI.Web.Controllers.OrdersController.
         /// </returns>
-        public OrdersAuthController GetOrdersController()
+        public OrdersController GetOrdersController()
         {
             var formsAuthentication = ScenarioContext.Current.Get<FakeFormsAuthentication>();
             var orderService = ScenarioContext.Current.Get<OrderService>();
-            return new OrdersAuthController(orderService, formsAuthentication);
+            return new OrdersController(orderService, formsAuthentication);
         }
 
         /// <summary>

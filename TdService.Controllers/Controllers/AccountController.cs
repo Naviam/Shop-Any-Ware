@@ -30,7 +30,7 @@ namespace TdService.UI.Web.Controllers
     /// <summary>
     /// This controller is responsible for authentication and authorization of user.
     /// </summary>
-    public class AccountAuthController : BaseAuthController
+    public class AccountController : BaseAuthController
     {
         /// <summary>
         /// Membership repository.
@@ -48,7 +48,7 @@ namespace TdService.UI.Web.Controllers
         private readonly ICookieStorageService cookieStorageService;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AccountAuthController"/> class.
+        /// Initializes a new instance of the <see cref="AccountController"/> class.
         /// </summary>
         /// <param name="membershipService">
         /// The membership service.
@@ -62,7 +62,7 @@ namespace TdService.UI.Web.Controllers
         /// <param name="formsAuthentication">
         /// The forms authentication.
         /// </param>
-        public AccountAuthController(
+        public AccountController(
             IMembershipService membershipService,
             IEmailService emailService,
             ICookieStorageService cookieStorageService,

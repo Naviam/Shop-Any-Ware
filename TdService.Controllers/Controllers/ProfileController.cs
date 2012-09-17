@@ -24,7 +24,7 @@ namespace TdService.UI.Web.Controllers
     /// <summary>
     /// Profile controller contains methods to work with user's profile.
     /// </summary>
-    public class ProfileAuthController : BaseAuthController
+    public class ProfileController : BaseAuthController
     {
         /// <summary>
         /// Interface for membership service.
@@ -32,7 +32,7 @@ namespace TdService.UI.Web.Controllers
         private readonly IMembershipService membershipService;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ProfileAuthController"/> class.
+        /// Initializes a new instance of the <see cref="ProfileController"/> class.
         /// </summary>
         /// <param name="membershipService">
         /// The membership service.
@@ -40,7 +40,7 @@ namespace TdService.UI.Web.Controllers
         /// <param name="formsAuthentication">
         /// The forms authentication service.
         /// </param>
-        public ProfileAuthController(IMembershipService membershipService, IFormsAuthentication formsAuthentication)
+        public ProfileController(IMembershipService membershipService, IFormsAuthentication formsAuthentication)
             : base(formsAuthentication)
         {
             this.membershipService = membershipService;

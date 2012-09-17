@@ -14,7 +14,7 @@ namespace TdService.UI.Web.Controllers
     /// <summary>
     /// This controller is responsible for administrative tasks.
     /// </summary>
-    public class AdminAuthController : BaseAuthController
+    public class AdminController : BaseAuthController
     {
         /// <summary>
         /// User repository.
@@ -22,7 +22,7 @@ namespace TdService.UI.Web.Controllers
         private readonly IMembershipRepository membershipRepository;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AdminAuthController"/> class.
+        /// Initializes a new instance of the <see cref="AdminController"/> class.
         /// </summary>
         /// <param name="membershipRepository">
         /// The membership Repository.
@@ -30,7 +30,7 @@ namespace TdService.UI.Web.Controllers
         /// <param name="formsAuthentication">
         /// The forms Authentication.
         /// </param>
-        public AdminAuthController(IMembershipRepository membershipRepository, IFormsAuthentication formsAuthentication)
+        public AdminController(IMembershipRepository membershipRepository, IFormsAuthentication formsAuthentication)
             : base(formsAuthentication)
         {
             this.membershipRepository = membershipRepository;

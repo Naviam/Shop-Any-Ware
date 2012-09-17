@@ -28,7 +28,7 @@ namespace TdService.UI.Web.Controllers
     /// <summary>
     /// This controller contains methods to work with orders.
     /// </summary>
-    public class OrdersAuthController : BaseAuthController
+    public class OrdersController : BaseAuthController
     {
         /// <summary>
         /// Order service.
@@ -36,7 +36,7 @@ namespace TdService.UI.Web.Controllers
         private readonly IOrderService orderService;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="OrdersAuthController"/> class. 
+        /// Initializes a new instance of the <see cref="OrdersController"/> class. 
         /// Order controller constructor.
         /// </summary>
         /// <param name="orderService">
@@ -45,7 +45,7 @@ namespace TdService.UI.Web.Controllers
         /// <param name="formsAuthentication">
         /// The form authentication.
         /// </param>
-        public OrdersAuthController(
+        public OrdersController(
             IOrderService orderService, 
             IFormsAuthentication formsAuthentication)
             : base(formsAuthentication)

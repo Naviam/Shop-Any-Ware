@@ -35,11 +35,11 @@ namespace TdService.Specs.Steps
         /// <returns>
         /// The TdService.UI.Web.Controllers.ProfileController.
         /// </returns>
-        public ProfileAuthController GetProfileController()
+        public ProfileController GetProfileController()
         {
             var membershipService = ScenarioContext.Current.Get<MembershipService>();
             var formsAuthentication = ScenarioContext.Current.Get<FakeFormsAuthentication>();
-            return new ProfileAuthController(membershipService, formsAuthentication);
+            return new ProfileController(membershipService, formsAuthentication);
         }
 
         /// <summary>

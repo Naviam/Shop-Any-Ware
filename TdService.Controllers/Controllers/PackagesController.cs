@@ -23,7 +23,7 @@ namespace TdService.UI.Web.Controllers
     /// <summary>
     /// The packages controller.
     /// </summary>
-    public class PackagesAuthController : BaseAuthController
+    public class PackagesController : BaseAuthController
     {
         /// <summary>
         /// The packages service.
@@ -31,7 +31,7 @@ namespace TdService.UI.Web.Controllers
         private readonly IPackagesService packagesService;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PackagesAuthController"/> class.
+        /// Initializes a new instance of the <see cref="PackagesController"/> class.
         /// </summary>
         /// <param name="packagesService">
         /// The packages service.
@@ -39,7 +39,7 @@ namespace TdService.UI.Web.Controllers
         /// <param name="formsAuthentication">
         /// The forms authentication.
         /// </param>
-        public PackagesAuthController(
+        public PackagesController(
             IPackagesService packagesService,
             IFormsAuthentication formsAuthentication)
             : base(formsAuthentication)

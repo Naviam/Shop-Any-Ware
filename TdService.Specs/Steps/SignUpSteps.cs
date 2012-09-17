@@ -35,9 +35,9 @@ namespace TdService.Specs.Steps
         /// <returns>
         /// The TdService.UI.Web.Controllers.AccountController.
         /// </returns>
-        public AccountAuthController GetAccountController()
+        public AccountController GetAccountController()
         {
-            return new AccountAuthController(
+            return new AccountController(
                 ScenarioContext.Current.Get<MembershipService>(),
                 ScenarioContext.Current.Get<FakeEmailService>(),
                 new FakeCookieProvider(),
