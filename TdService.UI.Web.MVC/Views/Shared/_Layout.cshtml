@@ -81,8 +81,9 @@
                     else
                     {
                         <ul class="nav pull-right">
-                            <li><a href="#" class="en choosen_culture" onclick="click: changeCulture('en');"></a></li>
+                            <li><a href="#" class="en" onclick="click: changeCulture('en');"></a></li>
                             <li><a href="#" class="ru" onclick="click: changeCulture('ru');"></a></li>
+                            <li><a href="@Url.Action("SignIn", "AccountAuth")"><i class="icon-white icon-lock"></i> @LayoutViewResources.SignInMenuHeader</a></li>
                         </ul>
                         @*<a href="@Url.Action("SignUp", "AccountAuth")" class="btn btn-success" style="margin-top:6px;margin-left: 20px">@LayoutViewResources.JoinUsMenuHeader &raquo;</a>
                         <a href="@Url.Action("SignIn", "AccountAuth")" class="btn btn-primary" style="margin-top:6px;margin-left: 20px">@LayoutViewResources.SignInMenuHeader &raquo;</a>*@
@@ -105,6 +106,20 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     @Scripts.Render("~/bundles/jquery", "~/bundles/bootstrap", "~/bundles/noty", "~/bundles/knockout", "~/bundles/common")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var culture = readCookie("culture");
+            if (culture != null) {
+                if (culture == "ru") {
+                    $(".en").removeClass("choosen_culture");
+                    $(".ru").addClass("choosen_culture");
+                } else {
+                    $(".ru").removeClass("choosen_culture");
+                    $(".en").addClass("choosen_culture");
+                }
+            }
+        });
+    </script>
     @RenderSection("Scripts", false)
 </body>
 </html>
