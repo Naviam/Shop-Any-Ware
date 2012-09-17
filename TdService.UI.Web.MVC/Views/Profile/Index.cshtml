@@ -6,7 +6,7 @@
 
 <ul class="breadcrumb">
     <li>
-        <a href="@Url.Action("Dashboard", "Member")">Dashboard</a> <span class="divider">/</span>
+        <a href="@Url.Action("Dashboard", "MemberAuth")">Dashboard</a> <span class="divider">/</span>
     </li>
     <li class="active">Profile</li>
 </ul>
@@ -17,7 +17,7 @@
         <strong>Error: </strong>@Model.Message
     </div>
 }
-@using (Html.BeginForm("Save", "Profile", FormMethod.Post, new { @class = "form-horizontal" }))
+@using (Html.BeginForm("Save", "ProfileAuth", FormMethod.Post, new { @class = "form-horizontal" }))
 {
     @Html.AntiForgeryToken("Profile")
     <input id="model" type="hidden" value="@(new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(Model))" />

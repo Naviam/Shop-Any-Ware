@@ -64,7 +64,7 @@ namespace TdService.ShopAnyWare.Tests.Account
         public void ShouldShowSignInPage()
         {
             // arrange
-            var controller = new AccountController(
+            var controller = new AccountAuthController(
                 this.MembershipService,
                 this.EmailService,
                 this.CookieStorageService,
@@ -86,7 +86,7 @@ namespace TdService.ShopAnyWare.Tests.Account
         public void ShouldShowSignUpPage()
         {
             // arrange
-            var controller = new AccountController(
+            var controller = new AccountAuthController(
                 this.MembershipService,
                 this.EmailService,
                 this.CookieStorageService,
@@ -108,7 +108,7 @@ namespace TdService.ShopAnyWare.Tests.Account
         public void ShouldShowForgotPasswordPage()
         {
             // arrange
-            var controller = new AccountController(
+            var controller = new AccountAuthController(
                 this.MembershipService,
                 this.EmailService,
                 this.CookieStorageService,
@@ -130,7 +130,7 @@ namespace TdService.ShopAnyWare.Tests.Account
         public void ShouldBeAbleToResetPasswordAndSendItToValidEmail()
         {
             // arrange
-            var controller = new AccountController(
+            var controller = new AccountAuthController(
                 this.MembershipService,
                 this.EmailService,
                 this.CookieStorageService,
@@ -152,7 +152,7 @@ namespace TdService.ShopAnyWare.Tests.Account
         public void ShouldNotBeAbleToResetPasswordAndSendItToInvalidEmail()
         {
             // arrange
-            var controller = new AccountController(
+            var controller = new AccountAuthController(
                 this.MembershipService,
                 this.EmailService,
                 this.CookieStorageService,
@@ -173,7 +173,7 @@ namespace TdService.ShopAnyWare.Tests.Account
         [Test]
         public void ShouldBeAbleToLogOffOnlyIfAuthorized()
         {
-            TestHelper.AssertIsAuthorized(typeof(AccountController), "SignOut");
+            TestHelper.AssertIsAuthorized(typeof(AccountAuthController), "SignOut");
         }
     }
 }

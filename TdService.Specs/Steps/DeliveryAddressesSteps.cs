@@ -35,11 +35,11 @@ namespace TdService.Specs.Steps
         /// <returns>
         /// The TdService.UI.Web.Controllers.AddressController.
         /// </returns>
-        public AddressController GetAddressController()
+        public AddressAuthController GetAddressController()
         {
             var formsAuthentication = ScenarioContext.Current.Get<FakeFormsAuthentication>();
             var addressService = ScenarioContext.Current.Get<DeliveryAddressService>();
-            return new AddressController(formsAuthentication, addressService);
+            return new AddressAuthController(formsAuthentication, addressService);
         }
 
         /// <summary>

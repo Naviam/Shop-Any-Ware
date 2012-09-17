@@ -14,7 +14,7 @@ namespace TdService.UI.Web.Controllers
     /// <summary>
     /// Home controller contains methods to display pages for unregistered shoppers.
     /// </summary>
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         /// <summary>
         /// The default page.

@@ -83,7 +83,7 @@ namespace TdService.Specs
         {
             // arrange
             this.formsAuthentication.SetAuthenticationToken("vhatalski@naviam.com", true);
-            var controller = new ItemsController(this.itemsService, this.formsAuthentication);
+            var controller = new ItemsAuthController(this.itemsService, this.formsAuthentication);
             const int OrderId = 1;
 
             // act
@@ -106,7 +106,7 @@ namespace TdService.Specs
         {
             // arrange
             this.formsAuthentication.SetAuthenticationToken("vhatalski@naviam.com", true);
-            var controller = new ItemsController(this.itemsService, this.formsAuthentication);
+            var controller = new ItemsAuthController(this.itemsService, this.formsAuthentication);
             var viewModel = new OrderItemViewModel { OrderId = 1, Name = "Kindle", Quantity = 1, Price = 70.43m, Weight = 70 };
 
             // act

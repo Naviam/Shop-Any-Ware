@@ -30,7 +30,7 @@ namespace TdService.UI.Web.Controllers
     /// <summary>
     /// This controller is responsible for authentication and authorization of user.
     /// </summary>
-    public class AccountController : BaseController
+    public class AccountAuthController : BaseAuthController
     {
         /// <summary>
         /// Membership repository.
@@ -48,7 +48,7 @@ namespace TdService.UI.Web.Controllers
         private readonly ICookieStorageService cookieStorageService;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AccountController"/> class.
+        /// Initializes a new instance of the <see cref="AccountAuthController"/> class.
         /// </summary>
         /// <param name="membershipService">
         /// The membership service.
@@ -62,7 +62,7 @@ namespace TdService.UI.Web.Controllers
         /// <param name="formsAuthentication">
         /// The forms authentication.
         /// </param>
-        public AccountController(
+        public AccountAuthController(
             IMembershipService membershipService,
             IEmailService emailService,
             ICookieStorageService cookieStorageService,
@@ -116,10 +116,10 @@ namespace TdService.UI.Web.Controllers
                     var roles = userRolesResponse.ConvertToRoleViewModelCollection();
                     if (roles.Exists(r => r.Name == StandardRole.Shopper.ToString()))
                     {
-                        return this.RedirectToAction("Dashboard", "Member");
+                        return this.RedirectToAction("Dashboard", "MemberAuth");
                     }
 
-                    return this.RedirectToAction("Dashboard", "Admin");
+                    return this.RedirectToAction("Dashboard", "AdminAuth");
                 }
 
                 result = response.ConvertToSignInViewModel();
@@ -306,7 +306,7 @@ namespace TdService.UI.Web.Controllers
         public ActionResult SignOut()
         {
             this.FormsAuthentication.SignOut();
-            return this.RedirectToAction("SignIn", "Account");
+            return this.RedirectToAction("SignIn", "AccountAuth");
         }
 
         /// <summary>

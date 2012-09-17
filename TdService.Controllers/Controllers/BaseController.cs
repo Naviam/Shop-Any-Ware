@@ -3,35 +3,37 @@
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
-//   Defines the BaseController type.
+//   The base controller.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace TdService.UI.Web.Controllers
 {
+    using System.Globalization;
+    using System.Threading;
     using System.Web.Mvc;
 
-    using TdService.Infrastructure.Authentication;
-
     /// <summary>
-    /// Base contoller contains methods common for all controllers.
+    /// The base controller.
     /// </summary>
     public class BaseController : Controller
     {
         /// <summary>
-        /// Authentication service.
+        /// The initialize.
         /// </summary>
-        protected readonly IFormsAuthentication FormsAuthentication;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="BaseController"/> class.
-        /// </summary>
-        /// <param name="formsAuthentication">
-        /// The forms authentication service.
+        /// <param name="requestContext">
+        /// The request context.
         /// </param>
-        public BaseController(IFormsAuthentication formsAuthentication)
+        protected override void Initialize(System.Web.Routing.RequestContext requestContext)
         {
-            this.FormsAuthentication = formsAuthentication;
+            if (requestContext.HttpContext.Request.Cookies["culture"] != null)
+            {
+                var culture = new CultureInfo(requestContext.HttpContext.Request.Cookies["culture"].Value);
+                Thread.CurrentThread.CurrentCulture = culture;
+                Thread.CurrentThread.CurrentUICulture = culture;
+            }
+
+            base.Initialize(requestContext);
         }
     }
 }

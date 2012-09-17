@@ -25,7 +25,7 @@ namespace TdService.UI.Web.Controllers
     /// <summary>
     /// The controller contains methods to work with the addresses.
     /// </summary>
-    public class AddressController : BaseController
+    public class AddressAuthController : BaseAuthController
     {
         /// <summary>
         /// The address Service.
@@ -33,7 +33,7 @@ namespace TdService.UI.Web.Controllers
         private readonly IAddressService addressService;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AddressController"/> class.
+        /// Initializes a new instance of the <see cref="AddressAuthController"/> class.
         /// </summary>
         /// <param name="formsAuthentication">
         /// The forms authentication.
@@ -41,7 +41,7 @@ namespace TdService.UI.Web.Controllers
         /// <param name="addressService">
         /// The address Service.
         /// </param>
-        public AddressController(IFormsAuthentication formsAuthentication, IAddressService addressService)
+        public AddressAuthController(IFormsAuthentication formsAuthentication, IAddressService addressService)
             : base(formsAuthentication)
         {
             this.addressService = addressService;

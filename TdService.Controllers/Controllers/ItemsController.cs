@@ -21,7 +21,7 @@ namespace TdService.UI.Web.Controllers
     /// <summary>
     /// The items controller.
     /// </summary>
-    public class ItemsController : BaseController
+    public class ItemsAuthController : BaseAuthController
     {
         /// <summary>
         /// The items service.
@@ -29,7 +29,7 @@ namespace TdService.UI.Web.Controllers
         private readonly IItemsService itemsService;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ItemsController"/> class.
+        /// Initializes a new instance of the <see cref="ItemsAuthController"/> class.
         /// </summary>
         /// <param name="itemsService">
         /// The items Service.
@@ -37,7 +37,7 @@ namespace TdService.UI.Web.Controllers
         /// <param name="formsAuthentication">
         /// The forms authentication.
         /// </param>
-        public ItemsController(
+        public ItemsAuthController(
             IItemsService itemsService,
             IFormsAuthentication formsAuthentication)
             : base(formsAuthentication)

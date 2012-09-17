@@ -56,7 +56,7 @@ namespace TdService.ShopAnyWare.Tests.Account
         public void ShouldSeeProfileForm()
         {
             // arrange
-            var controller = new ProfileController(this.MembershipService, this.FormsAuthentication);
+            var controller = new ProfileAuthController(this.MembershipService, this.FormsAuthentication);
 
             // act
             var actual = (ViewResult)controller.Index();
@@ -73,7 +73,7 @@ namespace TdService.ShopAnyWare.Tests.Account
         public void ShouldBeAbleToCallSaveProfileMethod()
         {
             // arrange
-            var controller = new ProfileController(this.MembershipService, this.FormsAuthentication);
+            var controller = new ProfileAuthController(this.MembershipService, this.FormsAuthentication);
             var profileView = new ProfileViewModel
                 {
                     FirstName = "Vitali",
@@ -100,7 +100,7 @@ namespace TdService.ShopAnyWare.Tests.Account
         public void ShouldNotBeAbleToSaveInvalidProfileView()
         {
             // arrange
-            var controller = new ProfileController(this.MembershipService, this.FormsAuthentication);
+            var controller = new ProfileAuthController(this.MembershipService, this.FormsAuthentication);
             controller.ViewData.ModelState.Clear();
 
             var profileViewModel = new ProfileViewModel

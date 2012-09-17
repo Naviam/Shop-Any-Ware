@@ -21,7 +21,7 @@ namespace TdService.UI.Web.Controllers
     /// <summary>
     /// The retailers controller.
     /// </summary>
-    public class RetailersController : BaseController
+    public class RetailersAuthController : BaseAuthController
     {
         /// <summary>
         /// The retailers service.
@@ -29,7 +29,7 @@ namespace TdService.UI.Web.Controllers
         private readonly IRetailersService retailersService;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RetailersController"/> class.
+        /// Initializes a new instance of the <see cref="RetailersAuthController"/> class.
         /// </summary>
         /// <param name="formsAuthentication">
         /// The forms authentication.
@@ -37,7 +37,7 @@ namespace TdService.UI.Web.Controllers
         /// <param name="retailersService">
         /// The retailers Service.
         /// </param>
-        public RetailersController(IFormsAuthentication formsAuthentication, IRetailersService retailersService)
+        public RetailersAuthController(IFormsAuthentication formsAuthentication, IRetailersService retailersService)
             : base(formsAuthentication)
         {
             this.retailersService = retailersService;

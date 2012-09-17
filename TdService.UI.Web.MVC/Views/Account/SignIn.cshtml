@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = AccountViewResources.SignInPageTitle;
 }
-@using (Html.BeginForm("SignIn", "Account", FormMethod.Post, new Dictionary<string, object> { { "class", "form-horizontal" } }))
+@using (Html.BeginForm("SignIn", "AccountAuth", FormMethod.Post, new Dictionary<string, object> { { "class", "form-horizontal" } }))
 {
     @Html.AntiForgeryToken("signin")
     <fieldset>
@@ -28,7 +28,7 @@
             <div class="controls">
                 <div style="float:left">@Html.CheckBoxFor(m => m.RememberMe, new Dictionary<string, object> { { "id", "rememberMe" }, { "data-bind", "value: rememberMe" } })</div>
                 <div style="float:left;margin:3px"><label for="rememberMe">@AccountViewResources.RememberMeFormLabel</label></div>
-                <div style="float:left;margin:3px 0 0 22px"><a href="@Url.Action("Forgot", "Account")">@AccountViewResources.ForgotPasswordHeader</a></div>
+                <div style="float:left;margin:3px 0 0 22px"><a href="@Url.Action("Forgot", "AccountAuth")">@AccountViewResources.ForgotPasswordHeader</a></div>
             </div>
         </div>
         <div class="form-actions">

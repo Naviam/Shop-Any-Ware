@@ -4,7 +4,7 @@
     ViewBag.Title = AccountViewResources.ForgotPageTitle;
 }
 
-@using(Html.BeginForm("Forgot", "Account", FormMethod.Post, new Dictionary<string, object> { { "class", "form-horizontal" } }))
+@using(Html.BeginForm("Forgot", "AccountAuth", FormMethod.Post, new Dictionary<string, object> { { "class", "form-horizontal" } }))
 {
     @Html.AntiForgeryToken("forgot")
     <fieldset>

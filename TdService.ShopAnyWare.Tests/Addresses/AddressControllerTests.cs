@@ -1,4 +1,13 @@
-﻿namespace TdService.ShopAnyWare.Tests.Addresses
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="AddressControllerTests.cs" company="TdService">
+//   Vitali Hatalski. 2012.
+// </copyright>
+// <summary>
+//   Defines the AddressControllerTests type.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace TdService.ShopAnyWare.Tests.Addresses
 {
     using System.Collections.Generic;
     using System.Diagnostics;
@@ -49,7 +58,7 @@
         [Test]
         public void ShouldBeAbleToCallGetDeliveryAddressesOnlyIfAuthorized()
         {
-            TestHelper.AssertIsAuthorized(typeof(AddressController), "Get");
+            TestHelper.AssertIsAuthorized(typeof(AddressAuthController), "Get");
         }
 
         /// <summary>
@@ -58,7 +67,7 @@
         [Test]
         public void ShouldBeAbleToCallAddDeliveryAddressOnlyIfAuthorized()
         {
-            TestHelper.AssertIsAuthorized(typeof(AddressController), "Add", typeof(DeliveryAddressViewModel));
+            TestHelper.AssertIsAuthorized(typeof(AddressAuthController), "Add", typeof(DeliveryAddressViewModel));
         }
 
         /// <summary>
@@ -67,7 +76,7 @@
         [Test]
         public void ShouldBeAbleToCallRemoveDeliveryAddressOnlyIfAuthorized()
         {
-            TestHelper.AssertIsAuthorized(typeof(AddressController), "Remove", typeof(int));
+            TestHelper.AssertIsAuthorized(typeof(AddressAuthController), "Remove", typeof(int));
         }
 
         /// <summary>
@@ -76,7 +85,7 @@
         [Test]
         public void ShouldBeAbleToCallUpdateDeliveryAddressOnlyIfAuthorized()
         {
-            TestHelper.AssertIsAuthorized(typeof(AddressController), "Update", typeof(DeliveryAddressViewModel));
+            TestHelper.AssertIsAuthorized(typeof(AddressAuthController), "Update", typeof(DeliveryAddressViewModel));
         }
 
         /// <summary>
@@ -86,7 +95,7 @@
         public void ShouldReturnJsonCollectionOfUserAddresses()
         {
             // arrange
-            var controller = new AddressController(this.formsAuthentication, this.addressService);
+            var controller = new AddressAuthController(this.formsAuthentication, this.addressService);
 
             // act
             var actual = controller.Get() as JsonNetResult;
@@ -106,7 +115,7 @@
         public void ShouldBeAbleToAddDeliveryAddress()
         {
             // arrange
-            var controller = new AddressController(this.formsAuthentication, this.addressService);
+            var controller = new AddressAuthController(this.formsAuthentication, this.addressService);
             var viewModel = new DeliveryAddressViewModel
                 {
                     Id = 0,
@@ -155,7 +164,7 @@
         public void ShouldBeAbleToUpdateDeliveryAddress()
         {
             // arrange
-            var controller = new AddressController(this.formsAuthentication, this.addressService);
+            var controller = new AddressAuthController(this.formsAuthentication, this.addressService);
             var viewModel = new DeliveryAddressViewModel
             {
                 Id = 1,
@@ -204,7 +213,7 @@
         public void ShouldBeAbleToRemoveDeliveryAddress()
         {
             // arrange
-            var controller = new AddressController(this.formsAuthentication, this.addressService);
+            var controller = new AddressAuthController(this.formsAuthentication, this.addressService);
             const int AddressIdToRemove = 1;
 
             // act
