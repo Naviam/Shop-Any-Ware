@@ -5,7 +5,7 @@
 
 <!-- Main hero unit for a primary marketing message or call to action -->
 <div class="row-fluid">
-    <div class="span8">
+    <div class="span7">
         <div class="hero-unit">
             <h1>@HomeViewResources.PageHeroHeader</h1>
             <br/>
@@ -14,7 +14,7 @@
             <p><a href="@Url.Action("SignUp", "AccountAuth")" class="btn btn-primary btn-large">Sign up free and start shopping &raquo;</a></p>*@
         </div>
     </div>
-    <div class="span4 form_registration">
+    <div class="span5 form_registration">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#signup" data-toggle="tab">@AccountViewResources.SignUpFormHeader</a></li>
             <li><a href="#signin" data-toggle="tab">@AccountViewResources.SignInFormHeader</a></li>
@@ -23,44 +23,42 @@
             <div id="signup" class="tab-pane active">
                 <form class="form-horizontal">
                     @Html.AntiForgeryToken("signup")
-                    <fieldset>
                         @*<div class="control-group">
                             <h2>@AccountViewResources.SignUpPageHeader</h2>
                         </div>*@
                         <div class="control-group">
                             <label class="control-label">@AccountViewResources.EmailFormLabel:</label>
                             <div class="controls">
-                                <input type="email" class="input-xlarge" data-bind="value: email" required placeholder="@AccountViewResources.EmailFormFieldPlaceholder" />
+                                <input type="email" class="span3" data-bind="value: email" required placeholder="@AccountViewResources.EmailFormFieldPlaceholder" />
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label">@AccountViewResources.PasswordFormLabel:</label>
                             <div class="controls">
-                                <input type="password" class="input-xlarge" data-bind="value: password" required placeholder="@AccountViewResources.PasswordFormFieldPlaceholder" />
+                                <input type="password" class="span3" data-bind="value: password" required placeholder="@AccountViewResources.PasswordFormFieldPlaceholder" />
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label">@AccountViewResources.ConfirmPasswordFormLabel:</label>
                             <div class="controls">
-                                <input type="password" class="input-xlarge" data-bind="value: passwordConfirm" required placeholder="@AccountViewResources.PasswordConfirmFormFieldPlaceholder" />
+                                <input type="password" class="span3" data-bind="value: passwordConfirm" required placeholder="@AccountViewResources.PasswordConfirmFormFieldPlaceholder" />
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label">@AccountViewResources.FirstNameFormLabel:</label>
                             <div class="controls">
-                                <input type="text" class="input-xlarge" data-bind="value: firstName" required placeholder="@AccountViewResources.FirstNameFormFieldPlaceholder" />
+                                <input type="text" class="span3" data-bind="value: firstName" required placeholder="@AccountViewResources.FirstNameFormFieldPlaceholder" />
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label">@AccountViewResources.LastNameFormLabel:</label>
                             <div class="controls">
-                                <input type="text" class="input-xlarge" data-bind="value: lastName" required placeholder="@AccountViewResources.LastNameFormFieldPlaceholder" />
+                                <input type="text" class="span3" data-bind="value: lastName" required placeholder="@AccountViewResources.LastNameFormFieldPlaceholder" />
                             </div>
                         </div>
                         <div class="form-actions">
                             <button type="submit" class="btn btn-primary btn-large">@AccountViewResources.SignUpButton</button>
                         </div>
-                    </fieldset>
                 </form>
             </div>
             <div id="signin" class="tab-pane">
@@ -73,20 +71,20 @@
                         <div class="control-group">
                             <label class="control-label">@AccountViewResources.EmailFormLabel:</label>
                             <div class="controls">
-                                <input type="email" class="input-xlarge" data-bind="value: email" required placeholder="@AccountViewResources.EmailFormFieldPlaceholder" />
+                                <input type="email" class="span3" data-bind="value: email" required placeholder="@AccountViewResources.EmailFormFieldPlaceholder" />
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label">@AccountViewResources.PasswordFormLabel:</label>
                             <div class="controls">
-                                <input type="password" class="input-xlarge" data-bind="value: password" required placeholder="@AccountViewResources.PasswordFormFieldPlaceholder" />
+                                <input type="password" class="span3" data-bind="value: password" required placeholder="@AccountViewResources.PasswordFormFieldPlaceholder" />
                             </div>
                         </div>
                         <div class="control-group">
                             <div class="controls">
                                 <div style="float:left"><input id="rememberMe" type="checkbox" data-bind="value: rememberMe" /></div>
                                 <div style="float:left;margin:3px"><label for="rememberMe">@AccountViewResources.RememberMeFormLabel</label></div>
-                                <div style="float:left;margin:3px 0 0 22px"><a href="@Url.Action("Forgot", "Account")">@AccountViewResources.ForgotPasswordHeader</a></div>
+                                <div style="clear:left"><a href="@Url.Action("Forgot", "Account")">@AccountViewResources.ForgotPasswordHeader</a></div>
                             </div>
                         </div>
                         <div class="form-actions">
