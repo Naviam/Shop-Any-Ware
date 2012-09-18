@@ -98,7 +98,6 @@ namespace TdService.UI.Web.Controllers
         /// Redirect user to the home page of authenticated users.
         /// </returns>
         [HttpPost]
-        [ValidateAntiForgeryToken(Salt = "signin")]
         public ActionResult SignIn(SignInViewModel model)
         {
             var result = new SignInViewModel();
@@ -116,10 +115,10 @@ namespace TdService.UI.Web.Controllers
                     var roles = userRolesResponse.ConvertToRoleViewModelCollection();
                     if (roles.Exists(r => r.Name == StandardRole.Shopper.ToString()))
                     {
-                        return this.RedirectToAction("Dashboard", "MemberAuth");
+                        return this.RedirectToAction("Welcome", "Member");
                     }
 
-                    return this.RedirectToAction("Dashboard", "AdminAuth");
+                    return this.RedirectToAction("Index", "Operator");
                 }
 
                 result = response.ConvertToSignInViewModel();
@@ -306,7 +305,7 @@ namespace TdService.UI.Web.Controllers
         public ActionResult SignOut()
         {
             this.FormsAuthentication.SignOut();
-            return this.RedirectToAction("SignIn", "AccountAuth");
+            return this.RedirectToAction("SignIn", "Account");
         }
 
         /// <summary>

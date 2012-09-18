@@ -1,10 +1,29 @@
-﻿namespace TdService.UI.Web.MVC.App_Start
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="BundleConfig.cs" company="TdService">
+//   Vitali Hatalski. 2012.
+// </copyright>
+// <summary>
+//   The bundle config.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace TdService.UI.Web.MVC.App_Start
 {
     using System.Web.Optimization;
 
+    /// <summary>
+    /// The bundle config.
+    /// </summary>
     public class BundleConfig
     {
         // For more information on Bundling, visit http://go.microsoft.com/fwlink/?LinkId=254725
+
+        /// <summary>
+        /// The register bundles.
+        /// </summary>
+        /// <param name="bundles">
+        /// The bundles.
+        /// </param>
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new StyleBundle("~/Content/sitecss").Include(
@@ -51,6 +70,9 @@
 
             bundles.Add(new ScriptBundle("~/bundles/dashboard").Include(
                         "~/Scripts/ViewModels/DashboardViewModel.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/home").Include(
+                        "~/Scripts/ViewModels/SignInViewModel.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
