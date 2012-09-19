@@ -129,6 +129,15 @@
   <data name="Footer" xml:space="preserve">
     <value>ShopAnyWare.com 2012</value>
   </data>
+  <data name="FooterFollowFacebookTitle" xml:space="preserve">
+    <value>Follow us on Facebook</value>
+  </data>
+  <data name="FooterFollowGoogleTitle" xml:space="preserve">
+    <value>Follow us on Google Plus</value>
+  </data>
+  <data name="FooterFollowTwitterTitle" xml:space="preserve">
+    <value>Follow us on Twitter</value>
+  </data>
   <data name="FooterLinksHeader" xml:space="preserve">
     <value>Quick links</value>
   </data>

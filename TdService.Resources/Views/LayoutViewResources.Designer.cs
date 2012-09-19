@@ -97,6 +97,33 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Follow us on Facebook.
+        /// </summary>
+        public static string FooterFollowFacebookTitle {
+            get {
+                return ResourceManager.GetString("FooterFollowFacebookTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Follow us on Google Plus.
+        /// </summary>
+        public static string FooterFollowGoogleTitle {
+            get {
+                return ResourceManager.GetString("FooterFollowGoogleTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Follow us on Twitter.
+        /// </summary>
+        public static string FooterFollowTwitterTitle {
+            get {
+                return ResourceManager.GetString("FooterFollowTwitterTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Quick links.
         /// </summary>
         public static string FooterLinksHeader {
