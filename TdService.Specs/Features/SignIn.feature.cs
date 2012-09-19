@@ -266,7 +266,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 57
  testRunner.When("I fill sign in form with the following data", ((string)(null)), table9, "When ");
 #line 60
- testRunner.Then("I should be redirected to controller \'Admin\' and action \'Dashboard\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I should be redirected to controller \'Operator\' and action \'Index\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -297,7 +297,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 66
  testRunner.When("I fill sign in form with the following data", ((string)(null)), table10, "When ");
 #line 69
- testRunner.Then("I should be redirected to controller \'Admin\' and action \'Dashboard\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I should be redirected to controller \'Operator\' and action \'Index\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -312,8 +312,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 72
 this.ScenarioSetup(scenarioInfo);
 #line 73
- testRunner.Given("there is \'v.hatalski@gmail.com\' account with \'ruinruin\' password in role \'Consult" +
-                    "ant\' with fullname \'Vitali\' and \'Hatalski\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("there is \'v.hatalski@gmail.com\' account with \'ruinruin\' password in role \'Admin\' " +
+                    "with fullname \'Vitali\' and \'Hatalski\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 74
  testRunner.And("I have not been authenticated yet", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
