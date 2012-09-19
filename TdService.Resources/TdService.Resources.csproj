@@ -68,6 +68,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ErrorCodeResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="SiteMapLocalizations.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SiteMapLocalizations.resx</DependentUpon>
+    </Compile>
     <Compile Include="Views\AccountViewResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -127,6 +132,11 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ErrorCodeResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="SiteMapLocalizations.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SiteMapLocalizations.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SiteMapLocalizations.ru.resx" />
     <EmbeddedResource Include="Views\AccountViewResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AccountViewResources.Designer.cs</LastGenOutput>
