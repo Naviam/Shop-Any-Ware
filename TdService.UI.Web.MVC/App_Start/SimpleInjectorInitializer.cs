@@ -3,7 +3,7 @@
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
-//   This class is for Simple Injector Dependency Injection initialization.
+//   The simple injector initializer.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -32,7 +32,7 @@ namespace TdService.UI.Web.MVC.App_Start
     using TdService.Services.Interfaces;
 
     /// <summary>
-    /// This class is for Simple Injector Dependency Injection initialization.
+    /// The simple injector initializer.
     /// </summary>
     public static class SimpleInjectorInitializer
     {
@@ -40,15 +40,21 @@ namespace TdService.UI.Web.MVC.App_Start
         public static void Initialize()
         {
             var container = new Container();
+
             InitializeContainer(container);
+
             container.RegisterMvcControllers(Assembly.GetExecutingAssembly());
+
             container.RegisterMvcAttributeFilterProvider();
+
+            // Using Entity Framework? Please read this: http://simpleinjector.codeplex.com/discussions/363935
             container.Verify();
+
             DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
         }
 
         /// <summary>
-        /// Initialize containers here.
+        /// The initialize container.
         /// </summary>
         /// <param name="container">
         /// The container.
@@ -78,9 +84,6 @@ namespace TdService.UI.Web.MVC.App_Start
             container.Register<IAddressRepository, AddressRepository>();
             container.Register<IItemsRepository, ItemsRepository>();
             container.Register<IPackageRepository, PackageRepository>();
-
-            // For instance:
-            // container.Register<IUserRepository, SqlUserRepository>();
         }
     }
 }

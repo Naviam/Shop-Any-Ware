@@ -16,7 +16,6 @@ namespace TdService.Specs.Steps
 
     using TdService.Services.Implementations;
     using TdService.Specs.Fakes;
-    using TdService.UI.Web;
     using TdService.UI.Web.Controllers;
     using TdService.UI.Web.ViewModels.Account;
 
@@ -68,9 +67,9 @@ namespace TdService.Specs.Steps
         [Then(@"the signin result should be as follows")]
         public void ThenTheSigninResultShouldBeAsFollows(Table table)
         {
-            var result = ScenarioContext.Current.Get<JsonNetResult>("controllerResponse");
+            var result = ScenarioContext.Current.Get<ViewResult>("controllerResponse");
             Assert.That(result, Is.Not.Null);
-            var actual = result.Data as SignInViewModel;
+            var actual = result.Model as SignInViewModel;
             Assert.That(actual, Is.Not.Null);
             table.CompareToInstance(actual);
         }
@@ -84,9 +83,9 @@ namespace TdService.Specs.Steps
         [Then(@"the signin view model should have following errors")]
         public void ThenTheSigninViewModelShouldHaveFollowingErrors(Table table)
         {
-            var result = ScenarioContext.Current.Get<JsonNetResult>("controllerResponse");
+            var result = ScenarioContext.Current.Get<ViewResult>("controllerResponse");
             Assert.That(result, Is.Not.Null);
-            var actual = result.Data as SignInViewModel;
+            var actual = result.Model as SignInViewModel;
             Assert.That(actual, Is.Not.Null);
             Debug.Assert(actual != null, "actual != null");
             Assert.That(actual.BrokenRules, Is.Not.Null);

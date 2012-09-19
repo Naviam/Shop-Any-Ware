@@ -11,6 +11,8 @@ namespace TdService.UI.Web.Controllers
 {
     using System.Web.Mvc;
 
+    using TdService.UI.Web.ViewModels.Account;
+
     /// <summary>
     /// Home controller contains methods to display pages for unregistered shoppers.
     /// </summary>
@@ -24,7 +26,9 @@ namespace TdService.UI.Web.Controllers
         /// </returns>
         public ActionResult Index()
         {
-            return this.View();
+            var model = new MainViewModel
+                { SignInViewModel = new SignInViewModel(), SignUpViewModel = new SignUpViewModel() };
+            return this.View(model);
         }
 
         /// <summary>

@@ -57,7 +57,7 @@ Scenario: Sign in operator
 	When I fill sign in form with the following data
 	| Email                | Password | Remember Me |
 	| v.hatalski@gmail.com | ruinruin | false       |
-	Then I should be redirected to controller 'Admin' and action 'Dashboard'
+	Then I should be redirected to controller 'Operator' and action 'Index'
 
 @consultant
 Scenario: Sign in consultant
@@ -66,11 +66,11 @@ Scenario: Sign in consultant
 	When I fill sign in form with the following data
 	| Email                | Password | Remember Me |
 	| v.hatalski@gmail.com | ruinruin | false       |
-	Then I should be redirected to controller 'Admin' and action 'Dashboard'
+	Then I should be redirected to controller 'Operator' and action 'Index'
 	
 @admin
 Scenario: Sign in admin
-	Given there is 'v.hatalski@gmail.com' account with 'ruinruin' password in role 'Consultant' with fullname 'Vitali' and 'Hatalski'
+	Given there is 'v.hatalski@gmail.com' account with 'ruinruin' password in role 'Admin' with fullname 'Vitali' and 'Hatalski'
 	And I have not been authenticated yet
 	When I fill sign in form with the following data
 	| Email                | Password | Remember Me |

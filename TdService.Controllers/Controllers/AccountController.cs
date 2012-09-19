@@ -85,7 +85,7 @@ namespace TdService.UI.Web.Controllers
             var model = new SignInViewModel();
             this.SetCredentialsFromCookie(ref model);
             this.ViewData.Model = model;
-            return this.View();
+            return this.View("SignIn");
         }
 
         /// <summary>
@@ -98,7 +98,8 @@ namespace TdService.UI.Web.Controllers
         /// Redirect user to the home page of authenticated users.
         /// </returns>
         [HttpPost]
-        public ActionResult SignIn(SignInViewModel model)
+        [ValidateAntiForgeryToken]
+        public ActionResult SignIn([Bind(Prefix = "SignInViewModel")]SignInViewModel model)
         {
             var result = new SignInViewModel();
             var validator = new SignInViewModelValidator();
@@ -115,9 +116,15 @@ namespace TdService.UI.Web.Controllers
                     var roles = userRolesResponse.ConvertToRoleViewModelCollection();
                     if (roles.Exists(r => r.Name == StandardRole.Shopper.ToString()))
                     {
-                        return this.RedirectToAction("Welcome", "Member");
+                        return this.RedirectToAction("Dashboard", "Member");
                     }
 
+                    if (roles.Exists(r => r.Name == StandardRole.Admin.ToString()))
+                    {
+                        return this.RedirectToAction("Dashboard", "Admin");
+                    }
+
+                    // for consultant and operator
                     return this.RedirectToAction("Index", "Operator");
                 }
 
@@ -138,12 +145,14 @@ namespace TdService.UI.Web.Controllers
                 result.Email = model.Email;
             }
 
-            var jsonNetResult = new JsonNetResult
-            {
-                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
-                Data = result
-            };
-            return jsonNetResult;
+            return this.View("SignIn", result);
+
+            ////var jsonNetResult = new JsonNetResult
+            ////{
+            ////    Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+            ////    Data = result
+            ////};
+            ////return jsonNetResult;
         }
 
         /// <summary>
@@ -155,7 +164,7 @@ namespace TdService.UI.Web.Controllers
         public ActionResult SignUp()
         {
             this.ViewData.Model = new SignUpViewModel();
-            return this.View();
+            return this.View("SignUp");
         }
 
         /// <summary>
@@ -168,7 +177,7 @@ namespace TdService.UI.Web.Controllers
         /// Redirects user to Sign In form in case of success.
         /// </returns>
         [HttpPost]
-        [ValidateAntiForgeryToken(Salt = "signup")]
+        [ValidateAntiForgeryToken]
         public ActionResult SignUp(SignUpViewModel model)
         {
             var result = new SignUpViewModel();

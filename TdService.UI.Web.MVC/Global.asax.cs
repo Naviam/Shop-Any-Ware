@@ -29,6 +29,13 @@ namespace TdService.UI.Web.MVC
         /// </summary>
         protected void Application_Start()
         {
+            // Clears all previously registered view engines.
+            ViewEngines.Engines.Clear();
+
+            // Registers our Razor C# specific view engine.
+            // This can also be registered using dependency injection through the new IDependencyResolver interface.
+            ViewEngines.Engines.Add(new RazorViewEngine());
+
             AutoMapperConfiguration.Configure();
 
             DatabaseInitializer.InitializeShopAnyWare();

@@ -1,5 +1,6 @@
 ﻿@using System.Web.Optimization
 @using TdService.Resources.Views;
+@model TdService.UI.Web.ViewModels.Account.MainViewModel
 @{
     ViewBag.Title = "Shop Any Ware";
 }
@@ -23,7 +24,7 @@
         <div class="tab-content">
             <div id="signUpForm" class="tab-pane active">
                 <form class="form-horizontal">
-                    @Html.AntiForgeryToken("signup")
+                    @Html.AntiForgeryToken()
                         @*<div class="control-group">
                             <h2>@AccountViewResources.SignUpPageHeader</h2>
                         </div>*@
@@ -63,7 +64,9 @@
                 </form>
             </div>
             <div id="signInForm" class="tab-pane">
-                <form class="form-horizontal">
+                @using (Html.BeginForm("SignIn", "Account", FormMethod.Post, new Dictionary<string, object> { { "class", "form-horizontal" } }))
+                {
+                    @Html.AntiForgeryToken()
                     <fieldset>
                         @*<div class="control-group">
                             <h2>@AccountViewResources.SignInPageHeader</h2>
@@ -71,27 +74,31 @@
                         <div class="control-group">
                             <label class="control-label">@AccountViewResources.EmailFormLabel:</label>
                             <div class="controls">
-                                <input type="email" class="span3" data-bind="value: email" required placeholder="@AccountViewResources.EmailFormFieldPlaceholder" />
+                                @Html.TextBoxFor(m => m.SignInViewModel.Email, new Dictionary<string, object> { { "class", "span3" }, { "data-bind", "value: email" }, { "placeholder", AccountViewResources.EmailFormFieldPlaceholder } })
+                                @Html.ValidationMessageFor(m => m.SignInViewModel.Email)
+                                @*<input type="email" class="span3" data-bind="value: email" required placeholder="@AccountViewResources.EmailFormFieldPlaceholder" />*@
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label">@AccountViewResources.PasswordFormLabel:</label>
                             <div class="controls">
-                                <input type="password" class="span3" data-bind="value: password" required placeholder="@AccountViewResources.PasswordFormFieldPlaceholder" />
+                                @Html.PasswordFor(m => m.SignInViewModel.Password, new Dictionary<string, object> { { "class", "span3" }, { "data-bind", "value: password" }, { "placeholder", AccountViewResources.PasswordFormFieldPlaceholder } })
+                                @Html.ValidationMessageFor(m => m.SignInViewModel.Password)
+                                @*<input type="password" class="span3" data-bind="value: password" required placeholder="@AccountViewResources.PasswordFormFieldPlaceholder" />*@
                             </div>
                         </div>
                         <div class="control-group">
                             <div class="controls">
-                                <div style="float:left"><input id="rememberMe" type="checkbox" data-bind="value: rememberMe" /></div>
-                                <div style="float:left;margin:3px"><label for="rememberMe">@AccountViewResources.RememberMeFormLabel</label></div>
-                                <div style="clear:left"><a href="@Url.Action("Forgot", "Account")">@AccountViewResources.ForgotPasswordHeader</a></div>
+                                <div style="float: left">@Html.CheckBoxFor(m => m.SignInViewModel.RememberMe, new Dictionary<string, object> { { "id", "rememberMe" }, { "data-bind", "value: rememberMe" } })@*<input id="rememberMe" type="checkbox" data-bind="value: rememberMe" />*@</div>
+                                <div style="float: left; margin: 3px">@Html.LabelFor(m => m.SignInViewModel.RememberMe, @AccountViewResources.RememberMeFormLabel)</div>
+                                <div style="clear: left"><a href="@Url.Action("Forgot", "Account")">@AccountViewResources.ForgotPasswordHeader</a></div>
                             </div>
                         </div>
                         <div class="form-actions">
-                            <button type="submit" data-bind="click: signIn" class="btn btn-primary btn-large">@AccountViewResources.SignInButton</button>
+                            <button type="submit" class="btn btn-primary btn-large">@AccountViewResources.SignInButton</button>
                         </div>
                     </fieldset>
-                </form>
+                }
             </div>
         </div>
     </div>
