@@ -1,0 +1,20 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (HttpContext.Current.Request.Cookies["culture"] != null)
+    {
+        var culture = new System.Globalization.CultureInfo(HttpContext.Current.Request.Cookies["culture"].Value);
+        TdService.Resources.Views.AccountViewResources.Culture =
+        TdService.Resources.Views.HomeViewResources.Culture =
+        TdService.Resources.Views.AddressViewResources.Culture =
+        TdService.Resources.Views.DashboardViewResources.Culture =
+        TdService.Resources.Views.ProfileViewResources.Culture =
+        TdService.Resources.Views.LayoutViewResources.Culture =
+        TdService.Resources.CommonResources.Culture =
+        TdService.Resources.BreadcrumbResources.Culture =
+        TdService.Resources.BusinessRules.Culture =
+        TdService.Resources.EmailResources.Culture =
+        TdService.Resources.ErrorCodeResources.Culture =
+        Resources.SiteMapLocalizations.Culture = 
+        TdService.Resources.MembershipResources.Culture = culture;
+    }
+}

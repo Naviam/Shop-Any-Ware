@@ -1,0 +1,28 @@
+﻿@model TdService.UI.Web.ViewModels.Account.ForgotPasswordViewModel
+@using TdService.Resources.Views;
+@{
+    ViewBag.Title = AccountViewResources.ForgotPageTitle;
+}
+
+@using(Html.BeginForm("Forgot", "Account", FormMethod.Post, new Dictionary<string, object> { { "class", "form-horizontal" } }))
+{
+    @Html.AntiForgeryToken()
+    <fieldset>
+        <div class="control-group">
+            <h2>@AccountViewResources.ForgotPageTitle</h2>
+        </div>
+        <div class="control-group">
+            @AccountViewResources.ForgotFormHelpMessage
+        </div>
+        <div class="control-group">
+            <label class="control-label">@AccountViewResources.EmailFormLabel</label>
+            <div class="controls error-inline">
+                @Html.TextBoxFor(m => m.Email, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: email" }, { "placeholder", AccountViewResources.EmailFormFieldPlaceholder } })
+                @Html.ValidationMessageFor(m => m.Email)
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary btn-large">@AccountViewResources.ResetPasswordButton</button>
+        </div>
+    </fieldset>
+}

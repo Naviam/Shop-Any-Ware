@@ -1,0 +1,38 @@
+﻿@using TdService.Resources.Views
+@model TdService.UI.Web.ViewModels.Account.SignInViewModel
+@{
+    ViewBag.Title = AccountViewResources.SignInPageTitle;
+}
+@using (Html.BeginForm("SignIn", "Account", FormMethod.Post, new Dictionary<string, object> { { "class", "form-horizontal" } }))
+{
+    @Html.AntiForgeryToken()
+    <fieldset>
+        <div class="control-group">
+            <h2>@AccountViewResources.SignInPageHeader</h2>
+        </div>
+        <div class="control-group">
+            <label class="control-label">@AccountViewResources.EmailFormLabel:</label>
+            <div class="controls">
+                @Html.TextBoxFor(m => m.Email, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: email" }, { "placeholder", AccountViewResources.EmailFormFieldPlaceholder } })
+                @Html.ValidationMessageFor(m => m.Email)
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">@AccountViewResources.PasswordFormLabel:</label>
+            <div class="controls">
+                @Html.PasswordFor(m => m.Password, new Dictionary<string, object> { { "value", Model.Password }, { "class", "input-xlarge" }, { "data-bind", "value: password" }, { "placeholder", AccountViewResources.PasswordFormFieldPlaceholder } })
+                @Html.ValidationMessageFor(m => m.Password)
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <div style="float:left">@Html.CheckBoxFor(m => m.RememberMe, new Dictionary<string, object> { { "id", "rememberMe" }, { "data-bind", "value: rememberMe" } })</div>
+                <div style="float:left;margin:3px">@Html.LabelFor(m => m.RememberMe, @AccountViewResources.RememberMeFormLabel)</div>
+                <div style="float:left;margin:3px 0 0 22px"><a href="@Url.Action("Forgot", "Account")">@AccountViewResources.ForgotPasswordHeader</a></div>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary btn-large">@AccountViewResources.SignInButton</button>
+        </div>
+    </fieldset>
+}

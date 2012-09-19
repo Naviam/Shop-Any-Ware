@@ -1,0 +1,125 @@
+﻿@using System.Web.Optimization
+@using TdService.Resources.Views
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>@ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="TD Service">
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- Le styles -->
+    @Styles.Render("~/Content/sitecss")
+    <style>
+        body
+        {
+            padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+        }
+    </style>
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="@Url.Content("~/Content/ico/favicon.ico")">
+    <link rel="apple-touch-icon" href="@Url.Content("~/Content/img/bootstrap-apple-57x57.png")">
+    <link rel="apple-touch-icon" sizes="72x72" href="@Url.Content("~/Content/img/bootstrap-apple-72x72.png")">
+    <link rel="apple-touch-icon" sizes="114x114" href="@Url.Content("~/Content/img/bootstrap-apple-114x114.png")">
+</head>
+<body>
+    <div id="topmenu" class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <a class="brand" href="@Url.Action("Index", "Home")">@LayoutViewResources.PageHeader</a>
+                <div class="nav-collapse">
+                    @(!this.User.Identity.IsAuthenticated ? 
+                      this.Html.MvcSiteMap("TopMenu").Menu("TopMenuHelperModel", true) : 
+                      this.Html.MvcSiteMap("Shopper").Menu("PillsMenuHelperModel", false))
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <ul class="nav pull-right">
+                            <li><a href="#" class="en" onclick="click: changeCulture('en');"></a></li>
+                            <li><a href="#" class="ru" onclick="click: changeCulture('ru');"></a></li>
+                            <li id="fat-menu" class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    @*@LayoutViewResources.BalanceMenuHeader:*@<i class="dollar">$</i>100 <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    @{Html.RenderPartial("transactions", true);}
+                                </ul>
+                            </li>
+                            <li id="fat-menu" class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="icon-white icon-home"></i> @LayoutViewResources.YourUsAddressMenuHeader <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    @{Html.RenderPartial("storeAddress", true);}
+                                </ul>
+                            </li>
+                            <li><a href="@Url.Action("Index", "Profile")"><i class="icon-white icon-user"></i> @LayoutViewResources.ProfileMenuHeader</a></li>
+                            <li><a href="@Url.Action("Index", "Address")"><i class="icon-white icon-th-list"></i> @LayoutViewResources.DeliveryAddressesMenuHeader</a></li>
+                            <li><a href="@Url.Action("Dashboard", "Admin")"><i class="icon-white icon-cog"></i> @LayoutViewResources.AdministrationMenuHeader</a></li>
+                            <li><a href="@Url.Action("SignOut", "Account")"><i class="icon-white icon-off"></i> @LayoutViewResources.SignOutMenuHeader</a></li>
+                            @*<li id="fat-menu" class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    @HttpContext.Current.User.Identity.Name <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="@Url.Action("Index", "Profile")"><i class="icon-user"></i> @LayoutViewResources.ProfileMenuHeader</a></li>
+                                    <li><a href="@Url.Action("Index", "Address")"><i class="icon-th-list"></i> @LayoutViewResources.DeliveryAddressesMenuHeader</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="@Url.Action("Dashboard", "Admin")"><i class="icon-cog"></i> @LayoutViewResources.AdministrationMenuHeader</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="@Url.Action("SignOut", "Account")"><i class="icon-off"></i> @LayoutViewResources.SignOutMenuHeader</a></li>
+                                </ul>
+                            </li>*@
+                            @*<li><a href="@Url.Action("SignOut", "Account")"><i class="icon-white icon-off"></i> Sign Out</a></li>*@
+                        </ul>
+                    }
+                    else
+                    {
+                        <ul class="nav pull-right">
+                            <li><a href="#" class="en" onclick="click: changeCulture('en');"></a></li>
+                            <li><a href="#" class="ru" onclick="click: changeCulture('ru');"></a></li>
+                            <li><a href="@Url.Action("SignIn", "Account")"><i class="icon-white icon-lock"></i> @LayoutViewResources.SignInMenuHeader</a></li>
+                        </ul>
+                        @*<a href="@Url.Action("SignUp", "AccountAuth")" class="btn btn-success" style="margin-top:6px;margin-left: 20px">@LayoutViewResources.JoinUsMenuHeader &raquo;</a>
+                        <a href="@Url.Action("SignIn", "AccountAuth")" class="btn btn-primary" style="margin-top:6px;margin-left: 20px">@LayoutViewResources.SignInMenuHeader &raquo;</a>*@
+                    }
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        @RenderBody()
+        <hr>
+        <footer>
+            @this.Html.MvcSiteMap("TopMenu").Menu("TopMenuHelperModel", false)
+            <p>&copy; @LayoutViewResources.Footer</p>
+        </footer>
+    </div>
+    <!-- /container -->
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    @Scripts.Render("~/bundles/jquery", "~/bundles/bootstrap", "~/bundles/noty", "~/bundles/knockout", "~/bundles/common")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var culture = readCookie("culture");
+            if (culture != null) {
+                if (culture == "ru") {
+                    ////$(".en").removeClass("choosen_culture");
+                    $(".ru").addClass("choosen_culture");
+                } else {
+                    ////$(".ru").removeClass("choosen_culture");
+                    $(".en").addClass("choosen_culture");
+                }
+            }
+        });
+    </script>
+    @RenderSection("Scripts", false)
+</body>
+</html>

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mvcSiteMap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-3.0"
+            xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-3.0 MvcSiteMapSchema.xsd"
+            enableLocalization="true">
+    <mvcSiteMapNode title="SignIn" controller="Account" action="Index">
+        <mvcSiteMapNode title="Dashboard" controller="Member" action="Dashboard" />
+        <!--<mvcSiteMapNode title="Delivery Addresses" controller="Profile" action="Index" />
+        <mvcSiteMapNode title="Admin" controller="Admin" action="Dashboard" />
+        <mvcSiteMapNode title="Summary" controller="Member" action="Home" />
+        <mvcSiteMapNode title="Orders" controller="Order" action="Index" />
+        <mvcSiteMapNode title="Parcels" controller="Parcel" action="Index" />
+        <mvcSiteMapNode title="Balance" controller="Balance" action="Index" />-->
+    </mvcSiteMapNode>
+</mvcSiteMap>

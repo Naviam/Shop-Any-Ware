@@ -1,0 +1,11 @@
+﻿@model SiteMapHelperModel
+@using System.Web.Mvc.Html
+
+<ul class="nav nav-pills">
+    @foreach (var node in Model.Nodes) { 
+        @Html.DisplayFor(m => node) 
+            if (node.Children.Any()) {
+                @Html.DisplayFor(m => node.Children)
+            }
+    }
+</ul>
