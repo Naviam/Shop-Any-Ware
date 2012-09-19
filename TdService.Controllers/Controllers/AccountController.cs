@@ -85,7 +85,7 @@ namespace TdService.UI.Web.Controllers
             var model = new SignInViewModel();
             this.SetCredentialsFromCookie(ref model);
             this.ViewData.Model = model;
-            return this.View();
+            return this.View("SignIn");
         }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace TdService.UI.Web.Controllers
         /// Redirect user to the home page of authenticated users.
         /// </returns>
         [HttpPost]
-        [ValidateAntiForgeryToken(Salt = "signin")]
+        [ValidateAntiForgeryToken]
         public ActionResult SignIn([Bind(Prefix = "SignInViewModel")]SignInViewModel model)
         {
             var result = new SignInViewModel();
@@ -164,7 +164,7 @@ namespace TdService.UI.Web.Controllers
         public ActionResult SignUp()
         {
             this.ViewData.Model = new SignUpViewModel();
-            return this.View();
+            return this.View("SignUp");
         }
 
         /// <summary>
@@ -177,7 +177,7 @@ namespace TdService.UI.Web.Controllers
         /// Redirects user to Sign In form in case of success.
         /// </returns>
         [HttpPost]
-        [ValidateAntiForgeryToken(Salt = "signup")]
+        [ValidateAntiForgeryToken]
         public ActionResult SignUp(SignUpViewModel model)
         {
             var result = new SignUpViewModel();

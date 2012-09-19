@@ -76,7 +76,7 @@ namespace TdService.UI.Web.Controllers
         /// Returns profile view.
         /// </returns>
         [HttpPost]
-        [ValidateAntiForgeryToken(Salt = "Profile")]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(ProfileViewModel model)
         {
             var result = new ProfileViewModel();

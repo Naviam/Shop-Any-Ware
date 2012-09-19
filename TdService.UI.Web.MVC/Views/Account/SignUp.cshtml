@@ -5,7 +5,7 @@
 }
 @using (Html.BeginForm("SignUp", "Account", FormMethod.Post, new Dictionary<string, object> { { "class", "form-horizontal" } }))
 {
-    @Html.AntiForgeryToken("signup")
+    @Html.AntiForgeryToken()
     <fieldset>
         <div class="control-group">
             <h2>@AccountViewResources.SignUpPageHeader</h2>

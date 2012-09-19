@@ -6,7 +6,7 @@
 
 @using(Html.BeginForm("Forgot", "Account", FormMethod.Post, new Dictionary<string, object> { { "class", "form-horizontal" } }))
 {
-    @Html.AntiForgeryToken("forgot")
+    @Html.AntiForgeryToken()
     <fieldset>
         <div class="control-group">
             <h2>@AccountViewResources.ForgotPageTitle</h2>
