@@ -1,10 +1,28 @@
-﻿namespace TdService.UI.Web.MVC.App_Start
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="RouteConfig.cs" company="TdService">
+//   Vitali Hatalski. 2012.
+// </copyright>
+// <summary>
+//   The route config.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace TdService.UI.Web.MVC.App_Start
 {
     using System.Web.Mvc;
     using System.Web.Routing;
 
+    /// <summary>
+    /// The route config.
+    /// </summary>
     public class RouteConfig
     {
+        /// <summary>
+        /// The register routes.
+        /// </summary>
+        /// <param name="routes">
+        /// The routes.
+        /// </param>
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
@@ -13,9 +31,6 @@
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional }); // Parameter defaults
-
-            routes.MapRoute("Welcome", "{action}", new { controller = "Member", action = "Welcome" });
-            routes.MapRoute("Dashboard", "{action}", new { controller = "Member", action = "Dashboard" });
         }
     }
 }

@@ -28,16 +28,5 @@ namespace TdService.UI.Web.Controllers
             : base(formsAuthentication)
         {
         }
-
-        /// <summary>
-        /// Show the list of transactions.
-        /// </summary>
-        /// <returns>
-        /// Returns view with the list of transactions.
-        /// </returns>
-        public ActionResult Index()
-        {
-            return this.View();
-        }
     }
 }
