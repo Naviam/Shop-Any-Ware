@@ -37,8 +37,8 @@
                 </a>
                 <a class="brand" href="@Url.Action("Index", "Home")">@LayoutViewResources.PageHeader</a>
                 <div class="nav-collapse">
-                    @(!this.User.Identity.IsAuthenticated ? 
-                      this.Html.MvcSiteMap("TopMenu").Menu("TopMenuHelperModel", true) : 
+                    @(!this.User.Identity.IsAuthenticated ?
+                      this.Html.MvcSiteMap("TopMenu").Menu("TopMenuHelperModel", true) :
                       this.Html.MvcSiteMap("Shopper").Menu("PillsMenuHelperModel", false))
                     @if (User.Identity.IsAuthenticated)
                     {
@@ -54,15 +54,15 @@
                             </li>
                             <li id="fat-menu" class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="icon-white icon-home"></i> @LayoutViewResources.YourUsAddressMenuHeader <b class="caret"></b></a>
+                                    <i class="icon-white icon-home"></i>@LayoutViewResources.YourUsAddressMenuHeader <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     @{Html.RenderPartial("storeAddress", true);}
                                 </ul>
                             </li>
-                            <li><a href="@Url.Action("Index", "Profile")"><i class="icon-white icon-user"></i> @LayoutViewResources.ProfileMenuHeader</a></li>
-                            <li><a href="@Url.Action("Index", "Address")"><i class="icon-white icon-th-list"></i> @LayoutViewResources.DeliveryAddressesMenuHeader</a></li>
-                            <li><a href="@Url.Action("Dashboard", "Admin")"><i class="icon-white icon-cog"></i> @LayoutViewResources.AdministrationMenuHeader</a></li>
-                            <li><a href="@Url.Action("SignOut", "Account")"><i class="icon-white icon-off"></i> @LayoutViewResources.SignOutMenuHeader</a></li>
+                            <li><a href="@Url.Action("Index", "Profile")"><i class="icon-white icon-user"></i>@LayoutViewResources.ProfileMenuHeader</a></li>
+                            <li><a href="@Url.Action("Index", "Address")"><i class="icon-white icon-th-list"></i>@LayoutViewResources.DeliveryAddressesMenuHeader</a></li>
+                            <li><a href="@Url.Action("Dashboard", "Admin")"><i class="icon-white icon-cog"></i>@LayoutViewResources.AdministrationMenuHeader</a></li>
+                            <li><a href="@Url.Action("SignOut", "Account")"><i class="icon-white icon-off"></i>@LayoutViewResources.SignOutMenuHeader</a></li>
                             @*<li id="fat-menu" class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     @HttpContext.Current.User.Identity.Name <b class="caret"></b></a>
@@ -83,9 +83,9 @@
                         <ul class="nav pull-right">
                             <li><a href="#" class="en" onclick="click: changeCulture('en');"></a></li>
                             <li><a href="#" class="ru" onclick="click: changeCulture('ru');"></a></li>
-                            <li><a href="@Url.Action("SignIn", "Account")"><i class="icon-white icon-lock"></i> @LayoutViewResources.SignInMenuHeader</a></li>
+                            <li><a href="@Url.Action("SignIn", "Account")"><i class="icon-white icon-lock"></i>@LayoutViewResources.SignInMenuHeader</a></li>
                         </ul>
-                        @*<a href="@Url.Action("SignUp", "AccountAuth")" class="btn btn-success" style="margin-top:6px;margin-left: 20px">@LayoutViewResources.JoinUsMenuHeader &raquo;</a>
+@*<a href="@Url.Action("SignUp", "AccountAuth")" class="btn btn-success" style="margin-top:6px;margin-left: 20px">@LayoutViewResources.JoinUsMenuHeader &raquo;</a>
                         <a href="@Url.Action("SignIn", "AccountAuth")" class="btn btn-primary" style="margin-top:6px;margin-left: 20px">@LayoutViewResources.SignInMenuHeader &raquo;</a>*@
                     }
                 </div>
@@ -95,12 +95,65 @@
     </div>
     <div class="container-fluid">
         @RenderBody()
-        <hr>
-        <footer>
-            @this.Html.MvcSiteMap("TopMenu").Menu("TopMenuHelperModel", false)
-            <p>&copy; @LayoutViewResources.Footer</p>
-        </footer>
+        
     </div>
+        <footer class="row">
+            <div class="container">
+                <div class="row">
+                    <div class="span2">
+                        <h3>Quick links</h3>
+                        <!-- @this.Html.MvcSiteMap("TopMenu").Menu("TopMenuHelperModel", false) -->
+                        <ul>
+                            <li><a href="#" title="">Home</a></li>
+                            <li><a href="#" title="">Catalog</a></li>
+                            <li><a href="#" title="">Services</a></li>
+                        </ul>
+                    </div>
+                    <div class="span2">
+                        <br>
+                        <br>
+                        <ul>
+                            <li><a href="#" title="">Terms</a></li>
+                            <li><a href="#" title="">Contacts</a></li>
+                            <li><a href="#" title="">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="span4 social-networks">
+                        <h3>Stay in touch</h3>
+                        <p>Stay in touch on social networks</p>
+                        <a href="#" title="Follow us on Facebook" class="icon-facebook"></a>
+                        <a href="#" title="Follow us on Twitter" class="icon-twitter"></a>
+                        <a href="#" title="Follow us on Google Plus" class="icon-google-plus"></a>
+                    </div>
+                    <div class="span4">
+                        <h3>Newsletter</h3>
+                        <p>Subscribe to our monthly newsletter and be the first to know about our news and special deals!</p>
+                        <form>
+                            <input type="text" placeholder="Enter your E-mail">
+                            <input type="submit" class="btn" value="Ok">
+                        </form>
+                    </div>
+                </div>
+                <!-- /row -->
+            </div>
+            <!-- /container -->
+
+            <div id="footer-extra">
+                <div class="container">
+                    <div class="row">
+                        <div class="span4">
+                            &copy; @LayoutViewResources.Footer
+                        </div>
+                        <div class="span4">
+                            <i class="icon-phone"></i>&nbsp;<a href="callto:00123 320 000 123 456">00123 320 000 123 456</a>
+                        </div>
+                        <div class="span4">
+                            <i class="icon-envelope"></i>&nbsp;<a href="mailto:info@shopanyware.com">info@shopanyware.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
     <!-- /container -->
     <!-- Le javascript
     ================================================== -->
