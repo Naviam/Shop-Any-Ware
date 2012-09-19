@@ -16,7 +16,6 @@ namespace TdService.Providers
 
     using TdService.Model.Membership;
     using TdService.Repository.MsSql;
-    using TdService.Repository.MsSql.Repositories;
 
     /// <summary>
     /// The role provider.

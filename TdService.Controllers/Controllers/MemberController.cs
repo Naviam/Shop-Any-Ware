@@ -22,6 +22,7 @@ namespace TdService.UI.Web.Controllers
         /// <returns>
         /// Returns the page with the new interface.
         /// </returns>
+        [Authorize(Roles = "Shopper")]
         public ActionResult Dashboard()
         {
             return this.View("Dashboard");
