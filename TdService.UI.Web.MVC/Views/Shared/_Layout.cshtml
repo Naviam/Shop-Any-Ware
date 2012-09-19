@@ -1,4 +1,5 @@
 ﻿@using System.Web.Optimization
+@using TdService.Resources
 @using TdService.Resources.Views
 <!DOCTYPE html>
 <html lang="en">
@@ -37,9 +38,6 @@
                 </a>
                 <a class="brand" href="@Url.Action("Index", "Home")">@LayoutViewResources.PageHeader</a>
                 <div class="nav-collapse">
-                    @(!this.User.Identity.IsAuthenticated ? 
-                      this.Html.MvcSiteMap("TopMenu").Menu("TopMenuHelperModel", true) : 
-                      this.Html.MvcSiteMap("Shopper").Menu("PillsMenuHelperModel", false))
                     @if (User.Identity.IsAuthenticated)
                     {
                         <ul class="nav pull-right">
@@ -63,23 +61,19 @@
                             <li><a href="@Url.Action("Index", "Address")"><i class="icon-white icon-th-list"></i> @LayoutViewResources.DeliveryAddressesMenuHeader</a></li>
                             <li><a href="@Url.Action("Dashboard", "Admin")"><i class="icon-white icon-cog"></i> @LayoutViewResources.AdministrationMenuHeader</a></li>
                             <li><a href="@Url.Action("SignOut", "Account")"><i class="icon-white icon-off"></i> @LayoutViewResources.SignOutMenuHeader</a></li>
-                            @*<li id="fat-menu" class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    @HttpContext.Current.User.Identity.Name <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="@Url.Action("Index", "Profile")"><i class="icon-user"></i> @LayoutViewResources.ProfileMenuHeader</a></li>
-                                    <li><a href="@Url.Action("Index", "Address")"><i class="icon-th-list"></i> @LayoutViewResources.DeliveryAddressesMenuHeader</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="@Url.Action("Dashboard", "Admin")"><i class="icon-cog"></i> @LayoutViewResources.AdministrationMenuHeader</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="@Url.Action("SignOut", "Account")"><i class="icon-off"></i> @LayoutViewResources.SignOutMenuHeader</a></li>
-                                </ul>
-                            </li>*@
-                            @*<li><a href="@Url.Action("SignOut", "Account")"><i class="icon-white icon-off"></i> Sign Out</a></li>*@
                         </ul>
                     }
                     else
                     {
+                        <ul class="nav nav-pills">
+                            <li class="active"><a href="/">@SiteMapLocalizations.HomeTitle</a></li>
+                            <li><a href="@Url.Action("Shops", "Home")" title="@SiteMapLocalizations.StoresCatalogDescription">@SiteMapLocalizations.StoresCatalogTitle</a></li>
+                            <li><a href="@Url.Action("Services", "Home")" title="@SiteMapLocalizations.OurServicesDescription">@SiteMapLocalizations.OurServicesTitle</a></li>
+                            <li><a href="@Url.Action("Terms", "Home")" title="@SiteMapLocalizations.TermsDescription">@SiteMapLocalizations.TermsTitle</a></li>
+                            <li><a href="@Url.Action("Contact", "Home")" title="@SiteMapLocalizations.ContactsDescription">@SiteMapLocalizations.ContactsTitle</a></li>
+                            <li><a href="@Url.Action("Help", "Home")" title="@SiteMapLocalizations.FaqDescription">@SiteMapLocalizations.FaqTitle</a></li>
+                            <li></li>
+                        </ul>
                         <ul class="nav pull-right">
                             <li><a href="#" class="en" onclick="click: changeCulture('en');"></a></li>
                             <li><a href="#" class="ru" onclick="click: changeCulture('ru');"></a></li>
@@ -97,7 +91,15 @@
         @RenderBody()
         <hr>
         <footer>
-            @this.Html.MvcSiteMap("TopMenu").Menu("TopMenuHelperModel", false)
+            <ul class="nav nav-pills">
+                <li class="active"><a href="/">@SiteMapLocalizations.HomeTitle</a></li>
+                <li><a href="@Url.Action("Shops", "Home")" title="@SiteMapLocalizations.StoresCatalogDescription">@SiteMapLocalizations.StoresCatalogTitle</a></li>
+                <li><a href="@Url.Action("Services", "Home")" title="@SiteMapLocalizations.OurServicesDescription">@SiteMapLocalizations.OurServicesTitle</a></li>
+                <li><a href="@Url.Action("Terms", "Home")" title="@SiteMapLocalizations.TermsDescription">@SiteMapLocalizations.TermsTitle</a></li>
+                <li><a href="@Url.Action("Contact", "Home")" title="@SiteMapLocalizations.ContactsDescription">@SiteMapLocalizations.ContactsTitle</a></li>
+                <li><a href="@Url.Action("Help", "Home")" title="@SiteMapLocalizations.FaqDescription">@SiteMapLocalizations.FaqTitle</a></li>
+                <li></li>
+            </ul>
             <p>&copy; @LayoutViewResources.Footer</p>
         </footer>
     </div>
@@ -111,10 +113,8 @@
             var culture = readCookie("culture");
             if (culture != null) {
                 if (culture == "ru") {
-                    ////$(".en").removeClass("choosen_culture");
                     $(".ru").addClass("choosen_culture");
                 } else {
-                    ////$(".ru").removeClass("choosen_culture");
                     $(".en").addClass("choosen_culture");
                 }
             }
