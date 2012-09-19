@@ -89,54 +89,40 @@
     </div>
     <div class="container-fluid">
         @RenderBody()
-        @*<hr>
-        <footer>
-            <ul class="nav nav-pills">
-                <li class="active"><a href="/">@SiteMapLocalizations.HomeTitle</a></li>
-                <li><a href="@Url.Action("Shops", "Home")" title="@SiteMapLocalizations.StoresCatalogDescription">@SiteMapLocalizations.StoresCatalogTitle</a></li>
-                <li><a href="@Url.Action("Services", "Home")" title="@SiteMapLocalizations.OurServicesDescription">@SiteMapLocalizations.OurServicesTitle</a></li>
-                <li><a href="@Url.Action("Terms", "Home")" title="@SiteMapLocalizations.TermsDescription">@SiteMapLocalizations.TermsTitle</a></li>
-                <li><a href="@Url.Action("Contact", "Home")" title="@SiteMapLocalizations.ContactsDescription">@SiteMapLocalizations.ContactsTitle</a></li>
-                <li><a href="@Url.Action("Help", "Home")" title="@SiteMapLocalizations.FaqDescription">@SiteMapLocalizations.FaqTitle</a></li>
-                <li></li>
-            </ul>
-            <p>&copy; @LayoutViewResources.Footer</p>
-        </footer>*@
     </div>
-
         <footer class="row">
             <div class="container">
                 <div class="row">
                     <div class="span2">
-                        <h3>Quick links</h3>
+                        <h3>@LayoutViewResources.FooterLinksHeader</h3>
                         <ul>
-                            <li><a href="#" title="">Home</a></li>
-                            <li><a href="#" title="">Catalog</a></li>
-                            <li><a href="#" title="">Services</a></li>
+                            <li><a href="@Url.Action("Index", "Home")" title="@SiteMapLocalizations.HomeDescription">@SiteMapLocalizations.HomeTitle</a></li>
+                            <li><a href="@Url.Action("Shops", "Home")" title="@SiteMapLocalizations.StoresCatalogDescription">@SiteMapLocalizations.StoresCatalogTitle</a></li>
+                            <li><a href="@Url.Action("Services", "Home")" title="@SiteMapLocalizations.OurServicesDescription">@SiteMapLocalizations.OurServicesTitle</a></li>
                         </ul>
                     </div>
                     <div class="span2">
                         <br>
                         <br>
                         <ul>
-                            <li><a href="#" title="">Terms</a></li>
-                            <li><a href="#" title="">Contacts</a></li>
-                            <li><a href="#" title="">FAQ</a></li>
+                            <li><a href="@Url.Action("Terms", "Home")" title="@SiteMapLocalizations.TermsDescription">@SiteMapLocalizations.TermsTitle</a></li>
+                            <li><a href="@Url.Action("Contact", "Home")" title="@SiteMapLocalizations.ContactsDescription">@SiteMapLocalizations.ContactsTitle</a></li>
+                            <li><a href="@Url.Action("Help", "Home")" title="@SiteMapLocalizations.FaqDescription">@SiteMapLocalizations.FaqTitle</a></li>
                         </ul>
                     </div>
                     <div class="span4 social-networks">
-                        <h3>Stay in touch</h3>
-                        <p>Stay in touch on social networks</p>
+                        <h3>@LayoutViewResources.FooterStayInTouchHeader</h3>
+                        <p>@LayoutViewResources.FooterStayInTouchDescription</p>
                         <a href="#" title="Follow us on Facebook" class="icon-facebook"></a>
                         <a href="#" title="Follow us on Twitter" class="icon-twitter"></a>
                         <a href="#" title="Follow us on Google Plus" class="icon-google-plus"></a>
                     </div>
                     <div class="span4">
-                        <h3>Newsletter</h3>
-                        <p>Subscribe to our monthly newsletter and be the first to know about our news and special deals!</p>
+                        <h3>@LayoutViewResources.FooterNewsHeader</h3>
+                        <p>@LayoutViewResources.FooterNewsDescription</p>
                         <form>
-                            <input type="text" placeholder="Enter your E-mail">
-                            <input type="submit" class="btn" value="Ok">
+                            <input type="text" placeholder="@LayoutViewResources.FooterSubscribePlaceholder">
+                            <input type="submit" class="btn" value="@LayoutViewResources.FooterSubscribeButton">
                         </form>
                     </div>
                 </div>

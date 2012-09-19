@@ -97,6 +97,69 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Quick links.
+        /// </summary>
+        public static string FooterLinksHeader {
+            get {
+                return ResourceManager.GetString("FooterLinksHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Subscribe to our monthly newsletter and be the first to know about our news and special deals!.
+        /// </summary>
+        public static string FooterNewsDescription {
+            get {
+                return ResourceManager.GetString("FooterNewsDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Newsletter.
+        /// </summary>
+        public static string FooterNewsHeader {
+            get {
+                return ResourceManager.GetString("FooterNewsHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stay in touch on social networks.
+        /// </summary>
+        public static string FooterStayInTouchDescription {
+            get {
+                return ResourceManager.GetString("FooterStayInTouchDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stay in touch.
+        /// </summary>
+        public static string FooterStayInTouchHeader {
+            get {
+                return ResourceManager.GetString("FooterStayInTouchHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ok.
+        /// </summary>
+        public static string FooterSubscribeButton {
+            get {
+                return ResourceManager.GetString("FooterSubscribeButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter your E-mail.
+        /// </summary>
+        public static string FooterSubscribePlaceholder {
+            get {
+                return ResourceManager.GetString("FooterSubscribePlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to JOIN US.
         /// </summary>
         public static string JoinUsMenuHeader {

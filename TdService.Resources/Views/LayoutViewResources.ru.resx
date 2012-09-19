@@ -129,6 +129,27 @@
   <data name="Footer" xml:space="preserve">
     <value>ShowAnyWare.com 2012</value>
   </data>
+  <data name="FooterLinksHeader" xml:space="preserve">
+    <value>Информация</value>
+  </data>
+  <data name="FooterNewsDescription" xml:space="preserve">
+    <value>Подпишитесь на наши новости и будьте среди первых кто узнает про наши специальные предложения!</value>
+  </data>
+  <data name="FooterNewsHeader" xml:space="preserve">
+    <value>Новости</value>
+  </data>
+  <data name="FooterStayInTouchDescription" xml:space="preserve">
+    <value>Оставайтесь на связи в социальных сетях</value>
+  </data>
+  <data name="FooterStayInTouchHeader" xml:space="preserve">
+    <value>Оставайтесь на связи</value>
+  </data>
+  <data name="FooterSubscribeButton" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="FooterSubscribePlaceholder" xml:space="preserve">
+    <value>Введите Ваш E-mail</value>
+  </data>
   <data name="JoinUsMenuHeader" xml:space="preserve">
     <value>Регистрация</value>
   </data>

@@ -129,6 +129,27 @@
   <data name="Footer" xml:space="preserve">
     <value>ShopAnyWare.com 2012</value>
   </data>
+  <data name="FooterLinksHeader" xml:space="preserve">
+    <value>Quick links</value>
+  </data>
+  <data name="FooterNewsDescription" xml:space="preserve">
+    <value>Subscribe to our monthly newsletter and be the first to know about our news and special deals!</value>
+  </data>
+  <data name="FooterNewsHeader" xml:space="preserve">
+    <value>Newsletter</value>
+  </data>
+  <data name="FooterStayInTouchDescription" xml:space="preserve">
+    <value>Stay in touch on social networks</value>
+  </data>
+  <data name="FooterStayInTouchHeader" xml:space="preserve">
+    <value>Stay in touch</value>
+  </data>
+  <data name="FooterSubscribeButton" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="FooterSubscribePlaceholder" xml:space="preserve">
+    <value>Enter your E-mail</value>
+  </data>
   <data name="JoinUsMenuHeader" xml:space="preserve">
     <value>JOIN US</value>
   </data>

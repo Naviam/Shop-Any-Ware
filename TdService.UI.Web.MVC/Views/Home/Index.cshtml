@@ -74,7 +74,7 @@
                         <div class="control-group">
                             <label class="control-label">@AccountViewResources.EmailFormLabel:</label>
                             <div class="controls">
-                                @Html.TextBoxFor(m => m.SignInViewModel.Email, new Dictionary<string, object> { { "class", "span3" }, { "data-bind", "value: email" }, { "placeholder", AccountViewResources.EmailFormFieldPlaceholder } })
+                                @Html.TextBoxFor(m => m.SignInViewModel.Email, new Dictionary<string, object> { { "class", "span3" }, { "data-bind", "value: Email" }, { "placeholder", AccountViewResources.EmailFormFieldPlaceholder } })
                                 @Html.ValidationMessageFor(m => m.SignInViewModel.Email)
                                 @*<input type="email" class="span3" data-bind="value: email" required placeholder="@AccountViewResources.EmailFormFieldPlaceholder" />*@
                             </div>
@@ -82,14 +82,14 @@
                         <div class="control-group">
                             <label class="control-label">@AccountViewResources.PasswordFormLabel:</label>
                             <div class="controls">
-                                @Html.PasswordFor(m => m.SignInViewModel.Password, new Dictionary<string, object> { { "class", "span3" }, { "data-bind", "value: password" }, { "placeholder", AccountViewResources.PasswordFormFieldPlaceholder } })
+                                @Html.PasswordFor(m => m.SignInViewModel.Password, new Dictionary<string, object> { { "class", "span3" }, { "data-bind", "value: Password" }, { "placeholder", AccountViewResources.PasswordFormFieldPlaceholder } })
                                 @Html.ValidationMessageFor(m => m.SignInViewModel.Password)
                                 @*<input type="password" class="span3" data-bind="value: password" required placeholder="@AccountViewResources.PasswordFormFieldPlaceholder" />*@
                             </div>
                         </div>
                         <div class="control-group">
                             <div class="controls">
-                                <div style="float: left">@Html.CheckBoxFor(m => m.SignInViewModel.RememberMe, new Dictionary<string, object> { { "id", "rememberMe" }, { "data-bind", "value: rememberMe" } })@*<input id="rememberMe" type="checkbox" data-bind="value: rememberMe" />*@</div>
+                                <div style="float: left">@Html.CheckBoxFor(m => m.SignInViewModel.RememberMe, new Dictionary<string, object> { { "data-bind", "value: RememberMe" } })@*<input id="rememberMe" type="checkbox" data-bind="value: rememberMe" />*@</div>
                                 <div style="float: left; margin: 3px">@Html.LabelFor(m => m.SignInViewModel.RememberMe, @AccountViewResources.RememberMeFormLabel)</div>
                                 <div style="clear: left"><a href="@Url.Action("Forgot", "Account")">@AccountViewResources.ForgotPasswordHeader</a></div>
                             </div>
