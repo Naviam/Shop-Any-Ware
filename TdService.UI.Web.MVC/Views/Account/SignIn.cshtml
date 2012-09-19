@@ -27,7 +27,7 @@
         <div class="control-group">
             <div class="controls">
                 <div style="float:left">@Html.CheckBoxFor(m => m.RememberMe, new Dictionary<string, object> { { "id", "rememberMe" }, { "data-bind", "value: rememberMe" } })</div>
-                <div style="float:left;margin:3px"><label for="rememberMe">@AccountViewResources.RememberMeFormLabel</label></div>
+                <div style="float:left;margin:3px">@Html.LabelFor(m => m.RememberMe, @AccountViewResources.RememberMeFormLabel)</div>
                 <div style="float:left;margin:3px 0 0 22px"><a href="@Url.Action("Forgot", "Account")">@AccountViewResources.ForgotPasswordHeader</a></div>
             </div>
         </div>
