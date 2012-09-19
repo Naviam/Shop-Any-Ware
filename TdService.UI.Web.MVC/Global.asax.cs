@@ -13,6 +13,8 @@ namespace TdService.UI.Web.MVC
     using System.Web.Optimization;
     using System.Web.Routing;
 
+    using FluentValidation.Mvc;
+
     using TdService.Repository.MsSql;
     using TdService.UI.Web.MVC.App_Start;
 
@@ -44,6 +46,8 @@ namespace TdService.UI.Web.MVC
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            FluentValidationModelValidatorProvider.Configure();
         }
     }
 }
