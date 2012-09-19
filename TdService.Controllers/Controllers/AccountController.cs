@@ -98,7 +98,8 @@ namespace TdService.UI.Web.Controllers
         /// Redirect user to the home page of authenticated users.
         /// </returns>
         [HttpPost]
-        public ActionResult SignIn(SignInViewModel model)
+        [ValidateAntiForgeryToken(Salt = "signin")]
+        public ActionResult SignIn([Bind(Prefix = "SignInViewModel")]SignInViewModel model)
         {
             var result = new SignInViewModel();
             var validator = new SignInViewModelValidator();
@@ -115,9 +116,15 @@ namespace TdService.UI.Web.Controllers
                     var roles = userRolesResponse.ConvertToRoleViewModelCollection();
                     if (roles.Exists(r => r.Name == StandardRole.Shopper.ToString()))
                     {
-                        return this.RedirectToAction("Welcome", "Member");
+                        return this.RedirectToAction("Dashboard", "Member");
                     }
 
+                    if (roles.Exists(r => r.Name == StandardRole.Admin.ToString()))
+                    {
+                        return this.RedirectToAction("Dashboard", "Admin");
+                    }
+
+                    // for consultant and operator
                     return this.RedirectToAction("Index", "Operator");
                 }
 
@@ -138,12 +145,14 @@ namespace TdService.UI.Web.Controllers
                 result.Email = model.Email;
             }
 
-            var jsonNetResult = new JsonNetResult
-            {
-                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
-                Data = result
-            };
-            return jsonNetResult;
+            return this.View("SignIn", result);
+
+            ////var jsonNetResult = new JsonNetResult
+            ////{
+            ////    Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+            ////    Data = result
+            ////};
+            ////return jsonNetResult;
         }
 
         /// <summary>
