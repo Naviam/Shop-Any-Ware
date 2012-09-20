@@ -104,6 +104,7 @@ namespace TdService.Specs.Steps
                     models.Add(actual);
                 }
             }
+
             ScenarioContext.Current.Set(models);
         }
 

@@ -95,5 +95,18 @@ namespace TdService.Specs.Steps
             var orderService = new OrderService(orderRepository, logger);
             ScenarioContext.Current.Set(orderService);
         }
+
+        /// <summary>
+        /// The before order scenarios.
+        /// </summary>
+        [BeforeScenario("packages")]
+        public static void BeforePackagesScenarios()
+        {
+            var context = new ShopAnyWareSql();
+            var userRepository = new UserRepository(context);
+            var packageRepository = new PackageRepository(context);
+            var packagesService = new PackagesService(packageRepository, userRepository);
+            ScenarioContext.Current.Set(packagesService);
+        }
     }
 }

@@ -144,8 +144,9 @@
     <Reference Include="Unity.Mvc3">
       <HintPath>..\packages\Unity.Mvc3.1.2\lib\net40\Unity.Mvc3.dll</HintPath>
     </Reference>
-    <Reference Include="WebActivator">
-      <HintPath>..\packages\WebActivator.1.4.4\lib\net40\WebActivator.dll</HintPath>
+    <Reference Include="WebActivator, Version=1.5.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebActivator.1.5.1\lib\net40\WebActivator.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
@@ -363,7 +364,9 @@
     <Content Include="Scripts\ViewModels\ProfileViewModel.js" />
     <Content Include="Scripts\ViewModels\SignInViewModel.js" />
     <Content Include="Unity.Mvc3.README.txt" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

@@ -117,6 +117,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>OrderItems.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\PackageItems.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PackageItems.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\Profile.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -126,6 +131,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ShopperOrders.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\ShopperPackages.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShopperPackages.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\SignIn.feature.cs">
       <AutoGen>True</AutoGen>
@@ -152,6 +162,8 @@
     <Compile Include="ShopAnyWareTestInitilizer.cs" />
     <Compile Include="Steps\GivenSteps.cs" />
     <Compile Include="Steps\Hooks.cs" />
+    <Compile Include="Steps\PackageItemsSteps.cs" />
+    <Compile Include="Steps\PackageSteps.cs" />
     <Compile Include="Steps\ProfileSteps.cs" />
     <Compile Include="Steps\ShopperOrdersSteps.cs" />
     <Compile Include="Steps\SignInSteps.cs" />
@@ -178,6 +190,10 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>OrderItems.feature.cs</LastGenOutput>
     </None>
+    <None Include="Features\PackageItems.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>PackageItems.feature.cs</LastGenOutput>
+    </None>
     <None Include="Features\Profile.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Profile.feature.cs</LastGenOutput>
@@ -185,6 +201,10 @@
     <None Include="Features\ShopperOrders.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>ShopperOrders.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\ShopperPackages.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ShopperPackages.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\SignIn.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
