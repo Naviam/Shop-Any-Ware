@@ -45,18 +45,7 @@ namespace TdService.UI.Web.MVC.App_Start
                         "~/scripts/ui/jquery-ui-1.8.18.custom.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                        "~/Scripts/bootstrap/bootstrap-transition.js",
-                        "~/Scripts/bootstrap/bootstrap-alert.js",
-                        "~/Scripts/bootstrap/bootstrap-modal.js",
-                        "~/Scripts/bootstrap/bootstrap-dropdown.js",
-                        "~/Scripts/bootstrap/bootstrap-scrollspy.js",
-                        "~/Scripts/bootstrap/bootstrap-tab.js",
-                        "~/Scripts/bootstrap/bootstrap-tooltip.js",
-                        "~/Scripts/bootstrap/bootstrap-popover.js",
-                        "~/Scripts/bootstrap/bootstrap-button.js",
-                        "~/Scripts/bootstrap/bootstrap-collapse.js",
-                        "~/Scripts/bootstrap/bootstrap-carousel.js",
-                        "~/Scripts/bootstrap/bootstrap-typeahead.js"));
+                        "~/Scripts/bootstrap/bootstrap.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/noty").Include(
                         "~/Scripts/noty/jquery.noty.js"));
