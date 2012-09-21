@@ -385,7 +385,7 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Мы покупаем и пересылаем.
+        ///   Looks up a localized string similar to Request For Orders.
         /// </summary>
         public static string OrderOption1 {
             get {
@@ -394,7 +394,7 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Вы покупаете и мы пересылаем.
+        ///   Looks up a localized string similar to Recent Orders.
         /// </summary>
         public static string OrderOption2 {
             get {

@@ -226,10 +226,10 @@
     <value>Номер заказа</value>
   </data>
   <data name="OrderOption1" xml:space="preserve">
-    <value>Мы покупаем и пересылаем</value>
+    <value>Запросы на заказ</value>
   </data>
   <data name="OrderOption2" xml:space="preserve">
-    <value>Вы покупаете и мы пересылаем</value>
+    <value>Текущие заказы</value>
   </data>
   <data name="OrderReceivedDateHeader" xml:space="preserve">
     <value>Получен</value>
@@ -268,7 +268,7 @@
     <value>К-во</value>
   </data>
   <data name="RecentPackagesTabHeader" xml:space="preserve">
-    <value>Последние</value>
+    <value>Текущие посылки</value>
   </data>
   <data name="RemoveOrderButton" xml:space="preserve">
     <value>Удалить посылку</value>

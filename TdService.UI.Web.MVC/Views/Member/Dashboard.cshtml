@@ -10,22 +10,23 @@
         <h3>@DashboardViewResources.OrdersHeader</h3><a href="#" class="store_address" data-trigger="click" data-title="@DashboardViewResources.MyUsAddressHeader" data-placement="bottom" data-content="<table class='table-striped table-condensed address'><tbody><tr><td>@AddressViewResources.AddressTable_FirstName: </td><td>@Model.FirstName</td></tr><tr><td>@AddressViewResources.AddressTable_LastName: </td><td>@Model.LastName</td></tr><tr><td>@AddressViewResources.AddressTable_AddressLine1: </td><td>452 PALISADE AVE #D</td></tr><tr><td>@AddressViewResources.AddressTable_AddressLine2: </td><td>CLIFFSIDE PARK , Ste #@Model.UserId</td></tr><tr><td>@AddressViewResources.AddressTable_ZipCode: </td><td>07010</td></tr><tr><td>@AddressViewResources.AddressTable_City: </td><td>New Jersey</td></tr><tr><td>@AddressViewResources.AddressTable_State: </td><td>New York or NY</td></tr><tr><td>@AddressViewResources.AddressTable_Phone: </td><td>(734)5166594</td></tr></tbody></table>">@DashboardViewResources.MyUsAddressLinkMessage</a><i class="icon-home" style="float:right;margin:2px 4px"></i>
         <br />
         <div id="addOrderForm" class="package">
-            <ul class="nav nav-tabs">
-                <li><a href="#">@DashboardViewResources.OrderOption1</a></li>
-                <li class="active"><a href="#">@DashboardViewResources.OrderOption2</a></li>
-                <li><a href="#">@DashboardViewResources.HistoryPackagesTabHeader</a></li>
-            </ul>
             <div class="control-group" data-bind="css: { error: !newOrderField.isValid() }, validationOptions: { insertMessages: false, decorateElement: true, errorClass: 'error', parseInputAttributes: false, errorElementClass: 'error' }">
                 <div class="controls">
                     <div class="input-prepend input-append">
                         <input class="add-order" style="width:66%" data-bind="value: newOrderField, valueUpdate: 'afterkeydown', executeOnEnter: createOrder, autosuggest: retailers" title="@DashboardViewResources.NewOrderPlaceholder" placeholder="@DashboardViewResources.NewOrderPlaceholder"/><button id="addNewOrderButton" class="btn btn-large btn-success" type="button" data-loading-text="@DashboardViewResources.AddOrderButtonLoadingMessage" data-bind="click: createOrder, disable: disableAddOrderButton">@DashboardViewResources.AddOrderButton</button>
                         <div class="sub">
                             <div class="link_example">@DashboardViewResources.ExampleHeader: <a href="#" data-bind="click: addOrderExample.bind($data, 'amazon.com')">amazon.com</a>, <a href="#" data-bind="click: addOrderExample.bind($data, 'gap.com')">gap.com</a>, <a href="#" data-bind="click: addOrderExample.bind($data, 'macys.com')">macys.com</a></div>
-                            <div class="link_expand"><a href="#" data-bind="click: collapseAllOrders">@DashboardViewResources.CollapseAllOrders</a></div>
+                            
                         </div>
                     </div>
                 </div>
             </div>
+            <ul class="nav nav-tabs">
+                @*<li><a href="#">@DashboardViewResources.OrderOption1</a></li>*@
+                <li class="active"><a href="#">@DashboardViewResources.OrderOption2</a></li>
+                <li><a href="#">@DashboardViewResources.HistoryPackagesTabHeader</a></li>
+                <div class="link_expand"><a href="#" data-bind="click: collapseAllOrders">@DashboardViewResources.CollapseAllOrders</a></div>
+            </ul>
         </div>
         <div style="clear:left"></div>
         <div class="alert alert-info package" data-bind="visible: shouldShowOrdersEmptyMessage">@DashboardViewResources.NoOrdersMessage</div>
@@ -158,13 +159,9 @@
         </div>
     </div>
     <div class="span6" style="float: right">
-        <h3>@DashboardViewResources.PackagesHeader</h3><a href="#" class="btn btn-success balance">@DashboardViewResources.BalanceHeader</a><span style="float:right;margin:6px 12px;font-weight:bold;font-size:18px">@DashboardViewResources.BalanceHeader: $123</span>
+        <h3>@DashboardViewResources.PackagesHeader</h3><a href="#" class="btn btn-success balance">@DashboardViewResources.BalanceAddFundsButton</a><span style="float:right;margin:6px 12px;font-weight:bold;font-size:18px">@DashboardViewResources.BalanceHeader: $123</span>
         <br />
         <div class="package">
-            <ul class="nav nav-tabs">
-                <li class="active"><a href="#">@DashboardViewResources.RecentPackagesTabHeader</a></li>
-                <li><a href="#">@DashboardViewResources.HistoryPackagesTabHeader</a></li>
-            </ul>
             <div class="control-group" data-bind="css: { error: !newPackageField.isValid() }, validationOptions: { insertMessages: false, decorateElement: true, errorClass: 'error', parseInputAttributes: false, errorElementClass: 'error' }">
                 <div class="controls">
                     <div class="input-prepend input-append">
@@ -176,6 +173,10 @@
                     </div>
                 </div>
             </div>
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#">@DashboardViewResources.RecentPackagesTabHeader</a></li>
+                <li><a href="#">@DashboardViewResources.HistoryPackagesTabHeader</a></li>
+            </ul>
         </div>
         <div style="clear:left"></div>
         <div id="packages" data-bind="foreach: packages">

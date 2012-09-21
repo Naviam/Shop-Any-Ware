@@ -226,10 +226,10 @@
     <value>Order #</value>
   </data>
   <data name="OrderOption1" xml:space="preserve">
-    <value>Мы покупаем и пересылаем</value>
+    <value>Request For Orders</value>
   </data>
   <data name="OrderOption2" xml:space="preserve">
-    <value>Вы покупаете и мы пересылаем</value>
+    <value>Recent Orders</value>
   </data>
   <data name="OrderReceivedDateHeader" xml:space="preserve">
     <value>Received</value>
