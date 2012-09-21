@@ -30,8 +30,8 @@ namespace TdService.UI.Web.ViewModels.Account
                 .EmailAddress().WithMessage(ErrorCode.UserEmailInvalid.ToString())
                 .Length(1, 256).WithMessage(ErrorCode.UserEmailMaxLength.ToString());
             RuleFor(su => su.Password).NotEmpty().WithMessage(ErrorCode.UserPasswordRequired.ToString())
-                .Length(7, 1000).WithMessage(ErrorCode.UserPasswordMinLength.ToString())
-                .Length(1, 21).WithMessage(ErrorCode.UserPasswordMaxLength.ToString());
+                .Length(7, 1000).WithMessage(ErrorCode.UserPasswordMinLength.ToString());
+                ////.Length(1, 21).WithMessage(ErrorCode.UserPasswordMaxLength.ToString());
             RuleFor(su => su.PasswordConfirm).NotEmpty().WithMessage(ErrorCode.UserPasswordConfirmRequired.ToString())
                 .Equal(u => u.Password).WithMessage(ErrorCode.UserPasswordConfirmNotEqual.ToString());
             RuleFor(su => su.FirstName).NotEmpty().WithMessage(ErrorCode.ProfileFirstNameRequired.ToString())

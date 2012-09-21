@@ -23,45 +23,53 @@
         </ul>
         <div class="tab-content">
             <div id="signUpForm" class="tab-pane active">
-                <form class="form-horizontal">
+                @using (Html.BeginForm("SignUp", "Account", FormMethod.Post, new Dictionary<string, object> { { "class", "form-horizontal" } }))
+                {
                     @Html.AntiForgeryToken()
-                    @*<div class="control-group">
-                            <h2>@AccountViewResources.SignUpPageHeader</h2>
-                        </div>*@
                     <div class="control-group">
                         <label class="control-label">@AccountViewResources.EmailFormLabel:</label>
                         <div class="controls">
-                            <input type="email" class="span3" data-bind="value: email" required placeholder="@AccountViewResources.EmailFormFieldPlaceholder" />
+                            @Html.TextBoxFor(m => m.SignUpViewModel.Email, new Dictionary<string, object> { { "class", "span3" }, { "data-bind", "value: email" }, { "placeholder", AccountViewResources.EmailFormFieldPlaceholder } })
+                            @Html.ValidationMessageFor(m => m.SignUpViewModel.Email)
+                            @*<input type="email" class="span3" data-bind="value: email" required placeholder="@AccountViewResources.EmailFormFieldPlaceholder" />*@
                         </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label">@AccountViewResources.PasswordFormLabel:</label>
                         <div class="controls">
-                            <input type="password" class="span3" data-bind="value: password" required placeholder="@AccountViewResources.PasswordFormFieldPlaceholder" />
+                            @Html.PasswordFor(m => m.SignUpViewModel.Password, new Dictionary<string, object> { { "class", "span3" }, { "data-bind", "value: password" }, { "placeholder", AccountViewResources.PasswordFormFieldPlaceholder } })
+                            @Html.ValidationMessageFor(m => m.SignUpViewModel.Password)
+                            @*<input type="password" class="span3" data-bind="value: password" required placeholder="@AccountViewResources.PasswordFormFieldPlaceholder" />*@
                         </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label">@AccountViewResources.ConfirmPasswordFormLabel:</label>
                         <div class="controls">
-                            <input type="password" class="span3" data-bind="value: passwordConfirm" required placeholder="@AccountViewResources.PasswordConfirmFormFieldPlaceholder" />
+                            @Html.PasswordFor(m => m.SignUpViewModel.PasswordConfirm, new Dictionary<string, object> { { "class", "span3" }, { "data-bind", "value: passwordConfirm" }, { "placeholder", AccountViewResources.PasswordConfirmFormFieldPlaceholder } })
+                            @Html.ValidationMessageFor(m => m.SignUpViewModel.PasswordConfirm)
+                            @*<input type="password" class="span3" data-bind="value: passwordConfirm" required placeholder="@AccountViewResources.PasswordConfirmFormFieldPlaceholder" />*@
                         </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label">@AccountViewResources.FirstNameFormLabel:</label>
                         <div class="controls">
-                            <input type="text" class="span3" data-bind="value: firstName" required placeholder="@AccountViewResources.FirstNameFormFieldPlaceholder" />
+                            @Html.TextBoxFor(m => m.SignUpViewModel.FirstName, new Dictionary<string, object> { { "class", "span3" }, { "data-bind", "value: firstName" }, { "placeholder", AccountViewResources.FirstNameFormFieldPlaceholder } })
+                            @Html.ValidationMessageFor(m => m.SignUpViewModel.FirstName)
+                            @*<input type="text" class="span3" data-bind="value: firstName" required placeholder="@AccountViewResources.FirstNameFormFieldPlaceholder" />*@
                         </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label">@AccountViewResources.LastNameFormLabel:</label>
                         <div class="controls">
-                            <input type="text" class="span3" data-bind="value: lastName" required placeholder="@AccountViewResources.LastNameFormFieldPlaceholder" />
+                            @Html.TextBoxFor(m => m.SignUpViewModel.LastName, new Dictionary<string, object> { { "class", "span3" }, { "data-bind", "value: lastName" }, { "placeholder", AccountViewResources.LastNameFormFieldPlaceholder } })
+                            @Html.ValidationMessageFor(m => m.SignUpViewModel.LastName)
+                            @*<input type="text" class="span3" data-bind="value: lastName" required placeholder="@AccountViewResources.LastNameFormFieldPlaceholder" />*@
                         </div>
                     </div>
                     <div class="form-actions">
                         <button type="submit" class="btn btn-primary btn-large">@AccountViewResources.SignUpButton</button>
                     </div>
-                </form>
+                }
             </div>
             <div id="signInForm" class="tab-pane">
                 @using (Html.BeginForm("SignIn", "Account", FormMethod.Post, new Dictionary<string, object> { { "class", "form-horizontal" } }))

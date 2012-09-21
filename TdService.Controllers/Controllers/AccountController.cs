@@ -12,6 +12,7 @@ namespace TdService.UI.Web.Controllers
     using System;
     using System.Collections.Generic;
     using System.Collections.Specialized;
+    using System.Linq;
     using System.Web.Mvc;
     using System.Xml;
 
@@ -169,7 +170,7 @@ namespace TdService.UI.Web.Controllers
         /// </returns>
         public ActionResult SignUp()
         {
-            this.ViewData.Model = new SignUpViewModel();
+            this.ViewData.Model = new MainViewModel { SignUpViewModel = new SignUpViewModel() };
             return this.View("SignUp");
         }
 
@@ -184,7 +185,7 @@ namespace TdService.UI.Web.Controllers
         /// </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult SignUp(SignUpViewModel model)
+        public ActionResult SignUp([Bind(Prefix = "SignUpViewModel")]SignUpViewModel model)
         {
             var result = new SignUpViewModel();
             var validator = new SignUpViewModelValidator();
@@ -202,6 +203,34 @@ namespace TdService.UI.Web.Controllers
 
                 var response = this.membershipService.SignUpShopper(request);
                 result = response.ConvertToSignUpViewModel();
+
+                if (response.BrokenRules.Any())
+                {
+                    foreach (var rule in response.BrokenRules)
+                    {
+                        ModelState.AddModelError(rule.Property, rule.Rule);
+                    }
+
+                    if (string.IsNullOrWhiteSpace(result.Email))
+                    {
+                        result.Email = model.Email;
+                    }
+
+                    if (string.IsNullOrWhiteSpace(result.FirstName))
+                    {
+                        result.FirstName = model.FirstName;
+                    }
+
+                    if (string.IsNullOrWhiteSpace(result.LastName))
+                    {
+                        result.LastName = model.LastName;
+                    }
+
+                    return this.View("SignUp", new MainViewModel { SignUpViewModel = result });
+                }
+
+                this.FormsAuthentication.SetAuthenticationToken(model.Email, false);
+                return this.RedirectToAction("Welcome", "Member");
             }
             else
             {
@@ -228,12 +257,13 @@ namespace TdService.UI.Web.Controllers
                 result.LastName = model.LastName;
             }
 
-            var jsonNetResult = new JsonNetResult
-            {
-                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
-                Data = result
-            };
-            return jsonNetResult;
+            return this.View("SignUp", new MainViewModel { SignUpViewModel = result });
+            ////var jsonNetResult = new JsonNetResult
+            ////{
+            ////    Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+            ////    Data = result
+            ////};
+            ////return jsonNetResult;
         }
 
         /// <summary>

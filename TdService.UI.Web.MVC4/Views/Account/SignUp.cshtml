@@ -1,4 +1,4 @@
-﻿@model TdService.UI.Web.ViewModels.Account.SignUpViewModel
+﻿@model TdService.UI.Web.ViewModels.Account.MainViewModel
 @using TdService.Resources.Views;
 @{
     ViewBag.Title = AccountViewResources.SignUpPageTitle;
@@ -13,36 +13,36 @@
         <div class="control-group">
             <label class="control-label">@AccountViewResources.EmailFormLabel:</label>
             <div class="controls">
-                @Html.TextBoxFor(m => m.Email, new Dictionary<string, object> { { "type", "email" }, { "class", "input-xlarge" }, { "data-bind", "value: email, change: verifyEmailExists" }, { "placeholder", AccountViewResources.EmailFormFieldPlaceholder } })
-                @Html.ValidationMessageFor(m => m.Email)
+                @Html.TextBoxFor(m => m.SignUpViewModel.Email, new Dictionary<string, object> { { "type", "email" }, { "class", "input-xlarge" }, { "data-bind", "value: email, change: verifyEmailExists" }, { "placeholder", AccountViewResources.EmailFormFieldPlaceholder } })
+                @Html.ValidationMessageFor(m => m.SignUpViewModel.Email)
             </div>
         </div>
         <div class="control-group">
             <label class="control-label">@AccountViewResources.PasswordFormLabel:</label>
             <div class="controls">
-                @Html.PasswordFor(m => m.Password, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: password" }, { "placeholder", AccountViewResources.PasswordFormFieldPlaceholder } })
-                @Html.ValidationMessageFor(m => m.Password)
+                @Html.PasswordFor(m => m.SignUpViewModel.Password, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: password" }, { "placeholder", AccountViewResources.PasswordFormFieldPlaceholder } })
+                @Html.ValidationMessageFor(m => m.SignUpViewModel.Password)
             </div>
         </div>
         <div class="control-group">
             <label class="control-label">@AccountViewResources.ConfirmPasswordFormLabel:</label>
             <div class="controls">
-                @Html.PasswordFor(m => m.PasswordConfirm, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: passwordConfirm" }, { "placeholder", AccountViewResources.PasswordConfirmFormFieldPlaceholder } })
-                @Html.ValidationMessageFor(m => m.PasswordConfirm)
+                @Html.PasswordFor(m => m.SignUpViewModel.PasswordConfirm, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: passwordConfirm" }, { "placeholder", AccountViewResources.PasswordConfirmFormFieldPlaceholder } })
+                @Html.ValidationMessageFor(m => m.SignUpViewModel.PasswordConfirm)
             </div>
         </div>
         <div class="control-group">
             <label class="control-label">@AccountViewResources.FirstNameFormLabel:</label>
             <div class="controls">
-                @Html.TextBoxFor(m => m.FirstName, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: firstName" }, { "placeholder", AccountViewResources.FirstNameFormFieldPlaceholder } })
-                @Html.ValidationMessageFor(m => m.FirstName)
+                @Html.TextBoxFor(m => m.SignUpViewModel.FirstName, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: firstName" }, { "placeholder", AccountViewResources.FirstNameFormFieldPlaceholder } })
+                @Html.ValidationMessageFor(m => m.SignUpViewModel.FirstName)
             </div>
         </div>
         <div class="control-group">
             <label class="control-label">@AccountViewResources.LastNameFormLabel:</label>
             <div class="controls">
-                @Html.TextBoxFor(m => m.LastName, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: lastName" }, { "placeholder", AccountViewResources.LastNameFormFieldPlaceholder } })
-                @Html.ValidationMessageFor(m => m.LastName)
+                @Html.TextBoxFor(m => m.SignUpViewModel.LastName, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: lastName" }, { "placeholder", AccountViewResources.LastNameFormFieldPlaceholder } })
+                @Html.ValidationMessageFor(m => m.SignUpViewModel.LastName)
             </div>
         </div>
         <div class="form-actions">
@@ -52,7 +52,7 @@
 }
 @section Scripts
 {
-    <script type="text/javascript" src="@Url.Content("~/Scripts/model/SignUpViewModel.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/ViewModels/SignUpViewModel.js")"></script>
     <script type="text/javascript">
         
     </script>
