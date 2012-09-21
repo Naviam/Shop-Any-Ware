@@ -109,6 +109,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ProfileViewResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Views\WelcomeViewResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WelcomeViewResources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="BreadcrumbResources.resx">
@@ -177,6 +182,11 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ProfileViewResources.ru.resx" />
+    <EmbeddedResource Include="Views\WelcomeViewResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>WelcomeViewResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\WelcomeViewResources.ru.resx" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

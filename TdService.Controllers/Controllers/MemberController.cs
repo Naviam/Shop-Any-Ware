@@ -69,7 +69,14 @@ namespace TdService.UI.Web.Controllers
         [Authorize(Roles = "Shopper")]
         public ActionResult Welcome()
         {
-            return this.View("Welcome");
+            var model = new WelcomeViewModel();
+            var response = this.membershipService.GetProfile(
+                new GetProfileRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() });
+            model.UserId = response.Id;
+            model.FirstName = response.FirstName;
+            model.LastName = response.LastName;
+
+            return this.View("Welcome", model);
         }
     }
 }

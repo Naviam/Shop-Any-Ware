@@ -61,6 +61,7 @@
     <Compile Include="Account\SignUpViewModelValidator.cs" />
     <Compile Include="Account\VerifyEmailViewModel.cs" />
     <Compile Include="Member\ShopperDashboardViewModel.cs" />
+    <Compile Include="Member\WelcomeViewModel.cs" />
     <Compile Include="ModelError.cs" />
     <Compile Include="Order\OrderViewModelValidator.cs" />
     <Compile Include="ViewModelBase.cs" />

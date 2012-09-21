@@ -1,35 +1,37 @@
-﻿@{
-    ViewBag.Title = "ShopAnyWare - Welcome";
+﻿@using TdService.Resources.Views
+@model TdService.UI.Web.ViewModels.Member.WelcomeViewModel
+@{
+    ViewBag.Title = WelcomeViewResources.WelcomePageHeader;
 }
 <div class="container-fluid">
     <div class="row-fluid">
         <div class="span12">
             <div class="hero-unit" style="margin-right: 460px">
-                <h1>Добро пожаловать!</h1>
+                <h1>@WelcomeViewResources.WelcomeHeader</h1>
                 <br />
-                <p>Уважаемый(ая) Vitali Hatalski!</p>
-                <p>Мы рады приветствовать Вас на нашем ресурсе. Надеемся, что мы станем хорошими друзьями и Вам будет легко и приятно работать с нами.</p>
-                <p>Ваш адрес для заказа в американских интернет магазинах:</p>
+                @*<p>Уважаемый(ая) Vitali Hatalski!</p>
+                <p>Мы рады приветствовать Вас на нашем ресурсе. Надеемся, что мы станем хорошими друзьями и Вам будет легко и приятно работать с нами.</p>*@
+                <p>@WelcomeViewResources.UsAddressHeader:</p>
                 <div class="alert">
-                    <p>First name: Vitali</p>
-                    <p>Last name: Hatalski</p>
-                    <p>Индекс: 19032</p>
-                    <p>Street address (строка 1): 701 Ashland Ave</p>
-                    <p>Street address (строка 2): BWW-Lettershop Ste 48419</p>
-                    <p>Город: Folcroft</p>
-                    <p>State: "Pennsylvania" или "PA"</p>
-                    <p>Телефон: 7345166594</p>
+                    <p>@AddressViewResources.AddressTable_FirstName: @Model.FirstName</p>
+                    <p>@AddressViewResources.AddressTable_LastName: @Model.LastName</p>
+                    <p>@AddressViewResources.AddressTable_ZipCode: 07010</p>
+                    <p>@AddressViewResources.AddressTable_AddressLine1: 452 PALISADE AVE #D</p>
+                    <p>@AddressViewResources.AddressTable_AddressLine2: CLIFFSIDE PARK , Ste #@Model.UserId</p>
+                    <p>@AddressViewResources.AddressTable_City: New Jersey</p>
+                    <p>@AddressViewResources.AddressTable_State: New York or NY</p>
+                    <p>@AddressViewResources.AddressTable_Phone: (734)5166594</p>
                 </div>
-                <p>Вы всегда сможете его найти в разделе Настройки главного меню.</p>
-                <a class="btn btn-large btn-success" href="@Url.Action("Dashboard")">Start working with your orders!</a>
+                <a class="btn btn-large btn-success" href="@Url.Action("Dashboard")">Перейти к работе с заказами!</a>
+                @*<p></p>*@
             </div>
         </div>
         <div class="mail">
             <p class="mail_address">
-                Vitali Hatalski<br />
-                701 Ashland Ave<br />
-                BWW Ste 89859<br />
-                Folcroft, PA 19032-2011
+                @Model.FirstName @Model.LastName<br />
+                452 PALISADE AVE #D<br />
+                CLIFFSIDE PARK , Ste #@Model.UserId<br />
+                New Jersey, NY 07010
             </p>
         </div>
     </div>
