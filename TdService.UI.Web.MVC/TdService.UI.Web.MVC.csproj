@@ -168,6 +168,7 @@
     <Content Include="Content\img\glyphicons-halflings-white.png" />
     <Content Include="Content\img\glyphicons-halflings.png" />
     <Content Include="Content\img\kindle.jpg" />
+    <Content Include="Content\img\mail.jpg" />
     <Content Include="Content\img\ru.png" />
     <Content Include="Content\img\sorting\asc.gif" />
     <Content Include="Content\img\sorting\desc.gif" />
@@ -513,10 +514,10 @@
     <Content Include="Sitemaps\TopMenu.sitemap">
       <SubType>Designer</SubType>
     </Content>
-    <None Include="Content\font\fontawesome-webfont.eot" />
-    <None Include="Content\font\fontawesome-webfont.svgz" />
-    <None Include="Content\font\fontawesome-webfont.ttf" />
-    <None Include="Content\font\fontawesome-webfont.woff" />
+    <Content Include="Content\font\fontawesome-webfont.eot" />
+    <Content Include="Content\font\fontawesome-webfont.svgz" />
+    <Content Include="Content\font\fontawesome-webfont.ttf" />
+    <Content Include="Content\font\fontawesome-webfont.woff" />
     <None Include="Content\less\accordion.less" />
     <None Include="Content\less\alerts.less" />
     <None Include="Content\less\badges.less" />

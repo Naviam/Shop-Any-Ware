@@ -61,6 +61,15 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Start working!.
+        /// </summary>
+        public static string DashboardButton {
+            get {
+                return ResourceManager.GetString("DashboardButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Here is your U.S. address for shopping.
         /// </summary>
         public static string UsAddressHeader {
