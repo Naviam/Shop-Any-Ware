@@ -45,7 +45,7 @@ namespace TdService.UI.Web.MVC.App_Start
                         "~/scripts/ui/jquery-ui-1.8.18.custom.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                        "~/Scripts/bootstrap/bootstrap.min.js"));
+                        "~/Scripts/bootstrap/bootstrap.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/noty").Include(
                         "~/Scripts/noty/jquery.noty.js"));
