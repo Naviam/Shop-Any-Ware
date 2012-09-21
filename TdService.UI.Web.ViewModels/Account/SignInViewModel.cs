@@ -6,8 +6,6 @@
 
 namespace TdService.UI.Web.ViewModels.Account
 {
-    using FluentValidation.Attributes;
-
     /// <summary>
     /// This class describes the view model for sign in page.
     /// </summary>

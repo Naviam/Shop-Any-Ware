@@ -19,7 +19,7 @@
 }
 @using (Html.BeginForm("Save", "Profile", FormMethod.Post, new { @class = "form-horizontal" }))
 {
-    @Html.AntiForgeryToken("Profile")
+    @Html.AntiForgeryToken()
     <input id="model" type="hidden" value="@(new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(Model))" />
     <fieldset>
         @Html.HiddenFor(m => m.Id)

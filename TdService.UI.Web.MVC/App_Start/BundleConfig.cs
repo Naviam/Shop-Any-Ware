@@ -26,9 +26,11 @@ namespace TdService.UI.Web.MVC.App_Start
         /// </param>
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new StyleBundle("~/Content/sitecss").Include(
+            bundles.Add(new StyleBundle("~/Content/less/bootstrapcss").Include(
                         "~/Content/less/bootstrap.css",
-                        "~/Content/less/responsive.css",
+                        "~/Content/less/responsive.css"));
+
+            bundles.Add(new StyleBundle("~/Content/sitecss").Include(
                         "~/Content/styles.css",
                         "~/Content/noty/jquery.noty.css",
                         "~/Content/noty/noty_theme_default.css",
