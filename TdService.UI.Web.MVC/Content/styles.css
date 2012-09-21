@@ -133,6 +133,10 @@ html
     background: url(img/ru.png);
 }
 
+.mail{background: url(img/mail.jpg) no-repeat 0 0;margin:20px auto 0;height:256px;width:450px}
+	.mail_address{padding:30px 40px;font-size:18px;line-height:normal}
+.mail_side{}
+
 .dollar
 {
     color: #fff;
@@ -543,7 +547,7 @@ html
 
     .form_registration .nav-tabs
     {
-        border-bottom: 1px solid #52a552;
+        border-bottom: 1px solid #999;
     }
 
         .form_registration .nav-tabs li
@@ -560,8 +564,8 @@ html
 
     .form_registration .tab-content
     {
-        background-color: #e6f5e6;
-        border: 1px solid #52a552;
+        /*background-color: #e6f5e6;*/
+        border: 1px solid #999;
         border-top: transparent;
         padding-top: 18px;
     }
@@ -573,7 +577,7 @@ html
 
     .form_registration .form-actions
     {
-        background-color: #81ce81;
+        /*background-color: #81ce81;*/
         border-top: transparent;
     }
 
@@ -584,8 +588,8 @@ html
 
     .form_registration .active > a
     {
-        background-color: #e6f5e6 !important;
-        border: 1px solid #52a552 !important;
+        /*background-color: #e6f5e6 !important;*/
+        border: 1px solid #999 !important;
         border-bottom: transparent !important;
         color: #333 !important;
         text-decoration: none !important;
@@ -714,7 +718,6 @@ html
         width: auto;
     }
     
-.row-fluid h3{float:left}
 .store_address{float:right;border-bottom:1px dashed #08C}
     .store_address:hover{border-bottom:1px dashed #005580;text-decoration:none}
 .balance{float:right}
