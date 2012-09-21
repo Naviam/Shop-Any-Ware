@@ -11,7 +11,6 @@ namespace TdService.UI.Web.ViewModels.Account
     /// <summary>
     /// This class describes the view model for sign in page.
     /// </summary>
-    [Validator(typeof(SignInViewModelValidator))]
     public class SignInViewModel : ViewModelBase
     {
         /// <summary>
