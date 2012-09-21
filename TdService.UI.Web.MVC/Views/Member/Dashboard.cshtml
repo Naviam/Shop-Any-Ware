@@ -5,9 +5,8 @@
 }
 <div class="row-fluid">
     <div class="span6">
-        <h3>Заказы</h3><a href="#" class="store_address">Посмотреть мой адрес склада</a><i class="icon-home" style="float:right;margin:2px 4px"></i>
+        <h3>Заказы</h3><a href="#" class="store_address" data-title="Your U.S. address" data-placement="bottom" data-content="20745 Stevens Creek Blvd. Cupertino, CA 95014">Посмотреть мой адрес склада</a><i class="icon-home" style="float:right;margin:2px 4px"></i>
         <br />
-        <div class="alert alert-info" style="margin-top:12px">20745 Stevens Creek Blvd. Cupertino, CA 95014</div>
         <div id="addOrderForm" class="package">
             <ul class="nav nav-tabs">
                 <li><a href="#">@DashboardViewResources.OrderOption1</a></li>
@@ -284,7 +283,7 @@
             var mainViewModel = new DashboardViewModel();
             ko.applyBindings(mainViewModel);
             ko.validation.init(mainViewModel, { insertMessages: false, decorateElement: true, errorClass: 'error', parseInputAttributes: true });
-            // $(".tn").popover();
+            $(".store_address").popover();
         });
     </script>
 }
