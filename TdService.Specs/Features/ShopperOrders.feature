@@ -16,7 +16,6 @@ Scenario: View my recent orders
 	| 4  | yoox.com   | 455367456655 | 34567893442345  | Disposed        |
 	| 5  | zappos.com | 234345454433 | 123456789012345 | Received        |
 	| 6  | zappos.com | 453656457544 | 245763453445463 | ReturnRequested |
-	| 7  | sdfs       | 453784658345 | 233746724657435 | New             |
 	When I go to my recent orders tab
 	Then the order view models should be as follows
 	| Id | Retailer Url | Order Number | Tracking Number | Status          | Can Be Modified | Can Be Removed | Can Be Requested For Return | Can Items Be Modified | Message Type |
