@@ -9,9 +9,13 @@
 
 namespace TdService.UI.Web.ViewModels.Account
 {
+    using System.Globalization;
+    using System.Web;
+
     using FluentValidation;
 
     using TdService.Infrastructure.Domain;
+    using TdService.Resources;
 
     /// <summary>
     /// The sign up view model validator.
@@ -26,18 +30,25 @@ namespace TdService.UI.Web.ViewModels.Account
             // First set the cascade mode
             this.CascadeMode = CascadeMode.StopOnFirstFailure;
 
-            RuleFor(su => su.Email).NotEmpty().WithMessage(ErrorCode.UserEmailRequired.ToString())
-                .EmailAddress().WithMessage(ErrorCode.UserEmailInvalid.ToString())
-                .Length(1, 256).WithMessage(ErrorCode.UserEmailMaxLength.ToString());
-            RuleFor(su => su.Password).NotEmpty().WithMessage(ErrorCode.UserPasswordRequired.ToString())
-                .Length(7, 1000).WithMessage(ErrorCode.UserPasswordMinLength.ToString());
+            var culture = new CultureInfo("en-US");
+            if (HttpContext.Current.Request.Cookies["culture"] != null)
+            {
+                var cultureText = HttpContext.Current.Request.Cookies["culture"].Value;
+                culture = new CultureInfo(cultureText);
+            }
+
+            RuleFor(su => su.Email).NotEmpty().WithMessage(ErrorCodeResources.ResourceManager.GetString(ErrorCode.UserEmailRequired.ToString(), culture))
+                .EmailAddress().WithMessage(ErrorCodeResources.ResourceManager.GetString(ErrorCode.UserEmailInvalid.ToString(), culture))
+                .Length(1, 256).WithMessage(ErrorCodeResources.ResourceManager.GetString(ErrorCode.UserEmailMaxLength.ToString(), culture));
+            RuleFor(su => su.Password).NotEmpty().WithMessage(ErrorCodeResources.ResourceManager.GetString(ErrorCode.UserPasswordRequired.ToString(), culture))
+                .Length(7, 1000).WithMessage(ErrorCodeResources.ResourceManager.GetString(ErrorCode.UserPasswordMinLength.ToString(), culture));
                 ////.Length(1, 21).WithMessage(ErrorCode.UserPasswordMaxLength.ToString());
-            RuleFor(su => su.PasswordConfirm).NotEmpty().WithMessage(ErrorCode.UserPasswordConfirmRequired.ToString())
-                .Equal(u => u.Password).WithMessage(ErrorCode.UserPasswordConfirmNotEqual.ToString());
-            RuleFor(su => su.FirstName).NotEmpty().WithMessage(ErrorCode.ProfileFirstNameRequired.ToString())
-                .Length(1, 21).WithMessage(ErrorCode.ProfileFirstNameMaxLength.ToString());
-            RuleFor(su => su.LastName).NotEmpty().WithMessage(ErrorCode.ProfileLastNameRequired.ToString())
-                .Length(1, 21).WithMessage(ErrorCode.ProfileLastNameMaxLength.ToString());
+            RuleFor(su => su.PasswordConfirm).NotEmpty().WithMessage(ErrorCodeResources.ResourceManager.GetString(ErrorCode.UserPasswordConfirmRequired.ToString(), culture))
+                .Equal(u => u.Password).WithMessage(ErrorCodeResources.ResourceManager.GetString(ErrorCode.UserPasswordConfirmNotEqual.ToString(), culture));
+            RuleFor(su => su.FirstName).NotEmpty().WithMessage(ErrorCodeResources.ResourceManager.GetString(ErrorCode.ProfileFirstNameRequired.ToString(), culture))
+                .Length(1, 21).WithMessage(ErrorCodeResources.ResourceManager.GetString(ErrorCode.ProfileFirstNameMaxLength.ToString(), culture));
+            RuleFor(su => su.LastName).NotEmpty().WithMessage(ErrorCodeResources.ResourceManager.GetString(ErrorCode.ProfileLastNameRequired.ToString(), culture))
+                .Length(1, 21).WithMessage(ErrorCodeResources.ResourceManager.GetString(ErrorCode.ProfileLastNameMaxLength.ToString(), culture));
         }
     }
 }

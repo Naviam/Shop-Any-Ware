@@ -226,7 +226,8 @@ namespace TdService.UI.Web.Controllers
                         result.LastName = model.LastName;
                     }
 
-                    return this.View("SignUp", new MainViewModel { SignUpViewModel = result });
+                    this.ViewData.Model = new MainViewModel { SignUpViewModel = result };
+                    return this.View("SignUp");
                 }
 
                 this.FormsAuthentication.SetAuthenticationToken(model.Email, false);
@@ -257,7 +258,8 @@ namespace TdService.UI.Web.Controllers
                 result.LastName = model.LastName;
             }
 
-            return this.View("SignUp", new MainViewModel { SignUpViewModel = result });
+            this.ViewData.Model = new MainViewModel { SignUpViewModel = result };
+            return this.View("SignUp");
             ////var jsonNetResult = new JsonNetResult
             ////{
             ////    Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,

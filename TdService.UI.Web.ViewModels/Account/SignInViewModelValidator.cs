@@ -9,6 +9,9 @@
 
 namespace TdService.UI.Web.ViewModels.Account
 {
+    using System.Globalization;
+    using System.Web;
+
     using FluentValidation;
 
     using TdService.Infrastructure.Domain;
@@ -27,11 +30,18 @@ namespace TdService.UI.Web.ViewModels.Account
             // First set the cascade mode
             this.CascadeMode = CascadeMode.StopOnFirstFailure;
 
-            RuleFor(si => si.Email).NotEmpty().WithMessage(ErrorCodeResources.ResourceManager.GetString(ErrorCode.UserEmailRequired.ToString()))
-                .EmailAddress().WithMessage(ErrorCodeResources.ResourceManager.GetString(ErrorCode.UserEmailInvalid.ToString()))
-                .Length(1, 256).WithMessage(ErrorCodeResources.ResourceManager.GetString(ErrorCode.UserEmailMaxLength.ToString()));
-            RuleFor(si => si.Password).NotEmpty().WithMessage(ErrorCodeResources.ResourceManager.GetString(ErrorCode.UserPasswordRequired.ToString()))
-                .Length(7, 1000).WithMessage(ErrorCodeResources.ResourceManager.GetString(ErrorCode.UserPasswordMinLength.ToString()));
+            var culture = new CultureInfo("en-US");
+            if (HttpContext.Current.Request.Cookies["culture"] != null)
+            {
+                var cultureText = HttpContext.Current.Request.Cookies["culture"].Value;
+                culture = new CultureInfo(cultureText);
+            }
+
+            RuleFor(si => si.Email).NotEmpty().WithMessage(ErrorCodeResources.ResourceManager.GetString(ErrorCode.UserEmailRequired.ToString(), culture))
+                .EmailAddress().WithMessage(ErrorCodeResources.ResourceManager.GetString(ErrorCode.UserEmailInvalid.ToString(), culture))
+                .Length(1, 256).WithMessage(ErrorCodeResources.ResourceManager.GetString(ErrorCode.UserEmailMaxLength.ToString(), culture));
+            RuleFor(si => si.Password).NotEmpty().WithMessage(ErrorCodeResources.ResourceManager.GetString(ErrorCode.UserPasswordRequired.ToString(), culture))
+                .Length(7, 1000).WithMessage(ErrorCodeResources.ResourceManager.GetString(ErrorCode.UserPasswordMinLength.ToString(), culture));
                 ////.Length(1, 21).WithMessage(ErrorCode.UserPasswordMaxLength.ToString());
         }
     }

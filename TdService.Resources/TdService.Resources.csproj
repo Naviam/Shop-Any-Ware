@@ -132,6 +132,7 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ErrorCodeResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="ErrorCodeResources.ru.resx" />
     <EmbeddedResource Include="SiteMapLocalizations.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SiteMapLocalizations.Designer.cs</LastGenOutput>
