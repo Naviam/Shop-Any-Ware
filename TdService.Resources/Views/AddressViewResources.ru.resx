@@ -165,6 +165,9 @@
   <data name="AddressTable_Region" xml:space="preserve">
     <value>Регион</value>
   </data>
+  <data name="AddressTable_State" xml:space="preserve">
+    <value>Штат</value>
+  </data>
   <data name="AddressTable_ZipCode" xml:space="preserve">
     <value>Почтовый индекс</value>
   </data>

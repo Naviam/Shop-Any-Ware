@@ -165,6 +165,9 @@
   <data name="AddressTable_Region" xml:space="preserve">
     <value>Region</value>
   </data>
+  <data name="AddressTable_State" xml:space="preserve">
+    <value>State</value>
+  </data>
   <data name="AddressTable_ZipCode" xml:space="preserve">
     <value>Zip Code</value>
   </data>

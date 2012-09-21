@@ -124,6 +124,24 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Funds.
+        /// </summary>
+        public static string BalanceAddFundsButton {
+            get {
+                return ResourceManager.GetString("BalanceAddFundsButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Balance.
+        /// </summary>
+        public static string BalanceHeader {
+            get {
+                return ResourceManager.GetString("BalanceHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         public static string CancelButton {
@@ -268,6 +286,24 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ShopAnyWare address.
+        /// </summary>
+        public static string MyUsAddressHeader {
+            get {
+                return ResourceManager.GetString("MyUsAddressHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show my U.S. address.
+        /// </summary>
+        public static string MyUsAddressLinkMessage {
+            get {
+                return ResourceManager.GetString("MyUsAddressLinkMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to please enter shop name or url (ex. amazon.com).
         /// </summary>
         public static string NewOrderPlaceholder {
@@ -385,6 +421,15 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Orders.
+        /// </summary>
+        public static string OrdersHeader {
+            get {
+                return ResourceManager.GetString("OrdersHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The package cannot be removed in current state..
         /// </summary>
         public static string PackageCannotBeRemoved {
@@ -426,6 +471,15 @@ namespace TdService.Resources.Views {
         public static string PackageRemovedSuccess {
             get {
                 return ResourceManager.GetString("PackageRemovedSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Packages.
+        /// </summary>
+        public static string PackagesHeader {
+            get {
+                return ResourceManager.GetString("PackagesHeader", resourceCulture);
             }
         }
         

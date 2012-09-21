@@ -138,6 +138,12 @@
   <data name="AddPackageButtonLoadingMessage" xml:space="preserve">
     <value>Создаем посылку...</value>
   </data>
+  <data name="BalanceAddFundsButton" xml:space="preserve">
+    <value>Пополнить</value>
+  </data>
+  <data name="BalanceHeader" xml:space="preserve">
+    <value>Баланс</value>
+  </data>
   <data name="CancelButton" xml:space="preserve">
     <value>Отменить</value>
   </data>
@@ -186,6 +192,12 @@
   <data name="MoveToNewPackage" xml:space="preserve">
     <value>Переместить в новую посылку</value>
   </data>
+  <data name="MyUsAddressHeader" xml:space="preserve">
+    <value>Адрес склада ShopAnyWare</value>
+  </data>
+  <data name="MyUsAddressLinkMessage" xml:space="preserve">
+    <value>Посмотреть мой адрес склада</value>
+  </data>
   <data name="NewOrderPlaceholder" xml:space="preserve">
     <value>введите ссылку на магазин</value>
   </data>
@@ -225,6 +237,9 @@
   <data name="OrderRemovedSuccess" xml:space="preserve">
     <value>Заказ был успешно удален.</value>
   </data>
+  <data name="OrdersHeader" xml:space="preserve">
+    <value>Заказы</value>
+  </data>
   <data name="PackageCannotBeRemoved" xml:space="preserve">
     <value>Посылка не может быть удалена в текущем состоянии.</value>
   </data>
@@ -239,6 +254,9 @@
   </data>
   <data name="PackageRemovedSuccess" xml:space="preserve">
     <value>Посылка была успешно удалена.</value>
+  </data>
+  <data name="PackagesHeader" xml:space="preserve">
+    <value>Посылки</value>
   </data>
   <data name="PriceHeader" xml:space="preserve">
     <value>Цена</value>

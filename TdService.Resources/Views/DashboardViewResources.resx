@@ -138,6 +138,12 @@
   <data name="AddPackageButtonLoadingMessage" xml:space="preserve">
     <value>Adding Package...</value>
   </data>
+  <data name="BalanceAddFundsButton" xml:space="preserve">
+    <value>Add Funds</value>
+  </data>
+  <data name="BalanceHeader" xml:space="preserve">
+    <value>Balance</value>
+  </data>
   <data name="CancelButton" xml:space="preserve">
     <value>Cancel</value>
   </data>
@@ -186,6 +192,12 @@
   <data name="MoveToNewPackage" xml:space="preserve">
     <value>Move to a new package</value>
   </data>
+  <data name="MyUsAddressHeader" xml:space="preserve">
+    <value>ShopAnyWare address</value>
+  </data>
+  <data name="MyUsAddressLinkMessage" xml:space="preserve">
+    <value>Show my U.S. address</value>
+  </data>
   <data name="NewOrderPlaceholder" xml:space="preserve">
     <value>please enter shop name or url (ex. amazon.com)</value>
   </data>
@@ -225,6 +237,9 @@
   <data name="OrderRemovedSuccess" xml:space="preserve">
     <value>The order has been successfully removed.</value>
   </data>
+  <data name="OrdersHeader" xml:space="preserve">
+    <value>Orders</value>
+  </data>
   <data name="PackageCannotBeRemoved" xml:space="preserve">
     <value>The package cannot be removed in current state.</value>
   </data>
@@ -239,6 +254,9 @@
   </data>
   <data name="PackageRemovedSuccess" xml:space="preserve">
     <value>The package has been successfully removed.</value>
+  </data>
+  <data name="PackagesHeader" xml:space="preserve">
+    <value>Packages</value>
   </data>
   <data name="PriceHeader" xml:space="preserve">
     <value>Price</value>

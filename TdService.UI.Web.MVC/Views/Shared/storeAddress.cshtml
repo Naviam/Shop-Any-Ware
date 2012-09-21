@@ -1,4 +1,5 @@
-﻿@model bool
+﻿@using TdService.Resources.Views
+@model bool
            
 @* if to be show in modal = true, othewise false *@
 
@@ -48,39 +49,4 @@
     </tbody>
 </table>
 
-<table class="table-striped table-condensed address">
-    <tbody>
-        <tr>
-            <td>First Name: </td>
-            <td>Vitali</td>
-        </tr>
-        <tr>
-            <td>Last Name: </td>
-            <td>Hatalski</td>
-        </tr>
-        <tr>
-            <td>Address 1: </td>
-            <td>701 Ashland Ave</td>
-        </tr>
-        <tr>
-            <td>Address 2: </td>
-            <td>BWW-Ltrshop , Ste #20901</td>
-        </tr>
-        <tr>
-            <td>Zip Code: </td>
-            <td>19032</td>
-        </tr>
-        <tr>
-            <td>City: </td>
-            <td>Folcroft</td>
-        </tr>
-        <tr>
-            <td>State: </td>
-            <td>"Pennsylvania" or "PA"</td>
-        </tr>
-        <tr>
-            <td>Phone: </td>
-            <td>(734)5166594</td>
-        </tr>
-    </tbody>
-</table>
+<table class="table-striped table-condensed address"><tbody><tr><td>@AddressViewResources.AddressTable_FirstName: </td><td>Vitali</td></tr><tr><td>@AddressViewResources.AddressTable_LastName: </td><td>Hatalski</td></tr><tr><td>@AddressViewResources.AddressTable_AddressLine1: </td><td>452 PALISADE AVE #D</td></tr><tr><td>@AddressViewResources.AddressTable_AddressLine2: </td><td>CLIFFSIDE PARK , Ste #20901</td></tr><tr><td>@AddressViewResources.AddressTable_ZipCode: </td><td>07010</td></tr><tr><td>@AddressViewResources.AddressTable_City: </td><td>New Jersey</td></tr><tr><td>@AddressViewResources.AddressTable_State: </td><td>"New York" or "NY"</td></tr><tr><td>@AddressViewResources.AddressTable_Phone: </td><td>(734)5166594</td></tr></tbody></table>
