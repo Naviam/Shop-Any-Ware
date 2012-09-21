@@ -133,7 +133,7 @@ html
     background: url(img/ru.png);
 }
 
-.mail{background: url(img/mail.jpg) no-repeat 0 0;margin:20px auto 0;height:256px;width:450px}
+.mail{background: url(img/mail.jpg) no-repeat 0 0;right:20px;position:absolute;height:256px;width:450px}
 	.mail_address{padding:30px 40px;font-size:18px;line-height:normal}
 .mail_side{}
 

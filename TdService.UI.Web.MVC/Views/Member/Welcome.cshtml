@@ -1,23 +1,36 @@
 ﻿@{
     ViewBag.Title = "ShopAnyWare - Welcome";
 }
-
-Добро пожаловать!
-
-Уважаемый(ая) Vitali Hatalski!
-
-Мы рады приветствовать Вас на нашем ресурсе. Надеемся, что мы станем хорошими друзьями и Вам будет легко и приятно работать с нами.
-
-Ваш адрес для заказа в американских интернет магазинах:
-
-First name: Vitali
-Last name: Hatalski
-Индекс: 19032
-Street address (строка 1): 701 Ashland Ave
-Street address (строка 2): BWW-Lettershop Ste 48419
-Город: Folcroft
-State: "Pennsylvania" или "PA"
-Телефон: 7345166594
-Вы всегда сможете его найти в разделе Настройки главного меню.
-
-<a class="btn btn-success" href="@Url.Action("Dashboard")">Start working with your orders!</a>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="hero-unit" style="margin-right: 460px">
+                <h1>Добро пожаловать!</h1>
+                <br />
+                <p>Уважаемый(ая) Vitali Hatalski!</p>
+                <p>Мы рады приветствовать Вас на нашем ресурсе. Надеемся, что мы станем хорошими друзьями и Вам будет легко и приятно работать с нами.</p>
+                <p>Ваш адрес для заказа в американских интернет магазинах:</p>
+                <div class="alert">
+                    <p>First name: Vitali</p>
+                    <p>Last name: Hatalski</p>
+                    <p>Индекс: 19032</p>
+                    <p>Street address (строка 1): 701 Ashland Ave</p>
+                    <p>Street address (строка 2): BWW-Lettershop Ste 48419</p>
+                    <p>Город: Folcroft</p>
+                    <p>State: "Pennsylvania" или "PA"</p>
+                    <p>Телефон: 7345166594</p>
+                </div>
+                <p>Вы всегда сможете его найти в разделе Настройки главного меню.</p>
+                <a class="btn btn-large btn-success" href="@Url.Action("Dashboard")">Start working with your orders!</a>
+            </div>
+        </div>
+        <div class="mail">
+            <p class="mail_address">
+                Vitali Hatalski<br />
+                701 Ashland Ave<br />
+                BWW Ste 89859<br />
+                Folcroft, PA 19032-2011
+            </p>
+        </div>
+    </div>
+</div>
