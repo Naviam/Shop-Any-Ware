@@ -1,16 +1,17 @@
-﻿@model bool
+﻿@using TdService.Resources.Views
+@model bool
            
 @* if to be show in modal = true, othewise false *@
 
 <table class="table-striped table-condensed address">
     @if (!Model)
     {
-<text>
-    <caption style="text-align: right; padding-bottom: 4px;">
-        <h4 style="float: left;padding-top: 6px">Your Store Address in USA</h4>
-        <a class="btn btn-small btn-primary" href="#"><i class="icon-white icon-file"></i>COPY</a>
-    </caption>
-</text>
+        <text>
+            <caption style="text-align: right; padding-bottom: 4px;">
+                <h4 style="float: left;padding-top: 6px">Your Store Address in USA</h4>
+                <a class="btn btn-small btn-primary" href="#"><i class="icon-white icon-file"></i>COPY</a>
+            </caption>
+        </text>
     }
     <tbody>
         <tr>
@@ -47,3 +48,5 @@
         </tr>
     </tbody>
 </table>
+
+<table class="table-striped table-condensed address"><tbody><tr><td>@AddressViewResources.AddressTable_FirstName: </td><td>Vitali</td></tr><tr><td>@AddressViewResources.AddressTable_LastName: </td><td>Hatalski</td></tr><tr><td>@AddressViewResources.AddressTable_AddressLine1: </td><td>452 PALISADE AVE #D</td></tr><tr><td>@AddressViewResources.AddressTable_AddressLine2: </td><td>CLIFFSIDE PARK , Ste #20901</td></tr><tr><td>@AddressViewResources.AddressTable_ZipCode: </td><td>07010</td></tr><tr><td>@AddressViewResources.AddressTable_City: </td><td>New Jersey</td></tr><tr><td>@AddressViewResources.AddressTable_State: </td><td>"New York" or "NY"</td></tr><tr><td>@AddressViewResources.AddressTable_Phone: </td><td>(734)5166594</td></tr></tbody></table>
