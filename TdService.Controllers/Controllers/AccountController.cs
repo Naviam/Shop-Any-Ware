@@ -82,18 +82,24 @@ namespace TdService.UI.Web.Controllers
         /// </returns>
         public ActionResult SignIn()
         {
-            var model = new SignInViewModel();
-            this.SetCredentialsFromCookie(ref model);
+            var model = new MainViewModel { SignInViewModel = new SignInViewModel() };
+            var signInViewModel = model.SignInViewModel;
+            this.SetCredentialsFromCookie(ref signInViewModel);
+            model.SignInViewModel = signInViewModel;
             this.ViewData.Model = model;
             return this.View("SignIn");
         }
 
         /// <summary>
+        /// The sign in.
+        /// </summary>
+        /// <returns>
+        /// The System.Web.Mvc.ActionResult.
+        /// </returns>
+        /// <summary>
         /// Defines a POST interface for submiting the SignIn form.
         /// </summary>
-        /// <param name="model">
-        /// Sign In Request object with username, password and remember me fields.
-        /// </param>
+        /// <param name="model"> Sign In Request object with username, password and remember me fields. The model. </param>
         /// <returns>
         /// Redirect user to the home page of authenticated users.
         /// </returns>
@@ -145,7 +151,7 @@ namespace TdService.UI.Web.Controllers
                 result.Email = model.Email;
             }
 
-            return this.View("SignIn", result);
+            return this.View("SignIn", new MainViewModel { SignInViewModel = result });
 
             ////var jsonNetResult = new JsonNetResult
             ////{
