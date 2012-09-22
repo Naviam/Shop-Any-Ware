@@ -61,7 +61,7 @@ namespace TdService.UI.Web.Controllers
         }
 
         /// <summary>
-        /// Welcome page after successfull registration.
+        /// Welcome page after successful registration.
         /// </summary>
         /// <returns>
         /// View with welcome message.

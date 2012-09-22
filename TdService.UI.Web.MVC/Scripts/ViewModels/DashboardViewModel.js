@@ -215,6 +215,7 @@ function Order(serverModel) {
     self.createdDate = ko.observable(formatDate(serverModel.CreatedDate));
     self.receivedDate = ko.observable(formatDate(serverModel.ReceivedDate));
     self.status = ko.observable(serverModel.Status);
+    self.statusTranslated = ko.observable(serverModel.StatusTranslated);
     self.isCollapsed = ko.observable(false);
 
     // order view model collections
@@ -347,6 +348,9 @@ function DashboardViewModel(serverModel) {
     /// <summary>Dashboard view model. The parent model for others.</summary>
     var self = this;
 
+    self.recentPackagesNotLoaded = true;
+    self.recentOrdersNotLoaded = true;
+
     // dashboard view model properties
     self.newOrderField = ko.observable().extend({ required: true });
     self.newPackageField = ko.observable().extend({ required: true });
@@ -362,12 +366,22 @@ function DashboardViewModel(serverModel) {
     // computed properties
     self.shouldShowOrdersEmptyMessage = ko.computed(function () {
         /// <summary>Determines whether no orders message should be displayed.</summary>
-        return self.orders().length == 0;
+        return self.orders().length == 0 && !self.recentOrdersNotLoaded;
     });
-    
+
+    self.shouldShowLoadingRecentOrdersMessage = ko.computed(function () {
+        /// <summary>Determines whether loading recent packages message should be displayed.</summary>
+        return self.orders().length == 0 && self.recentOrdersNotLoaded;
+    });
+
     self.shouldShowPackagesEmptyMessage = ko.computed(function () {
         /// <summary>Determines whether no orders message should be displayed.</summary>
-        return self.packages().length == 0;
+        return self.packages().length == 0 && !self.recentPackagesNotLoaded;
+    });
+
+    self.shouldShowLoadingRecentPackagesMessage = ko.computed(function () {
+        /// <summary>Determines whether loading recent packages message should be displayed.</summary>
+        return self.packages().length == 0 && self.recentPackagesNotLoaded;
     });
 
     self.disableAddOrderButton = ko.computed(function () {
@@ -425,6 +439,7 @@ function DashboardViewModel(serverModel) {
                 var order = new Order(value);
                 self.orders.unshift(order);
             });
+            self.recentOrdersNotLoaded = false;
         });
     };
     self.getRecentOrders();
@@ -486,6 +501,7 @@ function DashboardViewModel(serverModel) {
                 var pack = new Package(value);
                 self.packages.unshift(pack);
             });
+            self.recentPackagesNotLoaded = false;
         });
     };
     self.getRecentPackages();

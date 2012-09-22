@@ -183,6 +183,18 @@
   <data name="ItemsTotalHeader" xml:space="preserve">
     <value>Total</value>
   </data>
+  <data name="LoadingHistoryOrdersMessage" xml:space="preserve">
+    <value>Please wait. Loading your orders history..</value>
+  </data>
+  <data name="LoadingHistoryPackagesMessage" xml:space="preserve">
+    <value>Please wait. Loading your packages history..</value>
+  </data>
+  <data name="LoadingRecentOrdersMessage" xml:space="preserve">
+    <value>Please wait. Loading your recent orders..</value>
+  </data>
+  <data name="LoadingRecentPackagesMessage" xml:space="preserve">
+    <value>Please wait. Loading your recent packages..</value>
+  </data>
   <data name="MoveAllItemsTitle" xml:space="preserve">
     <value>Move all order items to package</value>
   </data>
@@ -205,10 +217,13 @@
     <value>please enter package name (ex. my package)</value>
   </data>
   <data name="NoItemsMessage" xml:space="preserve">
-    <value>The items will be automatically displayed when the order received.</value>
+    <value>The items will be automatically displayed when the order is received and processed by operator.</value>
   </data>
   <data name="NoOrdersMessage" xml:space="preserve">
     <value>There are no orders to show. Please add a new one.</value>
+  </data>
+  <data name="NoPackageItemsMessage" xml:space="preserve">
+    <value>There are no items inside this package. Please move the items from orders.</value>
   </data>
   <data name="NoPackagesMessage" xml:space="preserve">
     <value>There are no packages to show. Please add a new one.</value>

@@ -281,9 +281,24 @@ html
         background-color: #339933;
     }
 
-    .box .status-return, .box .status-return:hover
+    .box .status-returned, .box .status-returned:hover
     {
         background-color: #CC3333;
+    }
+
+    .box .status-returnrequested, .box .status-returnrequested:hover
+    {
+        background-color: #CC3333;
+    }
+
+    .box .status-received, .box .status-received:hover
+    {
+        background-color: #334dcc;
+    }
+
+    .box .status-disposed, .box .status-disposed:hover
+    {
+        background-color: #464444;
     }
 
     .box .name

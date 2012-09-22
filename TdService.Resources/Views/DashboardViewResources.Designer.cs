@@ -259,6 +259,42 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please wait. Loading your orders history...
+        /// </summary>
+        public static string LoadingHistoryOrdersMessage {
+            get {
+                return ResourceManager.GetString("LoadingHistoryOrdersMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please wait. Loading your packages history...
+        /// </summary>
+        public static string LoadingHistoryPackagesMessage {
+            get {
+                return ResourceManager.GetString("LoadingHistoryPackagesMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please wait. Loading your recent orders...
+        /// </summary>
+        public static string LoadingRecentOrdersMessage {
+            get {
+                return ResourceManager.GetString("LoadingRecentOrdersMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please wait. Loading your recent packages...
+        /// </summary>
+        public static string LoadingRecentPackagesMessage {
+            get {
+                return ResourceManager.GetString("LoadingRecentPackagesMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Move all order items to package.
         /// </summary>
         public static string MoveAllItemsTitle {
@@ -322,7 +358,7 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The items will be automatically displayed when the order received..
+        ///   Looks up a localized string similar to The items will be automatically displayed when the order is received and processed by operator..
         /// </summary>
         public static string NoItemsMessage {
             get {
@@ -336,6 +372,15 @@ namespace TdService.Resources.Views {
         public static string NoOrdersMessage {
             get {
                 return ResourceManager.GetString("NoOrdersMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are no items inside this package. Please move the items from orders..
+        /// </summary>
+        public static string NoPackageItemsMessage {
+            get {
+                return ResourceManager.GetString("NoPackageItemsMessage", resourceCulture);
             }
         }
         

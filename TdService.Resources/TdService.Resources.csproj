@@ -73,6 +73,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SiteMapLocalizations.resx</DependentUpon>
     </Compile>
+    <Compile Include="OrderStatusResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OrderStatusResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Views\AccountViewResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -143,6 +148,11 @@
       <LastGenOutput>SiteMapLocalizations.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="SiteMapLocalizations.ru.resx" />
+    <EmbeddedResource Include="OrderStatusResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>OrderStatusResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderStatusResources.ru.resx" />
     <EmbeddedResource Include="Views\AccountViewResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AccountViewResources.Designer.cs</LastGenOutput>

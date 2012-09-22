@@ -183,6 +183,18 @@
   <data name="ItemsTotalHeader" xml:space="preserve">
     <value>Всего</value>
   </data>
+  <data name="LoadingHistoryOrdersMessage" xml:space="preserve">
+    <value>Пожалуйста подождите. Идет загрузка истории Ваших заказов..</value>
+  </data>
+  <data name="LoadingHistoryPackagesMessage" xml:space="preserve">
+    <value>Пожалуйста подождите. Идет загрузка истории Ваших посылок..</value>
+  </data>
+  <data name="LoadingRecentOrdersMessage" xml:space="preserve">
+    <value>Пожалуйста подождите. Идет загрузка Ваших текущих заказов..</value>
+  </data>
+  <data name="LoadingRecentPackagesMessage" xml:space="preserve">
+    <value>Пожалуйста подождите. Идет загрузка Ваших текущих посылок..</value>
+  </data>
   <data name="MoveAllItemsTitle" xml:space="preserve">
     <value>Переместить все товары из заказа в посылку</value>
   </data>
@@ -209,6 +221,9 @@
   </data>
   <data name="NoOrdersMessage" xml:space="preserve">
     <value>На данный момент у Вас отсутствуют активные заказы. Добавьте новый заказ.</value>
+  </data>
+  <data name="NoPackageItemsMessage" xml:space="preserve">
+    <value>Пожалуйста, переместите сюда товары из Ваших заказов, которые уже поступили на склад.</value>
   </data>
   <data name="NoPackagesMessage" xml:space="preserve">
     <value>На данный момент у Вас отсутствуют посылки. Добавьте новую посылку.</value>

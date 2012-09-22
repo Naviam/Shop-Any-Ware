@@ -27,6 +27,10 @@
             </div>
         </div>
         <div style="clear:left"></div>
+        <div data-bind="visible: shouldShowLoadingRecentOrdersMessage">
+            <div class="alert package">@DashboardViewResources.LoadingRecentOrdersMessage</div>
+            <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+        </div>
         <div data-bind="visible: shouldShowOrdersEmptyMessage">
             <div class="alert alert-info package">@DashboardViewResources.NoOrdersMessage</div>
             <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
@@ -43,12 +47,12 @@
                                     <span data-bind="text: retailerUrl" class="name"></span>
                                 </td>
                                 <td class="right">
-                                    <span class="label status-return">@DashboardViewResources.StatusHeader: <span data-bind="text: status"></span></span>
+                                    <span data-bind="css: { 'status-new': status() == 'New', 'status-received': status() == 'Received', 'status-returned': status() == 'Returned', 'status-returnrequested': status() == 'ReturnRequested', 'status-disposed': status() == 'Disposed' }" class="label">@DashboardViewResources.StatusHeader: <span data-bind="text: statusTranslated"></span></span>
                                     <span class="label">@DashboardViewResources.OrderCreatedDateHeader: <span data-bind="text: orderDate"></span></span>
                                     <button class="btn btn-mini btn-primary" title="@DashboardViewResources.AddItemButton" data-bind="visible: canItemsBeModified" data-toggle="modal" href="#itemFormModal"><i class="icon-white icon-plus-sign"></i></button>
                                     <button class="btn btn-mini btn-danger" title="@DashboardViewResources.RemoveOrderButton" data-bind="click: $parent.removeOrder, visible: canBeRemoved"><i class="icon-white icon-trash"></i></button>
                                     <button class="btn btn-mini btn-success" title="@DashboardViewResources.InStockButton"><i class="icon-white icon-inbox"></i></button>
-                                    <button class="btn btn-mini" title="@DashboardViewResources.ReturnOrderButton" data-toggle="modal" data-bind="visible: canBeRequestedForReturn"><i class="icon-retweet"></i></button>
+                                    <button class="btn btn-mini" title="@DashboardViewResources.ReturnOrderButton" data-toggle="modal" data-bind="visible: canBeRequestedForReturn"><i class="icon icon-retweet"></i></button>
                                     <span class="dropdown">
                                         <button class="btn btn-mini dropdown-toggle" title="@DashboardViewResources.MoveAllItemsTitle" data-toggle="dropdown"><i class="icon icon-move"></i><span class="caret"></span></button>
                                         <ul class="dropdown-menu" data-bind="foreach: $parent.packages()">
@@ -64,13 +68,13 @@
                                     <tr>
                                         <td style="text-align:right">@DashboardViewResources.OrderNumberHeader</td>
                                         <td>
-                                            <input class="input" type="text" data-bind="value: orderNumber">
+                                            <input type="text" data-bind="value: orderNumber">
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>@DashboardViewResources.TrackingNumberHeader</td>
                                         <td>
-                                            <input class="input" type="text" data-bind="value: trackingNumber">@*<a data-bind="text: trackingNumber" href="http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum=EE972210493US"></a>*@</td>
+                                            <input type="text" data-bind="value: trackingNumber">@*<a data-bind="text: trackingNumber" href="http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum=EE972210493US"></a>*@</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -87,7 +91,7 @@
                                 </thead>
                                 <tbody id="order_items" data-bind="foreach: {data: items}">
                                     <tr data-bind="attr: {id: id}">
-                                        <td class="left"><i class="icon-camera"></i>&nbsp;<span class="tn editable" title="Click to edit item name" data-content="<table class='details'><tr><td><img src='@Url.Content("~/content/img/kindle.jpg")' /></td><td><p>Name: Kindle</p><p>Weight: 1.3lbs</p><p>Color: Black</p><p>Quantity: 1</p><p>Cost: $100</p></td>" data-bind="click: $parent.removeItem, text: name"></span></td>
+                                        <td class="left"><i class="icon-camera"></i>&nbsp;<span class="editable" title="Click to edit item name" data-content="<table class='details'><tr><td><img src='@Url.Content("~/content/img/kindle.jpg")' /></td><td><p>Name: Kindle</p><p>Weight: 1.3lbs</p><p>Color: Black</p><p>Quantity: 1</p><p>Cost: $100</p></td>" data-bind="click: $parent.removeItem, text: name"></span></td>
                                         <td><span class="editable" data-bind="text: quantity"></span></td>
                                         <td><span class="editable" data-bind="text: weight"></span>lbs</td>
                                         <td>$<span class="editable" title="@DashboardViewResources.PriceTitle" data-bind="text: price"></span></td>
@@ -170,7 +174,7 @@
                                     <span data-bind="text: retailerUrl" class="name"></span>
                                 </td>
                                 <td class="right">
-                                    <span class="label status-return">@DashboardViewResources.StatusHeader: <span data-bind="text: status"></span></span>
+                                    <span data-bind="css: { 'status-new': status == 'New', 'status-received': status == 'Received', 'status-returned': status == 'Returned', 'status-returnrequested': status == 'ReturnRequested', 'status-disposed': status == 'Disposed' }" class="label">@DashboardViewResources.StatusHeader: <span data-bind="text: statusTranslated"></span></span>
                                     <span class="label">@DashboardViewResources.OrderCreatedDateHeader: <span data-bind="text: orderDate"></span></span>
                                     <button class="btn btn-mini btn-primary" title="@DashboardViewResources.AddItemButton" data-bind="visible: canItemsBeModified" data-toggle="modal" href="#itemFormModal"><i class="icon-white icon-plus-sign"></i></button>
                                     <button class="btn btn-mini btn-danger" title="@DashboardViewResources.RemoveOrderButton" data-bind="click: $parent.removeOrder, visible: canBeRemoved"><i class="icon-white icon-trash"></i></button>
@@ -191,13 +195,13 @@
                                     <tr>
                                         <td style="text-align:right">@DashboardViewResources.OrderNumberHeader</td>
                                         <td>
-                                            <input class="input" type="text" data-bind="value: orderNumber">
+                                            <input type="text" data-bind="value: orderNumber">
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>@DashboardViewResources.TrackingNumberHeader</td>
                                         <td>
-                                            <input class="input" type="text" data-bind="value: trackingNumber">@*<a data-bind="text: trackingNumber" href="http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum=EE972210493US"></a>*@</td>
+                                            <input type="text" data-bind="value: trackingNumber">@*<a data-bind="text: trackingNumber" href="http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum=EE972210493US"></a>*@</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -214,7 +218,7 @@
                                 </thead>
                                 <tbody id="order_items" data-bind="foreach: {data: items}">
                                     <tr data-bind="attr: {id: id}">
-                                        <td class="left"><i class="icon-camera"></i>&nbsp;<span class="tn editable" title="Click to edit item name" data-content="<table class='details'><tr><td><img src='@Url.Content("~/content/img/kindle.jpg")' /></td><td><p>Name: Kindle</p><p>Weight: 1.3lbs</p><p>Color: Black</p><p>Quantity: 1</p><p>Cost: $100</p></td>" data-bind="click: $parent.removeItem, text: name"></span></td>
+                                        <td class="left"><i class="icon-camera"></i>&nbsp;<span class="editable" title="Click to edit item name" data-content="<table class='details'><tr><td><img src='@Url.Content("~/content/img/kindle.jpg")' /></td><td><p>Name: Kindle</p><p>Weight: 1.3lbs</p><p>Color: Black</p><p>Quantity: 1</p><p>Cost: $100</p></td>" data-bind="click: $parent.removeItem, text: name"></span></td>
                                         <td><span class="editable" data-bind="text: quantity"></span></td>
                                         <td><span class="editable" data-bind="text: weight"></span>lbs</td>
                                         <td>$<span class="editable" title="@DashboardViewResources.PriceTitle" data-bind="text: price"></span></td>
@@ -308,6 +312,10 @@
             </div>
         </div>
         <div style="clear:left"></div>
+        <div data-bind="visible: shouldShowLoadingRecentPackagesMessage">
+            <div class="alert package">@DashboardViewResources.LoadingRecentPackagesMessage</div>
+            <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+        </div>
         <div data-bind="visible: shouldShowPackagesEmptyMessage">
             <div class="alert alert-info package">@DashboardViewResources.NoPackagesMessage</div>
             <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
@@ -362,7 +370,8 @@
                                     </tr>
                                 </tfoot>
                             </table>
-                            <table>
+                            <div class="alert alert-info" data-bind="visible: items().length == 0">@DashboardViewResources.NoPackageItemsMessage</div>
+                            <table data-bind="visible: items().length != 0">
                                 <thead>
                                     <tr class="type">
                                         <th colspan="4">

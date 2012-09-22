@@ -166,6 +166,7 @@
     <Compile Include="Steps\PackageSteps.cs" />
     <Compile Include="Steps\ProfileSteps.cs" />
     <Compile Include="Steps\ShopperOrdersSteps.cs" />
+    <Compile Include="Steps\ShopperPackagesSteps.cs" />
     <Compile Include="Steps\SignInSteps.cs" />
     <Compile Include="Steps\SignUpSteps.cs" />
   </ItemGroup>

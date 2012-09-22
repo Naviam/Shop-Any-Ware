@@ -11,6 +11,8 @@ namespace TdService.UI.Web.ViewModels.Order
 {
     using System;
 
+    using TdService.Resources;
+
     /// <summary>
     /// Order view model to display order on a view.
     /// </summary>
@@ -50,6 +52,17 @@ namespace TdService.UI.Web.ViewModels.Order
         /// Gets or sets order status.
         /// </summary>
         public string Status { get; set; }
+
+        /// <summary>
+        /// Gets the status translated.
+        /// </summary>
+        public string StatusTranslated
+        {
+            get
+            {
+                return OrderStatusResources.ResourceManager.GetString(this.Status);
+            }
+        }
 
         /// <summary>
         /// Gets or sets a value indicating whether this order can be modified.

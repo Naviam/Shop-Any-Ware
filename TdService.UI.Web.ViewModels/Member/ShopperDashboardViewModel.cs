@@ -9,6 +9,10 @@
 
 namespace TdService.UI.Web.ViewModels.Member
 {
+    using System.Collections.Generic;
+
+    using TdService.UI.Web.ViewModels.Account;
+
     /// <summary>
     /// The shopper dashboard view model.
     /// </summary>
@@ -28,5 +32,10 @@ namespace TdService.UI.Web.ViewModels.Member
         /// Gets or sets the last name.
         /// </summary>
         public string LastName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the delivery address view models.
+        /// </summary>
+        public List<DeliveryAddressViewModel> DeliveryAddressViewModels { get; set; }
     }
 }
