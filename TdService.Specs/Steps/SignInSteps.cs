@@ -59,7 +59,7 @@ namespace TdService.Specs.Steps
         }
 
         /// <summary>
-        /// The then the signin result should be as follows.
+        /// The then the sign in result should be as follows.
         /// </summary>
         /// <param name="table">
         /// The table.
@@ -69,13 +69,18 @@ namespace TdService.Specs.Steps
         {
             var result = ScenarioContext.Current.Get<ViewResult>("controllerResponse");
             Assert.That(result, Is.Not.Null);
-            var actual = result.Model as SignInViewModel;
-            Assert.That(actual, Is.Not.Null);
-            table.CompareToInstance(actual);
+            var mainViewModel = result.Model as MainViewModel;
+            Assert.That(mainViewModel, Is.Not.Null);
+            if (mainViewModel != null)
+            {
+                var actual = mainViewModel.SignInViewModel;
+                Assert.That(actual, Is.Not.Null);
+                table.CompareToInstance(actual);
+            }
         }
 
         /// <summary>
-        /// The then the signin view model should have following errors.
+        /// The then the sign in view model should have following errors.
         /// </summary>
         /// <param name="table">
         /// The table.
@@ -85,11 +90,16 @@ namespace TdService.Specs.Steps
         {
             var result = ScenarioContext.Current.Get<ViewResult>("controllerResponse");
             Assert.That(result, Is.Not.Null);
-            var actual = result.Model as SignInViewModel;
-            Assert.That(actual, Is.Not.Null);
-            Debug.Assert(actual != null, "actual != null");
-            Assert.That(actual.BrokenRules, Is.Not.Null);
-            table.CompareToSet(actual.BrokenRules);
+            var mainViewModel = result.Model as MainViewModel;
+            Assert.That(mainViewModel, Is.Not.Null);
+            if (mainViewModel != null)
+            {
+                var actual = mainViewModel.SignInViewModel;
+                Assert.That(actual, Is.Not.Null);
+                Debug.Assert(actual != null, "actual != null");
+                Assert.That(actual.BrokenRules, Is.Not.Null);
+                table.CompareToSet(actual.BrokenRules);
+            }
         }
 
         /// <summary>

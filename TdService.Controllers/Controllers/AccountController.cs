@@ -94,13 +94,12 @@ namespace TdService.UI.Web.Controllers
         /// <summary>
         /// The sign in.
         /// </summary>
-        /// <returns>
-        /// The System.Web.Mvc.ActionResult.
-        /// </returns>
         /// <summary>
         /// Defines a POST interface for submiting the SignIn form.
         /// </summary>
-        /// <param name="model"> Sign In Request object with username, password and remember me fields. The model. </param>
+        /// <param name="model">
+        /// Sign In Request object with username, password and remember me fields. The model.
+        /// </param>
         /// <returns>
         /// Redirect user to the home page of authenticated users.
         /// </returns>
