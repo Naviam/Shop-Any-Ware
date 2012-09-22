@@ -331,11 +331,20 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There are no active orders right now. Please create a new one..
+        ///   Looks up a localized string similar to There are no orders to show. Please add a new one..
         /// </summary>
         public static string NoOrdersMessage {
             get {
                 return ResourceManager.GetString("NoOrdersMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are no packages to show. Please add a new one..
+        /// </summary>
+        public static string NoPackagesMessage {
+            get {
+                return ResourceManager.GetString("NoPackagesMessage", resourceCulture);
             }
         }
         
@@ -511,7 +520,7 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Recent.
+        ///   Looks up a localized string similar to Recent Packages.
         /// </summary>
         public static string RecentPackagesTabHeader {
             get {

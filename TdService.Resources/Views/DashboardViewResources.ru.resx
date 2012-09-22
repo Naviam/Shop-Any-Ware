@@ -210,6 +210,9 @@
   <data name="NoOrdersMessage" xml:space="preserve">
     <value>На данный момент у Вас отсутствуют активные заказы. Добавьте новый заказ.</value>
   </data>
+  <data name="NoPackagesMessage" xml:space="preserve">
+    <value>На данный момент у Вас отсутствуют посылки. Добавьте новую посылку.</value>
+  </data>
   <data name="OrderCannotBeRemoved" xml:space="preserve">
     <value>Заказ не может быть удален в текущем состоянии.</value>
   </data>

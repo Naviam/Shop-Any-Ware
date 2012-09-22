@@ -208,7 +208,10 @@
     <value>The items will be automatically displayed when the order received.</value>
   </data>
   <data name="NoOrdersMessage" xml:space="preserve">
-    <value>There are no active orders right now. Please create a new one.</value>
+    <value>There are no orders to show. Please add a new one.</value>
+  </data>
+  <data name="NoPackagesMessage" xml:space="preserve">
+    <value>There are no packages to show. Please add a new one.</value>
   </data>
   <data name="OrderCannotBeRemoved" xml:space="preserve">
     <value>The order cannot be removed in current state.</value>
@@ -268,7 +271,7 @@
     <value>Qty</value>
   </data>
   <data name="RecentPackagesTabHeader" xml:space="preserve">
-    <value>Recent</value>
+    <value>Recent Packages</value>
   </data>
   <data name="RemoveOrderButton" xml:space="preserve">
     <value>REMOVE</value>

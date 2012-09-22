@@ -353,14 +353,21 @@ function DashboardViewModel(serverModel) {
 
     // dashboard view model collections
     self.orders = ko.observableArray();
+    self.ordersHistory = ko.observableArray();
     self.addresses = ko.observableArray();
     self.packages = ko.observableArray();
+    self.packagesHistory = ko.observableArray();
     self.retailers = ko.observableArray();
 
     // computed properties
     self.shouldShowOrdersEmptyMessage = ko.computed(function () {
         /// <summary>Determines whether no orders message should be displayed.</summary>
         return self.orders().length == 0;
+    });
+    
+    self.shouldShowPackagesEmptyMessage = ko.computed(function () {
+        /// <summary>Determines whether no orders message should be displayed.</summary>
+        return self.packages().length == 0;
     });
 
     self.disableAddOrderButton = ko.computed(function () {
@@ -421,6 +428,19 @@ function DashboardViewModel(serverModel) {
         });
     };
     self.getRecentOrders();
+    
+    self.getHistoryOrders = function () {
+        /// <summary>Load recent orders from server.</summary>
+        $.post("/orders/history", function (data) {
+            var orders = ko.toJS(data);
+            self.ordersHistory.removeAll();
+            $.each(orders, function (index, value) {
+                var order = new Order(value);
+                self.ordersHistory.unshift(order);
+            });
+        });
+    };
+    self.getHistoryOrders();
 
     self.createOrder = function() {
         /// <summary>Add new order.</summary>
