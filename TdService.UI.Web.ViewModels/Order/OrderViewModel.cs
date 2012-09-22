@@ -75,6 +75,11 @@ namespace TdService.UI.Web.ViewModels.Order
         public bool CanBeRemoved { get; set; }
 
         /// <summary>
+        /// Gets or sets a value indicating whether this order can be removed.
+        /// </summary>
+        public bool CanBeReceived { get; set; }
+
+        /// <summary>
         /// Gets or sets a value indicating whether this order can be requested for return.
         /// </summary>
         public bool CanBeRequestedForReturn { get; set; }

@@ -11,6 +11,8 @@ namespace TdService.UI.Web.ViewModels.Package
 {
     using System;
 
+    using TdService.Resources;
+
     /// <summary>
     /// The package view model.
     /// </summary>
@@ -40,6 +42,17 @@ namespace TdService.UI.Web.ViewModels.Package
         /// Gets or sets the status.
         /// </summary>
         public string Status { get; set; }
+
+        /// <summary>
+        /// Gets the status translated.
+        /// </summary>
+        public string StatusTranslated
+        {
+            get
+            {
+                return PackageStatusResources.ResourceManager.GetString(this.Status);
+            }
+        }
 
         /// <summary>
         /// Gets or sets Created Date.

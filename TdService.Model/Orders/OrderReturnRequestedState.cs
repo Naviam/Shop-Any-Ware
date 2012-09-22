@@ -1,15 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="OrderReturnRequestedState.cs" company="TdService">
+//   Vitali Hatalski. 2012.
+// </copyright>
+// <summary>
+//   The order return requested state.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace TdService.Model.Orders
 {
+    /// <summary>
+    /// The order return requested state.
+    /// </summary>
     public class OrderReturnRequestedState : IOrderState
     {
         /// <summary>
-        /// Can this order be received (status changed to received).
+        /// Gets a value indicating whether can be received.
         /// </summary>
         public bool CanBeReceived
         {
@@ -20,7 +26,7 @@ namespace TdService.Model.Orders
         }
 
         /// <summary>
-        /// Flag that says whether items are editable in this order.
+        /// Gets a value indicating whether can items be modified.
         /// </summary>
         public bool CanItemsBeModified
         {
@@ -31,7 +37,7 @@ namespace TdService.Model.Orders
         }
 
         /// <summary>
-        /// Flag that says whether this order is editable.
+        /// Gets a value indicating whether can be modified.
         /// </summary>
         public bool CanBeModified
         {
@@ -42,7 +48,7 @@ namespace TdService.Model.Orders
         }
 
         /// <summary>
-        /// Flag that says whether this order can be returned.
+        /// Gets a value indicating whether can be requested for return.
         /// </summary>
         public bool CanBeRequestedForReturn
         {
@@ -53,7 +59,7 @@ namespace TdService.Model.Orders
         }
 
         /// <summary>
-        /// Flag that says whether this order can be returned.
+        /// Gets a value indicating whether can be returned.
         /// </summary>
         public bool CanBeReturned
         {
@@ -64,7 +70,7 @@ namespace TdService.Model.Orders
         }
 
         /// <summary>
-        /// Flag that says whether this order can be disposed.
+        /// Gets a value indicating whether can be disposed.
         /// </summary>
         public bool CanBeDisposed
         {
@@ -75,7 +81,7 @@ namespace TdService.Model.Orders
         }
 
         /// <summary>
-        /// Flag that says whether this order can be removed.
+        /// Gets a value indicating whether can be removed.
         /// </summary>
         public bool CanBeRemoved
         {

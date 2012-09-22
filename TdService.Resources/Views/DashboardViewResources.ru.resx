@@ -208,7 +208,7 @@
     <value>Адрес склада ShopAnyWare</value>
   </data>
   <data name="MyUsAddressLinkMessage" xml:space="preserve">
-    <value>Посмотреть мой адрес склада</value>
+    <value>Посмотреть адрес склада</value>
   </data>
   <data name="NewOrderPlaceholder" xml:space="preserve">
     <value>введите ссылку на магазин</value>
@@ -226,7 +226,7 @@
     <value>Пожалуйста, переместите сюда товары из Ваших заказов, которые уже поступили на склад.</value>
   </data>
   <data name="NoPackagesMessage" xml:space="preserve">
-    <value>На данный момент у Вас отсутствуют посылки. Добавьте новую посылку.</value>
+    <value>На данный момент у Вас отсутствуют посылки. Создайте посылку.</value>
   </data>
   <data name="OrderCannotBeRemoved" xml:space="preserve">
     <value>Заказ не может быть удален в текущем состоянии.</value>

@@ -169,7 +169,7 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ok.
+        ///   Looks up a localized string similar to Subscribe.
         /// </summary>
         public static string FooterSubscribeButton {
             get {

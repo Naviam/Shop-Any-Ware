@@ -50,11 +50,11 @@
                                     <span data-bind="css: { 'status-new': status() == 'New', 'status-received': status() == 'Received', 'status-returned': status() == 'Returned', 'status-returnrequested': status() == 'ReturnRequested', 'status-disposed': status() == 'Disposed' }" class="label">@DashboardViewResources.StatusHeader: <span data-bind="text: statusTranslated"></span></span>
                                     <span class="label">@DashboardViewResources.OrderCreatedDateHeader: <span data-bind="text: orderDate"></span></span>
                                     <button class="btn btn-mini btn-primary" title="@DashboardViewResources.AddItemButton" data-bind="visible: canItemsBeModified" data-toggle="modal" href="#itemFormModal"><i class="icon-white icon-plus-sign"></i></button>
-                                    <button class="btn btn-mini btn-danger" title="@DashboardViewResources.RemoveOrderButton" data-bind="click: $parent.removeOrder, visible: canBeRemoved"><i class="icon-white icon-trash"></i></button>
-                                    <button class="btn btn-mini btn-success" title="@DashboardViewResources.InStockButton"><i class="icon-white icon-inbox"></i></button>
+                                    <button class="btn btn-mini btn-danger" title="@DashboardViewResources.RemoveOrderButton" data-bind="click: $parent.removeOrder, visible: canBeRemoved"><i class="icon-white icon-remove"></i></button>
+                                    <button class="btn btn-mini btn-success" title="@DashboardViewResources.InStockButton" data-bind="visible: canBeReceived"><i class="icon-white icon-inbox"></i></button>
                                     <button class="btn btn-mini" title="@DashboardViewResources.ReturnOrderButton" data-toggle="modal" data-bind="visible: canBeRequestedForReturn"><i class="icon icon-retweet"></i></button>
                                     <span class="dropdown">
-                                        <button class="btn btn-mini dropdown-toggle" title="@DashboardViewResources.MoveAllItemsTitle" data-toggle="dropdown"><i class="icon icon-move"></i><span class="caret"></span></button>
+                                        <button class="btn btn-mini dropdown-toggle" title="@DashboardViewResources.MoveAllItemsTitle" data-toggle="dropdown" data-bind="visible: items().length > 0"><i class="icon icon-move"></i><span class="caret"></span></button>
                                         <ul class="dropdown-menu" data-bind="foreach: $parent.packages()">
                                             <li><a href="#"><span class="label">ID: <span data-bind="text: id()"></span></span> <span data-bind="text: name()"></span></a></li>
                                         </ul>
@@ -98,7 +98,7 @@
                                         <td>
                                             <div class="btn-group">
                                                 <button class="btn btn-mini" title="@DashboardViewResources.EditItemTitle"><i class="icon icon-edit"></i></button>
-                                                <button class="btn btn-mini" title="@DashboardViewResources.DeleteItemTitle"><i class="icon icon-trash"></i></button>
+                                                <button class="btn btn-mini" title="@DashboardViewResources.DeleteItemTitle"><i class="icon icon-remove"></i></button>
                                                 <button class="btn btn-mini dropdown-toggle" title="@DashboardViewResources.MoveItemTitle" data-toggle="dropdown"><i class="icon icon-move"></i>@*@DashboardViewResources.ActionMoveHeader*@ <span class="caret"></span></button>
                                                 <ul class="dropdown-menu" data-bind="foreach: $root.packages()">
                                                     <li><a href="#"><span class="label">ID: <span data-bind="text: id"></span></span> <span data-bind="text: name()"></span></a></li>
@@ -174,11 +174,11 @@
                                     <span data-bind="text: retailerUrl" class="name"></span>
                                 </td>
                                 <td class="right">
-                                    <span data-bind="css: { 'status-new': status == 'New', 'status-received': status == 'Received', 'status-returned': status == 'Returned', 'status-returnrequested': status == 'ReturnRequested', 'status-disposed': status == 'Disposed' }" class="label">@DashboardViewResources.StatusHeader: <span data-bind="text: statusTranslated"></span></span>
+                                    <span data-bind="css: { 'status-new': status() == 'New', 'status-received': status() == 'Received', 'status-returned': status() == 'Returned', 'status-returnrequested': status() == 'ReturnRequested', 'status-disposed': status() == 'Disposed' }" class="label">@DashboardViewResources.StatusHeader: <span data-bind="text: statusTranslated"></span></span>
                                     <span class="label">@DashboardViewResources.OrderCreatedDateHeader: <span data-bind="text: orderDate"></span></span>
                                     <button class="btn btn-mini btn-primary" title="@DashboardViewResources.AddItemButton" data-bind="visible: canItemsBeModified" data-toggle="modal" href="#itemFormModal"><i class="icon-white icon-plus-sign"></i></button>
                                     <button class="btn btn-mini btn-danger" title="@DashboardViewResources.RemoveOrderButton" data-bind="click: $parent.removeOrder, visible: canBeRemoved"><i class="icon-white icon-trash"></i></button>
-                                    <button class="btn btn-mini btn-success" title="@DashboardViewResources.InStockButton"><i class="icon-white icon-inbox"></i></button>
+                                    <button class="btn btn-mini btn-success" title="@DashboardViewResources.InStockButton" data-bind="visible: items().length > 0"><i class="icon-white icon-inbox"></i></button>
                                     <button class="btn btn-mini" title="@DashboardViewResources.ReturnOrderButton" data-toggle="modal" data-bind="visible: canBeRequestedForReturn"><i class="icon-retweet"></i></button>
                                     <span class="dropdown">
                                         <button class="btn btn-mini dropdown-toggle" title="@DashboardViewResources.MoveAllItemsTitle" data-toggle="dropdown"><i class="icon icon-move"></i><span class="caret"></span></button>
@@ -331,10 +331,10 @@
                                 @*@DashboardViewResources.PackageNameHeader: *@ <span data-bind="text: name" class="name"></span>
                             </td>
                             <td class="right">
-                                <span class="label status-new">@DashboardViewResources.StatusHeader: <span data-bind="text: status"></span></span>
+                                <span data-bind="css: { 'status-new': status() == 'New', 'status-pendingpayment': status() == 'PendingPayment', 'status-dispatched': status() == 'Dispatched', 'status-readytodispatch': status() == 'ReadyToDispatch', 'status-delivered': status() == 'Delivered' }" class="label">@DashboardViewResources.StatusHeader: <span data-bind="text: statusTranslated"></span></span>
                                 <span class="label">@DashboardViewResources.PackageCreatedDateHeader: <span data-bind="text: createdDate"></span></span>
-                                <button class="btn btn-mini btn-primary right" title="@DashboardViewResources.SendPackageButton" data-bind="click: sendPackage, visible: canBeSent"><i class="icon-white icon-plane"></i></button>
-                                <button class="btn btn-mini btn-danger" title="@DashboardViewResources.RemoveOrderButton" data-bind="click: $parent.removePackage, visible: canBeRemoved"><i class="icon-white icon-trash"></i></button>
+                                <button class="btn btn-mini btn-primary right" title="@DashboardViewResources.SendPackageButton" data-bind="click: sendPackage, visible: items().length > 0 && canBeSent"><i class="icon-white icon-plane"></i></button>
+                                <button class="btn btn-mini btn-danger" title="@DashboardViewResources.RemoveOrderButton" data-bind="click: $parent.removePackage, visible: canBeRemoved"><i class="icon-white icon-remove"></i></button>
                             </td>
                         </tr>
                     </table>

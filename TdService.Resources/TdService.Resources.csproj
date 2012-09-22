@@ -68,6 +68,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ErrorCodeResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="PackageStatusResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PackageStatusResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="SiteMapLocalizations.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -143,6 +148,11 @@
       <LastGenOutput>ErrorCodeResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ErrorCodeResources.ru.resx" />
+    <EmbeddedResource Include="PackageStatusResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PackageStatusResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PackageStatusResources.ru.resx" />
     <EmbeddedResource Include="SiteMapLocalizations.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SiteMapLocalizations.Designer.cs</LastGenOutput>

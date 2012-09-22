@@ -1,4 +1,13 @@
-﻿namespace TdService.Model.Orders
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="OrderReturnedState.cs" company="TdService">
+//   Vitali Hatalski. 2012.
+// </copyright>
+// <summary>
+//   Describe the order behavior when return of an order is in progress.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace TdService.Model.Orders
 {
     /// <summary>
     /// Describe the order behavior when return of an order is in progress.
@@ -6,7 +15,7 @@
     public class OrderReturnedState : IOrderState
     {
         /// <summary>
-        /// Can this order be received (status changed to received).
+        /// Gets a value indicating whether can be received.
         /// </summary>
         public bool CanBeReceived
         {
@@ -17,7 +26,7 @@
         }
 
         /// <summary>
-        /// Flag that says whether items are editable in this order.
+        /// Gets a value indicating whether can items be modified.
         /// </summary>
         public bool CanItemsBeModified
         {
@@ -28,7 +37,7 @@
         }
 
         /// <summary>
-        /// Flag that says whether this order is editable.
+        /// Gets a value indicating whether can be modified.
         /// </summary>
         public bool CanBeModified
         {
@@ -39,7 +48,7 @@
         }
 
         /// <summary>
-        /// Flag that says whether this order can be returned.
+        /// Gets a value indicating whether can be requested for return.
         /// </summary>
         public bool CanBeRequestedForReturn
         {
@@ -50,7 +59,7 @@
         }
 
         /// <summary>
-        /// Flag that says whether this order can be returned.
+        /// Gets a value indicating whether can be returned.
         /// </summary>
         public bool CanBeReturned
         {
@@ -61,7 +70,7 @@
         }
 
         /// <summary>
-        /// Flag that says whether this order can be disposed.
+        /// Gets a value indicating whether can be disposed.
         /// </summary>
         public bool CanBeDisposed
         {
@@ -72,7 +81,7 @@
         }
 
         /// <summary>
-        /// Flag that says whether this order can be removed.
+        /// Gets a value indicating whether can be removed.
         /// </summary>
         public bool CanBeRemoved
         {

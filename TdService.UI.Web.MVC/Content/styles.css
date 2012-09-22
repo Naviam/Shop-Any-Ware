@@ -301,6 +301,26 @@ html
         background-color: #464444;
     }
 
+    .box .status-delivered, .box .status-delivered:hover
+    {
+        background-color: #464444;
+    }
+
+    .box .status-pendingpayment, .box .status-pendingpayment:hover
+    {
+        background-color: #b7ae10;
+    }
+
+    .box .status-dispatched, .box .status-dispatched:hover
+    {
+        background-color: #b7ae10;
+    }
+
+    .box .status-readytodispatch, .box .status-readytodispatch:hover
+    {
+        background-color: #b7ae10;
+    }
+
     .box .name
     {
         font-weight: bold;

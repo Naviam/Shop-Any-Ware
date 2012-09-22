@@ -154,7 +154,7 @@
     <value>Оставайтесь на связи</value>
   </data>
   <data name="FooterSubscribeButton" xml:space="preserve">
-    <value>Ok</value>
+    <value>Подписаться</value>
   </data>
   <data name="FooterSubscribePlaceholder" xml:space="preserve">
     <value>Введите Ваш E-mail</value>
