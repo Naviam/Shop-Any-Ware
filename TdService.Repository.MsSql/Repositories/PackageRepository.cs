@@ -9,7 +9,6 @@
 
 namespace TdService.Repository.MsSql.Repositories
 {
-    using System;
     using System.Linq;
 
     using TdService.Model.Packages;
@@ -17,24 +16,8 @@ namespace TdService.Repository.MsSql.Repositories
     /// <summary>
     /// The package repository.
     /// </summary>
-    public class PackageRepository : IPackageRepository, IDisposable
+    public class PackageRepository : IPackageRepository
     {
-        /// <summary>
-        /// The context.
-        /// </summary>
-        private readonly ShopAnyWareSql context;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="PackageRepository"/> class.
-        /// </summary>
-        /// <param name="context">
-        /// The context.
-        /// </param>
-        public PackageRepository(ShopAnyWareSql context)
-        {
-            this.context = context;
-        }
-
         /// <summary>
         /// Get package with items by Id.
         /// </summary>
@@ -46,21 +29,38 @@ namespace TdService.Repository.MsSql.Repositories
         /// </returns>
         public Package GetPackageWithItemsById(int packageId)
         {
-            return this.context.Packages.Include("Items").SingleOrDefault(p => p.Id == packageId);
+            using (var context = new ShopAnyWareSql())
+            {
+                return context.Packages.Include("Items").SingleOrDefault(p => p.Id == packageId);
+            }
         }
 
         /// <summary>
         /// Add new package
         /// </summary>
+        /// <param name="email">
+        /// The email.
+        /// </param>
         /// <param name="package">
         /// The package to add.
         /// </param>
         /// <returns>
         /// The added package.
         /// </returns>
-        public Package AddPackage(Package package)
+        public Package AddPackage(string email, Package package)
         {
-            return this.context.Packages.Add(package);
+            using (var context = new ShopAnyWareSql())
+            {
+                var packageAdded = context.Packages.Add(package);
+                var user = context.Users.Include("Profile").Include("Roles").SingleOrDefault(u => u.Email == email);
+                if (user != null)
+                {
+                    user.AddPackage(packageAdded);
+                }
+
+                context.SaveChanges();
+                return packageAdded;
+            }
         }
 
         /// <summary>
@@ -71,10 +71,10 @@ namespace TdService.Repository.MsSql.Repositories
         /// </param>
         public void RemovePackage(int packageId)
         {
-            var package = this.context.Packages.Find(packageId);
-            if (package != null)
+            using (var context = new ShopAnyWareSql())
             {
-                this.context.Packages.Remove(package);
+                var package = context.Packages.Find(packageId);
+                context.Packages.Remove(package);
             }
         }
 
@@ -83,16 +83,10 @@ namespace TdService.Repository.MsSql.Repositories
         /// </summary>
         public void SaveChanges()
         {
-            this.context.SaveChanges();
-        }
-
-        /// <summary>
-        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-        /// </summary>
-        /// <filterpriority>2</filterpriority>
-        public void Dispose()
-        {
-            this.context.Dispose();
+            using (var context = new ShopAnyWareSql())
+            {
+                context.SaveChanges();
+            }
         }
     }
 }

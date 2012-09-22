@@ -88,8 +88,6 @@ namespace TdService.Specs.Steps
         [BeforeScenario("orders")]
         public static void BeforeOrderScenarios()
         {
-            var context = new ShopAnyWareSql();
-            var userRepository = new UserRepository(context);
             var orderRepository = new OrderRepository();
             var logger = new FakeLogger();
             var orderService = new OrderService(orderRepository, logger);
@@ -104,7 +102,7 @@ namespace TdService.Specs.Steps
         {
             var context = new ShopAnyWareSql();
             var userRepository = new UserRepository(context);
-            var packageRepository = new PackageRepository(context);
+            var packageRepository = new PackageRepository();
             var packagesService = new PackagesService(packageRepository, userRepository);
             ScenarioContext.Current.Set(packagesService);
         }

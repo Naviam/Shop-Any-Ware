@@ -193,34 +193,34 @@
     <value>An item must have a weight.</value>
   </data>
   <data name="OrderCannotBeAddedByYou" xml:space="preserve">
-    <value>An order cannot be added by you. Only users in 'Shopper' role can do this.</value>
+    <value>Заказ не может быть добавлен Вами. Только пользователь в роли "Shopper" может делать это.</value>
   </data>
   <data name="OrderCannotBeRemoved" xml:space="preserve">
-    <value>The order cannot be removed in current state.</value>
+    <value>В текущем состоянии заказ не может быть удален.</value>
   </data>
   <data name="OrderCannotBeUpdated" xml:space="preserve">
-    <value>The order cannot be updated in current state.</value>
+    <value>В текущем состоянии заказ не может быть отредактирован.</value>
   </data>
   <data name="OrderCreatedDateRequired" xml:space="preserve">
-    <value>Order must have a created date.</value>
+    <value>У заказа должна быть указана дата создания.</value>
   </data>
   <data name="OrderNotFoundForUser" xml:space="preserve">
-    <value>The order has not been found.</value>
+    <value>Заказ не был найден.</value>
   </data>
   <data name="OrderOrderNumberMaxLength" xml:space="preserve">
     <value>Order number must be a string with a maximum length of 64.</value>
   </data>
   <data name="OrderReceivedDateRequired" xml:space="preserve">
-    <value>Order in Received status must have a received date.</value>
+    <value>У заказа в состоянии Получен должна быть указана дата получения.</value>
   </data>
   <data name="OrderRetailerRequired" xml:space="preserve">
-    <value>Order must have a retailer.</value>
+    <value>У заказа должен быть указан магазин.</value>
   </data>
   <data name="OrderStatusExtendedMaxLength" xml:space="preserve">
     <value>Order extended status must be a string with a maximum length of 64.</value>
   </data>
   <data name="OrderStatusRequired" xml:space="preserve">
-    <value>An order must have a status.</value>
+    <value>У заказа должен быть указан статус.</value>
   </data>
   <data name="OrderTrackingNumberMaxLength" xml:space="preserve">
     <value>Tracking number must be a string with a maximum length of 64.</value>
@@ -228,8 +228,11 @@
   <data name="OrderWeightRequired" xml:space="preserve">
     <value>Order in Received status must have a weight.</value>
   </data>
+  <data name="PackageCannotBeAddedByYou" xml:space="preserve">
+    <value>Посылка не может быть добавлена Вами. Только пользователь в роли "Shopper" может делать это.</value>
+  </data>
   <data name="PackageNameMaxLength" xml:space="preserve">
-    <value>Package name must be a string with a maximum length of 64.</value>
+    <value>Название посылки не должно превышать 21 символов длинны.</value>
   </data>
   <data name="PackageNameRequired" xml:space="preserve">
     <value>A package must have a name.</value>

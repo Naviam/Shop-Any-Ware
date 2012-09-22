@@ -68,6 +68,7 @@ namespace TdService.Infrastructure.Domain
         OrderCannotBeRemoved,
         PackageNameMaxLength,
         PackageNameRequired,
+        PackageCannotBeAddedByYou,
         ItemNameMaxLength,
         ItemNameRequired,
         ItemPriceRequired,

@@ -71,7 +71,7 @@ namespace TdService.Specs
             Database.SetInitializer(new ShopAnyWareTestInitilizer());
             this.context = new ShopAnyWareSql();
             this.itemsRepository = new ItemsRepository(this.context);
-            this.packageRepository = new PackageRepository(this.context);
+            this.packageRepository = new PackageRepository();
             this.itemsService = new ItemsService(this.itemsRepository, this.packageRepository);
         }
 

@@ -82,12 +82,7 @@ namespace TdService.Services.Implementations
         public AddPackageResponse AddPackage(AddPackageRequest request)
         {
             var newPackage = new Package { Name = request.Name, CreatedDate = DateTime.UtcNow };
-            var packageResult = this.packageRepository.AddPackage(newPackage);
-            this.packageRepository.SaveChanges();
-
-            this.userRepository.AttachPackage(request.IdentityToken, packageResult.Id);
-            this.userRepository.SaveChanges();
-
+            var packageResult = this.packageRepository.AddPackage(request.IdentityToken, newPackage);
             return packageResult.ConvertToAddPackageResponse();
         }
 

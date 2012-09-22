@@ -147,7 +147,7 @@ namespace TdService.Model.Packages
             {
                 this.AddBrokenRule(PackageBusinessRules.NameRequired);
             }
-            else if (this.Name.Length > 64)
+            else if (this.Name.Length > 21)
             {
                 this.AddBrokenRule(PackageBusinessRules.NameLength);
             }

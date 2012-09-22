@@ -286,7 +286,7 @@ namespace TdService.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An order cannot be added by you. Only users in &apos;Shopper&apos; role can do this..
+        ///   Looks up a localized string similar to An order cannot be added by you. Only users in &apos;Shopper&apos; role can do it..
         /// </summary>
         public static string OrderCannotBeAddedByYou {
             get {
@@ -390,6 +390,15 @@ namespace TdService.Resources {
         public static string OrderWeightRequired {
             get {
                 return ResourceManager.GetString("OrderWeightRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A package cannot be added by you. Only users in &apos;Shopper&apos; role can do it..
+        /// </summary>
+        public static string PackageCannotBeAddedByYou {
+            get {
+                return ResourceManager.GetString("PackageCannotBeAddedByYou", resourceCulture);
             }
         }
         

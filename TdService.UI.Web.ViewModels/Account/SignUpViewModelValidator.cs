@@ -9,8 +9,7 @@
 
 namespace TdService.UI.Web.ViewModels.Account
 {
-    using System.Globalization;
-    using System.Web;
+    using System.Threading;
 
     using FluentValidation;
 
@@ -30,12 +29,7 @@ namespace TdService.UI.Web.ViewModels.Account
             // First set the cascade mode
             this.CascadeMode = CascadeMode.StopOnFirstFailure;
 
-            var culture = new CultureInfo("en-US");
-            if (HttpContext.Current.Request.Cookies["culture"] != null)
-            {
-                var cultureText = HttpContext.Current.Request.Cookies["culture"].Value;
-                culture = new CultureInfo(cultureText);
-            }
+            var culture = Thread.CurrentThread.CurrentCulture;
 
             RuleFor(su => su.Email).NotEmpty().WithMessage(ErrorCodeResources.ResourceManager.GetString(ErrorCode.UserEmailRequired.ToString(), culture))
                 .EmailAddress().WithMessage(ErrorCodeResources.ResourceManager.GetString(ErrorCode.UserEmailInvalid.ToString(), culture))

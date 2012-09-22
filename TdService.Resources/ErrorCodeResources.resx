@@ -193,7 +193,7 @@
     <value>An item must have a weight.</value>
   </data>
   <data name="OrderCannotBeAddedByYou" xml:space="preserve">
-    <value>An order cannot be added by you. Only users in 'Shopper' role can do this.</value>
+    <value>An order cannot be added by you. Only users in 'Shopper' role can do it.</value>
   </data>
   <data name="OrderCannotBeRemoved" xml:space="preserve">
     <value>The order cannot be removed in current state.</value>
@@ -227,6 +227,9 @@
   </data>
   <data name="OrderWeightRequired" xml:space="preserve">
     <value>Order in Received status must have a weight.</value>
+  </data>
+  <data name="PackageCannotBeAddedByYou" xml:space="preserve">
+    <value>A package cannot be added by you. Only users in 'Shopper' role can do it.</value>
   </data>
   <data name="PackageNameMaxLength" xml:space="preserve">
     <value>Package name must be a string with a maximum length of 64.</value>

@@ -20,7 +20,7 @@ namespace TdService.Repository.MsSql.Configurations
         /// </summary>
         public PackageConfiguration()
         {
-            this.Property(p => p.Name).HasMaxLength(64);
+            this.Property(p => p.Name).HasMaxLength(21);
         }
     }
 }

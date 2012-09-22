@@ -168,6 +168,22 @@ namespace TdService.Model.Membership
         }
 
         /// <summary>
+        /// The add package.
+        /// </summary>
+        /// <param name="package">
+        /// The package.
+        /// </param>
+        public void AddPackage(Package package)
+        {
+            if (this.Roles.Exists(r => r.Name != StandardRole.Shopper.ToString()))
+            {
+                throw new InvalidOrderException(ErrorCode.PackageCannotBeAddedByYou.ToString());
+            }
+
+            this.Packages.Add(package);
+        }
+
+        /// <summary>
         /// Add new order to user.
         /// </summary>
         /// <param name="order">

@@ -28,13 +28,16 @@ namespace TdService.Model.Packages
         /// <summary>
         /// Add new package
         /// </summary>
+        /// <param name="email">
+        /// The email.
+        /// </param>
         /// <param name="package">
         /// The package to add.
         /// </param>
         /// <returns>
         /// The added package.
         /// </returns>
-        Package AddPackage(Package package);
+        Package AddPackage(string email, Package package);
 
         /// <summary>
         /// Remove package by ID.
