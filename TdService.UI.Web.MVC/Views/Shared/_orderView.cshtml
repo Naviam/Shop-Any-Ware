@@ -15,7 +15,7 @@
                         <span data-bind="if: status() == 'Received'">@DashboardViewResources.OrderReceivedDateHeader</span>
                         <span data-bind="if: status() == 'Returned'">@DashboardViewResources.OrderReturnedDateHeader</span>: 
                         <span data-bind="text: orderDate"></span>
-                    </span>
+                    </span>&nbsp;
                     <button class="btn btn-mini btn-primary" title="@DashboardViewResources.AddItemButton" data-bind="visible: canItemsBeModified" data-toggle="modal" href="#itemFormModal"><i class="icon-white icon-plus-sign"></i></button>
                     <button class="btn btn-mini btn-danger" title="@DashboardViewResources.RemoveOrderButton" data-bind="click: $parent.removeOrder, visible: canBeRemoved"><i class="icon-white icon-remove"></i></button>
                     <button class="btn btn-mini btn-success" title="@DashboardViewResources.InStockButton" data-bind="visible: canBeReceived"><i class="icon-white icon-inbox"></i></button>

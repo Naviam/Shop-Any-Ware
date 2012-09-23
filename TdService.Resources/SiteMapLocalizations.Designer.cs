@@ -61,6 +61,24 @@ namespace TdService.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Administrator Dashboard.
+        /// </summary>
+        public static string AdminDashboard {
+            get {
+                return ResourceManager.GetString("AdminDashboard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Website administrator page.
+        /// </summary>
+        public static string AdminDashboardDescription {
+            get {
+                return ResourceManager.GetString("AdminDashboardDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Our contact details.
         /// </summary>
         public static string ContactsDescription {
@@ -115,6 +133,24 @@ namespace TdService.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Operator Dashboard.
+        /// </summary>
+        public static string OperatorDashboard {
+            get {
+                return ResourceManager.GetString("OperatorDashboard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Processing orders and packages.
+        /// </summary>
+        public static string OperatorDashboardDescription {
+            get {
+                return ResourceManager.GetString("OperatorDashboardDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Our services.
         /// </summary>
         public static string OurServicesDescription {
@@ -129,6 +165,24 @@ namespace TdService.Resources {
         public static string OurServicesTitle {
             get {
                 return ResourceManager.GetString("OurServicesTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shopper Dashboard.
+        /// </summary>
+        public static string ShopperDashboard {
+            get {
+                return ResourceManager.GetString("ShopperDashboard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add orders and packages.
+        /// </summary>
+        public static string ShopperDashboardDescription {
+            get {
+                return ResourceManager.GetString("ShopperDashboardDescription", resourceCulture);
             }
         }
         

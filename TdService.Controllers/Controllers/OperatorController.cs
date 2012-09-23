@@ -30,13 +30,13 @@ namespace TdService.UI.Web.Controllers
         }
 
         /// <summary>
-        /// The index.
+        /// The dashboard.
         /// </summary>
         /// <returns>
-        /// The System.Web.Mvc.ActionResult.
+        /// The <see cref="ActionResult"/>.
         /// </returns>
         [Authorize(Roles = "Operator")]
-        public ActionResult Index()
+        public ActionResult Dashboard()
         {
             return this.View();
         }

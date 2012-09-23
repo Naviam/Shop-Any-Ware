@@ -131,7 +131,7 @@ namespace TdService.UI.Web.Controllers
                     }
 
                     // for consultant and operator
-                    return this.RedirectToAction("Index", "Operator");
+                    return this.RedirectToAction("Dashboard", "Operator");
                 }
 
                 result = response.ConvertToSignInViewModel();

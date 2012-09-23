@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AdminDashboard" xml:space="preserve">
+    <value>Панель администратора</value>
+  </data>
+  <data name="AdminDashboardDescription" xml:space="preserve">
+    <value>Администрирование сайта</value>
+  </data>
   <data name="ContactsDescription" xml:space="preserve">
     <value>Наша контактная информация</value>
   </data>
@@ -135,11 +141,23 @@
   <data name="HomeTitle" xml:space="preserve">
     <value>Главная</value>
   </data>
+  <data name="OperatorDashboard" xml:space="preserve">
+    <value>Панель оператора</value>
+  </data>
+  <data name="OperatorDashboardDescription" xml:space="preserve">
+    <value>Обработка заказов и посылок</value>
+  </data>
   <data name="OurServicesDescription" xml:space="preserve">
     <value>Наш сервис</value>
   </data>
   <data name="OurServicesTitle" xml:space="preserve">
     <value>Наш сервис</value>
+  </data>
+  <data name="ShopperDashboard" xml:space="preserve">
+    <value>Панель покупателя</value>
+  </data>
+  <data name="ShopperDashboardDescription" xml:space="preserve">
+    <value>Добавление заказов и создание посылок</value>
   </data>
   <data name="StoresCatalogDescription" xml:space="preserve">
     <value>Каталог магазинов</value>

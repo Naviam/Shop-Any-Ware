@@ -342,9 +342,9 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Operator\Index.cshtml" />
     <Content Include="Views\Shared\_orderView.cshtml" />
     <Content Include="Views\Shared\_packageView.cshtml" />
+    <Content Include="Views\Operator\Dashboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Scripts\MVVM\Model\" />

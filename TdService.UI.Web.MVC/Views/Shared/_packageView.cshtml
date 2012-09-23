@@ -15,7 +15,7 @@
                         <span data-bind="if: status() == 'Dispatched'">@DashboardViewResources.PackageDispatchedDateHeader</span>
                         <span data-bind="if: status() == 'Delivered'">@DashboardViewResources.PackageDeliveredDateHeader</span>: 
                         <span data-bind="text: packageDate"></span>
-                    </span>
+                    </span>&nbsp;
                     <button class="btn btn-mini btn-primary right" title="@DashboardViewResources.SendPackageButton" data-bind="click: sendPackage, visible: items().length > 0 && canBeSent"><i class="icon-white icon-plane"></i></button>
                     <button class="btn btn-mini btn-danger" title="@DashboardViewResources.RemoveOrderButton" data-bind="click: $parent.removePackage, visible: canBeRemoved"><i class="icon-white icon-remove"></i></button>
                 </td>
