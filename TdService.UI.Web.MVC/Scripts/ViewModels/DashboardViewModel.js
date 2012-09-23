@@ -522,6 +522,7 @@ function DashboardViewModel(serverModel) {
             self.historyPackagesNotLoaded(false);
         });
     };
+    self.getPackageHistory();
 
     self.createPackage = function() {
         /// <summary>Create package.</summary>

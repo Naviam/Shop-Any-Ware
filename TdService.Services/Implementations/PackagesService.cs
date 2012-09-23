@@ -71,6 +71,27 @@ namespace TdService.Services.Implementations
         }
 
         /// <summary>
+        /// The get history.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The list of <see cref="GetRecentPackagesResponse"/>.
+        /// </returns>
+        public List<GetRecentPackagesResponse> GetHistory(GetRecentPackagesRequest request)
+        {
+            var user = this.userRepository.GetUserWithPackagesByEmail(request.IdentityToken);
+            if (user != null)
+            {
+                var recentPackages = user.GetHistoryPackages();
+                return recentPackages.ConvertToGetRecentPackagesResponseCollection();
+            }
+
+            return null;
+        }
+
+        /// <summary>
         /// Add new package.
         /// </summary>
         /// <param name="request">

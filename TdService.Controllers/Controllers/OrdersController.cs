@@ -57,7 +57,7 @@ namespace TdService.UI.Web.Controllers
         /// The new orders.
         /// </summary>
         /// <returns>
-        /// The System.Web.Mvc.ActionResult.
+        /// The <see cref="ActionResult"/>.
         /// </returns>
         [Authorize(Roles = "Operator")]
         [HttpPost]
@@ -79,7 +79,7 @@ namespace TdService.UI.Web.Controllers
         /// The received orders.
         /// </summary>
         /// <returns>
-        /// The System.Web.Mvc.ActionResult.
+        /// The <see cref="ActionResult"/>.
         /// </returns>
         public ActionResult ReceivedOrders()
         {
@@ -99,7 +99,7 @@ namespace TdService.UI.Web.Controllers
         /// The return requested orders.
         /// </summary>
         /// <returns>
-        /// The System.Web.Mvc.ActionResult.
+        /// The <see cref="ActionResult"/>.
         /// </returns>
         public ActionResult ReturnRequestedOrders()
         {

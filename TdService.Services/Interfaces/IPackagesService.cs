@@ -30,13 +30,24 @@ namespace TdService.Services.Interfaces
         List<GetRecentPackagesResponse> GetRecent(GetRecentPackagesRequest request);
 
         /// <summary>
+        /// The get history.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="GetRecentPackagesResponse"/>.
+        /// </returns>
+        List<GetRecentPackagesResponse> GetHistory(GetRecentPackagesRequest request);
+
+        /// <summary>
         /// Add new package.
         /// </summary>
         /// <param name="request">
         /// The add package request message.
         /// </param>
         /// <returns>
-        /// The add package response message.
+        /// The <see cref="AddPackageResponse"/>.
         /// </returns>
         AddPackageResponse AddPackage(AddPackageRequest request);
 
@@ -47,7 +58,7 @@ namespace TdService.Services.Interfaces
         /// The remove package request.
         /// </param>
         /// <returns>
-        /// The remove package response.
+        /// The <see cref="RemovePackageResponse"/>.
         /// </returns>
         RemovePackageResponse RemovePackage(RemovePackageRequest request);
     }

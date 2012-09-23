@@ -62,8 +62,8 @@
         <h3>@DashboardViewResources.PackagesHeader</h3><a href="#" class="btn btn-success balance">@DashboardViewResources.BalanceAddFundsButton</a><span style="float:right;margin:6px 12px;font-weight:bold;font-size:18px">@DashboardViewResources.BalanceHeader: $123</span>
         <div class="package">
             <ul class="nav nav-tabs">
-                <li class="active"><a href="#recent_packages">@DashboardViewResources.RecentPackagesTabHeader</a></li>
-                <li><a href="#history_packages">@DashboardViewResources.HistoryPackagesTabHeader</a></li>
+                <li class="active"><a href="#recent_packages" data-toggle="tab">@DashboardViewResources.RecentPackagesTabHeader</a></li>
+                <li><a href="#history_packages" data-toggle="tab">@DashboardViewResources.HistoryPackagesTabHeader</a></li>
             </ul>
             <div class="control-group" data-bind="css: { error: !newPackageField.isValid() }, validationOptions: { insertMessages: false, decorateElement: true, errorClass: 'error', parseInputAttributes: false, errorElementClass: 'error' }">
                 <div class="controls">

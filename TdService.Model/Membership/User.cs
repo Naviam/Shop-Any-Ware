@@ -95,26 +95,6 @@ namespace TdService.Model.Membership
         public List<Package> Packages { get; set; }
 
         /// <summary>
-        /// Get recent packages.
-        /// </summary>
-        /// <returns>
-        /// Collection of recent packages.
-        /// </returns>
-        public List<Package> GetRecentPackages()
-        {
-            var packages = this.Packages;
-            if (packages != null)
-            {
-                return packages.Where(
-                    p => !p.DeliveredDate.HasValue
-                             || p.DeliveredDate.Value > DateTime.UtcNow.AddDays(-30)).ToList();
-            }
-
-            this.Packages = new List<Package>();
-            return this.Packages;
-        }
-
-        /// <summary>
         /// Checks whether user has order with specified ID.
         /// </summary>
         /// <param name="orderId">
@@ -165,6 +145,48 @@ namespace TdService.Model.Membership
 
             this.Orders = new List<Order>();
             return this.Orders;
+        }
+
+        /// <summary>
+        /// Get recent packages.
+        /// </summary>
+        /// <returns>
+        /// Collection of recent packages.
+        /// </returns>
+        public List<Package> GetRecentPackages()
+        {
+            var packages = this.Packages;
+            if (packages != null)
+            {
+                return packages.Where(
+                    p => !p.DeliveredDate.HasValue
+                             || p.DeliveredDate.Value > DateTime.UtcNow.AddDays(-30)).ToList();
+            }
+
+            this.Packages = new List<Package>();
+            return this.Packages;
+        }
+
+        /// <summary>
+        /// The get history packages.
+        /// </summary>
+        /// <returns>
+        /// The list of <see cref="Package"/>.
+        /// </returns>
+        public List<Package> GetHistoryPackages()
+        {
+            var packages = this.Packages;
+            if (packages != null)
+            {
+                var result = from o in packages
+                             where o.Status == PackageStatus.Delivered
+                             orderby o.DeliveredDate descending
+                             select o;
+                return result.ToList();
+            }
+
+            this.Packages = new List<Package>();
+            return this.Packages;
         }
 
         /// <summary>

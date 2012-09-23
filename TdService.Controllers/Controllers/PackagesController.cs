@@ -54,7 +54,7 @@ namespace TdService.UI.Web.Controllers
         /// The package name.
         /// </param>
         /// <returns>
-        /// Json result with package view model.
+        /// The <see cref="ActionResult"/>.
         /// </returns>
         [Authorize(Roles = "Shopper")]
         [HttpPost]
@@ -79,7 +79,7 @@ namespace TdService.UI.Web.Controllers
         /// Get recent packages.
         /// </summary>
         /// <returns>
-        /// Json result.
+        /// The <see cref="ActionResult"/>.
         /// </returns>
         [Authorize(Roles = "Shopper")]
         [HttpPost]
@@ -98,13 +98,35 @@ namespace TdService.UI.Web.Controllers
         }
 
         /// <summary>
+        /// The history.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="ActionResult"/>.
+        /// </returns>
+        [Authorize(Roles = "Shopper")]
+        [HttpPost]
+        public ActionResult History()
+        {
+            var request = new GetRecentPackagesRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() };
+            var response = this.packagesService.GetHistory(request);
+            var result = response.ConvertToPackageViewModelCollection();
+
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = result
+            };
+            return jsonNetResult;
+        }
+
+        /// <summary>
         /// Remove package in new status.
         /// </summary>
         /// <param name="packageId">
         /// The package ID to remove.
         /// </param>
         /// <returns>
-        /// Json result.
+        /// JSON result.
         /// </returns>
         [Authorize(Roles = "Shopper")]
         [HttpPost]
