@@ -1,0 +1,126 @@
+﻿@using TdService.Resources.Views
+<div data-bind="attr: { id: domOrderId }" class="package action">
+    <div class="box">
+        <table class="title">
+            <tr>
+                <td>
+                    <span class="label">@DashboardViewResources.OrderIdHeader: <span data-bind="text: id"></span></span>
+                    <span data-bind="click: toggleCollapse"><i data-bind="css: { 'icon-chevron-right': isCollapsed, 'icon-chevron-down': isExpanded }"></i></span>
+                    <span data-bind="text: retailerUrl" class="name"></span>
+                </td>
+                <td class="right">
+                    <span data-bind="css: { 'status-new': status() == 'New', 'status-received': status() == 'Received', 'status-returned': status() == 'Returned', 'status-returnrequested': status() == 'ReturnRequested', 'status-disposed': status() == 'Disposed' }" class="label">@DashboardViewResources.StatusHeader: <span data-bind="text: statusTranslated"></span></span>
+                    <span class="label"><span data-bind="visible: status() == 'New'">@DashboardViewResources.OrderCreatedDateHeader</span><span data-bind="visible: status() == 'Received'">@DashboardViewResources.OrderReceivedDateHeader</span>: <span data-bind="text: orderDate"></span></span>
+                    <button class="btn btn-mini btn-primary" title="@DashboardViewResources.AddItemButton" data-bind="visible: canItemsBeModified" data-toggle="modal" href="#itemFormModal"><i class="icon-white icon-plus-sign"></i></button>
+                    <button class="btn btn-mini btn-danger" title="@DashboardViewResources.RemoveOrderButton" data-bind="click: $parent.removeOrder, visible: canBeRemoved"><i class="icon-white icon-remove"></i></button>
+                    <button class="btn btn-mini btn-success" title="@DashboardViewResources.InStockButton" data-bind="visible: canBeReceived"><i class="icon-white icon-inbox"></i></button>
+                    <button class="btn btn-mini" title="@DashboardViewResources.ReturnOrderButton" data-toggle="modal" data-bind="visible: canBeRequestedForReturn"><i class="icon icon-retweet"></i></button>
+                    <span class="dropdown">
+                        <button class="btn btn-mini dropdown-toggle" title="@DashboardViewResources.MoveAllItemsTitle" data-toggle="dropdown" data-bind="visible: items().length > 0"><i class="icon icon-move"></i><span class="caret"></span></button>
+                        <ul class="dropdown-menu" data-bind="foreach: $parent.packages()">
+                            <li><a href="#"><span class="label">ID: <span data-bind="text: id()"></span></span> <span data-bind="text: name()"></span></a></li>
+                        </ul>
+                    </span>
+                </td>
+            </tr>
+        </table>
+        <div data-bind="collapsed: isCollapsed" class="white collapse">
+            <table class="header">
+                <tbody>
+                    <tr>
+                        <td style="text-align:right">@DashboardViewResources.OrderNumberHeader</td>
+                        <td>
+                            <input type="text" data-bind="value: orderNumber" placeholder="@DashboardViewResources.OrderNumberPlaceholder">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>@DashboardViewResources.TrackingNumberHeader</td>
+                        <td>
+                            <input type="text" data-bind="value: trackingNumber" placeholder="@DashboardViewResources.TrackingNumberPlaceholder">@*<a data-bind="text: trackingNumber" href="http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum=EE972210493US"></a>*@</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="alert alert-info" data-bind="visible: items().length == 0">@DashboardViewResources.NoItemsMessage</div>
+            <table data-bind="visible: hasItems" class="info" style="display:none">
+                <thead>
+                    <tr>
+                        <th class="left">@DashboardViewResources.ItemNameHeader</th>
+                        <th>@DashboardViewResources.QuantityHeader</th>
+                        <th>@DashboardViewResources.WeightHeader</th>
+                        <th>@DashboardViewResources.PriceHeader</th>
+                        <th>@DashboardViewResources.ActionsHeader</th>
+                    </tr>
+                </thead>
+                <tbody id="order_items" data-bind="foreach: {data: items}">
+                    <tr data-bind="attr: {id: id}">
+                        <td class="left"><i class="icon-camera"></i>&nbsp;<span class="editable" title="Click to edit item name" data-content="<table class='details'><tr><td><img src='@Url.Content("~/content/img/kindle.jpg")' /></td><td><p>Name: Kindle</p><p>Weight: 1.3lbs</p><p>Color: Black</p><p>Quantity: 1</p><p>Cost: $100</p></td>" data-bind="click: $parent.removeItem, text: name"></span></td>
+                        <td><span class="editable" data-bind="text: quantity"></span></td>
+                        <td><span class="editable" data-bind="text: weight"></span>lbs</td>
+                        <td>$<span class="editable" title="@DashboardViewResources.PriceTitle" data-bind="text: price"></span></td>
+                        <td>
+                            <div class="btn-group">
+                                <button class="btn btn-mini" title="@DashboardViewResources.EditItemTitle"><i class="icon icon-edit"></i></button>
+                                <button class="btn btn-mini" title="@DashboardViewResources.DeleteItemTitle"><i class="icon icon-remove"></i></button>
+                                <button class="btn btn-mini dropdown-toggle" title="@DashboardViewResources.MoveItemTitle" data-toggle="dropdown"><i class="icon icon-move"></i>@*@DashboardViewResources.ActionMoveHeader*@ <span class="caret"></span></button>
+                                <ul class="dropdown-menu" data-bind="foreach: $root.packages()">
+                                    <li><a href="#"><span class="label">ID: <span data-bind="text: id"></span></span> <span data-bind="text: name()"></span></a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td class="right">@DashboardViewResources.ItemsTotalHeader</td>
+                        <td><span data-bind="text: totalItemsQuantity"></span></td>
+                        <td><span data-bind="text: totalItemsWeight"></span> lbs</td>
+                        <td>$ <span data-bind="text: totalItemsAmount"></span></td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <div class="modal" id="itemFormModal" style="display: none">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal">×</button>
+                <h3>@DashboardViewResources.AddItemForm</h3>
+            </div>
+            <div class="modal-body" data-bind="with: itemViewModel">
+                <form class="form-horizontal">
+                    <fieldset>
+                        <div class="control-group">
+                            <label class="control-label" for="itemName">@DashboardViewResources.ItemNameHeader</label>
+                            <div class="controls">
+                                <input class="input-xlarge focused" data-bind="value: Name" id="itemName" type="text">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="itemPrice">@DashboardViewResources.PriceHeader</label>
+                            <div class="controls">
+                                <div class="input-prepend">
+                                    <span class="add-on">$</span><input class="span1" data-bind="value: Price" id="itemPrice" size="16" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="itemQuantity">@DashboardViewResources.QuantityHeader</label>
+                            <div class="controls">
+                                <input class="input-xlarge focused" data-bind="value: Quantity" id="itemQuantity" type="text">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="itemWeight">@DashboardViewResources.WeightHeader</label>
+                            <div class="controls">
+                                <input class="input-xlarge focused" data-bind="value: Weight" id="itemWeight" type="text">
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn" data-dismiss="modal">@DashboardViewResources.CancelButton</a>
+                <a href="#" class="btn btn-primary" data-bind="click: addItem">@DashboardViewResources.SaveChangesButton</a>
+            </div>
+        </div>
+    </div>
+</div>

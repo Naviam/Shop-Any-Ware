@@ -1,0 +1,97 @@
+﻿@using TdService.Resources.Views
+<div data-bind="attr: { id: domPackageId }" class="package action">
+    <div class="box">
+        <table class="title">
+            <tr>
+                <td>
+                    <span class="label">@DashboardViewResources.OrderIdHeader: <span data-bind="text: id"></span></span>
+                    <span data-bind="click: toggleCollapse"><i data-bind="css: { 'icon-chevron-right': isCollapsed, 'icon-chevron-down': isExpanded }"></i></span>
+                    @*@DashboardViewResources.PackageNameHeader: *@ <span data-bind="text: name" class="name"></span>
+                </td>
+                <td class="right">
+                    <span data-bind="css: { 'status-new': status() == 'New', 'status-pendingpayment': status() == 'PendingPayment', 'status-dispatched': status() == 'Dispatched', 'status-readytodispatch': status() == 'ReadyToDispatch', 'status-delivered': status() == 'Delivered' }" class="label">@DashboardViewResources.StatusHeader: <span data-bind="text: statusTranslated"></span></span>
+                    <span class="label">@DashboardViewResources.PackageCreatedDateHeader: <span data-bind="text: createdDate"></span></span>
+                    <button class="btn btn-mini btn-primary right" title="@DashboardViewResources.SendPackageButton" data-bind="click: sendPackage, visible: items().length > 0 && canBeSent"><i class="icon-white icon-plane"></i></button>
+                    <button class="btn btn-mini btn-danger" title="@DashboardViewResources.RemoveOrderButton" data-bind="click: $parent.removePackage, visible: canBeRemoved"><i class="icon-white icon-remove"></i></button>
+                </td>
+            </tr>
+        </table>
+        <div data-bind="collapsed: isCollapsed" class="white collapse">
+            <div class="border">
+                <table>
+                    <thead>
+                        <tr class="type">
+                            <th colspan="4">
+                                <h4>@DashboardViewResources.DeliveryHeader</h4>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="2" style="text-align: left">
+                                <select id="selectError" class="span3">
+                                    <option>Мой адрес 1</option>
+                                    <option>Мой адрес 2</option>
+                                    <option>Добавить адрес</option>
+                                </select>
+                                <select id="selectError" class="span3">
+                                    <option>Standart Delivery</option>
+                                    <option>Express Delivery</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td class="right">@DashboardViewResources.TotalCostHeader:</td>
+                            <td class="span2">$1234</td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <div class="alert alert-info" data-bind="visible: items().length == 0">@DashboardViewResources.NoPackageItemsMessage</div>
+                <table data-bind="visible: items().length != 0">
+                    <thead>
+                        <tr class="type">
+                            <th colspan="4">
+                                <h4>@DashboardViewResources.CustomsDeclaration</h4>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th class="left">@DashboardViewResources.ItemNameHeader</th>
+                            <th>@DashboardViewResources.QuantityHeader</th>
+                            <th>@DashboardViewResources.WeightHeader</th>
+                            <th class="span2">@DashboardViewResources.PriceHeader</th>
+                            <th>@DashboardViewResources.ActionsHeader</th>
+                        </tr>
+                    </thead>
+                    <tbody id="package_items" data-bind="foreach: {data: items}">
+                        <tr>
+                            <td class="left"><i class="icon-camera"></i>&nbsp;<span data-bind="text: name"></span></td>
+                            <td><span class="editable" data-bind="text: quantity"></span></td>
+                            <td><span class="editable" data-bind="text: weight"></span> lbs</td>
+                            <td>$ <span class="editable" data-bind="text: price"></span></td>
+                            <td>
+                                <div class="btn-group">
+                                    <button class="btn btn-mini" title="@DashboardViewResources.ReturnItemBackTitle"><i class="icon-arrow-left"></i></button>
+                                    <button class="btn btn-mini" title="@DashboardViewResources.EditItemTitle"><i class="icon icon-edit"></i></button>
+                                    <ul class="dropdown-menu" data-bind="foreach: $root.packages()">
+                                        <li><i class="icon-gift"></i><span data-bind="text: name()"></span> (id:<span data-bind="text: id"></span>)</li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td class="right">@DashboardViewResources.ItemsTotalHeader</td>
+                            <td><span data-bind="text: totalItemsQuantity"></span></td>
+                            <td><span data-bind="text: totalItemsWeight"></span> lbs</td>
+                            <td>$ <span data-bind="text: totalItemsAmount"></span></td>
+                            <td colspan="2"></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
