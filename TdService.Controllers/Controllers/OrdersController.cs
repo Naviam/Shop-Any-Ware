@@ -119,7 +119,7 @@ namespace TdService.UI.Web.Controllers
         /// Get recent orders.
         /// </summary>
         /// <returns>
-        /// Get recent orders json result.
+        /// Get recent orders in JSON formatted result.
         /// </returns>
         [Authorize(Roles = "Shopper")]
         [HttpPost]
@@ -141,7 +141,7 @@ namespace TdService.UI.Web.Controllers
         /// The history.
         /// </summary>
         /// <returns>
-        /// The System.Web.Mvc.ActionResult.
+        /// Get history orders in JSON formatted result.
         /// </returns>
         [Authorize(Roles = "Shopper")]
         [HttpPost]
@@ -166,7 +166,7 @@ namespace TdService.UI.Web.Controllers
         /// The retailer Url.
         /// </param>
         /// <returns>
-        /// Json result.
+        /// Order view model in JSON format.
         /// </returns>
         [Authorize(Roles = "Shopper")]
         [HttpPost]
