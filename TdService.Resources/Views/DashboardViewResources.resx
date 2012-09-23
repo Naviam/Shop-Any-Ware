@@ -243,6 +243,9 @@
   <data name="OrderNumberHeader" xml:space="preserve">
     <value>Order #</value>
   </data>
+  <data name="OrderNumberPlaceholder" xml:space="preserve">
+    <value>Please enter order number</value>
+  </data>
   <data name="OrderOption1" xml:space="preserve">
     <value>Request For Orders</value>
   </data>
@@ -314,6 +317,9 @@
   </data>
   <data name="TrackingNumberHeader" xml:space="preserve">
     <value>Tracking #</value>
+  </data>
+  <data name="TrackingNumberPlaceholder" xml:space="preserve">
+    <value>Please enter tracking number</value>
   </data>
   <data name="WeightHeader" xml:space="preserve">
     <value>Weight</value>

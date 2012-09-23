@@ -243,6 +243,9 @@
   <data name="OrderNumberHeader" xml:space="preserve">
     <value>Номер заказа</value>
   </data>
+  <data name="OrderNumberPlaceholder" xml:space="preserve">
+    <value>Введите номер заказа</value>
+  </data>
   <data name="OrderOption1" xml:space="preserve">
     <value>Запросы на заказ</value>
   </data>
@@ -314,6 +317,9 @@
   </data>
   <data name="TrackingNumberHeader" xml:space="preserve">
     <value>Номер отслеживания</value>
+  </data>
+  <data name="TrackingNumberPlaceholder" xml:space="preserve">
+    <value>Введите номер отслеживания</value>
   </data>
   <data name="WeightHeader" xml:space="preserve">
     <value>Вес</value>

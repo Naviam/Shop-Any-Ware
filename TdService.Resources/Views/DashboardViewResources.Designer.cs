@@ -439,6 +439,15 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please enter order number.
+        /// </summary>
+        public static string OrderNumberPlaceholder {
+            get {
+                return ResourceManager.GetString("OrderNumberPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Request For Orders.
         /// </summary>
         public static string OrderOption1 {
@@ -651,6 +660,15 @@ namespace TdService.Resources.Views {
         public static string TrackingNumberHeader {
             get {
                 return ResourceManager.GetString("TrackingNumberHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter tracking number.
+        /// </summary>
+        public static string TrackingNumberPlaceholder {
+            get {
+                return ResourceManager.GetString("TrackingNumberPlaceholder", resourceCulture);
             }
         }
         
