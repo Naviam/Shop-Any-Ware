@@ -211,7 +211,7 @@ namespace TdService.UI.Web.Controllers
         /// The order ID to remove.
         /// </param>
         /// <returns>
-        /// Json result.
+        /// The <see cref="ActionResult"/>.
         /// </returns>
         [Authorize(Roles = "Shopper")]
         [HttpPost]
@@ -240,7 +240,7 @@ namespace TdService.UI.Web.Controllers
         /// The model.
         /// </param>
         /// <returns>
-        /// The System.Web.Mvc.ActionResult.
+        /// The <see cref="ActionResult"/>.
         /// </returns>
         [Authorize(Roles = "Shopper, Operator")]
         [HttpPost]
@@ -301,7 +301,7 @@ namespace TdService.UI.Web.Controllers
         /// The model.
         /// </param>
         /// <returns>
-        /// The System.Web.Mvc.ActionResult.
+        /// The <see cref="ActionResult"/>.
         /// </returns>
         public ActionResult RequestForReturn(OrderViewModel model)
         {

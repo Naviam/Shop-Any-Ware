@@ -218,6 +218,7 @@ function Order(serverModel) {
     self.message = ko.observable(serverModel.Message);
     self.messageType = ko.observable(serverModel.MessageType);
     self.errorCode = ko.observable(serverModel.ErrorCode);
+    self.brokenRules = ko.observableArray(serverModel.BrokenRules);
 
     // order view model properties
     self.id = ko.observable(serverModel.Id);
@@ -299,6 +300,30 @@ function Order(serverModel) {
         var currentValue = self.isCollapsed();
         self.isCollapsed(!currentValue);
     };
+
+    self.trackingNumber.subscribe(function(val) {
+        var params = { id: self.id(), orderNumber: self.orderNumber(), trackingNumber: self.trackingNumber() };
+        $.post("/orders/update", params, function(data) {
+            ////var order = new Order(ko.toJS(data));
+            window.showNotice(data.Message, data.MessageType);
+        });
+    }, self);
+    self.orderNumber.subscribe(function (val) {
+        var params = { id: self.id(), orderNumber: self.orderNumber(), trackingNumber: self.trackingNumber() };
+        $.post("/orders/update", params, function (data) {
+            ////var order = new Order(ko.toJS(data));
+            window.showNotice(data.Message, data.MessageType);
+        });
+    }, self);
+
+    //ko.computed(function () {
+    //    /// <summary>Update the order number or tracking number.</summary>
+    //    var params = { id: self.id(), orderNumber: self.orderNumber(), trackingNumber: self.trackingNumber() };
+    //    $.post("/orders/update", params, function (data) {
+    //        var order = new Order(ko.toJS(data));
+    //        window.showNotice(data.Message, data.MessageType);
+    //    });
+    //}, self).extend({ throttle: 1000 });
 
     self.loadItems = function() {
         /// <summary>Get collection of items for the order.</summary>
