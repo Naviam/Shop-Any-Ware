@@ -175,12 +175,13 @@ namespace TdService.Model.Membership
         /// </param>
         public void AddPackage(Package package)
         {
-            if (this.Roles.Exists(r => r.Name != StandardRole.Shopper.ToString()))
+            if (this.Roles.Exists(r => r.Name == StandardRole.Shopper.ToString()))
             {
-                throw new InvalidOrderException(ErrorCode.PackageCannotBeAddedByYou.ToString());
+                this.Packages.Add(package);
+                return;
             }
 
-            this.Packages.Add(package);
+            throw new InvalidOrderException(ErrorCode.PackageCannotBeAddedByYou.ToString());
         }
 
         /// <summary>
@@ -191,12 +192,13 @@ namespace TdService.Model.Membership
         /// </param>
         public void AddOrder(Order order)
         {
-            if (this.Roles.Exists(r => r.Name != StandardRole.Shopper.ToString()))
+            if (this.Roles.Exists(r => r.Name == StandardRole.Shopper.ToString()))
             {
-                throw new InvalidOrderException(ErrorCode.OrderCannotBeAddedByYou.ToString());
+                this.Orders.Add(order);
+                return;
             }
 
-            this.Orders.Add(order);
+            throw new InvalidOrderException(ErrorCode.OrderCannotBeAddedByYou.ToString());
         }
 
         /// <summary>
