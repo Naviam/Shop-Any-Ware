@@ -11,6 +11,7 @@ namespace TdService.Specs.Steps
 {
     using System.Diagnostics;
     using System.Linq;
+    using System.Web.Mvc;
 
     using NUnit.Framework;
 
@@ -55,12 +56,12 @@ namespace TdService.Specs.Steps
         {
             var signUpModel = table.CreateInstance<SignUpViewModel>();
             var controller = this.GetAccountController();
-            var result = controller.SignUp(signUpModel) as JsonNetResult;
+            var result = controller.SignUp(signUpModel) as ViewResult;
             Assert.That(result, Is.Not.Null);
             Debug.Assert(result != null, "result != null");
-            var model = result.Data as SignUpViewModel;
+            var model = result.Model as MainViewModel;
 
-            ScenarioContext.Current.Set(model, "actual");
+            ScenarioContext.Current.Set(model.SignUpViewModel, "actual");
         }
 
         /// <summary>

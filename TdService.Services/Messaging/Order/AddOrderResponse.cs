@@ -52,6 +52,11 @@ namespace TdService.Services.Messaging.Order
         public string Status { get; set; }
 
         /// <summary>
+        /// Gets or sets a value indicating whether can be received.
+        /// </summary>
+        public bool CanBeReceived { get; set; }
+
+        /// <summary>
         /// Gets or sets a value indicating whether this order can be modified.
         /// </summary>
         public bool CanBeModified { get; set; }

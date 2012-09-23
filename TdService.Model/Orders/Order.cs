@@ -132,6 +132,17 @@ namespace TdService.Model.Orders
         }
 
         /// <summary>
+        /// Gets a value indicating whether can be received.
+        /// </summary>
+        public bool CanBeReceived
+        {
+            get
+            {
+                return this.orderState.CanBeReceived;
+            }
+        }
+
+        /// <summary>
         /// Gets a value indicating whether this order can be modified.
         /// </summary>
         public bool CanBeModified

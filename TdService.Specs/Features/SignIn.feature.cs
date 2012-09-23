@@ -266,7 +266,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 57
  testRunner.When("I fill sign in form with the following data", ((string)(null)), table9, "When ");
 #line 60
- testRunner.Then("I should be redirected to controller \'Operator\' and action \'Index\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I should be redirected to controller \'Operator\' and action \'Dashboard\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -297,7 +297,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 66
  testRunner.When("I fill sign in form with the following data", ((string)(null)), table10, "When ");
 #line 69
- testRunner.Then("I should be redirected to controller \'Operator\' and action \'Index\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I should be redirected to controller \'Operator\' and action \'Dashboard\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

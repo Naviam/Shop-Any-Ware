@@ -57,7 +57,7 @@ Scenario: Sign in operator
 	When I fill sign in form with the following data
 	| Email                | Password | Remember Me |
 	| v.hatalski@gmail.com | ruinruin | false       |
-	Then I should be redirected to controller 'Operator' and action 'Index'
+	Then I should be redirected to controller 'Operator' and action 'Dashboard'
 
 @consultant
 Scenario: Sign in consultant
@@ -66,7 +66,7 @@ Scenario: Sign in consultant
 	When I fill sign in form with the following data
 	| Email                | Password | Remember Me |
 	| v.hatalski@gmail.com | ruinruin | false       |
-	Then I should be redirected to controller 'Operator' and action 'Index'
+	Then I should be redirected to controller 'Operator' and action 'Dashboard'
 	
 @admin
 Scenario: Sign in admin

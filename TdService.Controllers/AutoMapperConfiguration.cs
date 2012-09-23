@@ -139,7 +139,8 @@ namespace TdService.UI.Web
             // get my history orders
 
             // add order
-            Mapper.CreateMap<AddOrderResponse, OrderViewModel>();
+            Mapper.CreateMap<AddOrderResponse, OrderViewModel>()
+                .ForMember(o => o.ReturnedDate, opt => opt.Ignore());
             Mapper.CreateMap<OrderViewModel, AddOrderRequest>()
                 .ForMember(m => m.IdentityToken, opt => opt.Ignore());
             Mapper.CreateMap<Order, AddOrderResponse>()
@@ -152,6 +153,8 @@ namespace TdService.UI.Web
             Mapper.CreateMap<OrderViewModel, UpdateOrderRequest>()
                 .ForMember(m => m.IdentityToken, opt => opt.Ignore());
             Mapper.CreateMap<UpdateOrderResponse, OrderViewModel>()
+                .ForMember(r => r.CanBeReceived, opt => opt.Ignore())
+                .ForMember(r => r.ReturnedDate, opt => opt.Ignore())
                 .ForMember(r => r.CreatedDate, opt => opt.Ignore())
                 .ForMember(r => r.ReceivedDate, opt => opt.Ignore())
                 .ForMember(r => r.CanBeModified, opt => opt.Ignore())
@@ -176,7 +179,9 @@ namespace TdService.UI.Web
                 .ForMember(r => r.TrackingNumber, opt => opt.Ignore())
                 .ForMember(r => r.CreatedDate, opt => opt.Ignore())
                 .ForMember(r => r.ReceivedDate, opt => opt.Ignore())
+                .ForMember(r => r.ReturnedDate, opt => opt.Ignore())
                 .ForMember(r => r.Status, opt => opt.Ignore())
+                .ForMember(r => r.CanBeReceived, opt => opt.Ignore())
                 .ForMember(r => r.CanBeModified, opt => opt.Ignore())
                 .ForMember(r => r.CanBeRemoved, opt => opt.Ignore())
                 .ForMember(r => r.CanBeRequestedForReturn, opt => opt.Ignore())
