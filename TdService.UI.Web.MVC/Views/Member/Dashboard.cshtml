@@ -27,24 +27,34 @@
             </div>
         </div>
         <div style="clear:left"></div>
-        <div data-bind="visible: shouldShowLoadingRecentOrdersMessage">
-            <div class="alert package">@DashboardViewResources.LoadingRecentOrdersMessage</div>
-            <br /><br /><br /><br /><br /><br /><br />
-        </div>
-        <div data-bind="visible: shouldShowOrdersEmptyMessage">
-            <div class="alert alert-info package">@DashboardViewResources.NoOrdersMessage</div>
-            <br /><br /><br /><br /><br /><br /><br />
-        </div>
         <div class="tab-content">
-            <div id="recent_orders" class="tab-pane active" data-bind="foreach: orders">
-                @{
-                    this.Html.RenderPartial("_orderView");
-                }
+            <div id="recent_orders" class="tab-pane active">
+                <div data-bind="visible: orders().length == 0">
+                    <div class="alert package" data-bind="css: { 'alert-info': !recentOrdersNotLoaded() }">
+                        <span data-bind="visible: recentOrdersNotLoaded()">@DashboardViewResources.LoadingRecentOrdersMessage</span>
+                        <span data-bind="visible: !recentOrdersNotLoaded()">@DashboardViewResources.NoOrdersMessage</span>
+                    </div>
+                    <br /><br /><br /><br /><br /><br /><br />
+                </div>
+                <div data-bind="foreach: orders">
+                    @{
+                        this.Html.RenderPartial("_orderView");
+                    }
+                </div>
             </div>
-            <div id="history_orders" class="tab-pane" data-bind="foreach: ordersHistory">
-                @{
-                    this.Html.RenderPartial("_orderView");
-                }
+            <div id="history_orders" class="tab-pane">
+                <div data-bind="visible: ordersHistory().length == 0">
+                    <div class="alert package" data-bind="css: { 'alert-info': !historyOrdersNotLoaded() }">
+                        <span data-bind="visible: historyOrdersNotLoaded()">@DashboardViewResources.LoadingHistoryOrdersMessage</span>
+                        <span data-bind="visible: !historyOrdersNotLoaded()">@DashboardViewResources.NoHistoryOrdersMessage</span>
+                    </div>
+                    <br /><br /><br /><br /><br /><br /><br />
+                </div>
+                <div data-bind="foreach: ordersHistory">
+                    @{
+                        this.Html.RenderPartial("_orderView");
+                    }
+                </div>
             </div>
         </div>
     </div>
@@ -68,24 +78,34 @@
             </div>
         </div>
         <div style="clear:left"></div>
-        <div data-bind="visible: shouldShowLoadingRecentPackagesMessage">
-            <div class="alert package">@DashboardViewResources.LoadingRecentPackagesMessage</div>
-            <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-        </div>
-        <div data-bind="visible: shouldShowPackagesEmptyMessage">
-            <div class="alert alert-info package">@DashboardViewResources.NoPackagesMessage</div>
-            <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-        </div>
         <div class="tab-content">
-            <div id="recent_packages" class="tab-pane active" data-bind="foreach: packages">
-                @{
-                    this.Html.RenderPartial("_packageView");
-                }
+            <div id="recent_packages" class="tab-pane active" >
+                <div data-bind="visible: packages().length == 0">
+                    <div class="alert package" data-bind="css: { 'alert-info': !recentPackagesNotLoaded() }">
+                        <span data-bind="visible: recentPackagesNotLoaded()">@DashboardViewResources.LoadingRecentPackagesMessage</span>
+                        <span data-bind="visible: !recentPackagesNotLoaded()">@DashboardViewResources.NoPackagesMessage</span>
+                    </div>
+                    <br /><br /><br /><br /><br /><br /><br />
+                </div>
+                <div data-bind="foreach: packages">
+                    @{
+                        this.Html.RenderPartial("_packageView");
+                    }
+                </div>
             </div>
-            <div id="history_packages" class="tab-pane" data-bind="foreach: packages">
-                @{
-                    this.Html.RenderPartial("_packageView");
-                }
+            <div id="history_packages" class="tab-pane">
+                <div data-bind="visible: packagesHistory().length == 0">
+                    <div class="alert package" data-bind="css: { 'alert-info': !historyPackagesNotLoaded() }">
+                        <span data-bind="visible: historyPackagesNotLoaded()">@DashboardViewResources.LoadingHistoryPackagesMessage</span>
+                        <span data-bind="visible: !historyPackagesNotLoaded()">@DashboardViewResources.NoHistoryPackagesMessage</span>
+                    </div>
+                    <br /><br /><br /><br /><br /><br /><br />
+                </div>
+                <div data-bind="foreach: packagesHistory">
+                    @{
+                        this.Html.RenderPartial("_packageView");
+                    }
+                </div>
             </div>
         </div>
     </div>

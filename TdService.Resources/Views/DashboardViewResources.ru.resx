@@ -216,6 +216,12 @@
   <data name="NewPackagePlaceholder" xml:space="preserve">
     <value>введите название посылки</value>
   </data>
+  <data name="NoHistoryOrdersMessage" xml:space="preserve">
+    <value>На данный момент у Вас отсутствует история заказов.</value>
+  </data>
+  <data name="NoHistoryPackagesMessage" xml:space="preserve">
+    <value>На данный момент у Вас отсутствует история посылок.</value>
+  </data>
   <data name="NoItemsMessage" xml:space="preserve">
     <value>Товар будет автоматически отображен после поступления заказа на склад и обработки оператором.</value>
   </data>
@@ -258,6 +264,9 @@
   <data name="OrderRemovedSuccess" xml:space="preserve">
     <value>Заказ был успешно удален.</value>
   </data>
+  <data name="OrderReturnedDateHeader" xml:space="preserve">
+    <value>Возвращен</value>
+  </data>
   <data name="OrdersHeader" xml:space="preserve">
     <value>Заказы</value>
   </data>
@@ -269,6 +278,12 @@
   </data>
   <data name="PackageCreatedSuccessMessage" xml:space="preserve">
     <value>Посылка была успешно создана.</value>
+  </data>
+  <data name="PackageDeliveredDateHeader" xml:space="preserve">
+    <value>Доставлена</value>
+  </data>
+  <data name="PackageDispatchedDateHeader" xml:space="preserve">
+    <value>Отправлена</value>
   </data>
   <data name="PackageNameHeader" xml:space="preserve">
     <value>Название</value>

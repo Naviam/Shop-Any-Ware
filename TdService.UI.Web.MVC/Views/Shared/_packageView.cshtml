@@ -10,7 +10,12 @@
                 </td>
                 <td class="right">
                     <span data-bind="css: { 'status-new': status() == 'New', 'status-pendingpayment': status() == 'PendingPayment', 'status-dispatched': status() == 'Dispatched', 'status-readytodispatch': status() == 'ReadyToDispatch', 'status-delivered': status() == 'Delivered' }" class="label">@DashboardViewResources.StatusHeader: <span data-bind="text: statusTranslated"></span></span>
-                    <span class="label">@DashboardViewResources.PackageCreatedDateHeader: <span data-bind="text: createdDate"></span></span>
+                    <span class="label">
+                        <span data-bind="ifnot: status() == 'Dispatched' | status() == 'Delivered'">@DashboardViewResources.PackageCreatedDateHeader</span>
+                        <span data-bind="if: status() == 'Dispatched'">@DashboardViewResources.PackageDispatchedDateHeader</span>
+                        <span data-bind="if: status() == 'Delivered'">@DashboardViewResources.PackageDeliveredDateHeader</span>: 
+                        <span data-bind="text: packageDate"></span>
+                    </span>
                     <button class="btn btn-mini btn-primary right" title="@DashboardViewResources.SendPackageButton" data-bind="click: sendPackage, visible: items().length > 0 && canBeSent"><i class="icon-white icon-plane"></i></button>
                     <button class="btn btn-mini btn-danger" title="@DashboardViewResources.RemoveOrderButton" data-bind="click: $parent.removePackage, visible: canBeRemoved"><i class="icon-white icon-remove"></i></button>
                 </td>
@@ -44,7 +49,7 @@
                     <tfoot>
                         <tr>
                             <td class="right">@DashboardViewResources.TotalCostHeader:</td>
-                            <td class="span2">$1234</td>
+                            <td class="span2">0</td>
                         </tr>
                     </tfoot>
                 </table>

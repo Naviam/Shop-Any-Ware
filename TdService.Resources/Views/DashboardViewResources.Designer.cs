@@ -358,6 +358,24 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There are no orders that were processed..
+        /// </summary>
+        public static string NoHistoryOrdersMessage {
+            get {
+                return ResourceManager.GetString("NoHistoryOrdersMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are no packages that were delivered to you..
+        /// </summary>
+        public static string NoHistoryPackagesMessage {
+            get {
+                return ResourceManager.GetString("NoHistoryPackagesMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The items will be automatically displayed when the order is received and processed by operator..
         /// </summary>
         public static string NoItemsMessage {
@@ -484,6 +502,15 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Returned.
+        /// </summary>
+        public static string OrderReturnedDateHeader {
+            get {
+                return ResourceManager.GetString("OrderReturnedDateHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Orders.
         /// </summary>
         public static string OrdersHeader {
@@ -516,6 +543,24 @@ namespace TdService.Resources.Views {
         public static string PackageCreatedSuccessMessage {
             get {
                 return ResourceManager.GetString("PackageCreatedSuccessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delivered.
+        /// </summary>
+        public static string PackageDeliveredDateHeader {
+            get {
+                return ResourceManager.GetString("PackageDeliveredDateHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dispatched.
+        /// </summary>
+        public static string PackageDispatchedDateHeader {
+            get {
+                return ResourceManager.GetString("PackageDispatchedDateHeader", resourceCulture);
             }
         }
         

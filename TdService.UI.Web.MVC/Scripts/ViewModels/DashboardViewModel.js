@@ -148,6 +148,17 @@ function Package(serverModel) {
         return total;
     });
 
+    self.packageDate = ko.computed(function () {
+        switch (self.status()) {
+            case 'Delivered':
+                return self.deliveredDate();
+            case 'Dispatched':
+                return self.dispatchedDate();
+            default:
+                return self.createdDate();
+        }
+    });
+    
     self.loadItems = ko.computed(function () {
         $.post("/items/getpackageitems", { "packageId": self.id() }, function (data) {
             var items = ko.toJS(data);
@@ -215,6 +226,7 @@ function Order(serverModel) {
     self.trackingNumber = ko.observable(serverModel.TrackingNumber);
     self.createdDate = ko.observable(formatDate(serverModel.CreatedDate));
     self.receivedDate = ko.observable(formatDate(serverModel.ReceivedDate));
+    self.returnedDate = ko.observable(formatDate(serverModel.ReturnedDate));
     self.status = ko.observable(serverModel.Status);
     self.statusTranslated = ko.observable(serverModel.StatusTranslated);
     self.isCollapsed = ko.observable(false);
@@ -269,7 +281,14 @@ function Order(serverModel) {
     });
 
     self.orderDate = ko.computed(function() {
-        return self.receivedDate() == null ? self.createdDate() : self.receivedDate();
+        switch (self.status()) {
+            case 'Received':
+                return self.receivedDate();
+            case 'Returned':
+                return self.returnedDate();
+            default:
+                return self.createdDate();
+        }
     });
 
     self.isExpanded = ko.computed(function () {
@@ -352,6 +371,8 @@ function DashboardViewModel(serverModel) {
 
     self.recentPackagesNotLoaded = ko.observable(true);
     self.recentOrdersNotLoaded = ko.observable(true);
+    self.historyPackagesNotLoaded = ko.observable(true);
+    self.historyOrdersNotLoaded = ko.observable(true);
 
     // dashboard view model properties
     self.newOrderField = ko.observable().extend({ required: true });
@@ -366,26 +387,6 @@ function DashboardViewModel(serverModel) {
     self.retailers = ko.observableArray();
 
     // computed properties
-    self.shouldShowOrdersEmptyMessage = ko.computed(function () {
-        /// <summary>Determines whether no orders message should be displayed.</summary>
-        return self.orders().length == 0 && self.recentOrdersNotLoaded() == false;
-    });
-
-    self.shouldShowLoadingRecentOrdersMessage = ko.computed(function () {
-        /// <summary>Determines whether loading recent packages message should be displayed.</summary>
-        return self.orders().length == 0 && self.recentOrdersNotLoaded();
-    });
-
-    self.shouldShowPackagesEmptyMessage = ko.computed(function () {
-        /// <summary>Determines whether no orders message should be displayed.</summary>
-        return self.packages().length == 0 && self.recentPackagesNotLoaded() == false;
-    });
-
-    self.shouldShowLoadingRecentPackagesMessage = ko.computed(function () {
-        /// <summary>Determines whether loading recent packages message should be displayed.</summary>
-        return self.packages().length == 0 && self.recentPackagesNotLoaded();
-    });
-
     self.disableAddOrderButton = ko.computed(function () {
         /// <summary>Determines whether add order button should be disabled.</summary>
         return self.newOrderField() === undefined || self.newOrderField() == '';
@@ -455,6 +456,7 @@ function DashboardViewModel(serverModel) {
                 var order = new Order(value);
                 self.ordersHistory.unshift(order);
             });
+            self.historyOrdersNotLoaded(false);
         });
     };
     self.getHistoryOrders();
@@ -508,8 +510,17 @@ function DashboardViewModel(serverModel) {
     };
     self.getRecentPackages();
 
-    self.getPackageHistory = function (recordsToShow) {
+    self.getPackageHistory = function () {
         /// <summary>Load history of packages.</summary>
+        $.post("/packages/history", function (data) {
+            var packages = ko.toJS(data);
+            self.packagesHistory.removeAll();
+            $.each(packages, function (index, value) {
+                var pack = new Package(value);
+                self.packagesHistory.unshift(pack);
+            });
+            self.historyPackagesNotLoaded(false);
+        });
     };
 
     self.createPackage = function() {

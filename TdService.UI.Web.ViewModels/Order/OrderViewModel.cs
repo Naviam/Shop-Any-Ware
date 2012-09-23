@@ -49,6 +49,11 @@ namespace TdService.UI.Web.ViewModels.Order
         public DateTime? ReceivedDate { get; set; }
 
         /// <summary>
+        /// Gets or sets the returned date.
+        /// </summary>
+        public DateTime? ReturnedDate { get; set; }
+
+        /// <summary>
         /// Gets or sets order status.
         /// </summary>
         public string Status { get; set; }

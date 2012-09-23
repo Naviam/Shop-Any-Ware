@@ -216,6 +216,12 @@
   <data name="NewPackagePlaceholder" xml:space="preserve">
     <value>please enter package name (ex. my package)</value>
   </data>
+  <data name="NoHistoryOrdersMessage" xml:space="preserve">
+    <value>There are no orders that were processed.</value>
+  </data>
+  <data name="NoHistoryPackagesMessage" xml:space="preserve">
+    <value>There are no packages that were delivered to you.</value>
+  </data>
   <data name="NoItemsMessage" xml:space="preserve">
     <value>The items will be automatically displayed when the order is received and processed by operator.</value>
   </data>
@@ -258,6 +264,9 @@
   <data name="OrderRemovedSuccess" xml:space="preserve">
     <value>The order has been successfully removed.</value>
   </data>
+  <data name="OrderReturnedDateHeader" xml:space="preserve">
+    <value>Returned</value>
+  </data>
   <data name="OrdersHeader" xml:space="preserve">
     <value>Orders</value>
   </data>
@@ -269,6 +278,12 @@
   </data>
   <data name="PackageCreatedSuccessMessage" xml:space="preserve">
     <value>The package has been successfully created.</value>
+  </data>
+  <data name="PackageDeliveredDateHeader" xml:space="preserve">
+    <value>Delivered</value>
+  </data>
+  <data name="PackageDispatchedDateHeader" xml:space="preserve">
+    <value>Dispatched</value>
   </data>
   <data name="PackageNameHeader" xml:space="preserve">
     <value>Name</value>
