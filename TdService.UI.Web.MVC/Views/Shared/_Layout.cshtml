@@ -47,7 +47,7 @@
                             @if (User.IsInRole("Shopper"))
                             {
                                 <li><a href="@Url.Action("Index", "Profile")"><i class="icon-white icon-user"></i> @LayoutViewResources.ProfileMenuHeader</a></li>
-                                <li><a href="@Url.Action("Index", "Address")"><i class="icon-white icon-th-list"></i> @LayoutViewResources.DeliveryAddressesMenuHeader</a></li>
+                                <li><a href="@Url.Action("Index", "Address")"><i class="icon-white icon-book"></i> @LayoutViewResources.DeliveryAddressesMenuHeader</a></li>
                             }
                             @if (User.IsInRole("Admin"))
                             {
