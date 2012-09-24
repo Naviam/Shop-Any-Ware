@@ -1,4 +1,5 @@
 ﻿@model TdService.UI.Web.ViewModels.Account.MainViewModel
+@using System.Web.Script.Serialization
 @using TdService.Resources.Views;
 @{
     ViewBag.Title = AccountViewResources.SignUpPageTitle;
@@ -57,7 +58,9 @@
     <script type="text/javascript" src="@Url.Content("~/Scripts/ViewModels/SignUpViewModel.js")"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            var signUpViewModel = new SignUpViewModel();
+            var signUpViewModel = new SignUpViewModel(@{
+                                                          new JavaScriptSerializer().Serialize(Model.SignUpViewModel);
+                                                      });
             ko.applyBindingsWithValidation(
                 signUpViewModel,
                 document.getElementById('signUpForm'),
