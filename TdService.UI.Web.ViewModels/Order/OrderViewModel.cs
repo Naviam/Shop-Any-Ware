@@ -65,7 +65,12 @@ namespace TdService.UI.Web.ViewModels.Order
         {
             get
             {
-                return OrderStatusResources.ResourceManager.GetString(this.Status);
+                if (!string.IsNullOrWhiteSpace(this.Status))
+                {
+                    return OrderStatusResources.ResourceManager.GetString(this.Status);
+                }
+
+                return string.Empty;
             }
         }
 

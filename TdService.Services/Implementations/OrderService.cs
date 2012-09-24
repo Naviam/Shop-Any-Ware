@@ -181,13 +181,14 @@ namespace TdService.Services.Implementations
             {
                 var order = this.orderRepository.RemoveOrder(request.IdentityToken, request.Id);
                 response = order.ConvertToRemoveOrderResponse();
+                response.Message = CommonResources.OrderRemoveSuccessMessage;
             }
             catch (Exception ex)
             {
                 response.Id = request.Id;
                 response.MessageType = MessageType.Error;
                 response.ErrorCode = ex.Message;
-                this.logger.Error(CommonResources.OrderAddErrorMessage, ex);
+                this.logger.Error(CommonResources.OrderRemoveErrorMessage, ex);
             }
 
             return response;

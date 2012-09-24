@@ -115,6 +115,24 @@ namespace TdService.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There were some issues with the order you are removing..
+        /// </summary>
+        public static string OrderRemoveErrorMessage {
+            get {
+                return ResourceManager.GetString("OrderRemoveErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The order has been successfully removed..
+        /// </summary>
+        public static string OrderRemoveSuccessMessage {
+            get {
+                return ResourceManager.GetString("OrderRemoveSuccessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There were some issues with the order you are updating..
         /// </summary>
         public static string OrderUpdateErrorMessage {

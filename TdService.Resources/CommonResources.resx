@@ -135,6 +135,12 @@
   <data name="OrderAddSuccessMessage" xml:space="preserve">
     <value>The order has been successfully added.</value>
   </data>
+  <data name="OrderRemoveErrorMessage" xml:space="preserve">
+    <value>There were some issues with the order you are removing.</value>
+  </data>
+  <data name="OrderRemoveSuccessMessage" xml:space="preserve">
+    <value>The order has been successfully removed.</value>
+  </data>
   <data name="OrderUpdateErrorMessage" xml:space="preserve">
     <value>There were some issues with the order you are updating.</value>
   </data>

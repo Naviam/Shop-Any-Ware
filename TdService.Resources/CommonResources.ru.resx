@@ -135,6 +135,12 @@
   <data name="OrderAddSuccessMessage" xml:space="preserve">
     <value>Ваш заказ был успешно добавлен.</value>
   </data>
+  <data name="OrderRemoveErrorMessage" xml:space="preserve">
+    <value>Во время удаления заказа возникли проблемы.</value>
+  </data>
+  <data name="OrderRemoveSuccessMessage" xml:space="preserve">
+    <value>Заказ был успешно удален.</value>
+  </data>
   <data name="OrderUpdateErrorMessage" xml:space="preserve">
     <value>Во время обновления заказа возникли проблемы.</value>
   </data>
