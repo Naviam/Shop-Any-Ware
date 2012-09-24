@@ -306,6 +306,9 @@
   <data name="UserPasswordConfirmRequired" xml:space="preserve">
     <value>Введите пароль заново, чтобы избежать ошибок.</value>
   </data>
+  <data name="UserPasswordLength" xml:space="preserve">
+    <value>Пароль должен быть длиной от 7 до 21 символов.</value>
+  </data>
   <data name="UserPasswordMaxLength" xml:space="preserve">
     <value>Пароль не должен превышать 21 символа.</value>
   </data>

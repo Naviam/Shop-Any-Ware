@@ -151,6 +151,15 @@ namespace TdService.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There were some issues registering your account..
+        /// </summary>
+        public static string SignUpErrorMessage {
+            get {
+                return ResourceManager.GetString("SignUpErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This e-mail is already used..
         /// </summary>
         public static string VerifyEmailExistsMessage {

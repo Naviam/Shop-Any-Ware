@@ -128,6 +128,7 @@ namespace TdService.Services.Implementations
             if (response.BrokenRules.Any())
             {
                 response.MessageType = MessageType.Warning;
+                response.Message = CommonResources.SignUpErrorMessage;
                 return response;
             }
 
@@ -135,6 +136,7 @@ namespace TdService.Services.Implementations
             if (userExists != null)
             {
                 response.MessageType = MessageType.Warning;
+                response.Message = CommonResources.SignUpErrorMessage;
                 response.BrokenRules.Add(UserBusinessRules.EmailExists);
                 return response;
             }
@@ -152,8 +154,8 @@ namespace TdService.Services.Implementations
             catch (Exception e)
             {
                 response.MessageType = MessageType.Error;
-                response.Message = CommonResources.DeliveryAddressRemoveErrorMessage;
-                this.logger.Error(CommonResources.DeliveryAddressRemoveErrorMessage, e);
+                response.Message = CommonResources.SignUpErrorMessage;
+                this.logger.Error(CommonResources.SignUpErrorMessage, e);
                 return response;
             }
         }
@@ -219,14 +221,13 @@ namespace TdService.Services.Implementations
         /// The request.
         /// </param>
         /// <returns>
-        /// True if user exists in db, otherwise false.
+        /// The <see cref="SignInResponse"/>.
         /// </returns>
         public SignInResponse SignIn(SignInRequest request)
         {
             var response = new SignInResponse();
             if (this.userRepository.ValidateUser(request.Email, request.Password))
             {
-                response.Message = MembershipResources.ValidationSuccess;
                 return response;
             }
 

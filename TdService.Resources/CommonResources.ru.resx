@@ -117,130 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Address_AddressLine1Required" xml:space="preserve">
-    <value>The 1st line of an Address is required.</value>
+  <data name="DeliveryAddressAddOrUpdateErrorMessage" xml:space="preserve">
+    <value>Во время добавления или обновления Вашего адреса доставки возникли проблемы.</value>
   </data>
-  <data name="Address_CityRequired" xml:space="preserve">
-    <value>An address must have a city.</value>
+  <data name="DeliveryAddressAddOrUpdateSuccessMessage" xml:space="preserve">
+    <value>Ваш адрес доставки был успешно добавлен (обновлен). </value>
   </data>
-  <data name="Address_CountryRequired" xml:space="preserve">
-    <value>An address must have a country.</value>
+  <data name="DeliveryAddressRemoveErrorMessage" xml:space="preserve">
+    <value>Во время удаления Вашего адреса доставки возникли проблемы.</value>
   </data>
-  <data name="Address_ZipCodeRequired" xml:space="preserve">
-    <value>An address must have a zip code.</value>
+  <data name="DeliveryAddressRemoveSuccessMessage" xml:space="preserve">
+    <value>Ваш адрес доставки был успешно удален.</value>
   </data>
-  <data name="Courier_NameMaxLength" xml:space="preserve">
-    <value>Courier name must be a string with a maximum length of 64.</value>
+  <data name="OrderAddErrorMessage" xml:space="preserve">
+    <value>Во время добавления заказа возникли проблемы.</value>
   </data>
-  <data name="Courier_NameRequired" xml:space="preserve">
-    <value>A courier must have a name.</value>
+  <data name="OrderAddSuccessMessage" xml:space="preserve">
+    <value>Ваш заказ был успешно добавлен.</value>
   </data>
-  <data name="DeliveryAddress_AddressNameRequired" xml:space="preserve">
-    <value>A delivery address must have a name.</value>
+  <data name="OrderUpdateErrorMessage" xml:space="preserve">
+    <value>Во время обновления заказа возникли проблемы.</value>
   </data>
-  <data name="DeliveryAddress_FirstNameRequired" xml:space="preserve">
-    <value>A delivery address must contain your first name.</value>
+  <data name="OrderUpdateSuccessMessage" xml:space="preserve">
+    <value>Ваш заказ был успешно обновлен.</value>
   </data>
-  <data name="DeliveryAddress_LastNameRequired" xml:space="preserve">
-    <value>A delivery address must contain your last name.</value>
+  <data name="ProfileUpdateErrorMessage" xml:space="preserve">
+    <value>Во время обновления профиля возникли проблемы.</value>
   </data>
-  <data name="Item_NameRequired" xml:space="preserve">
-    <value>An item must have a name.</value>
+  <data name="ProfileUpdateSuccessMessage" xml:space="preserve">
+    <value>Ваш профиль был успешно обновлен.</value>
   </data>
-  <data name="Item_PriceRequired" xml:space="preserve">
-    <value>An item must have a price.</value>
+  <data name="SignUpErrorMessage" xml:space="preserve">
+    <value>Во время регистрации Вашего аккаунта возникли проблемы.</value>
   </data>
-  <data name="Item_QuantityRequired" xml:space="preserve">
-    <value>An item must have a quantity.</value>
+  <data name="VerifyEmailExistsMessage" xml:space="preserve">
+    <value>Аккаунт с этим e-mail был уже создан.</value>
   </data>
-  <data name="Item_WeightRequired" xml:space="preserve">
-    <value>An item must have a weight.</value>
-  </data>
-  <data name="Order_CreatedDateRequired" xml:space="preserve">
-    <value>Order must have a created date.</value>
-  </data>
-  <data name="Order_OrderNumberLength" xml:space="preserve">
-    <value>Order number must be a string with a maximum length of 64.</value>
-  </data>
-  <data name="Order_ReceivedDateRequired" xml:space="preserve">
-    <value>Order in Received status must have a received date.</value>
-  </data>
-  <data name="Order_RetailerRequired" xml:space="preserve">
-    <value>Order must have a retailer.</value>
-  </data>
-  <data name="Order_StatusExtendedLength" xml:space="preserve">
-    <value>Order extended status must be a string with a maximum length of 64.</value>
-  </data>
-  <data name="Order_TrackingNumberLength" xml:space="preserve">
-    <value>Tracking number must be a string with a maximum length of 64.</value>
-  </data>
-  <data name="Order_WeightRequired" xml:space="preserve">
-    <value>Order in Received status must have a weight.</value>
-  </data>
-  <data name="Package_NameLength" xml:space="preserve">
-    <value>Package name must be a string with a maximum length of 64.</value>
-  </data>
-  <data name="Package_NameRequired" xml:space="preserve">
-    <value>A package must have a name.</value>
-  </data>
-  <data name="Profile_FirstNameLength" xml:space="preserve">
-    <value>First name must be a string with a maximum length of 64.</value>
-  </data>
-  <data name="Profile_FirstNameRequired" xml:space="preserve">
-    <value>First name is a required field.</value>
-  </data>
-  <data name="Profile_LastNameLength" xml:space="preserve">
-    <value>Last name must be a string with a maximum length of 64.</value>
-  </data>
-  <data name="Profile_LastNameRequired" xml:space="preserve">
-    <value>Last name is a required field.</value>
-  </data>
-  <data name="Retailer_CategoryLength" xml:space="preserve">
-    <value>Retailer category must be a string with a maximum length of 64.</value>
-  </data>
-  <data name="Retailer_CategoryRequired" xml:space="preserve">
-    <value>A retailer must have a category.</value>
-  </data>
-  <data name="Retailer_DescriptionLength" xml:space="preserve">
-    <value>Retailer description must be a string with a maximum length of 1024.</value>
-  </data>
-  <data name="Retailer_NameLength" xml:space="preserve">
-    <value>Retailer name must be a string with a maximum length of 64.</value>
-  </data>
-  <data name="Retailer_NameRequired" xml:space="preserve">
-    <value>A retailer must have a name.</value>
-  </data>
-  <data name="Retailer_UrlLength" xml:space="preserve">
-    <value>Retailer url must be a string with a maximum length of 256.</value>
-  </data>
-  <data name="Retailer_UrlRequired" xml:space="preserve">
-    <value>A retailer must have a url.</value>
-  </data>
-  <data name="Role_DescriptionLength" xml:space="preserve">
-    <value>Description must be a string with a maximum length of 64.</value>
-  </data>
-  <data name="Role_NameLength" xml:space="preserve">
-    <value>Name must be a string with a maximum length of 64.</value>
-  </data>
-  <data name="Role_NameRequired" xml:space="preserve">
-    <value>A role must have a name.</value>
-  </data>
-  <data name="User_EmailExists" xml:space="preserve">
-    <value>This user already exists.</value>
-  </data>
-  <data name="User_EmailLength" xml:space="preserve">
-    <value>Email must be a string with a maximum length of 256.</value>
-  </data>
-  <data name="User_EmailRequired" xml:space="preserve">
-    <value>An user must have an email.</value>
-  </data>
-  <data name="User_PasswordLength" xml:space="preserve">
-    <value>Password must be a string with a maximum length of 64.</value>
-  </data>
-  <data name="User_PasswordMinLength" xml:space="preserve">
-    <value>Password must be a string with a minimum length of 7.</value>
-  </data>
-  <data name="User_PasswordRequired" xml:space="preserve">
-    <value>An user must have a password.</value>
+  <data name="VerifyEmailOkMessage" xml:space="preserve">
+    <value>Аккаунт не занят.</value>
   </data>
 </root>

@@ -301,14 +301,15 @@ function Order(serverModel) {
         self.isCollapsed(!currentValue);
     };
 
-    self.trackingNumber.subscribe(function(val) {
+    self.trackingNumber.subscribe(function() {
         var params = { id: self.id(), orderNumber: self.orderNumber(), trackingNumber: self.trackingNumber() };
         $.post("/orders/update", params, function(data) {
             ////var order = new Order(ko.toJS(data));
             window.showNotice(data.Message, data.MessageType);
         });
     }, self);
-    self.orderNumber.subscribe(function (val) {
+    
+    self.orderNumber.subscribe(function () {
         var params = { id: self.id(), orderNumber: self.orderNumber(), trackingNumber: self.trackingNumber() };
         $.post("/orders/update", params, function (data) {
             ////var order = new Order(ko.toJS(data));

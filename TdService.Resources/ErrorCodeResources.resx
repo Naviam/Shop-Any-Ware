@@ -306,6 +306,9 @@
   <data name="UserPasswordConfirmRequired" xml:space="preserve">
     <value>Re-enter password to avoid mistakes.</value>
   </data>
+  <data name="UserPasswordLength" xml:space="preserve">
+    <value>Password must be a string with a minimum length of 7 and a maximum of 21.</value>
+  </data>
   <data name="UserPasswordMaxLength" xml:space="preserve">
     <value>Password must be a string with a maximum length of 21.</value>
   </data>

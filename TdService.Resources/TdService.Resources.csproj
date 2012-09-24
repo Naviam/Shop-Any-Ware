@@ -48,11 +48,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BreadcrumbResources.resx</DependentUpon>
     </Compile>
-    <Compile Include="BusinessRules.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BusinessRules.resx</DependentUpon>
-    </Compile>
     <Compile Include="CommonResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -98,11 +93,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DashboardViewResources.resx</DependentUpon>
     </Compile>
-    <Compile Include="MembershipResources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MembershipResources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\HomeViewResources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -130,14 +120,13 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>BreadcrumbResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="BusinessRules.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>BusinessRules.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    <EmbeddedResource Include="BreadcrumbResources.ru.resx" />
     <EmbeddedResource Include="CommonResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>CommonResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="CommonResources.ru.resx" />
     <EmbeddedResource Include="EmailResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>EmailResources.Designer.cs</LastGenOutput>
@@ -179,10 +168,6 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>DashboardViewResources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MembershipResources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>MembershipResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\DashboardViewResources.ru.resx" />
     <EmbeddedResource Include="Views\HomeViewResources.resx">

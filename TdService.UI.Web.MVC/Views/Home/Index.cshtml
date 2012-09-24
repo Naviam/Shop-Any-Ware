@@ -144,8 +144,18 @@
     <script type="text/javascript">
         $(document).ready(function () {
             var signInViewModel = new SignInViewModel();
+            var signUpViewModel = new SignUpViewModel();
             ko.applyBindings(signInViewModel, document.getElementById('signInForm'));
             ko.validation.init(signInViewModel, { insertMessages: false, decorateElement: true, errorClass: 'error', parseInputAttributes: true });
+            ko.applyBindingsWithValidation(
+                signUpViewModel,
+                document.getElementById('signUpForm'),
+                {
+                    insertMessages: false,
+                    decorateElement: true,
+                    errorClass: 'error',
+                    parseInputAttributes: true
+                });
         });
     </script>
 }

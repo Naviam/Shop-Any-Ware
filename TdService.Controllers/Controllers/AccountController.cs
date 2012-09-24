@@ -209,37 +209,19 @@ namespace TdService.UI.Web.Controllers
                     {
                         ModelState.AddModelError(rule.Property, rule.Rule);
                     }
-
-                    if (string.IsNullOrWhiteSpace(result.Email))
-                    {
-                        result.Email = model.Email;
-                    }
-
-                    if (string.IsNullOrWhiteSpace(result.FirstName))
-                    {
-                        result.FirstName = model.FirstName;
-                    }
-
-                    if (string.IsNullOrWhiteSpace(result.LastName))
-                    {
-                        result.LastName = model.LastName;
-                    }
-
-                    this.ViewData.Model = new MainViewModel { SignUpViewModel = result };
-                    return this.View("SignUp");
                 }
-
-                this.FormsAuthentication.SetAuthenticationToken(model.Email, false);
-                return this.RedirectToAction("Welcome", "Member");
-            }
-            else
-            {
-                result.MessageType = MessageType.Warning.ToString();
-                result.BrokenRules = new List<BusinessRule>();
-                foreach (var failure in validationResult.Errors)
+                else
                 {
-                    result.BrokenRules.Add(new BusinessRule(failure.PropertyName, failure.ErrorMessage));
+                    this.FormsAuthentication.SetAuthenticationToken(model.Email, false);
+                    return this.RedirectToAction("Welcome", "Member");
                 }
+            }
+
+            result.MessageType = MessageType.Warning.ToString();
+            result.BrokenRules = new List<BusinessRule>();
+            foreach (var failure in validationResult.Errors)
+            {
+                result.BrokenRules.Add(new BusinessRule(failure.PropertyName, failure.ErrorMessage));
             }
 
             if (string.IsNullOrWhiteSpace(result.Email))
@@ -259,12 +241,6 @@ namespace TdService.UI.Web.Controllers
 
             this.ViewData.Model = new MainViewModel { SignUpViewModel = result };
             return this.View("SignUp");
-            ////var jsonNetResult = new JsonNetResult
-            ////{
-            ////    Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
-            ////    Data = result
-            ////};
-            ////return jsonNetResult;
         }
 
         /// <summary>

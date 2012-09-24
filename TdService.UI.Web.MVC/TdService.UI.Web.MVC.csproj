@@ -213,9 +213,9 @@
     <Content Include="Scripts\dotdotdot\jquery.dotdotdot-1.4.0-packed.js" />
     <Content Include="Scripts\dotdotdot\jquery.dotdotdot-1.4.0.js" />
     <Content Include="Scripts\dotdotdot\jquery.js" />
-    <None Include="Scripts\jquery-1.8.1.intellisense.js" />
-    <Content Include="Scripts\jquery-1.8.1.js" />
-    <Content Include="Scripts\jquery-1.8.1.min.js" />
+    <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.8.2.js" />
+    <Content Include="Scripts\jquery-1.8.2.min.js" />
     <Content Include="Scripts\jquery.autoellipsis-1.0.3.js" />
     <Content Include="Scripts\jquery.autoellipsis-1.0.3.min.js" />
     <Content Include="Scripts\jquery.nicescroll.js" />
@@ -252,7 +252,7 @@
     <Content Include="Scripts\model\DeliveryAddressViewModel.js" />
     <Content Include="Scripts\model\OrderViewModel.js" />
     <Content Include="Scripts\model\ProfileViewModel.js" />
-    <Content Include="Scripts\model\SignUpViewModel.js" />
+    <Content Include="Scripts\ViewModels\SignUpViewModel.js" />
     <Content Include="Scripts\MVVM\App.js" />
     <Content Include="Scripts\MVVM\ember-0.9.8.1.js" />
     <Content Include="Scripts\MVVM\ember-0.9.8.1.min.js" />

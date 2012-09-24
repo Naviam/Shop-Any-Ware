@@ -7,7 +7,6 @@
 namespace TdService.Model.Shipping
 {
     using TdService.Infrastructure.Domain;
-    using TdService.Resources;
 
     /// <summary>
     /// Courier business rules.
@@ -18,12 +17,12 @@ namespace TdService.Model.Shipping
         /// This rule ensures that name for courier is set.
         /// </summary>
         public static readonly BusinessRule NameRequired =
-            new BusinessRule("Name", BusinessRules.Courier_NameRequired);
+            new BusinessRule("Name", ErrorCode.CourierNameRequired.ToString());
 
         /// <summary>
         /// This rule ensures that name for courier within max length.
         /// </summary>
-        public static readonly BusinessRule NameMaxLength = 
-            new BusinessRule("Name", BusinessRules.Courier_NameMaxLength);
+        public static readonly BusinessRule NameMaxLength =
+            new BusinessRule("Name", ErrorCode.CourierNameMaxLength.ToString());
     }
 }

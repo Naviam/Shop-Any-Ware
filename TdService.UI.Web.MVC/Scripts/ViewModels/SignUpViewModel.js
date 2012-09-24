@@ -7,11 +7,11 @@
     /// </param>
     // var signUp = JSON.parse(model);
     var self = this;
-    self.email = ko.observable(); // signUp.Email
-    self.password = ko.observable(); // signUp.Password
-    self.passwordConfirm = ko.observable(); // signUp.passwordConfirm
-    self.firstName = ko.observable(); // signUp.FirstName
-    self.lastName = ko.observable(); // signUp.LastName
+    self.email = ko.observable(model.Email).extend({ required: true }); // signUp.Email
+    self.password = ko.observable().extend({ required: true }); // signUp.Password
+    self.passwordConfirm = ko.observable().extend({ required: true }); // signUp.passwordConfirm
+    self.firstName = ko.observable(model.FirstName).extend({ required: true }); // signUp.FirstName
+    self.lastName = ko.observable(model.LastName).extend({ required: true }); // signUp.LastName
 
     self.verifyEmailExists = function () {
         /// <summary>
@@ -22,7 +22,3 @@
         }
     };
 };
-
-$(document).ready(function () {
-    ko.applyBindings(new SignUpViewModel(null));
-});
