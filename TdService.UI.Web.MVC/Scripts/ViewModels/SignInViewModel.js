@@ -6,12 +6,13 @@
 /// <reference path="../knockout.validation.debug.js" />
 /// <reference path="../knockout-sortable.js" />
 
-function SignInViewModel() {
+function SignInViewModel(model) {
+    var m = JSON.parse(unescape(model));
     var self = this;
 
-    self.Email = ko.observable("vhatalski@naviam.com"); // .extend({ required: true, email: true })
-    self.Password = ko.observable("ruinruin"); // .extend({ required: true })
-    self.RememberMe = ko.observable(true);
+    self.Email = ko.observable(m.Email).extend({ required: true, email: true });
+    self.Password = ko.observable(m.Password).extend({ required: true });
+    self.RememberMe = ko.observable(m.RememberMe);
     ////self.__RequestVerificationToken = encodeURIComponent($('#signInForm [name=__RequestVerificationToken]').val());
 
     self.signIn = function (signInModel) {

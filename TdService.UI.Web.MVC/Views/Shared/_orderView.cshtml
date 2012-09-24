@@ -66,8 +66,8 @@
                             <div class="btn-group">
                                 <button class="btn btn-mini" title="@DashboardViewResources.EditItemTitle"><i class="icon icon-edit"></i></button>
                                 <button class="btn btn-mini" title="@DashboardViewResources.DeleteItemTitle"><i class="icon icon-remove"></i></button>
-                                <button class="btn btn-mini dropdown-toggle" title="@DashboardViewResources.MoveItemTitle" data-toggle="dropdown"><i class="icon icon-move"></i>@*@DashboardViewResources.ActionMoveHeader*@ <span class="caret"></span></button>
-                                <ul class="dropdown-menu" data-bind="foreach: $root.packages()">
+                                <button class="btn btn-mini dropdown-toggle" title="@DashboardViewResources.MoveItemTitle" data-toggle="dropdown" data-placement="right"><i class="icon icon-move"></i>@*@DashboardViewResources.ActionMoveHeader*@ <span class="caret"></span></button>
+                                <ul class="dropdown-menu" data-bind="foreach: $root.packages()" data-placement="top">
                                     <li><a href="#"><span class="label">ID: <span data-bind="text: id"></span></span> <span data-bind="text: name()"></span></a></li>
                                 </ul>
                             </div>

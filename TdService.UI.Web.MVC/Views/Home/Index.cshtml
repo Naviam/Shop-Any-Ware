@@ -143,8 +143,8 @@
     @Scripts.Render("~/bundles/Home")
     <script type="text/javascript">
         $(document).ready(function () {
-            var signInViewModel = new SignInViewModel();
-            var signUpViewModel = new SignUpViewModel();
+            var signInViewModel = new SignInViewModel(@Html.Raw(Json.Encode(Model.SignInViewModel)));
+            var signUpViewModel = new SignUpViewModel(@Html.Raw(Json.Encode(Model.SignUpViewModel)));
             ko.applyBindings(signInViewModel, document.getElementById('signInForm'));
             ko.validation.init(signInViewModel, { insertMessages: false, decorateElement: true, errorClass: 'error', parseInputAttributes: true });
             ko.applyBindingsWithValidation(

@@ -165,12 +165,12 @@ namespace TdService.UI.Web.Controllers
         /// Displays Registration Form.
         /// </summary>
         /// <returns>
-        /// Returns Action Result with SignUpView model.
+        /// The <see cref="ActionResult"/>.
         /// </returns>
         public ActionResult SignUp()
         {
-            this.ViewData.Model = new MainViewModel { SignUpViewModel = new SignUpViewModel() };
-            return this.View("SignUp");
+            var model = new MainViewModel { SignUpViewModel = new SignUpViewModel() };
+            return this.View("SignUp", model);
         }
 
         /// <summary>
