@@ -460,6 +460,11 @@ html
     text-align: left;
 }
 
+.body_header{height:24px}
+    .body_header h3{float:left}
+    .body_header i{float:right;margin:2px 4px}
+    .body_header .balance_text{float:right;margin:6px 12px;font-weight:bold;font-size:18px}
+
 .box .header
 {
     width: auto;
