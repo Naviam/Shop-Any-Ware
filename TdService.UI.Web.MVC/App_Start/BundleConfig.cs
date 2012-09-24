@@ -27,8 +27,8 @@ namespace TdService.UI.Web.MVC.App_Start
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new StyleBundle("~/Content/less/bootstrapcss").Include(
-                        "~/Content/less/bootstrap.css",
-                        "~/Content/less/responsive.css"));
+                "~/Content/less/bootstrap.css",
+                "~/Content/less/responsive.css"));
 
             bundles.Add(new StyleBundle("~/Content/sitecss").Include(
                         "~/Content/styles.css",
@@ -36,27 +36,19 @@ namespace TdService.UI.Web.MVC.App_Start
                         "~/Content/noty/noty_theme_default.css",
                         "~/Content/noty/noty_theme_twitter.css"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
+            bundles.Add(new ScriptBundle("~/bundles/layout").Include(
                         "~/Scripts/jquery-{version}.js",
+                        "~/scripts/ui/jquery-ui-1.8.18.custom.js",
                         "~/Scripts/json2.js",
+                        "~/Scripts/noty/jquery.noty.js",
                         ////"~/scripts/linq.min.js",
                         "~/scripts/jquery.validate.min.js",
                         "~/scripts/jquery.validate.unobtrusive.min.js",
-                        "~/scripts/ui/jquery-ui-1.8.18.custom.js"));
-
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                        "~/Scripts/bootstrap/bootstrap.js"));
-
-            bundles.Add(new ScriptBundle("~/bundles/noty").Include(
-                        "~/Scripts/noty/jquery.noty.js"));
-
-            bundles.Add(new ScriptBundle("~/bundles/knockout").Include(
+                        "~/Scripts/bootstrap/bootstrap.js",
                         "~/Scripts/knockout-2.1.0.js",
                         "~/Scripts/knockout.mapping-latest.js",
                         "~/Scripts/knockout.validation.js",
-                        "~/Scripts/knockout-sortable.js"));
-
-            bundles.Add(new ScriptBundle("~/bundles/common").Include(
+                        "~/Scripts/knockout-sortable.js",
                         "~/Scripts/Common.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/dashboard").Include(
