@@ -79,7 +79,7 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Delivery Addresses.
+        ///   Looks up a localized string similar to Address Book.
         /// </summary>
         public static string DeliveryAddressesMenuHeader {
             get {

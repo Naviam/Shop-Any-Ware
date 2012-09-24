@@ -147,6 +147,9 @@
   <data name="ProfileUpdateSuccessMessage" xml:space="preserve">
     <value>Your profile has been successfully updated.</value>
   </data>
+  <data name="SignUpErrorMessage" xml:space="preserve">
+    <value>There were some issues registering your account.</value>
+  </data>
   <data name="VerifyEmailExistsMessage" xml:space="preserve">
     <value>This e-mail is already used.</value>
   </data>

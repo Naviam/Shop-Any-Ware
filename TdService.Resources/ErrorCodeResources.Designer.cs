@@ -628,6 +628,15 @@ namespace TdService.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Password must be a string with a minimum length of 7 and a maximum of 21..
+        /// </summary>
+        public static string UserPasswordLength {
+            get {
+                return ResourceManager.GetString("UserPasswordLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password must be a string with a maximum length of 21..
         /// </summary>
         public static string UserPasswordMaxLength {

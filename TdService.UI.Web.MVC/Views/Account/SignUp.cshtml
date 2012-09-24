@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = AccountViewResources.SignUpPageTitle;
 }
+<div id="signUpForm">
 @using (Html.BeginForm("SignUp", "Account", FormMethod.Post, new Dictionary<string, object> { { "class", "form-horizontal" } }))
 {
     @Html.AntiForgeryToken()
@@ -50,9 +51,22 @@
         </div>
     </fieldset>
 }
+</div>
 @section Scripts
 {
-    <script type="text/javascript" src="@Url.Content("~/Scripts/model/SignUpViewModel.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/ViewModels/SignUpViewModel.js")"></script>
     <script type="text/javascript">
+        $(document).ready(function () {
+            var signUpViewModel = new SignUpViewModel();
+            ko.applyBindingsWithValidation(
+                signUpViewModel,
+                document.getElementById('signUpForm'),
+                {
+                    insertMessages: false,
+                    decorateElement: true,
+                    errorClass: 'error',
+                    parseInputAttributes: false
+                });
+        });
     </script>
 }
