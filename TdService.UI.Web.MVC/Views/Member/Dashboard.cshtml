@@ -7,7 +7,7 @@
 }
 <div class="row-fluid">
     <div class="span6">
-        <h3>@DashboardViewResources.OrdersHeader</h3><a href="#" class="store_address" data-trigger="click" data-title="@DashboardViewResources.MyUsAddressHeader" data-placement="bottom" data-content="<table class='table-striped table-condensed address'><tbody><tr><td>@AddressViewResources.AddressTable_FirstName: </td><td>@Model.FirstName</td></tr><tr><td>@AddressViewResources.AddressTable_LastName: </td><td>@Model.LastName</td></tr><tr><td>@AddressViewResources.AddressTable_AddressLine1: </td><td>452 PALISADE AVE #D</td></tr><tr><td>@AddressViewResources.AddressTable_AddressLine2: </td><td>CLIFFSIDE PARK , Ste #@Model.UserId</td></tr><tr><td>@AddressViewResources.AddressTable_ZipCode: </td><td>07010</td></tr><tr><td>@AddressViewResources.AddressTable_City: </td><td>New Jersey</td></tr><tr><td>@AddressViewResources.AddressTable_State: </td><td>New York or NY</td></tr><tr><td>@AddressViewResources.AddressTable_Phone: </td><td>(734)5166594</td></tr></tbody></table>">@DashboardViewResources.MyUsAddressLinkMessage</a><i class="icon-home" style="float:right;margin:2px 4px"></i>
+        <div class="body_header"><h3>@DashboardViewResources.OrdersHeader</h3><a href="#" class="store_address" data-trigger="click" data-title="@DashboardViewResources.MyUsAddressHeader" data-placement="bottom" data-content="<table class='table-striped table-condensed address'><tbody><tr><td>@AddressViewResources.AddressTable_FirstName: </td><td>@Model.FirstName</td></tr><tr><td>@AddressViewResources.AddressTable_LastName: </td><td>@Model.LastName</td></tr><tr><td>@AddressViewResources.AddressTable_AddressLine1: </td><td>452 PALISADE AVE #D</td></tr><tr><td>@AddressViewResources.AddressTable_AddressLine2: </td><td>CLIFFSIDE PARK , Ste #@Model.UserId</td></tr><tr><td>@AddressViewResources.AddressTable_ZipCode: </td><td>07010</td></tr><tr><td>@AddressViewResources.AddressTable_City: </td><td>New Jersey</td></tr><tr><td>@AddressViewResources.AddressTable_State: </td><td>New York or NY</td></tr><tr><td>@AddressViewResources.AddressTable_Phone: </td><td>(734)5166594</td></tr></tbody></table>">@DashboardViewResources.MyUsAddressLinkMessage</a><i class="icon-home"></i></div>
         <div id="addOrderForm" class="package">
             <ul class="nav nav-tabs">
                 @*<li><a href="#">@DashboardViewResources.OrderOption1</a></li>*@
@@ -59,7 +59,7 @@
         </div>
     </div>
     <div class="span6" style="float: right">
-        <h3>@DashboardViewResources.PackagesHeader</h3><a href="#" class="btn btn-success balance">@DashboardViewResources.BalanceAddFundsButton</a><span style="float:right;margin:6px 12px;font-weight:bold;font-size:18px">@DashboardViewResources.BalanceHeader: $123</span>
+        <div class="body_header"><h3>@DashboardViewResources.PackagesHeader</h3><a href="#" class="btn btn-success balance">@DashboardViewResources.BalanceAddFundsButton</a><span class="balance_text">@DashboardViewResources.BalanceHeader: $123</span></div>
         <div class="package">
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#recent_packages" data-toggle="tab">@DashboardViewResources.RecentPackagesTabHeader</a></li>
