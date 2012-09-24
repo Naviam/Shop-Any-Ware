@@ -1,5 +1,271 @@
-﻿@{
-    ViewBag.Title = "Dashboard";
+﻿@using System.Web.Optimization
+@using TdService.Resources.Views
+@{
+    ViewBag.Title = "ShopAnyWare - Operator Dashboard";
 }
-
-<h2>Dashboard</h2>
+<div class="row-fluid">
+    <div class="span6">
+        <div class="body_header"><h3>@DashboardViewResources.OrdersHeader</h3></div>
+        <div id="addOrderForm" class="package">
+            <div class="control-group">
+                <div class="controls">
+                    <div class="input-prepend input-append">
+                        <input class="add-order" style="width:66%" placeholder="Поиск заказов"/><button id="searchOrdersButton" class="btn btn-large" type="button" data-loading-text="Ищем..">Поиск</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="clear:left"><br /></div>
+        <div class="tab-content">
+            <ul class="nav nav-tabs">
+                @*<li><a href="#">@DashboardViewResources.OrderOption1</a></li>*@
+                <li class="active"><a href="#new_orders" data-toggle="tab">В ожидании прибытия</a></li>
+                <li><a href="#received_orders" data-toggle="tab">На складе</a></li>
+            </ul>
+            <div id="new_orders" class="tab-pane active">
+                <div data-bind="visible: orders().length == 0">
+                    <div class="alert package" data-bind="css: { 'alert-info': !recentOrdersNotLoaded() }">
+                        <span data-bind="visible: recentOrdersNotLoaded()">@DashboardViewResources.LoadingRecentOrdersMessage</span>
+                        <span data-bind="visible: !recentOrdersNotLoaded()">@DashboardViewResources.NoOrdersMessage</span>
+                    </div>
+                    <br /><br /><br /><br /><br /><br /><br />
+                </div>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="success">
+                            <th colspan="2">Клиент</th>
+                            <th colspan="2">Заказ</th>
+                            <th colspan="3">Магазин</th>
+                            <th rowspan="2">Действие</th>
+                        </tr>
+                        <tr class="success">
+                            <th>ID</th>
+                            <th>Фамилия, Имя</th>
+                            <th>ID</th>
+                            <th>Дата</th>
+                            <th>Название</th>
+                            <th>Номер заказа</th>
+                            <th>Номер отслеживания</th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: orders">
+                        <tr>
+                            <td data-bind="">
+                            </td>
+                            <td data-bind=""></td>
+                            <td data-bind="text: id"></td>
+                            <td data-bind="text: orderDate"></td>
+                            <td data-bind="text: retailerUrl"></td>
+                            <td data-bind="text: orderNumber"></td>
+                            <td data-bind="text: trackingNumber"></td>
+                            <td>
+                                <button class="btn btn-mini btn-primary" title="@DashboardViewResources.AddItemButton" data-bind="visible: canItemsBeModified" data-toggle="modal" href="#itemFormModal"><i class="icon-white icon-plus-sign"></i></button>
+                                <button class="btn btn-mini btn-success" title="@DashboardViewResources.InStockButton" data-bind="visible: canBeReceived"><i class="icon-white icon-inbox"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="8">
+                                <span data-bind="click: toggleCollapse"><i data-bind="css: { 'icon-chevron-right': isCollapsed, 'icon-chevron-down': isExpanded }"></i></span>
+                                <div data-bind="collapsed: isCollapsed" class="white collapse">
+                                    <div class="alert alert-info" data-bind="visible: items().length == 0">@DashboardViewResources.NoItemsMessage</div>
+                                    <table data-bind="visible: hasItems" class="info" style="display:none">
+                                        <thead>
+                                            <tr>
+                                                <th class="left">@DashboardViewResources.ItemNameHeader</th>
+                                                <th>@DashboardViewResources.QuantityHeader</th>
+                                                <th>@DashboardViewResources.WeightHeader</th>
+                                                <th>@DashboardViewResources.PriceHeader</th>
+                                                <th>@DashboardViewResources.ActionsHeader</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="order_items" data-bind="foreach: {data: items}">
+                                            <tr data-bind="attr: {id: id}">
+                                                <td class="left"><i class="icon-camera"></i>&nbsp;<span class="editable" data-content="<table class='details'><tr><td><img src='@Url.Content("~/content/img/kindle.jpg")' /></td><td><p>Name: Kindle</p><p>Weight: 1.3lbs</p><p>Color: Black</p><p>Quantity: 1</p><p>Cost: $100</p></td>" data-bind="click: $parent.removeItem, text: name"></span></td>
+                                                <td><span class="editable" data-bind="text: quantity"></span></td>
+                                                <td><span class="editable" data-bind="text: weight"></span>lbs</td>
+                                                <td>$<span class="editable" title="@DashboardViewResources.PriceTitle" data-bind="text: price"></span></td>
+                                                <td>
+                                                    <div class="btn-group">
+                                                        <button class="btn btn-mini" title="@DashboardViewResources.EditItemTitle"><i class="icon icon-edit"></i></button>
+                                                        <button class="btn btn-mini" title="@DashboardViewResources.DeleteItemTitle"><i class="icon icon-remove"></i></button>
+                                                        <button class="btn btn-mini dropdown-toggle" title="@DashboardViewResources.MoveItemTitle" data-toggle="dropdown"><i class="icon icon-arrow-right"></i>@*@DashboardViewResources.ActionMoveHeader*@ <span class="caret"></span></button>
+                                                        <ul class="dropdown-menu" data-bind="foreach: $root.packages()">
+                                                            <li><a href="#"><span class="label">ID: <span data-bind="text: id"></span></span> <span data-bind="text: name()"></span></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td class="right">@DashboardViewResources.ItemsTotalHeader</td>
+                                                <td><span data-bind="text: totalItemsQuantity"></span></td>
+                                                <td><span data-bind="text: totalItemsWeight"></span> lbs</td>
+                                                <td>$ <span data-bind="text: totalItemsAmount"></span></td>
+                                                <td></td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                @*<div data-bind="foreach: orders">
+                    @{
+                        this.Html.RenderPartial("_orderView");
+                    }
+                </div>*@
+                <div class="pagination pagination-right">
+                    <ul>
+                        <li><a href="#">Prev</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">Next</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="received_orders" class="tab-pane">
+                <div data-bind="visible: ordersHistory().length == 0">
+                    <div class="alert package" data-bind="css: { 'alert-info': !historyOrdersNotLoaded() }">
+                        <span data-bind="visible: historyOrdersNotLoaded()">@DashboardViewResources.LoadingHistoryOrdersMessage</span>
+                        <span data-bind="visible: !historyOrdersNotLoaded()">@DashboardViewResources.NoHistoryOrdersMessage</span>
+                    </div>
+                </div>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="success">
+                            <th colspan="2">Клиент</th>
+                            <th colspan="2">Заказ</th>
+                            <th colspan="3">Магазин</th>
+                            <th rowspan="2">Действие</th>
+                        </tr>
+                        <tr class="success">
+                            <th>ID</th>
+                            <th>Фамилия, Имя</th>
+                            <th>ID</th>
+                            <th>Дата</th>
+                            <th>Название</th>
+                            <th>Номер заказа</th>
+                            <th>Номер отслеживания</th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: ordersHistory">
+                        <tr>
+                            <td data-bind=""></td>
+                            <td data-bind=""></td>
+                            <td data-bind="text: id"></td>
+                            <td data-bind="text: orderDate"></td>
+                            <td data-bind="text: retailerUrl"></td>
+                            <td data-bind="text: orderNumber"></td>
+                            <td data-bind="text: trackingNumber"></td>
+                            <td>
+                                <button class="btn btn-mini btn-primary" title="@DashboardViewResources.AddItemButton" data-bind="visible: canItemsBeModified" data-toggle="modal" href="#itemFormModal"><i class="icon-white icon-plus-sign"></i></button>
+                                <button class="btn btn-mini btn-success" title="@DashboardViewResources.InStockButton" data-bind="visible: canBeReceived"><i class="icon-white icon-inbox"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div data-bind="foreach: ordersHistory">
+                    @{
+                        this.Html.RenderPartial("_orderView");
+                    }
+                </div>
+                <div class="pagination pagination-right">
+                    <ul>
+                        <li><a href="#">Prev</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">Next</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="span6" style="float: right">
+        <div class="body_header"><h3>@DashboardViewResources.PackagesHeader</h3></div>
+        <div class="package">
+            <div class="control-group">
+                <div class="controls">
+                    <div class="input-prepend input-append">
+                        <input class="add-order" style="width:66%" placeholder="Поиск посылок"/><button id="searchPackageButton" class="btn btn-large" type="button" data-loading-text="Ищем..">Поиск</button>
+                        <div class="sub">
+                            <div class="link_expand"><i class="icon icon-chevron-up"></i>&nbsp;<a href="#" data-bind="click: collapseAllPackages">@DashboardViewResources.CollapseAllPackages</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="clear:left"><br /></div>
+        <div class="tab-content">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#recent_packages" data-toggle="tab">В ожидании обработки</a></li>
+                <li><a href="#history_packages" data-toggle="tab">В ожидании отправки</a></li>
+            </ul>
+            <div id="recent_packages" class="tab-pane active" >
+                <div data-bind="visible: packages().length == 0">
+                    <div class="alert package" data-bind="css: { 'alert-info': !recentPackagesNotLoaded() }">
+                        <span data-bind="visible: recentPackagesNotLoaded()">@DashboardViewResources.LoadingRecentPackagesMessage</span>
+                        <span data-bind="visible: !recentPackagesNotLoaded()">@DashboardViewResources.NoPackagesMessage</span>
+                    </div>
+                    <br /><br /><br /><br /><br /><br /><br />
+                </div>
+                <div data-bind="foreach: packages">
+                    @{
+                        this.Html.RenderPartial("_packageView");
+                    }
+                </div>
+                <div class="pagination pagination-right">
+                    <ul>
+                        <li><a href="#">Prev</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">Next</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="history_packages" class="tab-pane">
+                <div data-bind="visible: packagesHistory().length == 0">
+                    <div class="alert package" data-bind="css: { 'alert-info': !historyPackagesNotLoaded() }">
+                        <span data-bind="visible: historyPackagesNotLoaded()">@DashboardViewResources.LoadingHistoryPackagesMessage</span>
+                        <span data-bind="visible: !historyPackagesNotLoaded()">@DashboardViewResources.NoHistoryPackagesMessage</span>
+                    </div>
+                    <br /><br /><br /><br /><br /><br /><br />
+                </div>
+                <div data-bind="foreach: packagesHistory">
+                    @{
+                        this.Html.RenderPartial("_packageView");
+                    }
+                </div>
+                <div class="pagination pagination-right">
+                    <ul>
+                        <li><a href="#">Prev</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">Next</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    @Scripts.Render("~/bundles/dashboard")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var mainViewModel = new DashboardViewModel();
+            ko.applyBindings(mainViewModel);
+            ko.validation.init(mainViewModel, { insertMessages: false, decorateElement: true, errorClass: 'error', parseInputAttributes: true });
+            $(".store_address").popover();
+        });
+    </script>
+}
