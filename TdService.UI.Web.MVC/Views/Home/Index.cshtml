@@ -32,18 +32,12 @@
                             @Html.TextBoxFor(m => m.SignUpViewModel.Email, new Dictionary<string, object> { { "class", "span3" }, { "data-bind", "value: email" }, { "placeholder", AccountViewResources.EmailFormFieldPlaceholder } })
                             @*<input type="email" class="span3" data-bind="value: email" required placeholder="@AccountViewResources.EmailFormFieldPlaceholder" />*@
                         </div>
-                        <div class="controls">
-                            @Html.ValidationMessageFor(m => m.SignUpViewModel.Email)
-                        </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label">@AccountViewResources.PasswordFormLabel:</label>
                         <div class="controls">
                             @Html.PasswordFor(m => m.SignUpViewModel.Password, new Dictionary<string, object> { { "class", "span3" }, { "data-bind", "value: password" }, { "placeholder", AccountViewResources.PasswordFormFieldPlaceholder } })
                             @*<input type="password" class="span3" data-bind="value: password" required placeholder="@AccountViewResources.PasswordFormFieldPlaceholder" />*@
-                        </div>
-                        <div class="controls">
-                            @Html.ValidationMessageFor(m => m.SignUpViewModel.Password)
                         </div>
                     </div>
                     <div class="control-group">
@@ -52,18 +46,12 @@
                             @Html.PasswordFor(m => m.SignUpViewModel.PasswordConfirm, new Dictionary<string, object> { { "class", "span3" }, { "data-bind", "value: passwordConfirm" }, { "placeholder", AccountViewResources.PasswordConfirmFormFieldPlaceholder } })
                             @*<input type="password" class="span3" data-bind="value: passwordConfirm" required placeholder="@AccountViewResources.PasswordConfirmFormFieldPlaceholder" />*@
                         </div>
-                        <div class="controls">
-                            @Html.ValidationMessageFor(m => m.SignUpViewModel.PasswordConfirm)
-                        </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label">@AccountViewResources.FirstNameFormLabel:</label>
                         <div class="controls">
                             @Html.TextBoxFor(m => m.SignUpViewModel.FirstName, new Dictionary<string, object> { { "class", "span3" }, { "data-bind", "value: firstName" }, { "placeholder", AccountViewResources.FirstNameFormFieldPlaceholder } })
                             @*<input type="text" class="span3" data-bind="value: firstName" required placeholder="@AccountViewResources.FirstNameFormFieldPlaceholder" />*@
-                        </div>
-                        <div class="controls">
-                            @Html.ValidationMessageFor(m => m.SignUpViewModel.FirstName)
                         </div>
                     </div>
                     <div class="control-group">
@@ -72,10 +60,8 @@
                             @Html.TextBoxFor(m => m.SignUpViewModel.LastName, new Dictionary<string, object> { { "class", "span3" }, { "data-bind", "value: lastName" }, { "placeholder", AccountViewResources.LastNameFormFieldPlaceholder } })
                             @*<input type="text" class="span3" data-bind="value: lastName" required placeholder="@AccountViewResources.LastNameFormFieldPlaceholder" />*@
                         </div>
-                        <div class="controls">
-                            @Html.ValidationMessageFor(m => m.SignUpViewModel.LastName)
-                        </div>
                     </div>
+                    @Html.ValidationSummary()
                     <div class="form-actions">
                         <button type="submit" class="btn btn-primary btn-large">@AccountViewResources.SignUpButton</button>
                     </div>
