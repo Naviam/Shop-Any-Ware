@@ -21,7 +21,7 @@
                     <span class="dropdown">
                         <button class="btn btn-mini dropdown-toggle" title="@DashboardViewResources.MoveAllItemsTitle" data-toggle="dropdown" data-bind="visible: items().length > 0"><i class="icon icon-arrow-right"></i><span class="caret"></span></button>
                         <ul class="dropdown-menu" data-bind="foreach: $parent.packages()">
-                            <li><a href="#"><span class="label">ID: <span data-bind="text: id()"></span></span> <span data-bind="text: name()"></span></a></li>
+                            <li><a href="#"><span class="label">ID: <span data-bind="text: id()"></span></span><span data-bind="text: name()"></span></a></li>
                         </ul>
                     </span>
                     <button class="btn btn-mini" title="@DashboardViewResources.ReturnOrderButton" data-toggle="modal" data-bind="visible: canBeRequestedForReturn"><i class="icon icon-retweet"></i></button>
@@ -33,7 +33,7 @@
             <table class="header">
                 <tbody>
                     <tr>
-                        <td style="text-align:right">@DashboardViewResources.OrderNumberHeader</td>
+                        <td style="text-align: right">@DashboardViewResources.OrderNumberHeader</td>
                         <td>
                             <input type="text" data-bind="value: orderNumber" placeholder="@DashboardViewResources.OrderNumberPlaceholder">
                         </td>
@@ -46,7 +46,7 @@
                 </tbody>
             </table>
             <div class="alert alert-info" data-bind="visible: items().length == 0">@DashboardViewResources.NoItemsMessage</div>
-            <table data-bind="visible: hasItems" class="info" style="display:none">
+            <table data-bind="visible: hasItems" class="info" style="display: none">
                 <thead>
                     <tr>
                         <th class="left">@DashboardViewResources.ItemNameHeader</th>
@@ -68,7 +68,7 @@
                                 @*<button class="btn btn-mini" title="@DashboardViewResources.DeleteItemTitle"><i class="icon icon-remove"></i></button>*@
                                 <button class="btn btn-mini dropdown-toggle" title="@DashboardViewResources.MoveItemTitle" data-toggle="dropdown"><i class="icon icon-arrow-right"></i>@*@DashboardViewResources.ActionMoveHeader*@ <span class="caret"></span></button>
                                 <ul class="dropdown-menu" data-bind="foreach: $root.packages()">
-                                    <li><a href="#"><span class="label">ID: <span data-bind="text: id"></span></span> <span data-bind="text: name()"></span></a></li>
+                                    <li><a href="#"><span class="label">ID: <span data-bind="text: id"></span></span><span data-bind="text: name()"></span></a></li>
                                 </ul>
                             </div>
                         </td>
@@ -78,7 +78,7 @@
                     <tr>
                         <td class="right">@DashboardViewResources.ItemsTotalHeader</td>
                         <td><span data-bind="text: totalItemsQuantity"></span></td>
-                        <td><span data-bind="text: totalItemsWeight"></span> lbs</td>
+                        <td><span data-bind="text: totalItemsWeight"></span>lbs</td>
                         <td>$ <span data-bind="text: totalItemsAmount"></span></td>
                         <td></td>
                     </tr>
