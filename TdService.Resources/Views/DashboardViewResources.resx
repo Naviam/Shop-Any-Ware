@@ -148,10 +148,10 @@
     <value>Cancel</value>
   </data>
   <data name="CollapseAllOrders" xml:space="preserve">
-    <value>collapse all orders</value>
+    <value>Collapse all orders</value>
   </data>
   <data name="CollapseAllPackages" xml:space="preserve">
-    <value>collapse all packages</value>
+    <value>Collapse all packages</value>
   </data>
   <data name="CustomsDeclaration" xml:space="preserve">
     <value>Customs Declaration</value>
@@ -170,6 +170,12 @@
   </data>
   <data name="ExampleHeader" xml:space="preserve">
     <value>Example</value>
+  </data>
+  <data name="ExpandAllOrders" xml:space="preserve">
+    <value>Expand all orders</value>
+  </data>
+  <data name="ExpandAllPackages" xml:space="preserve">
+    <value>Expand all packages</value>
   </data>
   <data name="HistoryPackagesTabHeader" xml:space="preserve">
     <value>History</value>

@@ -148,10 +148,10 @@
     <value>Отменить</value>
   </data>
   <data name="CollapseAllOrders" xml:space="preserve">
-    <value>свернуть все заказы</value>
+    <value>Свернуть все заказы</value>
   </data>
   <data name="CollapseAllPackages" xml:space="preserve">
-    <value>свернуть все посылки</value>
+    <value>Свернуть все посылки</value>
   </data>
   <data name="CustomsDeclaration" xml:space="preserve">
     <value>Таможенная декларация</value>
@@ -170,6 +170,12 @@
   </data>
   <data name="ExampleHeader" xml:space="preserve">
     <value>Пример</value>
+  </data>
+  <data name="ExpandAllOrders" xml:space="preserve">
+    <value>Развернуть все заказы</value>
+  </data>
+  <data name="ExpandAllPackages" xml:space="preserve">
+    <value>Развернуть все посылки</value>
   </data>
   <data name="HistoryPackagesTabHeader" xml:space="preserve">
     <value>История</value>

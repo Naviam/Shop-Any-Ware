@@ -151,7 +151,7 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to collapse all orders.
+        ///   Looks up a localized string similar to Collapse all orders.
         /// </summary>
         public static string CollapseAllOrders {
             get {
@@ -160,7 +160,7 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to collapse all packages.
+        ///   Looks up a localized string similar to Collapse all packages.
         /// </summary>
         public static string CollapseAllPackages {
             get {
@@ -219,6 +219,24 @@ namespace TdService.Resources.Views {
         public static string ExampleHeader {
             get {
                 return ResourceManager.GetString("ExampleHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expand all orders.
+        /// </summary>
+        public static string ExpandAllOrders {
+            get {
+                return ResourceManager.GetString("ExpandAllOrders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expand all packages.
+        /// </summary>
+        public static string ExpandAllPackages {
+            get {
+                return ResourceManager.GetString("ExpandAllPackages", resourceCulture);
             }
         }
         

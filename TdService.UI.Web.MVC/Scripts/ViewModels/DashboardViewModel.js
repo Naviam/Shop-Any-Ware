@@ -418,9 +418,21 @@ function DashboardViewModel(serverModel) {
         });
     };
 
+    self.expandAllOrders = function () {
+        $.each(self.orders(), function (index, order) {
+            order.isCollapsed(false);
+        });
+    };
+
     self.collapseAllPackages = function () {
         $.each(self.packages(), function (index, pack) {
             pack.isCollapsed(true);
+        });
+    };
+
+    self.expandAllPackages = function () {
+        $.each(self.packages(), function (index, pack) {
+            pack.isCollapsed(false);
         });
     };
 
