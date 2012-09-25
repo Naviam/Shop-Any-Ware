@@ -1,5 +1,11 @@
 ﻿$(document).ready(function () {
-    $([]).add("input[type=text][readonly!=readonly]").add("[type=email][readonly!=readonly]").first().focus();
+    // auto focus
+    //$([]).add("input[type=text][readonly!=readonly]").add("[type=email][readonly!=readonly]").first().focus();
+    // support placeholder in old browsers
+    //$('input[placeholder]').placeholder();
+    $('textarea[placeholder]').simplePlaceholder();
+    $('input:text[placeholder]').simplePlaceholder(); // classic input[type=text]
+    $('input[type="email"][placeholder]').simplePlaceholder(); // email fields input[type=email]
 });
 
 function showNotice(message, type) {
