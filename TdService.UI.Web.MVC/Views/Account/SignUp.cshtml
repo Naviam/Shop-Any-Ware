@@ -15,36 +15,31 @@
             <div class="control-group">
                 <label class="control-label">@AccountViewResources.EmailFormLabel:</label>
                 <div class="controls">
-                    @Html.TextBoxFor(m => m.SignUpViewModel.Email, new Dictionary<string, object> { { "type", "email" }, { "class", "input-xlarge" }, { "data-bind", "value: email, change: verifyEmailExists" }, { "placeholder", AccountViewResources.EmailFormFieldPlaceholder } })
-                    @Html.ValidationMessageFor(m => m.SignUpViewModel.Email)
+                    @Html.TextBoxFor(m => m.SignUpViewModel.Email, new Dictionary<string, object> { { "type", "email" }, { "class", "input-xlarge" }, { "placeholder", AccountViewResources.EmailFormFieldPlaceholder } })
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label">@AccountViewResources.PasswordFormLabel:</label>
                 <div class="controls">
                     @Html.PasswordFor(m => m.SignUpViewModel.Password, new Dictionary<string, object> { { "class", "input-xlarge" }, { "placeholder", AccountViewResources.PasswordFormFieldPlaceholder } })
-                    @Html.ValidationMessageFor(m => m.SignUpViewModel.Password)
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label">@AccountViewResources.ConfirmPasswordFormLabel:</label>
                 <div class="controls">
                     @Html.PasswordFor(m => m.SignUpViewModel.PasswordConfirm, new Dictionary<string, object> { { "class", "input-xlarge" }, { "placeholder", AccountViewResources.PasswordConfirmFormFieldPlaceholder } })
-                    @Html.ValidationMessageFor(m => m.SignUpViewModel.PasswordConfirm)
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label">@AccountViewResources.FirstNameFormLabel:</label>
                 <div class="controls">
                     @Html.TextBoxFor(m => m.SignUpViewModel.FirstName, new Dictionary<string, object> { { "class", "input-xlarge" }, { "placeholder", AccountViewResources.FirstNameFormFieldPlaceholder } })
-                    @Html.ValidationMessageFor(m => m.SignUpViewModel.FirstName)
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label">@AccountViewResources.LastNameFormLabel:</label>
                 <div class="controls">
                     @Html.TextBoxFor(m => m.SignUpViewModel.LastName, new Dictionary<string, object> { { "class", "input-xlarge" }, { "placeholder", AccountViewResources.LastNameFormFieldPlaceholder } })
-                    @Html.ValidationMessageFor(m => m.SignUpViewModel.LastName)
                 </div>
             </div>
             @Html.ValidationSummary()
@@ -54,22 +49,3 @@
         </fieldset>
     }
 </div>
-@*<input id="model" type="hidden" value="@Html.Raw(Json.Encode(Model.SignUpViewModel))" />*@
-@section Scripts
-{
-    @*<script type="text/javascript" src="@Url.Content("~/Scripts/ViewModels/SignUpViewModel.js")"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            var signUpViewModel = new SignUpViewModel($("#model").val());
-            ko.applyBindingsWithValidation(
-                signUpViewModel,
-                document.getElementById('signUpForm'),
-                {
-                    insertMessages: false,
-                    decorateElement: true,
-                    errorClass: 'error',
-                    parseInputAttributes: false
-                });
-        });
-    </script>*@
-}

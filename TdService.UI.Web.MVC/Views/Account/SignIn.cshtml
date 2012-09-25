@@ -14,14 +14,12 @@
             <label class="control-label">@AccountViewResources.EmailFormLabel:</label>
             <div class="controls">
                 @Html.TextBoxFor(m => m.SignInViewModel.Email, new Dictionary<string, object> { { "class", "input-xlarge" }, { "placeholder", AccountViewResources.EmailFormFieldPlaceholder } })
-                @Html.ValidationMessageFor(m => m.SignInViewModel.Email)
             </div>
         </div>
         <div class="control-group">
             <label class="control-label">@AccountViewResources.PasswordFormLabel:</label>
             <div class="controls">
                 @Html.PasswordFor(m => m.SignInViewModel.Password, new Dictionary<string, object> { { "class", "input-xlarge" }, { "placeholder", AccountViewResources.PasswordFormFieldPlaceholder } })
-                @Html.ValidationMessageFor(m => m.SignInViewModel.Password)
             </div>
         </div>
         <div class="control-group">

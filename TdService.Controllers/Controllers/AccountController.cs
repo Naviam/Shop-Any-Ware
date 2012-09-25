@@ -200,7 +200,7 @@ namespace TdService.UI.Web.Controllers
                 {
                     foreach (var rule in response.BrokenRules)
                     {
-                        ModelState.AddModelError(rule.Property, rule.Rule);
+                        ModelState.AddModelError(string.Concat("SignUpViewModel.", rule.Property), rule.Rule);
                     }
                 }
                 else
