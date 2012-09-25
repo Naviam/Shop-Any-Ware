@@ -49,7 +49,7 @@ jQuery.extend({
         var request = $.ajax({
             type: 'POST',
             url: url,
-            data: data,
+            data: $.param(data),
             success: success
         });
         request.done(success);
