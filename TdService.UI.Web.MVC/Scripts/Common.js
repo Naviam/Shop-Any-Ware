@@ -2,6 +2,70 @@
     $([]).add("input[type=text][readonly!=readonly]").add("[type=email][readonly!=readonly]").first().focus();
 });
 
+function showNotice(message, type) {
+    noty({
+        "text": message,
+        "layout": "topCenter",
+        "type": type.toLowerCase(),
+        "theme": "noty_theme_twitter",
+        "animateOpen": { "height": "toggle" },
+        "animateClose": { "height": "toggle" },
+        "speed": 900,
+        "timeout": 4000,
+        "closeButton": true,
+        "closeOnSelfClick": true,
+        "closeOnSelfOver": false,
+        "modal": false
+    });
+}
+
+jQuery.extend({
+    json: function (url, data, success) {
+        var request = $.ajax({
+            url: url,
+            type: 'POST',
+            data: data,
+            contentType: 'application/json;',
+            dataType: 'json'
+        });
+        request.done(success);
+        // ReSharper disable InconsistentNaming
+        request.fail(function (jqXHR, textStatus, errorThrown) {
+            // ReSharper restore InconsistentNaming
+            if (console && console.log) {
+                console.log("Status: " + textStatus + " Error:", errorThrown);
+            }
+            if (window.showNotice) {
+                window.showNotice(errorThrown, "Error");
+            }
+        });
+    },
+
+    jsonWithMapping: function(url, data, success) {
+        $.json(url, ko.mapping.toJSON(data), success);
+    },
+
+    postWithMapping: function(url, data, success) {
+        var request = $.ajax({
+            type: 'POST',
+            url: url,
+            data: data,
+            success: success
+        });
+        request.done(success);
+        // ReSharper disable InconsistentNaming
+        request.fail(function (jqXHR, textStatus, errorThrown) {
+            // ReSharper restore InconsistentNaming
+            if (console && console.log) {
+                console.log("Status: " + textStatus + " Error:", errorThrown);
+            }
+            if (window.showNotice) {
+                window.showNotice(errorThrown, "Error");
+            }
+        });
+    }
+});
+
 function createCookie(name, value, days) {
     var expires;
     if (days) {
@@ -39,20 +103,3 @@ function changeCulture(culture) {
     createCookie("culture", culture, 240);
     window.location.reload();
 };
-
-function showNotice(message, type) {
-    noty({
-        "text": message,
-        "layout": "topCenter",
-        "type": type.toLowerCase(),
-        "theme": "noty_theme_twitter",
-        "animateOpen": { "height": "toggle" },
-        "animateClose": { "height": "toggle" },
-        "speed": 500,
-        "timeout": 4000,
-        "closeButton": true,
-        "closeOnSelfClick": true,
-        "closeOnSelfOver": false,
-        "modal": false
-    });
-}

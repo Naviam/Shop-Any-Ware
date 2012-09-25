@@ -54,6 +54,9 @@ namespace TdService.UI.Web.MVC.App_Start
             bundles.Add(new ScriptBundle("~/bundles/dashboard").Include(
                         "~/Scripts/ViewModels/DashboardViewModel.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/addresses").Include(
+                        "~/Scripts/ViewModels/AddressViewModel.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/home").Include(
                         "~/Scripts/ViewModels/SignInViewModel.js",
                         "~/Scripts/ViewModels/SignUpViewModel.js"));

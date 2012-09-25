@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="AddressController.cs" company="TdService">
+// <copyright file="AddressesController.cs" company="TdService">
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
-//   Defines the AddressController type.
+//   The addresses controller.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -11,6 +11,7 @@ namespace TdService.UI.Web.Controllers
 {
     using System;
     using System.Collections.Generic;
+    using System.Web.Http;
     using System.Web.Mvc;
     using System.Xml;
 
@@ -18,33 +19,38 @@ namespace TdService.UI.Web.Controllers
     using TdService.Infrastructure.Domain;
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging;
-    using TdService.Services.Messaging.Address;
     using TdService.UI.Web.Mapping;
     using TdService.UI.Web.ViewModels.Account;
 
     /// <summary>
-    /// The controller contains methods to work with the addresses.
+    /// The addresses controller.
     /// </summary>
-    public class AddressController : BaseAuthController
+    public class AddressesController : ApiController
     {
+        
         /// <summary>
         /// The address Service.
         /// </summary>
         private readonly IAddressService addressService;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AddressController"/> class.
-        /// </summary>
-        /// <param name="formsAuthentication">
         /// The forms authentication.
-        /// </param>
+        /// </summary>
+        private readonly IFormsAuthentication formsAuthentication;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AddressesController"/> class.
+        /// </summary>
         /// <param name="addressService">
         /// The address Service.
         /// </param>
-        public AddressController(IFormsAuthentication formsAuthentication, IAddressService addressService)
-            : base(formsAuthentication)
+        /// <param name="formsAuthentication">
+        /// The forms Authentication.
+        /// </param>
+        public AddressesController(IAddressService addressService, IFormsAuthentication formsAuthentication)
         {
             this.addressService = addressService;
+            this.formsAuthentication = formsAuthentication;
         }
 
         /// <summary>
@@ -126,41 +132,6 @@ namespace TdService.UI.Web.Controllers
         }
 
         /// <summary>
-        /// Show the list of delivery addresses.
-        /// </summary>
-        /// <returns>
-        /// Returns view with the delivery addresses.
-        /// </returns>
-        [Authorize(Roles = "Shopper")]
-        public ActionResult Index()
-        {
-            return this.View("Index");
-        }
-
-        /// <summary>
-        /// Get user's delivery addresses.
-        /// </summary>
-        /// <returns>
-        /// The model with collection of delivery addresses.
-        /// </returns>
-        [Authorize(Roles = "Shopper")]
-        [HttpPost]
-        public ActionResult Get()
-        {
-            var request = new GetDeliveryAddressesRequest
-            {
-                IdentityToken = this.FormsAuthentication.GetAuthenticationToken()
-            };
-            var response = this.addressService.GetDeliveryAddresses(request);
-            var jsonNetResult = new JsonNetResult
-            {
-                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
-                Data = response.ConvertToDeliveryAddressViewModel()
-            };
-            return jsonNetResult;
-        }
-
-        /// <summary>
         /// Add delivery address.
         /// </summary>
         /// <param name="model">
@@ -169,8 +140,8 @@ namespace TdService.UI.Web.Controllers
         /// <returns>
         /// Returns view with delivery addresses.
         /// </returns>
-        [Authorize(Roles = "Shopper")]
-        [HttpPost]
+        [System.Web.Mvc.Authorize(Roles = "Shopper")]
+        [System.Web.Mvc.HttpPost]
         public ActionResult Add([Bind]DeliveryAddressViewModel model)
         {
             if (model == null)
@@ -184,7 +155,7 @@ namespace TdService.UI.Web.Controllers
             if (validationResult.IsValid)
             {
                 var request = model.ConvertToAddDeliveryAddressRequest();
-                request.IdentityToken = this.FormsAuthentication.GetAuthenticationToken();
+                request.IdentityToken = this.formsAuthentication.GetAuthenticationToken();
                 var response = this.addressService.AddOrUpdateDeliveryAddress(request);
                 result = response.ConvertToDeliveryAddressViewModel();
             }
@@ -204,83 +175,6 @@ namespace TdService.UI.Web.Controllers
             {
                 Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
                 Data = result
-            };
-            return jsonNetResult;
-        }
-
-        /// <summary>
-        /// Update delivery address.
-        /// </summary>
-        /// <param name="model">
-        /// The view model.
-        /// </param>
-        /// <returns>
-        /// Returns view with delivery addresses.
-        /// </returns>
-        [Authorize(Roles = "Shopper")]
-        [HttpPost]
-        public ActionResult Update(DeliveryAddressViewModel model)
-        {
-            if (model == null)
-            {
-                throw new ArgumentNullException("model");
-            }
-
-            var result = new DeliveryAddressViewModel();
-            var validator = new DeliveryAddressViewModelValidator();
-            var validationResult = validator.Validate(model);
-            if (validationResult.IsValid)
-            {
-                var request = model.ConvertToAddDeliveryAddressRequest();
-                request.IdentityToken = this.FormsAuthentication.GetAuthenticationToken();
-                var response = this.addressService.AddOrUpdateDeliveryAddress(request);
-                result = response.ConvertToDeliveryAddressViewModel();
-            }
-            else
-            {
-                result.MessageType = MessageType.Error.ToString();
-                result.BrokenRules = new List<BusinessRule>();
-                foreach (var failure in validationResult.Errors)
-                {
-                    result.BrokenRules.Add(new BusinessRule(failure.PropertyName, failure.ErrorMessage));
-                }
-            }
-
-            result = CopyDeliveryAddressViewModel(model, result);
-
-            var jsonNetResult = new JsonNetResult
-            {
-                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
-                Data = result
-            };
-            return jsonNetResult;
-        }
-
-        /// <summary>
-        /// Remove delivery address.
-        /// </summary>
-        /// <param name="addressId">
-        /// The address Id.
-        /// </param>
-        /// <returns>
-        /// Returns view with delivery addresses.
-        /// </returns>
-        [Authorize(Roles = "Shopper")]
-        [HttpPost]
-        public ActionResult Remove(int addressId)
-        {
-            var request = new RemoveDeliveryAddressRequest
-                {
-                    IdentityToken = this.FormsAuthentication.GetAuthenticationToken(),
-                    Id = addressId
-                };
-
-            var response = this.addressService.RemoveAddress(request);
-
-            var jsonNetResult = new JsonNetResult
-            {
-                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
-                Data = response.ConvertToDeliveryAddressViewModel()
             };
             return jsonNetResult;
         }
