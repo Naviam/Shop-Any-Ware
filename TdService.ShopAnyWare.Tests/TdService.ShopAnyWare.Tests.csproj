@@ -144,10 +144,6 @@
       <Project>{A9DEDA99-A27D-4687-B912-46F339EA36A4}</Project>
       <Name>TdService.Services</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TdService.UI.Web.MVC4\TdService.UI.Web.MVC4.csproj">
-      <Project>{8b12dbac-8b0a-4c92-8d28-92e9850c7e08}</Project>
-      <Name>TdService.UI.Web.MVC4</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TdService.UI.Web.ViewModels\TdService.UI.Web.ViewModels.csproj">
       <Project>{C79CC22D-53BA-4685-8E3C-D74A3CD7B1CF}</Project>
       <Name>TdService.UI.Web.ViewModels</Name>
