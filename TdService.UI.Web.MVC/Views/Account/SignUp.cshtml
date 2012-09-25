@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = AccountViewResources.SignUpPageTitle;
 }
-@Model.SignUpViewModel.Email
+
 <div id="signUpForm">
     @using (Html.BeginForm("SignUp", "Account", FormMethod.Post, new Dictionary<string, object> { { "class", "form-horizontal" } }))
     {
@@ -22,41 +22,42 @@
             <div class="control-group">
                 <label class="control-label">@AccountViewResources.PasswordFormLabel:</label>
                 <div class="controls">
-                    @Html.PasswordFor(m => m.SignUpViewModel.Password, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: password" }, { "placeholder", AccountViewResources.PasswordFormFieldPlaceholder } })
+                    @Html.PasswordFor(m => m.SignUpViewModel.Password, new Dictionary<string, object> { { "class", "input-xlarge" }, { "placeholder", AccountViewResources.PasswordFormFieldPlaceholder } })
                     @Html.ValidationMessageFor(m => m.SignUpViewModel.Password)
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label">@AccountViewResources.ConfirmPasswordFormLabel:</label>
                 <div class="controls">
-                    @Html.PasswordFor(m => m.SignUpViewModel.PasswordConfirm, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: passwordConfirm" }, { "placeholder", AccountViewResources.PasswordConfirmFormFieldPlaceholder } })
+                    @Html.PasswordFor(m => m.SignUpViewModel.PasswordConfirm, new Dictionary<string, object> { { "class", "input-xlarge" }, { "placeholder", AccountViewResources.PasswordConfirmFormFieldPlaceholder } })
                     @Html.ValidationMessageFor(m => m.SignUpViewModel.PasswordConfirm)
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label">@AccountViewResources.FirstNameFormLabel:</label>
                 <div class="controls">
-                    @Html.TextBoxFor(m => m.SignUpViewModel.FirstName, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: firstName" }, { "placeholder", AccountViewResources.FirstNameFormFieldPlaceholder } })
+                    @Html.TextBoxFor(m => m.SignUpViewModel.FirstName, new Dictionary<string, object> { { "class", "input-xlarge" }, { "placeholder", AccountViewResources.FirstNameFormFieldPlaceholder } })
                     @Html.ValidationMessageFor(m => m.SignUpViewModel.FirstName)
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label">@AccountViewResources.LastNameFormLabel:</label>
                 <div class="controls">
-                    @Html.TextBoxFor(m => m.SignUpViewModel.LastName, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: lastName" }, { "placeholder", AccountViewResources.LastNameFormFieldPlaceholder } })
+                    @Html.TextBoxFor(m => m.SignUpViewModel.LastName, new Dictionary<string, object> { { "class", "input-xlarge" }, { "placeholder", AccountViewResources.LastNameFormFieldPlaceholder } })
                     @Html.ValidationMessageFor(m => m.SignUpViewModel.LastName)
                 </div>
             </div>
+            @Html.ValidationSummary()
             <div class="form-actions">
                 <button type="submit" class="btn btn-primary btn-large">@AccountViewResources.SignUpButton</button>
             </div>
         </fieldset>
     }
 </div>
-<input id="model" type="hidden" value="@Html.Raw(Json.Encode(Model.SignUpViewModel))" />
+@*<input id="model" type="hidden" value="@Html.Raw(Json.Encode(Model.SignUpViewModel))" />*@
 @section Scripts
 {
-    <script type="text/javascript" src="@Url.Content("~/Scripts/ViewModels/SignUpViewModel.js")"></script>
+    @*<script type="text/javascript" src="@Url.Content("~/Scripts/ViewModels/SignUpViewModel.js")"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             var signUpViewModel = new SignUpViewModel($("#model").val());
@@ -70,5 +71,5 @@
                     parseInputAttributes: false
                 });
         });
-    </script>
+    </script>*@
 }

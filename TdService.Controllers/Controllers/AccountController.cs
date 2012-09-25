@@ -152,13 +152,6 @@ namespace TdService.UI.Web.Controllers
             }
 
             return this.View("SignIn", new MainViewModel { SignInViewModel = result });
-
-            ////var jsonNetResult = new JsonNetResult
-            ////{
-            ////    Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
-            ////    Data = result
-            ////};
-            ////return jsonNetResult;
         }
 
         /// <summary>
