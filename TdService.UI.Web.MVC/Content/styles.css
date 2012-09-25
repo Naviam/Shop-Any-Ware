@@ -240,9 +240,11 @@ html
                 text-decoration: none;
             }
 
-    .sub .link_expand
+ .link_expand
     {
         float: right;
+        position:relative;
+        top:28px
     }
 
 .package

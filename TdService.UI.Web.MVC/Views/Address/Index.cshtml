@@ -36,8 +36,8 @@
             <tbody data-bind="foreach: addressBook">
                 <tr>
                     <td>
-                        <input type="button" data-bind="click: $root.editDeliveryAddress" class="btn btn-primary btn-mini" value="Edit" />
-                        <input type="button" data-bind="click: $root.removeDeliveryAddress" class="btn btn-danger btn-mini" value="Remove" />
+                        <a href="#" data-bind="click: $root.editDeliveryAddress" class="btn btn-primary btn-mini"><i class="icon-edit icon-white"></i></a>
+                        <a href="#" data-bind="click: $root.removeDeliveryAddress" class="btn btn-danger btn-mini"><i class="icon-trash icon-white"></i></a>
                     </td>
                     <td><span data-bind="text: addressName"></span><input type="hidden" data-bind="value: id" /></td>
                     <td><span data-bind="text: firstName"></span>, <span data-bind="text: lastName"></span></td>
