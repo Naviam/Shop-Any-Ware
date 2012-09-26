@@ -11,7 +11,7 @@ namespace TdService.UI.Web.ViewModels.Account
 {
     using FluentValidation;
 
-    using TdService.Infrastructure.Domain;
+    using TdService.Resources;
 
     /// <summary>
     /// The delivery address view model validator.
@@ -26,25 +26,25 @@ namespace TdService.UI.Web.ViewModels.Account
             // First set the cascade mode
             this.CascadeMode = CascadeMode.StopOnFirstFailure;
 
-            RuleFor(da => da.AddressName).NotEmpty().WithMessage(ErrorCode.DeliveryAddressAddressNameRequired.ToString())
-                .Length(1, 40).WithMessage(ErrorCode.DeliveryAddressAddressNameMaxLength.ToString());
-            RuleFor(da => da.FirstName).NotEmpty().WithMessage(ErrorCode.DeliveryAddressFirstNameRequired.ToString())
-                .Length(1, 21).WithMessage(ErrorCode.DeliveryAddressFirstNameMaxLength.ToString());
-            RuleFor(da => da.LastName).NotEmpty().WithMessage(ErrorCode.DeliveryAddressLastNameRequired.ToString())
-                .Length(1, 21).WithMessage(ErrorCode.DeliveryAddressLastNameMaxLength.ToString());
+            RuleFor(da => da.AddressName).NotEmpty().WithLocalizedMessage(() => ErrorCodeResources.DeliveryAddressAddressNameRequired)
+                .Length(1, 40).WithLocalizedMessage(() => ErrorCodeResources.DeliveryAddressAddressNameMaxLength);
+            RuleFor(da => da.FirstName).NotEmpty().WithLocalizedMessage(() => ErrorCodeResources.DeliveryAddressFirstNameRequired)
+                .Length(1, 21).WithLocalizedMessage(() => ErrorCodeResources.DeliveryAddressFirstNameMaxLength);
+            RuleFor(da => da.LastName).NotEmpty().WithLocalizedMessage(() => ErrorCodeResources.DeliveryAddressLastNameRequired)
+                .Length(1, 21).WithLocalizedMessage(() => ErrorCodeResources.DeliveryAddressLastNameMaxLength);
 
-            RuleFor(da => da.AddressLine1).NotEmpty().WithMessage(ErrorCode.AddressAddressLine1Required.ToString())
-                .Length(1, 256).WithMessage(ErrorCode.AddressAddressLine1MaxLength.ToString());
-            RuleFor(da => da.AddressLine2).Length(0, 256).WithMessage(ErrorCode.AddressAddressLine2MaxLength.ToString());
-            RuleFor(da => da.State).Length(0, 64).WithMessage(ErrorCode.AddressStateMaxLength.ToString());
-            RuleFor(da => da.Region).Length(0, 64).WithMessage(ErrorCode.AddressRegionMaxLength.ToString());
-            RuleFor(da => da.City).NotEmpty().WithMessage(ErrorCode.AddressCityRequired.ToString())
-                .Length(1, 64).WithMessage(ErrorCode.AddressCityMaxLength.ToString());
-            RuleFor(da => da.Country).NotEmpty().WithMessage(ErrorCode.AddressCountryRequired.ToString())
-                .Length(1, 64).WithMessage(ErrorCode.AddressCountryMaxLength.ToString());
-            RuleFor(da => da.ZipCode).NotEmpty().WithMessage(ErrorCode.AddressZipCodeRequired.ToString())
-                .Length(1, 10).WithMessage(ErrorCode.AddressZipCodeMaxLength.ToString());
-            RuleFor(da => da.Phone).Length(0, 21).WithMessage(ErrorCode.AddressPhoneMaxLength.ToString());
+            RuleFor(da => da.AddressLine1).NotEmpty().WithLocalizedMessage(() => ErrorCodeResources.AddressAddressLine1Required)
+                .Length(1, 256).WithLocalizedMessage(() => ErrorCodeResources.AddressAddressLine1MaxLength);
+            RuleFor(da => da.AddressLine2).Length(0, 256).WithLocalizedMessage(() => ErrorCodeResources.AddressAddressLine2MaxLength);
+            RuleFor(da => da.State).Length(0, 64).WithLocalizedMessage(() => ErrorCodeResources.AddressStateMaxLength);
+            RuleFor(da => da.Region).Length(0, 64).WithLocalizedMessage(() => ErrorCodeResources.AddressRegionMaxLength);
+            RuleFor(da => da.City).NotEmpty().WithLocalizedMessage(() => ErrorCodeResources.AddressCityRequired)
+                .Length(1, 64).WithLocalizedMessage(() => ErrorCodeResources.AddressCityMaxLength);
+            RuleFor(da => da.Country).NotEmpty().WithLocalizedMessage(() => ErrorCodeResources.AddressCountryRequired)
+                .Length(1, 64).WithLocalizedMessage(() => ErrorCodeResources.AddressCountryMaxLength);
+            RuleFor(da => da.ZipCode).NotEmpty().WithLocalizedMessage(() => ErrorCodeResources.AddressZipCodeRequired)
+                .Length(1, 10).WithLocalizedMessage(() => ErrorCodeResources.AddressZipCodeMaxLength);
+            RuleFor(da => da.Phone).Length(0, 21).WithLocalizedMessage(() => ErrorCodeResources.AddressPhoneMaxLength);
         }
     }
 }

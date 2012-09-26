@@ -31,7 +31,7 @@ jQuery.extend({
             url: url,
             type: 'POST',
             data: data,
-            contentType: 'application/json;',
+            contentType: 'application/json; charset=utf-8',
             dataType: 'json'
         });
         request.done(success);
@@ -55,7 +55,7 @@ jQuery.extend({
         var request = $.ajax({
             type: 'POST',
             url: url,
-            data: $.param(data),
+            data: ko.toJSON(data),
             success: success
         });
         request.done(success);

@@ -171,7 +171,7 @@ namespace TdService.UI.Web.Controllers
         /// </returns>
         [Authorize(Roles = "Shopper")]
         [HttpPost]
-        public ActionResult Add([Bind]DeliveryAddressViewModel model)
+        public ActionResult Add(DeliveryAddressViewModel model)
         {
             if (model == null)
             {

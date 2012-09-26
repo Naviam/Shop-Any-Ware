@@ -20,15 +20,13 @@
     self.ZipCode = ko.observable(address.ZipCode);
     self.Phone = ko.observable(address.Phone);
 
-    self.add = function(deliveryAddress) {
-        window.deliveryAddressViewModel.add(deliveryAddress);
-    };
-
-    self.update = function (deliveryAddress) {
-        $.post("/address/update", ko.toJSON(deliveryAddress), function (data) {
-            window.showNotice(data.Message, data.MessageType);
-        });
-    };
+    self.addressId = ko.computed(function() {
+        return "address_" + self.Id();
+    });
+    
+    self.addressIdWithNumberSign = ko.computed(function () {
+        return "#" + self.addressId();
+    });
 };
 
 var AddressViewModel = function () {
@@ -36,6 +34,9 @@ var AddressViewModel = function () {
 
     // own properties
     self.addressBook = ko.observableArray();
+    self.addressesLoaded = ko.observable(false);
+
+    self.addAddressModel = ko.observable(new DeliveryAddress({ Id: 0 }));
 
     self.loadAddresses = function() {
         $.post("/address/get", function (data) {
@@ -45,27 +46,40 @@ var AddressViewModel = function () {
                 var deliveryAddress = new DeliveryAddress(value);
                 self.addressBook.unshift(deliveryAddress);
             });
+            self.addressesLoaded(true);
         });
     };
     self.loadAddresses();
 
-    self.add = function (deliveryAddress) {
-        $.jsonWithMapping("/address/add", deliveryAddress, function (data) {
-            var result = ko.toJS(data);
-            if (result.MessageType == "Success") {
-                var address = new DeliveryAddressViewModel(result);
-                self.addressBook.unshift(address);
-            }
+    self.update = function (deliveryAddress) {
+        $.post("/address/update", ko.toJS(deliveryAddress), function (data) {
             window.showNotice(data.Message, data.MessageType);
         });
     };
 
+    self.add = function (deliveryAddress) {
+        $.post("/address/add", ko.toJS(deliveryAddress), function (data) {
+            var result = ko.toJS(data);
+            self.addAddressModel(new DeliveryAddress({ Id: 0 }));
+            if (result.MessageType == "Success") {
+                var address = new DeliveryAddress(result);
+                self.addressBook.unshift(address);
+            }
+
+            $.each(result.BrokenRules, function(index, value) {
+                var rule = value;
+                result.Message = result.Message + rule.ErrorCode + "<br/>";
+            });
+            
+            window.showNotice(result.Message, data.MessageType);
+        });
+    };
+
     self.remove = function (deliveryAddress) {
-        $.jsonWithMapping("/address/remove", deliveryAddress.id, function (data) {
+        $.post("/address/remove", { 'addressId': deliveryAddress.Id() }, function (data) {
             var result = ko.toJS(data);
             if (result.MessageType == "Success") {
-                var address = new DeliveryAddressViewModel(result);
-                self.addressBook.remove(address);
+                self.addressBook.remove(deliveryAddress);
             }
             window.showNotice(data.Message, data.MessageType);
         });

@@ -1,7 +1,7 @@
 ﻿@using System.Web.Optimization
 @using TdService.Resources
 @using TdService.Resources.Views
-@model List<TdService.UI.Web.ViewModels.Account.DeliveryAddressViewModel>
+@model TdService.UI.Web.ViewModels.Account.DeliveryAddressViewModel
 @{
     ViewBag.Title = AddressViewResources.PageTitle;
 }
@@ -10,11 +10,16 @@
     <li><a href="#">@BreadcrumbResources.Dashboard</a> <span class="divider">/</span></li>
     <li class="active">@BreadcrumbResources.DeliveryAddresses</li>
 </ul>
-<a class="btn btn-success" data-toggle="modal" href="#deliveryAddressModel" >Add Delivery Address</a>
-<input id="model" type="hidden" value="@(new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(Model))" />
+<a class="btn btn-success" data-toggle="modal" href="#addDeliveryAddressModel" >@AddressViewResources.AddAddressButton</a>
 <div class="row-fluid">
-    <div class="span12">
-        <table id="dashboardModel" class="table table-striped table-condensed">
+    <div id="dashboardModel" class="span12">
+        <div data-bind="visible: addressBook().length == 0">
+            <div class="alert package" data-bind="css: { 'alert-info': addressesLoaded() }">
+                <span data-bind="visible: !addressesLoaded()">@AddressViewResources.LoadingAddressesMessage</span>
+                <span data-bind="visible: addressesLoaded()">@AddressViewResources.NoAddressesMessage</span>
+            </div>
+        </div>
+        <table class="table table-striped table-condensed" data-bind="visible: addressBook().length > 0">
             <thead>
                 <tr>
                     <th></th>
@@ -32,8 +37,25 @@
             <tbody data-bind="foreach: addressBook">
                 <tr>
                     <td>
-                        <a href="#" data-bind="click: $root.editDeliveryAddress" class="btn btn-primary btn-mini"><i class="icon-edit icon-white"></i></a>
-                        <a href="#" data-bind="click: $root.removeDeliveryAddress" class="btn btn-danger btn-mini"><i class="icon-trash icon-white"></i></a>
+                        <a data-bind="attr: { href: addressIdWithNumberSign }" data-toggle="modal" class="btn btn-primary btn-mini"><i class="icon-edit icon-white"></i></a>
+                        <div data-bind="attr: { id: addressId }" class="modal hide fade">
+                            <div class="modal-header">
+                                <a class="close" data-dismiss="modal">×</a>
+                                <h3>@AddressViewResources.UpdateAddressTitle</h3>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form-horizontal">
+                                      @Html.AntiForgeryToken()
+                                      @Html.ValidationSummary()
+                                      @{ Html.RenderPartial("deliveryAddressDetails", Model); }
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="#" class="btn" data-dismiss="modal">@AddressViewResources.CloseButton</a>
+                                <a href="#" class="btn btn-success" data-bind="click: $parent.update" data-dismiss="modal">@AddressViewResources.UpdateAddressButton</a>
+                            </div>
+                        </div>
+                        <a href="#" data-bind="click: $root.remove" class="btn btn-danger btn-mini"><i class="icon-remove icon-white"></i></a>
                     </td>
                     <td><span data-bind="text: AddressName"></span><input type="hidden" data-bind="value: Id" /></td>
                     <td><span data-bind="text: FirstName"></span>, <span data-bind="text: LastName"></span></td>
@@ -47,18 +69,23 @@
                 </tr>
             </tbody>
         </table>
-        <div id="deliveryAddressModel" class="modal hide fade">
-            <div class="modal-header">
-                <a class="close" data-dismiss="modal">×</a>
-                <h3>@AddressViewResources.AddAddressTitle</h3>
-            </div>
-            <div class="modal-body">
-                @{Html.RenderPartial("deliveryAddressDetails");}
-            </div>
-            <div class="modal-footer">
-                <a href="#" class="btn" data-dismiss="modal">Close</a>
-                <a href="#" class="btn btn-success" data-bind="click: add" data-dismiss="modal">@AddressViewResources.AddAddressButton</a>
-            </div>
+    </div>
+    <div id="addDeliveryAddressModel" data-bind="with: addAddressModel" class="modal hide fade">
+        <div class="modal-header">
+            <a class="close" data-dismiss="modal">×</a>
+            <h3>@AddressViewResources.AddAddressTitle</h3>
+        </div>
+        <div class="modal-body">
+            @using (Html.BeginForm("Add", "Address", FormMethod.Post, new Dictionary<string, object> { {"id", "addAddressForm"}, { "class", "form-horizontal" } }))
+            {
+                Html.AntiForgeryToken();
+                Html.ValidationSummary();
+                Html.RenderPartial("deliveryAddressDetails", Model);
+            }
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn" data-dismiss="modal">@AddressViewResources.CloseButton</a>
+            <a href="#" class="btn btn-success" data-bind="click: $parent.add" data-dismiss="modal">@AddressViewResources.AddAddressButton</a>
         </div>
     </div>
 </div>
@@ -69,9 +96,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             window.deliveryAddressViewModel = new AddressViewModel();
-            ko.applyBindings(deliveryAddressViewModel, document.getElementById('dashboardModel'));
-            var emptyAddress = new DeliveryAddress({ id: 0 });
-            ko.applyBindings(emptyAddress, document.getElementById('deliveryAddressModel'));
+            ko.applyBindings(deliveryAddressViewModel);
         });
     </script>
 }
