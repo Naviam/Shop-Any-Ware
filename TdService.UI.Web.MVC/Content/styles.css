@@ -42,6 +42,10 @@ input, textarea, select, .uneditable-input
 }
 
 @media (min-width: 980px) {
+    .modal
+    {
+        margin: -320px 0 0 -280px;
+    }
     .modal-body
     {
         max-height: 464px;
