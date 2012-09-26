@@ -36,7 +36,7 @@ var AddressViewModel = function () {
     self.addressBook = ko.observableArray();
     self.addressesLoaded = ko.observable(false);
 
-    self.addAddressModel = new DeliveryAddress({ Id: 0 });
+    self.addAddressModel = ko.observable(new DeliveryAddress({ Id: 0 }));
 
     self.loadAddresses = function() {
         $.post("/address/get", function (data) {
@@ -58,20 +58,20 @@ var AddressViewModel = function () {
     };
 
     self.add = function (deliveryAddress) {
-        //get the relevant form
-        //var form = $(deliveryAddress.addressIdWithNumberSign()).first().closest('form');
-        if (!$("#addAddressForm").valid()) {
-            $("#addAddressForm").showErrors();
-            return false;
-        }
-
         $.post("/address/add", ko.toJS(deliveryAddress), function (data) {
             var result = ko.toJS(data);
+            self.addAddressModel(new DeliveryAddress({ Id: 0 }));
             if (result.MessageType == "Success") {
                 var address = new DeliveryAddress(result);
                 self.addressBook.unshift(address);
             }
-            window.showNotice(data.Message, data.MessageType);
+
+            $.each(result.BrokenRules, function(index, value) {
+                var rule = value;
+                result.Message = result.Message + rule.ErrorCode + "<br/>";
+            });
+            
+            window.showNotice(result.Message, data.MessageType);
         });
     };
 
