@@ -232,6 +232,15 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        public static string CloseButton {
+            get {
+                return ResourceManager.GetString("CloseButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please enter country.
         /// </summary>
         public static string Country_Placeholder {
@@ -259,6 +268,24 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please wait. Loading your delivery addresses..
+        /// </summary>
+        public static string LoadingAddressesMessage {
+            get {
+                return ResourceManager.GetString("LoadingAddressesMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You do not have delivery addresses. Please add one..
+        /// </summary>
+        public static string NoAddressesMessage {
+            get {
+                return ResourceManager.GetString("NoAddressesMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ShopAnyWare - Delivery Address Book.
         /// </summary>
         public static string PageTitle {
@@ -282,6 +309,24 @@ namespace TdService.Resources.Views {
         public static string Region_Placeholder {
             get {
                 return ResourceManager.GetString("Region_Placeholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save changes.
+        /// </summary>
+        public static string UpdateAddressButton {
+            get {
+                return ResourceManager.GetString("UpdateAddressButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change delivery address.
+        /// </summary>
+        public static string UpdateAddressTitle {
+            get {
+                return ResourceManager.GetString("UpdateAddressTitle", resourceCulture);
             }
         }
         

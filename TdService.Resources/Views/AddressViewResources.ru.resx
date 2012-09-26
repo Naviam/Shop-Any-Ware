@@ -121,10 +121,10 @@
     <value>Добавить адрес</value>
   </data>
   <data name="AddAddressTitle" xml:space="preserve">
-    <value>Форма добавления адреса для доставки</value>
+    <value>Добавление адреса доставки</value>
   </data>
   <data name="AddDeliveryAddressSuccessMessage" xml:space="preserve">
-    <value>Ваш новый адрес для доставки был успешно добавлен.</value>
+    <value>Ваш новый адрес доставки был успешно добавлен.</value>
   </data>
   <data name="Address1_Placeholder" xml:space="preserve">
     <value>Введите улицу.</value>
@@ -174,6 +174,9 @@
   <data name="City_Placeholder" xml:space="preserve">
     <value>Введите город</value>
   </data>
+  <data name="CloseButton" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
   <data name="Country_Placeholder" xml:space="preserve">
     <value>Введите страну</value>
   </data>
@@ -183,6 +186,12 @@
   <data name="LastName_Placeholder" xml:space="preserve">
     <value>Введите фамилию</value>
   </data>
+  <data name="LoadingAddressesMessage" xml:space="preserve">
+    <value>Пожалуйста, подождите. Загружаем Ваши адреса доставки.</value>
+  </data>
+  <data name="NoAddressesMessage" xml:space="preserve">
+    <value>У Вас нет ни одного адреса доставки. Пожалуйста добавьте.</value>
+  </data>
   <data name="PageTitle" xml:space="preserve">
     <value>ShopAnyWare - Адресная книга</value>
   </data>
@@ -191,6 +200,12 @@
   </data>
   <data name="Region_Placeholder" xml:space="preserve">
     <value>Введите регион</value>
+  </data>
+  <data name="UpdateAddressButton" xml:space="preserve">
+    <value>Сохранить изменения</value>
+  </data>
+  <data name="UpdateAddressTitle" xml:space="preserve">
+    <value>Редактирование адреса доставки</value>
   </data>
   <data name="ZipCode_Placeholder" xml:space="preserve">
     <value>Введите почтовый индекс</value>

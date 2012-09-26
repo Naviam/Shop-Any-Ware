@@ -9,9 +9,12 @@
 
 namespace TdService.UI.Web.ViewModels.Account
 {
+    using FluentValidation.Attributes;
+
     /// <summary>
     /// The delivery address view model.
     /// </summary>
+    [Validator(typeof(DeliveryAddressViewModelValidator))]
     public class DeliveryAddressViewModel : ViewModelBase
     {
         /// <summary>

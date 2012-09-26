@@ -112,17 +112,17 @@ namespace TdService.Model.Addresses
                 this.AddBrokenRule(AddressBusinessRules.CountryMaxLength);
             }
 
-            if (this.Phone.Length > 21)
+            if (!string.IsNullOrEmpty(this.Phone) && this.Phone.Length > 21)
             {
                 this.AddBrokenRule(AddressBusinessRules.PhoneMaxLength);
             }
 
-            if (this.State.Length > 64)
+            if (!string.IsNullOrEmpty(this.State) && this.State.Length > 64)
             {
                 this.AddBrokenRule(AddressBusinessRules.StateMaxLength);
             }
 
-            if (this.Region.Length > 64)
+            if (!string.IsNullOrEmpty(this.Region) && this.Region.Length > 64)
             {
                 this.AddBrokenRule(AddressBusinessRules.RegionMaxLength);
             }
