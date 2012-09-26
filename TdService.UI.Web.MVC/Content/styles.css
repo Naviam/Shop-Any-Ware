@@ -40,6 +40,13 @@ input, textarea, select, .uneditable-input
 {
     padding: 10px 20px 12px;
 }
+
+.modal {
+  margin: -350px 0 0 -280px;
+}
+.modal-body {
+  max-height: 460px;
+}
 /* end reset bootstrap's css */
 
 html

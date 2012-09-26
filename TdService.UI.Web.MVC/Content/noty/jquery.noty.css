@@ -101,5 +101,8 @@
 	
 	/* noty_layout_topCenter */
 	.noty_bar.noty_layout_topCenter {
-		top: 40px;
+		top: 3px;
+        width: 500px;
+        margin: 0 -250px;
+        left: 50%;
 	}
