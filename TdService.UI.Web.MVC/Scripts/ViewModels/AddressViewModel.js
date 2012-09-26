@@ -64,6 +64,7 @@ var AddressViewModel = function () {
             if (result.MessageType == "Success") {
                 var address = new DeliveryAddress(result);
                 self.addressBook.unshift(address);
+                $("#addDeliveryAddressModel").modal('hide');
             }
 
             $.each(result.BrokenRules, function(index, value) {

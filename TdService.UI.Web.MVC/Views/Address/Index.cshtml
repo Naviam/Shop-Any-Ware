@@ -37,7 +37,7 @@
             <tbody data-bind="foreach: addressBook">
                 <tr>
                     <td>
-                        <a data-bind="attr: { href: addressIdWithNumberSign }" data-toggle="modal" class="btn btn-primary btn-mini"><i class="icon-edit icon-white"></i></a>
+                        <a data-bind="attr: { href: addressIdWithNumberSign }" data-toggle="modal" class="btn btn-warning btn-mini"><i class="icon-edit icon-white"></i></a>
                         <div data-bind="attr: { id: addressId }" class="modal hide fade">
                             <div class="modal-header">
                                 <a class="close" data-dismiss="modal">×</a>
@@ -85,7 +85,7 @@
         </div>
         <div class="modal-footer">
             <a href="#" class="btn" data-dismiss="modal">@AddressViewResources.CloseButton</a>
-            <a href="#" class="btn btn-success" data-bind="click: $parent.add" data-dismiss="modal">@AddressViewResources.AddAddressButton</a>
+            <a href="#" class="btn btn-success" data-bind="click: $parent.add">@AddressViewResources.AddAddressButton</a>
         </div>
     </div>
 </div>
