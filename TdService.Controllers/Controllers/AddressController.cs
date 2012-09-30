@@ -16,6 +16,7 @@ namespace TdService.UI.Web.Controllers
 
     using TdService.Infrastructure.Authentication;
     using TdService.Infrastructure.Domain;
+    using TdService.Resources;
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging;
     using TdService.Services.Messaging.Address;
@@ -187,10 +188,12 @@ namespace TdService.UI.Web.Controllers
                 request.IdentityToken = this.FormsAuthentication.GetAuthenticationToken();
                 var response = this.addressService.AddOrUpdateDeliveryAddress(request);
                 result = response.ConvertToDeliveryAddressViewModel();
+                result.Message = response.Message;
             }
             else
             {
-                result.MessageType = MessageType.Error.ToString();
+                result.MessageType = MessageType.Warning.ToString();
+                result.Message = CommonResources.DeliveryAddressAddOrUpdateErrorMessage;
                 result.BrokenRules = new List<BusinessRule>();
                 foreach (var failure in validationResult.Errors)
                 {

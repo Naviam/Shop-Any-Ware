@@ -59,6 +59,11 @@ var AddressViewModel = function () {
 
     self.addAddressModel = ko.observable(new DeliveryAddress({ Id: 0 }));
 
+    $('#addDeliveryAddressModel').on('hidden', function() {
+        // clean up form
+        self.addAddressModel(new DeliveryAddress({ Id: 0 }));
+    });
+
     self.loadAddresses = function() {
         $.post("/address/get", function (data) {
             var collection = ko.toJS(data);
@@ -80,21 +85,28 @@ var AddressViewModel = function () {
 
     self.add = function (deliveryAddress) {
         var param = deliveryAddress;
-        $.post("/address/add", ko.toJS(deliveryAddress), function (data) {
+        var form = $("#addAddressForm");
+        $.post("/address/add", form.serialize(), function (data) {
             var result = ko.toJS(data);
-            self.addAddressModel(new DeliveryAddress({ Id: 0 }));
             if (result.MessageType == "Success") {
                 var address = new DeliveryAddress(result);
                 self.addressBook.unshift(address);
                 $("#addDeliveryAddressModel").modal('hide');
             }
 
-            $.each(result.BrokenRules, function(index, value) {
-                var rule = value;
-                param[rule.Property].extend({ displayBrokenRule: rule });
-                result.Message = result.Message + rule.ErrorCode + "<br/>";
-            });
-            
+            if (data.BrokenRules !== undefined && data.BrokenRules != null) {
+                var container = $("#addAddressForm").find("[data-valmsg-summary=true]");
+                var list = container.find("ul");
+
+                if (list && list.length && data.BrokenRules.length) {
+                    list.empty();
+                    container.addClass("validation-summary-errors").removeClass("validation-summary-valid");
+
+                    $.each(data.BrokenRules, function () {
+                        $("<li />").html(this.Rule).appendTo(list);
+                    });
+                }
+            }
             window.showNotice(result.Message, data.MessageType);
         });
     };

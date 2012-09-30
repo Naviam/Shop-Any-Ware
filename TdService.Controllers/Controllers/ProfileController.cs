@@ -15,6 +15,7 @@ namespace TdService.UI.Web.Controllers
 
     using TdService.Infrastructure.Authentication;
     using TdService.Infrastructure.Domain;
+    using TdService.Resources;
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging;
     using TdService.Services.Messaging.Membership;
@@ -89,10 +90,12 @@ namespace TdService.UI.Web.Controllers
                 request.IdentityToken = this.FormsAuthentication.GetAuthenticationToken();
                 var response = this.membershipService.UpdateProfile(request);
                 result = response.ConvertToProfileViewModel();
+                result.Message = response.Message;
             }
             else
             {
                 result.MessageType = MessageType.Warning.ToString();
+                result.Message = CommonResources.ProfileUpdateErrorMessage;
                 result.FirstName = model.FirstName;
                 result.LastName = model.LastName;
                 result.NotifyOnOrderStatusChanged = model.NotifyOnOrderStatusChanged;

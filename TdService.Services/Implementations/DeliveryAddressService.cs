@@ -79,7 +79,7 @@ namespace TdService.Services.Implementations
             var response = new AddOrUpdateDeliveryAddressResponse { BrokenRules = deliveryAddress.GetBrokenRules().ToList() };
             if (response.BrokenRules.Any())
             {
-                response.MessageType = MessageType.Error;
+                response.MessageType = MessageType.Warning;
                 response.Message = CommonResources.DeliveryAddressAddOrUpdateErrorMessage;
                 return response;
             }

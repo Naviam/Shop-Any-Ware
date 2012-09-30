@@ -78,8 +78,8 @@
         <div class="modal-body">
             @using (Html.BeginForm("Add", "Address", FormMethod.Post, new Dictionary<string, object> { {"id", "addAddressForm"}, { "class", "form-horizontal" } }))
             {
-                Html.AntiForgeryToken();
-                Html.ValidationSummary();
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(CommonResources.DeliveryAddressAddOrUpdateErrorMessage)
                 Html.RenderPartial("deliveryAddressDetails", Model);
             }
         </div>

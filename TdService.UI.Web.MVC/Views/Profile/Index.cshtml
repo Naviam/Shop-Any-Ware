@@ -7,9 +7,9 @@
 
 <ul class="breadcrumb">
     <li>
-        <a href="@Url.Action("Dashboard", "Member")">@SiteMapLocalizations.HomeTitle</a> <span class="divider">/</span>
+        <a href="@Url.Action("Dashboard", "Member")">@BreadcrumbResources.Dashboard</a> <span class="divider">/</span>
     </li>
-    <li class="active">@LayoutViewResources.ProfileMenuHeader</li>
+    <li class="active">@BreadcrumbResources.Profile</li>
 </ul>
 @if (Model.MessageType == "error")
 {
