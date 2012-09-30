@@ -114,6 +114,8 @@ namespace TdService.UI.Web.Controllers
             {
                 var validateUserRequest = model.ConvertToSignInRequest();
                 var response = this.membershipService.SignIn(validateUserRequest);
+                result = response.ConvertToSignInViewModel();
+
                 if (response.MessageType == MessageType.Success)
                 {
                     this.FormsAuthentication.SetAuthenticationToken(model.Email, false);
@@ -134,7 +136,7 @@ namespace TdService.UI.Web.Controllers
                     return this.RedirectToAction("Dashboard", "Operator");
                 }
 
-                result = response.ConvertToSignInViewModel();
+                this.ModelState.AddModelError("SignInViewModel.Email", result.Message);
             }
             else
             {
@@ -201,7 +203,6 @@ namespace TdService.UI.Web.Controllers
                     foreach (var rule in result.BrokenRules)
                     {
                         ModelState.AddModelError(string.Concat("SignUpViewModel.", rule.Property), rule.Rule);
-                        
                     }
                 }
                 else
