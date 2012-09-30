@@ -38,9 +38,8 @@
                                     optionsText: function(address) { return address.AddressName; }, 
                                     value: selectedAddress, optionsCaption: "Select a delivery address..."'>
                                 </select>
-                                <select class="span3">
-                                    <option>Standart Delivery</option>
-                                    <option>Express Delivery</option>
+                                <select class="span3" data-bind='options: $root.deliveryMethods, 
+                                    value: selectedMethod, optionsCaption: "Select a delivery method..."'>
                                 </select>
                             </td>
                         </tr>

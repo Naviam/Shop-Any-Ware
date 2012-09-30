@@ -109,6 +109,7 @@ function Package(serverModel) {
     // package view model collections
     self.items = ko.observableArray();
     self.selectedAddress = ko.observable();
+    self.selectedMethod = ko.observable();
 
     // package state properties
     self.canBeRemoved = serverModel.CanBeRemoved;
@@ -395,7 +396,7 @@ function DashboardViewModel(serverModel) {
     self.newOrderField = ko.observable().extend({ required: true });
     self.newPackageField = ko.observable().extend({ required: true });
     self.deliveryAddresses = ko.observable(addressModel.DeliveryAddressViewModels);
-    
+    self.deliveryMethods = ko.observable(addressModel.DeliveryMethods);
 
     // dashboard view model collections
     self.orders = ko.observableArray();

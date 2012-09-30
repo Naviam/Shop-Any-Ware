@@ -9,6 +9,7 @@
 
 namespace TdService.UI.Web.Controllers
 {
+    using System.Collections.Generic;
     using System.Web.Mvc;
 
     using TdService.Infrastructure.Authentication;
@@ -68,6 +69,8 @@ namespace TdService.UI.Web.Controllers
 
             var addressesResponse = this.addressService.GetDeliveryAddresses(new GetDeliveryAddressesRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() });
             model.DeliveryAddressViewModels = addressesResponse.ConvertToDeliveryAddressViewModel();
+
+            model.DeliveryMethods = new List<string> { "Standard Delivery", "Express Delivery" };
 
             return this.View("Dashboard", model);
         }
