@@ -470,28 +470,36 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
                         "Property",
-                        "Error Code"});
+                        "Error Code",
+                        "Rule"});
             table9.AddRow(new string[] {
                         "FirstName",
-                        "DeliveryAddressFirstNameRequired"});
+                        "DeliveryAddressFirstNameRequired",
+                        ""});
             table9.AddRow(new string[] {
                         "LastName",
-                        "DeliveryAddressLastNameRequired"});
+                        "DeliveryAddressLastNameRequired",
+                        ""});
             table9.AddRow(new string[] {
                         "AddressName",
-                        "DeliveryAddressAddressNameRequired"});
+                        "DeliveryAddressAddressNameRequired",
+                        ""});
             table9.AddRow(new string[] {
                         "AddressLine1",
-                        "AddressAddressLine1Required"});
+                        "AddressAddressLine1Required",
+                        ""});
             table9.AddRow(new string[] {
                         "City",
-                        "AddressCityRequired"});
+                        "AddressCityRequired",
+                        ""});
             table9.AddRow(new string[] {
                         "Country",
-                        "AddressCountryRequired"});
+                        "AddressCountryRequired",
+                        ""});
             table9.AddRow(new string[] {
                         "ZipCode",
-                        "AddressZipCodeRequired"});
+                        "AddressZipCodeRequired",
+                        ""});
 #line 54
  testRunner.And("the delivery address view model should have following errors", ((string)(null)), table9, "And ");
 #line hidden
@@ -604,40 +612,52 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
                         "Property",
-                        "Error Code"});
+                        "Error Code",
+                        "Rule"});
             table13.AddRow(new string[] {
                         "FirstName",
-                        "DeliveryAddressFirstNameMaxLength"});
+                        "DeliveryAddressFirstNameMaxLength",
+                        ""});
             table13.AddRow(new string[] {
                         "LastName",
-                        "DeliveryAddressLastNameMaxLength"});
+                        "DeliveryAddressLastNameMaxLength",
+                        ""});
             table13.AddRow(new string[] {
                         "AddressName",
-                        "DeliveryAddressAddressNameMaxLength"});
+                        "DeliveryAddressAddressNameMaxLength",
+                        ""});
             table13.AddRow(new string[] {
                         "AddressLine1",
-                        "AddressAddressLine1MaxLength"});
+                        "AddressAddressLine1MaxLength",
+                        ""});
             table13.AddRow(new string[] {
                         "AddressLine2",
-                        "AddressAddressLine2MaxLength"});
+                        "AddressAddressLine2MaxLength",
+                        ""});
             table13.AddRow(new string[] {
                         "City",
-                        "AddressCityMaxLength"});
+                        "AddressCityMaxLength",
+                        ""});
             table13.AddRow(new string[] {
                         "Country",
-                        "AddressCountryMaxLength"});
+                        "AddressCountryMaxLength",
+                        ""});
             table13.AddRow(new string[] {
                         "State",
-                        "AddressStateMaxLength"});
+                        "AddressStateMaxLength",
+                        ""});
             table13.AddRow(new string[] {
                         "Region",
-                        "AddressRegionMaxLength"});
+                        "AddressRegionMaxLength",
+                        ""});
             table13.AddRow(new string[] {
                         "ZipCode",
-                        "AddressZipCodeMaxLength"});
+                        "AddressZipCodeMaxLength",
+                        ""});
             table13.AddRow(new string[] {
                         "Phone",
-                        "AddressPhoneMaxLength"});
+                        "AddressPhoneMaxLength",
+                        ""});
 #line 77
  testRunner.And("the delivery address view model should have following errors", ((string)(null)), table13, "And ");
 #line hidden

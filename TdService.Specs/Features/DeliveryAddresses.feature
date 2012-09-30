@@ -52,22 +52,22 @@ Scenario: Validate required fields when adding delivery address
 	| Id | FirstName | LastName | AddressName | AddressLine1      | AddressLine2 | City  | Country | State | Region | ZipCode | Phone         | MessageType |
 	| 0  |           |          |             |                   |              |       |         |       |        |         |               | Error       |
 	And the delivery address view model should have following errors
-	| Property     | Error Code                         |
-	| FirstName    | DeliveryAddressFirstNameRequired   |
-	| LastName     | DeliveryAddressLastNameRequired    |
-	| AddressName  | DeliveryAddressAddressNameRequired |
-	| AddressLine1 | AddressAddressLine1Required        |
-	| City         | AddressCityRequired                |
-	| Country      | AddressCountryRequired             |
-	| ZipCode      | AddressZipCodeRequired             |
+	| Property     | Error Code                         | Rule |
+	| FirstName    | DeliveryAddressFirstNameRequired   |      |
+	| LastName     | DeliveryAddressLastNameRequired    |      |
+	| AddressName  | DeliveryAddressAddressNameRequired |      |
+	| AddressLine1 | AddressAddressLine1Required        |      |
+	| City         | AddressCityRequired                |      |
+	| Country      | AddressCountryRequired             |      |
+	| ZipCode      | AddressZipCodeRequired             |      |
 
 @adddeliveryaddress
 Scenario: Validate max char length of fields when adding delivery address
 	Given there is 'v.hatalski@gmail.com' account with 'ruinruin' password in role 'Shopper' with fullname 'Vitali' and 'Hatalski'
 	And I am authenticated as 'v.hatalski@gmail.com'
 	And I have the following delivery addresses
-	| Id | FirstName | LastName | AddressName | AddressLine1      | AddressLine2 | City  | Country | State | Region | ZipCode | Phone         |
-	| 1  | Vitali    | Hatalski | Initial     | Nekrasova 8       | flat 14      | Minsk | Belarus |       |        | 220040  |               |
+	| Id | FirstName | LastName | AddressName | AddressLine1 | AddressLine2 | City  | Country | State | Region | ZipCode | Phone |
+	| 1  | Vitali    | Hatalski | Initial     | Nekrasova 8  | flat 14      | Minsk | Belarus |       |        | 220040  |       |
 	When I add the following delivery address
 	| Id | FirstName                          | LastName                          | AddressName                                             | AddressLine1                                                                                                                                                                                                                                                                                                         | AddressLine2                                                                                                                                                                                                                                                                                                         | City                                                                      | Country                                                                   | State                                                                     | Region                                                                    | ZipCode      | Phone                              |
 	|    | first name that is longer 21 chars | last name that is longer 21 chars | The maximum allowed length of address name is 40 chars. | This is an optional credential that allows you to increase the level of your account security. To add this security option to your account, you will need to purchase a compatible authentication device from Gemalto, a third-party provider. Click the button below to purchase a device from the Gemalto website. | This is an optional credential that allows you to increase the level of your account security. To add this security option to your account, you will need to purchase a compatible authentication device from Gemalto, a third-party provider. Click the button below to purchase a device from the Gemalto website. | Taumatawhakatangihangakoauauotamateapokaiwhenuakitanatahuwhenuakitanatahu | Taumatawhakatangihangakoauauotamateapokaiwhenuakitanatahuwhenuakitanatahu | Taumatawhakatangihangakoauauotamateapokaiwhenuakitanatahuwhenuakitanatahu | Taumatawhakatangihangakoauauotamateapokaiwhenuakitanatahuwhenuakitanatahu | 123456789012 | +375295067630506763050676305067630 |
@@ -75,18 +75,18 @@ Scenario: Validate max char length of fields when adding delivery address
 	| Id | FirstName                          | LastName                          | AddressName                                             | AddressLine1                                                                                                                                                                                                                                                                                                         | AddressLine2                                                                                                                                                                                                                                                                                                         | City                                                                      | Country                                                                   | State                                                                     | Region                                                                    | ZipCode      | Phone                              | MessageType |
 	| 0  | first name that is longer 21 chars | last name that is longer 21 chars | The maximum allowed length of address name is 40 chars. | This is an optional credential that allows you to increase the level of your account security. To add this security option to your account, you will need to purchase a compatible authentication device from Gemalto, a third-party provider. Click the button below to purchase a device from the Gemalto website. | This is an optional credential that allows you to increase the level of your account security. To add this security option to your account, you will need to purchase a compatible authentication device from Gemalto, a third-party provider. Click the button below to purchase a device from the Gemalto website. | Taumatawhakatangihangakoauauotamateapokaiwhenuakitanatahuwhenuakitanatahu | Taumatawhakatangihangakoauauotamateapokaiwhenuakitanatahuwhenuakitanatahu | Taumatawhakatangihangakoauauotamateapokaiwhenuakitanatahuwhenuakitanatahu | Taumatawhakatangihangakoauauotamateapokaiwhenuakitanatahuwhenuakitanatahu | 123456789012 | +375295067630506763050676305067630 | Error       |
 	And the delivery address view model should have following errors
-	| Property     | Error Code                          |
-	| FirstName    | DeliveryAddressFirstNameMaxLength   |
-	| LastName     | DeliveryAddressLastNameMaxLength    |
-	| AddressName  | DeliveryAddressAddressNameMaxLength |
-	| AddressLine1 | AddressAddressLine1MaxLength        |
-	| AddressLine2 | AddressAddressLine2MaxLength        |
-	| City         | AddressCityMaxLength                |
-	| Country      | AddressCountryMaxLength             |
-	| State        | AddressStateMaxLength               |
-	| Region       | AddressRegionMaxLength              |
-	| ZipCode      | AddressZipCodeMaxLength             |
-	| Phone        | AddressPhoneMaxLength               |
+	| Property     | Error Code                          | Rule |
+	| FirstName    | DeliveryAddressFirstNameMaxLength   |      |
+	| LastName     | DeliveryAddressLastNameMaxLength    |      |
+	| AddressName  | DeliveryAddressAddressNameMaxLength |      |
+	| AddressLine1 | AddressAddressLine1MaxLength        |      |
+	| AddressLine2 | AddressAddressLine2MaxLength        |      |
+	| City         | AddressCityMaxLength                |      |
+	| Country      | AddressCountryMaxLength             |      |
+	| State        | AddressStateMaxLength               |      |
+	| Region       | AddressRegionMaxLength              |      |
+	| ZipCode      | AddressZipCodeMaxLength             |      |
+	| Phone        | AddressPhoneMaxLength               |      |
 
 @editdeliveryaddress
 Scenario: Edit delivery address

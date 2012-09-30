@@ -16,6 +16,7 @@ namespace TdService.Specs.Steps
 
     using TdService.Services.Implementations;
     using TdService.Specs.Fakes;
+    using TdService.Specs.Infrastructure;
     using TdService.UI.Web;
     using TdService.UI.Web.Controllers;
     using TdService.UI.Web.ViewModels.Account;
@@ -82,7 +83,7 @@ namespace TdService.Specs.Steps
             var actual = ScenarioContext.Current.Get<DeliveryAddressViewModel>("actualInstance");
             Assert.That(actual, Is.Not.Null);
             Assert.That(actual.BrokenRules, Is.Not.Null);
-            table.CompareToSet(actual.BrokenRules);
+            table.ReplaceErrorCodeWithMessage().CompareToSet(actual.BrokenRules);
         }
 
         /// <summary>
