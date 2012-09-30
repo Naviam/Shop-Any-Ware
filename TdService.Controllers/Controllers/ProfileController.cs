@@ -100,7 +100,7 @@ namespace TdService.UI.Web.Controllers
                 result.BrokenRules = new List<BusinessRule>();
                 foreach (var failure in validationResult.Errors)
                 {
-                    result.BrokenRules.Add(new BusinessRule(failure.PropertyName, failure.ErrorMessage));
+                    result.BrokenRules.Add(new BusinessRule(failure.PropertyName, failure.CustomState.ToString()));
                 }
             }
 

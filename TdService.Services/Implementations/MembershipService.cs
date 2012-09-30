@@ -308,6 +308,7 @@ namespace TdService.Services.Implementations
             if (response.BrokenRules.Any())
             {
                 response.MessageType = MessageType.Warning;
+                response.Message = CommonResources.ProfileUpdateErrorMessage;
                 return response;
             }
 

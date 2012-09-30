@@ -6,9 +6,12 @@
 
 namespace TdService.UI.Web.ViewModels.Account
 {
+    using FluentValidation.Attributes;
+
     /// <summary>
     /// This is the profile model for web form.
     /// </summary>
+    [Validator(typeof(ProfileViewModelValidator))]
     public class ProfileViewModel : ViewModelBase
     {
         /// <summary>
