@@ -11,6 +11,7 @@ namespace TdService.UI.Web.ViewModels.Account
 {
     using FluentValidation;
 
+    using TdService.Infrastructure.Domain;
     using TdService.Resources;
 
     /// <summary>
@@ -25,11 +26,12 @@ namespace TdService.UI.Web.ViewModels.Account
         {
             this.CascadeMode = CascadeMode.StopOnFirstFailure;
 
-            RuleFor(si => si.Email).NotEmpty().WithLocalizedMessage(() => ErrorCodeResources.UserEmailRequired)
-                .EmailAddress().WithLocalizedMessage(() => ErrorCodeResources.UserEmailInvalid)
-                .Length(1, 256).WithLocalizedMessage(() => ErrorCodeResources.UserEmailMaxLength);
-            RuleFor(si => si.Password).NotEmpty().WithLocalizedMessage(() => ErrorCodeResources.UserPasswordRequired)
-                .Length(7, 21).WithLocalizedMessage(() => ErrorCodeResources.UserPasswordLength);
+            RuleFor(si => si.Email)
+                .NotEmpty().WithState(e => ErrorCode.UserEmailRequired.ToString()).WithLocalizedMessage(() => ErrorCodeResources.UserEmailRequired)
+                .EmailAddress().WithState(e => ErrorCode.UserEmailInvalid.ToString()).WithLocalizedMessage(() => ErrorCodeResources.UserEmailInvalid)
+                .Length(1, 256).WithState(e => ErrorCode.UserEmailMaxLength.ToString()).WithLocalizedMessage(() => ErrorCodeResources.UserEmailMaxLength);
+            RuleFor(si => si.Password)
+                .NotEmpty().WithState(e => ErrorCode.UserPasswordRequired.ToString()).WithLocalizedMessage(() => ErrorCodeResources.UserPasswordRequired);
         }
     }
 }

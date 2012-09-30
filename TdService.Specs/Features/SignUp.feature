@@ -9,11 +9,9 @@ Scenario: Shoppers sign up
 	When I fill sign up form with the following data
 	| Email          | Password | Password Confirm | First Name | Last Name |
 	| hautama@tut.by | ruinruin | ruinruin         | Vitali     | Hatalski  |
-	Then I should have the result as follows
-	| Email          | First Name | Last Name | Activated | Message Type |
-	| hautama@tut.by | Vitali     | Hatalski  | false     | Success      |
-	And activation code should be generated
+	Then activation code should be generated
 	And email with activation code should be sent to registration email address
+	And I should be redirected to controller 'Member' and action 'Welcome'
 
 Scenario: Account already exists
 	Given there is 'vhatalski@naviam.com' account with 'ruinruin' password in role 'Shopper' with fullname 'Vitali' and 'Hatalski'
@@ -52,10 +50,10 @@ Scenario: Email and password are required
 	| Email | First Name | Last Name | Message Type |
 	|       | Vitali     | Hatalski  | Warning      |
 	And the signup view model should have following errors
-	| Property        | Error Code                  |
-	| Password        | UserPasswordRequired        |
-	| Email           | UserEmailRequired           |
-	| PasswordConfirm | UserPasswordConfirmRequired |
+	| Property        | Error Code                  | Rule |
+	| Password        | UserPasswordRequired        |      |
+	| Email           | UserEmailRequired           |      |
+	| PasswordConfirm | UserPasswordConfirmRequired |      |
 
 Scenario: First and Last names are required
 	Given I have not been authenticated yet
@@ -66,9 +64,9 @@ Scenario: First and Last names are required
 	| Email          | First Name | Last Name | Message Type |
 	| hautama@tut.by |            |           | Warning      |
 	And the signup view model should have following errors
-	| Property  | Error Code               |
-	| FirstName | ProfileFirstNameRequired |
-	| LastName  | ProfileLastNameRequired  |
+	| Property  | Error Code               | Rule |
+	| FirstName | ProfileFirstNameRequired |      |
+	| LastName  | ProfileLastNameRequired  |      |
 
 Scenario: First and Last names should be less than 21 chars
 	Given I have not been authenticated yet
@@ -79,9 +77,9 @@ Scenario: First and Last names should be less than 21 chars
 	| Email          | First Name                      | Last Name                      | Message Type |
 	| hautama@tut.by | First name longer than 21 chars | Last name longer than 21 chars | Warning      |
 	And the signup view model should have following errors
-	| Property  | Error Code                |
-	| FirstName | ProfileFirstNameMaxLength |
-	| LastName  | ProfileLastNameMaxLength  |
+	| Property  | Error Code                | Rule |
+	| FirstName | ProfileFirstNameMaxLength |      |
+	| LastName  | ProfileLastNameMaxLength  |      |
 
 Scenario: Email is invalid
 	Given I have not been authenticated yet
@@ -92,8 +90,8 @@ Scenario: Email is invalid
 	| Email         | First Name | Last Name | Message Type |
 	| hautamatut.by | Vitali     | Hatalski  | Warning      |
 	And the signup view model should have following errors
-	| Property | Error Code       |
-	| Email    | UserEmailInvalid |
+	| Property | Error Code       | Rule |
+	| Email    | UserEmailInvalid |      |
 
 Scenario: Password Confirm does not match
 	Given I have not been authenticated yet
@@ -104,8 +102,8 @@ Scenario: Password Confirm does not match
 	| Email          | First Name | Last Name | Message Type |
 	| hautama@tut.by | Vitali     | Hatalski  | Warning      |
 	And the signup view model should have following errors
-	| Property        | Error Code                  |
-	| PasswordConfirm | UserPasswordConfirmNotEqual |
+	| Property        | Error Code                  | Rule |
+	| PasswordConfirm | UserPasswordConfirmNotEqual |      |
 
 Scenario: Password length cannot be less than 7 chars
 	Given I have not been authenticated yet
@@ -116,8 +114,8 @@ Scenario: Password length cannot be less than 7 chars
 	| Email          | First Name | Last Name | Message Type |
 	| hautama@tut.by | Vitali     | Hatalski  | Warning      |
 	And the signup view model should have following errors
-	| Property | Error Code            |
-	| Password | UserPasswordMinLength |
+	| Property | Error Code         | Rule |
+	| Password | UserPasswordLength |      |
 
 Scenario: Password length cannot be more than 21 chars
 	Given I have not been authenticated yet
@@ -128,8 +126,8 @@ Scenario: Password length cannot be more than 21 chars
 	| Email          | First Name | Last Name | Message Type |
 	| hautama@tut.by | Vitali     | Hatalski  | Warning      |
 	And the signup view model should have following errors
-	| Property | Error Code            |
-	| Password | UserPasswordMaxLength |
+	| Property | Error Code         | Rule |
+	| Password | UserPasswordLength |      |
 
 Scenario: Password is required and Password Confirm does not match
 	Given I have not been authenticated yet
@@ -140,6 +138,6 @@ Scenario: Password is required and Password Confirm does not match
 	| Email          | First Name | Last Name | Message Type |
 	| hautama@tut.by | Vitali     | Hatalski  | Warning      |
 	And the signup view model should have following errors
-	| Property        | Error Code                  |
-	| Password        | UserPasswordRequired        |
-	| PasswordConfirm | UserPasswordConfirmNotEqual |
+	| Property        | Error Code                  | Rule |
+	| Password        | UserPasswordRequired        |      |
+	| PasswordConfirm | UserPasswordConfirmNotEqual |      |

@@ -2,7 +2,7 @@
 @model TdService.UI.Web.ViewModels.Account.DeliveryAddressViewModel
 
 <fieldset>
-    <div class="control-group">
+    <div class="control-group" data-bind="css: {'error': AddressName.hasError }">
         <label class="control-label">@AddressViewResources.AddressTable_AddressName:</label>
         <div class="controls">
             @Html.HiddenFor(m => m.Id)

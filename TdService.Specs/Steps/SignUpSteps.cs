@@ -9,14 +9,17 @@
 
 namespace TdService.Specs.Steps
 {
+    using System;
     using System.Diagnostics;
     using System.Linq;
     using System.Web.Mvc;
 
     using NUnit.Framework;
 
+    using TdService.Repository.MsSql;
     using TdService.Services.Implementations;
     using TdService.Specs.Fakes;
+    using TdService.Specs.Infrastructure;
     using TdService.UI.Web;
     using TdService.UI.Web.Controllers;
     using TdService.UI.Web.ViewModels.Account;
@@ -55,13 +58,11 @@ namespace TdService.Specs.Steps
         public void WhenIFillSignUpFormWithTheFollowingData(Table table)
         {
             var signUpModel = table.CreateInstance<SignUpViewModel>();
+            ScenarioContext.Current.Set(signUpModel);
             var controller = this.GetAccountController();
-            var result = controller.SignUp(signUpModel) as ViewResult;
+            var result = controller.SignUp(signUpModel);
             Assert.That(result, Is.Not.Null);
-            Debug.Assert(result != null, "result != null");
-            var model = result.Model as MainViewModel;
-
-            ScenarioContext.Current.Set(model.SignUpViewModel, "actual");
+            ScenarioContext.Current.Set(result, "controllerResponse");
         }
 
         /// <summary>
@@ -79,7 +80,7 @@ namespace TdService.Specs.Steps
             Debug.Assert(result != null, "result != null");
             var model = result.Data as VerifyEmailViewModel;
 
-            ScenarioContext.Current.Set(model, "actual");
+            ScenarioContext.Current.Set(model);
         }
 
         /// <summary>
@@ -91,7 +92,7 @@ namespace TdService.Specs.Steps
         [Then(@"the verify email view model should be as follows")]
         public void ThenTheVerifyEmailViewModelShouldBeAsFollows(Table table)
         {
-            var actual = ScenarioContext.Current.Get<VerifyEmailViewModel>("actual");
+            var actual = ScenarioContext.Current.Get<VerifyEmailViewModel>();
             Assert.That(actual, Is.Not.Null);
             table.CompareToInstance(actual);
         }
@@ -105,9 +106,13 @@ namespace TdService.Specs.Steps
         [Then(@"I should have the result as follows")]
         public void ThenIShouldHaveTheResultAsFollows(Table table)
         {
-            var actual = ScenarioContext.Current.Get<SignUpViewModel>("actual");
+            var actual = ScenarioContext.Current.Get<ViewResult>("controllerResponse");
             Assert.That(actual, Is.Not.Null);
-            table.CompareToInstance(actual);
+            var mainModel = actual.Model as MainViewModel;
+            Assert.That(mainModel, Is.Not.Null);
+            Debug.Assert(mainModel != null, "mainModel != null");
+            Assert.That(mainModel.SignUpViewModel, Is.Not.Null);
+            table.CompareToInstance(mainModel.SignUpViewModel);
         }
 
         /// <summary>
@@ -119,10 +124,14 @@ namespace TdService.Specs.Steps
         [Then(@"the signup view model should have following errors")]
         public void ThenTheSignupViewModelShouldHaveFollowingErrors(Table table)
         {
-            var actual = ScenarioContext.Current.Get<SignUpViewModel>("actual");
+            var actual = ScenarioContext.Current.Get<ViewResult>("controllerResponse");
             Assert.That(actual, Is.Not.Null);
-            Assert.That(actual.BrokenRules, Is.Not.Null);
-            table.CompareToSet(actual.BrokenRules);
+            var mainModel = actual.Model as MainViewModel;
+            Assert.That(mainModel, Is.Not.Null);
+            Debug.Assert(mainModel != null, "mainModel != null");
+            Assert.That(mainModel.SignUpViewModel, Is.Not.Null);
+            Assert.That(mainModel.SignUpViewModel.BrokenRules, Is.Not.Null);
+            table.ReplaceErrorCodeWithMessage().CompareToSet(mainModel.SignUpViewModel.BrokenRules);
         }
 
         /// <summary>
@@ -131,8 +140,14 @@ namespace TdService.Specs.Steps
         [Then(@"activation code should be generated")]
         public void ThenActivationCodeShouldBeGenerated()
         {
-            var actual = ScenarioContext.Current.Get<SignUpViewModel>("actual");
-            Assert.That(actual.ActivationCode, Is.Not.Empty);
+            var signUpModel = ScenarioContext.Current.Get<SignUpViewModel>();
+            using (var context = new ShopAnyWareSql())
+            {
+                var user = context.Users.SingleOrDefault(u => u.Email == signUpModel.Email);
+                Debug.Assert(user != null, "user != null");
+                Assert.That(user.ActivationCode, Is.Not.Null);
+                ScenarioContext.Current.Set(user.ActivationCode, "activationCode");
+            }
         }
 
         /// <summary>
@@ -141,12 +156,15 @@ namespace TdService.Specs.Steps
         [Then(@"email with activation code should be sent to registration email address")]
         public void ThenEmailWithActivationCodeShouldBeSentToRegistrationEmailAddress()
         {
-            var actual = ScenarioContext.Current.Get<SignUpViewModel>("actual");
+            ////var actual = ScenarioContext.Current.Get<SignUpViewModel>("actual");
             var emailService = ScenarioContext.Current.Get<FakeEmailService>();
             Assert.That(emailService.SentMails.Any(), Is.True);
             var sentEmail = emailService.SentMails.First();
-            Assert.That(sentEmail.To, Is.EqualTo(actual.Email));
-            Assert.That(sentEmail.Body, Contains.Substring(actual.ActivationCode));
+            var signUpModel = ScenarioContext.Current.Get<SignUpViewModel>();
+
+            Assert.That(sentEmail.To, Is.EqualTo(signUpModel.Email));
+            var code = ScenarioContext.Current.Get<Guid>("activationCode");
+            Assert.That(sentEmail.Body, Contains.Substring(code.ToString()));
         }
     }
 }

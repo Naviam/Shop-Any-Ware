@@ -18,8 +18,8 @@ Scenario: Shopper invalid password
 	Given there is 'v.hatalski@gmail.com' account with 'ruinruin' password in role 'Shopper' with fullname 'Vitali' and 'Hatalski'
 	And I have not been authenticated yet
 	When I fill sign in form with the following data
-	| Email                | Password  | Remember Me |
-	| v.hatalski@gmail.com | ruinruin3 | false       |
+	| Email                | Password | Remember Me |
+	| v.hatalski@gmail.com | ruin3    | false       |
 	Then the signin result should be as follows
 	| Email                | Password | Remember Me | Message Type | Error Code   |
 	| v.hatalski@gmail.com |          | false       | Error        | UserNotValid |
@@ -29,10 +29,10 @@ Scenario: Shopper invalid email
 	Given there is 'v.hatalski@gmail.com' account with 'ruinruin' password in role 'Shopper' with fullname 'Vitali' and 'Hatalski'
 	And I have not been authenticated yet
 	When I fill sign in form with the following data
-	| Email                | Password  | Remember Me |
-	| vhatalski@gmail.com | ruinruin | false       |
+	| Email               | Password                         | Remember Me |
+	| vhatalski@gmail.com | ruinruinruinruinruinruinruinruin | false       |
 	Then the signin result should be as follows
-	| Email                | Password | Remember Me | Message Type | Error Code   |
+	| Email               | Password | Remember Me | Message Type | Error Code   |
 	| vhatalski@gmail.com |          | false       | Error        | UserNotValid |
 
 @shopper
@@ -46,9 +46,9 @@ Scenario: Shopper validate required fields
 	| Email | Password | Remember Me | Message Type |
 	|       |          | false       | Warning      |
 	And the signin view model should have following errors
-	| Property | Error Code           |
-	| Email    | UserEmailRequired    |
-	| Password | UserPasswordRequired |
+	| Property | Error Code           | Rule |
+	| Email    | UserEmailRequired    |      |
+	| Password | UserPasswordRequired |      |
 
 @operator
 Scenario: Sign in operator

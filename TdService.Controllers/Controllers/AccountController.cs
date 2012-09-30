@@ -142,7 +142,7 @@ namespace TdService.UI.Web.Controllers
                 result.BrokenRules = new List<BusinessRule>();
                 foreach (var failure in validationResult.Errors)
                 {
-                    result.BrokenRules.Add(new BusinessRule(failure.PropertyName, failure.ErrorMessage));
+                    result.BrokenRules.Add(new BusinessRule(failure.PropertyName, failure.CustomState.ToString()));
                 }
             }
 
@@ -196,11 +196,12 @@ namespace TdService.UI.Web.Controllers
                 var response = this.membershipService.SignUpShopper(request);
                 result = response.ConvertToSignUpViewModel();
 
-                if (response.BrokenRules.Any())
+                if (result.BrokenRules != null && result.BrokenRules.Any())
                 {
-                    foreach (var rule in response.BrokenRules)
+                    foreach (var rule in result.BrokenRules)
                     {
                         ModelState.AddModelError(string.Concat("SignUpViewModel.", rule.Property), rule.Rule);
+                        
                     }
                 }
                 else
@@ -209,12 +210,14 @@ namespace TdService.UI.Web.Controllers
                     return this.RedirectToAction("Welcome", "Member");
                 }
             }
-
-            result.MessageType = MessageType.Warning.ToString();
-            result.BrokenRules = new List<BusinessRule>();
-            foreach (var failure in validationResult.Errors)
+            else
             {
-                result.BrokenRules.Add(new BusinessRule(failure.PropertyName, failure.ErrorMessage));
+                result.MessageType = MessageType.Warning.ToString();
+                result.BrokenRules = new List<BusinessRule>();
+                foreach (var failure in validationResult.Errors)
+                {
+                    result.BrokenRules.Add(new BusinessRule(failure.PropertyName, failure.CustomState.ToString()));
+                }
             }
 
             if (string.IsNullOrWhiteSpace(result.Email))

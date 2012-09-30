@@ -152,6 +152,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DeliveryAddresses.feature</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\SpecFlowExtensions.cs" />
     <Compile Include="Steps\DeliveryAddressesSteps.cs" />
     <Compile Include="Fakes\FakeAddressService.cs" />
     <Compile Include="Fakes\FakeCookieProvider.cs" />
@@ -255,9 +256,7 @@
       <Name>TdService.UI.Web.ViewModels</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Infrastructure\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

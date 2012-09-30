@@ -119,7 +119,7 @@ this.ScenarioSetup(scenarioInfo);
                         "Remember Me"});
             table2.AddRow(new string[] {
                         "v.hatalski@gmail.com",
-                        "ruinruin3",
+                        "ruin3",
                         "false"});
 #line 20
  testRunner.When("I fill sign in form with the following data", ((string)(null)), table2, "When ");
@@ -163,7 +163,7 @@ this.ScenarioSetup(scenarioInfo);
                         "Remember Me"});
             table4.AddRow(new string[] {
                         "vhatalski@gmail.com",
-                        "ruinruin",
+                        "ruinruinruinruinruinruinruinruin",
                         "false"});
 #line 31
  testRunner.When("I fill sign in form with the following data", ((string)(null)), table4, "When ");
@@ -227,13 +227,16 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
                         "Property",
-                        "Error Code"});
+                        "Error Code",
+                        "Rule"});
             table8.AddRow(new string[] {
                         "Email",
-                        "UserEmailRequired"});
+                        "UserEmailRequired",
+                        ""});
             table8.AddRow(new string[] {
                         "Password",
-                        "UserPasswordRequired"});
+                        "UserPasswordRequired",
+                        ""});
 #line 48
  testRunner.And("the signin view model should have following errors", ((string)(null)), table8, "And ");
 #line hidden

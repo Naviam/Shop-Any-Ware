@@ -82,6 +82,7 @@ namespace TdService.Infrastructure.Domain
         RetailerNameMaxLength,
         RetailerNameRequired,
         RetailerUrlMaxLength,
-        RetailerUrlRequired
+        RetailerUrlRequired,
+        UserPasswordLength
     }
 }

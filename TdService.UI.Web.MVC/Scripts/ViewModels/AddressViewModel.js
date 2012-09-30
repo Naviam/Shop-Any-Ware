@@ -1,4 +1,25 @@
-﻿var DeliveryAddress = function (address) {
+﻿ko.extenders.displayBrokenRule = function (target, brokenRule) {
+    //add some sub-observables to our observable
+    target.hasError = ko.observable();
+    target.validationMessage = ko.observable();
+
+    //define a function to do validation
+    function validate(newValue) {
+        target.hasError(newValue ? false : true);
+        target.validationMessage(newValue ? "" : brokenRule.ErrorCode);
+    }
+
+    //initial validation
+    validate(target());
+
+    //validate whenever the value changes
+    target.subscribe(validate);
+
+    //return the original observable
+    return target;
+};
+
+var DeliveryAddress = function (address) {
     /// <summary>
     ///     View model that describes delivery address behavior.
     /// </summary>
@@ -58,6 +79,7 @@ var AddressViewModel = function () {
     };
 
     self.add = function (deliveryAddress) {
+        var param = deliveryAddress;
         $.post("/address/add", ko.toJS(deliveryAddress), function (data) {
             var result = ko.toJS(data);
             self.addAddressModel(new DeliveryAddress({ Id: 0 }));
@@ -69,6 +91,7 @@ var AddressViewModel = function () {
 
             $.each(result.BrokenRules, function(index, value) {
                 var rule = value;
+                param[rule.Property].extend({ displayBrokenRule: rule });
                 result.Message = result.Message + rule.ErrorCode + "<br/>";
             });
             
