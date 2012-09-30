@@ -216,6 +216,9 @@
   <data name="MyUsAddressLinkMessage" xml:space="preserve">
     <value>Посмотреть адрес склада</value>
   </data>
+  <data name="MyUsAddressLinkTooltip" xml:space="preserve">
+    <value>Нажмите на ссылку, чтобы посмотреть адрес склада</value>
+  </data>
   <data name="NewOrderPlaceholder" xml:space="preserve">
     <value>введите ссылку на магазин</value>
   </data>

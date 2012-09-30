@@ -349,11 +349,20 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Show my U.S. address.
+        ///   Looks up a localized string similar to U.S. address.
         /// </summary>
         public static string MyUsAddressLinkMessage {
             get {
                 return ResourceManager.GetString("MyUsAddressLinkMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Click the link to see your U.S. address.
+        /// </summary>
+        public static string MyUsAddressLinkTooltip {
+            get {
+                return ResourceManager.GetString("MyUsAddressLinkTooltip", resourceCulture);
             }
         }
         

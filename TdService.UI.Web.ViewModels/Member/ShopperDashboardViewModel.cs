@@ -34,8 +34,18 @@ namespace TdService.UI.Web.ViewModels.Member
         public string LastName { get; set; }
 
         /// <summary>
+        /// Gets or sets the wallet amount.
+        /// </summary>
+        public decimal WalletAmount { get; set; }
+
+        /// <summary>
         /// Gets or sets the delivery address view models.
         /// </summary>
         public List<DeliveryAddressViewModel> DeliveryAddressViewModels { get; set; }
+
+        /// <summary>
+        /// Gets or sets the delivery methods.
+        /// </summary>
+        public List<string> DeliveryMethods { get; set; }
     }
 }

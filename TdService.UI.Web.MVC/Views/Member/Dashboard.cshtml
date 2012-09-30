@@ -58,7 +58,8 @@
         </div>
     </div>
     <div class="span6" style="float: right">
-        <div class="body_header"><h3>@DashboardViewResources.PackagesHeader</h3><a href="#" class="btn btn-success balance">@DashboardViewResources.BalanceAddFundsButton</a><span class="balance_text">@DashboardViewResources.BalanceHeader: $123</span></div>
+        <div class="body_header"><h3>@DashboardViewResources.PackagesHeader</h3>
+            <a href="#" class="store_address" data-trigger="click" data-title="Последние транзакции" data-placement="bottom" data-content="@{ Html.RenderPartial("balanceTable");}">@DashboardViewResources.BalanceHeader: <span style="color: green">$0.00</span> Задолженность: <span style="color: red">$(0.00)</span> </a><i class="icon-money icon-large"></i></div>
         <div class="package">
             <div class="control-group" data-bind="css: { error: !newPackageField.isValid() }, validationOptions: { insertMessages: false, decorateElement: true, errorClass: 'error', parseInputAttributes: false, errorElementClass: 'error' }">
                 <div class="controls">
@@ -108,12 +109,13 @@
         </div>
     </div>
 </div>
+<input id="model" type="hidden" value="@(new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(Model))" />
 @section Scripts
 {
     @Scripts.Render("~/bundles/dashboard")
     <script type="text/javascript">
         $(document).ready(function () {
-            var mainViewModel = new DashboardViewModel();
+            var mainViewModel = new DashboardViewModel($("#model").val());
             ko.applyBindings(mainViewModel);
             ko.validation.init(mainViewModel, { insertMessages: false, decorateElement: true, errorClass: 'error', parseInputAttributes: true });
             $(".store_address").popover();

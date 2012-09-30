@@ -108,6 +108,7 @@ function Package(serverModel) {
 
     // package view model collections
     self.items = ko.observableArray();
+    self.selectedAddress = ko.observable();
 
     // package state properties
     self.canBeRemoved = serverModel.CanBeRemoved;
@@ -383,6 +384,7 @@ function Retailer(serverModel) {
 function DashboardViewModel(serverModel) {
     /// <summary>Dashboard view model. The parent model for others.</summary>
     var self = this;
+    var addressModel = JSON.parse(serverModel);
 
     self.recentPackagesNotLoaded = ko.observable(true);
     self.recentOrdersNotLoaded = ko.observable(true);
@@ -392,6 +394,8 @@ function DashboardViewModel(serverModel) {
     // dashboard view model properties
     self.newOrderField = ko.observable().extend({ required: true });
     self.newPackageField = ko.observable().extend({ required: true });
+    self.deliveryAddresses = ko.observable(addressModel.DeliveryAddressViewModels);
+    
 
     // dashboard view model collections
     self.orders = ko.observableArray();

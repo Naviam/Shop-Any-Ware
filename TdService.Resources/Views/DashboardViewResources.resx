@@ -214,7 +214,10 @@
     <value>ShopAnyWare address</value>
   </data>
   <data name="MyUsAddressLinkMessage" xml:space="preserve">
-    <value>Show my U.S. address</value>
+    <value>U.S. address</value>
+  </data>
+  <data name="MyUsAddressLinkTooltip" xml:space="preserve">
+    <value>Click the link to see your U.S. address</value>
   </data>
   <data name="NewOrderPlaceholder" xml:space="preserve">
     <value>please enter shop name or url (ex. amazon.com)</value>

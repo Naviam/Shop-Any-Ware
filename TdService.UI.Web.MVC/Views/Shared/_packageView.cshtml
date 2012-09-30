@@ -27,19 +27,18 @@
                     <thead>
                         <tr class="type">
                             <th colspan="4">
-                                <h4>@DashboardViewResources.DeliveryHeader / Tracking #	is 53456747645674</h4>
+                                <h4>@DashboardViewResources.DeliveryHeader / Tracking #	is <a href="#" class="store_address" style="float:none">53456747645674</a></h4>
                             </th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td colspan="2" style="text-align: left">
-                                <select id="selectError" class="span3">
-                                    <option>Мой адрес 1</option>
-                                    <option>Мой адрес 2</option>
-                                    <option>Добавить адрес</option>
+                                <select class="span3" data-bind='options: $root.deliveryAddresses, 
+                                    optionsText: function(address) { return address.AddressName; }, 
+                                    value: selectedAddress, optionsCaption: "Select a delivery address..."'>
                                 </select>
-                                <select id="selectError" class="span3">
+                                <select class="span3">
                                     <option>Standart Delivery</option>
                                     <option>Express Delivery</option>
                                 </select>

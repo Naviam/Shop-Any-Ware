@@ -13,7 +13,10 @@ namespace TdService.UI.Web.Controllers
 
     using TdService.Infrastructure.Authentication;
     using TdService.Services.Implementations;
+    using TdService.Services.Interfaces;
+    using TdService.Services.Messaging.Address;
     using TdService.Services.Messaging.Membership;
+    using TdService.UI.Web.Mapping;
     using TdService.UI.Web.ViewModels.Member;
 
     /// <summary>
@@ -24,7 +27,9 @@ namespace TdService.UI.Web.Controllers
         /// <summary>
         /// The membership service.
         /// </summary>
-        private readonly MembershipService membershipService;
+        private readonly IMembershipService membershipService;
+
+        private readonly IAddressService addressService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MemberController"/> class.
@@ -35,10 +40,14 @@ namespace TdService.UI.Web.Controllers
         /// <param name="membershipService">
         /// The membership service.
         /// </param>
-        public MemberController(IFormsAuthentication formsAuthentication, MembershipService membershipService)
+        /// <param name="addressService">
+        /// The address service.
+        /// </param>
+        public MemberController(IFormsAuthentication formsAuthentication, IMembershipService membershipService, IAddressService addressService)
             : base(formsAuthentication)
         {
             this.membershipService = membershipService;
+            this.addressService = addressService;
         }
 
         /// <summary>
@@ -56,6 +65,9 @@ namespace TdService.UI.Web.Controllers
             model.UserId = response.Id;
             model.FirstName = response.FirstName;
             model.LastName = response.LastName;
+
+            var addressesResponse = this.addressService.GetDeliveryAddresses(new GetDeliveryAddressesRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() });
+            model.DeliveryAddressViewModels = addressesResponse.ConvertToDeliveryAddressViewModel();
 
             return this.View("Dashboard", model);
         }
