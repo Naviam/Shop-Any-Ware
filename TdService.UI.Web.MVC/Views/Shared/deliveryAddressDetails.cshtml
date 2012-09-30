@@ -2,12 +2,12 @@
 @model TdService.UI.Web.ViewModels.Account.DeliveryAddressViewModel
 
 <fieldset>
-    <div class="control-group" data-bind="css: {'error': AddressName.hasError }">
+    <div class="control-group">
         <label class="control-label">@AddressViewResources.AddressTable_AddressName:</label>
         <div class="controls">
-            @Html.HiddenFor(m => m.Id)
+            @*@Html.HiddenFor(m => m.Id, new Dictionary<string, object> {{ "data-bind", "value: Id" }})*@
             @Html.TextBoxFor(m => m.AddressName, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: AddressName" }, { "placeholder", AddressViewResources.AddressName_Placeholder } })
-            @*<input class="input-xlarge" name="Id" data-bind="value: Id" type="hidden" />*@
+            <input class="input-xlarge" name="Id" data-bind="value: Id" type="hidden" />
             @*<input class="input-xlarge" name="AddressName" data-bind="value: AddressName" type="text" placeholder="@AddressViewResources.AddressName_Placeholder" />*@
         </div>
     </div>

@@ -44,7 +44,9 @@ var DeliveryAddress = function (address) {
     self.addressId = ko.computed(function() {
         return "address_" + self.Id();
     });
-    
+    self.addressFormId = ko.computed(function () {
+        return "form_" + self.addressId();
+    });
     self.addressIdWithNumberSign = ko.computed(function () {
         return "#" + self.addressId();
     });
@@ -59,7 +61,7 @@ var AddressViewModel = function () {
 
     self.addAddressModel = ko.observable(new DeliveryAddress({ Id: 0 }));
 
-    $('#addDeliveryAddressModel').on('hidden', function() {
+    $("#addDeliveryAddressModel").on("hidden", function() {
         // clean up form
         self.addAddressModel(new DeliveryAddress({ Id: 0 }));
     });
@@ -71,6 +73,10 @@ var AddressViewModel = function () {
             $.each(collection, function (index, value) {
                 var deliveryAddress = new DeliveryAddress(value);
                 self.addressBook.unshift(deliveryAddress);
+                $(deliveryAddress.addressIdWithNumberSign()).on("hidden", function () {
+                    // reload the list of addresses
+                    self.loadAddresses();
+                });
             });
             self.addressesLoaded(true);
         });
@@ -78,7 +84,42 @@ var AddressViewModel = function () {
     self.loadAddresses();
 
     self.update = function (deliveryAddress) {
-        $.post("/address/update", ko.toJS(deliveryAddress), function (data) {
+        var form = $("#" + deliveryAddress.addressFormId());
+        if (!form.valid()) {
+            return;
+        }
+        $.post("/address/update", form.serialize(), function (data) {
+            var result = ko.toJS(data);
+            var address = new DeliveryAddress(result);
+            if (result.MessageType == "Success") {
+                $(deliveryAddress.addressIdWithNumberSign()).modal('hide');
+            }
+
+            if (data.BrokenRules !== undefined && data.BrokenRules != null) {
+                var container = form.find("[data-valmsg-summary=true]");
+                var list = container.find("ul");
+
+                if (list && list.length && data.BrokenRules.length) {
+                    list.empty();
+                    container.addClass("validation-summary-errors").removeClass("validation-summary-valid");
+
+                    $.each(data.BrokenRules, function () {
+                        $("<li />").html(this.Rule).appendTo(list);
+                    });
+                }
+            }
+            //deliveryAddress.Id = address.Id;
+            //deliveryAddress.FirstName = address.FirstName;
+            //deliveryAddress.LastName = address.LastName;
+            //deliveryAddress.AddressName = address.AddressName;
+            //deliveryAddress.AddressLine1 = address.AddressLine1;
+            //deliveryAddress.AddressLine2 = address.AddressLine2;
+            //deliveryAddress.City = address.City;
+            //deliveryAddress.Country = address.Country;
+            //deliveryAddress.Region = address.Region;
+            //deliveryAddress.State = address.State;
+            //deliveryAddress.ZipCode = address.ZipCode;
+            //deliveryAddress.Phone = address.Phone;
             window.showNotice(data.Message, data.MessageType);
         });
     };
@@ -86,6 +127,9 @@ var AddressViewModel = function () {
     self.add = function (deliveryAddress) {
         var param = deliveryAddress;
         var form = $("#addAddressForm");
+        if (!form.valid()) {
+            return;
+        }
         $.post("/address/add", form.serialize(), function (data) {
             var result = ko.toJS(data);
             if (result.MessageType == "Success") {
