@@ -1,5 +1,6 @@
 ﻿@using TdService.Resources.Views
 <div data-bind="attr: { id: domPackageId }" class="package action">
+    <div class="box_focus"></div>
     <div class="box">
         <table class="title">
             <tr>
@@ -27,7 +28,7 @@
                     <thead>
                         <tr class="type">
                             <th colspan="4">
-                                <h4>@DashboardViewResources.DeliveryHeader / Tracking #	is <a href="#" class="store_address" style="float:none">53456747645674</a></h4>
+                                <h4>@DashboardViewResources.DeliveryHeader / Tracking #	is <a href="#" class="store_address" style="float: none">53456747645674</a></h4>
                             </th>
                         </tr>
                     </thead>
@@ -71,14 +72,14 @@
                         <tr>
                             <td class="left"><i class="icon-camera"></i>&nbsp;<span data-bind="text: name"></span></td>
                             <td><span class="editable" data-bind="text: quantity"></span></td>
-                            <td><span class="editable" data-bind="text: weight"></span> lbs</td>
+                            <td><span class="editable" data-bind="text: weight"></span>lbs</td>
                             <td>$ <span class="editable" data-bind="text: price"></span></td>
                             <td>
                                 <div class="btn-group">
                                     <button class="btn btn-mini" title="@DashboardViewResources.ReturnItemBackTitle"><i class="icon-arrow-left"></i></button>
                                     <button class="btn btn-mini" title="@DashboardViewResources.EditItemTitle"><i class="icon icon-edit"></i></button>
                                     <ul class="dropdown-menu" data-bind="foreach: $root.packages()">
-                                        <li><i class="icon-gift"></i><span data-bind="text: name()"></span> (id:<span data-bind="text: id"></span>)</li>
+                                        <li><i class="icon-gift"></i><span data-bind="text: name()"></span>(id:<span data-bind="text: id"></span>)</li>
                                     </ul>
                                 </div>
                             </td>
@@ -88,7 +89,7 @@
                         <tr>
                             <td class="right">@DashboardViewResources.ItemsTotalHeader</td>
                             <td><span data-bind="text: totalItemsQuantity"></span></td>
-                            <td><span data-bind="text: totalItemsWeight"></span> lbs</td>
+                            <td><span data-bind="text: totalItemsWeight"></span>lbs</td>
                             <td>$ <span data-bind="text: totalItemsAmount"></span></td>
                             <td colspan="2"></td>
                         </tr>

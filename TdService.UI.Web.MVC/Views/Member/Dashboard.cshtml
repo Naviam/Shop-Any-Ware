@@ -7,7 +7,9 @@
 }
 <div class="row-fluid">
     <div class="span6">
-        <div class="body_header"><h3>@DashboardViewResources.OrdersHeader</h3><a href="#" class="store_address" data-trigger="click" data-title="@DashboardViewResources.MyUsAddressHeader" data-placement="bottom" data-content="<table class='table-striped table-condensed address'><tbody><tr><td>@AddressViewResources.AddressTable_FirstName: </td><td>@Model.FirstName</td></tr><tr><td>@AddressViewResources.AddressTable_LastName: </td><td>@Model.LastName</td></tr><tr><td>@AddressViewResources.AddressTable_AddressLine1: </td><td>452 PALISADE AVE #D</td></tr><tr><td>@AddressViewResources.AddressTable_AddressLine2: </td><td>CLIFFSIDE PARK , Ste #@Model.UserId</td></tr><tr><td>@AddressViewResources.AddressTable_ZipCode: </td><td>07010</td></tr><tr><td>@AddressViewResources.AddressTable_City: </td><td>New Jersey</td></tr><tr><td>@AddressViewResources.AddressTable_State: </td><td>New York or NY</td></tr><tr><td>@AddressViewResources.AddressTable_Phone: </td><td>(734)5166594</td></tr></tbody></table>">@DashboardViewResources.MyUsAddressLinkMessage</a><i class="icon-home"></i></div>
+        <div class="body_header">
+            <h3>@DashboardViewResources.OrdersHeader</h3>
+            <a href="#" class="store_address" data-trigger="click" data-title="@DashboardViewResources.MyUsAddressHeader" data-placement="bottom" data-content="<table class='table-striped table-condensed address'><tbody><tr><td>@AddressViewResources.AddressTable_FirstName: </td><td>@Model.FirstName</td></tr><tr><td>@AddressViewResources.AddressTable_LastName: </td><td>@Model.LastName</td></tr><tr><td>@AddressViewResources.AddressTable_AddressLine1: </td><td>452 PALISADE AVE #D</td></tr><tr><td>@AddressViewResources.AddressTable_AddressLine2: </td><td>CLIFFSIDE PARK , Ste #@Model.UserId</td></tr><tr><td>@AddressViewResources.AddressTable_ZipCode: </td><td>07010</td></tr><tr><td>@AddressViewResources.AddressTable_City: </td><td>New Jersey</td></tr><tr><td>@AddressViewResources.AddressTable_State: </td><td>New York or NY</td></tr><tr><td>@AddressViewResources.AddressTable_Phone: </td><td>(734)5166594</td></tr></tbody></table>">@DashboardViewResources.MyUsAddressLinkMessage</a><i class="icon-home"></i></div>
         <div id="addOrderForm" class="package">
             <div class="control-group" data-bind="css: { error: !newOrderField.isValid() }, validationOptions: { insertMessages: false, decorateElement: true, errorClass: 'error', parseInputAttributes: false, errorElementClass: 'error' }">
                 <div class="controls">
@@ -33,7 +35,13 @@
                         <span data-bind="visible: recentOrdersNotLoaded()">@DashboardViewResources.LoadingRecentOrdersMessage</span>
                         <span data-bind="visible: !recentOrdersNotLoaded()">@DashboardViewResources.NoOrdersMessage</span>
                     </div>
-                    <br /><br /><br /><br /><br /><br /><br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
                 </div>
                 <div data-bind="foreach: orders">
                     @{
@@ -47,7 +55,13 @@
                         <span data-bind="visible: historyOrdersNotLoaded()">@DashboardViewResources.LoadingHistoryOrdersMessage</span>
                         <span data-bind="visible: !historyOrdersNotLoaded()">@DashboardViewResources.NoHistoryOrdersMessage</span>
                     </div>
-                    <br /><br /><br /><br /><br /><br /><br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
                 </div>
                 <div data-bind="foreach: ordersHistory">
                     @{
@@ -58,8 +72,10 @@
         </div>
     </div>
     <div class="span6" style="float: right">
-        <div class="body_header"><h3>@DashboardViewResources.PackagesHeader</h3>
-            <a href="#" class="store_address" data-trigger="click" data-title="Последние транзакции" data-placement="bottom" data-content="@{ Html.RenderPartial("balanceTable");}">@DashboardViewResources.BalanceHeader: <span style="color: green">$0.00</span> Задолженность: <span style="color: red">$(0.00)</span> </a><i class="icon-money icon-large"></i></div>
+        <div class="body_header">
+            <h3>@DashboardViewResources.PackagesHeader</h3>
+            <a href="#" class="store_address" data-trigger="click" data-title="Последние транзакции" data-placement="bottom" data-content="@{ Html.RenderPartial("balanceTable");}">@DashboardViewResources.BalanceHeader: <span style="color: green">$0.00</span> Задолженность: <span style="color: red">$(0.00)</span> </a><i class="icon-money icon-large"></i>
+        </div>
         <div class="package">
             <div class="control-group" data-bind="css: { error: !newPackageField.isValid() }, validationOptions: { insertMessages: false, decorateElement: true, errorClass: 'error', parseInputAttributes: false, errorElementClass: 'error' }">
                 <div class="controls">
@@ -73,18 +89,24 @@
             </div>
         </div>
         <div class="link_expand"><a href="#" title="@DashboardViewResources.ExpandAllPackages" data-bind="click: expandAllPackages"><i class="icon icon-chevron-down"></i>&nbsp;</a><a href="#" title="@DashboardViewResources.CollapseAllPackages" data-bind="click: collapseAllPackages"><i class="icon icon-chevron-up"></i>&nbsp;</a></div>
-        <div class="tab-content">
+        <div class="tab-content choose_package">
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#recent_packages" data-toggle="tab">@DashboardViewResources.RecentPackagesTabHeader</a></li>
                 <li><a href="#history_packages" data-toggle="tab">@DashboardViewResources.HistoryPackagesTabHeader</a></li>
             </ul>
-            <div id="recent_packages" class="tab-pane active" >
+            <div id="recent_packages" class="tab-pane active">
                 <div data-bind="visible: packages().length == 0">
                     <div class="alert package" data-bind="css: { 'alert-info': !recentPackagesNotLoaded() }">
                         <span data-bind="visible: recentPackagesNotLoaded()">@DashboardViewResources.LoadingRecentPackagesMessage</span>
                         <span data-bind="visible: !recentPackagesNotLoaded()">@DashboardViewResources.NoPackagesMessage</span>
                     </div>
-                    <br /><br /><br /><br /><br /><br /><br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
                 </div>
                 <div data-bind="foreach: packages">
                     @{
@@ -98,7 +120,13 @@
                         <span data-bind="visible: historyPackagesNotLoaded()">@DashboardViewResources.LoadingHistoryPackagesMessage</span>
                         <span data-bind="visible: !historyPackagesNotLoaded()">@DashboardViewResources.NoHistoryPackagesMessage</span>
                     </div>
-                    <br /><br /><br /><br /><br /><br /><br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
                 </div>
                 <div data-bind="foreach: packagesHistory">
                     @{
@@ -119,6 +147,7 @@
             ko.applyBindings(mainViewModel);
             ko.validation.init(mainViewModel, { insertMessages: false, decorateElement: true, errorClass: 'error', parseInputAttributes: true });
             $(".store_address").popover();
+            $(".choose_package").popover('show');
         });
     </script>
 }

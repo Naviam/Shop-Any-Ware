@@ -41,11 +41,13 @@ input, textarea, select, .uneditable-input
     padding: 10px 20px 12px;
 }
 
-@media (min-width: 980px) {
+@media (min-width: 980px)
+{
     .modal
     {
         margin: -320px 0 0 -280px;
     }
+
     .modal-body
     {
         max-height: 464px;
@@ -74,6 +76,40 @@ html
     {
         margin-right: 4px;
     }
+
+.box_focus
+{
+    display: none;
+}
+
+.choose_package .box_focus
+{
+    display: block;
+    background-color: #ff9900;
+    opacity: .2;
+    cursor: pointer;
+    position: absolute;
+    height: 160px;
+    width: 900px;
+    z-index: 999;
+}
+
+.choose_package .box:hover
+{
+    border-color: #ff9900;
+    box-shadow: 0 0 5px rgba(255, 153, 0, 1);
+    -webkit-box-shadow: 0 0 5px rgba(255, 153, 0, 1);
+    -moz-box-shadow: 0 0 5px rgba(255, 153, 0, 1);
+}
+
+.choose_package .popover
+{
+    display: block;
+    top: 170px;
+    left: auto;
+    width: 900px;
+    padding:0
+}
 
 .error-inline
 {
@@ -120,16 +156,17 @@ html
     background-color: #F2DEDE;
     border-color: #EED3D7;
     padding: 8px 35px 8px 14px;
-    margin:20px;
+    margin: 20px;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
 }
-.validation-summary-errors ul
-{
-    margin:5px 20px
-}
+
+    .validation-summary-errors ul
+    {
+        margin: 5px 20px;
+    }
 
 .validation-summary-valid
 {
