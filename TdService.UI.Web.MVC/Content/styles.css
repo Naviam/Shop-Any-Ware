@@ -94,7 +94,7 @@ html
     z-index: 999;
 }
 
-.choose_package .box:hover
+.choose_package .hover
 {
     border-color: #ff9900;
     box-shadow: 0 0 5px rgba(255, 153, 0, 1);
