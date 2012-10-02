@@ -52,7 +52,7 @@ namespace TdService.UI.Web.Controllers
         /// The order item view model.
         /// </param>
         /// <returns>
-        /// The json result.
+        /// The <see cref="ActionResult"/>.
         /// </returns>
         [HttpPost]
         [Authorize(Roles = "Operator")]
@@ -75,7 +75,7 @@ namespace TdService.UI.Web.Controllers
         /// The order ID.
         /// </param>
         /// <returns>
-        /// The json result.
+        /// The <see cref="ActionResult"/>.
         /// </returns>
         [HttpPost]
         [Authorize(Roles = "Shopper, Operator")]

@@ -19,6 +19,7 @@ namespace TdService.Specs.Steps
     using TdService.Model.Addresses;
     using TdService.Model.Balance;
     using TdService.Model.Common;
+    using TdService.Model.Items;
     using TdService.Model.Membership;
     using TdService.Model.Orders;
     using TdService.Repository.MsSql;
@@ -193,6 +194,31 @@ namespace TdService.Specs.Steps
                 var addedOrders = orders.Select(order => context.Orders.Add(order)).ToList();
                 context.SaveChanges();
                 ScenarioContext.Current.Set(addedOrders);
+            }
+        }
+
+        /// <summary>
+        /// The given there are following items for order in database.
+        /// </summary>
+        /// <param name="orderId">
+        /// The order id.
+        /// </param>
+        /// <param name="table">
+        /// The table.
+        /// </param>
+        [Given(@"there are following items for order '(.*)' in database")]
+        public void GivenThereAreFollowingItemsForOrderInDatabase(int orderId, Table table)
+        {
+            var items = table.CreateSet<Item>();
+            using (var context = new ShopAnyWareSql())
+            {
+                var order = context.Orders.Find(orderId);
+                foreach (var item in items)
+                {
+                    order.Items.Add(item);
+                }
+
+                context.SaveChanges();
             }
         }
 

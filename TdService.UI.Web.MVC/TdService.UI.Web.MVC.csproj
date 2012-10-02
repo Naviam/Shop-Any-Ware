@@ -168,6 +168,7 @@
     <Content Include="App_Data\retailers.txt" />
     <Content Include="App_Readme\glimpse.mvc3.readme.txt" />
     <Content Include="App_Readme\glimpse.readme.txt" />
+    <Content Include="Content\css\font-awesome-ie7.css" />
     <Content Include="Content\css\font-awesome.css" />
     <Content Include="Content\font\fontawesome-webfont.svg" />
     <Content Include="Content\ico\favicon.ico" />
