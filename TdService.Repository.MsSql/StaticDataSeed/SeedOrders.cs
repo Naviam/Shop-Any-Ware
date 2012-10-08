@@ -13,6 +13,7 @@ namespace TdService.Repository.MsSql.StaticDataSeed
     using System.Collections.Generic;
     using System.Linq;
 
+    using TdService.Model.Common;
     using TdService.Model.Items;
     using TdService.Model.Orders;
 
@@ -51,7 +52,7 @@ namespace TdService.Repository.MsSql.StaticDataSeed
 
             context.SaveChanges();
 
-            var item = new Item { Name = "Apple IPad", Color = "Black", Quantity = 1, Price = 890m, Weight = "900" };
+            var item = new Item { Name = "Apple IPad", Color = "Black", Quantity = 1, Price = 890m, Dimensions = new Dimensions { Width = 4, Height = 3, Length = 5, Girth = 4 }, Weight = new Weight { Pounds = 2, Ounces = 10 } };
             var newItem = context.Items.Add(item);
 
             context.SaveChanges();

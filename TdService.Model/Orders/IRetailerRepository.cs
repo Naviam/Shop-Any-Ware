@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Model.Common
+namespace TdService.Model.Orders
 {
     using System.Collections.Generic;
 

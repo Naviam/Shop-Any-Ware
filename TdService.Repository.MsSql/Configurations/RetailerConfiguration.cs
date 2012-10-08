@@ -9,6 +9,7 @@ namespace TdService.Repository.MsSql.Configurations
     using System.Data.Entity.ModelConfiguration;
 
     using TdService.Model.Common;
+    using TdService.Model.Orders;
 
     /// <summary>
     /// This class describes the configuration of retailers db table.

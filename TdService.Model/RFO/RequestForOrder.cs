@@ -10,6 +10,7 @@ namespace TdService.Model.RFO
     using Infrastructure.Domain;
 
     using TdService.Model.Common;
+    using TdService.Model.Orders;
 
     /// <summary>
     /// This class describes user's request for an order.

@@ -19,6 +19,7 @@ namespace TdService.Specs.Steps
     using TdService.Model.Addresses;
     using TdService.Model.Balance;
     using TdService.Model.Common;
+    using TdService.Model.Common;
     using TdService.Model.Items;
     using TdService.Model.Membership;
     using TdService.Model.Orders;

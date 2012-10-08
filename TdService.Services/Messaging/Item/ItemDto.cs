@@ -10,7 +10,7 @@
 namespace TdService.Services.Messaging.Item
 {
     /// <summary>
-    /// The item dto.
+    /// The item.
     /// </summary>
     public class ItemDto : ResponseBase
     {

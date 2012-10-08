@@ -24,7 +24,6 @@ namespace TdService.Repository.MsSql.Configurations
         public ItemConfiguration()
         {
             this.Property(i => i.Name).IsRequired().HasMaxLength(64);
-            this.Property(i => i.Weight).HasMaxLength(64);
             this.Property(i => i.Color).HasMaxLength(64);
             this.Property(i => i.Size).HasMaxLength(64);
         }

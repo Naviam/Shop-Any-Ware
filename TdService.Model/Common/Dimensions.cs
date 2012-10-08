@@ -1,39 +1,37 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ItemImage.cs" company="TdService">
+// <copyright file="Dimensions.cs" company="TdService">
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
-//   Defines the ItemImage type.
+//   The item dimensions.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Model.Items
+namespace TdService.Model.Common
 {
-    using TdService.Model.Common;
-
     /// <summary>
-    /// Item image.
+    /// The item dimensions.
     /// </summary>
-    public class ItemImage
+    public class Dimensions
     {
         /// <summary>
-        /// Gets or sets Id.
+        /// Gets or sets the length.
         /// </summary>
-        public int Id { get; set; }
+        public decimal Length { get; set; }
 
         /// <summary>
-        /// Gets or sets Filename.
+        /// Gets or sets the height.
         /// </summary>
-        public string Filename { get; set; }
+        public decimal Height { get; set; }
 
         /// <summary>
-        /// Gets or sets Path.
+        /// Gets or sets the width.
         /// </summary>
-        public string Path { get; set; }
+        public decimal Width { get; set; }
 
         /// <summary>
-        /// Gets or sets PictureType.
+        /// Gets or sets the girth.
         /// </summary>
-        public ImageType PictureType { get; set; }
+        public decimal Girth { get; set; }
     }
 }

@@ -1,27 +1,27 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Weight.cs" company="TdService">
+// <copyright file="Shape.cs" company="TdService">
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
-//   Defines the Weight type.
+//   The item shape.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace TdService.Model.Common
 {
     /// <summary>
-    /// The weight of an order.
+    /// The item shape.
     /// </summary>
-    public class Weight
+    public enum Shape
     {
         /// <summary>
-        /// Gets or sets Pounds.
+        /// The rectangular.
         /// </summary>
-        public int Pounds { get; set; }
+        Rectangular,
 
         /// <summary>
-        /// Gets or sets Ounces.
+        /// The non rectangular.
         /// </summary>
-        public decimal Ounces { get; set; }
+        NonRectangular
     }
 }

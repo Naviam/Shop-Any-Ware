@@ -13,6 +13,7 @@ namespace TdService.Services.Mapping
 
     using AutoMapper;
 
+    using TdService.Model.Common;
     using TdService.Model.Items;
     using TdService.Services.Messaging.Item;
 

@@ -6,7 +6,8 @@
 
 namespace TdService.Model.Items
 {
-    using Infrastructure.Domain;
+    using TdService.Infrastructure.Domain;
+    using TdService.Model.Common;
 
     /// <summary>
     /// Product is what user is buying from online shops.
@@ -34,9 +35,14 @@ namespace TdService.Model.Items
         public string Color { get; set; }
 
         /// <summary>
+        /// Gets or sets the dimensions.
+        /// </summary>
+        public Dimensions Dimensions { get; set; }
+
+        /// <summary>
         /// Gets or sets Weight.
         /// </summary>
-        public string Weight { get; set; }
+        public Weight Weight { get; set; }
 
         /// <summary>
         /// Gets or sets Price.

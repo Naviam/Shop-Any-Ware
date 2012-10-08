@@ -12,6 +12,7 @@ namespace TdService.Services.Implementations
     using System.Collections.Generic;
 
     using TdService.Model.Common;
+    using TdService.Model.Orders;
     using TdService.Services.Interfaces;
     using TdService.Services.Mapping;
     using TdService.Services.Messaging.Retailer;

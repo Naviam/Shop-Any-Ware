@@ -13,6 +13,7 @@ namespace TdService.ShopAnyWare.Tests.Repository
 
     using TdService.Infrastructure.FileSystem;
     using TdService.Model.Common;
+    using TdService.Model.Orders;
     using TdService.Repository.MsSql;
     using TdService.Repository.MsSql.StaticDataSeed;
 

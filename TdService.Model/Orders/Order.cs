@@ -13,7 +13,6 @@ namespace TdService.Model.Orders
     using System.Collections.Generic;
 
     using TdService.Infrastructure.Domain;
-    using TdService.Model.Common;
     using TdService.Model.Items;
     using TdService.Model.Membership;
 

@@ -22,7 +22,6 @@ namespace TdService.UI.Web.MVC.App_Start
     using TdService.Infrastructure.Email;
     using TdService.Infrastructure.Logging;
     using TdService.Model.Addresses;
-    using TdService.Model.Common;
     using TdService.Model.Items;
     using TdService.Model.Membership;
     using TdService.Model.Orders;

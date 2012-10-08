@@ -10,7 +10,6 @@
 namespace TdService.Model.Items
 {
     using TdService.Infrastructure.Domain;
-    using TdService.Resources;
 
     /// <summary>
     /// The item bussiness rules.

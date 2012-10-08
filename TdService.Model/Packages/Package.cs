@@ -15,6 +15,7 @@ namespace TdService.Model.Packages
     using Addresses;
 
     using TdService.Infrastructure.Domain;
+    using TdService.Model.Common;
     using TdService.Model.Items;
     using TdService.Model.Shipping;
 
@@ -73,6 +74,16 @@ namespace TdService.Model.Packages
         public DispatchMethod DispatchMethod { get; set; }
 
         /// <summary>
+        /// Gets or sets the weight.
+        /// </summary>
+        public Weight Weight { get; set; }
+
+        /// <summary>
+        /// Gets or sets the dimensions.
+        /// </summary>
+        public Dimensions Dimensions { get; set; }
+
+        /// <summary>
         /// Gets or sets the items.
         /// </summary>
         public List<Item> Items { get; set; }
@@ -109,7 +120,6 @@ namespace TdService.Model.Packages
                 return this.packageState.CanBeSent;
             }
         }
-
 
         /// <summary>
         /// Gets a value indicating whether package can be removed.

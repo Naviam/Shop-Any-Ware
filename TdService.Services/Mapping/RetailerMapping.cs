@@ -14,6 +14,7 @@ namespace TdService.Services.Mapping
     using AutoMapper;
 
     using TdService.Model.Common;
+    using TdService.Model.Orders;
     using TdService.Services.Messaging.Retailer;
 
     /// <summary>

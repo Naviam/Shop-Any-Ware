@@ -259,7 +259,7 @@ namespace TdService.Specs.Steps
         }
 
         /// <summary>
-        /// The then there must be only one db record with retailer url.
+        /// The then there must be only one DB record with retailer url.
         /// </summary>
         /// <param name="retailerUrl">
         /// The retailer url.

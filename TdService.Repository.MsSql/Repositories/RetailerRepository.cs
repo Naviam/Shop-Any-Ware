@@ -15,6 +15,7 @@ namespace TdService.Repository.MsSql.Repositories
     using System.Linq;
 
     using TdService.Model.Common;
+    using TdService.Model.Orders;
 
     /// <summary>
     /// Retailer repository.

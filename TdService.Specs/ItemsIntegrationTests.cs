@@ -107,7 +107,7 @@ namespace TdService.Specs
             // arrange
             this.formsAuthentication.SetAuthenticationToken("vhatalski@naviam.com", true);
             var controller = new ItemsController(this.itemsService, this.formsAuthentication);
-            var viewModel = new OrderItemViewModel { OrderId = 1, Name = "Kindle", Quantity = 1, Price = 70.43m, Weight = 70 };
+            var viewModel = new OrderItemViewModel { OrderId = 1, Name = "Kindle", Quantity = 1, Price = 70.43m, WeightPounds = 70, WeightOunces = 90 };
 
             // act
             var actual = controller.AddItemToOrder(viewModel) as JsonNetResult;

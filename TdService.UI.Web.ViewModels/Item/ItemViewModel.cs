@@ -40,9 +40,34 @@ namespace TdService.UI.Web.ViewModels.Item
         public string Size { get; set; }
 
         /// <summary>
-        /// Gets or sets the weight.
+        /// Gets or sets Weight Pounds.
         /// </summary>
-        public float Weight { get; set; }
+        public int WeightPounds { get; set; }
+
+        /// <summary>
+        /// Gets or sets the weight ounces.
+        /// </summary>
+        public decimal WeightOunces { get; set; }
+
+        /// <summary>
+        /// Gets or sets the dimensions length.
+        /// </summary>
+        public decimal DimensionsLength { get; set; }
+
+        /// <summary>
+        /// Gets or sets the dimensions height.
+        /// </summary>
+        public decimal DimensionsHeight { get; set; }
+
+        /// <summary>
+        /// Gets or sets the dimensions width.
+        /// </summary>
+        public decimal DimensionsWidth { get; set; }
+
+        /// <summary>
+        /// Gets or sets the dimensions girth.
+        /// </summary>
+        public decimal DimensionsGirth { get; set; }
 
         /// <summary>
         /// Gets or sets the price.

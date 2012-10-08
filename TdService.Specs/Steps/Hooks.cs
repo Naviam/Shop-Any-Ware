@@ -24,7 +24,7 @@ namespace TdService.Specs.Steps
     public class Hooks
     {
         /// <summary>
-        /// The before feauture.
+        /// The before feature.
         /// </summary>
         [BeforeFeature]
         public static void BeforeEachFeature()

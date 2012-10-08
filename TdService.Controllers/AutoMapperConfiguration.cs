@@ -198,8 +198,12 @@ namespace TdService.UI.Web
 
             // add order item
             Mapper.CreateMap<OrderItemViewModel, AddItemToOrderRequest>();
-            Mapper.CreateMap<AddItemToOrderRequest, Item>();
+            Mapper.CreateMap<AddItemToOrderRequest, Item>()
+                .ForMember(r => r.Id, opt => opt.Ignore())
+                .ForMember(r => r.Weight, opt => opt.ResolveUsing<WeightResolver>())
+                .ForMember(r => r.Dimensions, opt => opt.ResolveUsing<DimensionsResolver>());
             Mapper.CreateMap<Item, AddItemToOrderResponse>()
+                .ForMember(r => r.OrderId, opt => opt.Ignore())
                 .ForMember(r => r.BrokenRules, opt => opt.Ignore())
                 .ForMember(r => r.Message, opt => opt.Ignore())
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())
@@ -262,6 +266,52 @@ namespace TdService.UI.Web
             {
                 var value = context.SourceValue.ToString();
                 return new Retailer { Name = value, Url = value };
+            }
+        }
+
+        /// <summary>
+        /// The dimensions resolver.
+        /// </summary>
+        public class DimensionsResolver : ValueResolver<AddItemToOrderRequest, Dimensions>
+        {
+            /// <summary>
+            /// The resolve core.
+            /// </summary>
+            /// <param name="source">
+            /// The source.
+            /// </param>
+            /// <returns>
+            /// The <see cref="Dimensions"/>.
+            /// </returns>
+            protected override Dimensions ResolveCore(AddItemToOrderRequest source)
+            {
+                return new Dimensions
+                    {
+                        Girth = source.DimensionsGirth,
+                        Height = source.DimensionsHeight,
+                        Length = source.DimensionsLength,
+                        Width = source.DimensionsWidth
+                    };
+            }
+        }
+
+        /// <summary>
+        /// The weight resolver.
+        /// </summary>
+        public class WeightResolver : ValueResolver<AddItemToOrderRequest, Weight>
+        {
+            /// <summary>
+            /// The resolve core.
+            /// </summary>
+            /// <param name="source">
+            /// The source.
+            /// </param>
+            /// <returns>
+            /// The <see cref="Weight"/>.
+            /// </returns>
+            protected override Weight ResolveCore(AddItemToOrderRequest source)
+            {
+                return new Weight { Pounds = source.WeightPounds, Ounces = source.WeightOunces };
             }
         }
     }

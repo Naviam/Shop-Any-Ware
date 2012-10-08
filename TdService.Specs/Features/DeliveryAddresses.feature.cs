@@ -357,7 +357,7 @@ this.ScenarioSetup(scenarioInfo);
                         "",
                         "220053",
                         "+375295067630",
-                        "Error"});
+                        "Warning"});
 #line 35
  testRunner.Then("I should have the following delivery addresses as a result", ((string)(null)), table5, "Then ");
 #line hidden
@@ -464,7 +464,7 @@ this.ScenarioSetup(scenarioInfo);
                         "",
                         "",
                         "",
-                        "Error"});
+                        "Warning"});
 #line 51
  testRunner.Then("I should have the following delivery address as a result", ((string)(null)), table8, "Then ");
 #line hidden
@@ -606,7 +606,7 @@ this.ScenarioSetup(scenarioInfo);
                         "Taumatawhakatangihangakoauauotamateapokaiwhenuakitanatahuwhenuakitanatahu",
                         "123456789012",
                         "+375295067630506763050676305067630",
-                        "Error"});
+                        "Warning"});
 #line 74
  testRunner.Then("I should have the following delivery address as a result", ((string)(null)), table12, "Then ");
 #line hidden
@@ -796,7 +796,7 @@ this.ScenarioSetup(scenarioInfo);
                         "",
                         "220040",
                         "",
-                        "Error"});
+                        "Warning"});
             table16.AddRow(new string[] {
                         "2",
                         "Alex",

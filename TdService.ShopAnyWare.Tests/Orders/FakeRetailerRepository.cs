@@ -12,6 +12,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
     using System.Collections.Generic;
 
     using TdService.Model.Common;
+    using TdService.Model.Orders;
 
     /// <summary>
     /// The fake retailer repository.

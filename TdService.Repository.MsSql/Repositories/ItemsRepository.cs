@@ -13,6 +13,7 @@ namespace TdService.Repository.MsSql.Repositories
     using System.Data;
     using System.Linq;
 
+    using TdService.Model.Common;
     using TdService.Model.Items;
 
     /// <summary>

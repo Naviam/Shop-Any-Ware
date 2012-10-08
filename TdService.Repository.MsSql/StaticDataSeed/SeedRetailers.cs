@@ -15,6 +15,7 @@ namespace TdService.Repository.MsSql.StaticDataSeed
     using TdService.Infrastructure.FileSystem;
     using TdService.Infrastructure.Helpers;
     using TdService.Model.Common;
+    using TdService.Model.Orders;
 
     /// <summary>
     /// Seed retailers.
