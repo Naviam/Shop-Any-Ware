@@ -16,8 +16,8 @@
                         <span data-bind="if: status() == 'Returned'">@DashboardViewResources.OrderReturnedDateHeader</span>: 
                         <span data-bind="text: orderDate"></span>
                     </span>&nbsp;
-                    @*<button class="btn btn-mini btn-primary" title="@DashboardViewResources.AddItemButton" data-bind="visible: canItemsBeModified" data-toggle="modal" href="#itemFormModal"><i class="icon-white icon-plus-sign"></i></button>*@
-                    @*<button class="btn btn-mini btn-success" title="@DashboardViewResources.InStockButton" data-bind="visible: canBeReceived"><i class="icon-white icon-inbox"></i></button>*@
+                    <button class="btn btn-mini btn-primary" title="@DashboardViewResources.AddItemButton" data-bind="visible: canItemsBeModified" data-toggle="modal" href="#itemFormModal"><i class="icon-white icon-plus-sign"></i></button>
+                    <button class="btn btn-mini btn-success" title="@DashboardViewResources.InStockButton" data-bind="visible: canBeReceived"><i class="icon-white icon-inbox"></i></button>
                     <span class="dropdown">
                         <button class="btn btn-mini dropdown-toggle" title="@DashboardViewResources.MoveAllItemsTitle" data-toggle="dropdown" data-bind="visible: items().length > 0"><i class="icon icon-arrow-right"></i><span class="caret"></span></button>
                         <ul class="dropdown-menu" data-bind="foreach: $parent.packages()">
@@ -64,8 +64,8 @@
                         <td>$<span class="editable" title="@DashboardViewResources.PriceTitle" data-bind="text: price"></span></td>
                         <td>
                             <div class="btn-group">
-                                @*<button class="btn btn-mini" title="@DashboardViewResources.EditItemTitle"><i class="icon icon-edit"></i></button>*@
-                                @*<button class="btn btn-mini" title="@DashboardViewResources.DeleteItemTitle"><i class="icon icon-remove"></i></button>*@
+                                <button class="btn btn-mini" title="@DashboardViewResources.EditItemTitle"><i class="icon icon-edit"></i></button>
+                                <button class="btn btn-mini" title="@DashboardViewResources.DeleteItemTitle"><i class="icon icon-remove"></i></button>
                                 <button class="btn btn-mini dropdown-toggle" title="@DashboardViewResources.MoveItemTitle" data-toggle="dropdown"><i class="icon icon-arrow-right"></i>@*@DashboardViewResources.ActionMoveHeader*@ <span class="caret"></span></button>
                                 <ul class="dropdown-menu" data-bind="foreach: $root.packages()">
                                     <li><a href="#"><span class="label">ID: <span data-bind="text: id"></span></span><span data-bind="text: name()"></span></a></li>
