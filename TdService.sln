@@ -21,7 +21,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. UI and Presentation Laye
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Infrastructure Layer", "2. Infrastructure Layer", "{CEB99E70-B62D-4173-8784-32ABBB3AC042}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5. Testing", "5. Testing", "{E4053794-9C22-460C-9CB0-C0D316989810}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0. Testing", "0. Testing", "{E4053794-9C22-460C-9CB0-C0D316989810}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TdService.UI.Web.MVC", "TdService.UI.Web.MVC\TdService.UI.Web.MVC.csproj", "{21DB700B-C1D7-481D-939E-8AA00FF2F546}"
 EndProject
