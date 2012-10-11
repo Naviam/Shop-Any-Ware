@@ -124,6 +124,14 @@
     <Compile Include="Querying\PropertyNameHelper.cs" />
     <Compile Include="Querying\Query.cs" />
     <Compile Include="Querying\QueryOperator.cs" />
+    <Compile Include="Shipping\IntlRateV2Request.cs" />
+    <Compile Include="Shipping\IntlRateV2Response.cs" />
+    <Compile Include="Shipping\IShippingService.cs" />
+    <Compile Include="Shipping\TrackId.cs" />
+    <Compile Include="Shipping\TrackInfo.cs" />
+    <Compile Include="Shipping\TrackRequest.cs" />
+    <Compile Include="Shipping\TrackResponse.cs" />
+    <Compile Include="Shipping\UspsService.cs" />
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="UnitOfWork\IUnitOfWorkRepository.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
@@ -134,7 +142,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Payments\" />
-    <Folder Include="Shipping\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TdService.Resources\TdService.Resources.csproj">

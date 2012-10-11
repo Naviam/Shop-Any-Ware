@@ -465,6 +465,13 @@ function DashboardViewModel(serverModel) {
     };
     self.suggestRetailers();
 
+    self.trackPackage = function(trackingNumber) {
+        $.uspsTrackPackage("", trackingNumber, function(data) {
+            alert('success');
+        });
+    };
+    self.trackPackage("123");
+
     self.getRecentOrders = function() {
         /// <summary>Load recent orders from server.</summary>
         $.post("/orders/recent", function (data) {

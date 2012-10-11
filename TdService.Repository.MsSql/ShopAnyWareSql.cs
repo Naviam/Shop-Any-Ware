@@ -13,8 +13,6 @@ namespace TdService.Repository.MsSql
     using TdService.Infrastructure.FileSystem;
     using TdService.Model.Addresses;
     using TdService.Model.Balance;
-    using TdService.Model.Common;
-    using TdService.Model.Common;
     using TdService.Model.Items;
     using TdService.Model.Membership;
     using TdService.Model.Orders;
@@ -22,7 +20,7 @@ namespace TdService.Repository.MsSql
     using TdService.Repository.MsSql.StaticDataSeed;
 
     /// <summary>
-    /// DbContext for the entity framework mapping.
+    /// DB Context for the entity framework mapping.
     /// </summary>
     public class ShopAnyWareSql : DbContext
     {
@@ -55,7 +53,7 @@ namespace TdService.Repository.MsSql
 // ReSharper restore UnusedAutoPropertyAccessor.Local
 
         /// <summary>
-        /// Gets or sets Whallets.
+        /// Gets or sets Wallets.
         /// </summary>
 // ReSharper disable UnusedAutoPropertyAccessor.Local
         public DbSet<Wallet> Wallets { get; set; }
@@ -120,6 +118,8 @@ namespace TdService.Repository.MsSql
             modelBuilder.Configurations.Add(new OrderConfiguration());
             modelBuilder.Configurations.Add(new PackageConfiguration());
             modelBuilder.Configurations.Add(new ItemConfiguration());
+            modelBuilder.Configurations.Add(new WeightConfiguration());
+            modelBuilder.Configurations.Add(new DimensionsConfiguration());
         }
 
         /// <summary>

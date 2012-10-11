@@ -51,7 +51,8 @@ namespace TdService.UI.Web.MVC.App_Start
                         "~/Scripts/knockout-sortable.js",
                         "~/Scripts/jquery.simpleplaceholder.js",
                         ////"~/Scripts/html5placeholder.jquery.js",
-                        "~/Scripts/Common.js"));
+                        "~/Scripts/Common.js",
+                        "~/Scripts/Tools/UspsService.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/dashboard").Include(
                         "~/Scripts/ViewModels/DashboardViewModel.js"));

@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Configurations\CurrencyConfiguration.cs" />
     <Compile Include="Configurations\DeliveryAddressConfiguration.cs" />
+    <Compile Include="Configurations\DimensionsConfiguration.cs" />
     <Compile Include="Configurations\ItemConfiguration.cs" />
     <Compile Include="Configurations\OrderConfiguration.cs" />
     <Compile Include="Configurations\PackageConfiguration.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="Configurations\RetailerConfiguration.cs" />
     <Compile Include="Configurations\RoleConfiguration.cs" />
     <Compile Include="Configurations\UserConfiguration.cs" />
+    <Compile Include="Configurations\WeightConfiguration.cs" />
     <Compile Include="DatabaseInitializer.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\AddressRepository.cs" />
