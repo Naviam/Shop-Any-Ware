@@ -9,11 +9,16 @@
 
 namespace TdService.Infrastructure.Shipping
 {
+    using System;
+    using System.Net.Http;
+
     /// <summary>
     /// The USPS service.
     /// </summary>
     public class UspsService : IShippingService
     {
+        private static string serverUrl = "http://production.shippingapis.com/";
+
         /// <summary>
         /// The user id.
         /// </summary>
@@ -36,9 +41,10 @@ namespace TdService.Infrastructure.Shipping
         /// <param name="trackingNumber">
         /// The tracking number.
         /// </param>
-        public void Track(string trackingNumber)
+        public async void Track(string trackingNumber)
         {
-            
+            var client = new HttpClient();
+            var response = await client.GetAsync(new Uri(""));
         }
     }
 }

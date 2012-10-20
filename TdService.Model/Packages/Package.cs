@@ -44,6 +44,11 @@ namespace TdService.Model.Packages
         public string Name { get; set; }
 
         /// <summary>
+        /// Gets or sets the tracking number.
+        /// </summary>
+        public string TrackingNumber { get; set; }
+
+        /// <summary>
         /// Gets or sets Status.
         /// </summary>
         public PackageStatus Status { get; set; }

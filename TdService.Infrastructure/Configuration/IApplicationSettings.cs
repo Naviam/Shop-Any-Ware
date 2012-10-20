@@ -15,5 +15,15 @@ namespace TdService.Infrastructure.Configuration
         /// Gets LoggerName.
         /// </summary>
         string LoggerName { get; }
+
+        /// <summary>
+        /// Gets the USPS user name.
+        /// </summary>
+        string UspsUserName { get; }
+
+        /// <summary>
+        /// Gets the USPS production url.
+        /// </summary>
+        string UspsProductionUrl { get; }
     }
 }

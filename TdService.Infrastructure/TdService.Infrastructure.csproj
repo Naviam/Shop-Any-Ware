@@ -73,6 +73,8 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.WebRequest" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
@@ -131,6 +133,7 @@
     <Compile Include="Shipping\TrackInfo.cs" />
     <Compile Include="Shipping\TrackRequest.cs" />
     <Compile Include="Shipping\TrackResponse.cs" />
+    <Compile Include="Shipping\UspsError.cs" />
     <Compile Include="Shipping\UspsService.cs" />
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="UnitOfWork\IUnitOfWorkRepository.cs" />

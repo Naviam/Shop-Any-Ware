@@ -127,6 +127,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Profile.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\ShippingRateCalculator.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShippingRateCalculator.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\ShopperOrderItems.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -156,6 +161,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DeliveryAddresses.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\TrackingPackage.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TrackingPackage.feature</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\SpecFlowExtensions.cs" />
     <Compile Include="Steps\DeliveryAddressesSteps.cs" />
@@ -205,6 +215,10 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Profile.feature.cs</LastGenOutput>
     </None>
+    <None Include="Features\ShippingRateCalculator.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ShippingRateCalculator.feature.cs</LastGenOutput>
+    </None>
     <None Include="Features\ShopperOrderItems.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>ShopperOrderItems.feature.cs</LastGenOutput>
@@ -228,6 +242,10 @@
     <None Include="Features\DeliveryAddresses.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>DeliveryAddresses.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\TrackingPackage.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>TrackingPackage.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>

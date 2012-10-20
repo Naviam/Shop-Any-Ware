@@ -11,7 +11,7 @@ namespace TdService.Infrastructure.Configuration
     /// <summary>
     /// Web config application settings.
     /// </summary>
-    public class WebConfigApplicationSettings
+    public class WebConfigApplicationSettings : IApplicationSettings
     {
         /// <summary>
         /// Gets LoggerName.
@@ -21,6 +21,28 @@ namespace TdService.Infrastructure.Configuration
             get
             {
                 return ConfigurationManager.AppSettings["LoggerName"];
+            }
+        }
+
+        /// <summary>
+        /// Gets the USPS user name.
+        /// </summary>
+        public string UspsUserName
+        {
+            get
+            {
+                return ConfigurationManager.AppSettings["UspsUserName"];
+            }
+        }
+
+        /// <summary>
+        /// Gets the USPS production url.
+        /// </summary>
+        public string UspsProductionUrl
+        {
+            get
+            {
+                return ConfigurationManager.AppSettings["UspsProductionUrl"];
             }
         }
     }
