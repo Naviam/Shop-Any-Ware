@@ -153,6 +153,12 @@
   <data name="OurServicesTitle" xml:space="preserve">
     <value>Наш сервис</value>
   </data>
+  <data name="RatesDescription" xml:space="preserve">
+    <value>Стоимость доставки</value>
+  </data>
+  <data name="RatesTitle" xml:space="preserve">
+    <value>Стоимость</value>
+  </data>
   <data name="ShopperDashboard" xml:space="preserve">
     <value>Панель покупателя</value>
   </data>

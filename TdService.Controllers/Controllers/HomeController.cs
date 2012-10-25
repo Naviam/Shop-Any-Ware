@@ -22,7 +22,7 @@ namespace TdService.UI.Web.Controllers
         /// The default page.
         /// </summary>
         /// <returns>
-        /// Returns view with the short information about service.
+        /// The <see cref="ActionResult"/>.
         /// </returns>
         public ActionResult Index()
         {
@@ -35,7 +35,7 @@ namespace TdService.UI.Web.Controllers
         /// The page contains information about online US retailers.
         /// </summary>
         /// <returns>
-        /// Returns view with the catalog of onliner US retailers.
+        /// Returns view with the catalog of online US retailers.
         /// </returns>
         public ActionResult Shops()
         {
@@ -46,7 +46,7 @@ namespace TdService.UI.Web.Controllers
         /// The page with price information for the service.
         /// </summary>
         /// <returns>
-        /// Returns view with the table of service plans.
+        /// The <see cref="ActionResult"/>.
         /// </returns>
         public ActionResult Services()
         {
@@ -57,7 +57,7 @@ namespace TdService.UI.Web.Controllers
         /// The page contains information about terms and conditions of using this service.
         /// </summary>
         /// <returns>
-        /// Returns view with the information about terms and conditions.
+        /// The <see cref="ActionResult"/>.
         /// </returns>
         public ActionResult Terms()
         {
@@ -68,7 +68,7 @@ namespace TdService.UI.Web.Controllers
         /// The page contains help information for new users to get started quickly.
         /// </summary>
         /// <returns>
-        /// Returns view with help information and video material.
+        /// The <see cref="ActionResult"/>.
         /// </returns>
         public ActionResult Help()
         {
@@ -79,7 +79,7 @@ namespace TdService.UI.Web.Controllers
         /// The page contains contact information.
         /// </summary>
         /// <returns>
-        /// Returns view with the contact information.
+        /// The <see cref="ActionResult"/>.
         /// </returns>
         public ActionResult Contact()
         {
@@ -90,9 +90,20 @@ namespace TdService.UI.Web.Controllers
         /// The page contains about us information.
         /// </summary>
         /// <returns>
-        /// Returns view with the about us information.
+        /// The <see cref="ActionResult"/>.
         /// </returns>
         public ActionResult About()
+        {
+            return this.View();
+        }
+
+        /// <summary>
+        /// The rate.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="ActionResult"/>.
+        /// </returns>
+        public ActionResult Rate()
         {
             return this.View();
         }

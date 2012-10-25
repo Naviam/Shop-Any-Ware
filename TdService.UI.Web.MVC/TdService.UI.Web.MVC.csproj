@@ -185,7 +185,9 @@
     <Content Include="Content\img\glyphicons-halflings.png" />
     <Content Include="Content\img\kindle.jpg" />
     <Content Include="Content\img\mail.jpg" />
+    <Content Include="Content\img\registration_bg.jpg" />
     <Content Include="Content\img\ru.png" />
+    <Content Include="Content\img\signin_bg.jpg" />
     <Content Include="Content\img\sorting\asc.gif" />
     <Content Include="Content\img\sorting\desc.gif" />
     <Content Include="Content\img\sorting\sort.gif" />
@@ -366,6 +368,7 @@
     <Content Include="Views\Shared\_orderView.cshtml" />
     <Content Include="Views\Shared\_packageView.cshtml" />
     <Content Include="Views\Operator\Dashboard.cshtml" />
+    <Content Include="Views\Home\Rate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Scripts\MVVM\Model\" />
