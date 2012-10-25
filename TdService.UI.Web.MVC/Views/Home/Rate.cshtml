@@ -1,13 +1,19 @@
-﻿@{
+﻿@using TdService.Resources.Views;
+@{
     ViewBag.Title = "Shop Any Ware - Calculate Rate";
 }
 
-<label for="country">Country: </label>
+<label for="country">@DeliveryRatesViewResources.CountryHeader: </label>
 <select id="country">
-    <option value="">Russia</option>
-    <option value="">Belarus</option>
+    <option value="Russia">Russia</option>
+    <option value="Belarus">Belarus</option>
 </select>
-<label for="weight">Weight: </label>
+<label for="method">@DeliveryRatesViewResources.DeliveryMethodHeader: </label>
+<select id="method">
+    <option value="">Express USPS</option>
+    <option value="">Priority USPS</option>
+</select>
+<label for="weight">@DeliveryRatesViewResources.WeightHeader: </label>
 <input id="weight" type="text" />
-<label for="amount">Amount: </label>
+<label for="amount">@DeliveryRatesViewResources.AmountHeader: </label>
 <input id="amount" type="text" />
