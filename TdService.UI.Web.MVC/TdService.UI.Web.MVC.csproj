@@ -272,13 +272,11 @@
     <Content Include="Scripts\model\DeliveryAddressViewModel.js" />
     <Content Include="Scripts\model\OrderViewModel.js" />
     <Content Include="Scripts\Tools\UspsService.js" />
+    <Content Include="Scripts\ViewModels\DeliveryRatesViewModel.js" />
     <Content Include="Scripts\ViewModels\OperatorDashboardViewModel.js" />
     <Content Include="Scripts\ViewModels\ProfileViewModel.js" />
     <Content Include="Scripts\ViewModels\AddressViewModel.js" />
     <Content Include="Scripts\ViewModels\SignUpViewModel.js" />
-    <Content Include="Scripts\MVVM\App.js" />
-    <Content Include="Scripts\MVVM\ember-0.9.8.1.js" />
-    <Content Include="Scripts\MVVM\ember-0.9.8.1.min.js" />
     <Content Include="Scripts\noty\jquery.noty.js" />
     <Content Include="Scripts\noty\layouts\bottom.js" />
     <Content Include="Scripts\noty\layouts\bottomCenter.js" />
@@ -370,9 +368,7 @@
     <Content Include="Views\Operator\Dashboard.cshtml" />
     <Content Include="Views\Home\Rate.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Scripts\MVVM\Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
