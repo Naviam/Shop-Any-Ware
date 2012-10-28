@@ -7,13 +7,11 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Specs
+namespace TdService.ShopAnyWare.Specs
 {
     using System.Data.Entity;
 
-    using TdService.Model.Common;
     using TdService.Repository.MsSql;
-    using TdService.Repository.MsSql.StaticDataSeed;
 
     /// <summary>
     /// Shop any ware database initilizer that drops and recreate database for running db tests.

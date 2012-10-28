@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Specs.Steps
+namespace TdService.ShopAnyWare.Specs.Steps
 {
     using System.Diagnostics;
     using System.Web.Mvc;
@@ -15,8 +15,8 @@ namespace TdService.Specs.Steps
     using NUnit.Framework;
 
     using TdService.Services.Implementations;
-    using TdService.Specs.Fakes;
-    using TdService.Specs.Infrastructure;
+    using TdService.ShopAnyWare.Specs.Fakes;
+    using TdService.ShopAnyWare.Specs.Infrastructure;
     using TdService.UI.Web.Controllers;
     using TdService.UI.Web.ViewModels.Account;
 

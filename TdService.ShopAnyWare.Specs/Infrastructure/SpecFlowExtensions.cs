@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Specs.Infrastructure
+namespace TdService.ShopAnyWare.Specs.Infrastructure
 {
     /// <summary>
     /// The spec flow extensions.

@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Specs.Steps
+namespace TdService.ShopAnyWare.Specs.Steps
 {
     using System;
     using System.Collections.Generic;
@@ -17,10 +17,11 @@ namespace TdService.Specs.Steps
 
     using TdService.Repository.MsSql;
     using TdService.Services.Implementations;
-    using TdService.Specs.Fakes;
+    using TdService.ShopAnyWare.Specs.Fakes;
     using TdService.UI.Web;
     using TdService.UI.Web.Controllers;
     using TdService.UI.Web.ViewModels.Order;
+
     using TechTalk.SpecFlow;
     using TechTalk.SpecFlow.Assist;
 

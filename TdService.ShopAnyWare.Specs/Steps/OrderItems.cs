@@ -7,14 +7,14 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Specs.Steps
+namespace TdService.ShopAnyWare.Specs.Steps
 {
     using System.Collections.Generic;
 
     using NUnit.Framework;
 
     using TdService.Services.Implementations;
-    using TdService.Specs.Fakes;
+    using TdService.ShopAnyWare.Specs.Fakes;
     using TdService.UI.Web;
     using TdService.UI.Web.Controllers;
     using TdService.UI.Web.ViewModels.Item;

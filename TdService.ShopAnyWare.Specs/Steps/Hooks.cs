@@ -7,12 +7,12 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Specs.Steps
+namespace TdService.ShopAnyWare.Specs.Steps
 {
     using TdService.Repository.MsSql;
     using TdService.Repository.MsSql.Repositories;
     using TdService.Services.Implementations;
-    using TdService.Specs.Fakes;
+    using TdService.ShopAnyWare.Specs.Fakes;
     using TdService.UI.Web;
 
     using TechTalk.SpecFlow;

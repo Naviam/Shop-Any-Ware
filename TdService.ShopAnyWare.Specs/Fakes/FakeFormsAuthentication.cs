@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Specs.Fakes
+namespace TdService.ShopAnyWare.Specs.Fakes
 {
     using TdService.Infrastructure.Authentication;
 
