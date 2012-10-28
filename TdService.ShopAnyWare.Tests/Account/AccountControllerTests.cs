@@ -69,14 +69,14 @@ namespace TdService.ShopAnyWare.Tests.Account
                 this.EmailService,
                 this.CookieStorageService,
                 this.FormsAuthentication);
-            var expected = string.Empty;
+            const string Expected = "SignIn";
 
             // act
             var actual = (ViewResult)controller.SignIn();
 
             // asset
-            Assert.That(actual.ViewName, Is.EqualTo(expected));
-            Assert.That(actual.Model, Is.TypeOf(typeof(SignInViewModel)));
+            Assert.That(actual.ViewName, Is.EqualTo(Expected));
+            Assert.That(actual.Model, Is.TypeOf(typeof(MainViewModel)));
         }
 
         /// <summary>
@@ -91,14 +91,14 @@ namespace TdService.ShopAnyWare.Tests.Account
                 this.EmailService,
                 this.CookieStorageService,
                 this.FormsAuthentication);
-            var expected = string.Empty;
+            const string Expected = "SignUp";
 
             // act
             var actual = (ViewResult)controller.SignUp();
 
             // assert
-            Assert.That(actual.ViewName, Is.EqualTo(expected));
-            Assert.That(actual.Model, Is.TypeOf(typeof(SignUpViewModel)));
+            Assert.That(actual.ViewName, Is.EqualTo(Expected));
+            Assert.That(actual.Model, Is.TypeOf(typeof(MainViewModel)));
         }
 
         /// <summary>
@@ -142,29 +142,7 @@ namespace TdService.ShopAnyWare.Tests.Account
             var model = (ForgotPasswordViewModel)actual.ViewData.Model;
 
             // assert
-            Assert.That(model.MessageType, Is.EqualTo("success"));
-        }
-
-        /// <summary>
-        /// Should not be able to reset password and send it to invalid email.
-        /// </summary>
-        [Test]
-        public void ShouldNotBeAbleToResetPasswordAndSendItToInvalidEmail()
-        {
-            // arrange
-            var controller = new AccountController(
-                this.MembershipService,
-                this.EmailService,
-                this.CookieStorageService,
-                this.FormsAuthentication);
-            var view = new ForgotPasswordViewModel { Email = "vhatalski@invalid" };
-
-            // act
-            var actual = (ViewResult)controller.Forgot(view);
-            var model = (ForgotPasswordViewModel)actual.ViewData.Model;
-
-            // assert
-            Assert.That(model.MessageType, Is.EqualTo("error"));
+            Assert.That(model, Is.Not.Null);
         }
 
         /// <summary>
