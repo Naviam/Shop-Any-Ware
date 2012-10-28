@@ -19,20 +19,20 @@ namespace TdService.Specs.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "1.9.0.77")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Tracking Package")]
-    public partial class TrackingPackageFeature
+    [NUnit.Framework.DescriptionAttribute("USPS Shipping Service Integration")]
+    public partial class USPSShippingServiceIntegrationFeature
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "TrackingPackage.feature"
+#line 1 "UspsShippingServiceIntegration.feature"
 #line hidden
         
         [NUnit.Framework.TestFixtureSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Tracking Package", "In order to know where is my package now\r\nAs a shopper\r\nI want to be able to trac" +
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "USPS Shipping Service Integration", "In order to know where is my package now\r\nAs a shopper\r\nI want to be able to trac" +
                     "k the package", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
@@ -75,9 +75,17 @@ namespace TdService.Specs.Features
 #line 7
 this.ScenarioSetup(scenarioInfo);
 #line 8
- testRunner.When("I request the USPS tracking service with the \'23445345345\' tracking number", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.Given("I have the USPS account with the user id \'852TRADE0543\' and password \'743ZJ30GH76" +
+                    "5\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 9
- testRunner.Then("I should get the following trac", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("I request the USPS tracking service with the \'23445345345\' tracking number", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                        "",
+                        "",
+                        ""});
+#line 10
+ testRunner.Then("I should get the following USPS tracking response", ((string)(null)), table1, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
