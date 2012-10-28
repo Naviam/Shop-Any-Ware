@@ -11,7 +11,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace TdService.Specs.Features
+namespace TdService.ShopAnyWare.Specs.Features
 {
     using TechTalk.SpecFlow;
     
