@@ -14,9 +14,9 @@ namespace TdService.ShopAnyWare.Tests.Orders
 
     using NUnit.Framework;
 
+    using Rhino.Mocks;
+
     using TdService.Infrastructure.Logging;
-    using TdService.Model.Common;
-    using TdService.Model.Membership;
     using TdService.Model.Orders;
     using TdService.Services.Implementations;
     using TdService.Services.Messaging;
@@ -30,16 +30,6 @@ namespace TdService.ShopAnyWare.Tests.Orders
     public class OrderServiceTests
     {
         /// <summary>
-        /// The user repository.
-        /// </summary>
-        private IUserRepository userRepository;
-
-        /// <summary>
-        /// The order repository.
-        /// </summary>
-        private IOrderRepository orderRepository;
-
-        /// <summary>
         /// The logger.
         /// </summary>
         private ILogger logger;
@@ -52,21 +42,6 @@ namespace TdService.ShopAnyWare.Tests.Orders
         {
             AutoMapperConfiguration.Configure();
 
-            var orders = new List<Order>
-                {
-                    new Order(OrderStatus.Received)
-                        {
-                            CreatedDate = DateTime.UtcNow,
-                            DisposedDate = null,
-                            Id = 0,
-                            OrderNumber = "12212",
-                            ReceivedDate = null,
-                            Retailer = new Retailer("amazon.com"),
-                            ReturnedDate = null
-                        }
-                };
-            this.orderRepository = new FakeOrderRepository(orders);
-            this.userRepository = new FakeUserRepository();
             this.logger = new DummyLogger();
         }
 
@@ -77,16 +52,24 @@ namespace TdService.ShopAnyWare.Tests.Orders
         public void ShouldBeAbleToAddNewOrder()
         {
             // arrange
-            var service = new OrderService(this.orderRepository, this.logger);
+            var mock = new MockRepository();
+            var repository = mock.DynamicMock<IOrderRepository>();
+            const string IdentityToken = "vhatalski@naviam.com";
+            const string RetailerUrl = "amazon.com";
+            Expect.Call(repository.AddOrder(IdentityToken, new Order { Retailer = new Retailer(RetailerUrl) }))
+                .Return(new Order(OrderStatus.New) { Retailer = new Retailer(RetailerUrl), CreatedDate = DateTime.UtcNow });
+            var service = new OrderService(repository, this.logger);
             var request = new AddOrderRequest
                 {
-                    IdentityToken = "vhatalski@naviam.com",
-                    RetailerUrl = "apple.com",
+                    IdentityToken = IdentityToken,
+                    RetailerUrl = RetailerUrl,
                     CreatedDate = DateTime.UtcNow
                 };
 
             // act
+            mock.ReplayAll();
             var actual = service.AddOrder(request);
+            mock.VerifyAll();
 
             // assert
             Assert.That(actual, Is.Not.Null);
@@ -101,8 +84,42 @@ namespace TdService.ShopAnyWare.Tests.Orders
         public void ShouldBeAbleToGetListOfOrders()
         {
             // arrange
-            var service = new OrderService(this.orderRepository, this.logger);
-            var request = new GetMyOrdersRequest { IdentityToken = "vhatalski@naviam.com" };
+            var mock = new MockRepository();
+            var repository = mock.StrictMock<IOrderRepository>();
+            const string IdentityToken = "vhatalski@naviam.com";
+            Expect.Call(repository.GetMyRecent(IdentityToken)).Return(
+                new List<Order>
+                {
+                    new Order(OrderStatus.New)
+                        {
+                            CreatedDate = DateTime.UtcNow,
+                            Id = 1,
+                            OrderNumber = "12212",
+                            ReceivedDate = null,
+                            Retailer = new Retailer("amazon.com"),
+                            ReturnedDate = null
+                        },
+                    new Order(OrderStatus.Received)
+                        {
+                            CreatedDate = DateTime.UtcNow,
+                            Id = 2,
+                            OrderNumber = "122122",
+                            ReceivedDate = DateTime.UtcNow,
+                            Retailer = new Retailer("apple.com"),
+                            ReturnedDate = null
+                        },
+                    new Order(OrderStatus.ReturnRequested)
+                        {
+                            CreatedDate = DateTime.UtcNow,
+                            Id = 3,
+                            OrderNumber = "1221227776",
+                            ReceivedDate = DateTime.UtcNow,
+                            Retailer = new Retailer("apple.com"),
+                            ReturnedDate = null
+                        }
+                });
+            var service = new OrderService(repository, this.logger);
+            var request = new GetMyOrdersRequest { IdentityToken = IdentityToken };
             var expected = new List<GetMyOrdersResponse>
                 {
                     new GetMyOrdersResponse
@@ -138,7 +155,9 @@ namespace TdService.ShopAnyWare.Tests.Orders
                 };
 
             // act
+            mock.ReplayAll();
             var actual = service.GetRecent(request);
+            mock.VerifyAll();
 
             // assert
             Assert.That(actual, Is.Not.Null);
@@ -164,11 +183,18 @@ namespace TdService.ShopAnyWare.Tests.Orders
         public void ShouldBeAbleToRemoveOrder()
         {
             // arrange
-            var service = new OrderService(this.orderRepository, this.logger);
-            var request = new RemoveOrderRequest { IdentityToken = "vhatalski@naviam.com", Id = 1 };
+            var mock = new MockRepository();
+            var repository = mock.StrictMock<IOrderRepository>();
+            const string IdentityToken = "vhatalski@naviam.com";
+            const int OrderId = 1;
+            Expect.Call(repository.RemoveOrder(IdentityToken, OrderId)).Return(new Order { Id = 1 });
+            var service = new OrderService(repository, this.logger);
+            var request = new RemoveOrderRequest { IdentityToken = IdentityToken, Id = OrderId };
 
             // act
+            mock.ReplayAll();
             var actual = service.RemoveOrder(request);
+            mock.VerifyAll();
 
             // assert
             Assert.That(actual, Is.Not.Null);
@@ -182,15 +208,22 @@ namespace TdService.ShopAnyWare.Tests.Orders
         public void ShouldNotBeAbleToRemoveOrderInStateOtherThanNew()
         {
             // arrange
-            var service = new OrderService(this.orderRepository, this.logger);
-            var request = new RemoveOrderRequest { IdentityToken = "vhatalski@naviam.com", Id = 2 };
+            var mock = new MockRepository();
+            var repository = mock.StrictMock<IOrderRepository>();
+            const string IdentityToken = "vhatalski@naviam.com";
+            const int OrderId = 2;
+            Expect.Call(repository.RemoveOrder(IdentityToken, OrderId)).Throw(new ArgumentException());
+            var service = new OrderService(repository, this.logger);
+            var request = new RemoveOrderRequest { IdentityToken = IdentityToken, Id = OrderId };
 
             // act
+            mock.ReplayAll();
             var actual = service.RemoveOrder(request);
+            mock.VerifyAll();
 
             // assert
             Assert.That(actual, Is.Not.Null);
-            Assert.That(actual.MessageType, Is.EqualTo(MessageType.Warning));
+            Assert.That(actual.MessageType, Is.EqualTo(MessageType.Error));
         }
     }
 }
