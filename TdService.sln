@@ -33,7 +33,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TdService.UI.Web.Controller
 EndProject
 Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "TdService.Modeling", "TdService.Modeling\TdService.Modeling.modelproj", "{468BBD3F-058E-4C14-932A-8E15234411DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TdService.ShopAnyWare.Specs", "TdService.Specs\TdService.ShopAnyWare.Specs.csproj", "{F55B2888-785A-4CEA-A0D7-E4A99ACE30C4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TdService.ShopAnyWare.Specs", "TdService.ShopAnyWare.Specs\TdService.ShopAnyWare.Specs.csproj", "{F55B2888-785A-4CEA-A0D7-E4A99ACE30C4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TdService.Services", "TdService.Services\TdService.Services.csproj", "{A9DEDA99-A27D-4687-B912-46F339EA36A4}"
 EndProject
