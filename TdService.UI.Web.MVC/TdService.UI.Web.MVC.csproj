@@ -43,7 +43,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DeployIisAppPath>shopanyware</DeployIisAppPath>
+    <DeployIisAppPath>tdservice</DeployIisAppPath>
     <PublishDatabases>false</PublishDatabases>
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <IncludeIisSettings>false</IncludeIisSettings>
