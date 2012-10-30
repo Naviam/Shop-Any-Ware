@@ -17,9 +17,9 @@ Scenario: Add item to an order
 	| IPAD3  | 1        | 780.40 | 600    |
 	| Kindle | 5        | 130.95 | 200    |
 	Then the order item view model should be as follows
-	| Order Id | Id | Name   | Quantity | Price  | Weight | Message Type |
-	| 1        | 1  | IPAD3  | 1        | 780.40 | 600    | Success      |
-	| 1        | 2  | Kindle | 5        | 130.95 | 200    | Success      |
+	| Order Id | Id | Name   | Quantity | Price  | WeightPounds | Message Type |
+	| 1        | 1  | IPAD3  | 1        | 780.40 | 600          | Success      |
+	| 1        | 2  | Kindle | 5        | 130.95 | 200          | Success      |
 
 @removeorderitem
 Scenario: Remove item from an order
@@ -37,7 +37,7 @@ Scenario: Remove item from an order
     | Order Id | Id |
     | 1        | 1  |
     Then the order item view model should be as follows
-    | Order Id | Name | Quantity | Price | Weight | Message Type |
+    | Order Id | Name | Quantity | Price | WeightPounds | Message Type |
     | 1        |      |          |       |        | Success      |
 
 @updateorderitem

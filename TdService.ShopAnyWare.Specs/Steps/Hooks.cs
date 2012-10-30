@@ -85,6 +85,18 @@ namespace TdService.ShopAnyWare.Specs.Steps
         /// <summary>
         /// The before order scenarios.
         /// </summary>
+        [BeforeScenario("items")]
+        public static void BeforeItemsScenarios()
+        {
+            var itemsRepository = new ItemsRepository();
+            var packageRepository = new PackageRepository();
+            var itemsService = new ItemsService(itemsRepository, packageRepository);
+            ScenarioContext.Current.Set(itemsService);
+        }
+
+        /// <summary>
+        /// The before order scenarios.
+        /// </summary>
         [BeforeScenario("orders")]
         public static void BeforeOrderScenarios()
         {

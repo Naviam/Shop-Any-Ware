@@ -100,13 +100,5 @@ namespace TdService.Model.Items
         /// The item id.
         /// </param>
         void RemoveItem(int itemId);
-
-        /// <summary>
-        /// Save changes to db.
-        /// </summary>
-        /// <returns>
-        /// The result of operation.
-        /// </returns>
-        int SaveChanges();
     }
 }

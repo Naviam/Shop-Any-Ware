@@ -36,7 +36,9 @@ namespace TdService.ShopAnyWare.Specs.Steps
         /// </returns>
         public ItemsController GetItemsController()
         {
-            return new ItemsController(ScenarioContext.Current.Get<ItemsService>(), ScenarioContext.Current.Get<FakeFormsAuthentication>());
+            var itemService = ScenarioContext.Current.Get<ItemsService>();
+            var fakeFormsAuthentication = ScenarioContext.Current.Get<FakeFormsAuthentication>();
+            return new ItemsController(itemService, fakeFormsAuthentication);
         }
 
         /// <summary>
@@ -104,7 +106,9 @@ namespace TdService.ShopAnyWare.Specs.Steps
         [Then(@"the order item view model should be as follows")]
         public void ThenTheOrderItemViewModelShouldBeAsFollows(Table table)
         {
-            ScenarioContext.Current.Pending();
+            var actual = ScenarioContext.Current.Get<List<OrderItemViewModel>>();
+            Assert.That(actual, Is.Not.Null);
+            table.CompareToSet(actual);
         }
     }
 }

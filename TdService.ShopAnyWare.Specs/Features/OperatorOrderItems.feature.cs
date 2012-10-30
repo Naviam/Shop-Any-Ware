@@ -129,7 +129,7 @@ this.ScenarioSetup(scenarioInfo);
                         "Name",
                         "Quantity",
                         "Price",
-                        "Weight",
+                        "WeightPounds",
                         "Message Type"});
             table3.AddRow(new string[] {
                         "1",
@@ -224,7 +224,7 @@ this.ScenarioSetup(scenarioInfo);
                         "Name",
                         "Quantity",
                         "Price",
-                        "Weight",
+                        "WeightPounds",
                         "Message Type"});
             table7.AddRow(new string[] {
                         "1",

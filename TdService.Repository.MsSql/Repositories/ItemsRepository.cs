@@ -13,7 +13,6 @@ namespace TdService.Repository.MsSql.Repositories
     using System.Data;
     using System.Linq;
 
-    using TdService.Model.Common;
     using TdService.Model.Items;
 
     /// <summary>
@@ -21,22 +20,6 @@ namespace TdService.Repository.MsSql.Repositories
     /// </summary>
     public class ItemsRepository : IItemsRepository
     {
-        /// <summary>
-        /// Shop any ware db context.
-        /// </summary>
-        private readonly ShopAnyWareSql context;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ItemsRepository"/> class.
-        /// </summary>
-        /// <param name="context">
-        /// The context.
-        /// </param>
-        public ItemsRepository(ShopAnyWareSql context)
-        {
-            this.context = context;
-        }
-
         /// <summary>
         /// Get item by Id.
         /// </summary>
@@ -48,7 +31,10 @@ namespace TdService.Repository.MsSql.Repositories
         /// </returns>
         public Item GetItemById(int itemId)
         {
-            return this.context.Items.Find(itemId);
+            using (var context = new ShopAnyWareSql())
+            {
+                return context.Items.Find(itemId);
+            }
         }
 
         /// <summary>
@@ -62,8 +48,11 @@ namespace TdService.Repository.MsSql.Repositories
         /// </returns>
         public List<Item> GetOrderItems(int orderId)
         {
-            var order = this.context.Orders.Include("Items").SingleOrDefault(o => o.Id == orderId);
-            return order != null ? order.Items : null;
+            using (var context = new ShopAnyWareSql())
+            {
+                var order = context.Orders.Include("Items").SingleOrDefault(o => o.Id == orderId);
+                return order != null ? order.Items : null;
+            }
         }
 
         /// <summary>
@@ -77,8 +66,11 @@ namespace TdService.Repository.MsSql.Repositories
         /// </returns>
         public List<Item> GetPackageItems(int packageId)
         {
-            var package = this.context.Packages.Include("Items").SingleOrDefault(p => p.Id == packageId);
-            return package != null ? package.Items : null;
+            using (var context = new ShopAnyWareSql())
+            {
+                var package = context.Packages.Include("Items").SingleOrDefault(p => p.Id == packageId);
+                return package != null ? package.Items : null;
+            }
         }
 
         /// <summary>
@@ -95,19 +87,23 @@ namespace TdService.Repository.MsSql.Repositories
         /// </returns>
         public Item AddItemToOrder(int orderId, Item item)
         {
-            var newItem = this.context.Items.Add(item);
-            var order = this.context.Orders.Include("Items").SingleOrDefault(o => o.Id == orderId);
-            if (order != null)
+            using (var context = new ShopAnyWareSql())
             {
-                if (order.Items == null)
+                var newItem = context.Items.Add(item);
+                var order = context.Orders.Include("Items").SingleOrDefault(o => o.Id == orderId);
+                if (order != null)
                 {
-                    order.Items = new List<Item>();
+                    if (order.Items == null)
+                    {
+                        order.Items = new List<Item>();
+                    }
+
+                    order.Items.Add(newItem);
+                    context.SaveChanges();
                 }
 
-                order.Items.Add(newItem);
+                return newItem;
             }
-
-            return newItem;
         }
 
         /// <summary>
@@ -121,11 +117,15 @@ namespace TdService.Repository.MsSql.Repositories
         /// </param>
         public void AttachItemToPackage(int packageId, int itemId)
         {
-            var item = this.context.Items.Find(itemId);
-            var package = this.context.Packages.Include("Items").SingleOrDefault(p => p.Id == packageId);
-            if (package != null)
+            using (var context = new ShopAnyWareSql())
             {
-                package.Items.Add(item);
+                var item = context.Items.Find(itemId);
+                var package = context.Packages.Include("Items").SingleOrDefault(p => p.Id == packageId);
+                if (package != null)
+                {
+                    package.Items.Add(item);
+                    context.SaveChanges();
+                }
             }
         }
 
@@ -140,14 +140,18 @@ namespace TdService.Repository.MsSql.Repositories
         /// </param>
         public void DetachItemFromPackage(int packageId, int itemId)
         {
-            var package = this.context.Packages.Include("Items").SingleOrDefault(p => p.Id == packageId);
-            if (package != null)
+            using (var context = new ShopAnyWareSql())
             {
-                var itemToDetach = package.Items.SingleOrDefault(i => i.Id == itemId);
-
-                if (itemToDetach != null)
+                var package = context.Packages.Include("Items").SingleOrDefault(p => p.Id == packageId);
+                if (package != null)
                 {
-                    package.Items.Remove(itemToDetach);
+                    var itemToDetach = package.Items.SingleOrDefault(i => i.Id == itemId);
+
+                    if (itemToDetach != null)
+                    {
+                        package.Items.Remove(itemToDetach);
+                        context.SaveChanges();
+                    }
                 }
             }
         }
@@ -160,7 +164,11 @@ namespace TdService.Repository.MsSql.Repositories
         /// </param>
         public void UpdateItem(Item item)
         {
-            this.context.Entry(item).State = EntityState.Modified;
+            using (var context = new ShopAnyWareSql())
+            {
+                context.Entry(item).State = EntityState.Modified;
+                context.SaveChanges();
+            }
         }
 
         /// <summary>
@@ -171,19 +179,12 @@ namespace TdService.Repository.MsSql.Repositories
         /// </param>
         public void RemoveItem(int itemId)
         {
-            var item = this.context.Items.Find(itemId);
-            this.context.Items.Remove(item);
-        }
-
-        /// <summary>
-        /// Save changes to db.
-        /// </summary>
-        /// <returns>
-        /// The result of operation.
-        /// </returns>
-        public int SaveChanges()
-        {
-            return this.context.SaveChanges();
+            using (var context = new ShopAnyWareSql())
+            {
+                var item = context.Items.Find(itemId);
+                context.Items.Remove(item);
+                context.SaveChanges();
+            }
         }
     }
 }
