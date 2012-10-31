@@ -5,7 +5,7 @@ SQL Compare
 Version:9.0.0.79-->
 <Project version="1" type="SQLComparisonToolsProject">
   <DataSource1 version="1" type="FolderDataSource">
-    <Path>C:\Codebase\TD-Service\TdService.ShopAnyWare.Database</Path>
+    <Path>TdService.ShopAnyWare.Database</Path>
     <DatabaseName>TdService.ShopAnyWare.Database</DatabaseName>
     <ServerName>Scripts</ServerName>
     <GetLatestVersion>False</GetLatestVersion>
