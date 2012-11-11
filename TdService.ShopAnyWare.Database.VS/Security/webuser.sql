@@ -1,0 +1,2 @@
+﻿CREATE USER [webuser] WITHOUT LOGIN;
+
