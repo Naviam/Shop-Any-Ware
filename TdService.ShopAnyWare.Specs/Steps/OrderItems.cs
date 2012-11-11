@@ -58,13 +58,16 @@ namespace TdService.ShopAnyWare.Specs.Steps
             var actuals = new List<OrderItemViewModel>();
             foreach (var itemViewModel in itemViewModels)
             {
+                itemViewModel.OrderId = orderId;
                 var result = contoller.AddItemToOrder(itemViewModel) as JsonNetResult;
                 Assert.That(result, Is.Not.Null);
-                if (result != null)
+                if (result == null)
                 {
-                    var actual = result.Data as OrderItemViewModel;
-                    actuals.Add(actual);
+                    continue;
                 }
+
+                var actual = result.Data as OrderItemViewModel;
+                actuals.Add(actual);
             }
 
             ScenarioContext.Current.Set(actuals);
@@ -79,7 +82,23 @@ namespace TdService.ShopAnyWare.Specs.Steps
         [When(@"I remove the following order items")]
         public void WhenIRemoveTheFollowingOrderItems(Table table)
         {
-            ScenarioContext.Current.Pending();
+            var contoller = this.GetItemsController();
+            var itemViewModels = table.CreateSet<OrderItemViewModel>();
+            var actuals = new List<OrderItemViewModel>();
+            foreach (var itemViewModel in itemViewModels)
+            {
+                var result = contoller.RemoveItem(itemViewModel) as JsonNetResult;
+                Assert.That(result, Is.Not.Null);
+                if (result == null)
+                {
+                    continue;
+                }
+
+                var actual = result.Data as OrderItemViewModel;
+                actuals.Add(actual);
+            }
+
+            ScenarioContext.Current.Set(actuals);
         }
 
         /// <summary>

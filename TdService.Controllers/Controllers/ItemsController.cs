@@ -60,10 +60,11 @@ namespace TdService.UI.Web.Controllers
         {
             var request = itemViewModel.ConvertToAddItemToOrderRequest();
             var response = this.itemsService.AddItemToOrder(request);
+            var data = response.ConvertToOrderItemViewModel();
             var jsonNetResult = new JsonNetResult
             {
                 Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
-                Data = response.ConvertToOrderItemViewModel()
+                Data = data
             };
             return jsonNetResult;
         }
@@ -99,7 +100,7 @@ namespace TdService.UI.Web.Controllers
         /// The package id.
         /// </param>
         /// <returns>
-        /// The json result of item view models.
+        /// The <see cref="ActionResult"/>.
         /// </returns>
         [HttpPost]
         [Authorize(Roles = "Shopper, Operator")]
@@ -114,6 +115,32 @@ namespace TdService.UI.Web.Controllers
                 Data = response.ConvertToPackageItemViewModelCollection()
             };
             return jsonNetResult;
+        }
+
+        /// <summary>
+        /// The remove item.
+        /// </summary>
+        /// <param name="itemViewModel">
+        /// The item view model.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ActionResult"/>.
+        /// </returns>
+        [HttpPost]
+        [Authorize(Roles = "Shopper, Operator")]
+        public ActionResult RemoveItem(OrderItemViewModel itemViewModel)
+        {
+            return null;
+
+            ////var request = new RemoveItemRequest();
+            ////request = itemViewModel.ConvertToRemoveItemRequest();
+            ////var response = this.itemsService.RemoveItem(request);
+            ////var jsonNetResult = new JsonNetResult
+            ////{
+            ////    Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+            ////    Data = response.ConvertToOrderItemViewModel()
+            ////};
+            ////return jsonNetResult;
         }
     }
 }

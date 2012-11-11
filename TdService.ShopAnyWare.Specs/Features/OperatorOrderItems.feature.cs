@@ -109,17 +109,20 @@ this.ScenarioSetup(scenarioInfo);
                         "Name",
                         "Quantity",
                         "Price",
-                        "Weight"});
+                        "Weight Pounds",
+                        "Weight Ounces"});
             table2.AddRow(new string[] {
                         "IPAD3",
                         "1",
                         "780.40",
-                        "600"});
+                        "600",
+                        "20"});
             table2.AddRow(new string[] {
                         "Kindle",
                         "5",
                         "130.95",
-                        "200"});
+                        "200",
+                        "10"});
 #line 15
  testRunner.When("I add the following items to order \'1\'", ((string)(null)), table2, "When ");
 #line hidden
@@ -129,7 +132,8 @@ this.ScenarioSetup(scenarioInfo);
                         "Name",
                         "Quantity",
                         "Price",
-                        "WeightPounds",
+                        "Weight Pounds",
+                        "Weight Ounces",
                         "Message Type"});
             table3.AddRow(new string[] {
                         "1",
@@ -138,6 +142,7 @@ this.ScenarioSetup(scenarioInfo);
                         "1",
                         "780.40",
                         "600",
+                        "20",
                         "Success"});
             table3.AddRow(new string[] {
                         "1",
@@ -146,6 +151,7 @@ this.ScenarioSetup(scenarioInfo);
                         "5",
                         "130.95",
                         "200",
+                        "10",
                         "Success"});
 #line 19
  testRunner.Then("the order item view model should be as follows", ((string)(null)), table3, "Then ");
@@ -194,19 +200,22 @@ this.ScenarioSetup(scenarioInfo);
                         "Name",
                         "Quantity",
                         "Price",
-                        "Weight"});
+                        "Weight Pounds",
+                        "Weight Ounces"});
             table5.AddRow(new string[] {
                         "1",
                         "IPAD3",
                         "1",
                         "780.40",
-                        "600"});
+                        "600",
+                        "10"});
             table5.AddRow(new string[] {
                         "2",
                         "Kindle",
                         "5",
                         "130.95",
-                        "200"});
+                        "200",
+                        "12"});
 #line 32
     testRunner.And("there are following items for order \'1\' in database", ((string)(null)), table5, "And ");
 #line hidden
@@ -224,10 +233,12 @@ this.ScenarioSetup(scenarioInfo);
                         "Name",
                         "Quantity",
                         "Price",
-                        "WeightPounds",
+                        "Weight Pounds",
+                        "Weight Ounces",
                         "Message Type"});
             table7.AddRow(new string[] {
                         "1",
+                        "",
                         "",
                         "",
                         "",

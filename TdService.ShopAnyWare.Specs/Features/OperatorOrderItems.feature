@@ -13,13 +13,13 @@ Scenario: Add item to an order
     | 1  | amazon.com | 1234567890   | 1234567890      | New      |
     | 2  | macys.com  | 1234567891   | 1234567891      | Received |
 	When I add the following items to order '1'
-	| Name   | Quantity | Price  | Weight |
-	| IPAD3  | 1        | 780.40 | 600    |
-	| Kindle | 5        | 130.95 | 200    |
+	| Name   | Quantity | Price  | Weight Pounds | Weight Ounces |
+	| IPAD3  | 1        | 780.40 | 600           | 20            |
+	| Kindle | 5        | 130.95 | 200           | 10            |
 	Then the order item view model should be as follows
-	| Order Id | Id | Name   | Quantity | Price  | WeightPounds | Message Type |
-	| 1        | 1  | IPAD3  | 1        | 780.40 | 600          | Success      |
-	| 1        | 2  | Kindle | 5        | 130.95 | 200          | Success      |
+	| Order Id | Id | Name   | Quantity | Price  | Weight Pounds | Weight Ounces | Message Type |
+	| 1        | 1  | IPAD3  | 1        | 780.40 | 600           | 20            | Success      |
+	| 1        | 2  | Kindle | 5        | 130.95 | 200           | 10            | Success      |
 
 @removeorderitem
 Scenario: Remove item from an order
@@ -30,15 +30,15 @@ Scenario: Remove item from an order
     | 1  | amazon.com | 1234567890   | 1234567890      | New      |
     | 2  | macys.com  | 1234567891   | 1234567891      | Received |
     And there are following items for order '1' in database
-    | Id | Name   | Quantity | Price  | Weight |
-    | 1  | IPAD3  | 1        | 780.40 | 600    |
-    | 2  | Kindle | 5        | 130.95 | 200    |
+    | Id | Name   | Quantity | Price  | Weight Pounds | Weight Ounces |
+    | 1  | IPAD3  | 1        | 780.40 | 600           | 10            |
+    | 2  | Kindle | 5        | 130.95 | 200           | 12            |
     When I remove the following order items
     | Order Id | Id |
     | 1        | 1  |
     Then the order item view model should be as follows
-    | Order Id | Name | Quantity | Price | WeightPounds | Message Type |
-    | 1        |      |          |       |        | Success      |
+    | Order Id | Name | Quantity | Price | Weight Pounds | Weight Ounces | Message Type |
+    | 1        |      |          |       |               |               | Success      |
 
 @updateorderitem
 Scenario: Update order item

@@ -84,7 +84,8 @@ namespace TdService.Services.Implementations
 
             var addedItem = this.itemsRepository.AddItemToOrder(request.OrderId, item);
             var response = addedItem.ConvertToAddItemToOrderResponse();
-            response.MessageType = MessageType.Warning;
+            response.OrderId = request.OrderId;
+            response.MessageType = MessageType.Success;
             response.Message = "The item has been added successfully.";
             return response;
         }

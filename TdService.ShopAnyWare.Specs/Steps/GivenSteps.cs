@@ -12,12 +12,14 @@ namespace TdService.ShopAnyWare.Specs.Steps
     using System;
     using System.Collections.Generic;
     using System.Data;
+    using System.Diagnostics;
     using System.Linq;
 
     using AutoMapper;
 
     using TdService.Model.Addresses;
     using TdService.Model.Balance;
+    using TdService.Model.Common;
     using TdService.Model.Items;
     using TdService.Model.Membership;
     using TdService.Model.Orders;
@@ -36,7 +38,7 @@ namespace TdService.ShopAnyWare.Specs.Steps
     public class GivenSteps
     {
         /// <summary>
-        /// The given there is account with password in role with fullname and.
+        /// The given there is account with password in role with full name and.
         /// </summary>
         /// <param name="email">
         /// The email.
@@ -208,16 +210,67 @@ namespace TdService.ShopAnyWare.Specs.Steps
         [Given(@"there are following items for order '(.*)' in database")]
         public void GivenThereAreFollowingItemsForOrderInDatabase(int orderId, Table table)
         {
-            var items = table.CreateSet<Item>();
+            ScenarioContext.Current.Set(orderId, "OrderId");
+            var items = new List<Item>();
+            foreach (var row in table.Rows)
+            {
+                var t = new Table(table.Header.ToArray());
+                t.AddRow(row);
+                var item = t.CreateInstance<Item>();
+                string test;
+                item.Weight = new Weight
+                    {
+                        Pounds = row.TryGetValue("Weight Pounds", out test)
+                        ? Convert.ToInt32(row["Weight Pounds"]) : 0,
+                        Ounces = row.TryGetValue("Weight Ounces", out test)
+                        ? Convert.ToDecimal(row["Weight Ounces"]) : 0
+                    };
+                item.Dimensions = new Dimensions
+                    {
+                        Girth = row.TryGetValue("Dimensions Girth", out test)
+                        ? Convert.ToDecimal(row["Dimensions Girth"]) : 0,
+                        Height = row.TryGetValue("Dimensions Height", out test)
+                        ? Convert.ToDecimal(row["Dimensions Height"]) : 0,
+                        Length = row.TryGetValue("Dimensions Length", out test)
+                        ? Convert.ToDecimal(row["Dimensions Length"]) : 0,
+                        Width = row.TryGetValue("Dimensions Width", out test)
+                        ? Convert.ToDecimal(row["Dimensions Width"]) : 0
+                    };
+                items.Add(item);
+            }
+
+            ////var items = table.CreateSet<Item>();
             using (var context = new ShopAnyWareSql())
             {
-                var order = context.Orders.Find(orderId);
+                var order = context.Orders.Include("Items").SingleOrDefault(o => o.Id == orderId);
+
+                if (order == null)
+                {
+                    return;
+                }
+
                 foreach (var item in items)
                 {
+                    if (item.Weight == null)
+                    {
+                        item.Weight = new Weight();
+                    }
+
+                    if (item.Dimensions == null)
+                    {
+                        item.Dimensions = new Dimensions();
+                    }
+
+                    if (order.Items == null)
+                    {
+                        order.Items = new List<Item>();
+                    }
+
                     order.Items.Add(item);
                 }
 
                 context.SaveChanges();
+                ScenarioContext.Current.Set(order.Items);
             }
         }
 
@@ -233,21 +286,19 @@ namespace TdService.ShopAnyWare.Specs.Steps
         [StepArgumentTransformation]
         public IEnumerable<Order> OrdersTransform(Table ordersTable)
         {
-            foreach (var tableRow in ordersTable.Rows)
-            {
-                var retailer = new Retailer(tableRow["Retailer"]);
-                var orderNumber = tableRow["Order Number"];
-                var trackingNumber = tableRow["Tracking Number"];
-                var statusText = tableRow["Status"];
-                var status = (OrderStatus)Enum.Parse(typeof(OrderStatus), statusText);
-                yield return new Order(status)
-                    {
+            return from tableRow in ordersTable.Rows
+                   let retailer = new Retailer(tableRow["Retailer"])
+                   let orderNumber = tableRow["Order Number"]
+                   let trackingNumber = tableRow["Tracking Number"]
+                   let statusText = tableRow["Status"]
+                   let status = (OrderStatus)Enum.Parse(typeof(OrderStatus), statusText)
+                   select new Order(status)
+                   {
                         Retailer = retailer,
                         OrderNumber = orderNumber,
                         TrackingNumber = trackingNumber,
                         CreatedDate = DateTime.UtcNow
-                    };
-            }
+                   };
         }
     }
 }

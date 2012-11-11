@@ -80,6 +80,8 @@
     <Compile Include="Messaging\Item\GetPackageItemsRequest.cs" />
     <Compile Include="Messaging\Item\GetPackageItemsResponse.cs" />
     <Compile Include="Messaging\Item\ItemDto.cs" />
+    <Compile Include="Messaging\Item\RemoveItemRequest.cs" />
+    <Compile Include="Messaging\Item\RemoveItemResponse.cs" />
     <Compile Include="Messaging\Membership\GetUserRolesRequest.cs" />
     <Compile Include="Messaging\Membership\GetUserRolesResponse.cs" />
     <Compile Include="Messaging\Order\GetAllOrdersRequest.cs" />

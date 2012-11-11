@@ -208,8 +208,7 @@ namespace TdService.UI.Web
                 .ForMember(r => r.Message, opt => opt.Ignore())
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
-            Mapper.CreateMap<AddItemToOrderResponse, OrderItemViewModel>()
-                .ForMember(r => r.OrderId, opt => opt.Ignore());
+            Mapper.CreateMap<AddItemToOrderResponse, OrderItemViewModel>();
 
             // get order items
             Mapper.CreateMap<Item, GetOrderItemsResponse>()

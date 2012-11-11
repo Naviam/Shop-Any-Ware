@@ -119,6 +119,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AdminOrders.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\AmazonSimpleEmailServiceIntegration.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AmazonSimpleEmailServiceIntegration.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\ConsultantOrders.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -202,13 +207,19 @@
     <Content Include="App_Data\ShopAnyWareTests.sdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="App_Data\retailers.xls">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Features\AdminOrders.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>AdminOrders.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\AmazonSimpleEmailServiceIntegration.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>AmazonSimpleEmailServiceIntegration.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\ConsultantOrders.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

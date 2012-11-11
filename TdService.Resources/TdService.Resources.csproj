@@ -109,6 +109,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LayoutViewResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Views\OurServiceViewResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OurServiceViewResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Views\ProfileViewResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -191,6 +196,11 @@
       <LastGenOutput>LayoutViewResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\LayoutViewResources.ru.resx" />
+    <EmbeddedResource Include="Views\OurServiceViewResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>OurServiceViewResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\OurServiceViewResources.ru.resx" />
     <EmbeddedResource Include="Views\ProfileViewResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ProfileViewResources.Designer.cs</LastGenOutput>
