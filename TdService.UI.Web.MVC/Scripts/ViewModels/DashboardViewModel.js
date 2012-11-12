@@ -470,7 +470,7 @@ function DashboardViewModel(serverModel) {
             alert('success');
         });
     };
-    self.trackPackage("123");
+    ////self.trackPackage("123");
 
     self.getRecentOrders = function() {
         /// <summary>Load recent orders from server.</summary>
