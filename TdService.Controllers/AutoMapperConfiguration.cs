@@ -210,6 +210,16 @@ namespace TdService.UI.Web
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
             Mapper.CreateMap<AddItemToOrderResponse, OrderItemViewModel>();
 
+            // remove order item
+            Mapper.CreateMap<OrderItemViewModel, RemoveItemRequest>()
+                .ForMember(r => r.IdentityToken, opt => opt.Ignore());
+            Mapper.CreateMap<Item, RemoveItemResponse>()
+                .ForMember(r => r.OrderId, opt => opt.Ignore())
+                .ForMember(r => r.Message, opt => opt.Ignore())
+                .ForMember(r => r.ErrorCode, opt => opt.Ignore())
+                .ForMember(r => r.MessageType, opt => opt.Ignore());
+            Mapper.CreateMap<RemoveItemResponse, OrderItemViewModel>();
+
             // get order items
             Mapper.CreateMap<Item, GetOrderItemsResponse>()
                 .ForMember(r => r.BrokenRules, opt => opt.Ignore())

@@ -65,5 +65,33 @@ namespace TdService.UI.Web.Mapping
         {
             return Mapper.Map<OrderItemViewModel, AddItemToOrderRequest>(orderItemViewModel);
         }
+
+        /// <summary>
+        /// The convert to remove item request.
+        /// </summary>
+        /// <param name="orderItemViewModel">
+        /// The order item view model.
+        /// </param>
+        /// <returns>
+        /// The <see cref="RemoveItemRequest"/>.
+        /// </returns>
+        public static RemoveItemRequest ConvertToRemoveItemRequest(this OrderItemViewModel orderItemViewModel)
+        {
+            return Mapper.Map<OrderItemViewModel, RemoveItemRequest>(orderItemViewModel);
+        }
+
+        /// <summary>
+        /// The convert to remove item request.
+        /// </summary>
+        /// <param name="response">
+        /// The response.
+        /// </param>
+        /// <returns>
+        /// The <see cref="OrderItemViewModel"/>.
+        /// </returns>
+        public static OrderItemViewModel ConvertToOrderItemViewModel(this RemoveItemResponse response)
+        {
+            return Mapper.Map<RemoveItemResponse, OrderItemViewModel>(response);
+        }
     }
 }

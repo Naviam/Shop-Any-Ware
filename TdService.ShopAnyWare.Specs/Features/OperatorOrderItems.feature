@@ -37,8 +37,8 @@ Scenario: Remove item from an order
     | Order Id | Id |
     | 1        | 1  |
     Then the order item view model should be as follows
-    | Order Id | Name | Quantity | Price | Weight Pounds | Weight Ounces | Message Type |
-    | 1        |      |          |       |               |               | Success      |
+    | Order Id | Name  | Quantity | Price  | Weight Pounds | Weight Ounces | Message Type |
+    | 1        | IPAD3 | 1        | 780.40 | 600           | 10            | Success      |
 
 @updateorderitem
 Scenario: Update order item

@@ -99,6 +99,12 @@ namespace TdService.Model.Items
         /// <param name="itemId">
         /// The item id.
         /// </param>
-        void RemoveItem(int itemId);
+        /// <param name="orderId">
+        /// The order Id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Item"/>.
+        /// </returns>
+        Item RemoveItem(int itemId, int orderId);
     }
 }

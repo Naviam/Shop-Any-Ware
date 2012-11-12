@@ -130,17 +130,14 @@ namespace TdService.UI.Web.Controllers
         [Authorize(Roles = "Shopper, Operator")]
         public ActionResult RemoveItem(OrderItemViewModel itemViewModel)
         {
-            return null;
-
-            ////var request = new RemoveItemRequest();
-            ////request = itemViewModel.ConvertToRemoveItemRequest();
-            ////var response = this.itemsService.RemoveItem(request);
-            ////var jsonNetResult = new JsonNetResult
-            ////{
-            ////    Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
-            ////    Data = response.ConvertToOrderItemViewModel()
-            ////};
-            ////return jsonNetResult;
+            var request = itemViewModel.ConvertToRemoveItemRequest();
+            var response = this.itemsService.RemoveItem(request);
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = response.ConvertToOrderItemViewModel()
+            };
+            return jsonNetResult;
         }
     }
 }

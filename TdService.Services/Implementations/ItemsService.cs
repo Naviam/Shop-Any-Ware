@@ -143,5 +143,22 @@ namespace TdService.Services.Implementations
             var packageItems = this.itemsRepository.GetPackageItems(request.PackageId);
             return packageItems.ConvertToGetPackageItemsResponse();
         }
+
+        /// <summary>
+        /// The remove item.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="RemoveItemResponse"/>.
+        /// </returns>
+        public RemoveItemResponse RemoveItem(RemoveItemRequest request)
+        {
+            var removedItem = this.itemsRepository.RemoveItem(request.Id, request.OrderId);
+            var response = removedItem.ConvertToRemoveItemResponse();
+            response.OrderId = request.OrderId;
+            return response;
+        }
     }
 }

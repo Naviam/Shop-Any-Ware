@@ -77,5 +77,19 @@ namespace TdService.Services.Mapping
         {
             return Mapper.Map<Item, AddItemToOrderResponse>(item);
         }
+
+        /// <summary>
+        /// The convert to remove item response.
+        /// </summary>
+        /// <param name="item">
+        /// The item.
+        /// </param>
+        /// <returns>
+        /// The <see cref="RemoveItemResponse"/>.
+        /// </returns>
+        public static RemoveItemResponse ConvertToRemoveItemResponse(this Item item)
+        {
+            return Mapper.Map<Item, RemoveItemResponse>(item);
+        }
     }
 }

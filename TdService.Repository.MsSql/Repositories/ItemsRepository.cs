@@ -177,13 +177,26 @@ namespace TdService.Repository.MsSql.Repositories
         /// <param name="itemId">
         /// The item id.
         /// </param>
-        public void RemoveItem(int itemId)
+        /// <param name="orderId">
+        /// The order Id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Item"/>.
+        /// </returns>
+        public Item RemoveItem(int itemId, int orderId)
         {
             using (var context = new ShopAnyWareSql())
             {
+                var order = context.Orders.Include("Items").SingleOrDefault(o => o.Id == orderId);
                 var item = context.Items.Find(itemId);
-                context.Items.Remove(item);
+                if (order != null)
+                {
+                    order.Items.Remove(item);
+                }
+
+                var removedItem = context.Items.Remove(item);
                 context.SaveChanges();
+                return removedItem;
             }
         }
     }

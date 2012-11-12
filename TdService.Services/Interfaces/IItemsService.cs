@@ -61,5 +61,16 @@ namespace TdService.Services.Interfaces
         /// The get package items response.
         /// </returns>
         List<GetPackageItemsResponse> GetPackageItems(GetPackageItemsRequest request);
+
+        /// <summary>
+        /// The remove item.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="RemoveItemResponse"/>.
+        /// </returns>
+        RemoveItemResponse RemoveItem(RemoveItemRequest request);
     }
 }

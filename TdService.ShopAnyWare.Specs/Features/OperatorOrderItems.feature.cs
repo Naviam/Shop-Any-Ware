@@ -238,11 +238,11 @@ this.ScenarioSetup(scenarioInfo);
                         "Message Type"});
             table7.AddRow(new string[] {
                         "1",
-                        "",
-                        "",
-                        "",
-                        "",
-                        "",
+                        "IPAD3",
+                        "1",
+                        "780.40",
+                        "600",
+                        "10",
                         "Success"});
 #line 39
     testRunner.Then("the order item view model should be as follows", ((string)(null)), table7, "Then ");
