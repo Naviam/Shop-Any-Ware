@@ -11,6 +11,8 @@ namespace TdService.Services.Implementations
 {
     using System;
     using System.Collections.Generic;
+
+    using TdService.Model.Common;
     using TdService.Model.Membership;
     using TdService.Model.Packages;
     using TdService.Resources.Views;
@@ -102,7 +104,7 @@ namespace TdService.Services.Implementations
         /// </returns>
         public AddPackageResponse AddPackage(AddPackageRequest request)
         {
-            var newPackage = new Package { Name = request.Name, CreatedDate = DateTime.UtcNow };
+            var newPackage = new Package { Name = request.Name, CreatedDate = DateTime.UtcNow, Weight = new Weight(), Dimensions = new Dimensions() };
             var packageResult = this.packageRepository.AddPackage(request.IdentityToken, newPackage);
             return packageResult.ConvertToAddPackageResponse();
         }
