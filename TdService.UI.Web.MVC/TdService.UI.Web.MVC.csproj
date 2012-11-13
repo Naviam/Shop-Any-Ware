@@ -202,16 +202,6 @@
     <Content Include="Content\img\story_collapsed1.png" />
     <Content Include="Content\img\story_expanded1.png" />
     <Content Include="Content\img\white_bg.jpg" />
-    <Content Include="Content\less\bootstrap-responsive.css" />
-    <Content Include="Content\less\bootstrap.css">
-      <DependentUpon>bootstrap.less</DependentUpon>
-    </Content>
-    <Content Include="Content\less\bootstrap.min.css">
-      <DependentUpon>bootstrap.less</DependentUpon>
-    </Content>
-    <Content Include="Content\less\docs.css" />
-    <Content Include="Content\less\responsive.css" />
-    <Content Include="Content\less\responsive.min.css" />
     <Content Include="Content\noty\jquery.noty.css" />
     <Content Include="Content\noty\noty_theme_default.css" />
     <Content Include="Content\noty\noty_theme_twitter.css" />
@@ -245,8 +235,6 @@
     <Content Include="Scripts\html5placeholder.jquery.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
-    <Content Include="Scripts\jquery.autoellipsis-1.0.3.js" />
-    <Content Include="Scripts\jquery.autoellipsis-1.0.3.min.js" />
     <Content Include="Scripts\jquery.nicescroll.js" />
     <Content Include="Scripts\jquery.nicescroll.min.js" />
     <Content Include="Scripts\jquery.simpleplaceholder.js" />
@@ -257,9 +245,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\json2.js" />
     <Content Include="Scripts\json2.min.js" />
-    <Content Include="Scripts\knockout-2.0.0.js" />
-    <Content Include="Scripts\knockout-2.1.0.debug.js" />
-    <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\knockout-sortable.js" />
@@ -425,125 +410,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Content\less\accordion.less" />
-    <None Include="Content\less\alerts.less">
-      <Compile>False</Compile>
-      <Minify>False</Minify>
-    </None>
-    <None Include="Content\less\bootstrap.less" />
-    <None Include="Content\less\breadcrumbs.less">
-      <Compile>False</Compile>
-      <Minify>False</Minify>
-    </None>
-    <None Include="Content\less\button-groups.less">
-      <Compile>False</Compile>
-      <Minify>False</Minify>
-    </None>
-    <None Include="Content\less\buttons.less">
-      <Compile>False</Compile>
-      <Minify>False</Minify>
-    </None>
-    <None Include="Content\less\carousel.less" />
-    <None Include="Content\less\close.less" />
-    <None Include="Content\less\code.less">
-      <Compile>False</Compile>
-      <Minify>False</Minify>
-    </None>
-    <None Include="Content\less\component-animations.less">
-      <Compile>False</Compile>
-      <Minify>False</Minify>
-    </None>
-    <None Include="Content\less\dropdowns.less">
-      <Compile>False</Compile>
-      <Minify>False</Minify>
-    </None>
-    <None Include="Content\less\forms.less">
-      <Compile>False</Compile>
-      <Minify>False</Minify>
-    </None>
-    <None Include="Content\less\grid.less">
-      <Compile>False</Compile>
-      <Minify>False</Minify>
-    </None>
-    <None Include="Content\less\hero-unit.less">
-      <Compile>False</Compile>
-      <Minify>False</Minify>
-    </None>
-    <Content Include="Content\less\labels-badges.less" />
-    <None Include="Content\less\labels.less">
-      <Compile>False</Compile>
-      <Minify>False</Minify>
-    </None>
-    <None Include="Content\less\layouts.less" />
-    <None Include="Content\less\mixins.less">
-      <Compile>False</Compile>
-      <Minify>False</Minify>
-    </None>
-    <None Include="Content\less\modals.less">
-      <Compile>False</Compile>
-      <Minify>False</Minify>
-    </None>
-    <None Include="Content\less\navbar.less">
-      <Compile>False</Compile>
-      <Minify>False</Minify>
-    </None>
-    <None Include="Content\less\navs.less">
-      <Compile>False</Compile>
-      <Minify>False</Minify>
-    </None>
-    <None Include="Content\less\pager.less">
-      <Compile>False</Compile>
-      <Minify>False</Minify>
-    </None>
-    <None Include="Content\less\pagination.less">
-      <Compile>False</Compile>
-      <Minify>False</Minify>
-    </None>
-    <None Include="Content\less\popovers.less" />
-    <None Include="Content\less\progress-bars.less">
-      <Compile>False</Compile>
-      <Minify>False</Minify>
-    </None>
-    <None Include="Content\less\reset.less">
-      <Compile>False</Compile>
-      <Minify>False</Minify>
-    </None>
-    <Content Include="Content\less\responsive-utilities.less" />
-    <Content Include="Content\less\responsive-navbar.less" />
-    <Content Include="Content\less\responsive-768px-979px.less" />
-    <Content Include="Content\less\responsive-767px-max.less" />
-    <Content Include="Content\less\responsive-1200px-min.less" />
-    <None Include="Content\less\responsive.less">
-      <Compile>True</Compile>
-      <Minify>True</Minify>
-    </None>
-    <None Include="Content\less\scaffolding.less">
-      <Compile>False</Compile>
-      <Minify>False</Minify>
-    </None>
-    <None Include="Content\less\sprites.less">
-      <Compile>False</Compile>
-      <Minify>False</Minify>
-    </None>
-    <None Include="Content\less\tables.less">
-      <Compile>False</Compile>
-      <Minify>False</Minify>
-    </None>
-    <None Include="Content\less\thumbnails.less" />
-    <None Include="Content\less\tooltip.less" />
-    <None Include="Content\less\type.less">
-      <Compile>False</Compile>
-      <Minify>False</Minify>
-    </None>
-    <None Include="Content\less\utilities.less" />
-    <None Include="Content\less\variables.less">
-      <Compile>False</Compile>
-      <Minify>False</Minify>
-    </None>
-    <None Include="Content\less\wells.less">
-      <Compile>False</Compile>
-      <Minify>False</Minify>
-    </None>
     <Content Include="Sitemaps\TopMenu.sitemap">
       <SubType>Designer</SubType>
     </Content>
@@ -551,43 +417,6 @@
     <Content Include="Content\font\fontawesome-webfont.svgz" />
     <Content Include="Content\font\fontawesome-webfont.ttf" />
     <Content Include="Content\font\fontawesome-webfont.woff" />
-    <None Include="Content\less\accordion.less" />
-    <None Include="Content\less\alerts.less" />
-    <None Include="Content\less\badges.less" />
-    <None Include="Content\less\bootstrap.less" />
-    <None Include="Content\less\breadcrumbs.less" />
-    <None Include="Content\less\button-groups.less" />
-    <None Include="Content\less\buttons.less" />
-    <None Include="Content\less\carousel.less" />
-    <None Include="Content\less\close.less" />
-    <None Include="Content\less\code.less" />
-    <None Include="Content\less\component-animations.less" />
-    <None Include="Content\less\dropdowns.less" />
-    <None Include="Content\less\font-awesome.less" />
-    <None Include="Content\less\forms.less" />
-    <None Include="Content\less\grid.less" />
-    <None Include="Content\less\hero-unit.less" />
-    <None Include="Content\less\labels.less" />
-    <None Include="Content\less\layouts.less" />
-    <None Include="Content\less\mixins.less" />
-    <None Include="Content\less\modals.less" />
-    <None Include="Content\less\navbar.less" />
-    <None Include="Content\less\navs.less" />
-    <None Include="Content\less\pager.less" />
-    <None Include="Content\less\pagination.less" />
-    <None Include="Content\less\popovers.less" />
-    <None Include="Content\less\progress-bars.less" />
-    <None Include="Content\less\reset.less" />
-    <None Include="Content\less\responsive.less" />
-    <None Include="Content\less\scaffolding.less" />
-    <None Include="Content\less\sprites.less" />
-    <None Include="Content\less\tables.less" />
-    <None Include="Content\less\thumbnails.less" />
-    <None Include="Content\less\tooltip.less" />
-    <None Include="Content\less\type.less" />
-    <None Include="Content\less\utilities.less" />
-    <None Include="Content\less\variables.less" />
-    <None Include="Content\less\wells.less" />
     <None Include="Content\sass\font-awesome.sass" />
     <None Include="Content\sass\font-awesome.scss" />
     <None Include="Scripts\bootstrap\README.md" />
