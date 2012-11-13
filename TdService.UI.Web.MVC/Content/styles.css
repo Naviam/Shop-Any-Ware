@@ -23,22 +23,32 @@ input, textarea, select, .uneditable-input
 .navbar .nav > li > a
 {
     color: #b9b9b9;
-}
-
-.nav-pills > li > a
-{
-    margin: 1px;
-}
-
-.navbar .nav > li > a
-{
+    text-shadow: none;
     padding: 12px 10px 11px;
     line-height: normal;
 }
 
+/*.nav-pills > li > a
+{
+    margin: 1px;
+}*/
+
+.navbar .nav > li > a:focus, .navbar .nav > li > a:hover
+{
+    color: #FFFFFF;
+}
+
+.navbar .nav .active > a, .navbar .nav .active > a:hover {
+    background-color: #222222;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
 .navbar .brand
 {
+    color: #FFFFFF;
     padding: 10px 20px 12px;
+    text-shadow: none;
 }
 
 @media (min-width: 980px)
@@ -902,14 +912,12 @@ footer
 {
     background: #292727;
     margin: 40px 0 0;
-    padding: 20px 0 0;
     color: #ccc;
 }
 
     footer h3
     {
         color: white;
-        margin: 0 0 10px 0;
     }
 
     footer ul
