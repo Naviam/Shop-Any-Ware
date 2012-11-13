@@ -44,22 +44,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\ScrapySharp.1.4.3\lib\HtmlAgilityPack.dll</HintPath>
     </Reference>
-    <Reference Include="LinqToExcel">
-      <HintPath>..\packages\LinqToExcel_x64.1.6.3\lib\LinqToExcel.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\LinqToExcel_x64.1.6.3\lib\log4net.dll</HintPath>
-    </Reference>
-    <Reference Include="Remotion">
-      <HintPath>..\packages\LinqToExcel_x64.1.6.3\lib\Remotion.dll</HintPath>
-    </Reference>
-    <Reference Include="Remotion.Data.Linq">
-      <HintPath>..\packages\LinqToExcel_x64.1.6.3\lib\Remotion.Data.Linq.dll</HintPath>
-    </Reference>
-    <Reference Include="Remotion.Interfaces">
-      <HintPath>..\packages\LinqToExcel_x64.1.6.3\lib\Remotion.Interfaces.dll</HintPath>
-    </Reference>
     <Reference Include="ScrapySharp, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\ScrapySharp.1.4.3\lib\ScrapySharp.dll</HintPath>
