@@ -1157,6 +1157,10 @@ li[class^="icon-"], li[class*=" icon-"]
     content: "\f098";
 }
 
+.icon-skype:before {
+  content: "\f503";
+}
+
 .icon-twitter:before
 {
     content: "\f099";
