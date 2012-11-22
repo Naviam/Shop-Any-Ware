@@ -191,6 +191,10 @@ html
     background-color: #ffeeee;
 }
 
+.table-hover td{cursor:pointer}
+    .table-hover td a{display:block;height:100%;width:100%}
+        .table-hover td a:hover{color:#08C;text-decoration:none}
+
 .validation-summary-errors
 {
     color: #B94A48;
@@ -1145,7 +1149,7 @@ li[class^="icon-"], li[class*=" icon-"]
 {
     content: "\f003";
 }
-.icon-money:before                { content: "\f0d6"; }
+.icon-money:before{ content: "\f0d6"; }
 
 .icon-phone:before
 {
