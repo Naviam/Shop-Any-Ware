@@ -5,74 +5,58 @@
 <h2>Admin Dashboard</h2>
 <ul class="nav nav-tabs">
     <li><a href="#users" data-toggle="tab">Users</a></li>
-    <li><a href="#roles" data-toggle="tab">Roles</a></li>
+    <li><a href="#roles" data-toggle="tab">Administrators</a></li>
     <li><a href="#messages" data-toggle="tab">Messages</a></li>
     <li><a href="#settings" data-toggle="tab">Settings</a></li>
 </ul>
 
 <div class="tab-content">
     <div class="tab-pane active" id="users">
-        <form class="well form-inline" style="padding:8px 0 0">
+        <form class="well form-inline" style="padding: 8px 0 0">
             <ul class="filter">
                 <li class="span4">
                     <input type="text" class="span3">
                     <button type="submit" class="btn">Find</button>
                 </li>
                 <li class="span4">
-                    <label class="text">Group:</label>
-                    <select class="span3">
-                        <option>All users</option>
-                        <option>Group 1</option>
-                        <option>Group 2</option>
-                        <option>Group 3</option>
-                        <option>Group 4</option>
-                        <option>Group 5</option>
-                    </select>
-                </li>
-                <li class="span4">
-                    <label class="text">Role:</label>
-                    <select class="span3">
-                        <option>All roles</option>
-                        <option>Role 1</option>
-                        <option>Role 2</option>
-                        <option>Role 3</option>
-                        <option>Role 4</option>
-                        <option>Role 5</option>
-                    </select>
+                    <input type="text" class="span3">
+                    <button type="submit" class="btn">Find</button>
                 </li>
             </ul>
         </form>
 
-        <table class="table table-striped">
+        <table class="table table-hover">
             <thead>
                 <tr>
-                    <th style="width:12px"><input type="checkbox" /></th>
+                    <th style="width: 12px">
+                        <input type="checkbox" /></th>
                     <th>Username</th>
                     <th>Full name</th>
+                    <th>Full address</th>
+                    <th>Packages</th>
                     <th>Email</th>
-                    <th>Groups</th>
-                    <th>Roles</th>
                     <th>Last access time</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><input type="checkbox" /></td>
-                    <td>…</td>
-                    <td>…</td>
-                    <td>…</td>
-                    <td>…</td>
-                    <td>…</td>
-                    <td>…</td>
+                    <td>
+                        <input type="checkbox" /></td>
+                    <td><a href="/Member/Dashboard">Username</a></td>
+                    <td><a href="/Member/Dashboard">Vasya Pupkin</a></td>
+                    <td><a href="/Member/Dashboard">Melezha 5/1, Minsk, 220056 Belarus</a></td>
+                    <td><a href="/Member/Dashboard">4</a></td>
+                    <td><a href="/Member/Dashboard">email@domain.com</a></td>
+                    <td><a href="/Member/Dashboard">14 okt 2012</a></td>
                 </tr>
                 <tr>
                     <td><input type="checkbox" /></td>
-                    <td>…</td>
-                    <td>…</td>
-                    <td>…</td>
-                    <td>…</td>
-                    <td>…</td>
-                    <td>…</td>
+                    <td><a href="/Member/Dashboard">Another one</a></td>
+                    <td><a href="/Member/Dashboard">Brat Vasi Pupkina</a></td>
+                    <td><a href="/Member/Dashboard">Melezha 5/1, Minsk, 220056 Belarus</a></td>
+                    <td><a href="/Member/Dashboard">2</a></td>
+                    <td><a href="/Member/Dashboard">email2@domain.com</a></td>
+                    <td><a href="/Member/Dashboard">16 okt 2012</a></td>
                 </tr>
             </tbody>
         </table>
