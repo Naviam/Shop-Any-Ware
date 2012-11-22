@@ -365,6 +365,7 @@ html
 {
     margin: 12px 0;
 }
+    .package .input-append, .package .input-prepend{font-size:13px}
 
 .add-order
 {
