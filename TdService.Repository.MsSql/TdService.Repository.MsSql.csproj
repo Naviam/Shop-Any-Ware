@@ -75,6 +75,7 @@
     <Compile Include="Repositories\ProfileRepository.cs" />
     <Compile Include="Repositories\RetailerRepository.cs" />
     <Compile Include="Repositories\RoleRepository.cs" />
+    <Compile Include="Repositories\TransactionsRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="ShopAnyWareSql.cs" />
     <Compile Include="Repositories\MembershipRepository.cs" />

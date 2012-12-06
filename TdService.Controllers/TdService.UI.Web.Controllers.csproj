@@ -98,7 +98,7 @@
     <Compile Include="Controllers\AddressController.cs" />
     <Compile Include="Controllers\AddressesController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\BalanceController.cs" />
+    <Compile Include="Controllers\BallanceController.cs" />
     <Compile Include="Controllers\BaseAuthController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -120,6 +120,7 @@
     <Compile Include="Mapping\RoleViewModelMapper.cs" />
     <Compile Include="Mapping\SignInViewModelMapper.cs" />
     <Compile Include="Mapping\SignUpViewModelMapper.cs" />
+    <Compile Include="Mapping\TransactionsViewModelMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -60,12 +60,15 @@
     <Compile Include="Implementations\OrderService.cs" />
     <Compile Include="Implementations\PackagesService.cs" />
     <Compile Include="Implementations\RetailersService.cs" />
+    <Compile Include="Implementations\TransactionService.cs" />
     <Compile Include="Interfaces\IItemsService.cs" />
     <Compile Include="Interfaces\IPackagesService.cs" />
     <Compile Include="Interfaces\IRetailersService.cs" />
+    <Compile Include="Interfaces\ITransactionService.cs" />
     <Compile Include="Mapping\ItemMapping.cs" />
     <Compile Include="Mapping\PackageMapping.cs" />
     <Compile Include="Mapping\RetailerMapping.cs" />
+    <Compile Include="Mapping\TransactionMapping.cs" />
     <Compile Include="Mapping\UserMapper.cs" />
     <Compile Include="Messaging\Address\RemoveDeliveryAddressRequest.cs" />
     <Compile Include="Messaging\Address\RemoveDeliveryRequestResponse.cs" />
@@ -127,6 +130,8 @@
     <Compile Include="Messaging\ResponseBase.cs" />
     <Compile Include="Messaging\Retailer\GetRetailersRequest.cs" />
     <Compile Include="Messaging\Retailer\GetRetailersResponse.cs" />
+    <Compile Include="Messaging\Transactions\GetTransactionsRequest.cs" />
+    <Compile Include="Messaging\Transactions\GetTransactionsResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

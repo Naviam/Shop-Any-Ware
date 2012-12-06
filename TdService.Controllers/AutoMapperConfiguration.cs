@@ -10,8 +10,8 @@
 namespace TdService.UI.Web
 {
     using AutoMapper;
-
     using TdService.Model.Addresses;
+    using TdService.Model.Balance;
     using TdService.Model.Common;
     using TdService.Model.Items;
     using TdService.Model.Membership;
@@ -23,8 +23,10 @@ namespace TdService.UI.Web
     using TdService.Services.Messaging.Order;
     using TdService.Services.Messaging.Package;
     using TdService.Services.Messaging.Retailer;
+    using TdService.Services.Messaging.Transactions;
     using TdService.UI.Web.ViewModels;
     using TdService.UI.Web.ViewModels.Account;
+    using TdService.UI.Web.ViewModels.Ballance;
     using TdService.UI.Web.ViewModels.Item;
     using TdService.UI.Web.ViewModels.Order;
     using TdService.UI.Web.ViewModels.Package;
@@ -255,6 +257,12 @@ namespace TdService.UI.Web
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
             Mapper.CreateMap<AddPackageResponse, PackageViewModel>();
+
+            //get transactions
+            Mapper.CreateMap<Transaction, GetTransactionsResponse>()
+                .ForMember(dest => dest.Currency, opt => opt.MapFrom(src => src.Currency.AlphabeticCode));
+            Mapper.CreateMap<GetTransactionsResponse, TransactionsViewModel>()
+                .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Date.ToShortDateString()));
         }
 
         /// <summary>

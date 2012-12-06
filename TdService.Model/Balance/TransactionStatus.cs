@@ -22,6 +22,11 @@ namespace TdService.Model.Balance
         /// <summary>
         /// Approved status.
         /// </summary>
-        Approved
+        Approved,
+
+        /// <summary>
+        /// Failed status
+        /// </summary>
+        Failed
     }
 }

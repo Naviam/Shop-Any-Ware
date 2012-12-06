@@ -12,6 +12,7 @@ namespace TdService.Model.Balance
     using System;
 
     using TdService.Infrastructure.Domain;
+    using TdService.Model.Balance.BusinessRules;
 
     /// <summary>
     /// Wire transaction details
@@ -66,7 +67,8 @@ namespace TdService.Model.Balance
         /// </exception>
         protected override void Validate()
         {
-            throw new NotImplementedException();
+            if (this.OperationAmount==0)
+                this.AddBrokenRule(TransactionBusinessRules.TransactionOperationAmountRequired);
         }
     }
 }

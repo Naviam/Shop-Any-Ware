@@ -745,6 +745,42 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Amount.
+        /// </summary>
+        public static string TransactionsAmount {
+            get {
+                return ResourceManager.GetString("TransactionsAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date.
+        /// </summary>
+        public static string TransactionsDate {
+            get {
+                return ResourceManager.GetString("TransactionsDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Status.
+        /// </summary>
+        public static string TransactionsStatus {
+            get {
+                return ResourceManager.GetString("TransactionsStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type.
+        /// </summary>
+        public static string TransactionsType {
+            get {
+                return ResourceManager.GetString("TransactionsType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Weight.
         /// </summary>
         public static string WeightHeader {

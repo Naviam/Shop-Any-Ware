@@ -67,6 +67,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\NUnit.2.6.1\lib\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="PayPal_Merchant_SDK">
+      <HintPath>..\InternalPackages\PayPal_Merchant_SDK.dll</HintPath>
+    </Reference>
     <Reference Include="Rhino.Mocks, Version=3.6.0.0, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
       <HintPath>..\packages\RhinoMocks.3.6.1\lib\net\Rhino.Mocks.dll</HintPath>
     </Reference>
@@ -112,6 +115,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Steps\DepositSteps.cs" />
     <Compile Include="Fakes\FakeLogger.cs" />
     <Compile Include="Fakes\Mail.cs" />
     <Compile Include="Features\AdminOrders.feature.cs">
@@ -128,6 +132,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ConsultantOrders.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Deposit.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Deposit.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\OperatorOrders.feature.cs">
       <AutoGen>True</AutoGen>
@@ -224,6 +233,10 @@
     <None Include="Features\ConsultantOrders.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>ConsultantOrders.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\Deposit.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Deposit.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\OperatorOrders.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

@@ -374,6 +374,22 @@ function Order(serverModel) {
     };
 }
 
+function Transaction(serverModel) {
+    var self = this;
+
+    // default model properties
+    self.message = ko.observable(serverModel.Message);
+    self.messageType = ko.observable(serverModel.MessageType);
+    self.errorCode = ko.observable(serverModel.ErrorCode);
+    self.brokenRules = ko.observableArray(serverModel.BrokenRules);
+    
+    //server model properties
+    self.operationAmount = ko.observable(serverModel.OperationAmount);
+    self.tranDate = ko.observable(serverModel.Date);
+    self.currency = ko.observable(serverModel.Currency);
+    self.transactionStatus = ko.observable(serverModel.TransactionStatus);
+}
+
 function Retailer(serverModel) {
     /// <summary>Retailer view model.</summary>
     var self = this;
@@ -391,6 +407,7 @@ function DashboardViewModel(serverModel) {
     self.recentOrdersNotLoaded = ko.observable(true);
     self.historyPackagesNotLoaded = ko.observable(true);
     self.historyOrdersNotLoaded = ko.observable(true);
+    self.transactionHistoryNotLoaded = ko.observable(true);
 
     // dashboard view model properties
     self.newOrderField = ko.observable().extend({ required: true });
@@ -401,6 +418,7 @@ function DashboardViewModel(serverModel) {
     // dashboard view model collections
     self.orders = ko.observableArray();
     self.ordersHistory = ko.observableArray();
+    self.transactionHistory = ko.observableArray();
     self.addresses = ko.observableArray();
     self.packages = ko.observableArray();
     self.packagesHistory = ko.observableArray();
@@ -499,6 +517,20 @@ function DashboardViewModel(serverModel) {
         });
     };
     self.getHistoryOrders();
+
+    self.getTransactionHistory = function() {
+        $.post("/ballance/TransactionHistory", function (data) {
+            var transactions = ko.toJS(data);
+            self.transactionHistory.removeAll();
+            for (var i = 0; i < transactions.length;i++) {
+                var transaction = new Transaction(transactions[i]);
+                self.transactionHistory.unshift(transaction);
+            }
+            self.transactionHistoryNotLoaded(false);
+        });
+    };
+    self.getTransactionHistory();
+
 
     self.createOrder = function() {
         /// <summary>Add new order.</summary>
