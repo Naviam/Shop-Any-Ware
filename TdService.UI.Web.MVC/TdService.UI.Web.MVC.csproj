@@ -70,6 +70,10 @@
     <Reference Include="Glimpse.Mvc3">
       <HintPath>..\packages\Glimpse.Mvc3.0.87\lib\net40\Glimpse.Mvc3.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\InternalPackages\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -371,6 +375,9 @@
     <Content Include="Views\Shared\_packageView.cshtml" />
     <Content Include="Views\Operator\Dashboard.cshtml" />
     <Content Include="Views\Home\Rate.cshtml" />
+    <Content Include="Views\Member\Deposit.cshtml" />
+    <Content Include="Views\Member\ConfirmDeposit.cshtml" />
+    <Content Include="Views\Member\DepositCanceled.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

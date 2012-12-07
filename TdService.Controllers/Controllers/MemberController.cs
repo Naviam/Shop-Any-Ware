@@ -93,5 +93,22 @@ namespace TdService.UI.Web.Controllers
 
             return this.View("Welcome", model);
         }
+
+        [Authorize(Roles = "Shopper")]
+        public ActionResult Deposit()
+        {
+            return this.View("Deposit");
+        }
+        [Authorize(Roles = "Shopper")]
+        public ActionResult ConfirmDeposit(string token, string payerId)
+        {
+            return this.View("ConfirmDeposit");
+        }
+
+        [Authorize(Roles = "Shopper")]
+        public ActionResult DepositCanceled()
+        {
+            return this.View("DepositCanceled");
+        }
     }
 }
