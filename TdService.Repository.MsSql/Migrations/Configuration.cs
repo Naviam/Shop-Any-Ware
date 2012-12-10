@@ -11,7 +11,6 @@ namespace TdService.Repository.MsSql.Migrations
 {
     using System.Data.Entity.Migrations;
 
-    using TdService.Model.Membership;
     using TdService.Repository.MsSql;
 
     /// <summary>

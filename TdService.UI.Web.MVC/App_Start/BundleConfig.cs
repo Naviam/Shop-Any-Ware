@@ -27,8 +27,8 @@ namespace TdService.UI.Web.MVC.App_Start
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new StyleBundle("~/Content/less/bootstrapcss").Include(
-                        "~/Content/less/bootstrap.css",
-                        "~/Content/less/responsive.css"));
+                        "~/Content/bootstrap.css",
+                        "~/Content/bootstrap-responsive.css"));
 
             bundles.Add(new StyleBundle("~/Content/sitecss").Include(
                         "~/Content/styles.css",
@@ -45,7 +45,7 @@ namespace TdService.UI.Web.MVC.App_Start
                         "~/scripts/jquery.validate.js",
                         "~/scripts/jquery.validate.unobtrusive.js",
                         "~/Scripts/bootstrap/bootstrap.js",
-                        "~/Scripts/knockout-2.1.0.js",
+                        "~/Scripts/knockout-2.2.0.js",
                         "~/Scripts/knockout.mapping-latest.js",
                         "~/Scripts/knockout.validation.js",
                         "~/Scripts/knockout-sortable.js",

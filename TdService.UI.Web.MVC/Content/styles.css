@@ -1,8 +1,37 @@
 /* start reset bootstrap's css */
-input, textarea, select, .uneditable-input
-{
-    margin-bottom: 0;
+body {
+font-size: 13px;
 }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+h3 {
+  line-height: 27px;
+  font-size: 18px;
+}
+input,
+textarea,
+select,
+.uneditable-input {
+  line-height: 18px;
+  border: 1px solid #cccccc;
+}
+.btn-large {
+  padding: 9px 14px;
+  line-height: normal;
+}
+.btn-mini {
+  line-height: 14px;
+}
+.tab-content {
+  width: 100%;
+}
+.popover{width:auto}
 /*.row-fluid > [class*="span"]{margin-left:0}
 .row-fluid > .span4{width:33.33%}*/
 .navbar-inner
@@ -23,22 +52,32 @@ input, textarea, select, .uneditable-input
 .navbar .nav > li > a
 {
     color: #b9b9b9;
-}
-
-.nav-pills > li > a
-{
-    margin: 1px;
-}
-
-.navbar .nav > li > a
-{
+    text-shadow: none;
     padding: 12px 10px 11px;
     line-height: normal;
 }
 
+/*.nav-pills > li > a
+{
+    margin: 1px;
+}*/
+
+.navbar .nav > li > a:focus, .navbar .nav > li > a:hover
+{
+    color: #FFFFFF;
+}
+
+.navbar .nav .active > a, .navbar .nav .active > a:hover {
+    background-color: #222222;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
 .navbar .brand
 {
+    color: #FFFFFF;
     padding: 10px 20px 12px;
+    text-shadow: none;
 }
 
 @media (min-width: 980px)
@@ -152,6 +191,10 @@ html
     background-color: #ffeeee;
 }
 
+.table-hover td{cursor:pointer}
+    .table-hover td a{display:block;height:100%;width:100%}
+        .table-hover td a:hover{color:#08C;text-decoration:none}
+
 .validation-summary-errors
 {
     color: #B94A48;
@@ -264,6 +307,11 @@ html
         background-color: #F9F9F9;
     }
 
+    .header input
+    {
+        margin:0
+    }
+
 .in
 {
     padding: 4px;
@@ -317,6 +365,7 @@ html
 {
     margin: 12px 0;
 }
+    .package .input-append, .package .input-prepend{font-size:13px}
 
 .add-order
 {
@@ -902,14 +951,17 @@ footer
 {
     background: #292727;
     margin: 40px 0 0;
-    padding: 20px 0 0;
+		padding: 20px 0 0;
     color: #ccc;
 }
+    footer input
+    {
+        margin:0 !important
+    }
 
     footer h3
     {
         color: white;
-        margin: 0 0 10px 0;
     }
 
     footer ul
@@ -1098,7 +1150,7 @@ li[class^="icon-"], li[class*=" icon-"]
 {
     content: "\f003";
 }
-.icon-money:before                { content: "\f0d6"; }
+.icon-money:before{ content: "\f0d6"; }
 
 .icon-phone:before
 {
@@ -1108,6 +1160,10 @@ li[class^="icon-"], li[class*=" icon-"]
 .icon-phone-sign:before
 {
     content: "\f098";
+}
+
+.icon-skype:before {
+  content: "\f503";
 }
 
 .icon-twitter:before
