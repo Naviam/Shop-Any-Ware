@@ -10,8 +10,8 @@
 namespace TdService.UI.Web
 {
     using AutoMapper;
-
     using TdService.Model.Addresses;
+    using TdService.Model.Balance;
     using TdService.Model.Common;
     using TdService.Model.Items;
     using TdService.Model.Membership;
@@ -23,8 +23,10 @@ namespace TdService.UI.Web
     using TdService.Services.Messaging.Order;
     using TdService.Services.Messaging.Package;
     using TdService.Services.Messaging.Retailer;
+    using TdService.Services.Messaging.Transactions;
     using TdService.UI.Web.ViewModels;
     using TdService.UI.Web.ViewModels.Account;
+    using TdService.UI.Web.ViewModels.Ballance;
     using TdService.UI.Web.ViewModels.Item;
     using TdService.UI.Web.ViewModels.Order;
     using TdService.UI.Web.ViewModels.Package;
@@ -85,11 +87,9 @@ namespace TdService.UI.Web
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
             Mapper.CreateMap<GetProfileResponse, ProfileViewModel>()
                 .ForMember(m => m.Email, opt => opt.Ignore());
-            Mapper.CreateMap<Model.Membership.Profile, GetProfileResponse>()
-                .ForMember(r => r.Message, opt => opt.Ignore())
-                .ForMember(r => r.ErrorCode, opt => opt.Ignore())
-                .ForMember(r => r.BrokenRules, opt => opt.Ignore())
-                .ForMember(r => r.MessageType, opt => opt.Ignore());
+            Mapper.CreateMap<Model.Membership.Profile, GetProfileResponse>().ForMember(
+                r => r.Message, opt => opt.Ignore()).ForMember(r => r.ErrorCode, opt => opt.Ignore()).ForMember(
+                    r => r.BrokenRules, opt => opt.Ignore()).ForMember(r => r.MessageType, opt => opt.Ignore());
 
             // delivery address
             Mapper.CreateMap<DeliveryAddress, GetDeliveryAddressesResponse>()
@@ -255,6 +255,29 @@ namespace TdService.UI.Web
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
             Mapper.CreateMap<AddPackageResponse, PackageViewModel>();
+
+            // get transactions
+            Mapper.CreateMap<Transaction, GetTransactionsResponse>()
+                .ForMember(dest => dest.Currency, opt => opt.MapFrom(src => src.Currency.AlphabeticCode))
+                .ForMember(r => r.BrokenRules, opt => opt.Ignore())
+                .ForMember(r => r.Message, opt => opt.Ignore())
+                .ForMember(r => r.ErrorCode, opt => opt.Ignore())
+                .ForMember(r => r.MessageType, opt => opt.Ignore());
+            Mapper.CreateMap<GetTransactionsResponse, TransactionsViewModel>()
+                .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Date.ToShortDateString()));
+
+            // add transaction
+            Mapper.CreateMap<AddTransactionResponse, TransactionsViewModel>();
+            Mapper.CreateMap<TransactionsViewModel, AddTransactionRequest>()
+                .ForMember(r => r.IdentityToken, opt => opt.Ignore());
+            Mapper.CreateMap<Transaction, AddTransactionResponse>()
+                .ForMember(r => r.BrokenRules, opt => opt.Ignore())
+                .ForMember(r => r.Message, opt => opt.Ignore())
+                .ForMember(r => r.ErrorCode, opt => opt.Ignore())
+                .ForMember(r => r.MessageType, opt => opt.Ignore());
+            Mapper.CreateMap<AddTransactionRequest, Transaction>()
+                .ForMember(r => r.Id, opt => opt.Ignore())
+                .ForMember(r => r.Currency, opt => opt.Ignore());
         }
 
         /// <summary>

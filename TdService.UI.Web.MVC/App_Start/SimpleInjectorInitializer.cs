@@ -13,15 +13,14 @@ namespace TdService.UI.Web.MVC.App_Start
 {
     using System.Reflection;
     using System.Web.Mvc;
-
     using SimpleInjector;
     using SimpleInjector.Integration.Web.Mvc;
-
     using TdService.Infrastructure.Authentication;
     using TdService.Infrastructure.CookieStorage;
     using TdService.Infrastructure.Email;
     using TdService.Infrastructure.Logging;
     using TdService.Model.Addresses;
+    using TdService.Model.Balance;
     using TdService.Model.Items;
     using TdService.Model.Membership;
     using TdService.Model.Orders;
@@ -72,6 +71,7 @@ namespace TdService.UI.Web.MVC.App_Start
             container.Register<IPackagesService, PackagesService>();
             container.Register<IItemsService, ItemsService>();
             container.Register<IRetailersService, RetailersService>();
+            container.Register<ITransactionService, TransactionService>();
 
             // repositories
             container.Register<IOrderRepository, OrderRepository>();
@@ -83,6 +83,7 @@ namespace TdService.UI.Web.MVC.App_Start
             container.Register<IAddressRepository, AddressRepository>();
             container.Register<IItemsRepository, ItemsRepository>();
             container.Register<IPackageRepository, PackageRepository>();
+            container.Register<ITransactionsRepository, TransactionsRepository>();
         }
     }
 }

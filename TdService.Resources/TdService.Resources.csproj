@@ -78,6 +78,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>OrderStatusResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="TransactionStatusesResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TransactionStatusesResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Views\AccountViewResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -162,6 +167,11 @@
       <LastGenOutput>OrderStatusResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="OrderStatusResources.ru.resx" />
+    <EmbeddedResource Include="TransactionStatusesResources.ru.resx" />
+    <EmbeddedResource Include="TransactionStatusesResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>TransactionStatusesResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\AccountViewResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AccountViewResources.Designer.cs</LastGenOutput>

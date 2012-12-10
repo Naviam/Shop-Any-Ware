@@ -62,6 +62,7 @@
     <Compile Include="Configurations\ProfileConfiguration.cs" />
     <Compile Include="Configurations\RetailerConfiguration.cs" />
     <Compile Include="Configurations\RoleConfiguration.cs" />
+    <Compile Include="Configurations\TransactionConfiguration.cs" />
     <Compile Include="Configurations\UserConfiguration.cs" />
     <Compile Include="Configurations\WeightConfiguration.cs" />
     <Compile Include="DatabaseInitializer.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Repositories\ProfileRepository.cs" />
     <Compile Include="Repositories\RetailerRepository.cs" />
     <Compile Include="Repositories\RoleRepository.cs" />
+    <Compile Include="Repositories\TransactionsRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="ShopAnyWareSql.cs" />
     <Compile Include="Repositories\MembershipRepository.cs" />

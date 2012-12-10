@@ -5,9 +5,6 @@
 @{
     ViewBag.Title = DashboardViewResources.DashboardPageTitle;
 }
-<div class="alert">
-    <strong>Warning!</strong> You're working under <b>Vasya Pupkin: Melezha 5/1, Minsk, 220056 Belarus</b>. <a href="/Admin/Dashboard">Back to user list</a>
-</div>
 <div class="row-fluid">
     <div class="span6">
         <div class="body_header">
@@ -75,10 +72,13 @@
             </div>
         </div>
     </div>
+    @{ Html.RenderPartial("balanceTable");}
     <div class="span6" style="float: right">
         <div class="body_header">
             <h3>@DashboardViewResources.PackagesHeader</h3>
-            <a href="#" class="store_address" data-trigger="click" data-title="Последние транзакции" data-placement="bottom" data-content="@{ Html.RenderPartial("balanceTable");}">@DashboardViewResources.BalanceHeader: <span style="color: green">$0.00</span> Задолженность: <span style="color: red">$(0.00)</span> </a><i class="icon-money" style="margin-top: 6px"></i>
+            <a href="#" class="store_address" data-bind="popover: balanceBindingValue">
+               Последние транзакции, @DashboardViewResources.BalanceHeader: $<span style="color: green" data-bind="text:balance"></span>
+            </a><i class="icon-money" style="margin-top: 6px"></i>
         </div>
         <div class="package">
             <div class="control-group" data-bind="css: { error: !newPackageField.isValid() }, validationOptions: { insertMessages: false, decorateElement: true, errorClass: 'error', parseInputAttributes: false, errorElementClass: 'error' }">
@@ -92,7 +92,7 @@
                 </div>
             </div>
         </div>
-        <div class="link_expand"><a href="#" title="@DashboardViewResources.ExpandAllPackages" data-bind="click: expandAllPackages"><i class="icon icon-chevron-down"></i>&nbsp;</a><a href="#" title="@DashboardViewResources.CollapseAllPackages" data-bind="click: collapseAllPackages"><i class="icon icon-chevron-up"></i>&nbsp;</a></div>
+        <div class="link_expand"><a id="balanceAnchor" href="#" title="@DashboardViewResources.ExpandAllPackages" data-bind="click: expandAllPackages"><i class="icon icon-chevron-down"></i>&nbsp;</a><a href="#" title="@DashboardViewResources.CollapseAllPackages" data-bind="click: collapseAllPackages"><i class="icon icon-chevron-up"></i>&nbsp;</a></div>
         <div class="tab-content">@*<div class="tab-content choose_package">*@
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#recent_packages" data-toggle="tab">@DashboardViewResources.RecentPackagesTabHeader</a></li>
@@ -152,6 +152,7 @@
             ko.validation.init(mainViewModel, { insertMessages: false, decorateElement: true, errorClass: 'error', parseInputAttributes: true });
             $(".store_address").popover();
             $(".choose_package").popover('show');
+
         });
     </script>
 }
