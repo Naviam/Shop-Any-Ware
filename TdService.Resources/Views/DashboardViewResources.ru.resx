@@ -345,6 +345,18 @@
   <data name="TrackingNumberPlaceholder" xml:space="preserve">
     <value>Введите номер отслеживания</value>
   </data>
+  <data name="TransactionsAmount" xml:space="preserve">
+    <value>Всего</value>
+  </data>
+  <data name="TransactionsDate" xml:space="preserve">
+    <value>Дата</value>
+  </data>
+  <data name="TransactionsStatus" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="TransactionsType" xml:space="preserve">
+    <value>Тип</value>
+  </data>
   <data name="WeightHeader" xml:space="preserve">
     <value>Вес</value>
   </data>

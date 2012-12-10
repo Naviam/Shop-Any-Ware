@@ -345,6 +345,18 @@
   <data name="TrackingNumberPlaceholder" xml:space="preserve">
     <value>Please enter tracking number</value>
   </data>
+  <data name="TransactionsAmount" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="TransactionsDate" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="TransactionsStatus" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="TransactionsType" xml:space="preserve">
+    <value>Type</value>
+  </data>
   <data name="WeightHeader" xml:space="preserve">
     <value>Weight</value>
   </data>

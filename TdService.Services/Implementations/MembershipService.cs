@@ -286,8 +286,10 @@ namespace TdService.Services.Implementations
                 response.ErrorCode = ErrorCode.ProfileNotFound.ToString();
                 return response;
             }
-
-            return profile.ConvertToGetProfileResponse();
+            response = profile.ConvertToGetProfileResponse();
+            response.WalletId = user.Wallet.Id;
+            response.Balance = user.Wallet.Amount;
+            return response;
         }
 
         /// <summary>

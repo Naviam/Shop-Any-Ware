@@ -4,10 +4,11 @@
     [OperationDescription] NVARCHAR (MAX)  NULL,
     [Commission]           DECIMAL (18, 2) NOT NULL,
     [Date]                 DATETIME        NOT NULL,
-    [TransactionAmount]    DECIMAL (18, 2) NOT NULL,
     [TransactionStatus]    INT             NOT NULL,
     [Currency_Id]          INT             NULL,
     [Wallet_Id]            INT             NULL,
+    [PaypalToken] NVARCHAR(50) NULL, 
+    [PaypalPayerId] NVARCHAR(50) NULL, 
     CONSTRAINT [PK_dbo.Transactions] PRIMARY KEY CLUSTERED ([Id] ASC),
     CONSTRAINT [FK_dbo.Transactions_dbo.Currencies_Currency_Id] FOREIGN KEY ([Currency_Id]) REFERENCES [dbo].[Currencies] ([Id]),
     CONSTRAINT [FK_dbo.Transactions_dbo.Wallets_Wallet_Id] FOREIGN KEY ([Wallet_Id]) REFERENCES [dbo].[Wallets] ([Id])

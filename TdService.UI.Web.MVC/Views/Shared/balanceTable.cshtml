@@ -1,30 +1,41 @@
-﻿<table class='table table-striped table-condensed'>
-    <thead>
-        <tr>
-            <th style='width: 100px'>Дата</th>
-            <th style='width: 300px'>Тип</th>
-            <th style='width: 100px'>Статус</th>
-            <th style='width: 100px'>Всего</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>19-2-2012</td>
-            <td>Пополнение</td>
-            <td><span class='label label-warning'>Pending</span></td>
-            <td><span style='color: red'>(3.00)</span></td>
-        </tr>
-        <tr>
-            <td>02-2-2012</td>
-            <td>Доставка</td>
-            <td><span class='label label-info'>Delivered</span></td>
-            <td><span style='color: blue'>68.75</span></td>
-        </tr>
-        <tr>
-            <td>01-2-2012</td>
-            <td>Пополнение</td>
-            <td><span class='label label-success'>Approved</span></td>
-            <td><span style='color: green'>68.75</span></td>
-        </tr>
-    </tbody>
-</table>
+﻿@using TdService.Resources.Views
+<div id="balancePopupContent" style="display:none">
+<div data-bind='visible: transactions().length == 0'>
+    <div class='alert alert-info'>
+        <span>На данный момент у Вас отсутствует история транзакций</span>
+    </div>
+    <br />
+</div>
+    <table data-bind='visible: transactions().length > 0' class='table table-striped table-condensed'>
+        <thead>
+            <tr>
+                <th style='width: 100px'>@DashboardViewResources.TransactionsDate</th>
+                <th style='width: 300px'>@DashboardViewResources.TransactionsType</th>
+                <th style='width: 100px'>@DashboardViewResources.TransactionsStatus</th>
+                <th style='width: 100px'>@DashboardViewResources.TransactionsAmount</th>
+            </tr>
+        </thead>
+        <tbody data-bind='foreach: transactions()'>
+            <tr>
+                <td data-bind='text: transactionDate'></td>
+                <td>Deposit</td>
+                <td><span class='label label-warning' data-bind='text:transactionStatus'></span></td>
+                <td data-bind='text: operationAmount'></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>Баланс: </td>
+                <td data-bind='text: balance'></td>
+            </tr>
+        </tfoot>
+    </table>
+<form class='form-inline' action="/ballance/AddTransaction" method="post" target="_self">
+    <div class='input-prepend'>
+        <span class='add-on'>$</span><input class='span1' name='amount'/>
+    </div>
+    <input type="submit" class='btn btn-primary' value="Add Funds" />
+</form>
+</div>

@@ -15,6 +15,11 @@ namespace TdService.Model.Balance
     public enum TransactionStatus
     {
         /// <summary>
+        /// User was redirected to paypal
+        /// </summary>
+        InProgress,
+
+        /// <summary>
         /// Pending status.
         /// </summary>
         Pending,
@@ -22,6 +27,11 @@ namespace TdService.Model.Balance
         /// <summary>
         /// Approved status.
         /// </summary>
-        Approved
+        Approved,
+
+        /// <summary>
+        /// Failed status
+        /// </summary>
+        Failed
     }
 }

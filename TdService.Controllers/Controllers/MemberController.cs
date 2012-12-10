@@ -11,12 +11,13 @@ namespace TdService.UI.Web.Controllers
 {
     using System.Collections.Generic;
     using System.Web.Mvc;
-
+    using PayPal.PayPalAPIInterfaceService;
+    using PayPal.PayPalAPIInterfaceService.Model;
     using TdService.Infrastructure.Authentication;
-    using TdService.Services.Implementations;
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging.Address;
     using TdService.Services.Messaging.Membership;
+    using TdService.Services.Messaging.Transactions;
     using TdService.UI.Web.Mapping;
     using TdService.UI.Web.ViewModels.Member;
 
@@ -32,6 +33,8 @@ namespace TdService.UI.Web.Controllers
 
         private readonly IAddressService addressService;
 
+        private readonly ITransactionService transactionService;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="MemberController"/> class.
         /// </summary>
@@ -44,11 +47,12 @@ namespace TdService.UI.Web.Controllers
         /// <param name="addressService">
         /// The address service.
         /// </param>
-        public MemberController(IFormsAuthentication formsAuthentication, IMembershipService membershipService, IAddressService addressService)
+        public MemberController(IFormsAuthentication formsAuthentication, IMembershipService membershipService, IAddressService addressService, ITransactionService transactionService)
             : base(formsAuthentication)
         {
             this.membershipService = membershipService;
             this.addressService = addressService;
+            this.transactionService = transactionService;
         }
 
         /// <summary>
@@ -66,6 +70,58 @@ namespace TdService.UI.Web.Controllers
             model.UserId = response.Id;
             model.FirstName = response.FirstName;
             model.LastName = response.LastName;
+            model.WalletAmount = response.Balance;
+
+            var addressesResponse = this.addressService.GetDeliveryAddresses(new GetDeliveryAddressesRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() });
+            model.DeliveryAddressViewModels = addressesResponse.ConvertToDeliveryAddressViewModel();
+
+            model.DeliveryMethods = new List<string> { "Standard Delivery", "Express Delivery" };
+
+            return this.View("Dashboard", model);
+        }
+
+        /// <summary>
+        /// Testing the new interface.
+        /// </summary>
+        /// <returns>
+        /// Returns the page with the new interface.
+        /// </returns>
+        [Authorize(Roles = "Shopper")]
+        public ActionResult PaymentSucceded(string token, string payerId)
+        {
+            //confirm deposit
+            PayPalAPIInterfaceServiceService service = new PayPalAPIInterfaceServiceService();
+            GetExpressCheckoutDetailsReq getECWrapper = new GetExpressCheckoutDetailsReq();
+            getECWrapper.GetExpressCheckoutDetailsRequest = new GetExpressCheckoutDetailsRequestType(token);
+            GetExpressCheckoutDetailsResponseType getECResponse = service.GetExpressCheckoutDetails(getECWrapper);
+
+            // Create request object
+            DoExpressCheckoutPaymentRequestType request = new DoExpressCheckoutPaymentRequestType();
+            DoExpressCheckoutPaymentRequestDetailsType requestDetails = new DoExpressCheckoutPaymentRequestDetailsType();
+            request.DoExpressCheckoutPaymentRequestDetails = requestDetails;
+
+            requestDetails.PaymentDetails = getECResponse.GetExpressCheckoutDetailsResponseDetails.PaymentDetails;
+            requestDetails.Token = token;
+            requestDetails.PayerID = payerId;
+            requestDetails.PaymentAction = PaymentActionCodeType.SALE;
+
+            // Invoke the API
+            DoExpressCheckoutPaymentReq wrapper = new DoExpressCheckoutPaymentReq();
+            wrapper.DoExpressCheckoutPaymentRequest = request;
+            DoExpressCheckoutPaymentResponseType doECResponse = service.DoExpressCheckoutPayment(wrapper);
+
+            //add transaction
+            transactionService.ConfirmPayPalTransaction(
+                new ConfirmPayPalTransactionRequest { PayerId = payerId, Token = token });
+
+
+            var model = new ShopperDashboardViewModel();
+            var response = this.membershipService.GetProfile(
+                new GetProfileRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() });
+            model.UserId = response.Id;
+            model.FirstName = response.FirstName;
+            model.LastName = response.LastName;
+            model.WalletAmount = response.Balance;
 
             var addressesResponse = this.addressService.GetDeliveryAddresses(new GetDeliveryAddressesRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() });
             model.DeliveryAddressViewModels = addressesResponse.ConvertToDeliveryAddressViewModel();
@@ -92,6 +148,24 @@ namespace TdService.UI.Web.Controllers
             model.LastName = response.LastName;
 
             return this.View("Welcome", model);
+        }
+
+        [Authorize(Roles = "Shopper")]
+        public ActionResult Deposit()
+        {
+            return this.View("Deposit");
+        }
+
+        [Authorize(Roles = "Shopper")]
+        public ActionResult ConfirmDeposit(string token, string payerId)
+        {
+            return this.View("ConfirmDeposit");
+        }
+
+        [Authorize(Roles = "Shopper")]
+        public ActionResult DepositCanceled()
+        {
+            return this.View("DepositCanceled");
         }
     }
 }

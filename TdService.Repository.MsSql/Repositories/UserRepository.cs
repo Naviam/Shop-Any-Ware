@@ -130,7 +130,7 @@ namespace TdService.Repository.MsSql.Repositories
         /// </returns>
         public User GetUserByEmail(string email)
         {
-            return this.context.Users.Include("Profile").Include("Roles").SingleOrDefault(u => u.Email == email);
+            return this.context.Users.Include("Profile").Include("Roles").Include("Wallet").SingleOrDefault(u => u.Email == email);
         }
 
         /// <summary>

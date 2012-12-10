@@ -12,6 +12,7 @@ namespace TdService.Model.Balance
     using System;
 
     using TdService.Infrastructure.Domain;
+    using TdService.Model.Balance.BusinessRules;
 
     /// <summary>
     /// Wire transaction details
@@ -44,19 +45,24 @@ namespace TdService.Model.Balance
         public Currency Currency { get; set; }
 
         /// <summary>
-        /// Gets or sets Transaction Amount.
-        /// </summary>
-        public decimal TransactionAmount { get; set; }
-
-        /// <summary>
         /// Gets or sets Wallet.
         /// </summary>
-        public Wallet Wallet { get; set; }
+        public int WalletId { get; set; }
 
         /// <summary>
         /// Gets or sets Transaction Status.
         /// </summary>
         public TransactionStatus TransactionStatus { get; set; }
+
+        /// <summary>
+        /// Gets or sets Token
+        /// </summary>
+        public string Token { get; set; }
+
+        /// <summary>
+        /// Gets or sets PayerId
+        /// </summary>
+        public string PayerId{ get; set; }
 
         /// <summary>
         /// Validate business rules.
@@ -66,7 +72,8 @@ namespace TdService.Model.Balance
         /// </exception>
         protected override void Validate()
         {
-            throw new NotImplementedException();
+            if (this.OperationAmount==0)
+                this.AddBrokenRule(TransactionBusinessRules.TransactionOperationAmountRequired);
         }
     }
 }

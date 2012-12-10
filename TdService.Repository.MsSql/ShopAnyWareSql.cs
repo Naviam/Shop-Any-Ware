@@ -125,7 +125,7 @@ namespace TdService.Repository.MsSql
         /// <summary>
         /// This initializer is used to populate database with static data.
         /// </summary>
-        public class ShowAnyWareInitializer : CreateDatabaseIfNotExists<ShopAnyWareSql>
+        public class ShowAnyWareInitializer : DropCreateDatabaseIfModelChanges<ShopAnyWareSql>
         {
             /// <summary>
             /// Populate database with static data.

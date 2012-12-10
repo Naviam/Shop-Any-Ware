@@ -67,6 +67,23 @@ ko.bindingHandlers.collapsed = {
     }
 };
 
+ko.bindingHandlers.autosuggest = {
+    init: function (element, valueAccessor, allBindingsAccessor, viewModel) { // , valueAccessor, allBindingAccessors, model
+        $.post("/retailers/get", { "searchText": viewModel.newOrderField() }, function (data) {
+            var retailers = ko.toJS(data);
+            viewModel.retailers.removeAll();
+            $.each(retailers, function (index, value) {
+                var retailer = new Retailer(value);
+                viewModel.retailers.unshift(retailer.url);
+            });
+            var retailerUrls = $.map(retailers, function (n) {
+                return n.Url;
+            });
+            $(element).typeahead({ source: retailerUrls });
+        });
+    }
+};
+
 function Item(serverModel) {
     /// <summary>Item view model.</summary>
     var self = this;
@@ -330,7 +347,7 @@ function Order(serverModel) {
     };
     self.loadItems();
 
-    self.getItemDetails = function(item) {
+    self.getItemDetails = function() {
         /// <summary>Get item details.</summary>
     };
 
@@ -374,6 +391,22 @@ function Order(serverModel) {
     };
 }
 
+function Transaction(serverModel) {
+    var self = this;
+
+    // default model properties
+    self.message = ko.observable(serverModel.Message);
+    self.messageType = ko.observable(serverModel.MessageType);
+    self.errorCode = ko.observable(serverModel.ErrorCode);
+    self.brokenRules = ko.observableArray(serverModel.BrokenRules);
+    
+    //server model properties
+    self.operationAmount = ko.observable(serverModel.OperationAmount);
+    self.transactionDate = ko.observable(serverModel.Date);
+    self.currency = ko.observable(serverModel.Currency);
+    self.transactionStatus = ko.observable(serverModel.StatusTranslated);
+}
+
 function Retailer(serverModel) {
     /// <summary>Retailer view model.</summary>
     var self = this;
@@ -391,21 +424,27 @@ function DashboardViewModel(serverModel) {
     self.recentOrdersNotLoaded = ko.observable(true);
     self.historyPackagesNotLoaded = ko.observable(true);
     self.historyOrdersNotLoaded = ko.observable(true);
-
+    self.transactionHistoryNotLoaded = ko.observable(true);
+    
     // dashboard view model properties
     self.newOrderField = ko.observable().extend({ required: true });
     self.newPackageField = ko.observable().extend({ required: true });
     self.deliveryAddresses = ko.observable(addressModel.DeliveryAddressViewModels);
     self.deliveryMethods = ko.observable(addressModel.DeliveryMethods);
+    self.balanceBindingValue = ko.observable({ trigger: 'click', title: '', placement: 'bottom', content: 'balancePopupContent' });
 
     // dashboard view model collections
     self.orders = ko.observableArray();
     self.ordersHistory = ko.observableArray();
+    self.transactions = ko.observableArray();
     self.addresses = ko.observableArray();
     self.packages = ko.observableArray();
     self.packagesHistory = ko.observableArray();
     self.retailers = ko.observableArray();
 
+    self.balance = ko.observable(addressModel.WalletAmount);
+    self.addFundsAmount = ko.observable(23);
+    
     // computed properties
     self.disableAddOrderButton = ko.computed(function () {
         /// <summary>Determines whether add order button should be disabled.</summary>
@@ -466,11 +505,27 @@ function DashboardViewModel(serverModel) {
     self.suggestRetailers();
 
     self.trackPackage = function(trackingNumber) {
-        $.uspsTrackPackage("", trackingNumber, function(data) {
+        $.uspsTrackPackage("", trackingNumber, function() {
             alert('success');
         });
     };
     ////self.trackPackage("123");
+
+    //self.addFunds = function () {
+    //    $.post("/ballance/AddTransaction", { "amount": self.addFundsAmount }, function (data) {
+    //        var items = ko.toJS(data);
+    //        window.location = data;
+    //    });
+        //$.post("/ballance/AddTransaction", function (data) {
+        //    var orders = ko.toJS(data);
+        //    self.orders.removeAll();
+        //    $.each(orders, function (index, value) {
+        //        var order = new Order(value);
+        //        self.orders.unshift(order);
+        //    });
+        //    self.recentOrdersNotLoaded(false);
+        //});
+    //};
 
     self.getRecentOrders = function() {
         /// <summary>Load recent orders from server.</summary>
@@ -499,6 +554,24 @@ function DashboardViewModel(serverModel) {
         });
     };
     self.getHistoryOrders();
+
+    self.getTransactionHistory = function() {
+        $.post("/ballance/TransactionHistory", function (data) {
+            var transactions = ko.toJS(data);
+            self.transactions.removeAll();
+            $.each(transactions, function (index, value) {
+                var transaction = new Transaction(value);
+                self.transactions.unshift(transaction);
+            });
+            ////for (var i = 0; i < transactions.length;i++) {
+            ////    var transaction = new Transaction(transactions[i]);
+            ////    self.transactionHistory.unshift(transaction);
+            ////}
+            self.transactionHistoryNotLoaded(false);
+            self.balanceBindingValue({ trigger: 'click', title: '', placement: 'bottom', content: 'balancePopupContent', update: '1' });
+        });
+    };
+    self.getTransactionHistory();
 
     self.createOrder = function() {
         /// <summary>Add new order.</summary>
@@ -597,22 +670,35 @@ function DashboardViewModel(serverModel) {
             }
         });
     };
-
-    ko.bindingHandlers.autosuggest = {
-        init: function (element, valueAccessor, allBindingAccessors, model) {
-            $.post("/retailers/get", { "searchText": self.newOrderField() }, function (data) {
-                var retailers = ko.toJS(data);
-                self.retailers.removeAll();
-                $.each(retailers, function (index, value) {
-                    var retailer = new Retailer(value);
-                    self.retailers.unshift(retailer.url);
-                });
-                var retailerUrls = $.map(retailers, function (n) {
-                    return n.Url;
-                });
-                $(element).typeahead({ source: retailerUrls });
-            });
-            
-        }
-    };
 }
+
+
+
+ko.bindingHandlers.popover = {
+    init: function (element, valueAccessor, allBindingsAccessor, viewModel) {
+        var options = ko.utils.unwrapObservable(valueAccessor());
+        if (options) {
+            var templateContent = $('#' + options.content).html();
+            $(element).attr('data-content', templateContent);
+            $(element).attr('data-original-title', options.title || '');
+            $(element).attr('data-placement', options.placement || 'right');
+            $(element).attr('data-trigger', options.trigger || 'click');
+        }
+        $(element).popover({ html: true });
+    },
+    update: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
+        $(element).popover('destroy');
+        var options = ko.utils.unwrapObservable(valueAccessor());
+
+        if (options) {
+            var templateContent = $('#' + options.content).html();
+            $(element).attr('data-content', templateContent);
+            $(element).attr('data-original-title', options.title || '');
+            $(element).attr('data-placement', options.placement || 'right');
+            $(element).attr('data-trigger', options.trigger || 'click');
+        }
+        $(element).popover({ html: true });
+    }
+};
+
+
