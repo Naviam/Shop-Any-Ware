@@ -67,41 +67,14 @@ ko.bindingHandlers.collapsed = {
     }
 };
 
-ko.bindingHandlers.popover = {
-    init: function(element, valueAccessor, allBindingsAccessor, viewModel) {
-        var options = ko.utils.unwrapObservable(valueAccessor());
-        if (options) {
-            var templateContent = $('#' + options.content).html();
-            $(element).attr('data-content', templateContent);
-            $(element).attr('data-original-title', options.title || '');
-            $(element).attr('data-placement', options.placement || 'right');
-            $(element).attr('data-trigger', options.trigger || 'click');
-        }
-        $(element).popover({ html: true });
-    },
-    update: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
-        var value = ko.utils.unwrapObservable(valueAccessor());
-        $(element).attr('data-content', $(value).html());
-
-        if (options) {
-            var control = '#' + options.command + 'Content';
-            $(element).attr('data-content', $(control).html());
-            $(element).attr('data-original-title', options.title || 'Title');
-            $(element).attr('data-placement', options.placement || 'right');
-            $(element).attr('data-trigger', options.trigger || 'click');
-            $(element).popover({ html: true });
-        }
-    }
-};
-
 ko.bindingHandlers.autosuggest = {
-    init: function (element) { // , valueAccessor, allBindingAccessors, model
-        $.post("/retailers/get", { "searchText": self.newOrderField() }, function (data) {
+    init: function (element, valueAccessor, allBindingsAccessor, viewModel) { // , valueAccessor, allBindingAccessors, model
+        $.post("/retailers/get", { "searchText": viewModel.newOrderField() }, function (data) {
             var retailers = ko.toJS(data);
-            self.retailers.removeAll();
+            viewModel.retailers.removeAll();
             $.each(retailers, function (index, value) {
                 var retailer = new Retailer(value);
-                self.retailers.unshift(retailer.url);
+                viewModel.retailers.unshift(retailer.url);
             });
             var retailerUrls = $.map(retailers, function (n) {
                 return n.Url;
@@ -458,6 +431,7 @@ function DashboardViewModel(serverModel) {
     self.newPackageField = ko.observable().extend({ required: true });
     self.deliveryAddresses = ko.observable(addressModel.DeliveryAddressViewModels);
     self.deliveryMethods = ko.observable(addressModel.DeliveryMethods);
+    self.balanceBindingValue = ko.observable({ trigger: 'click', title: '', placement: 'bottom', content: 'balancePopupContent' });
 
     // dashboard view model collections
     self.orders = ko.observableArray();
@@ -536,6 +510,18 @@ function DashboardViewModel(serverModel) {
     };
     ////self.trackPackage("123");
 
+    self.addFunds = function() {
+        $.post("/ballance/AddTransaction", function (data) {
+            var orders = ko.toJS(data);
+            self.orders.removeAll();
+            $.each(orders, function (index, value) {
+                var order = new Order(value);
+                self.orders.unshift(order);
+            });
+            self.recentOrdersNotLoaded(false);
+        });
+    };
+
     self.getRecentOrders = function() {
         /// <summary>Load recent orders from server.</summary>
         $.post("/orders/recent", function (data) {
@@ -577,6 +563,7 @@ function DashboardViewModel(serverModel) {
             ////    self.transactionHistory.unshift(transaction);
             ////}
             self.transactionHistoryNotLoaded(false);
+            self.balanceBindingValue({ trigger: 'click', title: '', placement: 'bottom', content: 'balancePopupContent', update: '1' });
         });
     };
     self.getTransactionHistory();
@@ -679,3 +666,34 @@ function DashboardViewModel(serverModel) {
         });
     };
 }
+
+
+
+ko.bindingHandlers.popover = {
+    init: function (element, valueAccessor, allBindingsAccessor, viewModel) {
+        var options = ko.utils.unwrapObservable(valueAccessor());
+        if (options) {
+            var templateContent = $('#' + options.content).html();
+            $(element).attr('data-content', templateContent);
+            $(element).attr('data-original-title', options.title || '');
+            $(element).attr('data-placement', options.placement || 'right');
+            $(element).attr('data-trigger', options.trigger || 'click');
+        }
+        $(element).popover({ html: true });
+    },
+    update: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
+        $(element).popover('destroy');
+        var options = ko.utils.unwrapObservable(valueAccessor());
+
+        if (options) {
+            var templateContent = $('#' + options.content).html();
+            $(element).attr('data-content', templateContent);
+            $(element).attr('data-original-title', options.title || '');
+            $(element).attr('data-placement', options.placement || 'right');
+            $(element).attr('data-trigger', options.trigger || 'click');
+        }
+        $(element).popover({ html: true });
+    }
+};
+
+

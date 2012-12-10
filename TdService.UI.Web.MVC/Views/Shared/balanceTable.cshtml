@@ -1,5 +1,5 @@
 ﻿@using TdService.Resources.Views
-<script type="text/html" id="balancePopupContent">
+<div id="balancePopupContent" style="display:none">
 <div data-bind='visible: transactions().length == 0'>
     <div class='alert alert-info'>
         <span>На данный момент у Вас отсутствует история транзакций</span>
@@ -15,7 +15,7 @@
             <th style='width: 100px'>@DashboardViewResources.TransactionsAmount</th>
         </tr>
     </thead>
-    <tbody data-bind='foreach: transactions'>
+    <tbody data-bind='foreach: transactions()'>
         <tr>
             <td></td>
             <td></td>
@@ -34,8 +34,8 @@
 </table>
 <form class='form-inline'>
     <div class='input-prepend'>
-        <span class='add-on'>$</span><input data-bind='value: amountToAdd' type='text' class='span1' placeholder='0.00'/>
+        <span class='add-on'>$</span><input type='text' class='span1' placeholder='0.00'/>
     </div>
     <input type='button' data-bind='click: addFunds' class='btn btn-primary' value='Add Funds' />
 </form>
-</script>
+</div>

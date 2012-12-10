@@ -76,7 +76,7 @@
     <div class="span6" style="float: right">
         <div class="body_header">
             <h3>@DashboardViewResources.PackagesHeader</h3>
-            <a href="#" class="store_address" data-bind="popover: { trigger: 'click', title: '', placement: 'bottom', content: 'balancePopupContent' }">
+            <a href="#" class="store_address" data-bind="popover: balanceBindingValue">
                Последние транзакции, @DashboardViewResources.BalanceHeader: <span style="color: green">$0.00</span>
             </a><i class="icon-money" style="margin-top: 6px"></i>
         </div>
@@ -92,7 +92,7 @@
                 </div>
             </div>
         </div>
-        <div class="link_expand"><a href="#" title="@DashboardViewResources.ExpandAllPackages" data-bind="click: expandAllPackages"><i class="icon icon-chevron-down"></i>&nbsp;</a><a href="#" title="@DashboardViewResources.CollapseAllPackages" data-bind="click: collapseAllPackages"><i class="icon icon-chevron-up"></i>&nbsp;</a></div>
+        <div class="link_expand"><a id="balanceAnchor" href="#" title="@DashboardViewResources.ExpandAllPackages" data-bind="click: expandAllPackages"><i class="icon icon-chevron-down"></i>&nbsp;</a><a href="#" title="@DashboardViewResources.CollapseAllPackages" data-bind="click: collapseAllPackages"><i class="icon icon-chevron-up"></i>&nbsp;</a></div>
         <div class="tab-content">@*<div class="tab-content choose_package">*@
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#recent_packages" data-toggle="tab">@DashboardViewResources.RecentPackagesTabHeader</a></li>
