@@ -11,5 +11,7 @@ namespace TdService.Model.Balance
         List<Transaction> GetTransactionsForUser(string email);
 
         Transaction AddTransaction(Transaction transaction);
+
+        void ConfirmTransaction(string token, string payerId);
     }
 }

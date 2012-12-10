@@ -132,6 +132,8 @@
     <Compile Include="Messaging\Retailer\GetRetailersResponse.cs" />
     <Compile Include="Messaging\Transactions\AddTransactionRequest.cs" />
     <Compile Include="Messaging\Transactions\AddTransactionResponse.cs" />
+    <Compile Include="Messaging\Transactions\ConfirmPayPalTransactionRequest.cs" />
+    <Compile Include="Messaging\Transactions\ConfirmPayPalTransactionResponse.cs" />
     <Compile Include="Messaging\Transactions\GetTransactionsRequest.cs" />
     <Compile Include="Messaging\Transactions\GetTransactionsResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

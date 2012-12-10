@@ -47,7 +47,7 @@
             var request = new SetExpressCheckoutRequestType();
 
             var ecDetails = new SetExpressCheckoutRequestDetailsType();
-            ecDetails.ReturnURL = ResolveServerUrl(VirtualPathUtility.ToAbsolute(Url.Action("ConfirmDeposit","Member")),false);
+            ecDetails.ReturnURL = ResolveServerUrl(VirtualPathUtility.ToAbsolute(Url.Action("Dashboard","Member")),false);
             ecDetails.CancelURL = ResolveServerUrl(VirtualPathUtility.ToAbsolute(Url.Action("DepositCanceled","Member")),false);
 
             var paymentDetails = new PaymentDetailsType();

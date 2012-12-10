@@ -62,6 +62,7 @@
     <Compile Include="Configurations\ProfileConfiguration.cs" />
     <Compile Include="Configurations\RetailerConfiguration.cs" />
     <Compile Include="Configurations\RoleConfiguration.cs" />
+    <Compile Include="Configurations\TransactionConfiguration.cs" />
     <Compile Include="Configurations\UserConfiguration.cs" />
     <Compile Include="Configurations\WeightConfiguration.cs" />
     <Compile Include="DatabaseInitializer.cs" />

@@ -87,11 +87,9 @@ namespace TdService.UI.Web
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
             Mapper.CreateMap<GetProfileResponse, ProfileViewModel>()
                 .ForMember(m => m.Email, opt => opt.Ignore());
-            Mapper.CreateMap<Model.Membership.Profile, GetProfileResponse>()
-                .ForMember(r => r.Message, opt => opt.Ignore())
-                .ForMember(r => r.ErrorCode, opt => opt.Ignore())
-                .ForMember(r => r.BrokenRules, opt => opt.Ignore())
-                .ForMember(r => r.MessageType, opt => opt.Ignore());
+            Mapper.CreateMap<Model.Membership.Profile, GetProfileResponse>().ForMember(
+                r => r.Message, opt => opt.Ignore()).ForMember(r => r.ErrorCode, opt => opt.Ignore()).ForMember(
+                    r => r.BrokenRules, opt => opt.Ignore()).ForMember(r => r.MessageType, opt => opt.Ignore());
 
             // delivery address
             Mapper.CreateMap<DeliveryAddress, GetDeliveryAddressesResponse>()
@@ -279,7 +277,6 @@ namespace TdService.UI.Web
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
             Mapper.CreateMap<AddTransactionRequest, Transaction>()
                 .ForMember(r => r.Id, opt => opt.Ignore())
-                .ForMember(r => r.Wallet, opt => opt.Ignore())
                 .ForMember(r => r.Currency, opt => opt.Ignore());
         }
 

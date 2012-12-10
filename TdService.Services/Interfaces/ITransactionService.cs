@@ -8,5 +8,7 @@
         List<GetTransactionsResponse> GetTransactionsForUser(GetTransactionsRequest request);
 
         AddTransactionResponse AddTransaction(AddTransactionRequest request);
+
+        ConfirmPayPalTransactionResponse ConfirmPayPalTransaction(ConfirmPayPalTransactionRequest request);
     }
 }

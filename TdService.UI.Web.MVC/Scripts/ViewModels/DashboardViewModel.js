@@ -425,7 +425,7 @@ function DashboardViewModel(serverModel) {
     self.historyPackagesNotLoaded = ko.observable(true);
     self.historyOrdersNotLoaded = ko.observable(true);
     self.transactionHistoryNotLoaded = ko.observable(true);
-
+    
     // dashboard view model properties
     self.newOrderField = ko.observable().extend({ required: true });
     self.newPackageField = ko.observable().extend({ required: true });
@@ -442,8 +442,9 @@ function DashboardViewModel(serverModel) {
     self.packagesHistory = ko.observableArray();
     self.retailers = ko.observableArray();
 
-    self.balance = ko.observable();
-
+    self.balance = ko.observable(addressModel.WalletAmount);
+    self.addFundsAmount = ko.observable(23);
+    
     // computed properties
     self.disableAddOrderButton = ko.computed(function () {
         /// <summary>Determines whether add order button should be disabled.</summary>
@@ -510,17 +511,21 @@ function DashboardViewModel(serverModel) {
     };
     ////self.trackPackage("123");
 
-    self.addFunds = function() {
-        $.post("/ballance/AddTransaction", function (data) {
-            var orders = ko.toJS(data);
-            self.orders.removeAll();
-            $.each(orders, function (index, value) {
-                var order = new Order(value);
-                self.orders.unshift(order);
-            });
-            self.recentOrdersNotLoaded(false);
-        });
-    };
+    //self.addFunds = function () {
+    //    $.post("/ballance/AddTransaction", { "amount": self.addFundsAmount }, function (data) {
+    //        var items = ko.toJS(data);
+    //        window.location = data;
+    //    });
+        //$.post("/ballance/AddTransaction", function (data) {
+        //    var orders = ko.toJS(data);
+        //    self.orders.removeAll();
+        //    $.each(orders, function (index, value) {
+        //        var order = new Order(value);
+        //        self.orders.unshift(order);
+        //    });
+        //    self.recentOrdersNotLoaded(false);
+        //});
+    //};
 
     self.getRecentOrders = function() {
         /// <summary>Load recent orders from server.</summary>

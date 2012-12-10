@@ -1,9 +1,10 @@
 ﻿namespace TdService.Services.Messaging.Transactions
 {
+    using System;
+    using TdService.Model.Balance;
+
     public class AddTransactionRequest : RequestBase
     {
-        public int WalletId { get; set; }
-
         /// <summary>
         /// Gets or sets Operation Amount.
         /// </summary>
@@ -14,29 +15,29 @@
         /// </summary>
         public string OperationDescription { get; set; }
 
-        /// <summary>
-        /// Gets or sets Commission.
-        /// </summary>
-        public decimal Commission { get; set; }
-
-        /// <summary>
+       /// <summary>
         /// Gets or sets Date.
         /// </summary>
-        public string Date { get; set; }
-
-        /// <summary>
-        /// Gets or sets Transaction Amount.
-        /// </summary>
-        public decimal TransactionAmount { get; set; }
+        public DateTime Date { get; set; }
 
         /// <summary>
         /// Gets or sets Transaction Status.
         /// </summary>
-        public string TransactionStatus { get; set; }
+        public TransactionStatus TransactionStatus { get; set; }
 
         /// <summary>
         /// Gets or sets Currency.
         /// </summary>
         public string Currency { get; set; }
+
+        /// <summary>
+        /// Gets or sets Token.
+        /// </summary>
+        public string Token{ get; set; }
+
+        /// <summary>
+        /// Gets or sets Wallet Id.
+        /// </summary>
+        public int WalletId { get; set; }
     }
 }

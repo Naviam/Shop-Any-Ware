@@ -5,6 +5,7 @@
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging.Transactions;
     using TdService.Services.Mapping;
+    using System;
 
     public class TransactionService : ITransactionService
     {
@@ -23,10 +24,39 @@
 
         public AddTransactionResponse AddTransaction(AddTransactionRequest request)
         {
-            var transaction = request.ConvertToTransaction();
-            transaction.Wallet = new Wallet { Id = request.WalletId };
-            var result = this.transactionsRepository.AddTransaction(transaction);
-            return result.ConvertToAddTransactionResponse();
+            var response = new AddTransactionResponse();
+            response.MessageType = Messaging.MessageType.Success;
+            try
+            {
+                var transaction = request.ConvertToTransaction();
+                transaction.WalletId = request.WalletId;
+                var result = this.transactionsRepository.AddTransaction(transaction);
+                response = result.ConvertToAddTransactionResponse();
+                }
+            catch(Exception e)
+            {
+                response.MessageType = Messaging.MessageType.Error;
+                response.Message = e.Message;
+            }
+            return response;
+        }
+
+        public ConfirmPayPalTransactionResponse ConfirmPayPalTransaction(ConfirmPayPalTransactionRequest request)
+        {
+            var response = new ConfirmPayPalTransactionResponse();
+            response.MessageType = Messaging.MessageType.Success;
+            try
+            {
+                this.transactionsRepository.ConfirmTransaction(request.Token, request.PayerId);
+                
+                return response;
+            }
+            catch (Exception e)
+            {
+                response.MessageType = Messaging.MessageType.Error;
+                response.Message = e.Message;
+            }
+            return response;
         }
     }
 }

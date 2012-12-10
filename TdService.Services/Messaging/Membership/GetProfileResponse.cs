@@ -30,6 +30,16 @@ namespace TdService.Services.Messaging.Membership
         public string LastName { get; set; }
 
         /// <summary>
+        /// Gets or sets Balance
+        /// </summary>
+        public decimal Balance { get; set; }
+
+        /// <summary>
+        /// Gets or sets WalletId
+        /// </summary>
+        public int WalletId { get; set; }
+
+        /// <summary>
         /// Gets or sets a value indicating whether NotifyOnOrderStatusChanged.
         /// </summary>
         public bool NotifyOnOrderStatusChanged { get; set; }

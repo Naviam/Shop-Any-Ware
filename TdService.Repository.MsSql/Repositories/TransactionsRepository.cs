@@ -29,5 +29,18 @@
                 return result;
             }
         }
+
+        public void ConfirmTransaction(string token, string payerId)
+        {
+            using (var context = new ShopAnyWareSql())
+            {
+                var tran = context.Transactions.SingleOrDefault(t =>t.Token.Equals(token));
+                if (tran == null) throw new InvalidOperationException("Transaction Not Found");
+                tran.TransactionStatus = TransactionStatus.Approved;
+                tran.PayerId = payerId;
+                context.Wallets.Find(tran.WalletId).Amount += tran.OperationAmount;
+                context.SaveChanges();
+            }
+        }
     }
 }
