@@ -404,7 +404,7 @@ function Transaction(serverModel) {
     self.operationAmount = ko.observable(serverModel.OperationAmount);
     self.transactionDate = ko.observable(serverModel.Date);
     self.currency = ko.observable(serverModel.Currency);
-    self.transactionStatus = ko.observable(serverModel.TransactionStatus);
+    self.transactionStatus = ko.observable(serverModel.StatusTranslated);
 }
 
 function Retailer(serverModel) {

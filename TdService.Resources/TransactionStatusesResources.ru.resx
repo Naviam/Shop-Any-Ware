@@ -123,6 +123,9 @@
   <data name="Failed" xml:space="preserve">
     <value>Ошибка</value>
   </data>
+  <data name="InProgress" xml:space="preserve">
+    <value>В процессе</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>Ожидает подтверждения</value>
   </data>
