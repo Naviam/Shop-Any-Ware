@@ -22,5 +22,31 @@
             var result =  Mapper.Map<List<GetTransactionsResponse>, List<TransactionsViewModel>>(responses);
             return result;
         }
+
+        /// <summary>
+        /// Convert transaction view model to add transaction request message.
+        /// </summary>
+        /// <param name="model">
+        /// The transaction view model.
+        /// </param>
+        /// <returns>
+        /// The add transaction request message.
+        /// </returns>
+        public static AddTransactionRequest ConvertToAddTransactionRequest(this TransactionsViewModel model)
+        {
+            return Mapper.Map<TransactionsViewModel, AddTransactionRequest>(model);
+        }
+
+        /// <summary>
+        /// Convert add transaction response message to transaction view model.
+        /// </summary>
+        /// <param name="response">
+        /// The add transaction response message.
+        /// </param>
+        /// <returns></returns>
+        public static TransactionsViewModel ConvertToTransactionViewModel(this AddTransactionResponse response)
+        {
+            return Mapper.Map<AddTransactionResponse, TransactionsViewModel>(response);
+        }
     }
 }

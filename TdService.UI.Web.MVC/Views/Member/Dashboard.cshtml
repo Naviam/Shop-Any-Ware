@@ -72,13 +72,13 @@
             </div>
         </div>
     </div>
+    @{ Html.RenderPartial("balanceTable");}
     <div class="span6" style="float: right">
         <div class="body_header">
-            
             <h3>@DashboardViewResources.PackagesHeader</h3>
-            <a href="#" class="store_address" id="transactionAnchor" data-trigger="click" data-title="Последние транзакции" data-placement="bottom" data-content="@{ Html.RenderPartial("balanceTable");}">
-                @DashboardViewResources.BalanceHeader: <span style="color: green">$0.00</span> Задолженность: <span style="color: red">$(0.00)</span>
-            </a><i class="icon-money" style="margin-top: 6px"></i><a href="@Url.Action("Deposit")" style="margin-top: 3px; float:right;" target="_blank">Deposit</a>
+            <a href="#" class="store_address" data-bind="popover: { trigger: 'click', title: '', placement: 'bottom', content: 'balancePopupContent' }">
+               Последние транзакции, @DashboardViewResources.BalanceHeader: <span style="color: green">$0.00</span>
+            </a><i class="icon-money" style="margin-top: 6px"></i>
         </div>
         <div class="package">
             <div class="control-group" data-bind="css: { error: !newPackageField.isValid() }, validationOptions: { insertMessages: false, decorateElement: true, errorClass: 'error', parseInputAttributes: false, errorElementClass: 'error' }">

@@ -67,6 +67,50 @@ ko.bindingHandlers.collapsed = {
     }
 };
 
+ko.bindingHandlers.popover = {
+    init: function(element, valueAccessor, allBindingsAccessor, viewModel) {
+        var options = ko.utils.unwrapObservable(valueAccessor());
+        if (options) {
+            var templateContent = $('#' + options.content).html();
+            $(element).attr('data-content', templateContent);
+            $(element).attr('data-original-title', options.title || '');
+            $(element).attr('data-placement', options.placement || 'right');
+            $(element).attr('data-trigger', options.trigger || 'click');
+        }
+        $(element).popover({ html: true });
+    },
+    update: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
+        var value = ko.utils.unwrapObservable(valueAccessor());
+        $(element).attr('data-content', $(value).html());
+
+        if (options) {
+            var control = '#' + options.command + 'Content';
+            $(element).attr('data-content', $(control).html());
+            $(element).attr('data-original-title', options.title || 'Title');
+            $(element).attr('data-placement', options.placement || 'right');
+            $(element).attr('data-trigger', options.trigger || 'click');
+            $(element).popover({ html: true });
+        }
+    }
+};
+
+ko.bindingHandlers.autosuggest = {
+    init: function (element) { // , valueAccessor, allBindingAccessors, model
+        $.post("/retailers/get", { "searchText": self.newOrderField() }, function (data) {
+            var retailers = ko.toJS(data);
+            self.retailers.removeAll();
+            $.each(retailers, function (index, value) {
+                var retailer = new Retailer(value);
+                self.retailers.unshift(retailer.url);
+            });
+            var retailerUrls = $.map(retailers, function (n) {
+                return n.Url;
+            });
+            $(element).typeahead({ source: retailerUrls });
+        });
+    }
+};
+
 function Item(serverModel) {
     /// <summary>Item view model.</summary>
     var self = this;
@@ -330,7 +374,7 @@ function Order(serverModel) {
     };
     self.loadItems();
 
-    self.getItemDetails = function(item) {
+    self.getItemDetails = function() {
         /// <summary>Get item details.</summary>
     };
 
@@ -385,7 +429,7 @@ function Transaction(serverModel) {
     
     //server model properties
     self.operationAmount = ko.observable(serverModel.OperationAmount);
-    self.tranDate = ko.observable(serverModel.Date);
+    self.transactionDate = ko.observable(serverModel.Date);
     self.currency = ko.observable(serverModel.Currency);
     self.transactionStatus = ko.observable(serverModel.TransactionStatus);
 }
@@ -418,11 +462,13 @@ function DashboardViewModel(serverModel) {
     // dashboard view model collections
     self.orders = ko.observableArray();
     self.ordersHistory = ko.observableArray();
-    self.transactionHistory = ko.observableArray();
+    self.transactions = ko.observableArray();
     self.addresses = ko.observableArray();
     self.packages = ko.observableArray();
     self.packagesHistory = ko.observableArray();
     self.retailers = ko.observableArray();
+
+    self.balance = ko.observable();
 
     // computed properties
     self.disableAddOrderButton = ko.computed(function () {
@@ -484,7 +530,7 @@ function DashboardViewModel(serverModel) {
     self.suggestRetailers();
 
     self.trackPackage = function(trackingNumber) {
-        $.uspsTrackPackage("", trackingNumber, function(data) {
+        $.uspsTrackPackage("", trackingNumber, function() {
             alert('success');
         });
     };
@@ -521,16 +567,19 @@ function DashboardViewModel(serverModel) {
     self.getTransactionHistory = function() {
         $.post("/ballance/TransactionHistory", function (data) {
             var transactions = ko.toJS(data);
-            self.transactionHistory.removeAll();
-            for (var i = 0; i < transactions.length;i++) {
-                var transaction = new Transaction(transactions[i]);
-                self.transactionHistory.unshift(transaction);
-            }
+            self.transactions.removeAll();
+            $.each(transactions, function (index, value) {
+                var transaction = new Transaction(value);
+                self.transactions.unshift(transaction);
+            });
+            ////for (var i = 0; i < transactions.length;i++) {
+            ////    var transaction = new Transaction(transactions[i]);
+            ////    self.transactionHistory.unshift(transaction);
+            ////}
             self.transactionHistoryNotLoaded(false);
         });
     };
     self.getTransactionHistory();
-
 
     self.createOrder = function() {
         /// <summary>Add new order.</summary>
@@ -628,23 +677,5 @@ function DashboardViewModel(serverModel) {
                 });
             }
         });
-    };
-
-    ko.bindingHandlers.autosuggest = {
-        init: function (element, valueAccessor, allBindingAccessors, model) {
-            $.post("/retailers/get", { "searchText": self.newOrderField() }, function (data) {
-                var retailers = ko.toJS(data);
-                self.retailers.removeAll();
-                $.each(retailers, function (index, value) {
-                    var retailer = new Retailer(value);
-                    self.retailers.unshift(retailer.url);
-                });
-                var retailerUrls = $.map(retailers, function (n) {
-                    return n.Url;
-                });
-                $(element).typeahead({ source: retailerUrls });
-            });
-            
-        }
     };
 }

@@ -15,12 +15,15 @@ namespace TdService.UI.Web.Controllers
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging.Transactions;
     using TdService.UI.Web.Mapping;
+    using TdService.UI.Web.ViewModels.Ballance;
 
     /// <summary>
     /// This controller contains methods to work with balance.
     /// </summary>
     public class BallanceController : BaseAuthController
     {
+        private readonly IMembershipService membershipService;
+
         /// <summary>
         /// Order service.
         /// </summary>
@@ -29,12 +32,14 @@ namespace TdService.UI.Web.Controllers
         /// <summary>
         /// Initializes a new instance of the <see cref="BallanceController"/> class.
         /// </summary>
+        /// <param name="transactionService"></param>
         /// <param name="formsAuthentication">
         /// The forms authentication.
         /// </param>
-        public BallanceController(ITransactionService transactionService, IFormsAuthentication formsAuthentication)
+        public BallanceController(IMembershipService membershipService, ITransactionService transactionService, IFormsAuthentication formsAuthentication)
             : base(formsAuthentication)
         {
+            this.membershipService = membershipService;
             this.transactionService = transactionService;
         }
 
@@ -60,5 +65,21 @@ namespace TdService.UI.Web.Controllers
             return jsonNetResult;
         }
 
+        [Authorize(Roles = "Shopper")]
+        [HttpPost]
+        public ActionResult AddTransaction(TransactionsViewModel viewModel)
+        {
+            var request = viewModel.ConvertToAddTransactionRequest();
+            request.IdentityToken = this.FormsAuthentication.GetAuthenticationToken();
+            var response = this.transactionService.AddTransaction(request);
+            var result = response.ConvertToTransactionViewModel();
+
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = result
+            };
+            return jsonNetResult;
+        }
     }
 }

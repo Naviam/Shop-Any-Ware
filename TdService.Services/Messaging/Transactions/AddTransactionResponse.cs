@@ -1,8 +1,6 @@
 ﻿namespace TdService.Services.Messaging.Transactions
 {
-    using System;
-
-    public class GetTransactionsResponse : ResponseBase
+    public class AddTransactionResponse : ResponseBase
     {
         public int WalletId { get; set; }
 
@@ -24,7 +22,7 @@
         /// <summary>
         /// Gets or sets Date.
         /// </summary>
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
 
         /// <summary>
         /// Gets or sets Transaction Amount.

@@ -1,10 +1,5 @@
 ﻿namespace TdService.UI.Web.ViewModels.Ballance
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using TdService.Resources;
 
     /// <summary>
@@ -62,5 +57,7 @@
         /// Gets or sets Currency.
         /// </summary>
         public string Currency { get; set; }
+
+        public int WalletId { get; set; }
     }
 }

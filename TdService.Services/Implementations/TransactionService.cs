@@ -1,10 +1,6 @@
 ﻿namespace TdService.Services.Implementations
 {
-    using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using TdService.Model.Balance;
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging.Transactions;
@@ -24,6 +20,13 @@
             var result = this.transactionsRepository.GetTransactionsForUser(request.IdentityToken);
             return result.ConvertToGetTransactionsResponseCollection();
         }
-       
+
+        public AddTransactionResponse AddTransaction(AddTransactionRequest request)
+        {
+            var transaction = request.ConvertToTransaction();
+            transaction.Wallet = new Wallet { Id = request.WalletId };
+            var result = this.transactionsRepository.AddTransaction(transaction);
+            return result.ConvertToAddTransactionResponse();
+        }
     }
 }

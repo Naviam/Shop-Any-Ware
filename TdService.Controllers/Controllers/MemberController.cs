@@ -13,7 +13,6 @@ namespace TdService.UI.Web.Controllers
     using System.Web.Mvc;
 
     using TdService.Infrastructure.Authentication;
-    using TdService.Services.Implementations;
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging.Address;
     using TdService.Services.Messaging.Membership;
@@ -99,6 +98,7 @@ namespace TdService.UI.Web.Controllers
         {
             return this.View("Deposit");
         }
+
         [Authorize(Roles = "Shopper")]
         public ActionResult ConfirmDeposit(string token, string payerId)
         {

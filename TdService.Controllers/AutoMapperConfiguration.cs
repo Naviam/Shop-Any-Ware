@@ -258,11 +258,29 @@ namespace TdService.UI.Web
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
             Mapper.CreateMap<AddPackageResponse, PackageViewModel>();
 
-            //get transactions
+            // get transactions
             Mapper.CreateMap<Transaction, GetTransactionsResponse>()
-                .ForMember(dest => dest.Currency, opt => opt.MapFrom(src => src.Currency.AlphabeticCode));
+                .ForMember(dest => dest.Currency, opt => opt.MapFrom(src => src.Currency.AlphabeticCode))
+                .ForMember(r => r.BrokenRules, opt => opt.Ignore())
+                .ForMember(r => r.Message, opt => opt.Ignore())
+                .ForMember(r => r.ErrorCode, opt => opt.Ignore())
+                .ForMember(r => r.MessageType, opt => opt.Ignore());
             Mapper.CreateMap<GetTransactionsResponse, TransactionsViewModel>()
                 .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Date.ToShortDateString()));
+
+            // add transaction
+            Mapper.CreateMap<AddTransactionResponse, TransactionsViewModel>();
+            Mapper.CreateMap<TransactionsViewModel, AddTransactionRequest>()
+                .ForMember(r => r.IdentityToken, opt => opt.Ignore());
+            Mapper.CreateMap<Transaction, AddTransactionResponse>()
+                .ForMember(r => r.BrokenRules, opt => opt.Ignore())
+                .ForMember(r => r.Message, opt => opt.Ignore())
+                .ForMember(r => r.ErrorCode, opt => opt.Ignore())
+                .ForMember(r => r.MessageType, opt => opt.Ignore());
+            Mapper.CreateMap<AddTransactionRequest, Transaction>()
+                .ForMember(r => r.Id, opt => opt.Ignore())
+                .ForMember(r => r.Wallet, opt => opt.Ignore())
+                .ForMember(r => r.Currency, opt => opt.Ignore());
         }
 
         /// <summary>

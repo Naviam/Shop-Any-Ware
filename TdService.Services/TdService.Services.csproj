@@ -130,6 +130,8 @@
     <Compile Include="Messaging\ResponseBase.cs" />
     <Compile Include="Messaging\Retailer\GetRetailersRequest.cs" />
     <Compile Include="Messaging\Retailer\GetRetailersResponse.cs" />
+    <Compile Include="Messaging\Transactions\AddTransactionRequest.cs" />
+    <Compile Include="Messaging\Transactions\AddTransactionResponse.cs" />
     <Compile Include="Messaging\Transactions\GetTransactionsRequest.cs" />
     <Compile Include="Messaging\Transactions\GetTransactionsResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
