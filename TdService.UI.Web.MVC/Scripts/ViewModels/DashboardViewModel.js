@@ -443,7 +443,7 @@ function DashboardViewModel(serverModel) {
     self.retailers = ko.observableArray();
 
     self.balance = ko.observable(addressModel.WalletAmount);
-    self.addFundsAmount = ko.observable(23);
+    self.addFundsAmount = ko.observable('').extend({ required: { message: '*' }, number: true });
     
     // computed properties
     self.disableAddOrderButton = ko.computed(function () {
@@ -653,6 +653,12 @@ function DashboardViewModel(serverModel) {
             }
         });
     };
+
+    self.AddFunds = function() {
+        var valid = self.addFundsAmount.isValid();
+        ko.validation.group(self).showAllMessages();
+    };
+
 }
 
 

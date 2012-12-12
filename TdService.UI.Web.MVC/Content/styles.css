@@ -1185,3 +1185,11 @@ li[class^="icon-"], li[class*=" icon-"]
 {
     content: "\f0d5";
 }
+
+.validationMessage {
+    color: red;
+    font-weight: bold;
+    font-size: small;
+    margin-left: 5px;
+    padding-top: 2px;
+}
