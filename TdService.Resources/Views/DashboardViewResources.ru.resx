@@ -120,6 +120,9 @@
   <data name="ActionsHeader" xml:space="preserve">
     <value>Действие</value>
   </data>
+  <data name="AddFundsButton" xml:space="preserve">
+    <value>Пополнить</value>
+  </data>
   <data name="AddItemButton" xml:space="preserve">
     <value>Добавить товар</value>
   </data>
@@ -243,6 +246,9 @@
   <data name="NoPackagesMessage" xml:space="preserve">
     <value>На данный момент у Вас отсутствуют посылки. Создайте посылку.</value>
   </data>
+  <data name="NoTransactionsMessage" xml:space="preserve">
+    <value>На данный момент у Вас отсутствует история транзакций.</value>
+  </data>
   <data name="OrderCannotBeRemoved" xml:space="preserve">
     <value>Заказ не может быть удален в текущем состоянии.</value>
   </data>
@@ -302,6 +308,9 @@
   </data>
   <data name="PackagesHeader" xml:space="preserve">
     <value>Посылки</value>
+  </data>
+  <data name="PaymentTypePaypal" xml:space="preserve">
+    <value>Платеж / PayPal</value>
   </data>
   <data name="PriceHeader" xml:space="preserve">
     <value>Цена</value>

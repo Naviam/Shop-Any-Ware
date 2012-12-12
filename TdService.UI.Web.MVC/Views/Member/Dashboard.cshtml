@@ -79,12 +79,11 @@
             <script type="text/html" id="validationMessage"></script>
             <form class='form-inline' style="float: right; margin-left:10px" id='frmAddFunds' action="/ballance/AddTransaction" method="post" target="_self">
                <div class='input-prepend input-append'>
-                    <span class='add-on'>$</span><input class='span2' type='text' id='amount' name='amount' placeholder='0.00' data-bind='value:addFundsAmount' style='width:50px'/><input type='button' class='btn' style='font-size: 17px' id='btnAddFunds' data-bind='click:AddFunds' value='Add Funds'/>
+                    <span class='add-on'>$</span><input class='span2' type='text' id='amount' name='amount' placeholder='0.00' data-bind='value:addFundsAmount' style='width:50px'/><input type='button' class='btn' style='font-size: 17px' id='btnAddFunds' data-bind='click:AddFunds' value='@DashboardViewResources.AddFundsButton'/>
                </div>
             </form>
             <a href="#" class="store_address" data-bind="popover: balanceBindingValue">@DashboardViewResources.BalanceHeader: $<span data-bind="text:balance"></span>
             </a><i class="icon-money" style="margin-top: 6px"></i>
-            
         </div>
         <div class="package">
             <div class="control-group" data-bind="css: { error: !newPackageField.isValid() }, validationOptions: { insertMessages: false, decorateElement: true, errorClass: 'error', parseInputAttributes: false, errorElementClass: 'error' }">
