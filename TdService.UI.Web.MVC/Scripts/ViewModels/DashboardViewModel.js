@@ -509,23 +509,6 @@ function DashboardViewModel(serverModel) {
             alert('success');
         });
     };
-    ////self.trackPackage("123");
-
-    //self.addFunds = function () {
-    //    $.post("/ballance/AddTransaction", { "amount": self.addFundsAmount }, function (data) {
-    //        var items = ko.toJS(data);
-    //        window.location = data;
-    //    });
-        //$.post("/ballance/AddTransaction", function (data) {
-        //    var orders = ko.toJS(data);
-        //    self.orders.removeAll();
-        //    $.each(orders, function (index, value) {
-        //        var order = new Order(value);
-        //        self.orders.unshift(order);
-        //    });
-        //    self.recentOrdersNotLoaded(false);
-        //});
-    //};
 
     self.getRecentOrders = function() {
         /// <summary>Load recent orders from server.</summary>

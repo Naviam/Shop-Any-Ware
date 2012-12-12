@@ -76,8 +76,13 @@
     <div class="span6" style="float: right">
         <div class="body_header">
             <h3>@DashboardViewResources.PackagesHeader</h3>
-            <a href="#" class="store_address" data-bind="popover: balanceBindingValue">
-               Последние транзакции, @DashboardViewResources.BalanceHeader: $<span style="color: green" data-bind="text:balance"></span>
+            <a href="#" class="store_address" data-bind="popover: balanceBindingValue">@DashboardViewResources.BalanceHeader: $<span style="color: green" data-bind="text:balance"></span>
+            <form class='form-inline' id="frmAddFunds" action="/ballance/AddTransaction" method="post" target="_self">
+                <div class='input-prepend'>
+                    <span class='add-on'>$</span><input class='span1' type='text' id='amount' name='amount'/>
+                </div>
+                <input type='submit' class='btn btn-primary' value='Add Funds' />
+            </form>
             </a><i class="icon-money" style="margin-top: 6px"></i>
         </div>
         <div class="package">
@@ -152,6 +157,19 @@
             ko.validation.init(mainViewModel, { insertMessages: false, decorateElement: true, errorClass: 'error', parseInputAttributes: true });
             $(".store_address").popover();
             $(".choose_package").popover('show');
+            $("#frmAddFunds").validate({
+                rules: {
+                    amount: {
+                        required:true
+                    }
+                },
+                beforeSubmit: function (arr, $form, options) {
+                    var k = 1;
+                },
+                submitHandler: function (form) {
+                    var k = 1;
+                }
+            });
 
         });
     </script>
