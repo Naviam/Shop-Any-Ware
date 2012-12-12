@@ -402,7 +402,7 @@ function Transaction(serverModel) {
     
     //server model properties
     self.operationAmount = ko.observable(serverModel.OperationAmount);
-    self.transactionDate = ko.observable(serverModel.Date);
+    self.transactionDate = ko.observable(formatDate(serverModel.Date));
     self.currency = ko.observable(serverModel.Currency);
     self.transactionStatus = ko.observable(serverModel.StatusTranslated);
 }
