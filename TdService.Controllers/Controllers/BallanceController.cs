@@ -10,6 +10,7 @@
 namespace TdService.UI.Web.Controllers
 {
     using System;
+    using System.Globalization;
     using System.Web;
     using System.Web.Mvc;
     using System.Xml;
@@ -71,12 +72,13 @@ namespace TdService.UI.Web.Controllers
 
         [Authorize(Roles = "Shopper")]
         [HttpPost]
-        public ActionResult AddTransaction(decimal amount)
+        public ActionResult AddTransaction(string amount)
         {
+            decimal localAmount = decimal.Parse(amount, CultureInfo.InvariantCulture);
             try
             {
                 //get token from paypal
-                var token = PayPalHelper.GetTokenFromPayPalApi(amount,
+                var token = PayPalHelper.GetTokenFromPayPalApi(localAmount,
                     ResolveServerUrl(VirtualPathUtility.ToAbsolute(Url.Action("PaymentSucceded", "Member")), false),
                     ResolveServerUrl(VirtualPathUtility.ToAbsolute(Url.Action("DepositCanceled", "Member")), false),
                     "SAW sandbox test deposit",
@@ -89,7 +91,7 @@ namespace TdService.UI.Web.Controllers
                 {
                     Date = DateTime.Now,
                     IdentityToken = this.FormsAuthentication.GetAuthenticationToken(),
-                    OperationAmount = amount,
+                    OperationAmount = localAmount,
                     OperationDescription = "PayPal transaction",
                     TransactionStatus = TransactionStatus.InProgress,
                     Token = token,
