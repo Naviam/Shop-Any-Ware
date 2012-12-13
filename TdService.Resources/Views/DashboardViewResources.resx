@@ -249,6 +249,9 @@
   <data name="NoPackagesMessage" xml:space="preserve">
     <value>There are no packages to show. Please add a new one.</value>
   </data>
+  <data name="NoTransactionsMessage" xml:space="preserve">
+    <value>There are no transactions to show.</value>
+  </data>
   <data name="OrderCannotBeRemoved" xml:space="preserve">
     <value>The order cannot be removed in current state.</value>
   </data>
@@ -308,6 +311,9 @@
   </data>
   <data name="PackagesHeader" xml:space="preserve">
     <value>Packages</value>
+  </data>
+  <data name="PaymentTypePaypal" xml:space="preserve">
+    <value>Payment / PayPal</value>
   </data>
   <data name="PriceHeader" xml:space="preserve">
     <value>Price</value>

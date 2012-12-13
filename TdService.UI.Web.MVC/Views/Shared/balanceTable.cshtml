@@ -2,7 +2,7 @@
 <div id="balancePopupContent" style="display:none">
     <div data-bind='visible: transactions().length == 0'>
         <div class='alert alert-info'>
-            <span>На данный момент у Вас отсутствует история транзакций</span>
+            <span>@DashboardViewResources.NoTransactionsMessage</span>
         </div>
         <br />
     </div>
@@ -18,7 +18,7 @@
         <tbody data-bind='foreach: transactions()'>
             <tr>
                 <td data-bind='text: transactionDate'></td>
-                <td>Платеж / PayPal</td>
+                <td>@DashboardViewResources.PaymentTypePaypal</td>
                 <td><span class='label label-warning' data-bind='text:transactionStatus'></span></td>
                 <td data-bind='text: operationAmount'></td>
             </tr>
@@ -27,7 +27,7 @@
             <tr>
                 <td></td>
                 <td></td>
-                <td>Баланс: </td>
+                <td>@DashboardViewResources.BalanceHeader: </td>
                 <td data-bind='text: balance'></td>
             </tr>
         </tfoot>
