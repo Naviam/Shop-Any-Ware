@@ -11,16 +11,16 @@ namespace TdService.UI.Web.Controllers
 {
     using System.Collections.Generic;
     using System.Web.Mvc;
-    using PayPal.PayPalAPIInterfaceService;
-    using PayPal.PayPalAPIInterfaceService.Model;
     using TdService.Infrastructure.Authentication;
+    using TdService.Resources.Views;
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging.Address;
     using TdService.Services.Messaging.Membership;
     using TdService.Services.Messaging.Transactions;
     using TdService.UI.Web.Mapping;
     using TdService.UI.Web.ViewModels.Member;
-
+    using System.Linq;
+    using TdService.Infrastructure.PayPalHelpers;
     /// <summary>
     /// The controller that contains membership methods.
     /// </summary>
@@ -71,7 +71,7 @@ namespace TdService.UI.Web.Controllers
             model.FirstName = response.FirstName;
             model.LastName = response.LastName;
             model.WalletAmount = response.Balance;
-
+            model.AmountValidationMessage = DashboardViewResources.ResourceManager.GetString("AddFundsAmountValidationMessage");
             var addressesResponse = this.addressService.GetDeliveryAddresses(new GetDeliveryAddressesRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() });
             model.DeliveryAddressViewModels = addressesResponse.ConvertToDeliveryAddressViewModel();
 
@@ -89,45 +89,44 @@ namespace TdService.UI.Web.Controllers
         [Authorize(Roles = "Shopper")]
         public ActionResult PaymentSucceded(string token, string payerId)
         {
-            //confirm deposit
-            PayPalAPIInterfaceServiceService service = new PayPalAPIInterfaceServiceService();
-            GetExpressCheckoutDetailsReq getECWrapper = new GetExpressCheckoutDetailsReq();
-            getECWrapper.GetExpressCheckoutDetailsRequest = new GetExpressCheckoutDetailsRequestType(token);
-            GetExpressCheckoutDetailsResponseType getECResponse = service.GetExpressCheckoutDetails(getECWrapper);
-
-            // Create request object
-            DoExpressCheckoutPaymentRequestType request = new DoExpressCheckoutPaymentRequestType();
-            DoExpressCheckoutPaymentRequestDetailsType requestDetails = new DoExpressCheckoutPaymentRequestDetailsType();
-            request.DoExpressCheckoutPaymentRequestDetails = requestDetails;
-
-            requestDetails.PaymentDetails = getECResponse.GetExpressCheckoutDetailsResponseDetails.PaymentDetails;
-            requestDetails.Token = token;
-            requestDetails.PayerID = payerId;
-            requestDetails.PaymentAction = PaymentActionCodeType.SALE;
-
-            // Invoke the API
-            DoExpressCheckoutPaymentReq wrapper = new DoExpressCheckoutPaymentReq();
-            wrapper.DoExpressCheckoutPaymentRequest = request;
-            DoExpressCheckoutPaymentResponseType doECResponse = service.DoExpressCheckoutPayment(wrapper);
-
-            //add transaction
-            transactionService.ConfirmPayPalTransaction(
-                new ConfirmPayPalTransactionRequest { PayerId = payerId, Token = token });
-
-
             var model = new ShopperDashboardViewModel();
+            try
+            {
+                PayPalHelper.ConfirmPayPalPayment(token, payerId);
+
+                var confirmPayPalTransactionResponse = transactionService.ConfirmPayPalTransaction(
+                    new ConfirmPayPalTransactionRequest { PayerId = payerId, Token = token });
+                if (confirmPayPalTransactionResponse.MessageType == Services.Messaging.MessageType.Success)
+                {
+                    model.PayPalTransactionResultMessage = DashboardViewResources.ResourceManager.GetString("SuccessfullPayPalPaymentConfirmationMessage");
+                    model.PayPalTransactionResultMessageType = "Success";
+                }
+                else
+                {
+                    model.PayPalTransactionResultMessage = confirmPayPalTransactionResponse.Message;
+                    model.PayPalTransactionResultMessageType = confirmPayPalTransactionResponse.MessageType.ToString();
+                }
+            }
+            catch (PayPalException ex)
+            {
+                model.PayPalTransactionResultMessage = string.Format("{0}\n{1}",
+                    DashboardViewResources.ResourceManager.GetString("FailedPayPalPaymentConfirmationMessage"),
+                    ex.Message);
+                model.PayPalTransactionResultMessageType = "Error"; 
+            }
+            
             var response = this.membershipService.GetProfile(
                 new GetProfileRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() });
             model.UserId = response.Id;
             model.FirstName = response.FirstName;
             model.LastName = response.LastName;
             model.WalletAmount = response.Balance;
-
+            model.AmountValidationMessage = DashboardViewResources.ResourceManager.GetString("AddFundsAmountValidationMessage");
             var addressesResponse = this.addressService.GetDeliveryAddresses(new GetDeliveryAddressesRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() });
             model.DeliveryAddressViewModels = addressesResponse.ConvertToDeliveryAddressViewModel();
 
             model.DeliveryMethods = new List<string> { "Standard Delivery", "Express Delivery" };
-
+            
             return this.View("Dashboard", model);
         }
 

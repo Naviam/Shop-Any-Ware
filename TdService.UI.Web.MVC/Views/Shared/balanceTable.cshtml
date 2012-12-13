@@ -1,9 +1,10 @@
 ﻿@using TdService.Resources.Views
-<div id="balancePopupContent" style="display: none">
+<div id="balancePopupContent" style="display:none">
     <div data-bind='visible: transactions().length == 0'>
         <div class='alert alert-info'>
-            <span>На данный момент у Вас отсутствует история транзакций</span>
+            <span>@DashboardViewResources.NoTransactionsMessage</span>
         </div>
+        <br />
     </div>
     <table data-bind='visible: transactions().length > 0' class='table table-striped table-condensed'>
         <thead>
@@ -17,23 +18,19 @@
         <tbody data-bind='foreach: transactions()'>
             <tr>
                 <td data-bind='text: transactionDate'></td>
-                <td>Deposit</td>
-                <td><span class='label label-warning' data-bind='text:transactionStatus'></span></td>
+                <td>@DashboardViewResources.PaymentTypePaypal</td>
+                <td><span class='label' data-bind='text:transactionStatus, css: transactionStatusCssClass'></span></td>
                 <td data-bind='text: operationAmount'></td>
             </tr>
         </tbody>
-        <tfoot>
+        <tfoot style='font-weight: bold'>
             <tr>
                 <td></td>
                 <td></td>
-                <td>Баланс: </td>
+                <td>@DashboardViewResources.BalanceHeader: </td>
                 <td data-bind='text: balance'></td>
             </tr>
         </tfoot>
     </table>
-    <form class="input-prepend input-append" action="/ballance/AddTransaction" method="post" target="_self">
-        <span class="add-on">$</span>
-        <input class="span2" id="prependedInput" type="text">
-        <input type="submit" class='btn btn-primary' value="Add Funds" />
-    </form>
+    
 </div>

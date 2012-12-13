@@ -402,9 +402,22 @@ function Transaction(serverModel) {
     
     //server model properties
     self.operationAmount = ko.observable(serverModel.OperationAmount);
-    self.transactionDate = ko.observable(serverModel.Date);
+    self.transactionDate = ko.observable(formatDate(serverModel.Date));
     self.currency = ko.observable(serverModel.Currency);
     self.transactionStatus = ko.observable(serverModel.StatusTranslated);
+    self.transactionStatusCssClass = ko.computed(function() {
+        switch (serverModel.TransactionStatus) {
+            case 'Approved':
+                return 'label-success';
+            case 'InProgress':
+            case 'Pending':
+                return 'label-warning';
+            case 'Failed':
+                return 'label-important';
+            default:
+                return '';
+        }
+    }, self);
 }
 
 function Retailer(serverModel) {
@@ -425,7 +438,7 @@ function DashboardViewModel(serverModel) {
     self.historyPackagesNotLoaded = ko.observable(true);
     self.historyOrdersNotLoaded = ko.observable(true);
     self.transactionHistoryNotLoaded = ko.observable(true);
-    
+
     // dashboard view model properties
     self.newOrderField = ko.observable().extend({ required: true });
     self.newPackageField = ko.observable().extend({ required: true });
@@ -443,7 +456,13 @@ function DashboardViewModel(serverModel) {
     self.retailers = ko.observableArray();
 
     self.balance = ko.observable(addressModel.WalletAmount);
-    self.addFundsAmount = ko.observable(23);
+
+    self.addFundsAmount = ko.observable('').extend({ required: true, number: true });
+    
+    if (addressModel.PayPalTransactionResultMessage && addressModel.PayPalTransactionResultMessageType &&
+        addressModel.PayPalTransactionResultMessage != '' && addressModel.PayPalTransactionResultMessageType != '') {
+        window.showNotice(addressModel.PayPalTransactionResultMessage, addressModel.PayPalTransactionResultMessageType);
+    }
     
     // computed properties
     self.disableAddOrderButton = ko.computed(function () {
@@ -509,23 +528,6 @@ function DashboardViewModel(serverModel) {
             alert('success');
         });
     };
-    ////self.trackPackage("123");
-
-    //self.addFunds = function () {
-    //    $.post("/ballance/AddTransaction", { "amount": self.addFundsAmount }, function (data) {
-    //        var items = ko.toJS(data);
-    //        window.location = data;
-    //    });
-        //$.post("/ballance/AddTransaction", function (data) {
-        //    var orders = ko.toJS(data);
-        //    self.orders.removeAll();
-        //    $.each(orders, function (index, value) {
-        //        var order = new Order(value);
-        //        self.orders.unshift(order);
-        //    });
-        //    self.recentOrdersNotLoaded(false);
-        //});
-    //};
 
     self.getRecentOrders = function() {
         /// <summary>Load recent orders from server.</summary>
@@ -670,6 +672,23 @@ function DashboardViewModel(serverModel) {
             }
         });
     };
+
+    self.AddFunds = function() {
+        if(!self.addFundsAmount.isValid()) {
+            window.showNotice(addressModel.AmountValidationMessage, 'Warning');
+            return;
+        }
+        $.post("/ballance/AddTransaction", { "amount": self.addFundsAmount() }, function (data) {
+            var model = ko.toJS(data);
+            if (model.MessageType == "Success") {
+                window.location = model.RedirectUrl;
+            }
+            else {
+                window.showNotice(model.Message, model.MessageType);
+            }
+        });
+    };
+
 }
 
 

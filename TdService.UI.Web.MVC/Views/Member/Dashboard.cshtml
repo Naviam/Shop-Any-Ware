@@ -76,8 +76,12 @@
     <div class="span6" style="float: right">
         <div class="body_header">
             <h3>@DashboardViewResources.PackagesHeader</h3>
-            <a href="#" class="store_address" data-bind="popover: balanceBindingValue">
-               Последние транзакции, @DashboardViewResources.BalanceHeader: $<span style="color: green" data-bind="text:balance"></span>
+            <form class='form-inline' style="float: right; margin-left:10px" id='frmAddFunds'>
+               <div class='input-prepend input-append'>
+                    <span class='add-on'>$</span><input class='span1' type='text' id='amount' name='amount' placeholder='0.00' data-bind='value:addFundsAmount' style='width:60px'/><input type='button' class='btn' style='font-size: 17px' id='btnAddFunds' data-bind='click:AddFunds' value='@DashboardViewResources.AddFundsButton'/>
+               </div>
+            </form>
+            <a href="#" class="store_address" data-bind="popover: balanceBindingValue">@DashboardViewResources.BalanceHeader: $<span data-bind="text:balance"></span>
             </a><i class="icon-money" style="margin-top: 6px"></i>
         </div>
         <div class="package">
@@ -147,12 +151,19 @@
     @Scripts.Render("~/bundles/dashboard")
     <script type="text/javascript">
         $(document).ready(function () {
+            ko.validation.init(mainViewModel, {
+                registerExtenders: true,
+                messagesOnModified: false,
+                insertMessages: false,
+                parseInputAttributes: true,
+                messageTemplate: null
+            });
+
             var mainViewModel = new DashboardViewModel($("#model").val());
+           
             ko.applyBindings(mainViewModel);
-            ko.validation.init(mainViewModel, { insertMessages: false, decorateElement: true, errorClass: 'error', parseInputAttributes: true });
             $(".store_address").popover();
             $(".choose_package").popover('show');
-
         });
     </script>
 }

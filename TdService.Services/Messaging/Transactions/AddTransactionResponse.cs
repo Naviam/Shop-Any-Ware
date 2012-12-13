@@ -17,7 +17,7 @@
         /// <summary>
         /// Gets or sets Commission.
         /// </summary>
-        public decimal Commission { get; set; }
+        public decimal Commission { get; set; }//TODO: count comission
 
         /// <summary>
         /// Gets or sets Date.
@@ -38,5 +38,10 @@
         /// Gets or sets Currency.
         /// </summary>
         public string Currency { get; set; }
+
+        /// <summary>
+        /// PayPal Redirect Url
+        /// </summary>
+        public string PayPalRedirectUrl { get; set; }
     }
 }
