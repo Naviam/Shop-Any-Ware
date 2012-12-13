@@ -1,5 +1,6 @@
 ﻿namespace TdService.UI.Web.ViewModels.Ballance
 {
+    using System;
     using TdService.Resources;
 
     /// <summary>
@@ -25,7 +26,7 @@
         /// <summary>
         /// Gets or sets Date.
         /// </summary>
-        public string Date { get; set; }
+        public DateTime Date { get; set; }
 
         /// <summary>
         /// Gets or sets Transaction Status.

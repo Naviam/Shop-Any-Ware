@@ -263,8 +263,7 @@ namespace TdService.UI.Web
                 .ForMember(r => r.Message, opt => opt.Ignore())
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
-            Mapper.CreateMap<GetTransactionsResponse, TransactionsViewModel>()
-                .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Date.ToShortDateString()));
+            Mapper.CreateMap<GetTransactionsResponse, TransactionsViewModel>();
 
             // add transaction
             Mapper.CreateMap<AddTransactionResponse, TransactionsViewModel>();
