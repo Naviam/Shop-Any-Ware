@@ -123,6 +123,9 @@
   <data name="AddFundsAmountValidationMessage" xml:space="preserve">
     <value>Введите корректную сумму для депозита</value>
   </data>
+  <data name="AddFundsButton" xml:space="preserve">
+    <value>Пополнить</value>
+  </data>
   <data name="AddItemButton" xml:space="preserve">
     <value>Добавить товар</value>
   </data>

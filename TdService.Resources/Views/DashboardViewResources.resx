@@ -123,6 +123,9 @@
   <data name="AddFundsAmountValidationMessage" xml:space="preserve">
     <value>Amount is required and should be  a number</value>
   </data>
+  <data name="AddFundsButton" xml:space="preserve">
+    <value>Add Funds</value>
+  </data>
   <data name="AddItemButton" xml:space="preserve">
     <value>ADD ITEM</value>
   </data>

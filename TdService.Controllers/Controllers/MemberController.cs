@@ -71,7 +71,7 @@ namespace TdService.UI.Web.Controllers
             model.FirstName = response.FirstName;
             model.LastName = response.LastName;
             model.WalletAmount = response.Balance;
-            model.AmountValidationMessage = DashboardViewResources.AddFundsAmountValidationMessage;
+            model.AmountValidationMessage = DashboardViewResources.ResourceManager.GetString("AddFundsAmountValidationMessage");
             var addressesResponse = this.addressService.GetDeliveryAddresses(new GetDeliveryAddressesRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() });
             model.DeliveryAddressViewModels = addressesResponse.ConvertToDeliveryAddressViewModel();
 
@@ -98,7 +98,7 @@ namespace TdService.UI.Web.Controllers
                     new ConfirmPayPalTransactionRequest { PayerId = payerId, Token = token });
                 if (confirmPayPalTransactionResponse.MessageType == Services.Messaging.MessageType.Success)
                 {
-                    model.PayPalTransactionResultMessage = DashboardViewResources.SuccessfullPayPalPaymentConfirmationMessage;
+                    model.PayPalTransactionResultMessage = DashboardViewResources.ResourceManager.GetString("SuccessfullPayPalPaymentConfirmationMessage");
                     model.PayPalTransactionResultMessageType = "Success";
                 }
                 else
@@ -110,7 +110,7 @@ namespace TdService.UI.Web.Controllers
             catch (PayPalException ex)
             {
                 model.PayPalTransactionResultMessage = string.Format("{0}\n{1}",
-                    DashboardViewResources.FailedPayPalPaymentConfirmationMessage,
+                    DashboardViewResources.ResourceManager.GetString("FailedPayPalPaymentConfirmationMessage"),
                     ex.Message);
                 model.PayPalTransactionResultMessageType = "Error"; 
             }
@@ -121,7 +121,7 @@ namespace TdService.UI.Web.Controllers
             model.FirstName = response.FirstName;
             model.LastName = response.LastName;
             model.WalletAmount = response.Balance;
-
+            model.AmountValidationMessage = DashboardViewResources.ResourceManager.GetString("AddFundsAmountValidationMessage");
             var addressesResponse = this.addressService.GetDeliveryAddresses(new GetDeliveryAddressesRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() });
             model.DeliveryAddressViewModels = addressesResponse.ConvertToDeliveryAddressViewModel();
 
