@@ -425,7 +425,7 @@ function DashboardViewModel(serverModel) {
     self.historyPackagesNotLoaded = ko.observable(true);
     self.historyOrdersNotLoaded = ko.observable(true);
     self.transactionHistoryNotLoaded = ko.observable(true);
-    
+
     // dashboard view model properties
     self.newOrderField = ko.observable().extend({ required: true });
     self.newPackageField = ko.observable().extend({ required: true });
@@ -443,7 +443,13 @@ function DashboardViewModel(serverModel) {
     self.retailers = ko.observableArray();
 
     self.balance = ko.observable(addressModel.WalletAmount);
-    self.addFundsAmount = ko.observable('').extend({ required: { message: '*' }, number: true });
+
+    self.addFundsAmount = ko.observable('').extend({ required: true, number: true });
+    
+    if (addressModel.PayPalTransactionResultMessage && addressModel.PayPalTransactionResultMessageType &&
+        addressModel.PayPalTransactionResultMessage != '' && addressModel.PayPalTransactionResultMessageType != '') {
+        window.showNotice(addressModel.PayPalTransactionResultMessage, addressModel.PayPalTransactionResultMessageType);
+    }
     
     // computed properties
     self.disableAddOrderButton = ko.computed(function () {
@@ -655,8 +661,19 @@ function DashboardViewModel(serverModel) {
     };
 
     self.AddFunds = function() {
-        var valid = self.addFundsAmount.isValid();
-        ko.validation.group(self).showAllMessages();
+        if(!self.addFundsAmount.isValid()) {
+            window.showNotice(addressModel.AmountValidationMessage, 'Warning');
+            return;
+        }
+        $.post("/ballance/AddTransaction", { "amount": self.addFundsAmount }, function (data) {
+            var model = ko.toJS(data);
+            if (model.MessageType == "Success") {
+                window.location = model.RedirectUrl;
+            }
+            else {
+                window.showNotice(model.Message, model.MessageType);
+            }
+        });
     };
 
 }

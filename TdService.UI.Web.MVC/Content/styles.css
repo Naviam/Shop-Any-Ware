@@ -1187,9 +1187,5 @@ li[class^="icon-"], li[class*=" icon-"]
 }
 
 .validationMessage {
-    color: red;
-    font-weight: bold;
-    font-size: small;
-    margin-left: 5px;
-    padding-top: 2px;
+    display: none;
 }

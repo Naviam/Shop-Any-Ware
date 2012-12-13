@@ -13,10 +13,8 @@ namespace TdService.UI.Web.Controllers
     using System.Web;
     using System.Web.Mvc;
     using System.Xml;
-    using PayPal.Manager;
-    using PayPal.PayPalAPIInterfaceService;
-    using PayPal.PayPalAPIInterfaceService.Model;
     using TdService.Infrastructure.Authentication;
+    using TdService.Infrastructure.PayPalHelpers;
     using TdService.Model.Balance;
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging.Transactions;
@@ -75,14 +73,19 @@ namespace TdService.UI.Web.Controllers
         [HttpPost]
         public ActionResult AddTransaction(decimal amount)
         {
-            //get token from paypal
-            var token = GetTokenFromPayPalApi(amount);
+            try
+            {
+                //get token from paypal
+                var token = PayPalHelper.GetTokenFromPayPalApi(amount,
+                    ResolveServerUrl(VirtualPathUtility.ToAbsolute(Url.Action("PaymentSucceded", "Member")), false),
+                    ResolveServerUrl(VirtualPathUtility.ToAbsolute(Url.Action("DepositCanceled", "Member")), false),
+                    "SAW sandbox test deposit",
+                    "SAW");
 
-            var profile =
+                var profile =
                 membershipService.GetProfile(
-                    new Services.Messaging.Membership.GetProfileRequest
-                        { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() });
-            var request = new AddTransactionRequest
+                    new Services.Messaging.Membership.GetProfileRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() });
+                var request = new AddTransactionRequest
                 {
                     Date = DateTime.Now,
                     IdentityToken = this.FormsAuthentication.GetAuthenticationToken(),
@@ -91,50 +94,25 @@ namespace TdService.UI.Web.Controllers
                     TransactionStatus = TransactionStatus.InProgress,
                     Token = token,
                     WalletId = profile.WalletId
-                    
+
                 };
-            var response = this.transactionService.AddTransaction(request);
-            var result = response.ConvertToTransactionViewModel();
-
-            return Redirect(GetRedirectUrl(token));
-        }
-
-        private string GetTokenFromPayPalApi(decimal amount)
-        {
-            // Create request object
-            var request = new SetExpressCheckoutRequestType();
-
-            var ecDetails = new SetExpressCheckoutRequestDetailsType();
-            ecDetails.ReturnURL = ResolveServerUrl(VirtualPathUtility.ToAbsolute(Url.Action("PaymentSucceded", "Member")), false);
-            ecDetails.CancelURL = ResolveServerUrl(VirtualPathUtility.ToAbsolute(Url.Action("DepositCanceled", "Member")), false);
-
-            var paymentDetails = new PaymentDetailsType();
-            ecDetails.PaymentDetails.Add(paymentDetails);
-            paymentDetails.OrderDescription = "SAW sandbox test deposit";
-            paymentDetails.PaymentAction = PaymentActionCodeType.SALE;
-            var currency = CurrencyCodeType.USD;
-            paymentDetails.ItemTotal = new BasicAmountType(currency, amount.ToString());
-            paymentDetails.OrderTotal = new BasicAmountType(currency, amount.ToString());
-            paymentDetails.SellerDetails = new SellerDetailsType() { SellerUserName = "SAW" };
-            request.SetExpressCheckoutRequestDetails = ecDetails;
-
-            // Invoke the API
-            SetExpressCheckoutReq wrapper = new SetExpressCheckoutReq();
-            wrapper.SetExpressCheckoutRequest = request;
-            PayPalAPIInterfaceServiceService service = new PayPalAPIInterfaceServiceService();
-            SetExpressCheckoutResponseType setECResponse = service.SetExpressCheckout(wrapper);
-
-            if (setECResponse.Ack == AckCodeType.SUCCESS)
-            {
-                return setECResponse.Token;
+                var response = this.transactionService.AddTransaction(request);
+                var jsonNetResult = new JsonNetResult
+                {
+                    Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                    Data = new { Message = response.Message, MessageType = response.MessageType.ToString(), RedirectUrl = PayPalHelper.GetRedirectUrl(token) }
+                };
+                return jsonNetResult;
             }
-            throw new ApplicationException("Could not retrieve PP token");
-        }
-
-        private string GetRedirectUrl(string token)
-        {
-            var result = ConfigManager.Instance.GetProperty("paypalUrl") + "_express-checkout&token="+ token;
-            return result;
+            catch (PayPalException ex)
+            {
+                var jsonNetResult = new JsonNetResult
+                {
+                    Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                    Data = new { Message = ex.Message, MessageType="Error" }
+                };
+                return jsonNetResult;
+            }
         }
 
         private static string ResolveServerUrl(string serverUrl, bool forceHttps)

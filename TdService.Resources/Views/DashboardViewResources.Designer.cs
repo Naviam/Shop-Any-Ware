@@ -70,6 +70,15 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Amount is required and should be  a number.
+        /// </summary>
+        public static string AddFundsAmountValidationMessage {
+            get {
+                return ResourceManager.GetString("AddFundsAmountValidationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ADD ITEM.
         /// </summary>
         public static string AddItemButton {
@@ -237,6 +246,15 @@ namespace TdService.Resources.Views {
         public static string ExpandAllPackages {
             get {
                 return ResourceManager.GetString("ExpandAllPackages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error occured while confirming your PayPal transaction. Contact adminictrator for details..
+        /// </summary>
+        public static string FailedPayPalPaymentConfirmationMessage {
+            get {
+                return ResourceManager.GetString("FailedPayPalPaymentConfirmationMessage", resourceCulture);
             }
         }
         
@@ -705,6 +723,15 @@ namespace TdService.Resources.Views {
         public static string StatusHeader {
             get {
                 return ResourceManager.GetString("StatusHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your payment has been successfullt processed!.
+        /// </summary>
+        public static string SuccessfullPayPalPaymentConfirmationMessage {
+            get {
+                return ResourceManager.GetString("SuccessfullPayPalPaymentConfirmationMessage", resourceCulture);
             }
         }
         

@@ -47,5 +47,20 @@ namespace TdService.UI.Web.ViewModels.Member
         /// Gets or sets the delivery methods.
         /// </summary>
         public List<string> DeliveryMethods { get; set; }
+
+        /// <summary>
+        /// Validation message
+        /// </summary>
+        public string AmountValidationMessage { get; set; }
+
+        /// <summary>
+        /// PayPal transaction confirmation message
+        /// </summary>
+        public string PayPalTransactionResultMessage { get; set; }
+
+        /// <summary>
+        ///  PayPal transaction confirmation message type [Warning,success,error]
+        /// </summary>
+        public string PayPalTransactionResultMessageType { get; set; }
     }
 }

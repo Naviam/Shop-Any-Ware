@@ -120,6 +120,9 @@
   <data name="ActionsHeader" xml:space="preserve">
     <value>Действие</value>
   </data>
+  <data name="AddFundsAmountValidationMessage" xml:space="preserve">
+    <value>Введите корректную сумму для депозита</value>
+  </data>
   <data name="AddItemButton" xml:space="preserve">
     <value>Добавить товар</value>
   </data>
@@ -176,6 +179,9 @@
   </data>
   <data name="ExpandAllPackages" xml:space="preserve">
     <value>Развернуть все посылки</value>
+  </data>
+  <data name="FailedPayPalPaymentConfirmationMessage" xml:space="preserve">
+    <value>Во время подтверждения транзакции произошла ошибка. Обратитесь к администрации.</value>
   </data>
   <data name="HistoryPackagesTabHeader" xml:space="preserve">
     <value>История</value>
@@ -332,6 +338,9 @@
   </data>
   <data name="StatusHeader" xml:space="preserve">
     <value>Статус</value>
+  </data>
+  <data name="SuccessfullPayPalPaymentConfirmationMessage" xml:space="preserve">
+    <value>Ваш депозит прошел успешно!</value>
   </data>
   <data name="TotalCostHeader" xml:space="preserve">
     <value>Общие затраты</value>
