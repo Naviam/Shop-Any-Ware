@@ -405,6 +405,19 @@ function Transaction(serverModel) {
     self.transactionDate = ko.observable(formatDate(serverModel.Date));
     self.currency = ko.observable(serverModel.Currency);
     self.transactionStatus = ko.observable(serverModel.StatusTranslated);
+    self.transactionStatusCssClass = ko.computed(function() {
+        switch (serverModel.TransactionStatus) {
+            case 'Approved':
+                return 'label-success';
+            case 'InProgress':
+            case 'Pending':
+                return 'label-warning';
+            case 'Failed':
+                return 'label-important';
+            default:
+                return '';
+        }
+    }, self);
 }
 
 function Retailer(serverModel) {
@@ -665,7 +678,7 @@ function DashboardViewModel(serverModel) {
             window.showNotice(addressModel.AmountValidationMessage, 'Warning');
             return;
         }
-        $.post("/ballance/AddTransaction", { "amount": self.addFundsAmount }, function (data) {
+        $.post("/ballance/AddTransaction", { "amount": self.addFundsAmount() }, function (data) {
             var model = ko.toJS(data);
             if (model.MessageType == "Success") {
                 window.location = model.RedirectUrl;
