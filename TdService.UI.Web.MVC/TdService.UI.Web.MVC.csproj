@@ -368,9 +368,6 @@
     <Content Include="Views\Shared\_packageView.cshtml" />
     <Content Include="Views\Operator\Dashboard.cshtml" />
     <Content Include="Views\Home\Rate.cshtml" />
-    <Content Include="Views\Member\Deposit.cshtml" />
-    <Content Include="Views\Member\ConfirmDeposit.cshtml" />
-    <Content Include="Views\Member\DepositCanceled.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -456,7 +456,9 @@ function DashboardViewModel(serverModel) {
     self.retailers = ko.observableArray();
 
     self.balance = ko.observable(addressModel.WalletAmount);
-
+    self.addingFunds = ko.observable(false);//addFundsButtonText = ko.observable(addressModel.AddFundsButtonText);
+    //self.AddFundsButtonLoading = addressModel.AddFundsLoadingText;
+    //self.AddFundsButtonDefault = addressModel.AddFundsButtonText;
     self.addFundsAmount = ko.observable('').extend({ required: true, number: true });
     
     if (addressModel.PayPalTransactionResultMessage && addressModel.PayPalTransactionResultMessageType &&
@@ -678,12 +680,14 @@ function DashboardViewModel(serverModel) {
             window.showNotice(addressModel.AmountValidationMessage, 'Warning');
             return;
         }
+        self.addingFunds(true);
         $.post("/ballance/AddTransaction", { "amount": self.addFundsAmount() }, function (data) {
             var model = ko.toJS(data);
             if (model.MessageType == "Success") {
                 window.location = model.RedirectUrl;
             }
             else {
+                self.addingFunds(false);
                 window.showNotice(model.Message, model.MessageType);
             }
         });

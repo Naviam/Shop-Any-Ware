@@ -62,5 +62,15 @@ namespace TdService.UI.Web.ViewModels.Member
         ///  PayPal transaction confirmation message type [Warning,success,error]
         /// </summary>
         public string PayPalTransactionResultMessageType { get; set; }
+
+        /// <summary>
+        /// Addf funds button loading text
+        /// </summary>
+        public string AddFundsLoadingText { get; set; }
+
+        /// <summary>
+        /// Addf funds button loading text
+        /// </summary>
+        public string AddFundsButtonText { get; set; }
     }
 }

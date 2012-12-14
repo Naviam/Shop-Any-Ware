@@ -126,6 +126,9 @@
   <data name="AddFundsButton" xml:space="preserve">
     <value>Add Funds</value>
   </data>
+  <data name="AddFundsButtonLoading" xml:space="preserve">
+    <value>Loading</value>
+  </data>
   <data name="AddItemButton" xml:space="preserve">
     <value>ADD ITEM</value>
   </data>
