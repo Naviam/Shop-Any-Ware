@@ -10,5 +10,7 @@
         AddTransactionResponse AddTransaction(AddTransactionRequest request);
 
         ConfirmPayPalTransactionResponse ConfirmPayPalTransaction(ConfirmPayPalTransactionRequest request);
+
+        CancelPayPalTransactionResponse CancelPayPalTransaction(CancelPayPalTransactionRequest confirmPayPalTransactionRequest);
     }
 }
