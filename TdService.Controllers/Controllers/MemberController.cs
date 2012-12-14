@@ -65,17 +65,7 @@ namespace TdService.UI.Web.Controllers
         public ActionResult Dashboard()
         {
             var model = new ShopperDashboardViewModel();
-            var response = this.membershipService.GetProfile(
-                new GetProfileRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() });
-            model.UserId = response.Id;
-            model.FirstName = response.FirstName;
-            model.LastName = response.LastName;
-            model.WalletAmount = response.Balance;
-            model.AmountValidationMessage = DashboardViewResources.ResourceManager.GetString("AddFundsAmountValidationMessage");
-            var addressesResponse = this.addressService.GetDeliveryAddresses(new GetDeliveryAddressesRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() });
-            model.DeliveryAddressViewModels = addressesResponse.ConvertToDeliveryAddressViewModel();
-
-            model.DeliveryMethods = new List<string> { "Standard Delivery", "Express Delivery" };
+            FillDashboardViewModelWithCommonData(model);
 
             return this.View("Dashboard", model);
         }
@@ -112,21 +102,33 @@ namespace TdService.UI.Web.Controllers
                 model.PayPalTransactionResultMessage = string.Format("{0}\n{1}",
                     DashboardViewResources.ResourceManager.GetString("FailedPayPalPaymentConfirmationMessage"),
                     ex.Message);
-                model.PayPalTransactionResultMessageType = "Error"; 
+                model.PayPalTransactionResultMessageType = "Error";
             }
-            
-            var response = this.membershipService.GetProfile(
-                new GetProfileRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() });
-            model.UserId = response.Id;
-            model.FirstName = response.FirstName;
-            model.LastName = response.LastName;
-            model.WalletAmount = response.Balance;
-            model.AmountValidationMessage = DashboardViewResources.ResourceManager.GetString("AddFundsAmountValidationMessage");
-            var addressesResponse = this.addressService.GetDeliveryAddresses(new GetDeliveryAddressesRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() });
-            model.DeliveryAddressViewModels = addressesResponse.ConvertToDeliveryAddressViewModel();
 
-            model.DeliveryMethods = new List<string> { "Standard Delivery", "Express Delivery" };
-            
+            FillDashboardViewModelWithCommonData(model);
+
+            return this.View("Dashboard", model);
+        }
+
+        /// <summary>
+        /// Payment canceled
+        /// </summary>
+        /// <returns>
+        /// 
+        /// </returns>
+        [Authorize(Roles = "Shopper")]
+        public ActionResult PaymentCanceled(string token, string payerId)
+        {
+            var model = new ShopperDashboardViewModel();
+
+            var cancelPayPalTransactionResponse = transactionService.CancelPayPalTransaction(
+                new CancelPayPalTransactionRequest { Token = token });
+
+            model.PayPalTransactionResultMessage = cancelPayPalTransactionResponse.Message;
+            model.PayPalTransactionResultMessageType = cancelPayPalTransactionResponse.MessageType.ToString();
+
+            FillDashboardViewModelWithCommonData(model);
+
             return this.View("Dashboard", model);
         }
 
@@ -149,22 +151,21 @@ namespace TdService.UI.Web.Controllers
             return this.View("Welcome", model);
         }
 
-        [Authorize(Roles = "Shopper")]
-        public ActionResult Deposit()
+        private void FillDashboardViewModelWithCommonData(ShopperDashboardViewModel model)
         {
-            return this.View("Deposit");
+            var response = this.membershipService.GetProfile(
+               new GetProfileRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() });
+            model.UserId = response.Id;
+            model.FirstName = response.FirstName;
+            model.LastName = response.LastName;
+            model.WalletAmount = response.Balance;
+            model.AmountValidationMessage = DashboardViewResources.ResourceManager.GetString("AddFundsAmountValidationMessage");
+            var addressesResponse = this.addressService.GetDeliveryAddresses(new GetDeliveryAddressesRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() });
+            model.DeliveryAddressViewModels = addressesResponse.ConvertToDeliveryAddressViewModel();
+
+            model.DeliveryMethods = new List<string> { "Standard Delivery", "Express Delivery" };
         }
 
-        [Authorize(Roles = "Shopper")]
-        public ActionResult ConfirmDeposit(string token, string payerId)
-        {
-            return this.View("ConfirmDeposit");
-        }
 
-        [Authorize(Roles = "Shopper")]
-        public ActionResult DepositCanceled()
-        {
-            return this.View("DepositCanceled");
-        }
     }
 }

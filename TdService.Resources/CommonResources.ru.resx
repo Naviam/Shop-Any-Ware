@@ -156,6 +156,9 @@
   <data name="SignUpErrorMessage" xml:space="preserve">
     <value>Во время регистрации Вашего аккаунта возникли проблемы.</value>
   </data>
+  <data name="TransacionCanceledMessage" xml:space="preserve">
+    <value>Транзакция была отменена.</value>
+  </data>
   <data name="VerifyEmailExistsMessage" xml:space="preserve">
     <value>Аккаунт с этим e-mail был уже создан.</value>
   </data>
