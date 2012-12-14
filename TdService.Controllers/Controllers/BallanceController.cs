@@ -80,8 +80,8 @@ namespace TdService.UI.Web.Controllers
                 //get token from paypal
                 var token = PayPalHelper.GetTokenFromPayPalApi(localAmount,
                     ResolveServerUrl(VirtualPathUtility.ToAbsolute(Url.Action("PaymentSucceded", "Member")), false),
-                    ResolveServerUrl(VirtualPathUtility.ToAbsolute(Url.Action("DepositCanceled", "Member")), false),
-                    "SAW sandbox test deposit",
+                    ResolveServerUrl(VirtualPathUtility.ToAbsolute(Url.Action("PaymentCanceled", "Member")), false),
+                    "SAW sandbox test deposit",//TODO add description
                     "SAW");
 
                 var profile =

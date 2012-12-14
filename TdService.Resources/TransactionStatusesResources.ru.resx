@@ -120,6 +120,9 @@
   <data name="Approved" xml:space="preserve">
     <value>Одобрено</value>
   </data>
+  <data name="Canceled" xml:space="preserve">
+    <value>Отменена</value>
+  </data>
   <data name="Failed" xml:space="preserve">
     <value>Ошибка</value>
   </data>

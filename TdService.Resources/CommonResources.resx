@@ -156,6 +156,9 @@
   <data name="SignUpErrorMessage" xml:space="preserve">
     <value>There were some issues registering your account.</value>
   </data>
+  <data name="TransacionCanceledMessage" xml:space="preserve">
+    <value>Transaction was canceled</value>
+  </data>
   <data name="VerifyEmailExistsMessage" xml:space="preserve">
     <value>This e-mail is already used.</value>
   </data>

@@ -52,10 +52,10 @@ ko.bindingHandlers.executeOnEnter = {
 };
 
 ko.bindingHandlers.collapsed = {
-    init: function (element, valueAccessor, allBindingsAccessor, viewModel) {
-        var value = ko.utils.unwrapObservable(valueAccessor());
-        $(element).collapse();
-    },
+    //init: function (element, valueAccessor, allBindingsAccessor, viewModel) {
+    //    var value = ko.utils.unwrapObservable(valueAccessor());
+    //    $(element).collapse();
+    //},
     update: function (element, valueAccessor, allBindingsAccessor, viewModel) {
         var value = ko.utils.unwrapObservable(valueAccessor());
         if (value) {
@@ -690,8 +690,6 @@ function DashboardViewModel(serverModel) {
     };
 
 }
-
-
 
 ko.bindingHandlers.popover = {
     init: function (element, valueAccessor, allBindingsAccessor, viewModel) {
