@@ -13,5 +13,7 @@ namespace TdService.Model.Balance
         Transaction AddTransaction(Transaction transaction);
 
         void ConfirmTransaction(string token, string payerId);
+
+        void CancelTransaction(string token);
     }
 }

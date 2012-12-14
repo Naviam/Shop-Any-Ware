@@ -42,5 +42,17 @@
                 context.SaveChanges();
             }
         }
+
+
+        public void CancelTransaction(string token)
+        {
+            using (var context = new ShopAnyWareSql())
+            {
+                var tran = context.Transactions.SingleOrDefault(t => t.Token.Equals(token));
+                if (tran == null) throw new InvalidOperationException("Transaction Not Found");
+                tran.TransactionStatus = TransactionStatus.Canceled;
+                context.SaveChanges();
+            }
+        }
     }
 }

@@ -6,6 +6,7 @@
     using TdService.Services.Messaging.Transactions;
     using TdService.Services.Mapping;
     using System;
+    using TdService.Resources;
 
     public class TransactionService : ITransactionService
     {
@@ -49,6 +50,25 @@
             {
                 this.transactionsRepository.ConfirmTransaction(request.Token, request.PayerId);
                 
+                return response;
+            }
+            catch (Exception e)
+            {
+                response.MessageType = Messaging.MessageType.Error;
+                response.Message = e.Message;
+            }
+            return response;
+        }
+
+
+        public CancelPayPalTransactionResponse CancelPayPalTransaction(CancelPayPalTransactionRequest request)
+        {
+            var response = new CancelPayPalTransactionResponse();
+            try
+            {
+                this.transactionsRepository.CancelTransaction(request.Token);
+                response.MessageType = Messaging.MessageType.Success;
+                response.Message = CommonResources.TransacionCanceledMessage;
                 return response;
             }
             catch (Exception e)

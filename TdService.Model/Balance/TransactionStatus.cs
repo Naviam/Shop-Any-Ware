@@ -32,6 +32,11 @@ namespace TdService.Model.Balance
         /// <summary>
         /// Failed status
         /// </summary>
-        Failed
+        Failed,
+
+        /// <summary>
+        /// Canceled status (user pressed cancel on paypal page)
+        /// </summary>
+        Canceled
     }
 }

@@ -178,6 +178,15 @@ namespace TdService.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Transaction was canceled.
+        /// </summary>
+        public static string TransacionCanceledMessage {
+            get {
+                return ResourceManager.GetString("TransacionCanceledMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This e-mail is already used..
         /// </summary>
         public static string VerifyEmailExistsMessage {
