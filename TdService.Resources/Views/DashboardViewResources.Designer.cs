@@ -88,6 +88,15 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Loading.
+        /// </summary>
+        public static string AddFundsButtonLoading {
+            get {
+                return ResourceManager.GetString("AddFundsButtonLoading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ADD ITEM.
         /// </summary>
         public static string AddItemButton {

@@ -162,7 +162,8 @@ namespace TdService.UI.Web.Controllers
             model.AmountValidationMessage = DashboardViewResources.ResourceManager.GetString("AddFundsAmountValidationMessage");
             var addressesResponse = this.addressService.GetDeliveryAddresses(new GetDeliveryAddressesRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() });
             model.DeliveryAddressViewModels = addressesResponse.ConvertToDeliveryAddressViewModel();
-
+            model.AddFundsButtonText = DashboardViewResources.AddFundsButton;
+            model.AddFundsLoadingText = DashboardViewResources.AddFundsButtonLoading;
             model.DeliveryMethods = new List<string> { "Standard Delivery", "Express Delivery" };
         }
 

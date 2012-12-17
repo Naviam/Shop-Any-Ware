@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,8 +35,8 @@ namespace TdService.Infrastructure.PayPalHelpers
             paymentDetails.OrderDescription = orderDescription;
             paymentDetails.PaymentAction = PaymentActionCodeType.SALE;
             var currency = CurrencyCodeType.USD;//TODO: changeable?
-            paymentDetails.ItemTotal = new BasicAmountType(currency, amount.ToString());
-            paymentDetails.OrderTotal = new BasicAmountType(currency, amount.ToString());
+            paymentDetails.ItemTotal = new BasicAmountType(currency, amount.ToString(CultureInfo.InvariantCulture));
+            paymentDetails.OrderTotal = new BasicAmountType(currency, amount.ToString(CultureInfo.InvariantCulture));
             paymentDetails.SellerDetails = new SellerDetailsType() { SellerUserName = sellerUserName};
             request.SetExpressCheckoutRequestDetails = ecDetails;
 
