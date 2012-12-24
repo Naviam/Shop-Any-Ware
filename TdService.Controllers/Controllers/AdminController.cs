@@ -7,9 +7,11 @@
 namespace TdService.UI.Web.Controllers
 {
     using System.Web.Mvc;
-
+    using System.Xml;
     using TdService.Infrastructure.Authentication;
-    using TdService.Model.Membership;
+    using TdService.Services.Interfaces;
+    using TdService.Services.Messaging.Membership;
+    using TdService.UI.Web.Mapping; 
 
     /// <summary>
     /// This controller is responsible for administrative tasks.
@@ -19,7 +21,7 @@ namespace TdService.UI.Web.Controllers
         /// <summary>
         /// User repository.
         /// </summary>
-        private readonly IMembershipRepository membershipRepository;
+        private readonly IMembershipService membershipService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AdminController"/> class.
@@ -30,10 +32,10 @@ namespace TdService.UI.Web.Controllers
         /// <param name="formsAuthentication">
         /// The forms Authentication.
         /// </param>
-        public AdminController(IMembershipRepository membershipRepository, IFormsAuthentication formsAuthentication)
+        public AdminController(IMembershipService membershipService, IFormsAuthentication formsAuthentication)
             : base(formsAuthentication)
         {
-            this.membershipRepository = membershipRepository;
+            this.membershipService = membershipService;
         }
 
         /// <summary>
@@ -45,6 +47,27 @@ namespace TdService.UI.Web.Controllers
         public ActionResult Dashboard()
         {
             return this.View();
+        }
+
+        /// <summary>
+        /// Gets users for the  specified role
+        /// </summary>
+        /// <param name="roleId"></param>
+        /// <returns></returns>
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public ActionResult GetUsersInRole(int roleId)
+        {
+            var request = new GetUsersInRoleRequest { RoleId = roleId };
+            var response = this.membershipService.GetUsersInRole(request);
+            var result = response.ConvertToUsersInRoleViewModel();
+
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = result
+            };
+            return jsonNetResult;
         }
     }
 }

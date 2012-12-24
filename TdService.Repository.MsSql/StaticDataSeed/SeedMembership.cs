@@ -152,6 +152,28 @@ namespace TdService.Repository.MsSql.StaticDataSeed
             };
             context.Users.Add(consultant);
             context.SaveChanges();
+
+
+            // consultant
+            var profileKotg = new Profile
+            {
+                FirstName = "Kotg First name",
+                LastName = "Kotg Last name",
+                NotifyOnOrderStatusChanged = true,
+                NotifyOnPackageStatusChanged = true
+            };
+            context.Profiles.Add(profileKotg);
+            context.SaveChanges();
+            var kotg = new User
+            {
+                Email = "kotg@bk.ru",
+                Password = "2320244",
+                Profile = profileKotg,
+                Roles = new List<Role> { adminRole, shopperRole, operatorRole },
+                Wallet = new Wallet { Amount = 0 }
+            };
+            context.Users.Add(kotg);
+            context.SaveChanges();
         }
     }
 }

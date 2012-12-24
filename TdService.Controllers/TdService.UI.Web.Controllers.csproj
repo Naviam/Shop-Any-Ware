@@ -121,6 +121,7 @@
     <Compile Include="Mapping\SignInViewModelMapper.cs" />
     <Compile Include="Mapping\SignUpViewModelMapper.cs" />
     <Compile Include="Mapping\TransactionsViewModelMapper.cs" />
+    <Compile Include="Mapping\UsersInRolesViewModelMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

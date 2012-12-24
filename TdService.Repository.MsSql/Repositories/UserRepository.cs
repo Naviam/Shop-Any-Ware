@@ -239,6 +239,17 @@ namespace TdService.Repository.MsSql.Repositories
         }
 
         /// <summary>
+        /// Gets user list for the specified roleId
+        /// </summary>
+        /// <param name="roleId">role id</param>
+        /// <returns>list of users for the role id</returns>
+        public List<User> GetUsersInRole(int roleId)
+        {
+            var userList = this.context.Users.Include("Profile").Include("Packages").Include("Roles").Where(u => u.Roles.Select(role => role.Id).Contains(roleId)).ToList();
+            return userList;
+        }
+
+        /// <summary>
         /// Save changes to db.
         /// </summary>
         public void SaveChanges()

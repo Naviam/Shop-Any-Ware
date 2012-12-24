@@ -15,6 +15,7 @@ namespace TdService.Services.Mapping
 
     using TdService.Model.Membership;
     using TdService.Services.Messaging.Membership;
+    using TdService.Services.Messaging.UserManagement;
 
     /// <summary>
     /// The user mapper.
@@ -61,6 +62,21 @@ namespace TdService.Services.Mapping
         public static List<GetUserRolesResponse> ConvertToGetUserRolesResponseCollection(this List<Role> roles)
         {
             return Mapper.Map<List<Role>, List<GetUserRolesResponse>>(roles);
+        }
+
+        /// <summary>
+        /// The convert to get users in role response collection.
+        /// </summary>
+        /// <param name="users">
+        /// The roles.
+        /// </param>
+        /// <returns>
+        /// The System.Collections.Generic.List`1[T -&gt; TdService.Services.Messaging.Membership.GetUserRolesResponse].
+        /// </returns>
+        public static List<GetUsersInRoleResponse> ConvertToGetUsersInRoleResponseCollection(this List<User> users)
+        {
+            var result =  Mapper.Map<List<User>, List<GetUsersInRoleResponse>>(users);
+            return result;
         }
     }
 }

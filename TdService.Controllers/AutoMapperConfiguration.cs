@@ -26,6 +26,7 @@ namespace TdService.UI.Web
     using TdService.Services.Messaging.Transactions;
     using TdService.UI.Web.ViewModels;
     using TdService.UI.Web.ViewModels.Account;
+    using TdService.UI.Web.ViewModels.Admin;
     using TdService.UI.Web.ViewModels.Ballance;
     using TdService.UI.Web.ViewModels.Item;
     using TdService.UI.Web.ViewModels.Order;
@@ -277,6 +278,9 @@ namespace TdService.UI.Web
             Mapper.CreateMap<AddTransactionRequest, Transaction>()
                 .ForMember(r => r.Id, opt => opt.Ignore())
                 .ForMember(r => r.Currency, opt => opt.Ignore());
+
+            Mapper.CreateMap<User, GetUsersInRoleResponse>().ConvertUsing<UsersInRoleConverter>();
+            Mapper.CreateMap<GetUsersInRoleResponse, UsersInRoleViewModel>();
         }
 
         /// <summary>
@@ -297,6 +301,27 @@ namespace TdService.UI.Web
             {
                 var value = context.SourceValue.ToString();
                 return new Retailer { Name = value, Url = value };
+            }
+        }
+
+        /// <summary>
+        /// Type converter User->GetUsersInRoleResponse
+        /// </summary>
+        public class UsersInRoleConverter:ITypeConverter<User,GetUsersInRoleResponse>
+        {
+            public GetUsersInRoleResponse Convert(ResolutionContext context)
+            {
+                var user = context.SourceValue as User;
+                var converted = new GetUsersInRoleResponse
+                    {
+                        Email = user.Email,
+                        FullName = string.Concat(user.Profile.FirstName, " ", user.Profile.LastName),
+                        Id = user.Id,
+                        LastAccessDate = user.LastAccessDate,
+                        OrdersCount = user.Orders.Count,
+                        PackagesCount =user.Packages.Count
+                    };
+                return converted;
             }
         }
 

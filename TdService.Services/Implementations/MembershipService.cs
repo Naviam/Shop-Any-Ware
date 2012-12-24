@@ -9,7 +9,6 @@ namespace TdService.Services.Implementations
     using System;
     using System.Collections.Generic;
     using System.Linq;
-
     using TdService.Infrastructure.Domain;
     using TdService.Infrastructure.Email;
     using TdService.Infrastructure.Logging;
@@ -20,7 +19,7 @@ namespace TdService.Services.Implementations
     using TdService.Services.Mapping;
     using TdService.Services.Messaging;
     using TdService.Services.Messaging.Membership;
-
+    using TdService.Services.Messaging.UserManagement;
     using Profile = TdService.Model.Membership.Profile;
 
     /// <summary>
@@ -342,6 +341,18 @@ namespace TdService.Services.Implementations
         public ChangePasswordLinkResponse GenerateChangePasswordLink(ChangePasswordLinkRequest request)
         {
             return null;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public List<GetUsersInRoleResponse> GetUsersInRole(GetUsersInRoleRequest request)
+        {
+            var users = userRepository.GetUsersInRole(request.RoleId);
+            var result = users.ConvertToGetUsersInRoleResponseCollection();
+            return result;
         }
     }
 }

@@ -60,6 +60,11 @@ namespace TdService.Model.Membership
         public bool Activated { get; set; }
 
         /// <summary>
+        /// Gets or sets LastAccessDate 
+        /// </summary>
+        public DateTime? LastAccessDate { get; set; }
+
+        /// <summary>
         /// Gets or sets Row Version.
         /// </summary>
         public byte[] RowVersion { get; set; }

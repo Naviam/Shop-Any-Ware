@@ -7,6 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 namespace TdService.Model.Membership
 {
     /// <summary>
@@ -131,6 +132,13 @@ namespace TdService.Model.Membership
         /// Validation result. True if valid.
         /// </returns>
         bool ValidateCredentials(User user);
+
+        /// <summary>
+        /// Get users in role
+        /// </summary>
+        /// <param name="roleId">role id</param>
+        /// <returns></returns>
+        List<User> GetUsersInRole(int roleId);
 
         /// <summary>
         /// Save changes to db.

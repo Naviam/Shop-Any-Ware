@@ -9,6 +9,7 @@ namespace TdService.Services.Interfaces
     using System.Collections.Generic;
 
     using TdService.Services.Messaging.Membership;
+    using TdService.Services.Messaging.UserManagement;
 
     /// <summary>
     /// Interface of membership service.
@@ -91,5 +92,12 @@ namespace TdService.Services.Interfaces
         /// The TdService.Services.Messaging.Membership.ChangePasswordLinkResponse.
         /// </returns>
         ChangePasswordLinkResponse GenerateChangePasswordLink(ChangePasswordLinkRequest request);
+
+        /// <summary>
+        /// Gets users in role
+        /// </summary>
+        /// <param name="request">The request</param>
+        /// <returns>GetUsersInRole Response</returns>
+        GetUsersInRoleResponse GetUsersInRole(GetUsersInRoleRequest request);
     }
 }
