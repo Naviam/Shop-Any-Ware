@@ -233,5 +233,11 @@ namespace TdService.ShopAnyWare.Tests.Orders
         public void AttachPackage(string email, int packageId)
         {
         }
+
+
+        public List<User> GetUsersInRole(int roleId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -9,7 +9,6 @@ namespace TdService.Services.Interfaces
     using System.Collections.Generic;
 
     using TdService.Services.Messaging.Membership;
-    using TdService.Services.Messaging.UserManagement;
 
     /// <summary>
     /// Interface of membership service.
@@ -98,6 +97,6 @@ namespace TdService.Services.Interfaces
         /// </summary>
         /// <param name="request">The request</param>
         /// <returns>GetUsersInRole Response</returns>
-        GetUsersInRoleResponse GetUsersInRole(GetUsersInRoleRequest request);
+        List<GetUsersInRoleResponse> GetUsersInRole(GetUsersInRoleRequest request);
     }
 }

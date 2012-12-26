@@ -1,5 +1,9 @@
-﻿@{
-    ViewBag.Title = "Administrator Dashboard";
+﻿@using TdService.Resources.Views
+@using System.Web.Optimization
+
+@model TdService.UI.Web.ViewModels.Admin.AdminDashBoardViewModel
+@{
+    ViewBag.Title = AdminDashboardResources.AdminDashboardPageTitle;
 }
 
 <h2>Admin Dashboard</h2>
@@ -9,15 +13,15 @@
     <li><a href="#messages" data-toggle="tab">Messages</a></li>
     <li><a href="#settings" data-toggle="tab">Settings</a></li>
 </ul>
-
+<table class="roles-filter">
+    <tr data-bind="foreach: roles">
+        <td data-bind="click:$parent.changeSelectedRole, text:roleName" ></td>
+    </tr>
+</table>
 <div class="tab-content">
     <div class="tab-pane active" id="users">
         <form class="well form-inline" style="padding: 8px 0 0">
             <ul class="filter">
-                <li class="span4">
-                    <input type="text" class="span3">
-                    <button type="submit" class="btn">Find</button>
-                </li>
                 <li class="span4">
                     <input type="text" class="span3">
                     <button type="submit" class="btn">Find</button>
@@ -134,3 +138,14 @@
     <div class="tab-pane" id="messages">...</div>
     <div class="tab-pane" id="settings">...</div>
 </div>
+<input id="model" type="hidden" value="@(new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(Model))" />
+@section Scripts
+{
+    @Scripts.Render("~/bundles/adminDashboard")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var mainViewModel = new AdminDashboardViewModel($("#model").val());
+            ko.applyBindings(mainViewModel);
+        });
+    </script>
+}

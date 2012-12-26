@@ -120,5 +120,11 @@ namespace TdService.ShopAnyWare.Tests.Account
         {
             return new UpdateProfileResponse();
         }
+
+
+        public List<GetUsersInRoleResponse> GetUsersInRole(GetUsersInRoleRequest request)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

@@ -19,7 +19,6 @@ namespace TdService.Services.Implementations
     using TdService.Services.Mapping;
     using TdService.Services.Messaging;
     using TdService.Services.Messaging.Membership;
-    using TdService.Services.Messaging.UserManagement;
     using Profile = TdService.Model.Membership.Profile;
 
     /// <summary>

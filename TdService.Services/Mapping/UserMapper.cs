@@ -15,7 +15,6 @@ namespace TdService.Services.Mapping
 
     using TdService.Model.Membership;
     using TdService.Services.Messaging.Membership;
-    using TdService.Services.Messaging.UserManagement;
 
     /// <summary>
     /// The user mapper.

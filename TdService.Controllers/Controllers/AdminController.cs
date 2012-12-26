@@ -11,7 +11,8 @@ namespace TdService.UI.Web.Controllers
     using TdService.Infrastructure.Authentication;
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging.Membership;
-    using TdService.UI.Web.Mapping; 
+    using TdService.UI.Web.Mapping;
+    using TdService.UI.Web.ViewModels.Admin;
 
     /// <summary>
     /// This controller is responsible for administrative tasks.
@@ -46,7 +47,10 @@ namespace TdService.UI.Web.Controllers
         /// </returns>
         public ActionResult Dashboard()
         {
-            return this.View();
+            var userRolesResponse = this.membershipService.GetUserRoles(new GetUserRolesRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() });
+            var roles = userRolesResponse.ConvertToRoleViewModelCollection();
+            var model = new AdminDashBoardViewModel { Roles = roles };
+            return this.View("Dashboard", model);
         }
 
         /// <summary>
