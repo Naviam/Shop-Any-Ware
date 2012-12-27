@@ -159,6 +159,9 @@
   <data name="TransacionCanceledMessage" xml:space="preserve">
     <value>Transaction was canceled</value>
   </data>
+  <data name="UserNotFound" xml:space="preserve">
+    <value>User with specified ID  was not found</value>
+  </data>
   <data name="VerifyEmailExistsMessage" xml:space="preserve">
     <value>This e-mail is already used.</value>
   </data>

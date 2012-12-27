@@ -353,5 +353,22 @@ namespace TdService.Services.Implementations
             var result = users.ConvertToGetUsersInRoleResponseCollection();
             return result;
         }
+
+        /// <summary>
+        /// Getsuser by id
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public GetUserByIdResponse GetUserById(GetUserByIdRequest request)
+        {
+            var user = userRepository.GetUserById(request.UserId);
+            if (user==null)
+            {
+                return new GetUserByIdResponse
+                    { MessageType = MessageType.Warning, Message = CommonResources.UserNotFound };
+            }
+            var result = user.ConvertToGetUserByIdResponse();
+            return result;
+        }
     }
 }

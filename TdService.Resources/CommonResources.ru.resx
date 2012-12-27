@@ -159,6 +159,9 @@
   <data name="TransacionCanceledMessage" xml:space="preserve">
     <value>Транзакция была отменена.</value>
   </data>
+  <data name="UserNotFound" xml:space="preserve">
+    <value>Пользователь с таким ID  не найден</value>
+  </data>
   <data name="VerifyEmailExistsMessage" xml:space="preserve">
     <value>Аккаунт с этим e-mail был уже создан.</value>
   </data>

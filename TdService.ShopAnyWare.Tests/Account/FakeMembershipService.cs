@@ -126,5 +126,11 @@ namespace TdService.ShopAnyWare.Tests.Account
         {
             throw new System.NotImplementedException();
         }
+
+
+        public GetUserByIdResponse GetUserById(GetUserByIdRequest request)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

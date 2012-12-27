@@ -77,5 +77,16 @@ namespace TdService.Services.Mapping
             var result =  Mapper.Map<List<User>, List<GetUsersInRoleResponse>>(users);
             return result;
         }
+
+        /// <summary>
+        /// The convert to get user by id response.
+        /// </summary>
+        /// <param name="user">user</param>
+        /// <returns>GetUserByIdResponse</returns>
+        public static GetUserByIdResponse ConvertToGetUserByIdResponse(this User user)
+        {
+            var result = Mapper.Map<User, GetUserByIdResponse>(user);
+            return result;
+        }
     }
 }

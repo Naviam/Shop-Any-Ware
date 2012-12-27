@@ -120,4 +120,31 @@
   <data name="AdminDashboardPageTitle" xml:space="preserve">
     <value>Administrator  dashboard</value>
   </data>
+  <data name="BtnFindText" xml:space="preserve">
+    <value>Find</value>
+  </data>
+  <data name="NoUsersFound" xml:space="preserve">
+    <value>No users found</value>
+  </data>
+  <data name="UserInfoEmail" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="UserInfoFullName" xml:space="preserve">
+    <value>Full name</value>
+  </data>
+  <data name="UserInfoId" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="UserInfoLastAccessTime" xml:space="preserve">
+    <value>Last Access Time</value>
+  </data>
+  <data name="UserInfoOrders" xml:space="preserve">
+    <value>Orders</value>
+  </data>
+  <data name="UserInfoPackages" xml:space="preserve">
+    <value>Packages</value>
+  </data>
+  <data name="UserInfoUsername" xml:space="preserve">
+    <value>User name</value>
+  </data>
 </root>

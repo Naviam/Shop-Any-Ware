@@ -68,5 +68,86 @@ namespace TdService.Resources.Views {
                 return ResourceManager.GetString("AdminDashboardPageTitle", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Find.
+        /// </summary>
+        public static string BtnFindText {
+            get {
+                return ResourceManager.GetString("BtnFindText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No users found.
+        /// </summary>
+        public static string NoUsersFound {
+            get {
+                return ResourceManager.GetString("NoUsersFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email.
+        /// </summary>
+        public static string UserInfoEmail {
+            get {
+                return ResourceManager.GetString("UserInfoEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Full name.
+        /// </summary>
+        public static string UserInfoFullName {
+            get {
+                return ResourceManager.GetString("UserInfoFullName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ID.
+        /// </summary>
+        public static string UserInfoId {
+            get {
+                return ResourceManager.GetString("UserInfoId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last Access Time.
+        /// </summary>
+        public static string UserInfoLastAccessTime {
+            get {
+                return ResourceManager.GetString("UserInfoLastAccessTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Orders.
+        /// </summary>
+        public static string UserInfoOrders {
+            get {
+                return ResourceManager.GetString("UserInfoOrders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Packages.
+        /// </summary>
+        public static string UserInfoPackages {
+            get {
+                return ResourceManager.GetString("UserInfoPackages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User name.
+        /// </summary>
+        public static string UserInfoUsername {
+            get {
+                return ResourceManager.GetString("UserInfoUsername", resourceCulture);
+            }
+        }
     }
 }

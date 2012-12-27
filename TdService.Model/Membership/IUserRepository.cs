@@ -144,5 +144,12 @@ namespace TdService.Model.Membership
         /// Save changes to db.
         /// </summary>
         void SaveChanges();
+
+        /// <summary>
+        /// Getsuser by Id
+        /// </summary>
+        /// <param name="Id">user ID</param>
+        /// <returns>User</returns>
+        User GetUserById(int id);
     }
 }

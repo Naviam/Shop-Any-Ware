@@ -279,8 +279,11 @@ namespace TdService.UI.Web
                 .ForMember(r => r.Id, opt => opt.Ignore())
                 .ForMember(r => r.Currency, opt => opt.Ignore());
 
+            //admin dashboard
             Mapper.CreateMap<User, GetUsersInRoleResponse>().ConvertUsing<UsersInRoleConverter>();
+            Mapper.CreateMap<User, GetUserByIdResponse>().ConvertUsing<GetUserByIdConverter>();
             Mapper.CreateMap<GetUsersInRoleResponse, UsersInRoleViewModel>();
+            Mapper.CreateMap<GetUserByIdResponse, UsersInRoleViewModel>();
         }
 
         /// <summary>
@@ -321,6 +324,27 @@ namespace TdService.UI.Web
                         OrdersCount = user.Orders.Count,
                         PackagesCount =user.Packages.Count
                     };
+                return converted;
+            }
+        }
+
+        /// <summary>
+        /// Type converter User->GetUsersInRoleResponse
+        /// </summary>
+        public class GetUserByIdConverter : ITypeConverter<User, GetUserByIdResponse>
+        {
+            public GetUserByIdResponse Convert(ResolutionContext context)
+            {
+                var user = context.SourceValue as User;
+                var converted = new GetUserByIdResponse
+                {
+                    Email = user.Email,
+                    FullName = string.Concat(user.Profile.FirstName, " ", user.Profile.LastName),
+                    Id = user.Id,
+                    LastAccessDate = user.LastAccessDate,
+                    OrdersCount = user.Orders.Count,
+                    PackagesCount = user.Packages.Count
+                };
                 return converted;
             }
         }

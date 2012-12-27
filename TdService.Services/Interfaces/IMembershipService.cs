@@ -98,5 +98,7 @@ namespace TdService.Services.Interfaces
         /// <param name="request">The request</param>
         /// <returns>GetUsersInRole Response</returns>
         List<GetUsersInRoleResponse> GetUsersInRole(GetUsersInRoleRequest request);
+
+        GetUserByIdResponse GetUserById(GetUserByIdRequest request);
     }
 }

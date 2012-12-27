@@ -35,7 +35,8 @@ function AdminDashboardViewModel(serverModel) {
     var addressModel = JSON.parse(serverModel);
     self.roles = ko.observableArray();
     self.users = ko.observableArray();
-    
+    self.userId = ko.observable();
+
     $.each(addressModel.Roles, function (index, value) {
         var role = new Role(value);
         self.roles.push(role);
@@ -45,6 +46,15 @@ function AdminDashboardViewModel(serverModel) {
     self.changeSelectedRole = function () {
         //load users in role
         self.loadUsersInRole(this.id);
+    };
+
+    self.FilterById = function() {
+        $.post("/admin/GetUserById", { "userId": self.userId }, function (data) {
+            var resp = ko.toJS(data);
+            self.users.removeAll();
+            var user = new UserInRole(resp);
+            self.users.push(user);
+        });
     };
     
     self.loadUsersInRole = function(id){

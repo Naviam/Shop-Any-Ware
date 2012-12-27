@@ -265,5 +265,16 @@ namespace TdService.Repository.MsSql.Repositories
         {
             this.context.Dispose();
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public User GetUserById(int id)
+        {
+            var user = this.context.Users.Include("Profile").Include("Packages").Include("Roles").SingleOrDefault(u => u.Id.Equals(id));
+            return user;
+        }
     }
 }
