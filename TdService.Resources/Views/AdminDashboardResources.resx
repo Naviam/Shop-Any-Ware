@@ -126,6 +126,9 @@
   <data name="NoUsersFound" xml:space="preserve">
     <value>No users found</value>
   </data>
+  <data name="UserFilterValiidationMessage" xml:space="preserve">
+    <value>Incorrect ID</value>
+  </data>
   <data name="UserInfoEmail" xml:space="preserve">
     <value>Email</value>
   </data>

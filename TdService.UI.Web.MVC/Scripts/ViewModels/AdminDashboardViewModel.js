@@ -36,7 +36,8 @@ function AdminDashboardViewModel(serverModel) {
     self.roles = ko.observableArray();
     self.users = ko.observableArray();
     self.userId = ko.observable();
-
+    self.userFilterValiidationMessage = addressModel.UserFilterValiidationMessage;
+    
     $.each(addressModel.Roles, function (index, value) {
         var role = new Role(value);
         self.roles.push(role);
@@ -48,12 +49,21 @@ function AdminDashboardViewModel(serverModel) {
         self.loadUsersInRole(this.id);
     };
 
-    self.FilterById = function() {
+    self.FilterById = function () {
+        if (self.userId == '' || !Number(self.userId())) {
+            window.showNotice(self.userFilterValiidationMessage, 'Warning');
+            return;
+        }
+
         $.post("/admin/GetUserById", { "userId": self.userId }, function (data) {
             var resp = ko.toJS(data);
-            self.users.removeAll();
-            var user = new UserInRole(resp);
-            self.users.push(user);
+            if (resp.MessageType == 'Warning') {
+                window.showNotice(resp.Message, resp.MessageType);
+            } else {
+                self.users.removeAll();
+                var user = new UserInRole(resp);
+                self.users.push(user);
+            }
         });
     };
     

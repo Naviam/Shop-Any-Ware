@@ -88,6 +88,15 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Incorrect ID.
+        /// </summary>
+        public static string UserFilterValiidationMessage {
+            get {
+                return ResourceManager.GetString("UserFilterValiidationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email.
         /// </summary>
         public static string UserInfoEmail {
