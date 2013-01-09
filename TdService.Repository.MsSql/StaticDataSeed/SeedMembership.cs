@@ -174,6 +174,31 @@ namespace TdService.Repository.MsSql.StaticDataSeed
             };
             context.Users.Add(kotg);
             context.SaveChanges();
+
+            for (int i = 0; i < 100; i++)
+            {
+                var s = i.ToString();
+                var bulkProfile = new Profile
+                {
+                    FirstName = "First Name "+s,
+                    LastName = "Last name " + s,
+                    NotifyOnOrderStatusChanged = true,
+                    NotifyOnPackageStatusChanged = true
+                };
+                context.Profiles.Add(bulkProfile);
+                context.SaveChanges();
+
+                var bulkUser = new User
+                {
+                    Email = string.Format("user{0}@gmail.com",s),
+                    Password = "111111",
+                    Profile = bulkProfile,
+                    Roles = new List<Role> {shopperRole},
+                    Wallet = new Wallet { Amount = 0 }
+                };
+                context.Users.Add(bulkUser);
+                context.SaveChanges();
+            }
         }
     }
 }
