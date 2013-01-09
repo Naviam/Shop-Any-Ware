@@ -44,9 +44,9 @@ function UserInRole(serverModel, translatedRolesArray) {
     self.LastAccessDate = serverModel.LastAccessDate;
     self.Roles = '';
     $.each(translatedRolesArray, function (index, value) {
-        var index = $.inArray(value.id, serverModel.Roles);
-        if (index!=-1) {// not found. if index is positive then user is in role
-            self.Roles = self.Roles + ' ' + translatedRolesArray[index+1].roleName;// [0] - ia ALL users, so we have to shift up =(
+        var pos = $.inArray(value.id, serverModel.Roles);
+        if (pos != -1) {// not found. if index is positive then user is in role
+            self.Roles = self.Roles + ' ' + translatedRolesArray[serverModel.Roles[pos]].roleName;
         }
     });
     
