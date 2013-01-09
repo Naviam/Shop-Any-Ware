@@ -126,6 +126,12 @@
   <data name="BtnFindText" xml:space="preserve">
     <value>Find</value>
   </data>
+  <data name="GoToPageIndexValidationMessage" xml:space="preserve">
+    <value>Incorrect page index</value>
+  </data>
+  <data name="GotoPageWatermark" xml:space="preserve">
+    <value>#</value>
+  </data>
   <data name="NextPage" xml:space="preserve">
     <value>Next</value>
   </data>
@@ -140,6 +146,9 @@
   </data>
   <data name="PrevPage" xml:space="preserve">
     <value>Prev</value>
+  </data>
+  <data name="RolesForUser" xml:space="preserve">
+    <value>Roles</value>
   </data>
   <data name="UserFilterValiidationMessage" xml:space="preserve">
     <value>Incorrect ID</value>

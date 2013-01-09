@@ -88,6 +88,24 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Incorrect page index.
+        /// </summary>
+        public static string GoToPageIndexValidationMessage {
+            get {
+                return ResourceManager.GetString("GoToPageIndexValidationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to #.
+        /// </summary>
+        public static string GotoPageWatermark {
+            get {
+                return ResourceManager.GetString("GotoPageWatermark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Next.
         /// </summary>
         public static string NextPage {
@@ -129,6 +147,15 @@ namespace TdService.Resources.Views {
         public static string PrevPage {
             get {
                 return ResourceManager.GetString("PrevPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Roles.
+        /// </summary>
+        public static string RolesForUser {
+            get {
+                return ResourceManager.GetString("RolesForUser", resourceCulture);
             }
         }
         

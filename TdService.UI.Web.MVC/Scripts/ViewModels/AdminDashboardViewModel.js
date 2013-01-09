@@ -1,4 +1,18 @@
-﻿function Role(serverModel) {
+﻿ko.bindingHandlers.executeOnEnter = {
+    init: function (element, valueAccessor, allBindingsAccessor, viewModel) {
+        var allBindings = allBindingsAccessor();
+        $(element).keypress(function (event) {
+            var keyCode = (event.which ? event.which : event.keyCode);
+            if (keyCode === 13) {
+                allBindings.executeOnEnter.call(viewModel);
+                return false;
+            }
+            return true;
+        });
+    }
+};
+
+function Role(serverModel) {
     var self = this;
 
     // default model properties
@@ -28,6 +42,7 @@ function UserInRole(serverModel) {
     self.PackagesCount = serverModel.PackagesCount;
     self.Email = serverModel.Email;
     self.LastAccessDate = serverModel.LastAccessDate;
+    self.Roles = '';
 }
 
 function AdminDashboardViewModel(serverModel) {
@@ -37,10 +52,10 @@ function AdminDashboardViewModel(serverModel) {
     self.users = ko.observableArray();
     self.userId = ko.observable();
     self.userFilterValiidationMessage = addressModel.UserFilterValiidationMessage;
-    self.userListPageSizes = ko.observableArray(['2', '50', '100']);
-    self.selectedPageSize = ko.observable(2);
+    self.userListPageSizes = ko.observableArray(['10', '50', '200']);
+    self.selectedPageSize = ko.observable(10);
     self.totalCount = ko.observable(addressModel.TotalCount);
-    
+    self.goToPageIndex = ko.observable('').extend({ number: true });
     self.currentRole = -1;//all
     self.currentPage = ko.observable(1);
     self.initializing = true;
@@ -97,7 +112,18 @@ function AdminDashboardViewModel(serverModel) {
         self.currentPage(self.currentPage() - 1);
         self.loadUsers();
     };
-    
+
+    self.goToPage = function() {
+        if (!self.goToPageIndex.isValid() || self.goToPageIndex()>self.pageCount() || self.goToPageIndex()<1) {
+            window.showNotice(addressModel.GoToPageIndexValidationMessage, 'Warning');
+            return;
+        }
+        var k = self.goToPageIndex();
+        self.currentPage(k);
+        
+        self.loadUsers();
+    };
+
     self.loadUsers = function(){
         $.post("/admin/GetUsersInRole", { "roleId": self.currentRole, "pageSize": self.selectedPageSize, "pageNumber": self.currentPage }, function (data) {
             var response = ko.toJS(data);

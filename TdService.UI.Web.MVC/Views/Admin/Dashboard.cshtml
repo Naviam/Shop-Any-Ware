@@ -44,6 +44,7 @@
                     <th style="width: 30%">@AdminDashboardResources.UserInfoFullName</th>
                     <th style="width: 5%">@AdminDashboardResources.UserInfoOrders</th>
                     <th style="width: 5%">@AdminDashboardResources.UserInfoPackages</th>
+                    <th style="width: 5%">@AdminDashboardResources.RolesForUser</th>
                     <th style="width: 30%">@AdminDashboardResources.UserInfoLastAccessTime</th>
                 </tr>
             </thead>
@@ -56,6 +57,7 @@
                     <td data-bind='text: FullName'></td>
                     <td data-bind='text: OrdersCount'></td>
                     <td data-bind='text: PackagesCount'></td>
+                    <td data-bind='text: Roles'></td>
                     <td data-bind='text: LastAccessDate'></td>
                 </tr>
             </tbody>
@@ -64,7 +66,7 @@
             <span class="pageSizeSpan">@AdminDashboardResources.UsersPerPage &nbsp;<select data-bind="options: userListPageSizes, value:selectedPageSize,  event:{change:changePageSize}"></select></span>
             <span class="navButtonsSpan">
                 <input type="button" value="@AdminDashboardResources.PrevPage" data-bind="event:{click:movePrevPage}, enable:canMovePrev" />
-
+                <input type="text" placeholder="@AdminDashboardResources.GotoPageWatermark" data-bind="valueUpdate: 'afterkeydown', executeOnEnter: goToPage, value:goToPageIndex" />
                 <input type="button" value="@AdminDashboardResources.NextPage" data-bind="event:{click:moveNextPage}, enable:canMoveNext" />
             </span>
             <span class="pageNumberSpan">@AdminDashboardResources.PagingText1 &nbsp;<span data-bind="text:currentPage"></span>&nbsp;@AdminDashboardResources.PagingText2 &nbsp;<span data-bind="text:pageCount"></span></span>

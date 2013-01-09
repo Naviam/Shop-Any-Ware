@@ -13,6 +13,15 @@
                 return AdminDashboardResources.ResourceManager.GetString("UserFilterValiidationMessage");
             }
         }
+
+        public string GoToPageIndexValidationMessage
+        {
+            get
+            {
+                return AdminDashboardResources.ResourceManager.GetString("GoToPageIndexValidationMessage");
+            }
+        }
+
         public string AllRolesTranslated
         {
             get

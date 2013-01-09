@@ -1284,3 +1284,6 @@ li[class^="icon-"], li[class*=" icon-"]
 .pageNumberSpan {
     float: right;
 }
+.navButtonsSpan input[type=text] {
+    margin-bottom: 0px;
+}
