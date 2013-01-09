@@ -26,7 +26,7 @@ function Role(serverModel) {
     self.id = serverModel.Id;
 }
 
-function UserInRole(serverModel) {
+function UserInRole(serverModel, translatedRolesArray) {
     var self = this;
     
     // default model properties
@@ -43,6 +43,14 @@ function UserInRole(serverModel) {
     self.Email = serverModel.Email;
     self.LastAccessDate = serverModel.LastAccessDate;
     self.Roles = '';
+    $.each(translatedRolesArray, function (index, value) {
+        var index = $.inArray(value.id, serverModel.Roles);
+        if (index!=-1) {// not found. if index is positive then user is in role
+            self.Roles = self.Roles + ' ' + translatedRolesArray[index+1].roleName;// [0] - ia ALL users, so we have to shift up =(
+        }
+    });
+    
+    
 }
 
 function AdminDashboardViewModel(serverModel) {
@@ -67,8 +75,8 @@ function AdminDashboardViewModel(serverModel) {
         var role = new Role(value);
         self.roles.push(role);
     });
+    self.originalRoles = self.roles();
     self.roles.unshift({ roleName: addressModel.AllRolesTranslated, id: -1 });
-    
     
     self.changeSelectedRole = function () {
         //load users in role
@@ -129,7 +137,7 @@ function AdminDashboardViewModel(serverModel) {
             var response = ko.toJS(data);
             self.users.removeAll();
             $.each(response.Users, function (index, value) {
-                var user = new UserInRole(value);
+                var user = new UserInRole(value, self.originalRoles);
                 self.users.push(user);
             });
             if (response.TotalCount == 0) return;

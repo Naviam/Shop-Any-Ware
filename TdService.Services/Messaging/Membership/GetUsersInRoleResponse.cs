@@ -18,6 +18,8 @@
             public string Email { get; set; }
 
             public DateTime? LastAccessDate { get; set; }
+
+            public List<int> Roles { get; set; }
         }
 
         public List<UserResponseModel> Users { get; set; }

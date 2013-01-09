@@ -1,6 +1,7 @@
 ﻿namespace TdService.UI.Web.ViewModels.Admin
 {
     using System;
+    using System.Collections.Generic;
 
     public class UsersInRoleViewModel:ViewModelBase
     {
@@ -15,5 +16,7 @@
         public string Email { get; set; }
 
         public DateTime? LastAccessDate { get; set; }
+
+        public List<int> Roles { get; set; }
     }
 }

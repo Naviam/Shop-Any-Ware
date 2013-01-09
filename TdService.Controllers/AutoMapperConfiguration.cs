@@ -32,7 +32,8 @@ namespace TdService.UI.Web
     using TdService.UI.Web.ViewModels.Order;
     using TdService.UI.Web.ViewModels.Package;
     using TdService.UI.Web.ViewModels.Retailer;
-    using UserResponseModel=TdService.Services.Messaging.Membership.GetUsersInRoleResponse.UserResponseModel;
+    using System.Linq;
+    using UserResponseModel = TdService.Services.Messaging.Membership.GetUsersInRoleResponse.UserResponseModel;
 
     /// <summary>
     /// The auto mapper configuration.
@@ -323,7 +324,8 @@ namespace TdService.UI.Web
                         Id = user.Id,
                         LastAccessDate = user.LastAccessDate,
                         OrdersCount = user.Orders.Count,
-                        PackagesCount =user.Packages.Count
+                        PackagesCount = user.Packages.Count,
+                        Roles = user.Roles.Select(r => r.Id).ToList()
                     };
                 return converted;
             }
@@ -344,7 +346,8 @@ namespace TdService.UI.Web
                     Id = user.Id,
                     LastAccessDate = user.LastAccessDate,
                     OrdersCount = user.Orders.Count,
-                    PackagesCount = user.Packages.Count
+                    PackagesCount = user.Packages.Count,
+                    Roles = user.Roles.Select(r => r.Id).ToList()
                 };
                 return converted;
             }
