@@ -75,7 +75,6 @@ function AdminDashboardViewModel(serverModel) {
         var role = new Role(value);
         self.roles.push(role);
     });
-    self.originalRoles = self.roles();
     self.roles.unshift({ roleName: addressModel.AllRolesTranslated, id: -1 });
     
     self.changeSelectedRole = function () {
@@ -96,7 +95,7 @@ function AdminDashboardViewModel(serverModel) {
                 window.showNotice(resp.Message, resp.MessageType);
             } else {
                 self.users.removeAll();
-                var user = new UserInRole(resp);
+                var user = new UserInRole(resp, self.roles());
                 self.users.push(user);
             }
         });
@@ -137,7 +136,7 @@ function AdminDashboardViewModel(serverModel) {
             var response = ko.toJS(data);
             self.users.removeAll();
             $.each(response.Users, function (index, value) {
-                var user = new UserInRole(value, self.originalRoles);
+                var user = new UserInRole(value, self.roles());
                 self.users.push(user);
             });
             if (response.TotalCount == 0) return;
