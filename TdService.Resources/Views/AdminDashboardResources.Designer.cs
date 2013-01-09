@@ -88,11 +88,47 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Next.
+        /// </summary>
+        public static string NextPage {
+            get {
+                return ResourceManager.GetString("NextPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No users found.
         /// </summary>
         public static string NoUsersFound {
             get {
                 return ResourceManager.GetString("NoUsersFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Page.
+        /// </summary>
+        public static string PagingText1 {
+            get {
+                return ResourceManager.GetString("PagingText1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to of.
+        /// </summary>
+        public static string PagingText2 {
+            get {
+                return ResourceManager.GetString("PagingText2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prev.
+        /// </summary>
+        public static string PrevPage {
+            get {
+                return ResourceManager.GetString("PrevPage", resourceCulture);
             }
         }
         

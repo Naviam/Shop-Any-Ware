@@ -23,12 +23,12 @@
         <form class="well form-inline" style="padding: 8px 0 0">
             <ul class="filter">
                 <li class="span4">
-                    <input type="text" data-bind="value:userId" class="span3">
+                    <input placeholder="Find User By Id" type="text" data-bind="value:userId" class="span3">
                     <button type="submit" class="btn" data-bind="click:FilterById">@AdminDashboardResources.BtnFindText</button>
                 </li>
             </ul>
         </form>
-        <div data-bind='visible: users().length == 0'>
+        <div data-bind="visible: users().length == 0">
             <div class='alert alert-info'>
                 <span>@AdminDashboardResources.NoUsersFound</span>
             </div>
@@ -60,18 +60,16 @@
                 </tr>
             </tbody>
         </table>
-        <div class="pagingArea">
-            <span>@AdminDashboardResources.UsersPerPage &nbsp;<select data-bind="options: userListPageSizes, value:selectedPageSize,  event:{change:changePageSize}"></select></span>
+        <div class="pagingArea" data-bind="visible: users().length != 0">
+            <span class="pageSizeSpan">@AdminDashboardResources.UsersPerPage &nbsp;<select data-bind="options: userListPageSizes, value:selectedPageSize,  event:{change:changePageSize}"></select></span>
+            <span class="navButtonsSpan">
+                <input type="button" value="@AdminDashboardResources.PrevPage" data-bind="event:{click:movePrevPage}, enable:canMovePrev" />
+
+                <input type="button" value="@AdminDashboardResources.NextPage" data-bind="event:{click:moveNextPage}, enable:canMoveNext" />
+            </span>
+            <span class="pageNumberSpan">@AdminDashboardResources.PagingText1 &nbsp;<span data-bind="text:currentPage"></span>&nbsp;@AdminDashboardResources.PagingText2 &nbsp;<span data-bind="text:pageCount"></span></span>
             
-            <table class="pagingTable">
-                <tr data-bind="foreach: pages">
-                    <td>
-                        <a href="#" data-bind="click:changePage, text:pageNumber, disable: pages().length <= 1" />
-                    </td>
-                </tr>
-            </table>
         </div>
-        
     </div>
     <div class="tab-pane" id="roles">
         <table class="table table-bordered span4 header">

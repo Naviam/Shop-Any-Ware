@@ -39,13 +39,15 @@ function AdminDashboardViewModel(serverModel) {
     self.userFilterValiidationMessage = addressModel.UserFilterValiidationMessage;
     self.userListPageSizes = ko.observableArray(['2', '50', '100']);
     self.selectedPageSize = ko.observable(2);
-    self.currentPage = ko.observable(1);
-    
-    self.pages = ko.observableArray();
     self.totalCount = ko.observable(addressModel.TotalCount);
+    
     self.currentRole = -1;//all
+    self.currentPage = ko.observable(1);
     self.initializing = true;
-
+    self.pageCount = ko.observable(0);
+    self.canMoveNext = ko.observable(false);
+    self.canMovePrev = ko.observable(false);
+    
     $.each(addressModel.Roles, function (index, value) {
         var role = new Role(value);
         self.roles.push(role);
@@ -58,7 +60,7 @@ function AdminDashboardViewModel(serverModel) {
         self.currentRole = this.id;
         self.loadUsers();
     };
-
+    
     self.FilterById = function () {
         if (self.userId == '' || !Number(self.userId())) {
             window.showNotice(self.userFilterValiidationMessage, 'Warning');
@@ -82,10 +84,20 @@ function AdminDashboardViewModel(serverModel) {
             self.initializing = false;
             return;
         }
-        
+        self.currentPage(1);
         self.loadUsers();
     };
-
+    
+    self.moveNextPage = function () {
+        self.currentPage(self.currentPage() + 1);
+        self.loadUsers();
+    };
+    
+    self.movePrevPage = function() {
+        self.currentPage(self.currentPage() - 1);
+        self.loadUsers();
+    };
+    
     self.loadUsers = function(){
         $.post("/admin/GetUsersInRole", { "roleId": self.currentRole, "pageSize": self.selectedPageSize, "pageNumber": self.currentPage }, function (data) {
             var response = ko.toJS(data);
@@ -94,7 +106,19 @@ function AdminDashboardViewModel(serverModel) {
                 var user = new UserInRole(value);
                 self.users.push(user);
             });
+            if (response.TotalCount == 0) return;
+
             self.totalCount(response.TotalCount);
+            
+            if (response.TotalCount <= self.selectedPageSize()) {
+                self.pageCount(1);
+            }
+            else {
+                var mod = response.TotalCount % self.selectedPageSize();
+                self.pageCount(Math.floor(response.TotalCount / self.selectedPageSize() + (mod != 0 ? 1 : 0)));
+            }
+            self.canMoveNext(self.currentPage() < self.pageCount());
+            self.canMovePrev(self.currentPage() > 1);
         });
     };
     self.loadUsers();

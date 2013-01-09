@@ -126,8 +126,20 @@
   <data name="BtnFindText" xml:space="preserve">
     <value>Find</value>
   </data>
+  <data name="NextPage" xml:space="preserve">
+    <value>Next</value>
+  </data>
   <data name="NoUsersFound" xml:space="preserve">
     <value>No users found</value>
+  </data>
+  <data name="PagingText1" xml:space="preserve">
+    <value>Page</value>
+  </data>
+  <data name="PagingText2" xml:space="preserve">
+    <value>of</value>
+  </data>
+  <data name="PrevPage" xml:space="preserve">
+    <value>Prev</value>
   </data>
   <data name="UserFilterValiidationMessage" xml:space="preserve">
     <value>Incorrect ID</value>

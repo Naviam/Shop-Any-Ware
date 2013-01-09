@@ -13,6 +13,7 @@ namespace TdService.Repository.MsSql.Repositories
     using System.Collections.Generic;
     using System.Data;
     using System.Linq;
+    using System.Data.Entity;
 
     using TdService.Model.Addresses;
     using TdService.Model.Membership;
@@ -130,7 +131,7 @@ namespace TdService.Repository.MsSql.Repositories
         /// </returns>
         public User GetUserByEmail(string email)
         {
-            return this.context.Users.Include("Profile").Include("Roles").Include("Wallet").SingleOrDefault(u => u.Email == email);
+            return this.context.Users.Include(u => u.Profile).Include(u => u.Roles).Include(u => u.Wallet).SingleOrDefault(u => u.Email == email);
         }
 
         /// <summary>
@@ -144,7 +145,7 @@ namespace TdService.Repository.MsSql.Repositories
         /// </returns>
         public User GetUserWithOrdersByEmail(string email)
         {
-            return this.context.Users.Include("Profile").Include("Orders").Include("Roles").SingleOrDefault(u => u.Email == email);
+            return this.context.Users.Include(u => u.Profile).Include(u => u.Orders).Include(u => u.Roles).SingleOrDefault(u => u.Email == email);
         }
 
         /// <summary>
@@ -158,7 +159,7 @@ namespace TdService.Repository.MsSql.Repositories
         /// </returns>
         public User GetUserWithPackagesByEmail(string email)
         {
-            return this.context.Users.Include("Profile").Include("Packages").Include("Roles").SingleOrDefault(u => u.Email == email);
+            return this.context.Users.Include(u => u.Profile).Include(u => u.Packages).Include(u => u.Roles).SingleOrDefault(u => u.Email == email);
         }
 
         /// <summary>
@@ -245,7 +246,7 @@ namespace TdService.Repository.MsSql.Repositories
         /// <returns>Tuple of alist of users for the role and a total count</returns>
         public Tuple<List<User>, int> GetUsersInRole(int roleId, int skip, int take)
         {
-            var userQuery = this.context.Users.Include("Profile").Include("Packages").Include("Roles").Where(
+            var userQuery = this.context.Users.Include(u => u.Profile).Include(u => u.Packages).Include(u => u.Orders).Include(u => u.Roles).Where(
                     u => u.Roles.Select(role => role.Id).Contains(roleId));
             var total = userQuery.Count();
             var pagedList = userQuery.OrderBy(u => u.Id).Skip(skip).Take(take).ToList();
@@ -276,7 +277,7 @@ namespace TdService.Repository.MsSql.Repositories
         /// <returns></returns>
         public User GetUserById(int id)
         {
-            var user = this.context.Users.Include("Profile").Include("Packages").Include("Roles").SingleOrDefault(u => u.Id.Equals(id));
+            var user = this.context.Users.Include(u => u.Profile).Include(u => u.Packages).Include(u => u.Orders).Include(u => u.Roles).SingleOrDefault(u => u.Id.Equals(id));
             return user;
         }
 
@@ -286,7 +287,7 @@ namespace TdService.Repository.MsSql.Repositories
         /// <returns></returns>
         public Tuple<List<User>, int> GetAllUsers(int skip, int take)
         {
-            var userQuery = this.context.Users.Include("Profile").Include("Packages").Include("Roles");
+            var userQuery = this.context.Users.Include(u=>u.Profile).Include(u=>u.Packages).Include(u=>u.Orders).Include(u=>u.Roles);
             var total = userQuery.Count();
             var pagedList = userQuery.OrderBy(u=>u.Id).Skip(skip).Take(take).ToList();
             return new Tuple<List<User>, int>(pagedList, total);

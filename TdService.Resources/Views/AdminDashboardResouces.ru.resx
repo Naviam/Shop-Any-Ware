@@ -126,8 +126,20 @@
   <data name="BtnFindText" xml:space="preserve">
     <value>Найти</value>
   </data>
+  <data name="NextPage" xml:space="preserve">
+    <value>След.</value>
+  </data>
   <data name="NoUsersFound" xml:space="preserve">
     <value>Не найдено пользователей в этой роли</value>
+  </data>
+  <data name="PagingText1" xml:space="preserve">
+    <value>Страница</value>
+  </data>
+  <data name="PagingText2" xml:space="preserve">
+    <value>из</value>
+  </data>
+  <data name="PrevPage" xml:space="preserve">
+    <value>Пред.</value>
   </data>
   <data name="UserFilterValiidationMessage" xml:space="preserve">
     <value>Неверный Id</value>
