@@ -121,14 +121,13 @@ namespace TdService.ShopAnyWare.Tests.Account
             return new UpdateProfileResponse();
         }
 
-
-        public List<GetUsersInRoleResponse> GetUsersInRole(GetUsersInRoleRequest request)
+        public GetUserByIdResponse GetUserById(GetUserByIdRequest request)
         {
             throw new System.NotImplementedException();
         }
 
 
-        public GetUserByIdResponse GetUserById(GetUserByIdRequest request)
+        GetUsersInRoleResponse IMembershipService.GetUsersInRole(GetUsersInRoleRequest request)
         {
             throw new System.NotImplementedException();
         }

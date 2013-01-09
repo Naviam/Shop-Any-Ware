@@ -72,9 +72,9 @@ namespace TdService.Services.Mapping
         /// <returns>
         /// The System.Collections.Generic.List`1[T -&gt; TdService.Services.Messaging.Membership.GetUserRolesResponse].
         /// </returns>
-        public static List<GetUsersInRoleResponse> ConvertToGetUsersInRoleResponseCollection(this List<User> users)
+        public static List<TdService.Services.Messaging.Membership.GetUsersInRoleResponse.UserResponseModel> ConvertToGetUsersInRoleResponseCollection(this List<User> users)
         {
-            var result =  Mapper.Map<List<User>, List<GetUsersInRoleResponse>>(users);
+            var result = Mapper.Map<List<User>, List<TdService.Services.Messaging.Membership.GetUsersInRoleResponse.UserResponseModel>>(users);
             return result;
         }
 

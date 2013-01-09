@@ -120,6 +120,9 @@
   <data name="AdminDashboardPageTitle" xml:space="preserve">
     <value>Панель администратора</value>
   </data>
+  <data name="AllRoles" xml:space="preserve">
+    <value>Все</value>
+  </data>
   <data name="BtnFindText" xml:space="preserve">
     <value>Найти</value>
   </data>
@@ -149,5 +152,8 @@
   </data>
   <data name="UserInfoUsername" xml:space="preserve">
     <value>Имя пользователя</value>
+  </data>
+  <data name="UsersPerPage" xml:space="preserve">
+    <value>Пользователей на странице:</value>
   </data>
 </root>

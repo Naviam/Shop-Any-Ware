@@ -234,8 +234,12 @@ namespace TdService.ShopAnyWare.Tests.Orders
         {
         }
 
+        public Tuple<List<User>, int> GetUsersInRole(int roleId, int skip, int take)
+        {
+            throw new NotImplementedException();
+        }
 
-        public List<User> GetUsersInRole(int roleId)
+        public Tuple<List<User>, int> GetAllUsers(int skip, int take)
         {
             throw new NotImplementedException();
         }

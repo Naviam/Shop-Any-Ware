@@ -343,14 +343,24 @@ namespace TdService.Services.Implementations
         }
 
         /// <summary>
-        /// 
+        /// Gets users in role
         /// </summary>
-        /// <param name="request"></param>
+        /// <param name="request">The GetUsersInRoleRequest request. Pass role ID as '-1' to get all users</param>
         /// <returns></returns>
-        public List<GetUsersInRoleResponse> GetUsersInRole(GetUsersInRoleRequest request)
+        public GetUsersInRoleResponse GetUsersInRole(GetUsersInRoleRequest request)
         {
-            var users = userRepository.GetUsersInRole(request.RoleId);
-            var result = users.ConvertToGetUsersInRoleResponseCollection();
+            Tuple<List<User>, int> tuple;
+
+            if (request.RoleId.Equals(-1))
+            {
+                tuple = userRepository.GetAllUsers(request.Skip, request.Take);
+            }
+            else
+            {
+                tuple = userRepository.GetUsersInRole(request.RoleId, request.Skip, request.Take);
+            }
+
+            var result = new GetUsersInRoleResponse { Users = tuple.Item1.ConvertToGetUsersInRoleResponseCollection(), TotalCount = tuple.Item2 };
             return result;
         }
 

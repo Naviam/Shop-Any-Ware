@@ -120,6 +120,9 @@
   <data name="AdminDashboardPageTitle" xml:space="preserve">
     <value>Administrator  dashboard</value>
   </data>
+  <data name="AllRoles" xml:space="preserve">
+    <value>All</value>
+  </data>
   <data name="BtnFindText" xml:space="preserve">
     <value>Find</value>
   </data>
@@ -149,5 +152,8 @@
   </data>
   <data name="UserInfoUsername" xml:space="preserve">
     <value>User name</value>
+  </data>
+  <data name="UsersPerPage" xml:space="preserve">
+    <value>Users per page:</value>
   </data>
 </root>

@@ -60,17 +60,19 @@ namespace TdService.UI.Web.Controllers
         /// <returns></returns>
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public ActionResult GetUsersInRole(int roleId)
+        public ActionResult GetUsersInRole(int roleId, int pageSize, int pageNumber)
         {
-            var request = new GetUsersInRoleRequest { RoleId = roleId };
+            var skip = pageNumber * pageSize;
+            var request = new GetUsersInRoleRequest { RoleId = roleId, Skip = (pageNumber-1) * pageSize, Take = pageSize };
             var response = this.membershipService.GetUsersInRole(request);
-            var result = response.ConvertToUsersInRoleViewModel();
+            var result = new { Users = response.Users.ConvertToUsersInRoleViewModel(), TotalCount = response.TotalCount };
 
             var jsonNetResult = new JsonNetResult
             {
                 Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
                 Data = result
             };
+
             return jsonNetResult;
         }
 
@@ -83,7 +85,7 @@ namespace TdService.UI.Web.Controllers
         [HttpPost]
         public ActionResult GetUserById(int userId)
         {
-            var request = new GetUserByIdRequest { UserId = userId};
+            var request = new GetUserByIdRequest { UserId = userId };
             var response = this.membershipService.GetUserById(request);
             var result = response.ConvertToUsersInRoleViewModel();
 

@@ -70,6 +70,15 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All.
+        /// </summary>
+        public static string AllRoles {
+            get {
+                return ResourceManager.GetString("AllRoles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Find.
         /// </summary>
         public static string BtnFindText {
@@ -156,6 +165,15 @@ namespace TdService.Resources.Views {
         public static string UserInfoUsername {
             get {
                 return ResourceManager.GetString("UserInfoUsername", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Users per page:.
+        /// </summary>
+        public static string UsersPerPage {
+            get {
+                return ResourceManager.GetString("UsersPerPage", resourceCulture);
             }
         }
     }

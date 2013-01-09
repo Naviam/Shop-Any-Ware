@@ -242,11 +242,14 @@ namespace TdService.Repository.MsSql.Repositories
         /// Gets user list for the specified roleId
         /// </summary>
         /// <param name="roleId">role id</param>
-        /// <returns>list of users for the role id</returns>
-        public List<User> GetUsersInRole(int roleId)
+        /// <returns>Tuple of alist of users for the role and a total count</returns>
+        public Tuple<List<User>, int> GetUsersInRole(int roleId, int skip, int take)
         {
-            var userList = this.context.Users.Include("Profile").Include("Packages").Include("Roles").Where(u => u.Roles.Select(role => role.Id).Contains(roleId)).ToList();
-            return userList;
+            var userQuery = this.context.Users.Include("Profile").Include("Packages").Include("Roles").Where(
+                    u => u.Roles.Select(role => role.Id).Contains(roleId));
+            var total = userQuery.Count();
+            var pagedList = userQuery.OrderBy(u => u.Id).Skip(skip).Take(take).ToList();
+            return new Tuple<List<User>,int>(pagedList,total);
         }
 
         /// <summary>
@@ -275,6 +278,18 @@ namespace TdService.Repository.MsSql.Repositories
         {
             var user = this.context.Users.Include("Profile").Include("Packages").Include("Roles").SingleOrDefault(u => u.Id.Equals(id));
             return user;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public Tuple<List<User>, int> GetAllUsers(int skip, int take)
+        {
+            var userQuery = this.context.Users.Include("Profile").Include("Packages").Include("Roles");
+            var total = userQuery.Count();
+            var pagedList = userQuery.OrderBy(u=>u.Id).Skip(skip).Take(take).ToList();
+            return new Tuple<List<User>, int>(pagedList, total);
         }
     }
 }

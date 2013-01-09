@@ -32,6 +32,7 @@ namespace TdService.UI.Web
     using TdService.UI.Web.ViewModels.Order;
     using TdService.UI.Web.ViewModels.Package;
     using TdService.UI.Web.ViewModels.Retailer;
+    using UserResponseModel=TdService.Services.Messaging.Membership.GetUsersInRoleResponse.UserResponseModel;
 
     /// <summary>
     /// The auto mapper configuration.
@@ -280,9 +281,9 @@ namespace TdService.UI.Web
                 .ForMember(r => r.Currency, opt => opt.Ignore());
 
             //admin dashboard
-            Mapper.CreateMap<User, GetUsersInRoleResponse>().ConvertUsing<UsersInRoleConverter>();
+            Mapper.CreateMap<User, UserResponseModel>().ConvertUsing<UsersInRoleConverter>();
             Mapper.CreateMap<User, GetUserByIdResponse>().ConvertUsing<GetUserByIdConverter>();
-            Mapper.CreateMap<GetUsersInRoleResponse, UsersInRoleViewModel>();
+            Mapper.CreateMap<UserResponseModel, UsersInRoleViewModel>();
             Mapper.CreateMap<GetUserByIdResponse, UsersInRoleViewModel>();
         }
 
@@ -310,12 +311,12 @@ namespace TdService.UI.Web
         /// <summary>
         /// Type converter User->GetUsersInRoleResponse
         /// </summary>
-        public class UsersInRoleConverter:ITypeConverter<User,GetUsersInRoleResponse>
+        public class UsersInRoleConverter : ITypeConverter<User, UserResponseModel>
         {
-            public GetUsersInRoleResponse Convert(ResolutionContext context)
+            public UserResponseModel Convert(ResolutionContext context)
             {
                 var user = context.SourceValue as User;
-                var converted = new GetUsersInRoleResponse
+                var converted = new UserResponseModel
                     {
                         Email = user.Email,
                         FullName = string.Concat(user.Profile.FirstName, " ", user.Profile.LastName),

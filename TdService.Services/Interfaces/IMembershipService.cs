@@ -95,10 +95,15 @@ namespace TdService.Services.Interfaces
         /// <summary>
         /// Gets users in role
         /// </summary>
-        /// <param name="request">The request</param>
+        /// <param name="request">The GetUsersInRoleRequest request. Pass role ID as '-1' to get all users</param>
         /// <returns>GetUsersInRole Response</returns>
-        List<GetUsersInRoleResponse> GetUsersInRole(GetUsersInRoleRequest request);
+        GetUsersInRoleResponse GetUsersInRole(GetUsersInRoleRequest request);
 
+        /// <summary>
+        /// Gets user by id
+        /// </summary>
+        /// <param name="request">ID</param>
+        /// <returns>user</returns>
         GetUserByIdResponse GetUserById(GetUserByIdRequest request);
     }
 }

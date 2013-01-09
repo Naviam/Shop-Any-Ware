@@ -60,6 +60,18 @@
                 </tr>
             </tbody>
         </table>
+        <div class="pagingArea">
+            <span>@AdminDashboardResources.UsersPerPage &nbsp;<select data-bind="options: userListPageSizes, value:selectedPageSize,  event:{change:changePageSize}"></select></span>
+            
+            <table class="pagingTable">
+                <tr data-bind="foreach: pages">
+                    <td>
+                        <a href="#" data-bind="click:changePage, text:pageNumber, disable: pages().length <= 1" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        
     </div>
     <div class="tab-pane" id="roles">
         <table class="table table-bordered span4 header">

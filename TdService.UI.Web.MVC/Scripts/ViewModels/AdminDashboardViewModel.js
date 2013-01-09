@@ -20,7 +20,7 @@ function UserInRole(serverModel) {
     self.messageType = ko.observable(serverModel.MessageType);
     self.errorCode = ko.observable(serverModel.ErrorCode);
     self.brokenRules = ko.observableArray(serverModel.BrokenRules);
-
+    
     //server model properties
     self.Id = serverModel.Id;
     self.FullName = serverModel.FullName;
@@ -37,16 +37,26 @@ function AdminDashboardViewModel(serverModel) {
     self.users = ko.observableArray();
     self.userId = ko.observable();
     self.userFilterValiidationMessage = addressModel.UserFilterValiidationMessage;
+    self.userListPageSizes = ko.observableArray(['2', '50', '100']);
+    self.selectedPageSize = ko.observable(2);
+    self.currentPage = ko.observable(1);
     
+    self.pages = ko.observableArray();
+    self.totalCount = ko.observable(addressModel.TotalCount);
+    self.currentRole = -1;//all
+    self.initializing = true;
+
     $.each(addressModel.Roles, function (index, value) {
         var role = new Role(value);
         self.roles.push(role);
     });
-    var initialId = addressModel.Roles[0].Id;
+    self.roles.unshift({ roleName: addressModel.AllRolesTranslated, id: -1 });
+    
     
     self.changeSelectedRole = function () {
         //load users in role
-        self.loadUsersInRole(this.id);
+        self.currentRole = this.id;
+        self.loadUsers();
     };
 
     self.FilterById = function () {
@@ -66,16 +76,26 @@ function AdminDashboardViewModel(serverModel) {
             }
         });
     };
-    
-    self.loadUsersInRole = function(id){
-        $.post("/admin/GetUsersInRole", { "roleId": id }, function (data) {
-            var users = ko.toJS(data);
+
+    self.changePageSize = function() {
+        if (self.initializing) {
+            self.initializing = false;
+            return;
+        }
+        
+        self.loadUsers();
+    };
+
+    self.loadUsers = function(){
+        $.post("/admin/GetUsersInRole", { "roleId": self.currentRole, "pageSize": self.selectedPageSize, "pageNumber": self.currentPage }, function (data) {
+            var response = ko.toJS(data);
             self.users.removeAll();
-            $.each(users, function (index, value) {
+            $.each(response.Users, function (index, value) {
                 var user = new UserInRole(value);
                 self.users.push(user);
             });
+            self.totalCount(response.TotalCount);
         });
     };
-    self.loadUsersInRole(initialId);
+    self.loadUsers();
 }

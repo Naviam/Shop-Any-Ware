@@ -9,5 +9,7 @@ namespace TdService.Services.Messaging.Membership
     public class GetUsersInRoleRequest
     {
         public int RoleId { get; set; }
+        public int Skip { get; set; }
+        public int Take{ get; set; }
     }
 }

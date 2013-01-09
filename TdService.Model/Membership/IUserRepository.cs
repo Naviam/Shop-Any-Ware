@@ -7,6 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 namespace TdService.Model.Membership
 {
@@ -138,7 +139,13 @@ namespace TdService.Model.Membership
         /// </summary>
         /// <param name="roleId">role id</param>
         /// <returns></returns>
-        List<User> GetUsersInRole(int roleId);
+        Tuple<List<User>, int> GetUsersInRole(int roleId, int skip, int take);
+
+        /// <summary>
+        /// Gets all users
+        /// </summary>
+        /// <returns>list of all users</returns>
+        Tuple<List<User>, int> GetAllUsers(int skip, int take);
 
         /// <summary>
         /// Save changes to db.
