@@ -78,6 +78,7 @@ function AdminDashboardViewModel(serverModel) {
     self.roles.unshift({ roleName: addressModel.AllRolesTranslated, id: -1 });
     
     self.changeSelectedRole = function () {
+        self.currentPage(1);
         //load users in role
         self.currentRole = this.id;
         self.loadUsers();
