@@ -56,6 +56,7 @@
     <Compile Include="Balance\BusinessRules\TransactionBusinessRules.cs" />
     <Compile Include="Balance\Currency.cs" />
     <Compile Include="Balance\ITransactionsRepository.cs" />
+    <Compile Include="Membership\MemberShipException.cs" />
     <Compile Include="Orders\InvalidRetailerException.cs" />
     <Compile Include="Orders\IRetailerRepository.cs" />
     <Compile Include="Orders\RetailerBusinessRules.cs" />

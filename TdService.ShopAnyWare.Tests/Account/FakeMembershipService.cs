@@ -120,5 +120,27 @@ namespace TdService.ShopAnyWare.Tests.Account
         {
             return new UpdateProfileResponse();
         }
+
+        public GetUserByIdResponse GetUserById(GetUserByIdRequest request)
+        {
+            throw new System.NotImplementedException();
+        }
+
+
+        GetUsersInRoleResponse IMembershipService.GetUsersInRole(GetUsersInRoleRequest request)
+        {
+            throw new System.NotImplementedException();
+        }
+
+
+        public AddUserToRoleResponse AddUserToRole(AddUserToRoleRequest request)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public RemoveUserFromRoleResponse RemoveUserFromRole(RemoveUserFromRoleRequest request)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

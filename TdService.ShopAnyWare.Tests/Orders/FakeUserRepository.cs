@@ -233,5 +233,15 @@ namespace TdService.ShopAnyWare.Tests.Orders
         public void AttachPackage(string email, int packageId)
         {
         }
+
+        public Tuple<List<User>, int> GetUsersInRole(int roleId, int skip, int take)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Tuple<List<User>, int> GetAllUsers(int skip, int take)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

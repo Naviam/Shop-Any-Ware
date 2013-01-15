@@ -117,61 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="DeliveryAddressAddOrUpdateErrorMessage" xml:space="preserve">
-    <value>Во время добавления или обновления Вашего адреса доставки возникли проблемы.</value>
+  <data name="Admin" xml:space="preserve">
+    <value>Администратор</value>
   </data>
-  <data name="DeliveryAddressAddOrUpdateSuccessMessage" xml:space="preserve">
-    <value>Ваш адрес доставки был успешно добавлен (обновлен). </value>
+  <data name="Consultant" xml:space="preserve">
+    <value>Консультант</value>
   </data>
-  <data name="DeliveryAddressRemoveErrorMessage" xml:space="preserve">
-    <value>Во время удаления Вашего адреса доставки возникли проблемы.</value>
+  <data name="Operator" xml:space="preserve">
+    <value>Оператор</value>
   </data>
-  <data name="DeliveryAddressRemoveSuccessMessage" xml:space="preserve">
-    <value>Ваш адрес доставки был успешно удален.</value>
-  </data>
-  <data name="OrderAddErrorMessage" xml:space="preserve">
-    <value>Во время добавления заказа возникли проблемы.</value>
-  </data>
-  <data name="OrderAddSuccessMessage" xml:space="preserve">
-    <value>Ваш заказ был успешно добавлен.</value>
-  </data>
-  <data name="OrderRemoveErrorMessage" xml:space="preserve">
-    <value>Во время удаления заказа возникли проблемы.</value>
-  </data>
-  <data name="OrderRemoveSuccessMessage" xml:space="preserve">
-    <value>Заказ был успешно удален.</value>
-  </data>
-  <data name="OrderUpdateErrorMessage" xml:space="preserve">
-    <value>Во время обновления заказа возникли проблемы.</value>
-  </data>
-  <data name="OrderUpdateSuccessMessage" xml:space="preserve">
-    <value>Ваш заказ был успешно обновлен.</value>
-  </data>
-  <data name="ProfileUpdateErrorMessage" xml:space="preserve">
-    <value>Во время обновления профиля возникли проблемы.</value>
-  </data>
-  <data name="ProfileUpdateSuccessMessage" xml:space="preserve">
-    <value>Ваш профиль был успешно обновлен.</value>
-  </data>
-  <data name="SignUpErrorMessage" xml:space="preserve">
-    <value>Во время регистрации Вашего аккаунта возникли проблемы.</value>
-  </data>
-  <data name="TransacionCanceledMessage" xml:space="preserve">
-    <value>Транзакция была отменена.</value>
-  </data>
-  <data name="UserAddedToRole" xml:space="preserve">
-    <value>Пользователь был добавлен в роль</value>
-  </data>
-  <data name="UserNotFound" xml:space="preserve">
-    <value>Пользователь с таким ID  не найден</value>
-  </data>
-  <data name="UserRemovedFromRole" xml:space="preserve">
-    <value>Пользователь был удален из роли</value>
-  </data>
-  <data name="VerifyEmailExistsMessage" xml:space="preserve">
-    <value>Аккаунт с этим e-mail был уже создан.</value>
-  </data>
-  <data name="VerifyEmailOkMessage" xml:space="preserve">
-    <value>Аккаунт не занят.</value>
+  <data name="Shopper" xml:space="preserve">
+    <value>Покупатель</value>
   </data>
 </root>

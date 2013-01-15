@@ -7,6 +7,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
 namespace TdService.Model.Membership
 {
     /// <summary>
@@ -133,8 +135,28 @@ namespace TdService.Model.Membership
         bool ValidateCredentials(User user);
 
         /// <summary>
+        /// Get users in role
+        /// </summary>
+        /// <param name="roleId">role id</param>
+        /// <returns></returns>
+        Tuple<List<User>, int> GetUsersInRole(int roleId, int skip, int take);
+
+        /// <summary>
+        /// Gets all users
+        /// </summary>
+        /// <returns>list of all users</returns>
+        Tuple<List<User>, int> GetAllUsers(int skip, int take);
+
+        /// <summary>
         /// Save changes to db.
         /// </summary>
         void SaveChanges();
+
+        /// <summary>
+        /// Getsuser by Id
+        /// </summary>
+        /// <param name="Id">user ID</param>
+        /// <returns>User</returns>
+        User GetUserById(int id);
     }
 }

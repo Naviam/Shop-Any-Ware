@@ -147,6 +147,9 @@
   <data name="AddPackageButtonLoadingMessage" xml:space="preserve">
     <value>Создаем посылку...</value>
   </data>
+  <data name="AdminViewNoticeMessage" xml:space="preserve">
+    <value>Вы просматриваете панель покупателя {0}</value>
+  </data>
   <data name="BalanceAddFundsButton" xml:space="preserve">
     <value>Пополнить</value>
   </data>

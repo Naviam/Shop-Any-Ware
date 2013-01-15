@@ -26,11 +26,14 @@ namespace TdService.UI.Web
     using TdService.Services.Messaging.Transactions;
     using TdService.UI.Web.ViewModels;
     using TdService.UI.Web.ViewModels.Account;
+    using TdService.UI.Web.ViewModels.Admin;
     using TdService.UI.Web.ViewModels.Ballance;
     using TdService.UI.Web.ViewModels.Item;
     using TdService.UI.Web.ViewModels.Order;
     using TdService.UI.Web.ViewModels.Package;
     using TdService.UI.Web.ViewModels.Retailer;
+    using System.Linq;
+    using UserResponseModel = TdService.Services.Messaging.Membership.GetUsersInRoleResponse.UserResponseModel;
 
     /// <summary>
     /// The auto mapper configuration.
@@ -277,6 +280,12 @@ namespace TdService.UI.Web
             Mapper.CreateMap<AddTransactionRequest, Transaction>()
                 .ForMember(r => r.Id, opt => opt.Ignore())
                 .ForMember(r => r.Currency, opt => opt.Ignore());
+
+            //admin dashboard
+            Mapper.CreateMap<User, UserResponseModel>().ConvertUsing<UsersInRoleConverter>();
+            Mapper.CreateMap<User, GetUserByIdResponse>().ConvertUsing<GetUserByIdConverter>();
+            Mapper.CreateMap<UserResponseModel, UsersInRoleViewModel>();
+            Mapper.CreateMap<GetUserByIdResponse, UsersInRoleViewModel>();
         }
 
         /// <summary>
@@ -297,6 +306,50 @@ namespace TdService.UI.Web
             {
                 var value = context.SourceValue.ToString();
                 return new Retailer { Name = value, Url = value };
+            }
+        }
+
+        /// <summary>
+        /// Type converter User->GetUsersInRoleResponse
+        /// </summary>
+        public class UsersInRoleConverter : ITypeConverter<User, UserResponseModel>
+        {
+            public UserResponseModel Convert(ResolutionContext context)
+            {
+                var user = context.SourceValue as User;
+                var converted = new UserResponseModel
+                    {
+                        Email = user.Email,
+                        FullName = string.Concat(user.Profile.FirstName, " ", user.Profile.LastName),
+                        Id = user.Id,
+                        LastAccessDate = user.LastAccessDate,
+                        OrdersCount = user.Orders.Count,
+                        PackagesCount = user.Packages.Count,
+                        Roles = user.Roles.Select(r => r.Id).ToList()
+                    };
+                return converted;
+            }
+        }
+
+        /// <summary>
+        /// Type converter User->GetUsersInRoleResponse
+        /// </summary>
+        public class GetUserByIdConverter : ITypeConverter<User, GetUserByIdResponse>
+        {
+            public GetUserByIdResponse Convert(ResolutionContext context)
+            {
+                var user = context.SourceValue as User;
+                var converted = new GetUserByIdResponse
+                {
+                    Email = user.Email,
+                    FullName = string.Concat(user.Profile.FirstName, " ", user.Profile.LastName),
+                    Id = user.Id,
+                    LastAccessDate = user.LastAccessDate,
+                    OrdersCount = user.Orders.Count,
+                    PackagesCount = user.Packages.Count,
+                    Roles = user.Roles.Select(r => r.Id).ToList()
+                };
+                return converted;
             }
         }
 
