@@ -9,8 +9,6 @@ namespace TdService.Infrastructure
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-    using HtmlAgilityPack;
-    using ScrapySharp.Extensions;
 
     /// <summary>
     /// This class is used to parse html pages to get some data from them.
@@ -26,20 +24,20 @@ namespace TdService.Infrastructure
         /// <returns>
         /// Collection of the retailers.
         /// </returns>
-        public IEnumerable<Retailer> GetOnlineRetailers(StreamReader content)
-        {
-            var htmlDocument = new HtmlDocument();
-            htmlDocument.Load(content);
-            var html = htmlDocument.DocumentNode;
+        ////public IEnumerable<Retailer> GetOnlineRetailers(StreamReader content)
+        ////{
+        ////    var htmlDocument = new HtmlDocument();
+        ////    htmlDocument.Load(content);
+        ////    var html = htmlDocument.DocumentNode;
 
-            var retailersHtml = html.CssSelect("#company_listing").CssSelect("div");
-            return retailersHtml.Where(retailer => retailer.HasChildNodes)
-                .Select(retailerHtml => new Retailer
-                {
-                    Name = retailerHtml.CssSelect("p[class='company_name'] > a").First().InnerText,
-                    Category = retailerHtml.CssSelect("p[class='company_category']").First().InnerText
-                });
-        }
+        ////    var retailersHtml = html.CssSelect("#company_listing").CssSelect("div");
+        ////    return retailersHtml.Where(retailer => retailer.HasChildNodes)
+        ////        .Select(retailerHtml => new Retailer
+        ////        {
+        ////            Name = retailerHtml.CssSelect("p[class='company_name'] > a").First().InnerText,
+        ////            Category = retailerHtml.CssSelect("p[class='company_category']").First().InnerText
+        ////        });
+        ////}
 
         /// <summary>
         /// The class contains retailer details.

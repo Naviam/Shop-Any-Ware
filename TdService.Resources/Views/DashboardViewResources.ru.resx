@@ -148,7 +148,7 @@
     <value>Создаем посылку...</value>
   </data>
   <data name="AdminViewNoticeMessage" xml:space="preserve">
-    <value>Вы просматриваете панель покупателя {0}</value>
+    <value>Вы сейчас находитесь на странице пользователя {1} (ID {0}).</value>
   </data>
   <data name="BalanceAddFundsButton" xml:space="preserve">
     <value>Пополнить</value>

@@ -56,7 +56,7 @@ function UserInRole(serverModel, translatedRolesArray, memberDashboardUrl) {
     self.viewShopperDashboard = function () {
         if (!self.UserIsInRole(2)) return; //2 is shopper
         
-        window.open(self.memberDashboardUrl+'?userEmail='+self.Email, '_blank');
+        window.open(self.memberDashboardUrl+'?userEmail='+self.Email, '_self');
     };
 
     self.UserIsInRole = function (roleId) {

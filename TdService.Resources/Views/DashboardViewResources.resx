@@ -148,7 +148,7 @@
     <value>Adding Package...</value>
   </data>
   <data name="AdminViewNoticeMessage" xml:space="preserve">
-    <value>You are viewing {0}'s dashboard</value>
+    <value>You are currently on the user {1} page (ID {0}).</value>
   </data>
   <data name="BalanceAddFundsButton" xml:space="preserve">
     <value>Add Funds</value>

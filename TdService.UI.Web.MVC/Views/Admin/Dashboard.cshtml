@@ -6,20 +6,21 @@
     ViewBag.Title = AdminDashboardResources.AdminDashboardPageTitle;
 }
 
-<h2>Admin Dashboard</h2>
-<ul class="nav nav-tabs">
-    <li><a href="#users" data-toggle="tab">Users</a></li>
-    <li><a href="#roles" data-toggle="tab">Administrators</a></li>
-    <li><a href="#messages" data-toggle="tab">Messages</a></li>
-    <li><a href="#settings" data-toggle="tab">Settings</a></li>
+<ul class="breadcrumb">
+    <li class="active">@TdService.Resources.BreadcrumbResources.AdminDashboard</li>
 </ul>
-<table class="roles-filter">
-    <tr data-bind="foreach: roles">
-        <td data-bind="click:$parent.changeSelectedRole, text:roleName"></td>
-    </tr>
-</table>
+<ul class="nav nav-tabs">
+    <li class="active"><a href="#users" data-toggle="tab">Пользователи</a></li>
+    <li><a href="#messages" data-toggle="tab">Рассылка</a></li>
+    <li><a href="#settings" data-toggle="tab">Статистика</a></li>
+</ul>
 <div class="tab-content">
     <div class="tab-pane active" id="users">
+        <table class="roles-filter">
+            <tr data-bind="foreach: roles">
+                <td data-bind="click: $parent.changeSelectedRole, text: roleName"></td>
+            </tr>
+        </table>
         <form class="well form-inline" style="padding: 8px 0 0">
             <ul class="filter">
                 <li class="span4">
@@ -73,76 +74,12 @@
             
         </div>
     </div>
-    <div class="tab-pane" id="roles">
-        <table class="table table-bordered span4 header">
-            <thead>
-                <tr>
-                    <th>Project viewer</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Tag build</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Take responsibility</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>View project</td>
-                    <td></td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-bordered span4 header">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Tag build</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Take responsibility</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>View project</td>
-                    <td></td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-bordered span4 header">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Tag build</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Take responsibility</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>View project</td>
-                    <td></td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="tab-pane" id="messages">
+        Страница создания email рассылок для подписавшихся пользователей
     </div>
-    <div class="tab-pane" id="messages">...</div>
-    <div class="tab-pane" id="settings">...</div>
+    <div class="tab-pane" id="settings">
+        Страница со статистикой продаж и настройками цен на услуги
+    </div>
 </div>
 <input id="model" type="hidden" value="@(new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(Model))" />
 @section Scripts
