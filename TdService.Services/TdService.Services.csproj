@@ -85,8 +85,14 @@
     <Compile Include="Messaging\Item\ItemDto.cs" />
     <Compile Include="Messaging\Item\RemoveItemRequest.cs" />
     <Compile Include="Messaging\Item\RemoveItemResponse.cs" />
+    <Compile Include="Messaging\Membership\AddUserToRoleRequest.cs" />
+    <Compile Include="Messaging\Membership\AddUserToRoleResponse.cs" />
+    <Compile Include="Messaging\Membership\GetUserByIdRequest.cs" />
+    <Compile Include="Messaging\Membership\GetUserByIdResponse.cs" />
     <Compile Include="Messaging\Membership\GetUserRolesRequest.cs" />
     <Compile Include="Messaging\Membership\GetUserRolesResponse.cs" />
+    <Compile Include="Messaging\Membership\RemoveUserFromRoleRequest.cs" />
+    <Compile Include="Messaging\Membership\RemoveUserFromRoleResponse.cs" />
     <Compile Include="Messaging\Order\GetAllOrdersRequest.cs" />
     <Compile Include="Messaging\Order\GetAllOrdersResponse.cs" />
     <Compile Include="Messaging\Order\RemoveOrderRequest.cs" />
@@ -138,6 +144,8 @@
     <Compile Include="Messaging\Transactions\ConfirmPayPalTransactionResponse.cs" />
     <Compile Include="Messaging\Transactions\GetTransactionsRequest.cs" />
     <Compile Include="Messaging\Transactions\GetTransactionsResponse.cs" />
+    <Compile Include="Messaging\Membership\GetUsersInRoleRequest.cs" />
+    <Compile Include="Messaging\Membership\GetUsersInRoleResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -160,7 +168,9 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Messaging\UserManagement\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

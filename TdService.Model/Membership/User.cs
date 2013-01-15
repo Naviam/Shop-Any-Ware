@@ -60,6 +60,11 @@ namespace TdService.Model.Membership
         public bool Activated { get; set; }
 
         /// <summary>
+        /// Gets or sets LastAccessDate 
+        /// </summary>
+        public DateTime? LastAccessDate { get; set; }
+
+        /// <summary>
         /// Gets or sets Row Version.
         /// </summary>
         public byte[] RowVersion { get; set; }
@@ -272,6 +277,39 @@ namespace TdService.Model.Membership
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="roleId"></param>
+        /// <returns></returns>
+        public bool RemoveUserFromRole(int roleId)
+        {
+            var role = this.Roles.SingleOrDefault(r => r.Id.Equals(roleId));
+            if (role != null)
+            {
+                this.Roles.Remove(role);
+                return true;
+            }
+
+            throw new MemberShipException(ErrorCode.UserIsNotInRole.ToString());
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="role"></param>
+        /// <returns></returns>
+        public bool AddUserToRole(Role role)
+        {
+            if (!this.Roles.Select(r => r.Id).Contains(role.Id))
+            {
+                
+                this.Roles.Add(role);
+                return true;
+            }
+            throw new MemberShipException(ErrorCode.UserIsAlreadyInRole.ToString());
         }
 
         /// <summary>

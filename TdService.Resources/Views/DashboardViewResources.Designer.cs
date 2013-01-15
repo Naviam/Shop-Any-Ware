@@ -151,6 +151,15 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You are viewing {0}&apos;s dashboard.
+        /// </summary>
+        public static string AdminViewNoticeMessage {
+            get {
+                return ResourceManager.GetString("AdminViewNoticeMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add Funds.
         /// </summary>
         public static string BalanceAddFundsButton {

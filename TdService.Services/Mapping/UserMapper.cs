@@ -62,5 +62,31 @@ namespace TdService.Services.Mapping
         {
             return Mapper.Map<List<Role>, List<GetUserRolesResponse>>(roles);
         }
+
+        /// <summary>
+        /// The convert to get users in role response collection.
+        /// </summary>
+        /// <param name="users">
+        /// The roles.
+        /// </param>
+        /// <returns>
+        /// The System.Collections.Generic.List`1[T -&gt; TdService.Services.Messaging.Membership.GetUserRolesResponse].
+        /// </returns>
+        public static List<TdService.Services.Messaging.Membership.GetUsersInRoleResponse.UserResponseModel> ConvertToGetUsersInRoleResponseCollection(this List<User> users)
+        {
+            var result = Mapper.Map<List<User>, List<TdService.Services.Messaging.Membership.GetUsersInRoleResponse.UserResponseModel>>(users);
+            return result;
+        }
+
+        /// <summary>
+        /// The convert to get user by id response.
+        /// </summary>
+        /// <param name="user">user</param>
+        /// <returns>GetUserByIdResponse</returns>
+        public static GetUserByIdResponse ConvertToGetUserByIdResponse(this User user)
+        {
+            var result = Mapper.Map<User, GetUserByIdResponse>(user);
+            return result;
+        }
     }
 }

@@ -91,5 +91,33 @@ namespace TdService.Services.Interfaces
         /// The TdService.Services.Messaging.Membership.ChangePasswordLinkResponse.
         /// </returns>
         ChangePasswordLinkResponse GenerateChangePasswordLink(ChangePasswordLinkRequest request);
+
+        /// <summary>
+        /// Gets users in role
+        /// </summary>
+        /// <param name="request">The GetUsersInRoleRequest request. Pass role ID as '-1' to get all users</param>
+        /// <returns>GetUsersInRole Response</returns>
+        GetUsersInRoleResponse GetUsersInRole(GetUsersInRoleRequest request);
+
+        /// <summary>
+        /// Gets user by id
+        /// </summary>
+        /// <param name="request">ID</param>
+        /// <returns>user</returns>
+        GetUserByIdResponse GetUserById(GetUserByIdRequest request);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        AddUserToRoleResponse AddUserToRole(AddUserToRoleRequest request);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        RemoveUserFromRoleResponse RemoveUserFromRole(RemoveUserFromRoleRequest request);
     }
 }

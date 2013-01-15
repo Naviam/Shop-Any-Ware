@@ -9,7 +9,6 @@ namespace TdService.Services.Implementations
     using System;
     using System.Collections.Generic;
     using System.Linq;
-
     using TdService.Infrastructure.Domain;
     using TdService.Infrastructure.Email;
     using TdService.Infrastructure.Logging;
@@ -20,7 +19,6 @@ namespace TdService.Services.Implementations
     using TdService.Services.Mapping;
     using TdService.Services.Messaging;
     using TdService.Services.Messaging.Membership;
-
     using Profile = TdService.Model.Membership.Profile;
 
     /// <summary>
@@ -342,6 +340,69 @@ namespace TdService.Services.Implementations
         public ChangePasswordLinkResponse GenerateChangePasswordLink(ChangePasswordLinkRequest request)
         {
             return null;
+        }
+
+        /// <summary>
+        /// Gets users in role
+        /// </summary>
+        /// <param name="request">The GetUsersInRoleRequest request. Pass role ID as '-1' to get all users</param>
+        /// <returns></returns>
+        public GetUsersInRoleResponse GetUsersInRole(GetUsersInRoleRequest request)
+        {
+            Tuple<List<User>, int> tuple;
+
+            if (request.RoleId.Equals(-1))
+            {
+                tuple = userRepository.GetAllUsers(request.Skip, request.Take);
+            }
+            else
+            {
+                tuple = userRepository.GetUsersInRole(request.RoleId, request.Skip, request.Take);
+            }
+
+            var result = new GetUsersInRoleResponse { Users = tuple.Item1.ConvertToGetUsersInRoleResponseCollection(), TotalCount = tuple.Item2 };
+            return result;
+        }
+
+        /// <summary>
+        /// Getsuser by id
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public GetUserByIdResponse GetUserById(GetUserByIdRequest request)
+        {
+            var user = userRepository.GetUserById(request.UserId);
+            if (user == null)
+            {
+                return new GetUserByIdResponse { MessageType = MessageType.Warning, Message = CommonResources.UserNotFound };
+            }
+            var result = user.ConvertToGetUserByIdResponse();
+            return result;
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public AddUserToRoleResponse AddUserToRole(AddUserToRoleRequest request)
+        {
+            roleRepository.AddUserToRole(request.UserId, request.RoleId);
+            roleRepository.SaveChanges();
+            return new AddUserToRoleResponse { Message = CommonResources.ResourceManager.GetString("UserAddedToRole"), MessageType = MessageType.Success };
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public RemoveUserFromRoleResponse RemoveUserFromRole(RemoveUserFromRoleRequest request)
+        {
+            roleRepository.RemoveUserFromRole(request.UserId, request.RoleId);
+            roleRepository.SaveChanges();
+            return new RemoveUserFromRoleResponse { Message = CommonResources.ResourceManager.GetString("UserRemovedFromRole"), MessageType = MessageType.Success };
         }
     }
 }

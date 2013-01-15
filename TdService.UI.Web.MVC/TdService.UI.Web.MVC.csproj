@@ -279,6 +279,7 @@
     <Content Include="Scripts\model\DeliveryAddressViewModel.js" />
     <Content Include="Scripts\model\OrderViewModel.js" />
     <Content Include="Scripts\Tools\UspsService.js" />
+    <Content Include="Scripts\ViewModels\AdminDashboardViewModel.js" />
     <Content Include="Scripts\ViewModels\DeliveryRatesViewModel.js" />
     <Content Include="Scripts\ViewModels\OperatorDashboardViewModel.js" />
     <Content Include="Scripts\ViewModels\ProfileViewModel.js" />

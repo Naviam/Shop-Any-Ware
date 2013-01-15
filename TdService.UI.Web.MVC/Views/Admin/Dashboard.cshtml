@@ -1,5 +1,9 @@
-﻿@{
-    ViewBag.Title = "Administrator Dashboard";
+﻿@using TdService.Resources.Views
+@using System.Web.Optimization
+
+@model TdService.UI.Web.ViewModels.Admin.AdminDashBoardViewModel
+@{
+    ViewBag.Title = AdminDashboardResources.AdminDashboardPageTitle;
 }
 
 <h2>Admin Dashboard</h2>
@@ -9,59 +13,65 @@
     <li><a href="#messages" data-toggle="tab">Messages</a></li>
     <li><a href="#settings" data-toggle="tab">Settings</a></li>
 </ul>
-
+<table class="roles-filter">
+    <tr data-bind="foreach: roles">
+        <td data-bind="click:$parent.changeSelectedRole, text:roleName"></td>
+    </tr>
+</table>
 <div class="tab-content">
     <div class="tab-pane active" id="users">
         <form class="well form-inline" style="padding: 8px 0 0">
             <ul class="filter">
                 <li class="span4">
-                    <input type="text" class="span3">
-                    <button type="submit" class="btn">Find</button>
-                </li>
-                <li class="span4">
-                    <input type="text" class="span3">
-                    <button type="submit" class="btn">Find</button>
+                    <input placeholder="Find User By Id" type="text" data-bind="value:userId" class="span3">
+                    <button type="submit" class="btn" data-bind="click:FilterById">@AdminDashboardResources.BtnFindText</button>
                 </li>
             </ul>
         </form>
-
+        <div data-bind="visible: users().length == 0">
+            <div class='alert alert-info'>
+                <span>@AdminDashboardResources.NoUsersFound</span>
+            </div>
+            <br />
+        </div>
         <table class="table table-hover">
             <thead>
-                <tr>
-                    <th style="width: 12px">
+                <tr >
+                    <th style="width: 5%">
                         <input type="checkbox" /></th>
-                    <th>ID</th>
-                    <th>Username</th>
-                    <th>Full name</th>
-                    <th>Orders</th>
-                    <th>Packages</th>
-                    <th>Email</th>
-                    <th>Last access time</th>
+                    <th style="width: 5%">@AdminDashboardResources.UserInfoId</th>
+                    <th style="width: 20%">@AdminDashboardResources.UserInfoUsername</th>
+                    <th style="width: 20%">@AdminDashboardResources.UserInfoFullName</th>
+                    <th style="width: 5%">@AdminDashboardResources.UserInfoOrders</th>
+                    <th style="width: 5%">@AdminDashboardResources.UserInfoPackages</th>
+                    <th style="width: 15%">@AdminDashboardResources.RolesForUser</th>
+                    <th style="width: 30%">@AdminDashboardResources.UserInfoLastAccessTime</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td><input type="checkbox" /></td>
-                    <td><a href="/Member/Dashboard">1</a></td>
-                    <td><a href="/Member/Dashboard">Username</a></td>
-                    <td><a href="/Member/Dashboard">Vasya Pupkin</a></td>
-                    <td><a href="/Member/Dashboard">2</a></td>
-                    <td><a href="/Member/Dashboard">4</a></td>
-                    <td><a href="/Member/Dashboard">email@domain.com</a></td>
-                    <td><a href="/Member/Dashboard">14 okt 2012</a></td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" /></td>
-                    <td><a href="/Member/Dashboard">2</a></td>
-                    <td><a href="/Member/Dashboard">Another one</a></td>
-                    <td><a href="/Member/Dashboard">Brat Vasi Pupkina</a></td>
-                    <td><a href="/Member/Dashboard">1</a></td>
-                    <td><a href="/Member/Dashboard">2</a></td>
-                    <td><a href="/Member/Dashboard">email2@domain.com</a></td>
-                    <td><a href="/Member/Dashboard">16 okt 2012</a></td>
+            <tbody data-bind='foreach: users'>
+                <tr data-bind="click:viewShopperDashboard">
+                    <td>
+                        <input type="checkbox" /></td>
+                    <td data-bind='text: Id'></td>
+                    <td data-bind='text: Email'></td>
+                    <td data-bind='text: FullName'></td>
+                    <td data-bind='text: OrdersCount'></td>
+                    <td data-bind='text: PackagesCount'></td>
+                    <td data-bind='foreach: Roles'><span class="roleSpan" data-bind="text:roleName, css:{roleSpanInRole:userIsInRole}, event:{click:$parent.toggleRole}"></span></td>
+                    <td data-bind='text: LastAccessDate'></td>
                 </tr>
             </tbody>
         </table>
+        <div class="pagingArea" data-bind="visible: users().length != 0">
+            <span class="pageSizeSpan">@AdminDashboardResources.UsersPerPage &nbsp;<select data-bind="options: userListPageSizes, value:selectedPageSize,  event:{change:changePageSize}"></select></span>
+            <span class="navButtonsSpan">
+                <input type="button" value="@AdminDashboardResources.PrevPage" data-bind="event:{click:movePrevPage}, enable:canMovePrev" />
+                <input type="text" placeholder="@AdminDashboardResources.GotoPageWatermark" data-bind="valueUpdate: 'afterkeydown', executeOnEnter: goToPage, value:goToPageIndex" />
+                <input type="button" value="@AdminDashboardResources.NextPage" data-bind="event:{click:moveNextPage}, enable:canMoveNext" />
+            </span>
+            <span class="pageNumberSpan">@AdminDashboardResources.PagingText1 &nbsp;<span  data-bind="text:currentPage"></span>&nbsp;@AdminDashboardResources.PagingText2 &nbsp;<span data-bind="text:pageCount"></span></span>
+            
+        </div>
     </div>
     <div class="tab-pane" id="roles">
         <table class="table table-bordered span4 header">
@@ -134,3 +144,14 @@
     <div class="tab-pane" id="messages">...</div>
     <div class="tab-pane" id="settings">...</div>
 </div>
+<input id="model" type="hidden" value="@(new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(Model))" />
+@section Scripts
+{
+    @Scripts.Render("~/bundles/adminDashboard")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var mainViewModel = new AdminDashboardViewModel($("#model").val());
+            ko.applyBindings(mainViewModel);
+        });
+    </script>
+}
