@@ -25,9 +25,7 @@ function GridRole(id, roleName, userIsInRole) {
     
     self.id = id;
     self.roleName = roleName;
-    self.userIsInRole = userIsInRole;
-    
-    
+    self.userIsInRole = ko.observable(userIsInRole);
 }
 
 function UserInRole(serverModel, translatedRolesArray, memberDashboardUrl) {
@@ -64,14 +62,14 @@ function UserInRole(serverModel, translatedRolesArray, memberDashboardUrl) {
     self.UserIsInRole = function (roleId) {
         var result = false;
         $.each(self.Roles(), function (index, value) {
-            if (value.id == roleId && value.userIsInRole)
+            if (value.id == roleId && value.userIsInRole())
                 result = true;
         });
         return result;
     };
     
     self.toggleRole = function (gridRole, event) {
-        if (gridRole.userIsInRole) {
+        if (gridRole.userIsInRole()) {
             $.post("/admin/RemoveUserFromRole", { "userId": self.Id, "roleId": gridRole.id }, function (data) {
                 var resp = ko.toJS(data);
                 if (resp.MessageType == 'Error') {
@@ -81,7 +79,7 @@ function UserInRole(serverModel, translatedRolesArray, memberDashboardUrl) {
                 //update observable array
                 $.each(self.Roles(), function (index, value) {
                     if (value.id == gridRole.id)
-                        value.userIsInRole = false;
+                        value.userIsInRole(false);
                 });
                 window.showNotice(resp.Message,'Information');
             });
@@ -96,7 +94,7 @@ function UserInRole(serverModel, translatedRolesArray, memberDashboardUrl) {
                 //update observable array
                 $.each(self.Roles(), function (index, value) {
                     if (value.id == gridRole.id)
-                        value.userIsInRole = true;
+                        value.userIsInRole(true);
                 });
                 window.showNotice(resp.Message, 'Information');
             });

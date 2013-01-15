@@ -136,7 +136,7 @@ namespace TdService.Repository.MsSql.Repositories
         public void AddUserToRole(int userId, int roleId)
         {
             var role = this.GetRoleById(roleId);
-            var user = this.context.Users.Include("Roles").SingleOrDefault(u => u.Id.Equals(userId));
+            var user = this.context.Users.Include("Roles").Include("Profile").Include("Wallet").SingleOrDefault(u => u.Id.Equals(userId));
             user.AddUserToRole(role);
         }
 
@@ -147,7 +147,7 @@ namespace TdService.Repository.MsSql.Repositories
         /// <param name="roleId"></param>
         public void RemoveUserFromRole(int userId, int roleId)
         {
-            var user = this.context.Users.Include("Roles").SingleOrDefault(u => u.Id.Equals(userId));
+            var user = this.context.Users.Include("Roles").Include("Profile").Include("Wallet").SingleOrDefault(u => u.Id.Equals(userId));
             user.RemoveUserFromRole(roleId);
         }
     }
