@@ -115,6 +115,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Features\NlogDynamoDbTarget.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NlogDynamoDbTarget.feature</DependentUpon>
+    </Compile>
     <Compile Include="Steps\DepositSteps.cs" />
     <Compile Include="Fakes\FakeLogger.cs" />
     <Compile Include="Fakes\Mail.cs" />
@@ -237,6 +242,10 @@
     <None Include="Features\Deposit.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Deposit.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\NlogDynamoDbTarget.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>NlogDynamoDbTarget.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\OperatorOrders.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

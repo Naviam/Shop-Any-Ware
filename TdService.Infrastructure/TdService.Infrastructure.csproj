@@ -36,13 +36,19 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FSharp.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\ScrapySharp.1.4.3.1\lib\net40\FSharp.Core.dll</HintPath>
+    <Reference Include="AWS.Extensions">
+      <HintPath>..\packages\AWS.Extensions.1.5.10.0\lib\AWS.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="AWSSDK, Version=1.5.10.0, Culture=neutral, PublicKeyToken=cd2d24cd2bace800, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\AWSSDK.1.5.10.0\lib\AWSSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="FSharp.Core, Version=4.3.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>True</Private>
     </Reference>
     <Reference Include="HtmlAgilityPack, Version=1.4.6.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\ScrapySharp.1.4.3.1\lib\net40\HtmlAgilityPack.dll</HintPath>
+      <HintPath>..\packages\ScrapySharp.1.5\lib\net40\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="LinqToExcel, Version=1.6.6.0, Culture=neutral, PublicKeyToken=9c8ea65a58f03f1f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -52,6 +58,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
       <HintPath>..\packages\LinqToExcel_x64.1.6.6\lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\packages\NLog.2.0.0.2000\lib\net40\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog.Fluent">
+      <HintPath>..\packages\NLog.Fluent.1.0.0.2\lib\net40\NLog.Fluent.dll</HintPath>
     </Reference>
     <Reference Include="PayPal_Merchant_SDK">
       <HintPath>..\InternalPackages\PayPal_Merchant_SDK.dll</HintPath>
@@ -70,11 +82,11 @@
     </Reference>
     <Reference Include="ScrapySharp, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\ScrapySharp.1.4.3.1\lib\net40\ScrapySharp.dll</HintPath>
+      <HintPath>..\packages\ScrapySharp.1.5\lib\net40\ScrapySharp.dll</HintPath>
     </Reference>
     <Reference Include="ScrapySharp.Core, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\ScrapySharp.1.4.3.1\lib\net40\ScrapySharp.Core.dll</HintPath>
+      <HintPath>..\packages\ScrapySharp.1.5\lib\net40\ScrapySharp.Core.dll</HintPath>
     </Reference>
     <Reference Include="SeeSharpShip">
       <HintPath>..\packages\SeeSharpShip.0.1.5\lib\net40\SeeSharpShip.dll</HintPath>
@@ -128,6 +140,7 @@
     <Compile Include="Logging\ILogger.cs" />
     <Compile Include="Logging\Log4NetAdapter.cs" />
     <Compile Include="Logging\LoggingFactory.cs" />
+    <Compile Include="Logging\NLogAmazonDynamoDbTarget.cs" />
     <Compile Include="PayPalHeplers\PayPalException.cs" />
     <Compile Include="PayPalHeplers\PayPalHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -152,6 +165,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="aws-sessionprovider-sample.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
