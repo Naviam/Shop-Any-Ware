@@ -79,5 +79,22 @@ namespace TdService.ShopAnyWare.Tests.Account
         public void SaveChanges()
         {
         }
+
+
+        public Role GetRoleById(int roleId)
+        {
+            throw new System.NotImplementedException();
+        }
+
+
+        public void AddUserToRole(int userId, int roleId)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void RemoveUserFromRole(int userId, int roleId)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

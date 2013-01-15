@@ -28,6 +28,13 @@ namespace TdService.Model.Membership
         Role GetRoleByName(string roleName);
 
         /// <summary>
+        /// Get role by id
+        /// </summary>
+        /// <param name="roleId">id</param>
+        /// <returns>role</returns>
+        Role GetRoleById(int roleId);
+
+        /// <summary>
         /// Get all roles.
         /// </summary>
         /// <returns>
@@ -60,8 +67,24 @@ namespace TdService.Model.Membership
         void RemoveRole(int roleId);
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="roleId"></param>
+        void AddUserToRole(int userId, int roleId);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="roleId"></param>
+        void RemoveUserFromRole(int userId, int roleId);
+
+        /// <summary>
         /// Commit repository changes to db.
         /// </summary>
         void SaveChanges();
+
+        
     }
 }

@@ -68,6 +68,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PackageStatusResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="RoleNamesResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RoleNamesResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="SiteMapLocalizations.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -92,6 +97,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AddressViewResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminDashboardResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AdminDashboardResources.resx</DependentUpon>
     </Compile>
     <Compile Include="Views\DashboardViewResources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -157,6 +167,11 @@
       <LastGenOutput>PackageStatusResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="PackageStatusResources.ru.resx" />
+    <EmbeddedResource Include="RoleNamesResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RoleNamesResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RoleNamesResources.ru.resx" />
     <EmbeddedResource Include="SiteMapLocalizations.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SiteMapLocalizations.Designer.cs</LastGenOutput>
@@ -184,6 +199,11 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\AddressViewResources.ru.resx" />
+    <EmbeddedResource Include="Views\AdminDashboardResouces.ru.resx" />
+    <EmbeddedResource Include="Views\AdminDashboardResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AdminDashboardResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\DashboardViewResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>DashboardViewResources.Designer.cs</LastGenOutput>

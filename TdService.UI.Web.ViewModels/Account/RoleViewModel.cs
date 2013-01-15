@@ -7,8 +7,11 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+
 namespace TdService.UI.Web.ViewModels.Account
 {
+    using TdService.Resources;
+
     /// <summary>
     /// The role view model.
     /// </summary>
@@ -23,5 +26,22 @@ namespace TdService.UI.Web.ViewModels.Account
         /// Gets or sets the role name.
         /// </summary>
         public string Name { get; set; }
+
+        /// <summary>
+        /// Gets the translated status
+        /// </summary>
+        public string NameTranslated
+        {
+            get
+            {
+                if (!string.IsNullOrWhiteSpace(this.Name))
+                {
+                    return RoleNamesResources.ResourceManager.GetString(this.Name);
+                }
+
+                return string.Empty;
+            }
+        }
+
     }
 }
