@@ -51,15 +51,17 @@ using NLog.Targets;
             log["OrderId"] = logEvent.Properties["OrderId"].ToString();
             log["PackageId"] = logEvent.Properties["PackageId"].ToString();
             log["TransactionId"] = logEvent.Properties["TransactionId"].ToString();
+
+            return log;
         }
 
         protected override void Write(AsyncLogEventInfo logEvent)
         {
             using (var client = AWSClientFactory.CreateAmazonDynamoDBClient(this.AmazonAccessKeyId, this.AmazonSecretAccessKey))
             {
-                Table table = Table.LoadTable("TdService_Logs");
+                Table table = Table.LoadTable(client, "TdService_Logs");
                 var log = CreateLogDocument(logEvent.LogEvent);
-                table.BeginPutItem(log, );
+                ////table.BeginPutItem(log, );
             }
 
             base.Write(logEvent);
@@ -69,7 +71,7 @@ using NLog.Targets;
         {
             using (var client = AWSClientFactory.CreateAmazonDynamoDBClient(this.AmazonAccessKeyId, this.AmazonSecretAccessKey))
             {
-                Table table = Table.LoadTable("TdService_Logs");
+                Table table = Table.LoadTable(client, "TdService_Logs");
                 var log = CreateLogDocument(logEvent);
                 table.PutItem(log);
             }
