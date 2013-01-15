@@ -10,8 +10,8 @@
 namespace TdService.UI.Web.ViewModels.Member
 {
     using System.Collections.Generic;
-
-    using TdService.UI.Web.ViewModels.Account;
+using TdService.Resources.Views;
+using TdService.UI.Web.ViewModels.Account;
 
     /// <summary>
     /// The shopper dashboard view model.
@@ -32,6 +32,11 @@ namespace TdService.UI.Web.ViewModels.Member
         /// Gets or sets the last name.
         /// </summary>
         public string LastName { get; set; }
+
+        /// <summary>
+        /// User  email
+        /// </summary>
+        public string Email { get; set; }
 
         /// <summary>
         /// Gets or sets the wallet amount.
@@ -72,5 +77,21 @@ namespace TdService.UI.Web.ViewModels.Member
         /// Addf funds button loading text
         /// </summary>
         public string AddFundsButtonText { get; set; }
+
+        /// <summary>
+        /// Specifies whether page is being view by admin
+        /// </summary>
+        public bool AdminView { get; set; }
+
+        /// <summary>
+        /// Translatednotice message
+        /// </summary>
+        public string AdminViewNoticeMessage
+        {
+            get
+            {
+                return string.Format( DashboardViewResources.ResourceManager.GetString("AdminViewNoticeMessage"), this.Email);
+            }
+        }
     }
 }

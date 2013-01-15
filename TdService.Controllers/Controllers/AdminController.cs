@@ -6,6 +6,8 @@
 
 namespace TdService.UI.Web.Controllers
 {
+    using System;
+    using System.Web;
     using System.Web.Mvc;
     using System.Xml;
     using TdService.Infrastructure.Authentication;
@@ -49,7 +51,9 @@ namespace TdService.UI.Web.Controllers
         {
             var userRolesResponse = this.membershipService.GetUserRoles(new GetUserRolesRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() });
             var roles = userRolesResponse.ConvertToRoleViewModelCollection();
-            var model = new AdminDashBoardViewModel { Roles = roles };
+            var model = new AdminDashBoardViewModel { Roles = roles,
+                                                      MemberDashBoardUrl = ResolveServerUrl(VirtualPathUtility.ToAbsolute(Url.Action("ViewShopperDashboard", "Member")), false)
+            };
             return this.View("Dashboard", model);
         }
 
@@ -96,5 +100,18 @@ namespace TdService.UI.Web.Controllers
             };
             return jsonNetResult;
         }
+
+        private static string ResolveServerUrl(string serverUrl, bool forceHttps)
+        {
+            if (serverUrl.IndexOf("://") > -1)
+                return serverUrl;
+
+            string newUrl = serverUrl;
+            Uri originalUri = System.Web.HttpContext.Current.Request.Url;
+            newUrl = (forceHttps ? "https" : originalUri.Scheme) +
+                "://" + originalUri.Authority + newUrl;
+            return newUrl;
+        }
+
     }
 }

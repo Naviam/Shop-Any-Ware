@@ -56,7 +56,7 @@ namespace TdService.UI.Web.Controllers
         }
 
         /// <summary>
-        /// Testing the new interface.
+        /// default member action.
         /// </summary>
         /// <returns>
         /// Returns the page with the new interface.
@@ -65,7 +65,24 @@ namespace TdService.UI.Web.Controllers
         public ActionResult Dashboard()
         {
             var model = new ShopperDashboardViewModel();
-            FillDashboardViewModelWithCommonData(model);
+            FillDashboardViewModelWithCommonData(model, this.FormsAuthentication.GetAuthenticationToken());
+
+            return this.View("Dashboard", model);
+        }
+
+        /// <summary>
+        /// View shopper dashboard as admin
+        /// </summary>
+        /// <returns>
+        /// Returns the page with the new interface.
+        /// </returns>
+        [Authorize(Roles = "Admin")]
+        public ActionResult ViewShopperDashboard(string userEmail)
+        {
+            var model = new ShopperDashboardViewModel();
+            model.AdminView = true;
+
+            FillDashboardViewModelWithCommonData(model, userEmail);
 
             return this.View("Dashboard", model);
         }
@@ -105,7 +122,7 @@ namespace TdService.UI.Web.Controllers
                 model.PayPalTransactionResultMessageType = "Error";
             }
 
-            FillDashboardViewModelWithCommonData(model);
+            FillDashboardViewModelWithCommonData(model, this.FormsAuthentication.GetAuthenticationToken());
 
             return this.View("Dashboard", model);
         }
@@ -127,7 +144,7 @@ namespace TdService.UI.Web.Controllers
             model.PayPalTransactionResultMessage = cancelPayPalTransactionResponse.Message;
             model.PayPalTransactionResultMessageType = cancelPayPalTransactionResponse.MessageType.ToString();
 
-            FillDashboardViewModelWithCommonData(model);
+            FillDashboardViewModelWithCommonData(model, this.FormsAuthentication.GetAuthenticationToken());
 
             return this.View("Dashboard", model);
         }
@@ -151,10 +168,11 @@ namespace TdService.UI.Web.Controllers
             return this.View("Welcome", model);
         }
 
-        private void FillDashboardViewModelWithCommonData(ShopperDashboardViewModel model)
+        private void FillDashboardViewModelWithCommonData(ShopperDashboardViewModel model, string userEmail)
         {
             var response = this.membershipService.GetProfile(
-               new GetProfileRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() });
+               new GetProfileRequest { IdentityToken = userEmail });
+            model.Email = userEmail;
             model.UserId = response.Id;
             model.FirstName = response.FirstName;
             model.LastName = response.LastName;

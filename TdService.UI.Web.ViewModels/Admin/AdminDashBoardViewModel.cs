@@ -31,5 +31,7 @@
         }
         
         public List<RoleViewModel> Roles { get; set; }
+
+        public string MemberDashBoardUrl { get; set; }
     }
 }

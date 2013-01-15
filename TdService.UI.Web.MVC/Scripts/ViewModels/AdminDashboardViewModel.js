@@ -15,18 +15,20 @@
 function Role(serverModel) {
     var self = this;
 
-    // default model properties
-    self.message = ko.observable(serverModel.Message);
-    self.messageType = ko.observable(serverModel.MessageType);
-    self.errorCode = ko.observable(serverModel.ErrorCode);
-    self.brokenRules = ko.observableArray(serverModel.BrokenRules);
-
     //server model properties
     self.roleName = serverModel.NameTranslated;
     self.id = serverModel.Id;
 }
 
-function UserInRole(serverModel, translatedRolesArray) {
+function GridRole(id, roleName, userIsInRole) {
+    var self = this;
+    
+    self.id = id;
+    self.roleName = roleName;
+    self.userIsInRole = userIsInRole;
+}
+
+function UserInRole(serverModel, translatedRolesArray, memberDashboardUrl) {
     var self = this;
     
     // default model properties
@@ -42,15 +44,29 @@ function UserInRole(serverModel, translatedRolesArray) {
     self.PackagesCount = serverModel.PackagesCount;
     self.Email = serverModel.Email;
     self.LastAccessDate = serverModel.LastAccessDate;
-    self.Roles = '';
+    self.memberDashboardUrl = memberDashboardUrl;
+    self.Roles = ko.observableArray();
     $.each(translatedRolesArray, function (index, value) {
+        if (value.id == -1) return;//all users, not actually a role
         var pos = $.inArray(value.id, serverModel.Roles);
-        if (pos != -1) {// not found. if index is positive then user is in role
-            self.Roles = self.Roles + ' ' + translatedRolesArray[serverModel.Roles[pos]].roleName;
-        }
+        var gridRole = new GridRole(value.id, value.roleName, pos != -1);
+        self.Roles.push(gridRole);
     });
-    
-    
+
+    self.viewShopperDashboard = function () {
+        if (!self.UserIsInRole(2)) return; //2 is shopper
+        
+        window.open(self.memberDashboardUrl+'?userEmail='+self.Email, '_blank');
+    };
+
+    self.UserIsInRole = function (roleId) {
+        var result = false;
+        $.each(self.Roles(), function (index, value) {
+            if (value.id == roleId && value.userIsInRole)
+                result = true;
+        });
+        return result;
+    };
 }
 
 function AdminDashboardViewModel(serverModel) {
@@ -70,6 +86,7 @@ function AdminDashboardViewModel(serverModel) {
     self.pageCount = ko.observable(0);
     self.canMoveNext = ko.observable(false);
     self.canMovePrev = ko.observable(false);
+    self.memberDashboardUrl = addressModel.MemberDashBoardUrl;
     
     $.each(addressModel.Roles, function (index, value) {
         var role = new Role(value);
@@ -137,7 +154,7 @@ function AdminDashboardViewModel(serverModel) {
             var response = ko.toJS(data);
             self.users.removeAll();
             $.each(response.Users, function (index, value) {
-                var user = new UserInRole(value, self.roles());
+                var user = new UserInRole(value, self.roles(), self.memberDashboardUrl);
                 self.users.push(user);
             });
             if (response.TotalCount == 0) return;

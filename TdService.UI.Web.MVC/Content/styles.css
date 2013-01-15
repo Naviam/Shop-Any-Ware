@@ -1287,3 +1287,13 @@ li[class^="icon-"], li[class*=" icon-"]
 .navButtonsSpan input[type=text] {
     margin-bottom: 0px;
 }
+
+.roleSpan {
+    margin-left: 5px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.roleSpanInRole {
+    font-weight: bold;
+}
