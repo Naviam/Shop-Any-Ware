@@ -115,5 +115,40 @@ namespace TdService.Repository.MsSql.Repositories
         {
             this.context.Dispose();
         }
+
+        /// <summary>
+        /// get role by id
+        /// </summary>
+        /// <param name="roleId"></param>
+        /// <returns></returns>
+        public Role GetRoleById(int roleId)
+        {
+            var result = this.context.Roles.Find(roleId);
+            return result;
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="roleId"></param>
+        public void AddUserToRole(int userId, int roleId)
+        {
+            var role = this.GetRoleById(roleId);
+            var user = this.context.Users.Include("Roles").SingleOrDefault(u => u.Id.Equals(userId));
+            user.AddUserToRole(role);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="roleId"></param>
+        public void RemoveUserFromRole(int userId, int roleId)
+        {
+            var user = this.context.Users.Include("Roles").SingleOrDefault(u => u.Id.Equals(userId));
+            user.RemoveUserFromRole(roleId);
+        }
     }
 }

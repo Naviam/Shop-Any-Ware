@@ -131,5 +131,16 @@ namespace TdService.ShopAnyWare.Tests.Account
         {
             throw new System.NotImplementedException();
         }
+
+
+        public AddUserToRoleResponse AddUserToRole(AddUserToRoleRequest request)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public RemoveUserFromRoleResponse RemoveUserFromRole(RemoveUserFromRoleRequest request)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

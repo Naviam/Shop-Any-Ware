@@ -26,6 +26,8 @@ function GridRole(id, roleName, userIsInRole) {
     self.id = id;
     self.roleName = roleName;
     self.userIsInRole = userIsInRole;
+    
+    
 }
 
 function UserInRole(serverModel, translatedRolesArray, memberDashboardUrl) {
@@ -67,6 +69,41 @@ function UserInRole(serverModel, translatedRolesArray, memberDashboardUrl) {
         });
         return result;
     };
+    
+    self.toggleRole = function (gridRole, event) {
+        if (gridRole.userIsInRole) {
+            $.post("/admin/RemoveUserFromRole", { "userId": self.Id, "roleId": gridRole.id }, function (data) {
+                var resp = ko.toJS(data);
+                if (resp.MessageType == 'Error') {
+                    window.showNotice(resp.Message, resp.MessageType);
+                    return;
+                }
+                //update observable array
+                $.each(self.Roles(), function (index, value) {
+                    if (value.id == gridRole.id)
+                        value.userIsInRole = false;
+                });
+                window.showNotice(resp.Message,'Information');
+            });
+        }
+        else {
+            $.post("/admin/AddUserToRole", { "userId": self.Id, "roleId": gridRole.id }, function (data) {
+                var resp = ko.toJS(data);
+                if (resp.MessageType == 'Error') {
+                    window.showNotice(resp.Message, resp.MessageType);
+                    return;
+                }
+                //update observable array
+                $.each(self.Roles(), function (index, value) {
+                    if (value.id == gridRole.id)
+                        value.userIsInRole = true;
+                });
+                window.showNotice(resp.Message, 'Information');
+            });
+        }
+        event.originalEvent.stopImmediatePropagation();
+    };
+    
 }
 
 function AdminDashboardViewModel(serverModel) {

@@ -57,7 +57,7 @@
                     <td data-bind='text: FullName'></td>
                     <td data-bind='text: OrdersCount'></td>
                     <td data-bind='text: PackagesCount'></td>
-                    <td data-bind='foreach: Roles'><span class="roleSpan" data-bind="text:roleName, css:{roleSpanInRole:userIsInRole}"></span></td>
+                    <td data-bind='foreach: Roles'><span class="roleSpan" data-bind="text:roleName, css:{roleSpanInRole:userIsInRole}, event:{click:$parent.toggleRole}"></span></td>
                     <td data-bind='text: LastAccessDate'></td>
                 </tr>
             </tbody>

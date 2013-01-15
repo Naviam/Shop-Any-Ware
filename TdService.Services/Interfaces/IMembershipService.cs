@@ -105,5 +105,19 @@ namespace TdService.Services.Interfaces
         /// <param name="request">ID</param>
         /// <returns>user</returns>
         GetUserByIdResponse GetUserById(GetUserByIdRequest request);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        AddUserToRoleResponse AddUserToRole(AddUserToRoleRequest request);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        RemoveUserFromRoleResponse RemoveUserFromRole(RemoveUserFromRoleRequest request);
     }
 }

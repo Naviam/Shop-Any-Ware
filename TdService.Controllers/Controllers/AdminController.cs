@@ -101,6 +101,36 @@ namespace TdService.UI.Web.Controllers
             return jsonNetResult;
         }
 
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public ActionResult AddUserToRole(int userId, int roleId)
+        {
+            var req = new AddUserToRoleRequest { RoleId = roleId, UserId = userId };
+            var response = this.membershipService.AddUserToRole(req);
+
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = new { Message = response.Message, MessageType = response.MessageType.ToString() }
+            };
+            return jsonNetResult;
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public ActionResult RemoveUserFromRole(int userId, int roleId)
+        {
+            var req = new RemoveUserFromRoleRequest { RoleId = roleId, UserId = userId };
+            var response = this.membershipService.RemoveUserFromRole(req);
+
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = new { Message = response.Message, MessageType = response.MessageType.ToString() }
+            };
+            return jsonNetResult;
+        }
+
         private static string ResolveServerUrl(string serverUrl, bool forceHttps)
         {
             if (serverUrl.IndexOf("://") > -1)

@@ -187,11 +187,29 @@ namespace TdService.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to User was successfullt added to role.
+        /// </summary>
+        public static string UserAddedToRole {
+            get {
+                return ResourceManager.GetString("UserAddedToRole", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to User with specified ID  was not found.
         /// </summary>
         public static string UserNotFound {
             get {
                 return ResourceManager.GetString("UserNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User was successfully removed from role.
+        /// </summary>
+        public static string UserRemovedFromRole {
+            get {
+                return ResourceManager.GetString("UserRemovedFromRole", resourceCulture);
             }
         }
         

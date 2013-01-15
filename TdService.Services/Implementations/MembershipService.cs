@@ -372,13 +372,37 @@ namespace TdService.Services.Implementations
         public GetUserByIdResponse GetUserById(GetUserByIdRequest request)
         {
             var user = userRepository.GetUserById(request.UserId);
-            if (user==null)
+            if (user == null)
             {
-                return new GetUserByIdResponse
-                    { MessageType = MessageType.Warning, Message = CommonResources.UserNotFound };
+                return new GetUserByIdResponse { MessageType = MessageType.Warning, Message = CommonResources.UserNotFound };
             }
             var result = user.ConvertToGetUserByIdResponse();
             return result;
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public AddUserToRoleResponse AddUserToRole(AddUserToRoleRequest request)
+        {
+            roleRepository.AddUserToRole(request.UserId, request.RoleId);
+            roleRepository.SaveChanges();
+            return new AddUserToRoleResponse { Message = CommonResources.ResourceManager.GetString("UserAddedToRole"), MessageType = MessageType.Success };
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public RemoveUserFromRoleResponse RemoveUserFromRole(RemoveUserFromRoleRequest request)
+        {
+            roleRepository.RemoveUserFromRole(request.UserId, request.RoleId);
+            roleRepository.SaveChanges();
+            return new RemoveUserFromRoleResponse { Message = CommonResources.ResourceManager.GetString("UserRemovedFromRole"), MessageType = MessageType.Success };
         }
     }
 }
