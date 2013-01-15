@@ -465,11 +465,11 @@ function DashboardViewModel(serverModel) {
         addressModel.PayPalTransactionResultMessage != '' && addressModel.PayPalTransactionResultMessageType != '') {
         window.showNotice(addressModel.PayPalTransactionResultMessage, addressModel.PayPalTransactionResultMessageType);
     }
-    
-    if (addressModel.AdminView) {
-        window.showNotice(addressModel.AdminViewNoticeMessage, 'Information');
-        
-    }
+
+    ////if (addressModel.AdminView) {
+    ////    window.showNotice(addressModel.AdminViewNoticeMessage, 'Information');
+    ////}
+
     // computed properties
     self.disableAddOrderButton = ko.computed(function () {
         /// <summary>Determines whether add order button should be disabled.</summary>

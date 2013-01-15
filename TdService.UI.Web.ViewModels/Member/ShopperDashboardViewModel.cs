@@ -90,7 +90,7 @@ using TdService.UI.Web.ViewModels.Account;
         {
             get
             {
-                return string.Format( DashboardViewResources.ResourceManager.GetString("AdminViewNoticeMessage"), this.Email);
+                return string.Format( DashboardViewResources.ResourceManager.GetString("AdminViewNoticeMessage"), this.UserId, this.Email);
             }
         }
     }
