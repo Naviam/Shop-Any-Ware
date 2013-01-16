@@ -1248,15 +1248,8 @@ li[class^="icon-"], li[class*=" icon-"]
     display: none;
 }
 
-.roles-filter {
-    margin: 10px;    
-}
-
-.roles-filter td
-{
-    padding-right: 10px;
-    font-weight: bold;
-    cursor: pointer;
+.filterDiv {
+    margin-bottom: 10px;
 }
 
 .pagingArea {

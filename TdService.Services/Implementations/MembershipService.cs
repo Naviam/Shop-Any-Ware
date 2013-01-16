@@ -404,5 +404,33 @@ namespace TdService.Services.Implementations
             roleRepository.SaveChanges();
             return new RemoveUserFromRoleResponse { Message = CommonResources.ResourceManager.GetString("UserRemovedFromRole"), MessageType = MessageType.Success };
         }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public List<GetAllRolesResponse> GetAllRoles(GetAllRolesRequest request)
+        {
+            var roles = roleRepository.GetAllRoles().ToList().ConvertToGetAllRolesResponseCollection();
+            return roles;
+        }
+
+        /// <summary>
+        /// Gets user by email
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public GetUserByEmailResponse GetUserByEmail(GetUserByEmailRequest request)
+        {
+            var user = userRepository.GetUserByEmail(request.Email);
+            if (user == null)
+            {
+                return new GetUserByEmailResponse { MessageType = MessageType.Warning, Message = CommonResources.UserNotFound };
+            }
+            var result = user.ConvertToGetUserByEmailResponse();
+            return result;
+        }
     }
 }

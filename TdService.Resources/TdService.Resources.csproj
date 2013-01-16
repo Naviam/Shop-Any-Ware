@@ -199,7 +199,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\AddressViewResources.ru.resx" />
-    <EmbeddedResource Include="Views\AdminDashboardResouces.ru.resx" />
+    <EmbeddedResource Include="Views\AdminDashboardResources.ru.resx" />
     <EmbeddedResource Include="Views\AdminDashboardResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AdminDashboardResources.Designer.cs</LastGenOutput>

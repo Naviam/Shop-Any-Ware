@@ -88,5 +88,30 @@ namespace TdService.Services.Mapping
             var result = Mapper.Map<User, GetUserByIdResponse>(user);
             return result;
         }
+
+        /// <summary>
+        /// The convert to get user by id response.
+        /// </summary>
+        /// <param name="user">user</param>
+        /// <returns>GetUserByIdResponse</returns>
+        public static GetUserByEmailResponse ConvertToGetUserByEmailResponse(this User user)
+        {
+            var result = Mapper.Map<User, GetUserByEmailResponse>(user);
+            return result;
+        }
+
+        /// <summary>
+        /// The convert to get roles response collection.
+        /// </summary>
+        /// <param name="roles">
+        /// The roles.
+        /// </param>
+        /// <returns>
+        /// The System.Collections.Generic.List`1[T -&gt; TdService.Services.Messaging.Membership.GetAllRolesResponse].
+        /// </returns>
+        public static List<GetAllRolesResponse> ConvertToGetAllRolesResponseCollection(this List<Role> roles)
+        {
+            return Mapper.Map<List<Role>, List<GetAllRolesResponse>>(roles);
+        }
     }
 }
