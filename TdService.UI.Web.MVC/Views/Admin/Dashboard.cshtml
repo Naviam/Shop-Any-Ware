@@ -43,12 +43,11 @@
                     <th style="width: 5%">
                         <input type="checkbox" /></th>
                     <th style="width: 5%">@AdminDashboardResources.UserInfoId</th>
-                    <th style="width: 15%">@AdminDashboardResources.UserInfoUsername</th>
-                    <th style="width: 20%">@AdminDashboardResources.UserInfoFullName</th>
+                    <th style="width: 20%">@AdminDashboardResources.UserInfoUsername</th>
+                    <th style="width: 30%">@AdminDashboardResources.UserInfoFullName</th>
                     <th style="width: 5%">@AdminDashboardResources.UserInfoOrders</th>
                     <th style="width: 5%">@AdminDashboardResources.UserInfoPackages</th>
-                    <th style="width: 25%">@AdminDashboardResources.RolesForUser</th>
-                    <th style="width: 25%">@AdminDashboardResources.UserInfoLastAccessTime</th>
+                    <th style="width: 35%">@AdminDashboardResources.RolesForUser</th>
                 </tr>
             </thead>
             <tbody data-bind='foreach: users'>
@@ -64,7 +63,6 @@
                         <button type="button" class="btn btn-small" data-bind="css: {active: userIsInRole}, click: $parent.toggleRole,  text: roleName"></button>
                         @*<span class="roleSpan" data-bind="text:roleName, css:{roleSpanInRole:userIsInRole}, event:{click:$parent.toggleRole}"></span>*@
                     </td>
-                    <td data-bind='text: LastAccessDate'></td>
                 </tr>
             </tbody>
         </table>
