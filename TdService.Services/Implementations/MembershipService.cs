@@ -404,5 +404,17 @@ namespace TdService.Services.Implementations
             roleRepository.SaveChanges();
             return new RemoveUserFromRoleResponse { Message = CommonResources.ResourceManager.GetString("UserRemovedFromRole"), MessageType = MessageType.Success };
         }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public List<GetAllRolesResponse> GetAllRoles(GetAllRolesRequest request)
+        {
+            var roles = roleRepository.GetAllRoles().ToList().ConvertToGetAllRolesResponseCollection();
+            return roles;
+        }
     }
 }

@@ -76,6 +76,13 @@ namespace TdService.UI.Web
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
             Mapper.CreateMap<GetUserRolesResponse, RoleViewModel>();
 
+            Mapper.CreateMap<Role, GetAllRolesResponse>()
+                .ForMember(r => r.BrokenRules, opt => opt.Ignore())
+                .ForMember(r => r.Message, opt => opt.Ignore())
+                .ForMember(r => r.ErrorCode, opt => opt.Ignore())
+                .ForMember(r => r.MessageType, opt => opt.Ignore());
+            Mapper.CreateMap<GetAllRolesResponse, RoleViewModel>();
+
             // profile
             Mapper.CreateMap<ProfileViewModel, UpdateProfileRequest>()
                 .ForMember(m => m.IdentityToken, opt => opt.Ignore());

@@ -87,6 +87,8 @@
     <Compile Include="Messaging\Item\RemoveItemResponse.cs" />
     <Compile Include="Messaging\Membership\AddUserToRoleRequest.cs" />
     <Compile Include="Messaging\Membership\AddUserToRoleResponse.cs" />
+    <Compile Include="Messaging\Membership\GetAllRolesRequest.cs" />
+    <Compile Include="Messaging\Membership\GetAllRolesResponse.cs" />
     <Compile Include="Messaging\Membership\GetUserByIdRequest.cs" />
     <Compile Include="Messaging\Membership\GetUserByIdResponse.cs" />
     <Compile Include="Messaging\Membership\GetUserRolesRequest.cs" />

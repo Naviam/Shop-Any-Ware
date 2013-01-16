@@ -126,6 +126,15 @@
   <data name="BtnFindText" xml:space="preserve">
     <value>Найти</value>
   </data>
+  <data name="CantModifyOwnRole" xml:space="preserve">
+    <value>Вы не можете изменять свои роли</value>
+  </data>
+  <data name="FindByEmailWaterMark" xml:space="preserve">
+    <value>Найти пользователя по Email</value>
+  </data>
+  <data name="FindByIdWaterMark" xml:space="preserve">
+    <value>Найти пользователя по ID</value>
+  </data>
   <data name="GoToPageIndexValidationMessage" xml:space="preserve">
     <value>Неверный номер страницы</value>
   </data>
@@ -147,11 +156,17 @@
   <data name="PrevPage" xml:space="preserve">
     <value>Пред.</value>
   </data>
+  <data name="RoleManagementPermissionsError" xml:space="preserve">
+    <value>Только администратор может редактировать роли пользователей</value>
+  </data>
   <data name="RolesForUser" xml:space="preserve">
     <value>Роли</value>
   </data>
+  <data name="ShopperRoleCannotBeAssigned" xml:space="preserve">
+    <value>Эту роль нельзя назначить</value>
+  </data>
   <data name="UserFilterValiidationMessage" xml:space="preserve">
-    <value>Неверный Id</value>
+    <value>Значения фильтра заданы неверно</value>
   </data>
   <data name="UserInfoEmail" xml:space="preserve">
     <value>Email</value>

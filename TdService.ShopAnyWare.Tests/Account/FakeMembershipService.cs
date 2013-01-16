@@ -142,5 +142,10 @@ namespace TdService.ShopAnyWare.Tests.Account
         {
             throw new System.NotImplementedException();
         }
+
+        List<GetAllRolesResponse> IMembershipService.GetAllRoles(GetAllRolesRequest request)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

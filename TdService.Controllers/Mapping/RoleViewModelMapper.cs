@@ -34,5 +34,11 @@ namespace TdService.UI.Web.Mapping
         {
             return Mapper.Map<List<GetUserRolesResponse>, List<RoleViewModel>>(responses);
         }
+
+        public static List<RoleViewModel> ConvertToRoleViewModelCollection(this List<GetAllRolesResponse> responses)
+        {
+            return Mapper.Map<List<GetAllRolesResponse>, List<RoleViewModel>>(responses);
+        }
+
     }
 }

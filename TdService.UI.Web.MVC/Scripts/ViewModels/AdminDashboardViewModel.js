@@ -12,12 +12,26 @@
     }
 };
 
+function PageSettings(roleManagementPermissionsError, canModifyRoles, userFilterValiidationMessage, memberDashboardUrl, shopperRoleCannotBeAssigned, userId, cantModifyOwnRole) {
+    var self = this;
+    self.RoleManagementPermissionsError = roleManagementPermissionsError;
+    self.canModifyRoles = canModifyRoles;
+    self.userFilterValiidationMessage = userFilterValiidationMessage;
+    self.memberDashboardUrl = memberDashboardUrl;
+    self.shopperRoleCannotBeAssigned = shopperRoleCannotBeAssigned;
+    self.userId = userId;
+    self.CantModifyOwnRole = cantModifyOwnRole;
+}
+
+var pageSettings;//global stuff
+
 function Role(serverModel) {
     var self = this;
 
     //server model properties
     self.roleName = serverModel.NameTranslated;
     self.id = serverModel.Id;
+    self.selected = ko.observable(false);
 }
 
 function GridRole(id, roleName, userIsInRole) {
@@ -28,7 +42,7 @@ function GridRole(id, roleName, userIsInRole) {
     self.userIsInRole = ko.observable(userIsInRole);
 }
 
-function UserInRole(serverModel, translatedRolesArray, memberDashboardUrl) {
+function UserInRole(serverModel, translatedRolesArray) {
     var self = this;
     
     // default model properties
@@ -44,8 +58,9 @@ function UserInRole(serverModel, translatedRolesArray, memberDashboardUrl) {
     self.PackagesCount = serverModel.PackagesCount;
     self.Email = serverModel.Email;
     self.LastAccessDate = serverModel.LastAccessDate;
-    self.memberDashboardUrl = memberDashboardUrl;
     self.Roles = ko.observableArray();
+    
+
     $.each(translatedRolesArray, function (index, value) {
         if (value.id == -1) return;//all users, not actually a role
         var pos = $.inArray(value.id, serverModel.Roles);
@@ -56,7 +71,7 @@ function UserInRole(serverModel, translatedRolesArray, memberDashboardUrl) {
     self.viewShopperDashboard = function () {
         if (!self.UserIsInRole(2)) return; //2 is shopper
         
-        window.open(self.memberDashboardUrl+'?userEmail='+self.Email, '_self');
+        window.open(pageSettings.memberDashboardUrl+'?userEmail='+self.Email, '_self');
     };
 
     self.UserIsInRole = function (roleId) {
@@ -69,39 +84,38 @@ function UserInRole(serverModel, translatedRolesArray, memberDashboardUrl) {
     };
     
     self.toggleRole = function (gridRole, event) {
-        if (gridRole.userIsInRole()) {
-            $.post("/admin/RemoveUserFromRole", { "userId": self.Id, "roleId": gridRole.id }, function (data) {
-                var resp = ko.toJS(data);
-                if (resp.MessageType == 'Error') {
-                    window.showNotice(resp.Message, resp.MessageType);
-                    return;
-                }
-                //update observable array
-                $.each(self.Roles(), function (index, value) {
-                    if (value.id == gridRole.id)
-                        value.userIsInRole(false);
-                });
-                window.showNotice(resp.Message,'Information');
-            });
-        }
-        else {
-            $.post("/admin/AddUserToRole", { "userId": self.Id, "roleId": gridRole.id }, function (data) {
-                var resp = ko.toJS(data);
-                if (resp.MessageType == 'Error') {
-                    window.showNotice(resp.Message, resp.MessageType);
-                    return;
-                }
-                //update observable array
-                $.each(self.Roles(), function (index, value) {
-                    if (value.id == gridRole.id)
-                        value.userIsInRole(true);
-                });
-                window.showNotice(resp.Message, 'Information');
-            });
-        }
         event.originalEvent.stopImmediatePropagation();
+        
+        if (!pageSettings.canModifyRoles) {
+            window.showNotice(pageSettings.RoleManagementPermissionsError, 'Warning');
+            return false;
+        }
+        if (gridRole.id == 2) {
+            window.showNotice(pageSettings.shopperRoleCannotBeAssigned, 'Warning');
+            return false;
+        }
+        if (self.Id == pageSettings.userId) {
+            window.showNotice(pageSettings.CantModifyOwnRole, 'Warning');
+            return false;
+        }
+        self.sendRoleChangeRequest(gridRole);
     };
     
+    self.sendRoleChangeRequest = function(gridRole){
+        $.post(gridRole.userIsInRole() ? "/admin/RemoveUserFromRole" : "/admin/AddUserToRole", { "userId": self.Id, "roleId": gridRole.id }, function (data) {
+            var resp = ko.toJS(data);
+            if (resp.MessageType == 'Error') {
+                window.showNotice(resp.Message, resp.MessageType);
+                return;
+            }
+            //update observable array
+            $.each(self.Roles(), function (index, value) {
+                if (value.id == gridRole.id)
+                    value.userIsInRole(!gridRole.userIsInRole());
+            });
+            window.showNotice(resp.Message, 'Information');
+        });
+    }
 }
 
 function AdminDashboardViewModel(serverModel) {
@@ -110,7 +124,7 @@ function AdminDashboardViewModel(serverModel) {
     self.roles = ko.observableArray();
     self.users = ko.observableArray();
     self.userId = ko.observable();
-    self.userFilterValiidationMessage = addressModel.UserFilterValiidationMessage;
+    self.userEmail = ko.observable().extend({ email: true });;
     self.userListPageSizes = ko.observableArray(['10', '50', '200']);
     self.selectedPageSize = ko.observable(10);
     self.totalCount = ko.observable(addressModel.TotalCount);
@@ -121,14 +135,18 @@ function AdminDashboardViewModel(serverModel) {
     self.pageCount = ko.observable(0);
     self.canMoveNext = ko.observable(false);
     self.canMovePrev = ko.observable(false);
-    self.memberDashboardUrl = addressModel.MemberDashBoardUrl;
-    
+
     $.each(addressModel.Roles, function (index, value) {
         var role = new Role(value);
         self.roles.push(role);
     });
-    self.roles.unshift({ roleName: addressModel.AllRolesTranslated, id: -1 });
+    self.roles.unshift({ roleName: addressModel.AllRolesTranslated, id: -1, selected:ko.observable(true)});
     
+    //global class
+    pageSettings = new PageSettings(addressModel.RoleManagementPermissionsError, addressModel.CanModifyUserRoles, addressModel.UserFilterValiidationMessage, addressModel.MemberDashBoardUrl,
+    addressModel.ShopperRoleCannotBeAssigned, addressModel.UserId, addressModel.CantModifyOwnRole);
+
+
     self.changeSelectedRole = function () {
         self.currentPage(1);
         //load users in role
@@ -138,7 +156,7 @@ function AdminDashboardViewModel(serverModel) {
     
     self.FilterById = function () {
         if (self.userId == '' || !Number(self.userId())) {
-            window.showNotice(self.userFilterValiidationMessage, 'Warning');
+            window.showNotice(pageSettings.userFilterValiidationMessage, 'Warning');
             return;
         }
 
@@ -154,6 +172,13 @@ function AdminDashboardViewModel(serverModel) {
         });
     };
 
+    self.FilterByEmail = function () {
+        if (self.userEmail() == '' || !self.userEmail.isValid()) {
+            window.showNotice(pageSettings.userFilterValiidationMessage, 'Warning');
+            return;
+        }
+    };
+    
     self.changePageSize = function() {
         if (self.initializing) {
             self.initializing = false;
@@ -189,7 +214,7 @@ function AdminDashboardViewModel(serverModel) {
             var response = ko.toJS(data);
             self.users.removeAll();
             $.each(response.Users, function (index, value) {
-                var user = new UserInRole(value, self.roles(), self.memberDashboardUrl);
+                var user = new UserInRole(value, self.roles());
                 self.users.push(user);
             });
             if (response.TotalCount == 0) return;

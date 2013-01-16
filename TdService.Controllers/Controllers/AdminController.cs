@@ -15,7 +15,9 @@ namespace TdService.UI.Web.Controllers
     using TdService.Services.Messaging.Membership;
     using TdService.UI.Web.Mapping;
     using TdService.UI.Web.ViewModels.Admin;
-
+    using System.Linq;
+    using TdService.Model;
+    using TdService.Resources.Views;
     /// <summary>
     /// This controller is responsible for administrative tasks.
     /// </summary>
@@ -49,10 +51,18 @@ namespace TdService.UI.Web.Controllers
         /// </returns>
         public ActionResult Dashboard()
         {
-            var userRolesResponse = this.membershipService.GetUserRoles(new GetUserRolesRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() });
-            var roles = userRolesResponse.ConvertToRoleViewModelCollection();
-            var model = new AdminDashBoardViewModel { Roles = roles,
-                                                      MemberDashBoardUrl = ResolveServerUrl(VirtualPathUtility.ToAbsolute(Url.Action("ViewShopperDashboard", "Member")), false)
+            var profile = this.membershipService.GetProfile(new GetProfileRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() });
+
+            var allRoles = this.membershipService.GetAllRoles(new GetAllRolesRequest()).ConvertToRoleViewModelCollection();
+
+            var userRolesResponse = this.membershipService.GetUserRoles(new GetUserRolesRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() }).ConvertToRoleViewModelCollection();
+
+            var model = new AdminDashBoardViewModel
+            {
+                Roles = allRoles,
+                MemberDashBoardUrl = ResolveServerUrl(VirtualPathUtility.ToAbsolute(Url.Action("ViewShopperDashboard", "Member")), false),
+                CanModifyUserRoles = userRolesResponse.Exists(r => r.Name == StandardRole.Admin.ToString()),
+                UserId = profile.Id
             };
             return this.View("Dashboard", model);
         }
@@ -62,12 +72,12 @@ namespace TdService.UI.Web.Controllers
         /// </summary>
         /// <param name="roleId"></param>
         /// <returns></returns>
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Operator")]
         [HttpPost]
         public ActionResult GetUsersInRole(int roleId, int pageSize, int pageNumber)
         {
             var skip = pageNumber * pageSize;
-            var request = new GetUsersInRoleRequest { RoleId = roleId, Skip = (pageNumber-1) * pageSize, Take = pageSize };
+            var request = new GetUsersInRoleRequest { RoleId = roleId, Skip = (pageNumber - 1) * pageSize, Take = pageSize };
             var response = this.membershipService.GetUsersInRole(request);
             var result = new { Users = response.Users.ConvertToUsersInRoleViewModel(), TotalCount = response.TotalCount };
 
@@ -85,7 +95,7 @@ namespace TdService.UI.Web.Controllers
         /// </summary>
         /// <param name="roleId"></param>
         /// <returns></returns>
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Operator")]
         [HttpPost]
         public ActionResult GetUserById(int userId)
         {
@@ -105,6 +115,17 @@ namespace TdService.UI.Web.Controllers
         [HttpPost]
         public ActionResult AddUserToRole(int userId, int roleId)
         {
+            var profile = this.membershipService.GetProfile(new GetProfileRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() });
+
+            if (profile.Id.Equals(userId))
+            {
+                return GetWarningJsonFromResources("CantModifyOwnRole");
+            };
+            if (roleId.Equals(2))
+            {
+                return GetWarningJsonFromResources("ShopperRoleCannotBeAssigned");
+            }
+
             var req = new AddUserToRoleRequest { RoleId = roleId, UserId = userId };
             var response = this.membershipService.AddUserToRole(req);
 
@@ -120,6 +141,16 @@ namespace TdService.UI.Web.Controllers
         [HttpPost]
         public ActionResult RemoveUserFromRole(int userId, int roleId)
         {
+            var profile = this.membershipService.GetProfile(new GetProfileRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() });
+            if (profile.Id.Equals(userId))
+            {
+                return GetWarningJsonFromResources("CantModifyOwnRole");
+            };
+            if (roleId.Equals(2))
+            {
+                return GetWarningJsonFromResources("ShopperRoleCannotBeAssigned");
+            }
+
             var req = new RemoveUserFromRoleRequest { RoleId = roleId, UserId = userId };
             var response = this.membershipService.RemoveUserFromRole(req);
 
@@ -129,6 +160,15 @@ namespace TdService.UI.Web.Controllers
                 Data = new { Message = response.Message, MessageType = response.MessageType.ToString() }
             };
             return jsonNetResult;
+        }
+
+        private JsonNetResult GetWarningJsonFromResources(string key)
+        {
+            return new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = new { Message = AdminDashboardResources.ResourceManager.GetString(key), MessageType = "Warning" }
+            };
         }
 
         private static string ResolveServerUrl(string serverUrl, bool forceHttps)

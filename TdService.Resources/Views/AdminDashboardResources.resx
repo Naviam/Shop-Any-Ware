@@ -126,6 +126,15 @@
   <data name="BtnFindText" xml:space="preserve">
     <value>Find</value>
   </data>
+  <data name="CantModifyOwnRole" xml:space="preserve">
+    <value>You can't modify your own roles</value>
+  </data>
+  <data name="FindByEmailWaterMark" xml:space="preserve">
+    <value>Find User By Email</value>
+  </data>
+  <data name="FindByIdWaterMark" xml:space="preserve">
+    <value>Find User By Id</value>
+  </data>
   <data name="GoToPageIndexValidationMessage" xml:space="preserve">
     <value>Incorrect page index</value>
   </data>
@@ -147,11 +156,17 @@
   <data name="PrevPage" xml:space="preserve">
     <value>Prev</value>
   </data>
+  <data name="RoleManagementPermissionsError" xml:space="preserve">
+    <value>Only Administrator can modify users' roles</value>
+  </data>
   <data name="RolesForUser" xml:space="preserve">
     <value>Roles</value>
   </data>
+  <data name="ShopperRoleCannotBeAssigned" xml:space="preserve">
+    <value>This role can't be assigned</value>
+  </data>
   <data name="UserFilterValiidationMessage" xml:space="preserve">
-    <value>Incorrect ID</value>
+    <value>Incorrect filter value</value>
   </data>
   <data name="UserInfoEmail" xml:space="preserve">
     <value>Email</value>
