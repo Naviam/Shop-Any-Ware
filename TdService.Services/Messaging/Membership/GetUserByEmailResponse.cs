@@ -2,8 +2,8 @@
 {
     using TdService.Services.Messaging.Membership.Base;
 
-    public class GetUserByIdResponse : GetUserResponse
+    public class GetUserByEmailResponse : GetUserResponse
     {
-       
+        
     }
 }

@@ -88,6 +88,33 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You can&apos;t modify your own roles.
+        /// </summary>
+        public static string CantModifyOwnRole {
+            get {
+                return ResourceManager.GetString("CantModifyOwnRole", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Find User By Email.
+        /// </summary>
+        public static string FindByEmailWaterMark {
+            get {
+                return ResourceManager.GetString("FindByEmailWaterMark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Find User By Id.
+        /// </summary>
+        public static string FindByIdWaterMark {
+            get {
+                return ResourceManager.GetString("FindByIdWaterMark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Incorrect page index.
         /// </summary>
         public static string GoToPageIndexValidationMessage {
@@ -151,6 +178,15 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Only Administrator can modify users&apos; roles.
+        /// </summary>
+        public static string RoleManagementPermissionsError {
+            get {
+                return ResourceManager.GetString("RoleManagementPermissionsError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Roles.
         /// </summary>
         public static string RolesForUser {
@@ -160,7 +196,16 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Incorrect ID.
+        ///   Looks up a localized string similar to This role can&apos;t be assigned.
+        /// </summary>
+        public static string ShopperRoleCannotBeAssigned {
+            get {
+                return ResourceManager.GetString("ShopperRoleCannotBeAssigned", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incorrect filter value.
         /// </summary>
         public static string UserFilterValiidationMessage {
             get {

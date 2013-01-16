@@ -138,14 +138,6 @@ namespace TdService.Model.Membership
         /// </param>
         void RemoveUsersFromRole(List<User> users, string roleName);
 
-        /// <summary>
-        /// Get roles.
-        /// </summary>
-        /// <returns>
-        /// All application roles.
-        /// </returns>
-        IEnumerable<Role> GetRoles();
-
         #endregion
 
         #region Users
