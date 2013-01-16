@@ -36,7 +36,7 @@ function Role(serverModel) {
 
 function GridRole(id, roleName, userIsInRole) {
     var self = this;
-    
+
     self.id = id;
     self.roleName = roleName;
     self.userIsInRole = ko.observable(userIsInRole);
@@ -44,13 +44,13 @@ function GridRole(id, roleName, userIsInRole) {
 
 function UserInRole(serverModel, translatedRolesArray) {
     var self = this;
-    
+
     // default model properties
     self.message = ko.observable(serverModel.Message);
     self.messageType = ko.observable(serverModel.MessageType);
     self.errorCode = ko.observable(serverModel.ErrorCode);
     self.brokenRules = ko.observableArray(serverModel.BrokenRules);
-    
+
     //server model properties
     self.Id = serverModel.Id;
     self.FullName = serverModel.FullName;
@@ -59,7 +59,7 @@ function UserInRole(serverModel, translatedRolesArray) {
     self.Email = serverModel.Email;
     self.LastAccessDate = serverModel.LastAccessDate;
     self.Roles = ko.observableArray();
-    
+
 
     $.each(translatedRolesArray, function (index, value) {
         if (value.id == -1) return;//all users, not actually a role
@@ -70,8 +70,8 @@ function UserInRole(serverModel, translatedRolesArray) {
 
     self.viewShopperDashboard = function () {
         if (!self.UserIsInRole(2)) return; //2 is shopper
-        
-        window.open(pageSettings.memberDashboardUrl+'?userEmail='+self.Email, '_self');
+
+        window.open(pageSettings.memberDashboardUrl + '?userEmail=' + self.Email, '_self');
     };
 
     self.UserIsInRole = function (roleId) {
@@ -82,10 +82,10 @@ function UserInRole(serverModel, translatedRolesArray) {
         });
         return result;
     };
-    
+
     self.toggleRole = function (gridRole, event) {
         event.originalEvent.stopImmediatePropagation();
-        
+
         if (!pageSettings.canModifyRoles) {
             window.showNotice(pageSettings.RoleManagementPermissionsError, 'Warning');
             return false;
@@ -100,8 +100,8 @@ function UserInRole(serverModel, translatedRolesArray) {
         }
         self.sendRoleChangeRequest(gridRole);
     };
-    
-    self.sendRoleChangeRequest = function(gridRole){
+
+    self.sendRoleChangeRequest = function (gridRole) {
         $.post(gridRole.userIsInRole() ? "/admin/RemoveUserFromRole" : "/admin/AddUserToRole", { "userId": self.Id, "roleId": gridRole.id }, function (data) {
             var resp = ko.toJS(data);
             if (resp.MessageType == 'Error') {
@@ -140,8 +140,8 @@ function AdminDashboardViewModel(serverModel) {
         var role = new Role(value);
         self.roles.push(role);
     });
-    self.roles.unshift({ roleName: addressModel.AllRolesTranslated, id: -1, selected:ko.observable(true)});
-    
+    self.roles.unshift({ roleName: addressModel.AllRolesTranslated, id: -1, selected: ko.observable(true) });
+
     //global class
     pageSettings = new PageSettings(addressModel.RoleManagementPermissionsError, addressModel.CanModifyUserRoles, addressModel.UserFilterValiidationMessage, addressModel.MemberDashBoardUrl,
     addressModel.ShopperRoleCannotBeAssigned, addressModel.UserId, addressModel.CantModifyOwnRole);
@@ -153,7 +153,7 @@ function AdminDashboardViewModel(serverModel) {
         self.currentRole = this.id;
         self.loadUsers();
     };
-    
+
     self.FilterById = function () {
         if (self.userId == '' || !Number(self.userId())) {
             window.showNotice(pageSettings.userFilterValiidationMessage, 'Warning');
@@ -176,10 +176,21 @@ function AdminDashboardViewModel(serverModel) {
         if (self.userEmail() == '' || !self.userEmail.isValid()) {
             window.showNotice(pageSettings.userFilterValiidationMessage, 'Warning');
             return;
-        }
+        };
+
+        $.post("/admin/GetUserByEmail", { "email": self.userEmail() }, function (data) {
+            var resp = ko.toJS(data);
+            if (resp.MessageType == 'Warning') {
+                window.showNotice(resp.Message, resp.MessageType);
+            } else {
+                self.users.removeAll();
+                var user = new UserInRole(resp, self.roles());
+                self.users.push(user);
+            }
+        });
     };
-    
-    self.changePageSize = function() {
+
+    self.changePageSize = function () {
         if (self.initializing) {
             self.initializing = false;
             return;
@@ -187,29 +198,29 @@ function AdminDashboardViewModel(serverModel) {
         self.currentPage(1);
         self.loadUsers();
     };
-    
+
     self.moveNextPage = function () {
         self.currentPage(self.currentPage() + 1);
         self.loadUsers();
     };
-    
-    self.movePrevPage = function() {
+
+    self.movePrevPage = function () {
         self.currentPage(self.currentPage() - 1);
         self.loadUsers();
     };
 
-    self.goToPage = function() {
-        if (!self.goToPageIndex.isValid() || self.goToPageIndex()>self.pageCount() || self.goToPageIndex()<1) {
+    self.goToPage = function () {
+        if (!self.goToPageIndex.isValid() || self.goToPageIndex() > self.pageCount() || self.goToPageIndex() < 1) {
             window.showNotice(addressModel.GoToPageIndexValidationMessage, 'Warning');
             return;
         }
         var k = self.goToPageIndex();
         self.currentPage(k);
-        
+
         self.loadUsers();
     };
 
-    self.loadUsers = function(){
+    self.loadUsers = function () {
         $.post("/admin/GetUsersInRole", { "roleId": self.currentRole, "pageSize": self.selectedPageSize, "pageNumber": self.currentPage }, function (data) {
             var response = ko.toJS(data);
             self.users.removeAll();
@@ -220,7 +231,7 @@ function AdminDashboardViewModel(serverModel) {
             if (response.TotalCount == 0) return;
 
             self.totalCount(response.TotalCount);
-            
+
             if (response.TotalCount <= self.selectedPageSize()) {
                 self.pageCount(1);
             }

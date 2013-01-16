@@ -147,5 +147,11 @@ namespace TdService.ShopAnyWare.Tests.Account
         {
             throw new System.NotImplementedException();
         }
+
+
+        public GetUserByEmailResponse GetUserByEmail(GetUserByEmailRequest request)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

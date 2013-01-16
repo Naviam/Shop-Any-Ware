@@ -90,6 +90,17 @@ namespace TdService.Services.Mapping
         }
 
         /// <summary>
+        /// The convert to get user by id response.
+        /// </summary>
+        /// <param name="user">user</param>
+        /// <returns>GetUserByIdResponse</returns>
+        public static GetUserByEmailResponse ConvertToGetUserByEmailResponse(this User user)
+        {
+            var result = Mapper.Map<User, GetUserByEmailResponse>(user);
+            return result;
+        }
+
+        /// <summary>
         /// The convert to get roles response collection.
         /// </summary>
         /// <param name="roles">

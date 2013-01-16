@@ -126,5 +126,12 @@ namespace TdService.Services.Interfaces
         /// <param name="request"></param>
         /// <returns></returns>
         List<GetAllRolesResponse> GetAllRoles(GetAllRolesRequest request);
+
+        /// <summary>
+        /// Gets user by email
+        /// </summary>
+        /// <param name="request">req</param>
+        /// <returns>user</returns>
+        GetUserByEmailResponse GetUserByEmail(GetUserByEmailRequest request);
     }
 }

@@ -291,8 +291,10 @@ namespace TdService.UI.Web
             //admin dashboard
             Mapper.CreateMap<User, UserResponseModel>().ConvertUsing<UsersInRoleConverter>();
             Mapper.CreateMap<User, GetUserByIdResponse>().ConvertUsing<GetUserByIdConverter>();
+            Mapper.CreateMap<User, GetUserByEmailResponse>().ConvertUsing<GetUserByEmailConverter>();
             Mapper.CreateMap<UserResponseModel, UsersInRoleViewModel>();
             Mapper.CreateMap<GetUserByIdResponse, UsersInRoleViewModel>();
+            Mapper.CreateMap<GetUserByEmailResponse, UsersInRoleViewModel>();
         }
 
         /// <summary>
@@ -347,6 +349,28 @@ namespace TdService.UI.Web
             {
                 var user = context.SourceValue as User;
                 var converted = new GetUserByIdResponse
+                {
+                    Email = user.Email,
+                    FullName = string.Concat(user.Profile.FirstName, " ", user.Profile.LastName),
+                    Id = user.Id,
+                    LastAccessDate = user.LastAccessDate,
+                    OrdersCount = user.Orders.Count,
+                    PackagesCount = user.Packages.Count,
+                    Roles = user.Roles.Select(r => r.Id).ToList()
+                };
+                return converted;
+            }
+        }
+
+        /// <summary>
+        /// Type converter User->GetUsersInRoleResponse
+        /// </summary>
+        public class GetUserByEmailConverter : ITypeConverter<User, GetUserByEmailResponse>
+        {
+            public GetUserByEmailResponse Convert(ResolutionContext context)
+            {
+                var user = context.SourceValue as User;
+                var converted = new GetUserByEmailResponse
                 {
                     Email = user.Email,
                     FullName = string.Concat(user.Profile.FirstName, " ", user.Profile.LastName),

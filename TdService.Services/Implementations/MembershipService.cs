@@ -416,5 +416,21 @@ namespace TdService.Services.Implementations
             var roles = roleRepository.GetAllRoles().ToList().ConvertToGetAllRolesResponseCollection();
             return roles;
         }
+
+        /// <summary>
+        /// Gets user by email
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public GetUserByEmailResponse GetUserByEmail(GetUserByEmailRequest request)
+        {
+            var user = userRepository.GetUserByEmail(request.Email);
+            if (user == null)
+            {
+                return new GetUserByEmailResponse { MessageType = MessageType.Warning, Message = CommonResources.UserNotFound };
+            }
+            var result = user.ConvertToGetUserByEmailResponse();
+            return result;
+        }
     }
 }

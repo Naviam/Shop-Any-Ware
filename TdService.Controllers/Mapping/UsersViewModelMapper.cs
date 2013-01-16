@@ -16,5 +16,10 @@
         {
             return Mapper.Map<GetUserByIdResponse, UsersInRoleViewModel>(response);
         }
+
+        public static UsersInRoleViewModel ConvertToUsersInRoleViewModel(this GetUserByEmailResponse response)
+        {
+            return Mapper.Map<GetUserByEmailResponse, UsersInRoleViewModel>(response);
+        }
     }
 }

@@ -111,6 +111,27 @@ namespace TdService.UI.Web.Controllers
             return jsonNetResult;
         }
 
+        /// <summary>
+        /// Gets users for the  specified role
+        /// </summary>
+        /// <param name="roleId"></param>
+        /// <returns></returns>
+        [Authorize(Roles = "Admin, Operator")]
+        [HttpPost]
+        public ActionResult GetUserByEmail(string email)
+        {
+            var request = new GetUserByEmailRequest { Email = email };
+            var response = this.membershipService.GetUserByEmail(request);
+            var result = response.ConvertToUsersInRoleViewModel();
+
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = result
+            };
+            return jsonNetResult;
+        }
+
         [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult AddUserToRole(int userId, int roleId)
