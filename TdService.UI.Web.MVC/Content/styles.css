@@ -100,10 +100,10 @@ select,
 
 @media (min-width: 980px)
 {
-    .modal
+    /*.modal
     {
         margin: -320px 0 0 -280px;
-    }
+    }*/
 
     .modal-body
     {
@@ -1289,4 +1289,7 @@ li[class^="icon-"], li[class*=" icon-"]
 
 .roleSpanInRole {
     font-weight: bold;
+}
+.modalValidationErrors {
+    color: red;
 }

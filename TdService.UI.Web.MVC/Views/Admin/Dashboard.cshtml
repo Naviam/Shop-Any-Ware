@@ -31,6 +31,7 @@
                 </li>
             </ul>
         </form>
+        <button class="btn btn-mini btn-primary" data-bind="visible: canModifyUserRoles" data-toggle="modal" href="#newUserFormModal">@AdminDashboardResources.AddUserForm</button>
         <div data-bind="visible: users().length == 0">
             <div class='alert alert-info'>
                 <span>@AdminDashboardResources.NoUsersFound</span>
@@ -61,7 +62,6 @@
                     <td data-bind='text: PackagesCount'></td>
                     <td data-bind='foreach: Roles' data-toggle='buttons-radio'>
                         <button type="button" class="btn btn-small" data-bind="css: {active: userIsInRole}, click: $parent.toggleRole,  text: roleName"></button>
-                        @*<span class="roleSpan" data-bind="text:roleName, css:{roleSpanInRole:userIsInRole}, event:{click:$parent.toggleRole}"></span>*@
                     </td>
                 </tr>
             </tbody>
@@ -74,8 +74,54 @@
                 <input type="button" value="@AdminDashboardResources.NextPage" data-bind="event:{click:moveNextPage}, enable:canMoveNext" />
             </span>
             <span class="pageNumberSpan">@AdminDashboardResources.PagingText1 &nbsp;<span data-bind="text:currentPage"></span>&nbsp;@AdminDashboardResources.PagingText2 &nbsp;<span data-bind="text:pageCount"></span></span>
-
         </div>
+        <div class="modal" id="newUserFormModal" style="display: none" data-bind="with: newUserViewModel">
+        <div class="modal-header">
+            <button class="close" data-dismiss="modal">×</button>
+            <h3>@AdminDashboardResources.AddUserForm</h3>
+        </div>
+        <div class="modal-body">
+            <form class="form-horizontal" ">
+                <fieldset>
+                    <div class="control-group">
+                        <label class="control-label" for="tbEmail">@AdminDashboardResources.UserInfoEmail</label>
+                        <div class="controls">
+                            <input class="input-xlarge focused" data-bind="value: email, validationElement: email" id="tbEmail" type="text">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="tbFirstName">@AdminDashboardResources.UserInfoFirstName</label>
+                        <div class="controls">
+                            <input class="input-xlarge focused" data-bind="value: firstName" id="tbFirstName" type="text">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="tbLastName">@AdminDashboardResources.UserInfoLastName</label>
+                        <div class="controls">
+                            <input class="input-xlarge focused" data-bind="value: lastName" id="tbLastName" type="text">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="tbPwd">@AdminDashboardResources.UserInfoPassword</label>
+                        <div class="controls">
+                            <input class="input-xlarge focused" data-bind="value: password" id="tbPwd" type="text">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="tbRepeatPwd">@AdminDashboardResources.UserInfoRepeatPassword</label>
+                        <div class="controls">
+                            <input class="input-xlarge focused" data-bind="value: repeatPassword" id="tbRepeatPwd" type="text">
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="modalValidationErrors" data-bind="foreach:validationModel.errors, visible:errorsVisible"><div  data-bind="text:$data"></div></div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn" data-dismiss="modal">@AdminDashboardResources.CancelButton</a>
+            <a href="#" class="btn btn-primary" data-bind="click: saveUser">@AdminDashboardResources.SaveChangesButton</a>
+        </div>
+    </div>
     </div>
     <div class="tab-pane" id="messages">
         Страница создания email рассылок для подписавшихся пользователей
@@ -83,6 +129,7 @@
     <div class="tab-pane" id="settings">
         Страница со статистикой продаж и настройками цен на услуги
     </div>
+    
 </div>
 <input id="model" type="hidden" value="@(new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(Model))" />
 @section Scripts
@@ -91,6 +138,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             var mainViewModel = new AdminDashboardViewModel($("#model").val());
+            ko.validation.init();
             ko.applyBindings(mainViewModel);
         });
     </script>

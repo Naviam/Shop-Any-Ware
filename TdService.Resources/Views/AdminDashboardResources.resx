@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddUserForm" xml:space="preserve">
+    <value>Add new user</value>
+  </data>
   <data name="AdminDashboardPageTitle" xml:space="preserve">
     <value>Administrator  dashboard</value>
   </data>
@@ -125,6 +128,9 @@
   </data>
   <data name="BtnFindText" xml:space="preserve">
     <value>Find</value>
+  </data>
+  <data name="CancelButton" xml:space="preserve">
+    <value>Cancel</value>
   </data>
   <data name="CantModifyOwnRole" xml:space="preserve">
     <value>You can't modify your own roles</value>
@@ -162,6 +168,9 @@
   <data name="RolesForUser" xml:space="preserve">
     <value>Roles</value>
   </data>
+  <data name="SaveChangesButton" xml:space="preserve">
+    <value>Add</value>
+  </data>
   <data name="ShopperRoleCannotBeAssigned" xml:space="preserve">
     <value>This role can't be assigned</value>
   </data>
@@ -170,6 +179,9 @@
   </data>
   <data name="UserInfoEmail" xml:space="preserve">
     <value>Email</value>
+  </data>
+  <data name="UserInfoFirstName" xml:space="preserve">
+    <value>First Name</value>
   </data>
   <data name="UserInfoFullName" xml:space="preserve">
     <value>Full name</value>
@@ -180,16 +192,43 @@
   <data name="UserInfoLastAccessTime" xml:space="preserve">
     <value>Last Access Time</value>
   </data>
+  <data name="UserInfoLastName" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
   <data name="UserInfoOrders" xml:space="preserve">
     <value>Orders</value>
   </data>
   <data name="UserInfoPackages" xml:space="preserve">
     <value>Packages</value>
   </data>
+  <data name="UserInfoPassword" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="UserInfoRepeatPassword" xml:space="preserve">
+    <value>Repeat Password</value>
+  </data>
   <data name="UserInfoUsername" xml:space="preserve">
     <value>User name</value>
   </data>
   <data name="UsersPerPage" xml:space="preserve">
     <value>Users per page:</value>
+  </data>
+  <data name="UserValidationEmailRequired" xml:space="preserve">
+    <value>Email is required</value>
+  </data>
+  <data name="UserValidationFirstNameRequired" xml:space="preserve">
+    <value>First name is required</value>
+  </data>
+  <data name="UserValidationIncorrectEmail" xml:space="preserve">
+    <value>Email is incorrect</value>
+  </data>
+  <data name="UserValidationLastNameIsRequired" xml:space="preserve">
+    <value>Last name is required</value>
+  </data>
+  <data name="UserValidationPasswordIsRequired" xml:space="preserve">
+    <value>Password is required</value>
+  </data>
+  <data name="UserValidationPasswordsShouldMatch" xml:space="preserve">
+    <value>Passwords should match</value>
   </data>
 </root>

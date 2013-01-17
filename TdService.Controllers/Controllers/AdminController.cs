@@ -183,6 +183,13 @@ namespace TdService.UI.Web.Controllers
             return jsonNetResult;
         }
 
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public ActionResult CreateNewUser(string email, string firstName, string lastName, string password, bool adminRole, bool operatorRole)
+        {
+            return null;
+        }
+
         private JsonNetResult GetWarningJsonFromResources(string key)
         {
             return new JsonNetResult

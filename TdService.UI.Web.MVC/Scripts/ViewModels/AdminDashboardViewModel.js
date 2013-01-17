@@ -13,17 +13,62 @@
 };
 
 function PageSettings(roleManagementPermissionsError, canModifyRoles, userFilterValiidationMessage, memberDashboardUrl, shopperRoleCannotBeAssigned, userId, cantModifyOwnRole) {
-    var self = this;
-    self.RoleManagementPermissionsError = roleManagementPermissionsError;
-    self.canModifyRoles = canModifyRoles;
-    self.userFilterValiidationMessage = userFilterValiidationMessage;
-    self.memberDashboardUrl = memberDashboardUrl;
-    self.shopperRoleCannotBeAssigned = shopperRoleCannotBeAssigned;
-    self.userId = userId;
-    self.CantModifyOwnRole = cantModifyOwnRole;
+    this.RoleManagementPermissionsError = roleManagementPermissionsError;
+    this.canModifyRoles = canModifyRoles;
+    this.userFilterValiidationMessage = userFilterValiidationMessage;
+    this.memberDashboardUrl = memberDashboardUrl;
+    this.shopperRoleCannotBeAssigned = shopperRoleCannotBeAssigned;
+    this.userId = userId;
+    this.CantModifyOwnRole = cantModifyOwnRole;
 }
 
-var pageSettings;//global stuff
+function ModalWindowValidationMessages(emailIsRequired, emailIsIncorrect, firstNameIsRequired, lastNameIsRequired, passwordIsRequired, passwordShouldMatch) {
+    this.emailIsRequired = emailIsRequired;
+    this.emailIsIncorrect = emailIsIncorrect;
+    this.firstNameIsRequired = firstNameIsRequired;
+    this.lastNameIsRequired = lastNameIsRequired;
+    this.passwordIsRequired = passwordIsRequired;
+    this.passwordShouldMatch = passwordShouldMatch;
+}
+
+//global stuff
+var modalWindowValidationMessages;
+var pageSettings;
+
+function NewUserViewModel() {
+    var self = this;
+
+    self.email = ko.observable().extend({ required: { message: modalWindowValidationMessages.emailIsRequired }, email: { message: modalWindowValidationMessages.emailIsIncorrect } });
+    self.firstName = ko.observable().extend({ required: { message: modalWindowValidationMessages.firstNameIsRequired } });
+    self.lastName = ko.observable().extend({ required: { message: modalWindowValidationMessages.lastNameIsRequired } });
+    self.password = ko.observable().extend({ required: { message: modalWindowValidationMessages.passwordIsRequired } });
+    self.repeatPassword = ko.observable().extend({ equal: { params: self.password, message: modalWindowValidationMessages.passwordShouldMatch } });
+
+    self.errorsVisible = ko.observable(false);
+    
+    self.validationModel = ko.validatedObservable({
+        email: self.email,
+        firstName: self.firstName,
+        lastName: self.lastName,
+        password: self.password,
+        repeatPassword: self.repeatPassword
+    });
+
+    self.saveUser = function() {
+        if (!self.validationModel.isValid()) {
+            self.errorsVisible(true);
+            return;
+        }
+        $.post("/admin/CreateNewUser", { "email": self.email, "firstName": self.firstName, "lastName": self.lastName, "password": self.password, "adminRole":true, "operatorRole":true }, function (data) {
+            var resp = ko.toJS(data);
+            if (resp.MessageType == 'Warning') {
+                window.showNotice(resp.Message, resp.MessageType);
+            } else {
+                $('#myModal').modal('hide');
+            }
+        });
+    }
+}
 
 function Role(serverModel) {
     var self = this;
@@ -135,7 +180,8 @@ function AdminDashboardViewModel(serverModel) {
     self.pageCount = ko.observable(0);
     self.canMoveNext = ko.observable(false);
     self.canMovePrev = ko.observable(false);
-
+    self.canModifyUserRoles = ko.observable(addressModel.CanModifyUserRoles);
+    
     $.each(addressModel.Roles, function (index, value) {
         var role = new Role(value);
         self.roles.push(role);
@@ -146,7 +192,11 @@ function AdminDashboardViewModel(serverModel) {
     pageSettings = new PageSettings(addressModel.RoleManagementPermissionsError, addressModel.CanModifyUserRoles, addressModel.UserFilterValiidationMessage, addressModel.MemberDashBoardUrl,
     addressModel.ShopperRoleCannotBeAssigned, addressModel.UserId, addressModel.CantModifyOwnRole);
 
+    modalWindowValidationMessages = new ModalWindowValidationMessages(addressModel.EmailIsRequired, addressModel.EmailIsIncorrect, addressModel.FirstNameIsRequired,
+        addressModel.LastNameIsRequired, addressModel.PasswordIsRequired, addressModel.PasswordShouldMatch);
 
+    self.newUserViewModel = new NewUserViewModel();
+    
     self.changeSelectedRole = function () {
         self.currentPage(1);
         //load users in role
