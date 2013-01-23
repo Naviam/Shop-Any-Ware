@@ -1248,6 +1248,13 @@ li[class^="icon-"], li[class*=" icon-"]
     display: none;
 }
 
+.topArea{
+    display: inline;
+}
+.divNewAdminPopupBtn {
+    float: right;
+}
+
 .filterDiv {
     margin-bottom: 10px;
 }
@@ -1292,4 +1299,6 @@ li[class^="icon-"], li[class*=" icon-"]
 }
 .modalValidationErrors {
     color: red;
+    margin-left: 180px;
 }
+

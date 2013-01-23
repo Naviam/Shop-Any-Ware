@@ -277,6 +277,24 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Administrator.
+        /// </summary>
+        public static string UserInfoIsAdmin {
+            get {
+                return ResourceManager.GetString("UserInfoIsAdmin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Operator.
+        /// </summary>
+        public static string UserInfoIsOperator {
+            get {
+                return ResourceManager.GetString("UserInfoIsOperator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Last Access Time.
         /// </summary>
         public static string UserInfoLastAccessTime {

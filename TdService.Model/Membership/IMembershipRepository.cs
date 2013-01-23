@@ -178,7 +178,7 @@ namespace TdService.Model.Membership
         /// <returns>
         /// The TdService.Model.Membership.User.
         /// </returns>
-        User CreateUser(User user, Role role);
+        User CreateUser(User user, List<Role> role);
 
         /// <summary>
         /// Update user's email in the database.

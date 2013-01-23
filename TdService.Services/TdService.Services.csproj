@@ -98,6 +98,8 @@
     <Compile Include="Messaging\Membership\GetUserRolesResponse.cs" />
     <Compile Include="Messaging\Membership\RemoveUserFromRoleRequest.cs" />
     <Compile Include="Messaging\Membership\RemoveUserFromRoleResponse.cs" />
+    <Compile Include="Messaging\Membership\SignUpAdminRequest.cs" />
+    <Compile Include="Messaging\Membership\SignUpAdminResponse.cs" />
     <Compile Include="Messaging\Order\GetAllOrdersRequest.cs" />
     <Compile Include="Messaging\Order\GetAllOrdersResponse.cs" />
     <Compile Include="Messaging\Order\RemoveOrderRequest.cs" />

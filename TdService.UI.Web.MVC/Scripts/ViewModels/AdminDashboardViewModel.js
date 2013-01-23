@@ -38,14 +38,17 @@ var pageSettings;
 function NewUserViewModel() {
     var self = this;
 
+    self.isAdmin = ko.observable(false);
+    self.isOperator = ko.observable(true);
     self.email = ko.observable().extend({ required: { message: modalWindowValidationMessages.emailIsRequired }, email: { message: modalWindowValidationMessages.emailIsIncorrect } });
     self.firstName = ko.observable().extend({ required: { message: modalWindowValidationMessages.firstNameIsRequired } });
     self.lastName = ko.observable().extend({ required: { message: modalWindowValidationMessages.lastNameIsRequired } });
     self.password = ko.observable().extend({ required: { message: modalWindowValidationMessages.passwordIsRequired } });
     self.repeatPassword = ko.observable().extend({ equal: { params: self.password, message: modalWindowValidationMessages.passwordShouldMatch } });
-
+    self.brokenRules = ko.observableArray();
+    self.userAdded = false;
     self.errorsVisible = ko.observable(false);
-    
+
     self.validationModel = ko.validatedObservable({
         email: self.email,
         firstName: self.firstName,
@@ -54,17 +57,37 @@ function NewUserViewModel() {
         repeatPassword: self.repeatPassword
     });
 
-    self.saveUser = function() {
+    self.showPopup = function () {
+        self.errorsVisible(false);
+        self.brokenRules.removeAll();
+        self.email('');
+        self.firstName('');
+        self.lastName('');
+        self.password('');
+        self.repeatPassword('');
+        self.isAdmin(false);
+        self.isOperator(true);
+        self.userAdded = false;
+        $('#newUserFormModal').modal('show');
+    };
+
+
+    self.saveUser = function () {
         if (!self.validationModel.isValid()) {
             self.errorsVisible(true);
             return;
         }
-        $.post("/admin/CreateNewUser", { "email": self.email, "firstName": self.firstName, "lastName": self.lastName, "password": self.password, "adminRole":true, "operatorRole":true }, function (data) {
+        $.post("/admin/CreateNewUser", { "Email": self.email, "FirstName": self.firstName, "LastName": self.lastName, "Password": self.password, "IsAdmin": self.isAdmin(), "IsOperator": self.isOperator() }, function (data) {
             var resp = ko.toJS(data);
-            if (resp.MessageType == 'Warning') {
-                window.showNotice(resp.Message, resp.MessageType);
+            if (resp.MessageType != 'Success') {
+                self.brokenRules.removeAll();
+                self.errorsVisible(true);
+                $.each(resp.BrokenRules, function (index, value) {
+                    self.brokenRules.push(value.Rule);
+                });                
             } else {
-                $('#myModal').modal('hide');
+                self.userAdded = true;
+                $('#newUserFormModal').modal('hide');
             }
         });
     }
@@ -181,7 +204,7 @@ function AdminDashboardViewModel(serverModel) {
     self.canMoveNext = ko.observable(false);
     self.canMovePrev = ko.observable(false);
     self.canModifyUserRoles = ko.observable(addressModel.CanModifyUserRoles);
-    
+
     $.each(addressModel.Roles, function (index, value) {
         var role = new Role(value);
         self.roles.push(role);
@@ -196,7 +219,13 @@ function AdminDashboardViewModel(serverModel) {
         addressModel.LastNameIsRequired, addressModel.PasswordIsRequired, addressModel.PasswordShouldMatch);
 
     self.newUserViewModel = new NewUserViewModel();
-    
+    $('#newUserFormModal').bind('hidden', function () {
+        if (self.newUserViewModel.userAdded) {
+            self.loadUsers();
+        }
+    });
+
+
     self.changeSelectedRole = function () {
         self.currentPage(1);
         //load users in role
@@ -269,6 +298,7 @@ function AdminDashboardViewModel(serverModel) {
 
         self.loadUsers();
     };
+
 
     self.loadUsers = function () {
         $.post("/admin/GetUsersInRole", { "roleId": self.currentRole, "pageSize": self.selectedPageSize, "pageNumber": self.currentPage }, function (data) {

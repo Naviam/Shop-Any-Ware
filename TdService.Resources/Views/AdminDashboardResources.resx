@@ -231,4 +231,10 @@
   <data name="UserValidationPasswordsShouldMatch" xml:space="preserve">
     <value>Passwords should match</value>
   </data>
+  <data name="UserInfoIsAdmin" xml:space="preserve">
+    <value>Administrator</value>
+  </data>
+  <data name="UserInfoIsOperator" xml:space="preserve">
+    <value>Operator</value>
+  </data>
 </root>
