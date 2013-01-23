@@ -61,6 +61,15 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add new user.
+        /// </summary>
+        public static string AddUserForm {
+            get {
+                return ResourceManager.GetString("AddUserForm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Administrator  dashboard.
         /// </summary>
         public static string AdminDashboardPageTitle {
@@ -84,6 +93,15 @@ namespace TdService.Resources.Views {
         public static string BtnFindText {
             get {
                 return ResourceManager.GetString("BtnFindText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string CancelButton {
+            get {
+                return ResourceManager.GetString("CancelButton", resourceCulture);
             }
         }
         
@@ -196,6 +214,15 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add.
+        /// </summary>
+        public static string SaveChangesButton {
+            get {
+                return ResourceManager.GetString("SaveChangesButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This role can&apos;t be assigned.
         /// </summary>
         public static string ShopperRoleCannotBeAssigned {
@@ -223,6 +250,15 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to First Name.
+        /// </summary>
+        public static string UserInfoFirstName {
+            get {
+                return ResourceManager.GetString("UserInfoFirstName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Full name.
         /// </summary>
         public static string UserInfoFullName {
@@ -241,11 +277,38 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Administrator.
+        /// </summary>
+        public static string UserInfoIsAdmin {
+            get {
+                return ResourceManager.GetString("UserInfoIsAdmin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Operator.
+        /// </summary>
+        public static string UserInfoIsOperator {
+            get {
+                return ResourceManager.GetString("UserInfoIsOperator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Last Access Time.
         /// </summary>
         public static string UserInfoLastAccessTime {
             get {
                 return ResourceManager.GetString("UserInfoLastAccessTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last Name.
+        /// </summary>
+        public static string UserInfoLastName {
+            get {
+                return ResourceManager.GetString("UserInfoLastName", resourceCulture);
             }
         }
         
@@ -268,6 +331,24 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Password.
+        /// </summary>
+        public static string UserInfoPassword {
+            get {
+                return ResourceManager.GetString("UserInfoPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Repeat Password.
+        /// </summary>
+        public static string UserInfoRepeatPassword {
+            get {
+                return ResourceManager.GetString("UserInfoRepeatPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to User name.
         /// </summary>
         public static string UserInfoUsername {
@@ -282,6 +363,60 @@ namespace TdService.Resources.Views {
         public static string UsersPerPage {
             get {
                 return ResourceManager.GetString("UsersPerPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email is required.
+        /// </summary>
+        public static string UserValidationEmailRequired {
+            get {
+                return ResourceManager.GetString("UserValidationEmailRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to First name is required.
+        /// </summary>
+        public static string UserValidationFirstNameRequired {
+            get {
+                return ResourceManager.GetString("UserValidationFirstNameRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email is incorrect.
+        /// </summary>
+        public static string UserValidationIncorrectEmail {
+            get {
+                return ResourceManager.GetString("UserValidationIncorrectEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last name is required.
+        /// </summary>
+        public static string UserValidationLastNameIsRequired {
+            get {
+                return ResourceManager.GetString("UserValidationLastNameIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password is required.
+        /// </summary>
+        public static string UserValidationPasswordIsRequired {
+            get {
+                return ResourceManager.GetString("UserValidationPasswordIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Passwords should match.
+        /// </summary>
+        public static string UserValidationPasswordsShouldMatch {
+            get {
+                return ResourceManager.GetString("UserValidationPasswordsShouldMatch", resourceCulture);
             }
         }
     }

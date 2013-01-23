@@ -86,6 +86,7 @@ namespace TdService.Infrastructure.Domain
         UserPasswordLength,
         TransactionOperationAmountRequired,
         UserIsAlreadyInRole,
-        UserIsNotInRole
+        UserIsNotInRole,
+        NoRolesSpecified
     }
 }

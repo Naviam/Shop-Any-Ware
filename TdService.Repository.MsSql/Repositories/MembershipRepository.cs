@@ -10,7 +10,7 @@ namespace TdService.Repository.MsSql.Repositories
     using System.Collections.Generic;
     using System.Data;
     using System.Linq;
-
+    using TdService.Model;
     using TdService.Model.Addresses;
     using TdService.Model.Balance;
     using TdService.Model.Membership;
@@ -74,7 +74,7 @@ namespace TdService.Repository.MsSql.Repositories
         /// <returns>
         /// The TdService.Model.Membership.User.
         /// </returns>
-        public User CreateUser(User user, Role role)
+        public User CreateUser(User user, List<Role> roles)
         {
             using (var context = new ShopAnyWareSql())
             {
@@ -87,28 +87,22 @@ namespace TdService.Repository.MsSql.Repositories
                 user.Profile = profile;
                 context.SaveChanges();
 
-                // add to shopper role
-                var roleInDb = context.Roles.SingleOrDefault(r => r.Name == role.Name);
-                if (roleInDb == null)
-                {
-                    roleInDb = context.Roles.Add(role);
-                    context.SaveChanges();
-                }
-
-                if (user.Roles == null)
-                {
-                    user.Roles = new List<Role>();
-                }
-
-                user.Roles.Add(roleInDb);
-                context.Entry(user).State = EntityState.Modified;
-                context.SaveChanges();
+                roles.ForEach(r =>
+                    {
+                        var role = context.Roles.SingleOrDefault(r1 => r1.Name.Equals(r.Name));
+                        if (role!=null)
+                        {
+                            user.Roles.Add(role);
+                        }
+                    });
 
                 // add wallet
-                user.Wallet = new Wallet { Amount = 0.00m };
-                context.Entry(user).State = EntityState.Modified;
+                if (roles.Any(r=>r.Name.Equals(StandardRole.Shopper)))
+                {
+                    user.Wallet = new Wallet { Amount = 0.00m };
+                    context.Entry(user).State = EntityState.Modified;
+                }
                 context.SaveChanges();
-
                 return user;
             }
         }

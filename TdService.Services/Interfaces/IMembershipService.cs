@@ -133,5 +133,12 @@ namespace TdService.Services.Interfaces
         /// <param name="request">req</param>
         /// <returns>user</returns>
         GetUserByEmailResponse GetUserByEmail(GetUserByEmailRequest request);
+
+        /// <summary>
+        /// Signs up new admin or operator user
+        /// </summary>
+        /// <param name="request">request obj</param>
+        /// <returns>response obj</returns>
+        SignUpAdminResponse SignUpAdmin(SignUpAdminRequest request);
     }
 }

@@ -141,7 +141,7 @@ namespace TdService.Services.Implementations
 
             try
             {
-                var result = this.membershipRepository.CreateUser(user, role);
+                var result = this.membershipRepository.CreateUser(user, new List<Role>(){role});
                 this.emailService.SendMail(
                     EmailResources.EmailActivationFrom,
                     result.Email,
@@ -156,6 +156,75 @@ namespace TdService.Services.Implementations
                 this.logger.Error(CommonResources.SignUpErrorMessage, e);
                 return response;
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public SignUpAdminResponse SignUpAdmin(SignUpAdminRequest request)
+        {
+            var roles = new List<Role>();
+            if (request.AdminRole) roles.Add(new Role { Name = StandardRole.Admin.ToString()});
+            if (request.OperatorRole) roles.Add(new Role { Name = StandardRole.Operator.ToString()});
+
+            var user = new User
+            {
+                Email = request.Email,
+                Password = request.Password,
+                Profile =
+                    new Profile
+                    {
+                        FirstName = request.FirstName,
+                        LastName = request.LastName,
+                        NotifyOnOrderStatusChanged = true,
+                        NotifyOnPackageStatusChanged = true
+                    },
+                ActivationCode = Guid.NewGuid()
+            };
+            var response = new SignUpAdminResponse { BrokenRules = user.Profile.GetBrokenRules().ToList() };
+            response.BrokenRules.AddRange(user.GetBrokenRules());
+
+            if (!request.AdminRole && !request.OperatorRole)
+            {
+                response.BrokenRules.Add(UserBusinessRules.NoRolesSpecified);
+            }
+
+            if (response.BrokenRules.Any())
+            {
+                response.MessageType = MessageType.Warning;
+                response.Message = CommonResources.SignUpErrorMessage;
+                return response;
+            }
+
+            var userExists = this.membershipRepository.GetUser(request.Email);
+            if (userExists != null)
+            {
+                response.MessageType = MessageType.Warning;
+                response.Message = CommonResources.SignUpErrorMessage;
+                response.BrokenRules.Add(UserBusinessRules.EmailExists);
+                return response;
+            }
+
+            try
+            {
+                var result = this.membershipRepository.CreateUser(user, roles);
+                //this.emailService.SendMail(
+                //    EmailResources.EmailActivationFrom,
+                //    result.Email,
+                //    EmailResources.EmailActivationSubject,
+                //    string.Format(EmailResources.EmailActivationBody, "shopanyware.com", result.Id, result.ActivationCode));
+                return response;
+            }
+            catch (Exception e)
+            {
+                response.MessageType = MessageType.Error;
+                response.Message = CommonResources.SignUpErrorMessage;
+                this.logger.Error(CommonResources.SignUpErrorMessage, e);
+                return response;
+            }
+
         }
 
         /// <summary>
@@ -432,5 +501,8 @@ namespace TdService.Services.Implementations
             var result = user.ConvertToGetUserByEmailResponse();
             return result;
         }
+
+
+
     }
 }

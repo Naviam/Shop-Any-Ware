@@ -54,6 +54,54 @@
             }
         }
 
+        public string EmailIsRequired
+        {
+            get
+            {
+                return AdminDashboardResources.ResourceManager.GetString("UserValidationEmailRequired");
+            }
+        }
+
+        public string EmailIsIncorrect
+        {
+            get
+            {
+                return AdminDashboardResources.ResourceManager.GetString("UserValidationIncorrectEmail");
+            }
+        }
+
+        public string FirstNameIsRequired
+        {
+            get
+            {
+                return AdminDashboardResources.ResourceManager.GetString("UserValidationFirstNameRequired");
+            }
+        }
+
+        public string LastNameIsRequired
+        {
+            get
+            {
+                return AdminDashboardResources.ResourceManager.GetString("UserValidationLastNameIsRequired");
+            }
+        }
+
+        public string PasswordIsRequired
+        {
+            get
+            {
+                return AdminDashboardResources.ResourceManager.GetString("UserValidationPasswordIsRequired");
+            }
+        }
+
+        public string PasswordShouldMatch
+        {
+            get
+            {
+                return AdminDashboardResources.ResourceManager.GetString("UserValidationPasswordsShouldMatch");
+            }
+        }
+
         public int UserId { get; set; }
 
         public List<RoleViewModel> Roles { get; set; }

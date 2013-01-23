@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddUserForm" xml:space="preserve">
+    <value>Добавить пользователя</value>
+  </data>
   <data name="AdminDashboardPageTitle" xml:space="preserve">
     <value>Панель администратора</value>
   </data>
@@ -125,6 +128,9 @@
   </data>
   <data name="BtnFindText" xml:space="preserve">
     <value>Найти</value>
+  </data>
+  <data name="CancelButton" xml:space="preserve">
+    <value>Отмена</value>
   </data>
   <data name="CantModifyOwnRole" xml:space="preserve">
     <value>Вы не можете изменять свои роли</value>
@@ -162,6 +168,9 @@
   <data name="RolesForUser" xml:space="preserve">
     <value>Роли</value>
   </data>
+  <data name="SaveChangesButton" xml:space="preserve">
+    <value>Добавить</value>
+  </data>
   <data name="ShopperRoleCannotBeAssigned" xml:space="preserve">
     <value>Эту роль нельзя назначить</value>
   </data>
@@ -170,6 +179,9 @@
   </data>
   <data name="UserInfoEmail" xml:space="preserve">
     <value>Email</value>
+  </data>
+  <data name="UserInfoFirstName" xml:space="preserve">
+    <value>Имя</value>
   </data>
   <data name="UserInfoFullName" xml:space="preserve">
     <value>Полное имя</value>
@@ -180,16 +192,43 @@
   <data name="UserInfoLastAccessTime" xml:space="preserve">
     <value>Последнее посещение</value>
   </data>
+  <data name="UserInfoLastName" xml:space="preserve">
+    <value>Фамилия</value>
+  </data>
   <data name="UserInfoOrders" xml:space="preserve">
     <value>Заказы</value>
   </data>
   <data name="UserInfoPackages" xml:space="preserve">
     <value>Посылки</value>
   </data>
+  <data name="UserInfoPassword" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
+  <data name="UserInfoRepeatPassword" xml:space="preserve">
+    <value>Повторите пароль</value>
+  </data>
   <data name="UserInfoUsername" xml:space="preserve">
     <value>Имя пользователя</value>
   </data>
   <data name="UsersPerPage" xml:space="preserve">
     <value>Пользователей на странице:</value>
+  </data>
+  <data name="UserValidationEmailRequired" xml:space="preserve">
+    <value>Email обязателен для заполнения</value>
+  </data>
+  <data name="UserValidationFirstNameRequired" xml:space="preserve">
+    <value>Имя обязательно для заполнения</value>
+  </data>
+  <data name="UserValidationIncorrectEmail" xml:space="preserve">
+    <value>Email задан неверно</value>
+  </data>
+  <data name="UserValidationLastNameIsRequired" xml:space="preserve">
+    <value>Фамилия обязательно для заполнения</value>
+  </data>
+  <data name="UserValidationPasswordIsRequired" xml:space="preserve">
+    <value>Пароль обязателен для заполнения</value>
+  </data>
+  <data name="UserValidationPasswordsShouldMatch" xml:space="preserve">
+    <value>Пароли должны совпадать</value>
   </data>
 </root>
