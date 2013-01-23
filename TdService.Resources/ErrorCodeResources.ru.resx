@@ -192,6 +192,9 @@
   <data name="ItemWeightRequired" xml:space="preserve">
     <value>Вес товара обязателен для заполнения.</value>
   </data>
+  <data name="NoRolesSpecified" xml:space="preserve">
+    <value>Не указаны роли для создаваемого пользователя.</value>
+  </data>
   <data name="OrderCannotBeAddedByYou" xml:space="preserve">
     <value>Заказ не может быть добавлен Вами. Только пользователь в роли "Shopper" может делать это.</value>
   </data>

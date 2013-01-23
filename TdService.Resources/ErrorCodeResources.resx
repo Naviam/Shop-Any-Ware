@@ -192,6 +192,9 @@
   <data name="ItemWeightRequired" xml:space="preserve">
     <value>An item must have a weight.</value>
   </data>
+  <data name="NoRolesSpecified" xml:space="preserve">
+    <value>No roles specified for the user.</value>
+  </data>
   <data name="OrderCannotBeAddedByYou" xml:space="preserve">
     <value>An order cannot be added by you. Only users in 'Shopper' role can do it.</value>
   </data>

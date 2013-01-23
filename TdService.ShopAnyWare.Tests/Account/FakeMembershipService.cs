@@ -153,5 +153,11 @@ namespace TdService.ShopAnyWare.Tests.Account
         {
             throw new System.NotImplementedException();
         }
+
+
+        public SignUpAdminResponse SignUpAdmin(SignUpAdminRequest request)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

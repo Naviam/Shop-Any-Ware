@@ -24,6 +24,19 @@ namespace TdService.UI.Web.Controllers
     public class AdminController : BaseAuthController
     {
         /// <summary>
+        /// JS model
+        /// </summary>
+        public class NewAdminUser
+        {
+            public string Email { get; set; }
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
+            public string Password { get; set; }
+            public bool IsAdmin { get; set; }
+            public bool IsOperator { get; set; }
+        }
+
+        /// <summary>
         /// User repository.
         /// </summary>
         private readonly IMembershipService membershipService;
@@ -180,6 +193,33 @@ namespace TdService.UI.Web.Controllers
                 Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
                 Data = new { Message = response.Message, MessageType = response.MessageType.ToString() }
             };
+            return jsonNetResult;
+        }
+
+        
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public ActionResult CreateNewUser(NewAdminUser model)//string email, string firstName, string lastName, string password, bool adminRole, bool operatorRole)
+        {
+            var response =
+                this.membershipService.SignUpAdmin(
+                    new SignUpAdminRequest
+                        {
+                            AdminRole = model.IsAdmin,
+                            Email = model.Email,
+                            FirstName = model.FirstName,
+                            LastName = model.LastName,
+                            OperatorRole = model.IsOperator,
+                            Password = model.Password
+                        });
+
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = new { Message = response.Message, MessageType = response.MessageType.ToString(), BrokenRules = response.BrokenRules }
+            };
+
             return jsonNetResult;
         }
 

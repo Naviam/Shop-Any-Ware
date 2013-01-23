@@ -54,5 +54,11 @@ namespace TdService.Model.Membership
         /// </summary>
         public static readonly BusinessRule PasswordMinLength =
             new BusinessRule("Password", ErrorCode.UserPasswordMinLength.ToString());
+
+        /// <summary>
+        /// This rule ensures that password for user has more chars than min length.
+        /// </summary>
+        public static readonly BusinessRule NoRolesSpecified =
+            new BusinessRule("Roles", ErrorCode.NoRolesSpecified.ToString());
     }
 }

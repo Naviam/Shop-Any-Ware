@@ -286,6 +286,15 @@ namespace TdService.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No roles specified for the user..
+        /// </summary>
+        public static string NoRolesSpecified {
+            get {
+                return ResourceManager.GetString("NoRolesSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An order cannot be added by you. Only users in &apos;Shopper&apos; role can do it..
         /// </summary>
         public static string OrderCannotBeAddedByYou {

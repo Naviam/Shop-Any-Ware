@@ -36,6 +36,17 @@ namespace TdService.Services.Mapping
         }
 
         /// <summary>
+        /// The Convert to get SignUpAdminResponse response
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public static SignUpAdminResponse ConvertToRegisterAdminResponse(this User user)
+        {
+            return Mapper.Map<User, SignUpAdminResponse>(user);
+        }
+
+
+        /// <summary>
         /// The convert to user.
         /// </summary>
         /// <param name="request">

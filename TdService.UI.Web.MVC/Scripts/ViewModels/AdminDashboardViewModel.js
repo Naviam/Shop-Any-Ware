@@ -13,17 +13,85 @@
 };
 
 function PageSettings(roleManagementPermissionsError, canModifyRoles, userFilterValiidationMessage, memberDashboardUrl, shopperRoleCannotBeAssigned, userId, cantModifyOwnRole) {
-    var self = this;
-    self.RoleManagementPermissionsError = roleManagementPermissionsError;
-    self.canModifyRoles = canModifyRoles;
-    self.userFilterValiidationMessage = userFilterValiidationMessage;
-    self.memberDashboardUrl = memberDashboardUrl;
-    self.shopperRoleCannotBeAssigned = shopperRoleCannotBeAssigned;
-    self.userId = userId;
-    self.CantModifyOwnRole = cantModifyOwnRole;
+    this.RoleManagementPermissionsError = roleManagementPermissionsError;
+    this.canModifyRoles = canModifyRoles;
+    this.userFilterValiidationMessage = userFilterValiidationMessage;
+    this.memberDashboardUrl = memberDashboardUrl;
+    this.shopperRoleCannotBeAssigned = shopperRoleCannotBeAssigned;
+    this.userId = userId;
+    this.CantModifyOwnRole = cantModifyOwnRole;
 }
 
-var pageSettings;//global stuff
+function ModalWindowValidationMessages(emailIsRequired, emailIsIncorrect, firstNameIsRequired, lastNameIsRequired, passwordIsRequired, passwordShouldMatch) {
+    this.emailIsRequired = emailIsRequired;
+    this.emailIsIncorrect = emailIsIncorrect;
+    this.firstNameIsRequired = firstNameIsRequired;
+    this.lastNameIsRequired = lastNameIsRequired;
+    this.passwordIsRequired = passwordIsRequired;
+    this.passwordShouldMatch = passwordShouldMatch;
+}
+
+//global stuff
+var modalWindowValidationMessages;
+var pageSettings;
+
+function NewUserViewModel() {
+    var self = this;
+
+    self.isAdmin = ko.observable(false);
+    self.isOperator = ko.observable(true);
+    self.email = ko.observable().extend({ required: { message: modalWindowValidationMessages.emailIsRequired }, email: { message: modalWindowValidationMessages.emailIsIncorrect } });
+    self.firstName = ko.observable().extend({ required: { message: modalWindowValidationMessages.firstNameIsRequired } });
+    self.lastName = ko.observable().extend({ required: { message: modalWindowValidationMessages.lastNameIsRequired } });
+    self.password = ko.observable().extend({ required: { message: modalWindowValidationMessages.passwordIsRequired } });
+    self.repeatPassword = ko.observable().extend({ equal: { params: self.password, message: modalWindowValidationMessages.passwordShouldMatch } });
+    self.brokenRules = ko.observableArray();
+    self.userAdded = false;
+    self.errorsVisible = ko.observable(false);
+
+    self.validationModel = ko.validatedObservable({
+        email: self.email,
+        firstName: self.firstName,
+        lastName: self.lastName,
+        password: self.password,
+        repeatPassword: self.repeatPassword
+    });
+
+    self.showPopup = function () {
+        self.errorsVisible(false);
+        self.brokenRules.removeAll();
+        self.email('');
+        self.firstName('');
+        self.lastName('');
+        self.password('');
+        self.repeatPassword('');
+        self.isAdmin(false);
+        self.isOperator(true);
+        self.userAdded = false;
+        $('#newUserFormModal').modal('show');
+    };
+
+
+    self.saveUser = function () {
+        if (!self.validationModel.isValid()) {
+            self.errorsVisible(true);
+            return;
+        }
+        $.post("/admin/CreateNewUser", { "Email": self.email, "FirstName": self.firstName, "LastName": self.lastName, "Password": self.password, "IsAdmin": self.isAdmin(), "IsOperator": self.isOperator() }, function (data) {
+            var resp = ko.toJS(data);
+            if (resp.MessageType != 'Success') {
+                self.brokenRules.removeAll();
+                self.errorsVisible(true);
+                $.each(resp.BrokenRules, function (index, value) {
+                    self.brokenRules.push(value.Rule);
+                });                
+            } else {
+                self.userAdded = true;
+                $('#newUserFormModal').modal('hide');
+            }
+        });
+    }
+}
 
 function Role(serverModel) {
     var self = this;
@@ -135,6 +203,7 @@ function AdminDashboardViewModel(serverModel) {
     self.pageCount = ko.observable(0);
     self.canMoveNext = ko.observable(false);
     self.canMovePrev = ko.observable(false);
+    self.canModifyUserRoles = ko.observable(addressModel.CanModifyUserRoles);
 
     $.each(addressModel.Roles, function (index, value) {
         var role = new Role(value);
@@ -145,6 +214,16 @@ function AdminDashboardViewModel(serverModel) {
     //global class
     pageSettings = new PageSettings(addressModel.RoleManagementPermissionsError, addressModel.CanModifyUserRoles, addressModel.UserFilterValiidationMessage, addressModel.MemberDashBoardUrl,
     addressModel.ShopperRoleCannotBeAssigned, addressModel.UserId, addressModel.CantModifyOwnRole);
+
+    modalWindowValidationMessages = new ModalWindowValidationMessages(addressModel.EmailIsRequired, addressModel.EmailIsIncorrect, addressModel.FirstNameIsRequired,
+        addressModel.LastNameIsRequired, addressModel.PasswordIsRequired, addressModel.PasswordShouldMatch);
+
+    self.newUserViewModel = new NewUserViewModel();
+    $('#newUserFormModal').bind('hidden', function () {
+        if (self.newUserViewModel.userAdded) {
+            self.loadUsers();
+        }
+    });
 
 
     self.changeSelectedRole = function () {
@@ -219,6 +298,7 @@ function AdminDashboardViewModel(serverModel) {
 
         self.loadUsers();
     };
+
 
     self.loadUsers = function () {
         $.post("/admin/GetUsersInRole", { "roleId": self.currentRole, "pageSize": self.selectedPageSize, "pageNumber": self.currentPage }, function (data) {
