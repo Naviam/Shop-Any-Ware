@@ -12,7 +12,7 @@ namespace TdService.Services.Messaging.Item
     /// <summary>
     /// The add item to order request.
     /// </summary>
-    public class AddItemToOrderRequest
+    public class AddItemToOrderRequest:RequestBase
     {
         /// <summary>
         /// Gets or sets the order id.
@@ -28,11 +28,6 @@ namespace TdService.Services.Messaging.Item
         /// Gets or sets Quantity.
         /// </summary>
         public int Quantity { get; set; }
-
-        /// <summary>
-        /// Gets or sets Size.
-        /// </summary>
-        public string Size { get; set; }
 
         /// <summary>
         /// Gets or sets Color.

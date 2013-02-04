@@ -375,6 +375,7 @@
     <Content Include="Views\Shared\_packageView.cshtml" />
     <Content Include="Views\Operator\Dashboard.cshtml" />
     <Content Include="Views\Home\Rate.cshtml" />
+    <Content Include="Views\Shared\orderDetailsPopup.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

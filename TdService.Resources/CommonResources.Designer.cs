@@ -97,6 +97,15 @@ namespace TdService.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There were some issues with updating order item..
+        /// </summary>
+        public static string EditOrderItemErrorMessage {
+            get {
+                return ResourceManager.GetString("EditOrderItemErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There were some issues with the order you are adding..
         /// </summary>
         public static string OrderAddErrorMessage {
@@ -111,6 +120,24 @@ namespace TdService.Resources {
         public static string OrderAddSuccessMessage {
             get {
                 return ResourceManager.GetString("OrderAddSuccessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The item has been moved to package {0}, id: {1}.
+        /// </summary>
+        public static string OrderItemMovedToPackage {
+            get {
+                return ResourceManager.GetString("OrderItemMovedToPackage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Order item has been successfully added..
+        /// </summary>
+        public static string OrderItemSuccessfullyAdded {
+            get {
+                return ResourceManager.GetString("OrderItemSuccessfullyAdded", resourceCulture);
             }
         }
         

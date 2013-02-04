@@ -30,6 +30,13 @@ namespace TdService.Services.Interfaces
         AddItemToOrderResponse AddItemToOrder(AddItemToOrderRequest request);
 
         /// <summary>
+        /// Edit Item in order
+        /// </summary>
+        /// <param name="request">edit order item request message</param>
+        /// <returns>edit order item response message</returns>
+        EditOrderItemResponse EditOrderItem(EditOrderItemRequest request);
+
+        /// <summary>
         /// Add item to package.
         /// </summary>
         /// <param name="request">

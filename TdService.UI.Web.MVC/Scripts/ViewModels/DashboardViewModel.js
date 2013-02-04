@@ -1,11 +1,16 @@
-﻿/// <reference path="../jquery-1.7.2-vsdoc.js" />
-/// <reference path="../jquery.noty.js" />
-/// <reference path="../json2.js" />
-/// <reference path="../knockout-2.1.0.debug.js" />
-/// <reference path="../knockout.mapping-latest.debug.js" />
-/// <reference path="../knockout.validation.debug.js" />
-/// <reference path="../knockout-sortable.js" />
-/// <reference path="../bootstrap/bootstrap-collapse.js" />
+﻿var modalWindowValidationMessages;
+
+function ModalWindowValidationMessages(nameIsRequired, quantityIsRequired, priceIsRequired, invalidPrice, invalidWeight, invalidHeight,invalidLength,invalidWidth,invalidGirth) {
+    this.nameIsRequired = nameIsRequired;
+    this.quantityIsRequired = quantityIsRequired;
+    this.priceIsRequired = priceIsRequired;
+    this.invalidPrice = invalidPrice;
+    this.invalidWeight = invalidWeight;
+    this.invalidHeight = invalidHeight;
+    this.invalidLength = invalidLength;
+    this.invalidWidth = invalidWidth;
+    this.invalidGirth = invalidGirth;
+}
 
 function getUrl(methodUrl) {
     return window.location.host + methodUrl;
@@ -91,14 +96,13 @@ function Item(serverModel) {
     self.id = ko.observable(serverModel.Id);
     self.name = ko.observable(serverModel.Name);
     self.price = ko.observable(serverModel.Price);
-    self.quantity = ko.observable(serverModel.Quantity);
-    self.size = ko.observable(serverModel.Size);
     self.weight = ko.observable(serverModel.Weight);
-    self.color = ko.observable(serverModel.Color);
+    self.quantity = ko.observable(serverModel.Quantity);
+    self.dimHeight = ko.observable(serverModel.Height);
+    self.dimLength = ko.observable(serverModel.Length);
+    self.dimWidth = ko.observable(serverModel.Width);
+    self.dimGirth = ko.observable(serverModel.Girth);
 
-    self.showDetails = function(item) {
-        /// <summary>Show item details.</summary>
-    };
 }
 
 function Package(serverModel) {
@@ -216,17 +220,33 @@ function Package(serverModel) {
     };
 }
 
-function ItemViewModel() {
-    /// <summary>Add item view model.</summary>
+function PopupItemViewModel() {
+    /// <summary>Add item view model (for popup).</summary>
     var self = this;
-
+    
+    self.Id = -1;//new
     self.OrderId = 0;
-    self.Name = ko.observable("").extend({ required: true });
-    self.Quantity = ko.observable(1).extend({ required: true });
-    self.Price = ko.observable().extend({ required: true });
-    self.Weight = ko.observable();
-    self.Size = ko.observable("");
-    self.Color = ko.observable("");
+    self.Name = ko.observable("").extend({ required: { message: modalWindowValidationMessages.nameIsRequired } });
+    self.Quantity = ko.observable(1).extend({ required: { message: modalWindowValidationMessages.quantityIsRequired } });
+    self.Price = ko.observable().extend({ required: { message: modalWindowValidationMessages.priceIsRequired }, number: { message: modalWindowValidationMessages.invalidPrice } });
+    self.Weight = ko.observable("").extend({ number: { message: modalWindowValidationMessages.invalidWeight } });
+    self.DimHeight = ko.observable("").extend({ number: { message: modalWindowValidationMessages.invalidHeight } });;
+    self.DimLength = ko.observable("").extend({ number: { message: modalWindowValidationMessages.invalidLength } });;
+    self.DimWidth = ko.observable("").extend({ number: { message: modalWindowValidationMessages.invalidWidth } });;
+    self.DimGirth = ko.observable("").extend({ number: { message: modalWindowValidationMessages.invalidGirth } });;
+    
+    self.errorsVisible = ko.observable(false);
+    self.brokenRules = ko.observableArray();
+    self.validationModel = ko.validatedObservable({
+        name: self.Name,
+        quantity: self.Quantity,
+        price: self.Price,
+        weight: self.Weight,
+        dimHeight: self.DimHeight,
+        dimLength: self.DimLength,
+        dimWidth: self.DimWidth,
+        dimGirth: self.DimGirth
+    });
 }
 
 function Order(serverModel) {
@@ -254,7 +274,7 @@ function Order(serverModel) {
     // order view model collections
     self.items = ko.observableArray();
 
-    self.itemViewModel = new ItemViewModel();
+    self.popupItemViewModel = new PopupItemViewModel();
 
     // order state properties
     self.canBeReceived = serverModel.CanBeReceived;
@@ -351,30 +371,69 @@ function Order(serverModel) {
         /// <summary>Get item details.</summary>
     };
 
-    self.addItem = function() {
+    self.saveItem = function () {
         /// <summary>Add new item to order.</summary>
-        self.itemViewModel.OrderId = self.id();
-        var params =
-            {
-                "OrderId": self.id(),
-                "Name": self.itemViewModel.Name(),
-                "Quantity": self.itemViewModel.Quantity(),
-                "Price": self.itemViewModel.Price(),
-                "Size": self.itemViewModel.Size(),
-                "Weight": self.itemViewModel.Weight(),
-                "Color": self.itemViewModel.Color()
-            };
-        $.post("/items/additemtoorder", params, function (data) {
+        if (!self.popupItemViewModel.validationModel.isValid()) {
+            self.popupItemViewModel.errorsVisible(true);
+            return;
+        }
+        self.popupItemViewModel.OrderId = self.id();
+        var url = self.popupItemViewModel.Id == -1 ? "/items/additemtoorder" : "/items/EditOrderItem";
+        $.post(url, self.getPopupData(), function (data) {
             var model = ko.toJS(data);
             if (model.MessageType == "Success") {
                 var item = new Item(model);
                 self.items.unshift(item);
-                window.showNotice(data.Message, data.MessageType);
                 $('#' + item.id()).show("blind", {}, "normal", function () {
-                    self.itemViewModel = new ItemViewModel();
+                    self.popupItemViewModel = new PopupItemViewModel();
                 });
+                $('#itemFormModal').modal('hide');
+                window.showNotice(data.Message, data.MessageType);
             }
         });
+    };
+    
+    self.getPopupData = function() {
+        var data =
+            {
+                "OrderId": self.id(),
+                "Name": self.popupItemViewModel.Name(),
+                "Quantity": self.popupItemViewModel.Quantity(),
+                "Price": self.popupItemViewModel.Price(),
+                "Weight": self.popupItemViewModel.Weight(),
+                "Girth": self.popupItemViewModel.DimGirth(),
+                "Height": self.popupItemViewModel.DimHeight(),
+                "Width": self.popupItemViewModel.DimWidth(),
+                "Length": self.popupItemViewModel.DimLength()
+                
+            };
+        return data;
+    };
+    
+    self.showNewItemPopup = function () {
+        //reset and open popup
+        self.popupItemViewModel.Name("");
+        self.popupItemViewModel.Quantity("");
+        self.popupItemViewModel.Price("");
+        self.popupItemViewModel.Weight = ko.observable("");
+        self.popupItemViewModel.DimHeight = ko.observable("");
+        self.popupItemViewModel.DimLength = ko.observable("");
+        self.popupItemViewModel.DimWidth = ko.observable("");
+        self.popupItemViewModel.DimGirth = ko.observable("");
+        $('#itemFormModal').modal('show');
+    };
+
+    self.showEditItemPopup = function (model) {
+        self.popupItemViewModel.Id = model.id();
+        self.popupItemViewModel.Name(model.name());
+        self.popupItemViewModel.Quantity(model.quantity());
+        self.popupItemViewModel.Price(model.price());
+        self.popupItemViewModel.Weight = ko.observable(model.weight());
+        self.popupItemViewModel.DimHeight = ko.observable(model.dimHeight());
+        self.popupItemViewModel.DimLength = ko.observable(model.dimLength());
+        self.popupItemViewModel.DimWidth = ko.observable(model.dimWidth());
+        self.popupItemViewModel.DimGirth = ko.observable(model.dimGirth());
+        $('#itemFormModal').modal('show');
     };
 
     self.removeItem = function(item) {
@@ -432,7 +491,7 @@ function DashboardViewModel(serverModel) {
     /// <summary>Dashboard view model. The parent model for others.</summary>
     var self = this;
     var addressModel = JSON.parse(serverModel);
-
+    self.UserEmail = addressModel.UserEmail;
     self.recentPackagesNotLoaded = ko.observable(true);
     self.recentOrdersNotLoaded = ko.observable(true);
     self.historyPackagesNotLoaded = ko.observable(true);
@@ -456,9 +515,7 @@ function DashboardViewModel(serverModel) {
     self.retailers = ko.observableArray();
 
     self.balance = ko.observable(addressModel.WalletAmount);
-    self.addingFunds = ko.observable(false);//addFundsButtonText = ko.observable(addressModel.AddFundsButtonText);
-    //self.AddFundsButtonLoading = addressModel.AddFundsLoadingText;
-    //self.AddFundsButtonDefault = addressModel.AddFundsButtonText;
+    self.addingFunds = ko.observable(false);
     self.addFundsAmount = ko.observable('').extend({ required: true, number: true });
     
     if (addressModel.PayPalTransactionResultMessage && addressModel.PayPalTransactionResultMessageType &&
@@ -466,10 +523,9 @@ function DashboardViewModel(serverModel) {
         window.showNotice(addressModel.PayPalTransactionResultMessage, addressModel.PayPalTransactionResultMessageType);
     }
 
-    ////if (addressModel.AdminView) {
-    ////    window.showNotice(addressModel.AdminViewNoticeMessage, 'Information');
-    ////}
-
+    modalWindowValidationMessages = new ModalWindowValidationMessages(addressModel.NameIsRequired, addressModel.QuantityIsRequired, addressModel.PriceIsRequired,
+        addressModel.InvalidPrice, addressModel.InvalidWeight, addressModel.InvalidHeight, addressModel.InvalidLength, addressModel.InvalidWidth, addressModel.InvalidGirth);
+   
     // computed properties
     self.disableAddOrderButton = ko.computed(function () {
         /// <summary>Determines whether add order button should be disabled.</summary>
@@ -537,7 +593,7 @@ function DashboardViewModel(serverModel) {
 
     self.getRecentOrders = function() {
         /// <summary>Load recent orders from server.</summary>
-        $.post("/orders/recent", function (data) {
+        $.post("/orders/recent",{"UserEmail": self.UserEmail}, function (data) {
             var orders = ko.toJS(data);
             self.orders.removeAll();
             $.each(orders, function(index, value) {
@@ -551,7 +607,7 @@ function DashboardViewModel(serverModel) {
     
     self.getHistoryOrders = function () {
         /// <summary>Load recent orders from server.</summary>
-        $.post("/orders/history", function (data) {
+        $.post("/orders/history", { "UserEmail": self.UserEmail }, function (data) {
             var orders = ko.toJS(data);
             self.ordersHistory.removeAll();
             $.each(orders, function (index, value) {
@@ -585,7 +641,7 @@ function DashboardViewModel(serverModel) {
         /// <summary>Add new order.</summary>
         if (self.newOrderField.isValid()) {
             $("#addNewOrderButton").button('toggle').button('loading');
-            $.post("/orders/add", { "retailerUrl": self.newOrderField() }, function (data) {
+            $.post("/orders/add", { "retailerUrl": self.newOrderField(), "UserEmail": self.UserEmail }, function (data) {
                 var model = ko.toJS(data);
                 if (model.MessageType == "Success") {
                     var order = new Order(model);

@@ -192,17 +192,32 @@
   <data name="FailedPayPalPaymentConfirmationMessage" xml:space="preserve">
     <value>Error occured while confirming your PayPal transaction. Contact adminictrator for details.</value>
   </data>
+  <data name="GeneralLegend" xml:space="preserve">
+    <value>General Properties</value>
+  </data>
   <data name="HistoryPackagesTabHeader" xml:space="preserve">
     <value>History</value>
   </data>
   <data name="InStockButton" xml:space="preserve">
     <value>IN STOCK</value>
   </data>
+  <data name="ItemGirthHeader" xml:space="preserve">
+    <value>Girth</value>
+  </data>
+  <data name="ItemHeightHeader" xml:space="preserve">
+    <value>Height</value>
+  </data>
+  <data name="ItemLengthHeader" xml:space="preserve">
+    <value>Length</value>
+  </data>
   <data name="ItemNameHeader" xml:space="preserve">
     <value>Item</value>
   </data>
   <data name="ItemsTotalHeader" xml:space="preserve">
     <value>Total</value>
+  </data>
+  <data name="ItemWidthHeader" xml:space="preserve">
+    <value>Width</value>
   </data>
   <data name="LoadingHistoryOrdersMessage" xml:space="preserve">
     <value>Please wait. Loading your orders history..</value>
@@ -297,6 +312,9 @@
   <data name="OrdersHeader" xml:space="preserve">
     <value>Orders</value>
   </data>
+  <data name="OuncesShort" xml:space="preserve">
+    <value>oz.</value>
+  </data>
   <data name="PackageCannotBeRemoved" xml:space="preserve">
     <value>The package cannot be removed in current state.</value>
   </data>
@@ -324,6 +342,9 @@
   <data name="PaymentTypePaypal" xml:space="preserve">
     <value>Payment / PayPal</value>
   </data>
+  <data name="PoundsShort" xml:space="preserve">
+    <value>lb.</value>
+  </data>
   <data name="PriceHeader" xml:space="preserve">
     <value>Price</value>
   </data>
@@ -350,6 +371,9 @@
   </data>
   <data name="SendPackageButton" xml:space="preserve">
     <value>SEND PACKAGE</value>
+  </data>
+  <data name="SizeLegend" xml:space="preserve">
+    <value>Size</value>
   </data>
   <data name="StatusHeader" xml:space="preserve">
     <value>Status</value>
@@ -383,5 +407,35 @@
   </data>
   <data name="WeightHeader" xml:space="preserve">
     <value>Weight</value>
+  </data>
+  <data name="WeightLegend" xml:space="preserve">
+    <value>Weight</value>
+  </data>
+  <data name="InvalidGirth" xml:space="preserve">
+    <value>Invalid Girth</value>
+  </data>
+  <data name="InvalidHeight" xml:space="preserve">
+    <value>Invalid Height</value>
+  </data>
+  <data name="InvalidLength" xml:space="preserve">
+    <value>Invalid Length</value>
+  </data>
+  <data name="InvalidPrice" xml:space="preserve">
+    <value>Invalid Price</value>
+  </data>
+  <data name="InvalidWeight" xml:space="preserve">
+    <value>Invalid Weight</value>
+  </data>
+  <data name="InvalidWidth" xml:space="preserve">
+    <value>Invalid Width</value>
+  </data>
+  <data name="NameIsRequired" xml:space="preserve">
+    <value>Name is required</value>
+  </data>
+  <data name="PriceIsRequired" xml:space="preserve">
+    <value>Price is required</value>
+  </data>
+  <data name="QuantityIsRequired" xml:space="preserve">
+    <value>Quantity is required</value>
   </data>
 </root>

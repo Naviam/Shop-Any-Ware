@@ -16,7 +16,7 @@
                         <span data-bind="if: status() == 'Returned'">@DashboardViewResources.OrderReturnedDateHeader</span>: 
                         <span data-bind="text: orderDate"></span>
                     </span>&nbsp;
-                    <button class="btn btn-mini btn-primary" title="@DashboardViewResources.AddItemButton" data-bind="visible: canItemsBeModified" data-toggle="modal" href="#itemFormModal"><i class="icon-white icon-plus-sign"></i></button>
+                    <button class="btn btn-mini btn-primary" title="@DashboardViewResources.AddItemButton" data-bind="visible: canItemsBeModified, click:showNewItemPopup"><i class="icon-white icon-plus-sign"></i></button>
                     <button class="btn btn-mini btn-success" title="@DashboardViewResources.InStockButton" data-bind="visible: canBeReceived"><i class="icon-white icon-inbox"></i></button>
                     <span class="dropdown">
                         <button class="btn btn-mini dropdown-toggle" title="@DashboardViewResources.MoveAllItemsTitle" data-toggle="dropdown" data-bind="visible: items().length > 0"><i class="icon icon-arrow-right"></i><span class="caret"></span></button>
@@ -64,7 +64,7 @@
                         <td>$<span class="editable" title="@DashboardViewResources.PriceTitle" data-bind="text: price"></span></td>
                         <td>
                             <div class="btn-group">
-                                <button class="btn btn-mini" title="@DashboardViewResources.EditItemTitle"><i class="icon icon-edit"></i></button>
+                                <button class="btn btn-mini" title="@DashboardViewResources.EditItemTitle" data--bind="click:showEditItemPopup"><i class="icon icon-edit"></i></button>
                                 <button class="btn btn-mini" title="@DashboardViewResources.DeleteItemTitle"><i class="icon icon-remove"></i></button>
                                 <button class="btn btn-mini dropdown-toggle" title="@DashboardViewResources.MoveItemTitle" data-toggle="dropdown"><i class="icon icon-arrow-right"></i>@*@DashboardViewResources.ActionMoveHeader*@ <span class="caret"></span></button>
                                 <ul class="dropdown-menu" data-bind="foreach: $root.packages()">
@@ -85,47 +85,6 @@
                 </tfoot>
             </table>
         </div>
-        <div class="modal" id="itemFormModal" style="display: none">
-            <div class="modal-header">
-                <button class="close" data-dismiss="modal">×</button>
-                <h3>@DashboardViewResources.AddItemForm</h3>
-            </div>
-            <div class="modal-body" data-bind="with: itemViewModel">
-                <form class="form-horizontal">
-                    <fieldset>
-                        <div class="control-group">
-                            <label class="control-label" for="itemName">@DashboardViewResources.ItemNameHeader</label>
-                            <div class="controls">
-                                <input class="input-xlarge focused" data-bind="value: Name" id="itemName" type="text">
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label" for="itemPrice">@DashboardViewResources.PriceHeader</label>
-                            <div class="controls">
-                                <div class="input-prepend">
-                                    <span class="add-on">$</span><input class="span1" data-bind="value: Price" id="itemPrice" size="16" type="text">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label" for="itemQuantity">@DashboardViewResources.QuantityHeader</label>
-                            <div class="controls">
-                                <input class="input-xlarge focused" data-bind="value: Quantity" id="itemQuantity" type="text">
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label" for="itemWeight">@DashboardViewResources.WeightHeader</label>
-                            <div class="controls">
-                                <input class="input-xlarge focused" data-bind="value: Weight" id="itemWeight" type="text">
-                            </div>
-                        </div>
-                    </fieldset>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <a href="#" class="btn" data-dismiss="modal">@DashboardViewResources.CancelButton</a>
-                <a href="#" class="btn btn-primary" data-bind="click: addItem">@DashboardViewResources.SaveChangesButton</a>
-            </div>
-        </div>
+        @{ this.Html.RenderPartial("orderDetailsPopup"); }
     </div>
 </div>

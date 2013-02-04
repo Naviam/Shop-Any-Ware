@@ -55,7 +55,7 @@ namespace TdService.UI.Web.Controllers
         /// The <see cref="ActionResult"/>.
         /// </returns>
         [HttpPost]
-        [Authorize(Roles = "Operator")]
+        [Authorize(Roles = "Shopper, Operator")]
         public ActionResult AddItemToOrder(OrderItemViewModel itemViewModel)
         {
             var request = itemViewModel.ConvertToAddItemToOrderRequest();
@@ -65,6 +65,19 @@ namespace TdService.UI.Web.Controllers
             {
                 Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
                 Data = data
+            };
+            return jsonNetResult;
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Shopper, Operator")]
+        public ActionResult EditOrderItem(OrderItemViewModel itemViewModel)
+        {
+            
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = null
             };
             return jsonNetResult;
         }

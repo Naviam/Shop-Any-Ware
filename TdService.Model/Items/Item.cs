@@ -25,11 +25,6 @@ namespace TdService.Model.Items
         public int Quantity { get; set; }
 
         /// <summary>
-        /// Gets or sets Size.
-        /// </summary>
-        public string Size { get; set; }
-
-        /// <summary>
         /// Gets or sets Color.
         /// </summary>
         public string Color { get; set; }

@@ -10,33 +10,28 @@
 namespace TdService.Services.Implementations
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-
-    using TdService.Infrastructure.Logging;
-    using TdService.Model.Common;
-    using TdService.Model.Orders;
-    using TdService.Resources;
-    using TdService.Services.Interfaces;
-    using TdService.Services.Mapping;
-    using TdService.Services.Messaging;
-    using TdService.Services.Messaging.Order;
+using System.Collections.Generic;
+using System.Linq;
+using TdService.Infrastructure.Logging;
+using TdService.Model.Common;
+using TdService.Model.Orders;
+using TdService.Resources;
+using TdService.Services.Base;
+using TdService.Services.Interfaces;
+using TdService.Services.Mapping;
+using TdService.Services.Messaging;
+using TdService.Services.Messaging.Order;
 
     /// <summary>
     /// The order service.
     /// </summary>
-    public class OrderService : IOrderService
+    public class OrderService :ServiceBase, IOrderService
     {
         /// <summary>
         /// Order repository.
         /// </summary>
         private readonly IOrderRepository orderRepository;
-
-        /// <summary>
-        /// The logger.
-        /// </summary>
-        private readonly ILogger logger;
-
+        
         /// <summary>
         /// Initializes a new instance of the <see cref="OrderService"/> class.
         /// </summary>
@@ -46,10 +41,10 @@ namespace TdService.Services.Implementations
         /// <param name="logger">
         /// The logger.
         /// </param>
-        public OrderService(IOrderRepository orderRepository, ILogger logger)
+        public OrderService(IOrderRepository orderRepository, ILogger logger):base(logger)
         {
             this.orderRepository = orderRepository;
-            this.logger = logger;
+            
         }
 
         /// <summary>

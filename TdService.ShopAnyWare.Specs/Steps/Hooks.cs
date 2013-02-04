@@ -90,7 +90,8 @@ namespace TdService.ShopAnyWare.Specs.Steps
         {
             var itemsRepository = new ItemsRepository();
             var packageRepository = new PackageRepository();
-            var itemsService = new ItemsService(itemsRepository, packageRepository);
+            var logger = new FakeLogger();
+            var itemsService = new ItemsService(itemsRepository, packageRepository, logger);
             ScenarioContext.Current.Set(itemsService);
         }
 
@@ -115,7 +116,8 @@ namespace TdService.ShopAnyWare.Specs.Steps
             var context = new ShopAnyWareSql();
             var userRepository = new UserRepository(context);
             var packageRepository = new PackageRepository();
-            var packagesService = new PackagesService(packageRepository, userRepository);
+            var logger = new FakeLogger();
+            var packagesService = new PackagesService(packageRepository, userRepository,logger);
             ScenarioContext.Current.Set(packagesService);
         }
     }

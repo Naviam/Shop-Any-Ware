@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\ServiceBase.cs" />
     <Compile Include="Implementations\DeliveryAddressService.cs" />
     <Compile Include="Implementations\ItemsService.cs" />
     <Compile Include="Implementations\MembershipService.cs" />
@@ -74,6 +75,8 @@
     <Compile Include="Messaging\Address\RemoveDeliveryRequestResponse.cs" />
     <Compile Include="Messaging\Address\UpdateDeliveryAddressRequest.cs" />
     <Compile Include="Messaging\Address\UpdateDeliveryAddressResponse.cs" />
+    <Compile Include="Messaging\Item\EditOrderItemRequest.cs" />
+    <Compile Include="Messaging\Item\EditOrderItemResponse.cs" />
     <Compile Include="Messaging\Membership\Base\GetUserResponse.cs" />
     <Compile Include="Messaging\Membership\GetUserByEmailRequest.cs" />
     <Compile Include="Messaging\Item\AddItemToOrderRequest.cs" />

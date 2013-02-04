@@ -53,17 +53,31 @@ namespace TdService.UI.Web.Mapping
         }
 
         /// <summary>
-        /// Convert orders to get recent orders request.
+        /// Convert orders to add item to order request.
         /// </summary>
         /// <param name="orderItemViewModel">
         /// The order Item View Model.
         /// </param>
         /// <returns>
-        /// Collection of get recent orders requests.
+        /// AddItemToOrderRequest instance.
         /// </returns>
         public static AddItemToOrderRequest ConvertToAddItemToOrderRequest(this OrderItemViewModel orderItemViewModel)
         {
             return Mapper.Map<OrderItemViewModel, AddItemToOrderRequest>(orderItemViewModel);
+        }
+
+        /// <summary>
+        /// Convert orders to edit order item request.
+        /// </summary>
+        /// <param name="orderItemViewModel">
+        /// The order Item View Model.
+        /// </param>
+        /// <returns>
+        /// EditOrderItemRequest instance.
+        /// </returns>
+        public static EditOrderItemRequest ConvertToEditOrderItemRequest(this OrderItemViewModel orderItemViewModel)
+        {
+            return Mapper.Map<OrderItemViewModel, EditOrderItemRequest>(orderItemViewModel);
         }
 
         /// <summary>
