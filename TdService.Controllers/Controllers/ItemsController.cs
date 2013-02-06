@@ -73,11 +73,13 @@ namespace TdService.UI.Web.Controllers
         [Authorize(Roles = "Shopper, Operator")]
         public ActionResult EditOrderItem(OrderItemViewModel itemViewModel)
         {
-            
+            var request = itemViewModel.ConvertToEditOrderItemRequest();
+            var response = this.itemsService.EditOrderItem(request);
+            var data = response.ConvertToOrderItemViewModel();
             var jsonNetResult = new JsonNetResult
             {
                 Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
-                Data = null
+                Data = data
             };
             return jsonNetResult;
         }
@@ -141,9 +143,9 @@ namespace TdService.UI.Web.Controllers
         /// </returns>
         [HttpPost]
         [Authorize(Roles = "Shopper, Operator")]
-        public ActionResult RemoveItem(OrderItemViewModel itemViewModel)
+        public ActionResult RemoveItem(int itemId)
         {
-            var request = itemViewModel.ConvertToRemoveItemRequest();
+            var request = new RemoveItemRequest { Id = itemId };
             var response = this.itemsService.RemoveItem(request);
             var jsonNetResult = new JsonNetResult
             {

@@ -141,6 +141,9 @@
   <data name="OrderItemMovedToPackage" xml:space="preserve">
     <value>Заказ был перемещен в посылку {0}, id: {1}</value>
   </data>
+  <data name="OrderItemRemovedMessage" xml:space="preserve">
+    <value>Товар был успешно удален</value>
+  </data>
   <data name="OrderItemSuccessfullyAdded" xml:space="preserve">
     <value>Заказ успешно обновлен.</value>
   </data>
@@ -161,6 +164,9 @@
   </data>
   <data name="ProfileUpdateSuccessMessage" xml:space="preserve">
     <value>Ваш профиль был успешно обновлен.</value>
+  </data>
+  <data name="RemoveOrderItemErrorMessage" xml:space="preserve">
+    <value>Во время удаления товара возникли проблемы</value>
   </data>
   <data name="SignUpErrorMessage" xml:space="preserve">
     <value>Во время регистрации Вашего аккаунта возникли проблемы.</value>

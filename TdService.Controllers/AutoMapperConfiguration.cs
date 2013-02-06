@@ -222,6 +222,7 @@ namespace TdService.UI.Web
 
             // edit order item
             Mapper.CreateMap<OrderItemViewModel, EditOrderItemRequest>();
+            Mapper.CreateMap<EditOrderItemResponse, OrderItemViewModel>();
 
             // remove order item
             Mapper.CreateMap<OrderItemViewModel, RemoveItemRequest>()

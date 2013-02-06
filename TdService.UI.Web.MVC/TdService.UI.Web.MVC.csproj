@@ -281,6 +281,10 @@
     <Content Include="Scripts\Tools\UspsService.js" />
     <Content Include="Scripts\ViewModels\AdminDashboardViewModel.js" />
     <Content Include="Scripts\ViewModels\DeliveryRatesViewModel.js" />
+    <Content Include="Scripts\ViewModels\MemberDashboard\Item.js" />
+    <Content Include="Scripts\ViewModels\MemberDashboard\Order.js" />
+    <Content Include="Scripts\ViewModels\MemberDashboard\Package.js" />
+    <Content Include="Scripts\ViewModels\MemberDashboard\Transaction.js" />
     <Content Include="Scripts\ViewModels\OperatorDashboardViewModel.js" />
     <Content Include="Scripts\ViewModels\ProfileViewModel.js" />
     <Content Include="Scripts\ViewModels\AddressViewModel.js" />
@@ -353,7 +357,7 @@
     <Content Include="Scripts\ui\minified\jquery.ui.selectable.min.js" />
     <Content Include="Scripts\ui\minified\jquery.ui.sortable.min.js" />
     <Content Include="Scripts\ui\minified\jquery.ui.widget.min.js" />
-    <Content Include="Scripts\ViewModels\DashboardViewModel.js" />
+    <Content Include="Scripts\ViewModels\MemberDashboard\DashboardViewModel.js" />
     <Content Include="Scripts\ViewModels\SignInViewModel.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

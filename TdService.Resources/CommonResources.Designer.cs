@@ -133,6 +133,15 @@ namespace TdService.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Order item was successfullt removed.
+        /// </summary>
+        public static string OrderItemRemovedMessage {
+            get {
+                return ResourceManager.GetString("OrderItemRemovedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Order item has been successfully added..
         /// </summary>
         public static string OrderItemSuccessfullyAdded {
@@ -192,6 +201,15 @@ namespace TdService.Resources {
         public static string ProfileUpdateSuccessMessage {
             get {
                 return ResourceManager.GetString("ProfileUpdateSuccessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There were some issues removing order item.
+        /// </summary>
+        public static string RemoveOrderItemErrorMessage {
+            get {
+                return ResourceManager.GetString("RemoveOrderItemErrorMessage", resourceCulture);
             }
         }
         

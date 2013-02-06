@@ -157,10 +157,19 @@ namespace TdService.Services.Implementations
         /// </returns>
         public RemoveItemResponse RemoveItem(RemoveItemRequest request)
         {
-            var removedItem = this.itemsRepository.RemoveItem(request.Id, request.OrderId);
-            var response = removedItem.ConvertToRemoveItemResponse();
-            response.OrderId = request.OrderId;
-            return response;
+            try
+            {
+                var removedItem = this.itemsRepository.RemoveItem(request.Id);
+                var response = removedItem.ConvertToRemoveItemResponse();
+                response.Message = CommonResources.OrderItemRemovedMessage;
+                response.MessageType = MessageType.Success;    
+                return response;
+            }
+            catch(Exception ex)
+            {
+                this.logger.Error("Error while removing order item", ex);
+                return new RemoveItemResponse { MessageType = MessageType.Error, Message = CommonResources.RemoveOrderItemErrorMessage };
+            }
         }
 
         /// <summary>
@@ -176,7 +185,7 @@ namespace TdService.Services.Implementations
                 item.Price = request.Price;
                 item.Quantity = request.Quantity;
                 item.Name = request.Name;
-                if (request.OperatorUpdate)
+                if (request.OperatorMode)
                 {
                     //opeartor has extended view with additional fields
                     item.Weight.Pounds = request.WeightPounds;
@@ -190,7 +199,7 @@ namespace TdService.Services.Implementations
             }
             catch (Exception ex)
             {
-                this.logger.Error(CommonResources.OrderUpdateErrorMessage, ex);
+                this.logger.Error("Error while editing order item", ex);
                 return new EditOrderItemResponse
                     { MessageType = MessageType.Error, Message = CommonResources.EditOrderItemErrorMessage };
             }

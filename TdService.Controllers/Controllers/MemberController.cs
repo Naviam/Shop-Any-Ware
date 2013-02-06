@@ -82,8 +82,8 @@ namespace TdService.UI.Web.Controllers
         public ActionResult ViewShopperDashboard(string userEmail)
         {
             var model = new ShopperDashboardViewModel();
-            model.AdminView = true;
             model.UserEmail = userEmail;
+            model.OperatorMode = true;
 
             FillDashboardViewModelWithCommonData(model, userEmail);
 

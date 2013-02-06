@@ -16,7 +16,7 @@
                         <span data-bind="if: status() == 'Returned'">@DashboardViewResources.OrderReturnedDateHeader</span>: 
                         <span data-bind="text: orderDate"></span>
                     </span>&nbsp;
-                    <button class="btn btn-mini btn-primary" title="@DashboardViewResources.AddItemButton" data-bind="visible: canItemsBeModified, click:showNewItemPopup"><i class="icon-white icon-plus-sign"></i></button>
+                    <button class="btn btn-mini btn-primary" title="@DashboardViewResources.AddItemButton" data-bind="visible: canItemsBeModified, click:showAddItemPopup"><i class="icon-white icon-plus-sign"></i></button>
                     <button class="btn btn-mini btn-success" title="@DashboardViewResources.InStockButton" data-bind="visible: canBeReceived"><i class="icon-white icon-inbox"></i></button>
                     <span class="dropdown">
                         <button class="btn btn-mini dropdown-toggle" title="@DashboardViewResources.MoveAllItemsTitle" data-toggle="dropdown" data-bind="visible: items().length > 0"><i class="icon icon-arrow-right"></i><span class="caret"></span></button>
@@ -58,14 +58,14 @@
                 </thead>
                 <tbody id="order_items" data-bind="foreach: {data: items}">
                     <tr data-bind="attr: {id: id}">
-                        <td class="left"><i class="icon-camera"></i>&nbsp;<span class="editable" data-content="<table class='details'><tr><td><img src='@Url.Content("~/content/img/kindle.jpg")' /></td><td><p>Name: Kindle</p><p>Weight: 1.3lbs</p><p>Color: Black</p><p>Quantity: 1</p><p>Cost: $100</p></td>" data-bind="click: $parent.removeItem, text: name"></span></td>
+                        <td class="left"><i class="icon-camera"></i>&nbsp;<span class="editable" data-content="<table class='details'><tr><td><img src='@Url.Content("~/content/img/kindle.jpg")' /></td><td><p>Name: Kindle</p><p>Weight: 1.3lbs</p><p>Color: Black</p><p>Quantity: 1</p><p>Cost: $100</p></td>" data-bind="text: name"></span></td>
                         <td><span class="editable" data-bind="text: quantity"></span></td>
                         <td><span class="editable" data-bind="text: weight"></span>lbs</td>
                         <td>$<span class="editable" title="@DashboardViewResources.PriceTitle" data-bind="text: price"></span></td>
                         <td>
                             <div class="btn-group">
-                                <button class="btn btn-mini" title="@DashboardViewResources.EditItemTitle" data--bind="click:showEditItemPopup"><i class="icon icon-edit"></i></button>
-                                <button class="btn btn-mini" title="@DashboardViewResources.DeleteItemTitle"><i class="icon icon-remove"></i></button>
+                                <button class="btn btn-mini" title="@DashboardViewResources.EditItemTitle" data-bind="click:$parent.showEditItemPopup"><i class="icon icon-edit"></i></button>
+                                <button class="btn btn-mini" title="@DashboardViewResources.DeleteItemTitle" data-bind="click:$parent.removeItem"><i class="icon icon-remove"></i></button>
                                 <button class="btn btn-mini dropdown-toggle" title="@DashboardViewResources.MoveItemTitle" data-toggle="dropdown"><i class="icon icon-arrow-right"></i>@*@DashboardViewResources.ActionMoveHeader*@ <span class="caret"></span></button>
                                 <ul class="dropdown-menu" data-bind="foreach: $root.packages()">
                                     <li><a href="#"><span class="label">ID: <span data-bind="text: id"></span></span><span data-bind="text: name()"></span></a></li>

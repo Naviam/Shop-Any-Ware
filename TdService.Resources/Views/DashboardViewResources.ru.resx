@@ -438,4 +438,7 @@
   <data name="QuantityIsRequired" xml:space="preserve">
     <value>Введите количество</value>
   </data>
+  <data name="InvalidQuantity" xml:space="preserve">
+    <value>Неверно указано количество</value>
+  </data>
 </root>

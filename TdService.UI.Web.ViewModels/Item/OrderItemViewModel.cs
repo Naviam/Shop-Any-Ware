@@ -18,5 +18,10 @@ namespace TdService.UI.Web.ViewModels.Item
         /// Gets or sets the order id.
         /// </summary>
         public int OrderId { get; set; }
+
+        /// <summary>
+        /// specifies whether page is viewed by operator or admin
+        /// </summary>
+        public bool OperatorMode { get; set; }
     }
 }

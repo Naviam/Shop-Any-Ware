@@ -10,6 +10,6 @@
         /// <summary>
         /// Specifies whether update is perfomed by operator
         /// </summary>
-        public bool OperatorUpdate { get; set; }
+        public bool OperatorMode { get; set; }
     }
 }

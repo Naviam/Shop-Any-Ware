@@ -11,59 +11,59 @@
                 <div class="control-group">
                     <label class="control-label" for="itemName">@DashboardViewResources.ItemNameHeader</label>
                     <div class="controls">
-                        <input class="input-xlarge focused" data-bind="value: Name" id="itemName" type="text" />
+                        <input class="input-xlarge focused" data-bind="value: name" id="itemName" type="text" />
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="itemPrice">@DashboardViewResources.PriceHeader</label>
                     <div class="controls">
                         <div class="input-prepend">
-                            <span class="add-on">$</span><input class="span1" data-bind="value: Price" id="itemPrice" style="width: 80px" size="16" type="text" />
+                            <span class="add-on">$</span><input class="span1" data-bind="value: price" id="itemPrice" style="width: 80px" size="16" type="text" />
                         </div>
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="itemQuantity">@DashboardViewResources.QuantityHeader</label>
                     <div class="controls">
-                        <input class="input-small focused" data-bind="value: Quantity" id="itemQuantity" type="text" />
+                        <input class="input-small focused" data-bind="value: quantity" id="itemQuantity" type="text" />
                     </div>
                 </div>
-                @if (Model.AdminView)
+                @if (Model.OperatorMode)
                 {
                     <div class="control-group">
                         <label class="control-label" for="itemWeight">@DashboardViewResources.WeightHeader</label>
                         <div class="controls">
-                            <input class="input-small focused" data-bind="value: Weight" id="itemWeight" type="text" />&nbsp @DashboardViewResources.PoundsShort
+                            <input class="input-small focused" data-bind="value: weight" id="itemWeight" type="text" />&nbsp @DashboardViewResources.PoundsShort
                         </div>
                     </div>
                 }
             </fieldset>
-            @if (Model.AdminView)
+            @if (Model.OperatorMode)
             {
                 <fieldset class="well the-fieldset">
                     <legend class="the-legend">@DashboardViewResources.SizeLegend</legend>
                     <div class="control-group">
                         <label class="control-label" for="itemHeight">@DashboardViewResources.ItemHeightHeader</label>
                         <div class="controls">
-                            <input class="input-small focused" id="itemHeight" type="text" />
+                            <input class="input-small focused" id="itemHeight" data-bind="value: dimHeight" type="text" />
                         </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label" for="itemWidth">@DashboardViewResources.ItemWidthHeader</label>
                         <div class="controls">
-                            <input class="input-small focused" id="itemWidth" type="text" />
+                            <input class="input-small focused" id="itemWidth" type="text" data-bind="value: dimWidth" />
                         </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label" for="itemLength">@DashboardViewResources.ItemLengthHeader</label>
                         <div class="controls">
-                            <input class="input-small focused" id="itemLength" type="text" />
+                            <input class="input-small focused" id="itemLength" type="text" data-bind="value: dimLength" />
                         </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label" for="itemGirth">@DashboardViewResources.ItemGirthHeader</label>
                         <div class="controls">
-                            <input class="input-small focused" id="itemGirth" type="text" />
+                            <input class="input-small focused" id="itemGirth" type="text" data-bind="value: dimGirth"/>
                         </div>
                     </div>
                 </fieldset>

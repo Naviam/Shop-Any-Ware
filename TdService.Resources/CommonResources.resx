@@ -141,6 +141,9 @@
   <data name="OrderItemMovedToPackage" xml:space="preserve">
     <value>The item has been moved to package {0}, id: {1}</value>
   </data>
+  <data name="OrderItemRemovedMessage" xml:space="preserve">
+    <value>Order item was successfullt removed</value>
+  </data>
   <data name="OrderItemSuccessfullyAdded" xml:space="preserve">
     <value>Order item has been successfully added.</value>
   </data>
@@ -161,6 +164,9 @@
   </data>
   <data name="ProfileUpdateSuccessMessage" xml:space="preserve">
     <value>Your profile has been successfully updated.</value>
+  </data>
+  <data name="RemoveOrderItemErrorMessage" xml:space="preserve">
+    <value>There were some issues removing order item</value>
   </data>
   <data name="SignUpErrorMessage" xml:space="preserve">
     <value>There were some issues registering your account.</value>

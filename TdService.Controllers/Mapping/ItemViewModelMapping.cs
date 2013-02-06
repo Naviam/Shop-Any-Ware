@@ -53,6 +53,20 @@ namespace TdService.UI.Web.Mapping
         }
 
         /// <summary>
+        /// Convert edit order item response to order item view model.
+        /// </summary>
+        /// <param name="response">
+        /// The edit order itme response message.
+        /// </param>
+        /// <returns>
+        /// The order item view model.
+        /// </returns>
+        public static OrderItemViewModel ConvertToOrderItemViewModel(this EditOrderItemResponse response)
+        {
+            return Mapper.Map<EditOrderItemResponse, OrderItemViewModel>(response);
+        }
+
+        /// <summary>
         /// Convert orders to add item to order request.
         /// </summary>
         /// <param name="orderItemViewModel">
@@ -80,21 +94,7 @@ namespace TdService.UI.Web.Mapping
             return Mapper.Map<OrderItemViewModel, EditOrderItemRequest>(orderItemViewModel);
         }
 
-        /// <summary>
-        /// The convert to remove item request.
-        /// </summary>
-        /// <param name="orderItemViewModel">
-        /// The order item view model.
-        /// </param>
-        /// <returns>
-        /// The <see cref="RemoveItemRequest"/>.
-        /// </returns>
-        public static RemoveItemRequest ConvertToRemoveItemRequest(this OrderItemViewModel orderItemViewModel)
-        {
-            return Mapper.Map<OrderItemViewModel, RemoveItemRequest>(orderItemViewModel);
-        }
-
-        /// <summary>
+       /// <summary>
         /// The convert to remove item request.
         /// </summary>
         /// <param name="response">

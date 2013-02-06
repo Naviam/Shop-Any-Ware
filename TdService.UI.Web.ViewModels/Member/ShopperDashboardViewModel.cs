@@ -170,5 +170,18 @@ namespace TdService.UI.Web.ViewModels.Member
                 return DashboardViewResources.InvalidGirth;
             }
         }
+
+        public string InvalidQuantity
+        {
+            get
+            {
+                return DashboardViewResources.InvalidQuantity;
+            }
+        }
+
+        /// <summary>
+        /// Specifies whether page is viewd by operator or admin
+        /// </summary>
+        public bool OperatorMode { get; set; }
     }
 }
