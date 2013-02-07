@@ -105,6 +105,6 @@ namespace TdService.Model.Items
         /// <returns>
         /// The <see cref="Item"/>.
         /// </returns>
-        Item RemoveItem(int itemId, int orderId);
+        Item RemoveItem(int itemId);
     }
 }

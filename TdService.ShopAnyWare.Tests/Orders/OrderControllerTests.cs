@@ -105,7 +105,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
                             CanItemsBeModified = true
                         }
                 };
-
+            
             try
             {
                 var orderViewModels = Mapper.Map<List<GetMyOrdersResponse>, List<OrderViewModel>>(collection);
@@ -174,7 +174,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
                 };
 
             // act
-            var actual = controller.Recent() as JsonNetResult;
+            var actual = controller.Recent(formsAuthentication.GetAuthenticationToken()) as JsonNetResult;
 
             // assert
             Assert.That(actual, Is.Not.Null);
@@ -227,7 +227,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
                 };
 
             // act
-            var actual = controller.Add(expected.RetailerUrl) as JsonNetResult;
+            var actual = controller.Add(expected.RetailerUrl, formsAuthentication.GetAuthenticationToken()) as JsonNetResult;
 
             // assert
             Assert.That(actual, Is.Not.Null);

@@ -10,8 +10,8 @@
 namespace TdService.UI.Web.ViewModels.Member
 {
     using System.Collections.Generic;
-using TdService.Resources.Views;
-using TdService.UI.Web.ViewModels.Account;
+    using TdService.Resources.Views;
+    using TdService.UI.Web.ViewModels.Account;
 
     /// <summary>
     /// The shopper dashboard view model.
@@ -84,14 +84,104 @@ using TdService.UI.Web.ViewModels.Account;
         public bool AdminView { get; set; }
 
         /// <summary>
+        /// Specifies the email of user, whos dashboard is open by operator
+        /// </summary>
+        public string UserEmail { get; set; }
+
+        /// <summary>
         /// Translatednotice message
         /// </summary>
         public string AdminViewNoticeMessage
         {
             get
             {
-                return string.Format( DashboardViewResources.ResourceManager.GetString("AdminViewNoticeMessage"), this.UserId, this.Email);
+                return string.Format(DashboardViewResources.ResourceManager.GetString("AdminViewNoticeMessage"), this.UserId, this.Email);
             }
         }
+
+        public string NameIsRequired
+        {
+            get
+            {
+                return DashboardViewResources.NameIsRequired;
+            }
+        }
+
+        public string QuantityIsRequired
+        {
+            get
+            {
+                return DashboardViewResources.QuantityIsRequired;
+            }
+        }
+
+        public string PriceIsRequired
+        {
+            get
+            {
+                return DashboardViewResources.PriceIsRequired;
+            }
+        }
+
+        public string InvalidPrice
+        {
+            get
+            {
+                return DashboardViewResources.InvalidPrice;
+            }
+        }
+
+        public string InvalidWeight
+        {
+            get
+            {
+                return DashboardViewResources.InvalidWeight;
+            }
+        }
+
+        public string InvalidHeight
+        {
+            get
+            {
+                return DashboardViewResources.InvalidHeight;
+            }
+        }
+
+        public string InvalidLength
+        {
+            get
+            {
+                return DashboardViewResources.InvalidLength;
+            }
+        }
+
+        public string InvalidWidth
+        {
+            get
+            {
+                return DashboardViewResources.InvalidWidth;
+            }
+        }
+
+        public string InvalidGirth
+        {
+            get
+            {
+                return DashboardViewResources.InvalidGirth;
+            }
+        }
+
+        public string InvalidQuantity
+        {
+            get
+            {
+                return DashboardViewResources.InvalidQuantity;
+            }
+        }
+
+        /// <summary>
+        /// Specifies whether page is viewd by operator or admin
+        /// </summary>
+        public bool OperatorMode { get; set; }
     }
 }

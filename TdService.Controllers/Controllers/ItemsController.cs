@@ -55,11 +55,26 @@ namespace TdService.UI.Web.Controllers
         /// The <see cref="ActionResult"/>.
         /// </returns>
         [HttpPost]
-        [Authorize(Roles = "Operator")]
+        [Authorize(Roles = "Shopper, Operator")]
         public ActionResult AddItemToOrder(OrderItemViewModel itemViewModel)
         {
             var request = itemViewModel.ConvertToAddItemToOrderRequest();
             var response = this.itemsService.AddItemToOrder(request);
+            var data = response.ConvertToOrderItemViewModel();
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = data
+            };
+            return jsonNetResult;
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Shopper, Operator")]
+        public ActionResult EditOrderItem(OrderItemViewModel itemViewModel)
+        {
+            var request = itemViewModel.ConvertToEditOrderItemRequest();
+            var response = this.itemsService.EditOrderItem(request);
             var data = response.ConvertToOrderItemViewModel();
             var jsonNetResult = new JsonNetResult
             {
@@ -128,9 +143,9 @@ namespace TdService.UI.Web.Controllers
         /// </returns>
         [HttpPost]
         [Authorize(Roles = "Shopper, Operator")]
-        public ActionResult RemoveItem(OrderItemViewModel itemViewModel)
+        public ActionResult RemoveItem(int itemId)
         {
-            var request = itemViewModel.ConvertToRemoveItemRequest();
+            var request = new RemoveItemRequest { Id = itemId };
             var response = this.itemsService.RemoveItem(request);
             var jsonNetResult = new JsonNetResult
             {

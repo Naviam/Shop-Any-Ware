@@ -17,11 +17,12 @@ namespace TdService.Model.Common
         /// <summary>
         /// Gets or sets Pounds.
         /// </summary>
-        public int Pounds { get; set; }
+        public decimal Pounds { get; set; }
 
         /// <summary>
         /// Gets or sets Ounces.
         /// </summary>
+        [System.Obsolete]
         public decimal Ounces { get; set; }
     }
 }

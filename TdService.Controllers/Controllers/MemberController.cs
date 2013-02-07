@@ -65,7 +65,9 @@ namespace TdService.UI.Web.Controllers
         public ActionResult Dashboard()
         {
             var model = new ShopperDashboardViewModel();
+
             FillDashboardViewModelWithCommonData(model, this.FormsAuthentication.GetAuthenticationToken());
+            model.UserEmail = this.FormsAuthentication.GetAuthenticationToken();
 
             return this.View("Dashboard", model);
         }
@@ -80,7 +82,8 @@ namespace TdService.UI.Web.Controllers
         public ActionResult ViewShopperDashboard(string userEmail)
         {
             var model = new ShopperDashboardViewModel();
-            model.AdminView = true;
+            model.UserEmail = userEmail;
+            model.OperatorMode = true;
 
             FillDashboardViewModelWithCommonData(model, userEmail);
 

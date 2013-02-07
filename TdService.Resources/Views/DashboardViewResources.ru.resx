@@ -192,17 +192,32 @@
   <data name="FailedPayPalPaymentConfirmationMessage" xml:space="preserve">
     <value>Во время подтверждения транзакции произошла ошибка. Обратитесь к администрации.</value>
   </data>
+  <data name="GeneralLegend" xml:space="preserve">
+    <value>Общие свойства</value>
+  </data>
   <data name="HistoryPackagesTabHeader" xml:space="preserve">
     <value>История</value>
   </data>
   <data name="InStockButton" xml:space="preserve">
     <value>Принять на склад</value>
   </data>
+  <data name="ItemGirthHeader" xml:space="preserve">
+    <value>Обхват</value>
+  </data>
+  <data name="ItemHeightHeader" xml:space="preserve">
+    <value>Высота</value>
+  </data>
+  <data name="ItemLengthHeader" xml:space="preserve">
+    <value>Длина</value>
+  </data>
   <data name="ItemNameHeader" xml:space="preserve">
     <value>Название товара</value>
   </data>
   <data name="ItemsTotalHeader" xml:space="preserve">
     <value>Всего</value>
+  </data>
+  <data name="ItemWidthHeader" xml:space="preserve">
+    <value>Ширина</value>
   </data>
   <data name="LoadingHistoryOrdersMessage" xml:space="preserve">
     <value>Пожалуйста подождите. Идет загрузка истории Ваших заказов..</value>
@@ -297,6 +312,9 @@
   <data name="OrdersHeader" xml:space="preserve">
     <value>Заказы</value>
   </data>
+  <data name="OuncesShort" xml:space="preserve">
+    <value>ун.</value>
+  </data>
   <data name="PackageCannotBeRemoved" xml:space="preserve">
     <value>Посылка не может быть удалена в текущем состоянии.</value>
   </data>
@@ -324,6 +342,9 @@
   <data name="PaymentTypePaypal" xml:space="preserve">
     <value>Платеж / PayPal</value>
   </data>
+  <data name="PoundsShort" xml:space="preserve">
+    <value>фунт.</value>
+  </data>
   <data name="PriceHeader" xml:space="preserve">
     <value>Цена</value>
   </data>
@@ -350,6 +371,9 @@
   </data>
   <data name="SendPackageButton" xml:space="preserve">
     <value>Отправить посылку</value>
+  </data>
+  <data name="SizeLegend" xml:space="preserve">
+    <value>Размер</value>
   </data>
   <data name="StatusHeader" xml:space="preserve">
     <value>Статус</value>
@@ -383,5 +407,41 @@
   </data>
   <data name="WeightHeader" xml:space="preserve">
     <value>Вес</value>
+  </data>
+  <data name="WeightLegend" xml:space="preserve">
+    <value>Вес</value>
+  </data>
+  <data name="InvalidGirth" xml:space="preserve">
+    <value>Неверно указан обхват</value>
+  </data>
+  <data name="invalidHeight" xml:space="preserve">
+    <value>Неверное указана высота</value>
+  </data>
+  <data name="InvalidLength" xml:space="preserve">
+    <value>Неверно указана длина</value>
+  </data>
+  <data name="InvalidPrice" xml:space="preserve">
+    <value>Неверно указана цена</value>
+  </data>
+  <data name="InvalidWeight" xml:space="preserve">
+    <value>Неверно указан вес</value>
+  </data>
+  <data name="InvalidWidth" xml:space="preserve">
+    <value>Неверно указана ширина</value>
+  </data>
+  <data name="NameIsRequired" xml:space="preserve">
+    <value>Введите имя</value>
+  </data>
+  <data name="PriceIsRequired" xml:space="preserve">
+    <value>Введите цену</value>
+  </data>
+  <data name="QuantityIsRequired" xml:space="preserve">
+    <value>Введите количество</value>
+  </data>
+  <data name="InvalidQuantity" xml:space="preserve">
+    <value>Неверно указано количество</value>
+  </data>
+  <data name="WarningLabelText" xml:space="preserve">
+    <value>Внимание!</value>
   </data>
 </root>

@@ -9,12 +9,15 @@
 
 namespace TdService.Services.Implementations
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
-
+    using TdService.Infrastructure.Logging;
     using TdService.Model.Items;
     using TdService.Model.Packages;
+    using TdService.Resources;
+    using TdService.Services.Base;
     using TdService.Services.Interfaces;
     using TdService.Services.Mapping;
     using TdService.Services.Messaging;
@@ -23,7 +26,7 @@ namespace TdService.Services.Implementations
     /// <summary>
     /// The items service.
     /// </summary>
-    public class ItemsService : IItemsService
+    public class ItemsService :ServiceBase, IItemsService
     {
         /// <summary>
         /// The items repository.
@@ -44,7 +47,7 @@ namespace TdService.Services.Implementations
         /// <param name="packageRepository">
         /// The package repository.
         /// </param>
-        public ItemsService(IItemsRepository itemsRepository, IPackageRepository packageRepository)
+        public ItemsService(IItemsRepository itemsRepository, IPackageRepository packageRepository, ILogger logger):base(logger)
         {
             this.itemsRepository = itemsRepository;
             this.packageRepository = packageRepository;
@@ -85,7 +88,7 @@ namespace TdService.Services.Implementations
             var response = addedItem.ConvertToAddItemToOrderResponse();
             response.OrderId = request.OrderId;
             response.MessageType = MessageType.Success;
-            response.Message = "The item has been added successfully.";
+            response.Message = CommonResources.OrderItemSuccessfullyAdded;
             return response;
         }
 
@@ -109,7 +112,7 @@ namespace TdService.Services.Implementations
             return new AddItemToPackageResponse
                 {
                     MessageType = MessageType.Warning,
-                    Message = string.Format("The item has been moved to package {0}, id: {1}", package.Name, package.Id)
+                    Message = string.Format(CommonResources.OrderItemMovedToPackage, package.Name, package.Id)
                 };
         }
 
@@ -154,10 +157,52 @@ namespace TdService.Services.Implementations
         /// </returns>
         public RemoveItemResponse RemoveItem(RemoveItemRequest request)
         {
-            var removedItem = this.itemsRepository.RemoveItem(request.Id, request.OrderId);
-            var response = removedItem.ConvertToRemoveItemResponse();
-            response.OrderId = request.OrderId;
-            return response;
+            try
+            {
+                var removedItem = this.itemsRepository.RemoveItem(request.Id);
+                var response = removedItem.ConvertToRemoveItemResponse();
+                response.Message = CommonResources.OrderItemRemovedMessage;
+                response.MessageType = MessageType.Success;    
+                return response;
+            }
+            catch(Exception ex)
+            {
+                this.logger.Error("Error while removing order item", ex);
+                return new RemoveItemResponse { MessageType = MessageType.Error, Message = CommonResources.RemoveOrderItemErrorMessage };
+            }
+        }
+
+        /// <summary>
+        /// Edits order item's properties. 
+        /// </summary>
+        /// <param name="request">EditOrderItemRequest</param>
+        /// <returns>EditOrderItemResponse</returns>
+        public EditOrderItemResponse EditOrderItem(EditOrderItemRequest request)
+        {
+            try
+            {
+                var item = this.itemsRepository.GetItemById(request.Id);
+                item.Price = request.Price;
+                item.Quantity = request.Quantity;
+                item.Name = request.Name;
+                if (request.OperatorMode)
+                {
+                    //opeartor has extended view with additional fields
+                    item.Weight.Pounds = request.WeightPounds;
+                    item.Dimensions.Girth = request.DimensionsGirth;
+                    item.Dimensions.Height = request.DimensionsHeight;
+                    item.Dimensions.Length = request.DimensionsLength;
+                    item.Dimensions.Width = request.DimensionsWidth;
+                }
+                this.itemsRepository.UpdateItem(item);
+                return new EditOrderItemResponse { MessageType = MessageType.Success, Message = CommonResources.OrderUpdateSuccessMessage };
+            }
+            catch (Exception ex)
+            {
+                this.logger.Error("Error while editing order item", ex);
+                return new EditOrderItemResponse
+                    { MessageType = MessageType.Error, Message = CommonResources.EditOrderItemErrorMessage };
+            }
         }
     }
 }
