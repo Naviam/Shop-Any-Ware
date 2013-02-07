@@ -441,4 +441,7 @@
   <data name="InvalidQuantity" xml:space="preserve">
     <value>Неверно указано количество</value>
   </data>
+  <data name="WarningLabelText" xml:space="preserve">
+    <value>Внимание!</value>
+  </data>
 </root>

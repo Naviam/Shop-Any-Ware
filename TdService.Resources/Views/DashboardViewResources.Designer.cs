@@ -1015,6 +1015,15 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Warning!.
+        /// </summary>
+        public static string WarningLabelText {
+            get {
+                return ResourceManager.GetString("WarningLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Weight.
         /// </summary>
         public static string WeightHeader {
