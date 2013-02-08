@@ -10,9 +10,10 @@
 namespace TdService.Services.Implementations
 {
     using System.Collections.Generic;
-
+    using TdService.Infrastructure.Logging;
     using TdService.Model.Common;
     using TdService.Model.Orders;
+    using TdService.Services.Base;
     using TdService.Services.Interfaces;
     using TdService.Services.Mapping;
     using TdService.Services.Messaging.Retailer;
@@ -20,7 +21,7 @@ namespace TdService.Services.Implementations
     /// <summary>
     /// The retailers service.
     /// </summary>
-    public class RetailersService : IRetailersService
+    public class RetailersService :ServiceBase, IRetailersService
     {
         /// <summary>
         /// The retailer repository.
@@ -33,7 +34,7 @@ namespace TdService.Services.Implementations
         /// <param name="retailerRepository">
         /// The retailer repository.
         /// </param>
-        public RetailersService(IRetailerRepository retailerRepository)
+        public RetailersService(IRetailerRepository retailerRepository, ILogger logger):base(logger)
         {
             this.retailerRepository = retailerRepository;
         }

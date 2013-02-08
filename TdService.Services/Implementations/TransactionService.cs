@@ -7,12 +7,15 @@
     using TdService.Services.Mapping;
     using System;
     using TdService.Resources;
+    using TdService.Services.Base;
+    using TdService.Infrastructure.Logging;
 
-    public class TransactionService : ITransactionService
+    public class TransactionService : ServiceBase, ITransactionService
     {
         private readonly ITransactionsRepository transactionsRepository;
 
-        public TransactionService(ITransactionsRepository transactionsRepository)
+        public TransactionService(ITransactionsRepository transactionsRepository, ILogger logger)
+            : base(logger)
         {
             this.transactionsRepository = transactionsRepository;
         }
@@ -33,8 +36,8 @@
                 transaction.WalletId = request.WalletId;
                 var result = this.transactionsRepository.AddTransaction(transaction);
                 response = result.ConvertToAddTransactionResponse();
-                }
-            catch(Exception e)
+            }
+            catch (Exception e)
             {
                 response.MessageType = Messaging.MessageType.Error;
                 response.Message = e.Message;
@@ -49,7 +52,7 @@
             try
             {
                 this.transactionsRepository.ConfirmTransaction(request.Token, request.PayerId);
-                
+
                 return response;
             }
             catch (Exception e)

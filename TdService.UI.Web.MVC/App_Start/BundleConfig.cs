@@ -55,7 +55,11 @@ namespace TdService.UI.Web.MVC.App_Start
                         "~/Scripts/Tools/UspsService.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/dashboard").Include(
-                        "~/Scripts/ViewModels/DashboardViewModel.js"));
+                        "~/Scripts/ViewModels/MemberDashboard/DashboardViewModel.js",
+                        "~/Scripts/ViewModels/MemberDashboard/Item.js",
+                        "~/Scripts/ViewModels/MemberDashboard/Order.js",
+                        "~/Scripts/ViewModels/MemberDashboard/Package.js",
+                        "~/Scripts/ViewModels/MemberDashboard/Transaction.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/addresses").Include(
                         "~/Scripts/ViewModels/AddressViewModel.js"));

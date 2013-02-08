@@ -6,7 +6,7 @@
     ViewBag.Title = DashboardViewResources.DashboardPageTitle;
 }
 
-@if (Model.AdminView)
+@if (Model.OperatorMode)
 {
     <ul class="breadcrumb">
         <li>
@@ -15,7 +15,7 @@
         <li class="active">@TdService.Resources.BreadcrumbResources.UserPage</li>
     </ul>
     <div class="alert alert-block">
-        <strong>Внимание!</strong>
+        <strong>@DashboardViewResources.WarningLabelText</strong>
         @Model.AdminViewNoticeMessage
     </div>
 }

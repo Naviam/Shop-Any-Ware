@@ -10,21 +10,22 @@
 namespace TdService.Services.Implementations
 {
     using System;
-    using System.Collections.Generic;
-
-    using TdService.Model.Common;
-    using TdService.Model.Membership;
-    using TdService.Model.Packages;
-    using TdService.Resources.Views;
-    using TdService.Services.Interfaces;
-    using TdService.Services.Mapping;
-    using TdService.Services.Messaging;
-    using TdService.Services.Messaging.Package;
+using System.Collections.Generic;
+using TdService.Infrastructure.Logging;
+using TdService.Model.Common;
+using TdService.Model.Membership;
+using TdService.Model.Packages;
+using TdService.Resources.Views;
+using TdService.Services.Base;
+using TdService.Services.Interfaces;
+using TdService.Services.Mapping;
+using TdService.Services.Messaging;
+using TdService.Services.Messaging.Package;
 
     /// <summary>
     /// The packages service.
     /// </summary>
-    public class PackagesService : IPackagesService
+    public class PackagesService :ServiceBase, IPackagesService
     {
         /// <summary>
         /// The package repository.
@@ -45,7 +46,7 @@ namespace TdService.Services.Implementations
         /// <param name="userRepository">
         /// The user repository.
         /// </param>
-        public PackagesService(IPackageRepository packageRepository, IUserRepository userRepository)
+        public PackagesService(IPackageRepository packageRepository, IUserRepository userRepository, ILogger logger):base(logger)
         {
             this.packageRepository = packageRepository;
             this.userRepository = userRepository;

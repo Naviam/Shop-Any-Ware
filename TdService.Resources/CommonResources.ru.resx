@@ -129,11 +129,23 @@
   <data name="DeliveryAddressRemoveSuccessMessage" xml:space="preserve">
     <value>Ваш адрес доставки был успешно удален.</value>
   </data>
+  <data name="EditOrderItemErrorMessage" xml:space="preserve">
+    <value>Во время обновления заказа возникли проблемы.</value>
+  </data>
   <data name="OrderAddErrorMessage" xml:space="preserve">
     <value>Во время добавления заказа возникли проблемы.</value>
   </data>
   <data name="OrderAddSuccessMessage" xml:space="preserve">
     <value>Ваш заказ был успешно добавлен.</value>
+  </data>
+  <data name="OrderItemMovedToPackage" xml:space="preserve">
+    <value>Заказ был перемещен в посылку {0}, id: {1}</value>
+  </data>
+  <data name="OrderItemRemovedMessage" xml:space="preserve">
+    <value>Товар был успешно удален</value>
+  </data>
+  <data name="OrderItemSuccessfullyAdded" xml:space="preserve">
+    <value>Заказ успешно обновлен.</value>
   </data>
   <data name="OrderRemoveErrorMessage" xml:space="preserve">
     <value>Во время удаления заказа возникли проблемы.</value>
@@ -152,6 +164,9 @@
   </data>
   <data name="ProfileUpdateSuccessMessage" xml:space="preserve">
     <value>Ваш профиль был успешно обновлен.</value>
+  </data>
+  <data name="RemoveOrderItemErrorMessage" xml:space="preserve">
+    <value>Во время удаления товара возникли проблемы</value>
   </data>
   <data name="SignUpErrorMessage" xml:space="preserve">
     <value>Во время регистрации Вашего аккаунта возникли проблемы.</value>

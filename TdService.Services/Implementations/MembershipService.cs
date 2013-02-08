@@ -15,6 +15,7 @@ namespace TdService.Services.Implementations
     using TdService.Model;
     using TdService.Model.Membership;
     using TdService.Resources;
+    using TdService.Services.Base;
     using TdService.Services.Interfaces;
     using TdService.Services.Mapping;
     using TdService.Services.Messaging;
@@ -24,7 +25,7 @@ namespace TdService.Services.Implementations
     /// <summary>
     /// Membership service class.
     /// </summary>
-    public class MembershipService : IMembershipService
+    public class MembershipService :ServiceBase, IMembershipService
     {
         /// <summary>
         /// Membership repository.
@@ -45,11 +46,6 @@ namespace TdService.Services.Implementations
         /// The membership repository.
         /// </summary>
         private readonly IMembershipRepository membershipRepository;
-
-        /// <summary>
-        /// The logger.
-        /// </summary>
-        private readonly ILogger logger;
 
         /// <summary>
         /// The email service.
@@ -83,9 +79,8 @@ namespace TdService.Services.Implementations
             IUserRepository userRepository,
             IRoleRepository roleRepository,
             IProfileRepository profileRepository,
-            IMembershipRepository membershipRepository)
+            IMembershipRepository membershipRepository):base(logger)
         {
-            this.logger = logger;
             this.emailService = emailService;
             this.userRepository = userRepository;
             this.roleRepository = roleRepository;

@@ -183,16 +183,11 @@ namespace TdService.Repository.MsSql.Repositories
         /// <returns>
         /// The <see cref="Item"/>.
         /// </returns>
-        public Item RemoveItem(int itemId, int orderId)
+        public Item RemoveItem(int itemId)
         {
             using (var context = new ShopAnyWareSql())
             {
-                var order = context.Orders.Include("Items").SingleOrDefault(o => o.Id == orderId);
                 var item = context.Items.Find(itemId);
-                if (order != null)
-                {
-                    order.Items.Remove(item);
-                }
 
                 var removedItem = context.Items.Remove(item);
                 context.SaveChanges();

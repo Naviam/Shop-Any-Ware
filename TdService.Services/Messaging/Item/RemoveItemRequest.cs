@@ -14,12 +14,7 @@ namespace TdService.Services.Messaging.Item
     /// </summary>
     public class RemoveItemRequest : RequestBase
     {
-        /// <summary>
-        /// Gets or sets the order id.
-        /// </summary>
-        public int OrderId { get; set; }
-
-        /// <summary>
+       /// <summary>
         /// Gets or sets the id.
         /// </summary>
         public int Id { get; set; }

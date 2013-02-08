@@ -12,16 +12,14 @@ namespace TdService.ShopAnyWare.Specs.Steps
     using System;
     using System.Collections.Generic;
     using System.Linq;
-
     using NUnit.Framework;
-
+    using TdService.Infrastructure.Authentication;
     using TdService.Repository.MsSql;
     using TdService.Services.Implementations;
     using TdService.ShopAnyWare.Specs.Fakes;
     using TdService.UI.Web;
     using TdService.UI.Web.Controllers;
     using TdService.UI.Web.ViewModels.Order;
-
     using TechTalk.SpecFlow;
     using TechTalk.SpecFlow.Assist;
 
@@ -32,6 +30,11 @@ namespace TdService.ShopAnyWare.Specs.Steps
     public class ShopperOrdersSteps
     {
         /// <summary>
+        /// The forms authentication.
+        /// </summary>
+        private IFormsAuthentication formsAuthentication;
+
+        /// <summary>
         /// The get orders controller.
         /// </summary>
         /// <returns>
@@ -39,7 +42,7 @@ namespace TdService.ShopAnyWare.Specs.Steps
         /// </returns>
         public OrdersController GetOrdersController()
         {
-            var formsAuthentication = ScenarioContext.Current.Get<FakeFormsAuthentication>();
+            formsAuthentication = ScenarioContext.Current.Get<FakeFormsAuthentication>();
             var orderService = ScenarioContext.Current.Get<OrderService>();
             return new OrdersController(orderService, formsAuthentication);
         }
@@ -54,7 +57,7 @@ namespace TdService.ShopAnyWare.Specs.Steps
         public void WhenISetRetailerUrlAsAndPressAddOrderButtonOnShopperDashboardPage(string retailerUrl)
         {
             var contoller = this.GetOrdersController();
-            var result = contoller.Add(retailerUrl) as JsonNetResult;
+            var result = contoller.Add(retailerUrl, formsAuthentication.GetAuthenticationToken()) as JsonNetResult;
             Assert.That(result, Is.Not.Null);
             if (result != null)
             {
@@ -187,7 +190,7 @@ namespace TdService.ShopAnyWare.Specs.Steps
         public void WhenIGoToMyRecentOrdersTab()
         {
             var contoller = this.GetOrdersController();
-            var result = contoller.Recent() as JsonNetResult;
+            var result = contoller.Recent(formsAuthentication.GetAuthenticationToken()) as JsonNetResult;
             Assert.That(result, Is.Not.Null);
             if (result != null)
             {
@@ -203,7 +206,7 @@ namespace TdService.ShopAnyWare.Specs.Steps
         public void WhenIGoToMyHistoryOrdersTab()
         {
             var contoller = this.GetOrdersController();
-            var result = contoller.History() as JsonNetResult;
+            var result = contoller.History(formsAuthentication.GetAuthenticationToken()) as JsonNetResult;
             Assert.That(result, Is.Not.Null);
             if (result != null)
             {

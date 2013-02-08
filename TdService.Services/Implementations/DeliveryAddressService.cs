@@ -9,10 +9,10 @@ namespace TdService.Services.Implementations
     using System;
     using System.Collections.Generic;
     using System.Linq;
-
     using TdService.Infrastructure.Logging;
     using TdService.Model.Addresses;
     using TdService.Resources;
+    using TdService.Services.Base;
     using TdService.Services.Interfaces;
     using TdService.Services.Mapping;
     using TdService.Services.Messaging;
@@ -21,17 +21,12 @@ namespace TdService.Services.Implementations
     /// <summary>
     /// This class contains service methods to work with delivery addresses.
     /// </summary>
-    public class DeliveryAddressService : IAddressService
+    public class DeliveryAddressService :ServiceBase, IAddressService
     {
         /// <summary>
         /// Address repository.
         /// </summary>
         private readonly IAddressRepository addressRepository;
-
-        /// <summary>
-        /// The logger.
-        /// </summary>
-        private readonly ILogger logger;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DeliveryAddressService"/> class.
@@ -42,10 +37,9 @@ namespace TdService.Services.Implementations
         /// <param name="logger">
         /// The logger.
         /// </param>
-        public DeliveryAddressService(IAddressRepository addressRepository, ILogger logger)
+        public DeliveryAddressService(IAddressRepository addressRepository, ILogger logger):base(logger)
         {
             this.addressRepository = addressRepository;
-            this.logger = logger;
         }
 
         /// <summary>

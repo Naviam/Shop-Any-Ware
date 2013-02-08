@@ -129,11 +129,23 @@
   <data name="DeliveryAddressRemoveSuccessMessage" xml:space="preserve">
     <value>Delivery address has been successfully removed.</value>
   </data>
+  <data name="EditOrderItemErrorMessage" xml:space="preserve">
+    <value>There were some issues with updating order item.</value>
+  </data>
   <data name="OrderAddErrorMessage" xml:space="preserve">
     <value>There were some issues with the order you are adding.</value>
   </data>
   <data name="OrderAddSuccessMessage" xml:space="preserve">
     <value>The order has been successfully added.</value>
+  </data>
+  <data name="OrderItemMovedToPackage" xml:space="preserve">
+    <value>The item has been moved to package {0}, id: {1}</value>
+  </data>
+  <data name="OrderItemRemovedMessage" xml:space="preserve">
+    <value>Order item was successfullt removed</value>
+  </data>
+  <data name="OrderItemSuccessfullyAdded" xml:space="preserve">
+    <value>Order item has been successfully added.</value>
   </data>
   <data name="OrderRemoveErrorMessage" xml:space="preserve">
     <value>There were some issues with the order you are removing.</value>
@@ -152,6 +164,9 @@
   </data>
   <data name="ProfileUpdateSuccessMessage" xml:space="preserve">
     <value>Your profile has been successfully updated.</value>
+  </data>
+  <data name="RemoveOrderItemErrorMessage" xml:space="preserve">
+    <value>There were some issues removing order item</value>
   </data>
   <data name="SignUpErrorMessage" xml:space="preserve">
     <value>There were some issues registering your account.</value>

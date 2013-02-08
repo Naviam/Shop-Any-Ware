@@ -121,11 +121,11 @@ namespace TdService.UI.Web.Controllers
         /// <returns>
         /// Get recent orders in JSON formatted result.
         /// </returns>
-        [Authorize(Roles = "Shopper")]
+        [Authorize(Roles = "Shopper, Operator")]
         [HttpPost]
-        public ActionResult Recent()
+        public ActionResult Recent(string userEmail)
         {
-            var request = new GetMyOrdersRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() };
+            var request = new GetMyOrdersRequest { IdentityToken = userEmail };
             var response = this.orderService.GetRecent(request);
             var result = response.ConvertToOrderViewModelCollection();
 
@@ -143,11 +143,11 @@ namespace TdService.UI.Web.Controllers
         /// <returns>
         /// Get history orders in JSON formatted result.
         /// </returns>
-        [Authorize(Roles = "Shopper")]
+        [Authorize(Roles = "Shopper, Operator")]
         [HttpPost]
-        public ActionResult History()
+        public ActionResult History(string userEmail)
         {
-            var request = new GetMyOrdersRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() };
+            var request = new GetMyOrdersRequest { IdentityToken = userEmail };
             var response = this.orderService.GetHistory(request);
             var result = response.ConvertToOrderViewModelCollection();
 
@@ -168,9 +168,9 @@ namespace TdService.UI.Web.Controllers
         /// <returns>
         /// Order view model in JSON format.
         /// </returns>
-        [Authorize(Roles = "Shopper")]
+        [Authorize(Roles = "Shopper, Operator")]
         [HttpPost]
-        public ActionResult Add([Bind]string retailerUrl)
+        public ActionResult Add([Bind]string retailerUrl, string userEmail)
         {
             var result = new OrderViewModel { Status = "New", RetailerUrl = retailerUrl };
             var validator = new OrderViewModelValidator();
@@ -181,7 +181,7 @@ namespace TdService.UI.Web.Controllers
                 {
                     RetailerUrl = retailerUrl,
                     CreatedDate = DateTime.UtcNow,
-                    IdentityToken = this.FormsAuthentication.GetAuthenticationToken()
+                    IdentityToken = userEmail
                 };
                 var response = this.orderService.AddOrder(request);
                 result = response.ConverToOrderViewModel();
@@ -213,7 +213,7 @@ namespace TdService.UI.Web.Controllers
         /// <returns>
         /// The <see cref="ActionResult"/>.
         /// </returns>
-        [Authorize(Roles = "Shopper")]
+        [Authorize(Roles = "Shopper, Operator")]
         [HttpPost]
         public ActionResult Remove(int orderId)
         {

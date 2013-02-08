@@ -53,13 +53,27 @@ namespace TdService.UI.Web.Mapping
         }
 
         /// <summary>
-        /// Convert orders to get recent orders request.
+        /// Convert edit order item response to order item view model.
+        /// </summary>
+        /// <param name="response">
+        /// The edit order itme response message.
+        /// </param>
+        /// <returns>
+        /// The order item view model.
+        /// </returns>
+        public static OrderItemViewModel ConvertToOrderItemViewModel(this EditOrderItemResponse response)
+        {
+            return Mapper.Map<EditOrderItemResponse, OrderItemViewModel>(response);
+        }
+
+        /// <summary>
+        /// Convert orders to add item to order request.
         /// </summary>
         /// <param name="orderItemViewModel">
         /// The order Item View Model.
         /// </param>
         /// <returns>
-        /// Collection of get recent orders requests.
+        /// AddItemToOrderRequest instance.
         /// </returns>
         public static AddItemToOrderRequest ConvertToAddItemToOrderRequest(this OrderItemViewModel orderItemViewModel)
         {
@@ -67,20 +81,20 @@ namespace TdService.UI.Web.Mapping
         }
 
         /// <summary>
-        /// The convert to remove item request.
+        /// Convert orders to edit order item request.
         /// </summary>
         /// <param name="orderItemViewModel">
-        /// The order item view model.
+        /// The order Item View Model.
         /// </param>
         /// <returns>
-        /// The <see cref="RemoveItemRequest"/>.
+        /// EditOrderItemRequest instance.
         /// </returns>
-        public static RemoveItemRequest ConvertToRemoveItemRequest(this OrderItemViewModel orderItemViewModel)
+        public static EditOrderItemRequest ConvertToEditOrderItemRequest(this OrderItemViewModel orderItemViewModel)
         {
-            return Mapper.Map<OrderItemViewModel, RemoveItemRequest>(orderItemViewModel);
+            return Mapper.Map<OrderItemViewModel, EditOrderItemRequest>(orderItemViewModel);
         }
 
-        /// <summary>
+       /// <summary>
         /// The convert to remove item request.
         /// </summary>
         /// <param name="response">

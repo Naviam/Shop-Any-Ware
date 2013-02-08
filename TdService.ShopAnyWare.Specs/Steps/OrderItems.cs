@@ -87,7 +87,7 @@ namespace TdService.ShopAnyWare.Specs.Steps
             var actuals = new List<OrderItemViewModel>();
             foreach (var itemViewModel in itemViewModels)
             {
-                var result = contoller.RemoveItem(itemViewModel) as JsonNetResult;
+                var result = contoller.RemoveItem(itemViewModel.Id) as JsonNetResult;
                 Assert.That(result, Is.Not.Null);
                 if (result == null)
                 {
