@@ -155,11 +155,7 @@
     self.addItemCallback = function (data) {
         var model = ko.toJS(data);
         if (model.MessageType == "Success") {
-            var item = new Item(model);
-            self.items.unshift(item);
-            $('#' + item.id()).show("blind", {}, "normal", function () {
-                self.popupItemViewModel = new PopupItemViewModel();
-            });
+            self.loadItems();
             $('#itemFormModal').modal('hide');
             window.showNotice(data.Message, data.MessageType);
         }
