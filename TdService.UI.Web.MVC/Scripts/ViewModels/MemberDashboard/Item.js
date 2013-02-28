@@ -28,7 +28,8 @@ function PopupItemViewModel() {
     self.dimLength = ko.observable("").extend({ number: { message: modalWindowValidationMessages.invalidLength } });;
     self.dimWidth = ko.observable("").extend({ number: { message: modalWindowValidationMessages.invalidWidth } });;
     self.dimGirth = ko.observable("").extend({ number: { message: modalWindowValidationMessages.invalidGirth } });;
-
+    
+    self.uploaderVisible = ko.observable(false);
     self.errorsVisible = ko.observable(false);
     self.brokenRules = ko.observableArray();
     self.validationModel = ko.validatedObservable({

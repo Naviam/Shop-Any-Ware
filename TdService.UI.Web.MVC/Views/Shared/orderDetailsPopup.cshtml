@@ -63,9 +63,13 @@
                     <div class="control-group">
                         <label class="control-label" for="itemGirth">@DashboardViewResources.ItemGirthHeader</label>
                         <div class="controls">
-                            <input class="input-small focused" id="itemGirth" type="text" data-bind="value: dimGirth"/>
+                            <input class="input-small focused" id="itemGirth" type="text" data-bind="value: dimGirth" />
                         </div>
                     </div>
+                </fieldset>
+                <fieldset class="well the-fieldset" data-bind="visible:uploaderVisible">
+                    <legend class="the-legend">@DashboardViewResources.ImagesUploadLegend</legend>
+                    <div id="uploadImages">@DashboardViewResources.NoHtml5Support</div>
                 </fieldset>
             }
             <div class="modalValidationErrors" data-bind="foreach:validationModel.errors, visible:errorsVisible">

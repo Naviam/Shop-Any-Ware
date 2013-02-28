@@ -79,5 +79,12 @@ namespace TdService.Services.Interfaces
         /// The <see cref="RemoveItemResponse"/>.
         /// </returns>
         RemoveItemResponse RemoveItem(RemoveItemRequest request);
+
+        /// <summary>
+        /// Adds image to item
+        /// </summary>
+        /// <param name="request">Uploaded image info</param>
+        /// <returns>response</returns>
+        AddItemImageReponse AddItemImage(AddItemImageRequest request);
     }
 }

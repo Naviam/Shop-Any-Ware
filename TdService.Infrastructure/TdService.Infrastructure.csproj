@@ -112,6 +112,8 @@
     <Compile Include="FileSystem\FileStorage.cs" />
     <Compile Include="FileSystem\FileWebStorage.cs" />
     <Compile Include="FileSystem\IFileStorage.cs" />
+    <Compile Include="Helpers\AmazonS3Helper.cs" />
+    <Compile Include="Helpers\AppConfigHelper.cs" />
     <Compile Include="Helpers\ExcelHelper.cs" />
     <Compile Include="Helpers\PriceHelper.cs" />
     <Compile Include="Helpers\RetailersSource.cs" />

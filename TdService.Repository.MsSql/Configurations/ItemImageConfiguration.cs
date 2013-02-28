@@ -15,7 +15,7 @@ namespace TdService.Repository.MsSql.Configurations
         /// </summary>
         public ItemImageConfiguration()
         {
-            this.Property(p => p.Path).IsRequired().HasMaxLength(100);
+            this.Property(p => p.Url).IsRequired().HasMaxLength(100);
             this.Property(p => p.Filename).HasMaxLength(64);
         }
     }

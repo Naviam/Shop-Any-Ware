@@ -9,10 +9,12 @@
 
 namespace TdService.UI.Web.Controllers
 {
+    using System;
+    using System.Web;
     using System.Web.Mvc;
     using System.Xml;
-
     using TdService.Infrastructure.Authentication;
+    using TdService.Infrastructure.Helpers;
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging.Item;
     using TdService.UI.Web.Mapping;
@@ -153,6 +155,43 @@ namespace TdService.UI.Web.Controllers
                 Data = response.ConvertToOrderItemViewModel()
             };
             return jsonNetResult;
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Operator")]
+        public ActionResult AddItemImage(int itemId)
+        {
+            HttpPostedFileBase FileData = Request.Files[0];
+            int succeded=0, failed=0;
+            for (int i = 0; i < Request.Files.Count; i++)
+            {
+                try
+                {
+                    AmazonS3Helper.SaveFile(
+                        AppConfigHelper.AWSAccessKey,
+                        AppConfigHelper.AWSSecretKey,
+                        AppConfigHelper.AmazonS3Bucket,
+                        Request.Files[i].FileName.Replace('\\', '/'),
+                        Request.Files[i].InputStream);
+                    var resp = this.itemsService.AddItemImage(
+                        new AddItemImageRequest
+                            {
+                                ItemId = itemId,
+                                ImageName = Request.Files[i].FileName,
+                                ImageUrl = string.Concat(AppConfigHelper.AWSUrl, AppConfigHelper.AmazonS3Bucket, "/", Request.Files[i].FileName)
+                            });
+                    succeded++;
+                }
+                catch(Exception ex)
+                {
+                    failed++;
+                }
+            }
+            return new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = new {Succeded = succeded, Failed = failed}
+            };
         }
     }
 }

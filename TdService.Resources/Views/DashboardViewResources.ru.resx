@@ -444,4 +444,10 @@
   <data name="WarningLabelText" xml:space="preserve">
     <value>Внимание!</value>
   </data>
+  <data name="ImagesUploadLegend" xml:space="preserve">
+    <value>Добавить фотографии</value>
+  </data>
+  <data name="NoHtml5Support" xml:space="preserve">
+    <value>Ваш  браузер не поддерживает HTML 5</value>
+  </data>
 </root>
