@@ -186,9 +186,15 @@
             max_file_size: '2mb',
             max_file_count: 5,
             chunk_size: '1mb',
-            unique_names: true,
-            url: '/Items/AddItemImage?itemId=' + self.popupItemViewModel.id
-        });
+            filters : [
+            {title : "Image files", extensions : "jpg"}
+            ],
+            url: '/Items/AddItemImage?itemId=' + self.popupItemViewModel.id,
+            init : {
+                FileUploaded: function(up, file, response)  {
+                    var model = ko.toJS(data);
+                }
+            });
         //I'm sorry for that. 
         $("#uploadImages_start").click(function () {
             var up = $('#uploadImages').plupload('getUploader');

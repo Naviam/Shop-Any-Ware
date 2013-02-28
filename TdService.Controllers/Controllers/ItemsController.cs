@@ -161,36 +161,26 @@ namespace TdService.UI.Web.Controllers
         [Authorize(Roles = "Operator")]
         public ActionResult AddItemImage(int itemId)
         {
-            HttpPostedFileBase FileData = Request.Files[0];
-            int succeded=0, failed=0;
-            for (int i = 0; i < Request.Files.Count; i++)
-            {
-                try
-                {
-                    AmazonS3Helper.SaveFile(
-                        AppConfigHelper.AWSAccessKey,
-                        AppConfigHelper.AWSSecretKey,
-                        AppConfigHelper.AmazonS3Bucket,
-                        Request.Files[i].FileName.Replace('\\', '/'),
-                        Request.Files[i].InputStream);
-                    var resp = this.itemsService.AddItemImage(
-                        new AddItemImageRequest
-                            {
-                                ItemId = itemId,
-                                ImageName = Request.Files[i].FileName,
-                                ImageUrl = string.Concat(AppConfigHelper.AWSUrl, AppConfigHelper.AmazonS3Bucket, "/", Request.Files[i].FileName)
-                            });
-                    succeded++;
-                }
-                catch(Exception ex)
-                {
-                    failed++;
-                }
-            }
+            var fileName = Guid.NewGuid().ToString();
+
+            AmazonS3Helper.SaveFile(
+                AppConfigHelper.AWSAccessKey,
+                AppConfigHelper.AWSSecretKey,
+                AppConfigHelper.AmazonS3Bucket,
+                fileName,
+                Request.Files[0].InputStream);
+            
+            var resp = this.itemsService.AddItemImage(
+                new AddItemImageRequest
+                    {
+                        ItemId = itemId,
+                        ImageName = fileName,
+                        ImageUrl = string.Concat(AppConfigHelper.AWSUrl, AppConfigHelper.AmazonS3Bucket, "/", fileName)
+                    });
             return new JsonNetResult
             {
                 Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
-                Data = new {Succeded = succeded, Failed = failed}
+                Data = null
             };
         }
     }

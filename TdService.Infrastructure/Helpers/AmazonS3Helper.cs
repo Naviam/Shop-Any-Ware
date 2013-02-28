@@ -14,7 +14,7 @@
     /// </summary>
     public static class AmazonS3Helper
     {
-        public static void SaveFile(string awsAccessKey, string awsSecretKey, string bucket, string path, Stream fileStream)
+        public static PutObjectResponse SaveFile(string awsAccessKey, string awsSecretKey, string bucket, string path, Stream fileStream)
         {
             using (var amazonClient = AWSClientFactory.CreateAmazonS3Client(awsAccessKey, awsSecretKey))
             {
@@ -26,7 +26,8 @@
                 createFileRequest.WithKey(path);
                 createFileRequest.WithBucketName(bucket);
                 createFileRequest.WithInputStream(fileStream);
-                amazonClient.PutObject(createFileRequest);
+                var response = amazonClient.PutObject(createFileRequest);
+                return response;
             }
         }
 
@@ -42,7 +43,7 @@
                 copyRequest.WithSourceKey(sourceKey);
                 copyRequest.WithDestinationBucket(destinationBucket);
                 copyRequest.WithDestinationKey(destinationKey);
-                amazonClient.CopyObject(copyRequest);
+                var response = amazonClient.CopyObject(copyRequest);
             }
         }
     }
