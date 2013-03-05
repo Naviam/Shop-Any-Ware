@@ -25,11 +25,6 @@
         public string Date { get; set; }
 
         /// <summary>
-        /// Gets or sets Transaction Amount.
-        /// </summary>
-        public decimal TransactionAmount { get; set; }
-
-        /// <summary>
         /// Gets or sets Transaction Status.
         /// </summary>
         public string TransactionStatus { get; set; }

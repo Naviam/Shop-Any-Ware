@@ -106,5 +106,13 @@ namespace TdService.Model.Items
         /// The <see cref="Item"/>.
         /// </returns>
         Item RemoveItem(int itemId);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <param name="image"></param>
+        void AddImageToItem(int itemId, ItemImage image);
+
     }
 }

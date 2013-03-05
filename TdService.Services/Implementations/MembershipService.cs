@@ -341,14 +341,13 @@ namespace TdService.Services.Implementations
                 return response;
             }
 
-            var profile = user.Profile;
-            if (profile == null)
+            if (user.Profile == null)
             {
                 response.MessageType = MessageType.Error;
                 response.ErrorCode = ErrorCode.ProfileNotFound.ToString();
                 return response;
             }
-            response = profile.ConvertToGetProfileResponse();
+            response = user.ConvertToGetProfileResponse();
             response.WalletId = user.Wallet.Id;
             response.Balance = user.Wallet.Amount;
             return response;

@@ -5,6 +5,12 @@
 @{
     ViewBag.Title = DashboardViewResources.DashboardPageTitle;
 }
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
+
+<script type="text/javascript" src="../Scripts/plupload/js/plupload.js"></script>
+<script type=";text/javascript" src="../Scripts/plupload/js/plupload.html4.js"></script>
+<script type="text/javascript" src="../Scripts/plupload/js/jquery.ui.plupload/jquery.ui.plupload.js"></script>
 
 @if (Model.OperatorMode)
 {
@@ -91,10 +97,10 @@
     <div class="span6" style="float: right">
         <div class="body_header">
             <h3>@DashboardViewResources.PackagesHeader</h3>
-            <form class='form-inline' style="float: right; margin-left:10px" id='frmAddFunds'>
-               <div class='input-prepend input-append'>
-                   <span class='add-on'>$</span><input class='span1' type='text' id='amount' name='amount' placeholder='0.00' data-bind='value:addFundsAmount' style='width:60px'/><input type="button" class="btn" style="font-size: 16px; width:100px;" id="btnAddFunds" data-bind="click:AddFunds, value: addingFunds()?'@DashboardViewResources.AddFundsButtonLoading':'@DashboardViewResources.AddFundsButton', disable: addingFunds()"/>
-               </div>
+            <form class='form-inline' style="float: right; margin-left: 10px" id='frmAddFunds'>
+                <div class='input-prepend input-append'>
+                    <span class='add-on'>$</span><input class='span1' type='text' id='amount' name='amount' placeholder='0.00' data-bind='value:addFundsAmount' style='width: 60px' /><input type="button" class="btn" style="font-size: 16px; width:100px;" id="btnAddFunds" data-bind="click:AddFunds, value: addingFunds()?'@DashboardViewResources.AddFundsButtonLoading':'@DashboardViewResources.AddFundsButton', disable: addingFunds()"/>
+                </div>
             </form>
             <a href="#" class="store_address" data-bind="popover: balanceBindingValue">@DashboardViewResources.BalanceHeader: $<span data-bind="text:balance"></span>
             </a><i class="icon-money" style="margin-top: 6px"></i>
@@ -163,9 +169,10 @@
 <input id="model" type="hidden" value="@(new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(Model))" />
 @section Scripts
 {
-    @Scripts.Render("~/bundles/dashboard")
+    @Scripts.Render("~/bundles/plUpload");
+    @Scripts.Render("~/bundles/dashboard");
     <script type="text/javascript">
-        $(document).ready(function () {
+        $(document).ready(function() {
             ko.validation.init(mainViewModel, {
                 registerExtenders: true,
                 messagesOnModified: false,
@@ -175,10 +182,12 @@
             });
 
             var mainViewModel = new DashboardViewModel($("#model").val());
-           
+
             ko.applyBindings(mainViewModel);
             $(".store_address").popover();
             $(".choose_package").popover('show');
+
+
         });
     </script>
 }

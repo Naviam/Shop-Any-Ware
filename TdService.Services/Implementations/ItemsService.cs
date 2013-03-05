@@ -204,5 +204,18 @@ namespace TdService.Services.Implementations
                     { MessageType = MessageType.Error, Message = CommonResources.EditOrderItemErrorMessage };
             }
         }
+
+        /// <summary>
+        /// Adds item image
+        /// </summary>
+        /// <param name="request">request</param>
+        /// <returns>response</returns>
+        public AddItemImageReponse AddItemImage(AddItemImageRequest request)
+        {
+            this.itemsRepository.AddImageToItem(
+                request.ItemId, new ItemImage { Filename = request.ImageName, Url = request.ImageUrl });
+
+            return new AddItemImageReponse { ImageUrl = request.ImageUrl, ImageName = request.ImageName };
+        }
     }
 }

@@ -444,4 +444,10 @@
   <data name="WarningLabelText" xml:space="preserve">
     <value>Warning!</value>
   </data>
+  <data name="ImagesUploadLegend" xml:space="preserve">
+    <value>Add Images</value>
+  </data>
+  <data name="NoHtml5Support" xml:space="preserve">
+    <value>Your browser does not support HTML 5</value>
+  </data>
 </root>

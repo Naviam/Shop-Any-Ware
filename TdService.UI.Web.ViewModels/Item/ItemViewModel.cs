@@ -35,11 +35,6 @@ namespace TdService.UI.Web.ViewModels.Item
         public string Color { get; set; }
 
         /// <summary>
-        /// Gets or sets the size.
-        /// </summary>
-        public string Size { get; set; }
-
-        /// <summary>
         /// Gets or sets Weight Pounds.
         /// </summary>
         public int WeightPounds { get; set; }

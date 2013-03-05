@@ -43,18 +43,6 @@ namespace TdService.Services.Mapping
             return Mapper.Map<Model.Membership.Profile, UpdateProfileResponse>(profile);
         }
 
-        /// <summary>
-        /// The convert to get profile response.
-        /// </summary>
-        /// <param name="profile">
-        /// The profile.
-        /// </param>
-        /// <returns>
-        /// The TdService.Services.Messaging.Membership.GetProfileResponse.
-        /// </returns>
-        public static GetProfileResponse ConvertToGetProfileResponse(this Model.Membership.Profile profile)
-        {
-            return Mapper.Map<Model.Membership.Profile, GetProfileResponse>(profile);
-        }
+        
     }
 }

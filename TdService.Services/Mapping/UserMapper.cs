@@ -124,5 +124,19 @@ namespace TdService.Services.Mapping
         {
             return Mapper.Map<List<Role>, List<GetAllRolesResponse>>(roles);
         }
+
+        /// <summary>
+        /// The convert to get profile response.
+        /// </summary>
+        /// <param name="profile">
+        /// The profile.
+        /// </param>
+        /// <returns>
+        /// The TdService.Services.Messaging.Membership.GetProfileResponse.
+        /// </returns>
+        public static GetProfileResponse ConvertToGetProfileResponse(this Model.Membership.User profile)
+        {
+            return Mapper.Map<Model.Membership.User, GetProfileResponse>(profile);
+        }
     }
 }

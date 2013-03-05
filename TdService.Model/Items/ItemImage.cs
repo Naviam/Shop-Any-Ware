@@ -29,11 +29,11 @@ namespace TdService.Model.Items
         /// <summary>
         /// Gets or sets Path.
         /// </summary>
-        public string Path { get; set; }
+        public string Url { get; set; }
 
-        /// <summary>
-        /// Gets or sets PictureType.
-        /// </summary>
-        public ImageType PictureType { get; set; }
+        ///// <summary>
+        ///// Gets or sets PictureType.
+        ///// </summary>
+        //public ImageType PictureType { get; set; }
     }
 }

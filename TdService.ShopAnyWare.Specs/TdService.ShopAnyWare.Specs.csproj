@@ -59,6 +59,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\InternalPackages\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -321,6 +325,10 @@
     <ProjectReference Include="..\TdService.Services\TdService.Services.csproj">
       <Project>{a9deda99-a27d-4687-b912-46f339ea36a4}</Project>
       <Name>TdService.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TdService.UI.Web.MVC\TdService.UI.Web.MVC.csproj">
+      <Project>{21db700b-c1d7-481d-939e-8aa00ff2f546}</Project>
+      <Name>TdService.UI.Web.MVC</Name>
     </ProjectReference>
     <ProjectReference Include="..\TdService.UI.Web.ViewModels\TdService.UI.Web.ViewModels.csproj">
       <Project>{C79CC22D-53BA-4685-8E3C-D74A3CD7B1CF}</Project>

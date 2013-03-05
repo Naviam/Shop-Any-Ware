@@ -2,36 +2,14 @@
 Feature: Deposit
 	In order to buy services from SAW
 	As a shopper
-	I want to be able to make a deposit via my credit card
+	I want to be able to make a deposit via PayPal web interface
 
-@DoDirectPayment @sandbox
-Scenario: Make a deposit witch a CC via PayPal sandbox
-	Given there is 'kotg@bk.ru' account with '123456' password in role 'Shoper' with fullname 'kotg' and 'kotg'
-	And I am authenticated as 'kotg@bk.ru'
-	And my current wallet  amount is 0
-	And I enter the following CC info on the deposit page
-	| First Name | Last Name | Credit Card Number | CVV2 | Exp Year | Exp Month | Amount |
-	| Test       | Test      | 4534674555592087   | 111  | 2017     | 11        | 1      |
-	Then the DoDirectPayment responce should be as follows
-	| Result  |
-	| Success |
-	And my current wallet  amount should be 0
+@PPExpressCheckout 
+Scenario: Make a deposit via PP web UI
+	Given there is 'pptest@gmail.com' account with 'ruinruin' password in role 'Shopper' with fullname 'Vitali' and 'Hatalski'
+	Given I am authenticated as 'pptest@gmail.com'
+	And I enter the following amount '3141' int the deposit textbox and press Add funds button
+	Then the PP URL in the AddTransaction responce should start with '_express-checkout&token='	
 	And there should be a transaction for me as follows
 	| Operation Amount | Transaction Status |
-	| 1                | Success            |
-
-@DoDirectPayment @sandbox
-Scenario: Make a deposit witch a CC via PayPal sandbox with incorrect payment data
-	Given there is 'kotg@bk.ru' account with '123456' password in role 'Shoper' with fullname 'kotg' and 'kotg'
-	And I am authenticated as 'kotg@bk.ru'
-	And my current wallet  amount is 0
-	And I enter the following CC info on the deposit page
-	| First Name | Last Name | Credit Card Number | CVV2 | Exp Year | Exp Month | Amount |
-	| Test       | Test      | 4534674555591111   | 111  | 2011     | 12        | 1      |
-	Then the DoDirectPayment responce should be as follows
-	| Result |
-	| Error  |
-	And my current wallet  amount should be 0
-	And there should be a transaction for me as follows
-	| Operation Amount | Transaction Status |
-	| 1                | Error              |
+	| 3141             | InProgress         |
