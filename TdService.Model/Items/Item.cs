@@ -6,6 +6,7 @@
 
 namespace TdService.Model.Items
 {
+    using System.Collections.Generic;
     using TdService.Infrastructure.Domain;
     using TdService.Model.Common;
 
@@ -40,6 +41,11 @@ namespace TdService.Model.Items
         public Weight Weight { get; set; }
 
         /// <summary>
+        /// Get or sets item images
+        /// </summary>
+        public List<ItemImage> Images { get; set; }
+
+        /// <summary>
         /// Gets or sets Price.
         /// </summary>
         public decimal Price { get; set; }
@@ -59,5 +65,7 @@ namespace TdService.Model.Items
                 this.AddBrokenRule(ItemBussinessRules.QuantityRequired);
             }
         }
+
+       
     }
 }

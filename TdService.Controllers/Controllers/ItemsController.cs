@@ -9,10 +9,12 @@
 
 namespace TdService.UI.Web.Controllers
 {
+    using System;
+    using System.Web;
     using System.Web.Mvc;
     using System.Xml;
-
     using TdService.Infrastructure.Authentication;
+    using TdService.Infrastructure.Helpers;
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging.Item;
     using TdService.UI.Web.Mapping;
@@ -153,6 +155,33 @@ namespace TdService.UI.Web.Controllers
                 Data = response.ConvertToOrderItemViewModel()
             };
             return jsonNetResult;
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Operator")]
+        public ActionResult AddItemImage(int itemId)
+        {
+            var fileName = Guid.NewGuid().ToString();
+
+            AmazonS3Helper.SaveFile(
+                AppConfigHelper.AWSAccessKey,
+                AppConfigHelper.AWSSecretKey,
+                AppConfigHelper.AmazonS3Bucket,
+                fileName,
+                Request.Files[0].InputStream);
+            
+            var resp = this.itemsService.AddItemImage(
+                new AddItemImageRequest
+                    {
+                        ItemId = itemId,
+                        ImageName = fileName,
+                        ImageUrl = string.Concat(AppConfigHelper.AWSUrl, AppConfigHelper.AmazonS3Bucket, "/", fileName)
+                    });
+            return new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = null
+            };
         }
     }
 }

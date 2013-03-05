@@ -294,10 +294,10 @@ namespace TdService.ShopAnyWare.Specs.Steps
                    let status = (OrderStatus)Enum.Parse(typeof(OrderStatus), statusText)
                    select new Order(status)
                    {
-                        Retailer = retailer,
-                        OrderNumber = orderNumber,
-                        TrackingNumber = trackingNumber,
-                        CreatedDate = DateTime.UtcNow
+                       Retailer = retailer,
+                       OrderNumber = orderNumber,
+                       TrackingNumber = trackingNumber,
+                       CreatedDate = DateTime.UtcNow
                    };
         }
     }

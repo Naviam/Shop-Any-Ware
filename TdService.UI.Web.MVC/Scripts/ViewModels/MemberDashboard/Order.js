@@ -147,6 +147,7 @@
         var model = ko.toJS(data);
         if (model.MessageType == "Success") {
             self.loadItems();
+            self.destroyUploader();
             $('#itemFormModal').modal('hide');
             window.showNotice(data.Message, data.MessageType);
         }
@@ -155,11 +156,7 @@
     self.addItemCallback = function (data) {
         var model = ko.toJS(data);
         if (model.MessageType == "Success") {
-            var item = new Item(model);
-            self.items.unshift(item);
-            $('#' + item.id()).show("blind", {}, "normal", function () {
-                self.popupItemViewModel = new PopupItemViewModel();
-            });
+            self.loadItems();
             $('#itemFormModal').modal('hide');
             window.showNotice(data.Message, data.MessageType);
         }
@@ -182,14 +179,44 @@
         return data;
     };
 
+    self.initUploader = function () {
+        $('#uploadImages').plupload({
+            // General settings
+            runtimes: 'html4',
+            max_file_size: '2mb',
+            max_file_count: 5,
+            chunk_size: '1mb',
+            filters : [
+            {title : "Image files", extensions : "jpg"}
+            ],
+            url: '/Items/AddItemImage?itemId=' + self.popupItemViewModel.id,
+            init : {
+                FileUploaded: function(up, file, response)  {
+                    var model = ko.toJS(data);
+                }
+            });
+        //I'm sorry for that. 
+        $("#uploadImages_start").click(function () {
+            var up = $('#uploadImages').plupload('getUploader');
+            up.start();
+        });
+    };
+
+    self.destroyUploader = function () {
+        $('#uploadImages').plupload('destroy');
+    }
+
     self.showAddItemPopup = function () {
         self.popupItemViewModel.clear();
+        self.popupItemViewModel.uploaderVisible(false);
 
         $('#itemFormModal').modal('show');
     };
 
     self.showEditItemPopup = function (model) {
         self.popupItemViewModel.updateFieldsFromModel(model);
+        self.popupItemViewModel.uploaderVisible(true);
+        self.initUploader();
 
         $('#itemFormModal').modal('show');
     };

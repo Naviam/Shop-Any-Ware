@@ -304,6 +304,15 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Images.
+        /// </summary>
+        public static string ImagesUploadLegend {
+            get {
+                return ResourceManager.GetString("ImagesUploadLegend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to IN STOCK.
         /// </summary>
         public static string InStockButton {
@@ -561,6 +570,15 @@ namespace TdService.Resources.Views {
         public static string NoHistoryPackagesMessage {
             get {
                 return ResourceManager.GetString("NoHistoryPackagesMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your browser does not support HTML 5.
+        /// </summary>
+        public static string NoHtml5Support {
+            get {
+                return ResourceManager.GetString("NoHtml5Support", resourceCulture);
             }
         }
         

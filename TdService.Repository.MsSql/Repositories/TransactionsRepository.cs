@@ -30,6 +30,11 @@
             }
         }
 
+        /// <summary>
+        /// Confirms transaction. 
+        /// </summary>
+        /// <param name="token">token from PP API</param>
+        /// <param name="payerId">payerId from PP API</param>
         public void ConfirmTransaction(string token, string payerId)
         {
             using (var context = new ShopAnyWareSql())

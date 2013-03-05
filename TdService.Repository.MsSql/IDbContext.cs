@@ -82,6 +82,11 @@ namespace TdService.Repository.MsSql
         IDbSet<DeliveryAddress> DeliveryAddresses { get; }
 
         /// <summary>
+        /// Gets item images
+        /// </summary>
+        IDbSet<ItemImage> ItemImages { get; }
+
+        /// <summary>
         /// Save all changes made in this context to the underlying database.
         /// </summary>
         /// <returns>

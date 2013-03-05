@@ -57,6 +57,7 @@
     <Compile Include="Configurations\DeliveryAddressConfiguration.cs" />
     <Compile Include="Configurations\DimensionsConfiguration.cs" />
     <Compile Include="Configurations\ItemConfiguration.cs" />
+    <Compile Include="Configurations\ItemImageConfiguration.cs" />
     <Compile Include="Configurations\OrderConfiguration.cs" />
     <Compile Include="Configurations\PackageConfiguration.cs" />
     <Compile Include="Configurations\ProfileConfiguration.cs" />

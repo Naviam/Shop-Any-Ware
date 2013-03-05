@@ -101,6 +101,10 @@ namespace TdService.Repository.MsSql
         public DbSet<DeliveryAddress> DeliveryAddresses { get; set; }
 // ReSharper restore UnusedAutoPropertyAccessor.Local
 
+        // ReSharper disable UnusedAutoPropertyAccessor.Local
+        public DbSet<ItemImage> ItemImages{ get; set; }
+        // ReSharper restore UnusedAutoPropertyAccessor.Local
+
         /// <summary>
         /// Model creating rules.
         /// </summary>
@@ -120,6 +124,7 @@ namespace TdService.Repository.MsSql
             modelBuilder.Configurations.Add(new ItemConfiguration());
             modelBuilder.Configurations.Add(new WeightConfiguration());
             modelBuilder.Configurations.Add(new DimensionsConfiguration());
+            modelBuilder.Configurations.Add(new ItemImageConfiguration());
         }
 
         /// <summary>
