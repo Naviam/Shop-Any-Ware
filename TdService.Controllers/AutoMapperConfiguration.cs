@@ -84,6 +84,18 @@ namespace TdService.UI.Web
             Mapper.CreateMap<GetAllRolesResponse, RoleViewModel>();
 
             // profile
+            Mapper.CreateMap<User, GetProfileResponse>()
+                .ForMember(resp => resp.Balance, opt => opt.MapFrom(source => source.Wallet.Amount))
+                .ForMember(resp => resp.WalletId, opt => opt.MapFrom(source => source.Wallet.Id))
+                .ForMember(resp => resp.Id, opt => opt.MapFrom(source => source.Profile.Id))
+                .ForMember(resp => resp.LastName, opt => opt.MapFrom(source => source.Profile.LastName))
+                .ForMember(resp => resp.FirstName, opt => opt.MapFrom(source => source.Profile.FirstName))
+                .ForMember(resp => resp.NotifyOnOrderStatusChanged, opt => opt.MapFrom(source => source.Profile.NotifyOnOrderStatusChanged))
+                .ForMember(resp => resp.NotifyOnPackageStatusChanged, opt => opt.MapFrom(source => source.Profile.NotifyOnPackageStatusChanged))
+                .ForMember(r => r.Message, opt => opt.Ignore()).ForMember(r => r.ErrorCode, opt => opt.Ignore()).ForMember(
+                    r => r.BrokenRules, opt => opt.Ignore()).ForMember(r => r.MessageType, opt => opt.Ignore());
+                    
+
             Mapper.CreateMap<ProfileViewModel, UpdateProfileRequest>()
                 .ForMember(m => m.IdentityToken, opt => opt.Ignore());
             Mapper.CreateMap<UpdateProfileResponse, ProfileViewModel>()
@@ -97,9 +109,6 @@ namespace TdService.UI.Web
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
             Mapper.CreateMap<GetProfileResponse, ProfileViewModel>()
                 .ForMember(m => m.Email, opt => opt.Ignore());
-            Mapper.CreateMap<Model.Membership.Profile, GetProfileResponse>().ForMember(
-                r => r.Message, opt => opt.Ignore()).ForMember(r => r.ErrorCode, opt => opt.Ignore()).ForMember(
-                    r => r.BrokenRules, opt => opt.Ignore()).ForMember(r => r.MessageType, opt => opt.Ignore());
 
             // delivery address
             Mapper.CreateMap<DeliveryAddress, GetDeliveryAddressesResponse>()
@@ -207,9 +216,11 @@ namespace TdService.UI.Web
             Mapper.CreateMap<GetRetailersResponse, RetailerViewModel>();
 
             // add order item
-            Mapper.CreateMap<OrderItemViewModel, AddItemToOrderRequest>();
+            Mapper.CreateMap<OrderItemViewModel, AddItemToOrderRequest>()
+                .ForMember(dest => dest.IdentityToken, opt => opt.Ignore()); 
             Mapper.CreateMap<AddItemToOrderRequest, Item>()
                 .ForMember(r => r.Id, opt => opt.Ignore())
+                .ForMember(r => r.Images, opt => opt.Ignore())
                 .ForMember(r => r.Weight, opt => opt.ResolveUsing<WeightResolver>())
                 .ForMember(r => r.Dimensions, opt => opt.ResolveUsing<DimensionsResolver>());
             Mapper.CreateMap<Item, AddItemToOrderResponse>()
@@ -218,11 +229,14 @@ namespace TdService.UI.Web
                 .ForMember(r => r.Message, opt => opt.Ignore())
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
-            Mapper.CreateMap<AddItemToOrderResponse, OrderItemViewModel>();
+            Mapper.CreateMap<AddItemToOrderResponse, OrderItemViewModel>()
+                .ForMember(dest=>dest.OperatorMode, opt=>opt.Ignore());
 
             // edit order item
-            Mapper.CreateMap<OrderItemViewModel, EditOrderItemRequest>();
-            Mapper.CreateMap<EditOrderItemResponse, OrderItemViewModel>();
+            Mapper.CreateMap<OrderItemViewModel, EditOrderItemRequest>()
+                .ForMember(dest => dest.IdentityToken, opt => opt.Ignore()); 
+            Mapper.CreateMap<EditOrderItemResponse, OrderItemViewModel>()
+                .ForMember(dest => dest.OperatorMode, opt => opt.Ignore()); 
 
             // remove order item
             Mapper.CreateMap<OrderItemViewModel, RemoveItemRequest>()
@@ -232,7 +246,8 @@ namespace TdService.UI.Web
                 .ForMember(r => r.Message, opt => opt.Ignore())
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
-            Mapper.CreateMap<RemoveItemResponse, OrderItemViewModel>();
+            Mapper.CreateMap<RemoveItemResponse, OrderItemViewModel>()
+                .ForMember(dest => dest.OperatorMode, opt => opt.Ignore());
 
             // get order items
             Mapper.CreateMap<Item, GetOrderItemsResponse>()
@@ -241,7 +256,8 @@ namespace TdService.UI.Web
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
             Mapper.CreateMap<GetOrderItemsResponse, OrderItemViewModel>()
-                .ForMember(r => r.OrderId, opt => opt.Ignore());
+                .ForMember(r => r.OrderId, opt => opt.Ignore())
+                .ForMember(dest => dest.OperatorMode, opt => opt.Ignore()); ;
 
             // add item to package
 
@@ -282,21 +298,29 @@ namespace TdService.UI.Web
             // add transaction
             Mapper.CreateMap<AddTransactionResponse, TransactionsViewModel>();
             Mapper.CreateMap<TransactionsViewModel, AddTransactionRequest>()
-                .ForMember(r => r.IdentityToken, opt => opt.Ignore());
+                .ForMember(r => r.IdentityToken, opt => opt.Ignore())
+                .ForMember(r => r.Token, opt => opt.Ignore());
             Mapper.CreateMap<Transaction, AddTransactionResponse>()
                 .ForMember(r => r.BrokenRules, opt => opt.Ignore())
                 .ForMember(r => r.Message, opt => opt.Ignore())
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())
-                .ForMember(r => r.MessageType, opt => opt.Ignore());
+                .ForMember(r => r.MessageType, opt => opt.Ignore())
+                .ForMember(r => r.PayPalRedirectUrl, opt => opt.Ignore());
             Mapper.CreateMap<AddTransactionRequest, Transaction>()
                 .ForMember(r => r.Id, opt => opt.Ignore())
-                .ForMember(r => r.Currency, opt => opt.Ignore());
+                .ForMember(r => r.Currency, opt => opt.Ignore())
+                .ForMember(r => r.PayerId, opt => opt.Ignore())
+                .ForMember(r => r.Commission, opt => opt.Ignore());
 
             //admin dashboard
             Mapper.CreateMap<User, UserResponseModel>().ConvertUsing<UsersInRoleConverter>();
             Mapper.CreateMap<User, GetUserByIdResponse>().ConvertUsing<GetUserByIdConverter>();
             Mapper.CreateMap<User, GetUserByEmailResponse>().ConvertUsing<GetUserByEmailConverter>();
-            Mapper.CreateMap<UserResponseModel, UsersInRoleViewModel>();
+            Mapper.CreateMap<UserResponseModel, UsersInRoleViewModel>()
+                .ForMember(r => r.BrokenRules, opt => opt.Ignore())
+                .ForMember(r => r.Message, opt => opt.Ignore())
+                .ForMember(r => r.ErrorCode, opt => opt.Ignore())
+                .ForMember(r => r.MessageType, opt => opt.Ignore()); 
             Mapper.CreateMap<GetUserByIdResponse, UsersInRoleViewModel>();
             Mapper.CreateMap<GetUserByEmailResponse, UsersInRoleViewModel>();
         }

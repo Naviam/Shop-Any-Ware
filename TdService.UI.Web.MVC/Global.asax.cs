@@ -49,5 +49,10 @@ namespace TdService.UI.Web.MVC
 
             FluentValidationModelValidatorProvider.Configure();
         }
+
+        public void RegisterRoutes(RouteCollection routes)
+        {
+            RouteConfig.RegisterRoutes(routes);
+        }
     }
 }

@@ -65,6 +65,7 @@
     <Compile Include="Account\VerifyEmailViewModel.cs" />
     <Compile Include="Admin\AdminDashBoardViewModel.cs" />
     <Compile Include="Admin\UsersInRoleViewModel.cs" />
+    <Compile Include="Ballance\AddTransactionViewModel.cs" />
     <Compile Include="Ballance\TransactionsViewModel.cs" />
     <Compile Include="Member\ShopperDashboardViewModel.cs" />
     <Compile Include="Member\WelcomeViewModel.cs" />

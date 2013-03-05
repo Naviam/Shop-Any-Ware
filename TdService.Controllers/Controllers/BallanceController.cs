@@ -79,8 +79,8 @@ namespace TdService.UI.Web.Controllers
             {
                 //get token from paypal
                 var token = PayPalHelper.GetTokenFromPayPalApi(localAmount,
-                    ResolveServerUrl(VirtualPathUtility.ToAbsolute(Url.Action("PaymentSucceded", "Member")), false),
-                    ResolveServerUrl(VirtualPathUtility.ToAbsolute(Url.Action("PaymentCanceled", "Member")), false),
+                    ResolveServerUrl(this.HttpContext, VirtualPathUtility.ToAbsolute(Url.Action("PaymentSucceded", "Member")), false),
+                    ResolveServerUrl(this.HttpContext, VirtualPathUtility.ToAbsolute(Url.Action("PaymentCanceled", "Member")), false),
                     "SAW sandbox test deposit",//TODO add description
                     "SAW");
                 
@@ -96,13 +96,12 @@ namespace TdService.UI.Web.Controllers
                     TransactionStatus = TransactionStatus.InProgress,
                     Token = token,
                     WalletId = profile.WalletId
-
                 };
                 var response = this.transactionService.AddTransaction(request);
                 var jsonNetResult = new JsonNetResult
                 {
                     Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
-                    Data = new { Message = response.Message, MessageType = response.MessageType.ToString(), RedirectUrl = PayPalHelper.GetRedirectUrl(token) }
+                    Data = new AddTransactionViewModel { Message = response.Message, MessageType = response.MessageType.ToString(), RedirectUrl = PayPalHelper.GetRedirectUrl(token) }
                 };
                 return jsonNetResult;
             }
@@ -111,19 +110,19 @@ namespace TdService.UI.Web.Controllers
                 var jsonNetResult = new JsonNetResult
                 {
                     Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
-                    Data = new { Message = ex.Message, MessageType="Error" }
+                    Data = new AddTransactionViewModel { Message = ex.Message, MessageType="Error" }
                 };
                 return jsonNetResult;
             }
         }
 
-        private static string ResolveServerUrl(string serverUrl, bool forceHttps)
+        private static string ResolveServerUrl(HttpContextBase context, string serverUrl, bool forceHttps)
         {
             if (serverUrl.IndexOf("://") > -1)
                 return serverUrl;
 
             string newUrl = serverUrl;
-            Uri originalUri = System.Web.HttpContext.Current.Request.Url;
+            Uri originalUri = context.Request.Url;
             newUrl = (forceHttps ? "https" : originalUri.Scheme) +
                 "://" + originalUri.Authority + newUrl;
             return newUrl;

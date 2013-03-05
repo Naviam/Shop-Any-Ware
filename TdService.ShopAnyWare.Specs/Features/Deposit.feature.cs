@@ -34,7 +34,7 @@ namespace TdService.ShopAnyWare.Specs.Features
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Deposit", "In order to buy services from SAW\r\nAs a shopper\r\nI want to be able to make a depo" +
-                    "sit via my credit card", ProgrammingLanguage.CSharp, new string[] {
+                    "sit via PayPal web interface", ProgrammingLanguage.CSharp, new string[] {
                         "paypal"});
             testRunner.OnFeatureStart(featureInfo);
         }
@@ -68,119 +68,34 @@ namespace TdService.ShopAnyWare.Specs.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Make a deposit witch a CC via PayPal sandbox")]
-        [NUnit.Framework.CategoryAttribute("DoDirectPayment")]
-        [NUnit.Framework.CategoryAttribute("sandbox")]
-        public virtual void MakeADepositWitchACCViaPayPalSandbox()
+        [NUnit.Framework.DescriptionAttribute("Make a deposit via PP web UI")]
+        [NUnit.Framework.CategoryAttribute("PPExpressCheckout")]
+        public virtual void MakeADepositViaPPWebUI()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Make a deposit witch a CC via PayPal sandbox", new string[] {
-                        "DoDirectPayment",
-                        "sandbox"});
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Make a deposit via PP web UI", new string[] {
+                        "PPExpressCheckout"});
 #line 8
 this.ScenarioSetup(scenarioInfo);
 #line 9
- testRunner.Given("there is \'kotg@bk.ru\' account with \'123456\' password in role \'Shoper\' with fullna" +
-                    "me \'kotg\' and \'kotg\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("there is \'pptest@gmail.com\' account with \'ruinruin\' password in role \'Shopper\' wi" +
+                    "th fullname \'Vitali\' and \'Hatalski\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 10
- testRunner.And("I am authenticated as \'kotg@bk.ru\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("I am authenticated as \'pptest@gmail.com\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 11
- testRunner.And("my current wallet  amount is 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I enter the following amount \'3141\' int the deposit textbox and press Add funds b" +
+                    "utton", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 12
+ testRunner.Then("the PP URL in the AddTransaction responce should start with \'_express-checkout&to" +
+                    "ken=\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
-                        "First Name",
-                        "Last Name",
-                        "Credit Card Number",
-                        "CVV2",
-                        "Exp Year",
-                        "Exp Month",
-                        "Amount"});
+                        "Operation Amount",
+                        "Transaction Status"});
             table1.AddRow(new string[] {
-                        "Test",
-                        "Test",
-                        "4534674555592087",
-                        "111",
-                        "2017",
-                        "11",
-                        "1"});
-#line 12
- testRunner.And("I enter the following CC info on the deposit page", ((string)(null)), table1, "And ");
-#line hidden
-            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Result"});
-            table2.AddRow(new string[] {
-                        "Success"});
-#line 15
- testRunner.Then("the DoDirectPayment responce should be as follows", ((string)(null)), table2, "Then ");
-#line 18
- testRunner.And("my current wallet  amount should be 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-            TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Operation Amount",
-                        "Transaction Status"});
-            table3.AddRow(new string[] {
-                        "1",
-                        "Success"});
-#line 19
- testRunner.And("there should be a transaction for me as follows", ((string)(null)), table3, "And ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Make a deposit witch a CC via PayPal sandbox with incorrect payment data")]
-        [NUnit.Framework.CategoryAttribute("DoDirectPayment")]
-        [NUnit.Framework.CategoryAttribute("sandbox")]
-        public virtual void MakeADepositWitchACCViaPayPalSandboxWithIncorrectPaymentData()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Make a deposit witch a CC via PayPal sandbox with incorrect payment data", new string[] {
-                        "DoDirectPayment",
-                        "sandbox"});
-#line 24
-this.ScenarioSetup(scenarioInfo);
-#line 25
- testRunner.Given("there is \'kotg@bk.ru\' account with \'123456\' password in role \'Shoper\' with fullna" +
-                    "me \'kotg\' and \'kotg\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 26
- testRunner.And("I am authenticated as \'kotg@bk.ru\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 27
- testRunner.And("my current wallet  amount is 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
-                        "First Name",
-                        "Last Name",
-                        "Credit Card Number",
-                        "CVV2",
-                        "Exp Year",
-                        "Exp Month",
-                        "Amount"});
-            table4.AddRow(new string[] {
-                        "Test",
-                        "Test",
-                        "4534674555591111",
-                        "111",
-                        "2011",
-                        "12",
-                        "1"});
-#line 28
- testRunner.And("I enter the following CC info on the deposit page", ((string)(null)), table4, "And ");
-#line hidden
-            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Result"});
-            table5.AddRow(new string[] {
-                        "Error"});
-#line 31
- testRunner.Then("the DoDirectPayment responce should be as follows", ((string)(null)), table5, "Then ");
-#line 34
- testRunner.And("my current wallet  amount should be 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-            TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Operation Amount",
-                        "Transaction Status"});
-            table6.AddRow(new string[] {
-                        "1",
-                        "Error"});
-#line 35
- testRunner.And("there should be a transaction for me as follows", ((string)(null)), table6, "And ");
+                        "3141",
+                        "InProgress"});
+#line 13
+ testRunner.And("there should be a transaction for me as follows", ((string)(null)), table1, "And ");
 #line hidden
             this.ScenarioCleanup();
         }

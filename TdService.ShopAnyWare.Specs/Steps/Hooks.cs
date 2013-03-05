@@ -120,5 +120,23 @@ namespace TdService.ShopAnyWare.Specs.Steps
             var packagesService = new PackagesService(packageRepository, userRepository,logger);
             ScenarioContext.Current.Set(packagesService);
         }
+
+        [BeforeScenario("paypal")]
+        public static void BeforeExpressCheckoutScenarios()
+        {
+            var context = new ShopAnyWareSql();
+            var userRepository = new UserRepository(context);
+            var roleRepository = new RoleRepository(context);
+            var profileRepository = new ProfileRepository(context);
+            var membershipRepository = new MembershipRepository();
+            var transactionRepo = new TransactionsRepository();
+
+            var logger = new FakeLogger();
+            var emailService = new FakeEmailService();
+            var transactionService = new TransactionService(transactionRepo, logger);
+            ScenarioContext.Current.Set(transactionService);
+            var membershipService = new MembershipService(logger, emailService, userRepository, roleRepository, profileRepository, membershipRepository);
+            ScenarioContext.Current.Set(membershipService);
+        }
     }
 }
