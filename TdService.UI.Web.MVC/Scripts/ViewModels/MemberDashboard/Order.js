@@ -186,13 +186,22 @@
             max_file_count: 5,
             chunk_size: '1mb',
             filters: [
-            { title: "Image files", extensions: "jpg" }
+            { title: "Image files", extensions: "jpg,bmp,gif,jpeg" }
             ],
             url: '/Items/AddItemImage?itemId=' + self.popupItemViewModel.id,
             init: {
                 FileUploaded: function (up, file, response) {
                     //TODO: handle responses
-                    self.loadItems();
+                    var model = JSON.parse($(response.response).text());
+                    if (model.MessageType != 'Success') return;
+                    //add new image to carousel
+                    $.each(self.items(), function (index, value) {
+                        if (value.id() == model.ItemId) {
+                            //found
+                            value.images.push({ FileName: model.FileName, Url: model.Url });
+                            
+                        }
+                    });
                 }
             }
         });

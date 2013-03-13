@@ -60,16 +60,17 @@
                     <tr data-bind="attr: {id: id}">
                         <td class="left">
                             <div class="modal" data-bind="attr:{id: imagesPopupDivId}" style="display: none;">
-                                <div class="modal-header" style="border:none">
-                                    <button class="close" data-dismiss="modal">×</button>
-                                </div>
                                 <div class="modal-body">
                                     <ul class="bxslider" data-bind="foreach: {data: images}">
-                                        <li><img data-bind="attr: {src: Url, title:FileName}" /></li>
+                                        <li>
+                                            <img data-bind="attr: {src: Url, title:FileName}" /></li>
                                     </ul>
                                 </div>
+                                <div class="modal-footer">
+                                    <a href="#" class="btn" data-bind="click:closeImagesPopup">@DashboardViewResources.CancelButton</a>
+                                </div>
                             </div>
-                            <i class="icon-camera" style="cursor:pointer" data-bind="click:openImagesPopup"></i>&nbsp;<span class="editable" data-content="<table class='details'><tr><td><img src='@Url.Content("~/content/img/kindle.jpg")' /></td><td><p>Name: Kindle</p><p>Weight: 1.3lbs</p><p>Color: Black</p><p>Quantity: 1</p><p>Cost: $100</p></td>" data-bind="text: name"></span>
+                            <i class="icon-camera" style="cursor: pointer" data-bind="click:openImagesPopup"></i>&nbsp;<span class="editable" data-content="<table class='details'><tr><td><img src='@Url.Content("~/content/img/kindle.jpg")' /></td><td><p>Name: Kindle</p><p>Weight: 1.3lbs</p><p>Color: Black</p><p>Quantity: 1</p><p>Cost: $100</p></td>" data-bind="text: name"></span>
                         </td>
                         <td><span class="editable" data-bind="text: quantity"></span></td>
                         <td><span class="editable" data-bind="text: weight"></span>lbs</td>

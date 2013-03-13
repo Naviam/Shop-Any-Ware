@@ -11,18 +11,26 @@
     self.dimLength = ko.observable(serverModel.DimensionsLength);
     self.dimWidth = ko.observable(serverModel.DimensionsWidth);
     self.dimGirth = ko.observable(serverModel.DimensionsGirth);
-    self.images = serverModel.Images;
+    self.images = ko.observableArray(serverModel.Images);
 
     self.imagesPopupDivId = ko.computed(function () {
         return 'popup' + self.id();
     });
-
-    self.openImagesPopup = function() {
+    
+    self.slider = null;
+    
+    self.openImagesPopup = function () {
+        if (self.images().length == 0) return;
         $('#' + self.imagesPopupDivId()).modal('show');
-        $('.bxslider').bxSlider({
+        self.slider = $('#' + self.imagesPopupDivId() +' .bxslider').bxSlider({
             mode: 'fade',
             captions: true
         });
+    };
+    
+    self.closeImagesPopup = function () {
+        self.slider.destroySlider();
+        $('#' + self.imagesPopupDivId()).modal('hide');
     };
 }
 

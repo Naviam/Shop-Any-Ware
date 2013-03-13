@@ -15,12 +15,6 @@ namespace TdService.UI.Web.ViewModels.Item
     /// </summary>
     public class ItemViewModel : ViewModelBase
     {
-        public class ItemImageViewModel
-        {
-            public string Url { get; set; }
-            public string FileName { get; set; }
-        }
-
         /// <summary>
         /// Gets or sets the id.
         /// </summary>

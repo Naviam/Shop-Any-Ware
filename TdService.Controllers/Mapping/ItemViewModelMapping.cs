@@ -107,5 +107,10 @@ namespace TdService.UI.Web.Mapping
         {
             return Mapper.Map<RemoveItemResponse, OrderItemViewModel>(response);
         }
+
+        public static ItemImageViewModel ConvertToItemImageViewModel(this  AddItemImageReponse  response)
+        {
+            return Mapper.Map<AddItemImageReponse, ItemImageViewModel>(response);
+        }
     }
 }

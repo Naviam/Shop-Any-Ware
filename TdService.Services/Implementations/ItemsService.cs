@@ -215,7 +215,7 @@ namespace TdService.Services.Implementations
             this.itemsRepository.AddImageToItem(
                 request.ItemId, new ItemImage { Filename = request.ImageName, Url = request.ImageUrl });
 
-            return new AddItemImageReponse { ImageUrl = request.ImageUrl, ImageName = request.ImageName };
+            return new AddItemImageReponse { Url = request.ImageUrl, FileName = request.ImageName,ItemId = request.ItemId };
         }
     }
 }

@@ -35,7 +35,7 @@ namespace TdService.UI.Web
     using System.Linq;
     using UserResponseModel = TdService.Services.Messaging.Membership.GetUsersInRoleResponse.UserResponseModel;
     using ItemImageModel = TdService.Services.Messaging.Item.GetOrderItemsResponse.ItemImageModel;
-    using ItemImageViewModel = TdService.UI.Web.ViewModels.Item.ItemViewModel.ItemImageViewModel;
+
     /// <summary>
     /// The auto mapper configuration.
     /// </summary>
@@ -256,10 +256,13 @@ namespace TdService.UI.Web
                 .ForMember(r => r.Message, opt => opt.Ignore())
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
-            Mapper.CreateMap<ItemImage, ItemImageModel>();
-            Mapper.CreateMap<ItemImageModel, ItemImageViewModel>();
             Mapper.CreateMap<GetOrderItemsResponse, OrderItemViewModel>().ForMember(r => r.OrderId, opt => opt.Ignore())
                 .ForMember(dest => dest.OperatorMode, opt => opt.Ignore());
+
+            //item images
+            Mapper.CreateMap<ItemImage, ItemImageModel>();
+            Mapper.CreateMap<ItemImageModel, ItemImageViewModel>();
+            Mapper.CreateMap<AddItemImageReponse, ItemImageViewModel>();
 
             // add item to package
 

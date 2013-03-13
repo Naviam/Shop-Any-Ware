@@ -177,11 +177,12 @@ namespace TdService.UI.Web.Controllers
                         ImageName = Request.Files[0].FileName,
                         ImageUrl = string.Concat(AppConfigHelper.AWSUrl, AppConfigHelper.AmazonS3Bucket, "/", fileName)
                     });
-            return new JsonNetResult
+            var jsonNetResult = new JsonNetResult
             {
                 Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
-                Data = null
+                Data = resp.ConvertToItemImageViewModel()
             };
+            return jsonNetResult;
         }
     }
 }
