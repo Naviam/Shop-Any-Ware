@@ -13,7 +13,7 @@ namespace TdService.Repository.MsSql.Repositories
     using System.Data;
     using System.Linq;
     using System.Data.Entity;
-
+    using TdService.Repository.MsSql.Extensions;
     using TdService.Model.Items;
 
     /// <summary>
@@ -34,7 +34,7 @@ namespace TdService.Repository.MsSql.Repositories
         {
             using (var context = new ShopAnyWareSql())
             {
-                return context.Items.Include(i => i.Images).SingleOrDefault(item => item.Id.Equals(itemId));
+                return context.ItemsWithImages().SingleOrDefault(item => item.Id.Equals(itemId));
             }
         }
 
@@ -51,7 +51,7 @@ namespace TdService.Repository.MsSql.Repositories
         {
             using (var context = new ShopAnyWareSql())
             {
-                var order = context.Orders.Include(o => o.Items).SingleOrDefault(o => o.Id == orderId);
+                var order = context.OrdersWithItemsAndImages().SingleOrDefault(o => o.Id == orderId);
                 return order != null ? order.Items : null;
             }
         }
@@ -69,7 +69,7 @@ namespace TdService.Repository.MsSql.Repositories
         {
             using (var context = new ShopAnyWareSql())
             {
-                var package = context.Packages.Include(o => o.Items).SingleOrDefault(p => p.Id == packageId);
+                var package = context.PackagesWithItemsAndImages().SingleOrDefault(p => p.Id == packageId);
                 return package != null ? package.Items : null;
             }
         }
@@ -91,7 +91,7 @@ namespace TdService.Repository.MsSql.Repositories
             using (var context = new ShopAnyWareSql())
             {
                 var newItem = context.Items.Add(item);
-                var order = context.Orders.Include(o => o.Items).SingleOrDefault(o => o.Id == orderId);
+                var order = context.OrdersWithItems().SingleOrDefault(o => o.Id == orderId);
                 if (order != null)
                 {
                     if (order.Items == null)
@@ -114,7 +114,7 @@ namespace TdService.Repository.MsSql.Repositories
         {
             using (var context = new ShopAnyWareSql())
             {
-                var item = context.Items.Include(i => i.Images).SingleOrDefault(i=> i.Id.Equals(itemId));
+                var item = context.ItemsWithImages().SingleOrDefault(i=> i.Id.Equals(itemId));
                 item.Images.Add(image);
                 context.SaveChanges();
             }
@@ -134,7 +134,7 @@ namespace TdService.Repository.MsSql.Repositories
             using (var context = new ShopAnyWareSql())
             {
                 var item = context.Items.Find(itemId);
-                var package = context.Packages.Include(o => o.Items).SingleOrDefault(p => p.Id == packageId);
+                var package = context.PackagesWithItems().SingleOrDefault(p => p.Id == packageId);
                 if (package != null)
                 {
                     package.Items.Add(item);
@@ -156,7 +156,7 @@ namespace TdService.Repository.MsSql.Repositories
         {
             using (var context = new ShopAnyWareSql())
             {
-                var package = context.Packages.Include(o => o.Items).SingleOrDefault(p => p.Id == packageId);
+                var package = context.PackagesWithItems().SingleOrDefault(p => p.Id == packageId);
                 if (package != null)
                 {
                     var itemToDetach = package.Items.SingleOrDefault(i => i.Id == itemId);

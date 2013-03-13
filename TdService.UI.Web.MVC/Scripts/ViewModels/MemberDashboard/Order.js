@@ -31,7 +31,6 @@
     self.canBeModified = serverModel.CanBeModified;
     self.canItemsBeModified = serverModel.CanItemsBeModified;
     self.canBeRequestedForReturn = serverModel.CanBeRequestedForReturn;
-
     // order view model computed properties
     self.domOrderId = ko.computed(function () {
         return "order" + self.id();
@@ -186,15 +185,17 @@
             max_file_size: '2mb',
             max_file_count: 5,
             chunk_size: '1mb',
-            filters : [
-            {title : "Image files", extensions : "jpg"}
+            filters: [
+            { title: "Image files", extensions: "jpg" }
             ],
             url: '/Items/AddItemImage?itemId=' + self.popupItemViewModel.id,
-            init : {
-                FileUploaded: function(up, file, response)  {
-                    var model = ko.toJS(data);
+            init: {
+                FileUploaded: function (up, file, response) {
+                    //TODO: handle responses
+                    self.loadItems();
                 }
-            });
+            }
+        });
         //I'm sorry for that. 
         $("#uploadImages_start").click(function () {
             var up = $('#uploadImages').plupload('getUploader');
