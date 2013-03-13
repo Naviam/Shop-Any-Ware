@@ -67,9 +67,9 @@
     <Compile Include="Configurations\UserConfiguration.cs" />
     <Compile Include="Configurations\WeightConfiguration.cs" />
     <Compile Include="DatabaseInitializer.cs" />
+    <Compile Include="Extensions\DbContextExtensions.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\AddressRepository.cs" />
-    <Compile Include="IDbContext.cs" />
     <Compile Include="Repositories\ItemsRepository.cs" />
     <Compile Include="Repositories\OrderRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -11,6 +11,19 @@
     self.dimLength = ko.observable(serverModel.DimensionsLength);
     self.dimWidth = ko.observable(serverModel.DimensionsWidth);
     self.dimGirth = ko.observable(serverModel.DimensionsGirth);
+    self.images = serverModel.Images;
+
+    self.imagesPopupDivId = ko.computed(function () {
+        return 'popup' + self.id();
+    });
+
+    self.openImagesPopup = function() {
+        $('#' + self.imagesPopupDivId()).modal('show');
+        $('.bxslider').bxSlider({
+            mode: 'fade',
+            captions: true
+        });
+    };
 }
 
 
@@ -20,14 +33,14 @@ function PopupItemViewModel() {
     var self = this;
     self.OrderId = 0;
     self.id = -1;//new
-    self.name = ko.observable("").extend({ required: { message: modalWindowValidationMessages.nameIsRequired } });;
-    self.quantity = ko.observable(1).extend({ required: { message: modalWindowValidationMessages.quantityIsRequired }, number: { message: modalWindowValidationMessages.invalidQuantity }  });;
-    self.price = ko.observable().extend({ required: { message: modalWindowValidationMessages.priceIsRequired }, number: { message: modalWindowValidationMessages.invalidPrice } });;
-    self.weight = ko.observable("").extend({ number: { message: modalWindowValidationMessages.invalidWeight } });;
-    self.dimHeight = ko.observable("").extend({ number: { message: modalWindowValidationMessages.invalidHeight } });;
-    self.dimLength = ko.observable("").extend({ number: { message: modalWindowValidationMessages.invalidLength } });;
-    self.dimWidth = ko.observable("").extend({ number: { message: modalWindowValidationMessages.invalidWidth } });;
-    self.dimGirth = ko.observable("").extend({ number: { message: modalWindowValidationMessages.invalidGirth } });;
+    self.name = ko.observable("").extend({ required: { message: modalWindowValidationMessages.nameIsRequired } });
+    self.quantity = ko.observable(1).extend({ required: { message: modalWindowValidationMessages.quantityIsRequired }, number: { message: modalWindowValidationMessages.invalidQuantity }  });
+    self.price = ko.observable().extend({ required: { message: modalWindowValidationMessages.priceIsRequired }, number: { message: modalWindowValidationMessages.invalidPrice } });
+    self.weight = ko.observable("").extend({ number: { message: modalWindowValidationMessages.invalidWeight } });
+    self.dimHeight = ko.observable("").extend({ number: { message: modalWindowValidationMessages.invalidHeight } });
+    self.dimLength = ko.observable("").extend({ number: { message: modalWindowValidationMessages.invalidLength } });
+    self.dimWidth = ko.observable("").extend({ number: { message: modalWindowValidationMessages.invalidWidth } });
+    self.dimGirth = ko.observable("").extend({ number: { message: modalWindowValidationMessages.invalidGirth } });
     
     self.uploaderVisible = ko.observable(false);
     self.errorsVisible = ko.observable(false);

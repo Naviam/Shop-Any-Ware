@@ -174,7 +174,7 @@ namespace TdService.UI.Web.Controllers
                 new AddItemImageRequest
                     {
                         ItemId = itemId,
-                        ImageName = fileName,
+                        ImageName = Request.Files[0].FileName,
                         ImageUrl = string.Concat(AppConfigHelper.AWSUrl, AppConfigHelper.AmazonS3Bucket, "/", fileName)
                     });
             return new JsonNetResult

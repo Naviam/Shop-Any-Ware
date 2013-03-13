@@ -7,6 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 namespace TdService.UI.Web.ViewModels.Item
 {
     /// <summary>
@@ -14,6 +15,12 @@ namespace TdService.UI.Web.ViewModels.Item
     /// </summary>
     public class ItemViewModel : ViewModelBase
     {
+        public class ItemImageViewModel
+        {
+            public string Url { get; set; }
+            public string FileName { get; set; }
+        }
+
         /// <summary>
         /// Gets or sets the id.
         /// </summary>
@@ -68,5 +75,10 @@ namespace TdService.UI.Web.ViewModels.Item
         /// Gets or sets the price.
         /// </summary>
         public decimal Price { get; set; }
+
+        /// <summary>
+        /// Gets or sets images
+        /// </summary>
+        public List<ItemImageViewModel> Images { get; set; }
     }
 }

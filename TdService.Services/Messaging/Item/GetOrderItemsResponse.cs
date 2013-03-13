@@ -7,6 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 namespace TdService.Services.Messaging.Item
 {
     /// <summary>
@@ -14,6 +15,12 @@ namespace TdService.Services.Messaging.Item
     /// </summary>
     public class GetOrderItemsResponse : ResponseBase
     {
+        public class ItemImageModel
+        {
+            public string Url { get; set; }
+            public string FileName { get; set; }
+        }
+
         /// <summary>
         /// Gets or sets the id.
         /// </summary>
@@ -68,5 +75,10 @@ namespace TdService.Services.Messaging.Item
         /// Gets or sets the price.
         /// </summary>
         public decimal Price { get; set; }
+
+        /// <summary>
+        /// Gets or sets images
+        /// </summary>
+        public List<ItemImageModel> Images { get; set; }
     }
 }
