@@ -45,7 +45,8 @@ namespace TdService.UI.Web.MVC.App_Start
                         "~/Content/noty/jquery.noty.css",
                         "~/Content/noty/noty_theme_default.css",
                         "~/Content/noty/noty_theme_twitter.css",
-                        "~/Scripts/plupload/js/jquery.ui.plupload/css/jquery.ui.plupload.css"));
+                        "~/Scripts/plupload/js/jquery.ui.plupload/css/jquery.ui.plupload.css",
+                        "~/Content/bxslider/jquery.bxslider.css"));
 
             var plUploadBundle = new ScriptBundle("~/bundles/plUpload").Include("~/Scripts/plupload/js/plupload.js",
                     "~/Scripts/plupload/js/plupload.html4.js",
@@ -68,6 +69,7 @@ namespace TdService.UI.Web.MVC.App_Start
                 "~/Scripts/jquery.simpleplaceholder.js",
                 "~/Scripts/Common.js",
                 "~/Scripts/Tools/UspsService.js");
+
             layoutBundle.Orderer = new AsIsBundleOrderer();
             bundles.Add(layoutBundle);
 
@@ -76,7 +78,8 @@ namespace TdService.UI.Web.MVC.App_Start
                         "~/Scripts/ViewModels/MemberDashboard/Item.js",
                         "~/Scripts/ViewModels/MemberDashboard/Order.js",
                         "~/Scripts/ViewModels/MemberDashboard/Package.js",
-                        "~/Scripts/ViewModels/MemberDashboard/Transaction.js"));
+                        "~/Scripts/ViewModels/MemberDashboard/Transaction.js", 
+                        "~/Scripts/bxslider/jquery.bxslider.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/addresses").Include(
                           "~/Scripts/ViewModels/AddressViewModel.js"));
