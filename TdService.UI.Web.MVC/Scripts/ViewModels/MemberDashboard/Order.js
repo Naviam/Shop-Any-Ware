@@ -192,7 +192,7 @@
             init: {
                 FileUploaded: function (up, file, response) {
                     //TODO: handle responses
-                    var model = JSON.parse($(response.response).text());
+                    var model = JSON.parse(response.response);
                     if (model.MessageType != 'Success') return;
                     //add new image to carousel
                     $.each(self.items(), function (index, value) {
@@ -208,8 +208,10 @@
         //I'm sorry for that. 
         $("#uploadImages_start").click(function () {
             var up = $('#uploadImages').plupload('getUploader');
-            up.start();
+            up.start(); 
         });
+        var up = $('#uploadImages').plupload('getUploader');
+        up.refresh();
     };
 
     self.destroyUploader = function () {
@@ -226,9 +228,9 @@
     self.showEditItemPopup = function (model) {
         self.popupItemViewModel.updateFieldsFromModel(model);
         self.popupItemViewModel.uploaderVisible(true);
-        self.initUploader();
-
+        
         $('#itemFormModal').modal('show');
+        self.initUploader();
     };
 
     self.removeItem = function (item) {

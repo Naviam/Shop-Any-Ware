@@ -179,6 +179,7 @@ namespace TdService.UI.Web.Controllers
                     });
             var jsonNetResult = new JsonNetResult
             {
+                ContentType="text/html",
                 Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
                 Data = resp.ConvertToItemImageViewModel()
             };
