@@ -14,6 +14,7 @@ namespace TdService.Services.Implementations
     using System.Linq;
     using System.Text;
     using TdService.Infrastructure.Logging;
+    using TdService.Model.Common;
     using TdService.Model.Items;
     using TdService.Model.Packages;
     using TdService.Resources;
@@ -140,7 +141,7 @@ namespace TdService.Services.Implementations
         /// <returns>
         /// The collection of get package items responses.
         /// </returns>
-        public List<GetPackageItemsResponse> GetPackageItems(GetPackageItemsRequest request)
+        public GetPackageItemsResponse GetPackageItems(GetPackageItemsRequest request)
         {
             var packageItems = this.itemsRepository.GetPackageItems(request.PackageId);
             return packageItems.ConvertToGetPackageItemsResponse();
@@ -216,6 +217,36 @@ namespace TdService.Services.Implementations
                 request.ItemId, new ItemImage { Filename = request.ImageName, Url = request.ImageUrl });
 
             return new AddItemImageReponse { Url = request.ImageUrl, FileName = request.ImageName,ItemId = request.ItemId };
+        }
+
+
+        public MoveOrderItemsToExistingPackageResponse MoveOrderItemsToExistingPackage(MoveOrderItemsToExistingPackageRequest request)
+        {
+            var items = this.itemsRepository.GetOrderItems(request.OrderId);
+            items.ForEach(i => itemsRepository.AttachItemToPackage(request.PackageId, i.Id));
+            var result = items.ConvertToMoveOrderItemsToExistingPackageResponse();
+            result.PackageId = request.PackageId;
+            return result;
+        }
+
+        public MoveOrderItemsToNewPackageResponse MoveOrderItemsToNewPackage(MoveOrderItemsToNewPackageRequest request)
+        {
+            var package = this.packageRepository.AddPackage(
+                request.IdentityToken, new Package { Name = request.PackageName, Status = PackageStatus.New, CreatedDate = DateTime.UtcNow, Dimensions = new Dimensions() });
+            var items = this.itemsRepository.GetOrderItems(request.OrderId);
+            items.ForEach(i => itemsRepository.AttachItemToPackage(package.Id, i.Id));
+            var result = items.ConvertToMoveOrderItemsToNewPackageResponse();
+            result.PackageId = package.Id;
+            return result;
+        }
+
+        public MoveOrderItemsToOriginalOrderResponse MoveOrderItemsToOriginalOrder(MoveOrderItemsToOriginalOrderRequest request)
+        {
+            var items = this.itemsRepository.GetPackageItems(request.PackageId);
+            items.ForEach(i => itemsRepository.DetachItemFromPackage(request.PackageId, i.Id));
+            var result = items.ConvertToMoveOrderItemsToOriginalOrderResponse();
+            result.PackageId = request.PackageId;
+            return result;
         }
     }
 }

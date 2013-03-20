@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.UI.Web.Controllers
+namespace TdService.UI.Web.Controllers.Base
 {
     using System.Globalization;
     using System.Threading;

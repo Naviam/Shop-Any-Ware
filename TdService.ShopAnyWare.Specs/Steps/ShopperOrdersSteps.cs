@@ -72,16 +72,21 @@ namespace TdService.ShopAnyWare.Specs.Steps
         /// <param name="orderId">
         /// The order id.
         /// </param>
-        [When(@"I remove order with id '(.*)'")]
-        public void WhenIRemoveOrderWithId(int orderId)
+        [When(@"I remove order with orderNumber '(.*)'")]
+        public void WhenIRemoveOrderWithOrderNumber(string orderNumber)
         {
-            var contoller = this.GetOrdersController();
-            var result = contoller.Remove(orderId) as JsonNetResult;
-            Assert.That(result, Is.Not.Null);
-            if (result != null)
+            using (var context = new ShopAnyWareSql())
             {
-                var actual = result.Data as OrderViewModel;
-                ScenarioContext.Current.Set(actual);
+                var order = context.Orders.SingleOrDefault(o => o.OrderNumber.Equals(orderNumber));
+                Assert.IsNotNull(order);
+                var contoller = this.GetOrdersController();
+                var result = contoller.Remove(order.Id, AuthToken) as JsonNetResult;
+                Assert.That(result, Is.Not.Null);
+                if (result != null)
+                {
+                    var actual = result.Data as OrderViewModel;
+                    ScenarioContext.Current.Set(actual);
+                }
             }
         }
 
@@ -100,7 +105,7 @@ namespace TdService.ShopAnyWare.Specs.Steps
             var models = new List<OrderViewModel>();
             foreach (var id in orderIdsToRemove)
             {
-                var result = contoller.Remove(id.Id) as JsonNetResult;
+                var result = contoller.Remove( id.Id,AuthToken) as JsonNetResult;
                 Assert.That(result, Is.Not.Null);
                 if (result != null)
                 {
@@ -223,7 +228,7 @@ namespace TdService.ShopAnyWare.Specs.Steps
         {
             ScenarioContext.Current.Pending();
             var contoller = this.GetOrdersController();
-            var result = contoller.NewOrders() as JsonNetResult;
+            var result = contoller.NewOrders(AuthToken) as JsonNetResult;
             Assert.That(result, Is.Not.Null);
             if (result != null)
             {
@@ -240,7 +245,7 @@ namespace TdService.ShopAnyWare.Specs.Steps
         {
             ScenarioContext.Current.Pending();
             var contoller = this.GetOrdersController();
-            var result = contoller.ReceivedOrders() as JsonNetResult;
+            var result = contoller.ReceivedOrders(AuthToken) as JsonNetResult;
             Assert.That(result, Is.Not.Null);
             if (result != null)
             {
@@ -257,7 +262,7 @@ namespace TdService.ShopAnyWare.Specs.Steps
         {
             ScenarioContext.Current.Pending();
             var contoller = this.GetOrdersController();
-            var result = contoller.ReturnRequestedOrders() as JsonNetResult;
+            var result = contoller.ReturnRequestedOrders(AuthToken) as JsonNetResult;
             Assert.That(result, Is.Not.Null);
             if (result != null)
             {
@@ -334,6 +339,15 @@ namespace TdService.ShopAnyWare.Specs.Steps
             Assert.That(actual, Is.Not.Null);
             Assert.That(actual.BrokenRules, Is.Not.Null);
             table.CompareToSet(actual.BrokenRules);
+        }
+
+        private string AuthToken
+        {
+            get
+            {
+                return ScenarioContext.Current.Get<FakeFormsAuthentication>().GetAuthenticationToken();
+            }
+
         }
     }
 }

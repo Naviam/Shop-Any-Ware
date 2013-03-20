@@ -17,6 +17,7 @@ namespace TdService.UI.Web.Controllers
     using TdService.Infrastructure.Helpers;
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging.Item;
+    using TdService.UI.Web.Controllers.Base;
     using TdService.UI.Web.Mapping;
     using TdService.UI.Web.ViewModels.Item;
 
@@ -169,7 +170,7 @@ namespace TdService.UI.Web.Controllers
                 AppConfigHelper.AmazonS3Bucket,
                 fileName,
                 Request.Files[0].InputStream);
-            
+
             var resp = this.itemsService.AddItemImage(
                 new AddItemImageRequest
                     {
@@ -179,9 +180,51 @@ namespace TdService.UI.Web.Controllers
                     });
             var jsonNetResult = new JsonNetResult
             {
-                ContentType="text/html",
+                ContentType = "text/html",
                 Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
                 Data = resp.ConvertToItemImageViewModel()
+            };
+            return jsonNetResult;
+        }
+
+        [Authorize(Roles = "Shopper")]
+        [HttpPost]
+        public ActionResult MoveOrderItemsToExistingPackage(int orderId, int packageId)
+        {
+            var request = new MoveOrderItemsToExistingPackageRequest { OrderId = orderId, PackageId = packageId };
+            var response = this.itemsService.MoveOrderItemsToExistingPackage(request);
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = response.ConvertToPackageItemViewModelCollection()
+            };
+            return jsonNetResult;
+        }
+
+        [Authorize(Roles = "Shopper")]
+        [HttpPost]
+        public ActionResult MoveOrderItemsToNewPackage(int orderId, string packageName)
+        {
+            var request = new MoveOrderItemsToNewPackageRequest { OrderId = orderId, PackageName = packageName };
+            var response = this.itemsService.MoveOrderItemsToNewPackage(request);
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = response.ConvertToPackageItemViewModelCollection()
+            };
+            return jsonNetResult;
+        }
+
+        [Authorize(Roles = "Shopper")]
+        [HttpPost]
+        public ActionResult MoveOrderItemsToOriginalOrder(int packageId)
+        {
+            var request = new MoveOrderItemsToOriginalOrderRequest { PackageId=packageId };
+            var response = this.itemsService.MoveOrderItemsToOriginalOrder(request);
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = response.ConvertToPackageItemViewModelCollection()
             };
             return jsonNetResult;
         }

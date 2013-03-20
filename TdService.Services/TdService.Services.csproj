@@ -77,8 +77,15 @@
     <Compile Include="Messaging\Address\UpdateDeliveryAddressResponse.cs" />
     <Compile Include="Messaging\Item\AddItemImageReponse.cs" />
     <Compile Include="Messaging\Item\AddItemImageRequest.cs" />
+    <Compile Include="Messaging\Item\Base\ItemResponse.cs" />
     <Compile Include="Messaging\Item\EditOrderItemRequest.cs" />
     <Compile Include="Messaging\Item\EditOrderItemResponse.cs" />
+    <Compile Include="Messaging\Item\MoveOrderItemsToExistingPackageRequest.cs" />
+    <Compile Include="Messaging\Item\MoveOrderItemsToExistingPackageResponse.cs" />
+    <Compile Include="Messaging\Item\MoveOrderItemsToNewPackageRequest.cs" />
+    <Compile Include="Messaging\Item\MoveOrderItemsToNewPackageResponse.cs" />
+    <Compile Include="Messaging\Item\MoveOrderItemsToOriginalOrderRequest.cs" />
+    <Compile Include="Messaging\Item\MoveOrderItemsToOriginalOrderResponse.cs" />
     <Compile Include="Messaging\Membership\Base\GetUserResponse.cs" />
     <Compile Include="Messaging\Membership\GetUserByEmailRequest.cs" />
     <Compile Include="Messaging\Item\AddItemToOrderRequest.cs" />

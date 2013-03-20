@@ -85,8 +85,8 @@ Scenario: Remove order should not be possible by operator
 	And I am authenticated as 'v.hatalski@gmail.com'
 	And I have the following orders
 	| Id | Retailer   | Order Number | Tracking Number | Received Date | Status |
-	| 1  | amazon.com |              |                 |               | New    |
-	When I remove order with id '1'
+	| 1  | amazon.com |   1234567890 |                 |               | New    |
+	When I remove order with orderNumber '1234567890'
 	Then the order view model should be as follows
 	| Id | Retailer Url | Order Number | Tracking Number | Received Date | Status | Message Type | Error Code           |
 	| 1  |              |              |                 |               |        | Error        | OrderCannotBeRemoved |

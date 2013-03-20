@@ -11,6 +11,7 @@ namespace TdService.Model.Orders
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     using TdService.Infrastructure.Domain;
     using TdService.Model.Items;
@@ -282,6 +283,15 @@ namespace TdService.Model.Orders
             if (!string.IsNullOrEmpty(this.TrackingNumber) && this.TrackingNumber.Length > 64)
             {
                 this.AddBrokenRule(OrderBusinessRules.TrackingNumberLength);
+            }
+        }
+
+        public List<Item> ItemsNotInPackage
+        {
+            get
+            {
+                if (this.Items == null) return new List<Item>();
+                return this.Items.Where(i => i.Package == null).ToList();
             }
         }
     }

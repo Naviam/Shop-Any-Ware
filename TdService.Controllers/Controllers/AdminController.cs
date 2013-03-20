@@ -18,6 +18,7 @@ namespace TdService.UI.Web.Controllers
     using System.Linq;
     using TdService.Model;
     using TdService.Resources.Views;
+    using TdService.UI.Web.Controllers.Base;
     /// <summary>
     /// This controller is responsible for administrative tasks.
     /// </summary>

@@ -17,17 +17,7 @@ namespace TdService.ShopAnyWare.Specs.Steps
     [Binding]
     public class ShopperPackagesSteps
     {
-        /// <summary>
-        /// The given i have the following packages.
-        /// </summary>
-        /// <param name="table">
-        /// The table.
-        /// </param>
-        [Given(@"I have the following packages")]
-        public void GivenIHaveTheFollowingPackages(Table table)
-        {
-            ScenarioContext.Current.Pending();
-        }
+
 
         /// <summary>
         /// The when i update delivery address to of package.

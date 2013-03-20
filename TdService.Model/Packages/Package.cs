@@ -79,11 +79,6 @@ namespace TdService.Model.Packages
         public DispatchMethod DispatchMethod { get; set; }
 
         /// <summary>
-        /// Gets or sets the weight.
-        /// </summary>
-        public Weight Weight { get; set; }
-
-        /// <summary>
         /// Gets or sets the dimensions.
         /// </summary>
         public Dimensions Dimensions { get; set; }
