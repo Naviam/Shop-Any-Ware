@@ -238,6 +238,9 @@ namespace TdService.UI.Web
                 .ForMember(r => r.Id, opt => opt.Ignore())
                 .ForMember(r => r.Images, opt => opt.Ignore())
                 .ForMember(r => r.Package, opt => opt.Ignore())
+                .ForMember(r => r.PackageId, opt => opt.Ignore())
+                .ForMember(r => r.Order, opt => opt.Ignore())
+                .ForMember(r => r.OrderId, opt => opt.Ignore())
                 .ForMember(r => r.Weight, opt => opt.ResolveUsing<WeightResolver>())
                 .ForMember(r => r.Dimensions, opt => opt.ResolveUsing<DimensionsResolver>());
             Mapper.CreateMap<Item, AddItemToOrderResponse>()

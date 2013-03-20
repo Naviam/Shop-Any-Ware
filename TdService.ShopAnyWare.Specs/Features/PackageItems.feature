@@ -53,9 +53,9 @@ Scenario: Move package items in bulk back to their original order
 	| Name | Delivery Address Id | Status |
 	| my first package  | 1      | New    |
 	And there are following items for package 'my first package' in database
-    | Name   | Quantity | Price  | 
-    | IPAD3  | 1        | 780.40 | 
-    | Kindle | 5        | 130.95 | 
+    | Name   | Quantity | Price  | OrderId |
+    | IPAD3  | 1        | 780.40 | 1       |
+    | Kindle | 5        | 130.95 | 1       |
 	When I move all items from package 'my first package' back to their original order
 	Then there should be following items for order '1234567890'
 	| Name   | Quantity | Price  |

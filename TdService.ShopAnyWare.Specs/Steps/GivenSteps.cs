@@ -234,12 +234,13 @@ namespace TdService.ShopAnyWare.Specs.Steps
         public void GivenThereAreFollowingItemsForOrderInDatabase(string orderNumber, Table table)
         {
             var user = ScenarioContext.Current.Get<User>();
-            var order = user.Orders.SingleOrDefault(o => o.OrderNumber.Equals(orderNumber));
+            var orderId = user.Orders.SingleOrDefault(o => o.OrderNumber.Equals(orderNumber)).Id;
 
-            var items = table.CreateSet<Item>().Select(i => { i.Dimensions = new Dimensions(); i.Weight = new Weight(); return i; }).ToList();
-            ScenarioContext.Current.Set(order.Id, "OrderId");
+            var items = table.CreateSet<Item>().Select(i => { i.Dimensions = new Dimensions(); i.Weight = new Weight(); return i; });
+            ScenarioContext.Current.Set(orderId, "OrderId");
             using (var context = new ShopAnyWareSql())
             {
+                var order = context.Orders.Find(orderId);
                 if (order.Items == null)
                 {
                     order.Items = new List<Item>();
@@ -256,12 +257,13 @@ namespace TdService.ShopAnyWare.Specs.Steps
         public void GivenThereAreFollowingItemsForPackageInDatabase(string  packageName, Table table)
         {
             var user = ScenarioContext.Current.Get<User>();
-            var package = user.Packages.SingleOrDefault(p => p.Name.Equals(packageName));
+            var packageId = user.Packages.SingleOrDefault(p => p.Name.Equals(packageName)).Id;
             
-            ScenarioContext.Current.Set(package.Id, "PackageId");
+            ScenarioContext.Current.Set(packageId, "PackageId");
             var items = table.CreateSet<Item>().Select(i => { i.Dimensions = new Dimensions(); i.Weight = new Weight(); return i; }); ;
             using (var context = new ShopAnyWareSql())
             {
+                var package = context.Packages.Find(packageId);
                 if (package.Items == null)
                 {
                     package.Items = new List<Item>();

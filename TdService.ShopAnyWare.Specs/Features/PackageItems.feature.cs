@@ -249,15 +249,18 @@ this.ScenarioSetup(scenarioInfo);
             TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name",
                         "Quantity",
-                        "Price"});
+                        "Price",
+                        "OrderId"});
             table11.AddRow(new string[] {
                         "IPAD3",
                         "1",
-                        "780.40"});
+                        "780.40",
+                        "1"});
             table11.AddRow(new string[] {
                         "Kindle",
                         "5",
-                        "130.95"});
+                        "130.95",
+                        "1"});
 #line 55
  testRunner.And("there are following items for package \'my first package\' in database", ((string)(null)), table11, "And ");
 #line 59

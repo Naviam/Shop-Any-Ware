@@ -57,11 +57,20 @@ using TdService.Model.Packages;
         /// </summary>
         public Package Package { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public int? PackageId { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public int Package_Id { get; set; }
+        public Order Order { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int? OrderId { get; set; }
 
         /// <summary>
         /// Validate item business rules.

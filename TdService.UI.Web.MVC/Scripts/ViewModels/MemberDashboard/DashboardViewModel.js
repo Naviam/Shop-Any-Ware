@@ -277,7 +277,7 @@ function DashboardViewModel(serverModel) {
 
     self.removeOrder = function (order) {
         /// <summary>Remove order.</summary>
-        $.post("/orders/remove", { "orderId": order.id }, function (data) {
+        $.post("/orders/remove", { "orderId": order.id, "UserEmail": self.UserEmail }, function (data) {
             var model = ko.toJS(data);
             if (model.MessageType == "Success") {
                 window.showNotice(data.Message, data.MessageType);
@@ -290,7 +290,7 @@ function DashboardViewModel(serverModel) {
 
     self.getRecentPackages = function () {
         /// <summary>Load recent packages from server.</summary>
-        $.post("/packages/recent", function (data) {
+        $.post("/packages/recent",{ "UserEmail": self.UserEmail }, function (data) {
             var packages = ko.toJS(data);
             self.packages.removeAll();
             $.each(packages, function (index, value) {
@@ -304,7 +304,7 @@ function DashboardViewModel(serverModel) {
 
     self.getPackageHistory = function () {
         /// <summary>Load history of packages.</summary>
-        $.post("/packages/history", function (data) {
+        $.post("/packages/history",{ "UserEmail": self.UserEmail }, function (data) {
             var packages = ko.toJS(data);
             self.packagesHistory.removeAll();
             $.each(packages, function (index, value) {
@@ -320,7 +320,7 @@ function DashboardViewModel(serverModel) {
         /// <summary>Create package.</summary>
         if (self.newPackageField.isValid()) {
             $("#addNewPackageButton").button('toggle').button('loading');
-            $.post("/packages/add", { "packageName": self.newPackageField() }, function (data) {
+            $.post("/packages/add", { "packageName": self.newPackageField(), "UserEmail": self.UserEmail  }, function (data) {
                 var model = ko.toJS(data);
                 if (model.MessageType == "Success") {
                     var newPackage = new Package(model);
@@ -340,7 +340,7 @@ function DashboardViewModel(serverModel) {
 
     self.removePackage = function (currentPackage) {
         /// <summary>Remove package.</summary>
-        $.post("/packages/remove", { "packageId": currentPackage.id() }, function (data) {
+        $.post("/packages/remove", { "packageId": currentPackage.id(), "UserEmail": self.UserEmail }, function (data) {
             var model = ko.toJS(data);
             if (model.MessageType == "Success") {
                 window.showNotice(data.Message, data.MessageType);

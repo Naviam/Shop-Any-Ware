@@ -129,7 +129,7 @@ namespace TdService.ShopAnyWare.Specs.Steps
             Assert.That(actual.Count.Equals(items.Count));
             foreach (var resp in actual)
             {
-                var item = items.SingleOrDefault(i => i.Id.Equals(resp.Id));
+                var item = items.SingleOrDefault(i => i.Name.Equals(resp.Name) && i.Price.Equals(resp.Price) && i.Quantity.Equals(resp.Quantity));
                 Assert.IsNotNull(item);
                 Assert.AreEqual(item.Name, resp.Name);
             }
