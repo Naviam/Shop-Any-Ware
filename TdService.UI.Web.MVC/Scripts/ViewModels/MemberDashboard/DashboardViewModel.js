@@ -263,9 +263,10 @@ function DashboardViewModel(serverModel) {
                     var order = new Order(model);
                     self.orders.unshift(order);
                     window.showNotice(data.Message, data.MessageType);
-                    $('#' + order.domOrderId()).show("blind", {}, "normal", function () {
-                        self.newOrderField("");
-                    });
+                    self.newOrderField("");
+                    //$('#' + order.domOrderId()).show("blind", {}, "normal", function () {
+                    //    self.newOrderField("");
+                    //});
                 }
                 $("#addNewOrderButton").button('toggle').button('reset');
             });
@@ -326,9 +327,10 @@ function DashboardViewModel(serverModel) {
                     var newPackage = new Package(model);
                     self.packages.unshift(newPackage);
                     window.showNotice(data.Message, data.MessageType);
-                    $('#' + newPackage.domPackageId()).show("blind", {}, "normal", function () {
-                        self.newPackageField("");
-                    });
+                    self.newPackageField("");
+                    //$('#' + newPackage.domPackageId()).show("blind", {}, "normal", function () {
+                    //    self.newPackageField("");
+                    //});
                 }
                 $("#addNewPackageButton").button('toggle').button('reset');
             });

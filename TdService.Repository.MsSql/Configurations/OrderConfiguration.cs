@@ -25,7 +25,7 @@ namespace TdService.Repository.MsSql.Configurations
             this.Property(o => o.TrackingNumber).HasMaxLength(40);
             this.Ignore(o => o.ItemsNotInPackage);
 
-            this.HasMany(o => o.Items).WithOptional(i => i.Order).HasForeignKey(i => i.OrderId);
+            this.HasMany(o => o.Items).WithOptional(i => i.Order).HasForeignKey(i => i.OrderId).WillCascadeOnDelete(true);
         }
     }
 }
