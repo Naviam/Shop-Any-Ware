@@ -169,8 +169,8 @@
 <input id="model" type="hidden" value="@(new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(Model))" />
 @section Scripts
 {
-    @Scripts.Render("~/bundles/plUpload");
-    @Scripts.Render("~/bundles/dashboard");
+    @Scripts.Render("~/bundles/plUpload")
+    @Scripts.Render("~/bundles/dashboard")
     <script type="text/javascript">
         $(document).ready(function() {
             ko.validation.init(mainViewModel, {
