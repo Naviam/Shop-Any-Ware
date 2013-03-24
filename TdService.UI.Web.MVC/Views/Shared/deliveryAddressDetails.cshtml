@@ -26,27 +26,6 @@
         </div>
     </div>
     <div class="control-group">
-        <label class="control-label">@AddressViewResources.AddressTable_Country:</label>
-        <div class="controls">
-            @Html.TextBoxFor(m => m.Country, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: Country" }, { "placeholder", AddressViewResources.Country_Placeholder } })
-            @*<input class="input-xlarge" name="Country" data-bind="value: Country" type="text" placeholder="@AddressViewResources.Country_Placeholder" />*@
-        </div>
-    </div>
-    <div class="control-group">
-        <label class="control-label">@AddressViewResources.AddressTable_Region:</label>
-        <div class="controls">
-            @Html.TextBoxFor(m => m.Region, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: Region" }, { "placeholder", AddressViewResources.Region_Placeholder } })
-            @*<input class="input-xlarge" name="Region" data-bind="value: Region" type="text" placeholder="@AddressViewResources.Region_Placeholder" />*@
-        </div>
-    </div>
-    <div class="control-group">
-        <label class="control-label">@AddressViewResources.AddressTable_City:</label>
-        <div class="controls">
-            @Html.TextBoxFor(m => m.City, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: City" }, { "placeholder", AddressViewResources.City_Placeholder } })
-            @*<input class="input-xlarge" name="City" data-bind="value: City" type="text" placeholder="@AddressViewResources.City_Placeholder" />*@
-        </div>
-    </div>
-    <div class="control-group">
         <label class="control-label">@AddressViewResources.AddressTable_AddressLine1:</label>
         <div class="controls">
             @Html.TextBoxFor(m => m.AddressLine1, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: AddressLine1" }, { "placeholder", AddressViewResources.Address1_Placeholder } })
@@ -58,6 +37,27 @@
         <div class="controls">
             @Html.TextBoxFor(m => m.AddressLine2, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: AddressLine2" }, { "placeholder", AddressViewResources.Address2_Placeholder } })
             @*<input class="input-xlarge" name="AddressLine2" data-bind="value: AddressLine2" type="text" placeholder="@AddressViewResources.Address2_Placeholder" />*@
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">@AddressViewResources.AddressTable_City:</label>
+        <div class="controls">
+            @Html.TextBoxFor(m => m.City, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: City" }, { "placeholder", AddressViewResources.City_Placeholder } })
+            @*<input class="input-xlarge" name="City" data-bind="value: City" type="text" placeholder="@AddressViewResources.City_Placeholder" />*@
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">@AddressViewResources.AddressTable_Region:</label>
+        <div class="controls">
+            @Html.TextBoxFor(m => m.Region, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: Region" }, { "placeholder", AddressViewResources.Region_Placeholder } })
+            @*<input class="input-xlarge" name="Region" data-bind="value: Region" type="text" placeholder="@AddressViewResources.Region_Placeholder" />*@
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">@AddressViewResources.AddressTable_Country:</label>
+        <div class="controls">
+            @Html.TextBoxFor(m => m.Country, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: Country" }, { "placeholder", AddressViewResources.Country_Placeholder } })
+            @*<input class="input-xlarge" name="Country" data-bind="value: Country" type="text" placeholder="@AddressViewResources.Country_Placeholder" />*@
         </div>
     </div>
     <div class="control-group">

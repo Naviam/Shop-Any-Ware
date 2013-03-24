@@ -14,7 +14,7 @@
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <!-- Le styles -->
-    @Styles.Render("~/Content/less/bootstrapcss")
+    @Styles.Render("~/Content/bootstrapcss")
     @Styles.Render("~/Content/sitecss")
     <style>
         body
@@ -103,7 +103,7 @@
                     <h3>@LayoutViewResources.FooterLinksHeader</h3>
                     <ul>
                         <li><a href="@Url.Action("Index", "Home")" title="@SiteMapLocalizations.HomeDescription">@SiteMapLocalizations.HomeTitle</a></li>
-                        <li><a href="@Url.Action("Shops", "Home")" title="@SiteMapLocalizations.StoresCatalogDescription">@SiteMapLocalizations.StoresCatalogTitle</a></li>
+                        @*<li><a href="@Url.Action("Shops", "Home")" title="@SiteMapLocalizations.StoresCatalogDescription">@SiteMapLocalizations.StoresCatalogTitle</a></li>*@
                         <li><a href="@Url.Action("Services", "Home")" title="@SiteMapLocalizations.OurServicesDescription">@SiteMapLocalizations.OurServicesTitle</a></li>
                     </ul>
                 </div>
@@ -165,6 +165,8 @@
                 } else {
                     $(".en").addClass("choosen_culture");
                 }
+            } else {
+                // read domain name.
             }
         });
     </script>
