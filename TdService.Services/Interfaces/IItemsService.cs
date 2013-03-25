@@ -116,5 +116,13 @@ namespace TdService.Services.Interfaces
         /// <param name="request"></param>
         /// <returns></returns>
         MoveItemBackToOriginalOrderResponse MoveOrderItemBackToOriginalOrder(MoveItemBackToOriginalOrderRequest request);
+
+        /// <summary>
+        /// Move single item to existing package
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        MoveOrderItemToExistingPackageResponse MoveOrderItemsToExistingPackage(
+            MoveOrderItemToExistingPackageRequest request);
     }
 }

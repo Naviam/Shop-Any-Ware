@@ -80,10 +80,7 @@
                             <div class="btn-group">
                                 <button class="btn btn-mini" title="@DashboardViewResources.EditItemTitle" data-bind="click:$parent.showEditItemPopup"><i class="icon icon-edit"></i></button>
                                 <button class="btn btn-mini" title="@DashboardViewResources.DeleteItemTitle" data-bind="click:$parent.removeItem"><i class="icon icon-remove"></i></button>
-                                <button class="btn btn-mini dropdown-toggle" title="@DashboardViewResources.MoveItemTitle" data-toggle="dropdown"><i class="icon icon-arrow-right"></i>@*@DashboardViewResources.ActionMoveHeader*@ <span class="caret"></span></button>
-                                <ul class="dropdown-menu" data-bind="foreach: $root.packages()">
-                                    <li><a href="#"><span class="label">ID: <span data-bind="text: id"></span></span><span data-bind="text: name()"></span></a></li>
-                                </ul>
+                                <select style="width:100px;" data-bind="options:  $root.packages, optionsText: 'name', visible: $parent.status() == 'Received',  value: selectedPackage, optionsCaption: 'Choose...', event: {change: function(data, event){ $root.moveSingleItemToPackage($data); } }"></select>
                             </div>
                         </td>
                     </tr>

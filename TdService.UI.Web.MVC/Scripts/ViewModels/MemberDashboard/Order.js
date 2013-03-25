@@ -261,6 +261,15 @@
         });
     };
 
+    self.removeItemClient = function (id) {
+        $.each(self.items(), function (index, value) {
+            if (value.id() == id) {
+                self.items.remove(value);//remove item client-side
+                return false;
+            }
+        });
+    };
+
     self.orderInStock = function(order) {
         $.post("/orders/OrderReceived", { "orderId": self.id }, function (data) {
             var model = ko.toJS(data);

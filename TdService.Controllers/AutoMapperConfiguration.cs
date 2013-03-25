@@ -351,6 +351,17 @@ namespace TdService.UI.Web
                 .ForMember(r => r.PackageId, opt => opt.Ignore());
             Mapper.CreateMap<MoveItemBackToOriginalOrderResponse, MoveItemBackToOriginalOrderViewModel>();
 
+            //move single item to exist. package
+            Mapper.CreateMap<Item, MoveOrderItemToExistingPackageResponse>()
+                .ForMember(dest => dest.Item, opt => opt.MapFrom(src => src))
+                .ForMember(r => r.BrokenRules, opt => opt.Ignore())
+                .ForMember(r => r.Message, opt => opt.Ignore())
+                .ForMember(r => r.ErrorCode, opt => opt.Ignore())
+                .ForMember(r => r.MessageType, opt => opt.Ignore())
+                .ForMember(r => r.OrderId, opt => opt.Ignore())
+                .ForMember(r => r.PackageId, opt => opt.Ignore());
+            Mapper.CreateMap<MoveOrderItemToExistingPackageResponse, MoveOrderItemToExistingPackageViewModel>();
+
             // get recent packages
             Mapper.CreateMap<Package, GetRecentPackagesResponse>()
                 .ForMember(r => r.BrokenRules, opt => opt.Ignore())
