@@ -137,6 +137,8 @@ function DashboardViewModel(serverModel) {
     self.addingFunds = ko.observable(false);
     self.addFundsAmount = ko.observable('').extend({ required: true, number: true });
 
+    
+
     if (addressModel.PayPalTransactionResultMessage && addressModel.PayPalTransactionResultMessageType &&
         addressModel.PayPalTransactionResultMessage != '' && addressModel.PayPalTransactionResultMessageType != '') {
         window.showNotice(addressModel.PayPalTransactionResultMessage, addressModel.PayPalTransactionResultMessageType);

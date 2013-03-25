@@ -201,6 +201,12 @@ namespace TdService.Model.Orders
             return order;
         }
 
+        public Order SetAsRecieved()
+        {
+            this.Status = OrderStatus.Received;
+            return this;
+        }
+
         /// <summary>
         /// Add item to an order.
         /// </summary>
@@ -291,7 +297,7 @@ namespace TdService.Model.Orders
             get
             {
                 if (this.Items == null) return new List<Item>();
-                return this.Items.Where(i => i.Package == null).ToList();
+                return this.Items.Where(i => !(i.PackageId.HasValue)).ToList();
             }
         }
     }

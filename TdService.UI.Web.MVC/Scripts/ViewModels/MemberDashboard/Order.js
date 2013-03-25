@@ -25,6 +25,9 @@
 
     self.popupItemViewModel = new PopupItemViewModel();
 
+    //move orderItems to package
+    self.selectedPackage = new ko.observable();
+
     // order state properties
     self.canBeReceived = serverModel.CanBeReceived;
     self.canBeRemoved = serverModel.CanBeRemoved;
@@ -53,6 +56,16 @@
         }
         return total;
     });
+
+    self.moveEntireOrderToPackage = function() {
+        if (!self.selectedPackage) return;
+        $.post("/items/MoveOrderItemsToExistingPackage", { "orderId": self.id(), "packageId": self.selectedPackage().id()}, function (data) {
+            var model = ko.toJS(data);
+            if (model.MessageType == "Success") {
+                window.showNotice(model.Message, model.MessageType);
+            }
+        });
+    };
 
     self.totalItemsWeight = ko.computed(function () {
         /// <summary>Determines the total weight of items in the order.</summary>
@@ -245,4 +258,9 @@
             }
         });
     };
+
+    self.orderInStock = function() {
+
+    };
+    
 }

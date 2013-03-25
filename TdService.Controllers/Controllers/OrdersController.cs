@@ -245,6 +245,12 @@ namespace TdService.UI.Web.Controllers
             return jsonNetResult;
         }
 
+        [Authorize(Roles = "Operator, Admin")]
+        [HttpPost]
+        public ActionResult OrderInStock(int orderId)
+        {
+        }
+
         /// <summary>
         /// The update.
         /// </summary>
