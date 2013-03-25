@@ -116,6 +116,7 @@
         $.each(self.items(), function (index, value) {
             if (value.id() == id) {
                 self.items.remove(value);//remove item client-side
+                return false;
             }
         });
     };

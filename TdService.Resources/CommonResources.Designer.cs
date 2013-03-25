@@ -133,6 +133,15 @@ namespace TdService.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error occured while moving order item to existing package.
+        /// </summary>
+        public static string MoveOrderItemToExistingPackageError {
+            get {
+                return ResourceManager.GetString("MoveOrderItemToExistingPackageError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error occured while moving order item to original order.
         /// </summary>
         public static string MoveOrderItemToOriginalOrderError {
@@ -201,6 +210,15 @@ namespace TdService.Resources {
         public static string OrderItemSuccessfullyAdded {
             get {
                 return ResourceManager.GetString("OrderItemSuccessfullyAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Order item was successfully moved to package id:{0}.
+        /// </summary>
+        public static string OrderItemSuccessfullyMoved {
+            get {
+                return ResourceManager.GetString("OrderItemSuccessfullyMoved", resourceCulture);
             }
         }
         
