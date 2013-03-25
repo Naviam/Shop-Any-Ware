@@ -128,5 +128,10 @@ namespace TdService.UI.Web.Mapping
         {
             return Mapper.Map<MoveOrderItemsToOriginalOrderResponse, PackageItemsViewModel>(moveOrderItemsToOriginalOrderResponse);
         }
+
+        public static MoveItemBackToOriginalOrderViewModel ConvertToPackageItemViewModel(this MoveItemBackToOriginalOrderResponse moveOrderItemsToOriginalOrderResponse)
+        {
+            return Mapper.Map<MoveItemBackToOriginalOrderResponse, MoveItemBackToOriginalOrderViewModel>(moveOrderItemsToOriginalOrderResponse);
+        }
     }
 }

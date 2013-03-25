@@ -1,7 +1,9 @@
 ﻿function Order(serverModel) {
     /// <summary>Order view model.</summary>
     var self = this;
-
+    
+    
+    
     // default model properties
     self.message = ko.observable(serverModel.Message);
     self.messageType = ko.observable(serverModel.MessageType);
@@ -57,15 +59,7 @@
         return total;
     });
 
-    self.moveEntireOrderToPackage = function() {
-        if (!self.selectedPackage) return;
-        $.post("/items/MoveOrderItemsToExistingPackage", { "orderId": self.id(), "packageId": self.selectedPackage().id()}, function (data) {
-            var model = ko.toJS(data);
-            if (model.MessageType == "Success") {
-                window.showNotice(model.Message, model.MessageType);
-            }
-        });
-    };
+
 
     self.totalItemsWeight = ko.computed(function () {
         /// <summary>Determines the total weight of items in the order.</summary>
@@ -120,13 +114,17 @@
         $.post("/items/getorderitems", { "orderId": self.id() }, function (data) {
             var items = ko.toJS(data);
             self.items.removeAll();
-            $.each(items, function (index, value) {
-                var item = new Item(value);
-                self.items.unshift(item);
-            });
+            self.addItems(items);
         });
     };
     self.loadItems();
+
+    self.addItems = function (itemsList) {
+        $.each(itemsList, function (index, value) {
+            var item = new Item(value);
+            self.items.unshift(item);
+        });
+    };
 
     self.getItemDetails = function () {
         /// <summary>Get item details.</summary>
@@ -259,7 +257,7 @@
         });
     };
 
-    self.orderInStock = function() {
+    self.orderInStock = function(order) {
         $.post("/orders/OrderReceived", { "orderId": self.id }, function (data) {
             var model = ko.toJS(data);
             if (model.MessageType == "Success") {

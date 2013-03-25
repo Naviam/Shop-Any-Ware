@@ -210,4 +210,10 @@
   <data name="PackageItemsSuccessfullyMovedBackToOriginalOrder" xml:space="preserve">
     <value>Package items were successfully moved to original order, id: {0}</value>
   </data>
+  <data name="MoveOrderItemToOriginalOrderError" xml:space="preserve">
+    <value>Error occured while moving order item to original order</value>
+  </data>
+  <data name="OrderItemMovedToOriginalOrder" xml:space="preserve">
+    <value>Order item was successfully moved to original order id:{0}</value>
+  </data>
 </root>

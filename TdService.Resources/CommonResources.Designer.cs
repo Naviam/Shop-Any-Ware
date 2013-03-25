@@ -133,6 +133,15 @@ namespace TdService.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error occured while moving order item to original order.
+        /// </summary>
+        public static string MoveOrderItemToOriginalOrderError {
+            get {
+                return ResourceManager.GetString("MoveOrderItemToOriginalOrderError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There were some issues with the order you are adding..
         /// </summary>
         public static string OrderAddErrorMessage {
@@ -147,6 +156,15 @@ namespace TdService.Resources {
         public static string OrderAddSuccessMessage {
             get {
                 return ResourceManager.GetString("OrderAddSuccessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Order item was successfully moved to original order id:{0}.
+        /// </summary>
+        public static string OrderItemMovedToOriginalOrder {
+            get {
+                return ResourceManager.GetString("OrderItemMovedToOriginalOrder", resourceCulture);
             }
         }
         
