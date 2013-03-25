@@ -55,7 +55,7 @@ namespace TdService.Model.Orders
         /// <summary>
         /// Gets or sets Retailer.
         /// </summary>
-        public virtual Retailer Retailer { get; set; }
+        public Retailer Retailer { get; set; }
 
         /// <summary>
         /// Gets or sets OrderNumber.
@@ -204,6 +204,7 @@ namespace TdService.Model.Orders
         public Order SetAsRecieved()
         {
             this.Status = OrderStatus.Received;
+            this.ReceivedDate = DateTime.UtcNow;
             return this;
         }
 

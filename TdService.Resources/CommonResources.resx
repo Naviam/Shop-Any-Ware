@@ -144,14 +144,23 @@
   <data name="OrderItemRemovedMessage" xml:space="preserve">
     <value>Order item was successfullt removed</value>
   </data>
+  <data name="OrderItemsSuccessfullyMoved" xml:space="preserve">
+    <value>Order items were successfully moved to package {0}, id: {1}</value>
+  </data>
   <data name="OrderItemSuccessfullyAdded" xml:space="preserve">
     <value>Order item has been successfully added.</value>
+  </data>
+  <data name="OrderReceivedErrorMessage" xml:space="preserve">
+    <value>Error occured while updating order status to 'received'</value>
   </data>
   <data name="OrderRemoveErrorMessage" xml:space="preserve">
     <value>There were some issues with the order you are removing.</value>
   </data>
   <data name="OrderRemoveSuccessMessage" xml:space="preserve">
     <value>The order has been successfully removed.</value>
+  </data>
+  <data name="OrderStatusChangedToReceived" xml:space="preserve">
+    <value>Order status successfully changed to RECEIVED</value>
   </data>
   <data name="OrderUpdateErrorMessage" xml:space="preserve">
     <value>There were some issues with the order you are updating.</value>
@@ -188,5 +197,17 @@
   </data>
   <data name="VerifyEmailOkMessage" xml:space="preserve">
     <value>E-mail is OK.</value>
+  </data>
+  <data name="MoveOrderItemsToExistingPackageError" xml:space="preserve">
+    <value>Error occured while moving order items to existing package</value>
+  </data>
+  <data name="MoveOrderItemsToNewPackageError" xml:space="preserve">
+    <value>Error occured while moving order items to new package</value>
+  </data>
+  <data name="MoveOrderItemsToOriginalOrderError" xml:space="preserve">
+    <value>Error occured while moving order items to original order</value>
+  </data>
+  <data name="PackageItemsSuccessfullyMovedBackToOriginalOrder" xml:space="preserve">
+    <value>Package items were successfully moved to original order, id: {0}</value>
   </data>
 </root>

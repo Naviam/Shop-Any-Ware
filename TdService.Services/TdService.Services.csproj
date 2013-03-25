@@ -114,6 +114,8 @@
     <Compile Include="Messaging\Membership\SignUpAdminResponse.cs" />
     <Compile Include="Messaging\Order\GetAllOrdersRequest.cs" />
     <Compile Include="Messaging\Order\GetAllOrdersResponse.cs" />
+    <Compile Include="Messaging\Order\OrderReceivedRequest.cs" />
+    <Compile Include="Messaging\Order\OrderReceivedResponse.cs" />
     <Compile Include="Messaging\Order\RemoveOrderRequest.cs" />
     <Compile Include="Messaging\Order\RemoveOrderResponse.cs" />
     <Compile Include="Interfaces\IOrderService.cs" />

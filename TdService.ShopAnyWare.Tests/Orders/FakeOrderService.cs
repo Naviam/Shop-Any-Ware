@@ -172,5 +172,11 @@ namespace TdService.ShopAnyWare.Tests.Orders
         {
             return null;
         }
+
+
+        public OrderReceivedResponse OrderReceived(OrderReceivedRequest request)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

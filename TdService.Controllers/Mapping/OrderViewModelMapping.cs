@@ -10,11 +10,10 @@
 namespace TdService.UI.Web.Mapping
 {
     using System.Collections.Generic;
-
-    using AutoMapper;
-
-    using TdService.Services.Messaging.Order;
-    using TdService.UI.Web.ViewModels.Order;
+using AutoMapper;
+using TdService.Services.Messaging.Item;
+using TdService.Services.Messaging.Order;
+using TdService.UI.Web.ViewModels.Order;
 
     /// <summary>
     /// The order view model mapping.
@@ -117,6 +116,16 @@ namespace TdService.UI.Web.Mapping
         public static UpdateOrderRequest ConvertToUpdateOrderRequest(this OrderViewModel model)
         {
             return Mapper.Map<OrderViewModel, UpdateOrderRequest>(model);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="response"></param>
+        /// <returns></returns>
+        public static OrderViewModel ConvertToOrderViewModel(this OrderReceivedResponse response)
+        {
+            return Mapper.Map<OrderReceivedResponse, OrderViewModel>(response);
         }
     }
 }

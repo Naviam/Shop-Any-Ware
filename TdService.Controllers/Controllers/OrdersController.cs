@@ -247,8 +247,18 @@ namespace TdService.UI.Web.Controllers
 
         [Authorize(Roles = "Operator, Admin")]
         [HttpPost]
-        public ActionResult OrderInStock(int orderId)
+        public ActionResult OrderReceived(int orderId)
         {
+            var request = new OrderReceivedRequest { OrderId = orderId };
+            var response = this.orderService.OrderReceived(request);
+            var result = response.ConvertToOrderViewModel();
+
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = result
+            };
+            return jsonNetResult;
         }
 
         /// <summary>

@@ -29,11 +29,11 @@
     self.selectedPackage = new ko.observable();
 
     // order state properties
-    self.canBeReceived = serverModel.CanBeReceived;
-    self.canBeRemoved = serverModel.CanBeRemoved;
-    self.canBeModified = serverModel.CanBeModified;
-    self.canItemsBeModified = serverModel.CanItemsBeModified;
-    self.canBeRequestedForReturn = serverModel.CanBeRequestedForReturn;
+    self.canBeReceived = ko.observable(serverModel.CanBeReceived);
+    self.canBeRemoved = ko.observable(serverModel.CanBeRemoved);
+    self.canBeModified = ko.observable(serverModel.CanBeModified);
+    self.canItemsBeModified = ko.observable(serverModel.CanItemsBeModified);
+    self.canBeRequestedForReturn = ko.observable(serverModel.CanBeRequestedForReturn);
     // order view model computed properties
     self.domOrderId = ko.computed(function () {
         return "order" + self.id();
@@ -260,7 +260,22 @@
     };
 
     self.orderInStock = function() {
+        $.post("/orders/OrderReceived", { "orderId": self.id }, function (data) {
+            var model = ko.toJS(data);
+            if (model.MessageType == "Success") {
+                self.receivedDate(formatDate(model.ReceivedDate));
+                self.status(model.Status);
+                self.statusTranslated(model.StatusTranslated);
 
+                // order state properties
+                self.canBeReceived(model.CanBeReceived);
+                self.canBeRemoved(model.CanBeRemoved);
+                self.canBeModified(model.CanBeModified);
+                self.canItemsBeModified(model.CanItemsBeModified);
+                self.canBeRequestedForReturn(model.CanBeRequestedForReturn);
+                window.showNotice(model.Message, model.MessageType);
+            }
+        });
     };
     
 }

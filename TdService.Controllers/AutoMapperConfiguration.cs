@@ -209,6 +209,14 @@ namespace TdService.UI.Web
                 .ForMember(r => r.CanBeRequestedForReturn, opt => opt.Ignore())
                 .ForMember(r => r.CanItemsBeModified, opt => opt.Ignore());
 
+            //order received
+            Mapper.CreateMap<OrderReceivedResponse, OrderViewModel>();
+            Mapper.CreateMap<Order, OrderReceivedResponse>()
+                .ForMember(r => r.BrokenRules, opt => opt.Ignore())
+                .ForMember(r => r.Message, opt => opt.Ignore())
+                .ForMember(r => r.ErrorCode, opt => opt.Ignore())
+                .ForMember(r => r.MessageType, opt => opt.Ignore());
+
             // retailer
             Mapper.CreateMap<string, Retailer>().ConvertUsing<RetailerConverter>();
             Mapper.CreateMap<Retailer, GetRetailersResponse>()
