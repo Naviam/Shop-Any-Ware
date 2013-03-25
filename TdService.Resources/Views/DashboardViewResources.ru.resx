@@ -450,4 +450,10 @@
   <data name="NoHtml5Support" xml:space="preserve">
     <value>Ваш  браузер не поддерживает HTML 5</value>
   </data>
+  <data name="DeliveryAddressHeader" xml:space="preserve">
+    <value>Адрес доставки</value>
+  </data>
+  <data name="DeliveryMethodHeader" xml:space="preserve">
+    <value>Метод доставки</value>
+  </data>
 </root>
