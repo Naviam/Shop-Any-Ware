@@ -88,6 +88,8 @@
     <Compile Include="Messaging\Item\MoveOrderItemsToNewPackageResponse.cs" />
     <Compile Include="Messaging\Item\MoveOrderItemsToOriginalOrderRequest.cs" />
     <Compile Include="Messaging\Item\MoveOrderItemsToOriginalOrderResponse.cs" />
+    <Compile Include="Messaging\Item\MoveOrderItemToExistingPackageRequest.cs" />
+    <Compile Include="Messaging\Item\MoveOrderItemToExistingPackageResponse.cs" />
     <Compile Include="Messaging\Membership\Base\GetUserResponse.cs" />
     <Compile Include="Messaging\Membership\GetUserByEmailRequest.cs" />
     <Compile Include="Messaging\Item\AddItemToOrderRequest.cs" />

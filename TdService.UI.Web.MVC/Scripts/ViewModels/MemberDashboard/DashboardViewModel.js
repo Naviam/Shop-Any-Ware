@@ -373,14 +373,39 @@ function DashboardViewModel(serverModel) {
         });
     };
 
+    self.moveSingleItemToPackage = function(item) {
+        if (!item.selectedPackage()) return;
+        
+        $.post("/items/MoveOrderItemToNewPackage", { "itemId": item.id(), "packageId": item.selectedPackage().id() }, function (data) {
+            var model = ko.toJS(data);
+            if (model.MessageType == "Success") {
+                $.each(self.orders(), function (index, value) {
+                    if (value.id() == model.OrderId) {
+                        value.removeItemClient(model.Item.Id);
+                    }
+                });
+
+                $.each(self.packages(), function (index, value) {
+                    if (value.id() == model.PackageId) {
+                        value.addItems([model.Item]);
+                    }
+                });
+
+                window.showNotice(model.Message, model.MessageType);
+            }
+        });
+    };
+    
     self.moveEntireOrderToPackage = function (order) {
         if (!order.selectedPackage()) return;
+        
         $.post("/items/MoveOrderItemsToExistingPackage", { "orderId": order.id(), "packageId": order.selectedPackage().id()}, function (data) {
             var model = ko.toJS(data);
             if (model.MessageType == "Success") {
                 $.each(self.orders(), function (index, value) {
                     if (value.id()==model.OrderId) {
                         value.items.removeAll();
+                        value.selectedPackage(null);
                     }
                 });
                 

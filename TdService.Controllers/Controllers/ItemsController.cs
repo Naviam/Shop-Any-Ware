@@ -217,6 +217,20 @@ namespace TdService.UI.Web.Controllers
 
         [Authorize(Roles = "Shopper")]
         [HttpPost]
+        public ActionResult MoveOrderItemToNewPackage(int itemId, int packageId)
+        {
+            var request = new MoveOrderItemToExistingPackageRequest { ItemId = itemId, PackageId = packageId };
+            var response = this.itemsService.MoveOrderItemsToExistingPackage(request);
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = response.ConvertToMoveOrderItemToExistingPackageViewModel()
+            };
+            return jsonNetResult;
+        }
+
+        [Authorize(Roles = "Shopper")]
+        [HttpPost]
         public ActionResult MoveOrderItemsToOriginalOrder(int packageId)
         {
             var request = new MoveOrderItemsToOriginalOrderRequest { PackageId=packageId };

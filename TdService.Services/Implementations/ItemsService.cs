@@ -330,5 +330,30 @@ namespace TdService.Services.Implementations
                 return new MoveItemBackToOriginalOrderResponse { MessageType = MessageType.Error, Message = CommonResources.MoveOrderItemToOriginalOrderError };
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public MoveOrderItemToExistingPackageResponse MoveOrderItemsToExistingPackage(MoveOrderItemToExistingPackageRequest request)
+        {
+            try
+            {
+                itemsRepository.AttachItemToPackage(request.PackageId, request.ItemId);
+                var item = this.itemsRepository.GetItemById(request.ItemId);
+                var result = item.ConvertToMoveOrderItemToExistingPackageResponse();
+                result.PackageId = request.PackageId;
+                result.OrderId= item.OrderId.Value;
+                result.MessageType = MessageType.Success;
+                result.Message = string.Format(CommonResources.OrderItemSuccessfullyMoved, request.PackageId);
+                return result;
+            }
+            catch(Exception ex)
+            {
+                this.logger.Error("Error while moving order item to existing package", ex);
+                return new MoveOrderItemToExistingPackageResponse { MessageType = MessageType.Error, Message = CommonResources.MoveOrderItemToExistingPackageError };
+            }
+        }
     }
 }

@@ -24,7 +24,7 @@
                             <li><a href="#"><span class="label">ID: <span data-bind="text: id()"></span></span><span data-bind="text: name()"></span></a></li>
                         </ul>
                     </span>
-                    <select style="width:100px;" data-bind="options:  $root.packages, optionsText: 'name', visible: status() == 'Received' && hasItems(),  value: selectedPackage, optionsCaption: 'Choose...', event: {change: function(data, event){ $root.moveEntireOrderToPackage($data)} }"></select>
+                    <select style="width:100px;" data-bind="options:  $root.packages, optionsText: 'name', visible: status() == 'Received' && hasItems(),  value: selectedPackage, optionsCaption: 'Choose...', event: {change: function(data, event){ $root.moveEntireOrderToPackage($data); } }"></select>
                     <button class="btn btn-mini" title="@DashboardViewResources.ReturnOrderButton" data-toggle="modal" data-bind="visible: canBeRequestedForReturn"><i class="icon icon-retweet"></i></button>
                     <button class="btn btn-mini btn-danger" title="@DashboardViewResources.RemoveOrderButton" data-bind="click: $parent.removeOrder, visible: canBeRemoved"><i class="icon-white icon-remove"></i></button>
                 </td>
@@ -80,6 +80,7 @@
                             <div class="btn-group">
                                 <button class="btn btn-mini" title="@DashboardViewResources.EditItemTitle" data-bind="click:$parent.showEditItemPopup"><i class="icon icon-edit"></i></button>
                                 <button class="btn btn-mini" title="@DashboardViewResources.DeleteItemTitle" data-bind="click:$parent.removeItem"><i class="icon icon-remove"></i></button>
+                                <select style="width:100px;" data-bind="options:  $root.packages, optionsText: 'name', visible: $parent.status() == 'Received',  value: selectedPackage, optionsCaption: 'Choose...', event: {change: function(data, event){ $root.moveSingleItemToPackage($data); } }"></select>
                                 <button class="btn btn-mini dropdown-toggle" title="@DashboardViewResources.MoveItemTitle" data-toggle="dropdown"><i class="icon icon-arrow-right"></i>@*@DashboardViewResources.ActionMoveHeader*@ <span class="caret"></span></button>
                                 <ul class="dropdown-menu" data-bind="foreach: $root.packages()">
                                     <li><a href="#"><span class="label">ID: <span data-bind="text: id"></span></span><span data-bind="text: name()"></span></a></li>
