@@ -1,7 +1,20 @@
-﻿namespace TdService.Services.Messaging.Item.Base
+﻿using System.Collections.Generic;
+namespace TdService.Services.Messaging.Item.Base
 {
     public class ItemResponse:ResponseBase
     {
+        public class ItemImageModel
+        {
+            public string Url { get; set; }
+            public string FileName { get; set; }
+        }
+
+
+        /// <summary>
+        /// Gets or sets images
+        /// </summary>
+        public List<ItemImageModel> Images { get; set; }
+
         /// <summary>
         /// Gets or sets the id.
         /// </summary>

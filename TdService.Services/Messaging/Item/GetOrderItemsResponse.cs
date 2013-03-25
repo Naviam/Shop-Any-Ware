@@ -16,16 +16,6 @@ namespace TdService.Services.Messaging.Item
     /// </summary>
     public class GetOrderItemsResponse : ItemResponse
     {
-        public class ItemImageModel
-        {
-            public string Url { get; set; }
-            public string FileName { get; set; }
-        }
-
-
-        /// <summary>
-        /// Gets or sets images
-        /// </summary>
-        public List<ItemImageModel> Images { get; set; }
+        
     }
 }

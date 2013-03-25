@@ -236,8 +236,7 @@ namespace TdService.UI.Web
                  .ForMember(r => r.BrokenRules, opt => opt.Ignore())
                 .ForMember(r => r.Message, opt => opt.Ignore())
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())
-                .ForMember(r => r.MessageType, opt => opt.Ignore())
-                .ForMember(r => r.Images, opt => opt.Ignore());
+                .ForMember(r => r.MessageType, opt => opt.Ignore());
 
             // add order item
             Mapper.CreateMap<OrderItemViewModel, AddItemToOrderRequest>()

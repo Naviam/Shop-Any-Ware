@@ -40,6 +40,10 @@
     self.domOrderId = ko.computed(function () {
         return "order" + self.id();
     });
+    
+    self.popupDomOrderId = ko.computed(function () {
+        return "itemFormModal" + self.id();
+    });
 
     self.totalItemsAmount = ko.computed(function () {
         /// <summary>Determines the total amount of the order.</summary>
@@ -158,7 +162,7 @@
         if (model.MessageType == "Success") {
             self.loadItems();
             self.destroyUploader();
-            $('#itemFormModal').modal('hide');
+            $('#' + self.popupDomOrderId()).modal('hide');
             window.showNotice(data.Message, data.MessageType);
         }
     };
@@ -167,7 +171,7 @@
         var model = ko.toJS(data);
         if (model.MessageType == "Success") {
             self.loadItems();
-            $('#itemFormModal').modal('hide');
+            $('#' + self.popupDomOrderId()).modal('hide');
             window.showNotice(data.Message, data.MessageType);
         }
     };
@@ -233,14 +237,14 @@
         self.popupItemViewModel.clear();
         self.popupItemViewModel.uploaderVisible(false);
 
-        $('#itemFormModal').modal('show');
+        $('#' + self.popupDomOrderId()).modal('show');
     };
 
     self.showEditItemPopup = function (model) {
         self.popupItemViewModel.updateFieldsFromModel(model);
         self.popupItemViewModel.uploaderVisible(true);
         
-        $('#itemFormModal').modal('show');
+        $('#' + self.popupDomOrderId()).modal('show');
         self.initUploader();
     };
 
