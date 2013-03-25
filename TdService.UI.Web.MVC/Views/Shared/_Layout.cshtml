@@ -79,7 +79,7 @@
                             <li class="@(string.Compare(this.Request.RawUrl, "/home/rate", StringComparison.OrdinalIgnoreCase) == 0 ? "active" : string.Empty)"><a href="@Url.Action("Rate", "Home")" title="@SiteMapLocalizations.RatesDescription">@SiteMapLocalizations.RatesTitle</a></li>
                             <li class="@(string.Compare(this.Request.RawUrl, "/home/terms", StringComparison.OrdinalIgnoreCase) == 0 ? "active" : string.Empty)"><a href="@Url.Action("Terms", "Home")" title="@SiteMapLocalizations.TermsDescription">@SiteMapLocalizations.TermsTitle</a></li>
                             <li class="@(string.Compare(this.Request.RawUrl, "/home/contact", StringComparison.OrdinalIgnoreCase) == 0 ? "active" : string.Empty)"><a href="@Url.Action("Contact", "Home")" title="@SiteMapLocalizations.ContactsDescription">@SiteMapLocalizations.ContactsTitle</a></li>
-                            <li class="@(string.Compare(this.Request.RawUrl, "/home/help", StringComparison.OrdinalIgnoreCase) == 0 ? "active" : string.Empty)"><a href="@Url.Action("Help", "Home")" title="@SiteMapLocalizations.FaqDescription">@SiteMapLocalizations.FaqTitle</a></li>
+                            @*<li class="@(string.Compare(this.Request.RawUrl, "/home/help", StringComparison.OrdinalIgnoreCase) == 0 ? "active" : string.Empty)"><a href="@Url.Action("Help", "Home")" title="@SiteMapLocalizations.FaqDescription">@SiteMapLocalizations.FaqTitle</a></li>*@
                             <li></li>
                         </ul>
                         <ul class="nav pull-right">
@@ -105,6 +105,7 @@
                         <li><a href="@Url.Action("Index", "Home")" title="@SiteMapLocalizations.HomeDescription">@SiteMapLocalizations.HomeTitle</a></li>
                         @*<li><a href="@Url.Action("Shops", "Home")" title="@SiteMapLocalizations.StoresCatalogDescription">@SiteMapLocalizations.StoresCatalogTitle</a></li>*@
                         <li><a href="@Url.Action("Services", "Home")" title="@SiteMapLocalizations.OurServicesDescription">@SiteMapLocalizations.OurServicesTitle</a></li>
+                        <li><a href="@Url.Action("Rate", "Home")" title="@SiteMapLocalizations.RatesDescription">@SiteMapLocalizations.RatesTitle</a></li>
                     </ul>
                 </div>
                 <div class="span2">
@@ -112,7 +113,7 @@
                     <ul>
                         <li><a href="@Url.Action("Terms", "Home")" title="@SiteMapLocalizations.TermsDescription">@SiteMapLocalizations.TermsTitle</a></li>
                         <li><a href="@Url.Action("Contact", "Home")" title="@SiteMapLocalizations.ContactsDescription">@SiteMapLocalizations.ContactsTitle</a></li>
-                        <li><a href="@Url.Action("Help", "Home")" title="@SiteMapLocalizations.FaqDescription">@SiteMapLocalizations.FaqTitle</a></li>
+                        @*<li><a href="@Url.Action("Help", "Home")" title="@SiteMapLocalizations.FaqDescription">@SiteMapLocalizations.FaqTitle</a></li>*@
                     </ul>
                 </div>
                 <div class="span4 social-networks">

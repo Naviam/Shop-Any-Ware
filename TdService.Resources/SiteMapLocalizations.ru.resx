@@ -148,10 +148,10 @@
     <value>Обработка заказов и посылок</value>
   </data>
   <data name="OurServicesDescription" xml:space="preserve">
-    <value>Наш сервис</value>
+    <value>Наши услуги</value>
   </data>
   <data name="OurServicesTitle" xml:space="preserve">
-    <value>Наш сервис</value>
+    <value>Наши услуги</value>
   </data>
   <data name="RatesDescription" xml:space="preserve">
     <value>Стоимость доставки</value>
