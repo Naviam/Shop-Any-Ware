@@ -7,13 +7,15 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Globalization;
+
 namespace TdService.Repository.MsSql.StaticDataSeed
 {
     using System;
     using System.Collections.Generic;
 
-    using TdService.Model.Balance;
-    using TdService.Model.Membership;
+    using Model.Balance;
+    using Model.Membership;
 
     /// <summary>
     /// Seed users and roles.
@@ -56,7 +58,7 @@ namespace TdService.Repository.MsSql.StaticDataSeed
                 Password = "ruinruin",
                 Profile = profile,
                 Roles = new List<Role> { adminRole, shopperRole, operatorRole },
-                Wallet = new Wallet { Amount = 1003.23m }
+                Wallet = new Wallet { Amount = 0.00m }
             };
             context.Users.Add(user);
             context.SaveChanges();
@@ -77,7 +79,7 @@ namespace TdService.Repository.MsSql.StaticDataSeed
                 Email = "tdservice@mail.ru",
                 Password = "1111111",
                 Roles = new List<Role> { adminRole },
-                Wallet = new Wallet { Amount = 988.00m },
+                Wallet = new Wallet { Amount = 0.00m },
                 Profile = profileOleg,
                 ActivationCode = Guid.NewGuid()
             };
@@ -101,7 +103,7 @@ namespace TdService.Repository.MsSql.StaticDataSeed
                 Password = "1111111111",
                 Profile = profileShopper,
                 Roles = new List<Role> { shopperRole },
-                Wallet = new Wallet { Amount = 88.00m },
+                Wallet = new Wallet { Amount = 0.00m },
                 ActivationCode = Guid.NewGuid()
             };
             context.Users.Add(shopper);
@@ -175,9 +177,9 @@ namespace TdService.Repository.MsSql.StaticDataSeed
             context.Users.Add(kotg);
             context.SaveChanges();
 
-            for (int i = 0; i < 100; i++)
+            for (var i = 0; i < 100; i++)
             {
-                var s = i.ToString();
+                var s = i.ToString(CultureInfo.InvariantCulture);
                 var bulkProfile = new Profile
                 {
                     FirstName = "First Name "+s,

@@ -36,7 +36,7 @@ namespace TdService.UI.Web.MVC.App_Start
         /// </param>
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new StyleBundle("~/Content/less/bootstrapcss").Include(
+            bundles.Add(new StyleBundle("~/Content/bootstrapcss").Include(
                         "~/Content/bootstrap.css",
                         "~/Content/bootstrap-responsive.css"));
 
