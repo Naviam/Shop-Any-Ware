@@ -12,6 +12,7 @@ namespace TdService.UI.Web.Controllers
     using System.Web.Mvc;
 
     using TdService.Infrastructure.Authentication;
+    using TdService.UI.Web.Controllers.Base;
 
     /// <summary>
     /// The operator controller.

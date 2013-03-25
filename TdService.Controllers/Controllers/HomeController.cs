@@ -10,7 +10,7 @@
 namespace TdService.UI.Web.Controllers
 {
     using System.Web.Mvc;
-
+    using TdService.UI.Web.Controllers.Base;
     using TdService.UI.Web.ViewModels.Account;
 
     /// <summary>

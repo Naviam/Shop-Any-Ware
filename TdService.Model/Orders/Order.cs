@@ -11,6 +11,7 @@ namespace TdService.Model.Orders
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     using TdService.Infrastructure.Domain;
     using TdService.Model.Items;
@@ -54,7 +55,7 @@ namespace TdService.Model.Orders
         /// <summary>
         /// Gets or sets Retailer.
         /// </summary>
-        public virtual Retailer Retailer { get; set; }
+        public Retailer Retailer { get; set; }
 
         /// <summary>
         /// Gets or sets OrderNumber.
@@ -200,6 +201,13 @@ namespace TdService.Model.Orders
             return order;
         }
 
+        public Order SetAsRecieved()
+        {
+            this.Status = OrderStatus.Received;
+            this.ReceivedDate = DateTime.UtcNow;
+            return this;
+        }
+
         /// <summary>
         /// Add item to an order.
         /// </summary>
@@ -282,6 +290,15 @@ namespace TdService.Model.Orders
             if (!string.IsNullOrEmpty(this.TrackingNumber) && this.TrackingNumber.Length > 64)
             {
                 this.AddBrokenRule(OrderBusinessRules.TrackingNumberLength);
+            }
+        }
+
+        public List<Item> ItemsNotInPackage
+        {
+            get
+            {
+                if (this.Items == null) return new List<Item>();
+                return this.Items.Where(i => !(i.PackageId.HasValue)).ToList();
             }
         }
     }

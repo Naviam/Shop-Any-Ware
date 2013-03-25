@@ -33,9 +33,9 @@ namespace TdService.UI.Web.Mapping
         /// <returns>
         /// The collection of package item view models.
         /// </returns>
-        public static List<PackageItemViewModel> ConvertToPackageItemViewModelCollection(this List<GetPackageItemsResponse> packageItemsResponses)
+        public static PackageItemsViewModel ConvertToPackageItemViewModelCollection(this GetPackageItemsResponse packageItemsResponses)
         {
-            return Mapper.Map<List<GetPackageItemsResponse>, List<PackageItemViewModel>>(packageItemsResponses);
+            return Mapper.Map<GetPackageItemsResponse, PackageItemsViewModel>(packageItemsResponses);
         }
 
         /// <summary>
@@ -111,6 +111,27 @@ namespace TdService.UI.Web.Mapping
         public static ItemImageViewModel ConvertToItemImageViewModel(this  AddItemImageReponse  response)
         {
             return Mapper.Map<AddItemImageReponse, ItemImageViewModel>(response);
+        }
+
+
+        public static PackageItemsViewModel ConvertToPackageItemViewModelCollection(this MoveOrderItemsToExistingPackageResponse moveOrderItemsToExistingPackageResponse)
+        {
+            return Mapper.Map<MoveOrderItemsToExistingPackageResponse, PackageItemsViewModel>(moveOrderItemsToExistingPackageResponse);
+        }
+
+        public static PackageItemsViewModel ConvertToPackageItemViewModelCollection(this MoveOrderItemsToNewPackageResponse moveOrderItemsToNewPackageResponse)
+        {
+            return Mapper.Map<MoveOrderItemsToNewPackageResponse, PackageItemsViewModel>(moveOrderItemsToNewPackageResponse);
+        }
+
+        public static PackageItemsViewModel ConvertToPackageItemViewModelCollection(this MoveOrderItemsToOriginalOrderResponse moveOrderItemsToOriginalOrderResponse)
+        {
+            return Mapper.Map<MoveOrderItemsToOriginalOrderResponse, PackageItemsViewModel>(moveOrderItemsToOriginalOrderResponse);
+        }
+
+        public static MoveItemBackToOriginalOrderViewModel ConvertToPackageItemViewModel(this MoveItemBackToOriginalOrderResponse moveOrderItemsToOriginalOrderResponse)
+        {
+            return Mapper.Map<MoveItemBackToOriginalOrderResponse, MoveItemBackToOriginalOrderViewModel>(moveOrderItemsToOriginalOrderResponse);
         }
     }
 }

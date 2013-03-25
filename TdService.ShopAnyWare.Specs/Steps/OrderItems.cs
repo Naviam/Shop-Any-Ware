@@ -10,17 +10,16 @@
 namespace TdService.ShopAnyWare.Specs.Steps
 {
     using System.Collections.Generic;
-
     using NUnit.Framework;
-
+    using TdService.Repository.MsSql;
     using TdService.Services.Implementations;
     using TdService.ShopAnyWare.Specs.Fakes;
     using TdService.UI.Web;
     using TdService.UI.Web.Controllers;
     using TdService.UI.Web.ViewModels.Item;
-
     using TechTalk.SpecFlow;
     using TechTalk.SpecFlow.Assist;
+    using System.Linq;
 
     /// <summary>
     /// The order items.
@@ -50,27 +49,32 @@ namespace TdService.ShopAnyWare.Specs.Steps
         /// <param name="table">
         /// The table.
         /// </param>
-        [When(@"I add the following items to order '(.*)'")]
-        public void WhenIAddTheFollowingItemsToOrder(int orderId, Table table)
+        [When(@"I add the following items to order with orderNumber '(.*)'")]
+        public void WhenIAddTheFollowingItemsToOrder(string orderNumber, Table table)
         {
-            var contoller = this.GetItemsController();
-            var itemViewModels = table.CreateSet<OrderItemViewModel>();
-            var actuals = new List<OrderItemViewModel>();
-            foreach (var itemViewModel in itemViewModels)
+            using (var context = new ShopAnyWareSql())
             {
-                itemViewModel.OrderId = orderId;
-                var result = contoller.AddItemToOrder(itemViewModel) as JsonNetResult;
-                Assert.That(result, Is.Not.Null);
-                if (result == null)
+                var order = context.Orders.SingleOrDefault(o => o.OrderNumber.Equals(orderNumber));
+                Assert.IsNotNull(order);
+                var contoller = this.GetItemsController();
+                var itemViewModels = table.CreateSet<OrderItemViewModel>();
+                var actuals = new List<OrderItemViewModel>();
+                foreach (var itemViewModel in itemViewModels)
                 {
-                    continue;
+                    itemViewModel.OrderId = order.Id;
+                    var result = contoller.AddItemToOrder(itemViewModel) as JsonNetResult;
+                    Assert.That(result, Is.Not.Null);
+                    if (result == null)
+                    {
+                        continue;
+                    }
+
+                    var actual = result.Data as OrderItemViewModel;
+                    actuals.Add(actual);
                 }
 
-                var actual = result.Data as OrderItemViewModel;
-                actuals.Add(actual);
+                ScenarioContext.Current.Set(actuals);
             }
-
-            ScenarioContext.Current.Set(actuals);
         }
 
         /// <summary>
@@ -82,23 +86,26 @@ namespace TdService.ShopAnyWare.Specs.Steps
         [When(@"I remove the following order items")]
         public void WhenIRemoveTheFollowingOrderItems(Table table)
         {
-            var contoller = this.GetItemsController();
-            var itemViewModels = table.CreateSet<OrderItemViewModel>();
-            var actuals = new List<OrderItemViewModel>();
-            foreach (var itemViewModel in itemViewModels)
+            using (var context = new ShopAnyWareSql())
             {
-                var result = contoller.RemoveItem(itemViewModel.Id) as JsonNetResult;
-                Assert.That(result, Is.Not.Null);
-                if (result == null)
+                var contoller = this.GetItemsController();
+                var itemViewModels = table.CreateSet<OrderItemViewModel>();
+                var actuals = new List<OrderItemViewModel>();
+                foreach (var itemViewModel in itemViewModels)
                 {
-                    continue;
+                    var result = contoller.RemoveItem(itemViewModel.Id) as JsonNetResult;
+                    Assert.That(result, Is.Not.Null);
+                    if (result == null)
+                    {
+                        continue;
+                    }
+
+                    var actual = result.Data as OrderItemViewModel;
+                    actuals.Add(actual);
                 }
 
-                var actual = result.Data as OrderItemViewModel;
-                actuals.Add(actual);
+                ScenarioContext.Current.Set(actuals);
             }
-
-            ScenarioContext.Current.Set(actuals);
         }
 
         /// <summary>

@@ -45,9 +45,9 @@ namespace TdService.Services.Mapping
         /// <returns>
         /// Collection of get package items responses.
         /// </returns>
-        public static List<GetPackageItemsResponse> ConvertToGetPackageItemsResponse(this List<Item> items)
+        public static GetPackageItemsResponse ConvertToGetPackageItemsResponse(this List<Item> items)
         {
-            return Mapper.Map<List<Item>, List<GetPackageItemsResponse>>(items);
+            return Mapper.Map<List<Item>, GetPackageItemsResponse>(items);
         }
 
         /// <summary>
@@ -90,6 +90,26 @@ namespace TdService.Services.Mapping
         public static RemoveItemResponse ConvertToRemoveItemResponse(this Item item)
         {
             return Mapper.Map<Item, RemoveItemResponse>(item);
+        }
+
+        public static MoveOrderItemsToExistingPackageResponse ConvertToMoveOrderItemsToExistingPackageResponse(this List<Item> itemList)
+        {
+            return Mapper.Map<List<Item>, MoveOrderItemsToExistingPackageResponse>(itemList);
+        }
+
+        public static MoveOrderItemsToNewPackageResponse ConvertToMoveOrderItemsToNewPackageResponse(this List<Item> itemList)
+        {
+            return Mapper.Map<List<Item>, MoveOrderItemsToNewPackageResponse>(itemList);
+        }
+
+        public static MoveOrderItemsToOriginalOrderResponse ConvertToMoveOrderItemsToOriginalOrderResponse(this List<Item> itemList)
+        {
+            return Mapper.Map<List<Item>, MoveOrderItemsToOriginalOrderResponse>(itemList);
+        }
+
+        public static MoveItemBackToOriginalOrderResponse ConvertToMoveOrderItemToOriginalOrderResponse(this Item item)
+        {
+            return Mapper.Map<Item, MoveItemBackToOriginalOrderResponse>(item);
         }
     }
 }

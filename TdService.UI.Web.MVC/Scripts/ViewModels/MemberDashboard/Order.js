@@ -1,7 +1,9 @@
 ﻿function Order(serverModel) {
     /// <summary>Order view model.</summary>
     var self = this;
-
+    
+    
+    
     // default model properties
     self.message = ko.observable(serverModel.Message);
     self.messageType = ko.observable(serverModel.MessageType);
@@ -25,15 +27,22 @@
 
     self.popupItemViewModel = new PopupItemViewModel();
 
+    //move orderItems to package
+    self.selectedPackage = new ko.observable();
+
     // order state properties
-    self.canBeReceived = serverModel.CanBeReceived;
-    self.canBeRemoved = serverModel.CanBeRemoved;
-    self.canBeModified = serverModel.CanBeModified;
-    self.canItemsBeModified = serverModel.CanItemsBeModified;
-    self.canBeRequestedForReturn = serverModel.CanBeRequestedForReturn;
+    self.canBeReceived = ko.observable(serverModel.CanBeReceived);
+    self.canBeRemoved = ko.observable(serverModel.CanBeRemoved);
+    self.canBeModified = ko.observable(serverModel.CanBeModified);
+    self.canItemsBeModified = ko.observable(serverModel.CanItemsBeModified);
+    self.canBeRequestedForReturn = ko.observable(serverModel.CanBeRequestedForReturn);
     // order view model computed properties
     self.domOrderId = ko.computed(function () {
         return "order" + self.id();
+    });
+    
+    self.popupDomOrderId = ko.computed(function () {
+        return "itemFormModal" + self.id();
     });
 
     self.totalItemsAmount = ko.computed(function () {
@@ -53,6 +62,8 @@
         }
         return total;
     });
+
+
 
     self.totalItemsWeight = ko.computed(function () {
         /// <summary>Determines the total weight of items in the order.</summary>
@@ -107,13 +118,17 @@
         $.post("/items/getorderitems", { "orderId": self.id() }, function (data) {
             var items = ko.toJS(data);
             self.items.removeAll();
-            $.each(items, function (index, value) {
-                var item = new Item(value);
-                self.items.unshift(item);
-            });
+            self.addItems(items);
         });
     };
     self.loadItems();
+
+    self.addItems = function (itemsList) {
+        $.each(itemsList, function (index, value) {
+            var item = new Item(value);
+            self.items.unshift(item);
+        });
+    };
 
     self.getItemDetails = function () {
         /// <summary>Get item details.</summary>
@@ -147,7 +162,7 @@
         if (model.MessageType == "Success") {
             self.loadItems();
             self.destroyUploader();
-            $('#itemFormModal').modal('hide');
+            $('#' + self.popupDomOrderId()).modal('hide');
             window.showNotice(data.Message, data.MessageType);
         }
     };
@@ -156,7 +171,7 @@
         var model = ko.toJS(data);
         if (model.MessageType == "Success") {
             self.loadItems();
-            $('#itemFormModal').modal('hide');
+            $('#' + self.popupDomOrderId()).modal('hide');
             window.showNotice(data.Message, data.MessageType);
         }
     };
@@ -222,14 +237,14 @@
         self.popupItemViewModel.clear();
         self.popupItemViewModel.uploaderVisible(false);
 
-        $('#itemFormModal').modal('show');
+        $('#' + self.popupDomOrderId()).modal('show');
     };
 
     self.showEditItemPopup = function (model) {
         self.popupItemViewModel.updateFieldsFromModel(model);
         self.popupItemViewModel.uploaderVisible(true);
         
-        $('#itemFormModal').modal('show');
+        $('#' + self.popupDomOrderId()).modal('show');
         self.initUploader();
     };
 
@@ -245,4 +260,24 @@
             }
         });
     };
+
+    self.orderInStock = function(order) {
+        $.post("/orders/OrderReceived", { "orderId": self.id }, function (data) {
+            var model = ko.toJS(data);
+            if (model.MessageType == "Success") {
+                self.receivedDate(formatDate(model.ReceivedDate));
+                self.status(model.Status);
+                self.statusTranslated(model.StatusTranslated);
+
+                // order state properties
+                self.canBeReceived(model.CanBeReceived);
+                self.canBeRemoved(model.CanBeRemoved);
+                self.canBeModified(model.CanBeModified);
+                self.canItemsBeModified(model.CanItemsBeModified);
+                self.canBeRequestedForReturn(model.CanBeRequestedForReturn);
+                window.showNotice(model.Message, model.MessageType);
+            }
+        });
+    };
+    
 }

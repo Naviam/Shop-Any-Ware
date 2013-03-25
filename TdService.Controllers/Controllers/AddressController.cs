@@ -13,13 +13,13 @@ namespace TdService.UI.Web.Controllers
     using System.Collections.Generic;
     using System.Web.Mvc;
     using System.Xml;
-
     using TdService.Infrastructure.Authentication;
     using TdService.Infrastructure.Domain;
     using TdService.Resources;
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging;
     using TdService.Services.Messaging.Address;
+    using TdService.UI.Web.Controllers.Base;
     using TdService.UI.Web.Mapping;
     using TdService.UI.Web.ViewModels.Account;
 

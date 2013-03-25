@@ -233,5 +233,29 @@ using TdService.Services.Messaging.Order;
 
             return response;
         }
+
+        /// <summary>
+        /// Updates order status to received
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public OrderReceivedResponse OrderReceived(OrderReceivedRequest request)
+        {
+            try
+            {
+                var order = this.orderRepository.GetOrderById(request.OrderId);
+                order.SetAsRecieved();
+                var updatedOrder = this.orderRepository.UpdateOrder(order);
+                var response = updatedOrder.ConvertToOrderReceivedResponse();
+                response.Message = CommonResources.OrderStatusChangedToReceived;
+                response.MessageType = MessageType.Success;
+                return response;
+            }
+            catch(Exception ex)
+            {
+                this.logger.Error(CommonResources.OrderReceivedErrorMessage, ex);
+                return new OrderReceivedResponse { MessageType = MessageType.Error, ErrorCode = ex.Message };
+            }
+        }
     }
 }

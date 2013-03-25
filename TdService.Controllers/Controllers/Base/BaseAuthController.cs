@@ -7,10 +7,12 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.UI.Web.Controllers
+namespace TdService.UI.Web.Controllers.Base
 {
+    using System.Web.Security;
     using TdService.Infrastructure.Authentication;
-
+    using System.Linq;
+    using System;
     /// <summary>
     /// Base contoller contains methods common for all controllers.
     /// </summary>
@@ -30,6 +32,16 @@ namespace TdService.UI.Web.Controllers
         public BaseAuthController(IFormsAuthentication formsAuthentication)
         {
             this.FormsAuthentication = formsAuthentication;
+        }
+
+        /// <summary>
+        /// Ensures that user email was not changed on the view
+        /// </summary>
+        /// <param name="userEmail"></param>
+        protected void EnsureUserEmailIsNotChanged(string userEmail)
+        {
+            if (Roles.Enabled && !Roles.GetRolesForUser().Contains("Operator") && !userEmail.Equals(FormsAuthentication.GetAuthenticationToken())) 
+                throw new Exception("Access violation");
         }
     }
 }

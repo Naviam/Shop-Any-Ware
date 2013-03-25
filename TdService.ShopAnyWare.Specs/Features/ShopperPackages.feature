@@ -36,8 +36,8 @@ Scenario: Remove package in New status
     | 1  | Vitali    | Hatalski | my first address | Nekrasova 8  | 14           | Minsk | Belarus |       |        | 220040  | +375295067630 |
 	And I have the following packages
 	| Name              | Delivery Address Id | Dispatch Method | Status |
-	| my first package  | 0                   |                 | New    |
-	| my second package | 1                   |                 | New    |
+	| my first package  | 0                   | ExpressMail     | New    |
+	| my second package | 1                   | ExpressMail     | New    |
 	When I remove packages with the ids as follows
 	| Id |
 	| 1  |

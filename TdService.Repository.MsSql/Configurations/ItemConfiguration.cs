@@ -9,8 +9,8 @@
 
 namespace TdService.Repository.MsSql.Configurations
 {
+    using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.ModelConfiguration;
-
     using TdService.Model.Items;
 
     /// <summary>
@@ -23,6 +23,7 @@ namespace TdService.Repository.MsSql.Configurations
         /// </summary>
         public ItemConfiguration()
         {
+            this.Property(i => i.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             this.Property(i => i.Name).IsRequired().HasMaxLength(64);
             this.Property(i => i.Color).HasMaxLength(64);
         }

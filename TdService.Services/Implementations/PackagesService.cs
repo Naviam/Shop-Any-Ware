@@ -105,7 +105,7 @@ using TdService.Services.Messaging.Package;
         /// </returns>
         public AddPackageResponse AddPackage(AddPackageRequest request)
         {
-            var newPackage = new Package { Name = request.Name, CreatedDate = DateTime.UtcNow, Weight = new Weight(), Dimensions = new Dimensions() };
+            var newPackage = new Package { Name = request.Name, CreatedDate = DateTime.UtcNow, Dimensions = new Dimensions() };
             var packageResult = this.packageRepository.AddPackage(request.IdentityToken, newPackage);
             return packageResult.ConvertToAddPackageResponse();
         }

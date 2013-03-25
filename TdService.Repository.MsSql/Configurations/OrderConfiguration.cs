@@ -6,8 +6,8 @@
 
 namespace TdService.Repository.MsSql.Configurations
 {
+    using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.ModelConfiguration;
-
     using TdService.Model.Orders;
 
     /// <summary>
@@ -20,8 +20,12 @@ namespace TdService.Repository.MsSql.Configurations
         /// </summary>
         public OrderConfiguration()
         {
+            this.Property(o => o.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             this.Property(o => o.OrderNumber).HasMaxLength(40);
             this.Property(o => o.TrackingNumber).HasMaxLength(40);
+            this.Ignore(o => o.ItemsNotInPackage);
+
+            this.HasMany(o => o.Items).WithOptional(i => i.Order).HasForeignKey(i => i.OrderId).WillCascadeOnDelete(true);
         }
     }
 }
