@@ -23,8 +23,34 @@
             </tr>
         </table>
         <div data-bind="collapsed: isCollapsed" class="white collapse" style="height:auto">
+            <table class="header">
+                <tbody>
+                    <tr>
+                        <td>@DashboardViewResources.DeliveryAddressHeader</td>
+                        <td>
+                            <select data-bind='options: $root.deliveryAddresses, 
+                                    optionsText: function(address) { return address.AddressName; }, 
+                                    value: selectedAddress, optionsCaption: "@DashboardViewResources.SelectDefaultValue'>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>@DashboardViewResources.DeliveryMethodHeader</td>
+                        <td>
+                            <select data-bind='options: $root.deliveryMethods, value: selectedMethod, optionsCaption: "@DashboardViewResources.SelectDefaultValue"'>
+                            </select>
+                        </td>
+                    </tr>
+                    @*<tr>
+                        <td>@DashboardViewResources.TrackingNumberHeader</td>
+                        <td>
+                            <input type="text" readonly="readonly" placeholder="@DashboardViewResources.TrackingNumberPlaceholder">
+                        </td>
+                    </tr>*@
+                </tbody>
+            </table>
             <div class="border">
-                <table>
+                @*<table>
                     <thead>
                         <tr class="type">
                             <th colspan="4">
@@ -51,15 +77,15 @@
                             <td class="span2">0</td>
                         </tr>
                     </tfoot>
-                </table>
+                </table>*@
                 <div class="alert alert-info" data-bind="visible: items().length == 0">@DashboardViewResources.NoPackageItemsMessage</div>
                 <table data-bind="visible: items().length != 0">
                     <thead>
-                        <tr class="type">
+                        @*<tr class="type">
                             <th colspan="4">
                                 <h4>@DashboardViewResources.CustomsDeclaration</h4>
                             </th>
-                        </tr>
+                        </tr>*@
                         <tr>
                             <th class="left">@DashboardViewResources.ItemNameHeader</th>
                             <th>@DashboardViewResources.QuantityHeader</th>
