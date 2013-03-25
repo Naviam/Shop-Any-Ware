@@ -21,6 +21,7 @@ namespace TdService.UI.Web.Controllers
     using TdService.UI.Web.ViewModels.Member;
     using System.Linq;
     using TdService.Infrastructure.PayPalHelpers;
+    using TdService.UI.Web.Controllers.Base;
     /// <summary>
     /// The controller that contains membership methods.
     /// </summary>

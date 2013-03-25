@@ -52,7 +52,7 @@ namespace TdService.Repository.MsSql.Repositories
             using (var context = new ShopAnyWareSql())
             {
                 var order = context.OrdersWithItemsAndImages().SingleOrDefault(o => o.Id == orderId);
-                return order != null ? order.Items : null;
+                return order != null ? order.ItemsNotInPackage : null;
             }
         }
 

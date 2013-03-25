@@ -7,8 +7,10 @@
 namespace TdService.Model.Items
 {
     using System.Collections.Generic;
-    using TdService.Infrastructure.Domain;
-    using TdService.Model.Common;
+using TdService.Infrastructure.Domain;
+using TdService.Model.Common;
+using TdService.Model.Orders;
+using TdService.Model.Packages;
 
     /// <summary>
     /// Product is what user is buying from online shops.
@@ -49,6 +51,26 @@ namespace TdService.Model.Items
         /// Gets or sets Price.
         /// </summary>
         public decimal Price { get; set; }
+
+        /// <summary>
+        /// Gets or sets package
+        /// </summary>
+        public Package Package { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int? PackageId { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Order Order { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int? OrderId { get; set; }
 
         /// <summary>
         /// Validate item business rules.

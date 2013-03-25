@@ -11,10 +11,10 @@ namespace TdService.UI.Web.Controllers
 {
     using System.Web.Mvc;
     using System.Xml;
-
     using TdService.Infrastructure.Authentication;
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging.Retailer;
+    using TdService.UI.Web.Controllers.Base;
     using TdService.UI.Web.Mapping;
 
     /// <summary>

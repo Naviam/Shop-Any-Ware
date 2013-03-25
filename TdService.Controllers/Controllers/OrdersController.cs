@@ -12,16 +12,17 @@ namespace TdService.UI.Web.Controllers
     using System;
     using System.Collections.Generic;
     using System.Web.Mvc;
+    using System.Web.Security;
     using System.Xml;
-
     using FluentValidation;
     using FluentValidation.Internal;
-
     using TdService.Infrastructure.Authentication;
     using TdService.Infrastructure.Domain;
+    using TdService.Infrastructure.SessionStorage;
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging;
     using TdService.Services.Messaging.Order;
+    using TdService.UI.Web.Controllers.Base;
     using TdService.UI.Web.Mapping;
     using TdService.UI.Web.ViewModels.Order;
 
@@ -34,6 +35,8 @@ namespace TdService.UI.Web.Controllers
         /// Order service.
         /// </summary>
         private readonly IOrderService orderService;
+
+        
 
         /// <summary>
         /// Initializes a new instance of the <see cref="OrdersController"/> class. 
@@ -61,9 +64,10 @@ namespace TdService.UI.Web.Controllers
         /// </returns>
         [Authorize(Roles = "Operator")]
         [HttpPost]
-        public ActionResult NewOrders()
+        public ActionResult NewOrders(string userEmail)
         {
-            var request = new GetAllOrdersRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() };
+            EnsureUserEmailIsNotChanged(userEmail);
+            var request = new GetAllOrdersRequest { IdentityToken = userEmail };
             var response = this.orderService.GetAllNew(request);
             var result = response.ConvertToOrderViewModelCollection();
 
@@ -81,9 +85,11 @@ namespace TdService.UI.Web.Controllers
         /// <returns>
         /// The <see cref="ActionResult"/>.
         /// </returns>
-        public ActionResult ReceivedOrders()
+        public ActionResult ReceivedOrders(string userEmail)
         {
-            var request = new GetAllOrdersRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() };
+            EnsureUserEmailIsNotChanged(userEmail);
+
+            var request = new GetAllOrdersRequest { IdentityToken = userEmail };
             var response = this.orderService.GetAllReceived(request);
             var result = response.ConvertToOrderViewModelCollection();
 
@@ -101,9 +107,10 @@ namespace TdService.UI.Web.Controllers
         /// <returns>
         /// The <see cref="ActionResult"/>.
         /// </returns>
-        public ActionResult ReturnRequestedOrders()
+        public ActionResult ReturnRequestedOrders(string userEmail)
         {
-            var request = new GetAllOrdersRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() };
+            EnsureUserEmailIsNotChanged(userEmail);
+            var request = new GetAllOrdersRequest { IdentityToken = userEmail };
             var response = this.orderService.GetAllReturnRequested(request);
             var result = response.ConvertToOrderViewModelCollection();
 
@@ -125,6 +132,7 @@ namespace TdService.UI.Web.Controllers
         [HttpPost]
         public ActionResult Recent(string userEmail)
         {
+            EnsureUserEmailIsNotChanged(userEmail);
             var request = new GetMyOrdersRequest { IdentityToken = userEmail };
             var response = this.orderService.GetRecent(request);
             var result = response.ConvertToOrderViewModelCollection();
@@ -147,6 +155,7 @@ namespace TdService.UI.Web.Controllers
         [HttpPost]
         public ActionResult History(string userEmail)
         {
+            EnsureUserEmailIsNotChanged(userEmail);
             var request = new GetMyOrdersRequest { IdentityToken = userEmail };
             var response = this.orderService.GetHistory(request);
             var result = response.ConvertToOrderViewModelCollection();
@@ -172,6 +181,7 @@ namespace TdService.UI.Web.Controllers
         [HttpPost]
         public ActionResult Add([Bind]string retailerUrl, string userEmail)
         {
+            EnsureUserEmailIsNotChanged(userEmail);
             var result = new OrderViewModel { Status = "New", RetailerUrl = retailerUrl };
             var validator = new OrderViewModelValidator();
             var validationResult = validator.Validate(result);
@@ -213,16 +223,34 @@ namespace TdService.UI.Web.Controllers
         /// <returns>
         /// The <see cref="ActionResult"/>.
         /// </returns>
-        [Authorize(Roles = "Shopper, Operator")]
+        [Authorize(Roles = "Shopper, Admin")]
         [HttpPost]
-        public ActionResult Remove(int orderId)
+        public ActionResult Remove(int orderId, string userEmail)
         {
+            EnsureUserEmailIsNotChanged(userEmail);
+
             var request = new RemoveOrderRequest
                 {
-                    IdentityToken = this.FormsAuthentication.GetAuthenticationToken(),
+                    IdentityToken=userEmail,
                     Id = orderId
                 };
             var response = this.orderService.RemoveOrder(request);
+            var result = response.ConvertToOrderViewModel();
+
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = result
+            };
+            return jsonNetResult;
+        }
+
+        [Authorize(Roles = "Operator, Admin")]
+        [HttpPost]
+        public ActionResult OrderReceived(int orderId)
+        {
+            var request = new OrderReceivedRequest { OrderId = orderId };
+            var response = this.orderService.OrderReceived(request);
             var result = response.ConvertToOrderViewModel();
 
             var jsonNetResult = new JsonNetResult
@@ -294,6 +322,8 @@ namespace TdService.UI.Web.Controllers
             return jsonNetResult;
         }
 
+
+
         /// <summary>
         /// The request for return.
         /// </summary>
@@ -313,5 +343,7 @@ namespace TdService.UI.Web.Controllers
             };
             return jsonNetResult;
         }
+
+        
     }
 }

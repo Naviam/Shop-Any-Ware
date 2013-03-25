@@ -14,21 +14,18 @@ namespace TdService.ShopAnyWare.Specs.Steps
     using System.Data;
     using System.Diagnostics;
     using System.Linq;
-
     using AutoMapper;
-
     using TdService.Model.Addresses;
     using TdService.Model.Balance;
     using TdService.Model.Common;
     using TdService.Model.Items;
     using TdService.Model.Membership;
     using TdService.Model.Orders;
+    using TdService.Model.Packages;
     using TdService.Repository.MsSql;
     using TdService.ShopAnyWare.Specs.Fakes;
-
     using TechTalk.SpecFlow;
     using TechTalk.SpecFlow.Assist;
-
     using Profile = TdService.Model.Membership.Profile;
 
     /// <summary>
@@ -156,24 +153,50 @@ namespace TdService.ShopAnyWare.Specs.Steps
         [Given(@"I have the following orders")]
         public void GivenIHaveTheFollowingOrders(Table table)
         {
-            var orders = this.OrdersTransform(table);
             var user = ScenarioContext.Current.Get<User>();
-
             using (var context = new ShopAnyWareSql())
             {
-                context.Wallets.Attach(user.Wallet);
-                context.Profiles.Attach(user.Profile);
-                context.Users.Attach(user);
+                var orders = table.CreateSet<Order>().Select(o => { context.Entry<Order>(o).State = EntityState.Added; return o; });
                 if (user.Orders == null)
                 {
                     user.Orders = new List<Order>();
                 }
 
-                var addedOrders = orders.Select(order => context.Orders.Add(order)).ToList();
+                user.Orders.AddRange(orders);
+                context.Entry(user).State = EntityState.Modified;
                 context.SaveChanges();
 
-                user.Orders.AddRange(addedOrders.ToList());
-                context.Entry(user).State = EntityState.Modified;
+                ScenarioContext.Current.Set(user);
+            }
+        }
+
+        /// <summary>
+        /// The given i have the following packages.
+        /// </summary>
+        /// <param name="table">
+        /// The table.
+        /// </param>
+        [Given(@"I have the following packages")]
+        public void GivenIHaveTheFollowingPackages(Table table)
+        {
+            var packages = table.CreateSet<Package>();
+            var user = ScenarioContext.Current.Get<User>();
+            using (var context = new ShopAnyWareSql())
+            {
+
+                if (user.Packages == null)
+                {
+                    user.Packages = new List<Package>();
+                }
+
+                var addedPackages = packages.Select(p =>
+                    {
+                        p.CreatedDate = DateTime.Now;
+                        p.Dimensions = new Dimensions();
+                        return context.Packages.Add(p);
+                    });
+
+                user.Packages.AddRange(addedPackages);
                 context.SaveChanges();
 
                 ScenarioContext.Current.Set(user);
@@ -208,71 +231,50 @@ namespace TdService.ShopAnyWare.Specs.Steps
         /// The table.
         /// </param>
         [Given(@"there are following items for order '(.*)' in database")]
-        public void GivenThereAreFollowingItemsForOrderInDatabase(int orderId, Table table)
+        public void GivenThereAreFollowingItemsForOrderInDatabase(string orderNumber, Table table)
         {
-            ScenarioContext.Current.Set(orderId, "OrderId");
-            var items = new List<Item>();
-            foreach (var row in table.Rows)
-            {
-                var t = new Table(table.Header.ToArray());
-                t.AddRow(row);
-                var item = t.CreateInstance<Item>();
-                string test;
-                item.Weight = new Weight
-                    {
-                        Pounds = row.TryGetValue("Weight Pounds", out test)
-                        ? Convert.ToInt32(row["Weight Pounds"]) : 0,
-                        Ounces = row.TryGetValue("Weight Ounces", out test)
-                        ? Convert.ToDecimal(row["Weight Ounces"]) : 0
-                    };
-                item.Dimensions = new Dimensions
-                    {
-                        Girth = row.TryGetValue("Dimensions Girth", out test)
-                        ? Convert.ToDecimal(row["Dimensions Girth"]) : 0,
-                        Height = row.TryGetValue("Dimensions Height", out test)
-                        ? Convert.ToDecimal(row["Dimensions Height"]) : 0,
-                        Length = row.TryGetValue("Dimensions Length", out test)
-                        ? Convert.ToDecimal(row["Dimensions Length"]) : 0,
-                        Width = row.TryGetValue("Dimensions Width", out test)
-                        ? Convert.ToDecimal(row["Dimensions Width"]) : 0
-                    };
-                items.Add(item);
-            }
+            var user = ScenarioContext.Current.Get<User>();
+            var orderId = user.Orders.SingleOrDefault(o => o.OrderNumber.Equals(orderNumber)).Id;
 
-            ////var items = table.CreateSet<Item>();
+            var items = table.CreateSet<Item>().Select(i => { i.Dimensions = new Dimensions(); i.Weight = new Weight(); return i; });
+            ScenarioContext.Current.Set(orderId, "OrderId");
             using (var context = new ShopAnyWareSql())
             {
-                var order = context.Orders.Include("Items").SingleOrDefault(o => o.Id == orderId);
-
-                if (order == null)
+                var order = context.Orders.Find(orderId);
+                if (order.Items == null)
                 {
-                    return;
+                    order.Items = new List<Item>();
                 }
 
-                foreach (var item in items)
-                {
-                    if (item.Weight == null)
-                    {
-                        item.Weight = new Weight();
-                    }
-
-                    if (item.Dimensions == null)
-                    {
-                        item.Dimensions = new Dimensions();
-                    }
-
-                    if (order.Items == null)
-                    {
-                        order.Items = new List<Item>();
-                    }
-
-                    order.Items.Add(item);
-                }
-
+                order.Items.AddRange(items);
+                context.Orders.Attach(order);
                 context.SaveChanges();
                 ScenarioContext.Current.Set(order.Items);
             }
         }
+
+        [Given(@"there are following items for package '(.*)' in database")]
+        public void GivenThereAreFollowingItemsForPackageInDatabase(string  packageName, Table table)
+        {
+            var user = ScenarioContext.Current.Get<User>();
+            var packageId = user.Packages.SingleOrDefault(p => p.Name.Equals(packageName)).Id;
+            
+            ScenarioContext.Current.Set(packageId, "PackageId");
+            var items = table.CreateSet<Item>().Select(i => { i.Dimensions = new Dimensions(); i.Weight = new Weight(); return i; }); ;
+            using (var context = new ShopAnyWareSql())
+            {
+                var package = context.Packages.Find(packageId);
+                if (package.Items == null)
+                {
+                    package.Items = new List<Item>();
+                }
+                context.Packages.Attach(package);
+                package.Items.AddRange(items);
+                context.SaveChanges();
+                ScenarioContext.Current.Set(package.Items);
+            }
+        }
+
 
         /// <summary>
         /// The orders transform.

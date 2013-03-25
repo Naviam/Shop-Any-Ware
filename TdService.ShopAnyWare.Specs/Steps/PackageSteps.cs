@@ -10,15 +10,16 @@
 namespace TdService.ShopAnyWare.Specs.Steps
 {
     using NUnit.Framework;
-
+    using TdService.Model.Packages;
+    using TdService.Repository.MsSql;
     using TdService.Services.Implementations;
     using TdService.ShopAnyWare.Specs.Fakes;
     using TdService.UI.Web;
     using TdService.UI.Web.Controllers;
     using TdService.UI.Web.ViewModels.Package;
-
     using TechTalk.SpecFlow;
     using TechTalk.SpecFlow.Assist;
+    using System.Linq;
 
     /// <summary>
     /// The package steps.
@@ -39,6 +40,8 @@ namespace TdService.ShopAnyWare.Specs.Steps
             return new PackagesController(packagesService, formsAuthentication);
         }
 
+
+
         /// <summary>
         /// The when i set package name as.
         /// </summary>
@@ -49,7 +52,7 @@ namespace TdService.ShopAnyWare.Specs.Steps
         public void WhenISetPackageNameAs(string packageName)
         {
             var contoller = this.GetPackagesController();
-            var result = contoller.Add(packageName) as JsonNetResult;
+            var result = contoller.Add(packageName, AuthToken) as JsonNetResult;
             Assert.That(result, Is.Not.Null);
             if (result != null)
             {
@@ -70,6 +73,28 @@ namespace TdService.ShopAnyWare.Specs.Steps
             var actual = ScenarioContext.Current.Get<PackageViewModel>();
             Assert.That(actual, Is.Not.Null);
             table.CompareToInstance(actual);
+        }
+
+        [Then(@"There should  be a package with following data")]
+        public void ThenThereShouldBeAPackageWithFollowingData(Table table)
+        {
+            var package = table.CreateInstance<Package>();
+            using (var context = new ShopAnyWareSql())
+            {
+                var actual =
+                    context.Packages.SingleOrDefault(p => p.Name.Equals(package.Name) && p.Status == package.Status);
+                Assert.IsNotNull(actual);
+                ScenarioContext.Current.Set(actual.Id, "PackageId");
+            }
+        }
+
+        private string AuthToken
+        {
+            get
+            {
+                return ScenarioContext.Current.Get<FakeFormsAuthentication>().GetAuthenticationToken();
+            }
+
         }
     }
 }

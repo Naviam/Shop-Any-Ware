@@ -90,5 +90,15 @@ namespace TdService.Services.Mapping
         {
             return Mapper.Map<Order, RemoveOrderResponse>(order);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="order"></param>
+        /// <returns></returns>
+        public static OrderReceivedResponse ConvertToOrderReceivedResponse(this Order order)
+        {
+            return Mapper.Map<Order, OrderReceivedResponse>(order);
+        }
     }
 }

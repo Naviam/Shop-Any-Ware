@@ -35,6 +35,8 @@ namespace TdService.UI.Web
     using System.Linq;
     using UserResponseModel = TdService.Services.Messaging.Membership.GetUsersInRoleResponse.UserResponseModel;
     using ItemImageModel = TdService.Services.Messaging.Item.GetOrderItemsResponse.ItemImageModel;
+    using TdService.Services.Messaging.Item.Base;
+    using System.Collections.Generic;
 
     /// <summary>
     /// The auto mapper configuration.
@@ -207,6 +209,14 @@ namespace TdService.UI.Web
                 .ForMember(r => r.CanBeRequestedForReturn, opt => opt.Ignore())
                 .ForMember(r => r.CanItemsBeModified, opt => opt.Ignore());
 
+            //order received
+            Mapper.CreateMap<OrderReceivedResponse, OrderViewModel>();
+            Mapper.CreateMap<Order, OrderReceivedResponse>()
+                .ForMember(r => r.BrokenRules, opt => opt.Ignore())
+                .ForMember(r => r.Message, opt => opt.Ignore())
+                .ForMember(r => r.ErrorCode, opt => opt.Ignore())
+                .ForMember(r => r.MessageType, opt => opt.Ignore());
+
             // retailer
             Mapper.CreateMap<string, Retailer>().ConvertUsing<RetailerConverter>();
             Mapper.CreateMap<Retailer, GetRetailersResponse>()
@@ -216,12 +226,29 @@ namespace TdService.UI.Web
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
             Mapper.CreateMap<GetRetailersResponse, RetailerViewModel>();
 
+            //items global
+            Mapper.CreateMap<Item, ItemResponse>()
+                .ForMember(r => r.BrokenRules, opt => opt.Ignore())
+                .ForMember(r => r.Message, opt => opt.Ignore())
+                .ForMember(r => r.ErrorCode, opt => opt.Ignore())
+                .ForMember(r => r.MessageType, opt => opt.Ignore());
+            Mapper.CreateMap<ItemResponse, ItemViewModel>()
+                 .ForMember(r => r.BrokenRules, opt => opt.Ignore())
+                .ForMember(r => r.Message, opt => opt.Ignore())
+                .ForMember(r => r.ErrorCode, opt => opt.Ignore())
+                .ForMember(r => r.MessageType, opt => opt.Ignore())
+                .ForMember(r => r.Images, opt => opt.Ignore());
+
             // add order item
             Mapper.CreateMap<OrderItemViewModel, AddItemToOrderRequest>()
                 .ForMember(dest => dest.IdentityToken, opt => opt.Ignore()); 
             Mapper.CreateMap<AddItemToOrderRequest, Item>()
                 .ForMember(r => r.Id, opt => opt.Ignore())
                 .ForMember(r => r.Images, opt => opt.Ignore())
+                .ForMember(r => r.Package, opt => opt.Ignore())
+                .ForMember(r => r.PackageId, opt => opt.Ignore())
+                .ForMember(r => r.Order, opt => opt.Ignore())
+                .ForMember(r => r.OrderId, opt => opt.Ignore())
                 .ForMember(r => r.Weight, opt => opt.ResolveUsing<WeightResolver>())
                 .ForMember(r => r.Dimensions, opt => opt.ResolveUsing<DimensionsResolver>());
             Mapper.CreateMap<Item, AddItemToOrderResponse>()
@@ -231,12 +258,14 @@ namespace TdService.UI.Web
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
             Mapper.CreateMap<AddItemToOrderResponse, OrderItemViewModel>()
+                .ForMember(dest => dest.Images, opt => opt.Ignore())
                 .ForMember(dest=>dest.OperatorMode, opt=>opt.Ignore());
 
             // edit order item
             Mapper.CreateMap<OrderItemViewModel, EditOrderItemRequest>()
                 .ForMember(dest => dest.IdentityToken, opt => opt.Ignore()); 
             Mapper.CreateMap<EditOrderItemResponse, OrderItemViewModel>()
+                .ForMember(dest => dest.Images, opt => opt.Ignore())
                 .ForMember(dest => dest.OperatorMode, opt => opt.Ignore()); 
 
             // remove order item
@@ -248,6 +277,7 @@ namespace TdService.UI.Web
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
             Mapper.CreateMap<RemoveItemResponse, OrderItemViewModel>()
+                .ForMember(dest => dest.Images, opt => opt.Ignore())
                 .ForMember(dest => dest.OperatorMode, opt => opt.Ignore());
 
             // get order items
@@ -261,19 +291,55 @@ namespace TdService.UI.Web
 
             //item images
             Mapper.CreateMap<ItemImage, ItemImageModel>();
-            Mapper.CreateMap<ItemImageModel, ItemImageViewModel>();
+            Mapper.CreateMap<ItemImageModel, ItemImageViewModel>()
+                .ForMember(r => r.BrokenRules, opt => opt.Ignore())
+                .ForMember(r => r.Message, opt => opt.Ignore())
+                .ForMember(r => r.ErrorCode, opt => opt.Ignore())
+                .ForMember(r => r.MessageType, opt => opt.Ignore())
+                .ForMember(r => r.ItemId, opt => opt.Ignore());
             Mapper.CreateMap<AddItemImageReponse, ItemImageViewModel>();
 
             // add item to package
-
+            
             // get package items
-            Mapper.CreateMap<Item, GetPackageItemsResponse>()
+            Mapper.CreateMap<List<Item>, GetPackageItemsResponse>()
+                .ForMember(dest => dest.Items, opt => opt.MapFrom(src => src))
                 .ForMember(r => r.BrokenRules, opt => opt.Ignore())
                 .ForMember(r => r.Message, opt => opt.Ignore())
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
-            Mapper.CreateMap<GetPackageItemsResponse, PackageItemViewModel>()
+            Mapper.CreateMap<GetPackageItemsResponse, PackageItemsViewModel>()
                 .ForMember(r => r.PackageId, opt => opt.Ignore());
+
+            //move package items to existing package
+            Mapper.CreateMap<List<Item>, MoveOrderItemsToExistingPackageResponse>()
+                .ForMember(dest => dest.Items, opt => opt.MapFrom(src => src))
+                .ForMember(r => r.BrokenRules, opt => opt.Ignore())
+                .ForMember(r => r.Message, opt => opt.Ignore())
+                .ForMember(r => r.ErrorCode, opt => opt.Ignore())
+                .ForMember(r => r.MessageType, opt => opt.Ignore())
+                .ForMember(r => r.PackageId, opt => opt.Ignore());
+            Mapper.CreateMap<MoveOrderItemsToExistingPackageResponse, PackageItemsViewModel>();
+
+            //move package items to new package
+            Mapper.CreateMap<List<Item>, MoveOrderItemsToNewPackageResponse>()
+                .ForMember(dest => dest.Items, opt => opt.MapFrom(src => src))
+                .ForMember(r => r.BrokenRules, opt => opt.Ignore())
+                .ForMember(r => r.Message, opt => opt.Ignore())
+                .ForMember(r => r.ErrorCode, opt => opt.Ignore())
+                .ForMember(r => r.MessageType, opt => opt.Ignore())
+                .ForMember(r => r.PackageId, opt => opt.Ignore());
+            Mapper.CreateMap<MoveOrderItemsToNewPackageResponse, PackageItemsViewModel>();
+
+            //move package items to new package
+            Mapper.CreateMap<List<Item>, MoveOrderItemsToOriginalOrderResponse>()
+                .ForMember(dest => dest.Items, opt => opt.MapFrom(src => src))
+                .ForMember(r => r.BrokenRules, opt => opt.Ignore())
+                .ForMember(r => r.Message, opt => opt.Ignore())
+                .ForMember(r => r.ErrorCode, opt => opt.Ignore())
+                .ForMember(r => r.MessageType, opt => opt.Ignore())
+                .ForMember(r => r.PackageId, opt => opt.Ignore());
+            Mapper.CreateMap<MoveOrderItemsToOriginalOrderResponse, PackageItemsViewModel>();
 
             // get recent packages
             Mapper.CreateMap<Package, GetRecentPackagesResponse>()

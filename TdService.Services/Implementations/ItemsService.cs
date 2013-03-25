@@ -14,6 +14,7 @@ namespace TdService.Services.Implementations
     using System.Linq;
     using System.Text;
     using TdService.Infrastructure.Logging;
+    using TdService.Model.Common;
     using TdService.Model.Items;
     using TdService.Model.Packages;
     using TdService.Resources;
@@ -111,7 +112,7 @@ namespace TdService.Services.Implementations
 
             return new AddItemToPackageResponse
                 {
-                    MessageType = MessageType.Warning,
+                    MessageType = MessageType.Success,
                     Message = string.Format(CommonResources.OrderItemMovedToPackage, package.Name, package.Id)
                 };
         }
@@ -140,7 +141,7 @@ namespace TdService.Services.Implementations
         /// <returns>
         /// The collection of get package items responses.
         /// </returns>
-        public List<GetPackageItemsResponse> GetPackageItems(GetPackageItemsRequest request)
+        public GetPackageItemsResponse GetPackageItems(GetPackageItemsRequest request)
         {
             var packageItems = this.itemsRepository.GetPackageItems(request.PackageId);
             return packageItems.ConvertToGetPackageItemsResponse();
@@ -216,6 +217,89 @@ namespace TdService.Services.Implementations
                 request.ItemId, new ItemImage { Filename = request.ImageName, Url = request.ImageUrl });
 
             return new AddItemImageReponse { Url = request.ImageUrl, FileName = request.ImageName,ItemId = request.ItemId };
+        }
+
+        /// <summary>
+        /// Move Order Items To Existing Package
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public MoveOrderItemsToExistingPackageResponse MoveOrderItemsToExistingPackage(MoveOrderItemsToExistingPackageRequest request)
+        {
+            try
+            {
+                var package = this.packageRepository.GetPackageWithItemsById(request.PackageId);
+                var items = this.itemsRepository.GetOrderItems(request.OrderId);
+                items.ForEach(i => itemsRepository.AttachItemToPackage(request.PackageId, i.Id));
+                var result = items.ConvertToMoveOrderItemsToExistingPackageResponse();
+                result.PackageId = request.PackageId;
+                result.MessageType = MessageType.Success;
+                result.Message = string.Format(CommonResources.OrderItemsSuccessfullyMoved, package.Name, package.Id);
+                return result;
+            }
+            catch(Exception ex)
+            {
+                this.logger.Error("Error while moving order items to existing package", ex);
+                return new MoveOrderItemsToExistingPackageResponse { MessageType = MessageType.Error, Message = CommonResources.MoveOrderItemsToExistingPackageError };
+            }
+        }
+
+        /// <summary>
+        /// Move Order Items To New Package
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public MoveOrderItemsToNewPackageResponse MoveOrderItemsToNewPackage(MoveOrderItemsToNewPackageRequest request)
+        {
+            try
+            {
+                var package = this.packageRepository.AddPackage(
+                    request.IdentityToken,
+                    new Package
+                        {
+                            Name = request.PackageName,
+                            Status = PackageStatus.New,
+                            CreatedDate = DateTime.UtcNow,
+                            Dimensions = new Dimensions()
+                        });
+                var items = this.itemsRepository.GetOrderItems(request.OrderId);
+                items.ForEach(i => itemsRepository.AttachItemToPackage(package.Id, i.Id));
+                var result = items.ConvertToMoveOrderItemsToNewPackageResponse();
+                result.PackageId = package.Id;
+                result.MessageType = MessageType.Success;
+                result.Message = string.Format(CommonResources.OrderItemsSuccessfullyMoved, package.Name, package.Id);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                this.logger.Error("Error while moving order items to new package", ex);
+                return new MoveOrderItemsToNewPackageResponse { MessageType = MessageType.Error, Message = CommonResources.MoveOrderItemsToNewPackageError };
+            }
+        }
+
+        /// <summary>
+        /// Move Order  Items To Original Order
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public MoveOrderItemsToOriginalOrderResponse MoveOrderItemsToOriginalOrder(MoveOrderItemsToOriginalOrderRequest request)
+        {
+            try
+            {
+                var items = this.itemsRepository.GetPackageItems(request.PackageId);
+                items.ForEach(i => itemsRepository.DetachItemFromPackage(request.PackageId, i.Id));
+                var result = items.ConvertToMoveOrderItemsToOriginalOrderResponse();
+                result.PackageId = request.PackageId;
+                result.MessageType = MessageType.Success;
+                result.Message = string.Format(
+                    CommonResources.PackageItemsSuccessfullyMovedBackToOriginalOrder, items.First().OrderId);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                this.logger.Error("Error while moving order items back to original order", ex);
+                return new MoveOrderItemsToOriginalOrderResponse { MessageType = MessageType.Error, Message = CommonResources.MoveOrderItemsToOriginalOrderError };
+            }
         }
     }
 }

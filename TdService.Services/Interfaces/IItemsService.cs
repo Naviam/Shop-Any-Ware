@@ -67,7 +67,7 @@ namespace TdService.Services.Interfaces
         /// <returns>
         /// The get package items response.
         /// </returns>
-        List<GetPackageItemsResponse> GetPackageItems(GetPackageItemsRequest request);
+        GetPackageItemsResponse GetPackageItems(GetPackageItemsRequest request);
 
         /// <summary>
         /// The remove item.
@@ -86,5 +86,28 @@ namespace TdService.Services.Interfaces
         /// <param name="request">Uploaded image info</param>
         /// <returns>response</returns>
         AddItemImageReponse AddItemImage(AddItemImageRequest request);
+
+        /// <summary>
+        /// Moves order items to existing  package
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        MoveOrderItemsToExistingPackageResponse MoveOrderItemsToExistingPackage(
+            MoveOrderItemsToExistingPackageRequest request);
+
+        /// <summary>
+        /// Moves order items to new  package
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        MoveOrderItemsToNewPackageResponse MoveOrderItemsToNewPackage(MoveOrderItemsToNewPackageRequest request);
+
+        /// <summary>
+        /// Moves package items to their original order
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        MoveOrderItemsToOriginalOrderResponse MoveOrderItemsToOriginalOrder(
+            MoveOrderItemsToOriginalOrderRequest request);
     }
 }

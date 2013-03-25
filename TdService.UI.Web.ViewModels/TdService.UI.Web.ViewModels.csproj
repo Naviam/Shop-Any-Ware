@@ -76,7 +76,7 @@
     <Compile Include="Item\ItemViewModel.cs" />
     <Compile Include="Item\OrderItemViewModel.cs" />
     <Compile Include="Order\OrderViewModel.cs" />
-    <Compile Include="PackageItemViewModel.cs" />
+    <Compile Include="Item\PackageItemsViewModel.cs" />
     <Compile Include="Package\PackageViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Retailer\RetailerViewModel.cs" />

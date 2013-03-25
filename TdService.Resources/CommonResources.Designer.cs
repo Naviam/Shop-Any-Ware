@@ -106,6 +106,33 @@ namespace TdService.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error occured while moving order items to existing package.
+        /// </summary>
+        public static string MoveOrderItemsToExistingPackageError {
+            get {
+                return ResourceManager.GetString("MoveOrderItemsToExistingPackageError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error occured while moving order items to new package.
+        /// </summary>
+        public static string MoveOrderItemsToNewPackageError {
+            get {
+                return ResourceManager.GetString("MoveOrderItemsToNewPackageError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error occured while moving order items to original order.
+        /// </summary>
+        public static string MoveOrderItemsToOriginalOrderError {
+            get {
+                return ResourceManager.GetString("MoveOrderItemsToOriginalOrderError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There were some issues with the order you are adding..
         /// </summary>
         public static string OrderAddErrorMessage {
@@ -142,11 +169,29 @@ namespace TdService.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Order items were successfully moved to package {0}, id: {1}.
+        /// </summary>
+        public static string OrderItemsSuccessfullyMoved {
+            get {
+                return ResourceManager.GetString("OrderItemsSuccessfullyMoved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Order item has been successfully added..
         /// </summary>
         public static string OrderItemSuccessfullyAdded {
             get {
                 return ResourceManager.GetString("OrderItemSuccessfullyAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error occured while updating order status to &apos;received&apos;.
+        /// </summary>
+        public static string OrderReceivedErrorMessage {
+            get {
+                return ResourceManager.GetString("OrderReceivedErrorMessage", resourceCulture);
             }
         }
         
@@ -169,6 +214,15 @@ namespace TdService.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Order status successfully changed to RECEIVED.
+        /// </summary>
+        public static string OrderStatusChangedToReceived {
+            get {
+                return ResourceManager.GetString("OrderStatusChangedToReceived", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There were some issues with the order you are updating..
         /// </summary>
         public static string OrderUpdateErrorMessage {
@@ -183,6 +237,15 @@ namespace TdService.Resources {
         public static string OrderUpdateSuccessMessage {
             get {
                 return ResourceManager.GetString("OrderUpdateSuccessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Package items were successfully moved to original order, id: {0}.
+        /// </summary>
+        public static string PackageItemsSuccessfullyMovedBackToOriginalOrder {
+            get {
+                return ResourceManager.GetString("PackageItemsSuccessfullyMovedBackToOriginalOrder", resourceCulture);
             }
         }
         

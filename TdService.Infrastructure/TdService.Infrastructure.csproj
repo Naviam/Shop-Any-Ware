@@ -133,6 +133,8 @@
     <Compile Include="Querying\PropertyNameHelper.cs" />
     <Compile Include="Querying\Query.cs" />
     <Compile Include="Querying\QueryOperator.cs" />
+    <Compile Include="SessionStorage\ISessionStorage.cs" />
+    <Compile Include="SessionStorage\SawSessionStorage.cs" />
     <Compile Include="Shipping\IntlRateV2Request.cs" />
     <Compile Include="Shipping\IntlRateV2Response.cs" />
     <Compile Include="Shipping\IShippingService.cs" />

@@ -77,9 +77,9 @@
 
     self.loadItems = ko.computed(function () {
         $.post("/items/getpackageitems", { "packageId": self.id() }, function (data) {
-            var items = ko.toJS(data);
+            var response = ko.toJS(data);
             self.items.removeAll();
-            $.each(items, function (index, value) {
+            $.each(response.Items, function (index, value) {
                 var item = new Item(value);
                 self.items.unshift(item);
             });
