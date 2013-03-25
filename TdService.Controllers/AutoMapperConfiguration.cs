@@ -236,8 +236,7 @@ namespace TdService.UI.Web
                  .ForMember(r => r.BrokenRules, opt => opt.Ignore())
                 .ForMember(r => r.Message, opt => opt.Ignore())
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())
-                .ForMember(r => r.MessageType, opt => opt.Ignore())
-                .ForMember(r => r.Images, opt => opt.Ignore());
+                .ForMember(r => r.MessageType, opt => opt.Ignore());
 
             // add order item
             Mapper.CreateMap<OrderItemViewModel, AddItemToOrderRequest>()
@@ -331,7 +330,7 @@ namespace TdService.UI.Web
                 .ForMember(r => r.PackageId, opt => opt.Ignore());
             Mapper.CreateMap<MoveOrderItemsToNewPackageResponse, PackageItemsViewModel>();
 
-            //move package items to new package
+            //move package items to original order
             Mapper.CreateMap<List<Item>, MoveOrderItemsToOriginalOrderResponse>()
                 .ForMember(dest => dest.Items, opt => opt.MapFrom(src => src))
                 .ForMember(r => r.BrokenRules, opt => opt.Ignore())
@@ -340,6 +339,17 @@ namespace TdService.UI.Web
                 .ForMember(r => r.MessageType, opt => opt.Ignore())
                 .ForMember(r => r.PackageId, opt => opt.Ignore());
             Mapper.CreateMap<MoveOrderItemsToOriginalOrderResponse, PackageItemsViewModel>();
+
+            //move single package item to original order
+            Mapper.CreateMap<Item, MoveItemBackToOriginalOrderResponse>()
+                .ForMember(dest => dest.Item, opt => opt.MapFrom(src => src))
+                .ForMember(r => r.BrokenRules, opt => opt.Ignore())
+                .ForMember(r => r.Message, opt => opt.Ignore())
+                .ForMember(r => r.ErrorCode, opt => opt.Ignore())
+                .ForMember(r => r.MessageType, opt => opt.Ignore())
+                .ForMember(r => r.OrderId, opt => opt.Ignore())
+                .ForMember(r => r.PackageId, opt => opt.Ignore());
+            Mapper.CreateMap<MoveItemBackToOriginalOrderResponse, MoveItemBackToOriginalOrderViewModel>();
 
             // get recent packages
             Mapper.CreateMap<Package, GetRecentPackagesResponse>()

@@ -228,5 +228,19 @@ namespace TdService.UI.Web.Controllers
             };
             return jsonNetResult;
         }
+
+        [Authorize(Roles = "Shopper")]
+        [HttpPost]
+        public ActionResult MoveOrderItemToOriginalOrder(int itemId)
+        {
+            var request = new MoveItemBackToOriginalOrderRequest { ItemId = itemId };
+            var response = this.itemsService.MoveOrderItemBackToOriginalOrder(request);
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = response.ConvertToPackageItemViewModel()
+            };
+            return jsonNetResult;
+        }
     }
 }

@@ -106,5 +106,10 @@ namespace TdService.Services.Mapping
         {
             return Mapper.Map<List<Item>, MoveOrderItemsToOriginalOrderResponse>(itemList);
         }
+
+        public static MoveItemBackToOriginalOrderResponse ConvertToMoveOrderItemToOriginalOrderResponse(this Item item)
+        {
+            return Mapper.Map<Item, MoveItemBackToOriginalOrderResponse>(item);
+        }
     }
 }

@@ -68,6 +68,7 @@
     <Compile Include="Ballance\AddTransactionViewModel.cs" />
     <Compile Include="Ballance\TransactionsViewModel.cs" />
     <Compile Include="Item\ItemImageViewModel.cs" />
+    <Compile Include="Item\MoveItemBackToOriginalOrderViewModel.cs" />
     <Compile Include="Member\ShopperDashboardViewModel.cs" />
     <Compile Include="Member\WelcomeViewModel.cs" />
     <Compile Include="ModelError.cs" />

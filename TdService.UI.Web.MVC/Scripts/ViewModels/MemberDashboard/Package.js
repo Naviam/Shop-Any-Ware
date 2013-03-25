@@ -75,17 +75,21 @@
         }
     });
 
-    self.loadItems = ko.computed(function () {
-        $.post("/items/getpackageitems", { "packageId": self.id() }, function (data) {
+    self.loadItems = function() {
+        $.post("/items/getpackageitems", { "packageId": self.id() }, function(data) {
             var response = ko.toJS(data);
             self.items.removeAll();
-            $.each(response.Items, function (index, value) {
-                var item = new Item(value);
-                self.items.unshift(item);
-            });
+            self.addItems(response.Items);
         });
-    });
+    };
     self.loadItems();
+
+    self.addItems = function(itemsList) {
+        $.each(itemsList, function(index, value) {
+            var item = new Item(value);
+            self.items.unshift(item);
+        });
+    };
 
     self.isExpanded = ko.computed(function () {
         return !self.isCollapsed();
@@ -108,7 +112,11 @@
         /// <summary>Add new item to order.</summary>
     };
 
-    self.removeItem = function (item) {
-        /// <summary>Remove item from order.</summary>
+    self.removeItem = function (id) {
+        $.each(self.items(), function (index, value) {
+            if (value.id() == id) {
+                self.items.remove(value);//remove item client-side
+            }
+        });
     };
 }

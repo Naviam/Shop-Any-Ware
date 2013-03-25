@@ -373,6 +373,49 @@ function DashboardViewModel(serverModel) {
         });
     };
 
+    self.moveEntireOrderToPackage = function (order) {
+        if (!order.selectedPackage()) return;
+        $.post("/items/MoveOrderItemsToExistingPackage", { "orderId": order.id(), "packageId": order.selectedPackage().id()}, function (data) {
+            var model = ko.toJS(data);
+            if (model.MessageType == "Success") {
+                $.each(self.orders(), function (index, value) {
+                    if (value.id()==model.OrderId) {
+                        value.items.removeAll();
+                    }
+                });
+                
+                $.each(self.packages(), function (index, value) {
+                    if (value.id() == model.PackageId) {
+                        value.addItems(model.Items);
+                    }
+                });
+                
+                window.showNotice(model.Message, model.MessageType);
+            }
+        });
+    };
+    
+    self.moveItemBackToOriginalOrder = function(item) {
+        $.post("/items/MoveOrderItemToOriginalOrder", { "itemId": item.id() }, function (data) {
+            var model = ko.toJS(data);
+            if (model.MessageType == "Success") {
+                $.each(self.packages(), function (index, value) {
+                    if (value.id() == model.PackageId) {
+                        value.removeItem(model.Item.Id);//remove item client-side
+                    }
+                });
+
+                $.each(self.orders(), function (index, value) {
+                    if (value.id() == model.OrderId) {
+                        value.addItems([model.Item]);
+                    }
+                });
+
+                window.showNotice(model.Message, model.MessageType);
+            }
+        });
+    }
+
 }
 
 ko.bindingHandlers.popover = {
