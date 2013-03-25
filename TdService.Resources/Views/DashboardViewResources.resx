@@ -456,4 +456,7 @@
   <data name="DeliveryMethodHeader" xml:space="preserve">
     <value>Delivery Method</value>
   </data>
+  <data name="SelectDefaultValue" xml:space="preserve">
+    <value>Choose..</value>
+  </data>
 </root>

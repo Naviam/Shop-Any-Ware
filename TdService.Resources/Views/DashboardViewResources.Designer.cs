@@ -943,6 +943,15 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Choose...
+        /// </summary>
+        public static string SelectDefaultValue {
+            get {
+                return ResourceManager.GetString("SelectDefaultValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Send Package.
         /// </summary>
         public static string SendPackageButton {
