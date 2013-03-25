@@ -21,5 +21,10 @@ namespace TdService.UI.Web.ViewModels.Item
         /// Gets or sets the package id.
         /// </summary>
         public int PackageId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the order id.
+        /// </summary>
+        public int OrderId { get; set; }
     }
 }

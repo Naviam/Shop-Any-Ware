@@ -233,6 +233,7 @@ namespace TdService.Services.Implementations
                 items.ForEach(i => itemsRepository.AttachItemToPackage(request.PackageId, i.Id));
                 var result = items.ConvertToMoveOrderItemsToExistingPackageResponse();
                 result.PackageId = request.PackageId;
+                result.OrderId= request.OrderId;
                 result.MessageType = MessageType.Success;
                 result.Message = string.Format(CommonResources.OrderItemsSuccessfullyMoved, package.Name, package.Id);
                 return result;
@@ -266,6 +267,7 @@ namespace TdService.Services.Implementations
                 items.ForEach(i => itemsRepository.AttachItemToPackage(package.Id, i.Id));
                 var result = items.ConvertToMoveOrderItemsToNewPackageResponse();
                 result.PackageId = package.Id;
+                result.OrderId = request.OrderId;
                 result.MessageType = MessageType.Success;
                 result.Message = string.Format(CommonResources.OrderItemsSuccessfullyMoved, package.Name, package.Id);
                 return result;
@@ -299,6 +301,33 @@ namespace TdService.Services.Implementations
             {
                 this.logger.Error("Error while moving order items back to original order", ex);
                 return new MoveOrderItemsToOriginalOrderResponse { MessageType = MessageType.Error, Message = CommonResources.MoveOrderItemsToOriginalOrderError };
+            }
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public MoveItemBackToOriginalOrderResponse MoveOrderItemBackToOriginalOrder(MoveItemBackToOriginalOrderRequest request)
+        {
+            try
+            {
+                var item = itemsRepository.GetItemById(request.ItemId);
+                var packageId = item.PackageId.Value;
+                itemsRepository.DetachItemFromPackage(item.PackageId.Value, item.Id);
+                var response = item.ConvertToMoveOrderItemToOriginalOrderResponse();
+                response.OrderId = item.OrderId.Value;
+                response.PackageId = packageId;
+                response.MessageType = MessageType.Success;
+                response.Message = string.Format(CommonResources.OrderItemMovedToOriginalOrder, item.OrderId.Value);
+                return response;
+            }
+            catch(Exception ex)
+            {
+                this.logger.Error("Error while moving order item back to original order", ex);
+                return new MoveItemBackToOriginalOrderResponse { MessageType = MessageType.Error, Message = CommonResources.MoveOrderItemToOriginalOrderError };
             }
         }
     }

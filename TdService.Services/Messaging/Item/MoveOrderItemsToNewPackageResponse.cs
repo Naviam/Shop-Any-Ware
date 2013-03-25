@@ -7,5 +7,7 @@ namespace TdService.Services.Messaging.Item
         public List<ItemResponse> Items { get; set; }
 
         public int PackageId { get; set; }
+
+        public int OrderId { get; set; }
     }
 }

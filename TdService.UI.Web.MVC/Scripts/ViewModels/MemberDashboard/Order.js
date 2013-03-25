@@ -1,7 +1,9 @@
 ﻿function Order(serverModel) {
     /// <summary>Order view model.</summary>
     var self = this;
-
+    
+    
+    
     // default model properties
     self.message = ko.observable(serverModel.Message);
     self.messageType = ko.observable(serverModel.MessageType);
@@ -38,6 +40,10 @@
     self.domOrderId = ko.computed(function () {
         return "order" + self.id();
     });
+    
+    self.popupDomOrderId = ko.computed(function () {
+        return "itemFormModal" + self.id();
+    });
 
     self.totalItemsAmount = ko.computed(function () {
         /// <summary>Determines the total amount of the order.</summary>
@@ -57,15 +63,7 @@
         return total;
     });
 
-    self.moveEntireOrderToPackage = function() {
-        if (!self.selectedPackage) return;
-        $.post("/items/MoveOrderItemsToExistingPackage", { "orderId": self.id(), "packageId": self.selectedPackage().id()}, function (data) {
-            var model = ko.toJS(data);
-            if (model.MessageType == "Success") {
-                window.showNotice(model.Message, model.MessageType);
-            }
-        });
-    };
+
 
     self.totalItemsWeight = ko.computed(function () {
         /// <summary>Determines the total weight of items in the order.</summary>
@@ -120,13 +118,17 @@
         $.post("/items/getorderitems", { "orderId": self.id() }, function (data) {
             var items = ko.toJS(data);
             self.items.removeAll();
-            $.each(items, function (index, value) {
-                var item = new Item(value);
-                self.items.unshift(item);
-            });
+            self.addItems(items);
         });
     };
     self.loadItems();
+
+    self.addItems = function (itemsList) {
+        $.each(itemsList, function (index, value) {
+            var item = new Item(value);
+            self.items.unshift(item);
+        });
+    };
 
     self.getItemDetails = function () {
         /// <summary>Get item details.</summary>
@@ -160,7 +162,7 @@
         if (model.MessageType == "Success") {
             self.loadItems();
             self.destroyUploader();
-            $('#itemFormModal').modal('hide');
+            $('#' + self.popupDomOrderId()).modal('hide');
             window.showNotice(data.Message, data.MessageType);
         }
     };
@@ -169,7 +171,7 @@
         var model = ko.toJS(data);
         if (model.MessageType == "Success") {
             self.loadItems();
-            $('#itemFormModal').modal('hide');
+            $('#' + self.popupDomOrderId()).modal('hide');
             window.showNotice(data.Message, data.MessageType);
         }
     };
@@ -235,14 +237,14 @@
         self.popupItemViewModel.clear();
         self.popupItemViewModel.uploaderVisible(false);
 
-        $('#itemFormModal').modal('show');
+        $('#' + self.popupDomOrderId()).modal('show');
     };
 
     self.showEditItemPopup = function (model) {
         self.popupItemViewModel.updateFieldsFromModel(model);
         self.popupItemViewModel.uploaderVisible(true);
         
-        $('#itemFormModal').modal('show');
+        $('#' + self.popupDomOrderId()).modal('show');
         self.initUploader();
     };
 
@@ -259,7 +261,7 @@
         });
     };
 
-    self.orderInStock = function() {
+    self.orderInStock = function(order) {
         $.post("/orders/OrderReceived", { "orderId": self.id }, function (data) {
             var model = ko.toJS(data);
             if (model.MessageType == "Success") {

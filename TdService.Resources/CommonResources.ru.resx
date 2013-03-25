@@ -210,4 +210,10 @@
   <data name="MoveOrderItemsToOriginalOrderError" xml:space="preserve">
     <value>Во время возврата товаров в оригинальный заказ произошла ошибка</value>
   </data>
+  <data name="OrderItemMovedToOriginalOrder" xml:space="preserve">
+    <value>Товар были перемещен в оригинальный заказ. id:{0}</value>
+  </data>
+  <data name="OrderItemMovedToOriginalOrderError" xml:space="preserve">
+    <value>Во время возврата товара в оригинальный заказ произошла ошибка</value>
+  </data>
 </root>

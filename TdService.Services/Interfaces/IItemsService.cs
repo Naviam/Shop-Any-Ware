@@ -109,5 +109,12 @@ namespace TdService.Services.Interfaces
         /// <returns></returns>
         MoveOrderItemsToOriginalOrderResponse MoveOrderItemsToOriginalOrder(
             MoveOrderItemsToOriginalOrderRequest request);
+
+        /// <summary>
+        /// Move single item back to orig order
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        MoveItemBackToOriginalOrderResponse MoveOrderItemBackToOriginalOrder(MoveItemBackToOriginalOrderRequest request);
     }
 }
