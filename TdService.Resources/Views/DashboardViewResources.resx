@@ -130,7 +130,7 @@
     <value>Loading</value>
   </data>
   <data name="AddItemButton" xml:space="preserve">
-    <value>ADD ITEM</value>
+    <value>Add Item</value>
   </data>
   <data name="AddItemForm" xml:space="preserve">
     <value>Add item form</value>
@@ -199,7 +199,7 @@
     <value>History</value>
   </data>
   <data name="InStockButton" xml:space="preserve">
-    <value>IN STOCK</value>
+    <value>Place in Stock</value>
   </data>
   <data name="ItemGirthHeader" xml:space="preserve">
     <value>Girth</value>
@@ -370,7 +370,7 @@
     <value>Save changes</value>
   </data>
   <data name="SendPackageButton" xml:space="preserve">
-    <value>SEND PACKAGE</value>
+    <value>Send Package</value>
   </data>
   <data name="SizeLegend" xml:space="preserve">
     <value>Size</value>
@@ -449,5 +449,14 @@
   </data>
   <data name="NoHtml5Support" xml:space="preserve">
     <value>Your browser does not support HTML 5</value>
+  </data>
+  <data name="DeliveryAddressHeader" xml:space="preserve">
+    <value>Delivery Address</value>
+  </data>
+  <data name="DeliveryMethodHeader" xml:space="preserve">
+    <value>Delivery Method</value>
+  </data>
+  <data name="SelectDefaultValue" xml:space="preserve">
+    <value>Choose..</value>
   </data>
 </root>
