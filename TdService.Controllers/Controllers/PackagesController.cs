@@ -11,12 +11,13 @@ namespace TdService.UI.Web.Controllers
 {
     using System.Web.Mvc;
     using System.Xml;
-
     using TdService.Infrastructure.Authentication;
+    using TdService.Infrastructure.SessionStorage;
     using TdService.Resources.Views;
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging;
     using TdService.Services.Messaging.Package;
+    using TdService.UI.Web.Controllers.Base;
     using TdService.UI.Web.Mapping;
     using TdService.UI.Web.ViewModels.Package;
 
@@ -56,11 +57,13 @@ namespace TdService.UI.Web.Controllers
         /// <returns>
         /// The <see cref="ActionResult"/>.
         /// </returns>
-        [Authorize(Roles = "Shopper")]
+        [Authorize(Roles = "Shopper, Operator")]
         [HttpPost]
-        public ActionResult Add(string packageName)
+        public ActionResult Add(string packageName, string userEmail)
         {
-            var request = new AddPackageRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken(), Name = packageName };
+            EnsureUserEmailIsNotChanged(userEmail);
+
+            var request = new AddPackageRequest { IdentityToken = userEmail, Name = packageName };
 
             var response = this.packagesService.AddPackage(request);
             var result = response.ConvertToPackageViewModel();
@@ -81,11 +84,13 @@ namespace TdService.UI.Web.Controllers
         /// <returns>
         /// The <see cref="ActionResult"/>.
         /// </returns>
-        [Authorize(Roles = "Shopper")]
+        [Authorize(Roles = "Shopper, Operator")]
         [HttpPost]
-        public ActionResult Recent()
+        public ActionResult Recent(string userEmail)
         {
-            var request = new GetRecentPackagesRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() };
+            EnsureUserEmailIsNotChanged(userEmail);
+
+            var request = new GetRecentPackagesRequest { IdentityToken = userEmail };
             var response = this.packagesService.GetRecent(request);
             var result = response.ConvertToPackageViewModelCollection();
 
@@ -103,11 +108,13 @@ namespace TdService.UI.Web.Controllers
         /// <returns>
         /// The <see cref="ActionResult"/>.
         /// </returns>
-        [Authorize(Roles = "Shopper")]
+        [Authorize(Roles = "Shopper, Operator")]
         [HttpPost]
-        public ActionResult History()
+        public ActionResult History(string userEmail)
         {
-            var request = new GetRecentPackagesRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() };
+            EnsureUserEmailIsNotChanged(userEmail);
+
+            var request = new GetRecentPackagesRequest { IdentityToken = userEmail };
             var response = this.packagesService.GetHistory(request);
             var result = response.ConvertToPackageViewModelCollection();
 
@@ -128,7 +135,7 @@ namespace TdService.UI.Web.Controllers
         /// <returns>
         /// JSON result.
         /// </returns>
-        [Authorize(Roles = "Shopper")]
+        [Authorize(Roles = "Shopper, Operator")]
         [HttpPost]
         public ActionResult Remove(int packageId)
         {
@@ -152,5 +159,7 @@ namespace TdService.UI.Web.Controllers
             };
             return jsonNetResult;
         }
+
+        
     }
 }

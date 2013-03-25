@@ -116,9 +116,12 @@ namespace TdService.ShopAnyWare.Specs.Steps
             var context = new ShopAnyWareSql();
             var userRepository = new UserRepository(context);
             var packageRepository = new PackageRepository();
+            var itemsRepository = new ItemsRepository();
             var logger = new FakeLogger();
             var packagesService = new PackagesService(packageRepository, userRepository,logger);
+            var itemsService = new ItemsService(itemsRepository, packageRepository, logger);
             ScenarioContext.Current.Set(packagesService);
+            ScenarioContext.Current.Set(itemsService);
         }
 
         [BeforeScenario("paypal")]

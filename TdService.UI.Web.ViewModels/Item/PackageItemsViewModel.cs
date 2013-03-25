@@ -7,15 +7,16 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.UI.Web.ViewModels
+namespace TdService.UI.Web.ViewModels.Item
 {
-    using TdService.UI.Web.ViewModels.Item;
+    using System.Collections.Generic;
 
     /// <summary>
     /// The package item view model.
     /// </summary>
-    public class PackageItemViewModel : ItemViewModel
+    public class PackageItemsViewModel : ViewModelBase
     {
+        public List<ItemViewModel> Items { get; set; }
         /// <summary>
         /// Gets or sets the package id.
         /// </summary>

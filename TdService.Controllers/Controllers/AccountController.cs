@@ -15,7 +15,6 @@ namespace TdService.UI.Web.Controllers
     using System.Linq;
     using System.Web.Mvc;
     using System.Xml;
-
     using TdService.Infrastructure.Authentication;
     using TdService.Infrastructure.CookieStorage;
     using TdService.Infrastructure.Domain;
@@ -25,6 +24,7 @@ namespace TdService.UI.Web.Controllers
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging;
     using TdService.Services.Messaging.Membership;
+    using TdService.UI.Web.Controllers.Base;
     using TdService.UI.Web.Mapping;
     using TdService.UI.Web.ViewModels.Account;
 

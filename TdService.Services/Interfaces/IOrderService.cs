@@ -105,5 +105,12 @@ namespace TdService.Services.Interfaces
         /// The TdService.Services.Messaging.Order.UpdateOrderResponse.
         /// </returns>
         UpdateOrderResponse UpdateOrder(UpdateOrderRequest request);
+
+        /// <summary>
+        /// Changes order status to received
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        OrderReceivedResponse OrderReceived(OrderReceivedRequest request);
     }
 }

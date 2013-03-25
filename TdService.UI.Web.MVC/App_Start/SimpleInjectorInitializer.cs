@@ -19,6 +19,7 @@ namespace TdService.UI.Web.MVC.App_Start
     using TdService.Infrastructure.CookieStorage;
     using TdService.Infrastructure.Email;
     using TdService.Infrastructure.Logging;
+    using TdService.Infrastructure.SessionStorage;
     using TdService.Model.Addresses;
     using TdService.Model.Balance;
     using TdService.Model.Items;
@@ -72,6 +73,7 @@ namespace TdService.UI.Web.MVC.App_Start
             container.Register<IItemsService, ItemsService>();
             container.Register<IRetailersService, RetailersService>();
             container.Register<ITransactionService, TransactionService>();
+            container.Register<ISessionStorage, SawSessionStorage>();
 
             // repositories
             container.Register<IOrderRepository, OrderRepository>();

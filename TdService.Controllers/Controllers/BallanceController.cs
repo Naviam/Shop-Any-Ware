@@ -19,6 +19,7 @@ namespace TdService.UI.Web.Controllers
     using TdService.Model.Balance;
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging.Transactions;
+    using TdService.UI.Web.Controllers.Base;
     using TdService.UI.Web.Mapping;
     using TdService.UI.Web.ViewModels.Ballance;
 

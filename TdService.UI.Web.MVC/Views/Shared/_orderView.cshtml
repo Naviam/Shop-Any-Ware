@@ -17,13 +17,14 @@
                         <span data-bind="text: orderDate"></span>
                     </span>&nbsp;
                     <button class="btn btn-mini btn-primary" title="@DashboardViewResources.AddItemButton" data-bind="visible: canItemsBeModified, click:showAddItemPopup"><i class="icon-white icon-plus-sign"></i></button>
-                    <button class="btn btn-mini btn-success" title="@DashboardViewResources.InStockButton" data-bind="visible: canBeReceived"><i class="icon-white icon-inbox"></i></button>
-                    <span class="dropdown">
+                    <button class="btn btn-mini btn-success" title="@DashboardViewResources.InStockButton" data-bind="visible: canBeReceived()  && items().length!=0 && viewSettings.operatorMode, click:orderInStock"><i class="icon-white icon-inbox"></i></button>
+                    <span class="dropdown" data-bind="visible: status() == 'Received' && items().length!=0">
                         <button class="btn btn-mini dropdown-toggle" title="@DashboardViewResources.MoveAllItemsTitle" data-toggle="dropdown" data-bind="visible: items().length > 0"><i class="icon icon-arrow-right"></i><span class="caret"></span></button>
                         <ul class="dropdown-menu" data-bind="foreach: $parent.packages()">
                             <li><a href="#"><span class="label">ID: <span data-bind="text: id()"></span></span><span data-bind="text: name()"></span></a></li>
                         </ul>
                     </span>
+                    <select style="width:100px;" data-bind="options:  $root.packages, optionsText: 'name', visible: status() == 'Received' && items().length!=0,  value: selectedPackage, optionsCaption: 'Choose...', event: {change: moveEntireOrderToPackage }"></select>
                     <button class="btn btn-mini" title="@DashboardViewResources.ReturnOrderButton" data-toggle="modal" data-bind="visible: canBeRequestedForReturn"><i class="icon icon-retweet"></i></button>
                     <button class="btn btn-mini btn-danger" title="@DashboardViewResources.RemoveOrderButton" data-bind="click: $parent.removeOrder, visible: canBeRemoved"><i class="icon-white icon-remove"></i></button>
                 </td>

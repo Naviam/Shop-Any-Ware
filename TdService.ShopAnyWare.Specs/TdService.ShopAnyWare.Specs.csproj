@@ -119,6 +119,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Fakes\FakeSessionStorage.cs" />
     <Compile Include="Features\NlogDynamoDbTarget.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
