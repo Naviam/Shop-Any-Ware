@@ -13,6 +13,8 @@
     self.dimGirth = ko.observable(serverModel.DimensionsGirth);
     self.images = ko.observableArray(serverModel.Images);
 
+    self.selectedPackage = ko.observable();
+
     self.imagesPopupDivId = ko.computed(function () {
         return 'popup' + self.id();
     });
