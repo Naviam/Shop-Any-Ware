@@ -26,7 +26,7 @@
     self.items = ko.observableArray();
 
     self.popupItemViewModel = new PopupItemViewModel();
-
+    
     //move orderItems to package
     self.selectedPackage = new ko.observable();
 
@@ -41,8 +41,16 @@
         return "order" + self.id();
     });
     
-    self.popupDomOrderId = ko.computed(function () {
+    self.popupDomId = ko.computed(function () {
         return "itemFormModal" + self.id();
+    });
+
+    self.plUploaderDivContainerId = ko.computed(function () {
+        return "plUploaderOrderDiv" + self.id();
+    });
+
+    self.plUploaderstartButtonId = ko.computed(function () {
+        return self.plUploaderDivContainerId()+'_start';
     });
 
     self.totalItemsAmount = ko.computed(function () {
@@ -160,9 +168,13 @@
     self.editItemCallback = function (data) {
         var model = ko.toJS(data);
         if (model.MessageType == "Success") {
-            self.loadItems();
-            self.destroyUploader();
-            $('#' + self.popupDomOrderId()).modal('hide');
+            $.each(self.items(), function (index, value) {
+                if (value.id() == model.Id) {
+                    value.updateFromModel(model);
+                    return false;
+                }
+            });
+            $('#' + self.popupDomId()).modal('hide');
             window.showNotice(data.Message, data.MessageType);
         }
     };
@@ -170,8 +182,8 @@
     self.addItemCallback = function (data) {
         var model = ko.toJS(data);
         if (model.MessageType == "Success") {
-            self.loadItems();
-            $('#' + self.popupDomOrderId()).modal('hide');
+            self.addItems([model]);
+            $('#' + self.popupDomId()).modal('hide');
             window.showNotice(data.Message, data.MessageType);
         }
     };
@@ -194,7 +206,7 @@
     };
 
     self.initUploader = function () {
-        $('#uploadImages').plupload({
+        $('#' + self.plUploaderDivContainerId()).plupload({
             // General settings
             runtimes: 'html4',
             max_file_size: '2mb',
@@ -221,30 +233,26 @@
             }
         });
         //I'm sorry for that. 
-        $("#uploadImages_start").click(function () {
-            var up = $('#uploadImages').plupload('getUploader');
+        $('#' + self.plUploaderstartButtonId()).click(function () {
+            var up = $('#' + self.plUploaderDivContainerId()).plupload('getUploader');
             up.start(); 
         });
-        var up = $('#uploadImages').plupload('getUploader');
+        var up = $('#' + self.plUploaderDivContainerId()).plupload('getUploader');
         up.refresh();
     };
-
-    self.destroyUploader = function () {
-        $('#uploadImages').plupload('destroy');
-    }
 
     self.showAddItemPopup = function () {
         self.popupItemViewModel.clear();
         self.popupItemViewModel.uploaderVisible(false);
 
-        $('#' + self.popupDomOrderId()).modal('show');
+        $('#' + self.popupDomId()).modal('show');
     };
 
     self.showEditItemPopup = function (model) {
         self.popupItemViewModel.updateFieldsFromModel(model);
         self.popupItemViewModel.uploaderVisible(true);
         
-        $('#' + self.popupDomOrderId()).modal('show');
+        $('#' + self.popupDomId()).modal('show');
         self.initUploader();
     };
 

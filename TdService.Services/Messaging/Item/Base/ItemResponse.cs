@@ -69,5 +69,10 @@ namespace TdService.Services.Messaging.Item.Base
         /// Gets or sets the price.
         /// </summary>
         public decimal Price { get; set; }
+
+        /// <summary>
+        /// Gets or sets the OrderId.
+        /// </summary>
+        public int OrderId { get; set; }
     }
 }

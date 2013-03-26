@@ -34,6 +34,18 @@
         self.slider.destroySlider();
         $('#' + self.imagesPopupDivId()).modal('hide');
     };
+    
+    self.updateFromModel = function (serverModel) {
+        self.name(serverModel.Name);
+        self.price(serverModel.Price);
+        self.weight(serverModel.WeightPounds);
+        self.quantity(serverModel.Quantity);
+        self.dimHeight(serverModel.DimensionsHeight);
+        self.dimLength(serverModel.DimensionsLength);
+        self.dimWidth(serverModel.DimensionsWidth);
+        self.dimGirth(serverModel.DimensionsGirth);
+        self.images(serverModel.Images);
+    }
 }
 
 

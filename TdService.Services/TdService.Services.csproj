@@ -80,6 +80,8 @@
     <Compile Include="Messaging\Item\Base\ItemResponse.cs" />
     <Compile Include="Messaging\Item\EditOrderItemRequest.cs" />
     <Compile Include="Messaging\Item\EditOrderItemResponse.cs" />
+    <Compile Include="Messaging\Item\EditPackageItemRequest.cs" />
+    <Compile Include="Messaging\Item\EditPackageItemResponse.cs" />
     <Compile Include="Messaging\Item\MoveItemBackToOriginalOrderRequest.cs" />
     <Compile Include="Messaging\Item\MoveItemBackToOriginalOrderResponse.cs" />
     <Compile Include="Messaging\Item\MoveOrderItemsToExistingPackageRequest.cs" />

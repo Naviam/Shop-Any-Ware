@@ -196,13 +196,51 @@ namespace TdService.Services.Implementations
                     item.Dimensions.Width = request.DimensionsWidth;
                 }
                 this.itemsRepository.UpdateItem(item);
-                return new EditOrderItemResponse { MessageType = MessageType.Success, Message = CommonResources.OrderUpdateSuccessMessage };
+                var response = item.ConvertToEditOrderItemResponse();
+                response.MessageType = MessageType.Success;
+                response.Message = CommonResources.OrderItemUpdateSuccessMessage;
+                return response;
             }
             catch (Exception ex)
             {
                 this.logger.Error("Error while editing order item", ex);
                 return new EditOrderItemResponse
                     { MessageType = MessageType.Error, Message = CommonResources.EditOrderItemErrorMessage };
+            }
+        }
+
+        /// <summary>
+        /// Edits package item's properties.
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public EditPackageItemResponse EditPackageItem(EditPackageItemRequest request)
+        {
+            try
+            {
+                var item = this.itemsRepository.GetItemById(request.Id);
+                item.Price = request.Price;
+                item.Quantity = request.Quantity;
+                item.Name = request.Name;
+                if (request.OperatorMode)
+                {
+                    //opeartor has extended view with additional fields
+                    item.Weight.Pounds = request.WeightPounds;
+                    item.Dimensions.Girth = request.DimensionsGirth;
+                    item.Dimensions.Height = request.DimensionsHeight;
+                    item.Dimensions.Length = request.DimensionsLength;
+                    item.Dimensions.Width = request.DimensionsWidth;
+                }
+                this.itemsRepository.UpdateItem(item);
+                var response = item.ConvertToEditPackageItemResponse();
+                response.MessageType = MessageType.Success; 
+                response.Message = CommonResources.PackageItemUpdateSuccessMessage;
+                return response;
+            }
+            catch (Exception ex)
+            {
+                this.logger.Error("Error while editing package item", ex);
+                return new EditPackageItemResponse { MessageType = MessageType.Error, Message = CommonResources.EditPackageItemErrorMessage };
             }
         }
 
@@ -318,10 +356,10 @@ namespace TdService.Services.Implementations
                 var packageId = item.PackageId.Value;
                 itemsRepository.DetachItemFromPackage(item.PackageId.Value, item.Id);
                 var response = item.ConvertToMoveOrderItemToOriginalOrderResponse();
-                response.OrderId = item.OrderId.Value;
+                response.OrderId = item.OrderId;
                 response.PackageId = packageId;
                 response.MessageType = MessageType.Success;
-                response.Message = string.Format(CommonResources.OrderItemMovedToOriginalOrder, item.OrderId.Value);
+                response.Message = string.Format(CommonResources.OrderItemMovedToOriginalOrder, item.OrderId);
                 return response;
             }
             catch(Exception ex)
@@ -344,7 +382,7 @@ namespace TdService.Services.Implementations
                 var item = this.itemsRepository.GetItemById(request.ItemId);
                 var result = item.ConvertToMoveOrderItemToExistingPackageResponse();
                 result.PackageId = request.PackageId;
-                result.OrderId= item.OrderId.Value;
+                result.OrderId= item.OrderId;
                 result.MessageType = MessageType.Success;
                 result.Message = string.Format(CommonResources.OrderItemSuccessfullyMoved, request.PackageId);
                 return result;
@@ -355,5 +393,8 @@ namespace TdService.Services.Implementations
                 return new MoveOrderItemToExistingPackageResponse { MessageType = MessageType.Error, Message = CommonResources.MoveOrderItemToExistingPackageError };
             }
         }
+
+
+        
     }
 }

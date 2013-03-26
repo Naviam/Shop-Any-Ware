@@ -1,5 +1,5 @@
 ﻿@using TdService.Resources.Views
-<div class="modal" data-bind="attr: { id: popupDomOrderId }" style="display: none">
+<div class="modal" data-bind="attr: { id: popupDomId }" style="display: none">
     <div class="modal-header">
         <button class="close" data-dismiss="modal">×</button>
         <h3>@DashboardViewResources.AddItemForm</h3>
@@ -69,7 +69,7 @@
                 </fieldset>
                 <fieldset class="well the-fieldset" data-bind="visible:uploaderVisible">
                     <legend class="the-legend">@DashboardViewResources.ImagesUploadLegend</legend>
-                    <div id="uploadImages">@DashboardViewResources.NoHtml5Support</div>
+                    <div data-bind="attr: { id: $parent.plUploaderDivContainerId }">@DashboardViewResources.NoHtml5Support</div>
                 </fieldset>
             }
             <div class="modalValidationErrors" data-bind="foreach:validationModel.errors, visible:errorsVisible">
