@@ -32,9 +32,23 @@
     self.canBeSent = serverModel.CanBeSent;
     self.canBeDisposed = serverModel.CanBeDisposed;
 
+    self.popupItemViewModel = new PopupItemViewModel();
+
     // package view model computed properties
     self.domPackageId = ko.computed(function () {
         return "package" + self.id();
+    });
+
+    self.popupDomId = ko.computed(function () {
+        return "packageItemFormModal" + self.id();
+    });
+
+    self.plUploaderDivContainerId = ko.computed(function () {
+        return "plUploaderPackageDiv" + self.id();
+    });
+
+    self.plUploaderstartButtonId = ko.computed(function () {
+        return self.plUploaderDivContainerId() + '_start';
     });
 
     self.totalItemsAmount = ko.computed(function () {
@@ -75,8 +89,8 @@
         }
     });
 
-    self.loadItems = function() {
-        $.post("/items/getpackageitems", { "packageId": self.id() }, function(data) {
+    self.loadItems = function () {
+        $.post("/items/getpackageitems", { "packageId": self.id() }, function (data) {
             var response = ko.toJS(data);
             self.items.removeAll();
             self.addItems(response.Items);
@@ -84,8 +98,8 @@
     };
     self.loadItems();
 
-    self.addItems = function(itemsList) {
-        $.each(itemsList, function(index, value) {
+    self.addItems = function (itemsList) {
+        $.each(itemsList, function (index, value) {
             var item = new Item(value);
             self.items.unshift(item);
         });
@@ -113,11 +127,102 @@
     };
 
     self.removeItem = function (id) {
+        ///remove item client-side
         $.each(self.items(), function (index, value) {
             if (value.id() == id) {
-                self.items.remove(value);//remove item client-side
+                self.items.remove(value);
                 return false;
             }
         });
     };
+
+    self.showEditItemPopup = function (model) {
+        self.popupItemViewModel.updateFieldsFromModel(model);
+        self.popupItemViewModel.uploaderVisible(true);
+
+        $('#' + self.popupDomId()).modal('show');
+        self.initUploader();
+    };
+
+    self.saveItem = function () {
+        /// <summary>Add new item to order.</summary>
+        if (!self.popupItemViewModel.validationModel.isValid()) {
+            self.popupItemViewModel.errorsVisible(true);
+            return;
+        }
+
+        var url = '/items/EditPackageItem';
+        var callback = self.editItemCallback;
+
+        $.post(url, self.getPopupData(), callback);
+    };
+
+    self.getPopupData = function () {
+        var data =
+            {
+                "Id": self.popupItemViewModel.id,
+                "PackageId": self.id(),
+                "Name": self.popupItemViewModel.name(),
+                "Quantity": self.popupItemViewModel.quantity(),
+                "Price": self.popupItemViewModel.price(),
+                "WeightPounds": self.popupItemViewModel.weight(),
+                "DimensionsGirth": self.popupItemViewModel.dimGirth(),
+                "DimensionsHeight": self.popupItemViewModel.dimHeight(),
+                "DimensionsWidth": self.popupItemViewModel.dimWidth(),
+                "DimensionsLength": self.popupItemViewModel.dimLength(),
+                "OperatorMode": viewSettings.operatorMode
+            };
+        return data;
+    };
+
+    self.editItemCallback = function (data) {
+        var model = ko.toJS(data);
+        if (model.MessageType == "Success") {
+            $.each(self.items(), function (index, value) {
+                if (value.id() == model.Id) {
+                    value.updateFromModel(model);
+                    return false;
+                }
+            });
+            $('#' + self.popupDomId()).modal('hide');
+            window.showNotice(data.Message, data.MessageType);
+        }
+    };
+    
+    self.initUploader = function () {
+        $('#' + self.plUploaderDivContainerId()).plupload({
+            // General settings
+            runtimes: 'html4',
+            max_file_size: '2mb',
+            max_file_count: 5,
+            chunk_size: '1mb',
+            filters: [
+            { title: "Image files", extensions: "jpg,bmp,gif,jpeg" }
+            ],
+            url: '/Items/AddItemImage?itemId=' + self.popupItemViewModel.id,
+            init: {
+                FileUploaded: function (up, file, response) {
+                    //TODO: handle responses
+                    var model = JSON.parse(response.response);
+                    if (model.MessageType != 'Success') return;
+                    //add new image to carousel
+                    $.each(self.items(), function (index, value) {
+                        if (value.id() == model.ItemId) {
+                            //found
+                            value.images.push({ FileName: model.FileName, Url: model.Url });
+
+                        }
+                    });
+                }
+            }
+        });
+        //I'm sorry for that. 
+        $('#' + self.plUploaderstartButtonId()).click(function () {
+            var up = $('#' + self.plUploaderDivContainerId()).plupload('getUploader');
+            up.start();
+        });
+        var up = $('#' + self.plUploaderDivContainerId()).plupload('getUploader');
+        up.refresh();
+    };
+    
 }

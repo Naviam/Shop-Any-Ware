@@ -117,5 +117,15 @@ namespace TdService.Services.Mapping
             return Mapper.Map<Item, MoveOrderItemToExistingPackageResponse>(item);
         }
         
+
+        public static EditPackageItemResponse ConvertToEditPackageItemResponse(this Item item)
+        {
+            return Mapper.Map<Item, EditPackageItemResponse>(item);
+        }
+
+        public static EditOrderItemResponse ConvertToEditOrderItemResponse(this Item item)
+        {
+            return Mapper.Map<Item, EditOrderItemResponse>(item);
+        }
     }
 }

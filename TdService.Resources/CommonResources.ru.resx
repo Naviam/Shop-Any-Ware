@@ -222,4 +222,13 @@
   <data name="OrderItemSuccessfullyMoved" xml:space="preserve">
     <value>Товар был перемещен в посылку id:{0}</value>
   </data>
+  <data name="EditPackageItemErrorMessage" xml:space="preserve">
+    <value>Во время обновления товара из посылки произошла ошибка</value>
+  </data>
+  <data name="PackageItemUpdateSuccessMessage" xml:space="preserve">
+    <value>Товар в посылке был успешно обновлен</value>
+  </data>
+  <data name="OrderItemUpdateSuccessMessage" xml:space="preserve">
+    <value>Товар был успешно обновлен</value>
+  </data>
 </root>
