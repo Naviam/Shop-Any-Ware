@@ -26,7 +26,7 @@
     self.items = ko.observableArray();
 
     self.popupItemViewModel = new PopupItemViewModel();
-
+    
     //move orderItems to package
     self.selectedPackage = new ko.observable();
 
@@ -43,6 +43,14 @@
     
     self.popupDomId = ko.computed(function () {
         return "itemFormModal" + self.id();
+    });
+
+    self.plUploaderDivContainerId = ko.computed(function () {
+        return "plUploaderOrderDiv" + self.id();
+    });
+
+    self.plUploaderstartButtonId = ko.computed(function () {
+        return self.plUploaderDivContainerId()+'_start';
     });
 
     self.totalItemsAmount = ko.computed(function () {
@@ -166,7 +174,6 @@
                     return false;
                 }
             });
-            self.destroyUploader();
             $('#' + self.popupDomId()).modal('hide');
             window.showNotice(data.Message, data.MessageType);
         }
@@ -199,7 +206,7 @@
     };
 
     self.initUploader = function () {
-        $('#uploadImages').plupload({
+        $('#' + self.plUploaderDivContainerId()).plupload({
             // General settings
             runtimes: 'html4',
             max_file_size: '2mb',
@@ -226,17 +233,13 @@
             }
         });
         //I'm sorry for that. 
-        $("#uploadImages_start").click(function () {
-            var up = $('#uploadImages').plupload('getUploader');
+        $('#' + self.plUploaderstartButtonId()).click(function () {
+            var up = $('#' + self.plUploaderDivContainerId()).plupload('getUploader');
             up.start(); 
         });
-        var up = $('#uploadImages').plupload('getUploader');
+        var up = $('#' + self.plUploaderDivContainerId()).plupload('getUploader');
         up.refresh();
     };
-
-    self.destroyUploader = function () {
-        $('#uploadImages').plupload('destroy');
-    }
 
     self.showAddItemPopup = function () {
         self.popupItemViewModel.clear();
