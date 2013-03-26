@@ -170,7 +170,12 @@
     self.editItemCallback = function (data) {
         var model = ko.toJS(data);
         if (model.MessageType == "Success") {
-            self.loadItems();
+            $.each(self.items(), function (index, value) {
+                if (value.id() == model.Id) {
+                    value.updateFromModel(model);
+                    return false;
+                }
+            });
             self.destroyUploader();
             $('#' + self.popupDomId()).modal('hide');
             window.showNotice(data.Message, data.MessageType);
