@@ -222,4 +222,13 @@
   <data name="OrderItemSuccessfullyMoved" xml:space="preserve">
     <value>Order item was successfully moved to package id:{0}</value>
   </data>
+  <data name="EditPackageItemErrorMessage" xml:space="preserve">
+    <value>Error occured while updating package item</value>
+  </data>
+  <data name="PackageItemUpdateSuccessMessage" xml:space="preserve">
+    <value>Package item was successfully updated</value>
+  </data>
+  <data name="OrderItemUpdateSuccessMessage" xml:space="preserve">
+    <value>Order item was successfully updated</value>
+  </data>
 </root>

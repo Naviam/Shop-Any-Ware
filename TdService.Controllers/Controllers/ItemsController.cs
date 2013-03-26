@@ -87,6 +87,22 @@ namespace TdService.UI.Web.Controllers
             return jsonNetResult;
         }
 
+        [HttpPost]
+        [Authorize(Roles = "Shopper, Operator")]
+        public ActionResult EditPackageItem(PackageItemViewModel itemViewModel)
+        {
+            var request = itemViewModel.ConvertToEditPackageItemRequest();
+            var response = this.itemsService.EditPackageItem(request);
+            var data = response.ConvertToPackageItemViewModel();
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = data
+            };
+            return jsonNetResult;
+        }
+
+
         /// <summary>
         /// Get collection of order items.
         /// </summary>

@@ -66,6 +66,11 @@ namespace TdService.UI.Web.Mapping
             return Mapper.Map<EditOrderItemResponse, OrderItemViewModel>(response);
         }
 
+        public static PackageItemViewModel ConvertToPackageItemViewModel(this EditPackageItemResponse response)
+        {
+            return Mapper.Map<EditPackageItemResponse, PackageItemViewModel>(response);
+        }
+
         /// <summary>
         /// Convert orders to add item to order request.
         /// </summary>
@@ -94,7 +99,13 @@ namespace TdService.UI.Web.Mapping
             return Mapper.Map<OrderItemViewModel, EditOrderItemRequest>(orderItemViewModel);
         }
 
-       /// <summary>
+
+        public static EditPackageItemRequest ConvertToEditPackageItemRequest(this PackageItemViewModel packageItemViewModel)
+        {
+            return Mapper.Map<PackageItemViewModel, EditPackageItemRequest>(packageItemViewModel);
+        }
+
+        /// <summary>
         /// The convert to remove item request.
         /// </summary>
         /// <param name="response">

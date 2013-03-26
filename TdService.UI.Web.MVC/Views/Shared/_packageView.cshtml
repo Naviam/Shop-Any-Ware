@@ -103,7 +103,7 @@
                             <td>
                                 <div class="btn-group">
                                     <button class="btn btn-mini" title="@DashboardViewResources.ReturnItemBackTitle" data-bind="click:$root.moveItemBackToOriginalOrder"><i class="icon-arrow-left"></i></button>
-                                    <button class="btn btn-mini" title="@DashboardViewResources.EditItemTitle"><i class="icon icon-edit"></i></button>
+                                    <button class="btn btn-mini" title="@DashboardViewResources.EditItemTitle" data-bind="click:$parent.showEditItemPopup"><i class="icon icon-edit"></i></button>
                                     <ul class="dropdown-menu" data-bind="foreach: $root.packages()">
                                         <li><i class="icon-gift"></i><span data-bind="text: name()"></span>(id:<span data-bind="text: id"></span>)</li>
                                     </ul>
@@ -124,4 +124,5 @@
             </div>
         </div>
     </div>
+    @{ this.Html.RenderPartial("itemDetailsPopup"); }
 </div>

@@ -41,7 +41,7 @@
         return "order" + self.id();
     });
     
-    self.popupDomOrderId = ko.computed(function () {
+    self.popupDomId = ko.computed(function () {
         return "itemFormModal" + self.id();
     });
 
@@ -162,7 +162,7 @@
         if (model.MessageType == "Success") {
             self.loadItems();
             self.destroyUploader();
-            $('#' + self.popupDomOrderId()).modal('hide');
+            $('#' + self.popupDomId()).modal('hide');
             window.showNotice(data.Message, data.MessageType);
         }
     };
@@ -171,7 +171,7 @@
         var model = ko.toJS(data);
         if (model.MessageType == "Success") {
             self.loadItems();
-            $('#' + self.popupDomOrderId()).modal('hide');
+            $('#' + self.popupDomId()).modal('hide');
             window.showNotice(data.Message, data.MessageType);
         }
     };
@@ -237,14 +237,14 @@
         self.popupItemViewModel.clear();
         self.popupItemViewModel.uploaderVisible(false);
 
-        $('#' + self.popupDomOrderId()).modal('show');
+        $('#' + self.popupDomId()).modal('show');
     };
 
     self.showEditItemPopup = function (model) {
         self.popupItemViewModel.updateFieldsFromModel(model);
         self.popupItemViewModel.uploaderVisible(true);
         
-        $('#' + self.popupDomOrderId()).modal('show');
+        $('#' + self.popupDomId()).modal('show');
         self.initUploader();
     };
 

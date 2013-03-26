@@ -70,7 +70,7 @@ using TdService.Model.Packages;
         /// <summary>
         /// 
         /// </summary>
-        public int? OrderId { get; set; }
+        public int OrderId { get; set; }
 
         /// <summary>
         /// Validate item business rules.

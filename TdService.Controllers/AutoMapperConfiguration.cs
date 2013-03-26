@@ -261,10 +261,17 @@ namespace TdService.UI.Web
                 .ForMember(dest=>dest.OperatorMode, opt=>opt.Ignore());
 
             // edit order item
+            Mapper.CreateMap<Item, EditOrderItemResponse>();
             Mapper.CreateMap<OrderItemViewModel, EditOrderItemRequest>()
                 .ForMember(dest => dest.IdentityToken, opt => opt.Ignore()); 
             Mapper.CreateMap<EditOrderItemResponse, OrderItemViewModel>()
-                .ForMember(dest => dest.Images, opt => opt.Ignore())
+                .ForMember(dest => dest.OperatorMode, opt => opt.Ignore()); 
+
+            //edit package item
+            Mapper.CreateMap<Item, EditPackageItemResponse>();
+            Mapper.CreateMap<PackageItemViewModel, EditPackageItemRequest>()
+                .ForMember(dest => dest.IdentityToken, opt => opt.Ignore());
+            Mapper.CreateMap<EditPackageItemResponse, PackageItemViewModel>()
                 .ForMember(dest => dest.OperatorMode, opt => opt.Ignore()); 
 
             // remove order item

@@ -70,6 +70,7 @@
     <Compile Include="Item\ItemImageViewModel.cs" />
     <Compile Include="Item\MoveItemBackToOriginalOrderViewModel.cs" />
     <Compile Include="Item\MoveOrderItemToExistingPackageViewModel.cs" />
+    <Compile Include="Item\PackageItemViewModel.cs" />
     <Compile Include="Member\ShopperDashboardViewModel.cs" />
     <Compile Include="Member\WelcomeViewModel.cs" />
     <Compile Include="ModelError.cs" />
