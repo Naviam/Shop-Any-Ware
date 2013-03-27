@@ -118,9 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ExpressMail" xml:space="preserve">
-    <value>Express Mail</value>
+    <value>USPS Express Mail</value>
   </data>
   <data name="PriorityMail" xml:space="preserve">
-    <value>Priority Mail</value>
+    <value>USPS Priority Mail</value>
   </data>
 </root>
