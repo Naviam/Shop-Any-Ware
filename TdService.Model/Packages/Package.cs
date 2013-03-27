@@ -74,6 +74,11 @@ namespace TdService.Model.Packages
         public DeliveryAddress DeliveryAddress { get; set; }
 
         /// <summary>
+        /// Gets or sets Delivery Address ID.
+        /// </summary>
+        public int? DeliveryAddressId { get; set; }
+
+        /// <summary>
         /// Gets or sets DispatchMethod.
         /// </summary>
         public DispatchMethod DispatchMethod { get; set; }

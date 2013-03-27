@@ -419,18 +419,18 @@ function DashboardViewModel(serverModel) {
             }
         });
     };
-    
+
     self.moveItemBackToOriginalOrder = function(item) {
-        $.post("/items/MoveOrderItemToOriginalOrder", { "itemId": item.id() }, function (data) {
+        $.post("/items/MoveOrderItemToOriginalOrder", { "itemId": item.id() }, function(data) {
             var model = ko.toJS(data);
             if (model.MessageType == "Success") {
-                $.each(self.packages(), function (index, value) {
+                $.each(self.packages(), function(index, value) {
                     if (value.id() == model.PackageId) {
-                        value.removeItem(model.Item.Id);//remove item client-side
+                        value.removeItem(model.Item.Id); //remove item client-side
                     }
                 });
 
-                $.each(self.orders(), function (index, value) {
+                $.each(self.orders(), function(index, value) {
                     if (value.id() == model.OrderId) {
                         value.addItems([model.Item]);
                     }
@@ -439,7 +439,7 @@ function DashboardViewModel(serverModel) {
                 window.showNotice(model.Message, model.MessageType);
             }
         });
-    }
+    };
 
 }
 

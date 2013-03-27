@@ -11,8 +11,12 @@
     self.id = ko.observable(serverModel.Id);
     self.name = ko.observable(serverModel.Name);
     self.deliveryAddressId = ko.observable(serverModel.DeliveryAddressId);
+    self.selectedAddress = ko.observable(serverModel.DeliveryAddressId);
     self.deliveryAddressName = ko.observable(serverModel.DeliveryAddressName).extend({ defaultIfNull: "not set" });
-    self.dispatchMethod = ko.observable(serverModel.DispatchMethod).extend({ defaultIfNull: "not set" });
+    
+    self.dispatchMethod = ko.observable(serverModel.DispatchMethod);
+    self.selectedMethod = ko.observable(serverModel.DispatchMethod);
+
     self.createdDate = ko.observable(formatDate(serverModel.CreatedDate));
     self.dispatchedDate = ko.observable(formatDate(serverModel.DispatchedDate));
     self.deliveredDate = ko.observable(formatDate(serverModel.DeliveredDate));
@@ -22,8 +26,7 @@
 
     // package view model collections
     self.items = ko.observableArray();
-    self.selectedAddress = ko.observable();
-    self.selectedMethod = ko.observable();
+
 
     // package state properties
     self.canBeRemoved = serverModel.CanBeRemoved;
@@ -188,7 +191,7 @@
             window.showNotice(data.Message, data.MessageType);
         }
     };
-    
+
     self.initUploader = function () {
         $('#' + self.plUploaderDivContainerId()).plupload({
             // General settings
@@ -224,5 +227,28 @@
         var up = $('#' + self.plUploaderDivContainerId()).plupload('getUploader');
         up.refresh();
     };
-    
+
+    self.changeDeliveryAddress = function (packageObj) {
+        if (self.selectedAddress()==null || self.selectedAddress() == self.deliveryAddressId()) return;
+        $.post("/packages/ChangePackageDeliveryAddress", { "packageId": self.id(), "deliveryAddressId": self.selectedAddress() }, function(data) {
+            var model = ko.toJS(data);
+            if (model.MessageType == "Success") {
+                self.deliveryAddressId(self.selectedAddress());
+            }
+            window.showNotice(model.Message, model.MessageType);
+
+        });
+    };
+
+    self.changeDispatchMethod = function (packageObj) {
+        if (self.selectedMethod() == null || self.selectedMethod() == self.dispatchMethod()) return;
+        $.post("/packages/ChangePackageDispatchMethod", { "packageId": self.id(), "dispatchMethodId": self.selectedMethod() }, function (data) {
+            var model = ko.toJS(data);
+            if (model.MessageType == "Success") {
+                self.dispatchMethod(self.selectedMethod());
+            }
+            window.showNotice(model.Message, model.MessageType);
+
+        });
+    };
 }

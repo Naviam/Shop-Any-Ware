@@ -22,6 +22,9 @@ namespace TdService.UI.Web.Controllers
     using System.Linq;
     using TdService.Infrastructure.PayPalHelpers;
     using TdService.UI.Web.Controllers.Base;
+    using TdService.UI.Web.ViewModels.Package;
+    using TdService.Model.Shipping;
+    using System;
     /// <summary>
     /// The controller that contains membership methods.
     /// </summary>
@@ -186,7 +189,9 @@ namespace TdService.UI.Web.Controllers
             model.DeliveryAddressViewModels = addressesResponse.ConvertToDeliveryAddressViewModel();
             model.AddFundsButtonText = DashboardViewResources.AddFundsButton;
             model.AddFundsLoadingText = DashboardViewResources.AddFundsButtonLoading;
-            model.DeliveryMethods = new List<string> { "Standard Delivery", "Express Delivery" };
+            model.DeliveryMethods = Enum.GetValues(typeof(DispatchMethod))
+                                    .Cast<DispatchMethod>()
+                                    .Select(enumElement=>new DispatchMethodViewModel{Id=(int)enumElement, Name=enumElement.ToString()}).ToList();
         }
 
 

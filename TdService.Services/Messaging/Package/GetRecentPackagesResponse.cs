@@ -29,12 +29,12 @@ namespace TdService.Services.Messaging.Package
         /// <summary>
         /// Gets or sets the delivery address id.
         /// </summary>
-        public int DeliveryAddressId { get; set; }
+        public int? DeliveryAddressId { get; set; }
 
         /// <summary>
         /// Gets or sets the dispatch method.
         /// </summary>
-        public string DispatchMethod { get; set; }
+        public int? DispatchMethod { get; set; }
 
         /// <summary>
         /// Gets or sets the created date.

@@ -61,6 +61,24 @@ namespace TdService.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error occured while updating package delivery address.
+        /// </summary>
+        public static string ChangePackageDeliveryAddressError {
+            get {
+                return ResourceManager.GetString("ChangePackageDeliveryAddressError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error occured while updating dispatch method for package.
+        /// </summary>
+        public static string ChangePackageDispatchMethodError {
+            get {
+                return ResourceManager.GetString("ChangePackageDispatchMethodError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There were some issues with the delivery address you are trying to add or update..
         /// </summary>
         public static string DeliveryAddressAddOrUpdateErrorMessage {
@@ -291,6 +309,24 @@ namespace TdService.Resources {
         public static string OrderUpdateSuccessMessage {
             get {
                 return ResourceManager.GetString("OrderUpdateSuccessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delivery address changed for package id:{0}.
+        /// </summary>
+        public static string PackageDeliveryAddressChanged {
+            get {
+                return ResourceManager.GetString("PackageDeliveryAddressChanged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dispatch method was successfully updated for package id:{0}.
+        /// </summary>
+        public static string PackageDispatchMethodChanged {
+            get {
+                return ResourceManager.GetString("PackageDispatchMethodChanged", resourceCulture);
             }
         }
         
