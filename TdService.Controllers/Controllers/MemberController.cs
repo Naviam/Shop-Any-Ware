@@ -25,6 +25,7 @@ namespace TdService.UI.Web.Controllers
     using TdService.UI.Web.ViewModels.Package;
     using TdService.Model.Shipping;
     using System;
+    using TdService.Resources;
     /// <summary>
     /// The controller that contains membership methods.
     /// </summary>
@@ -191,7 +192,7 @@ namespace TdService.UI.Web.Controllers
             model.AddFundsLoadingText = DashboardViewResources.AddFundsButtonLoading;
             model.DeliveryMethods = Enum.GetValues(typeof(DispatchMethod))
                                     .Cast<DispatchMethod>()
-                                    .Select(enumElement=>new DispatchMethodViewModel{Id=(int)enumElement, Name=enumElement.ToString()}).ToList();
+                                    .Select(enumElement => new DispatchMethodViewModel { Id = (int)enumElement, Name = DispatchMethods.ResourceManager.GetString(enumElement.ToString()) }).ToList();
         }
 
 
