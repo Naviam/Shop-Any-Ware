@@ -231,4 +231,16 @@
   <data name="OrderItemUpdateSuccessMessage" xml:space="preserve">
     <value>Order item was successfully updated</value>
   </data>
+  <data name="ChangePackageDeliveryAddressError" xml:space="preserve">
+    <value>Error occured while updating package delivery address</value>
+  </data>
+  <data name="PackageDeliveryAddressChanged" xml:space="preserve">
+    <value>Delivery address changed for package id:{0}</value>
+  </data>
+  <data name="ChangePackageDispatchMethodError" xml:space="preserve">
+    <value>Error occured while updating dispatch method for package</value>
+  </data>
+  <data name="PackageDispatchMethodChanged" xml:space="preserve">
+    <value>Dispatch method was successfully updated for package id:{0}</value>
+  </data>
 </root>

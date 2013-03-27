@@ -10,22 +10,24 @@
 namespace TdService.Services.Implementations
 {
     using System;
-using System.Collections.Generic;
-using TdService.Infrastructure.Logging;
-using TdService.Model.Common;
-using TdService.Model.Membership;
-using TdService.Model.Packages;
-using TdService.Resources.Views;
-using TdService.Services.Base;
-using TdService.Services.Interfaces;
-using TdService.Services.Mapping;
-using TdService.Services.Messaging;
-using TdService.Services.Messaging.Package;
+    using System.Collections.Generic;
+    using TdService.Infrastructure.Logging;
+    using TdService.Model.Common;
+    using TdService.Model.Membership;
+    using TdService.Model.Packages;
+    using TdService.Model.Shipping;
+    using TdService.Resources;
+    using TdService.Resources.Views;
+    using TdService.Services.Base;
+    using TdService.Services.Interfaces;
+    using TdService.Services.Mapping;
+    using TdService.Services.Messaging;
+    using TdService.Services.Messaging.Package;
 
     /// <summary>
     /// The packages service.
     /// </summary>
-    public class PackagesService :ServiceBase, IPackagesService
+    public class PackagesService : ServiceBase, IPackagesService
     {
         /// <summary>
         /// The package repository.
@@ -46,7 +48,8 @@ using TdService.Services.Messaging.Package;
         /// <param name="userRepository">
         /// The user repository.
         /// </param>
-        public PackagesService(IPackageRepository packageRepository, IUserRepository userRepository, ILogger logger):base(logger)
+        public PackagesService(IPackageRepository packageRepository, IUserRepository userRepository, ILogger logger)
+            : base(logger)
         {
             this.packageRepository = packageRepository;
             this.userRepository = userRepository;
@@ -133,7 +136,7 @@ using TdService.Services.Messaging.Package;
                     if (result)
                     {
                         this.packageRepository.RemovePackage(request.Id);
-                        this.packageRepository.SaveChanges();
+                        //this.packageRepository.SaveChanges();
                     }
                     else
                     {
@@ -149,6 +152,39 @@ using TdService.Services.Messaging.Package;
             }
 
             return response;
+        }
+
+
+        public ChangePackageDeliveryAddressResponse ChangePackageDeliveryAddress(ChangePackageDeliveryAddressRequest request)
+        {
+            try
+            {
+                var package = this.packageRepository.GetPackageById(request.PackageId);
+                package.DeliveryAddressId = request.DeliverAddressId;
+                this.packageRepository.UpdatePackage(package);
+                return new ChangePackageDeliveryAddressResponse { MessageType = MessageType.Success, Message =string.Format(CommonResources.PackageDeliveryAddressChanged,package.Id) };
+            }
+            catch (Exception ex)
+            {
+                logger.Log(ex.Message);
+                return new ChangePackageDeliveryAddressResponse { MessageType = MessageType.Error, Message = CommonResources.ChangePackageDeliveryAddressError };
+            }
+        }
+
+        public ChangePackageDeliveryMethodResponse ChangePackageDispatchMethod(ChangePackageDeliveryMethodRequest request)
+        {
+            try
+            {
+                var package = this.packageRepository.GetPackageById(request.PackageId);
+                package.DispatchMethod = (DispatchMethod)Enum.Parse(typeof(DispatchMethod),request.DispatchMethodId.ToString());
+                this.packageRepository.UpdatePackage(package);
+                return new ChangePackageDeliveryMethodResponse { MessageType = MessageType.Success, Message = string.Format(CommonResources.PackageDispatchMethodChanged, package.Id) };
+            }
+            catch (Exception ex)
+            {
+                logger.Log(ex.Message);
+                return new ChangePackageDeliveryMethodResponse { MessageType = MessageType.Error, Message = CommonResources.ChangePackageDispatchMethodError };
+            }
         }
     }
 }

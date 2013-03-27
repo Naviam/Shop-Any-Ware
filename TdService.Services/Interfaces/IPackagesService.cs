@@ -61,5 +61,19 @@ namespace TdService.Services.Interfaces
         /// The <see cref="RemovePackageResponse"/>.
         /// </returns>
         RemovePackageResponse RemovePackage(RemovePackageRequest request);
+
+        /// <summary>
+        /// Changes package delivery address
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        ChangePackageDeliveryAddressResponse ChangePackageDeliveryAddress(ChangePackageDeliveryAddressRequest request);
+
+        /// <summary>
+        /// Changes package delivery method
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        ChangePackageDeliveryMethodResponse ChangePackageDispatchMethod(ChangePackageDeliveryMethodRequest request);
     }
 }

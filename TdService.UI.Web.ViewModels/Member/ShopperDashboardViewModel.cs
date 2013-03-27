@@ -12,6 +12,7 @@ namespace TdService.UI.Web.ViewModels.Member
     using System.Collections.Generic;
     using TdService.Resources.Views;
     using TdService.UI.Web.ViewModels.Account;
+    using TdService.UI.Web.ViewModels.Package;
 
     /// <summary>
     /// The shopper dashboard view model.
@@ -51,7 +52,7 @@ namespace TdService.UI.Web.ViewModels.Member
         /// <summary>
         /// Gets or sets the delivery methods.
         /// </summary>
-        public List<string> DeliveryMethods { get; set; }
+        public List<DispatchMethodViewModel> DeliveryMethods { get; set; }
 
         /// <summary>
         /// Validation message

@@ -29,15 +29,23 @@
                         <td>@DashboardViewResources.DeliveryAddressHeader</td>
                         <td>
                             <select data-bind='options: $root.deliveryAddresses, 
-                                    optionsText: function(address) { return address.AddressName; }, 
-                                    value: selectedAddress, optionsCaption: "@DashboardViewResources.SelectDefaultValue"'>
+                                    optionsText: "AddressName", 
+                                    optionsValue: "Id",
+                                    value: selectedAddress, 
+                                    optionsCaption: "@DashboardViewResources.SelectDefaultValue",
+                                    event: {change: changeDeliveryAddress}'>
                             </select>
                         </td>
                     </tr>
                     <tr>
                         <td>@DashboardViewResources.DeliveryMethodHeader</td>
                         <td>
-                            <select data-bind='options: $root.deliveryMethods, value: selectedMethod, optionsCaption: "@DashboardViewResources.SelectDefaultValue"'>
+                            <select data-bind='options: $root.deliveryMethods,
+                                    value: selectedMethod,
+                                    optionsText: "Name", 
+                                    optionsValue: "Id",
+                                    optionsCaption: "@DashboardViewResources.SelectDefaultValue",
+                                    event: {change: changeDispatchMethod}'>
                             </select>
                         </td>
                     </tr>

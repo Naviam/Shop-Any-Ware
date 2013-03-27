@@ -22,6 +22,7 @@ namespace TdService.Repository.MsSql.Configurations
         {
             this.Property(p => p.Name).HasMaxLength(21);
             this.HasMany(p => p.Items).WithOptional(i => i.Package).HasForeignKey(i => i.PackageId).WillCascadeOnDelete(true);
+            //this.HasOptional(p => p.DeliveryAddress).WithMany();
         }
     }
 }
