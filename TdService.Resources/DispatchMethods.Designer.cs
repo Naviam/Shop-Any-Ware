@@ -61,7 +61,7 @@ namespace TdService.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Express Mail.
+        ///   Looks up a localized string similar to USPS Express Mail.
         /// </summary>
         public static string ExpressMail {
             get {
@@ -70,7 +70,7 @@ namespace TdService.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Priority Mail.
+        ///   Looks up a localized string similar to USPS Priority Mail.
         /// </summary>
         public static string PriorityMail {
             get {
