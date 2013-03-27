@@ -12,6 +12,8 @@ namespace TdService.Repository.MsSql.Repositories
     using System.Linq;
 
     using TdService.Model.Packages;
+    using System.Data.Entity;
+    using TdService.Repository.MsSql.Extensions;
 
     /// <summary>
     /// The package repository.
@@ -31,7 +33,7 @@ namespace TdService.Repository.MsSql.Repositories
         {
             using (var context = new ShopAnyWareSql())
             {
-                return context.Packages.Include("Items").SingleOrDefault(p => p.Id == packageId);
+                return context.PackagesWithItemsAndImages().SingleOrDefault(p => p.Id == packageId);
             }
         }
 
@@ -52,7 +54,7 @@ namespace TdService.Repository.MsSql.Repositories
             using (var context = new ShopAnyWareSql())
             {
                 var packageAdded = context.Packages.Add(package);
-                var user = context.Users.Include("Profile").Include("Roles").SingleOrDefault(u => u.Email == email);
+                var user = context.Users.Include(u=>u.Profile).Include(u=>u.Roles).SingleOrDefault(u => u.Email == email);
                 if (user != null)
                 {
                     user.AddPackage(packageAdded);
@@ -75,16 +77,30 @@ namespace TdService.Repository.MsSql.Repositories
             {
                 var package = context.Packages.Find(packageId);
                 context.Packages.Remove(package);
+                context.SaveChanges();
             }
         }
 
         /// <summary>
-        /// Save changes to DB.
+        /// Get Package By Id
         /// </summary>
-        public void SaveChanges()
+        /// <param name="packageId"></param>
+        /// <returns></returns>
+        public Package GetPackageById(int packageId)
         {
             using (var context = new ShopAnyWareSql())
             {
+                return context.Packages.Find(packageId);
+            }
+        }
+
+
+        public void UpdatePackage(Package package)
+        {
+            using (var context = new ShopAnyWareSql())
+            {
+                context.Packages.Attach(package);
+                context.Entry<Package>(package).State = System.Data.EntityState.Modified;
                 context.SaveChanges();
             }
         }

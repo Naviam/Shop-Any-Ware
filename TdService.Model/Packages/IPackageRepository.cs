@@ -15,6 +15,13 @@ namespace TdService.Model.Packages
     public interface IPackageRepository
     {
         /// <summary>
+        ///  Get package by Id.
+        /// </summary>
+        /// <param name="packageId"></param>
+        /// <returns></returns>
+        Package GetPackageById(int packageId);
+
+        /// <summary>
         /// Get package with items by Id.
         /// </summary>
         /// <param name="packageId">
@@ -48,8 +55,11 @@ namespace TdService.Model.Packages
         void RemovePackage(int packageId);
 
         /// <summary>
-        /// Save changes to DB.
+        /// Updates package
         /// </summary>
-        void SaveChanges();
+        /// <param name="package"></param>
+        /// <returns></returns>
+        void UpdatePackage(Package package);
+
     }
 }

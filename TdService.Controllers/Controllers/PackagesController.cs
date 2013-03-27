@@ -160,6 +160,34 @@ namespace TdService.UI.Web.Controllers
             return jsonNetResult;
         }
 
-        
+        [Authorize(Roles = "Shopper")]
+        [HttpPost]
+        public ActionResult ChangePackageDeliveryAddress(int packageId, int deliveryAddressId)
+        {
+            var request = new ChangePackageDeliveryAddressRequest {PackageId=packageId, DeliverAddressId = deliveryAddressId};
+            var response = this.packagesService.ChangePackageDeliveryAddress(request);
+
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = new { Message = response.Message, MessageType = response.MessageType.ToString() }
+            };
+            return jsonNetResult;
+        }
+
+        [Authorize(Roles = "Shopper")]
+        [HttpPost]
+        public ActionResult ChangePackageDispatchMethod(int packageId, int dispatchMethodId)
+        {
+            var request = new ChangePackageDeliveryMethodRequest { PackageId = packageId, DispatchMethodId = dispatchMethodId };
+            var response = this.packagesService.ChangePackageDispatchMethod(request);
+
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = new { Message = response.Message, MessageType = response.MessageType.ToString() }
+            };
+            return jsonNetResult;
+        }
     }
 }

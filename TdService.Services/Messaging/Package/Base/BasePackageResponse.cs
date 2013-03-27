@@ -1,25 +1,10 @@
-// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="PackageViewModel.cs" company="TdService">
-//   Vitali Hatalski. 2012.
-// </copyright>
-// <summary>
-//   The package view model.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace TdService.UI.Web.ViewModels.Package
+﻿using System;
+namespace TdService.Services.Messaging.Package.Base
 {
-    using System;
-
-    using TdService.Resources;
-
-    /// <summary>
-    /// The package view model.
-    /// </summary>
-    public class PackageViewModel : ViewModelBase
+    public abstract class BasePackageResponse:ResponseBase
     {
         /// <summary>
-        /// Gets or sets package ID.
+        /// Gets or sets the id.
         /// </summary>
         public int Id { get; set; }
 
@@ -36,38 +21,27 @@ namespace TdService.UI.Web.ViewModels.Package
         /// <summary>
         /// Gets or sets the dispatch method.
         /// </summary>
-        public int? DispatchMethod { get; set; }
+        public int DispatchMethod { get; set; }
+
+        /// <summary>
+        /// Gets or sets the created date.
+        /// </summary>
+        public DateTime CreatedDate { get; set; }
+
+        /// <summary>
+        /// Gets or sets the dispatched date.
+        /// </summary>
+        public DateTime DispatchedDate { get; set; }
+
+        /// <summary>
+        /// Gets or sets the delivered date.
+        /// </summary>
+        public DateTime DeliveredDate { get; set; }
 
         /// <summary>
         /// Gets or sets the status.
         /// </summary>
         public string Status { get; set; }
-
-        /// <summary>
-        /// Gets the status translated.
-        /// </summary>
-        public string StatusTranslated
-        {
-            get
-            {
-                return PackageStatusResources.ResourceManager.GetString(this.Status);
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets Created Date.
-        /// </summary>
-        public DateTime CreatedDate { get; set; }
-
-        /// <summary>
-        /// Gets or sets Dispatched Date.
-        /// </summary>
-        public DateTime? DispatchedDate { get; set; }
-
-        /// <summary>
-        /// Gets or sets Delivered Date.
-        /// </summary>
-        public DateTime? DeliveredDate { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether can be modified.

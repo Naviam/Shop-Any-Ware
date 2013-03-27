@@ -231,4 +231,16 @@
   <data name="OrderItemUpdateSuccessMessage" xml:space="preserve">
     <value>Товар был успешно обновлен</value>
   </data>
+  <data name="ChangePackageDeliveryAddressError" xml:space="preserve">
+    <value>Во время изменения адреса доставки произошла ошибка</value>
+  </data>
+  <data name="PackageDeliveryAddressChanged" xml:space="preserve">
+    <value>Адрес доставки изменен для посылки id:{0}</value>
+  </data>
+  <data name="ChangePackageDispatchMethodError" xml:space="preserve">
+    <value>Во время обновления способа доставки произошла ошибка</value>
+  </data>
+  <data name="PackageDispatchMethodChanged" xml:space="preserve">
+    <value>Способ доставки был успешно обновлен для посылки id:{0}</value>
+  </data>
 </root>

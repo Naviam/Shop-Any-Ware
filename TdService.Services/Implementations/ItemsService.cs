@@ -94,30 +94,6 @@ namespace TdService.Services.Implementations
         }
 
         /// <summary>
-        /// Add item to package.
-        /// </summary>
-        /// <param name="request">
-        /// The add item to package request message.
-        /// </param>
-        /// <returns>
-        /// The add item to package response message.
-        /// </returns>
-        public AddItemToPackageResponse AddItemToPackage(AddItemToPackageRequest request)
-        {
-            var item = this.itemsRepository.GetItemById(request.ItemId);
-            var package = this.packageRepository.GetPackageWithItemsById(request.PackageId);
-            package.Items.Add(item);
-
-            this.packageRepository.SaveChanges();
-
-            return new AddItemToPackageResponse
-                {
-                    MessageType = MessageType.Success,
-                    Message = string.Format(CommonResources.OrderItemMovedToPackage, package.Name, package.Id)
-                };
-        }
-
-        /// <summary>
         /// Get order items.
         /// </summary>
         /// <param name="request">

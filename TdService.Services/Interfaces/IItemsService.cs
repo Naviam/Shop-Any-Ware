@@ -43,18 +43,7 @@ namespace TdService.Services.Interfaces
         /// <returns>edit package item response message</returns>
         EditPackageItemResponse EditPackageItem(EditPackageItemRequest request);
 
-        /// <summary>
-        /// Add item to package.
-        /// </summary>
-        /// <param name="request">
-        /// The add item to package request message.
-        /// </param>
-        /// <returns>
-        /// The add item to package response message.
-        /// </returns>
-        AddItemToPackageResponse AddItemToPackage(AddItemToPackageRequest request);
-
-        /// <summary>
+   /// <summary>
         /// Get order items.
         /// </summary>
         /// <param name="request">

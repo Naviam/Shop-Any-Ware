@@ -155,6 +155,11 @@
     <Compile Include="Messaging\Order\UpdateOrderResponse.cs" />
     <Compile Include="Messaging\Package\AddPackageRequest.cs" />
     <Compile Include="Messaging\Package\AddPackageResponse.cs" />
+    <Compile Include="Messaging\Package\Base\BasePackageResponse.cs" />
+    <Compile Include="Messaging\Package\ChangePackageDeliveryAddressRequest.cs" />
+    <Compile Include="Messaging\Package\ChangePackageDeliveryAddressResponse.cs" />
+    <Compile Include="Messaging\Package\ChangePackageDeliveryMethodRequest.cs" />
+    <Compile Include="Messaging\Package\ChangePackageDeliveryMethodResponse.cs" />
     <Compile Include="Messaging\Package\GetRecentPackagesRequest.cs" />
     <Compile Include="Messaging\Package\GetRecentPackagesResponse.cs" />
     <Compile Include="Messaging\Package\RemovePackageRequest.cs" />
