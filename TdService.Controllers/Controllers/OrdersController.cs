@@ -12,13 +12,11 @@ namespace TdService.UI.Web.Controllers
     using System;
     using System.Collections.Generic;
     using System.Web.Mvc;
-    using System.Web.Security;
     using System.Xml;
     using FluentValidation;
     using FluentValidation.Internal;
     using TdService.Infrastructure.Authentication;
     using TdService.Infrastructure.Domain;
-    using TdService.Infrastructure.SessionStorage;
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging;
     using TdService.Services.Messaging.Order;
@@ -35,8 +33,6 @@ namespace TdService.UI.Web.Controllers
         /// Order service.
         /// </summary>
         private readonly IOrderService orderService;
-
-        
 
         /// <summary>
         /// Initializes a new instance of the <see cref="OrdersController"/> class. 
@@ -59,6 +55,9 @@ namespace TdService.UI.Web.Controllers
         /// <summary>
         /// The new orders.
         /// </summary>
+        /// <param name="userEmail">
+        /// The user Email.
+        /// </param>
         /// <returns>
         /// The <see cref="ActionResult"/>.
         /// </returns>
@@ -66,7 +65,7 @@ namespace TdService.UI.Web.Controllers
         [HttpPost]
         public ActionResult NewOrders(string userEmail)
         {
-            EnsureUserEmailIsNotChanged(userEmail);
+            this.EnsureUserEmailIsNotChanged(userEmail);
             var request = new GetAllOrdersRequest { IdentityToken = userEmail };
             var response = this.orderService.GetAllNew(request);
             var result = response.ConvertToOrderViewModelCollection();
@@ -82,12 +81,15 @@ namespace TdService.UI.Web.Controllers
         /// <summary>
         /// The received orders.
         /// </summary>
+        /// <param name="userEmail">
+        /// The user Email.
+        /// </param>
         /// <returns>
         /// The <see cref="ActionResult"/>.
         /// </returns>
         public ActionResult ReceivedOrders(string userEmail)
         {
-            EnsureUserEmailIsNotChanged(userEmail);
+            this.EnsureUserEmailIsNotChanged(userEmail);
 
             var request = new GetAllOrdersRequest { IdentityToken = userEmail };
             var response = this.orderService.GetAllReceived(request);
@@ -104,12 +106,15 @@ namespace TdService.UI.Web.Controllers
         /// <summary>
         /// The return requested orders.
         /// </summary>
+        /// <param name="userEmail">
+        /// The user Email.
+        /// </param>
         /// <returns>
         /// The <see cref="ActionResult"/>.
         /// </returns>
         public ActionResult ReturnRequestedOrders(string userEmail)
         {
-            EnsureUserEmailIsNotChanged(userEmail);
+            this.EnsureUserEmailIsNotChanged(userEmail);
             var request = new GetAllOrdersRequest { IdentityToken = userEmail };
             var response = this.orderService.GetAllReturnRequested(request);
             var result = response.ConvertToOrderViewModelCollection();
@@ -125,6 +130,9 @@ namespace TdService.UI.Web.Controllers
         /// <summary>
         /// Get recent orders.
         /// </summary>
+        /// <param name="userEmail">
+        /// The user Email.
+        /// </param>
         /// <returns>
         /// Get recent orders in JSON formatted result.
         /// </returns>
@@ -132,7 +140,7 @@ namespace TdService.UI.Web.Controllers
         [HttpPost]
         public ActionResult Recent(string userEmail)
         {
-            EnsureUserEmailIsNotChanged(userEmail);
+            this.EnsureUserEmailIsNotChanged(userEmail);
             var request = new GetMyOrdersRequest { IdentityToken = userEmail };
             var response = this.orderService.GetRecent(request);
             var result = response.ConvertToOrderViewModelCollection();
@@ -148,6 +156,9 @@ namespace TdService.UI.Web.Controllers
         /// <summary>
         /// The history.
         /// </summary>
+        /// <param name="userEmail">
+        /// The user Email.
+        /// </param>
         /// <returns>
         /// Get history orders in JSON formatted result.
         /// </returns>
@@ -155,7 +166,7 @@ namespace TdService.UI.Web.Controllers
         [HttpPost]
         public ActionResult History(string userEmail)
         {
-            EnsureUserEmailIsNotChanged(userEmail);
+            this.EnsureUserEmailIsNotChanged(userEmail);
             var request = new GetMyOrdersRequest { IdentityToken = userEmail };
             var response = this.orderService.GetHistory(request);
             var result = response.ConvertToOrderViewModelCollection();
@@ -174,6 +185,9 @@ namespace TdService.UI.Web.Controllers
         /// <param name="retailerUrl">
         /// The retailer Url.
         /// </param>
+        /// <param name="userEmail">
+        /// The user Email.
+        /// </param>
         /// <returns>
         /// Order view model in JSON format.
         /// </returns>
@@ -181,7 +195,7 @@ namespace TdService.UI.Web.Controllers
         [HttpPost]
         public ActionResult Add([Bind]string retailerUrl, string userEmail)
         {
-            EnsureUserEmailIsNotChanged(userEmail);
+            this.EnsureUserEmailIsNotChanged(userEmail);
             var result = new OrderViewModel { Status = "New", RetailerUrl = retailerUrl };
             var validator = new OrderViewModelValidator();
             var validationResult = validator.Validate(result);
@@ -220,6 +234,9 @@ namespace TdService.UI.Web.Controllers
         /// <param name="orderId">
         /// The order ID to remove.
         /// </param>
+        /// <param name="userEmail">
+        /// The user Email.
+        /// </param>
         /// <returns>
         /// The <see cref="ActionResult"/>.
         /// </returns>
@@ -227,11 +244,11 @@ namespace TdService.UI.Web.Controllers
         [HttpPost]
         public ActionResult Remove(int orderId, string userEmail)
         {
-            EnsureUserEmailIsNotChanged(userEmail);
+            this.EnsureUserEmailIsNotChanged(userEmail);
 
             var request = new RemoveOrderRequest
                 {
-                    IdentityToken=userEmail,
+                    IdentityToken = userEmail,
                     Id = orderId
                 };
             var response = this.orderService.RemoveOrder(request);
@@ -245,6 +262,15 @@ namespace TdService.UI.Web.Controllers
             return jsonNetResult;
         }
 
+        /// <summary>
+        /// The order received.
+        /// </summary>
+        /// <param name="orderId">
+        /// The order id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ActionResult"/>.
+        /// </returns>
         [Authorize(Roles = "Operator, Admin")]
         [HttpPost]
         public ActionResult OrderReceived(int orderId)
@@ -322,8 +348,6 @@ namespace TdService.UI.Web.Controllers
             return jsonNetResult;
         }
 
-
-
         /// <summary>
         /// The request for return.
         /// </summary>
@@ -342,8 +366,6 @@ namespace TdService.UI.Web.Controllers
                 Data = result
             };
             return jsonNetResult;
-        }
-
-        
+        }        
     }
 }
