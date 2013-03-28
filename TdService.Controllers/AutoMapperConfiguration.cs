@@ -9,7 +9,11 @@
 
 namespace TdService.UI.Web
 {
+    using System.Collections.Generic;
+    using System.Linq;
+
     using AutoMapper;
+
     using TdService.Model.Addresses;
     using TdService.Model.Balance;
     using TdService.Model.Common;
@@ -19,12 +23,12 @@ namespace TdService.UI.Web
     using TdService.Model.Packages;
     using TdService.Services.Messaging.Address;
     using TdService.Services.Messaging.Item;
+    using TdService.Services.Messaging.Item.Base;
     using TdService.Services.Messaging.Membership;
     using TdService.Services.Messaging.Order;
     using TdService.Services.Messaging.Package;
     using TdService.Services.Messaging.Retailer;
     using TdService.Services.Messaging.Transactions;
-    using TdService.UI.Web.ViewModels;
     using TdService.UI.Web.ViewModels.Account;
     using TdService.UI.Web.ViewModels.Admin;
     using TdService.UI.Web.ViewModels.Ballance;
@@ -32,11 +36,11 @@ namespace TdService.UI.Web
     using TdService.UI.Web.ViewModels.Order;
     using TdService.UI.Web.ViewModels.Package;
     using TdService.UI.Web.ViewModels.Retailer;
-    using System.Linq;
-    using UserResponseModel = TdService.Services.Messaging.Membership.GetUsersInRoleResponse.UserResponseModel;
+
+// ReSharper disable AccessToStaticMemberViaDerivedType
     using ItemImageModel = TdService.Services.Messaging.Item.GetOrderItemsResponse.ItemImageModel;
-    using TdService.Services.Messaging.Item.Base;
-    using System.Collections.Generic;
+// ReSharper restore AccessToStaticMemberViaDerivedType
+    using UserResponseModel = TdService.Services.Messaging.Membership.GetUsersInRoleResponse.UserResponseModel;
 
     /// <summary>
     /// The auto mapper configuration.
@@ -97,8 +101,7 @@ namespace TdService.UI.Web
                 .ForMember(resp => resp.NotifyOnPackageStatusChanged, opt => opt.MapFrom(source => source.Profile.NotifyOnPackageStatusChanged))
                 .ForMember(r => r.Message, opt => opt.Ignore()).ForMember(r => r.ErrorCode, opt => opt.Ignore()).ForMember(
                     r => r.BrokenRules, opt => opt.Ignore()).ForMember(r => r.MessageType, opt => opt.Ignore());
-                    
-
+            
             Mapper.CreateMap<ProfileViewModel, UpdateProfileRequest>()
                 .ForMember(m => m.IdentityToken, opt => opt.Ignore());
             Mapper.CreateMap<UpdateProfileResponse, ProfileViewModel>()
@@ -209,7 +212,7 @@ namespace TdService.UI.Web
                 .ForMember(r => r.CanBeRequestedForReturn, opt => opt.Ignore())
                 .ForMember(r => r.CanItemsBeModified, opt => opt.Ignore());
 
-            //order received
+            // order received
             Mapper.CreateMap<OrderReceivedResponse, OrderViewModel>();
             Mapper.CreateMap<Order, OrderReceivedResponse>()
                 .ForMember(r => r.BrokenRules, opt => opt.Ignore())
@@ -226,7 +229,7 @@ namespace TdService.UI.Web
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
             Mapper.CreateMap<GetRetailersResponse, RetailerViewModel>();
 
-            //items global
+            // items global
             Mapper.CreateMap<Item, ItemResponse>()
                 .ForMember(r => r.BrokenRules, opt => opt.Ignore())
                 .ForMember(r => r.Message, opt => opt.Ignore())
@@ -257,18 +260,25 @@ namespace TdService.UI.Web
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
             Mapper.CreateMap<AddItemToOrderResponse, OrderItemViewModel>()
-                .ForMember(dest=>dest.OperatorMode, opt=>opt.Ignore());
+                .ForMember(dest => dest.OperatorMode, opt => opt.Ignore());
 
             // edit order item
-            Mapper.CreateMap<Item, EditOrderItemResponse>();
+            Mapper.CreateMap<Item, EditOrderItemResponse>()
+                .ForMember(r => r.Message, opt => opt.Ignore())
+                .ForMember(r => r.ErrorCode, opt => opt.Ignore())
+                .ForMember(r => r.MessageType, opt => opt.Ignore());
             Mapper.CreateMap<OrderItemViewModel, EditOrderItemRequest>()
                 .ForMember(dest => dest.IdentityToken, opt => opt.Ignore()); 
             Mapper.CreateMap<EditOrderItemResponse, OrderItemViewModel>()
                 .ForMember(dest => dest.OperatorMode, opt => opt.Ignore()); 
 
-            //edit package item
-            Mapper.CreateMap<Item, EditPackageItemResponse>();
+            // edit package item
+            Mapper.CreateMap<Item, EditPackageItemResponse>()
+                .ForMember(r => r.Message, opt => opt.Ignore())
+                .ForMember(r => r.ErrorCode, opt => opt.Ignore())
+                .ForMember(r => r.MessageType, opt => opt.Ignore());
             Mapper.CreateMap<PackageItemViewModel, EditPackageItemRequest>()
+                .ForMember(dest => dest.OrderId, opt => opt.Ignore())
                 .ForMember(dest => dest.IdentityToken, opt => opt.Ignore());
             Mapper.CreateMap<EditPackageItemResponse, PackageItemViewModel>()
                 .ForMember(dest => dest.OperatorMode, opt => opt.Ignore()); 
@@ -294,7 +304,7 @@ namespace TdService.UI.Web
             Mapper.CreateMap<GetOrderItemsResponse, OrderItemViewModel>().ForMember(r => r.OrderId, opt => opt.Ignore())
                 .ForMember(dest => dest.OperatorMode, opt => opt.Ignore());
 
-            //item images
+            // item images
             Mapper.CreateMap<ItemImage, ItemImageModel>();
             Mapper.CreateMap<ItemImageModel, ItemImageViewModel>()
                 .ForMember(r => r.BrokenRules, opt => opt.Ignore())
@@ -314,11 +324,13 @@ namespace TdService.UI.Web
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
             Mapper.CreateMap<GetPackageItemsResponse, PackageItemsViewModel>()
+                .ForMember(r => r.OrderId, opt => opt.Ignore())
                 .ForMember(r => r.PackageId, opt => opt.Ignore());
 
-            //move package items to existing package
+            // move package items to existing package
             Mapper.CreateMap<List<Item>, MoveOrderItemsToExistingPackageResponse>()
                 .ForMember(dest => dest.Items, opt => opt.MapFrom(src => src))
+                .ForMember(r => r.OrderId, opt => opt.Ignore())
                 .ForMember(r => r.BrokenRules, opt => opt.Ignore())
                 .ForMember(r => r.Message, opt => opt.Ignore())
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())
@@ -326,9 +338,10 @@ namespace TdService.UI.Web
                 .ForMember(r => r.PackageId, opt => opt.Ignore());
             Mapper.CreateMap<MoveOrderItemsToExistingPackageResponse, PackageItemsViewModel>();
 
-            //move package items to new package
+            // move package items to new package
             Mapper.CreateMap<List<Item>, MoveOrderItemsToNewPackageResponse>()
                 .ForMember(dest => dest.Items, opt => opt.MapFrom(src => src))
+                .ForMember(r => r.OrderId, opt => opt.Ignore())
                 .ForMember(r => r.BrokenRules, opt => opt.Ignore())
                 .ForMember(r => r.Message, opt => opt.Ignore())
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())
@@ -336,7 +349,7 @@ namespace TdService.UI.Web
                 .ForMember(r => r.PackageId, opt => opt.Ignore());
             Mapper.CreateMap<MoveOrderItemsToNewPackageResponse, PackageItemsViewModel>();
 
-            //move package items to original order
+            // move package items to original order
             Mapper.CreateMap<List<Item>, MoveOrderItemsToOriginalOrderResponse>()
                 .ForMember(dest => dest.Items, opt => opt.MapFrom(src => src))
                 .ForMember(r => r.BrokenRules, opt => opt.Ignore())
@@ -344,9 +357,10 @@ namespace TdService.UI.Web
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())
                 .ForMember(r => r.MessageType, opt => opt.Ignore())
                 .ForMember(r => r.PackageId, opt => opt.Ignore());
-            Mapper.CreateMap<MoveOrderItemsToOriginalOrderResponse, PackageItemsViewModel>();
+            Mapper.CreateMap<MoveOrderItemsToOriginalOrderResponse, PackageItemsViewModel>()
+                .ForMember(r => r.OrderId, opt => opt.Ignore());
 
-            //move single package item to original order
+            // move single package item to original order
             Mapper.CreateMap<Item, MoveItemBackToOriginalOrderResponse>()
                 .ForMember(dest => dest.Item, opt => opt.MapFrom(src => src))
                 .ForMember(r => r.BrokenRules, opt => opt.Ignore())
@@ -357,7 +371,7 @@ namespace TdService.UI.Web
                 .ForMember(r => r.PackageId, opt => opt.Ignore());
             Mapper.CreateMap<MoveItemBackToOriginalOrderResponse, MoveItemBackToOriginalOrderViewModel>();
 
-            //move single item to exist. package
+            // move single item to exist. package
             Mapper.CreateMap<Item, MoveOrderItemToExistingPackageResponse>()
                 .ForMember(dest => dest.Item, opt => opt.MapFrom(src => src))
                 .ForMember(r => r.BrokenRules, opt => opt.Ignore())
@@ -410,7 +424,7 @@ namespace TdService.UI.Web
                 .ForMember(r => r.PayerId, opt => opt.Ignore())
                 .ForMember(r => r.Commission, opt => opt.Ignore());
 
-            //admin dashboard
+            // admin dashboard
             Mapper.CreateMap<User, UserResponseModel>().ConvertUsing<UsersInRoleConverter>();
             Mapper.CreateMap<User, GetUserByIdResponse>().ConvertUsing<GetUserByIdConverter>();
             Mapper.CreateMap<User, GetUserByEmailResponse>().ConvertUsing<GetUserByEmailConverter>();
@@ -449,20 +463,34 @@ namespace TdService.UI.Web
         /// </summary>
         public class UsersInRoleConverter : ITypeConverter<User, UserResponseModel>
         {
+            /// <summary>
+            /// The convert.
+            /// </summary>
+            /// <param name="context">
+            /// The context.
+            /// </param>
+            /// <returns>
+            /// The <see cref="UserResponseModel"/>.
+            /// </returns>
             public UserResponseModel Convert(ResolutionContext context)
             {
                 var user = context.SourceValue as User;
-                var converted = new UserResponseModel
-                    {
-                        Email = user.Email,
-                        FullName = string.Concat(user.Profile.FirstName, " ", user.Profile.LastName),
-                        Id = user.Id,
-                        LastAccessDate = user.LastAccessDate,
-                        OrdersCount = user.Orders.Count,
-                        PackagesCount = user.Packages.Count,
-                        Roles = user.Roles.Select(r => r.Id).ToList()
-                    };
-                return converted;
+                if (user != null)
+                {
+                    var converted = new UserResponseModel
+                                        {
+                                            Email = user.Email,
+                                            FullName = string.Concat(user.Profile.FirstName, " ", user.Profile.LastName),
+                                            Id = user.Id,
+                                            LastAccessDate = user.LastAccessDate,
+                                            OrdersCount = user.Orders.Count,
+                                            PackagesCount = user.Packages.Count,
+                                            Roles = user.Roles.Select(r => r.Id).ToList()
+                                        };
+                    return converted;
+                }
+
+                return null;
             }
         }
 
@@ -471,20 +499,34 @@ namespace TdService.UI.Web
         /// </summary>
         public class GetUserByIdConverter : ITypeConverter<User, GetUserByIdResponse>
         {
+            /// <summary>
+            /// The convert.
+            /// </summary>
+            /// <param name="context">
+            /// The context.
+            /// </param>
+            /// <returns>
+            /// The <see cref="GetUserByIdResponse"/>.
+            /// </returns>
             public GetUserByIdResponse Convert(ResolutionContext context)
             {
                 var user = context.SourceValue as User;
-                var converted = new GetUserByIdResponse
+                if (user != null)
                 {
-                    Email = user.Email,
-                    FullName = string.Concat(user.Profile.FirstName, " ", user.Profile.LastName),
-                    Id = user.Id,
-                    LastAccessDate = user.LastAccessDate,
-                    OrdersCount = user.Orders.Count,
-                    PackagesCount = user.Packages.Count,
-                    Roles = user.Roles.Select(r => r.Id).ToList()
-                };
-                return converted;
+                    var converted = new GetUserByIdResponse
+                                        {
+                                            Email = user.Email,
+                                            FullName = string.Concat(user.Profile.FirstName, " ", user.Profile.LastName),
+                                            Id = user.Id,
+                                            LastAccessDate = user.LastAccessDate,
+                                            OrdersCount = user.Orders.Count,
+                                            PackagesCount = user.Packages.Count,
+                                            Roles = user.Roles.Select(r => r.Id).ToList()
+                                        };
+                    return converted;
+                }
+
+                return null;
             }
         }
 
@@ -493,20 +535,34 @@ namespace TdService.UI.Web
         /// </summary>
         public class GetUserByEmailConverter : ITypeConverter<User, GetUserByEmailResponse>
         {
+            /// <summary>
+            /// The convert.
+            /// </summary>
+            /// <param name="context">
+            /// The context.
+            /// </param>
+            /// <returns>
+            /// The <see cref="GetUserByEmailResponse"/>.
+            /// </returns>
             public GetUserByEmailResponse Convert(ResolutionContext context)
             {
                 var user = context.SourceValue as User;
-                var converted = new GetUserByEmailResponse
+                if (user != null)
                 {
-                    Email = user.Email,
-                    FullName = string.Concat(user.Profile.FirstName, " ", user.Profile.LastName),
-                    Id = user.Id,
-                    LastAccessDate = user.LastAccessDate,
-                    OrdersCount = user.Orders.Count,
-                    PackagesCount = user.Packages.Count,
-                    Roles = user.Roles.Select(r => r.Id).ToList()
-                };
-                return converted;
+                    var converted = new GetUserByEmailResponse
+                                        {
+                                            Email = user.Email,
+                                            FullName = string.Concat(user.Profile.FirstName, " ", user.Profile.LastName),
+                                            Id = user.Id,
+                                            LastAccessDate = user.LastAccessDate,
+                                            OrdersCount = user.Orders.Count,
+                                            PackagesCount = user.Packages.Count,
+                                            Roles = user.Roles.Select(r => r.Id).ToList()
+                                        };
+                    return converted;
+                }
+
+                return null;
             }
         }
 
@@ -552,7 +608,11 @@ namespace TdService.UI.Web
             /// </returns>
             protected override Weight ResolveCore(AddItemToOrderRequest source)
             {
-                return new Weight { Pounds = source.WeightPounds, Ounces = source.WeightOunces };
+                return new Weight
+                           {
+                               Pounds = source.WeightPounds
+                               ////,Ounces = source.WeightOunces
+                           };
             }
         }
     }
