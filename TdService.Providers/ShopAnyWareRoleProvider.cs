@@ -198,6 +198,7 @@ namespace TdService.Providers
                     return users.ToArray();
                 }
             }
+
             return new string[] { };
         }
 

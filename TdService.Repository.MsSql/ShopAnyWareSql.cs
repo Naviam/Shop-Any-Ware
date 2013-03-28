@@ -101,8 +101,11 @@ namespace TdService.Repository.MsSql
         public DbSet<DeliveryAddress> DeliveryAddresses { get; set; }
 // ReSharper restore UnusedAutoPropertyAccessor.Local
 
+        /// <summary>
+        /// Gets or sets the item images.
+        /// </summary>
         // ReSharper disable UnusedAutoPropertyAccessor.Local
-        public DbSet<ItemImage> ItemImages{ get; set; }
+        public DbSet<ItemImage> ItemImages { get; set; }
         // ReSharper restore UnusedAutoPropertyAccessor.Local
 
         /// <summary>

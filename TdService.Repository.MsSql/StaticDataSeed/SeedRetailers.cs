@@ -10,11 +10,9 @@
 namespace TdService.Repository.MsSql.StaticDataSeed
 {
     using System.Linq;
-    using System.Web;
 
     using TdService.Infrastructure.FileSystem;
     using TdService.Infrastructure.Helpers;
-    using TdService.Model.Common;
     using TdService.Model.Orders;
 
     /// <summary>
@@ -23,7 +21,7 @@ namespace TdService.Repository.MsSql.StaticDataSeed
     public static class SeedRetailers
     {
         /// <summary>
-        /// Populate db with retailers.
+        /// Populate DB with retailers.
         /// </summary>
         /// <param name="context">
         /// The context.

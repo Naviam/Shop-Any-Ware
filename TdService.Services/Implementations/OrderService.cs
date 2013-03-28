@@ -10,22 +10,21 @@
 namespace TdService.Services.Implementations
 {
     using System;
-using System.Collections.Generic;
-using System.Linq;
-using TdService.Infrastructure.Logging;
-using TdService.Model.Common;
-using TdService.Model.Orders;
-using TdService.Resources;
-using TdService.Services.Base;
-using TdService.Services.Interfaces;
-using TdService.Services.Mapping;
-using TdService.Services.Messaging;
-using TdService.Services.Messaging.Order;
+    using System.Collections.Generic;
+    using System.Linq;
+    using TdService.Infrastructure.Logging;
+    using TdService.Model.Orders;
+    using TdService.Resources;
+    using TdService.Services.Base;
+    using TdService.Services.Interfaces;
+    using TdService.Services.Mapping;
+    using TdService.Services.Messaging;
+    using TdService.Services.Messaging.Order;
 
     /// <summary>
     /// The order service.
     /// </summary>
-    public class OrderService :ServiceBase, IOrderService
+    public class OrderService : ServiceBase, IOrderService
     {
         /// <summary>
         /// Order repository.
@@ -41,10 +40,10 @@ using TdService.Services.Messaging.Order;
         /// <param name="logger">
         /// The logger.
         /// </param>
-        public OrderService(IOrderRepository orderRepository, ILogger logger):base(logger)
+        public OrderService(IOrderRepository orderRepository, ILogger logger)
+            : base(logger)
         {
-            this.orderRepository = orderRepository;
-            
+            this.orderRepository = orderRepository;  
         }
 
         /// <summary>
@@ -237,8 +236,12 @@ using TdService.Services.Messaging.Order;
         /// <summary>
         /// Updates order status to received
         /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="OrderReceivedResponse"/>.
+        /// </returns>
         public OrderReceivedResponse OrderReceived(OrderReceivedRequest request)
         {
             try
@@ -251,7 +254,7 @@ using TdService.Services.Messaging.Order;
                 response.MessageType = MessageType.Success;
                 return response;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 this.logger.Error(CommonResources.OrderReceivedErrorMessage, ex);
                 return new OrderReceivedResponse { MessageType = MessageType.Error, ErrorCode = ex.Message };

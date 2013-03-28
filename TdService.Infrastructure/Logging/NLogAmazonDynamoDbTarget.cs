@@ -1,28 +1,82 @@
-﻿namespace TdService.Infrastructure.Logging
-{
-    using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Amazon;
-using Amazon.DynamoDB.DocumentModel;
-using NLog;
-using NLog.Common;
-using NLog.Targets;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="NLogAmazonDynamoDbTarget.cs" company="TdService">
+//   Vitali Hatalski. 2012.
+// </copyright>
+// <summary>
+//   Defines the NLogAmazonDynamoDbTarget type.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
+namespace TdService.Infrastructure.Logging
+{
+    using Amazon;
+    using Amazon.DynamoDB.DocumentModel;
+    using NLog;
+    using NLog.Common;
+    using NLog.Targets;
+
+    /// <summary>
+    /// The n log amazon dynamo DB target.
+    /// </summary>
     [Target("DynamoDb")]
     public class NLogAmazonDynamoDbTarget : TargetWithLayout
     {
-        public NLogAmazonDynamoDbTarget()
-        {
-        }
-
-        //[Required]
+        /// <summary>
+        /// Gets or sets the amazon access key id.
+        /// </summary>
         public string AmazonAccessKeyId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the amazon secret access key.
+        /// </summary>
         public string AmazonSecretAccessKey { get; set; }
 
+        /// <summary>
+        /// The write.
+        /// </summary>
+        /// <param name="logEvent">
+        /// The log event.
+        /// </param>
+        protected override void Write(AsyncLogEventInfo logEvent)
+        {
+            using (var client = AWSClientFactory.CreateAmazonDynamoDBClient(this.AmazonAccessKeyId, this.AmazonSecretAccessKey))
+            {
+                var table = Table.LoadTable(client, "TdService_Logs");
+                var log = this.CreateLogDocument(logEvent.LogEvent);
+
+                table.BeginPutItem(log, ar => { }, null);
+            }
+
+            base.Write(logEvent);
+        }
+
+        /// <summary>
+        /// The write.
+        /// </summary>
+        /// <param name="logEvent">
+        /// The log event.
+        /// </param>
+        protected override void Write(LogEventInfo logEvent)
+        {
+            using (var client = AWSClientFactory.CreateAmazonDynamoDBClient(this.AmazonAccessKeyId, this.AmazonSecretAccessKey))
+            {
+                var table = Table.LoadTable(client, "TdService_Logs");
+                var log = this.CreateLogDocument(logEvent);
+                table.PutItem(log);
+            }
+
+            base.Write(logEvent);
+        }
+
+        /// <summary>
+        /// The create log document.
+        /// </summary>
+        /// <param name="logEvent">
+        /// The log event.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Document"/>.
+        /// </returns>
         private Document CreateLogDocument(LogEventInfo logEvent)
         {
             var log = new Document();
@@ -53,30 +107,6 @@ using NLog.Targets;
             log["TransactionId"] = logEvent.Properties["TransactionId"].ToString();
 
             return log;
-        }
-
-        protected override void Write(AsyncLogEventInfo logEvent)
-        {
-            using (var client = AWSClientFactory.CreateAmazonDynamoDBClient(this.AmazonAccessKeyId, this.AmazonSecretAccessKey))
-            {
-                Table table = Table.LoadTable(client, "TdService_Logs");
-                var log = CreateLogDocument(logEvent.LogEvent);
-                ////table.BeginPutItem(log, );
-            }
-
-            base.Write(logEvent);
-        }
-
-        protected override void Write(LogEventInfo logEvent)
-        {
-            using (var client = AWSClientFactory.CreateAmazonDynamoDBClient(this.AmazonAccessKeyId, this.AmazonSecretAccessKey))
-            {
-                Table table = Table.LoadTable(client, "TdService_Logs");
-                var log = CreateLogDocument(logEvent);
-                table.PutItem(log);
-            }
-
-            base.Write(logEvent);
         }
     }
 }
