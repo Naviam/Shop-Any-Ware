@@ -13,13 +13,10 @@ namespace TdService.ShopAnyWare.Tests.Orders
     using System.Collections.Generic;
     using System.Diagnostics;
 
-    using AutoMapper;
-
     using NUnit.Framework;
 
     using TdService.Infrastructure.Authentication;
     using TdService.Services.Interfaces;
-    using TdService.Services.Messaging.Order;
     using TdService.ShopAnyWare.Tests.Account;
     using TdService.ShopAnyWare.Tests.Helpers;
     using TdService.UI.Web;
@@ -56,80 +53,17 @@ namespace TdService.ShopAnyWare.Tests.Orders
         }
 
         /// <summary>
-        /// The should map get recent order response to order view model.
-        /// </summary>
-        [Category("Controller")]
-        [Test]
-        public void ShouldMapGetRecentOrderResponseToOrderViewModel()
-        {
-            // Mapper.CreateMap<IEnumerable<GetRecentOrdersResponse>, IEnumerable<OrderViewModel>>();
-            Mapper.CreateMap<GetMyOrdersResponse, OrderViewModel>();
-
-            var response = new GetMyOrdersResponse
-                {
-                    CreatedDate = DateTime.UtcNow,
-                    ReceivedDate = DateTime.UtcNow,
-                    RetailerUrl = string.Empty,
-                    Id = 1,
-                    OrderNumber = string.Empty,
-                    TrackingNumber = string.Empty,
-                    Status = string.Empty,
-                    CanBeModified = true,
-                    CanBeRemoved = true,
-                    CanBeRequestedForReturn = true,
-                    CanItemsBeModified = true
-                };
-            try
-            {
-                Mapper.Map<GetMyOrdersResponse, OrderViewModel>(response);
-            }
-            catch (AutoMapperConfigurationException ex)
-            {
-                Assert.Fail(ex.Message);
-            }
-
-            var collection = new List<GetMyOrdersResponse>
-                {
-                    new GetMyOrdersResponse
-                        {
-                            CreatedDate = DateTime.UtcNow,
-                            ReceivedDate = DateTime.UtcNow,
-                            RetailerUrl = string.Empty,
-                            Id = 1,
-                            OrderNumber = string.Empty,
-                            TrackingNumber = string.Empty,
-                            Status = string.Empty,
-                            CanBeModified = true,
-                            CanBeRemoved = true,
-                            CanBeRequestedForReturn = true,
-                            CanItemsBeModified = true
-                        }
-                };
-            
-            try
-            {
-                var orderViewModels = Mapper.Map<List<GetMyOrdersResponse>, List<OrderViewModel>>(collection);
-            }
-            catch (AutoMapperMappingException ex)
-            {
-                Assert.Fail(ex.Message);
-            }
-
-            Assert.Pass();
-        }
-
-        /// <summary>
-        /// This test verifies that only authorized users can access getrecent orders method.
+        /// This test verifies that only authorized users can access get recent orders method.
         /// </summary>
         [Category("Controller")]
         [Test(Description = "This test verifies that only authorized users can access getrecent orders method.")]
         public void ShouldBeAbleToCallGetRecentOrdersOnlyIfAuthorized()
         {
-            TestHelper.AssertIsAuthorized(typeof(OrdersController), "Recent");
+            TestHelper.AssertIsAuthorized(typeof(OrdersController), "Recent", typeof(string));
         }
 
         /// <summary>
-        /// This test verifies that getrecent method returns json object with collection of orders that are within
+        /// This test verifies that get recent method returns JSON object with collection of orders that are within
         /// 30 days from received date.
         /// </summary>
         [Category("Controller")]
@@ -174,7 +108,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
                 };
 
             // act
-            var actual = controller.Recent(formsAuthentication.GetAuthenticationToken()) as JsonNetResult;
+            var actual = controller.Recent(this.formsAuthentication.GetAuthenticationToken()) as JsonNetResult;
 
             // assert
             Assert.That(actual, Is.Not.Null);
@@ -196,13 +130,13 @@ namespace TdService.ShopAnyWare.Tests.Orders
         }
 
         /// <summary>
-        /// This test verifies that only authorized users can access addorder method.
+        /// This test verifies that only authorized users can access add order method.
         /// </summary>
         [Category("Controller")]
         [Test]
         public void ShouldBeAbleToPostNewOrderOnlyIfAuthorized()
         {
-            TestHelper.AssertIsAuthorized(typeof(OrdersController), "Add", typeof(string));
+            TestHelper.AssertIsAuthorized(typeof(OrdersController), "Add", typeof(string), typeof(string));
         }
 
         /// <summary>
@@ -227,7 +161,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
                 };
 
             // act
-            var actual = controller.Add(expected.RetailerUrl, formsAuthentication.GetAuthenticationToken()) as JsonNetResult;
+            var actual = controller.Add(expected.RetailerUrl, this.formsAuthentication.GetAuthenticationToken()) as JsonNetResult;
 
             // assert
             Assert.That(actual, Is.Not.Null);
@@ -251,7 +185,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
         [Test]
         public void ShouldBeAbleToRemoveNewOrderOnlyIfAuthorized()
         {
-            TestHelper.AssertIsAuthorized(typeof(OrdersController), "Remove", typeof(int));
+            TestHelper.AssertIsAuthorized(typeof(OrdersController), "Remove", typeof(int), typeof(string));
         }
     }
 }

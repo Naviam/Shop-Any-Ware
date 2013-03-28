@@ -24,6 +24,9 @@ namespace TdService.ShopAnyWare.Tests.Addresses
     using TdService.UI.Web.Controllers;
     using TdService.UI.Web.ViewModels.Account;
 
+    /// <summary>
+    /// The address controller tests.
+    /// </summary>
     [TestFixture]
     [Category("Controller")]
     public class AddressControllerTests
@@ -89,7 +92,7 @@ namespace TdService.ShopAnyWare.Tests.Addresses
         }
 
         /// <summary>
-        /// The should return json collection of user addresses.
+        /// The should return JSON collection of user addresses.
         /// </summary>
         [Test]
         public void ShouldReturnJsonCollectionOfUserAddresses()
