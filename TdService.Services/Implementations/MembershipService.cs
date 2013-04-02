@@ -113,7 +113,8 @@ namespace TdService.Services.Implementations
                                 NotifyOnOrderStatusChanged = true,
                                 NotifyOnPackageStatusChanged = true
                             },
-                    ActivationCode = Guid.NewGuid()
+                    ActivationCode = Guid.NewGuid(),
+                    Activated = false
                 };
             var response = new SignUpResponse { BrokenRules = user.Profile.GetBrokenRules().ToList() };
             response.BrokenRules.AddRange(role.GetBrokenRules());
@@ -138,11 +139,12 @@ namespace TdService.Services.Implementations
             try
             {
                 var result = this.membershipRepository.CreateUser(user, new List<Role> { role });
+
                 this.emailService.SendMail(
                     EmailResources.EmailActivationFrom,
                     result.Email,
                     EmailResources.EmailActivationSubject,
-                    string.Format(EmailResources.EmailActivationBody, "shopanyware.com", result.Id, result.ActivationCode));
+                    string.Format(EmailResources.EmailActivationBody, result.Id, result.ActivationCode, user.Profile.GetFullName()));
                 return result.ConvertToRegisterUserResponse();
             }
             catch (Exception e)
@@ -220,7 +222,7 @@ namespace TdService.Services.Implementations
 
                 this.emailService.SendMail(
                     EmailResources.EmailActivationFrom,
-                    result.Email,
+                    request.Email,
                     EmailResources.EmailActivationSubject,
                     string.Format(EmailResources.EmailActivationBody, "shopanyware.com", result.Id, result.ActivationCode));
                 return response;
@@ -250,6 +252,7 @@ namespace TdService.Services.Implementations
                 {
                     Email = request.Email,
                     Password = request.Password,
+                    ActivationCode = Guid.NewGuid(),
                     Profile =
                         new Profile
                             {
@@ -264,7 +267,7 @@ namespace TdService.Services.Implementations
             {
                 ////ThrowExceptionIfUserIsInvalid(user);
                 var createdUser = this.userRepository.CreateUser(user);
-                this.profileRepository.FindOrAddProfile(user.Profile);
+                var profile = this.profileRepository.FindOrAddProfile(user.Profile);
                 this.userRepository.SaveChanges();
                 this.profileRepository.SaveChanges();
 
@@ -278,11 +281,18 @@ namespace TdService.Services.Implementations
 
                 createdUser.Roles.Add(role);
                 this.userRepository.SaveChanges();
+
+                this.emailService.SendMail(
+                    EmailResources.EmailActivationFrom, 
+                    request.Email, 
+                    EmailResources.EmailActivationSubject,
+                    string.Format(EmailResources.EmailActivationBody, createdUser.Id, createdUser.ActivationCode, profile.GetFullName()));
             }
-            catch (InvalidUserException)
+            catch (InvalidUserException ex)
             {
                 response.MessageType = MessageType.Error;
                 response.ErrorCode = ErrorCode.UserEmailExists.ToString();
+                this.logger.Error(ErrorCodeResources.UserEmailExists, ex);
             }
 
             return response;
