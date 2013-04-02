@@ -75,5 +75,26 @@ namespace TdService.Services.Interfaces
         /// <param name="request"></param>
         /// <returns></returns>
         ChangePackageDeliveryMethodResponse ChangePackageDispatchMethod(ChangePackageDeliveryMethodRequest request);
+
+        /// <summary>
+        /// Sets package status to Assemling
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        AssemblePackageResponse AssemblePackage(AssemblePackageRequest request);
+
+        /// <summary>
+        /// Sets package status to Assembled. Used by operator or admin
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        PackageAssembledResponse PackageAssembled(PackageAssembledRequest request);
+
+        /// <summary>
+        /// Changes package status to SENT
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        SendPackageResponse SendPackage(SendPackageRequest request);
     }
 }

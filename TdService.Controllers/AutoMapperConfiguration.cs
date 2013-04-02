@@ -398,6 +398,38 @@ namespace TdService.UI.Web
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
             Mapper.CreateMap<AddPackageResponse, PackageViewModel>();
 
+            //assemble package
+            Mapper.CreateMap<Package, AssemblePackageResponse>()
+                .ForMember(r => r.BrokenRules, opt => opt.Ignore())
+                .ForMember(r => r.Message, opt => opt.Ignore())
+                .ForMember(r => r.ErrorCode, opt => opt.Ignore())
+                .ForMember(r => r.MessageType, opt => opt.Ignore());
+            Mapper.CreateMap<AssemblePackageResponse, PackageViewModel>();
+
+            //package assembled
+            Mapper.CreateMap<Package, PackageAssembledResponse>()
+                .ForMember(r => r.BrokenRules, opt => opt.Ignore())
+                .ForMember(r => r.Message, opt => opt.Ignore())
+                .ForMember(r => r.ErrorCode, opt => opt.Ignore())
+                .ForMember(r => r.MessageType, opt => opt.Ignore());
+            Mapper.CreateMap<PackageAssembledResponse, PackageViewModel>();
+
+            //pay for package 
+            Mapper.CreateMap<Package, PayForPackageResponse>()
+                .ForMember(r => r.BrokenRules, opt => opt.Ignore())
+                .ForMember(r => r.Message, opt => opt.Ignore())
+                .ForMember(r => r.ErrorCode, opt => opt.Ignore())
+                .ForMember(r => r.MessageType, opt => opt.Ignore());
+            Mapper.CreateMap<PayForPackageResponse, PayForPackageViewModel>();
+
+            //send package
+            Mapper.CreateMap<Package, SendPackageResponse>()
+                .ForMember(r => r.BrokenRules, opt => opt.Ignore())
+                .ForMember(r => r.Message, opt => opt.Ignore())
+                .ForMember(r => r.ErrorCode, opt => opt.Ignore())
+                .ForMember(r => r.MessageType, opt => opt.Ignore());
+            Mapper.CreateMap<SendPackageResponse, PackageViewModel>();
+
             // get transactions
             Mapper.CreateMap<Transaction, GetTransactionsResponse>()
                 .ForMember(dest => dest.Currency, opt => opt.MapFrom(src => src.Currency.AlphabeticCode))

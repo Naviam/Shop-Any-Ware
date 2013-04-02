@@ -90,5 +90,11 @@ namespace TdService.Model.Orders
                 return true;
             }
         }
+
+
+        public bool CanItemsBeAdded
+        {
+            get { return true; }
+        }
     }
 }

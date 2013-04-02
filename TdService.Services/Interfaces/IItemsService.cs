@@ -96,7 +96,7 @@ namespace TdService.Services.Interfaces
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        MoveOrderItemsToNewPackageResponse MoveOrderItemsToNewPackage(MoveOrderItemsToNewPackageRequest request);
+        //MoveOrderItemsToNewPackageResponse MoveOrderItemsToNewPackage(MoveOrderItemsToNewPackageRequest request);
 
         /// <summary>
         /// Moves package items to their original order

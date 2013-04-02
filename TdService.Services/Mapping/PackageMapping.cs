@@ -46,5 +46,32 @@ namespace TdService.Services.Mapping
         {
             return Mapper.Map<Package, AddPackageResponse>(package);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="package"></param>
+        /// <returns></returns>
+        public static AssemblePackageResponse ConvertToAssemblePackageResponse(this Package package)
+        {
+            return Mapper.Map<Package, AssemblePackageResponse>(package);
+        }
+
+        public static PackageAssembledResponse ConvertToPackageAssembledResponse(this Package package)
+        {
+            return Mapper.Map<Package, PackageAssembledResponse>(package);
+        }
+
+        public static PayForPackageResponse ConvertToPayForPackageResponse(this Package package)
+        {
+            return Mapper.Map<Package, PayForPackageResponse>(package);
+        }
+
+        public static SendPackageResponse ConvertToSendPackageResponse(this Package package)
+        {
+            return Mapper.Map<Package, SendPackageResponse>(package);
+        }
+
+        
     }
 }

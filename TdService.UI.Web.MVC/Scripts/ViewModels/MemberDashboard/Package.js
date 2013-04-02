@@ -2,6 +2,7 @@
     /// <summary>Package view model.</summary>
     var self = this;
 
+
     // default model properties
     self.message = ko.observable(serverModel.Message);
     self.messageType = ko.observable(serverModel.MessageType);
@@ -29,14 +30,31 @@
 
 
     // package state properties
-    self.canBeRemoved = serverModel.CanBeRemoved;
-    self.canBeModified = serverModel.CanBeModified;
-    self.canItemsBeModified = serverModel.CanItemsBeModified;
-    self.canBeSent = serverModel.CanBeSent;
+    self.canBeRemoved = ko.observable(serverModel.CanBeRemoved);
+    self.canBeModified = ko.observable(serverModel.CanBeModified);
+    self.canItemsBeModified = ko.observable(serverModel.CanItemsBeModified);
+    self.canBeSent = ko.observable(serverModel.CanBeSent);
     self.canBeDisposed = serverModel.CanBeDisposed;
-
+    self.canBeAssembled = ko.observable(serverModel.CanBeAssembled);
+    self.canBePaidFor = ko.observable(serverModel.CanBePaidFor);
     self.popupItemViewModel = new PopupItemViewModel();
 
+    self.assembleButtonVisible = ko.computed(function () {
+        return self.items().length > 0 && self.canBeAssembled() && !viewSettings.operatorMode;
+    });
+    
+    self.packageAssembledButtonVisible = ko.computed(function () {
+        return self.status() == 'Assembling' && viewSettings.operatorMode;
+    });
+
+    self.sendPackageButtonVisible = ko.computed(function () {
+        return self.canBeSent() && !viewSettings.operatorMode;
+    });
+
+    self.payForPackageButtonVisible = ko.computed(function () {
+        return self.canBePaidFor() && !viewSettings.operatorMode;
+    });
+    
     // package view model computed properties
     self.domPackageId = ko.computed(function () {
         return "package" + self.id();
@@ -101,6 +119,8 @@
     };
     self.loadItems();
 
+    
+
     self.addItems = function (itemsList) {
         $.each(itemsList, function (index, value) {
             var item = new Item(value);
@@ -115,10 +135,6 @@
     self.toggleCollapse = function () {
         var currentValue = self.isCollapsed();
         self.isCollapsed(!currentValue);
-    };
-
-    self.sendPackage = function (pack) {
-        /// <summary>Send package.</summary>
     };
 
     self.getItemDetails = function (item) {
@@ -249,6 +265,47 @@
             }
             window.showNotice(model.Message, model.MessageType);
 
+        });
+    };
+
+    self.assemblePackage = function() {
+        $.post("/packages/AssemblePackage", { "packageId": self.id() }, function(data) {
+            var model = ko.toJS(data);
+            if (model.MessageType == 'Success') {
+                self.updateStatusFieldsFromModel(model);
+            }
+            window.showNotice(model.Message, model.MessageType);
+        });
+    };
+
+    self.updateStatusFieldsFromModel = function(serverModel) {
+        self.status(serverModel.Status);
+        self.statusTranslated(serverModel.StatusTranslated);
+        self.canBeAssembled(serverModel.CanBeAssembled);
+        self.canBeRemoved(serverModel.CanBeRemoved);
+        self.canBeModified(serverModel.CanBeModified);
+        self.canItemsBeModified(serverModel.CanItemsBeModified);
+        self.canBeSent(serverModel.CanBeSent);
+        self.canBePaidFor(serverModel.CanBePaidFor);
+    };
+
+    self.packageAssembled = function() {
+        $.post("/packages/PackageAssembled", { "packageId": self.id() }, function (data) {
+            var model = ko.toJS(data);
+            if (model.MessageType == 'Success') {
+                self.updateStatusFieldsFromModel(model);
+            }
+            window.showNotice(model.Message, model.MessageType);
+        });
+    };
+
+    self.sendPackage = function () {
+        $.post("/packages/SendPackage", { "packageId": self.id() }, function (data) {
+            var model = ko.toJS(data);
+            if (model.MessageType == 'Success') {
+                self.updateStatusFieldsFromModel(model);
+            }
+            window.showNotice(model.Message, model.MessageType);
         });
     };
 }

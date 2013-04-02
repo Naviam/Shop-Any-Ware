@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Model.Packages
+namespace TdService.Model.Packages.States
 {
     /// <summary>
     /// The Package State interface.
@@ -38,5 +38,20 @@ namespace TdService.Model.Packages
         /// Gets a value indicating whether package can be disposed.
         /// </summary>
         bool CanBeDisposed { get; }
+
+        /// <summary>
+        /// Gets a value indicating whether package can be paid for.
+        /// </summary>
+        bool CanBePaidFor { get; }
+
+        /// <summary>
+        /// Gets a value indication whether package can be assembled
+        /// </summary>
+        bool CanBeAssembled { get; }
+
+        /// <summary>
+        /// State name
+        /// </summary>
+        string TranslatedName { get; }
     }
 }

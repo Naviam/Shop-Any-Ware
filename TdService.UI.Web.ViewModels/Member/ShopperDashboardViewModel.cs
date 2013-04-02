@@ -35,11 +35,6 @@ namespace TdService.UI.Web.ViewModels.Member
         public string LastName { get; set; }
 
         /// <summary>
-        /// User  email
-        /// </summary>
-        public string Email { get; set; }
-
-        /// <summary>
         /// Gets or sets the wallet amount.
         /// </summary>
         public decimal WalletAmount { get; set; }
@@ -96,7 +91,7 @@ namespace TdService.UI.Web.ViewModels.Member
         {
             get
             {
-                return string.Format(DashboardViewResources.ResourceManager.GetString("AdminViewNoticeMessage"), this.UserId, this.Email);
+                return string.Format(DashboardViewResources.ResourceManager.GetString("AdminViewNoticeMessage"), this.UserId, this.UserEmail);
             }
         }
 

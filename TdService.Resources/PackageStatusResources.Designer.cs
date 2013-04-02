@@ -61,6 +61,24 @@ namespace TdService.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Assembled.
+        /// </summary>
+        public static string Assembled {
+            get {
+                return ResourceManager.GetString("Assembled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Assembling.
+        /// </summary>
+        public static string Assembling {
+            get {
+                return ResourceManager.GetString("Assembling", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delivered.
         /// </summary>
         public static string Delivered {
@@ -79,6 +97,15 @@ namespace TdService.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Package state can&apos;t be changed from {0} to {1}.
+        /// </summary>
+        public static string InvalidPackageStateException {
+            get {
+                return ResourceManager.GetString("InvalidPackageStateException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New.
         /// </summary>
         public static string New {
@@ -88,20 +115,29 @@ namespace TdService.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pending Payment.
+        ///   Looks up a localized string similar to Paid.
         /// </summary>
-        public static string PendingPayment {
+        public static string Paid {
             get {
-                return ResourceManager.GetString("PendingPayment", resourceCulture);
+                return ResourceManager.GetString("Paid", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ready to Dispatch.
+        ///   Looks up a localized string similar to Sent.
         /// </summary>
-        public static string ReadyToDispatch {
+        public static string Sent {
             get {
-                return ResourceManager.GetString("ReadyToDispatch", resourceCulture);
+                return ResourceManager.GetString("Sent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Package state changed to {0}.
+        /// </summary>
+        public static string StatusChanged {
+            get {
+                return ResourceManager.GetString("StatusChanged", resourceCulture);
             }
         }
     }

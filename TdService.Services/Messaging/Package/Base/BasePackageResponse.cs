@@ -67,5 +67,15 @@ namespace TdService.Services.Messaging.Package.Base
         /// Gets or sets a value indicating whether can be disposed.
         /// </summary>
         public bool CanBeDisposed { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether can be assembled.
+        /// </summary>
+        public bool CanBeAssembled { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether package can be paid.
+        /// </summary>
+        public bool CanBePaidFor { get; set; }
     }
 }

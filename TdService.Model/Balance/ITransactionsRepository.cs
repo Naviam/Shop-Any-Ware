@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TdService.Model.Packages;
 
 namespace TdService.Model.Balance
 {
@@ -15,5 +16,12 @@ namespace TdService.Model.Balance
         void ConfirmTransaction(string token, string payerId);
 
         void CancelTransaction(string token);
+
+        /// <summary>
+        /// Adds package transaction
+        /// </summary>
+        /// <param name="packageId"></param>
+        /// <returns>Tuple of package  and actual wallet amount</returns>
+        Tuple<Package, decimal> AddPackagePaymentTransaction(int packageId);
     }
 }
