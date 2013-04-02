@@ -35,5 +35,10 @@
         /// Gets or sets Currency.
         /// </summary>
         public string Currency { get; set; }
+
+        /// <summary>
+        /// Gets or sets Operation Type.
+        /// </summary>
+        public string OperationType { get; set; }
     }
 }

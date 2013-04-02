@@ -55,5 +55,20 @@
         public string Currency { get; set; }
 
         public int WalletId { get; set; }
+
+        public string OperationType { get; set; }
+
+        public string OperationTypeTranslated
+        {
+            get
+            {
+                if (!string.IsNullOrWhiteSpace(this.OperationType))
+                {
+                    return TransactionStatusesResources.ResourceManager.GetString(this.OperationType);
+                }
+
+                return string.Empty;
+            }
+        }
     }
 }
