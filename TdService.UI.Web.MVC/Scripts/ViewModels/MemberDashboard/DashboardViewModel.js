@@ -153,6 +153,12 @@ function DashboardViewModel(serverModel) {
         return self.newOrderField() === undefined || self.newOrderField() == '';
     });
 
+    self.packagesAvailableForMove = ko.computed(function() {
+        return self.packages().filter(function (element, index, array) {
+            return element.status() == 'New';
+        });
+    });
+    var z = self.packagesAvailableForMove();
     self.disableCreatePackageButton = ko.computed(function () {
         /// <summary>Determines whether create package button should be disabled.</summary>
         return self.newPackageField() === undefined || self.newPackageField() == '';
