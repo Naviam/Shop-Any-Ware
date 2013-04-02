@@ -22,10 +22,21 @@ namespace TdService.UI.Web.MVC
     // visit http://go.microsoft.com/?LinkId=9394801
 
     /// <summary>
-    /// Global Asax class configures web application
+    /// Global ASAX class configures web application
     /// </summary>
     public class MvcApplication : System.Web.HttpApplication
     {
+        /// <summary>
+        /// The register routes.
+        /// </summary>
+        /// <param name="routes">
+        /// The routes.
+        /// </param>
+        public void RegisterRoutes(RouteCollection routes)
+        {
+            RouteConfig.RegisterRoutes(routes);
+        }
+
         /// <summary>
         /// Application start even handler
         /// </summary>
@@ -48,11 +59,6 @@ namespace TdService.UI.Web.MVC
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             FluentValidationModelValidatorProvider.Configure();
-        }
-
-        public void RegisterRoutes(RouteCollection routes)
-        {
-            RouteConfig.RegisterRoutes(routes);
         }
     }
 }
