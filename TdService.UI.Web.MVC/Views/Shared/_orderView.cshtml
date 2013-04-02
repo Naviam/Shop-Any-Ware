@@ -16,7 +16,7 @@
                         <span data-bind="if: status() == 'Returned'">@DashboardViewResources.OrderReturnedDateHeader</span>: 
                         <span data-bind="text: orderDate"></span>
                     </span>&nbsp;
-                    <button class="btn btn-mini btn-primary" title="@DashboardViewResources.AddItemButton" data-bind="visible: canItemsBeModified, click:showAddItemPopup"><i class="icon-white icon-plus-sign"></i></button>
+                    <button class="btn btn-mini btn-primary" title="@DashboardViewResources.AddItemButton" data-bind="visible: canItemsBeAdded(), click:showAddItemPopup"><i class="icon-white icon-plus-sign"></i></button>
                     <button class="btn btn-mini btn-success" title="@DashboardViewResources.InStockButton" data-bind="visible: canBeReceived()  && hasItems() && viewSettings.operatorMode, click:orderInStock"><i class="icon-white icon-inbox"></i></button>
                     @*<span class="dropdown" data-bind="visible: status() == 'Received' && hasItems()">
                         <button class="btn btn-mini dropdown-toggle" title="@DashboardViewResources.MoveAllItemsTitle" data-toggle="dropdown" ><i class="icon icon-arrow-right"></i><span class="caret"></span></button>
@@ -24,7 +24,7 @@
                             <li><a href="#"><span class="label">ID: <span data-bind="text: id()"></span></span><span data-bind="text: name()"></span></a></li>
                         </ul>
                     </span>*@
-                    <select style="width:100px;" data-bind="options:  $root.packages, optionsText: 'name', visible: status() == 'Received' && hasItems(),  value: selectedPackage, optionsCaption: '@DashboardViewResources.SelectDefaultValue', event: {change: function(data, event){ $root.moveEntireOrderToPackage($data)} }"></select>
+                    <select style="width:100px;" data-bind="options:  $root.packages, optionsText: 'name', visible: canBeMoved,  value: selectedPackage, optionsCaption: '@DashboardViewResources.SelectDefaultValue', event: {change: function(data, event){ $root.moveEntireOrderToPackage($data)} }"></select>
                     <button class="btn btn-mini" title="@DashboardViewResources.ReturnOrderButton" data-toggle="modal" data-bind="visible: canBeRequestedForReturn"><i class="icon icon-retweet"></i></button>
                     <button class="btn btn-mini btn-danger" title="@DashboardViewResources.RemoveOrderButton" data-bind="click: $parent.removeOrder, visible: canBeRemoved"><i class="icon-white icon-remove"></i></button>
                 </td>
@@ -78,9 +78,9 @@
                         <td>$<span class="editable" title="@DashboardViewResources.PriceTitle" data-bind="text: price"></span></td>
                         <td>
                             <div class="btn-group">
-                                <button class="btn btn-mini" title="@DashboardViewResources.EditItemTitle" data-bind="click:$parent.showEditItemPopup"><i class="icon icon-edit"></i></button>
-                                <button class="btn btn-mini" title="@DashboardViewResources.DeleteItemTitle" data-bind="click:$parent.removeItem"><i class="icon icon-remove"></i></button>
-                                <select style="width:100px;" data-bind="options:  $root.packages, optionsText: 'name', visible: $parent.status() == 'Received',  value: selectedPackage, optionsCaption: 'Choose...', event: {change: function(data, event){ $root.moveSingleItemToPackage($data); } }"></select>
+                                <button class="btn btn-mini" title="@DashboardViewResources.EditItemTitle" data-bind="visible:$parent.canItemsBeModified, click:$parent.showEditItemPopup"><i class="icon icon-edit"></i></button>
+                                <button class="btn btn-mini" title="@DashboardViewResources.DeleteItemTitle" data-bind="visible:$parent.canItemsBeModified, click:$parent.removeItem"><i class="icon icon-remove"></i></button>
+                                <select style="width:100px;" data-bind="visible:$parent.canBeMoved, options:  $root.packages, optionsText: 'name', value: selectedPackage, optionsCaption: 'Choose...', event: {change: function(data, event){ $root.moveSingleItemToPackage($data); } }"></select>
                             </div>
                         </td>
                     </tr>

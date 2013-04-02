@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TdService.Model.Packages
+namespace TdService.Model.Packages.Exceptions
 {
     using System;
 

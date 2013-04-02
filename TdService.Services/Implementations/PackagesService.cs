@@ -109,6 +109,7 @@ namespace TdService.Services.Implementations
         public AddPackageResponse AddPackage(AddPackageRequest request)
         {
             var newPackage = new Package { Name = request.Name, CreatedDate = DateTime.UtcNow, Dimensions = new Dimensions() };
+
             var packageResult = this.packageRepository.AddPackage(request.IdentityToken, newPackage);
             return packageResult.ConvertToAddPackageResponse();
         }
@@ -184,6 +185,63 @@ namespace TdService.Services.Implementations
             {
                 logger.Log(ex.Message);
                 return new ChangePackageDeliveryMethodResponse { MessageType = MessageType.Error, Message = CommonResources.ChangePackageDispatchMethodError };
+            }
+        }
+
+        public AssemblePackageResponse AssemblePackage(AssemblePackageRequest request)
+        {
+            try
+            {
+                var package = this.packageRepository.GetPackageById(request.PackageId);
+                package.Status = PackageStatus.Assembling;
+                this.packageRepository.UpdatePackage(package);
+                var response = package.ConvertToAssemblePackageResponse();
+                response.MessageType = MessageType.Success;
+                response.Message = string.Format(PackageStatusResources.StatusChanged, PackageStatus.Assembling);
+                return response;
+            }
+            catch (Exception ex)
+            {
+                logger.Log(ex.Message);
+                return new AssemblePackageResponse { MessageType = MessageType.Error, Message = ex.Message };
+            }
+        }
+
+        public PackageAssembledResponse PackageAssembled(PackageAssembledRequest request)
+        {
+            try
+            {
+                var package = this.packageRepository.GetPackageById(request.PackageId);
+                package.Status = PackageStatus.Assembled;
+                this.packageRepository.UpdatePackage(package);
+                var response = package.ConvertToPackageAssembledResponse();
+                response.MessageType = MessageType.Success;
+                response.Message = string.Format(PackageStatusResources.StatusChanged, PackageStatus.Assembled);
+                return response;
+            }
+            catch (Exception ex)
+            {
+                logger.Log(ex.Message);
+                return new PackageAssembledResponse { MessageType = MessageType.Error, Message = ex.Message };
+            }
+        }
+
+        public SendPackageResponse SendPackage(SendPackageRequest request)
+        {
+            try
+            {
+                var package = this.packageRepository.GetPackageById(request.PackageId);
+                package.Status = PackageStatus.Sent;
+                this.packageRepository.UpdatePackage(package);
+                var response = package.ConvertToSendPackageResponse();
+                response.MessageType = MessageType.Success;
+                response.Message = string.Format(PackageStatusResources.StatusChanged, PackageStatus.Sent);
+                return response;
+            }
+            catch (Exception ex)
+            {
+                logger.Log(ex.Message);
+                return new SendPackageResponse { MessageType = MessageType.Error, Message = ex.Message };
             }
         }
     }

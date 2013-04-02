@@ -92,17 +92,17 @@ namespace TdService.ShopAnyWare.Specs.Steps
             }
         }
 
-        [When(@"I move all items in order '(.*)' to new package '(.*)'")]
-        public void WhenIMoveAllItemsInOrderToNewPackage(string orderNumber, string packageName)
-        {
-            var user = ScenarioContext.Current.Get<TdService.Model.Membership.User>();
-            var order = user.Orders.SingleOrDefault(o => o.OrderNumber == orderNumber);
-            var controller = GetItemsController();
-            var actual = controller.MoveOrderItemsToNewPackage(order.Id, packageName) as JsonNetResult;
-            Assert.IsNotNull(actual);
-            Assert.That(actual.Data is ViewModelBase);
-            Assert.That((actual.Data as ViewModelBase).MessageType.Equals(MessageType.Success.ToString()));
-        }
+        //[When(@"I move all items in order '(.*)' to new package '(.*)'")]
+        //public void WhenIMoveAllItemsInOrderToNewPackage(string orderNumber, string packageName)
+        //{
+        //    var user = ScenarioContext.Current.Get<TdService.Model.Membership.User>();
+        //    var order = user.Orders.SingleOrDefault(o => o.OrderNumber == orderNumber);
+        //    var controller = GetItemsController();
+        //    var actual = controller.MoveOrderItemsToNewPackage(order.Id, packageName) as JsonNetResult;
+        //    Assert.IsNotNull(actual);
+        //    Assert.That(actual.Data is ViewModelBase);
+        //    Assert.That((actual.Data as ViewModelBase).MessageType.Equals(MessageType.Success.ToString()));
+        //}
 
         [When(@"I move all items from package '(.*)' back to their original order")]
         public void WhenIMoveAllItemsFromPackageBackToTheirOriginalOrder(string packageName)

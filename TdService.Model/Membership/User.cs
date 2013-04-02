@@ -73,7 +73,7 @@ namespace TdService.Model.Membership
         /// Gets or sets Profile.
         /// </summary>
         public Profile Profile { get; set; }
-
+        
         /// <summary>
         /// Gets or sets DeliveryAddresses.
         /// </summary>
@@ -88,6 +88,7 @@ namespace TdService.Model.Membership
         /// Gets or sets Wallet.
         /// </summary>
         public Wallet Wallet { get; set; }
+
 
         /// <summary>
         /// Gets or sets Roles.

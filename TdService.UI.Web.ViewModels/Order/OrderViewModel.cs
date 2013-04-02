@@ -98,5 +98,10 @@ namespace TdService.UI.Web.ViewModels.Order
         /// Gets or sets a value indicating whether can items be modified.
         /// </summary>
         public bool CanItemsBeModified { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether can items be added.
+        /// </summary>
+        public bool CanItemsBeAdded { get; set; }
     }
 }

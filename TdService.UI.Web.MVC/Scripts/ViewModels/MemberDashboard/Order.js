@@ -36,11 +36,15 @@
     self.canBeModified = ko.observable(serverModel.CanBeModified);
     self.canItemsBeModified = ko.observable(serverModel.CanItemsBeModified);
     self.canBeRequestedForReturn = ko.observable(serverModel.CanBeRequestedForReturn);
+    self.canItemsBeAdded = ko.observable(serverModel.CanItemsBeAdded);
+
     // order view model computed properties
     self.domOrderId = ko.computed(function () {
         return "order" + self.id();
     });
-    
+
+
+
     self.popupDomId = ko.computed(function () {
         return "itemFormModal" + self.id();
     });
@@ -87,6 +91,10 @@
         return self.items().length > 0;
     });
 
+    self.canBeMoved = ko.computed(function () {
+        return self.status() == 'Received' && self.hasItems() && !viewSettings.operatorMode;
+    });
+    
     self.orderDate = ko.computed(function () {
         switch (self.status()) {
             case 'Received':

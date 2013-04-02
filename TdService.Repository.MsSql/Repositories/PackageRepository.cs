@@ -14,6 +14,7 @@ namespace TdService.Repository.MsSql.Repositories
     using TdService.Model.Packages;
     using System.Data.Entity;
     using TdService.Repository.MsSql.Extensions;
+    using TdService.Model.Membership;
 
     /// <summary>
     /// The package repository.
@@ -54,7 +55,7 @@ namespace TdService.Repository.MsSql.Repositories
             using (var context = new ShopAnyWareSql())
             {
                 var packageAdded = context.Packages.Add(package);
-                var user = context.Users.Include(u=>u.Profile).Include(u=>u.Roles).SingleOrDefault(u => u.Email == email);
+                var user = context.Users.Include(u => u.Profile).Include(u => u.Roles).Include(u => u.Wallet).SingleOrDefault(u => u.Email == email);
                 if (user != null)
                 {
                     user.AddPackage(packageAdded);

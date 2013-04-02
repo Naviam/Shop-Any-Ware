@@ -189,5 +189,50 @@ namespace TdService.UI.Web.Controllers
             };
             return jsonNetResult;
         }
+
+        [Authorize(Roles = "Shopper")]
+        [HttpPost]
+        public ActionResult AssemblePackage(int packageId)
+        {
+            var request = new AssemblePackageRequest { PackageId = packageId };
+            var response = this.packagesService.AssemblePackage(request);
+
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = response.ConvertToPackageViewModel()
+            };
+            return jsonNetResult;
+        }
+
+        [Authorize(Roles = "Operator, Admin")]
+        [HttpPost]
+        public ActionResult PackageAssembled(int packageId)
+        {
+            var request = new PackageAssembledRequest { PackageId = packageId };
+            var response = this.packagesService.PackageAssembled(request);
+
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = response.ConvertToPackageViewModel()
+            };
+            return jsonNetResult;
+        }
+
+        [Authorize(Roles = "Shopper")]
+        [HttpPost]
+        public ActionResult SendPackage(int packageId)
+        {
+            var request = new SendPackageRequest { PackageId = packageId };
+            var response = this.packagesService.SendPackage(request);
+
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = response.ConvertToPackageViewModel()
+            };
+            return jsonNetResult;
+        }
     }
 }

@@ -4,8 +4,9 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
-    using System.Threading.Tasks;
     using TdService.Model.Balance;
+    using TdService.Model.Packages;
+    using TdService.Repository.MsSql.Extensions;
 
     public class TransactionsRepository : ITransactionsRepository
     {
@@ -57,6 +58,33 @@
                 if (tran == null) throw new InvalidOperationException("Transaction Not Found");
                 tran.TransactionStatus = TransactionStatus.Canceled;
                 context.SaveChanges();
+            }
+        }
+
+        /// <summary>
+        /// Adds package payment transaction
+        /// </summary>
+        /// <param name="package"></param>
+        /// <returns></returns>
+        public Tuple<Package, decimal> AddPackagePaymentTransaction(int packageId)
+        {
+            using (var context = new ShopAnyWareSql())
+            {
+                var package = context.PackagesWithUserAndWallet().Single(p => p.Id.Equals(packageId));
+                var newTransaction = Transaction.CreatePackagePaymentTransaction(package);
+                var wallet = package.User.Wallet;
+                wallet.PackagePayment(newTransaction.OperationAmount);
+                var brokenRules = wallet.GetBrokenRules();
+                if (brokenRules.Any())
+                {
+                    throw new InvalidOperationException("Wallet amount can't be negative");
+                }
+                package.ChangePackageStatus(PackageStatus.Paid);
+                context.Packages.Attach(package);
+                context.Entry<Package>(package).State = System.Data.EntityState.Modified;
+                context.Transactions.Add(newTransaction);
+                context.SaveChanges();
+                return new Tuple<Package, decimal>(package, wallet.Amount);
             }
         }
     }

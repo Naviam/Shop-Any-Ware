@@ -259,39 +259,39 @@ namespace TdService.Services.Implementations
             }
         }
 
-        /// <summary>
-        /// Move Order Items To New Package
-        /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
-        public MoveOrderItemsToNewPackageResponse MoveOrderItemsToNewPackage(MoveOrderItemsToNewPackageRequest request)
-        {
-            try
-            {
-                var package = this.packageRepository.AddPackage(
-                    request.IdentityToken,
-                    new Package
-                        {
-                            Name = request.PackageName,
-                            Status = PackageStatus.New,
-                            CreatedDate = DateTime.UtcNow,
-                            Dimensions = new Dimensions()
-                        });
-                var items = this.itemsRepository.GetOrderItems(request.OrderId);
-                items.ForEach(i => itemsRepository.AttachItemToPackage(package.Id, i.Id));
-                var result = items.ConvertToMoveOrderItemsToNewPackageResponse();
-                result.PackageId = package.Id;
-                result.OrderId = request.OrderId;
-                result.MessageType = MessageType.Success;
-                result.Message = string.Format(CommonResources.OrderItemsSuccessfullyMoved, package.Name, package.Id);
-                return result;
-            }
-            catch (Exception ex)
-            {
-                this.logger.Error("Error while moving order items to new package", ex);
-                return new MoveOrderItemsToNewPackageResponse { MessageType = MessageType.Error, Message = CommonResources.MoveOrderItemsToNewPackageError };
-            }
-        }
+        ///// <summary>
+        ///// Move Order Items To New Package
+        ///// </summary>
+        ///// <param name="request"></param>
+        ///// <returns></returns>
+        //public MoveOrderItemsToNewPackageResponse MoveOrderItemsToNewPackage(MoveOrderItemsToNewPackageRequest request)
+        //{
+        //    try
+        //    {
+        //        var package = this.packageRepository.AddPackage(
+        //            request.IdentityToken,
+        //            new Package
+        //                {
+        //                    Name = request.PackageName,
+        //                    Status = PackageStatus.New,
+        //                    CreatedDate = DateTime.UtcNow,
+        //                    Dimensions = new Dimensions()
+        //                });
+        //        var items = this.itemsRepository.GetOrderItems(request.OrderId);
+        //        items.ForEach(i => itemsRepository.AttachItemToPackage(package.Id, i.Id));
+        //        var result = items.ConvertToMoveOrderItemsToNewPackageResponse();
+        //        result.PackageId = package.Id;
+        //        result.OrderId = request.OrderId;
+        //        result.MessageType = MessageType.Success;
+        //        result.Message = string.Format(CommonResources.OrderItemsSuccessfullyMoved, package.Name, package.Id);
+        //        return result;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        this.logger.Error("Error while moving order items to new package", ex);
+        //        return new MoveOrderItemsToNewPackageResponse { MessageType = MessageType.Error, Message = CommonResources.MoveOrderItemsToNewPackageError };
+        //    }
+        //}
 
         /// <summary>
         /// Move Order  Items To Original Order

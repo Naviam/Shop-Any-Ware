@@ -29,7 +29,7 @@ namespace TdService.Model.Orders
         {
             get
             {
-                return false;
+                return true;
             }
         }
 
@@ -86,6 +86,13 @@ namespace TdService.Model.Orders
             {
                 return false;
             }
+        }
+
+
+
+        public bool CanItemsBeAdded
+        {
+            get { return false; }
         }
     }
 }
