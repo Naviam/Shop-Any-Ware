@@ -18,9 +18,9 @@
     self.dispatchMethod = ko.observable(serverModel.DispatchMethod);
     self.selectedMethod = ko.observable(serverModel.DispatchMethod);
 
-    self.createdDate = ko.observable(formatDate(serverModel.CreatedDate));
-    self.dispatchedDate = ko.observable(formatDate(serverModel.DispatchedDate));
-    self.deliveredDate = ko.observable(formatDate(serverModel.DeliveredDate));
+    self.createdDate = ko.observable(serverModel.CreatedDateString);
+    self.dispatchedDate = ko.observable(serverModel.DispatchedDateString);
+    self.deliveredDate = ko.observable(serverModel.DeliveredDateString);
     self.status = ko.observable(serverModel.Status);
     self.statusTranslated = ko.observable(serverModel.StatusTranslated);
     self.isCollapsed = ko.observable(false);

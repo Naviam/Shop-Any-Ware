@@ -54,6 +54,40 @@ namespace TdService.UI.Web.ViewModels.Order
         public DateTime? ReturnedDate { get; set; }
 
         /// <summary>
+        /// Gets or sets created date.
+        /// </summary>
+        public string CreatedDateString
+        {
+            get
+            {
+                return this.CreatedDate.ToShortDateString();
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets received date.
+        /// </summary>
+        public string ReceivedDateString
+        {
+            get
+            {
+                return this.ReceivedDate.HasValue ? this.ReceivedDate.Value.ToShortDateString() : string.Empty;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the returned date.
+        /// </summary>
+        public string ReturnedDateString
+        {
+            get
+            {
+                return this.ReturnedDate.HasValue ? this.ReturnedDate.Value.ToShortDateString() : string.Empty;
+            }
+        }
+
+
+        /// <summary>
         /// Gets or sets order status.
         /// </summary>
         public string Status { get; set; }

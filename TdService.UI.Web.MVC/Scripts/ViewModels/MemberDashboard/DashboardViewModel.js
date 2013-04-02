@@ -22,17 +22,6 @@ function getUrl(methodUrl) {
     return window.location.host + methodUrl;
 }
 
-function formatDate(dateUtcString) {
-    if (dateUtcString == null || dateUtcString === undefined)
-        return null;
-
-    var date = new Date(dateUtcString);
-    var currDate = date.getDate();
-    var currMonth = date.getMonth() + 1; //Months are zero based
-    var currYear = date.getFullYear();
-    return currDate + "-" + currMonth + "-" + currYear;
-}
-
 ko.extenders.defaultIfNull = function (target, defaultValue) {
     var result = ko.computed({
         read: target,
