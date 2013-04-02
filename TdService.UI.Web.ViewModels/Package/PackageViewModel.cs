@@ -61,14 +61,47 @@ namespace TdService.UI.Web.ViewModels.Package
         public DateTime CreatedDate { get; set; }
 
         /// <summary>
+        /// Gets created date string
+        /// </summary>
+        public string CreatedDateString
+        {
+            get
+            {
+                return this.CreatedDate.ToShortDateString();
+            }
+        }
+
+        /// <summary>
         /// Gets or sets Dispatched Date.
         /// </summary>
         public DateTime? DispatchedDate { get; set; }
 
         /// <summary>
+        /// Gets Dispatched Date string.
+        /// </summary>
+        public string DispatchedDateString
+        {
+            get
+            {
+                return this.DispatchedDate.HasValue ? this.DispatchedDate.Value.ToShortDateString() : string.Empty;
+            }
+        }
+
+        /// <summary>
         /// Gets or sets Delivered Date.
         /// </summary>
         public DateTime? DeliveredDate { get; set; }
+
+        /// <summary>
+        /// Gets or sets Delivered Date.
+        /// </summary>
+        public string DeliveredDateString
+        {
+            get
+            {
+                return this.DeliveredDate.HasValue ? this.DeliveredDate.Value.ToShortDateString() : string.Empty;
+            }
+        }
 
         /// <summary>
         /// Gets or sets a value indicating whether can be modified.

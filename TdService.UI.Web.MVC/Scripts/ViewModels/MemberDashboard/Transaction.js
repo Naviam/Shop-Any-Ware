@@ -9,7 +9,7 @@
 
     //server model properties
     self.operationAmount = serverModel.OperationAmount;
-    self.transactionDate = formatDate(serverModel.Date);
+    self.transactionDate = serverModel.DateString;
     self.currency = serverModel.Currency;
     self.transactionStatus = serverModel.StatusTranslated;
     self.operationType = serverModel.OperationType;
