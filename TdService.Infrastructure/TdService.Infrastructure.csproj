@@ -103,6 +103,7 @@
     <Compile Include="Domain\IRepository.cs" />
     <Compile Include="Domain\ValueObjectBase.cs" />
     <Compile Include="Domain\ValueObjectIsInvalidException.cs" />
+    <Compile Include="Email\AmazonSimpleEmailService.cs" />
     <Compile Include="Email\EmailServiceFactory.cs" />
     <Compile Include="Email\IEmailService.cs" />
     <Compile Include="Email\SMTPService.cs" />
