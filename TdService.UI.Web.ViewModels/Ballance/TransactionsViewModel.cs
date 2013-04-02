@@ -29,6 +29,17 @@
         public DateTime Date { get; set; }
 
         /// <summary>
+        /// Gets  Date string.
+        /// </summary>
+        public string DateString
+        {
+            get
+            {
+                return this.Date.ToShortDateString();
+            }
+        }
+
+        /// <summary>
         /// Gets or sets Transaction Status.
         /// </summary>
         public string TransactionStatus { get; set; }

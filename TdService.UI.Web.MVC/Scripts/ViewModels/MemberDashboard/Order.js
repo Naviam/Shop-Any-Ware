@@ -15,9 +15,9 @@
     self.retailerUrl = ko.observable(serverModel.RetailerUrl);
     self.orderNumber = ko.observable(serverModel.OrderNumber);
     self.trackingNumber = ko.observable(serverModel.TrackingNumber);
-    self.createdDate = ko.observable(formatDate(serverModel.CreatedDate));
-    self.receivedDate = ko.observable(formatDate(serverModel.ReceivedDate));
-    self.returnedDate = ko.observable(formatDate(serverModel.ReturnedDate));
+    self.createdDate = ko.observable(serverModel.CreatedDateString);
+    self.receivedDate = ko.observable(serverModel.ReceivedDateString);
+    self.returnedDate = ko.observable(serverModel.ReturnedDateString);
     self.status = ko.observable(serverModel.Status);
     self.statusTranslated = ko.observable(serverModel.StatusTranslated);
     self.isCollapsed = ko.observable(false);
@@ -290,7 +290,7 @@
         $.post("/orders/OrderReceived", { "orderId": self.id }, function (data) {
             var model = ko.toJS(data);
             if (model.MessageType == "Success") {
-                self.receivedDate(formatDate(model.ReceivedDate));
+                self.receivedDate(model.ReceivedDateString);
                 self.status(model.Status);
                 self.statusTranslated(model.StatusTranslated);
 
