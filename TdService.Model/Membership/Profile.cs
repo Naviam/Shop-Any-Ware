@@ -42,6 +42,17 @@ namespace TdService.Model.Membership
         public byte[] RowVersion { get; set; }
 
         /// <summary>
+        /// The get full name.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="string"/>.
+        /// </returns>
+        public string GetFullName()
+        {
+            return string.Format("{0} {1}", this.FirstName, this.LastName);
+        }
+
+        /// <summary>
         /// Validate business rules.
         /// </summary>
         protected override void Validate()
