@@ -135,11 +135,11 @@
                 &lt;div style="background-color: #fff; border: 1px solid #D5D5D5; text-align: left; border-radius: 5px; margin: 4px 0; padding: 0 18px; display: block;"&gt;
                     &lt;p style="font-weight: bold; font-size: 14px"&gt;Необходимо подтвердить e-mail адрес&lt;/p&gt;
                     &lt;p style="border-bottom: 1px solid #D5D5D5;"&gt;&lt;/p&gt;
-                    &lt;p&gt;Уважаемый(ая) {0}&lt;/p&gt;
+                    &lt;p&gt;Уважаемый(ая) {2}&lt;/p&gt;
                     &lt;p&gt;Вы зарегистрировались на ресурсе ShopAnyWare.com. Для завершения регистрации Вам необходимо подтвердить Ваш e-mail адрес.&lt;/p&gt;
                     &lt;p&gt;Для подтверждения нажмите ссылку ниже:&lt;/p&gt;
                     &lt;p&gt;
-                        &lt;a href="#" style="color: #4e8ecd; text-decoration: underline"&gt;https://shopanyware.com/?hash={1}&lt;/a&gt;
+                        &lt;a href="https://shopanyware.ru/account/activateemail?uid={0}&amp;hash={1}" style="color: #4e8ecd; text-decoration: underline"&gt;https://shopanyware.ru/account/activateemail?uid={0}&amp;hash={1}&lt;/a&gt;
                     &lt;/p&gt;
                     &lt;p&gt;Если ссылка не работает, просто скопируйте адрес в адресную строку Вашего браузера&lt;/p&gt;
                     &lt;p&gt;С уважением, команда ShopAnyWare.&lt;/p&gt;
