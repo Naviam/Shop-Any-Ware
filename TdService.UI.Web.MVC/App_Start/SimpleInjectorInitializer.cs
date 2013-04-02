@@ -65,7 +65,7 @@ namespace TdService.UI.Web.MVC.App_Start
             // services
             container.Register<IFormsAuthentication, AspFormsAuthentication>();
             container.Register<IMembershipService, MembershipService>();
-            container.Register<IEmailService, SmtpService>();
+            container.Register<IEmailService, AmazonSimpleEmailService>();
             container.Register<ICookieStorageService, CookieStorageService>();
             container.Register<IAddressService, DeliveryAddressService>();
             container.Register<IOrderService, OrderService>();
