@@ -68,8 +68,8 @@ namespace TdService.Repository.MsSql.Repositories
         /// <param name="user">
         /// The user.
         /// </param>
-        /// <param name="role">
-        /// The role.
+        /// <param name="roles">
+        /// The roles.
         /// </param>
         /// <returns>
         /// The TdService.Model.Membership.User.
@@ -90,18 +90,19 @@ namespace TdService.Repository.MsSql.Repositories
                 roles.ForEach(r =>
                     {
                         var role = context.Roles.SingleOrDefault(r1 => r1.Name.Equals(r.Name));
-                        if (role!=null)
+                        if (role != null)
                         {
                             user.Roles.Add(role);
                         }
                     });
 
                 // add wallet
-                if (roles.Any(r=>r.Name.Equals(StandardRole.Shopper)))
+                if (roles.Any(r => r.Name.Equals(StandardRole.Shopper)))
                 {
                     user.Wallet = new Wallet { Amount = 0.00m };
                     context.Entry(user).State = EntityState.Modified;
                 }
+
                 context.SaveChanges();
                 return user;
             }
@@ -130,7 +131,7 @@ namespace TdService.Repository.MsSql.Repositories
         }
 
         /// <summary>
-        /// Get users acsending sorted by email.
+        /// Get users ascending sorted by email.
         /// </summary>
         /// <param name="pageSize">
         /// The page size.

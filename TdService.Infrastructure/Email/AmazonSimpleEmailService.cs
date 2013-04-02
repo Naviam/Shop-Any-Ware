@@ -44,7 +44,7 @@ namespace TdService.Infrastructure.Email
             using (var client = Amazon.AWSClientFactory.CreateAmazonSimpleEmailServiceClient(this.credentials))
             {
                 var request = new SendEmailRequest();
-                var destination = new Destination(to.Split(';').ToList());
+                var destination = new Destination(to.Split(';', ',').ToList());
                 request.WithDestination(destination);
                 request.WithSource(@from);
                 var message = new Message();

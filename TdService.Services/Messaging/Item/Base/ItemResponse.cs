@@ -1,14 +1,23 @@
 ﻿using System.Collections.Generic;
 namespace TdService.Services.Messaging.Item.Base
 {
-    public class ItemResponse:ResponseBase
+    /// <summary>
+    /// The item response.
+    /// </summary>
+    public class ItemResponse : ResponseBase
     {
+        /// <summary>
+        /// The item image model.
+        /// </summary>
         public class ItemImageModel
         {
+            /// <summary>
+            /// Gets or sets the url.
+            /// </summary>
             public string Url { get; set; }
+
             public string FileName { get; set; }
         }
-
 
         /// <summary>
         /// Gets or sets images

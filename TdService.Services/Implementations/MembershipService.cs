@@ -25,7 +25,7 @@ namespace TdService.Services.Implementations
     /// <summary>
     /// Membership service class.
     /// </summary>
-    public class MembershipService :ServiceBase, IMembershipService
+    public class MembershipService : ServiceBase, IMembershipService
     {
         /// <summary>
         /// Membership repository.
@@ -79,7 +79,8 @@ namespace TdService.Services.Implementations
             IUserRepository userRepository,
             IRoleRepository roleRepository,
             IProfileRepository profileRepository,
-            IMembershipRepository membershipRepository):base(logger)
+            IMembershipRepository membershipRepository)
+            : base(logger)
         {
             this.emailService = emailService;
             this.userRepository = userRepository;
@@ -136,7 +137,7 @@ namespace TdService.Services.Implementations
 
             try
             {
-                var result = this.membershipRepository.CreateUser(user, new List<Role>(){role});
+                var result = this.membershipRepository.CreateUser(user, new List<Role> { role });
                 this.emailService.SendMail(
                     EmailResources.EmailActivationFrom,
                     result.Email,
@@ -154,15 +155,26 @@ namespace TdService.Services.Implementations
         }
 
         /// <summary>
-        /// 
+        /// The sign up admin.
         /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="SignUpAdminResponse"/>.
+        /// </returns>
         public SignUpAdminResponse SignUpAdmin(SignUpAdminRequest request)
         {
             var roles = new List<Role>();
-            if (request.AdminRole) roles.Add(new Role { Name = StandardRole.Admin.ToString()});
-            if (request.OperatorRole) roles.Add(new Role { Name = StandardRole.Operator.ToString()});
+            if (request.AdminRole)
+            {
+                roles.Add(new Role { Name = StandardRole.Admin.ToString() });
+            }
+
+            if (request.OperatorRole)
+            {
+                roles.Add(new Role { Name = StandardRole.Operator.ToString() });
+            }
 
             var user = new User
             {
@@ -205,11 +217,12 @@ namespace TdService.Services.Implementations
             try
             {
                 var result = this.membershipRepository.CreateUser(user, roles);
-                //this.emailService.SendMail(
-                //    EmailResources.EmailActivationFrom,
-                //    result.Email,
-                //    EmailResources.EmailActivationSubject,
-                //    string.Format(EmailResources.EmailActivationBody, "shopanyware.com", result.Id, result.ActivationCode));
+
+                this.emailService.SendMail(
+                    EmailResources.EmailActivationFrom,
+                    result.Email,
+                    EmailResources.EmailActivationSubject,
+                    string.Format(EmailResources.EmailActivationBody, "shopanyware.com", result.Id, result.ActivationCode));
                 return response;
             }
             catch (Exception e)
@@ -219,7 +232,6 @@ namespace TdService.Services.Implementations
                 this.logger.Error(CommonResources.SignUpErrorMessage, e);
                 return response;
             }
-
         }
 
         /// <summary>
@@ -347,6 +359,7 @@ namespace TdService.Services.Implementations
                 response.ErrorCode = ErrorCode.ProfileNotFound.ToString();
                 return response;
             }
+
             response = user.ConvertToGetProfileResponse();
             response.WalletId = user.Wallet.Id;
             response.Balance = user.Wallet.Amount;
@@ -406,97 +419,109 @@ namespace TdService.Services.Implementations
         }
 
         /// <summary>
-        /// Gets users in role
+        /// The get users in role.
         /// </summary>
-        /// <param name="request">The GetUsersInRoleRequest request. Pass role ID as '-1' to get all users</param>
-        /// <returns></returns>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="GetUsersInRoleResponse"/>.
+        /// </returns>
         public GetUsersInRoleResponse GetUsersInRole(GetUsersInRoleRequest request)
         {
-            Tuple<List<User>, int> tuple;
-
-            if (request.RoleId.Equals(-1))
-            {
-                tuple = userRepository.GetAllUsers(request.Skip, request.Take);
-            }
-            else
-            {
-                tuple = userRepository.GetUsersInRole(request.RoleId, request.Skip, request.Take);
-            }
+            Tuple<List<User>, int> tuple = 
+                request.RoleId.Equals(-1) ? this.userRepository.GetAllUsers(request.Skip, request.Take) : this.userRepository.GetUsersInRole(request.RoleId, request.Skip, request.Take);
 
             var result = new GetUsersInRoleResponse { Users = tuple.Item1.ConvertToGetUsersInRoleResponseCollection(), TotalCount = tuple.Item2 };
             return result;
         }
 
         /// <summary>
-        /// Getsuser by id
+        /// The get user by id.
         /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="GetUserByIdResponse"/>.
+        /// </returns>
         public GetUserByIdResponse GetUserById(GetUserByIdRequest request)
         {
-            var user = userRepository.GetUserById(request.UserId);
+            var user = this.userRepository.GetUserById(request.UserId);
             if (user == null)
             {
                 return new GetUserByIdResponse { MessageType = MessageType.Warning, Message = CommonResources.UserNotFound };
             }
+
             var result = user.ConvertToGetUserByIdResponse();
             return result;
         }
 
-
         /// <summary>
-        /// 
+        /// The add user to role.
         /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="AddUserToRoleResponse"/>.
+        /// </returns>
         public AddUserToRoleResponse AddUserToRole(AddUserToRoleRequest request)
         {
-            roleRepository.AddUserToRole(request.UserId, request.RoleId);
-            roleRepository.SaveChanges();
+            this.roleRepository.AddUserToRole(request.UserId, request.RoleId);
+            this.roleRepository.SaveChanges();
             return new AddUserToRoleResponse { Message = CommonResources.ResourceManager.GetString("UserAddedToRole"), MessageType = MessageType.Success };
         }
 
         /// <summary>
-        /// 
+        /// The remove user from role.
         /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="RemoveUserFromRoleResponse"/>.
+        /// </returns>
         public RemoveUserFromRoleResponse RemoveUserFromRole(RemoveUserFromRoleRequest request)
         {
-            roleRepository.RemoveUserFromRole(request.UserId, request.RoleId);
-            roleRepository.SaveChanges();
+            this.roleRepository.RemoveUserFromRole(request.UserId, request.RoleId);
+            this.roleRepository.SaveChanges();
             return new RemoveUserFromRoleResponse { Message = CommonResources.ResourceManager.GetString("UserRemovedFromRole"), MessageType = MessageType.Success };
         }
 
-
         /// <summary>
-        /// 
+        /// The get all roles.
         /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// Collection of get all roles response.
+        /// </returns>
         public List<GetAllRolesResponse> GetAllRoles(GetAllRolesRequest request)
         {
-            var roles = roleRepository.GetAllRoles().ToList().ConvertToGetAllRolesResponseCollection();
-            return roles;
+            return this.roleRepository.GetAllRoles().ToList().ConvertToGetAllRolesResponseCollection();
         }
 
         /// <summary>
-        /// Gets user by email
+        /// The get user by email.
         /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="GetUserByEmailResponse"/>.
+        /// </returns>
         public GetUserByEmailResponse GetUserByEmail(GetUserByEmailRequest request)
         {
-            var user = userRepository.GetUserByEmail(request.Email);
+            var user = this.userRepository.GetUserByEmail(request.Email);
             if (user == null)
             {
                 return new GetUserByEmailResponse { MessageType = MessageType.Warning, Message = CommonResources.UserNotFound };
             }
+
             var result = user.ConvertToGetUserByEmailResponse();
             return result;
         }
-
-
-
     }
 }

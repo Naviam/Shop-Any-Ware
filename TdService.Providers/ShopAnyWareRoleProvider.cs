@@ -25,7 +25,9 @@ namespace TdService.Providers
         /// <summary>
         /// Initializes a new instance of the <see cref="ShopAnyWareRoleProvider"/> class.
         /// </summary>
+// ReSharper disable EmptyConstructor
         public ShopAnyWareRoleProvider()
+// ReSharper restore EmptyConstructor
         {
         }
 

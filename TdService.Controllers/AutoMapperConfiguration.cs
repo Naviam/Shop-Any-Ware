@@ -398,7 +398,7 @@ namespace TdService.UI.Web
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
             Mapper.CreateMap<AddPackageResponse, PackageViewModel>();
 
-            //assemble package
+            // assemble package
             Mapper.CreateMap<Package, AssemblePackageResponse>()
                 .ForMember(r => r.BrokenRules, opt => opt.Ignore())
                 .ForMember(r => r.Message, opt => opt.Ignore())
@@ -406,7 +406,7 @@ namespace TdService.UI.Web
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
             Mapper.CreateMap<AssemblePackageResponse, PackageViewModel>();
 
-            //package assembled
+            // package assembled
             Mapper.CreateMap<Package, PackageAssembledResponse>()
                 .ForMember(r => r.BrokenRules, opt => opt.Ignore())
                 .ForMember(r => r.Message, opt => opt.Ignore())
@@ -414,7 +414,7 @@ namespace TdService.UI.Web
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
             Mapper.CreateMap<PackageAssembledResponse, PackageViewModel>();
 
-            //pay for package 
+            // pay for package 
             Mapper.CreateMap<Package, PayForPackageResponse>()
                 .ForMember(r => r.BrokenRules, opt => opt.Ignore())
                 .ForMember(r => r.Message, opt => opt.Ignore())
@@ -422,7 +422,7 @@ namespace TdService.UI.Web
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
             Mapper.CreateMap<PayForPackageResponse, PayForPackageViewModel>();
 
-            //send package
+            // send package
             Mapper.CreateMap<Package, SendPackageResponse>()
                 .ForMember(r => r.BrokenRules, opt => opt.Ignore())
                 .ForMember(r => r.Message, opt => opt.Ignore())
