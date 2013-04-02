@@ -27,7 +27,6 @@ namespace TdService.UI.Web.Controllers
     /// </summary>
     public class AddressesController : ApiController
     {
-        
         /// <summary>
         /// The address Service.
         /// </summary>

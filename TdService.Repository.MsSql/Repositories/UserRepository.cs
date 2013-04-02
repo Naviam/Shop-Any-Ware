@@ -12,8 +12,8 @@ namespace TdService.Repository.MsSql.Repositories
     using System;
     using System.Collections.Generic;
     using System.Data;
-    using System.Linq;
     using System.Data.Entity;
+    using System.Linq;
 
     using TdService.Model.Addresses;
     using TdService.Model.Membership;
@@ -26,7 +26,7 @@ namespace TdService.Repository.MsSql.Repositories
     public class UserRepository : IUserRepository, IDisposable
     {
         /// <summary>
-        /// Shop any ware db context.
+        /// Shop any ware DB context.
         /// </summary>
         private readonly ShopAnyWareSql context;
 
@@ -100,7 +100,7 @@ namespace TdService.Repository.MsSql.Repositories
         /// The user email.
         /// </param>
         /// <param name="addressId">
-        /// The addresss id to attach.
+        /// The address id to attach.
         /// </param>
         public void AttachAddress(string email, int addressId)
         {
@@ -163,7 +163,7 @@ namespace TdService.Repository.MsSql.Repositories
         }
 
         /// <summary>
-        /// Validate user against db.
+        /// Validate user against DB.
         /// </summary>
         /// <param name="email">
         /// The email.
@@ -240,21 +240,31 @@ namespace TdService.Repository.MsSql.Repositories
         }
 
         /// <summary>
-        /// Gets user list for the specified roleId
+        /// The get users in role.
         /// </summary>
-        /// <param name="roleId">role id</param>
-        /// <returns>Tuple of alist of users for the role and a total count</returns>
+        /// <param name="roleId">
+        /// The role id.
+        /// </param>
+        /// <param name="skip">
+        /// The skip.
+        /// </param>
+        /// <param name="take">
+        /// The take.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Tuple"/>.
+        /// </returns>
         public Tuple<List<User>, int> GetUsersInRole(int roleId, int skip, int take)
         {
             var userQuery = this.context.Users.Include(u => u.Profile).Include(u => u.Packages).Include(u => u.Orders).Include(u => u.Roles).Where(
                     u => u.Roles.Select(role => role.Id).Contains(roleId));
             var total = userQuery.Count();
             var pagedList = userQuery.OrderBy(u => u.Id).Skip(skip).Take(take).ToList();
-            return new Tuple<List<User>,int>(pagedList,total);
+            return new Tuple<List<User>, int>(pagedList, total);
         }
 
         /// <summary>
-        /// Save changes to db.
+        /// Save changes to DB.
         /// </summary>
         public void SaveChanges()
         {
@@ -271,10 +281,14 @@ namespace TdService.Repository.MsSql.Repositories
         }
 
         /// <summary>
-        /// 
+        /// The get user by id.
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">
+        /// The id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="User"/>.
+        /// </returns>
         public User GetUserById(int id)
         {
             var user = this.context.Users.Include(u => u.Profile).Include(u => u.Packages).Include(u => u.Orders).Include(u => u.Roles).SingleOrDefault(u => u.Id.Equals(id));
@@ -282,14 +296,26 @@ namespace TdService.Repository.MsSql.Repositories
         }
 
         /// <summary>
-        /// 
+        /// The get all users.
         /// </summary>
-        /// <returns></returns>
+        /// <param name="skip">
+        /// The skip.
+        /// </param>
+        /// <param name="take">
+        /// The take.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Tuple"/>.
+        /// </returns>
         public Tuple<List<User>, int> GetAllUsers(int skip, int take)
         {
-            var userQuery = this.context.Users.Include(u=>u.Profile).Include(u=>u.Packages).Include(u=>u.Orders).Include(u=>u.Roles);
+            var userQuery =
+                this.context.Users.Include(u => u.Profile)
+                    .Include(u => u.Packages)
+                    .Include(u => u.Orders)
+                    .Include(u => u.Roles);
             var total = userQuery.Count();
-            var pagedList = userQuery.OrderBy(u=>u.Id).Skip(skip).Take(take).ToList();
+            var pagedList = userQuery.OrderBy(u => u.Id).Skip(skip).Take(take).ToList();
             return new Tuple<List<User>, int>(pagedList, total);
         }
     }
