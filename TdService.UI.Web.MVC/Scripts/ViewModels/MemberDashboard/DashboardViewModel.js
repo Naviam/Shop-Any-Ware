@@ -441,6 +441,24 @@ function DashboardViewModel(serverModel) {
         });
     };
 
+    self.payForPackage = function (packageObj) {
+        $.post("/ballance/PayForPackage", { "packageId": packageObj.id() }, function (data) {
+            var model = ko.toJS(data);
+            
+            window.showNotice(model.Message, model.MessageType);
+            
+            if (model.MessageType == "Success") {
+                $.each(self.packages(), function (index, value) {
+                    if (value.id() == model.Id) {
+                        value.updateStatusFieldsFromModel(model); //update status change buttons enable/disable state
+                    }
+                });
+                self.balance(model.WalletAmount);//update wallet amount
+                self.getTransactionHistory();//update transaction history list
+            }
+        });
+    };
+    
 }
 
 ko.bindingHandlers.popover = {

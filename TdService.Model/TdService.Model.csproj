@@ -56,6 +56,7 @@
     <Compile Include="Balance\BusinessRules\TransactionBusinessRules.cs" />
     <Compile Include="Balance\Currency.cs" />
     <Compile Include="Balance\ITransactionsRepository.cs" />
+    <Compile Include="Balance\OperationType.cs" />
     <Compile Include="Membership\MemberShipException.cs" />
     <Compile Include="Orders\InvalidRetailerException.cs" />
     <Compile Include="Orders\IRetailerRepository.cs" />
@@ -80,10 +81,16 @@
     <Compile Include="Orders\IOrderState.cs" />
     <Compile Include="Orders\OrderReturnedState.cs" />
     <Compile Include="Orders\OrderReturnRequestedState.cs" />
-    <Compile Include="Packages\InvalidPackageException.cs" />
-    <Compile Include="Packages\IPackageState.cs" />
+    <Compile Include="Packages\Exceptions\InvalidPackageException.cs" />
+    <Compile Include="Packages\Exceptions\InvalidPackageStateException.cs" />
+    <Compile Include="Packages\States\IPackageState.cs" />
     <Compile Include="Packages\PackageBusinessRules.cs" />
-    <Compile Include="Packages\PackageNewState.cs" />
+    <Compile Include="Packages\States\PackageAssembledState.cs" />
+    <Compile Include="Packages\States\PackageAssemblingState.cs" />
+    <Compile Include="Packages\States\PackageDeliveredState.cs" />
+    <Compile Include="Packages\States\PackageNewState.cs" />
+    <Compile Include="Packages\States\PackagePaidState.cs" />
+    <Compile Include="Packages\States\PackageSentState.cs" />
     <Compile Include="RFO\IRequestForOrderRepository.cs" />
     <Compile Include="Orders\OrderNewState.cs" />
     <Compile Include="Orders\OrderReceivedState.cs" />
@@ -130,6 +137,7 @@
     <None Include="App.config" />
     <None Include="DomainModel.cd" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

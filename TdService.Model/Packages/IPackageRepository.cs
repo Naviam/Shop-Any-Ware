@@ -7,6 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using TdService.Model.Membership;
 namespace TdService.Model.Packages
 {
     /// <summary>

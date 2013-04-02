@@ -9,6 +9,7 @@
     using TdService.Resources;
     using TdService.Services.Base;
     using TdService.Infrastructure.Logging;
+    using TdService.Services.Messaging.Package;
 
     public class TransactionService : ServiceBase, ITransactionService
     {
@@ -34,6 +35,7 @@
             {
                 var transaction = request.ConvertToTransaction();
                 transaction.WalletId = request.WalletId;
+                transaction.OperationType = OperationType.PayPalBalanceLoad;
                 var result = this.transactionsRepository.AddTransaction(transaction);
                 response = result.ConvertToAddTransactionResponse();
             }
@@ -80,6 +82,28 @@
                 response.Message = e.Message;
             }
             return response;
+        }
+
+
+
+        public PayForPackageResponse AddPackagePaymentTransaction(PayForPackageRequest request)
+        {
+            try
+            {
+                var tuple = this.transactionsRepository.AddPackagePaymentTransaction(request.PackageId);
+                var package = tuple.Item1;
+                var result = package.ConvertToPayForPackageResponse();
+                result.Message = string.Format(CommonResources.TransactionPaymentSucceded, package.Id);
+                result.MessageType = Messaging.MessageType.Success;
+                result.WalletAmount = tuple.Item2;
+                return result;
+            }
+            catch (Exception ex)
+            {
+                logger.Log(ex.Message);
+                return new PayForPackageResponse
+                    { MessageType = Messaging.MessageType.Error, Message = CommonResources.TransactionPaymentError };
+            }
         }
     }
 }

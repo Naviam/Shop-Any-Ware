@@ -187,6 +187,17 @@ namespace TdService.Model.Orders
         }
 
         /// <summary>
+        /// Gets a value indicating whether items can be added to order.
+        /// </summary>
+        public bool CanItemsBeAdded
+        {
+            get
+            {
+                return this.orderState.CanItemsBeAdded;
+            }
+        }
+
+        /// <summary>
         /// Create new order.
         /// </summary>
         /// <param name="retailer">

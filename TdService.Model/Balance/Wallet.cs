@@ -37,7 +37,15 @@ namespace TdService.Model.Balance
         /// </exception>
         protected override void Validate()
         {
-            throw new NotImplementedException();
+            if (this.Amount<0)
+            {
+                this.AddBrokenRule(new BusinessRule("Amount", ErrorCode.WalletAmountNegative.ToString()));
+            }
+        }
+
+        public void PackagePayment(decimal operationAmount)
+        {
+            this.Amount -= operationAmount;
         }
     }
 }

@@ -7,6 +7,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using TdService.Model.Packages.States;
+using TdService.Resources;
 namespace TdService.Model.Packages
 {
     /// <summary>
@@ -43,7 +45,7 @@ namespace TdService.Model.Packages
         {
             get
             {
-                return true;
+                return false;
             }
         }
 
@@ -67,6 +69,26 @@ namespace TdService.Model.Packages
             {
                 return true;
             }
+        }
+
+
+        public bool CanBePaidFor
+        {
+            get { return false; }
+        }
+
+        public string TranslatedName
+        {
+            get
+            {
+                return PackageStatusResources.New;
+            }
+        }
+
+
+        public bool CanBeAssembled
+        {
+            get { return true; }
         }
     }
 }

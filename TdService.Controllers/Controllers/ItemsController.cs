@@ -217,19 +217,19 @@ namespace TdService.UI.Web.Controllers
             return jsonNetResult;
         }
 
-        [Authorize(Roles = "Shopper")]
-        [HttpPost]
-        public ActionResult MoveOrderItemsToNewPackage(int orderId, string packageName)
-        {
-            var request = new MoveOrderItemsToNewPackageRequest { OrderId = orderId, PackageName = packageName };
-            var response = this.itemsService.MoveOrderItemsToNewPackage(request);
-            var jsonNetResult = new JsonNetResult
-            {
-                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
-                Data = response.ConvertToPackageItemViewModelCollection()
-            };
-            return jsonNetResult;
-        }
+        //[Authorize(Roles = "Shopper")]
+        //[HttpPost]
+        //public ActionResult MoveOrderItemsToNewPackage(int orderId, string packageName)
+        //{
+        //    var request = new MoveOrderItemsToNewPackageRequest { OrderId = orderId, PackageName = packageName };
+        //    var response = this.itemsService.MoveOrderItemsToNewPackage(request);
+        //    var jsonNetResult = new JsonNetResult
+        //    {
+        //        Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+        //        Data = response.ConvertToPackageItemViewModelCollection()
+        //    };
+        //    return jsonNetResult;
+        //}
 
         [Authorize(Roles = "Shopper")]
         [HttpPost]

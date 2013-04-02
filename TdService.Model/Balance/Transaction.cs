@@ -10,9 +10,10 @@
 namespace TdService.Model.Balance
 {
     using System;
-
-    using TdService.Infrastructure.Domain;
-    using TdService.Model.Balance.BusinessRules;
+using TdService.Infrastructure.Domain;
+using TdService.Model.Balance.BusinessRules;
+using TdService.Model.Packages;
+using TdService.Resources;
 
     /// <summary>
     /// Wire transaction details
@@ -52,7 +53,7 @@ namespace TdService.Model.Balance
         /// <summary>
         /// Gets or sets Transaction Status.
         /// </summary>
-        public TransactionStatus TransactionStatus { get; set; }
+        public TransactionStatus? TransactionStatus { get; set; }
 
         /// <summary>
         /// Gets or sets Token
@@ -65,6 +66,11 @@ namespace TdService.Model.Balance
         public string PayerId{ get; set; }
 
         /// <summary>
+        /// Gets or sets Operation Type.
+        /// </summary>
+        public OperationType OperationType { get; set; }
+
+        /// <summary>
         /// Validate business rules.
         /// </summary>
         /// <exception cref="NotImplementedException">
@@ -74,6 +80,20 @@ namespace TdService.Model.Balance
         {
             if (this.OperationAmount==0)
                 this.AddBrokenRule(TransactionBusinessRules.TransactionOperationAmountRequired);
+        }
+
+        public static Transaction CreatePackagePaymentTransaction(Package package)
+        {
+            var result = new Transaction
+                {
+                    Date = DateTime.UtcNow,
+                    OperationAmount = 2,//HARDCODED
+                    OperationDescription = string.Format("Payment for package id:{0}", package.Id),
+                    OperationType = OperationType.PackagePayment,
+                    TransactionStatus = null,
+                    WalletId = package.User.Wallet.Id
+                };
+            return result;
         }
     }
 }

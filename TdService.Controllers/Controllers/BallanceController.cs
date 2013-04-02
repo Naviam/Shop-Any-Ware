@@ -18,6 +18,7 @@ namespace TdService.UI.Web.Controllers
     using TdService.Infrastructure.PayPalHelpers;
     using TdService.Model.Balance;
     using TdService.Services.Interfaces;
+    using TdService.Services.Messaging.Package;
     using TdService.Services.Messaging.Transactions;
     using TdService.UI.Web.Controllers.Base;
     using TdService.UI.Web.Mapping;
@@ -128,5 +129,21 @@ namespace TdService.UI.Web.Controllers
                 "://" + originalUri.Authority + newUrl;
             return newUrl;
         }
+
+        [Authorize(Roles = "Shopper")]
+        [HttpPost]
+        public ActionResult PayForPackage(int packageId)
+        {
+            var request = new PayForPackageRequest { PackageId = packageId };
+            var response = this.transactionService.AddPackagePaymentTransaction(request);
+
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = response.ConvertToPackageViewModel()
+            };
+            return jsonNetResult;
+        }
+
     }
 }

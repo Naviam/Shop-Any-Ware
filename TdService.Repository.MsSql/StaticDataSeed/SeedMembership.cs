@@ -196,7 +196,7 @@ namespace TdService.Repository.MsSql.StaticDataSeed
                     Password = "111111",
                     Profile = bulkProfile,
                     Roles = new List<Role> {shopperRole},
-                    Wallet = new Wallet { Amount = 0 }
+                    Wallet = new Wallet { Amount =500 }
                 };
                 context.Users.Add(bulkUser);
                 context.SaveChanges();

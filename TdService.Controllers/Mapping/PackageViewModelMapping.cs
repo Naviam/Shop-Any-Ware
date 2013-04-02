@@ -36,5 +36,26 @@ namespace TdService.UI.Web.Mapping
         {
             return Mapper.Map<List<GetRecentPackagesResponse>, List<PackageViewModel>>(responses);
         }
+
+
+        public static PackageViewModel ConvertToPackageViewModel(this AssemblePackageResponse response)
+        {
+            return Mapper.Map<AssemblePackageResponse, PackageViewModel>(response);
+        }
+
+        public static PackageViewModel ConvertToPackageViewModel(this PackageAssembledResponse response)
+        {
+            return Mapper.Map<PackageAssembledResponse, PackageViewModel>(response);
+        }
+
+        public static PayForPackageViewModel ConvertToPackageViewModel(this PayForPackageResponse response)
+        {
+            return Mapper.Map<PayForPackageResponse, PayForPackageViewModel>(response);
+        }
+
+        public static PackageViewModel ConvertToPackageViewModel(this SendPackageResponse response)
+        {
+            return Mapper.Map<SendPackageResponse, PackageViewModel>(response);
+        }
     }
 }
