@@ -437,7 +437,8 @@ namespace TdService.UI.Web
                 .ForMember(r => r.Message, opt => opt.Ignore())
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
-            Mapper.CreateMap<GetTransactionsResponse, TransactionsViewModel>();
+            Mapper.CreateMap<GetTransactionsResponse, TransactionsViewModel>()
+                .ForMember(r => r.OperationTypeTranslated, opt => opt.Ignore()); 
 
             // add transaction
             Mapper.CreateMap<AddTransactionResponse, TransactionsViewModel>();

@@ -18,7 +18,7 @@
         <tbody data-bind='foreach: transactions()'>
             <tr>
                 <td data-bind='text: transactionDate'></td>
-                <td>@DashboardViewResources.PaymentTypePaypal</td>
+                <td data-bind='text: operationTypeTranslated'></td>
                 <td><span class='label' data-bind='text:transactionStatus, css: transactionStatusCssClass'></span></td>
                 <td data-bind='text: operationAmount'></td>
             </tr>

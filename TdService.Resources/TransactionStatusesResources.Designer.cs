@@ -97,6 +97,24 @@ namespace TdService.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Package payment.
+        /// </summary>
+        public static string PackagePayment {
+            get {
+                return ResourceManager.GetString("PackagePayment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pay Pal deposit.
+        /// </summary>
+        public static string PayPalBalanceLoad {
+            get {
+                return ResourceManager.GetString("PayPalBalanceLoad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pending.
         /// </summary>
         public static string Pending {
