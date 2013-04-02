@@ -155,6 +155,8 @@
     <Compile Include="Messaging\Order\UpdateOrderResponse.cs" />
     <Compile Include="Messaging\Package\AddPackageRequest.cs" />
     <Compile Include="Messaging\Package\AddPackageResponse.cs" />
+    <Compile Include="Messaging\Package\AssemblePackageRequest.cs" />
+    <Compile Include="Messaging\Package\AssemblePackageResponse.cs" />
     <Compile Include="Messaging\Package\Base\BasePackageResponse.cs" />
     <Compile Include="Messaging\Package\ChangePackageDeliveryAddressRequest.cs" />
     <Compile Include="Messaging\Package\ChangePackageDeliveryAddressResponse.cs" />
@@ -162,8 +164,14 @@
     <Compile Include="Messaging\Package\ChangePackageDeliveryMethodResponse.cs" />
     <Compile Include="Messaging\Package\GetRecentPackagesRequest.cs" />
     <Compile Include="Messaging\Package\GetRecentPackagesResponse.cs" />
+    <Compile Include="Messaging\Package\PackageAssembledRequest.cs" />
+    <Compile Include="Messaging\Package\PackageAssembledResponse.cs" />
+    <Compile Include="Messaging\Package\PayForPackageRequest.cs" />
+    <Compile Include="Messaging\Package\PayForPackageResponse.cs" />
     <Compile Include="Messaging\Package\RemovePackageRequest.cs" />
     <Compile Include="Messaging\Package\RemovePackageResponse.cs" />
+    <Compile Include="Messaging\Package\SendPackageRequest.cs" />
+    <Compile Include="Messaging\Package\SendPackageResponse.cs" />
     <Compile Include="Messaging\RequestBase.cs" />
     <Compile Include="Messaging\ResponseBase.cs" />
     <Compile Include="Messaging\Retailer\GetRetailersRequest.cs" />

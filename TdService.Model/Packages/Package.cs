@@ -11,12 +11,13 @@ namespace TdService.Model.Packages
 {
     using System;
     using System.Collections.Generic;
-
     using Addresses;
-
     using TdService.Infrastructure.Domain;
     using TdService.Model.Common;
     using TdService.Model.Items;
+    using TdService.Model.Membership;
+    using TdService.Model.Packages.Exceptions;
+    using TdService.Model.Packages.States;
     using TdService.Model.Shipping;
 
     /// <summary>
@@ -27,7 +28,9 @@ namespace TdService.Model.Packages
         /// <summary>
         /// The package state.
         /// </summary>
-        private readonly IPackageState packageState;
+        private IPackageState packageState;
+
+        private PackageStatus status;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Package"/> class.
@@ -51,7 +54,51 @@ namespace TdService.Model.Packages
         /// <summary>
         /// Gets or sets Status.
         /// </summary>
-        public PackageStatus Status { get; set; }
+        public PackageStatus Status
+        {
+            get
+            {
+                return this.status;
+            }
+            set
+            {
+                switch(value)
+                {
+                    case (PackageStatus.Assembling):
+                        {
+                            this.status = value;
+                            this.packageState = new PackageAssemblingState();
+                            break;
+                        }
+                    case (PackageStatus.Assembled):
+                        {
+                            this.status = value;
+                            this.packageState = new PackageAssembledState();
+                            break;
+                        }
+                    case (PackageStatus.Paid):
+                        {
+                            this.status = value;
+                            this.packageState = new PackagePaidState();
+                            break;
+                        }
+                    case (PackageStatus.Sent):
+                        {
+                            this.status = value;
+                            this.packageState = new PackageSentState();
+                            break;
+                        }
+                }
+            }
+        }
+
+        public string StatusTranslated
+        {
+            get
+            {
+                return this.packageState.TranslatedName;
+            }
+        }
 
         /// <summary>
         /// Gets or sets Created Date.
@@ -92,6 +139,16 @@ namespace TdService.Model.Packages
         /// Gets or sets the items.
         /// </summary>
         public List<Item> Items { get; set; }
+
+        /// <summary>
+        /// Gets or sets user
+        /// </summary>
+        public User User { get; set; }
+
+        /// <summary>
+        ///  Gets or sets user id
+        /// </summary>
+        public int UserId { get; set; }
 
         /// <summary>
         /// Gets a value indicating whether package can be modified.
@@ -149,6 +206,28 @@ namespace TdService.Model.Packages
         }
 
         /// <summary>
+        /// Gets a value indicating whether package can be assembled.
+        /// </summary>
+        public bool CanBeAssembled
+        {
+            get
+            {
+                return this.packageState.CanBeAssembled;
+            }
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether package can be paid.
+        /// </summary>
+        public bool CanBePaidFor
+        {
+            get
+            {
+                return this.packageState.CanBePaidFor;
+            }
+        }
+
+        /// <summary>
         /// Gets or sets Row Version.
         /// </summary>
         public byte[] RowVersion { get; set; }
@@ -167,5 +246,42 @@ namespace TdService.Model.Packages
                 this.AddBrokenRule(PackageBusinessRules.NameLength);
             }
         }
+
+
+        public void ChangePackageStatus(PackageStatus newStatus)
+        {
+            switch (newStatus)
+            {
+                case (PackageStatus.Assembling):
+                    {
+                        if (this.Status != PackageStatus.New) throw new InvalidPackageStateException(this.Status, newStatus);
+                        this.status = newStatus;
+                        this.packageState = new PackageAssemblingState();
+                        break;
+                    }
+                case (PackageStatus.Assembled):
+                    {
+                        if (this.Status != PackageStatus.Assembling) throw new InvalidPackageStateException(this.Status, newStatus);
+                        this.status = newStatus;
+                        this.packageState = new PackageAssembledState();
+                        break;
+                    }
+                case (PackageStatus.Paid):
+                    {
+                        if (this.Status != PackageStatus.Assembled) throw new InvalidPackageStateException(this.Status, newStatus);
+                        this.status = newStatus;
+                        this.packageState = new PackagePaidState();
+                        break;
+                    }
+                case (PackageStatus.Sent):
+                    {
+                        if (this.Status != PackageStatus.Paid) throw new InvalidPackageStateException(this.Status, newStatus);
+                        this.status = newStatus;
+                        this.packageState = new PackageSentState();
+                        break;
+                    }
+            }
+        }
+
     }
 }

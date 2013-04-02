@@ -394,6 +394,24 @@ namespace TdService.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error occured while performing package payment transaction.
+        /// </summary>
+        public static string TransactionPaymentError {
+            get {
+                return ResourceManager.GetString("TransactionPaymentError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Payment for package id:{0} completed successfully!.
+        /// </summary>
+        public static string TransactionPaymentSucceded {
+            get {
+                return ResourceManager.GetString("TransactionPaymentSucceded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to User was successfullt added to role.
         /// </summary>
         public static string UserAddedToRole {

@@ -19,24 +19,18 @@ namespace TdService.Model.Packages
         /// </summary>
         New = 0,
 
-        /// <summary>
-        /// Pending payment.
-        /// </summary>
-        PendingPayment = 1,
+        Assembling = 1,
 
-        /// <summary>
-        /// Ready to be dispatched.
-        /// </summary>
-        ReadyToDispatch = 2,
+        Assembled = 2,
 
-        /// <summary>
-        /// Dispatched status.
-        /// </summary>
-        Dispatched = 3,
+        Paid = 3,
+
+        Sent = 4,
 
         /// <summary>
         /// Delivered status.
         /// </summary>
-        Delivered = 4
+        Delivered = 5
+
     }
 }

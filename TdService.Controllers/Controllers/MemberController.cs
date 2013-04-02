@@ -180,7 +180,7 @@ namespace TdService.UI.Web.Controllers
         {
             var response = this.membershipService.GetProfile(
                new GetProfileRequest { IdentityToken = userEmail });
-            model.Email = userEmail;
+            model.UserEmail = userEmail;
             model.UserId = response.Id;
             model.FirstName = response.FirstName;
             model.LastName = response.LastName;

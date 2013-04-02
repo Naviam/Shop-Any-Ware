@@ -50,6 +50,7 @@ namespace TdService.UI.Web.ViewModels.Package
         {
             get
             {
+                if (string.IsNullOrEmpty(this.Status)) return null;
                 return PackageStatusResources.ResourceManager.GetString(this.Status);
             }
         }
@@ -93,5 +94,15 @@ namespace TdService.UI.Web.ViewModels.Package
         /// Gets or sets a value indicating whether can be disposed.
         /// </summary>
         public bool CanBeDisposed { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether can be assembled.
+        /// </summary>
+        public bool CanBeAssembled { get; set; }
+
+        /// <summary>
+        ///  Gets a value indicating whether package can be paid.
+        /// </summary>
+        public bool CanBePaidFor { get; set; }
     }
 }

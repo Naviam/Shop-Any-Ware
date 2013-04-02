@@ -17,7 +17,10 @@
                         <span data-bind="if: status() == 'Delivered'">@DashboardViewResources.PackageDeliveredDateHeader</span>: 
                         <span data-bind="text: packageDate"></span>
                     </span>&nbsp;
-                    <button class="btn btn-mini btn-primary right" title="@DashboardViewResources.SendPackageButton" data-bind="click: sendPackage, visible: items().length > 0 && canBeSent"><i class="icon-white icon-plane"></i></button>
+                    <button class="btn btn-mini btn-primary" title="@DashboardViewResources.AssemblePackageButtonTitle" data-bind="visible: assembleButtonVisible, click:assemblePackage"><i class="icon-white icon-gift"></i></button>
+                    <button class="btn btn-mini btn-primary" title="@DashboardViewResources.PackageAssembledButtonTitle" data-bind="visible: packageAssembledButtonVisible, click:packageAssembled"><i class="icon-white icon-ok"></i></button>
+                    <button class="btn btn-mini btn-primary right" title="@DashboardViewResources.SendPackageButton" data-bind="click: sendPackage, visible: sendPackageButtonVisible"><i class="icon-white icon-plane"></i></button>
+                    <button class="btn btn-mini btn-primary right" title="@DashboardViewResources.PayForPackageButtonTitle" data-bind="click: $root.payForPackage, visible: payForPackageButtonVisible"><i class="icon-white icon-shopping-cart"></i></button>
                     <button class="btn btn-mini btn-danger" title="@DashboardViewResources.RemoveOrderButton" data-bind="click: $parent.removePackage, visible: canBeRemoved"><i class="icon-white icon-remove"></i></button>
                 </td>
             </tr>
@@ -110,8 +113,8 @@
                             <td>$ <span class="editable" data-bind="text: price"></span></td>
                             <td>
                                 <div class="btn-group">
-                                    <button class="btn btn-mini" title="@DashboardViewResources.ReturnItemBackTitle" data-bind="click:$root.moveItemBackToOriginalOrder"><i class="icon-arrow-left"></i></button>
-                                    <button class="btn btn-mini" title="@DashboardViewResources.EditItemTitle" data-bind="click:$parent.showEditItemPopup"><i class="icon icon-edit"></i></button>
+                                    <button class="btn btn-mini" title="@DashboardViewResources.ReturnItemBackTitle" data-bind="visible:$parent.canItemsBeModified, click:$root.moveItemBackToOriginalOrder"><i class="icon-arrow-left"></i></button>
+                                    <button class="btn btn-mini" title="@DashboardViewResources.EditItemTitle" data-bind="visible: $parent.canItemsBeModified,click:$parent.showEditItemPopup"><i class="icon icon-edit"></i></button>
                                     <ul class="dropdown-menu" data-bind="foreach: $root.packages()">
                                         <li><i class="icon-gift"></i><span data-bind="text: name()"></span>(id:<span data-bind="text: id"></span>)</li>
                                     </ul>

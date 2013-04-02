@@ -243,4 +243,10 @@
   <data name="PackageDispatchMethodChanged" xml:space="preserve">
     <value>Dispatch method was successfully updated for package id:{0}</value>
   </data>
+  <data name="TransactionPaymentSucceded" xml:space="preserve">
+    <value>Payment for package id:{0} completed successfully!</value>
+  </data>
+  <data name="TransactionPaymentError" xml:space="preserve">
+    <value>Error occured while performing package payment transaction</value>
+  </data>
 </root>

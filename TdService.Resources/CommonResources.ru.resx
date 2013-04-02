@@ -243,4 +243,10 @@
   <data name="PackageDispatchMethodChanged" xml:space="preserve">
     <value>Способ доставки был успешно обновлен для посылки id:{0}</value>
   </data>
+  <data name="TransactionPaymentSucceded" xml:space="preserve">
+    <value>Оплата посылки id:{0} произведена успешно!</value>
+  </data>
+  <data name="TransactionPaymentError" xml:space="preserve">
+    <value>Во время оплаты посылки произошла ошибка</value>
+  </data>
 </root>

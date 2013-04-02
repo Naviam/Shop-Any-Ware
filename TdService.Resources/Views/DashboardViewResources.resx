@@ -459,4 +459,13 @@
   <data name="SelectDefaultValue" xml:space="preserve">
     <value>Choose..</value>
   </data>
+  <data name="AssemblePackageButtonTitle" xml:space="preserve">
+    <value>Assemble package</value>
+  </data>
+  <data name="PackageAssembledButtonTitle" xml:space="preserve">
+    <value>Package Assembled</value>
+  </data>
+  <data name="PayForPackageButtonTitle" xml:space="preserve">
+    <value>Pay for package</value>
+  </data>
 </root>

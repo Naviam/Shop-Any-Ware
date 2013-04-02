@@ -87,6 +87,7 @@ namespace TdService.Infrastructure.Domain
         TransactionOperationAmountRequired,
         UserIsAlreadyInRole,
         UserIsNotInRole,
-        NoRolesSpecified
+        NoRolesSpecified,
+        WalletAmountNegative
     }
 }

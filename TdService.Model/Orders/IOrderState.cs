@@ -45,5 +45,10 @@ namespace TdService.Model.Orders
         /// Gets a value indicating whether can be removed.
         /// </summary>
         bool CanBeRemoved { get; }
+
+        /// <summary>
+        /// Gets a value indicating whether items can be added to the order
+        /// </summary>
+        bool CanItemsBeAdded { get; }
     }
 }

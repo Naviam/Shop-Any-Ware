@@ -32,5 +32,10 @@ namespace TdService.Repository.MsSql.Extensions
         {
             return context.Packages.Include(p => p.Items);
         }
+
+        public static IQueryable<Package> PackagesWithUserAndWallet(this ShopAnyWareSql context)
+        {
+            return context.Packages.Include(p => p.User.Wallet).Include(p=>p.User.Profile);
+        }
     }
 }
