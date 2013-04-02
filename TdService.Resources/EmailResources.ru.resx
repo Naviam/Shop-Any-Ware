@@ -118,7 +118,38 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="EmailActivationBody" xml:space="preserve">
-    <value>http://{0}/account/activate/{1}/{2}</value>
+    <value>&lt;!DOCTYPE html&gt;
+&lt;html lang="en" xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;title&gt;Авторизация E-mail&lt;/title&gt;
+&lt;/head&gt;
+&lt;body style="background-color: #E9E9E9; margin: 8px; padding: 0; font-size: 12px"&gt;
+    &lt;center&gt;
+    &lt;table style="width: 600px; border: none; font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;"&gt;
+        &lt;tr&gt;
+            &lt;td style="background: url('top.png') no-repeat 0 0; height: 44px; text-align: right; font-size: 18px; color: #fff; font-weight: bold; padding: 0 14px;"&gt;Авторизация E-mail&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                &lt;div style="background-color: #fff; border: 1px solid #D5D5D5; text-align: left; border-radius: 5px; margin: 4px 0; padding: 0 18px; display: block;"&gt;
+                    &lt;p style="font-weight: bold; font-size: 14px"&gt;Необходимо подтвердить e-mail адрес&lt;/p&gt;
+                    &lt;p style="border-bottom: 1px solid #D5D5D5;"&gt;&lt;/p&gt;
+                    &lt;p&gt;Уважаемый(ая) {0}&lt;/p&gt;
+                    &lt;p&gt;Вы зарегистрировались на ресурсе ShopAnyWare.com. Для завершения регистрации Вам необходимо подтвердить Ваш e-mail адрес.&lt;/p&gt;
+                    &lt;p&gt;Для подтверждения нажмите ссылку ниже:&lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;a href="#" style="color: #4e8ecd; text-decoration: underline"&gt;https://shopanyware.com/?hash={1}&lt;/a&gt;
+                    &lt;/p&gt;
+                    &lt;p&gt;Если ссылка не работает, просто скопируйте адрес в адресную строку Вашего браузера&lt;/p&gt;
+                    &lt;p&gt;С уважением, команда ShopAnyWare.&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/table&gt;
+    &lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;</value>
   </data>
   <data name="EmailActivationFrom" xml:space="preserve">
     <value>noreply@shopanyware.ru</value>
