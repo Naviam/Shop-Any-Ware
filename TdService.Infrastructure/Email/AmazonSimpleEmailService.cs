@@ -49,7 +49,8 @@ namespace TdService.Infrastructure.Email
                 request.WithSource(@from);
                 var message = new Message();
                 message.WithSubject(new Content(subject));
-                message.WithBody(new Body(new Content(body)));
+                var html = new Body { Html = new Content(body) };
+                message.WithBody(html);
                 request.WithMessage(message);
                 request.WithReturnPath("noreply@shopanyware.com");
                 client.SendEmail(request);
