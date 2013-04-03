@@ -15,6 +15,9 @@ namespace TdService.Repository.MsSql.Repositories
     using System.Data.Entity;
     using TdService.Repository.MsSql.Extensions;
     using TdService.Model.Membership;
+    using System.Collections.Generic;
+    using System;
+    using System.Linq.Expressions;
 
     /// <summary>
     /// The package repository.
@@ -103,6 +106,18 @@ namespace TdService.Repository.MsSql.Repositories
                 context.Packages.Attach(package);
                 context.Entry<Package>(package).State = System.Data.EntityState.Modified;
                 context.SaveChanges();
+            }
+        }
+
+
+        public List<Package> GetShoppersPackages(bool includeAssebling, bool includePaid)
+        {
+            using (var context = new ShopAnyWareSql())
+            {
+                if (!includeAssebling && !includePaid) return new List<Package>();
+                if (includeAssebling) return context.Packages.Include(p=>p.User).Where(p => p.Status == PackageStatus.Assembling).ToList();
+                if (includePaid) return context.Packages.Include(p => p.User).Where(p => p.Status == PackageStatus.Paid).ToList();
+                return context.Packages.Include(p => p.User).Where(p => p.Status == PackageStatus.Paid || p.Status == PackageStatus.Assembling).ToList();
             }
         }
     }

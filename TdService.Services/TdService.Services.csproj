@@ -164,6 +164,8 @@
     <Compile Include="Messaging\Package\ChangePackageDeliveryMethodResponse.cs" />
     <Compile Include="Messaging\Package\GetRecentPackagesRequest.cs" />
     <Compile Include="Messaging\Package\GetRecentPackagesResponse.cs" />
+    <Compile Include="Messaging\Package\GetUsersPackagesRequest.cs" />
+    <Compile Include="Messaging\Package\GetUsersPackagesResponse.cs" />
     <Compile Include="Messaging\Package\PackageAssembledRequest.cs" />
     <Compile Include="Messaging\Package\PackageAssembledResponse.cs" />
     <Compile Include="Messaging\Package\PayForPackageRequest.cs" />

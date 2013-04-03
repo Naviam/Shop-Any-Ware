@@ -97,6 +97,24 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Show Requested for Assembling .
+        /// </summary>
+        public static string BtnShowAssemblingText {
+            get {
+                return ResourceManager.GetString("BtnShowAssemblingText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show Paid.
+        /// </summary>
+        public static string BtnShowPaidText {
+            get {
+                return ResourceManager.GetString("BtnShowPaidText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         public static string CancelButton {
@@ -169,6 +187,15 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No user packages found.
+        /// </summary>
+        public static string NoUsersPackagesFound {
+            get {
+                return ResourceManager.GetString("NoUsersPackagesFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Page.
         /// </summary>
         public static string PagingText1 {
@@ -228,6 +255,42 @@ namespace TdService.Resources.Views {
         public static string ShopperRoleCannotBeAssigned {
             get {
                 return ResourceManager.GetString("ShopperRoleCannotBeAssigned", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email Notifications.
+        /// </summary>
+        public static string TabHeaderEmailNotifications {
+            get {
+                return ResourceManager.GetString("TabHeaderEmailNotifications", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Packages.
+        /// </summary>
+        public static string TabHeaderPackages {
+            get {
+                return ResourceManager.GetString("TabHeaderPackages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        public static string TabHeaderSettings {
+            get {
+                return ResourceManager.GetString("TabHeaderSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Users.
+        /// </summary>
+        public static string TabHeaderUsers {
+            get {
+                return ResourceManager.GetString("TabHeaderUsers", resourceCulture);
             }
         }
         
@@ -327,6 +390,33 @@ namespace TdService.Resources.Views {
         public static string UserInfoPackages {
             get {
                 return ResourceManager.GetString("UserInfoPackages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Packages to assemble.
+        /// </summary>
+        public static string UserInfoPackagesAssemblingRequested {
+            get {
+                return ResourceManager.GetString("UserInfoPackagesAssemblingRequested", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Packages to dispatch.
+        /// </summary>
+        public static string UserInfoPackagesDispatchRequested {
+            get {
+                return ResourceManager.GetString("UserInfoPackagesDispatchRequested", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Status.
+        /// </summary>
+        public static string UserInfoPackageStatus {
+            get {
+                return ResourceManager.GetString("UserInfoPackageStatus", resourceCulture);
             }
         }
         
