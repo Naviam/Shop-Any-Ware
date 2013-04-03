@@ -7,6 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using TdService.Model.Membership;
 namespace TdService.Model.Packages
 {
@@ -62,5 +63,6 @@ namespace TdService.Model.Packages
         /// <returns></returns>
         void UpdatePackage(Package package);
 
+        List<Package> GetShoppersPackages(bool includeAssebling, bool includePaid);
     }
 }

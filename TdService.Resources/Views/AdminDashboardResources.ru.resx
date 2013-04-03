@@ -231,4 +231,34 @@
   <data name="UserValidationPasswordsShouldMatch" xml:space="preserve">
     <value>Пароли должны совпадать</value>
   </data>
+  <data name="TabHeaderEmailNotifications" xml:space="preserve">
+    <value>Рассылки</value>
+  </data>
+  <data name="TabHeaderPackages" xml:space="preserve">
+    <value>Посылки</value>
+  </data>
+  <data name="TabHeaderSettings" xml:space="preserve">
+    <value>Настройка</value>
+  </data>
+  <data name="TabHeaderUsers" xml:space="preserve">
+    <value>Пользователи</value>
+  </data>
+  <data name="NoUsersPackagesFound" xml:space="preserve">
+    <value>Посылки не найдены</value>
+  </data>
+  <data name="UserInfoPackagesAssemblingRequested" xml:space="preserve">
+    <value>Посылок для сборки</value>
+  </data>
+  <data name="UserInfoPackagesDispatchRequested" xml:space="preserve">
+    <value>Посылок на отправку</value>
+  </data>
+  <data name="UserInfoPackageStatus" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="BtnShowAssemblingText" xml:space="preserve">
+    <value>Для сборки</value>
+  </data>
+  <data name="BtnShowPaidText" xml:space="preserve">
+    <value>Оплаченные</value>
+  </data>
 </root>

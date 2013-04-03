@@ -234,5 +234,22 @@ namespace TdService.UI.Web.Controllers
             };
             return jsonNetResult;
         }
+
+        [Authorize(Roles = "Admin, Operator")]
+        [HttpPost]
+        public ActionResult GetUsersPackages(bool includeAssebling, bool includePaid)
+        {
+            if (!includeAssebling && !includePaid) return null;
+
+            var request = new GetUsersPackagesRequest(){IncludeAssembling=includeAssebling,IncludePaid=includePaid};
+            var response = this.packagesService.GetUsersPackages(request);
+
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = response.ConvertToUsersPackagesViewModel()
+            };
+            return jsonNetResult;
+        }
     }
 }

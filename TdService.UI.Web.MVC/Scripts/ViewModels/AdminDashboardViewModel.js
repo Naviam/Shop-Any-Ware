@@ -186,16 +186,16 @@ function UserInRole(serverModel, translatedRolesArray) {
     }
 }
 
-function AdminDashboardViewModel(serverModel) {
+function UsersTab(serverModel) {
     var self = this;
-    var addressModel = JSON.parse(serverModel);
+    var jsonServerModel = JSON.parse(serverModel);
     self.roles = ko.observableArray();
     self.users = ko.observableArray();
     self.userId = ko.observable();
     self.userEmail = ko.observable().extend({ email: true });;
     self.userListPageSizes = ko.observableArray(['10', '50', '200']);
     self.selectedPageSize = ko.observable(10);
-    self.totalCount = ko.observable(addressModel.TotalCount);
+    self.totalCount = ko.observable(jsonServerModel.TotalCount);
     self.goToPageIndex = ko.observable('').extend({ number: true });
     self.currentRole = -1;//all
     self.currentPage = ko.observable(1);
@@ -203,20 +203,20 @@ function AdminDashboardViewModel(serverModel) {
     self.pageCount = ko.observable(0);
     self.canMoveNext = ko.observable(false);
     self.canMovePrev = ko.observable(false);
-    self.canModifyUserRoles = ko.observable(addressModel.CanModifyUserRoles);
+    self.canModifyUserRoles = ko.observable(jsonServerModel.CanModifyUserRoles);
 
-    $.each(addressModel.Roles, function (index, value) {
+    $.each(jsonServerModel.Roles, function (index, value) {
         var role = new Role(value);
         self.roles.push(role);
     });
-    self.roles.unshift({ roleName: addressModel.AllRolesTranslated, id: -1, selected: ko.observable(true) });
+    self.roles.unshift({ roleName: jsonServerModel.AllRolesTranslated, id: -1, selected: ko.observable(true) });
 
     //global class
-    pageSettings = new PageSettings(addressModel.RoleManagementPermissionsError, addressModel.CanModifyUserRoles, addressModel.UserFilterValiidationMessage, addressModel.MemberDashBoardUrl,
-    addressModel.ShopperRoleCannotBeAssigned, addressModel.UserId, addressModel.CantModifyOwnRole);
+    pageSettings = new PageSettings(jsonServerModel.RoleManagementPermissionsError, jsonServerModel.CanModifyUserRoles, jsonServerModel.UserFilterValiidationMessage, jsonServerModel.MemberDashBoardUrl,
+    jsonServerModel.ShopperRoleCannotBeAssigned, jsonServerModel.UserId, jsonServerModel.CantModifyOwnRole);
 
-    modalWindowValidationMessages = new ModalWindowValidationMessages(addressModel.EmailIsRequired, addressModel.EmailIsIncorrect, addressModel.FirstNameIsRequired,
-        addressModel.LastNameIsRequired, addressModel.PasswordIsRequired, addressModel.PasswordShouldMatch);
+    modalWindowValidationMessages = new ModalWindowValidationMessages(jsonServerModel.EmailIsRequired, jsonServerModel.EmailIsIncorrect, jsonServerModel.FirstNameIsRequired,
+        jsonServerModel.LastNameIsRequired, jsonServerModel.PasswordIsRequired, jsonServerModel.PasswordShouldMatch);
 
     self.newUserViewModel = new NewUserViewModel();
     $('#newUserFormModal').bind('hidden', function () {
@@ -290,7 +290,7 @@ function AdminDashboardViewModel(serverModel) {
 
     self.goToPage = function () {
         if (!self.goToPageIndex.isValid() || self.goToPageIndex() > self.pageCount() || self.goToPageIndex() < 1) {
-            window.showNotice(addressModel.GoToPageIndexValidationMessage, 'Warning');
+            window.showNotice(jsonServerModel.GoToPageIndexValidationMessage, 'Warning');
             return;
         }
         var k = self.goToPageIndex();
@@ -324,4 +324,63 @@ function AdminDashboardViewModel(serverModel) {
         });
     };
     self.loadUsers();
+}
+
+function UserPackage(model) {
+    var self = this;
+    self.id = model.Id;
+    self.email = model.Email;
+    self.Status = model.Status;
+    
+    self.viewShopperDashboard = function () {
+        window.open(pageSettings.memberDashboardUrl + '?userEmail=' + self.email, '_self');
+    };
+}
+
+
+function PackagesTab(serverModel) {
+    var self = this;
+    var jsonServerModel = JSON.parse(serverModel);
+    self.initiallyLoaded = false;
+    self.userPackages = ko.observableArray();
+    self.assemblingRequestedSelected = ko.observable(true);
+    self.dispatchRequestedSelected = ko.observable(false);
+    
+    self.loadUserPackages = function () {
+        if (!self.assemblingRequestedSelected() && !self.dispatchRequestedSelected()) return;
+        $.post("/packages/GetUsersPackages",{"includeAssebling": self.assemblingRequestedSelected(), "includePaid": self.dispatchRequestedSelected()}, function (data) {
+            var response = ko.toJS(data);
+            self.userPackages.removeAll();
+            $.each(response.UsersPackages, function (index, value) {
+                var userPackage = new UserPackage(value);
+                self.userPackages.push(userPackage);
+            });
+        });
+    };
+
+    self.toggleShowAssemblingRequestedPackages = function () {
+        self.assemblingRequestedSelected(!self.assemblingRequestedSelected());
+        self.loadUserPackages();
+    };
+    
+    self.toggleShowDispatchRequestedPackages = function() {
+        self.dispatchRequestedSelected(!self.dispatchRequestedSelected());
+        self.loadUserPackages();
+    };
+
+    self.loadData = function () {
+        if (!self.initiallyLoaded) {
+            self.loadUserPackages();
+            self.initiallyLoaded = true;
+        }
+    };
+}
+
+function AdminDashboardViewModel(serverModel) {
+    var self = this;
+    self.usersTab = new UsersTab(serverModel);
+    self.PackagesTab = new PackagesTab(serverModel);
+    $('#packagesTabHeader').on('show', function (e) {
+            self.PackagesTab.loadData();
+    })
 }

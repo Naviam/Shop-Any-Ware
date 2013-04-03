@@ -853,7 +853,7 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pay for package.
+        ///   Looks up a localized string similar to Pay &amp; Dispatch.
         /// </summary>
         public static string PayForPackageButtonTitle {
             get {

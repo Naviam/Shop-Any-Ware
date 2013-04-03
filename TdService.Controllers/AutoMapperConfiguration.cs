@@ -41,6 +41,10 @@ namespace TdService.UI.Web
     using ItemImageModel = TdService.Services.Messaging.Item.GetOrderItemsResponse.ItemImageModel;
 // ReSharper restore AccessToStaticMemberViaDerivedType
     using UserResponseModel = TdService.Services.Messaging.Membership.GetUsersInRoleResponse.UserResponseModel;
+// ReSharper restore AccessToStaticMemberViaDerivedType
+    using UserPackage = TdService.Services.Messaging.Package.GetUsersPackagesResponse.UserPackage;
+// ReSharper restore AccessToStaticMemberViaDerivedType
+    using UserPackageViewModel = TdService.UI.Web.ViewModels.Package.UsersPackagesViewModel.UserPackageViewModel;
 
     /// <summary>
     /// The auto mapper configuration.
@@ -468,6 +472,15 @@ namespace TdService.UI.Web
                 .ForMember(r => r.MessageType, opt => opt.Ignore()); 
             Mapper.CreateMap<GetUserByIdResponse, UsersInRoleViewModel>();
             Mapper.CreateMap<GetUserByEmailResponse, UsersInRoleViewModel>();
+
+            //get users' packages
+            Mapper.CreateMap<Package, UserPackage>().ConvertUsing<UserPackageConverter>();
+            Mapper.CreateMap<GetUsersPackagesResponse, UsersPackagesViewModel>()
+                .ForMember(r => r.BrokenRules, opt => opt.Ignore())
+                .ForMember(r => r.Message, opt => opt.Ignore())
+                .ForMember(r => r.ErrorCode, opt => opt.Ignore())
+                .ForMember(r => r.MessageType, opt => opt.Ignore());
+            Mapper.CreateMap<UserPackage, UserPackageViewModel>();
         }
 
         /// <summary>
@@ -488,6 +501,17 @@ namespace TdService.UI.Web
             {
                 var value = context.SourceValue.ToString();
                 return new Retailer { Name = value, Url = value };
+            }
+        }
+
+        public class UserPackageConverter:ITypeConverter<Package, UserPackage>
+        {
+            public UserPackage Convert(ResolutionContext context)
+            {
+                var package = context.SourceValue as Package;
+                if (package == null) return null;
+                var converted = new UserPackage {Id = package.UserId, Email=package.User.Email,Status = package.StatusTranslated };
+                return converted;
             }
         }
 

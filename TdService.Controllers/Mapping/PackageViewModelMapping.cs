@@ -57,5 +57,10 @@ namespace TdService.UI.Web.Mapping
         {
             return Mapper.Map<SendPackageResponse, PackageViewModel>(response);
         }
+
+        public static UsersPackagesViewModel ConvertToUsersPackagesViewModel(this GetUsersPackagesResponse response)
+        {
+            return Mapper.Map<GetUsersPackagesResponse, UsersPackagesViewModel>(response);
+        }
     }
 }

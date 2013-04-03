@@ -96,5 +96,12 @@ namespace TdService.Services.Interfaces
         /// <param name="request"></param>
         /// <returns></returns>
         SendPackageResponse SendPackage(SendPackageRequest request);
+
+        /// <summary>
+        /// Gets packages count (assembling and paid)
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        GetUsersPackagesResponse GetUsersPackages(GetUsersPackagesRequest request);
     }
 }
