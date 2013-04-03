@@ -163,7 +163,7 @@ namespace TdService.Services.Implementations
                 var package = this.packageRepository.GetPackageById(request.PackageId);
                 package.DeliveryAddressId = request.DeliverAddressId;
                 this.packageRepository.UpdatePackage(package);
-                return new ChangePackageDeliveryAddressResponse { MessageType = MessageType.Success, Message =string.Format(CommonResources.PackageDeliveryAddressChanged,package.Id) };
+                return new ChangePackageDeliveryAddressResponse { MessageType = MessageType.Success, Message = string.Format(CommonResources.PackageDeliveryAddressChanged, package.Id) };
             }
             catch (Exception ex)
             {
@@ -177,7 +177,7 @@ namespace TdService.Services.Implementations
             try
             {
                 var package = this.packageRepository.GetPackageById(request.PackageId);
-                package.DispatchMethod = (DispatchMethod)Enum.Parse(typeof(DispatchMethod),request.DispatchMethodId.ToString());
+                package.DispatchMethod = (DispatchMethod)Enum.Parse(typeof(DispatchMethod), request.DispatchMethodId.ToString());
                 this.packageRepository.UpdatePackage(package);
                 return new ChangePackageDeliveryMethodResponse { MessageType = MessageType.Success, Message = string.Format(CommonResources.PackageDispatchMethodChanged, package.Id) };
             }
@@ -242,6 +242,22 @@ namespace TdService.Services.Implementations
             {
                 logger.Log(ex.Message);
                 return new SendPackageResponse { MessageType = MessageType.Error, Message = ex.Message };
+            }
+        }
+
+
+        public GetUsersPackagesResponse GetUsersPackages(GetUsersPackagesRequest request)
+        {
+            try
+            {
+                var packages = this.packageRepository.GetShoppersPackages(request.IncludeAssembling, request.IncludePaid);
+                var result = packages.ConvertToUsersPackagesCollection();
+                return result;
+            }
+            catch(Exception ex)
+            {
+                logger.Log(ex.Message);
+                return new GetUsersPackagesResponse { MessageType = MessageType.Error, Message = ex.Message };
             }
         }
     }

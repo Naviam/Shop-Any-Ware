@@ -72,6 +72,12 @@ namespace TdService.Services.Mapping
             return Mapper.Map<Package, SendPackageResponse>(package);
         }
 
-        
+        public static GetUsersPackagesResponse ConvertToUsersPackagesCollection(this List<Package> packages)
+        {
+            return new GetUsersPackagesResponse
+                {
+                    UsersPackages = Mapper.Map<List<Package>, List<TdService.Services.Messaging.Package.GetUsersPackagesResponse.UserPackage>>(packages)
+                };
+        }
     }
 }

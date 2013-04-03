@@ -466,6 +466,6 @@
     <value>Посылка собрана</value>
   </data>
   <data name="PayForPackageButtonTitle" xml:space="preserve">
-    <value>Оплатить посылку</value>
+    <value>Оплатить и отправить</value>
   </data>
 </root>

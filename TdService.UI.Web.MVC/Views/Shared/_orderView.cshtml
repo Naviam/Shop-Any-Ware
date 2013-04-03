@@ -25,7 +25,7 @@
                         </ul>
                     </span>*@
                     <select style="width:100px;" data-bind="options:  $root.packagesAvailableForMove, optionsText: 'name', visible: canBeMoved,  value: selectedPackage, optionsCaption: '@DashboardViewResources.SelectDefaultValue', event: {change: function(data, event){ $root.moveEntireOrderToPackage($data)} }"></select>
-                    <button class="btn btn-mini" title="@DashboardViewResources.ReturnOrderButton" data-toggle="modal" data-bind="visible: canBeRequestedForReturn"><i class="icon icon-retweet"></i></button>
+                    @*<button class="btn btn-mini" title="@DashboardViewResources.ReturnOrderButton" data-toggle="modal" data-bind="visible: canBeRequestedForReturn"><i class="icon icon-retweet"></i></button>*@
                     <button class="btn btn-mini btn-danger" title="@DashboardViewResources.RemoveOrderButton" data-bind="click: $parent.removeOrder, visible: canBeRemoved"><i class="icon-white icon-remove"></i></button>
                 </td>
             </tr>
