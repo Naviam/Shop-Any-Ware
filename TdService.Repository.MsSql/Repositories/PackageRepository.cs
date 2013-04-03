@@ -115,9 +115,9 @@ namespace TdService.Repository.MsSql.Repositories
             using (var context = new ShopAnyWareSql())
             {
                 if (!includeAssebling && !includePaid) return new List<Package>();
-                if (includeAssebling) return context.Packages.Include(p=>p.User).Where(p => p.Status == PackageStatus.Assembling).ToList();
-                if (includePaid) return context.Packages.Include(p => p.User).Where(p => p.Status == PackageStatus.Paid).ToList();
-                return context.Packages.Include(p => p.User).Where(p => p.Status == PackageStatus.Paid || p.Status == PackageStatus.Assembling).ToList();
+                if (includeAssebling && includePaid) return context.Packages.Include(p => p.Items).Include(p => p.User).Where(p => p.Status == PackageStatus.Paid || p.Status == PackageStatus.Assembling).ToList();
+                if (includeAssebling) return context.Packages.Include(p => p.Items).Include(p => p.User).Where(p => p.Status == PackageStatus.Assembling).ToList();
+                return context.Packages.Include(p => p.Items).Include(p => p.User).Where(p => p.Status == PackageStatus.Paid).ToList();
             }
         }
     }

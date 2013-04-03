@@ -267,4 +267,16 @@
   <data name="BtnShowPaidText" xml:space="preserve">
     <value>Show Paid</value>
   </data>
+  <data name="PackageInfoDispatchMethod" xml:space="preserve">
+    <value>Dispatch Method</value>
+  </data>
+  <data name="PackageInfoItemsCount" xml:space="preserve">
+    <value>Items Count</value>
+  </data>
+  <data name="PackageInfoPackageId" xml:space="preserve">
+    <value>Package Id</value>
+  </data>
+  <data name="PackageInfoPackageName" xml:space="preserve">
+    <value>Package Name</value>
+  </data>
 </root>
