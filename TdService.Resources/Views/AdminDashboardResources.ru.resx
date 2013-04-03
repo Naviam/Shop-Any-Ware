@@ -261,4 +261,16 @@
   <data name="BtnShowPaidText" xml:space="preserve">
     <value>Оплаченные</value>
   </data>
+  <data name="PackageInfoDispatchMethod" xml:space="preserve">
+    <value>Метод отправки</value>
+  </data>
+  <data name="PackageInfoItemsCount" xml:space="preserve">
+    <value>Количество товаров</value>
+  </data>
+  <data name="PackageInfoPackageId" xml:space="preserve">
+    <value>Id Посылки</value>
+  </data>
+  <data name="PackageInfoPackageName" xml:space="preserve">
+    <value>Название посылки</value>
+  </data>
 </root>

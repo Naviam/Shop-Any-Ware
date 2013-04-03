@@ -164,14 +164,22 @@
                 <tr>
                     <th>@AdminDashboardResources.UserInfoId</th>
                     <th>@AdminDashboardResources.UserInfoUsername</th>
+                    <th>@AdminDashboardResources.PackageInfoPackageId</th>
+                    <th>@AdminDashboardResources.PackageInfoPackageName</th>
+                    <th>@AdminDashboardResources.PackageInfoDispatchMethod</th>
+                    <th>@AdminDashboardResources.PackageInfoItemsCount</th>
                     <th>@AdminDashboardResources.UserInfoPackageStatus</th>
                 </tr>
             </thead>
             <tbody data-bind='foreach: userPackages'>
                 <tr data-bind="click:viewShopperDashboard">
-                    <td data-bind='text: id'></td>
+                    <td data-bind='text: userId'></td>
                     <td data-bind='text: email'></td>
-                    <td data-bind='text: Status'></td>
+                    <td data-bind='text: packageId'></td>
+                    <td data-bind='text: packageName'></td>
+                    <td data-bind='text: dispatchMethod'></td>
+                    <td data-bind='text: itemsCount'></td>
+                    <td data-bind='text: status'></td>
                 </tr>
             </tbody>
         </table>

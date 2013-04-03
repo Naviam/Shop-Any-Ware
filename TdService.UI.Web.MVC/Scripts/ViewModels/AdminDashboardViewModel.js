@@ -328,10 +328,15 @@ function UsersTab(serverModel) {
 
 function UserPackage(model) {
     var self = this;
-    self.id = model.Id;
+    self.userId = model.UserId;
+    self.packageId = model.packageId;
     self.email = model.Email;
-    self.Status = model.Status;
-    
+    self.status = model.Status;
+    self.packageId = model.PackageId;
+    self.packageName = model.PackageName;
+    self.dispatchMethod = model.DispatchMethodTranslated;
+    self.itemsCount = model.ItemsCount;
+
     self.viewShopperDashboard = function () {
         window.open(pageSettings.memberDashboardUrl + '?userEmail=' + self.email, '_self');
     };
