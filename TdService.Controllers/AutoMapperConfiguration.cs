@@ -510,7 +510,14 @@ namespace TdService.UI.Web
             {
                 var package = context.SourceValue as Package;
                 if (package == null) return null;
-                var converted = new UserPackage {Id = package.UserId, Email=package.User.Email,Status = package.StatusTranslated };
+                var converted = new UserPackage {UserId = package.UserId,
+                    Email=package.User.Email,
+                    Status = package.StatusTranslated,
+                    PackageId = package.Id,
+                    ItemsCount = package.Items.Count,
+                    DispatchMethod = package.DispatchMethod.ToString(),
+                    PackageName = package.Name
+                };
                 return converted;
             }
         }

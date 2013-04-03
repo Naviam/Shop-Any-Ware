@@ -196,6 +196,42 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dispatch Method.
+        /// </summary>
+        public static string PackageInfoDispatchMethod {
+            get {
+                return ResourceManager.GetString("PackageInfoDispatchMethod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Items Count.
+        /// </summary>
+        public static string PackageInfoItemsCount {
+            get {
+                return ResourceManager.GetString("PackageInfoItemsCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Package Id.
+        /// </summary>
+        public static string PackageInfoPackageId {
+            get {
+                return ResourceManager.GetString("PackageInfoPackageId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Package Name.
+        /// </summary>
+        public static string PackageInfoPackageName {
+            get {
+                return ResourceManager.GetString("PackageInfoPackageName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Page.
         /// </summary>
         public static string PagingText1 {
