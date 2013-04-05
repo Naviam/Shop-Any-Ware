@@ -12,9 +12,9 @@ namespace TdService.Repository.MsSql.Repositories
     using System.Collections.Generic;
     using System.Data;
     using System.Linq;
-    using System.Data.Entity;
-    using TdService.Repository.MsSql.Extensions;
+
     using TdService.Model.Items;
+    using TdService.Repository.MsSql.Extensions;
 
     /// <summary>
     /// The items repository.
@@ -110,12 +110,22 @@ namespace TdService.Repository.MsSql.Repositories
         /// <summary>
         /// Adds image to item
         /// </summary>
+        /// <param name="itemId">
+        /// The item Id.
+        /// </param>
+        /// <param name="image">
+        /// The image.
+        /// </param>
         public void AddImageToItem(int itemId, ItemImage image)
         {
             using (var context = new ShopAnyWareSql())
             {
-                var item = context.ItemsWithImages().SingleOrDefault(i=> i.Id.Equals(itemId));
-                item.Images.Add(image);
+                var item = context.ItemsWithImages().SingleOrDefault(i => i.Id.Equals(itemId));
+                if (item != null)
+                {
+                    item.Images.Add(image);
+                }
+
                 context.SaveChanges();
             }
         }
@@ -190,9 +200,6 @@ namespace TdService.Repository.MsSql.Repositories
         /// </summary>
         /// <param name="itemId">
         /// The item id.
-        /// </param>
-        /// <param name="orderId">
-        /// The order Id.
         /// </param>
         /// <returns>
         /// The <see cref="Item"/>.

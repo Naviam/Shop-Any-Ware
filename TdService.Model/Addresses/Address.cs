@@ -27,6 +27,11 @@ namespace TdService.Model.Addresses
         public string Country { get; set; }
 
         /// <summary>
+        /// Gets or sets the country 1.
+        /// </summary>
+        public Country Country1 { get; set; }
+
+        /// <summary>
         /// Gets or sets Region.
         /// </summary>
         public string Region { get; set; }

@@ -7,15 +7,14 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System.Globalization;
-
 namespace TdService.Repository.MsSql.StaticDataSeed
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
 
-    using Model.Balance;
-    using Model.Membership;
+    using TdService.Model.Balance;
+    using TdService.Model.Membership;
 
     /// <summary>
     /// Seed users and roles.
@@ -76,8 +75,8 @@ namespace TdService.Repository.MsSql.StaticDataSeed
 
             var userOleg = new User
             {
-                Email = "tdservice@mail.ru",
-                Password = "1111111",
+                Email = "tdservice.corp@gmail.com",
+                Password = "1234567",
                 Roles = new List<Role> { adminRole },
                 Wallet = new Wallet { Amount = 0.00m },
                 Profile = profileOleg,
@@ -155,7 +154,6 @@ namespace TdService.Repository.MsSql.StaticDataSeed
             context.Users.Add(consultant);
             context.SaveChanges();
 
-
             // consultant
             var profileKotg = new Profile
             {
@@ -181,22 +179,22 @@ namespace TdService.Repository.MsSql.StaticDataSeed
             {
                 var s = i.ToString(CultureInfo.InvariantCulture);
                 var bulkProfile = new Profile
-                {
-                    FirstName = "First Name "+s,
-                    LastName = "Last name " + s,
-                    NotifyOnOrderStatusChanged = true,
-                    NotifyOnPackageStatusChanged = true
-                };
+                                      {
+                                          FirstName = "First Name " + s, 
+                                          LastName = "Last name " + s, 
+                                          NotifyOnOrderStatusChanged = true, 
+                                          NotifyOnPackageStatusChanged = true
+                                      };
                 context.Profiles.Add(bulkProfile);
                 context.SaveChanges();
 
                 var bulkUser = new User
                 {
-                    Email = string.Format("user{0}@gmail.com",s),
-                    Password = "111111",
-                    Profile = bulkProfile,
-                    Roles = new List<Role> {shopperRole},
-                    Wallet = new Wallet { Amount =500 }
+                    Email = string.Format("user{0}@gmail.com", s), 
+                    Password = "111111", 
+                    Profile = bulkProfile, 
+                    Roles = new List<Role> { shopperRole }, 
+                    Wallet = new Wallet { Amount = 500 }
                 };
                 context.Users.Add(bulkUser);
                 context.SaveChanges();
