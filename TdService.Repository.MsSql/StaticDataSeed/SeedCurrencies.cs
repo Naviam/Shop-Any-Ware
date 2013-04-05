@@ -17,7 +17,7 @@ namespace TdService.Repository.MsSql.StaticDataSeed
     public static class SeedCurrencies
     {
         /// <summary>
-        /// Populate db with currencies.
+        /// Populate DB with currencies.
         /// </summary>
         /// <param name="context">
         /// The context.

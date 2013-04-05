@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configurations\CountryConfiguration.cs" />
     <Compile Include="Configurations\CurrencyConfiguration.cs" />
     <Compile Include="Configurations\DeliveryAddressConfiguration.cs" />
     <Compile Include="Configurations\DimensionsConfiguration.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="ShopAnyWareSql.cs" />
     <Compile Include="Repositories\MembershipRepository.cs" />
+    <Compile Include="StaticDataSeed\SeedCountries.cs" />
     <Compile Include="StaticDataSeed\SeedCurrencies.cs" />
     <Compile Include="StaticDataSeed\SeedMembership.cs" />
     <Compile Include="StaticDataSeed\SeedOrders.cs" />

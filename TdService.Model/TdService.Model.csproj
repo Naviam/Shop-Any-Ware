@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Addresses\Address.cs" />
     <Compile Include="Addresses\AddressBusinessRules.cs" />
+    <Compile Include="Addresses\Country.cs" />
     <Compile Include="Addresses\DeliveryAddressBusinessRules.cs" />
     <Compile Include="Addresses\InvalidAddressException.cs" />
     <Compile Include="Addresses\InvalidDeliveryAddressException.cs" />
