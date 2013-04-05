@@ -11,7 +11,7 @@ namespace TdService.Repository.MsSql.Configurations
     using TdService.Model.Balance;
 
     /// <summary>
-    /// This class describes the configuration of currency db table.
+    /// This class describes the configuration of currency DB table.
     /// </summary>
     public class CurrencyConfiguration : EntityTypeConfiguration<Currency>
     {

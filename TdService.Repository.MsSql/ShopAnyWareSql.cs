@@ -102,6 +102,11 @@ namespace TdService.Repository.MsSql
 // ReSharper restore UnusedAutoPropertyAccessor.Local
 
         /// <summary>
+        /// Gets or sets the countries.
+        /// </summary>
+        public DbSet<Country> Countries { get; set; }
+
+        /// <summary>
         /// Gets or sets the item images.
         /// </summary>
         // ReSharper disable UnusedAutoPropertyAccessor.Local
@@ -121,6 +126,7 @@ namespace TdService.Repository.MsSql
             modelBuilder.Configurations.Add(new DeliveryAddressConfiguration());
             modelBuilder.Configurations.Add(new ProfileConfiguration());
             modelBuilder.Configurations.Add(new CurrencyConfiguration());
+            modelBuilder.Configurations.Add(new CountryConfiguration());
             modelBuilder.Configurations.Add(new RetailerConfiguration());
             modelBuilder.Configurations.Add(new OrderConfiguration());
             modelBuilder.Configurations.Add(new PackageConfiguration());
@@ -147,6 +153,7 @@ namespace TdService.Repository.MsSql
                 SeedMembership.Populate(context);
                 SeedCurrencies.Populate(context);
                 SeedRetailers.Populate(context, new FileWebStorage());
+                SeedCountries.Populate(context, new FileWebStorage());
                 SeedOrders.Populate(context);
                 SeedPackages.Populate(context);
 
