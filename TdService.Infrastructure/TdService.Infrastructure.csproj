@@ -44,6 +44,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\AWSSDK.1.5.16.1\lib\AWSSDK.dll</HintPath>
     </Reference>
+    <Reference Include="DotNetShipping">
+      <HintPath>..\packages\DotNetShipping.0.8.1.12151\lib\net40\DotNetShipping.dll</HintPath>
+    </Reference>
     <Reference Include="LinqToExcel, Version=1.7.0.0, Culture=neutral, PublicKeyToken=9c8ea65a58f03f1f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\LinqToExcel_x64.1.7.0\lib\LinqToExcel.dll</HintPath>
@@ -68,6 +71,9 @@
     <Reference Include="Remotion.Interfaces, Version=1.13.52.2, Culture=neutral, PublicKeyToken=0669cf0452175907, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\LinqToExcel_x64.1.7.0\lib\Remotion.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="SeeSharpShip">
+      <HintPath>..\packages\SeeSharpShip.0.1.6.0\lib\net40\SeeSharpShip.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -115,6 +121,7 @@
     <Compile Include="Helpers\ExcelHelper.cs" />
     <Compile Include="Helpers\PriceHelper.cs" />
     <Compile Include="Helpers\RetailersSource.cs" />
+    <Compile Include="Helpers\ShippingHelper.cs" />
     <Compile Include="Helpers\UrlHelper.cs" />
     <Compile Include="HtmlParser.cs" />
     <Compile Include="Logging\DummyLogger.cs" />

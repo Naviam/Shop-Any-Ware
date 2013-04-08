@@ -116,6 +116,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Account\MembershipServiceTests.cs" />
+    <Compile Include="Shipping\ShippingHelperTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
