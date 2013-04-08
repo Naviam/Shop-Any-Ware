@@ -11,6 +11,7 @@ namespace TdService.UI.Web.Controllers.Base
 {
     using System.Globalization;
     using System.Threading;
+    using System.Web;
     using System.Web.Mvc;
 
     /// <summary>
@@ -26,9 +27,21 @@ namespace TdService.UI.Web.Controllers.Base
         /// </param>
         protected override void Initialize(System.Web.Routing.RequestContext requestContext)
         {
-            if (requestContext.HttpContext.Request.Cookies["culture"] != null)
+            var cultureCookie = requestContext.HttpContext.Request.Cookies["culture"];
+            if (cultureCookie == null)
             {
-                var culture = new CultureInfo(requestContext.HttpContext.Request.Cookies["culture"].Value);
+                // get domain name
+                var url = this.Request.Url;
+                if (url != null && url.AbsoluteUri.IndexOf("shopanyware.ru", System.StringComparison.Ordinal) >= 0)
+                {
+                    cultureCookie = new HttpCookie("culture", "ru");
+                    Response.Cookies.Set(cultureCookie);
+                }
+            }
+
+            if (cultureCookie != null)
+            {
+                var culture = new CultureInfo(cultureCookie.Value);
                 Thread.CurrentThread.CurrentCulture = culture;
                 Thread.CurrentThread.CurrentUICulture = culture;
             }
