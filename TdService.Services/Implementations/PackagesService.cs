@@ -260,5 +260,30 @@ namespace TdService.Services.Implementations
                 return new GetUsersPackagesResponse { MessageType = MessageType.Error, Message = ex.Message };
             }
         }
+
+
+        public UpdatePackageTotalSizeResponse UpdatePackageTotalSize(UpdatePackageTotalSizeRequest request)
+        {
+            try
+            {
+                var package = this.packageRepository.GetPackageById(request.PackageId);
+                package.TotalWeight = request.WeightPounds;
+                package.Dimensions.Girth = request.DimensionsGirth;
+                package.Dimensions.Height = request.DimensionsHeight;
+                package.Dimensions.Length = request.DimensionsLength;
+                package.Dimensions.Width = request.DimensionsWidth;
+                this.packageRepository.UpdatePackage(package);
+                var response = package.ConvertToUpdatePackageTotalSizeResponse();
+                response.MessageType = MessageType.Success;
+                response.Message = DashboardViewResources.PackageSizeUpdated;
+                return response;
+            }
+            catch (Exception ex)
+            {
+                logger.Log(ex.Message);
+                return new UpdatePackageTotalSizeResponse { MessageType = MessageType.Error, Message = ex.Message };
+            }
+
+        }
     }
 }

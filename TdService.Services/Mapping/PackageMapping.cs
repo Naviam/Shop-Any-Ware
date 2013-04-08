@@ -79,5 +79,10 @@ namespace TdService.Services.Mapping
                     UsersPackages = Mapper.Map<List<Package>, List<TdService.Services.Messaging.Package.GetUsersPackagesResponse.UserPackage>>(packages)
                 };
         }
+
+        public static UpdatePackageTotalSizeResponse ConvertToUpdatePackageTotalSizeResponse(this Package package)
+        {
+            return Mapper.Map<Package, UpdatePackageTotalSizeResponse>(package);
+        }
     }
 }

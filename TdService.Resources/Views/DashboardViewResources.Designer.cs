@@ -277,6 +277,15 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Package size.
+        /// </summary>
+        public static string EditPackageSizePopupTitle {
+            get {
+                return ResourceManager.GetString("EditPackageSizePopupTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Example.
         /// </summary>
         public static string ExampleHeader {
@@ -826,6 +835,33 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Girth.
+        /// </summary>
+        public static string PackageGirthHeader {
+            get {
+                return ResourceManager.GetString("PackageGirthHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Height.
+        /// </summary>
+        public static string PackageHeightHeader {
+            get {
+                return ResourceManager.GetString("PackageHeightHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Length.
+        /// </summary>
+        public static string PackageLengthHeader {
+            get {
+                return ResourceManager.GetString("PackageLengthHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
         public static string PackageNameHeader {
@@ -849,6 +885,33 @@ namespace TdService.Resources.Views {
         public static string PackagesHeader {
             get {
                 return ResourceManager.GetString("PackagesHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Package size successfully updated.
+        /// </summary>
+        public static string PackageSizeUpdated {
+            get {
+                return ResourceManager.GetString("PackageSizeUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Weight.
+        /// </summary>
+        public static string PackageWeightHeader {
+            get {
+                return ResourceManager.GetString("PackageWeightHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Width.
+        /// </summary>
+        public static string PackageWidthHeader {
+            get {
+                return ResourceManager.GetString("PackageWidthHeader", resourceCulture);
             }
         }
         
@@ -984,6 +1047,15 @@ namespace TdService.Resources.Views {
         public static string SendPackageButton {
             get {
                 return ResourceManager.GetString("SendPackageButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set package total size &amp; weight.
+        /// </summary>
+        public static string SetPackageTotalSizeButtonTitle {
+            get {
+                return ResourceManager.GetString("SetPackageTotalSizeButtonTitle", resourceCulture);
             }
         }
         
