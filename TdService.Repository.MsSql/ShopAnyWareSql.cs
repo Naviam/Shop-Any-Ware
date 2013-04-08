@@ -152,11 +152,10 @@ namespace TdService.Repository.MsSql
                 context.Database.ExecuteSqlCommand("ALTER TABLE Retailers ADD CONSTRAINT rc_Url UNIQUE(Url)");
                 SeedMembership.Populate(context);
                 SeedCurrencies.Populate(context);
-                SeedRetailers.Populate(context, new FileWebStorage());
                 SeedCountries.Populate(context, new FileWebStorage());
                 SeedOrders.Populate(context);
                 SeedPackages.Populate(context);
-
+                SeedRetailers.Populate(context, new FileWebStorage());
                 base.Seed(context);
             }
         }

@@ -251,5 +251,20 @@ namespace TdService.UI.Web.Controllers
             };
             return jsonNetResult;
         }
+
+        [Authorize(Roles = "Admin, Operator")]
+        [HttpPost]
+        public ActionResult UpdateTotalSize(PackageSizePopupViewModel model)
+        {
+            var request = model.ConvertToUpdatePackageTotalSizeRequest();
+            var response = this.packagesService.UpdatePackageTotalSize(request);
+
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = response.ConvertToUsersPackagesViewModel()
+            };
+            return jsonNetResult;
+        }
     }
 }

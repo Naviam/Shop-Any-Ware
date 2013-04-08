@@ -77,5 +77,31 @@ namespace TdService.Services.Messaging.Package.Base
         /// Gets or sets a value indicating whether package can be paid.
         /// </summary>
         public bool CanBePaidFor { get; set; }
+
+        /// <summary>
+        /// Gets or sets Weight Pounds.
+        /// </summary>
+        public decimal TotalWeight { get; set; }
+
+        /// <summary>
+        /// Gets or sets the dimensions length.
+        /// </summary>
+        public decimal DimensionsLength { get; set; }
+
+        /// <summary>
+        /// Gets or sets the dimensions height.
+        /// </summary>
+        public decimal DimensionsHeight { get; set; }
+
+        /// <summary>
+        /// Gets or sets the dimensions width.
+        /// </summary>
+        public decimal DimensionsWidth { get; set; }
+
+        /// <summary>
+        /// Gets or sets the dimensions girth.
+        /// </summary>
+        public decimal DimensionsGirth { get; set; }
+
     }
 }

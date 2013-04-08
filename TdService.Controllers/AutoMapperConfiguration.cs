@@ -481,6 +481,12 @@ namespace TdService.UI.Web
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
             Mapper.CreateMap<UserPackage, UserPackageViewModel>();
+
+            //update package total size
+            Mapper.CreateMap<PackageSizePopupViewModel, UpdatePackageTotalSizeRequest>()
+                .ForMember(r => r.IdentityToken, opt => opt.Ignore());
+            Mapper.CreateMap<UpdatePackageTotalSizeResponse, PackageViewModel>();
+            Mapper.CreateMap<Package, UpdatePackageTotalSizeResponse>();
         }
 
         /// <summary>
