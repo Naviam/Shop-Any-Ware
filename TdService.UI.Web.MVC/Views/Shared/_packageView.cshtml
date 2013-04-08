@@ -17,6 +17,7 @@
                         <span data-bind="if: status() == 'Delivered'">@DashboardViewResources.PackageDeliveredDateHeader</span>: 
                         <span data-bind="text: packageDate"></span>
                     </span>&nbsp;
+                    <button class="btn btn-mini btn-primary right" title="@DashboardViewResources.SetPackageTotalSizeButtonTitle" data-bind="click: openSetPackageTotalSizePopup, visible: setPackageTotalSizeButtonVisible"><i class="icon-white icon-tasks"></i></button>
                     <button class="btn btn-mini btn-primary" title="@DashboardViewResources.AssemblePackageButtonTitle" data-bind="visible: assembleButtonVisible, click:assemblePackage"><i class="icon-white icon-gift"></i></button>
                     <button class="btn btn-mini btn-primary" title="@DashboardViewResources.PackageAssembledButtonTitle" data-bind="visible: packageAssembledButtonVisible, click:packageAssembled"><i class="icon-white icon-ok"></i></button>
                     <button class="btn btn-mini btn-primary right" title="@DashboardViewResources.SendPackageButton" data-bind="click: sendPackage, visible: sendPackageButtonVisible"><i class="icon-white icon-plane"></i></button>
@@ -136,4 +137,5 @@
         </div>
     </div>
     @{ this.Html.RenderPartial("itemDetailsPopup"); }
+    @{ this.Html.RenderPartial("PackageSizePopup"); }
 </div>

@@ -468,4 +468,28 @@
   <data name="PayForPackageButtonTitle" xml:space="preserve">
     <value>Оплатить и отправить</value>
   </data>
+  <data name="SetPackageTotalSizeButtonTitle" xml:space="preserve">
+    <value>Редактировать размер и вес посылки</value>
+  </data>
+  <data name="EditPackageSizePopupTitle" xml:space="preserve">
+    <value>Размеры посылки</value>
+  </data>
+  <data name="PackageGirthHeader" xml:space="preserve">
+    <value>Обхват</value>
+  </data>
+  <data name="PackageHeightHeader" xml:space="preserve">
+    <value>Высота</value>
+  </data>
+  <data name="PackageLengthHeader" xml:space="preserve">
+    <value>Длина</value>
+  </data>
+  <data name="PackageWeightHeader" xml:space="preserve">
+    <value>Вес</value>
+  </data>
+  <data name="PackageWidthHeader" xml:space="preserve">
+    <value>Ширина</value>
+  </data>
+  <data name="PackageSizeUpdated" xml:space="preserve">
+    <value>Размер посылки успешно изменен</value>
+  </data>
 </root>

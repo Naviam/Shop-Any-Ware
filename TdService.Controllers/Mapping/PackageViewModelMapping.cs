@@ -62,5 +62,15 @@ namespace TdService.UI.Web.Mapping
         {
             return Mapper.Map<GetUsersPackagesResponse, UsersPackagesViewModel>(response);
         }
+
+        public static UpdatePackageTotalSizeRequest ConvertToUpdatePackageTotalSizeRequest(this PackageSizePopupViewModel model)
+        {
+            return Mapper.Map<PackageSizePopupViewModel, UpdatePackageTotalSizeRequest>(model);
+        }
+
+        public static PackageViewModel ConvertToUsersPackagesViewModel(this UpdatePackageTotalSizeResponse response)
+        {
+            return Mapper.Map<UpdatePackageTotalSizeResponse, PackageViewModel>(response);
+        }
     }
 }

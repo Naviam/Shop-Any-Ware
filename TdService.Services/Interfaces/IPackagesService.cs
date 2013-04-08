@@ -103,5 +103,12 @@ namespace TdService.Services.Interfaces
         /// <param name="request"></param>
         /// <returns></returns>
         GetUsersPackagesResponse GetUsersPackages(GetUsersPackagesRequest request);
+
+        /// <summary>
+        /// Updates total package size. Available for operator
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        UpdatePackageTotalSizeResponse UpdatePackageTotalSize(UpdatePackageTotalSizeRequest request);
     }
 }

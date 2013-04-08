@@ -44,6 +44,32 @@ namespace TdService.UI.Web.ViewModels.Package
         public string Status { get; set; }
 
         /// <summary>
+        /// total Weight package weight. Set by operator
+        /// </summary>
+        public decimal TotalWeight { get; set; }
+
+        /// <summary>
+        /// Gets or sets the dimensions length.
+        /// </summary>
+        public decimal DimensionsLength { get; set; }
+
+        /// <summary>
+        /// Gets or sets the dimensions height.
+        /// </summary>
+        public decimal DimensionsHeight { get; set; }
+
+        /// <summary>
+        /// Gets or sets the dimensions width.
+        /// </summary>
+        public decimal DimensionsWidth { get; set; }
+
+        /// <summary>
+        /// Gets or sets the dimensions girth.
+        /// </summary>
+        public decimal DimensionsGirth { get; set; }
+
+
+        /// <summary>
         /// Gets the status translated.
         /// </summary>
         public string StatusTranslated

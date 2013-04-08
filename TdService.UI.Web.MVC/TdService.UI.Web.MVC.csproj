@@ -430,6 +430,7 @@
     <Content Include="Views\Operator\Dashboard.cshtml" />
     <Content Include="Views\Home\Rate.cshtml" />
     <Content Include="Views\Shared\itemDetailsPopup.cshtml" />
+    <Content Include="Views\Shared\PackageSizePopup.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

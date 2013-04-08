@@ -136,6 +136,11 @@ namespace TdService.Model.Packages
         public Dimensions Dimensions { get; set; }
 
         /// <summary>
+        /// total Weight package weight. Set by operator
+        /// </summary>
+        public decimal TotalWeight { get; set; }
+
+        /// <summary>
         /// Gets or sets the items.
         /// </summary>
         public List<Item> Items { get; set; }

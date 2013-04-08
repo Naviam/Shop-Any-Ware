@@ -1,7 +1,57 @@
-﻿function Package(serverModel) {
+﻿function PopupPackageSizeViewModel(packageObj) {
+    /// <summary>Add item view model (for popup).</summary>
+    var self = this;
+    self.package = packageObj;
+    self.weight = ko.observable(packageObj.weight()).extend({ number: { message: modalWindowValidationMessages.invalidWeight } });
+    self.dimHeight = ko.observable(packageObj.dimHeight()).extend({ number: { message: modalWindowValidationMessages.invalidHeight } });
+    self.dimLength = ko.observable(packageObj.dimLength()).extend({ number: { message: modalWindowValidationMessages.invalidLength } });
+    self.dimWidth = ko.observable(packageObj.dimWidth()).extend({ number: { message: modalWindowValidationMessages.invalidWidth } });
+    self.dimGirth = ko.observable(packageObj.dimGirth()).extend({ number: { message: modalWindowValidationMessages.invalidGirth } });
+
+    //size popup dom id
+    self.popupDomId = ko.computed(function () {
+        return "sizePopup" + self.package.id();
+    });
+
+    self.errorsVisible = ko.observable(false);
+    self.brokenRules = ko.observableArray();
+    self.validationModel = ko.validatedObservable({
+        weight: self.weight,
+        dimHeight: self.dimHeight,
+        dimLength: self.dimLength,
+        dimWidth: self.dimWidth,
+        dimGirth: self.dimGirth
+    });
+    self.savePackageSize = function () {
+        if (!self.validationModel.isValid()) {
+            self.errorsVisible(true);
+            return;
+        }
+
+        $.post("/packages/updateTotalSize", {
+            "PackageId":self.package.id(),
+            "WeightPounds": self.weight(),
+            "DimensionsLength": self.dimLength(),
+            "DimensionsHeight": self.dimHeight(),
+            "DimensionsWidth": self.dimWidth(),
+            "DimensionsGirth": self.dimGirth()}, function (data) {
+                var model = ko.toJS(data);
+                if (model.MessageType == "Success") {
+                    self.package.weight(self.weight());
+                    self.package.dimHeight(self.dimHeight());
+                    self.package.dimLength(self.dimLength());
+                    self.package.dimWidth(self.dimWidth());
+                    self.package.dimGirth(self.dimGirth());
+                    $('#' + self.popupDomId()).modal('hide');
+                    window.showNotice(data.Message, data.MessageType);
+                }
+        });
+    };
+}
+
+function Package(serverModel) {
     /// <summary>Package view model.</summary>
     var self = this;
-
 
     // default model properties
     self.message = ko.observable(serverModel.Message);
@@ -24,10 +74,19 @@
     self.status = ko.observable(serverModel.Status);
     self.statusTranslated = ko.observable(serverModel.StatusTranslated);
     self.isCollapsed = ko.observable(false);
-
+    
     // package view model collections
     self.items = ko.observableArray();
 
+    //size&weight
+    self.dimHeight =  ko.observable(serverModel.DimensionsHeight);
+    self.dimLength =  ko.observable(serverModel.DimensionsLength);
+    self.dimWidth =  ko.observable(serverModel.DimensionsWidth);
+    self.dimGirth =  ko.observable(serverModel.DimensionsGirth);
+    self.weight =  ko.observable(serverModel.TotalWeight);
+
+    //size&weight edit popup
+    self.popupPackageSizeViewModel = new PopupPackageSizeViewModel(self);
 
     // package state properties
     self.canBeRemoved = ko.observable(serverModel.CanBeRemoved);
@@ -43,6 +102,12 @@
         return self.items().length > 0 && self.canBeAssembled() && !viewSettings.operatorMode;
     });
     
+    
+    
+    self.setPackageTotalSizeButtonVisible = ko.computed(function () {
+        return self.status() == 'Assembling' && viewSettings.operatorMode;
+    });
+
     self.packageAssembledButtonVisible = ko.computed(function () {
         return self.status() == 'Assembling' && viewSettings.operatorMode;
     });
@@ -307,5 +372,9 @@
             }
             window.showNotice(model.Message, model.MessageType);
         });
+    };
+
+    self.openSetPackageTotalSizePopup = function() {
+        $('#' + self.popupPackageSizeViewModel.popupDomId()).modal('show');
     };
 }
