@@ -14,7 +14,7 @@
         </div>
     </div>
     <div class="span5 form_registration">
-        <ul class="nav nav-tabs">
+        <ul id="authTab" class="nav nav-tabs">
             <li class="active"><a href="#signUpForm" data-toggle="tab">@AccountViewResources.SignUpFormHeader</a></li>
             <li><a href="#signInForm" data-toggle="tab">@AccountViewResources.SignInFormHeader</a></li>
         </ul>
@@ -119,6 +119,14 @@
 
 @section Scripts
 {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var loginCookie = readCookie("shopanyware_login");
+            if (loginCookie != null) {
+                $("#authTab a:last").tab('show');
+            }
+        });
+    </script>
     @*@Scripts.Render("~/bundles/Home")
     <script type="text/javascript">
         $(document).ready(function () {
