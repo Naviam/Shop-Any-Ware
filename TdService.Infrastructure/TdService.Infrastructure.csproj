@@ -69,6 +69,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\LinqToExcel_x64.1.7.0\lib\Remotion.Interfaces.dll</HintPath>
     </Reference>
+    <Reference Include="SeeSharpShip">
+      <HintPath>..\packages\SeeSharpShip.0.1.6.0\lib\net40\SeeSharpShip.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -144,6 +147,8 @@
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="UnitOfWork\IUnitOfWorkRepository.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
+    <Compile Include="Usps\ShippingRatesResponse.cs" />
+    <Compile Include="Usps\UspsRateCalculator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

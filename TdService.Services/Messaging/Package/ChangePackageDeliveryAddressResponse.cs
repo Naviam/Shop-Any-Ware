@@ -2,6 +2,6 @@
 {
     public class ChangePackageDeliveryAddressResponse:ResponseBase
     {
-        
+        public string Country { get; set; }
     }
 }
