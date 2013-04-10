@@ -34,6 +34,11 @@ namespace TdService.UI.Web.ViewModels.Package
         public int? DeliveryAddressId { get; set; }
 
         /// <summary>
+        /// Gets or sets the Country.
+        /// </summary>
+        public string Country { get; set; }
+
+        /// <summary>
         /// Gets or sets the dispatch method.
         /// </summary>
         public int? DispatchMethod { get; set; }
@@ -163,5 +168,13 @@ namespace TdService.UI.Web.ViewModels.Package
         ///  Gets a value indicating whether package can be paid.
         /// </summary>
         public bool CanBePaidFor { get; set; }
+
+        public string LoadingText
+        {
+            get
+            {
+                return CommonResources.LoadingText;
+            }
+        }
     }
 }

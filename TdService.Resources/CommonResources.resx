@@ -249,4 +249,7 @@
   <data name="TransactionPaymentError" xml:space="preserve">
     <value>Error occured while performing package payment transaction</value>
   </data>
+  <data name="LoadingText" xml:space="preserve">
+    <value>Loading</value>
+  </data>
 </root>

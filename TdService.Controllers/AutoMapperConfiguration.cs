@@ -391,7 +391,8 @@ namespace TdService.UI.Web
                 .ForMember(r => r.BrokenRules, opt => opt.Ignore())
                 .ForMember(r => r.Message, opt => opt.Ignore())
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())
-                .ForMember(r => r.MessageType, opt => opt.Ignore());
+                .ForMember(r => r.MessageType, opt => opt.Ignore())
+                .ForMember(r => r.Country, opt => opt.MapFrom(p => p.DeliveryAddress.Country));
             Mapper.CreateMap<GetRecentPackagesResponse, PackageViewModel>();
 
             // add package
@@ -486,7 +487,8 @@ namespace TdService.UI.Web
             Mapper.CreateMap<PackageSizePopupViewModel, UpdatePackageTotalSizeRequest>()
                 .ForMember(r => r.IdentityToken, opt => opt.Ignore());
             Mapper.CreateMap<UpdatePackageTotalSizeResponse, PackageViewModel>();
-            Mapper.CreateMap<Package, UpdatePackageTotalSizeResponse>();
+            Mapper.CreateMap<Package, UpdatePackageTotalSizeResponse>()
+                .ForMember(r => r.Country, opt => opt.MapFrom(p => p.DeliveryAddress.Country)); 
         }
 
         /// <summary>

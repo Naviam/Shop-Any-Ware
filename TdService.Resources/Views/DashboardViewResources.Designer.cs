@@ -286,6 +286,15 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Estimated shipping rate.
+        /// </summary>
+        public static string EstimatedShippingRate {
+            get {
+                return ResourceManager.GetString("EstimatedShippingRate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Example.
         /// </summary>
         public static string ExampleHeader {

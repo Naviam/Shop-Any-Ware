@@ -19,6 +19,11 @@ namespace TdService.Services.Messaging.Package.Base
         public int? DeliveryAddressId { get; set; }
 
         /// <summary>
+        /// Gets or sets Country
+        /// </summary>
+        public string Country { get; set; }
+
+        /// <summary>
         /// Gets or sets the dispatch method.
         /// </summary>
         public int DispatchMethod { get; set; }

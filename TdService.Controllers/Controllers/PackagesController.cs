@@ -13,6 +13,7 @@ namespace TdService.UI.Web.Controllers
     using System.Xml;
     using TdService.Infrastructure.Authentication;
     using TdService.Infrastructure.SessionStorage;
+    using TdService.Infrastructure.Usps;
     using TdService.Resources.Views;
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging;
@@ -170,7 +171,7 @@ namespace TdService.UI.Web.Controllers
             var jsonNetResult = new JsonNetResult
             {
                 Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
-                Data = new { Message = response.Message, MessageType = response.MessageType.ToString() }
+                Data = new {Country = response.Country, Message = response.Message, MessageType = response.MessageType.ToString() }
             };
             return jsonNetResult;
         }
@@ -263,6 +264,19 @@ namespace TdService.UI.Web.Controllers
             {
                 Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
                 Data = response.ConvertToUsersPackagesViewModel()
+            };
+            return jsonNetResult;
+        }
+
+        [Authorize(Roles = "Admin, Operator, Shopper")]
+        [HttpPost]
+        public ActionResult GetShippingRatesForPackage(decimal height, decimal width, decimal length, decimal girth, int weight, string country)
+        {
+            var rates = UspsRateCalculator.GetShippingRates(weight, height, length, width, girth, country, "100");
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = rates
             };
             return jsonNetResult;
         }
