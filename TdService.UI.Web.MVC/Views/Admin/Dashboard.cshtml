@@ -151,6 +151,7 @@
             <div class="topArea">
                 <button type="button" class="btn btn-primary" data-bind="css: {active: assemblingRequestedSelected}, click: toggleShowAssemblingRequestedPackages, text: '@AdminDashboardResources.BtnShowAssemblingText'"></button>
                 <button type="button" class="btn btn-primary" data-bind="css: {active: dispatchRequestedSelected}, click: toggleShowDispatchRequestedPackages, text: '@AdminDashboardResources.BtnShowPaidText'"></button>
+                <button type="button" class="btn btn-primary" data-bind="css: {active: sentPackagesSelected}, click: toggleShowSentPackages, text: '@AdminDashboardResources.BtnShowSelectedText'"></button>
             </div>
         </div>
         <div data-bind="visible: userPackages().length == 0">

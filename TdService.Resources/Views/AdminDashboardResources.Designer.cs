@@ -115,6 +115,15 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Show sent.
+        /// </summary>
+        public static string BtnShowSelectedText {
+            get {
+                return ResourceManager.GetString("BtnShowSelectedText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         public static string CancelButton {

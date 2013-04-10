@@ -350,10 +350,15 @@ function PackagesTab(serverModel) {
     self.userPackages = ko.observableArray();
     self.assemblingRequestedSelected = ko.observable(true);
     self.dispatchRequestedSelected = ko.observable(false);
+    self.sentPackagesSelected = ko.observable(false);
     
     self.loadUserPackages = function () {
         if (!self.assemblingRequestedSelected() && !self.dispatchRequestedSelected()) return;
-        $.post("/packages/GetUsersPackages",{"includeAssebling": self.assemblingRequestedSelected(), "includePaid": self.dispatchRequestedSelected()}, function (data) {
+        $.post("/packages/GetUsersPackages", {
+            "includeAssebling": self.assemblingRequestedSelected(),
+            "includePaid": self.dispatchRequestedSelected(),
+            "includeSent": self.sentPackagesSelected()
+        }, function (data) {
             var response = ko.toJS(data);
             self.userPackages.removeAll();
             $.each(response.UsersPackages, function (index, value) {
@@ -370,6 +375,11 @@ function PackagesTab(serverModel) {
     
     self.toggleShowDispatchRequestedPackages = function() {
         self.dispatchRequestedSelected(!self.dispatchRequestedSelected());
+        self.loadUserPackages();
+    };
+
+    self.toggleShowSentPackages = function () {
+        self.sentPackagesSelected(!self.sentPackagesSelected());
         self.loadUserPackages();
     };
 

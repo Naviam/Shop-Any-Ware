@@ -179,5 +179,7 @@ namespace TdService.UI.Web.ViewModels.Member
         /// Specifies whether page is viewd by operator or admin
         /// </summary>
         public bool OperatorMode { get; set; }
+
+        public string UspsTrackingUrl { get; set; }
     }
 }
