@@ -53,6 +53,12 @@
                             </select>
                         </td>
                     </tr>
+                    <tr data-bind="visible:canCalculateDeliveryRates">
+                        <td>@DashboardViewResources.EstimatedShippingRate</td>
+                        <td>
+                            <span data-bind="text:estimatedDeliveryRate" ></span>
+                        </td>
+                    </tr>
                     @*<tr>
                         <td>@DashboardViewResources.TrackingNumberHeader</td>
                         <td>

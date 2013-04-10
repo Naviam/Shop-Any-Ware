@@ -492,4 +492,7 @@
   <data name="PackageSizeUpdated" xml:space="preserve">
     <value>Package size successfully updated</value>
   </data>
+  <data name="EstimatedShippingRate" xml:space="preserve">
+    <value>Estimated shipping rate</value>
+  </data>
 </root>

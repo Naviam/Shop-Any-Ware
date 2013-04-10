@@ -249,4 +249,7 @@
   <data name="TransactionPaymentError" xml:space="preserve">
     <value>Во время оплаты посылки произошла ошибка</value>
   </data>
+  <data name="LoadingText" xml:space="preserve">
+    <value>Загрузка</value>
+  </data>
 </root>

@@ -29,12 +29,14 @@
         }
 
         $.post("/packages/updateTotalSize", {
-            "PackageId":self.package.id(),
+            "PackageId": self.package.id(),
             "WeightPounds": self.weight(),
             "DimensionsLength": self.dimLength(),
             "DimensionsHeight": self.dimHeight(),
             "DimensionsWidth": self.dimWidth(),
-            "DimensionsGirth": self.dimGirth()}, function (data) {
+            "DimensionsGirth": self.dimGirth()
+        },
+            function (data) {
                 var model = ko.toJS(data);
                 if (model.MessageType == "Success") {
                     self.package.weight(self.weight());
@@ -44,8 +46,9 @@
                     self.package.dimGirth(self.dimGirth());
                     $('#' + self.popupDomId()).modal('hide');
                     window.showNotice(data.Message, data.MessageType);
+                    self.package.updateEstimatedDeliveryPrice();
                 }
-        });
+            });
     };
 }
 
@@ -58,13 +61,16 @@ function Package(serverModel) {
     self.messageType = ko.observable(serverModel.MessageType);
     self.errorCode = ko.observable(serverModel.ErrorCode);
 
+    //mesages from resources
+    self.loadingText = serverModel.LoadingText;
     // package view model properties
     self.id = ko.observable(serverModel.Id);
     self.name = ko.observable(serverModel.Name);
     self.deliveryAddressId = ko.observable(serverModel.DeliveryAddressId);
+    self.country = ko.observable(serverModel.Country);
     self.selectedAddress = ko.observable(serverModel.DeliveryAddressId);
     self.deliveryAddressName = ko.observable(serverModel.DeliveryAddressName).extend({ defaultIfNull: "not set" });
-    
+
     self.dispatchMethod = ko.observable(serverModel.DispatchMethod);
     self.selectedMethod = ko.observable(serverModel.DispatchMethod);
 
@@ -74,16 +80,16 @@ function Package(serverModel) {
     self.status = ko.observable(serverModel.Status);
     self.statusTranslated = ko.observable(serverModel.StatusTranslated);
     self.isCollapsed = ko.observable(false);
-    
+
     // package view model collections
     self.items = ko.observableArray();
 
     //size&weight
-    self.dimHeight =  ko.observable(serverModel.DimensionsHeight);
-    self.dimLength =  ko.observable(serverModel.DimensionsLength);
-    self.dimWidth =  ko.observable(serverModel.DimensionsWidth);
-    self.dimGirth =  ko.observable(serverModel.DimensionsGirth);
-    self.weight =  ko.observable(serverModel.TotalWeight);
+    self.dimHeight = ko.observable(serverModel.DimensionsHeight);
+    self.dimLength = ko.observable(serverModel.DimensionsLength);
+    self.dimWidth = ko.observable(serverModel.DimensionsWidth);
+    self.dimGirth = ko.observable(serverModel.DimensionsGirth);
+    self.weight = ko.observable(serverModel.TotalWeight);
 
     //size&weight edit popup
     self.popupPackageSizeViewModel = new PopupPackageSizeViewModel(self);
@@ -98,11 +104,26 @@ function Package(serverModel) {
     self.canBePaidFor = ko.observable(serverModel.CanBePaidFor);
     self.popupItemViewModel = new PopupItemViewModel();
 
+    self.loadingDeliveryRates = ko.observable(false);
+    self.canCalculateDeliveryRates = ko.computed(function() {
+        return self.dimWidth() != '0' && self.dimHeight() != '0' && self.dimLength() != '0' && self.weight() != '0' && self.country()!=null;
+    });
+    this.expressMailPostagePrice = ko.observable();
+    this.priorityMailPostagePrice = ko.observable();
+    self.estimatedDeliveryRate = ko.computed(function () {
+        if (self.loadingDeliveryRates()) return self.loadingText;
+        switch (self.dispatchMethod()) {
+        case 0:
+            return '$' + self.expressMailPostagePrice();
+        case 1:
+            return '$' + self.priorityMailPostagePrice();
+        }
+    });
+    
+
     self.assembleButtonVisible = ko.computed(function () {
         return self.items().length > 0 && self.canBeAssembled() && !viewSettings.operatorMode;
     });
-    
-    
     
     self.setPackageTotalSizeButtonVisible = ko.computed(function () {
         return self.status() == 'Assembling' && viewSettings.operatorMode;
@@ -119,7 +140,7 @@ function Package(serverModel) {
     self.payForPackageButtonVisible = ko.computed(function () {
         return self.canBePaidFor() && !viewSettings.operatorMode;
     });
-    
+
     // package view model computed properties
     self.domPackageId = ko.computed(function () {
         return "package" + self.id();
@@ -184,7 +205,6 @@ function Package(serverModel) {
     };
     self.loadItems();
 
-    
 
     self.addItems = function (itemsList) {
         $.each(itemsList, function (index, value) {
@@ -310,11 +330,13 @@ function Package(serverModel) {
     };
 
     self.changeDeliveryAddress = function (packageObj) {
-        if (self.selectedAddress()==null || self.selectedAddress() == self.deliveryAddressId()) return;
-        $.post("/packages/ChangePackageDeliveryAddress", { "packageId": self.id(), "deliveryAddressId": self.selectedAddress() }, function(data) {
+        if (self.selectedAddress() == null || self.selectedAddress() == self.deliveryAddressId()) return;
+        $.post("/packages/ChangePackageDeliveryAddress", { "packageId": self.id(), "deliveryAddressId": self.selectedAddress() }, function (data) {
             var model = ko.toJS(data);
             if (model.MessageType == "Success") {
+                self.country(model.Country);
                 self.deliveryAddressId(self.selectedAddress());
+                self.updateEstimatedDeliveryPrice();
             }
             window.showNotice(model.Message, model.MessageType);
 
@@ -329,12 +351,12 @@ function Package(serverModel) {
                 self.dispatchMethod(self.selectedMethod());
             }
             window.showNotice(model.Message, model.MessageType);
-
+            
         });
     };
 
-    self.assemblePackage = function() {
-        $.post("/packages/AssemblePackage", { "packageId": self.id() }, function(data) {
+    self.assemblePackage = function () {
+        $.post("/packages/AssemblePackage", { "packageId": self.id() }, function (data) {
             var model = ko.toJS(data);
             if (model.MessageType == 'Success') {
                 self.updateStatusFieldsFromModel(model);
@@ -343,7 +365,7 @@ function Package(serverModel) {
         });
     };
 
-    self.updateStatusFieldsFromModel = function(serverModel) {
+    self.updateStatusFieldsFromModel = function (serverModel) {
         self.status(serverModel.Status);
         self.statusTranslated(serverModel.StatusTranslated);
         self.canBeAssembled(serverModel.CanBeAssembled);
@@ -354,7 +376,7 @@ function Package(serverModel) {
         self.canBePaidFor(serverModel.CanBePaidFor);
     };
 
-    self.packageAssembled = function() {
+    self.packageAssembled = function () {
         $.post("/packages/PackageAssembled", { "packageId": self.id() }, function (data) {
             var model = ko.toJS(data);
             if (model.MessageType == 'Success') {
@@ -374,7 +396,21 @@ function Package(serverModel) {
         });
     };
 
-    self.openSetPackageTotalSizePopup = function() {
+    self.openSetPackageTotalSizePopup = function () {
         $('#' + self.popupPackageSizeViewModel.popupDomId()).modal('show');
     };
+
+    self.updateEstimatedDeliveryPrice = function() {
+        if (!self.canCalculateDeliveryRates()) return;
+        self.loadingDeliveryRates(true);
+        $.post("/packages/GetShippingRatesForPackage", { "height": self.dimHeight(), "length": self.dimLength(), "width": self.dimWidth(), "weight": self.weight(), "girth": self.dimGirth(), "country": self.country() }, function (data) {
+            var model = ko.toJS(data);
+            self.expressMailPostagePrice(model.ExpressMailPostagePrice);
+            self.priorityMailPostagePrice(model.PriorityMailPostagePrice);
+            self.loadingDeliveryRates(false);
+        });
+    };
+    self.updateEstimatedDeliveryPrice();
+    
+    
 }

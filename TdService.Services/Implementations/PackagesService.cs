@@ -12,6 +12,7 @@ namespace TdService.Services.Implementations
     using System;
     using System.Collections.Generic;
     using TdService.Infrastructure.Logging;
+    using TdService.Model.Addresses;
     using TdService.Model.Common;
     using TdService.Model.Membership;
     using TdService.Model.Packages;
@@ -39,6 +40,8 @@ namespace TdService.Services.Implementations
         /// </summary>
         private readonly IUserRepository userRepository;
 
+        private readonly IAddressRepository addressRepository;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="PackagesService"/> class.
         /// </summary>
@@ -48,11 +51,12 @@ namespace TdService.Services.Implementations
         /// <param name="userRepository">
         /// The user repository.
         /// </param>
-        public PackagesService(IPackageRepository packageRepository, IUserRepository userRepository, ILogger logger)
+        public PackagesService(IPackageRepository packageRepository, IUserRepository userRepository, IAddressRepository addressRepository, ILogger logger)
             : base(logger)
         {
             this.packageRepository = packageRepository;
             this.userRepository = userRepository;
+            this.addressRepository = addressRepository;
         }
 
         /// <summary>
@@ -163,7 +167,8 @@ namespace TdService.Services.Implementations
                 var package = this.packageRepository.GetPackageById(request.PackageId);
                 package.DeliveryAddressId = request.DeliverAddressId;
                 this.packageRepository.UpdatePackage(package);
-                return new ChangePackageDeliveryAddressResponse { MessageType = MessageType.Success, Message = string.Format(CommonResources.PackageDeliveryAddressChanged, package.Id) };
+                var addr = this.addressRepository.GetDeliveryAddressDetails(request.DeliverAddressId);
+                return new ChangePackageDeliveryAddressResponse {Country=addr.Country, MessageType = MessageType.Success, Message = string.Format(CommonResources.PackageDeliveryAddressChanged, package.Id) };
             }
             catch (Exception ex)
             {
@@ -254,7 +259,7 @@ namespace TdService.Services.Implementations
                 var result = packages.ConvertToUsersPackagesCollection();
                 return result;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 logger.Log(ex.Message);
                 return new GetUsersPackagesResponse { MessageType = MessageType.Error, Message = ex.Message };

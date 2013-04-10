@@ -492,4 +492,7 @@
   <data name="PackageSizeUpdated" xml:space="preserve">
     <value>Размер посылки успешно изменен</value>
   </data>
+  <data name="EstimatedShippingRate" xml:space="preserve">
+    <value>Ориентировочная стоимость доставки</value>
+  </data>
 </root>
