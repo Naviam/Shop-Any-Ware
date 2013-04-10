@@ -113,10 +113,10 @@ function Package(serverModel) {
     self.estimatedDeliveryRate = ko.computed(function () {
         if (self.loadingDeliveryRates()) return self.loadingText;
         switch (self.dispatchMethod()) {
-        case 0:
-            return '$' + self.expressMailPostagePrice();
+            case 0:
+                return self.expressMailPostagePrice() != 'N/A' ? '$' + self.expressMailPostagePrice() : 'N/A';
         case 1:
-            return '$' + self.priorityMailPostagePrice();
+            return self.priorityMailPostagePrice()!='N/A'?'$' + self.priorityMailPostagePrice():'N/A';
         }
     });
     
@@ -405,8 +405,13 @@ function Package(serverModel) {
         self.loadingDeliveryRates(true);
         $.post("/packages/GetShippingRatesForPackage", { "height": self.dimHeight(), "length": self.dimLength(), "width": self.dimWidth(), "weight": self.weight(), "girth": self.dimGirth(), "country": self.country() }, function (data) {
             var model = ko.toJS(data);
-            self.expressMailPostagePrice(model.ExpressMailPostagePrice);
-            self.priorityMailPostagePrice(model.PriorityMailPostagePrice);
+            if (model.Error != null) {
+                self.expressMailPostagePrice('N/A');
+                self.priorityMailPostagePrice('N/A');
+            } else {
+                self.expressMailPostagePrice(model.ExpressMailPostagePrice);
+                self.priorityMailPostagePrice(model.PriorityMailPostagePrice);
+            }
             self.loadingDeliveryRates(false);
         });
     };

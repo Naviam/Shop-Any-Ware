@@ -43,6 +43,20 @@ namespace TdService.Infrastructure.Usps
                                 Packages = _packages,
                                 Revision = "2"
                             });
+
+                if (resp.Error != null)
+                {
+                    response.Error = resp.Error.Description;
+                    return response;
+                }
+
+                var expressSvc = resp.Packages[0].Services.SingleOrDefault(s => s.Id.Equals("1"));
+                if (expressSvc != null) response.ExpressMailPostagePrice = expressSvc.Postage;
+
+                var prioritySvc = resp.Packages[0].Services.SingleOrDefault(s => s.Id.Equals("2"));
+                if (prioritySvc != null) response.PriorityMailPostagePrice = prioritySvc.Postage;
+
+                return response;
             }
             catch (Exception ex)
             {
@@ -50,19 +64,6 @@ namespace TdService.Infrastructure.Usps
                 return response;
             }
 
-            if (resp.Error!=null)
-            {
-                response.Error = resp.Error.Description;
-                return response;
-            }
-
-            var expressSvc = resp.Packages[0].Services.SingleOrDefault(s => s.Id.Equals("1"));
-            if (expressSvc != null) response.ExpressMailPostagePrice = expressSvc.Postage;
-
-            var prioritySvc = resp.Packages[0].Services.SingleOrDefault(s => s.Id.Equals("2"));
-            if (prioritySvc != null) response.PriorityMailPostagePrice = prioritySvc.Postage;
-
-            return response;
         }
     }
 }
