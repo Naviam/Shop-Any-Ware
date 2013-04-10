@@ -91,6 +91,8 @@ function Package(serverModel) {
     self.dimGirth = ko.observable(serverModel.DimensionsGirth);
     self.weight = ko.observable(serverModel.TotalWeight);
 
+    self.trackingNumber = ko.observable(serverModel.TrackingNumber);
+
     //size&weight edit popup
     self.popupPackageSizeViewModel = new PopupPackageSizeViewModel(self);
 
@@ -103,10 +105,23 @@ function Package(serverModel) {
     self.canBeAssembled = ko.observable(serverModel.CanBeAssembled);
     self.canBePaidFor = ko.observable(serverModel.CanBePaidFor);
     self.popupItemViewModel = new PopupItemViewModel();
+    self.canSpecifyTrackingNumber = ko.computed(function () {
+        return self.status() == 'Sent' && viewSettings.operatorMode;
+    });
+    self.trackingNumberVisible = ko.computed(function () {
+        return self.status() == 'Sent';
+    });
+    self.canTrackPackage = ko.computed(function () {
+        return self.status() == 'Sent' && self.trackingNumber() != '';
+    });
+    self.uspsPackageTrackingLink = ko.computed(function () {
+        return viewSettings.uspsTrackingUrl + self.trackingNumber();
+    });
+    
 
     self.loadingDeliveryRates = ko.observable(false);
     self.canCalculateDeliveryRates = ko.computed(function() {
-        return self.dimWidth() != '0' && self.dimHeight() != '0' && self.dimLength() != '0' && self.weight() != '0' && self.country()!=null;
+        return self.dimWidth() != '0' && self.dimHeight() != '0' && self.dimLength() != '0' && self.weight() != '0' && self.country() != null && (self.status() == 'Assembled' || self.status() == 'Assembling');
     });
     this.expressMailPostagePrice = ko.observable();
     this.priorityMailPostagePrice = ko.observable();
@@ -417,5 +432,10 @@ function Package(serverModel) {
     };
     self.updateEstimatedDeliveryPrice();
     
-    
+    self.saveTrackingNumber= function() {
+        $.post("/packages/UpdateTrackingNumber", { "packageId": self.id(), "trackingNumber": self.trackingNumber()}, function (data) {
+            var model = ko.toJS(data);
+            window.showNotice(model.Message, model.MessageType);
+        });
+    }
 }

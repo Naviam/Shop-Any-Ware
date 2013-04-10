@@ -238,11 +238,12 @@ namespace TdService.UI.Web.Controllers
 
         [Authorize(Roles = "Admin, Operator")]
         [HttpPost]
-        public ActionResult GetUsersPackages(bool includeAssebling, bool includePaid)
+        public ActionResult GetUsersPackages(bool includeAssebling, bool includePaid, bool includeSent)
         {
-            if (!includeAssebling && !includePaid) return null;
+            if (!includeAssebling && !includePaid && !includeSent) return null;
 
-            var request = new GetUsersPackagesRequest(){IncludeAssembling=includeAssebling,IncludePaid=includePaid};
+            var request = new GetUsersPackagesRequest()
+                { IncludeAssembling = includeAssebling, IncludePaid = includePaid, IncludeSent = includeSent };
             var response = this.packagesService.GetUsersPackages(request);
 
             var jsonNetResult = new JsonNetResult
@@ -277,6 +278,20 @@ namespace TdService.UI.Web.Controllers
             {
                 Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
                 Data = rates
+            };
+            return jsonNetResult;
+        }
+
+        [Authorize(Roles = "Admin, Operator")]
+        [HttpPost]
+        public ActionResult UpdateTrackingNumber(int packageId, string trackingNumber)
+        {
+            var request = new ChangeTrackingNumberRequest { PackageId = packageId, TrackingNumber = trackingNumber };
+            var response = this.packagesService.ChangePackageTrackingNumber(request);
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = new { Message = response.Message, MessageType = response.MessageType.ToString() }
             };
             return jsonNetResult;
         }

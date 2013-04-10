@@ -176,5 +176,10 @@ namespace TdService.UI.Web.ViewModels.Package
                 return CommonResources.LoadingText;
             }
         }
+
+        /// <summary>
+        /// Gets or sets Tracking Number
+        /// </summary>
+        public string TrackingNumber { get; set; }
     }
 }

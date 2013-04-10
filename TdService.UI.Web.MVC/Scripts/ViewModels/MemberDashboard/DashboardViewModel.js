@@ -1,8 +1,9 @@
 ﻿var modalWindowValidationMessages;
 var viewSettings;
 
-function viewSettings(operatorMode) {
+function viewSettings(operatorMode, uspsTrackingUrl) {
     this.operatorMode = operatorMode;
+    this.uspsTrackingUrl = uspsTrackingUrl;
 }
 
 function ModalWindowValidationMessages(nameIsRequired, quantityIsRequired, priceIsRequired, invalidPrice, invalidWeight, invalidHeight, invalidLength, invalidWidth, invalidGirth, invalidQuantity) {
@@ -97,7 +98,7 @@ function DashboardViewModel(serverModel) {
     var self = this;
     var addressModel = JSON.parse(serverModel);
     
-    viewSettings = new viewSettings(addressModel.OperatorMode);
+    viewSettings = new viewSettings(addressModel.OperatorMode, addressModel.UspsTrackingUrl);
     
     self.UserEmail = addressModel.UserEmail;
     self.recentPackagesNotLoaded = ko.observable(true);

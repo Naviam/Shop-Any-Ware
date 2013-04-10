@@ -495,4 +495,13 @@
   <data name="EstimatedShippingRate" xml:space="preserve">
     <value>Ориентировочная стоимость доставки</value>
   </data>
+  <data name="TrackingNumberUpdated" xml:space="preserve">
+    <value>Номер отслеживания сохранен успешно</value>
+  </data>
+  <data name="TrackingNumberUpdateError" xml:space="preserve">
+    <value>Во время сохранения номера отслеживания произошла ошибка</value>
+  </data>
+  <data name="TrackPackageText" xml:space="preserve">
+    <value>Отследить посылку</value>
+  </data>
 </root>

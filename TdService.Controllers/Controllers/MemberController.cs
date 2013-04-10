@@ -26,6 +26,7 @@ namespace TdService.UI.Web.Controllers
     using TdService.Model.Shipping;
     using System;
     using TdService.Resources;
+    using System.Configuration;
     /// <summary>
     /// The controller that contains membership methods.
     /// </summary>
@@ -181,12 +182,13 @@ namespace TdService.UI.Web.Controllers
             var response = this.membershipService.GetProfile(
                new GetProfileRequest { IdentityToken = userEmail });
             model.UserEmail = userEmail;
+            model.UspsTrackingUrl = ConfigurationManager.AppSettings["UspsTrackingUrl"];
             model.UserId = response.Id;
             model.FirstName = response.FirstName;
             model.LastName = response.LastName;
             model.WalletAmount = response.Balance;
             model.AmountValidationMessage = DashboardViewResources.ResourceManager.GetString("AddFundsAmountValidationMessage");
-            var addressesResponse = this.addressService.GetDeliveryAddresses(new GetDeliveryAddressesRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() });
+            var addressesResponse = this.addressService.GetDeliveryAddresses(new GetDeliveryAddressesRequest { IdentityToken = userEmail });
             model.DeliveryAddressViewModels = addressesResponse.ConvertToDeliveryAddressViewModel();
             model.AddFundsButtonText = DashboardViewResources.AddFundsButton;
             model.AddFundsLoadingText = DashboardViewResources.AddFundsButtonLoading;
