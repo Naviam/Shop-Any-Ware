@@ -110,5 +110,12 @@ namespace TdService.Services.Interfaces
         /// <param name="request"></param>
         /// <returns></returns>
         UpdatePackageTotalSizeResponse UpdatePackageTotalSize(UpdatePackageTotalSizeRequest request);
+
+        /// <summary>
+        /// Changes Tracking Number For package
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        ChangeTrackingNumberResponse ChangePackageTrackingNumber(ChangeTrackingNumberRequest request);
     }
 }

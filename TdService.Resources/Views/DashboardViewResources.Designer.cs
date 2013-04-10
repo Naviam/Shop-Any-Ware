@@ -1132,6 +1132,33 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tracking number was updated successfully.
+        /// </summary>
+        public static string TrackingNumberUpdated {
+            get {
+                return ResourceManager.GetString("TrackingNumberUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error occured while updating tracking number.
+        /// </summary>
+        public static string TrackingNumberUpdateError {
+            get {
+                return ResourceManager.GetString("TrackingNumberUpdateError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Track package.
+        /// </summary>
+        public static string TrackPackageText {
+            get {
+                return ResourceManager.GetString("TrackPackageText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Amount.
         /// </summary>
         public static string TransactionsAmount {

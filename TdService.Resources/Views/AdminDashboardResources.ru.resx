@@ -273,4 +273,7 @@
   <data name="PackageInfoPackageName" xml:space="preserve">
     <value>Название посылки</value>
   </data>
+  <data name="BtnShowSelectedText" xml:space="preserve">
+    <value>Отправлены</value>
+  </data>
 </root>

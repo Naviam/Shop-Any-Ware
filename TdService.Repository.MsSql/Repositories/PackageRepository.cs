@@ -110,14 +110,17 @@ namespace TdService.Repository.MsSql.Repositories
         }
 
 
-        public List<Package> GetShoppersPackages(bool includeAssebling, bool includePaid)
+        public List<Package> GetShoppersPackages(bool includeAssembling, bool includePaid, bool includeSent)
         {
             using (var context = new ShopAnyWareSql())
             {
-                if (!includeAssebling && !includePaid) return new List<Package>();
-                if (includeAssebling && includePaid) return context.Packages.Include(p => p.Items).Include(p => p.User).Where(p => p.Status == PackageStatus.Paid || p.Status == PackageStatus.Assembling).ToList();
-                if (includeAssebling) return context.Packages.Include(p => p.Items).Include(p => p.User).Where(p => p.Status == PackageStatus.Assembling).ToList();
-                return context.Packages.Include(p => p.Items).Include(p => p.User).Where(p => p.Status == PackageStatus.Paid).ToList();
+                List<PackageStatus> statuses = new List<PackageStatus>();
+                if (includeAssembling) statuses.Add(PackageStatus.Assembling);
+                if (includePaid) statuses.Add(PackageStatus.Paid);
+                if (includeSent) statuses.Add(PackageStatus.Sent);
+
+                if (!includeAssembling && !includePaid && !includeSent) return new List<Package>();
+                return context.Packages.Include(p => p.Items).Include(p => p.User).Where(p => statuses.Contains(p.Status)).ToList();
             }
         }
     }

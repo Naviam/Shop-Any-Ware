@@ -162,6 +162,8 @@
     <Compile Include="Messaging\Package\ChangePackageDeliveryAddressResponse.cs" />
     <Compile Include="Messaging\Package\ChangePackageDeliveryMethodRequest.cs" />
     <Compile Include="Messaging\Package\ChangePackageDeliveryMethodResponse.cs" />
+    <Compile Include="Messaging\Package\ChangeTrackingNumberRequest.cs" />
+    <Compile Include="Messaging\Package\ChangeTrackingNumberResponse.cs" />
     <Compile Include="Messaging\Package\GetRecentPackagesRequest.cs" />
     <Compile Include="Messaging\Package\GetRecentPackagesResponse.cs" />
     <Compile Include="Messaging\Package\GetUsersPackagesRequest.cs" />

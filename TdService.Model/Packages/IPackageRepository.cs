@@ -63,6 +63,6 @@ namespace TdService.Model.Packages
         /// <returns></returns>
         void UpdatePackage(Package package);
 
-        List<Package> GetShoppersPackages(bool includeAssebling, bool includePaid);
+        List<Package> GetShoppersPackages(bool includeAssebling, bool includePaid, bool includeSent);
     }
 }
