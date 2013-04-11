@@ -168,7 +168,7 @@ namespace TdService.Services.Implementations
                 package.DeliveryAddressId = request.DeliverAddressId;
                 this.packageRepository.UpdatePackage(package);
                 var addr = this.addressRepository.GetDeliveryAddressDetails(request.DeliverAddressId);
-                return new ChangePackageDeliveryAddressResponse {Country=addr.Country, MessageType = MessageType.Success, Message = string.Format(CommonResources.PackageDeliveryAddressChanged, package.Id) };
+                return new ChangePackageDeliveryAddressResponse {Country=addr.Country.TranslatedName, MessageType = MessageType.Success, Message = string.Format(CommonResources.PackageDeliveryAddressChanged, package.Id) };
             }
             catch (Exception ex)
             {

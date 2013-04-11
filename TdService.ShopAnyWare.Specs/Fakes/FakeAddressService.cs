@@ -35,7 +35,7 @@ namespace TdService.ShopAnyWare.Specs.Fakes
                             AddressLine2 = string.Empty,
                             AddressName = "My first address",
                             City = "Москва",
-                            Country = "Россия",
+                            Country = new Country{Code="RU",Id=183},
                             Region = null,
                             State = null,
                             ZipCode = "11003",
@@ -50,7 +50,7 @@ namespace TdService.ShopAnyWare.Specs.Fakes
                             AddressLine2 = string.Empty,
                             AddressName = "My second address",
                             City = "Минск",
-                            Country = "Буларусь",
+                            Country = new Country{Code="BY",Id=21},
                             Region = null,
                             State = null,
                             ZipCode = "29482",
@@ -121,6 +121,12 @@ namespace TdService.ShopAnyWare.Specs.Fakes
         public void Clean()
         {
             this.addresses.Clear();
+        }
+
+
+        List<GetCountriesResponse> IAddressService.GetCountries()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

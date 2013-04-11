@@ -122,6 +122,7 @@ namespace TdService.UI.Web
 
             // delivery address
             Mapper.CreateMap<DeliveryAddress, GetDeliveryAddressesResponse>()
+                .ForMember(r => r.CountryNameTranslated, opt => opt.MapFrom(da => da.Country.TranslatedName))
                 .ForMember(r => r.Message, opt => opt.Ignore())
                 .ForMember(r => r.BrokenRules, opt => opt.Ignore())
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())
@@ -133,6 +134,7 @@ namespace TdService.UI.Web
             Mapper.CreateMap<AddOrUpdateDeliveryAddressRequest, DeliveryAddress>()
                 .ForMember(m => m.RowVersion, opt => opt.Ignore());
             Mapper.CreateMap<DeliveryAddress, AddOrUpdateDeliveryAddressResponse>()
+                .ForMember(r=>r.CountryNameTranslated, opt=>opt.MapFrom(da=>da.Country.TranslatedName))
                 .ForMember(r => r.Message, opt => opt.Ignore())
                 .ForMember(r => r.BrokenRules, opt => opt.Ignore())
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())
@@ -141,7 +143,7 @@ namespace TdService.UI.Web
                 .ForMember(r => r.FirstName, opt => opt.Ignore())
                 .ForMember(r => r.LastName, opt => opt.Ignore())
                 .ForMember(r => r.ZipCode, opt => opt.Ignore())
-                .ForMember(r => r.Country, opt => opt.Ignore())
+                .ForMember(r => r.CountryId, opt => opt.Ignore())
                 .ForMember(r => r.Region, opt => opt.Ignore())
                 .ForMember(r => r.State, opt => opt.Ignore())
                 .ForMember(r => r.City, opt => opt.Ignore())
@@ -489,6 +491,10 @@ namespace TdService.UI.Web
             Mapper.CreateMap<UpdatePackageTotalSizeResponse, PackageViewModel>();
             Mapper.CreateMap<Package, UpdatePackageTotalSizeResponse>()
                 .ForMember(r => r.Country, opt => opt.MapFrom(p => p.DeliveryAddress.Country)); 
+
+            //countries
+            Mapper.CreateMap<GetCountriesResponse, CountryViewModel>();
+            Mapper.CreateMap<Country, GetCountriesResponse>();
         }
 
         /// <summary>

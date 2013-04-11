@@ -127,5 +127,15 @@ namespace TdService.Services.Implementations
 
             return response;
         }
+
+        public List<GetCountriesResponse> GetCountries()
+        {
+            var countries = this.addressRepository.GetCountries();
+            var response = countries.ConvertToGetCountriesResponse();
+            return response;
+        }
+
+
+        
     }
 }

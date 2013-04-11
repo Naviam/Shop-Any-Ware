@@ -30,7 +30,8 @@ namespace TdService.UI.Web.Mapping
         /// <returns>
         /// The add delivery address request.
         /// </returns>
-        public static AddOrUpdateDeliveryAddressRequest ConvertToAddDeliveryAddressRequest(this DeliveryAddressViewModel model)
+        public static AddOrUpdateDeliveryAddressRequest ConvertToAddDeliveryAddressRequest(
+            this DeliveryAddressViewModel model)
         {
             return Mapper.Map<DeliveryAddressViewModel, AddOrUpdateDeliveryAddressRequest>(model);
         }
@@ -44,7 +45,8 @@ namespace TdService.UI.Web.Mapping
         /// <returns>
         /// The System.Collections.Generic.List`1[T -&gt; TdService.UI.Web.ViewModels.Account.DeliveryAddressViewModel].
         /// </returns>
-        public static List<DeliveryAddressViewModel> ConvertToDeliveryAddressViewModel(this List<GetDeliveryAddressesResponse> responses)
+        public static List<DeliveryAddressViewModel> ConvertToDeliveryAddressViewModel(
+            this List<GetDeliveryAddressesResponse> responses)
         {
             return Mapper.Map<List<GetDeliveryAddressesResponse>, List<DeliveryAddressViewModel>>(responses);
         }
@@ -58,7 +60,8 @@ namespace TdService.UI.Web.Mapping
         /// <returns>
         /// The TdService.UI.Web.ViewModels.Account.DeliveryAddressViewModel.
         /// </returns>
-        public static DeliveryAddressViewModel ConvertToDeliveryAddressViewModel(this AddOrUpdateDeliveryAddressResponse response)
+        public static DeliveryAddressViewModel ConvertToDeliveryAddressViewModel(
+            this AddOrUpdateDeliveryAddressResponse response)
         {
             return Mapper.Map<AddOrUpdateDeliveryAddressResponse, DeliveryAddressViewModel>(response);
         }
@@ -72,9 +75,15 @@ namespace TdService.UI.Web.Mapping
         /// <returns>
         /// The TdService.UI.Web.ViewModels.Account.DeliveryAddressViewModel.
         /// </returns>
-        public static DeliveryAddressViewModel ConvertToDeliveryAddressViewModel(this RemoveDeliveryRequestResponse response)
+        public static DeliveryAddressViewModel ConvertToDeliveryAddressViewModel(
+            this RemoveDeliveryRequestResponse response)
         {
             return Mapper.Map<RemoveDeliveryRequestResponse, DeliveryAddressViewModel>(response);
         }
-    }
+
+        public static List<CountryViewModel> ConvertToCountriesViewModel(this List<GetCountriesResponse> response)
+        {
+            return Mapper.Map<List<GetCountriesResponse>, List<CountryViewModel>>(response);
+        }
+}
 }

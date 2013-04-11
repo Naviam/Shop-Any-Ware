@@ -22,6 +22,7 @@ namespace TdService.UI.Web.Controllers
     using TdService.UI.Web.Controllers.Base;
     using TdService.UI.Web.Mapping;
     using TdService.UI.Web.ViewModels.Account;
+    using System.Linq;
 
     /// <summary>
     /// The controller contains methods to work with the addresses.
@@ -98,10 +99,7 @@ namespace TdService.UI.Web.Controllers
                 destination.City = source.City;
             }
 
-            if (string.IsNullOrWhiteSpace(destination.Country))
-            {
-                destination.Country = source.Country;
-            }
+            destination.CountryId = source.CountryId;
 
             if (string.IsNullOrWhiteSpace(destination.State))
             {
@@ -135,6 +133,9 @@ namespace TdService.UI.Web.Controllers
         [Authorize(Roles = "Shopper")]
         public ActionResult Index()
         {
+            var result = this.addressService.GetCountries().ConvertToCountriesViewModel();
+            var sl = result.Select(vm => new SelectListItem { Text = vm.TranslatedName, Value = vm.Id.ToString() });
+            this.ViewData["Countries"] = sl;
             return this.View("Index");
         }
 

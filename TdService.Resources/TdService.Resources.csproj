@@ -108,6 +108,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AdminDashboardResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Countries.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Countries.resx</DependentUpon>
+    </Compile>
     <Compile Include="Views\DashboardViewResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -214,6 +219,12 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AdminDashboardResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Countries.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Countries.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Countries.ru.resx" />
     <EmbeddedResource Include="Views\DashboardViewResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>DashboardViewResources.Designer.cs</LastGenOutput>

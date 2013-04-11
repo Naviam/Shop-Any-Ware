@@ -49,9 +49,6 @@ namespace TdService.UI.Web.ViewModels.Account
             RuleFor(da => da.City)
                 .NotEmpty().WithState(e => ErrorCode.AddressCityRequired.ToString()).WithLocalizedMessage(() => ErrorCodeResources.AddressCityRequired)
                 .Length(1, 64).WithState(e => ErrorCode.AddressCityMaxLength.ToString()).WithLocalizedMessage(() => ErrorCodeResources.AddressCityMaxLength);
-            RuleFor(da => da.Country)
-                .NotEmpty().WithState(e => ErrorCode.AddressCountryRequired.ToString()).WithLocalizedMessage(() => ErrorCodeResources.AddressCountryRequired)
-                .Length(1, 64).WithState(e => ErrorCode.AddressCountryMaxLength.ToString()).WithLocalizedMessage(() => ErrorCodeResources.AddressCountryMaxLength);
             RuleFor(da => da.ZipCode)
                 .NotEmpty().WithState(e => ErrorCode.AddressZipCodeRequired.ToString()).WithLocalizedMessage(() => ErrorCodeResources.AddressZipCodeRequired)
                 .Length(1, 10).WithState(e => ErrorCode.AddressZipCodeMaxLength.ToString()).WithLocalizedMessage(() => ErrorCodeResources.AddressZipCodeMaxLength);

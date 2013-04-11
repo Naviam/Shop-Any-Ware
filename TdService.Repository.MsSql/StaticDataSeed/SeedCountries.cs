@@ -35,13 +35,10 @@ namespace TdService.Repository.MsSql.StaticDataSeed
             var doc = XElement.Load(path);
             var countries =
                 from el in doc.Elements()
-                let xElement = el.Element("ISO_3166-1_Country_name")
-                where xElement != null
                 let element = el.Element("ISO_3166-1_Alpha-2_Code_element")
                 where element != null
                 select new Country
                            {
-                               Name = xElement.Value.Trim(),
                                Code = element.Value.Trim()
                            };
             countries.ToList().ForEach(c => context.Countries.Add(c));

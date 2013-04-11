@@ -71,6 +71,7 @@
     <Compile Include="Mapping\RetailerMapping.cs" />
     <Compile Include="Mapping\TransactionMapping.cs" />
     <Compile Include="Mapping\UserMapper.cs" />
+    <Compile Include="Messaging\Address\GetCountriesResponse.cs" />
     <Compile Include="Messaging\Address\RemoveDeliveryAddressRequest.cs" />
     <Compile Include="Messaging\Address\RemoveDeliveryRequestResponse.cs" />
     <Compile Include="Messaging\Address\UpdateDeliveryAddressRequest.cs" />

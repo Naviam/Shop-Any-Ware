@@ -20,8 +20,8 @@ namespace TdService.Repository.MsSql.Configurations
         /// </summary>
         public DeliveryAddressConfiguration()
         {
+            this.HasRequired(a => a.Country);
             this.Property(a => a.AddressName).HasMaxLength(40).IsRequired();
-            this.Property(a => a.Country).HasMaxLength(64).IsRequired();
             this.Property(a => a.City).HasMaxLength(64).IsRequired();
             this.Property(a => a.State).HasMaxLength(64);
             this.Property(a => a.ZipCode).HasMaxLength(10).IsRequired();
