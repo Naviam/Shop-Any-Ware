@@ -22,14 +22,14 @@ namespace TdService.Model.Addresses
         public string ZipCode { get; set; }
 
         /// <summary>
-        /// Gets or sets Country.
+        /// Gets or sets the country.
         /// </summary>
-        public string Country { get; set; }
+        public Country Country { get; set; }
 
         /// <summary>
-        /// Gets or sets the country 1.
+        /// Gets or sets the country id
         /// </summary>
-        public Country Country1 { get; set; }
+        public int CountryId { get; set; }
 
         /// <summary>
         /// Gets or sets Region.
@@ -108,13 +108,9 @@ namespace TdService.Model.Addresses
                 this.AddBrokenRule(AddressBusinessRules.CityMaxLength);
             }
 
-            if (string.IsNullOrEmpty(this.Country))
+            if (this.CountryId ==0)
             {
                 this.AddBrokenRule(AddressBusinessRules.CountryRequired);
-            }
-            else if (this.Country.Length > 64)
-            {
-                this.AddBrokenRule(AddressBusinessRules.CountryMaxLength);
             }
 
             if (!string.IsNullOrEmpty(this.Phone) && this.Phone.Length > 21)

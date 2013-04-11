@@ -9,7 +9,8 @@
 
 namespace TdService.UI.Web.ViewModels.Account
 {
-    using FluentValidation.Attributes;
+    using System.Collections.Generic;
+using FluentValidation.Attributes;
 
     /// <summary>
     /// The delivery address view model.
@@ -38,9 +39,14 @@ namespace TdService.UI.Web.ViewModels.Account
         public string ZipCode { get; set; }
 
         /// <summary>
-        /// Gets or sets Country.
+        /// Gets or sets Country id.
         /// </summary>
-        public string Country { get; set; }
+        public int CountryId { get; set; }
+
+        /// <summary>
+        /// Gets or sets translated country name.
+        /// </summary>
+        public string CountryNameTranslated { get; set; }
 
         /// <summary>
         /// Gets or sets Region.

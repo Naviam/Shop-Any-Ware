@@ -59,5 +59,15 @@ namespace TdService.Services.Mapping
         {
             return Mapper.Map<DeliveryAddress, AddOrUpdateDeliveryAddressResponse>(deliveryAddress);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="countries"></param>
+        /// <returns></returns>
+        public static List<GetCountriesResponse> ConvertToGetCountriesResponse(this List<Country> countries)
+        {
+            return Mapper.Map<List<Country>, List<GetCountriesResponse>>(countries);
+        }
     }
 }

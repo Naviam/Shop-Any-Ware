@@ -56,7 +56,8 @@
     <div class="control-group">
         <label class="control-label">@AddressViewResources.AddressTable_Country:</label>
         <div class="controls">
-            @Html.TextBoxFor(m => m.Country, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: Country" }, { "placeholder", AddressViewResources.Country_Placeholder } })
+            @Html.DropDownListFor(m=>m.CountryId, (IEnumerable<SelectListItem>)ViewData["Countries"],new Dictionary<string, object> { { "data-bind", "value: CountryId" }})
+            @*@Html.TextBoxFor(m => m.Country, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: Country" }, { "placeholder", AddressViewResources.Country_Placeholder } })*@
             @*<input class="input-xlarge" name="Country" data-bind="value: Country" type="text" placeholder="@AddressViewResources.Country_Placeholder" />*@
         </div>
     </div>
