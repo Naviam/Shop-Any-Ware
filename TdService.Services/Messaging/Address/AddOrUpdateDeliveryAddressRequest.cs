@@ -37,7 +37,7 @@ namespace TdService.Services.Messaging.Address
         /// <summary>
         /// Gets or sets Country.
         /// </summary>
-        public string Country { get; set; }
+        public int CountryId { get; set; }
 
         /// <summary>
         /// Gets or sets Region.

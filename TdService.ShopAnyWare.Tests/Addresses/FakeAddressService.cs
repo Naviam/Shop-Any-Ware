@@ -35,7 +35,7 @@ namespace TdService.ShopAnyWare.Tests.Addresses
                             AddressLine2 = string.Empty,
                             AddressName = "My first address",
                             City = "Москва",
-                            Country = "Россия",
+                            Country = new Country{Code="RU",Id=183},
                             Region = null,
                             State = null,
                             ZipCode = "11003",
@@ -50,7 +50,7 @@ namespace TdService.ShopAnyWare.Tests.Addresses
                             AddressLine2 = string.Empty,
                             AddressName = "My second address",
                             City = "Минск",
-                            Country = "Буларусь",
+                            Country = new Country{Code="BY",Id=21},
                             Region = null,
                             State = null,
                             ZipCode = "29482",
@@ -113,6 +113,12 @@ namespace TdService.ShopAnyWare.Tests.Addresses
         {
             var result = this.addresses.RemoveAll(a => a.Id == request.Id);
             return new RemoveDeliveryRequestResponse { Id = result == 1 ? request.Id : 0 };
+        }
+
+
+        List<GetCountriesResponse> IAddressService.GetCountries()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

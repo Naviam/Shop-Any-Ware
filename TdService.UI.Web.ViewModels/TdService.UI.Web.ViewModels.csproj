@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\CountryViewModel.cs" />
     <Compile Include="Account\DeliveryAddressViewModel.cs" />
     <Compile Include="Account\DeliveryAddressViewModelValidator.cs" />
     <Compile Include="Account\EmailExistsValidator.cs" />
