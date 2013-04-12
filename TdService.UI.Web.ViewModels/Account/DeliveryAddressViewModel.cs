@@ -11,6 +11,7 @@ namespace TdService.UI.Web.ViewModels.Account
 {
     using System.Collections.Generic;
 using FluentValidation.Attributes;
+    using TdService.Resources;
 
     /// <summary>
     /// The delivery address view model.
@@ -41,12 +42,18 @@ using FluentValidation.Attributes;
         /// <summary>
         /// Gets or sets Country id.
         /// </summary>
-        public int CountryId { get; set; }
+        public string CountryCode{ get; set; }
+
+        public string CountryId { get; set; }
 
         /// <summary>
         /// Gets or sets translated country name.
         /// </summary>
-        public string CountryNameTranslated { get; set; }
+        public string CountryNameTranslated { get
+        {
+            return Countries.ResourceManager.GetString(this.CountryCode);
+        }
+        }
 
         /// <summary>
         /// Gets or sets Region.

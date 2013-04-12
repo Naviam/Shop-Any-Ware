@@ -18,22 +18,14 @@ namespace TdService.Model.Addresses
     public class Country : EntityBase<int>
     {
         /// <summary>
-        /// Gets or sets the country name.
-        /// </summary>
-        public string TranslatedName
-        {
-            get
-            {
-                var translated = Countries.ResourceManager.GetString(this.Code);
-                if (string.IsNullOrEmpty(translated)) return string.Empty;
-                return translated;
-            }
-        }
-
-        /// <summary>
         /// Gets or sets the country code.
         /// </summary>
         public string Code { get; set; }
+
+        /// <summary>
+        /// Used for USPS
+        /// </summary>
+        public string DefaultName { get; set; }
 
         /// <summary>
         /// The validate.

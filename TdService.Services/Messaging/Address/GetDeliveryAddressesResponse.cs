@@ -7,6 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+
 namespace TdService.Services.Messaging.Address
 {
     /// <summary>
@@ -37,12 +38,12 @@ namespace TdService.Services.Messaging.Address
         /// <summary>
         /// Gets or sets Country.
         /// </summary>
-        public string CountryId { get; set; }
+        public string CountryCode { get; set; }
 
         /// <summary>
         /// Gets or sets Country.
         /// </summary>
-        public string CountryNameTranslated { get; set; }
+        public int CountryId { get; set; }
 
         /// <summary>
         /// Gets or sets Region.

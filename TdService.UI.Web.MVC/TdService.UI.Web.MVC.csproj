@@ -330,7 +330,6 @@
     <Content Include="Scripts\plupload\js\plupload.silverlight.xap" />
     <Content Include="Scripts\Tools\UspsService.js" />
     <Content Include="Scripts\ViewModels\AdminDashboardViewModel.js" />
-    <Content Include="Scripts\ViewModels\DeliveryRatesViewModel.js" />
     <Content Include="Scripts\ViewModels\MemberDashboard\Item.js" />
     <Content Include="Scripts\ViewModels\MemberDashboard\Order.js" />
     <Content Include="Scripts\ViewModels\MemberDashboard\Package.js" />
@@ -338,6 +337,7 @@
     <Content Include="Scripts\ViewModels\OperatorDashboardViewModel.js" />
     <Content Include="Scripts\ViewModels\ProfileViewModel.js" />
     <Content Include="Scripts\ViewModels\AddressViewModel.js" />
+    <Content Include="Scripts\ViewModels\RatesViewModel.js" />
     <Content Include="Scripts\ViewModels\SignUpViewModel.js" />
     <Content Include="Scripts\noty\jquery.noty.js" />
     <Content Include="Scripts\noty\layouts\bottom.js" />

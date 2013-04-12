@@ -126,6 +126,18 @@
   <data name="DeliveryMethodHeader" xml:space="preserve">
     <value>Метод Доставки</value>
   </data>
+  <data name="DeliveryRate" xml:space="preserve">
+    <value>Приблизительная стоимость доставки</value>
+  </data>
+  <data name="ErrorText" xml:space="preserve">
+    <value>Ошибка. Проверьте входные данные</value>
+  </data>
+  <data name="LoadingRatesText" xml:space="preserve">
+    <value>загрузка</value>
+  </data>
+  <data name="PageHeader" xml:space="preserve">
+    <value>Shop Any Ware - цена доставки</value>
+  </data>
   <data name="WeightHeader" xml:space="preserve">
     <value>Вес</value>
   </data>
