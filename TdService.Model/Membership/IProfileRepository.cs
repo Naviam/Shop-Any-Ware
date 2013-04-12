@@ -34,7 +34,7 @@ namespace TdService.Model.Membership
         void UpdateProfile(Profile profile);
 
         /// <summary>
-        /// Save changes to db.
+        /// Save changes to DB.
         /// </summary>
         /// <returns>
         /// Commit changes result.

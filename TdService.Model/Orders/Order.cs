@@ -198,6 +198,17 @@ namespace TdService.Model.Orders
         }
 
         /// <summary>
+        /// Gets the items not in package.
+        /// </summary>
+        public List<Item> ItemsNotInPackage
+        {
+            get
+            {
+                return this.Items == null ? new List<Item>() : this.Items.Where(i => !i.PackageId.HasValue).ToList();
+            }
+        }
+
+        /// <summary>
         /// Create new order.
         /// </summary>
         /// <param name="retailer">
@@ -212,7 +223,13 @@ namespace TdService.Model.Orders
             return order;
         }
 
-        public Order SetAsRecieved()
+        /// <summary>
+        /// The set as received.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="Order"/>.
+        /// </returns>
+        public Order SetAsReceived()
         {
             this.Status = OrderStatus.Received;
             this.ReceivedDate = DateTime.UtcNow;
@@ -301,15 +318,6 @@ namespace TdService.Model.Orders
             if (!string.IsNullOrEmpty(this.TrackingNumber) && this.TrackingNumber.Length > 64)
             {
                 this.AddBrokenRule(OrderBusinessRules.TrackingNumberLength);
-            }
-        }
-
-        public List<Item> ItemsNotInPackage
-        {
-            get
-            {
-                if (this.Items == null) return new List<Item>();
-                return this.Items.Where(i => !(i.PackageId.HasValue)).ToList();
             }
         }
     }

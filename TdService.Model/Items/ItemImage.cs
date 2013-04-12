@@ -9,8 +9,6 @@
 
 namespace TdService.Model.Items
 {
-    using TdService.Model.Common;
-
     /// <summary>
     /// Item image.
     /// </summary>
@@ -34,6 +32,6 @@ namespace TdService.Model.Items
         ///// <summary>
         ///// Gets or sets PictureType.
         ///// </summary>
-        //public ImageType PictureType { get; set; }
+        //// public ImageType PictureType { get; set; }
     }
 }

@@ -10,7 +10,7 @@
 namespace TdService.Model.Addresses
 {
     /// <summary>
-    /// This is a class that descibed additional info for user's delivery address.
+    /// This is a class that described additional info for user's delivery address.
     /// </summary>
     public class DeliveryAddress : Address
     {

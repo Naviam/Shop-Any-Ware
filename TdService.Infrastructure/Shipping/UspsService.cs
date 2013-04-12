@@ -17,6 +17,9 @@ namespace TdService.Infrastructure.Shipping
     /// </summary>
     public class UspsService : IShippingService
     {
+        /// <summary>
+        /// The server url.
+        /// </summary>
         private static string serverUrl = "http://production.shippingapis.com/";
 
         /// <summary>

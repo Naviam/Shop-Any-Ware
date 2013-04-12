@@ -38,19 +38,19 @@ namespace TdService.Model.Orders
             new BusinessRule("Weight", ErrorCode.OrderWeightRequired.ToString());
 
         /// <summary>
-        /// This rule ensures that order number is withing max length.
+        /// This rule ensures that order number is within max length.
         /// </summary>
         public static readonly BusinessRule OrderNumberLength =
             new BusinessRule("OrderNumber", ErrorCode.OrderOrderNumberMaxLength.ToString());
 
         /// <summary>
-        /// This rule ensures that tracking number is withing max length.
+        /// This rule ensures that tracking number is within max length.
         /// </summary>
         public static readonly BusinessRule TrackingNumberLength =
             new BusinessRule("TrackingNumber", ErrorCode.OrderTrackingNumberMaxLength.ToString());
 
         /// <summary>
-        /// This rule ensures that extended status is withing max length.
+        /// This rule ensures that extended status is within max length.
         /// </summary>
         public static readonly BusinessRule StatusExtendedLength =
             new BusinessRule("StatusExtended", ErrorCode.OrderStatusExtendedMaxLength.ToString());

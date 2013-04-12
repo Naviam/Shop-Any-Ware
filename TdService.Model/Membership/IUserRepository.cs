@@ -7,10 +7,11 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
 namespace TdService.Model.Membership
 {
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
     /// User repository contract.
     /// </summary>
@@ -45,7 +46,7 @@ namespace TdService.Model.Membership
         /// The user email.
         /// </param>
         /// <param name="addressId">
-        /// The addresss id to attach.
+        /// The address id to attach.
         /// </param>
         void AttachAddress(string email, int addressId);
 
@@ -83,7 +84,7 @@ namespace TdService.Model.Membership
         User GetUserWithPackagesByEmail(string email);
 
         /// <summary>
-        /// Validate user against db.
+        /// Validate user against DB.
         /// </summary>
         /// <param name="email">
         /// The email.
@@ -135,28 +136,50 @@ namespace TdService.Model.Membership
         bool ValidateCredentials(User user);
 
         /// <summary>
-        /// Get users in role
+        /// The get users in role.
         /// </summary>
-        /// <param name="roleId">role id</param>
-        /// <returns></returns>
+        /// <param name="roleId">
+        /// The role id.
+        /// </param>
+        /// <param name="skip">
+        /// The skip.
+        /// </param>
+        /// <param name="take">
+        /// The take.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Tuple"/>.
+        /// </returns>
         Tuple<List<User>, int> GetUsersInRole(int roleId, int skip, int take);
 
         /// <summary>
-        /// Gets all users
+        /// The get all users.
         /// </summary>
-        /// <returns>list of all users</returns>
+        /// <param name="skip">
+        /// The skip.
+        /// </param>
+        /// <param name="take">
+        /// The take.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Tuple"/>.
+        /// </returns>
         Tuple<List<User>, int> GetAllUsers(int skip, int take);
 
         /// <summary>
-        /// Save changes to db.
+        /// Save changes to DB.
         /// </summary>
         void SaveChanges();
 
         /// <summary>
-        /// Getsuser by Id
+        /// The get user by id.
         /// </summary>
-        /// <param name="Id">user ID</param>
-        /// <returns>User</returns>
+        /// <param name="id">
+        /// The id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="User"/>.
+        /// </returns>
         User GetUserById(int id);
     }
 }

@@ -14,7 +14,6 @@ namespace TdService.Repository.MsSql.Repositories
     using System.Data;
     using System.Linq;
 
-    using TdService.Model.Common;
     using TdService.Model.Orders;
 
     /// <summary>
@@ -23,7 +22,7 @@ namespace TdService.Repository.MsSql.Repositories
     public class RetailerRepository : IRetailerRepository, IDisposable
     {
         /// <summary>
-        /// Shop any ware sql context.
+        /// Shop any ware SQL context.
         /// </summary>
         private readonly ShopAnyWareSql context;
 
@@ -78,10 +77,10 @@ namespace TdService.Repository.MsSql.Repositories
         }
 
         /// <summary>
-        /// Save changes to db.
+        /// Save changes to DB.
         /// </summary>
         /// <returns>
-        /// The System.Int32.
+        /// Number of changes.
         /// </returns>
         public int SaveChanges()
         {

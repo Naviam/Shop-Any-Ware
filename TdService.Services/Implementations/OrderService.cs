@@ -247,7 +247,7 @@ namespace TdService.Services.Implementations
             try
             {
                 var order = this.orderRepository.GetOrderById(request.OrderId);
-                order.SetAsRecieved();
+                order.SetAsReceived();
                 var updatedOrder = this.orderRepository.UpdateOrder(order);
                 var response = updatedOrder.ConvertToOrderReceivedResponse();
                 response.Message = CommonResources.OrderStatusChangedToReceived;

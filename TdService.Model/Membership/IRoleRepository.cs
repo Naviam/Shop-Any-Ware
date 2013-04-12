@@ -20,7 +20,7 @@ namespace TdService.Model.Membership
         /// Get role by name.
         /// </summary>
         /// <param name="roleName">
-        /// The name of the rol.
+        /// The name of the role.
         /// </param>
         /// <returns>
         /// The role.
@@ -28,10 +28,14 @@ namespace TdService.Model.Membership
         Role GetRoleByName(string roleName);
 
         /// <summary>
-        /// Get role by id
+        /// The get role by id.
         /// </summary>
-        /// <param name="roleId">id</param>
-        /// <returns>role</returns>
+        /// <param name="roleId">
+        /// The role id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Role"/>.
+        /// </returns>
         Role GetRoleById(int roleId);
 
         /// <summary>
@@ -59,7 +63,7 @@ namespace TdService.Model.Membership
         void UpdateRole(Role role);
 
         /// <summary>
-        /// Remove role from db.
+        /// Remove role from DB.
         /// </summary>
         /// <param name="roleId">
         /// The role ID to remove.
@@ -67,24 +71,30 @@ namespace TdService.Model.Membership
         void RemoveRole(int roleId);
 
         /// <summary>
-        /// 
+        /// The add user to role.
         /// </summary>
-        /// <param name="userId"></param>
-        /// <param name="roleId"></param>
+        /// <param name="userId">
+        /// The user id.
+        /// </param>
+        /// <param name="roleId">
+        /// The role id.
+        /// </param>
         void AddUserToRole(int userId, int roleId);
 
         /// <summary>
-        /// 
+        /// The remove user from role.
         /// </summary>
-        /// <param name="userId"></param>
-        /// <param name="roleId"></param>
+        /// <param name="userId">
+        /// The user id.
+        /// </param>
+        /// <param name="roleId">
+        /// The role id.
+        /// </param>
         void RemoveUserFromRole(int userId, int roleId);
 
         /// <summary>
-        /// Commit repository changes to db.
+        /// Commit repository changes to DB.
         /// </summary>
         void SaveChanges();
-
-        
     }
 }

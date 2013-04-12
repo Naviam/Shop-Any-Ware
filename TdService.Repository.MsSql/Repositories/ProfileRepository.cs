@@ -20,7 +20,7 @@ namespace TdService.Repository.MsSql.Repositories
     public class ProfileRepository : IProfileRepository, IDisposable
     {
         /// <summary>
-        /// Shop any ware db context.
+        /// Shop any ware DB context.
         /// </summary>
         private readonly ShopAnyWareSql context;
 
@@ -62,7 +62,7 @@ namespace TdService.Repository.MsSql.Repositories
         }
 
         /// <summary>
-        /// Save changes to db.
+        /// Save changes to DB.
         /// </summary>
         /// <returns>
         /// Commit changes result.

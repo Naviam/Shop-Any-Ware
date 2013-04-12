@@ -22,7 +22,7 @@ namespace TdService.Model
     public interface IRepository<T> : IDisposable where T : class
     {
         /// <summary>
-        /// Get all objects from db.
+        /// Get all objects from DB.
         /// </summary>
         /// <returns>
         /// Collection of objects.
@@ -30,7 +30,7 @@ namespace TdService.Model
         IQueryable<T> All();
         
         /// <summary>
-        /// Get objects from db by filter.
+        /// Get objects from DB by filter.
         /// </summary>
         /// <param name="predicate">
         /// Specified a filter.
@@ -50,7 +50,7 @@ namespace TdService.Model
         /// The keys.
         /// </param>
         /// <returns>
-        /// Object from db.
+        /// Object from DB.
         /// </returns>
         T Find(params object[] keys);
 
@@ -61,7 +61,7 @@ namespace TdService.Model
         /// The specified expression.
         /// </param>
         /// <returns>
-        /// Object from db.
+        /// Object from DB.
         /// </returns>
         T Find(Expression<Func<T, bool>> predicate);
 

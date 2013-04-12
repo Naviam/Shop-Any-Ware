@@ -12,7 +12,7 @@ namespace TdService.Model.Items
     using TdService.Infrastructure.Domain;
 
     /// <summary>
-    /// The item bussiness rules.
+    /// The item business rules.
     /// </summary>
     public static class ItemBussinessRules
     {

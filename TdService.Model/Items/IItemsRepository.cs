@@ -99,20 +99,20 @@ namespace TdService.Model.Items
         /// <param name="itemId">
         /// The item id.
         /// </param>
-        /// <param name="orderId">
-        /// The order Id.
-        /// </param>
         /// <returns>
         /// The <see cref="Item"/>.
         /// </returns>
         Item RemoveItem(int itemId);
 
         /// <summary>
-        /// 
+        /// The add image to item.
         /// </summary>
-        /// <param name="itemId"></param>
-        /// <param name="image"></param>
+        /// <param name="itemId">
+        /// The item id.
+        /// </param>
+        /// <param name="image">
+        /// The image.
+        /// </param>
         void AddImageToItem(int itemId, ItemImage image);
-
     }
 }
