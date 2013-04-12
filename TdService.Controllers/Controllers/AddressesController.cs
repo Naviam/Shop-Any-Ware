@@ -102,10 +102,7 @@ namespace TdService.UI.Web.Controllers
                 destination.City = source.City;
             }
 
-            if (string.IsNullOrWhiteSpace(destination.Country))
-            {
-                destination.Country = source.Country;
-            }
+            destination.CountryId = source.CountryId;
 
             if (string.IsNullOrWhiteSpace(destination.State))
             {

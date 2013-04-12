@@ -168,7 +168,7 @@ namespace TdService.Services.Implementations
                 package.DeliveryAddressId = request.DeliverAddressId;
                 this.packageRepository.UpdatePackage(package);
                 var addr = this.addressRepository.GetDeliveryAddressDetails(request.DeliverAddressId);
-                return new ChangePackageDeliveryAddressResponse {Country=addr.Country, MessageType = MessageType.Success, Message = string.Format(CommonResources.PackageDeliveryAddressChanged, package.Id) };
+                return new ChangePackageDeliveryAddressResponse {Country=addr.Country.TranslatedName, MessageType = MessageType.Success, Message = string.Format(CommonResources.PackageDeliveryAddressChanged, package.Id) };
             }
             catch (Exception ex)
             {
@@ -255,7 +255,7 @@ namespace TdService.Services.Implementations
         {
             try
             {
-                var packages = this.packageRepository.GetShoppersPackages(request.IncludeAssembling, request.IncludePaid);
+                var packages = this.packageRepository.GetShoppersPackages(request.IncludeAssembling, request.IncludePaid, request.IncludeSent);
                 var result = packages.ConvertToUsersPackagesCollection();
                 return result;
             }
@@ -265,7 +265,6 @@ namespace TdService.Services.Implementations
                 return new GetUsersPackagesResponse { MessageType = MessageType.Error, Message = ex.Message };
             }
         }
-
 
         public UpdatePackageTotalSizeResponse UpdatePackageTotalSize(UpdatePackageTotalSizeRequest request)
         {
@@ -288,7 +287,24 @@ namespace TdService.Services.Implementations
                 logger.Log(ex.Message);
                 return new UpdatePackageTotalSizeResponse { MessageType = MessageType.Error, Message = ex.Message };
             }
+        }
 
+        public ChangeTrackingNumberResponse ChangePackageTrackingNumber(ChangeTrackingNumberRequest request)
+        {
+            try
+            {
+                var package = this.packageRepository.GetPackageById(request.PackageId);
+                package.TrackingNumber = request.TrackingNumber;
+                this.packageRepository.UpdatePackage(package);
+                var response = new ChangeTrackingNumberResponse
+                    { Message = DashboardViewResources.TrackingNumberUpdated, MessageType = MessageType.Success };
+                return response;
+            }
+            catch (Exception ex)
+            {
+                logger.Log(ex.Message);
+                return new ChangeTrackingNumberResponse { Message = DashboardViewResources.TrackingNumberUpdateError, MessageType = MessageType.Error};
+            }
         }
     }
 }

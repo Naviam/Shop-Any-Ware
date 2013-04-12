@@ -47,5 +47,7 @@ namespace TdService.Services.Interfaces
         /// The response.
         /// </returns>
         RemoveDeliveryRequestResponse RemoveAddress(RemoveDeliveryAddressRequest request);
+
+        List<GetCountriesResponse> GetCountries();
     }
 }

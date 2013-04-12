@@ -29,6 +29,8 @@ namespace TdService.Model.Addresses
         /// </summary>
         public string LastName { get; set; }
 
+        public int UserId { get; set; }
+
         /// <summary>
         /// Validate business rules.
         /// </summary>

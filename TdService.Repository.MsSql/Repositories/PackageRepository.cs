@@ -115,50 +115,18 @@ namespace TdService.Repository.MsSql.Repositories
             }
         }
 
-        /// <summary>
-        /// The get shoppers packages.
-        /// </summary>
-        /// <param name="includeAssembling">
-        /// The include assembling.
-        /// </param>
-        /// <param name="includePaid">
-        /// The include paid.
-        /// </param>
-        /// <returns>
-        /// Collection of packages.
-        /// </returns>
-        public List<Package> GetShoppersPackages(bool includeAssembling, bool includePaid)
+
+        public List<Package> GetShoppersPackages(bool includeAssembling, bool includePaid, bool includeSent)
         {
             using (var context = new ShopAnyWareSql())
             {
-                if (!includeAssembling && !includePaid)
-                {
-                    return new List<Package>();
-                }
+                List<PackageStatus> statuses = new List<PackageStatus>();
+                if (includeAssembling) statuses.Add(PackageStatus.Assembling);
+                if (includePaid) statuses.Add(PackageStatus.Paid);
+                if (includeSent) statuses.Add(PackageStatus.Sent);
 
-                if (includeAssembling && includePaid)
-                {
-                    return
-                        context.Packages.Include(p => p.Items)
-                               .Include(p => p.User)
-                               .Where(p => p.Status == PackageStatus.Paid || p.Status == PackageStatus.Assembling)
-                               .ToList();
-                }
-
-                if (includeAssembling)
-                {
-                    return
-                        context.Packages.Include(p => p.Items)
-                               .Include(p => p.User)
-                               .Where(p => p.Status == PackageStatus.Assembling)
-                               .ToList();
-                }
-
-                return
-                    context.Packages.Include(p => p.Items)
-                           .Include(p => p.User)
-                           .Where(p => p.Status == PackageStatus.Paid)
-                           .ToList();
+                if (!includeAssembling && !includePaid && !includeSent) return new List<Package>();
+                return context.Packages.Include(p => p.Items).Include(p => p.User).Where(p => statuses.Contains(p.Status)).ToList();
             }
         }
     }

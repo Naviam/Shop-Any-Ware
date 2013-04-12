@@ -76,5 +76,11 @@ namespace TdService.Model.Addresses
         /// The TdService.Model.Addresses.DeliveryAddress.
         /// </returns>
         DeliveryAddress RemoveDeliveryAddress(string email, DeliveryAddress address);
+
+        /// <summary>
+        /// Get country list
+        /// </summary>
+        /// <returns></returns>
+        List<Country> GetCountries();
     }
 }

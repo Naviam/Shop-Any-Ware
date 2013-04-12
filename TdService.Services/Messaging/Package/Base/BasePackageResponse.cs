@@ -108,5 +108,9 @@ namespace TdService.Services.Messaging.Package.Base
         /// </summary>
         public decimal DimensionsGirth { get; set; }
 
+        /// <summary>
+        /// Gets or sets Tracking Number.
+        /// </summary>
+        public string TrackingNumber { get; set; } 
     }
 }

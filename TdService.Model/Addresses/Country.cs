@@ -10,6 +10,7 @@
 namespace TdService.Model.Addresses
 {
     using TdService.Infrastructure.Domain;
+    using TdService.Resources;
 
     /// <summary>
     /// The country.
@@ -19,7 +20,15 @@ namespace TdService.Model.Addresses
         /// <summary>
         /// Gets or sets the country name.
         /// </summary>
-        public string Name { get; set; }
+        public string TranslatedName
+        {
+            get
+            {
+                var translated = Countries.ResourceManager.GetString(this.Code);
+                if (string.IsNullOrEmpty(translated)) return string.Empty;
+                return translated;
+            }
+        }
 
         /// <summary>
         /// Gets or sets the country code.
@@ -31,7 +40,6 @@ namespace TdService.Model.Addresses
         /// </summary>
         protected override void Validate()
         {
-            throw new System.NotImplementedException();
         }
     }
 }

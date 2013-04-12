@@ -279,4 +279,7 @@
   <data name="PackageInfoPackageName" xml:space="preserve">
     <value>Package Name</value>
   </data>
+  <data name="BtnShowSelectedText" xml:space="preserve">
+    <value>Show sent</value>
+  </data>
 </root>

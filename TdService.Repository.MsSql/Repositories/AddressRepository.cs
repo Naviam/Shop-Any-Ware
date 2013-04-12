@@ -10,6 +10,7 @@ namespace TdService.Repository.MsSql.Repositories
     using System.Collections.Generic;
     using System.Data;
     using System.Linq;
+    using System.Data.Entity;
 
     using TdService.Infrastructure.Domain;
     using TdService.Model.Addresses;
@@ -38,8 +39,10 @@ namespace TdService.Repository.MsSql.Repositories
 
             using (var context = new ShopAnyWareSql())
             {
-                var user = context.Users.Include("DeliveryAddresses").SingleOrDefault(u => u.Email == email);
-                return user != null ? user.DeliveryAddresses : new List<DeliveryAddress>();
+                var user = context.Users.SingleOrDefault(u => u.Email == email);
+                var addr = context.DeliveryAddresses.Include(da => da.Country).Where(da => da.UserId.Equals(user.Id));
+
+                return addr.ToList();
             }
         }
 
@@ -109,7 +112,7 @@ namespace TdService.Repository.MsSql.Repositories
                     throw new InvalidUserException(ErrorCode.UserNotFound.ToString());
                 }
 
-                ////var addressInDb = user.DeliveryAddresses.SingleOrDefault(a => a.Id == address.Id);
+                address.UserId = user.Id;
                 var addressInDb = address.Id == 0 ? null : context.DeliveryAddresses.Find(address.Id);
                 if (addressInDb == null)
                 {
@@ -120,10 +123,6 @@ namespace TdService.Repository.MsSql.Repositories
                     {
                         user.DeliveryAddresses = new List<DeliveryAddress>();
                     }
-
-                    user.DeliveryAddresses.Add(addressInDb);
-                    context.Entry(user).State = EntityState.Modified;
-                    context.SaveChanges();
                 }
                 else
                 {
@@ -137,11 +136,12 @@ namespace TdService.Repository.MsSql.Repositories
                     addressInDb.AddressLine1 = address.AddressLine1;
                     addressInDb.AddressLine2 = address.AddressLine2;
                     addressInDb.AddressLine3 = address.AddressLine3;
+                    addressInDb.CountryId = address.CountryId;
 
                     context.Entry(addressInDb).State = EntityState.Modified;
                     context.SaveChanges();
                 }
-
+                addressInDb.Country = context.Countries.Single(c => c.Id.Equals(addressInDb.CountryId));
                 return addressInDb;
             }
         }
@@ -187,6 +187,15 @@ namespace TdService.Repository.MsSql.Repositories
                 var removedAddress = context.DeliveryAddresses.Remove(addressToRemove);
                 context.SaveChanges();
                 return removedAddress;
+            }
+        }
+
+
+        public List<Country> GetCountries()
+        {
+            using (var context = new ShopAnyWareSql())
+            {
+                return context.Countries.ToList();
             }
         }
     }
