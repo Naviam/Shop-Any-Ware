@@ -1,12 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="ConfirmPayPalTransactionRequest.cs" company="Naviam">
+//   Vadim Shaporov. 2013
+// </copyright>
+// <summary>
+//   The confirm pay pal transaction request.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace TdService.Services.Messaging.Transactions
 {
-    public class ConfirmPayPalTransactionRequest:RequestBase
+    /// <summary>
+    /// The confirm pay pal transaction request.
+    /// </summary>
+    public class ConfirmPayPalTransactionRequest : RequestBase
     {
         /// <summary>
         /// Gets or sets token
@@ -16,6 +22,6 @@ namespace TdService.Services.Messaging.Transactions
         /// <summary>
         /// Gets or sets payer id
         /// </summary>
-        public string PayerId{ get; set; }
+        public string PayerId { get; set; }
     }
 }

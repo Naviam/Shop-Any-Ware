@@ -19,18 +19,29 @@ namespace TdService.Model.Packages
         /// </summary>
         New = 0,
 
+        /// <summary>
+        /// The assembling.
+        /// </summary>
         Assembling = 1,
 
+        /// <summary>
+        /// The assembled.
+        /// </summary>
         Assembled = 2,
 
+        /// <summary>
+        /// The paid.
+        /// </summary>
         Paid = 3,
 
+        /// <summary>
+        /// The sent.
+        /// </summary>
         Sent = 4,
 
         /// <summary>
         /// Delivered status.
         /// </summary>
         Delivered = 5
-
     }
 }

@@ -107,10 +107,14 @@ namespace TdService.Services.Interfaces
         UpdateOrderResponse UpdateOrder(UpdateOrderRequest request);
 
         /// <summary>
-        /// Changes order status to received
+        /// The order received.
         /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="OrderReceivedResponse"/>.
+        /// </returns>
         OrderReceivedResponse OrderReceived(OrderReceivedRequest request);
     }
 }

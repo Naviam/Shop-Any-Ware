@@ -61,10 +61,14 @@ namespace TdService.Services.Mapping
         }
 
         /// <summary>
-        /// 
+        /// The convert to get countries response.
         /// </summary>
-        /// <param name="countries"></param>
-        /// <returns></returns>
+        /// <param name="countries">
+        /// The countries.
+        /// </param>
+        /// <returns>
+        /// The collection of get countries responses.
+        /// </returns>
         public static List<GetCountriesResponse> ConvertToGetCountriesResponse(this List<Country> countries)
         {
             return Mapper.Map<List<Country>, List<GetCountriesResponse>>(countries);

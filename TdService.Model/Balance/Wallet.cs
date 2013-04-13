@@ -30,6 +30,17 @@ namespace TdService.Model.Balance
         public List<Transaction> Transactions { get; set; }
 
         /// <summary>
+        /// The package payment.
+        /// </summary>
+        /// <param name="operationAmount">
+        /// The operation amount.
+        /// </param>
+        public void PackagePayment(decimal operationAmount)
+        {
+            this.Amount -= operationAmount;
+        }
+
+        /// <summary>
         /// Validate business rules.
         /// </summary>
         /// <exception cref="NotImplementedException">
@@ -37,15 +48,10 @@ namespace TdService.Model.Balance
         /// </exception>
         protected override void Validate()
         {
-            if (this.Amount<0)
+            if (this.Amount < 0)
             {
                 this.AddBrokenRule(new BusinessRule("Amount", ErrorCode.WalletAmountNegative.ToString()));
             }
-        }
-
-        public void PackagePayment(decimal operationAmount)
-        {
-            this.Amount -= operationAmount;
         }
     }
 }

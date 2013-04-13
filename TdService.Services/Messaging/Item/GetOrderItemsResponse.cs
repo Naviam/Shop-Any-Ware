@@ -7,15 +7,14 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using TdService.Services.Messaging.Item.Base;
 namespace TdService.Services.Messaging.Item
 {
+    using TdService.Services.Messaging.Item.Base;
+
     /// <summary>
     /// The get order items response.
     /// </summary>
     public class GetOrderItemsResponse : ItemResponse
     {
-        
     }
 }

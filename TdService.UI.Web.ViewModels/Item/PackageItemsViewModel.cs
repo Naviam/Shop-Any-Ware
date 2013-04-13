@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="PackageItemViewModel.cs" company="TdService">
+// <copyright file="PackageItemsViewModel.cs" company="TdService">
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
@@ -16,7 +16,11 @@ namespace TdService.UI.Web.ViewModels.Item
     /// </summary>
     public class PackageItemsViewModel : ViewModelBase
     {
+        /// <summary>
+        /// Gets or sets the items.
+        /// </summary>
         public List<ItemViewModel> Items { get; set; }
+
         /// <summary>
         /// Gets or sets the package id.
         /// </summary>

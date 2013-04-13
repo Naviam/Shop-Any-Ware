@@ -7,9 +7,10 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using TdService.Services.Messaging.Item.Base;
 namespace TdService.Services.Messaging.Item
 {
+    using TdService.Services.Messaging.Item.Base;
+
     /// <summary>
     /// The add item to package response.
     /// </summary>

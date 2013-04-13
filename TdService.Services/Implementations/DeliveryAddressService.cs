@@ -21,7 +21,7 @@ namespace TdService.Services.Implementations
     /// <summary>
     /// This class contains service methods to work with delivery addresses.
     /// </summary>
-    public class DeliveryAddressService :ServiceBase, IAddressService
+    public class DeliveryAddressService : ServiceBase, IAddressService
     {
         /// <summary>
         /// Address repository.
@@ -37,7 +37,8 @@ namespace TdService.Services.Implementations
         /// <param name="logger">
         /// The logger.
         /// </param>
-        public DeliveryAddressService(IAddressRepository addressRepository, ILogger logger):base(logger)
+        public DeliveryAddressService(IAddressRepository addressRepository, ILogger logger)
+            : base(logger)
         {
             this.addressRepository = addressRepository;
         }
@@ -88,7 +89,7 @@ namespace TdService.Services.Implementations
             {
                 response.MessageType = MessageType.Error;
                 response.Message = CommonResources.DeliveryAddressAddOrUpdateErrorMessage;
-                this.logger.Error(CommonResources.DeliveryAddressAddOrUpdateErrorMessage, e);
+                this.Logger.Error(CommonResources.DeliveryAddressAddOrUpdateErrorMessage, e);
             }
 
             return response;
@@ -122,20 +123,23 @@ namespace TdService.Services.Implementations
             {
                 response.MessageType = MessageType.Error;
                 response.Message = CommonResources.DeliveryAddressRemoveErrorMessage;
-                this.logger.Error(CommonResources.DeliveryAddressRemoveErrorMessage, e);
+                this.Logger.Error(CommonResources.DeliveryAddressRemoveErrorMessage, e);
             }
 
             return response;
         }
 
+        /// <summary>
+        /// The get countries.
+        /// </summary>
+        /// <returns>
+        /// The collection of get countries responses.
+        /// </returns>
         public List<GetCountriesResponse> GetCountries()
         {
             var countries = this.addressRepository.GetCountries();
             var response = countries.ConvertToGetCountriesResponse();
             return response;
         }
-
-
-        
     }
 }

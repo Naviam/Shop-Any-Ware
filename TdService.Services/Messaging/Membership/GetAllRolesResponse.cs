@@ -1,12 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="GetAllRolesResponse.cs" company="Naviam">
+//   Vadim Shaporov. 2013
+// </copyright>
+// <summary>
+//   The get all roles response.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace TdService.Services.Messaging.Membership
 {
-    public class GetAllRolesResponse:ResponseBase
+    /// <summary>
+    /// The get all roles response.
+    /// </summary>
+    public class GetAllRolesResponse : ResponseBase
     {
         /// <summary>
         /// Gets or sets the id.

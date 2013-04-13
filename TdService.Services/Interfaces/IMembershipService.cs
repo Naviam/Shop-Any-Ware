@@ -100,52 +100,80 @@ namespace TdService.Services.Interfaces
         GetUsersInRoleResponse GetUsersInRole(GetUsersInRoleRequest request);
 
         /// <summary>
-        /// Gets user by id
+        /// The get user by id.
         /// </summary>
-        /// <param name="request">ID</param>
-        /// <returns>user</returns>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="GetUserByIdResponse"/>.
+        /// </returns>
         GetUserByIdResponse GetUserById(GetUserByIdRequest request);
 
         /// <summary>
-        /// 
+        /// The add user to role.
         /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="AddUserToRoleResponse"/>.
+        /// </returns>
         AddUserToRoleResponse AddUserToRole(AddUserToRoleRequest request);
 
         /// <summary>
-        /// 
+        /// The remove user from role.
         /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="RemoveUserFromRoleResponse"/>.
+        /// </returns>
         RemoveUserFromRoleResponse RemoveUserFromRole(RemoveUserFromRoleRequest request);
 
         /// <summary>
-        /// 
+        /// The get all roles.
         /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The collection of get all roles responses.
+        /// </returns>
         List<GetAllRolesResponse> GetAllRoles(GetAllRolesRequest request);
 
         /// <summary>
-        /// Gets user by email
+        /// The get user by email.
         /// </summary>
-        /// <param name="request">req</param>
-        /// <returns>user</returns>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="GetUserByEmailResponse"/>.
+        /// </returns>
         GetUserByEmailResponse GetUserByEmail(GetUserByEmailRequest request);
 
         /// <summary>
-        /// Signs up new admin or operator user
+        /// The sign up admin.
         /// </summary>
-        /// <param name="request">request obj</param>
-        /// <returns>response obj</returns>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="SignUpAdminResponse"/>.
+        /// </returns>
         SignUpAdminResponse SignUpAdmin(SignUpAdminRequest request);
 
         /// <summary>
-        /// Activates user's email
+        /// The activate email.
         /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ActivateUserEmailResponse"/>.
+        /// </returns>
         ActivateUserEmailResponse ActivateEmail(ActivateUserEmailRequest request);
     }
 }

@@ -91,7 +91,9 @@ namespace TdService.Model.Orders
             }
         }
 
-
+        /// <summary>
+        /// Gets a value indicating whether can items be added.
+        /// </summary>
         public bool CanItemsBeAdded
         {
             get { return true; }

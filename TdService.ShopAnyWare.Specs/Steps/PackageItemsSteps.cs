@@ -9,19 +9,21 @@
 
 namespace TdService.ShopAnyWare.Specs.Steps
 {
+    using System.Diagnostics;
+    using System.Linq;
+
     using NUnit.Framework;
+
     using TdService.Model.Items;
-    using TdService.Repository.MsSql;
-    using TdService.Services.Interfaces;
+    using TdService.Services.Implementations;
     using TdService.Services.Messaging;
     using TdService.ShopAnyWare.Specs.Fakes;
     using TdService.UI.Web;
     using TdService.UI.Web.Controllers;
     using TdService.UI.Web.ViewModels;
+
     using TechTalk.SpecFlow;
     using TechTalk.SpecFlow.Assist;
-    using System.Linq;
-    using TdService.Services.Implementations;
 
     /// <summary>
     /// The package items steps.
@@ -29,14 +31,6 @@ namespace TdService.ShopAnyWare.Specs.Steps
     [Binding]
     public class PackageItemsSteps
     {
-        private ItemsController GetItemsController()
-        {
-            var itemsService = ScenarioContext.Current.Get<ItemsService>();
-            var fakeFormsAuthentication = ScenarioContext.Current.Get<FakeFormsAuthentication>();
-            var controller = new ItemsController(itemsService, fakeFormsAuthentication);
-            return controller;
-        }
-
         /// <summary>
         /// The when i add item to package with the following data.
         /// </summary>
@@ -61,20 +55,37 @@ namespace TdService.ShopAnyWare.Specs.Steps
             ScenarioContext.Current.Pending();
         }
 
+        /// <summary>
+        /// The when i move all items in order to package.
+        /// </summary>
+        /// <param name="orderNumber">
+        /// The order number.
+        /// </param>
+        /// <param name="packageName">
+        /// The package name.
+        /// </param>
         [When(@"I move all items in order '(.*)' to package '(.*)'")]
         public void WhenIMoveAllItemsInOrderToPackage(string orderNumber, string packageName)
         {
-            var user = ScenarioContext.Current.Get<TdService.Model.Membership.User>();
+            var user = ScenarioContext.Current.Get<Model.Membership.User>();
             var order = user.Orders.SingleOrDefault(o => o.OrderNumber == orderNumber);
             var package = user.Packages.SingleOrDefault(p => p.Name == packageName);
-            var controller = GetItemsController();
+            var controller = this.GetItemsController();
+            Debug.Assert(order != null, "order != null");
+            Debug.Assert(package != null, "package != null");
             var actual = controller.MoveOrderItemsToExistingPackage(order.Id, package.Id) as JsonNetResult;
             Assert.IsNotNull(actual);
             Assert.That(actual.Data is ViewModelBase);
             Assert.That((actual.Data as ViewModelBase).MessageType.Equals(MessageType.Success.ToString()));
-            ScenarioContext.Current.Set<int>(package.Id, "PackageId");
+            ScenarioContext.Current.Set(package.Id, "PackageId");
         }
 
+        /// <summary>
+        /// The then there should be following items for package.
+        /// </summary>
+        /// <param name="table">
+        /// The table.
+        /// </param>
         [Then(@"there should be following items for this package")]
         public void ThenThereShouldBeFollowingItemsForPackage(Table table)
         {
@@ -92,40 +103,43 @@ namespace TdService.ShopAnyWare.Specs.Steps
             }
         }
 
-        //[When(@"I move all items in order '(.*)' to new package '(.*)'")]
-        //public void WhenIMoveAllItemsInOrderToNewPackage(string orderNumber, string packageName)
-        //{
-        //    var user = ScenarioContext.Current.Get<TdService.Model.Membership.User>();
-        //    var order = user.Orders.SingleOrDefault(o => o.OrderNumber == orderNumber);
-        //    var controller = GetItemsController();
-        //    var actual = controller.MoveOrderItemsToNewPackage(order.Id, packageName) as JsonNetResult;
-        //    Assert.IsNotNull(actual);
-        //    Assert.That(actual.Data is ViewModelBase);
-        //    Assert.That((actual.Data as ViewModelBase).MessageType.Equals(MessageType.Success.ToString()));
-        //}
-
+        /// <summary>
+        /// The when i move all items from package back to their original order.
+        /// </summary>
+        /// <param name="packageName">
+        /// The package name.
+        /// </param>
         [When(@"I move all items from package '(.*)' back to their original order")]
         public void WhenIMoveAllItemsFromPackageBackToTheirOriginalOrder(string packageName)
         {
-            var user = ScenarioContext.Current.Get<TdService.Model.Membership.User>();
+            var user = ScenarioContext.Current.Get<Model.Membership.User>();
             var package = user.Packages.SingleOrDefault(p => p.Name == packageName);
-            var controller = GetItemsController();
+            var controller = this.GetItemsController();
+            Debug.Assert(package != null, "package != null");
             var actual = controller.MoveOrderItemsToOriginalOrder(package.Id) as JsonNetResult;
             Assert.IsNotNull(actual);
             Assert.That(actual.Data is ViewModelBase);
             Assert.That((actual.Data as ViewModelBase).MessageType.Equals(MessageType.Success.ToString()));
         }
 
+        /// <summary>
+        /// The then there should be following items for order.
+        /// </summary>
+        /// <param name="orderNumber">
+        /// The order number.
+        /// </param>
+        /// <param name="table">
+        /// The table.
+        /// </param>
         [Then(@"there should be following items for order '(.*)'")]
         public void ThenThereShouldBeFollowingItemsForOrder(string orderNumber, Table table)
         {
-            var user = ScenarioContext.Current.Get<TdService.Model.Membership.User>();
+            var user = ScenarioContext.Current.Get<Model.Membership.User>();
             var order = user.Orders.SingleOrDefault(o => o.OrderNumber == orderNumber);
             var items = table.CreateSet<Item>().ToList();
             var itemsService = ScenarioContext.Current.Get<ItemsService>();
-            var actual =
-                itemsService.GetOrderItems(
-                    new Services.Messaging.Item.GetOrderItemsRequest { OrderId = order.Id });
+            Debug.Assert(order != null, "order != null");
+            var actual = itemsService.GetOrderItems(new Services.Messaging.Item.GetOrderItemsRequest { OrderId = order.Id });
             Assert.That(actual.Count.Equals(items.Count));
             foreach (var resp in actual)
             {
@@ -135,5 +149,18 @@ namespace TdService.ShopAnyWare.Specs.Steps
             }
         }
 
+        /// <summary>
+        /// The get items controller.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="ItemsController"/>.
+        /// </returns>
+        private ItemsController GetItemsController()
+        {
+            var itemsService = ScenarioContext.Current.Get<ItemsService>();
+            var fakeFormsAuthentication = ScenarioContext.Current.Get<FakeFormsAuthentication>();
+            var controller = new ItemsController(itemsService, fakeFormsAuthentication);
+            return controller;
+        }
     }
 }

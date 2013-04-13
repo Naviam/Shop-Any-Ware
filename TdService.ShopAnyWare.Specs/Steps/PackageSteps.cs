@@ -9,7 +9,10 @@
 
 namespace TdService.ShopAnyWare.Specs.Steps
 {
+    using System.Linq;
+
     using NUnit.Framework;
+
     using TdService.Model.Packages;
     using TdService.Repository.MsSql;
     using TdService.Services.Implementations;
@@ -17,9 +20,9 @@ namespace TdService.ShopAnyWare.Specs.Steps
     using TdService.UI.Web;
     using TdService.UI.Web.Controllers;
     using TdService.UI.Web.ViewModels.Package;
+
     using TechTalk.SpecFlow;
     using TechTalk.SpecFlow.Assist;
-    using System.Linq;
 
     /// <summary>
     /// The package steps.
@@ -27,6 +30,17 @@ namespace TdService.ShopAnyWare.Specs.Steps
     [Binding]
     public class PackageSteps
     {
+        /// <summary>
+        /// Gets the AUTH token.
+        /// </summary>
+        private string AuthToken
+        {
+            get
+            {
+                return ScenarioContext.Current.Get<FakeFormsAuthentication>().GetAuthenticationToken();
+            }
+        }
+
         /// <summary>
         /// The get packages controller.
         /// </summary>
@@ -40,8 +54,6 @@ namespace TdService.ShopAnyWare.Specs.Steps
             return new PackagesController(packagesService, formsAuthentication);
         }
 
-
-
         /// <summary>
         /// The when i set package name as.
         /// </summary>
@@ -52,7 +64,7 @@ namespace TdService.ShopAnyWare.Specs.Steps
         public void WhenISetPackageNameAs(string packageName)
         {
             var contoller = this.GetPackagesController();
-            var result = contoller.Add(packageName, AuthToken) as JsonNetResult;
+            var result = contoller.Add(packageName, this.AuthToken) as JsonNetResult;
             Assert.That(result, Is.Not.Null);
             if (result != null)
             {
@@ -75,6 +87,12 @@ namespace TdService.ShopAnyWare.Specs.Steps
             table.CompareToInstance(actual);
         }
 
+        /// <summary>
+        /// The then there should be a package with following data.
+        /// </summary>
+        /// <param name="table">
+        /// The table.
+        /// </param>
         [Then(@"There should  be a package with following data")]
         public void ThenThereShouldBeAPackageWithFollowingData(Table table)
         {
@@ -86,15 +104,6 @@ namespace TdService.ShopAnyWare.Specs.Steps
                 Assert.IsNotNull(actual);
                 ScenarioContext.Current.Set(actual.Id, "PackageId");
             }
-        }
-
-        private string AuthToken
-        {
-            get
-            {
-                return ScenarioContext.Current.Get<FakeFormsAuthentication>().GetAuthenticationToken();
-            }
-
         }
     }
 }

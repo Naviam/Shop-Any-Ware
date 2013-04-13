@@ -43,7 +43,7 @@ namespace TdService.Infrastructure.Querying
         public OrderByClause OrderByProperty { get; set; }
 
         /// <summary>
-        /// Add subquery.
+        /// Add sub query.
         /// </summary>
         /// <param name="subQuery">
         /// The sub query.

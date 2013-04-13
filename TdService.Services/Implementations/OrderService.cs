@@ -152,7 +152,7 @@ namespace TdService.Services.Implementations
             {
                 response.MessageType = MessageType.Error;
                 response.ErrorCode = ex.Message;
-                this.logger.Error(CommonResources.OrderAddErrorMessage, ex);
+                this.Logger.Error(CommonResources.OrderAddErrorMessage, ex);
             }
 
             return response;
@@ -182,7 +182,7 @@ namespace TdService.Services.Implementations
                 response.Id = request.Id;
                 response.MessageType = MessageType.Error;
                 response.ErrorCode = ex.Message;
-                this.logger.Error(CommonResources.OrderRemoveErrorMessage, ex);
+                this.Logger.Error(CommonResources.OrderRemoveErrorMessage, ex);
             }
 
             return response;
@@ -227,7 +227,7 @@ namespace TdService.Services.Implementations
             {
                 response.MessageType = MessageType.Error;
                 response.ErrorCode = e.Message;
-                this.logger.Error(CommonResources.OrderUpdateErrorMessage, e);
+                this.Logger.Error(CommonResources.OrderUpdateErrorMessage, e);
             }
 
             return response;
@@ -247,7 +247,7 @@ namespace TdService.Services.Implementations
             try
             {
                 var order = this.orderRepository.GetOrderById(request.OrderId);
-                order.SetAsRecieved();
+                order.SetAsReceived();
                 var updatedOrder = this.orderRepository.UpdateOrder(order);
                 var response = updatedOrder.ConvertToOrderReceivedResponse();
                 response.Message = CommonResources.OrderStatusChangedToReceived;
@@ -256,7 +256,7 @@ namespace TdService.Services.Implementations
             }
             catch (Exception ex)
             {
-                this.logger.Error(CommonResources.OrderReceivedErrorMessage, ex);
+                this.Logger.Error(CommonResources.OrderReceivedErrorMessage, ex);
                 return new OrderReceivedResponse { MessageType = MessageType.Error, ErrorCode = ex.Message };
             }
         }

@@ -48,38 +48,87 @@ namespace TdService.Services.Mapping
         }
 
         /// <summary>
-        /// 
+        /// The convert to assemble package response.
         /// </summary>
-        /// <param name="package"></param>
-        /// <returns></returns>
+        /// <param name="package">
+        /// The package.
+        /// </param>
+        /// <returns>
+        /// The <see cref="AssemblePackageResponse"/>.
+        /// </returns>
         public static AssemblePackageResponse ConvertToAssemblePackageResponse(this Package package)
         {
             return Mapper.Map<Package, AssemblePackageResponse>(package);
         }
 
+        /// <summary>
+        /// The convert to package assembled response.
+        /// </summary>
+        /// <param name="package">
+        /// The package.
+        /// </param>
+        /// <returns>
+        /// The <see cref="PackageAssembledResponse"/>.
+        /// </returns>
         public static PackageAssembledResponse ConvertToPackageAssembledResponse(this Package package)
         {
             return Mapper.Map<Package, PackageAssembledResponse>(package);
         }
 
+        /// <summary>
+        /// The convert to pay for package response.
+        /// </summary>
+        /// <param name="package">
+        /// The package.
+        /// </param>
+        /// <returns>
+        /// The <see cref="PayForPackageResponse"/>.
+        /// </returns>
         public static PayForPackageResponse ConvertToPayForPackageResponse(this Package package)
         {
             return Mapper.Map<Package, PayForPackageResponse>(package);
         }
 
+        /// <summary>
+        /// The convert to send package response.
+        /// </summary>
+        /// <param name="package">
+        /// The package.
+        /// </param>
+        /// <returns>
+        /// The <see cref="SendPackageResponse"/>.
+        /// </returns>
         public static SendPackageResponse ConvertToSendPackageResponse(this Package package)
         {
             return Mapper.Map<Package, SendPackageResponse>(package);
         }
 
+        /// <summary>
+        /// The convert to users packages collection.
+        /// </summary>
+        /// <param name="packages">
+        /// The packages.
+        /// </param>
+        /// <returns>
+        /// The <see cref="GetUsersPackagesResponse"/>.
+        /// </returns>
         public static GetUsersPackagesResponse ConvertToUsersPackagesCollection(this List<Package> packages)
         {
             return new GetUsersPackagesResponse
                 {
-                    UsersPackages = Mapper.Map<List<Package>, List<TdService.Services.Messaging.Package.GetUsersPackagesResponse.UserPackage>>(packages)
+                    UsersPackages = Mapper.Map<List<Package>, List<UserPackageResponse>>(packages)
                 };
         }
 
+        /// <summary>
+        /// The convert to update package total size response.
+        /// </summary>
+        /// <param name="package">
+        /// The package.
+        /// </param>
+        /// <returns>
+        /// The <see cref="UpdatePackageTotalSizeResponse"/>.
+        /// </returns>
         public static UpdatePackageTotalSizeResponse ConvertToUpdatePackageTotalSizeResponse(this Package package)
         {
             return Mapper.Map<Package, UpdatePackageTotalSizeResponse>(package);

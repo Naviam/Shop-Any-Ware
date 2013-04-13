@@ -23,7 +23,7 @@ namespace TdService.Infrastructure.UnitOfWork
         /// The entity.
         /// </param>
         /// <param name="unitofWorkRepository">
-        /// The unitof work repository.
+        /// The unit of work repository.
         /// </param>
         void RegisterAmended(IAggregateRoot entity, IUnitOfWorkRepository unitofWorkRepository);
 
@@ -34,7 +34,7 @@ namespace TdService.Infrastructure.UnitOfWork
         /// The entity.
         /// </param>
         /// <param name="unitofWorkRepository">
-        /// The unitof work repository.
+        /// The unit of work repository.
         /// </param>
         void RegisterNew(IAggregateRoot entity, IUnitOfWorkRepository unitofWorkRepository);
 
@@ -45,7 +45,7 @@ namespace TdService.Infrastructure.UnitOfWork
         /// The entity.
         /// </param>
         /// <param name="unitofWorkRepository">
-        /// The unitof work repository.
+        /// The unit of work repository.
         /// </param>
         void RegisterRemoved(IAggregateRoot entity, IUnitOfWorkRepository unitofWorkRepository);
 

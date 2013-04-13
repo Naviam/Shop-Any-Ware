@@ -83,6 +83,7 @@
     <Compile Include="Package\PackageSizePopupViewModel.cs" />
     <Compile Include="Package\PayForPackageViewModel.cs" />
     <Compile Include="Package\UserPackageViewModel.cs" />
+    <Compile Include="Package\UsersPackagesViewModel.cs" />
     <Compile Include="ViewModelBase.cs" />
     <Compile Include="Item\ItemViewModel.cs" />
     <Compile Include="Item\OrderItemViewModel.cs" />

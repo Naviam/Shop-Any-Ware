@@ -1,6 +1,18 @@
-﻿namespace TdService.Services.Messaging.Package
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="UpdatePackageTotalSizeRequest.cs" company="Naviam">
+//   Vadim Shaporov. 2013
+// </copyright>
+// <summary>
+//   The update package total size request.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace TdService.Services.Messaging.Package
 {
-    public class UpdatePackageTotalSizeRequest:RequestBase
+    /// <summary>
+    /// The update package total size request.
+    /// </summary>
+    public class UpdatePackageTotalSizeRequest : RequestBase
     {
         /// <summary>
         /// Gets or sets Weight Pounds.
@@ -27,6 +39,9 @@
         /// </summary>
         public decimal DimensionsGirth { get; set; }
 
+        /// <summary>
+        /// Gets or sets the package id.
+        /// </summary>
         public int PackageId { get; set; }
     }
 }

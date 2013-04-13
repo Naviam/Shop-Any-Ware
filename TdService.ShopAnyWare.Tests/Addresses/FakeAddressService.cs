@@ -9,9 +9,8 @@
 
 namespace TdService.ShopAnyWare.Tests.Addresses
 {
+    using System;
     using System.Collections.Generic;
-
-    using AutoMapper;
 
     using TdService.Model.Addresses;
     using TdService.Services.Interfaces;
@@ -35,7 +34,7 @@ namespace TdService.ShopAnyWare.Tests.Addresses
                             AddressLine2 = string.Empty,
                             AddressName = "My first address",
                             City = "Москва",
-                            Country = new Country{Code="RU",Id=183},
+                            Country = new Country { Code = "RU", Id = 183 },
                             Region = null,
                             State = null,
                             ZipCode = "11003",
@@ -50,7 +49,7 @@ namespace TdService.ShopAnyWare.Tests.Addresses
                             AddressLine2 = string.Empty,
                             AddressName = "My second address",
                             City = "Минск",
-                            Country = new Country{Code="BY",Id=21},
+                            Country = new Country { Code = "BY", Id = 21 },
                             Region = null,
                             State = null,
                             ZipCode = "29482",
@@ -115,10 +114,18 @@ namespace TdService.ShopAnyWare.Tests.Addresses
             return new RemoveDeliveryRequestResponse { Id = result == 1 ? request.Id : 0 };
         }
 
-
+        /// <summary>
+        /// The get countries.
+        /// </summary>
+        /// <returns>
+        /// The collection of get countries responses.
+        /// </returns>
+        /// <exception cref="NotImplementedException">
+        /// Not implemented yet.
+        /// </exception>
         List<GetCountriesResponse> IAddressService.GetCountries()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

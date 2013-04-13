@@ -1,9 +1,24 @@
-﻿namespace TdService.Services.Messaging.Transactions
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="GetTransactionsResponse.cs" company="Naviam">
+//   Vadim Shaporov. 2013
+// </copyright>
+// <summary>
+//   The get transactions response.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace TdService.Services.Messaging.Transactions
 {
     using System;
 
+    /// <summary>
+    /// The get transactions response.
+    /// </summary>
     public class GetTransactionsResponse : ResponseBase
     {
+        /// <summary>
+        /// Gets or sets the wallet id.
+        /// </summary>
         public int WalletId { get; set; }
 
         /// <summary>

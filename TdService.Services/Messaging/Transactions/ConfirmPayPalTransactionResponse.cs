@@ -1,12 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="ConfirmPayPalTransactionResponse.cs" company="Naviam">
+//   Vadim Shaporov. 2013
+// </copyright>
+// <summary>
+//   The confirm pay pal transaction response.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace TdService.Services.Messaging.Transactions
 {
-    public class ConfirmPayPalTransactionResponse:ResponseBase
+    /// <summary>
+    /// The confirm pay pal transaction response.
+    /// </summary>
+    public class ConfirmPayPalTransactionResponse : ResponseBase
     {
     }
 }

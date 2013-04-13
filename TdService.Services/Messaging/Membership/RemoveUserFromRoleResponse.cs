@@ -1,12 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="RemoveUserFromRoleResponse.cs" company="Naviam">
+//   Vadim Shaporov. 2013
+// </copyright>
+// <summary>
+//   The remove user from role response.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace TdService.Services.Messaging.Membership
 {
-    public class RemoveUserFromRoleResponse:ResponseBase
+    /// <summary>
+    /// The remove user from role response.
+    /// </summary>
+    public class RemoveUserFromRoleResponse : ResponseBase
     {
     }
 }

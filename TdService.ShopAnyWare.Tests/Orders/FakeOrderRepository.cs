@@ -11,7 +11,6 @@ namespace TdService.ShopAnyWare.Tests.Orders
 {
     using System.Collections.Generic;
 
-    using TdService.Model.Common;
     using TdService.Model.Orders;
 
     /// <summary>
@@ -194,7 +193,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
         }
 
         /// <summary>
-        /// Save changes to db.
+        /// Save changes to DB.
         /// </summary>
         public void SaveChanges()
         {

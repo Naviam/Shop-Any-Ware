@@ -18,7 +18,7 @@ namespace TdService.UI.Web
     using Formatting = System.Xml.Formatting;
 
     /// <summary>
-    /// The json net result.
+    /// The JSON net result.
     /// </summary>
     public class JsonNetResult : ActionResult
     {

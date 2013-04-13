@@ -73,7 +73,6 @@ namespace TdService.Infrastructure.Shipping
             /// </summary>
             public class Service
             {
-                 
             }
         }
     }

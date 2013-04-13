@@ -1,29 +1,30 @@
-﻿namespace TdService.Services.Messaging.Membership
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="GetUsersInRoleResponse.cs" company="Naviam">
+//   Vadim Shaporov. 2013
+// </copyright>
+// <summary>
+//   The get users in role response.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace TdService.Services.Messaging.Membership
 {
     using System;
     using System.Collections.Generic;
 
+    /// <summary>
+    /// The get users in role response.
+    /// </summary>
     public class GetUsersInRoleResponse
     {
-        public class UserResponseModel
-        {
-            public int Id { get; set; }
+        /// <summary>
+        /// Gets or sets the users.
+        /// </summary>
+        public List<UserResponse> Users { get; set; }
 
-            public string FullName { get; set; }
-
-            public int OrdersCount { get; set; }
-
-            public int PackagesCount { get; set; }
-
-            public string Email { get; set; }
-
-            public DateTime? LastAccessDate { get; set; }
-
-            public List<int> Roles { get; set; }
-        }
-
-        public List<UserResponseModel> Users { get; set; }
-
+        /// <summary>
+        /// Gets or sets the total count.
+        /// </summary>
         public int TotalCount { get; set; }
     }
 }

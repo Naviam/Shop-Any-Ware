@@ -9,8 +9,7 @@
 
 namespace TdService.UI.Web.ViewModels.Account
 {
-    using System.Collections.Generic;
-using FluentValidation.Attributes;
+    using FluentValidation.Attributes;
     using TdService.Resources;
 
     /// <summary>
@@ -42,17 +41,22 @@ using FluentValidation.Attributes;
         /// <summary>
         /// Gets or sets Country id.
         /// </summary>
-        public string CountryCode{ get; set; }
+        public string CountryCode { get; set; }
 
+        /// <summary>
+        /// Gets or sets the country id.
+        /// </summary>
         public string CountryId { get; set; }
 
         /// <summary>
-        /// Gets or sets translated country name.
+        /// Gets translated country name.
         /// </summary>
-        public string CountryNameTranslated { get
+        public string CountryNameTranslated
         {
-            return Countries.ResourceManager.GetString(this.CountryCode);
-        }
+            get
+            {
+                return Countries.ResourceManager.GetString(this.CountryCode);
+            }
         }
 
         /// <summary>

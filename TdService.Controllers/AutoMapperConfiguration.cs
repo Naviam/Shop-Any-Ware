@@ -36,16 +36,7 @@ namespace TdService.UI.Web
     using TdService.UI.Web.ViewModels.Order;
     using TdService.UI.Web.ViewModels.Package;
     using TdService.UI.Web.ViewModels.Retailer;
-
-// ReSharper disable AccessToStaticMemberViaDerivedType
-    using ItemImageModel = TdService.Services.Messaging.Item.GetOrderItemsResponse.ItemImageModel;
-// ReSharper restore AccessToStaticMemberViaDerivedType
-    using UserResponseModel = TdService.Services.Messaging.Membership.GetUsersInRoleResponse.UserResponseModel;
-// ReSharper restore AccessToStaticMemberViaDerivedType
-    using UserPackage = TdService.Services.Messaging.Package.GetUsersPackagesResponse.UserPackage;
-// ReSharper restore AccessToStaticMemberViaDerivedType
-    using UserPackageViewModel = TdService.UI.Web.ViewModels.Package.UsersPackagesViewModel.UserPackageViewModel;
-
+    
     /// <summary>
     /// The auto mapper configuration.
     /// </summary>
@@ -133,10 +124,10 @@ namespace TdService.UI.Web
             Mapper.CreateMap<AddOrUpdateDeliveryAddressRequest, DeliveryAddress>()
                 .ForMember(m => m.RowVersion, opt => opt.Ignore());
             Mapper.CreateMap<DeliveryAddress, AddOrUpdateDeliveryAddressResponse>()
-                .ForMember(r => r.Message, opt => opt.Ignore())
-                .ForMember(r => r.BrokenRules, opt => opt.Ignore())
-                .ForMember(r => r.ErrorCode, opt => opt.Ignore())
-                .ForMember(r => r.MessageType, opt => opt.Ignore());
+                  .ForMember(r => r.Message, opt => opt.Ignore())
+                  .ForMember(r => r.BrokenRules, opt => opt.Ignore())
+                  .ForMember(r => r.ErrorCode, opt => opt.Ignore())
+                  .ForMember(r => r.MessageType, opt => opt.Ignore());
             Mapper.CreateMap<RemoveDeliveryRequestResponse, DeliveryAddressViewModel>()
                 .ForMember(r => r.FirstName, opt => opt.Ignore())
                 .ForMember(r => r.LastName, opt => opt.Ignore())
@@ -309,14 +300,14 @@ namespace TdService.UI.Web
                 .ForMember(dest => dest.OperatorMode, opt => opt.Ignore());
 
             // item images
-            Mapper.CreateMap<ItemImage, ItemImageModel>();
-            Mapper.CreateMap<ItemImageModel, ItemImageViewModel>()
+            Mapper.CreateMap<ItemImage, ItemImageResponse>();
+            Mapper.CreateMap<ItemImageResponse, ItemImageViewModel>()
                 .ForMember(r => r.BrokenRules, opt => opt.Ignore())
                 .ForMember(r => r.Message, opt => opt.Ignore())
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())
                 .ForMember(r => r.MessageType, opt => opt.Ignore())
                 .ForMember(r => r.ItemId, opt => opt.Ignore());
-            Mapper.CreateMap<AddItemImageReponse, ItemImageViewModel>();
+            Mapper.CreateMap<AddItemImageResponse, ItemImageViewModel>();
 
             // add item to package
             
@@ -463,10 +454,10 @@ namespace TdService.UI.Web
                 .ForMember(r => r.Commission, opt => opt.Ignore());
 
             // admin dashboard
-            Mapper.CreateMap<User, UserResponseModel>().ConvertUsing<UsersInRoleConverter>();
+            Mapper.CreateMap<User, UserResponse>().ConvertUsing<UsersInRoleConverter>();
             Mapper.CreateMap<User, GetUserByIdResponse>().ConvertUsing<GetUserByIdConverter>();
             Mapper.CreateMap<User, GetUserByEmailResponse>().ConvertUsing<GetUserByEmailConverter>();
-            Mapper.CreateMap<UserResponseModel, UsersInRoleViewModel>()
+            Mapper.CreateMap<UserResponse, UsersInRoleViewModel>()
                 .ForMember(r => r.BrokenRules, opt => opt.Ignore())
                 .ForMember(r => r.Message, opt => opt.Ignore())
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())
@@ -474,23 +465,23 @@ namespace TdService.UI.Web
             Mapper.CreateMap<GetUserByIdResponse, UsersInRoleViewModel>();
             Mapper.CreateMap<GetUserByEmailResponse, UsersInRoleViewModel>();
 
-            //get users' packages
-            Mapper.CreateMap<Package, UserPackage>().ConvertUsing<UserPackageConverter>();
+            // get users' packages
+            Mapper.CreateMap<Package, UserPackageResponse>().ConvertUsing<UserPackageConverter>();
             Mapper.CreateMap<GetUsersPackagesResponse, UsersPackagesViewModel>()
                 .ForMember(r => r.BrokenRules, opt => opt.Ignore())
                 .ForMember(r => r.Message, opt => opt.Ignore())
                 .ForMember(r => r.ErrorCode, opt => opt.Ignore())
                 .ForMember(r => r.MessageType, opt => opt.Ignore());
-            Mapper.CreateMap<UserPackage, UserPackageViewModel>();
+            Mapper.CreateMap<UserPackageResponse, UserPackageViewModel>();
 
-            //update package total size
+            // update package total size
             Mapper.CreateMap<PackageSizePopupViewModel, UpdatePackageTotalSizeRequest>()
                 .ForMember(r => r.IdentityToken, opt => opt.Ignore());
             Mapper.CreateMap<UpdatePackageTotalSizeResponse, PackageViewModel>();
             Mapper.CreateMap<Package, UpdatePackageTotalSizeResponse>()
                 .ForMember(r => r.Country, opt => opt.MapFrom(p => p.DeliveryAddress.Country.DefaultName)); 
 
-            //countries
+            // countries
             Mapper.CreateMap<GetCountriesResponse, CountryViewModel>();
             Mapper.CreateMap<Country, GetCountriesResponse>();
         }
@@ -516,28 +507,10 @@ namespace TdService.UI.Web
             }
         }
 
-        public class UserPackageConverter:ITypeConverter<Package, UserPackage>
-        {
-            public UserPackage Convert(ResolutionContext context)
-            {
-                var package = context.SourceValue as Package;
-                if (package == null) return null;
-                var converted = new UserPackage {UserId = package.UserId,
-                    Email=package.User.Email,
-                    Status = package.StatusTranslated,
-                    PackageId = package.Id,
-                    ItemsCount = package.Items.Count,
-                    DispatchMethod = package.DispatchMethod.ToString(),
-                    PackageName = package.Name
-                };
-                return converted;
-            }
-        }
-
         /// <summary>
-        /// Type converter User->GetUsersInRoleResponse
+        /// The user package converter.
         /// </summary>
-        public class UsersInRoleConverter : ITypeConverter<User, UserResponseModel>
+        public class UserPackageConverter : ITypeConverter<Package, UserPackageResponse>
         {
             /// <summary>
             /// The convert.
@@ -546,14 +519,50 @@ namespace TdService.UI.Web
             /// The context.
             /// </param>
             /// <returns>
-            /// The <see cref="UserResponseModel"/>.
+            /// The <see cref="UserPackageResponse"/>.
             /// </returns>
-            public UserResponseModel Convert(ResolutionContext context)
+            public UserPackageResponse Convert(ResolutionContext context)
+            {
+                var package = context.SourceValue as Package;
+                if (package == null)
+                {
+                    return null;
+                }
+
+                var converted = new UserPackageResponse
+                                    {
+                                        UserId = package.UserId,
+                                        Email = package.User.Email,
+                                        Status = package.StatusTranslated,
+                                        PackageId = package.Id,
+                                        ItemsCount = package.Items.Count,
+                                        DispatchMethod = package.DispatchMethod.ToString(),
+                                        PackageName = package.Name
+                                    };
+                return converted;
+            }
+        }
+
+        /// <summary>
+        /// Type converter User->GetUsersInRoleResponse
+        /// </summary>
+        public class UsersInRoleConverter : ITypeConverter<User, UserResponse>
+        {
+            /// <summary>
+            /// The convert.
+            /// </summary>
+            /// <param name="context">
+            /// The context.
+            /// </param>
+            /// <returns>
+            /// The <see cref="UserResponse"/>.
+            /// </returns>
+            public UserResponse Convert(ResolutionContext context)
             {
                 var user = context.SourceValue as User;
                 if (user != null)
                 {
-                    var converted = new UserResponseModel
+                    var converted = new UserResponse
                                         {
                                             Email = user.Email,
                                             FullName = string.Concat(user.Profile.FirstName, " ", user.Profile.LastName),

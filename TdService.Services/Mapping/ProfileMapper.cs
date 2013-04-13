@@ -42,7 +42,5 @@ namespace TdService.Services.Mapping
         {
             return Mapper.Map<Model.Membership.Profile, UpdateProfileResponse>(profile);
         }
-
-        
     }
 }

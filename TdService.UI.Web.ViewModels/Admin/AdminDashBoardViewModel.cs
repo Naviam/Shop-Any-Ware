@@ -1,12 +1,27 @@
-﻿namespace TdService.UI.Web.ViewModels.Admin
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="AdminDashBoardViewModel.cs" company="Naviam">
+//   Vadim Shaporov. 2013.
+// </copyright>
+// <summary>
+//   The admin dash board view model.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace TdService.UI.Web.ViewModels.Admin
 {
     using System.Collections.Generic;
     using TdService.Resources.Views;
     using TdService.UI.Web.ViewModels.Account;
 
+    /// <summary>
+    /// The admin dash board view model.
+    /// </summary>
     public class AdminDashBoardViewModel : ViewModelBase
     {
-        public string UserFilterValiidationMessage
+        /// <summary>
+        /// Gets the user filter validation message.
+        /// </summary>
+        public string UserFilterValidationMessage
         {
             get
             {
@@ -14,6 +29,9 @@
             }
         }
 
+        /// <summary>
+        /// Gets the go to page index validation message.
+        /// </summary>
         public string GoToPageIndexValidationMessage
         {
             get
@@ -22,6 +40,9 @@
             }
         }
 
+        /// <summary>
+        /// Gets the all roles translated.
+        /// </summary>
         public string AllRolesTranslated
         {
             get
@@ -30,6 +51,9 @@
             }
         }
 
+        /// <summary>
+        /// Gets the role management permissions error.
+        /// </summary>
         public string RoleManagementPermissionsError
         {
             get
@@ -38,6 +62,9 @@
             }
         }
 
+        /// <summary>
+        /// Gets the shopper role cannot be assigned.
+        /// </summary>
         public string ShopperRoleCannotBeAssigned
         {
             get
@@ -46,6 +73,9 @@
             }
         }
 
+        /// <summary>
+        /// Gets the cant modify own role.
+        /// </summary>
         public string CantModifyOwnRole
         {
             get
@@ -54,6 +84,9 @@
             }
         }
 
+        /// <summary>
+        /// Gets the email is required.
+        /// </summary>
         public string EmailIsRequired
         {
             get
@@ -62,6 +95,9 @@
             }
         }
 
+        /// <summary>
+        /// Gets the email is incorrect.
+        /// </summary>
         public string EmailIsIncorrect
         {
             get
@@ -70,6 +106,9 @@
             }
         }
 
+        /// <summary>
+        /// Gets the first name is required.
+        /// </summary>
         public string FirstNameIsRequired
         {
             get
@@ -78,6 +117,9 @@
             }
         }
 
+        /// <summary>
+        /// Gets the last name is required.
+        /// </summary>
         public string LastNameIsRequired
         {
             get
@@ -86,6 +128,9 @@
             }
         }
 
+        /// <summary>
+        /// Gets the password is required.
+        /// </summary>
         public string PasswordIsRequired
         {
             get
@@ -94,6 +139,9 @@
             }
         }
 
+        /// <summary>
+        /// Gets the password should match.
+        /// </summary>
         public string PasswordShouldMatch
         {
             get
@@ -102,12 +150,24 @@
             }
         }
 
+        /// <summary>
+        /// Gets or sets the user id.
+        /// </summary>
         public int UserId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the roles.
+        /// </summary>
         public List<RoleViewModel> Roles { get; set; }
 
+        /// <summary>
+        /// Gets or sets the member dash board url.
+        /// </summary>
         public string MemberDashBoardUrl { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether can modify user roles.
+        /// </summary>
         public bool CanModifyUserRoles { get; set; }
     }
 }

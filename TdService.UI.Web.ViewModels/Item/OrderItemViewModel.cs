@@ -20,7 +20,7 @@ namespace TdService.UI.Web.ViewModels.Item
         public int OrderId { get; set; }
 
         /// <summary>
-        /// specifies whether page is viewed by operator or admin
+        /// Gets or sets a value indicating whether operator mode.
         /// </summary>
         public bool OperatorMode { get; set; }
     }

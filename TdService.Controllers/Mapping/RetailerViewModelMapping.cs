@@ -1,11 +1,24 @@
-﻿namespace TdService.UI.Web.Mapping
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="RetailerViewModelMapping.cs" company="Naviam">
+//   Vadim Shaporov. 2013
+// </copyright>
+// <summary>
+//   The retailer view model mapping.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace TdService.UI.Web.Mapping
 {
-    using AutoMapper;
     using System.Collections.Generic;
+
+    using AutoMapper;
 
     using TdService.Services.Messaging.Retailer;
     using TdService.UI.Web.ViewModels.Retailer;
 
+    /// <summary>
+    /// The retailer view model mapping.
+    /// </summary>
     public static class RetailerViewModelMapping
     {
         /// <summary>

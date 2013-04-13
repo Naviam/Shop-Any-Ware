@@ -108,7 +108,7 @@ namespace TdService.Model.Addresses
                 this.AddBrokenRule(AddressBusinessRules.CityMaxLength);
             }
 
-            if (this.CountryId ==0)
+            if (this.CountryId == 0)
             {
                 this.AddBrokenRule(AddressBusinessRules.CountryRequired);
             }

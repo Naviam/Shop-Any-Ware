@@ -9,8 +9,8 @@ namespace TdService.Repository.MsSql.Repositories
     using System;
     using System.Collections.Generic;
     using System.Data;
-    using System.Linq;
     using System.Data.Entity;
+    using System.Linq;
 
     using TdService.Infrastructure.Domain;
     using TdService.Model.Addresses;
@@ -76,7 +76,8 @@ namespace TdService.Repository.MsSql.Repositories
         {
             using (var context = new ShopAnyWareSql())
             {
-                return context.DeliveryAddresses.Include(ad=>ad.Country).SingleOrDefault(ad=>ad.Id.Equals(addressId));
+                return context.DeliveryAddresses.Include(ad => ad.Country)
+                              .SingleOrDefault(ad => ad.Id.Equals(addressId));
             }
         }
 
@@ -141,6 +142,7 @@ namespace TdService.Repository.MsSql.Repositories
                     context.Entry(addressInDb).State = EntityState.Modified;
                     context.SaveChanges();
                 }
+
                 addressInDb.Country = context.Countries.Single(c => c.Id.Equals(addressInDb.CountryId));
                 return addressInDb;
             }
@@ -190,7 +192,12 @@ namespace TdService.Repository.MsSql.Repositories
             }
         }
 
-
+        /// <summary>
+        /// The get countries.
+        /// </summary>
+        /// <returns>
+        /// The collection of countries.
+        /// </returns>
         public List<Country> GetCountries()
         {
             using (var context = new ShopAnyWareSql())

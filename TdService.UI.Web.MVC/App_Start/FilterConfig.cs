@@ -1,7 +1,19 @@
-﻿namespace TdService.UI.Web.MVC.App_Start
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="FilterConfig.cs" company="Naviam">
+//   Vitali Hatalski. 2012
+// </copyright>
+// <summary>
+//   The filter config.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace TdService.UI.Web.MVC.App_Start
 {
     using System.Web.Mvc;
 
+    /// <summary>
+    /// The filter config.
+    /// </summary>
     public class FilterConfig
     {
         /// <summary>

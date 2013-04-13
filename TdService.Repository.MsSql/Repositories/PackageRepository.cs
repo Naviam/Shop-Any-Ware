@@ -9,15 +9,12 @@
 
 namespace TdService.Repository.MsSql.Repositories
 {
+    using System.Collections.Generic;
+    using System.Data.Entity;
     using System.Linq;
 
     using TdService.Model.Packages;
-    using System.Data.Entity;
     using TdService.Repository.MsSql.Extensions;
-    using TdService.Model.Membership;
-    using System.Collections.Generic;
-    using System;
-    using System.Linq.Expressions;
 
     /// <summary>
     /// The package repository.
@@ -86,10 +83,14 @@ namespace TdService.Repository.MsSql.Repositories
         }
 
         /// <summary>
-        /// Get Package By Id
+        /// The get package by id.
         /// </summary>
-        /// <param name="packageId"></param>
-        /// <returns></returns>
+        /// <param name="packageId">
+        /// The package id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Package"/>.
+        /// </returns>
         public Package GetPackageById(int packageId)
         {
             using (var context = new ShopAnyWareSql())
@@ -98,29 +99,67 @@ namespace TdService.Repository.MsSql.Repositories
             }
         }
 
-
+        /// <summary>
+        /// The update package.
+        /// </summary>
+        /// <param name="package">
+        /// The package.
+        /// </param>
         public void UpdatePackage(Package package)
         {
             using (var context = new ShopAnyWareSql())
             {
                 context.Packages.Attach(package);
-                context.Entry<Package>(package).State = System.Data.EntityState.Modified;
+                context.Entry(package).State = System.Data.EntityState.Modified;
                 context.SaveChanges();
             }
         }
 
-
+        /// <summary>
+        /// The get shoppers packages.
+        /// </summary>
+        /// <param name="includeAssembling">
+        /// The include assembling.
+        /// </param>
+        /// <param name="includePaid">
+        /// The include paid.
+        /// </param>
+        /// <param name="includeSent">
+        /// The include sent.
+        /// </param>
+        /// <returns>
+        /// The collection of packages.
+        /// </returns>
         public List<Package> GetShoppersPackages(bool includeAssembling, bool includePaid, bool includeSent)
         {
             using (var context = new ShopAnyWareSql())
             {
-                List<PackageStatus> statuses = new List<PackageStatus>();
-                if (includeAssembling) statuses.Add(PackageStatus.Assembling);
-                if (includePaid) statuses.Add(PackageStatus.Paid);
-                if (includeSent) statuses.Add(PackageStatus.Sent);
+                var statuses = new List<PackageStatus>();
+                if (includeAssembling)
+                {
+                    statuses.Add(PackageStatus.Assembling);
+                }
 
-                if (!includeAssembling && !includePaid && !includeSent) return new List<Package>();
-                return context.Packages.Include(p => p.Items).Include(p => p.User).Where(p => statuses.Contains(p.Status)).ToList();
+                if (includePaid)
+                {
+                    statuses.Add(PackageStatus.Paid);
+                }
+
+                if (includeSent)
+                {
+                    statuses.Add(PackageStatus.Sent);
+                }
+
+                if (!includeAssembling && !includePaid && !includeSent)
+                {
+                    return new List<Package>();
+                }
+
+                return
+                    context.Packages.Include(p => p.Items)
+                           .Include(p => p.User)
+                           .Where(p => statuses.Contains(p.Status))
+                           .ToList();
             }
         }
     }

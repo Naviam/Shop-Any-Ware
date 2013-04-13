@@ -1,6 +1,18 @@
-﻿namespace TdService.Services.Messaging.Package
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="ChangePackageDeliveryMethodResponse.cs" company="Naviam">
+//   Vadim Shaporov. 2013
+// </copyright>
+// <summary>
+//   The change package delivery method response.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace TdService.Services.Messaging.Package
 {
-    public class ChangePackageDeliveryMethodResponse:ResponseBase
+    /// <summary>
+    /// The change package delivery method response.
+    /// </summary>
+    public class ChangePackageDeliveryMethodResponse : ResponseBase
     {
     }
 }

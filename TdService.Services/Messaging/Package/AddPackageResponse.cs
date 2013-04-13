@@ -9,7 +9,6 @@
 
 namespace TdService.Services.Messaging.Package
 {
-    using System;
     using TdService.Services.Messaging.Package.Base;
 
     /// <summary>
@@ -17,6 +16,5 @@ namespace TdService.Services.Messaging.Package
     /// </summary>
     public class AddPackageResponse : BasePackageResponse
     {
-        
     }
 }

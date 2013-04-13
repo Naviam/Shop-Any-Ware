@@ -13,7 +13,6 @@ namespace TdService.Services.Mapping
 
     using AutoMapper;
 
-    using TdService.Model.Common;
     using TdService.Model.Items;
     using TdService.Services.Messaging.Item;
 
@@ -92,37 +91,99 @@ namespace TdService.Services.Mapping
             return Mapper.Map<Item, RemoveItemResponse>(item);
         }
 
+        /// <summary>
+        /// The convert to move order items to existing package response.
+        /// </summary>
+        /// <param name="itemList">
+        /// The item list.
+        /// </param>
+        /// <returns>
+        /// The <see cref="MoveOrderItemsToExistingPackageResponse"/>.
+        /// </returns>
         public static MoveOrderItemsToExistingPackageResponse ConvertToMoveOrderItemsToExistingPackageResponse(this List<Item> itemList)
         {
             return Mapper.Map<List<Item>, MoveOrderItemsToExistingPackageResponse>(itemList);
         }
 
+        /// <summary>
+        /// The convert to move order items to new package response.
+        /// </summary>
+        /// <param name="itemList">
+        /// The item list.
+        /// </param>
+        /// <returns>
+        /// The <see cref="MoveOrderItemsToNewPackageResponse"/>.
+        /// </returns>
         public static MoveOrderItemsToNewPackageResponse ConvertToMoveOrderItemsToNewPackageResponse(this List<Item> itemList)
         {
             return Mapper.Map<List<Item>, MoveOrderItemsToNewPackageResponse>(itemList);
         }
 
+        /// <summary>
+        /// The convert to move order items to original order response.
+        /// </summary>
+        /// <param name="itemList">
+        /// The item list.
+        /// </param>
+        /// <returns>
+        /// The <see cref="MoveOrderItemsToOriginalOrderResponse"/>.
+        /// </returns>
         public static MoveOrderItemsToOriginalOrderResponse ConvertToMoveOrderItemsToOriginalOrderResponse(this List<Item> itemList)
         {
             return Mapper.Map<List<Item>, MoveOrderItemsToOriginalOrderResponse>(itemList);
         }
 
+        /// <summary>
+        /// The convert to move order item to original order response.
+        /// </summary>
+        /// <param name="item">
+        /// The item.
+        /// </param>
+        /// <returns>
+        /// The <see cref="MoveItemBackToOriginalOrderResponse"/>.
+        /// </returns>
         public static MoveItemBackToOriginalOrderResponse ConvertToMoveOrderItemToOriginalOrderResponse(this Item item)
         {
             return Mapper.Map<Item, MoveItemBackToOriginalOrderResponse>(item);
         }
 
+        /// <summary>
+        /// The convert to move order item to existing package response.
+        /// </summary>
+        /// <param name="item">
+        /// The item.
+        /// </param>
+        /// <returns>
+        /// The <see cref="MoveOrderItemToExistingPackageResponse"/>.
+        /// </returns>
         public static MoveOrderItemToExistingPackageResponse ConvertToMoveOrderItemToExistingPackageResponse(this Item item)
         {
             return Mapper.Map<Item, MoveOrderItemToExistingPackageResponse>(item);
         }
-        
 
+        /// <summary>
+        /// The convert to edit package item response.
+        /// </summary>
+        /// <param name="item">
+        /// The item.
+        /// </param>
+        /// <returns>
+        /// The <see cref="EditPackageItemResponse"/>.
+        /// </returns>
         public static EditPackageItemResponse ConvertToEditPackageItemResponse(this Item item)
         {
             return Mapper.Map<Item, EditPackageItemResponse>(item);
         }
 
+        /// <summary>
+        /// The convert to edit order item response.
+        /// </summary>
+        /// <param name="item">
+        /// The item.
+        /// </param>
+        /// <returns>
+        /// The <see cref="EditOrderItemResponse"/>.
+        /// </returns>
         public static EditOrderItemResponse ConvertToEditOrderItemResponse(this Item item)
         {
             return Mapper.Map<Item, EditOrderItemResponse>(item);

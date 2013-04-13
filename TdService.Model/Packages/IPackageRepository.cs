@@ -7,20 +7,24 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using TdService.Model.Membership;
 namespace TdService.Model.Packages
 {
+    using System.Collections.Generic;
+
     /// <summary>
     /// The interface for package repository.
     /// </summary>
     public interface IPackageRepository
     {
         /// <summary>
-        ///  Get package by Id.
+        /// The get package by id.
         /// </summary>
-        /// <param name="packageId"></param>
-        /// <returns></returns>
+        /// <param name="packageId">
+        /// The package id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Package"/>.
+        /// </returns>
         Package GetPackageById(int packageId);
 
         /// <summary>
@@ -57,12 +61,28 @@ namespace TdService.Model.Packages
         void RemovePackage(int packageId);
 
         /// <summary>
-        /// Updates package
+        /// The update package.
         /// </summary>
-        /// <param name="package"></param>
-        /// <returns></returns>
+        /// <param name="package">
+        /// The package.
+        /// </param>
         void UpdatePackage(Package package);
 
-        List<Package> GetShoppersPackages(bool includeAssebling, bool includePaid, bool includeSent);
+        /// <summary>
+        /// The get shoppers packages.
+        /// </summary>
+        /// <param name="includeAssembling">
+        /// The include assembling.
+        /// </param>
+        /// <param name="includePaid">
+        /// The include paid.
+        /// </param>
+        /// <param name="includeSent">
+        /// The include sent.
+        /// </param>
+        /// <returns>
+        /// The collection of packages.
+        /// </returns>
+        List<Package> GetShoppersPackages(bool includeAssembling, bool includePaid, bool includeSent);
     }
 }

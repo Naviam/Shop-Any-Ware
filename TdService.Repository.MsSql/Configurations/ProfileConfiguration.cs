@@ -11,7 +11,7 @@ namespace TdService.Repository.MsSql.Configurations
     using TdService.Model.Membership;
 
     /// <summary>
-    /// This class describes the configuration of profile db table.
+    /// This class describes the configuration of profile DB table.
     /// </summary>
     public class ProfileConfiguration : EntityTypeConfiguration<Profile>
     {

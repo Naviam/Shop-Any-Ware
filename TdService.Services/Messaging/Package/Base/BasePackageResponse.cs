@@ -1,7 +1,20 @@
-﻿using System;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="BasePackageResponse.cs" company="Naviam">
+//   Vadim Shaporov. 2013
+// </copyright>
+// <summary>
+//   The base package response.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
 namespace TdService.Services.Messaging.Package.Base
 {
-    public abstract class BasePackageResponse:ResponseBase
+    using System;
+
+    /// <summary>
+    /// The base package response.
+    /// </summary>
+    public abstract class BasePackageResponse : ResponseBase
     {
         /// <summary>
         /// Gets or sets the id.

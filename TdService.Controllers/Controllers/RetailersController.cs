@@ -69,7 +69,7 @@ namespace TdService.UI.Web.Controllers
         /// The search string.
         /// </param>
         /// <returns>
-        /// Json result.
+        /// The <see cref="ActionResult"/>.
         /// </returns>
         public ActionResult Suggest(string searchText)
         {
