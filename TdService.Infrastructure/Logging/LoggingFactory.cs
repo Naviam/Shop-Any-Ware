@@ -28,10 +28,10 @@ namespace TdService.Infrastructure.Logging
         }
 
         /// <summary>
-        /// Get logger.
+        /// The get logger.
         /// </summary>
         /// <returns>
-        /// Loger class.
+        /// The <see cref="ILogger"/>.
         /// </returns>
         public static ILogger GetLogger()
         {

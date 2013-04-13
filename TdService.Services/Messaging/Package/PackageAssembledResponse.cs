@@ -1,8 +1,20 @@
-﻿using TdService.Services.Messaging.Package.Base;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="PackageAssembledResponse.cs" company="Naviam">
+//   Vadim Shaporov. 2013
+// </copyright>
+// <summary>
+//   The package assembled response.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace TdService.Services.Messaging.Package
 {
-    public class PackageAssembledResponse:BasePackageResponse
+    using TdService.Services.Messaging.Package.Base;
+
+    /// <summary>
+    /// The package assembled response.
+    /// </summary>
+    public class PackageAssembledResponse : BasePackageResponse
     {
     }
 }

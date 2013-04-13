@@ -9,12 +9,14 @@
 
 namespace TdService.UI.Web.Controllers.Base
 {
-    using System.Web.Security;
-    using TdService.Infrastructure.Authentication;
-    using System.Linq;
     using System;
+    using System.Linq;
+    using System.Web.Security;
+
+    using TdService.Infrastructure.Authentication;
+
     /// <summary>
-    /// Base contoller contains methods common for all controllers.
+    /// Base controller contains methods common for all controllers.
     /// </summary>
     public class BaseAuthController : BaseController
     {
@@ -35,13 +37,21 @@ namespace TdService.UI.Web.Controllers.Base
         }
 
         /// <summary>
-        /// Ensures that user email was not changed on the view
+        /// The ensure user email is not changed.
         /// </summary>
-        /// <param name="userEmail"></param>
+        /// <param name="userEmail">
+        /// The user email.
+        /// </param>
+        /// <exception cref="Exception">
+        /// Access violation.
+        /// </exception>
         protected void EnsureUserEmailIsNotChanged(string userEmail)
         {
-            if (Roles.Enabled && !Roles.GetRolesForUser().Contains("Operator") && !userEmail.Equals(FormsAuthentication.GetAuthenticationToken())) 
+            if (Roles.Enabled && !Roles.GetRolesForUser().Contains("Operator")
+                && !userEmail.Equals(this.FormsAuthentication.GetAuthenticationToken()))
+            {
                 throw new Exception("Access violation");
+            }
         }
     }
 }

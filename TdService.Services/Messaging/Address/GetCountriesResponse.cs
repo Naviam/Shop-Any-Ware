@@ -1,8 +1,27 @@
-﻿namespace TdService.Services.Messaging.Address
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="GetCountriesResponse.cs" company="Naviam">
+//   Vadim  Shaporov. 2013
+// </copyright>
+// <summary>
+//   The get countries response.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace TdService.Services.Messaging.Address
 {
-    public class GetCountriesResponse:ResponseBase
+    /// <summary>
+    /// The get countries response.
+    /// </summary>
+    public class GetCountriesResponse : ResponseBase
     {
+        /// <summary>
+        /// Gets or sets the id.
+        /// </summary>
         public int Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets the translated name.
+        /// </summary>
         public string TranslatedName { get; set; }
     }
 }

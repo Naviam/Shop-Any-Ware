@@ -1,10 +1,19 @@
-﻿namespace TdService.UI.Web.ViewModels.Ballance
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="TransactionsViewModel.cs" company="Naviam">
+//   Vadim Shaporov. 2013
+// </copyright>
+// <summary>
+//   The transactions view model.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace TdService.UI.Web.ViewModels.Ballance
 {
     using System;
     using TdService.Resources;
 
     /// <summary>
-    /// Transactions ViewM odel
+    /// The transactions view model.
     /// </summary>
     public class TransactionsViewModel : ViewModelBase
     {
@@ -65,20 +74,24 @@
         /// </summary>
         public string Currency { get; set; }
 
+        /// <summary>
+        /// Gets or sets the wallet id.
+        /// </summary>
         public int WalletId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the operation type.
+        /// </summary>
         public string OperationType { get; set; }
 
+        /// <summary>
+        /// Gets the operation type translated.
+        /// </summary>
         public string OperationTypeTranslated
         {
             get
             {
-                if (!string.IsNullOrWhiteSpace(this.OperationType))
-                {
-                    return TransactionStatusesResources.ResourceManager.GetString(this.OperationType);
-                }
-
-                return string.Empty;
+                return !string.IsNullOrWhiteSpace(this.OperationType) ? TransactionStatusesResources.ResourceManager.GetString(this.OperationType) : string.Empty;
             }
         }
     }

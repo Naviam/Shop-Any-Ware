@@ -9,6 +9,7 @@
 
 namespace TdService.ShopAnyWare.Specs.Fakes
 {
+    using System;
     using System.Collections.Generic;
 
     using AutoMapper;
@@ -35,7 +36,7 @@ namespace TdService.ShopAnyWare.Specs.Fakes
                             AddressLine2 = string.Empty,
                             AddressName = "My first address",
                             City = "Москва",
-                            Country = new Country{Code="RU",Id=183},
+                            Country = new Country { Code = "RU", Id = 183 },
                             Region = null,
                             State = null,
                             ZipCode = "11003",
@@ -50,7 +51,7 @@ namespace TdService.ShopAnyWare.Specs.Fakes
                             AddressLine2 = string.Empty,
                             AddressName = "My second address",
                             City = "Минск",
-                            Country = new Country{Code="BY",Id=21},
+                            Country = new Country { Code = "BY", Id = 21 },
                             Region = null,
                             State = null,
                             ZipCode = "29482",
@@ -123,10 +124,18 @@ namespace TdService.ShopAnyWare.Specs.Fakes
             this.addresses.Clear();
         }
 
-
+        /// <summary>
+        /// The get countries.
+        /// </summary>
+        /// <returns>
+        /// The collection of get countries responses.
+        /// </returns>
+        /// <exception cref="NotImplementedException">
+        /// Not yet implemented.
+        /// </exception>
         List<GetCountriesResponse> IAddressService.GetCountries()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

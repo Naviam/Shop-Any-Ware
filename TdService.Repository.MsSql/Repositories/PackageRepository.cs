@@ -115,18 +115,51 @@ namespace TdService.Repository.MsSql.Repositories
             }
         }
 
-
+        /// <summary>
+        /// The get shoppers packages.
+        /// </summary>
+        /// <param name="includeAssembling">
+        /// The include assembling.
+        /// </param>
+        /// <param name="includePaid">
+        /// The include paid.
+        /// </param>
+        /// <param name="includeSent">
+        /// The include sent.
+        /// </param>
+        /// <returns>
+        /// The collection of packages.
+        /// </returns>
         public List<Package> GetShoppersPackages(bool includeAssembling, bool includePaid, bool includeSent)
         {
             using (var context = new ShopAnyWareSql())
             {
-                List<PackageStatus> statuses = new List<PackageStatus>();
-                if (includeAssembling) statuses.Add(PackageStatus.Assembling);
-                if (includePaid) statuses.Add(PackageStatus.Paid);
-                if (includeSent) statuses.Add(PackageStatus.Sent);
+                var statuses = new List<PackageStatus>();
+                if (includeAssembling)
+                {
+                    statuses.Add(PackageStatus.Assembling);
+                }
 
-                if (!includeAssembling && !includePaid && !includeSent) return new List<Package>();
-                return context.Packages.Include(p => p.Items).Include(p => p.User).Where(p => statuses.Contains(p.Status)).ToList();
+                if (includePaid)
+                {
+                    statuses.Add(PackageStatus.Paid);
+                }
+
+                if (includeSent)
+                {
+                    statuses.Add(PackageStatus.Sent);
+                }
+
+                if (!includeAssembling && !includePaid && !includeSent)
+                {
+                    return new List<Package>();
+                }
+
+                return
+                    context.Packages.Include(p => p.Items)
+                           .Include(p => p.User)
+                           .Where(p => statuses.Contains(p.Status))
+                           .ToList();
             }
         }
     }

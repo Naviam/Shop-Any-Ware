@@ -63,59 +63,91 @@ namespace TdService.Services.Interfaces
         RemovePackageResponse RemovePackage(RemovePackageRequest request);
 
         /// <summary>
-        /// Changes package delivery address
+        /// The change package delivery address.
         /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ChangePackageDeliveryAddressResponse"/>.
+        /// </returns>
         ChangePackageDeliveryAddressResponse ChangePackageDeliveryAddress(ChangePackageDeliveryAddressRequest request);
 
         /// <summary>
-        /// Changes package delivery method
+        /// The change package dispatch method.
         /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ChangePackageDeliveryMethodResponse"/>.
+        /// </returns>
         ChangePackageDeliveryMethodResponse ChangePackageDispatchMethod(ChangePackageDeliveryMethodRequest request);
 
         /// <summary>
-        /// Sets package status to Assemling
+        /// The assemble package.
         /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="AssemblePackageResponse"/>.
+        /// </returns>
         AssemblePackageResponse AssemblePackage(AssemblePackageRequest request);
 
         /// <summary>
-        /// Sets package status to Assembled. Used by operator or admin
+        /// The package assembled.
         /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="PackageAssembledResponse"/>.
+        /// </returns>
         PackageAssembledResponse PackageAssembled(PackageAssembledRequest request);
 
         /// <summary>
-        /// Changes package status to SENT
+        /// The send package.
         /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="SendPackageResponse"/>.
+        /// </returns>
         SendPackageResponse SendPackage(SendPackageRequest request);
 
         /// <summary>
-        /// Gets packages count (assembling and paid)
+        /// The get users packages.
         /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="GetUsersPackagesResponse"/>.
+        /// </returns>
         GetUsersPackagesResponse GetUsersPackages(GetUsersPackagesRequest request);
 
         /// <summary>
-        /// Updates total package size. Available for operator
+        /// The update package total size.
         /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="UpdatePackageTotalSizeResponse"/>.
+        /// </returns>
         UpdatePackageTotalSizeResponse UpdatePackageTotalSize(UpdatePackageTotalSizeRequest request);
 
         /// <summary>
-        /// Changes Tracking Number For package
+        /// The change package tracking number.
         /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ChangeTrackingNumberResponse"/>.
+        /// </returns>
         ChangeTrackingNumberResponse ChangePackageTrackingNumber(ChangeTrackingNumberRequest request);
     }
 }

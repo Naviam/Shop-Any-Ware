@@ -1,13 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="AddUserToRoleResponse.cs" company="Naviam">
+//   Vadim Shaporov. 2013
+// </copyright>
+// <summary>
+//   The add user to role response.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace TdService.Services.Messaging.Membership
 {
-    public class AddUserToRoleResponse:ResponseBase
+    /// <summary>
+    /// The add user to role response.
+    /// </summary>
+    public class AddUserToRoleResponse : ResponseBase
     {
-        
     }
 }

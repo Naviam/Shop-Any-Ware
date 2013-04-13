@@ -81,9 +81,18 @@ namespace TdService.UI.Web.Mapping
             return Mapper.Map<RemoveDeliveryRequestResponse, DeliveryAddressViewModel>(response);
         }
 
+        /// <summary>
+        /// The convert to countries view model.
+        /// </summary>
+        /// <param name="response">
+        /// The response.
+        /// </param>
+        /// <returns>
+        /// The collection of country view models.
+        /// </returns>
         public static List<CountryViewModel> ConvertToCountriesViewModel(this List<GetCountriesResponse> response)
         {
             return Mapper.Map<List<GetCountriesResponse>, List<CountryViewModel>>(response);
         }
-}
+    }
 }

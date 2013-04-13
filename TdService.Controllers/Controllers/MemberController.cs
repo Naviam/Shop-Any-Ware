@@ -9,24 +9,25 @@
 
 namespace TdService.UI.Web.Controllers
 {
-    using System.Collections.Generic;
+    using System;
+    using System.Configuration;
+    using System.Linq;
     using System.Web.Mvc;
+
     using TdService.Infrastructure.Authentication;
+    using TdService.Infrastructure.PayPalHelpers;
+    using TdService.Model.Shipping;
+    using TdService.Resources;
     using TdService.Resources.Views;
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging.Address;
     using TdService.Services.Messaging.Membership;
     using TdService.Services.Messaging.Transactions;
+    using TdService.UI.Web.Controllers.Base;
     using TdService.UI.Web.Mapping;
     using TdService.UI.Web.ViewModels.Member;
-    using System.Linq;
-    using TdService.Infrastructure.PayPalHelpers;
-    using TdService.UI.Web.Controllers.Base;
     using TdService.UI.Web.ViewModels.Package;
-    using TdService.Model.Shipping;
-    using System;
-    using TdService.Resources;
-    using System.Configuration;
+
     /// <summary>
     /// The controller that contains membership methods.
     /// </summary>
@@ -37,8 +38,14 @@ namespace TdService.UI.Web.Controllers
         /// </summary>
         private readonly IMembershipService membershipService;
 
+        /// <summary>
+        /// The address service.
+        /// </summary>
         private readonly IAddressService addressService;
 
+        /// <summary>
+        /// The transaction service.
+        /// </summary>
         private readonly ITransactionService transactionService;
 
         /// <summary>
@@ -53,7 +60,14 @@ namespace TdService.UI.Web.Controllers
         /// <param name="addressService">
         /// The address service.
         /// </param>
-        public MemberController(IFormsAuthentication formsAuthentication, IMembershipService membershipService, IAddressService addressService, ITransactionService transactionService)
+        /// <param name="transactionService">
+        /// The transaction Service.
+        /// </param>
+        public MemberController(
+            IFormsAuthentication formsAuthentication,
+            IMembershipService membershipService,
+            IAddressService addressService,
+            ITransactionService transactionService)
             : base(formsAuthentication)
         {
             this.membershipService = membershipService;
@@ -72,7 +86,7 @@ namespace TdService.UI.Web.Controllers
         {
             var model = new ShopperDashboardViewModel();
 
-            FillDashboardViewModelWithCommonData(model, this.FormsAuthentication.GetAuthenticationToken());
+            this.FillDashboardViewModelWithCommonData(model, this.FormsAuthentication.GetAuthenticationToken());
             model.UserEmail = this.FormsAuthentication.GetAuthenticationToken();
 
             return this.View("Dashboard", model);
@@ -81,17 +95,18 @@ namespace TdService.UI.Web.Controllers
         /// <summary>
         /// View shopper dashboard as admin
         /// </summary>
+        /// <param name="userEmail">
+        /// The user Email.
+        /// </param>
         /// <returns>
         /// Returns the page with the new interface.
         /// </returns>
         [Authorize(Roles = "Admin, Operator")]
         public ActionResult ViewShopperDashboard(string userEmail)
         {
-            var model = new ShopperDashboardViewModel();
-            model.UserEmail = userEmail;
-            model.OperatorMode = true;
+            var model = new ShopperDashboardViewModel { UserEmail = userEmail, OperatorMode = true };
 
-            FillDashboardViewModelWithCommonData(model, userEmail);
+            this.FillDashboardViewModelWithCommonData(model, userEmail);
 
             return this.View("Dashboard", model);
         }
@@ -99,6 +114,12 @@ namespace TdService.UI.Web.Controllers
         /// <summary>
         /// Testing the new interface.
         /// </summary>
+        /// <param name="token">
+        /// The token.
+        /// </param>
+        /// <param name="payerId">
+        /// The payer Id.
+        /// </param>
         /// <returns>
         /// Returns the page with the new interface.
         /// </returns>
@@ -110,7 +131,7 @@ namespace TdService.UI.Web.Controllers
             {
                 PayPalHelper.ConfirmPayPalPayment(token, payerId);
 
-                var confirmPayPalTransactionResponse = transactionService.ConfirmPayPalTransaction(
+                var confirmPayPalTransactionResponse = this.transactionService.ConfirmPayPalTransaction(
                     new ConfirmPayPalTransactionRequest { PayerId = payerId, Token = token });
                 if (confirmPayPalTransactionResponse.MessageType == Services.Messaging.MessageType.Success)
                 {
@@ -125,35 +146,42 @@ namespace TdService.UI.Web.Controllers
             }
             catch (PayPalException ex)
             {
-                model.PayPalTransactionResultMessage = string.Format("{0}\n{1}",
+                model.PayPalTransactionResultMessage = string.Format(
+                    "{0}\n{1}",
                     DashboardViewResources.ResourceManager.GetString("FailedPayPalPaymentConfirmationMessage"),
                     ex.Message);
                 model.PayPalTransactionResultMessageType = "Error";
             }
 
-            FillDashboardViewModelWithCommonData(model, this.FormsAuthentication.GetAuthenticationToken());
+            this.FillDashboardViewModelWithCommonData(model, this.FormsAuthentication.GetAuthenticationToken());
 
             return this.View("Dashboard", model);
         }
 
         /// <summary>
-        /// Payment canceled
+        /// The payment canceled.
         /// </summary>
+        /// <param name="token">
+        /// The token.
+        /// </param>
+        /// <param name="payerId">
+        /// The payer id.
+        /// </param>
         /// <returns>
-        /// 
+        /// The <see cref="ActionResult"/>.
         /// </returns>
         [Authorize(Roles = "Shopper")]
         public ActionResult PaymentCanceled(string token, string payerId)
         {
             var model = new ShopperDashboardViewModel();
 
-            var cancelPayPalTransactionResponse = transactionService.CancelPayPalTransaction(
+            var cancelPayPalTransactionResponse = this.transactionService.CancelPayPalTransaction(
                 new CancelPayPalTransactionRequest { Token = token });
 
             model.PayPalTransactionResultMessage = cancelPayPalTransactionResponse.Message;
             model.PayPalTransactionResultMessageType = cancelPayPalTransactionResponse.MessageType.ToString();
 
-            FillDashboardViewModelWithCommonData(model, this.FormsAuthentication.GetAuthenticationToken());
+            this.FillDashboardViewModelWithCommonData(model, this.FormsAuthentication.GetAuthenticationToken());
 
             return this.View("Dashboard", model);
         }
@@ -177,6 +205,15 @@ namespace TdService.UI.Web.Controllers
             return this.View("Welcome", model);
         }
 
+        /// <summary>
+        /// The fill dashboard view model with common data.
+        /// </summary>
+        /// <param name="model">
+        /// The model.
+        /// </param>
+        /// <param name="userEmail">
+        /// The user email.
+        /// </param>
         private void FillDashboardViewModelWithCommonData(ShopperDashboardViewModel model, string userEmail)
         {
             var response = this.membershipService.GetProfile(
@@ -196,7 +233,5 @@ namespace TdService.UI.Web.Controllers
                                     .Cast<DispatchMethod>()
                                     .Select(enumElement => new DispatchMethodViewModel { Id = (int)enumElement, Name = DispatchMethods.ResourceManager.GetString(enumElement.ToString()) }).ToList();
         }
-
-
     }
 }

@@ -173,7 +173,18 @@ namespace TdService.ShopAnyWare.Tests.Orders
             return null;
         }
 
-
+        /// <summary>
+        /// The order received.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="OrderReceivedResponse"/>.
+        /// </returns>
+        /// <exception cref="NotImplementedException">
+        /// Not implemented yet.
+        /// </exception>
         public OrderReceivedResponse OrderReceived(OrderReceivedRequest request)
         {
             throw new NotImplementedException();

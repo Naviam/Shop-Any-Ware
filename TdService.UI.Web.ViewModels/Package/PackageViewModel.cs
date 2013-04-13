@@ -49,7 +49,7 @@ namespace TdService.UI.Web.ViewModels.Package
         public string Status { get; set; }
 
         /// <summary>
-        /// total Weight package weight. Set by operator
+        /// Gets or sets the total weight.
         /// </summary>
         public decimal TotalWeight { get; set; }
 
@@ -73,7 +73,6 @@ namespace TdService.UI.Web.ViewModels.Package
         /// </summary>
         public decimal DimensionsGirth { get; set; }
 
-
         /// <summary>
         /// Gets the status translated.
         /// </summary>
@@ -81,8 +80,7 @@ namespace TdService.UI.Web.ViewModels.Package
         {
             get
             {
-                if (string.IsNullOrEmpty(this.Status)) return null;
-                return PackageStatusResources.ResourceManager.GetString(this.Status);
+                return string.IsNullOrEmpty(this.Status) ? null : PackageStatusResources.ResourceManager.GetString(this.Status);
             }
         }
 
@@ -124,7 +122,7 @@ namespace TdService.UI.Web.ViewModels.Package
         public DateTime? DeliveredDate { get; set; }
 
         /// <summary>
-        /// Gets or sets Delivered Date.
+        /// Gets Delivered Date.
         /// </summary>
         public string DeliveredDateString
         {
@@ -165,10 +163,13 @@ namespace TdService.UI.Web.ViewModels.Package
         public bool CanBeAssembled { get; set; }
 
         /// <summary>
-        ///  Gets a value indicating whether package can be paid.
+        /// Gets or sets a value indicating whether can be paid for.
         /// </summary>
         public bool CanBePaidFor { get; set; }
 
+        /// <summary>
+        /// Gets the loading text.
+        /// </summary>
         public string LoadingText
         {
             get

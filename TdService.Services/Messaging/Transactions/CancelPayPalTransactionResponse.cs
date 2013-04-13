@@ -1,12 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="CancelPayPalTransactionResponse.cs" company="Naviam">
+//   Vadim Shaporov. 2013
+// </copyright>
+// <summary>
+//   The cancel pay pal transaction response.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace TdService.Services.Messaging.Transactions
 {
-    public class CancelPayPalTransactionResponse:ResponseBase
+    /// <summary>
+    /// The cancel pay pal transaction response.
+    /// </summary>
+    public class CancelPayPalTransactionResponse : ResponseBase
     {
     }
 }

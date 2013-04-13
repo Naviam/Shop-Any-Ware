@@ -12,7 +12,6 @@ namespace TdService.UI.Web.Controllers
     using System.Web.Mvc;
     using System.Xml;
     using TdService.Infrastructure.Authentication;
-    using TdService.Infrastructure.SessionStorage;
     using TdService.Infrastructure.Usps;
     using TdService.Resources.Views;
     using TdService.Services.Interfaces;
@@ -55,6 +54,9 @@ namespace TdService.UI.Web.Controllers
         /// <param name="packageName">
         /// The package name.
         /// </param>
+        /// <param name="userEmail">
+        /// The user Email.
+        /// </param>
         /// <returns>
         /// The <see cref="ActionResult"/>.
         /// </returns>
@@ -62,7 +64,7 @@ namespace TdService.UI.Web.Controllers
         [HttpPost]
         public ActionResult Add(string packageName, string userEmail)
         {
-            EnsureUserEmailIsNotChanged(userEmail);
+            this.EnsureUserEmailIsNotChanged(userEmail);
 
             var request = new AddPackageRequest { IdentityToken = userEmail, Name = packageName };
 
@@ -82,6 +84,9 @@ namespace TdService.UI.Web.Controllers
         /// <summary>
         /// Get recent packages.
         /// </summary>
+        /// <param name="userEmail">
+        /// The user Email.
+        /// </param>
         /// <returns>
         /// The <see cref="ActionResult"/>.
         /// </returns>
@@ -89,7 +94,7 @@ namespace TdService.UI.Web.Controllers
         [HttpPost]
         public ActionResult Recent(string userEmail)
         {
-            EnsureUserEmailIsNotChanged(userEmail);
+            this.EnsureUserEmailIsNotChanged(userEmail);
 
             var request = new GetRecentPackagesRequest { IdentityToken = userEmail };
             var response = this.packagesService.GetRecent(request);
@@ -106,6 +111,9 @@ namespace TdService.UI.Web.Controllers
         /// <summary>
         /// The history.
         /// </summary>
+        /// <param name="userEmail">
+        /// The user Email.
+        /// </param>
         /// <returns>
         /// The <see cref="ActionResult"/>.
         /// </returns>
@@ -113,7 +121,7 @@ namespace TdService.UI.Web.Controllers
         [HttpPost]
         public ActionResult History(string userEmail)
         {
-            EnsureUserEmailIsNotChanged(userEmail);
+            this.EnsureUserEmailIsNotChanged(userEmail);
 
             var request = new GetRecentPackagesRequest { IdentityToken = userEmail };
             var response = this.packagesService.GetHistory(request);
@@ -161,21 +169,49 @@ namespace TdService.UI.Web.Controllers
             return jsonNetResult;
         }
 
+        /// <summary>
+        /// The change package delivery address.
+        /// </summary>
+        /// <param name="packageId">
+        /// The package id.
+        /// </param>
+        /// <param name="deliveryAddressId">
+        /// The delivery address id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ActionResult"/>.
+        /// </returns>
         [Authorize(Roles = "Shopper")]
         [HttpPost]
         public ActionResult ChangePackageDeliveryAddress(int packageId, int deliveryAddressId)
         {
-            var request = new ChangePackageDeliveryAddressRequest {PackageId=packageId, DeliverAddressId = deliveryAddressId};
+            var request = new ChangePackageDeliveryAddressRequest
+                              {
+                                  PackageId = packageId,
+                                  DeliverAddressId = deliveryAddressId
+                              };
             var response = this.packagesService.ChangePackageDeliveryAddress(request);
 
             var jsonNetResult = new JsonNetResult
             {
                 Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
-                Data = new {Country = response.Country, Message = response.Message, MessageType = response.MessageType.ToString() }
+                Data = new { response.Country, response.Message, MessageType = response.MessageType.ToString() }
             };
             return jsonNetResult;
         }
 
+        /// <summary>
+        /// The change package dispatch method.
+        /// </summary>
+        /// <param name="packageId">
+        /// The package id.
+        /// </param>
+        /// <param name="dispatchMethodId">
+        /// The dispatch method id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ActionResult"/>.
+        /// </returns>
         [Authorize(Roles = "Shopper")]
         [HttpPost]
         public ActionResult ChangePackageDispatchMethod(int packageId, int dispatchMethodId)
@@ -186,11 +222,20 @@ namespace TdService.UI.Web.Controllers
             var jsonNetResult = new JsonNetResult
             {
                 Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
-                Data = new { Message = response.Message, MessageType = response.MessageType.ToString() }
+                Data = new { response.Message, MessageType = response.MessageType.ToString() }
             };
             return jsonNetResult;
         }
 
+        /// <summary>
+        /// The assemble package.
+        /// </summary>
+        /// <param name="packageId">
+        /// The package id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ActionResult"/>.
+        /// </returns>
         [Authorize(Roles = "Shopper")]
         [HttpPost]
         public ActionResult AssemblePackage(int packageId)
@@ -206,6 +251,15 @@ namespace TdService.UI.Web.Controllers
             return jsonNetResult;
         }
 
+        /// <summary>
+        /// The package assembled.
+        /// </summary>
+        /// <param name="packageId">
+        /// The package id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ActionResult"/>.
+        /// </returns>
         [Authorize(Roles = "Operator, Admin")]
         [HttpPost]
         public ActionResult PackageAssembled(int packageId)
@@ -221,6 +275,15 @@ namespace TdService.UI.Web.Controllers
             return jsonNetResult;
         }
 
+        /// <summary>
+        /// The send package.
+        /// </summary>
+        /// <param name="packageId">
+        /// The package id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ActionResult"/>.
+        /// </returns>
         [Authorize(Roles = "Shopper")]
         [HttpPost]
         public ActionResult SendPackage(int packageId)
@@ -236,14 +299,31 @@ namespace TdService.UI.Web.Controllers
             return jsonNetResult;
         }
 
+        /// <summary>
+        /// The get users packages.
+        /// </summary>
+        /// <param name="includeAssembling">
+        /// The include assembling.
+        /// </param>
+        /// <param name="includePaid">
+        /// The include paid.
+        /// </param>
+        /// <param name="includeSent">
+        /// The include sent.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ActionResult"/>.
+        /// </returns>
         [Authorize(Roles = "Admin, Operator")]
         [HttpPost]
-        public ActionResult GetUsersPackages(bool includeAssebling, bool includePaid, bool includeSent)
+        public ActionResult GetUsersPackages(bool includeAssembling, bool includePaid, bool includeSent)
         {
-            if (!includeAssebling && !includePaid && !includeSent) return null;
+            if (!includeAssembling && !includePaid && !includeSent)
+            {
+                return null;
+            }
 
-            var request = new GetUsersPackagesRequest()
-                { IncludeAssembling = includeAssebling, IncludePaid = includePaid, IncludeSent = includeSent };
+            var request = new GetUsersPackagesRequest { IncludeAssembling = includeAssembling, IncludePaid = includePaid, IncludeSent = includeSent };
             var response = this.packagesService.GetUsersPackages(request);
 
             var jsonNetResult = new JsonNetResult
@@ -254,6 +334,15 @@ namespace TdService.UI.Web.Controllers
             return jsonNetResult;
         }
 
+        /// <summary>
+        /// The update total size.
+        /// </summary>
+        /// <param name="model">
+        /// The model.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ActionResult"/>.
+        /// </returns>
         [Authorize(Roles = "Admin, Operator")]
         [HttpPost]
         public ActionResult UpdateTotalSize(PackageSizePopupViewModel model)
@@ -269,6 +358,30 @@ namespace TdService.UI.Web.Controllers
             return jsonNetResult;
         }
 
+        /// <summary>
+        /// The get shipping rates for package.
+        /// </summary>
+        /// <param name="height">
+        /// The height.
+        /// </param>
+        /// <param name="width">
+        /// The width.
+        /// </param>
+        /// <param name="length">
+        /// The length.
+        /// </param>
+        /// <param name="girth">
+        /// The girth.
+        /// </param>
+        /// <param name="weight">
+        /// The weight.
+        /// </param>
+        /// <param name="country">
+        /// The country.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ActionResult"/>.
+        /// </returns>
         [Authorize(Roles = "Admin, Operator, Shopper")]
         [HttpPost]
         public ActionResult GetShippingRatesForPackage(decimal height, decimal width, decimal length, decimal girth, int weight, string country)
@@ -282,6 +395,18 @@ namespace TdService.UI.Web.Controllers
             return jsonNetResult;
         }
 
+        /// <summary>
+        /// The update tracking number.
+        /// </summary>
+        /// <param name="packageId">
+        /// The package id.
+        /// </param>
+        /// <param name="trackingNumber">
+        /// The tracking number.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ActionResult"/>.
+        /// </returns>
         [Authorize(Roles = "Admin, Operator")]
         [HttpPost]
         public ActionResult UpdateTrackingNumber(int packageId, string trackingNumber)
@@ -291,7 +416,7 @@ namespace TdService.UI.Web.Controllers
             var jsonNetResult = new JsonNetResult
             {
                 Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
-                Data = new { Message = response.Message, MessageType = response.MessageType.ToString() }
+                Data = new { response.Message, MessageType = response.MessageType.ToString() }
             };
             return jsonNetResult;
         }

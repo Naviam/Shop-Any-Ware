@@ -36,15 +36,18 @@ namespace TdService.Services.Mapping
         }
 
         /// <summary>
-        /// The Convert to get SignUpAdminResponse response
+        /// The convert to register admin response.
         /// </summary>
-        /// <param name="user"></param>
-        /// <returns></returns>
+        /// <param name="user">
+        /// The user.
+        /// </param>
+        /// <returns>
+        /// The <see cref="SignUpAdminResponse"/>.
+        /// </returns>
         public static SignUpAdminResponse ConvertToRegisterAdminResponse(this User user)
         {
             return Mapper.Map<User, SignUpAdminResponse>(user);
         }
-
 
         /// <summary>
         /// The convert to user.
@@ -78,22 +81,26 @@ namespace TdService.Services.Mapping
         /// The convert to get users in role response collection.
         /// </summary>
         /// <param name="users">
-        /// The roles.
+        /// The users.
         /// </param>
         /// <returns>
-        /// The System.Collections.Generic.List`1[T -&gt; TdService.Services.Messaging.Membership.GetUserRolesResponse].
+        /// The collection of get user in role responses.
         /// </returns>
-        public static List<TdService.Services.Messaging.Membership.GetUsersInRoleResponse.UserResponseModel> ConvertToGetUsersInRoleResponseCollection(this List<User> users)
+        public static List<UserResponse> ConvertToGetUsersInRoleResponseCollection(this List<User> users)
         {
-            var result = Mapper.Map<List<User>, List<TdService.Services.Messaging.Membership.GetUsersInRoleResponse.UserResponseModel>>(users);
+            var result = Mapper.Map<List<User>, List<UserResponse>>(users);
             return result;
         }
 
         /// <summary>
         /// The convert to get user by id response.
         /// </summary>
-        /// <param name="user">user</param>
-        /// <returns>GetUserByIdResponse</returns>
+        /// <param name="user">
+        /// The user.
+        /// </param>
+        /// <returns>
+        /// The <see cref="GetUserByIdResponse"/>.
+        /// </returns>
         public static GetUserByIdResponse ConvertToGetUserByIdResponse(this User user)
         {
             var result = Mapper.Map<User, GetUserByIdResponse>(user);
@@ -101,10 +108,14 @@ namespace TdService.Services.Mapping
         }
 
         /// <summary>
-        /// The convert to get user by id response.
+        /// The convert to get user by email response.
         /// </summary>
-        /// <param name="user">user</param>
-        /// <returns>GetUserByIdResponse</returns>
+        /// <param name="user">
+        /// The user.
+        /// </param>
+        /// <returns>
+        /// The <see cref="GetUserByEmailResponse"/>.
+        /// </returns>
         public static GetUserByEmailResponse ConvertToGetUserByEmailResponse(this User user)
         {
             var result = Mapper.Map<User, GetUserByEmailResponse>(user);
@@ -134,9 +145,9 @@ namespace TdService.Services.Mapping
         /// <returns>
         /// The TdService.Services.Messaging.Membership.GetProfileResponse.
         /// </returns>
-        public static GetProfileResponse ConvertToGetProfileResponse(this Model.Membership.User profile)
+        public static GetProfileResponse ConvertToGetProfileResponse(this User profile)
         {
-            return Mapper.Map<Model.Membership.User, GetProfileResponse>(profile);
+            return Mapper.Map<User, GetProfileResponse>(profile);
         }
     }
 }

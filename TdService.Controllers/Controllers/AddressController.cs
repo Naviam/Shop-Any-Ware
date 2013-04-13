@@ -11,8 +11,11 @@ namespace TdService.UI.Web.Controllers
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
+    using System.Linq;
     using System.Web.Mvc;
     using System.Xml;
+
     using TdService.Infrastructure.Authentication;
     using TdService.Infrastructure.Domain;
     using TdService.Resources;
@@ -22,7 +25,6 @@ namespace TdService.UI.Web.Controllers
     using TdService.UI.Web.Controllers.Base;
     using TdService.UI.Web.Mapping;
     using TdService.UI.Web.ViewModels.Account;
-    using System.Linq;
 
     /// <summary>
     /// The controller contains methods to work with the addresses.
@@ -134,7 +136,7 @@ namespace TdService.UI.Web.Controllers
         public ActionResult Index()
         {
             var result = this.addressService.GetCountries().ConvertToCountriesViewModel();
-            var sl = result.Select(vm => new SelectListItem { Text = vm.TranslatedName, Value = vm.Id.ToString() });
+            var sl = result.Select(vm => new SelectListItem { Text = vm.TranslatedName, Value = vm.Id.ToString(CultureInfo.InvariantCulture) });
             this.ViewData["Countries"] = sl;
             return this.View("Index");
         }

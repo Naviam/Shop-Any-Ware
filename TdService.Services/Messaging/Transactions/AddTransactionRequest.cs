@@ -1,8 +1,20 @@
-﻿namespace TdService.Services.Messaging.Transactions
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="AddTransactionRequest.cs" company="Naviam">
+//   Vadim Shaporov. 2013
+// </copyright>
+// <summary>
+//   The add transaction request.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace TdService.Services.Messaging.Transactions
 {
     using System;
     using TdService.Model.Balance;
 
+    /// <summary>
+    /// The add transaction request.
+    /// </summary>
     public class AddTransactionRequest : RequestBase
     {
         /// <summary>
@@ -33,7 +45,7 @@
         /// <summary>
         /// Gets or sets Token.
         /// </summary>
-        public string Token{ get; set; }
+        public string Token { get; set; }
 
         /// <summary>
         /// Gets or sets Wallet Id.

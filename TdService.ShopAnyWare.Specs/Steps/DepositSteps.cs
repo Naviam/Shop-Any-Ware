@@ -1,23 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using NUnit.Framework;
-using TdService.Model.Membership;
-using TdService.Services.Interfaces;
-using TdService.ShopAnyWare.Specs.Fakes;
-using TdService.UI.Web;
-using TdService.UI.Web.Controllers;
-using TdService.UI.Web.ViewModels.Ballance;
-using TechTalk.SpecFlow;
-using System.Linq;
-using TdService.Services.Implementations;
-using Rhino.Mocks;
-using System.Web.Mvc;
-using System.Web.Routing;
-using System.Web;
-using TdService.UI.Web.MVC;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="DepositSteps.cs" company="Naviam">
+//   Vadim Shaporov. 2013
+// </copyright>
+// <summary>
+//   The deposit steps.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace TdService.ShopAnyWare.Specs.Steps
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.Globalization;
+    using System.Linq;
+    using System.Web;
+    using System.Web.Mvc;
+    using System.Web.Routing;
+
+    using NUnit.Framework;
+
+    using Rhino.Mocks;
+
+    using TdService.Services.Implementations;
+    using TdService.ShopAnyWare.Specs.Fakes;
+    using TdService.UI.Web;
+    using TdService.UI.Web.Controllers;
+    using TdService.UI.Web.MVC;
+    using TdService.UI.Web.ViewModels.Ballance;
+
+    using TechTalk.SpecFlow;
+
+    /// <summary>
+    /// The deposit steps.
+    /// </summary>
     [Binding]
     public class DepositSteps
     {
@@ -54,39 +70,59 @@ namespace TdService.ShopAnyWare.Specs.Steps
             return controller;
         }
 
+        /// <summary>
+        /// The given i enter the following amount INT the deposit textbox and press add funds button.
+        /// </summary>
+        /// <param name="amount">
+        /// The amount.
+        /// </param>
         [Given(@"I enter the following amount '(.*)' int the deposit textbox and press Add funds button")]
         public void GivenIEnterTheFollowingAmountIntTheDepositTextboxAndPressAddFundsButton(int amount)
         {
             var controller = this.GetBalanceController();
-            var actionResult = controller.AddTransaction(amount.ToString()) as JsonNetResult;
+            var actionResult = controller.AddTransaction(amount.ToString(CultureInfo.InvariantCulture)) as JsonNetResult;
             ScenarioContext.Current.Set(actionResult);
         }
 
+        /// <summary>
+        /// The then the URL in the add transaction response should start with.
+        /// </summary>
+        /// <param name="url">
+        /// The URL.
+        /// </param>
         [Then(@"the PP URL in the AddTransaction responce should start with '(.*)'")]
-        public void ThenThePPURLInTheAddTransactionResponceShouldStartWith(string ppUrl)
+        public void ThenThePPURLInTheAddTransactionResponceShouldStartWith(string url)
         {
             var actionResult = ScenarioContext.Current.Get<JsonNetResult>();
             Assert.That(actionResult, Is.Not.Null);
             var data = actionResult.Data as AddTransactionViewModel;
             Assert.That(data, Is.Not.Null);
 
-            Assert.That(data.RedirectUrl, Is.StringStarting(ppUrl));
+            Debug.Assert(data != null, "data != null");
+            Assert.That(data.RedirectUrl, Is.StringStarting(url));
         }
 
+        /// <summary>
+        /// The then there should be a transaction for me as follows.
+        /// </summary>
+        /// <param name="table">
+        /// The table.
+        /// </param>
         [Then(@"there should be a transaction for me as follows")]
         public void ThenThereShouldBeATransactionForMeAsFollows(Table table)
         {
             var controller = this.GetBalanceController();
             var actionResult = controller.TransactionHistory() as JsonNetResult;
             Assert.That(actionResult, Is.Not.Null);
+            Debug.Assert(actionResult != null, "actionResult != null");
             var data = actionResult.Data as List<TransactionsViewModel>;
             Assert.That(data, Is.Not.Null);
+            Debug.Assert(data != null, "data != null");
             Assert.AreNotEqual(data.Count, 0);
             var tran = data.OrderByDescending(tr => tr.Date).First();
 
             Assert.AreEqual(tran.OperationAmount, decimal.Parse(table.Rows[0][0]));
             Assert.AreEqual(tran.TransactionStatus, table.Rows[0][1]);
-
         }
     }
 }

@@ -1,36 +1,78 @@
-﻿namespace TdService.Services.Implementations
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="TransactionService.cs" company="Naviam">
+//   Vadim Shaporov. 2013
+// </copyright>
+// <summary>
+//   The transaction service.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace TdService.Services.Implementations
 {
-    using System.Collections.Generic;
-    using TdService.Model.Balance;
-    using TdService.Services.Interfaces;
-    using TdService.Services.Messaging.Transactions;
-    using TdService.Services.Mapping;
     using System;
+    using System.Collections.Generic;
+
+    using TdService.Infrastructure.Logging;
+    using TdService.Model.Balance;
     using TdService.Resources;
     using TdService.Services.Base;
-    using TdService.Infrastructure.Logging;
+    using TdService.Services.Interfaces;
+    using TdService.Services.Mapping;
     using TdService.Services.Messaging.Package;
+    using TdService.Services.Messaging.Transactions;
 
+    /// <summary>
+    /// The transaction service.
+    /// </summary>
     public class TransactionService : ServiceBase, ITransactionService
     {
+        /// <summary>
+        /// The transactions repository.
+        /// </summary>
         private readonly ITransactionsRepository transactionsRepository;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TransactionService"/> class.
+        /// </summary>
+        /// <param name="transactionsRepository">
+        /// The transactions repository.
+        /// </param>
+        /// <param name="logger">
+        /// The logger.
+        /// </param>
         public TransactionService(ITransactionsRepository transactionsRepository, ILogger logger)
             : base(logger)
         {
             this.transactionsRepository = transactionsRepository;
         }
 
+        /// <summary>
+        /// The get transactions for user.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The collection of get transactions responses.
+        /// </returns>
         public List<GetTransactionsResponse> GetTransactionsForUser(GetTransactionsRequest request)
         {
             var result = this.transactionsRepository.GetTransactionsForUser(request.IdentityToken);
             return result.ConvertToGetTransactionsResponseCollection();
         }
 
+        /// <summary>
+        /// The add transaction.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="AddTransactionResponse"/>.
+        /// </returns>
         public AddTransactionResponse AddTransaction(AddTransactionRequest request)
         {
-            var response = new AddTransactionResponse();
-            response.MessageType = Messaging.MessageType.Success;
+            var response = new AddTransactionResponse { MessageType = Messaging.MessageType.Success };
             try
             {
                 var transaction = request.ConvertToTransaction();
@@ -44,13 +86,22 @@
                 response.MessageType = Messaging.MessageType.Error;
                 response.Message = e.Message;
             }
+
             return response;
         }
 
+        /// <summary>
+        /// The confirm pay pal transaction.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ConfirmPayPalTransactionResponse"/>.
+        /// </returns>
         public ConfirmPayPalTransactionResponse ConfirmPayPalTransaction(ConfirmPayPalTransactionRequest request)
         {
-            var response = new ConfirmPayPalTransactionResponse();
-            response.MessageType = Messaging.MessageType.Success;
+            var response = new ConfirmPayPalTransactionResponse { MessageType = Messaging.MessageType.Success };
             try
             {
                 this.transactionsRepository.ConfirmTransaction(request.Token, request.PayerId);
@@ -62,10 +113,19 @@
                 response.MessageType = Messaging.MessageType.Error;
                 response.Message = e.Message;
             }
+
             return response;
         }
 
-
+        /// <summary>
+        /// The cancel pay pal transaction.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="CancelPayPalTransactionResponse"/>.
+        /// </returns>
         public CancelPayPalTransactionResponse CancelPayPalTransaction(CancelPayPalTransactionRequest request)
         {
             var response = new CancelPayPalTransactionResponse();
@@ -81,11 +141,19 @@
                 response.MessageType = Messaging.MessageType.Error;
                 response.Message = e.Message;
             }
+
             return response;
         }
 
-
-
+        /// <summary>
+        /// The add package payment transaction.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="PayForPackageResponse"/>.
+        /// </returns>
         public PayForPackageResponse AddPackagePaymentTransaction(PayForPackageRequest request)
         {
             try
@@ -100,9 +168,12 @@
             }
             catch (Exception ex)
             {
-                logger.Log(ex.Message);
+                this.Logger.Log(ex.Message);
                 return new PayForPackageResponse
-                    { MessageType = Messaging.MessageType.Error, Message = CommonResources.TransactionPaymentError };
+                           {
+                               MessageType = Messaging.MessageType.Error,
+                               Message = CommonResources.TransactionPaymentError
+                           };
             }
         }
     }

@@ -124,8 +124,8 @@
     <Compile Include="Logging\ILogger.cs" />
     <Compile Include="Logging\LoggingFactory.cs" />
     <Compile Include="Logging\NLogAmazonDynamoDbTarget.cs" />
-    <Compile Include="PayPalHeplers\PayPalException.cs" />
-    <Compile Include="PayPalHeplers\PayPalHelper.cs" />
+    <Compile Include="PayPalHelpers\PayPalException.cs" />
+    <Compile Include="PayPalHelpers\PayPalHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Querying\CriteriaOperator.cs" />
     <Compile Include="Querying\Criterion.cs" />
@@ -143,7 +143,6 @@
     <Compile Include="Shipping\TrackRequest.cs" />
     <Compile Include="Shipping\TrackResponse.cs" />
     <Compile Include="Shipping\UspsError.cs" />
-    <Compile Include="Shipping\UspsService.cs" />
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="UnitOfWork\IUnitOfWorkRepository.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />

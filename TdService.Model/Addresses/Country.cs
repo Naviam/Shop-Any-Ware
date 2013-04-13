@@ -18,14 +18,18 @@ namespace TdService.Model.Addresses
     public class Country : EntityBase<int>
     {
         /// <summary>
-        /// Gets or sets the country name.
+        /// Gets the translated name.
         /// </summary>
         public string TranslatedName
         {
             get
             {
                 var translated = Countries.ResourceManager.GetString(this.Code);
-                if (string.IsNullOrEmpty(translated)) return string.Empty;
+                if (string.IsNullOrEmpty(translated))
+                {
+                    return string.Empty;
+                }
+
                 return translated;
             }
         }

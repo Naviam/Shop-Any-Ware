@@ -119,12 +119,15 @@ namespace TdService.ShopAnyWare.Specs.Steps
             var itemsRepository = new ItemsRepository();
             var addressRepository = new AddressRepository();
             var logger = new FakeLogger();
-            var packagesService = new PackagesService(packageRepository, userRepository, addressRepository,logger);
+            var packagesService = new PackagesService(packageRepository, userRepository, addressRepository, logger);
             var itemsService = new ItemsService(itemsRepository, packageRepository, logger);
             ScenarioContext.Current.Set(packagesService);
             ScenarioContext.Current.Set(itemsService);
         }
 
+        /// <summary>
+        /// The before express checkout scenarios.
+        /// </summary>
         [BeforeScenario("paypal")]
         public static void BeforeExpressCheckoutScenarios()
         {

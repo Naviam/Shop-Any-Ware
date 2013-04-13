@@ -12,7 +12,6 @@ namespace TdService.ShopAnyWare.Tests.Orders
     using System;
     using System.Collections.Generic;
 
-    using TdService.Model.Common;
     using TdService.Model.Membership;
     using TdService.Model.Orders;
     using TdService.Model.Packages;
@@ -49,6 +48,15 @@ namespace TdService.ShopAnyWare.Tests.Orders
         {
         }
 
+        /// <summary>
+        /// The attach address.
+        /// </summary>
+        /// <param name="email">
+        /// The email.
+        /// </param>
+        /// <param name="addressId">
+        /// The address id.
+        /// </param>
         public void AttachAddress(string email, int addressId)
         {
         }
@@ -150,7 +158,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
         }
 
         /// <summary>
-        /// Validate user against db.
+        /// Validate user against DB.
         /// </summary>
         /// <param name="email">
         /// The email.
@@ -215,7 +223,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
         }
 
         /// <summary>
-        /// Save changes to db.
+        /// Save changes to DB.
         /// </summary>
         public void SaveChanges()
         {
@@ -234,11 +242,44 @@ namespace TdService.ShopAnyWare.Tests.Orders
         {
         }
 
+        /// <summary>
+        /// The get users in role.
+        /// </summary>
+        /// <param name="roleId">
+        /// The role id.
+        /// </param>
+        /// <param name="skip">
+        /// The skip.
+        /// </param>
+        /// <param name="take">
+        /// The take.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Tuple"/>.
+        /// </returns>
+        /// <exception cref="NotImplementedException">
+        /// Not implemented exception.
+        /// </exception>
         public Tuple<List<User>, int> GetUsersInRole(int roleId, int skip, int take)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// The get all users.
+        /// </summary>
+        /// <param name="skip">
+        /// The skip.
+        /// </param>
+        /// <param name="take">
+        /// The take.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Tuple"/>.
+        /// </returns>
+        /// <exception cref="NotImplementedException">
+        /// Not implemented exception.
+        /// </exception>
         public Tuple<List<User>, int> GetAllUsers(int skip, int take)
         {
             throw new NotImplementedException();

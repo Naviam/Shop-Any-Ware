@@ -6,6 +6,7 @@
 
 namespace TdService.ShopAnyWare.Tests.Account
 {
+    using System;
     using System.Collections.Generic;
 
     using TdService.Services.Interfaces;
@@ -74,6 +75,15 @@ namespace TdService.ShopAnyWare.Tests.Account
             return new SignInResponse();
         }
 
+        /// <summary>
+        /// The get user roles.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The collection of get user roles responses.
+        /// </returns>
         List<GetUserRolesResponse> IMembershipService.GetUserRoles(GetUserRolesRequest request)
         {
             return null;
@@ -97,7 +107,7 @@ namespace TdService.ShopAnyWare.Tests.Account
         /// Generate change password link.
         /// </summary>
         /// <param name="request">
-        /// The generate change pasword link request.
+        /// The generate change password link request.
         /// </param>
         /// <returns>
         /// The response with generated link.
@@ -121,43 +131,123 @@ namespace TdService.ShopAnyWare.Tests.Account
             return new UpdateProfileResponse();
         }
 
+        /// <summary>
+        /// The get user by id.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="GetUserByIdResponse"/>.
+        /// </returns>
+        /// <exception cref="NotImplementedException">
+        /// Not implemented yet.
+        /// </exception>
         public GetUserByIdResponse GetUserById(GetUserByIdRequest request)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
-
+        /// <summary>
+        /// The get users in role.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="GetUsersInRoleResponse"/>.
+        /// </returns>
+        /// <exception cref="NotImplementedException">
+        /// Not implemented yet.
+        /// </exception>
         GetUsersInRoleResponse IMembershipService.GetUsersInRole(GetUsersInRoleRequest request)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
-
+        /// <summary>
+        /// The add user to role.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="AddUserToRoleResponse"/>.
+        /// </returns>
+        /// <exception cref="NotImplementedException">
+        /// Not implemented yet.
+        /// </exception>
         public AddUserToRoleResponse AddUserToRole(AddUserToRoleRequest request)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// The remove user from role.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="RemoveUserFromRoleResponse"/>.
+        /// </returns>
+        /// <exception cref="NotImplementedException">
+        /// Not implemented yet.
+        /// </exception>
         public RemoveUserFromRoleResponse RemoveUserFromRole(RemoveUserFromRoleRequest request)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// The get all roles.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The collection of get all roles responses.
+        /// </returns>
+        /// <exception cref="NotImplementedException">
+        /// Not implemented exception.
+        /// </exception>
         List<GetAllRolesResponse> IMembershipService.GetAllRoles(GetAllRolesRequest request)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
-
+        /// <summary>
+        /// The get user by email.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="GetUserByEmailResponse"/>.
+        /// </returns>
+        /// <exception cref="NotImplementedException">
+        /// Not implemented yet.
+        /// </exception>
         public GetUserByEmailResponse GetUserByEmail(GetUserByEmailRequest request)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
-
+        /// <summary>
+        /// The sign up admin.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="SignUpAdminResponse"/>.
+        /// </returns>
+        /// <exception cref="NotImplementedException">
+        /// Not implemented yet.
+        /// </exception>
         public SignUpAdminResponse SignUpAdmin(SignUpAdminRequest request)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

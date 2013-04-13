@@ -50,51 +50,55 @@ namespace TdService.UI.Web.ViewModels.Member
         public List<DispatchMethodViewModel> DeliveryMethods { get; set; }
 
         /// <summary>
-        /// Validation message
+        /// Gets or sets the amount validation message.
         /// </summary>
         public string AmountValidationMessage { get; set; }
 
         /// <summary>
-        /// PayPal transaction confirmation message
+        /// Gets or sets the pay pal transaction result message.
         /// </summary>
         public string PayPalTransactionResultMessage { get; set; }
 
         /// <summary>
-        ///  PayPal transaction confirmation message type [Warning,success,error]
+        /// Gets or sets the pay pal transaction result message type.
         /// </summary>
         public string PayPalTransactionResultMessageType { get; set; }
 
         /// <summary>
-        /// Addf funds button loading text
+        /// Gets or sets the add funds loading text.
         /// </summary>
         public string AddFundsLoadingText { get; set; }
 
         /// <summary>
-        /// Addf funds button loading text
+        /// Gets or sets the add funds button text.
         /// </summary>
         public string AddFundsButtonText { get; set; }
 
         /// <summary>
-        /// Specifies whether page is being view by admin
+        /// Gets or sets a value indicating whether admin view.
         /// </summary>
         public bool AdminView { get; set; }
 
         /// <summary>
-        /// Specifies the email of user, whos dashboard is open by operator
+        /// Gets or sets the user email.
         /// </summary>
         public string UserEmail { get; set; }
 
         /// <summary>
-        /// Translatednotice message
+        /// Gets the admin view notice message.
         /// </summary>
         public string AdminViewNoticeMessage
         {
             get
             {
-                return string.Format(DashboardViewResources.ResourceManager.GetString("AdminViewNoticeMessage"), this.UserId, this.UserEmail);
+                var message = DashboardViewResources.ResourceManager.GetString("AdminViewNoticeMessage");
+                return (message != null) ? string.Format(message, this.UserId, this.UserEmail) : null;
             }
         }
 
+        /// <summary>
+        /// Gets the name is required.
+        /// </summary>
         public string NameIsRequired
         {
             get
@@ -103,6 +107,9 @@ namespace TdService.UI.Web.ViewModels.Member
             }
         }
 
+        /// <summary>
+        /// Gets the quantity is required.
+        /// </summary>
         public string QuantityIsRequired
         {
             get
@@ -111,6 +118,9 @@ namespace TdService.UI.Web.ViewModels.Member
             }
         }
 
+        /// <summary>
+        /// Gets the price is required.
+        /// </summary>
         public string PriceIsRequired
         {
             get
@@ -119,6 +129,9 @@ namespace TdService.UI.Web.ViewModels.Member
             }
         }
 
+        /// <summary>
+        /// Gets the invalid price.
+        /// </summary>
         public string InvalidPrice
         {
             get
@@ -127,6 +140,9 @@ namespace TdService.UI.Web.ViewModels.Member
             }
         }
 
+        /// <summary>
+        /// Gets the invalid weight.
+        /// </summary>
         public string InvalidWeight
         {
             get
@@ -135,6 +151,9 @@ namespace TdService.UI.Web.ViewModels.Member
             }
         }
 
+        /// <summary>
+        /// Gets the invalid height.
+        /// </summary>
         public string InvalidHeight
         {
             get
@@ -143,6 +162,9 @@ namespace TdService.UI.Web.ViewModels.Member
             }
         }
 
+        /// <summary>
+        /// Gets the invalid length.
+        /// </summary>
         public string InvalidLength
         {
             get
@@ -151,6 +173,9 @@ namespace TdService.UI.Web.ViewModels.Member
             }
         }
 
+        /// <summary>
+        /// Gets the invalid width.
+        /// </summary>
         public string InvalidWidth
         {
             get
@@ -159,6 +184,9 @@ namespace TdService.UI.Web.ViewModels.Member
             }
         }
 
+        /// <summary>
+        /// Gets the invalid girth.
+        /// </summary>
         public string InvalidGirth
         {
             get
@@ -167,6 +195,9 @@ namespace TdService.UI.Web.ViewModels.Member
             }
         }
 
+        /// <summary>
+        /// Gets the invalid quantity.
+        /// </summary>
         public string InvalidQuantity
         {
             get
@@ -176,10 +207,13 @@ namespace TdService.UI.Web.ViewModels.Member
         }
 
         /// <summary>
-        /// Specifies whether page is viewd by operator or admin
+        /// Gets or sets a value indicating whether operator mode.
         /// </summary>
         public bool OperatorMode { get; set; }
 
+        /// <summary>
+        /// Gets or sets the USPS tracking url.
+        /// </summary>
         public string UspsTrackingUrl { get; set; }
     }
 }

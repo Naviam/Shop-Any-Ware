@@ -11,6 +11,8 @@ namespace TdService.Services.Implementations
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
+
     using TdService.Infrastructure.Logging;
     using TdService.Model.Addresses;
     using TdService.Model.Common;
@@ -40,6 +42,9 @@ namespace TdService.Services.Implementations
         /// </summary>
         private readonly IUserRepository userRepository;
 
+        /// <summary>
+        /// The address repository.
+        /// </summary>
         private readonly IAddressRepository addressRepository;
 
         /// <summary>
@@ -50,6 +55,12 @@ namespace TdService.Services.Implementations
         /// </param>
         /// <param name="userRepository">
         /// The user repository.
+        /// </param>
+        /// <param name="addressRepository">
+        /// The address Repository.
+        /// </param>
+        /// <param name="logger">
+        /// The logger.
         /// </param>
         public PackagesService(IPackageRepository packageRepository, IUserRepository userRepository, IAddressRepository addressRepository, ILogger logger)
             : base(logger)
@@ -141,7 +152,6 @@ namespace TdService.Services.Implementations
                     if (result)
                     {
                         this.packageRepository.RemovePackage(request.Id);
-                        //this.packageRepository.SaveChanges();
                     }
                     else
                     {
@@ -159,7 +169,15 @@ namespace TdService.Services.Implementations
             return response;
         }
 
-
+        /// <summary>
+        /// The change package delivery address.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ChangePackageDeliveryAddressResponse"/>.
+        /// </returns>
         public ChangePackageDeliveryAddressResponse ChangePackageDeliveryAddress(ChangePackageDeliveryAddressRequest request)
         {
             try
@@ -168,31 +186,57 @@ namespace TdService.Services.Implementations
                 package.DeliveryAddressId = request.DeliverAddressId;
                 this.packageRepository.UpdatePackage(package);
                 var addr = this.addressRepository.GetDeliveryAddressDetails(request.DeliverAddressId);
-                return new ChangePackageDeliveryAddressResponse {Country=addr.Country.TranslatedName, MessageType = MessageType.Success, Message = string.Format(CommonResources.PackageDeliveryAddressChanged, package.Id) };
+                return new ChangePackageDeliveryAddressResponse
+                           {
+                               Country = addr.Country.TranslatedName,
+                               MessageType = MessageType.Success,
+                               Message =
+                                   string.Format(
+                                       CommonResources.PackageDeliveryAddressChanged,
+                                       package.Id)
+                           };
             }
             catch (Exception ex)
             {
-                logger.Log(ex.Message);
+                this.Logger.Log(ex.Message);
                 return new ChangePackageDeliveryAddressResponse { MessageType = MessageType.Error, Message = CommonResources.ChangePackageDeliveryAddressError };
             }
         }
 
+        /// <summary>
+        /// The change package dispatch method.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ChangePackageDeliveryMethodResponse"/>.
+        /// </returns>
         public ChangePackageDeliveryMethodResponse ChangePackageDispatchMethod(ChangePackageDeliveryMethodRequest request)
         {
             try
             {
                 var package = this.packageRepository.GetPackageById(request.PackageId);
-                package.DispatchMethod = (DispatchMethod)Enum.Parse(typeof(DispatchMethod), request.DispatchMethodId.ToString());
+                package.DispatchMethod = (DispatchMethod)Enum.Parse(typeof(DispatchMethod), request.DispatchMethodId.ToString(CultureInfo.InvariantCulture));
                 this.packageRepository.UpdatePackage(package);
                 return new ChangePackageDeliveryMethodResponse { MessageType = MessageType.Success, Message = string.Format(CommonResources.PackageDispatchMethodChanged, package.Id) };
             }
             catch (Exception ex)
             {
-                logger.Log(ex.Message);
+                this.Logger.Log(ex.Message);
                 return new ChangePackageDeliveryMethodResponse { MessageType = MessageType.Error, Message = CommonResources.ChangePackageDispatchMethodError };
             }
         }
 
+        /// <summary>
+        /// The assemble package.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="AssemblePackageResponse"/>.
+        /// </returns>
         public AssemblePackageResponse AssemblePackage(AssemblePackageRequest request)
         {
             try
@@ -207,11 +251,20 @@ namespace TdService.Services.Implementations
             }
             catch (Exception ex)
             {
-                logger.Log(ex.Message);
+                this.Logger.Log(ex.Message);
                 return new AssemblePackageResponse { MessageType = MessageType.Error, Message = ex.Message };
             }
         }
 
+        /// <summary>
+        /// The package assembled.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="PackageAssembledResponse"/>.
+        /// </returns>
         public PackageAssembledResponse PackageAssembled(PackageAssembledRequest request)
         {
             try
@@ -226,11 +279,20 @@ namespace TdService.Services.Implementations
             }
             catch (Exception ex)
             {
-                logger.Log(ex.Message);
+                this.Logger.Log(ex.Message);
                 return new PackageAssembledResponse { MessageType = MessageType.Error, Message = ex.Message };
             }
         }
 
+        /// <summary>
+        /// The send package.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="SendPackageResponse"/>.
+        /// </returns>
         public SendPackageResponse SendPackage(SendPackageRequest request)
         {
             try
@@ -245,12 +307,20 @@ namespace TdService.Services.Implementations
             }
             catch (Exception ex)
             {
-                logger.Log(ex.Message);
+                this.Logger.Log(ex.Message);
                 return new SendPackageResponse { MessageType = MessageType.Error, Message = ex.Message };
             }
         }
 
-
+        /// <summary>
+        /// The get users packages.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="GetUsersPackagesResponse"/>.
+        /// </returns>
         public GetUsersPackagesResponse GetUsersPackages(GetUsersPackagesRequest request)
         {
             try
@@ -261,11 +331,20 @@ namespace TdService.Services.Implementations
             }
             catch (Exception ex)
             {
-                logger.Log(ex.Message);
+                this.Logger.Log(ex.Message);
                 return new GetUsersPackagesResponse { MessageType = MessageType.Error, Message = ex.Message };
             }
         }
 
+        /// <summary>
+        /// The update package total size.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="UpdatePackageTotalSizeResponse"/>.
+        /// </returns>
         public UpdatePackageTotalSizeResponse UpdatePackageTotalSize(UpdatePackageTotalSizeRequest request)
         {
             try
@@ -284,11 +363,20 @@ namespace TdService.Services.Implementations
             }
             catch (Exception ex)
             {
-                logger.Log(ex.Message);
+                this.Logger.Log(ex.Message);
                 return new UpdatePackageTotalSizeResponse { MessageType = MessageType.Error, Message = ex.Message };
             }
         }
 
+        /// <summary>
+        /// The change package tracking number.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ChangeTrackingNumberResponse"/>.
+        /// </returns>
         public ChangeTrackingNumberResponse ChangePackageTrackingNumber(ChangeTrackingNumberRequest request)
         {
             try
@@ -302,8 +390,12 @@ namespace TdService.Services.Implementations
             }
             catch (Exception ex)
             {
-                logger.Log(ex.Message);
-                return new ChangeTrackingNumberResponse { Message = DashboardViewResources.TrackingNumberUpdateError, MessageType = MessageType.Error};
+                this.Logger.Log(ex.Message);
+                return new ChangeTrackingNumberResponse
+                           {
+                               Message = DashboardViewResources.TrackingNumberUpdateError,
+                               MessageType = MessageType.Error
+                           };
             }
         }
     }

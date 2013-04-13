@@ -1,11 +1,22 @@
-﻿namespace TdService.UI.Web.Mapping
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="TransactionsViewModelMapper.cs" company="Naviam">
+//   Vadim Shaporov. 2013
+// </copyright>
+// <summary>
+//   The transactions view model mapper.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace TdService.UI.Web.Mapping
 {
-    using System;
     using System.Collections.Generic;
     using AutoMapper;
     using TdService.Services.Messaging.Transactions;
     using TdService.UI.Web.ViewModels.Ballance;
 
+    /// <summary>
+    /// The transactions view model mapper.
+    /// </summary>
     public static class TransactionsViewModelMapper
     {
         /// <summary>
@@ -19,7 +30,7 @@
         /// </returns>
         public static List<TransactionsViewModel> ConvertToTransactionsViewModelCollection(this List<GetTransactionsResponse> responses)
         {
-            var result =  Mapper.Map<List<GetTransactionsResponse>, List<TransactionsViewModel>>(responses);
+            var result = Mapper.Map<List<GetTransactionsResponse>, List<TransactionsViewModel>>(responses);
             return result;
         }
 
@@ -38,12 +49,14 @@
         }
 
         /// <summary>
-        /// Convert add transaction response message to transaction view model.
+        /// The convert to transaction view model.
         /// </summary>
         /// <param name="response">
-        /// The add transaction response message.
+        /// The response.
         /// </param>
-        /// <returns></returns>
+        /// <returns>
+        /// The <see cref="TransactionsViewModel"/>.
+        /// </returns>
         public static TransactionsViewModel ConvertToTransactionViewModel(this AddTransactionResponse response)
         {
             return Mapper.Map<AddTransactionResponse, TransactionsViewModel>(response);

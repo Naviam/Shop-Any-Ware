@@ -151,7 +151,7 @@ namespace TdService.Services.Implementations
             {
                 response.MessageType = MessageType.Error;
                 response.Message = CommonResources.SignUpErrorMessage;
-                this.logger.Error(CommonResources.SignUpErrorMessage, e);
+                this.Logger.Error(CommonResources.SignUpErrorMessage, e);
                 return response;
             }
         }
@@ -231,7 +231,7 @@ namespace TdService.Services.Implementations
             {
                 response.MessageType = MessageType.Error;
                 response.Message = CommonResources.SignUpErrorMessage;
-                this.logger.Error(CommonResources.SignUpErrorMessage, e);
+                this.Logger.Error(CommonResources.SignUpErrorMessage, e);
                 return response;
             }
         }
@@ -292,7 +292,7 @@ namespace TdService.Services.Implementations
             {
                 response.MessageType = MessageType.Error;
                 response.ErrorCode = ErrorCode.UserEmailExists.ToString();
-                this.logger.Error(ErrorCodeResources.UserEmailExists, ex);
+                this.Logger.Error(ErrorCodeResources.UserEmailExists, ex);
             }
 
             return response;
@@ -409,7 +409,7 @@ namespace TdService.Services.Implementations
             {
                 response.MessageType = MessageType.Error;
                 response.Message = CommonResources.ProfileUpdateErrorMessage;
-                this.logger.Error(CommonResources.ProfileUpdateErrorMessage, e);
+                this.Logger.Error(CommonResources.ProfileUpdateErrorMessage, e);
                 return response;
             }
         }

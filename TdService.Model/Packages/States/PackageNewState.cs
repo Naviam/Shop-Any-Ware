@@ -7,10 +7,10 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using TdService.Model.Packages.States;
-using TdService.Resources;
-namespace TdService.Model.Packages
+namespace TdService.Model.Packages.States
 {
+    using TdService.Resources;
+
     /// <summary>
     /// The package new state.
     /// </summary>
@@ -71,12 +71,17 @@ namespace TdService.Model.Packages
             }
         }
 
-
+        /// <summary>
+        /// Gets a value indicating whether can be paid for.
+        /// </summary>
         public bool CanBePaidFor
         {
             get { return false; }
         }
 
+        /// <summary>
+        /// Gets the translated name.
+        /// </summary>
         public string TranslatedName
         {
             get
@@ -85,7 +90,9 @@ namespace TdService.Model.Packages
             }
         }
 
-
+        /// <summary>
+        /// Gets a value indicating whether can be assembled.
+        /// </summary>
         public bool CanBeAssembled
         {
             get { return true; }
