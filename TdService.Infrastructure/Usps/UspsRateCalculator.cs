@@ -90,6 +90,14 @@ namespace TdService.Infrastructure.Usps
                     return response;
                 }
 
+                var packageResponse = resp.Packages[0];
+
+                if (packageResponse.Error != null)
+                {
+                    response.Error = packageResponse.Error.Description;
+                    return response;
+                }
+
                 var expressSvc = resp.Packages[0].Services.SingleOrDefault(s => s.Id.Equals("1"));
                 if (expressSvc != null)
                 {
