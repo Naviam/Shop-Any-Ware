@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="CountryViewModel.cs" company="Naviam">
 //   Vadim Shaporov. 2013
 // </copyright>
@@ -9,6 +9,8 @@
 
 namespace TdService.UI.Web.ViewModels.Account
 {
+	using TdService.Resources;
+	
     /// <summary>
     /// The country view model.
     /// </summary>
@@ -23,5 +25,16 @@ namespace TdService.UI.Web.ViewModels.Account
         /// Gets or sets the translated name.
         /// </summary>
         public string TranslatedName { get; set; }
+
+        public string TranslatedName
+        {
+            get
+            {
+                return Countries.ResourceManager.GetString(this.Code);
+            }
+        }
+
+        public string Code { get; set; }
+        public string DefaultName { get; set; }
     }
 }

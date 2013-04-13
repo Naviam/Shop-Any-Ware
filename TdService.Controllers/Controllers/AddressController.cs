@@ -100,9 +100,10 @@ namespace TdService.UI.Web.Controllers
             {
                 destination.City = source.City;
             }
-
-            destination.CountryId = source.CountryId;
-
+            if (string.IsNullOrWhiteSpace(destination.CountryCode))
+            {
+                destination.CountryCode = source.CountryCode;
+            }
             if (string.IsNullOrWhiteSpace(destination.State))
             {
                 destination.State = source.State;

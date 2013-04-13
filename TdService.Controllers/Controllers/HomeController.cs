@@ -10,14 +10,29 @@
 namespace TdService.UI.Web.Controllers
 {
     using System.Web.Mvc;
+    using System.Xml;
+    using TdService.Services.Interfaces;
     using TdService.UI.Web.Controllers.Base;
     using TdService.UI.Web.ViewModels.Account;
+    using TdService.UI.Web.Mapping;
+    using TdService.Infrastructure.Usps;
+    using TdService.UI.Web.ViewModels.Home;
 
     /// <summary>
     /// Home controller contains methods to display pages for unregistered shoppers.
     /// </summary>
     public class HomeController : BaseController
     {
+        /// <summary>
+        /// The address Service.
+        /// </summary>
+        private readonly IAddressService addressService;
+
+        public HomeController(IAddressService addressService)
+        {
+            this.addressService = addressService;
+        }
+
         /// <summary>
         /// The default page.
         /// </summary>
@@ -26,8 +41,7 @@ namespace TdService.UI.Web.Controllers
         /// </returns>
         public ActionResult Index()
         {
-            var model = new MainViewModel
-                { SignInViewModel = new SignInViewModel(), SignUpViewModel = new SignUpViewModel() };
+            var model = new MainViewModel { SignInViewModel = new SignInViewModel(), SignUpViewModel = new SignUpViewModel() };
             return this.View(model);
         }
 
@@ -106,6 +120,33 @@ namespace TdService.UI.Web.Controllers
         public ActionResult Rate()
         {
             return this.View();
+        }
+
+        [HttpPost]
+        public ActionResult GetCountries()
+        {
+            var result = this.addressService.GetCountries().ConvertToCountriesViewModel();
+
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = result
+            };
+            return jsonNetResult;
+        }
+
+        [HttpPost]
+        public ActionResult CalculateRate(CalculateFeeViewModel model)
+        {
+            var rates = UspsRateCalculator.GetShippingRates(
+                model.Weight, 15, 15, 15, 0, model.CountryName, model.Amount.ToString());
+
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = new { Rate = model.DeliveryMethodId == 1 ? rates.ExpressMailPostagePrice : rates.PriorityMailPostagePrice, Error = rates.Error }
+            };
+            return jsonNetResult;
         }
     }
 }

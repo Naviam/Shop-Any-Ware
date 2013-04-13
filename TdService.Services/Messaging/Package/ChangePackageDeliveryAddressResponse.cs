@@ -18,5 +18,7 @@ namespace TdService.Services.Messaging.Package
         /// Gets or sets the country.
         /// </summary>
         public string Country { get; set; }
+
+        public string CountryCode { get; set; }
     }
 }

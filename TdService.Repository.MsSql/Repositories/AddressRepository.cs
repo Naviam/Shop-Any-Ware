@@ -76,7 +76,7 @@ namespace TdService.Repository.MsSql.Repositories
         {
             using (var context = new ShopAnyWareSql())
             {
-                return context.DeliveryAddresses.Find(addressId);
+                return context.DeliveryAddresses.Include(ad=>ad.Country).SingleOrDefault(ad=>ad.Id.Equals(addressId));
             }
         }
 
