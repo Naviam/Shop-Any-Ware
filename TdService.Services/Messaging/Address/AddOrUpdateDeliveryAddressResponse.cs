@@ -39,6 +39,8 @@ namespace TdService.Services.Messaging.Address
         /// </summary>
         public int CountryId { get; set; }
 
+        public string CountryCode { get; set; }
+
         public string CountryNameTranslated { get; set; }
 
         /// <summary>

@@ -23,7 +23,6 @@ namespace TdService.Repository.MsSql.Configurations
         /// </summary>
         public CountryConfiguration()
         {
-            this.Ignore(c => c.TranslatedName);
             this.Property(c => c.Code).HasMaxLength(2).IsRequired();
         }
     }

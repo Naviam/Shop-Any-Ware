@@ -159,7 +159,9 @@ namespace TdService.Repository.MsSql.Repositories
         /// </returns>
         public User GetUserWithPackagesByEmail(string email)
         {
-            return this.context.Users.Include(u => u.Profile).Include(u => u.Packages.Select(p => p.DeliveryAddress)).Include(u => u.Roles).SingleOrDefault(u => u.Email == email);
+            return this.context.Users.Include(u => u.Profile)
+                .Include(u => u.Packages.Select(p => p.DeliveryAddress.Country))
+                .Include(u => u.Roles).SingleOrDefault(u => u.Email == email);
         }
 
         /// <summary>

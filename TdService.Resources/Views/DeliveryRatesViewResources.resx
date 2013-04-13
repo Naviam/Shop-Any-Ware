@@ -126,6 +126,18 @@
   <data name="DeliveryMethodHeader" xml:space="preserve">
     <value>Delivery Method</value>
   </data>
+  <data name="DeliveryRate" xml:space="preserve">
+    <value>Approximate delivery rate</value>
+  </data>
+  <data name="ErrorText" xml:space="preserve">
+    <value>Error. Check input data.</value>
+  </data>
+  <data name="LoadingRatesText" xml:space="preserve">
+    <value>loading</value>
+  </data>
+  <data name="PageHeader" xml:space="preserve">
+    <value>Shop Any Ware - Calculate Rate</value>
+  </data>
   <data name="WeightHeader" xml:space="preserve">
     <value>Weight</value>
   </data>

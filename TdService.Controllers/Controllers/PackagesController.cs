@@ -14,6 +14,7 @@ namespace TdService.UI.Web.Controllers
     using TdService.Infrastructure.Authentication;
     using TdService.Infrastructure.SessionStorage;
     using TdService.Infrastructure.Usps;
+    using TdService.Resources;
     using TdService.Resources.Views;
     using TdService.Services.Interfaces;
     using TdService.Services.Messaging;
@@ -171,7 +172,7 @@ namespace TdService.UI.Web.Controllers
             var jsonNetResult = new JsonNetResult
             {
                 Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
-                Data = new {Country = response.Country, Message = response.Message, MessageType = response.MessageType.ToString() }
+                Data = new {Country = Countries.ResourceManager.GetString(response.CountryCode), Message = response.Message, MessageType = response.MessageType.ToString() }
             };
             return jsonNetResult;
         }

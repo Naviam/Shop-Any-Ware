@@ -126,7 +126,7 @@ namespace TdService.ShopAnyWare.Tests.Addresses
                     AddressLine1 = "street",
                     AddressLine2 = "flat",
                     City = "Minsk",
-                    CountryId = 21,
+                    CountryCode = "BY",
                     Region = null,
                     State = null,
                     FirstName = "Vitali",
@@ -151,7 +151,7 @@ namespace TdService.ShopAnyWare.Tests.Addresses
             Assert.That(model.AddressLine2, Is.EqualTo("flat"));
             Assert.That(model.AddressLine3, Is.Null);
             Assert.That(model.City, Is.EqualTo("Minsk"));
-            Assert.That(model.CountryId, Is.EqualTo("Belarus"));
+            Assert.That(model.CountryCode, Is.EqualTo("BY"));
             Assert.That(model.Region, Is.Null);
             Assert.That(model.State, Is.Null);
             Assert.That(model.FirstName, Is.EqualTo("Vitali"));
@@ -175,7 +175,7 @@ namespace TdService.ShopAnyWare.Tests.Addresses
                 AddressLine1 = "street",
                 AddressLine2 = "flat",
                 City = "Minsk",
-                CountryId = 21,
+                CountryCode = "BY",
                 Region = null,
                 State = null,
                 FirstName = "Vitali",
@@ -200,7 +200,7 @@ namespace TdService.ShopAnyWare.Tests.Addresses
             Assert.That(model.AddressLine2, Is.EqualTo("flat"));
             Assert.That(model.AddressLine3, Is.Null);
             Assert.That(model.City, Is.EqualTo("Minsk"));
-            Assert.That(model.CountryId, Is.EqualTo("Belarus"));
+            Assert.That(model.CountryCode, Is.EqualTo("BY"));
             Assert.That(model.Region, Is.Null);
             Assert.That(model.State, Is.Null);
             Assert.That(model.FirstName, Is.EqualTo("Vitali"));
