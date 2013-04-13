@@ -189,7 +189,7 @@ namespace TdService.Services.Implementations
 
                 return new ChangePackageDeliveryAddressResponse
                            {
-                               CountryCode=addr.Country.Code,
+                               CountryCode = addr.Country.Code,
                                MessageType = MessageType.Success,
                                Message =
                                    string.Format(

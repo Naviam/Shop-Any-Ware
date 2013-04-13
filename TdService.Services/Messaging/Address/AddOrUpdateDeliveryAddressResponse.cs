@@ -44,6 +44,9 @@ namespace TdService.Services.Messaging.Address
         /// </summary>
         public string CountryCode { get; set; }
 
+        /// <summary>
+        /// Gets or sets the country name translated.
+        /// </summary>
         public string CountryNameTranslated { get; set; }
 
         /// <summary>

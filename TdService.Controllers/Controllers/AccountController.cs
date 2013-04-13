@@ -328,11 +328,17 @@ namespace TdService.UI.Web.Controllers
         }
 
         /// <summary>
-        /// Activates user's email
+        /// The activate email.
         /// </summary>
-        /// <param name="uid"></param>
-        /// <param name="hash"></param>
-        /// <returns></returns>
+        /// <param name="uid">
+        /// The user id.
+        /// </param>
+        /// <param name="hash">
+        /// The hash.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ActionResult"/>.
+        /// </returns>
         public ActionResult ActivateEmail(int uid, Guid hash)
         {
             var request = new ActivateUserEmailRequest { ActivationCode = hash, UserId = uid };

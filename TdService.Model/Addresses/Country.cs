@@ -34,12 +34,13 @@ namespace TdService.Model.Addresses
             }
         }
 
-        /// Gets or sets the country code.
+        /// <summary>
+        /// Gets or sets the code.
         /// </summary>
         public string Code { get; set; }
 
         /// <summary>
-        /// Used for USPS
+        /// Gets or sets the default name.
         /// </summary>
         public string DefaultName { get; set; }
 

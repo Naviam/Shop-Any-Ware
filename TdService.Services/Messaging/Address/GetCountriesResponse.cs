@@ -24,7 +24,14 @@ namespace TdService.Services.Messaging.Address
         /// </summary>
         public string TranslatedName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the default name.
+        /// </summary>
         public string DefaultName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the code.
+        /// </summary>
         public string Code { get; set; }
     }
 }

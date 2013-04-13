@@ -250,10 +250,21 @@ namespace TdService.ShopAnyWare.Tests.Account
             throw new NotImplementedException();
         }
 
-
+        /// <summary>
+        /// The activate email.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ActivateUserEmailResponse"/>.
+        /// </returns>
+        /// <exception cref="NotImplementedException">
+        /// Not implemented yet.
+        /// </exception>
         public ActivateUserEmailResponse ActivateEmail(ActivateUserEmailRequest request)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }
