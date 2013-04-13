@@ -252,4 +252,16 @@
   <data name="LoadingText" xml:space="preserve">
     <value>Загрузка</value>
   </data>
+  <data name="EmailActivated" xml:space="preserve">
+    <value>Ваш почтовый адрес был активирован.  Сейчас вы можете получать сервисные сообщения от ShopAnyWare.</value>
+  </data>
+  <data name="EmailActivationErrorInvalidCode" xml:space="preserve">
+    <value>Не удалось активировать почтовый адрес. Неверный код активации</value>
+  </data>
+  <data name="EmailActivationErrorUserNotFound" xml:space="preserve">
+    <value>Не удалось активировать почтовый адрес. Пользователь не найен.</value>
+  </data>
+  <data name="EmailActivationAlreadyActivated" xml:space="preserve">
+    <value>Ваш почтовый адрес уже активирован.</value>
+  </data>
 </root>
