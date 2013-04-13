@@ -328,6 +328,19 @@ namespace TdService.UI.Web.Controllers
         }
 
         /// <summary>
+        /// Activates user's email
+        /// </summary>
+        /// <param name="uid"></param>
+        /// <param name="hash"></param>
+        /// <returns></returns>
+        public ActionResult ActivateEmail(int uid, Guid hash)
+        {
+            var request = new ActivateUserEmailRequest { ActivationCode = hash, UserId = uid };
+            var response = this.membershipService.ActivateEmail(request);
+            return this.View(new ActivateEmailViewModel { ActivateionResult = response.Message });
+        }
+
+        /// <summary>
         /// Save credentials to cookie.
         /// </summary>
         /// <param name="view">

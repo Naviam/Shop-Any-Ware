@@ -139,7 +139,7 @@
                     &lt;p&gt;Вы зарегистрировались на ресурсе ShopAnyWare.com. Для завершения регистрации Вам необходимо подтвердить Ваш e-mail адрес.&lt;/p&gt;
                     &lt;p&gt;Для подтверждения нажмите ссылку ниже:&lt;/p&gt;
                     &lt;p&gt;
-                        &lt;a href="https://shopanyware.ru/account/activateemail?uid={0}&amp;hash={1}" style="color: #4e8ecd; text-decoration: underline"&gt;https://shopanyware.ru/account/activateemail?uid={0}&amp;hash={1}&lt;/a&gt;
+                        &lt;a href="https://shopanyware.ru/account/activateemail?uid={0}&amp;hash={1}" style="color: #4e8ecd; text-decoration: underline"&gt;{0}/account/activateemail?uid={1}&amp;hash={2}&lt;/a&gt;
                     &lt;/p&gt;
                     &lt;p&gt;Если ссылка не работает, просто скопируйте адрес в адресную строку Вашего браузера&lt;/p&gt;
                     &lt;p&gt;С уважением, команда ShopAnyWare.&lt;/p&gt;

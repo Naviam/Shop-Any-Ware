@@ -98,6 +98,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AccountViewResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Views\ActivateEmailResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ActivateEmailResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Views\AddressViewResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -208,6 +213,11 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\AccountViewResources.ru.resx" />
+    <EmbeddedResource Include="Views\ActivateEmailResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ActivateEmailResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ActivateEmailResources.ru.resx" />
     <EmbeddedResource Include="Views\AddressViewResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AddressViewResources.Designer.cs</LastGenOutput>

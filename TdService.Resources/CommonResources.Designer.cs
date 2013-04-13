@@ -133,6 +133,42 @@ namespace TdService.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your email has been activated. Now you can receive service emails from ShopAnyWare..
+        /// </summary>
+        public static string EmailActivated {
+            get {
+                return ResourceManager.GetString("EmailActivated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your email has already been activated.
+        /// </summary>
+        public static string EmailActivationAlreadyActivated {
+            get {
+                return ResourceManager.GetString("EmailActivationAlreadyActivated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not activate user email. Invalid activation code..
+        /// </summary>
+        public static string EmailActivationErrorInvalidCode {
+            get {
+                return ResourceManager.GetString("EmailActivationErrorInvalidCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not activate user email. User not found..
+        /// </summary>
+        public static string EmailActivationErrorUserNotFound {
+            get {
+                return ResourceManager.GetString("EmailActivationErrorUserNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Loading.
         /// </summary>
         public static string LoadingText {
