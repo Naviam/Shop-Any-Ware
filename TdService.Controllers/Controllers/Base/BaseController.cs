@@ -31,7 +31,7 @@ namespace TdService.UI.Web.Controllers.Base
             if (cultureCookie == null)
             {
                 // get domain name
-                var url = this.Request.Url;
+                var url = requestContext.HttpContext.Request.Url;
                 if (url != null && url.AbsoluteUri.IndexOf("shopanyware.ru", System.StringComparison.Ordinal) >= 0)
                 {
                     cultureCookie = new HttpCookie("culture", "ru");

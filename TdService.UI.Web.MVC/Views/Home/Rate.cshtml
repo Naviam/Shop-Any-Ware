@@ -6,15 +6,15 @@
 <script type="text/javascript" src="@Url.Content("~/Scripts/knockout-2.2.0.js")"></script>
 
 <label for="country">@DeliveryRatesViewResources.CountryHeader: </label>
-<select data-bind="options: countries,optionsText: 'TranslatedName', value: selectedCountry">
+<select id="country" data-bind="options: countries,optionsText: 'TranslatedName', value: selectedCountry">
 </select>
 <label for="method">@DeliveryRatesViewResources.DeliveryMethodHeader: </label>
-<select data-bind="options: methods, optionsText: 'name', value: selectedMethod">
+<select id="method" data-bind="options: methods, optionsText: 'name', value: selectedMethod">
 </select>
 <label for="weight">@DeliveryRatesViewResources.WeightHeader: </label>
-<input data-bind="value:weight" type="text" />
+<input id="weight" data-bind="value:weight" type="text" />
 <label for="amount">@DeliveryRatesViewResources.AmountHeader: </label>
-<input type="text" data-bind="value:amount" />
+<input id="amount" type="text" data-bind="value:amount" />
 <br />
 @DeliveryRatesViewResources.DeliveryRate: <span style="font-weight:bold" data-bind="text:calculatedRate" ></span><br />
 <input type="button" value="Calculate" data-bind="click:calculateRate" />
