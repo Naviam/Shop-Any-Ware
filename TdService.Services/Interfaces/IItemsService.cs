@@ -43,7 +43,7 @@ namespace TdService.Services.Interfaces
         /// <returns>edit package item response message</returns>
         EditPackageItemResponse EditPackageItem(EditPackageItemRequest request);
 
-   /// <summary>
+        /// <summary>
         /// Get order items.
         /// </summary>
         /// <param name="request">
@@ -77,48 +77,58 @@ namespace TdService.Services.Interfaces
         RemoveItemResponse RemoveItem(RemoveItemRequest request);
 
         /// <summary>
-        /// Adds image to item
+        /// The add item image.
         /// </summary>
-        /// <param name="request">Uploaded image info</param>
-        /// <returns>response</returns>
-        AddItemImageReponse AddItemImage(AddItemImageRequest request);
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="AddItemImageResponse"/>.
+        /// </returns>
+        AddItemImageResponse AddItemImage(AddItemImageRequest request);
 
         /// <summary>
-        /// Moves order items to existing  package
+        /// The move order items to existing package.
         /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
-        MoveOrderItemsToExistingPackageResponse MoveOrderItemsToExistingPackage(
-            MoveOrderItemsToExistingPackageRequest request);
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="MoveOrderItemsToExistingPackageResponse"/>.
+        /// </returns>
+        MoveOrderItemsToExistingPackageResponse MoveOrderItemsToExistingPackage(MoveOrderItemsToExistingPackageRequest request);
 
         /// <summary>
-        /// Moves order items to new  package
+        /// The move order items to original order.
         /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
-        //MoveOrderItemsToNewPackageResponse MoveOrderItemsToNewPackage(MoveOrderItemsToNewPackageRequest request);
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="MoveOrderItemsToOriginalOrderResponse"/>.
+        /// </returns>
+        MoveOrderItemsToOriginalOrderResponse MoveOrderItemsToOriginalOrder(MoveOrderItemsToOriginalOrderRequest request);
 
         /// <summary>
-        /// Moves package items to their original order
+        /// The move order item back to original order.
         /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
-        MoveOrderItemsToOriginalOrderResponse MoveOrderItemsToOriginalOrder(
-            MoveOrderItemsToOriginalOrderRequest request);
-
-        /// <summary>
-        /// Move single item back to orig order
-        /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="MoveItemBackToOriginalOrderResponse"/>.
+        /// </returns>
         MoveItemBackToOriginalOrderResponse MoveOrderItemBackToOriginalOrder(MoveItemBackToOriginalOrderRequest request);
 
         /// <summary>
-        /// Move single item to existing package
+        /// The move order items to existing package.
         /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
-        MoveOrderItemToExistingPackageResponse MoveOrderItemsToExistingPackage(
-            MoveOrderItemToExistingPackageRequest request);
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="MoveOrderItemToExistingPackageResponse"/>.
+        /// </returns>
+        MoveOrderItemToExistingPackageResponse MoveOrderItemsToExistingPackage(MoveOrderItemToExistingPackageRequest request);
     }
 }

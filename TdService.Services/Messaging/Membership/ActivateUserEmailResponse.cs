@@ -1,6 +1,18 @@
-﻿namespace TdService.Services.Messaging.Membership
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="ActivateUserEmailResponse.cs" company="Naviam">
+//   Vadim Shaporov. 2013
+// </copyright>
+// <summary>
+//   The activate user email response.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace TdService.Services.Messaging.Membership
 {
-    public class ActivateUserEmailResponse:ResponseBase
+    /// <summary>
+    /// The activate user email response.
+    /// </summary>
+    public class ActivateUserEmailResponse : ResponseBase
     {
     }
 }

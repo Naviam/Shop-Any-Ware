@@ -11,7 +11,7 @@ namespace TdService.Repository.MsSql.Configurations
     using TdService.Model.Membership;
 
     /// <summary>
-    /// This class describes the configuration of role db table.
+    /// This class describes the configuration of role DB table.
     /// </summary>
     public class RoleConfiguration : EntityTypeConfiguration<Role>
     {

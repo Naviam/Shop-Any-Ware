@@ -11,7 +11,7 @@ namespace TdService.Repository.MsSql.Configurations
     using TdService.Model.Addresses;
 
     /// <summary>
-    /// This class describes the configuration of deliveryaddresses db table.
+    /// This class describes the configuration of delivery addresses DB table.
     /// </summary>
     public class DeliveryAddressConfiguration : EntityTypeConfiguration<DeliveryAddress>
     {

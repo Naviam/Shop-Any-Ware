@@ -15,7 +15,7 @@ namespace TdService.Model.Balance
     public enum TransactionStatus
     {
         /// <summary>
-        /// User was redirected to paypal
+        /// User was redirected to PAYPAL
         /// </summary>
         InProgress,
 
@@ -35,7 +35,7 @@ namespace TdService.Model.Balance
         Failed,
 
         /// <summary>
-        /// Canceled status (user pressed cancel on paypal page)
+        /// Canceled status (user pressed cancel on PAYPAL page)
         /// </summary>
         Canceled
     }

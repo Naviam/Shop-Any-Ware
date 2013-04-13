@@ -30,6 +30,9 @@ namespace TdService.Model.Packages
         /// </summary>
         private IPackageState packageState;
 
+        /// <summary>
+        /// The status.
+        /// </summary>
         private PackageStatus status;
 
         /// <summary>
@@ -60,38 +63,34 @@ namespace TdService.Model.Packages
             {
                 return this.status;
             }
+
             set
             {
-                switch(value)
+                switch (value)
                 {
-                    case (PackageStatus.Assembling):
-                        {
+                    case PackageStatus.Assembling:
                             this.status = value;
                             this.packageState = new PackageAssemblingState();
                             break;
-                        }
-                    case (PackageStatus.Assembled):
-                        {
+                    case PackageStatus.Assembled:
                             this.status = value;
                             this.packageState = new PackageAssembledState();
                             break;
-                        }
-                    case (PackageStatus.Paid):
-                        {
+                    case PackageStatus.Paid:
                             this.status = value;
                             this.packageState = new PackagePaidState();
                             break;
-                        }
-                    case (PackageStatus.Sent):
-                        {
+                    case PackageStatus.Sent:
                             this.status = value;
                             this.packageState = new PackageSentState();
                             break;
-                        }
                 }
             }
         }
 
+        /// <summary>
+        /// Gets the status translated.
+        /// </summary>
         public string StatusTranslated
         {
             get
@@ -136,7 +135,7 @@ namespace TdService.Model.Packages
         public Dimensions Dimensions { get; set; }
 
         /// <summary>
-        /// total Weight package weight. Set by operator
+        /// Gets or sets the total weight.
         /// </summary>
         public decimal TotalWeight { get; set; }
 
@@ -238,6 +237,58 @@ namespace TdService.Model.Packages
         public byte[] RowVersion { get; set; }
 
         /// <summary>
+        /// The change package status.
+        /// </summary>
+        /// <param name="newStatus">
+        /// The new status.
+        /// </param>
+        /// <exception cref="InvalidPackageStateException">
+        /// Invalid package.
+        /// </exception>
+        public void ChangePackageStatus(PackageStatus newStatus)
+        {
+            switch (newStatus)
+            {
+                case PackageStatus.Assembling:
+                    if (this.Status != PackageStatus.New)
+                    {
+                        throw new InvalidPackageStateException(this.Status, newStatus);
+                    }
+
+                    this.status = newStatus;
+                    this.packageState = new PackageAssemblingState();
+                    break;
+                case PackageStatus.Assembled:
+                    if (this.Status != PackageStatus.Assembling)
+                    {
+                        throw new InvalidPackageStateException(this.Status, newStatus);
+                    }
+
+                    this.status = newStatus;
+                    this.packageState = new PackageAssembledState();
+                    break;
+                case PackageStatus.Paid:
+                    if (this.Status != PackageStatus.Assembled)
+                    {
+                        throw new InvalidPackageStateException(this.Status, newStatus);
+                    }
+
+                    this.status = newStatus;
+                    this.packageState = new PackagePaidState();
+                    break;
+                case PackageStatus.Sent:
+                    if (this.Status != PackageStatus.Paid)
+                    {
+                        throw new InvalidPackageStateException(this.Status, newStatus);
+                    }
+
+                    this.status = newStatus;
+                    this.packageState = new PackageSentState();
+                    break;
+            }
+        }
+
+        /// <summary>
         /// Validate business rules.
         /// </summary>
         protected override void Validate()
@@ -251,42 +302,5 @@ namespace TdService.Model.Packages
                 this.AddBrokenRule(PackageBusinessRules.NameLength);
             }
         }
-
-
-        public void ChangePackageStatus(PackageStatus newStatus)
-        {
-            switch (newStatus)
-            {
-                case (PackageStatus.Assembling):
-                    {
-                        if (this.Status != PackageStatus.New) throw new InvalidPackageStateException(this.Status, newStatus);
-                        this.status = newStatus;
-                        this.packageState = new PackageAssemblingState();
-                        break;
-                    }
-                case (PackageStatus.Assembled):
-                    {
-                        if (this.Status != PackageStatus.Assembling) throw new InvalidPackageStateException(this.Status, newStatus);
-                        this.status = newStatus;
-                        this.packageState = new PackageAssembledState();
-                        break;
-                    }
-                case (PackageStatus.Paid):
-                    {
-                        if (this.Status != PackageStatus.Assembled) throw new InvalidPackageStateException(this.Status, newStatus);
-                        this.status = newStatus;
-                        this.packageState = new PackagePaidState();
-                        break;
-                    }
-                case (PackageStatus.Sent):
-                    {
-                        if (this.Status != PackageStatus.Paid) throw new InvalidPackageStateException(this.Status, newStatus);
-                        this.status = newStatus;
-                        this.packageState = new PackageSentState();
-                        break;
-                    }
-            }
-        }
-
     }
 }

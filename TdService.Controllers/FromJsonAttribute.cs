@@ -20,7 +20,7 @@ namespace TdService.UI.Web
         /// <summary>
         /// The serializer.
         /// </summary>
-        private readonly static JavaScriptSerializer Serializer = new JavaScriptSerializer();
+        private static readonly JavaScriptSerializer Serializer = new JavaScriptSerializer();
 
         /// <summary>
         /// The get binder.

@@ -92,10 +92,14 @@ namespace TdService.Services.Mapping
         }
 
         /// <summary>
-        /// 
+        /// The convert to order received response.
         /// </summary>
-        /// <param name="order"></param>
-        /// <returns></returns>
+        /// <param name="order">
+        /// The order.
+        /// </param>
+        /// <returns>
+        /// The <see cref="OrderReceivedResponse"/>.
+        /// </returns>
         public static OrderReceivedResponse ConvertToOrderReceivedResponse(this Order order)
         {
             return Mapper.Map<Order, OrderReceivedResponse>(order);

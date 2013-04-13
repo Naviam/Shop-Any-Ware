@@ -89,7 +89,6 @@ namespace TdService.Model.Membership
         /// </summary>
         public Wallet Wallet { get; set; }
 
-
         /// <summary>
         /// Gets or sets Roles.
         /// </summary>
@@ -281,10 +280,17 @@ namespace TdService.Model.Membership
         }
 
         /// <summary>
-        /// 
+        /// The remove user from role.
         /// </summary>
-        /// <param name="roleId"></param>
-        /// <returns></returns>
+        /// <param name="roleId">
+        /// The role id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
+        /// <exception cref="MemberShipException">
+        /// User is not in role.
+        /// </exception>
         public bool RemoveUserFromRole(int roleId)
         {
             var role = this.Roles.SingleOrDefault(r => r.Id.Equals(roleId));
@@ -298,18 +304,25 @@ namespace TdService.Model.Membership
         }
 
         /// <summary>
-        /// 
+        /// The add user to role.
         /// </summary>
-        /// <param name="role"></param>
-        /// <returns></returns>
+        /// <param name="role">
+        /// The role.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
+        /// <exception cref="MemberShipException">
+        /// User is already in role.
+        /// </exception>
         public bool AddUserToRole(Role role)
         {
             if (!this.Roles.Select(r => r.Id).Contains(role.Id))
             {
-                
                 this.Roles.Add(role);
                 return true;
             }
+
             throw new MemberShipException(ErrorCode.UserIsAlreadyInRole.ToString());
         }
 

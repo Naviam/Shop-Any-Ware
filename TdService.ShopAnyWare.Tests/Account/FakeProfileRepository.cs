@@ -41,7 +41,7 @@ namespace TdService.ShopAnyWare.Tests.Account
         }
 
         /// <summary>
-        /// Save changes to db.
+        /// Save changes to DB.
         /// </summary>
         /// <returns>
         /// Commit changes result.

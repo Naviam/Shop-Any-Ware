@@ -9,13 +9,15 @@
 
 namespace TdService.UI.Web.Controllers
 {
+    using System.Globalization;
     using System.Web.Mvc;
     using System.Xml;
+
+    using TdService.Infrastructure.Usps;
     using TdService.Services.Interfaces;
     using TdService.UI.Web.Controllers.Base;
-    using TdService.UI.Web.ViewModels.Account;
     using TdService.UI.Web.Mapping;
-    using TdService.Infrastructure.Usps;
+    using TdService.UI.Web.ViewModels.Account;
     using TdService.UI.Web.ViewModels.Home;
 
     /// <summary>
@@ -28,6 +30,12 @@ namespace TdService.UI.Web.Controllers
         /// </summary>
         private readonly IAddressService addressService;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HomeController"/> class.
+        /// </summary>
+        /// <param name="addressService">
+        /// The address service.
+        /// </param>
         public HomeController(IAddressService addressService)
         {
             this.addressService = addressService;
@@ -122,6 +130,12 @@ namespace TdService.UI.Web.Controllers
             return this.View();
         }
 
+        /// <summary>
+        /// The get countries.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="ActionResult"/>.
+        /// </returns>
         [HttpPost]
         public ActionResult GetCountries()
         {
@@ -135,16 +149,29 @@ namespace TdService.UI.Web.Controllers
             return jsonNetResult;
         }
 
+        /// <summary>
+        /// The calculate rate.
+        /// </summary>
+        /// <param name="model">
+        /// The model.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ActionResult"/>.
+        /// </returns>
         [HttpPost]
         public ActionResult CalculateRate(CalculateFeeViewModel model)
         {
             var rates = UspsRateCalculator.GetShippingRates(
-                model.Weight, 15, 15, 15, 0, model.CountryName, model.Amount.ToString());
+                model.Weight, 15, 15, 15, 0, model.CountryName, model.Amount.ToString(CultureInfo.InvariantCulture));
 
             var jsonNetResult = new JsonNetResult
             {
                 Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
-                Data = new { Rate = model.DeliveryMethodId == 1 ? rates.ExpressMailPostagePrice : rates.PriorityMailPostagePrice, Error = rates.Error }
+                Data = new
+                           {
+                               Rate = model.DeliveryMethodId == 1 ? rates.ExpressMailPostagePrice : rates.PriorityMailPostagePrice,
+                               rates.Error
+                           }
             };
             return jsonNetResult;
         }

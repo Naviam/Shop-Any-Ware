@@ -1,23 +1,24 @@
-﻿using System.Collections.Generic;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="GetUsersPackagesResponse.cs" company="Naviam">
+//   Vadim Shaporov. 2013
+// </copyright>
+// <summary>
+//   The get users packages response.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace TdService.Services.Messaging.Package
 {
-    public class GetUsersPackagesResponse:ResponseBase
+    using System.Collections.Generic;
+
+    /// <summary>
+    /// The get users packages response.
+    /// </summary>
+    public class GetUsersPackagesResponse : ResponseBase
     {
-        public class UserPackage
-        {
-            public int UserId { get; set; }
-            public string Email { get; set; }
-            public string Status { get; set; }
-            public string PackageName { get; set; }
-
-            public int ItemsCount { get; set; }
-
-            public string DispatchMethod { get; set; }
-
-            public int PackageId { get; set; }
-        }
-
-        public List<UserPackage> UsersPackages { get; set; }
+        /// <summary>
+        /// Gets or sets the users packages.
+        /// </summary>
+        public List<UserPackageResponse> UsersPackages { get; set; }
     }
 }

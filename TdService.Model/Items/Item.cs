@@ -43,7 +43,7 @@ using TdService.Model.Packages;
         public Weight Weight { get; set; }
 
         /// <summary>
-        /// Get or sets item images
+        /// Gets or sets the images.
         /// </summary>
         public List<ItemImage> Images { get; set; }
 
@@ -58,17 +58,17 @@ using TdService.Model.Packages;
         public Package Package { get; set; }
 
         /// <summary>
-        /// 
+        /// Gets or sets the package id.
         /// </summary>
         public int? PackageId { get; set; }
 
         /// <summary>
-        /// 
+        /// Gets or sets the order.
         /// </summary>
         public Order Order { get; set; }
 
         /// <summary>
-        /// 
+        /// Gets or sets the order id.
         /// </summary>
         public int OrderId { get; set; }
 
@@ -87,7 +87,5 @@ using TdService.Model.Packages;
                 this.AddBrokenRule(ItemBussinessRules.QuantityRequired);
             }
         }
-
-       
     }
 }

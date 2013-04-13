@@ -1,17 +1,35 @@
-﻿using TdService.Infrastructure.Logging;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="ServiceBase.cs" company="Naviam">
+//   Vadim Shaporov. 2013
+// </copyright>
+// <summary>
+//   The service base.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace TdService.Services.Base
 {
+    using TdService.Infrastructure.Logging;
+
+    /// <summary>
+    /// The service base.
+    /// </summary>
     public abstract class ServiceBase
     {
         /// <summary>
         /// The logger.
         /// </summary>
-        protected readonly ILogger logger;
+        protected readonly ILogger Logger;
 
-        public ServiceBase(ILogger logger)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ServiceBase"/> class.
+        /// </summary>
+        /// <param name="logger">
+        /// The logger.
+        /// </param>
+        protected ServiceBase(ILogger logger)
         {
-            this.logger = logger;
+            this.Logger = logger;
         }
     }
 }

@@ -16,6 +16,12 @@ namespace TdService.Model.Items
     /// </summary>
     public class InvalidItemException : Exception
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="InvalidItemException"/> class.
+        /// </summary>
+        /// <param name="message">
+        /// The message.
+        /// </param>
         public InvalidItemException(string message) : base(message)
         {
         }

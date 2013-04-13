@@ -45,12 +45,12 @@ namespace TdService.Model.Packages.States
         bool CanBePaidFor { get; }
 
         /// <summary>
-        /// Gets a value indication whether package can be assembled
+        /// Gets a value indicating whether can be assembled.
         /// </summary>
         bool CanBeAssembled { get; }
 
         /// <summary>
-        /// State name
+        /// Gets the translated name.
         /// </summary>
         string TranslatedName { get; }
     }

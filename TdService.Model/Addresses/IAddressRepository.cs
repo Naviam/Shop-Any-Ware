@@ -80,7 +80,9 @@ namespace TdService.Model.Addresses
         /// <summary>
         /// Get country list
         /// </summary>
-        /// <returns></returns>
+        /// <returns>
+        /// The collection of countries.
+        /// </returns>
         List<Country> GetCountries();
     }
 }

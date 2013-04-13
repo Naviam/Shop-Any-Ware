@@ -12,7 +12,6 @@ namespace TdService.ShopAnyWare.Specs.Steps
     using System;
     using System.Collections.Generic;
     using System.Data;
-    using System.Diagnostics;
     using System.Linq;
     using AutoMapper;
     using TdService.Model.Addresses;
@@ -156,7 +155,7 @@ namespace TdService.ShopAnyWare.Specs.Steps
             var user = ScenarioContext.Current.Get<User>();
             using (var context = new ShopAnyWareSql())
             {
-                var orders = table.CreateSet<Order>().Select(o => { context.Entry<Order>(o).State = EntityState.Added; return o; });
+                var orders = table.CreateSet<Order>().Select(o => { context.Entry(o).State = EntityState.Added; return o; });
                 if (user.Orders == null)
                 {
                     user.Orders = new List<Order>();
@@ -183,7 +182,6 @@ namespace TdService.ShopAnyWare.Specs.Steps
             var user = ScenarioContext.Current.Get<User>();
             using (var context = new ShopAnyWareSql())
             {
-
                 if (user.Packages == null)
                 {
                     user.Packages = new List<Package>();
@@ -224,8 +222,8 @@ namespace TdService.ShopAnyWare.Specs.Steps
         /// <summary>
         /// The given there are following items for order in database.
         /// </summary>
-        /// <param name="orderId">
-        /// The order id.
+        /// <param name="orderNumber">
+        /// The order Number.
         /// </param>
         /// <param name="table">
         /// The table.
@@ -253,14 +251,28 @@ namespace TdService.ShopAnyWare.Specs.Steps
             }
         }
 
+        /// <summary>
+        /// The given there are following items for package in database.
+        /// </summary>
+        /// <param name="packageName">
+        /// The package name.
+        /// </param>
+        /// <param name="table">
+        /// The table.
+        /// </param>
         [Given(@"there are following items for package '(.*)' in database")]
-        public void GivenThereAreFollowingItemsForPackageInDatabase(string  packageName, Table table)
+        public void GivenThereAreFollowingItemsForPackageInDatabase(string packageName, Table table)
         {
             var user = ScenarioContext.Current.Get<User>();
             var packageId = user.Packages.SingleOrDefault(p => p.Name.Equals(packageName)).Id;
             
             ScenarioContext.Current.Set(packageId, "PackageId");
-            var items = table.CreateSet<Item>().Select(i => { i.Dimensions = new Dimensions(); i.Weight = new Weight(); return i; }); ;
+            var items = table.CreateSet<Item>().Select(i =>
+                {
+                    i.Dimensions = new Dimensions();
+                    i.Weight = new Weight();
+                    return i;
+                });
             using (var context = new ShopAnyWareSql())
             {
                 var package = context.Packages.Find(packageId);
@@ -268,13 +280,13 @@ namespace TdService.ShopAnyWare.Specs.Steps
                 {
                     package.Items = new List<Item>();
                 }
+
                 context.Packages.Attach(package);
                 package.Items.AddRange(items);
                 context.SaveChanges();
                 ScenarioContext.Current.Set(package.Items);
             }
         }
-
 
         /// <summary>
         /// The orders transform.

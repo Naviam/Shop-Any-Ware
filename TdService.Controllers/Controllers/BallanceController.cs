@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="BalanceController.cs" company="TdService">
+// <copyright file="BallanceController.cs" company="TdService">
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
@@ -29,6 +29,9 @@ namespace TdService.UI.Web.Controllers
     /// </summary>
     public class BallanceController : BaseAuthController
     {
+        /// <summary>
+        /// The membership service.
+        /// </summary>
         private readonly IMembershipService membershipService;
 
         /// <summary>
@@ -39,7 +42,12 @@ namespace TdService.UI.Web.Controllers
         /// <summary>
         /// Initializes a new instance of the <see cref="BallanceController"/> class.
         /// </summary>
-        /// <param name="transactionService"></param>
+        /// <param name="membershipService">
+        /// The membership Service.
+        /// </param>
+        /// <param name="transactionService">
+        /// The transaction service.
+        /// </param>
         /// <param name="formsAuthentication">
         /// The forms authentication.
         /// </param>
@@ -72,23 +80,34 @@ namespace TdService.UI.Web.Controllers
             return jsonNetResult;
         }
 
+        /// <summary>
+        /// The add transaction.
+        /// </summary>
+        /// <param name="amount">
+        /// The amount.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ActionResult"/>.
+        /// </returns>
         [Authorize(Roles = "Shopper")]
         [HttpPost]
         public ActionResult AddTransaction(string amount)
         {
-            decimal localAmount = decimal.Parse(amount, CultureInfo.InvariantCulture);
+            var localAmount = decimal.Parse(amount, CultureInfo.InvariantCulture);
             try
             {
-                //get token from paypal
-                var token = PayPalHelper.GetTokenFromPayPalApi(localAmount,
+                // get token from paypal
+                var token = PayPalHelper.GetTokenFromPayPalApi(
+                    localAmount,
                     ResolveServerUrl(this.HttpContext, VirtualPathUtility.ToAbsolute(Url.Action("PaymentSucceded", "Member")), false),
                     ResolveServerUrl(this.HttpContext, VirtualPathUtility.ToAbsolute(Url.Action("PaymentCanceled", "Member")), false),
-                    "SAW sandbox test deposit",//TODO add description
+                    "SAW sandbox test deposit", // TODO add description
                     "SAW");
                 
-                var profile =
-                membershipService.GetProfile(
-                    new Services.Messaging.Membership.GetProfileRequest { IdentityToken = this.FormsAuthentication.GetAuthenticationToken() });
+                var profile = this.membershipService.GetProfile(new Services.Messaging.Membership.GetProfileRequest
+                                                 {
+                                                     IdentityToken = this.FormsAuthentication.GetAuthenticationToken()
+                                                 });
                 var request = new AddTransactionRequest
                 {
                     Date = DateTime.Now,
@@ -112,24 +131,21 @@ namespace TdService.UI.Web.Controllers
                 var jsonNetResult = new JsonNetResult
                 {
                     Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
-                    Data = new AddTransactionViewModel { Message = ex.Message, MessageType="Error" }
+                    Data = new AddTransactionViewModel { Message = ex.Message, MessageType = "Error" }
                 };
                 return jsonNetResult;
             }
         }
 
-        private static string ResolveServerUrl(HttpContextBase context, string serverUrl, bool forceHttps)
-        {
-            if (serverUrl.IndexOf("://") > -1)
-                return serverUrl;
-
-            string newUrl = serverUrl;
-            Uri originalUri = context.Request.Url;
-            newUrl = (forceHttps ? "https" : originalUri.Scheme) +
-                "://" + originalUri.Authority + newUrl;
-            return newUrl;
-        }
-
+        /// <summary>
+        /// The pay for package.
+        /// </summary>
+        /// <param name="packageId">
+        /// The package id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ActionResult"/>.
+        /// </returns>
         [Authorize(Roles = "Shopper")]
         [HttpPost]
         public ActionResult PayForPackage(int packageId)
@@ -145,5 +161,37 @@ namespace TdService.UI.Web.Controllers
             return jsonNetResult;
         }
 
+        /// <summary>
+        /// The resolve server url.
+        /// </summary>
+        /// <param name="context">
+        /// The context.
+        /// </param>
+        /// <param name="serverUrl">
+        /// The server url.
+        /// </param>
+        /// <param name="forceHttps">
+        /// The force https.
+        /// </param>
+        /// <returns>
+        /// The <see cref="string"/>.
+        /// </returns>
+        private static string ResolveServerUrl(HttpContextBase context, string serverUrl, bool forceHttps)
+        {
+            if (serverUrl.IndexOf("://", StringComparison.Ordinal) > -1)
+            {
+                return serverUrl;
+            }
+
+            var newUrl = serverUrl;
+            var originalUri = context.Request.Url;
+            if (originalUri != null)
+            {
+                newUrl = (forceHttps ? "https" : originalUri.Scheme) +
+                         "://" + originalUri.Authority + newUrl;
+            }
+
+            return newUrl;
+        }
     }
 }

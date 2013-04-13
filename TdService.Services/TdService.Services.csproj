@@ -77,13 +77,14 @@
     <Compile Include="Messaging\Address\RemoveDeliveryRequestResponse.cs" />
     <Compile Include="Messaging\Address\UpdateDeliveryAddressRequest.cs" />
     <Compile Include="Messaging\Address\UpdateDeliveryAddressResponse.cs" />
-    <Compile Include="Messaging\Item\AddItemImageReponse.cs" />
+    <Compile Include="Messaging\Item\AddItemImageResponse.cs" />
     <Compile Include="Messaging\Item\AddItemImageRequest.cs" />
     <Compile Include="Messaging\Item\Base\ItemResponse.cs" />
     <Compile Include="Messaging\Item\EditOrderItemRequest.cs" />
     <Compile Include="Messaging\Item\EditOrderItemResponse.cs" />
     <Compile Include="Messaging\Item\EditPackageItemRequest.cs" />
     <Compile Include="Messaging\Item\EditPackageItemResponse.cs" />
+    <Compile Include="Messaging\Item\ItemImageResponse.cs" />
     <Compile Include="Messaging\Item\MoveItemBackToOriginalOrderRequest.cs" />
     <Compile Include="Messaging\Item\MoveItemBackToOriginalOrderResponse.cs" />
     <Compile Include="Messaging\Item\MoveOrderItemsToExistingPackageRequest.cs" />
@@ -122,6 +123,7 @@
     <Compile Include="Messaging\Membership\RemoveUserFromRoleResponse.cs" />
     <Compile Include="Messaging\Membership\SignUpAdminRequest.cs" />
     <Compile Include="Messaging\Membership\SignUpAdminResponse.cs" />
+    <Compile Include="Messaging\Membership\UserResponse.cs" />
     <Compile Include="Messaging\Order\GetAllOrdersRequest.cs" />
     <Compile Include="Messaging\Order\GetAllOrdersResponse.cs" />
     <Compile Include="Messaging\Order\OrderReceivedRequest.cs" />
@@ -182,6 +184,7 @@
     <Compile Include="Messaging\Package\SendPackageResponse.cs" />
     <Compile Include="Messaging\Package\UpdatePackageTotalSizeRequest.cs" />
     <Compile Include="Messaging\Package\UpdatePackageTotalSizeResponse.cs" />
+    <Compile Include="Messaging\Package\UserPackageResponse.cs" />
     <Compile Include="Messaging\RequestBase.cs" />
     <Compile Include="Messaging\ResponseBase.cs" />
     <Compile Include="Messaging\Retailer\GetRetailersRequest.cs" />
@@ -214,9 +217,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

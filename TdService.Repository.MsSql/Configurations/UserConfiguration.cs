@@ -11,7 +11,7 @@ namespace TdService.Repository.MsSql.Configurations
     using TdService.Model.Membership;
 
     /// <summary>
-    /// This class describes the configuration of user db table.
+    /// This class describes the configuration of user DB table.
     /// </summary>
     public class UserConfiguration : EntityTypeConfiguration<User>
     {

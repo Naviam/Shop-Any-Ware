@@ -7,9 +7,10 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 namespace TdService.UI.Web.ViewModels.Item
 {
+    using System.Collections.Generic;
+
     /// <summary>
     /// The item view model.
     /// </summary>

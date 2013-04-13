@@ -1,13 +1,24 @@
-﻿using System.Collections.Generic;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="ItemViewModelMapping.cs" company="Naviam">
+//   Vitali Hatalski. 2013
+// </copyright>
+// <summary>
+//   Defines the ItemViewModelMapping type.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace TdService.UI.Web.Mapping
 {
+    using System.Collections.Generic;
+
     using AutoMapper;
 
     using TdService.Services.Messaging.Item;
-    using TdService.UI.Web.ViewModels;
     using TdService.UI.Web.ViewModels.Item;
 
+    /// <summary>
+    /// The item view model mapping.
+    /// </summary>
     public static class ItemViewModelMapping
     {
         /// <summary>
@@ -56,7 +67,7 @@ namespace TdService.UI.Web.Mapping
         /// Convert edit order item response to order item view model.
         /// </summary>
         /// <param name="response">
-        /// The edit order itme response message.
+        /// The edit order item response message.
         /// </param>
         /// <returns>
         /// The order item view model.
@@ -66,6 +77,15 @@ namespace TdService.UI.Web.Mapping
             return Mapper.Map<EditOrderItemResponse, OrderItemViewModel>(response);
         }
 
+        /// <summary>
+        /// The convert to package item view model.
+        /// </summary>
+        /// <param name="response">
+        /// The response.
+        /// </param>
+        /// <returns>
+        /// The <see cref="PackageItemViewModel"/>.
+        /// </returns>
         public static PackageItemViewModel ConvertToPackageItemViewModel(this EditPackageItemResponse response)
         {
             return Mapper.Map<EditPackageItemResponse, PackageItemViewModel>(response);
@@ -99,7 +119,15 @@ namespace TdService.UI.Web.Mapping
             return Mapper.Map<OrderItemViewModel, EditOrderItemRequest>(orderItemViewModel);
         }
 
-
+        /// <summary>
+        /// The convert to edit package item request.
+        /// </summary>
+        /// <param name="packageItemViewModel">
+        /// The package item view model.
+        /// </param>
+        /// <returns>
+        /// The <see cref="EditPackageItemRequest"/>.
+        /// </returns>
         public static EditPackageItemRequest ConvertToEditPackageItemRequest(this PackageItemViewModel packageItemViewModel)
         {
             return Mapper.Map<PackageItemViewModel, EditPackageItemRequest>(packageItemViewModel);
@@ -119,36 +147,88 @@ namespace TdService.UI.Web.Mapping
             return Mapper.Map<RemoveItemResponse, OrderItemViewModel>(response);
         }
 
-        public static ItemImageViewModel ConvertToItemImageViewModel(this  AddItemImageReponse  response)
+        /// <summary>
+        /// The convert to item image view model.
+        /// </summary>
+        /// <param name="response">
+        /// The response.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ItemImageViewModel"/>.
+        /// </returns>
+        public static ItemImageViewModel ConvertToItemImageViewModel(this AddItemImageResponse response)
         {
-            return Mapper.Map<AddItemImageReponse, ItemImageViewModel>(response);
+            return Mapper.Map<AddItemImageResponse, ItemImageViewModel>(response);
         }
 
-
+        /// <summary>
+        /// The convert to package item view model collection.
+        /// </summary>
+        /// <param name="moveOrderItemsToExistingPackageResponse">
+        /// The move order items to existing package response.
+        /// </param>
+        /// <returns>
+        /// The <see cref="PackageItemsViewModel"/>.
+        /// </returns>
         public static PackageItemsViewModel ConvertToPackageItemViewModelCollection(this MoveOrderItemsToExistingPackageResponse moveOrderItemsToExistingPackageResponse)
         {
             return Mapper.Map<MoveOrderItemsToExistingPackageResponse, PackageItemsViewModel>(moveOrderItemsToExistingPackageResponse);
         }
 
+        /// <summary>
+        /// The convert to package item view model collection.
+        /// </summary>
+        /// <param name="moveOrderItemsToNewPackageResponse">
+        /// The move order items to new package response.
+        /// </param>
+        /// <returns>
+        /// The <see cref="PackageItemsViewModel"/>.
+        /// </returns>
         public static PackageItemsViewModel ConvertToPackageItemViewModelCollection(this MoveOrderItemsToNewPackageResponse moveOrderItemsToNewPackageResponse)
         {
             return Mapper.Map<MoveOrderItemsToNewPackageResponse, PackageItemsViewModel>(moveOrderItemsToNewPackageResponse);
         }
 
+        /// <summary>
+        /// The convert to package item view model collection.
+        /// </summary>
+        /// <param name="moveOrderItemsToOriginalOrderResponse">
+        /// The move order items to original order response.
+        /// </param>
+        /// <returns>
+        /// The <see cref="PackageItemsViewModel"/>.
+        /// </returns>
         public static PackageItemsViewModel ConvertToPackageItemViewModelCollection(this MoveOrderItemsToOriginalOrderResponse moveOrderItemsToOriginalOrderResponse)
         {
             return Mapper.Map<MoveOrderItemsToOriginalOrderResponse, PackageItemsViewModel>(moveOrderItemsToOriginalOrderResponse);
         }
 
+        /// <summary>
+        /// The convert to package item view model.
+        /// </summary>
+        /// <param name="moveOrderItemToOriginalOrderResponse">
+        /// The move order item to original order response.
+        /// </param>
+        /// <returns>
+        /// The <see cref="MoveItemBackToOriginalOrderViewModel"/>.
+        /// </returns>
         public static MoveItemBackToOriginalOrderViewModel ConvertToPackageItemViewModel(this MoveItemBackToOriginalOrderResponse moveOrderItemToOriginalOrderResponse)
         {
             return Mapper.Map<MoveItemBackToOriginalOrderResponse, MoveItemBackToOriginalOrderViewModel>(moveOrderItemToOriginalOrderResponse);
         }
 
+        /// <summary>
+        /// The convert to move order item to existing package view model.
+        /// </summary>
+        /// <param name="moveOrderItemToExistingOrderResponse">
+        /// The move order item to existing order response.
+        /// </param>
+        /// <returns>
+        /// The <see cref="MoveOrderItemToExistingPackageViewModel"/>.
+        /// </returns>
         public static MoveOrderItemToExistingPackageViewModel ConvertToMoveOrderItemToExistingPackageViewModel(this MoveOrderItemToExistingPackageResponse moveOrderItemToExistingOrderResponse)
         {
             return Mapper.Map<MoveOrderItemToExistingPackageResponse, MoveOrderItemToExistingPackageViewModel>(moveOrderItemToExistingOrderResponse);
         }
-
     }
 }

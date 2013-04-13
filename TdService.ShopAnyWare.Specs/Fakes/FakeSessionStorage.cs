@@ -1,14 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TdService.Infrastructure.SessionStorage;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="FakeSessionStorage.cs" company="Naviam">
+//   Vadim Shaporov. 2013
+// </copyright>
+// <summary>
+//   The fake session storage.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace TdService.ShopAnyWare.Specs.Fakes
 {
-    public class FakeSessionStorage:ISessionStorage
+    using TdService.Infrastructure.SessionStorage;
+
+    /// <summary>
+    /// The fake session storage.
+    /// </summary>
+    public class FakeSessionStorage : ISessionStorage
     {
-       
     }
 }

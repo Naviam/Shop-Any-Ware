@@ -1,7 +1,22 @@
-﻿namespace TdService.Services.Messaging.Transactions
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="AddTransactionResponse.cs" company="Naviam">
+//   Vadim Shaporov. 2013
+// </copyright>
+// <summary>
+//   The add transaction response.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace TdService.Services.Messaging.Transactions
 {
+    /// <summary>
+    /// The add transaction response.
+    /// </summary>
     public class AddTransactionResponse : ResponseBase
     {
+        /// <summary>
+        /// Gets or sets the wallet id.
+        /// </summary>
         public int WalletId { get; set; }
 
         /// <summary>
@@ -17,7 +32,7 @@
         /// <summary>
         /// Gets or sets Commission.
         /// </summary>
-        public decimal Commission { get; set; }//TODO: count comission
+        public decimal Commission { get; set; } // TODO: count comission
 
         /// <summary>
         /// Gets or sets Date.
@@ -35,7 +50,7 @@
         public string Currency { get; set; }
 
         /// <summary>
-        /// PayPal Redirect Url
+        /// Gets or sets the pay pal redirect url.
         /// </summary>
         public string PayPalRedirectUrl { get; set; }
     }

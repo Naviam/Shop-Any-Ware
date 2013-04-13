@@ -48,14 +48,6 @@ namespace TdService.Services.Implementations
         /// </summary>
         private readonly IMembershipRepository membershipRepository;
 
-        private string ApplicationUrl
-        {
-            get
-            {
-                return ConfigurationManager.AppSettings["ApplicationUrl"];
-            }
-        }
-
         /// <summary>
         /// The email service.
         /// </summary>
@@ -96,6 +88,17 @@ namespace TdService.Services.Implementations
             this.roleRepository = roleRepository;
             this.profileRepository = profileRepository;
             this.membershipRepository = membershipRepository;
+        }
+
+        /// <summary>
+        /// Gets the application url.
+        /// </summary>
+        private string ApplicationUrl
+        {
+            get
+            {
+                return ConfigurationManager.AppSettings["ApplicationUrl"];
+            }
         }
 
         /// <summary>
@@ -160,7 +163,7 @@ namespace TdService.Services.Implementations
             {
                 response.MessageType = MessageType.Error;
                 response.Message = CommonResources.SignUpErrorMessage;
-                this.logger.Error(CommonResources.SignUpErrorMessage, e);
+                this.Logger.Error(CommonResources.SignUpErrorMessage, e);
                 return response;
             }
         }
@@ -240,7 +243,7 @@ namespace TdService.Services.Implementations
             {
                 response.MessageType = MessageType.Error;
                 response.Message = CommonResources.SignUpErrorMessage;
-                this.logger.Error(CommonResources.SignUpErrorMessage, e);
+                this.Logger.Error(CommonResources.SignUpErrorMessage, e);
                 return response;
             }
         }
@@ -301,7 +304,7 @@ namespace TdService.Services.Implementations
             {
                 response.MessageType = MessageType.Error;
                 response.ErrorCode = ErrorCode.UserEmailExists.ToString();
-                this.logger.Error(ErrorCodeResources.UserEmailExists, ex);
+                this.Logger.Error(ErrorCodeResources.UserEmailExists, ex);
             }
 
             return response;
@@ -418,7 +421,7 @@ namespace TdService.Services.Implementations
             {
                 response.MessageType = MessageType.Error;
                 response.Message = CommonResources.ProfileUpdateErrorMessage;
-                this.logger.Error(CommonResources.ProfileUpdateErrorMessage, e);
+                this.Logger.Error(CommonResources.ProfileUpdateErrorMessage, e);
                 return response;
             }
         }
@@ -543,21 +546,54 @@ namespace TdService.Services.Implementations
             return result;
         }
 
-
+        /// <summary>
+        /// The activate email.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ActivateUserEmailResponse"/>.
+        /// </returns>
         public ActivateUserEmailResponse ActivateEmail(ActivateUserEmailRequest request)
         {
             var user = this.userRepository.GetUserById(request.UserId);
 
-            if (user == null) return new ActivateUserEmailResponse { MessageType = MessageType.Warning, Message = CommonResources.EmailActivationErrorUserNotFound };
-            if (user.Activated) return new ActivateUserEmailResponse { MessageType = MessageType.Warning, Message = CommonResources.EmailActivationAlreadyActivated };
+            if (user == null)
+            {
+                return new ActivateUserEmailResponse
+                           {
+                               MessageType = MessageType.Warning,
+                               Message = CommonResources.EmailActivationErrorUserNotFound
+                           };
+            }
+
+            if (user.Activated)
+            {
+                return new ActivateUserEmailResponse
+                           {
+                               MessageType = MessageType.Warning,
+                               Message = CommonResources.EmailActivationAlreadyActivated
+                           };
+            }
+
             if (!user.ActivationCode.Equals(request.ActivationCode))
-                return new ActivateUserEmailResponse { MessageType = MessageType.Warning, Message = CommonResources.EmailActivationErrorInvalidCode };
+            {
+                return new ActivateUserEmailResponse
+                           {
+                               MessageType = MessageType.Warning,
+                               Message = CommonResources.EmailActivationErrorInvalidCode
+                           };
+            }
 
             user.Activated = true;
             this.userRepository.UpdateUser(user);
             this.userRepository.SaveChanges();
-            return new ActivateUserEmailResponse { MessageType = MessageType.Success, Message = CommonResources.EmailActivated };
-
+            return new ActivateUserEmailResponse
+                       {
+                           MessageType = MessageType.Success,
+                           Message = CommonResources.EmailActivated
+                       };
         }
     }
 }

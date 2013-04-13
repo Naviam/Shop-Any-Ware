@@ -10,7 +10,6 @@
 namespace TdService.UI.Web.Controllers
 {
     using System;
-    using System.Web;
     using System.Web.Mvc;
     using System.Xml;
     using TdService.Infrastructure.Authentication;
@@ -72,6 +71,15 @@ namespace TdService.UI.Web.Controllers
             return jsonNetResult;
         }
 
+        /// <summary>
+        /// The edit order item.
+        /// </summary>
+        /// <param name="itemViewModel">
+        /// The item view model.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ActionResult"/>.
+        /// </returns>
         [HttpPost]
         [Authorize(Roles = "Shopper, Operator")]
         public ActionResult EditOrderItem(OrderItemViewModel itemViewModel)
@@ -87,6 +95,15 @@ namespace TdService.UI.Web.Controllers
             return jsonNetResult;
         }
 
+        /// <summary>
+        /// The edit package item.
+        /// </summary>
+        /// <param name="itemViewModel">
+        /// The item view model.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ActionResult"/>.
+        /// </returns>
         [HttpPost]
         [Authorize(Roles = "Shopper, Operator")]
         public ActionResult EditPackageItem(PackageItemViewModel itemViewModel)
@@ -101,7 +118,6 @@ namespace TdService.UI.Web.Controllers
             };
             return jsonNetResult;
         }
-
 
         /// <summary>
         /// Get collection of order items.
@@ -154,8 +170,8 @@ namespace TdService.UI.Web.Controllers
         /// <summary>
         /// The remove item.
         /// </summary>
-        /// <param name="itemViewModel">
-        /// The item view model.
+        /// <param name="itemId">
+        /// The item Id.
         /// </param>
         /// <returns>
         /// The <see cref="ActionResult"/>.
@@ -174,35 +190,66 @@ namespace TdService.UI.Web.Controllers
             return jsonNetResult;
         }
 
+        /// <summary>
+        /// The add item image.
+        /// </summary>
+        /// <param name="itemId">
+        /// The item id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ActionResult"/>.
+        /// </returns>
         [HttpPost]
         [Authorize(Roles = "Operator")]
         public ActionResult AddItemImage(int itemId)
         {
             var fileName = Guid.NewGuid().ToString();
-
-            AmazonS3Helper.SaveFile(
-                AppConfigHelper.AWSAccessKey,
-                AppConfigHelper.AWSSecretKey,
-                AppConfigHelper.AmazonS3Bucket,
-                fileName,
-                Request.Files[0].InputStream);
-
-            var resp = this.itemsService.AddItemImage(
-                new AddItemImageRequest
-                    {
-                        ItemId = itemId,
-                        ImageName = Request.Files[0].FileName,
-                        ImageUrl = string.Concat(AppConfigHelper.AWSUrl, AppConfigHelper.AmazonS3Bucket, "/", fileName)
-                    });
-            var jsonNetResult = new JsonNetResult
+            
+            // todo: handle the situation with no files in request gracefully
+            var httpPostedFileBase = this.Request.Files[0];
+            if (httpPostedFileBase != null)
             {
-                ContentType = "text/html",
-                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
-                Data = resp.ConvertToItemImageViewModel()
-            };
-            return jsonNetResult;
+                AmazonS3Helper.SaveFile(
+                    AppConfigHelper.AwsAccessKey,
+                    AppConfigHelper.AwsSecretKey,
+                    AppConfigHelper.AmazonS3Bucket,
+                    fileName,
+                    httpPostedFileBase.InputStream);
+            }
+
+            if (httpPostedFileBase != null)
+            {
+                var resp = this.itemsService.AddItemImage(
+                    new AddItemImageRequest
+                        {
+                            ItemId = itemId,
+                            ImageName = httpPostedFileBase.FileName,
+                            ImageUrl = string.Concat(AppConfigHelper.AwsUrl, AppConfigHelper.AmazonS3Bucket, "/", fileName)
+                        });
+                var jsonNetResult = new JsonNetResult
+                                        {
+                                            ContentType = "text/html",
+                                            Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                                            Data = resp.ConvertToItemImageViewModel()
+                                        };
+                return jsonNetResult;
+            }
+
+            return null;
         }
 
+        /// <summary>
+        /// The move order items to existing package.
+        /// </summary>
+        /// <param name="orderId">
+        /// The order id.
+        /// </param>
+        /// <param name="packageId">
+        /// The package id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ActionResult"/>.
+        /// </returns>
         [Authorize(Roles = "Shopper")]
         [HttpPost]
         public ActionResult MoveOrderItemsToExistingPackage(int orderId, int packageId)
@@ -217,20 +264,18 @@ namespace TdService.UI.Web.Controllers
             return jsonNetResult;
         }
 
-        //[Authorize(Roles = "Shopper")]
-        //[HttpPost]
-        //public ActionResult MoveOrderItemsToNewPackage(int orderId, string packageName)
-        //{
-        //    var request = new MoveOrderItemsToNewPackageRequest { OrderId = orderId, PackageName = packageName };
-        //    var response = this.itemsService.MoveOrderItemsToNewPackage(request);
-        //    var jsonNetResult = new JsonNetResult
-        //    {
-        //        Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
-        //        Data = response.ConvertToPackageItemViewModelCollection()
-        //    };
-        //    return jsonNetResult;
-        //}
-
+        /// <summary>
+        /// The move order item to new package.
+        /// </summary>
+        /// <param name="itemId">
+        /// The item id.
+        /// </param>
+        /// <param name="packageId">
+        /// The package id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ActionResult"/>.
+        /// </returns>
         [Authorize(Roles = "Shopper")]
         [HttpPost]
         public ActionResult MoveOrderItemToNewPackage(int itemId, int packageId)
@@ -245,11 +290,20 @@ namespace TdService.UI.Web.Controllers
             return jsonNetResult;
         }
 
+        /// <summary>
+        /// The move order items to original order.
+        /// </summary>
+        /// <param name="packageId">
+        /// The package id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ActionResult"/>.
+        /// </returns>
         [Authorize(Roles = "Shopper")]
         [HttpPost]
         public ActionResult MoveOrderItemsToOriginalOrder(int packageId)
         {
-            var request = new MoveOrderItemsToOriginalOrderRequest { PackageId=packageId };
+            var request = new MoveOrderItemsToOriginalOrderRequest { PackageId = packageId };
             var response = this.itemsService.MoveOrderItemsToOriginalOrder(request);
             var jsonNetResult = new JsonNetResult
             {
@@ -259,6 +313,15 @@ namespace TdService.UI.Web.Controllers
             return jsonNetResult;
         }
 
+        /// <summary>
+        /// The move order item to original order.
+        /// </summary>
+        /// <param name="itemId">
+        /// The item id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ActionResult"/>.
+        /// </returns>
         [Authorize(Roles = "Shopper")]
         [HttpPost]
         public ActionResult MoveOrderItemToOriginalOrder(int itemId)

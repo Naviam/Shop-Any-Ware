@@ -17,8 +17,6 @@ namespace TdService.ShopAnyWare.Specs.Steps
     [Binding]
     public class ShopperPackagesSteps
     {
-
-
         /// <summary>
         /// The when i update delivery address to of package.
         /// </summary>

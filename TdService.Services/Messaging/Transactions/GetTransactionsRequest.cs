@@ -1,6 +1,18 @@
-﻿namespace TdService.Services.Messaging.Transactions
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="GetTransactionsRequest.cs" company="Naviam">
+//   Vadim Shaporov. 2013
+// </copyright>
+// <summary>
+//   The get transactions request.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace TdService.Services.Messaging.Transactions
 {
-    public class GetTransactionsRequest:RequestBase
+    /// <summary>
+    /// The get transactions request.
+    /// </summary>
+    public class GetTransactionsRequest : RequestBase
     {
         /// <summary>
         /// Gets or sets the take.

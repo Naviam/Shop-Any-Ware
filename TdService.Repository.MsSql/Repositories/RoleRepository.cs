@@ -22,7 +22,7 @@ namespace TdService.Repository.MsSql.Repositories
     public class RoleRepository : IRoleRepository, IDisposable
     {
         /// <summary>
-        /// Shop any ware db context.
+        /// Shop any ware DB context.
         /// </summary>
         private readonly ShopAnyWareSql context;
 
@@ -85,7 +85,7 @@ namespace TdService.Repository.MsSql.Repositories
         }
 
         /// <summary>
-        /// Remove role from db.
+        /// Remove role from DB.
         /// </summary>
         /// <param name="roleId">
         /// The role ID to remove.
@@ -100,7 +100,7 @@ namespace TdService.Repository.MsSql.Repositories
         }
 
         /// <summary>
-        /// Commit repository changes to db.
+        /// Commit repository changes to DB.
         /// </summary>
         public void SaveChanges()
         {
@@ -117,38 +117,55 @@ namespace TdService.Repository.MsSql.Repositories
         }
 
         /// <summary>
-        /// get role by id
+        /// The get role by id.
         /// </summary>
-        /// <param name="roleId"></param>
-        /// <returns></returns>
+        /// <param name="roleId">
+        /// The role id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Role"/>.
+        /// </returns>
         public Role GetRoleById(int roleId)
         {
             var result = this.context.Roles.Find(roleId);
             return result;
         }
 
-
         /// <summary>
-        /// 
+        /// The add user to role.
         /// </summary>
-        /// <param name="userId"></param>
-        /// <param name="roleId"></param>
+        /// <param name="userId">
+        /// The user id.
+        /// </param>
+        /// <param name="roleId">
+        /// The role id.
+        /// </param>
         public void AddUserToRole(int userId, int roleId)
         {
             var role = this.GetRoleById(roleId);
             var user = this.context.Users.Include("Roles").Include("Profile").Include("Wallet").SingleOrDefault(u => u.Id.Equals(userId));
-            user.AddUserToRole(role);
+            if (user != null)
+            {
+                user.AddUserToRole(role);
+            }
         }
 
         /// <summary>
-        /// 
+        /// The remove user from role.
         /// </summary>
-        /// <param name="userId"></param>
-        /// <param name="roleId"></param>
+        /// <param name="userId">
+        /// The user id.
+        /// </param>
+        /// <param name="roleId">
+        /// The role id.
+        /// </param>
         public void RemoveUserFromRole(int userId, int roleId)
         {
             var user = this.context.Users.Include("Roles").Include("Profile").Include("Wallet").SingleOrDefault(u => u.Id.Equals(userId));
-            user.RemoveUserFromRole(roleId);
+            if (user != null)
+            {
+                user.RemoveUserFromRole(roleId);
+            }
         }
     }
 }

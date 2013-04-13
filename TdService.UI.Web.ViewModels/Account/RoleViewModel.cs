@@ -7,7 +7,6 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-
 namespace TdService.UI.Web.ViewModels.Account
 {
     using TdService.Resources;
@@ -34,14 +33,8 @@ namespace TdService.UI.Web.ViewModels.Account
         {
             get
             {
-                if (!string.IsNullOrWhiteSpace(this.Name))
-                {
-                    return RoleNamesResources.ResourceManager.GetString(this.Name);
-                }
-
-                return string.Empty;
+                return !string.IsNullOrWhiteSpace(this.Name) ? RoleNamesResources.ResourceManager.GetString(this.Name) : string.Empty;
             }
         }
-
     }
 }

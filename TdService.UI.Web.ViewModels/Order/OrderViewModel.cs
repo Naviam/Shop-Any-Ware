@@ -54,7 +54,7 @@ namespace TdService.UI.Web.ViewModels.Order
         public DateTime? ReturnedDate { get; set; }
 
         /// <summary>
-        /// Gets or sets created date.
+        /// Gets created date.
         /// </summary>
         public string CreatedDateString
         {
@@ -65,7 +65,7 @@ namespace TdService.UI.Web.ViewModels.Order
         }
 
         /// <summary>
-        /// Gets or sets received date.
+        /// Gets received date.
         /// </summary>
         public string ReceivedDateString
         {
@@ -76,7 +76,7 @@ namespace TdService.UI.Web.ViewModels.Order
         }
 
         /// <summary>
-        /// Gets or sets the returned date.
+        /// Gets the returned date.
         /// </summary>
         public string ReturnedDateString
         {
@@ -85,7 +85,6 @@ namespace TdService.UI.Web.ViewModels.Order
                 return this.ReturnedDate.HasValue ? this.ReturnedDate.Value.ToShortDateString() : string.Empty;
             }
         }
-
 
         /// <summary>
         /// Gets or sets order status.

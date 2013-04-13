@@ -17,7 +17,7 @@ namespace TdService.Infrastructure.Querying
         public string PropertyName { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether Desc.
+        /// Gets or sets a value indicating whether descending or ascending.
         /// </summary>
         public bool Desc { get; set; }
     }

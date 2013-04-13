@@ -1,13 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="CancelPayPalTransactionRequest.cs" company="Naviam">
+//   Vadim Shaporov. 2013
+// </copyright>
+// <summary>
+//   The cancel pay pal transaction request.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace TdService.Services.Messaging.Transactions
 {
-    public class CancelPayPalTransactionRequest:RequestBase
+    /// <summary>
+    /// The cancel pay pal transaction request.
+    /// </summary>
+    public class CancelPayPalTransactionRequest : RequestBase
     {
+        /// <summary>
+        /// Gets or sets the token.
+        /// </summary>
         public string Token { get; set; }
     }
 }

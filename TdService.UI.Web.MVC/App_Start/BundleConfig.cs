@@ -18,14 +18,6 @@ namespace TdService.UI.Web.MVC.App_Start
     /// </summary>
     public class BundleConfig
     {
-        public class AsIsBundleOrderer : IBundleOrderer
-        {
-            public virtual IEnumerable<FileInfo> OrderFiles(BundleContext context, IEnumerable<FileInfo> files)
-            {
-                return files;
-            }
-        }
-
         // For more information on Bundling, visit http://go.microsoft.com/fwlink/?LinkId=254725
 
         /// <summary>
@@ -48,12 +40,13 @@ namespace TdService.UI.Web.MVC.App_Start
                         "~/Scripts/plupload/js/jquery.ui.plupload/css/jquery.ui.plupload.css",
                         "~/Content/bxslider/jquery.bxslider.css"));
 
-            var plUploadBundle = new ScriptBundle("~/bundles/plUpload").Include("~/Scripts/plupload/js/plupload.js",
-                    "~/Scripts/plupload/js/plupload.html4.js",
-                    "~/Scripts/plupload/js/jquery.ui.plupload/jquery.ui.plupload.js");
-            plUploadBundle.Orderer = new AsIsBundleOrderer();
+            var uploadBundle = new ScriptBundle("~/bundles/plUpload").Include(
+                "~/Scripts/plupload/js/plupload.js",
+                "~/Scripts/plupload/js/plupload.html4.js",
+                "~/Scripts/plupload/js/jquery.ui.plupload/jquery.ui.plupload.js");
+            uploadBundle.Orderer = new AsIsBundleOrderer();
 
-            bundles.Add(plUploadBundle);
+            bundles.Add(uploadBundle);
             var layoutBundle = new ScriptBundle("~/bundles/layout").Include(
                 "~/Scripts/jquery-{version}.js",
                 "~/scripts/ui/jquery-ui-1.8.18.custom.js",
@@ -95,6 +88,29 @@ namespace TdService.UI.Web.MVC.App_Start
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             // bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
             //            "~/Scripts/modernizr-*"));
+        }
+
+        /// <summary>
+        /// The bundle order.
+        /// </summary>
+        public class AsIsBundleOrderer : IBundleOrderer
+        {
+            /// <summary>
+            /// The order files.
+            /// </summary>
+            /// <param name="context">
+            /// The context.
+            /// </param>
+            /// <param name="files">
+            /// The files.
+            /// </param>
+            /// <returns>
+            /// Collection of file info objects.
+            /// </returns>
+            public virtual IEnumerable<FileInfo> OrderFiles(BundleContext context, IEnumerable<FileInfo> files)
+            {
+                return files;
+            }
         }
     }
 }

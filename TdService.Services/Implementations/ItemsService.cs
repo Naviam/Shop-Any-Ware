@@ -14,7 +14,6 @@ namespace TdService.Services.Implementations
     using System.Linq;
     using System.Text;
     using TdService.Infrastructure.Logging;
-    using TdService.Model.Common;
     using TdService.Model.Items;
     using TdService.Model.Packages;
     using TdService.Resources;
@@ -27,7 +26,7 @@ namespace TdService.Services.Implementations
     /// <summary>
     /// The items service.
     /// </summary>
-    public class ItemsService :ServiceBase, IItemsService
+    public class ItemsService : ServiceBase, IItemsService
     {
         /// <summary>
         /// The items repository.
@@ -48,7 +47,11 @@ namespace TdService.Services.Implementations
         /// <param name="packageRepository">
         /// The package repository.
         /// </param>
-        public ItemsService(IItemsRepository itemsRepository, IPackageRepository packageRepository, ILogger logger):base(logger)
+        /// <param name="logger">
+        /// The logger.
+        /// </param>
+        public ItemsService(IItemsRepository itemsRepository, IPackageRepository packageRepository, ILogger logger)
+            : base(logger)
         {
             this.itemsRepository = itemsRepository;
             this.packageRepository = packageRepository;
@@ -142,18 +145,22 @@ namespace TdService.Services.Implementations
                 response.MessageType = MessageType.Success;    
                 return response;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                this.logger.Error("Error while removing order item", ex);
+                this.Logger.Error("Error while removing order item", ex);
                 return new RemoveItemResponse { MessageType = MessageType.Error, Message = CommonResources.RemoveOrderItemErrorMessage };
             }
         }
 
         /// <summary>
-        /// Edits order item's properties. 
+        /// The edit order item.
         /// </summary>
-        /// <param name="request">EditOrderItemRequest</param>
-        /// <returns>EditOrderItemResponse</returns>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="EditOrderItemResponse"/>.
+        /// </returns>
         public EditOrderItemResponse EditOrderItem(EditOrderItemRequest request)
         {
             try
@@ -164,13 +171,14 @@ namespace TdService.Services.Implementations
                 item.Name = request.Name;
                 if (request.OperatorMode)
                 {
-                    //opeartor has extended view with additional fields
+                    // operator has extended view with additional fields
                     item.Weight.Pounds = request.WeightPounds;
                     item.Dimensions.Girth = request.DimensionsGirth;
                     item.Dimensions.Height = request.DimensionsHeight;
                     item.Dimensions.Length = request.DimensionsLength;
                     item.Dimensions.Width = request.DimensionsWidth;
                 }
+
                 this.itemsRepository.UpdateItem(item);
                 var response = item.ConvertToEditOrderItemResponse();
                 response.MessageType = MessageType.Success;
@@ -179,17 +187,24 @@ namespace TdService.Services.Implementations
             }
             catch (Exception ex)
             {
-                this.logger.Error("Error while editing order item", ex);
+                this.Logger.Error("Error while editing order item", ex);
                 return new EditOrderItemResponse
-                    { MessageType = MessageType.Error, Message = CommonResources.EditOrderItemErrorMessage };
+                           {
+                               MessageType = MessageType.Error,
+                               Message = CommonResources.EditOrderItemErrorMessage
+                           };
             }
         }
 
         /// <summary>
-        /// Edits package item's properties.
+        /// The edit package item.
         /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="EditPackageItemResponse"/>.
+        /// </returns>
         public EditPackageItemResponse EditPackageItem(EditPackageItemRequest request)
         {
             try
@@ -200,13 +215,14 @@ namespace TdService.Services.Implementations
                 item.Name = request.Name;
                 if (request.OperatorMode)
                 {
-                    //opeartor has extended view with additional fields
+                    // opeartor has extended view with additional fields
                     item.Weight.Pounds = request.WeightPounds;
                     item.Dimensions.Girth = request.DimensionsGirth;
                     item.Dimensions.Height = request.DimensionsHeight;
                     item.Dimensions.Length = request.DimensionsLength;
                     item.Dimensions.Width = request.DimensionsWidth;
                 }
+
                 this.itemsRepository.UpdateItem(item);
                 var response = item.ConvertToEditPackageItemResponse();
                 response.MessageType = MessageType.Success; 
@@ -215,95 +231,73 @@ namespace TdService.Services.Implementations
             }
             catch (Exception ex)
             {
-                this.logger.Error("Error while editing package item", ex);
+                this.Logger.Error("Error while editing package item", ex);
                 return new EditPackageItemResponse { MessageType = MessageType.Error, Message = CommonResources.EditPackageItemErrorMessage };
             }
         }
 
         /// <summary>
-        /// Adds item image
+        /// The add item image.
         /// </summary>
-        /// <param name="request">request</param>
-        /// <returns>response</returns>
-        public AddItemImageReponse AddItemImage(AddItemImageRequest request)
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="AddItemImageResponse"/>.
+        /// </returns>
+        public AddItemImageResponse AddItemImage(AddItemImageRequest request)
         {
             this.itemsRepository.AddImageToItem(
                 request.ItemId, new ItemImage { Filename = request.ImageName, Url = request.ImageUrl });
 
-            return new AddItemImageReponse { Url = request.ImageUrl, FileName = request.ImageName,ItemId = request.ItemId };
+            return new AddItemImageResponse { Url = request.ImageUrl, FileName = request.ImageName, ItemId = request.ItemId };
         }
 
         /// <summary>
-        /// Move Order Items To Existing Package
+        /// The move order items to existing package.
         /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="MoveOrderItemsToExistingPackageResponse"/>.
+        /// </returns>
         public MoveOrderItemsToExistingPackageResponse MoveOrderItemsToExistingPackage(MoveOrderItemsToExistingPackageRequest request)
         {
             try
             {
                 var package = this.packageRepository.GetPackageWithItemsById(request.PackageId);
                 var items = this.itemsRepository.GetOrderItems(request.OrderId);
-                items.ForEach(i => itemsRepository.AttachItemToPackage(request.PackageId, i.Id));
+                items.ForEach(i => this.itemsRepository.AttachItemToPackage(request.PackageId, i.Id));
                 var result = items.ConvertToMoveOrderItemsToExistingPackageResponse();
                 result.PackageId = request.PackageId;
-                result.OrderId= request.OrderId;
+                result.OrderId = request.OrderId;
                 result.MessageType = MessageType.Success;
                 result.Message = string.Format(CommonResources.OrderItemsSuccessfullyMoved, package.Name, package.Id);
                 return result;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                this.logger.Error("Error while moving order items to existing package", ex);
+                this.Logger.Error("Error while moving order items to existing package", ex);
                 return new MoveOrderItemsToExistingPackageResponse { MessageType = MessageType.Error, Message = CommonResources.MoveOrderItemsToExistingPackageError };
             }
         }
 
-        ///// <summary>
-        ///// Move Order Items To New Package
-        ///// </summary>
-        ///// <param name="request"></param>
-        ///// <returns></returns>
-        //public MoveOrderItemsToNewPackageResponse MoveOrderItemsToNewPackage(MoveOrderItemsToNewPackageRequest request)
-        //{
-        //    try
-        //    {
-        //        var package = this.packageRepository.AddPackage(
-        //            request.IdentityToken,
-        //            new Package
-        //                {
-        //                    Name = request.PackageName,
-        //                    Status = PackageStatus.New,
-        //                    CreatedDate = DateTime.UtcNow,
-        //                    Dimensions = new Dimensions()
-        //                });
-        //        var items = this.itemsRepository.GetOrderItems(request.OrderId);
-        //        items.ForEach(i => itemsRepository.AttachItemToPackage(package.Id, i.Id));
-        //        var result = items.ConvertToMoveOrderItemsToNewPackageResponse();
-        //        result.PackageId = package.Id;
-        //        result.OrderId = request.OrderId;
-        //        result.MessageType = MessageType.Success;
-        //        result.Message = string.Format(CommonResources.OrderItemsSuccessfullyMoved, package.Name, package.Id);
-        //        return result;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        this.logger.Error("Error while moving order items to new package", ex);
-        //        return new MoveOrderItemsToNewPackageResponse { MessageType = MessageType.Error, Message = CommonResources.MoveOrderItemsToNewPackageError };
-        //    }
-        //}
-
         /// <summary>
-        /// Move Order  Items To Original Order
+        /// The move order items to original order.
         /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="MoveOrderItemsToOriginalOrderResponse"/>.
+        /// </returns>
         public MoveOrderItemsToOriginalOrderResponse MoveOrderItemsToOriginalOrder(MoveOrderItemsToOriginalOrderRequest request)
         {
             try
             {
                 var items = this.itemsRepository.GetPackageItems(request.PackageId);
-                items.ForEach(i => itemsRepository.DetachItemFromPackage(request.PackageId, i.Id));
+                items.ForEach(i => this.itemsRepository.DetachItemFromPackage(request.PackageId, i.Id));
                 var result = items.ConvertToMoveOrderItemsToOriginalOrderResponse();
                 result.PackageId = request.PackageId;
                 result.MessageType = MessageType.Success;
@@ -313,64 +307,73 @@ namespace TdService.Services.Implementations
             }
             catch (Exception ex)
             {
-                this.logger.Error("Error while moving order items back to original order", ex);
+                this.Logger.Error("Error while moving order items back to original order", ex);
                 return new MoveOrderItemsToOriginalOrderResponse { MessageType = MessageType.Error, Message = CommonResources.MoveOrderItemsToOriginalOrderError };
             }
         }
 
-
         /// <summary>
-        /// 
+        /// The move order item back to original order.
         /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="MoveItemBackToOriginalOrderResponse"/>.
+        /// </returns>
         public MoveItemBackToOriginalOrderResponse MoveOrderItemBackToOriginalOrder(MoveItemBackToOriginalOrderRequest request)
         {
             try
             {
-                var item = itemsRepository.GetItemById(request.ItemId);
-                var packageId = item.PackageId.Value;
-                itemsRepository.DetachItemFromPackage(item.PackageId.Value, item.Id);
-                var response = item.ConvertToMoveOrderItemToOriginalOrderResponse();
-                response.OrderId = item.OrderId;
-                response.PackageId = packageId;
-                response.MessageType = MessageType.Success;
-                response.Message = string.Format(CommonResources.OrderItemMovedToOriginalOrder, item.OrderId);
-                return response;
+                var item = this.itemsRepository.GetItemById(request.ItemId);
+                if (item.PackageId != null)
+                {
+                    var packageId = item.PackageId.Value;
+                    this.itemsRepository.DetachItemFromPackage(item.PackageId.Value, item.Id);
+                    var response = item.ConvertToMoveOrderItemToOriginalOrderResponse();
+                    response.OrderId = item.OrderId;
+                    response.PackageId = packageId;
+                    response.MessageType = MessageType.Success;
+                    response.Message = string.Format(CommonResources.OrderItemMovedToOriginalOrder, item.OrderId);
+                    return response;
+                }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                this.logger.Error("Error while moving order item back to original order", ex);
+                this.Logger.Error("Error while moving order item back to original order", ex);
                 return new MoveItemBackToOriginalOrderResponse { MessageType = MessageType.Error, Message = CommonResources.MoveOrderItemToOriginalOrderError };
             }
+
+            return null;
         }
 
         /// <summary>
-        /// 
+        /// The move order items to existing package.
         /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="MoveOrderItemToExistingPackageResponse"/>.
+        /// </returns>
         public MoveOrderItemToExistingPackageResponse MoveOrderItemsToExistingPackage(MoveOrderItemToExistingPackageRequest request)
         {
             try
             {
-                itemsRepository.AttachItemToPackage(request.PackageId, request.ItemId);
+                this.itemsRepository.AttachItemToPackage(request.PackageId, request.ItemId);
                 var item = this.itemsRepository.GetItemById(request.ItemId);
                 var result = item.ConvertToMoveOrderItemToExistingPackageResponse();
                 result.PackageId = request.PackageId;
-                result.OrderId= item.OrderId;
+                result.OrderId = item.OrderId;
                 result.MessageType = MessageType.Success;
                 result.Message = string.Format(CommonResources.OrderItemSuccessfullyMoved, request.PackageId);
                 return result;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                this.logger.Error("Error while moving order item to existing package", ex);
+                this.Logger.Error("Error while moving order item to existing package", ex);
                 return new MoveOrderItemToExistingPackageResponse { MessageType = MessageType.Error, Message = CommonResources.MoveOrderItemToExistingPackageError };
             }
         }
-
-
-        
     }
 }

@@ -35,6 +35,17 @@ namespace TdService.ShopAnyWare.Specs.Steps
         private IFormsAuthentication formsAuthentication;
 
         /// <summary>
+        /// Gets the AUTH token.
+        /// </summary>
+        private string AuthToken
+        {
+            get
+            {
+                return ScenarioContext.Current.Get<FakeFormsAuthentication>().GetAuthenticationToken();
+            }
+        }
+
+        /// <summary>
         /// The get orders controller.
         /// </summary>
         /// <returns>
@@ -42,9 +53,9 @@ namespace TdService.ShopAnyWare.Specs.Steps
         /// </returns>
         public OrdersController GetOrdersController()
         {
-            formsAuthentication = ScenarioContext.Current.Get<FakeFormsAuthentication>();
+            this.formsAuthentication = ScenarioContext.Current.Get<FakeFormsAuthentication>();
             var orderService = ScenarioContext.Current.Get<OrderService>();
-            return new OrdersController(orderService, formsAuthentication);
+            return new OrdersController(orderService, this.formsAuthentication);
         }
 
         /// <summary>
@@ -57,7 +68,7 @@ namespace TdService.ShopAnyWare.Specs.Steps
         public void WhenISetRetailerUrlAsAndPressAddOrderButtonOnShopperDashboardPage(string retailerUrl)
         {
             var contoller = this.GetOrdersController();
-            var result = contoller.Add(retailerUrl, formsAuthentication.GetAuthenticationToken()) as JsonNetResult;
+            var result = contoller.Add(retailerUrl, this.formsAuthentication.GetAuthenticationToken()) as JsonNetResult;
             Assert.That(result, Is.Not.Null);
             if (result != null)
             {
@@ -69,8 +80,8 @@ namespace TdService.ShopAnyWare.Specs.Steps
         /// <summary>
         /// The when i remove order with id.
         /// </summary>
-        /// <param name="orderId">
-        /// The order id.
+        /// <param name="orderNumber">
+        /// The order number.
         /// </param>
         [When(@"I remove order with orderNumber '(.*)'")]
         public void WhenIRemoveOrderWithOrderNumber(string orderNumber)
@@ -80,7 +91,7 @@ namespace TdService.ShopAnyWare.Specs.Steps
                 var order = context.Orders.SingleOrDefault(o => o.OrderNumber.Equals(orderNumber));
                 Assert.IsNotNull(order);
                 var contoller = this.GetOrdersController();
-                var result = contoller.Remove(order.Id, AuthToken) as JsonNetResult;
+                var result = contoller.Remove(order.Id, this.AuthToken) as JsonNetResult;
                 Assert.That(result, Is.Not.Null);
                 if (result != null)
                 {
@@ -105,7 +116,7 @@ namespace TdService.ShopAnyWare.Specs.Steps
             var models = new List<OrderViewModel>();
             foreach (var id in orderIdsToRemove)
             {
-                var result = contoller.Remove( id.Id,AuthToken) as JsonNetResult;
+                var result = contoller.Remove(id.Id, this.AuthToken) as JsonNetResult;
                 Assert.That(result, Is.Not.Null);
                 if (result != null)
                 {
@@ -195,7 +206,7 @@ namespace TdService.ShopAnyWare.Specs.Steps
         public void WhenIGoToMyRecentOrdersTab()
         {
             var contoller = this.GetOrdersController();
-            var result = contoller.Recent(formsAuthentication.GetAuthenticationToken()) as JsonNetResult;
+            var result = contoller.Recent(this.formsAuthentication.GetAuthenticationToken()) as JsonNetResult;
             Assert.That(result, Is.Not.Null);
             if (result != null)
             {
@@ -211,7 +222,7 @@ namespace TdService.ShopAnyWare.Specs.Steps
         public void WhenIGoToMyHistoryOrdersTab()
         {
             var contoller = this.GetOrdersController();
-            var result = contoller.History(formsAuthentication.GetAuthenticationToken()) as JsonNetResult;
+            var result = contoller.History(this.formsAuthentication.GetAuthenticationToken()) as JsonNetResult;
             Assert.That(result, Is.Not.Null);
             if (result != null)
             {
@@ -228,7 +239,7 @@ namespace TdService.ShopAnyWare.Specs.Steps
         {
             ScenarioContext.Current.Pending();
             var contoller = this.GetOrdersController();
-            var result = contoller.NewOrders(AuthToken) as JsonNetResult;
+            var result = contoller.NewOrders(this.AuthToken) as JsonNetResult;
             Assert.That(result, Is.Not.Null);
             if (result != null)
             {
@@ -245,7 +256,7 @@ namespace TdService.ShopAnyWare.Specs.Steps
         {
             ScenarioContext.Current.Pending();
             var contoller = this.GetOrdersController();
-            var result = contoller.ReceivedOrders(AuthToken) as JsonNetResult;
+            var result = contoller.ReceivedOrders(this.AuthToken) as JsonNetResult;
             Assert.That(result, Is.Not.Null);
             if (result != null)
             {
@@ -262,7 +273,7 @@ namespace TdService.ShopAnyWare.Specs.Steps
         {
             ScenarioContext.Current.Pending();
             var contoller = this.GetOrdersController();
-            var result = contoller.ReturnRequestedOrders(AuthToken) as JsonNetResult;
+            var result = contoller.ReturnRequestedOrders(this.AuthToken) as JsonNetResult;
             Assert.That(result, Is.Not.Null);
             if (result != null)
             {
@@ -316,7 +327,7 @@ namespace TdService.ShopAnyWare.Specs.Steps
         }
 
         /// <summary>
-        /// The then the order view model should have created date that is earlier than utc now.
+        /// The then the order view model should have created date that is earlier than UTC now.
         /// </summary>
         [Then(@"the order view model should have Created Date that is earlier than UTC Now")]
         public void ThenTheOrderViewModelShouldHaveCreatedDateThatIsEarlierThanUtcNow()
@@ -339,15 +350,6 @@ namespace TdService.ShopAnyWare.Specs.Steps
             Assert.That(actual, Is.Not.Null);
             Assert.That(actual.BrokenRules, Is.Not.Null);
             table.CompareToSet(actual.BrokenRules);
-        }
-
-        private string AuthToken
-        {
-            get
-            {
-                return ScenarioContext.Current.Get<FakeFormsAuthentication>().GetAuthenticationToken();
-            }
-
         }
     }
 }

@@ -11,14 +11,12 @@ namespace TdService.ShopAnyWare.Tests.Repository
 {
     using System.Data.Entity;
 
-    using TdService.Infrastructure.FileSystem;
-    using TdService.Model.Common;
     using TdService.Model.Orders;
     using TdService.Repository.MsSql;
     using TdService.Repository.MsSql.StaticDataSeed;
 
     /// <summary>
-    /// Shop any ware db initilizer that drops and recreate database for running db tests.
+    /// Shop any ware DB initialization that drops and recreate database for running DB tests.
     /// </summary>
     public class ShopAnyWareTestInitilizer : DropCreateDatabaseAlways<ShopAnyWareSql>
     {

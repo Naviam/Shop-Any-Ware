@@ -7,14 +7,18 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using TdService.Services.Messaging.Item.Base;
 namespace TdService.Services.Messaging.Item
 {
+    using TdService.Services.Messaging.Item.Base;
+
     /// <summary>
     /// The add item to order response.
     /// </summary>
     public class AddItemToOrderResponse : ItemResponse
     {
-        public int OrderId { get; set; }
+        /// <summary>
+        /// Gets or sets the order id.
+        /// </summary>
+        public new int OrderId { get; set; }
     }
 }

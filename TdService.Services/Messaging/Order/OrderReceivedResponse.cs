@@ -1,8 +1,20 @@
-﻿
-using System;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="OrderReceivedResponse.cs" company="Naviam">
+//   Vadim Shaporov. 2013
+// </copyright>
+// <summary>
+//   The order received response.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
 namespace TdService.Services.Messaging.Order
 {
-    public class OrderReceivedResponse:ResponseBase
+    using System;
+
+    /// <summary>
+    /// The order received response.
+    /// </summary>
+    public class OrderReceivedResponse : ResponseBase
     {
         /// <summary>
         /// Gets or sets order id.

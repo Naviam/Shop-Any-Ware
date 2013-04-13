@@ -44,10 +44,10 @@ namespace TdService.Model.Orders
         void Remove(int retailerId);
 
         /// <summary>
-        /// Save changes to db.
+        /// Save changes to DB.
         /// </summary>
         /// <returns>
-        /// Db change result.
+        /// DB change result.
         /// </returns>
         int SaveChanges();
     }
