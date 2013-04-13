@@ -36,10 +36,6 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AWS.Extensions, Version=1.5.10.0, Culture=neutral, PublicKeyToken=cd2d24cd2bace800, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\AWS.Extensions.1.5.16.1\lib\AWS.Extensions.dll</HintPath>
-    </Reference>
     <Reference Include="AWSSDK, Version=1.5.12.0, Culture=neutral, PublicKeyToken=cd2d24cd2bace800, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\AWSSDK.1.5.16.1\lib\AWSSDK.dll</HintPath>
@@ -51,23 +47,12 @@
     <Reference Include="NLog">
       <HintPath>..\packages\NLog.2.0.0.2000\lib\net40\NLog.dll</HintPath>
     </Reference>
-    <Reference Include="NLog.Fluent">
-      <HintPath>..\packages\NLog.Fluent.1.0.0.2\lib\net40\NLog.Fluent.dll</HintPath>
-    </Reference>
     <Reference Include="PayPal_Merchant_SDK">
       <HintPath>..\InternalPackages\PayPal_Merchant_SDK.dll</HintPath>
-    </Reference>
-    <Reference Include="Remotion, Version=1.13.52.2, Culture=neutral, PublicKeyToken=0669cf0452175907, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\LinqToExcel_x64.1.7.0\lib\Remotion.dll</HintPath>
     </Reference>
     <Reference Include="Remotion.Data.Linq, Version=1.13.52.2, Culture=neutral, PublicKeyToken=0669cf0452175907, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\LinqToExcel_x64.1.7.0\lib\Remotion.Data.Linq.dll</HintPath>
-    </Reference>
-    <Reference Include="Remotion.Interfaces, Version=1.13.52.2, Culture=neutral, PublicKeyToken=0669cf0452175907, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\LinqToExcel_x64.1.7.0\lib\Remotion.Interfaces.dll</HintPath>
     </Reference>
     <Reference Include="SeeSharpShip">
       <HintPath>..\packages\SeeSharpShip.0.1.6.0\lib\net40\SeeSharpShip.dll</HintPath>
@@ -75,14 +60,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Net.Http.WebRequest" />
-    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
