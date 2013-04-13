@@ -9,8 +9,8 @@
 
 namespace TdService.UI.Web.ViewModels.Account
 {
-	using TdService.Resources;
-	
+    using TdService.Resources;
+
     /// <summary>
     /// The country view model.
     /// </summary>
@@ -22,10 +22,8 @@ namespace TdService.UI.Web.ViewModels.Account
         public int Id { get; set; }
 
         /// <summary>
-        /// Gets or sets the translated name.
+        /// Gets the translated name.
         /// </summary>
-        public string TranslatedName { get; set; }
-
         public string TranslatedName
         {
             get
@@ -34,7 +32,14 @@ namespace TdService.UI.Web.ViewModels.Account
             }
         }
 
+        /// <summary>
+        /// Gets or sets the code.
+        /// </summary>
         public string Code { get; set; }
+
+        /// <summary>
+        /// Gets or sets the default name.
+        /// </summary>
         public string DefaultName { get; set; }
     }
 }
