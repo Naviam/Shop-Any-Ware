@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TdService.Resources {
+namespace TdService.Resources.Views {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace TdService.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class EmailResources {
+    public class ActivateEmailResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal EmailResources() {
+        internal ActivateEmailResources() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace TdService.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TdService.Resources.EmailResources", typeof(EmailResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TdService.Resources.Views.ActivateEmailResources", typeof(ActivateEmailResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,59 +61,20 @@ namespace TdService.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;!DOCTYPE html&gt;
-        ///&lt;html lang=&quot;en&quot; xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
-        ///&lt;head&gt;
-        ///    &lt;meta charset=&quot;utf-8&quot; /&gt;
-        ///    &lt;title&gt;Email confirmation&lt;/title&gt;
-        ///&lt;/head&gt;
-        ///&lt;body style=&quot;background-color: #E9E9E9; margin: 8px; padding: 0; font-size: 12px&quot;&gt;
-        ///    &lt;center&gt;
-        ///    &lt;table style=&quot;width: 600px; border: none; font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: &apos;Helvetica Neue&apos;, Helvetica, Arial, sans-serif;&quot;&gt;
-        ///        &lt;tr&gt;
-        ///            &lt;td style=&quot;background: url(&apos;top.png&apos;) no-re [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to Start working!.
         /// </summary>
-        public static string EmailActivationBody {
+        public static string DashboardButton {
             get {
-                return ResourceManager.GetString("EmailActivationBody", resourceCulture);
+                return ResourceManager.GetString("DashboardButton", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to noreply@shopanyware.com.
+        ///   Looks up a localized string similar to Email activation.
         /// </summary>
-        public static string EmailActivationFrom {
+        public static string PageTitle {
             get {
-                return ResourceManager.GetString("EmailActivationFrom", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Email address confirmation.
-        /// </summary>
-        public static string EmailActivationSubject {
-            get {
-                return ResourceManager.GetString("EmailActivationSubject", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to To reset your password on ShopAnyWare.com please follow instructions on this link: http://shopfans.ru/user/password.html?rp=9fa3db5b4b29f0463cf34432ef7d0feea33b4212
-        ///
-        ///Please note that this link will be valid for 30 minutes only..
-        /// </summary>
-        public static string ResetPasswordBody {
-            get {
-                return ResourceManager.GetString("ResetPasswordBody", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Password recovery for ShopAnyWare.com.
-        /// </summary>
-        public static string ResetPasswordSubject {
-            get {
-                return ResourceManager.GetString("ResetPasswordSubject", resourceCulture);
+                return ResourceManager.GetString("PageTitle", resourceCulture);
             }
         }
     }

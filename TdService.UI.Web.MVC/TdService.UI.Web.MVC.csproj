@@ -431,6 +431,7 @@
     <Content Include="Views\Home\Rate.cshtml" />
     <Content Include="Views\Shared\itemDetailsPopup.cshtml" />
     <Content Include="Views\Shared\PackageSizePopup.cshtml" />
+    <Content Include="Views\Account\ActivateEmail.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

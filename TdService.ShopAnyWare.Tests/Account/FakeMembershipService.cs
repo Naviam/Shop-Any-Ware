@@ -159,5 +159,11 @@ namespace TdService.ShopAnyWare.Tests.Account
         {
             throw new System.NotImplementedException();
         }
+
+
+        public ActivateUserEmailResponse ActivateEmail(ActivateUserEmailRequest request)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
