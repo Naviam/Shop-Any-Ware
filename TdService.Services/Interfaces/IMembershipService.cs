@@ -164,5 +164,12 @@ namespace TdService.Services.Interfaces
         /// The <see cref="SignUpAdminResponse"/>.
         /// </returns>
         SignUpAdminResponse SignUpAdmin(SignUpAdminRequest request);
+
+        /// <summary>
+        /// Activates user's email
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        ActivateUserEmailResponse ActivateEmail(ActivateUserEmailRequest request);
     }
 }

@@ -8,6 +8,7 @@ namespace TdService.Services.Implementations
 {
     using System;
     using System.Collections.Generic;
+    using System.Configuration;
     using System.Linq;
     using TdService.Infrastructure.Domain;
     using TdService.Infrastructure.Email;
@@ -46,6 +47,14 @@ namespace TdService.Services.Implementations
         /// The membership repository.
         /// </summary>
         private readonly IMembershipRepository membershipRepository;
+
+        private string ApplicationUrl
+        {
+            get
+            {
+                return ConfigurationManager.AppSettings["ApplicationUrl"];
+            }
+        }
 
         /// <summary>
         /// The email service.
@@ -144,7 +153,7 @@ namespace TdService.Services.Implementations
                     EmailResources.EmailActivationFrom,
                     result.Email,
                     EmailResources.EmailActivationSubject,
-                    string.Format(EmailResources.EmailActivationBody, result.Id, result.ActivationCode, user.Profile.GetFullName()));
+                    string.Format(EmailResources.EmailActivationBody, this.ApplicationUrl, result.Id, result.ActivationCode, user.Profile.GetFullName()));
                 return result.ConvertToRegisterUserResponse();
             }
             catch (Exception e)
@@ -283,8 +292,8 @@ namespace TdService.Services.Implementations
                 this.userRepository.SaveChanges();
 
                 this.emailService.SendMail(
-                    EmailResources.EmailActivationFrom, 
-                    request.Email, 
+                    EmailResources.EmailActivationFrom,
+                    request.Email,
                     EmailResources.EmailActivationSubject,
                     string.Format(EmailResources.EmailActivationBody, createdUser.Id, createdUser.ActivationCode, profile.GetFullName()));
             }
@@ -439,7 +448,7 @@ namespace TdService.Services.Implementations
         /// </returns>
         public GetUsersInRoleResponse GetUsersInRole(GetUsersInRoleRequest request)
         {
-            Tuple<List<User>, int> tuple = 
+            Tuple<List<User>, int> tuple =
                 request.RoleId.Equals(-1) ? this.userRepository.GetAllUsers(request.Skip, request.Take) : this.userRepository.GetUsersInRole(request.RoleId, request.Skip, request.Take);
 
             var result = new GetUsersInRoleResponse { Users = tuple.Item1.ConvertToGetUsersInRoleResponseCollection(), TotalCount = tuple.Item2 };
@@ -532,6 +541,23 @@ namespace TdService.Services.Implementations
 
             var result = user.ConvertToGetUserByEmailResponse();
             return result;
+        }
+
+
+        public ActivateUserEmailResponse ActivateEmail(ActivateUserEmailRequest request)
+        {
+            var user = this.userRepository.GetUserById(request.UserId);
+
+            if (user == null) return new ActivateUserEmailResponse { MessageType = MessageType.Warning, Message = CommonResources.EmailActivationErrorUserNotFound };
+            if (user.Activated) return new ActivateUserEmailResponse { MessageType = MessageType.Warning, Message = CommonResources.EmailActivationAlreadyActivated };
+            if (!user.ActivationCode.Equals(request.ActivationCode))
+                return new ActivateUserEmailResponse { MessageType = MessageType.Warning, Message = CommonResources.EmailActivationErrorInvalidCode };
+
+            user.Activated = true;
+            this.userRepository.UpdateUser(user);
+            this.userRepository.SaveChanges();
+            return new ActivateUserEmailResponse { MessageType = MessageType.Success, Message = CommonResources.EmailActivated };
+
         }
     }
 }

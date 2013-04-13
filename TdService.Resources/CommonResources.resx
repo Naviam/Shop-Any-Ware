@@ -252,4 +252,16 @@
   <data name="LoadingText" xml:space="preserve">
     <value>Loading</value>
   </data>
+  <data name="EmailActivated" xml:space="preserve">
+    <value>Your email has been activated. Now you can receive service emails from ShopAnyWare.</value>
+  </data>
+  <data name="EmailActivationErrorInvalidCode" xml:space="preserve">
+    <value>Could not activate user email. Invalid activation code.</value>
+  </data>
+  <data name="EmailActivationErrorUserNotFound" xml:space="preserve">
+    <value>Could not activate user email. User not found.</value>
+  </data>
+  <data name="EmailActivationAlreadyActivated" xml:space="preserve">
+    <value>Your email has already been activated</value>
+  </data>
 </root>
