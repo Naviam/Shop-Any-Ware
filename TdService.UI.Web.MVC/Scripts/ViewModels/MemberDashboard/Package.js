@@ -149,7 +149,7 @@ function Package(serverModel) {
     });
 
     self.sendPackageButtonVisible = ko.computed(function () {
-        return self.canBeSent() && !viewSettings.operatorMode;
+        return self.canBeSent() && viewSettings.operatorMode;
     });
 
     self.payForPackageButtonVisible = ko.computed(function () {

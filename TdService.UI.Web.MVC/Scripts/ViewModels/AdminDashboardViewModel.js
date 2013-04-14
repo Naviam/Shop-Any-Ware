@@ -353,9 +353,9 @@ function PackagesTab(serverModel) {
     self.sentPackagesSelected = ko.observable(false);
     
     self.loadUserPackages = function () {
-        if (!self.assemblingRequestedSelected() && !self.dispatchRequestedSelected()) return;
+        if (!self.assemblingRequestedSelected() && !self.dispatchRequestedSelected() && !self.sentPackagesSelected()) return;
         $.post("/packages/GetUsersPackages", {
-            "includeAssebling": self.assemblingRequestedSelected(),
+            "includeAssembling": self.assemblingRequestedSelected(),
             "includePaid": self.dispatchRequestedSelected(),
             "includeSent": self.sentPackagesSelected()
         }, function (data) {
