@@ -119,21 +119,6 @@ function Package(serverModel) {
     });
     
 
-    self.loadingDeliveryRates = ko.observable(false);
-    self.canCalculateDeliveryRates = ko.computed(function() {
-        return self.dimWidth() != '0' && self.dimHeight() != '0' && self.dimLength() != '0' && self.weight() != '0' && self.country() != null && (self.status() == 'Assembled' || self.status() == 'Assembling');
-    });
-    this.expressMailPostagePrice = ko.observable();
-    this.priorityMailPostagePrice = ko.observable();
-    self.estimatedDeliveryRate = ko.computed(function () {
-        if (self.loadingDeliveryRates()) return self.loadingText;
-        switch (self.dispatchMethod()) {
-            case 0:
-                return self.expressMailPostagePrice() != 'N/A' ? '$' + self.expressMailPostagePrice() : 'N/A';
-        case 1:
-            return self.priorityMailPostagePrice()!='N/A'?'$' + self.priorityMailPostagePrice():'N/A';
-        }
-    });
     
 
     self.assembleButtonVisible = ko.computed(function () {
@@ -216,10 +201,33 @@ function Package(serverModel) {
             var response = ko.toJS(data);
             self.items.removeAll();
             self.addItems(response.Items);
+            self.updateEstimatedDeliveryPrice();
         });
     };
     self.loadItems();
 
+
+    self.loadingDeliveryRates = ko.observable(false);
+    self.canCalculateDeliveryRates = ko.computed(function () {
+        var result =  ((self.dimWidth() != '0'
+            && self.dimHeight() != '0' &&
+            self.dimLength() != '0' &&
+            self.weight() != '0') || (self.totalItemsWeight() != '0')) &&
+            self.country() != null &&
+            (self.status() == 'Assembled' || self.status() == 'Assembling' || self.status() == 'New');
+        return result;
+    });
+    this.expressMailPostagePrice = ko.observable();
+    this.priorityMailPostagePrice = ko.observable();
+    self.estimatedDeliveryRate = ko.computed(function () {
+        if (self.loadingDeliveryRates()) return self.loadingText;
+        switch (self.dispatchMethod()) {
+            case 0:
+                return self.expressMailPostagePrice() != 'N/A' ? '$' + self.expressMailPostagePrice() : 'N/A';
+            case 1:
+                return self.priorityMailPostagePrice() != 'N/A' ? '$' + self.priorityMailPostagePrice() : 'N/A';
+        }
+    });
 
     self.addItems = function (itemsList) {
         $.each(itemsList, function (index, value) {
@@ -418,7 +426,8 @@ function Package(serverModel) {
     self.updateEstimatedDeliveryPrice = function() {
         if (!self.canCalculateDeliveryRates()) return;
         self.loadingDeliveryRates(true);
-        $.post("/packages/GetShippingRatesForPackage", { "height": self.dimHeight(), "length": self.dimLength(), "width": self.dimWidth(), "weight": self.weight(), "girth": self.dimGirth(), "country": self.country() }, function (data) {
+        var weight = self.weight() == '0' ? self.totalItemsWeight() : self.weight();
+        $.post("/packages/GetShippingRatesForPackage", { "height": self.dimHeight(), "length": self.dimLength(), "width": self.dimWidth(), "weight": weight, "girth": self.dimGirth(), "country": self.country() }, function (data) {
             var model = ko.toJS(data);
             if (model.Error != null) {
                 self.expressMailPostagePrice('N/A');
@@ -430,7 +439,6 @@ function Package(serverModel) {
             self.loadingDeliveryRates(false);
         });
     };
-    self.updateEstimatedDeliveryPrice();
     
     self.saveTrackingNumber= function() {
         $.post("/packages/UpdateTrackingNumber", { "packageId": self.id(), "trackingNumber": self.trackingNumber()}, function (data) {

@@ -97,11 +97,29 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delivery unavailable.
+        /// </summary>
+        public static string DeliveryUnavailable {
+            get {
+                return ResourceManager.GetString("DeliveryUnavailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error. Check input data..
         /// </summary>
         public static string ErrorText {
             get {
                 return ResourceManager.GetString("ErrorText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to lbs..
+        /// </summary>
+        public static string LbsShort {
+            get {
+                return ResourceManager.GetString("LbsShort", resourceCulture);
             }
         }
         
