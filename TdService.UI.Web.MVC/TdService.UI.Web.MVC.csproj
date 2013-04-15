@@ -246,6 +246,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Scripts\html5placeholder.jquery.js" />
+    <None Include="Properties\PublishProfiles\ShopAnyWareDEV.pubxml" />
     <None Include="Scripts\jquery-1.8.3.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.3.js" />
     <Content Include="Scripts\jquery-1.8.3.min.js" />
@@ -432,6 +433,7 @@
     <Content Include="Views\Shared\itemDetailsPopup.cshtml" />
     <Content Include="Views\Shared\PackageSizePopup.cshtml" />
     <Content Include="Views\Account\ActivateEmail.cshtml" />
+    <Content Include="Views\Home\DeliveryRules.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
