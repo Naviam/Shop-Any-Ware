@@ -12,17 +12,16 @@
 <select id="method" data-bind="options: methods, optionsText: 'name', value: selectedMethod">
 </select>
 <label for="weight">@DeliveryRatesViewResources.WeightHeader: </label>
-<input id="weight" data-bind="value:weight" type="text" />
+<input id="weight" data-bind="value:weight" type="text" />&nbsp;@DeliveryRatesViewResources.LbsShort
 <label for="amount">@DeliveryRatesViewResources.AmountHeader: </label>
-<input id="amount" type="text" data-bind="value:amount" />
+<input id="amount" type="text" readonly data-bind="value:calculatedRate" />
 <br />
-@DeliveryRatesViewResources.DeliveryRate: <span style="font-weight:bold" data-bind="text:calculatedRate" ></span><br />
 <input type="button" value="Calculate" data-bind="click:calculateRate" />
 @section Scripts
 {
     <script type="text/javascript">
         $(document).ready(function () {
-            var ratesViewModel = new RatesViewModel('@DeliveryRatesViewResources.LoadingRatesText', '@DeliveryRatesViewResources.ErrorText');
+            var ratesViewModel = new RatesViewModel('@DeliveryRatesViewResources.LoadingRatesText', '@DeliveryRatesViewResources.ErrorText', '@DeliveryRatesViewResources.DeliveryUnavailable');
             ko.applyBindings(ratesViewModel);
         });
     </script>
