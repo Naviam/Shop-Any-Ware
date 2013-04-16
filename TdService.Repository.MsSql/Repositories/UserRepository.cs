@@ -14,7 +14,7 @@ namespace TdService.Repository.MsSql.Repositories
     using System.Data;
     using System.Data.Entity;
     using System.Linq;
-
+    using TdService.Infrastructure.Security;
     using TdService.Model.Addresses;
     using TdService.Model.Membership;
     using TdService.Model.Orders;
@@ -179,9 +179,9 @@ namespace TdService.Repository.MsSql.Repositories
         public bool ValidateUser(string email, string password)
         {
             var user = this.context.Users.SingleOrDefault(u =>
-                    (string.Compare(u.Email, email, StringComparison.OrdinalIgnoreCase) == 0 &&
-                    string.Compare(u.Password, password, StringComparison.Ordinal) == 0));
-            return user != null;
+                    (string.Compare(u.Email, email, StringComparison.OrdinalIgnoreCase) == 0));
+            var passwordsMatch = PasswordHash.ValidatePassword(password, user.Password);
+            return passwordsMatch;
         }
 
         /// <summary>

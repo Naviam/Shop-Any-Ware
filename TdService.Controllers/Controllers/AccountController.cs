@@ -133,7 +133,7 @@ namespace TdService.UI.Web.Controllers
                     }
 
                     // for consultant and operator
-                    return this.RedirectToAction("Dashboard", "Operator");
+                    return this.RedirectToAction("Dashboard", "Admin");
                 }
 
                 this.ModelState.AddModelError("SignInViewModel.Email", result.Message);

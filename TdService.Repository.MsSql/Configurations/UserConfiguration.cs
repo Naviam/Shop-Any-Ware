@@ -20,7 +20,7 @@ namespace TdService.Repository.MsSql.Configurations
         /// </summary>
         public UserConfiguration()
         {
-            this.Property(u => u.Password).IsRequired().HasMaxLength(64);
+            this.Property(u => u.Password).IsRequired().HasMaxLength(100);
             this.Property(u => u.Email).IsRequired().HasMaxLength(256);
             this.Property(u => u.RowVersion).IsRowVersion();
             this.Property(u => u.LastAccessDate).IsOptional();
