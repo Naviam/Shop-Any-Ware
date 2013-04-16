@@ -129,8 +129,14 @@
   <data name="DeliveryRate" xml:space="preserve">
     <value>Approximate delivery rate</value>
   </data>
+  <data name="DeliveryUnavailable" xml:space="preserve">
+    <value>Delivery unavailable</value>
+  </data>
   <data name="ErrorText" xml:space="preserve">
     <value>Error. Check input data.</value>
+  </data>
+  <data name="LbsShort" xml:space="preserve">
+    <value>lbs.</value>
   </data>
   <data name="LoadingRatesText" xml:space="preserve">
     <value>loading</value>

@@ -1,11 +1,11 @@
-﻿var RatesViewModel = function (loadingText, errorText) {
+﻿var RatesViewModel = function (loadingText, errorText, deliveryUnavailableText) {
     var self = this;
 
     self.loadingText = loadingText;
     self.errorText = errorText;
+    self.deliveryUnavailableText = deliveryUnavailableText;
     self.loadingRates = ko.observable(false);
     self.weight = ko.observable();
-    self.amount = ko.observable();
     self.countries = ko.observableArray();
     self.methods = ko.observableArray();
     self.methods.push({ name: "USPS Express mail", Id: 1 });
@@ -13,7 +13,7 @@
     self.selectedMethod = ko.observable(0);
     self.selectedCountry = ko.observable(0);
     self.rate = ko.observable(0);
-    self.calculatedRate = ko.computed(function() {
+    self.calculatedRate = ko.computed(function () {
         if (self.loadingRates()) return self.loadingText;
         return self.rate();
     });
@@ -25,22 +25,25 @@
     });
 
     self.calculateRate = function () {
-        if (isNaN(self.amount()) || isNaN(self.weight())) return;
+        if (isNaN(self.weight())) return;
         self.loadingRates(true);
         $.post("/home/CalculateRate", {
             "Weight": self.weight(),
-            "Amount": self.amount(),
             "CountryName": self.selectedCountry().DefaultName,
-            "DeliveryMethodId": self.selectedMethod().Id},
+            "DeliveryMethodId": self.selectedMethod().Id
+        },
             function (data) {
                 var resp = ko.toJS(data);
                 self.loadingRates(false);
-                if (resp.Error != '') {
+                if (resp.Error != null) {
                     self.rate(self.errorText);
+                    return
                 }
-                else {
-                    self.rate('$'+resp.Rate);
+                if (resp.Rate == null) {
+                    self.rate(self.deliveryUnavailableText);
+                    return;
                 }
+                self.rate("$" + resp.Rate);
             });
     };
 }

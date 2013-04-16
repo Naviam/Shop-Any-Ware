@@ -162,7 +162,7 @@ namespace TdService.UI.Web.Controllers
         public ActionResult CalculateRate(CalculateFeeViewModel model)
         {
             var rates = UspsRateCalculator.GetShippingRates(
-                model.Weight, 15, 15, 15, 0, model.CountryName, model.Amount.ToString(CultureInfo.InvariantCulture));
+                model.Weight, 15, 15, 15, 0, model.CountryName, "150");
 
             var jsonNetResult = new JsonNetResult
             {
