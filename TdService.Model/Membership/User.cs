@@ -344,14 +344,6 @@ namespace TdService.Model.Membership
             {
                 this.AddBrokenRule(UserBusinessRules.PasswordRequired);
             }
-            else if (this.Password.Length > 21)
-            {
-                this.AddBrokenRule(UserBusinessRules.PasswordLength);
-            }
-            else if (this.Password.Length < 7)
-            {
-                this.AddBrokenRule(UserBusinessRules.PasswordMinLength);
-            }
         }
     }
 }

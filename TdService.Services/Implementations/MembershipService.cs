@@ -13,6 +13,7 @@ namespace TdService.Services.Implementations
     using TdService.Infrastructure.Domain;
     using TdService.Infrastructure.Email;
     using TdService.Infrastructure.Logging;
+    using TdService.Infrastructure.Security;
     using TdService.Model;
     using TdService.Model.Membership;
     using TdService.Resources;
@@ -116,7 +117,7 @@ namespace TdService.Services.Implementations
             var user = new User
                 {
                     Email = request.Email,
-                    Password = request.Password,
+                    Password = PasswordHash.CreateHash(request.Password),
                     Profile =
                         new Profile
                             {
@@ -193,7 +194,7 @@ namespace TdService.Services.Implementations
             var user = new User
             {
                 Email = request.Email,
-                Password = request.Password,
+                Password = PasswordHash.CreateHash(request.Password),
                 Profile =
                     new Profile
                     {
@@ -236,7 +237,7 @@ namespace TdService.Services.Implementations
                     EmailResources.EmailActivationFrom,
                     request.Email,
                     EmailResources.EmailActivationSubject,
-                    string.Format(EmailResources.EmailActivationBody, "shopanyware.com", result.Id, result.ActivationCode));
+                    string.Format(EmailResources.EmailActivationBody, "shopanyware.com", result.Id, result.ActivationCode, user.Profile.GetFullName()));
                 return response;
             }
             catch (Exception e)

@@ -12,7 +12,7 @@ namespace TdService.Repository.MsSql.StaticDataSeed
     using System;
     using System.Collections.Generic;
     using System.Globalization;
-
+    using TdService.Infrastructure.Security;
     using TdService.Model.Balance;
     using TdService.Model.Membership;
 
@@ -54,7 +54,7 @@ namespace TdService.Repository.MsSql.StaticDataSeed
             var user = new User
             {
                 Email = "vhatalski@naviam.com",
-                Password = "ruinruin",
+                Password = PasswordHash.CreateHash("ruinruin"),
                 Profile = profile,
                 Roles = new List<Role> { adminRole, shopperRole, operatorRole },
                 Wallet = new Wallet { Amount = 0.00m }
@@ -76,7 +76,7 @@ namespace TdService.Repository.MsSql.StaticDataSeed
             var userOleg = new User
             {
                 Email = "tdservice.corp@gmail.com",
-                Password = "1234567",
+                Password = PasswordHash.CreateHash("1234567"),
                 Roles = new List<Role> { adminRole },
                 Wallet = new Wallet { Amount = 0.00m },
                 Profile = profileOleg,
@@ -99,7 +99,7 @@ namespace TdService.Repository.MsSql.StaticDataSeed
             var shopper = new User
             {
                 Email = "v.hatalski@gmail.com",
-                Password = "1111111111",
+                Password = PasswordHash.CreateHash("1111111111"),
                 Profile = profileShopper,
                 Roles = new List<Role> { shopperRole },
                 Wallet = new Wallet { Amount = 0.00m },
@@ -122,7 +122,7 @@ namespace TdService.Repository.MsSql.StaticDataSeed
             var operatorUser = new User
             {
                 Email = "operator@shopanyware.ru",
-                Password = "1111111111",
+                Password = PasswordHash.CreateHash("1111111111"),
                 Profile = profileOperator,
                 Roles = new List<Role> { operatorRole },
                 Wallet = new Wallet { Amount = 0.00m },
@@ -145,7 +145,7 @@ namespace TdService.Repository.MsSql.StaticDataSeed
             var consultant = new User
             {
                 Email = "consultant@shopanyware.ru",
-                Password = "1111111111",
+                Password = PasswordHash.CreateHash("1111111111"),
                 Profile = profileConsultant,
                 Roles = new List<Role> { consultantRole },
                 Wallet = new Wallet { Amount = 0.00m },
@@ -167,7 +167,7 @@ namespace TdService.Repository.MsSql.StaticDataSeed
             var kotg = new User
             {
                 Email = "kotg@bk.ru",
-                Password = "2320244",
+                Password = PasswordHash.CreateHash("2320244"),
                 Profile = profileKotg,
                 Roles = new List<Role> { adminRole, shopperRole, operatorRole },
                 Wallet = new Wallet { Amount = 0 }
@@ -177,6 +177,7 @@ namespace TdService.Repository.MsSql.StaticDataSeed
 
             for (var i = 0; i < 100; i++)
             {
+                var pwd = PasswordHash.CreateHash("111111");
                 var s = i.ToString(CultureInfo.InvariantCulture);
                 var bulkProfile = new Profile
                                       {
@@ -190,8 +191,8 @@ namespace TdService.Repository.MsSql.StaticDataSeed
 
                 var bulkUser = new User
                 {
-                    Email = string.Format("user{0}@gmail.com", s), 
-                    Password = "111111", 
+                    Email = string.Format("user{0}@gmail.com", s),
+                    Password = pwd, 
                     Profile = bulkProfile, 
                     Roles = new List<Role> { shopperRole }, 
                     Wallet = new Wallet { Amount = 500 }
