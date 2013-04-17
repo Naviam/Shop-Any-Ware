@@ -134,6 +134,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LayoutViewResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Views\NewPasswordViewResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NewPasswordViewResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Views\OurServiceViewResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -175,6 +180,7 @@
     <EmbeddedResource Include="ErrorCodeResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ErrorCodeResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="ErrorCodeResources.ru.resx" />
     <EmbeddedResource Include="PackageStatusResources.resx">
@@ -252,6 +258,11 @@
       <LastGenOutput>LayoutViewResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\LayoutViewResources.ru.resx" />
+    <EmbeddedResource Include="Views\NewPasswordViewResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>NewPasswordViewResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\NewPasswordViewResources.ru.resx" />
     <EmbeddedResource Include="Views\OurServiceViewResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>OurServiceViewResources.Designer.cs</LastGenOutput>

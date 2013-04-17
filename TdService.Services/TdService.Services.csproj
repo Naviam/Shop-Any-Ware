@@ -98,6 +98,8 @@
     <Compile Include="Messaging\Membership\ActivateUserEmailRequest.cs" />
     <Compile Include="Messaging\Membership\ActivateUserEmailResponse.cs" />
     <Compile Include="Messaging\Membership\Base\GetUserResponse.cs" />
+    <Compile Include="Messaging\Membership\ChangePasswordRequest.cs" />
+    <Compile Include="Messaging\Membership\ChangePasswordResponse.cs" />
     <Compile Include="Messaging\Membership\GetUserByEmailRequest.cs" />
     <Compile Include="Messaging\Item\AddItemToOrderRequest.cs" />
     <Compile Include="Messaging\Item\AddItemToOrderResponse.cs" />
@@ -132,8 +134,8 @@
     <Compile Include="Messaging\Order\RemoveOrderResponse.cs" />
     <Compile Include="Interfaces\IOrderService.cs" />
     <Compile Include="Mapping\OrderMapping.cs" />
-    <Compile Include="Messaging\Membership\ChangePasswordLinkRequest.cs" />
-    <Compile Include="Messaging\Membership\ChangePasswordLinkResponse.cs" />
+    <Compile Include="Messaging\Membership\ResetPasswordRequest.cs" />
+    <Compile Include="Messaging\Membership\ResetPasswordResponse.cs" />
     <Compile Include="Messaging\Membership\UpdateProfileRequest.cs" />
     <Compile Include="Mapping\DeliveryAddressMapper.cs" />
     <Compile Include="Messaging\Address\AddOrUpdateDeliveryAddressRequest.cs" />

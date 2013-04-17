@@ -133,7 +133,7 @@
     <value>Имя</value>
   </data>
   <data name="ForgotFormHelpMessage" xml:space="preserve">
-    <value>Enter email address you have specified at registration.</value>
+    <value>Введите электронный адрес, указанный при регистрации</value>
   </data>
   <data name="ForgotPageTitle" xml:space="preserve">
     <value>ShopAnyWare - Забыли электронный адрес или пароль?</value>
@@ -147,6 +147,12 @@
   <data name="LastNameFormLabel" xml:space="preserve">
     <value>Фамилия</value>
   </data>
+  <data name="PasswordChangedPageContent" xml:space="preserve">
+    <value>Ваш пароль был успешно изменен!</value>
+  </data>
+  <data name="PasswordChangedPageTitle" xml:space="preserve">
+    <value>Пароль изменен</value>
+  </data>
   <data name="PasswordConfirmFormFieldPlaceholder" xml:space="preserve">
     <value>Введите пароль повторно</value>
   </data>
@@ -155,6 +161,18 @@
   </data>
   <data name="PasswordFormLabel" xml:space="preserve">
     <value>Пароль</value>
+  </data>
+  <data name="PasswordResetErrorPageTitle" xml:space="preserve">
+    <value>Сброс пароля - произошла ошибка</value>
+  </data>
+  <data name="PasswordResetPageTitle" xml:space="preserve">
+    <value>Пароль был сброшен</value>
+  </data>
+  <data name="PwdRecoveryEmailSent" xml:space="preserve">
+    <value>На ваш адрес email были отправлены инструкции по сбросу пароля.</value>
+  </data>
+  <data name="PwdRecoveryUserNotFound" xml:space="preserve">
+    <value>Пользователь с указанным адресом не найден</value>
   </data>
   <data name="RememberMeFormLabel" xml:space="preserve">
     <value>Запомнить меня</value>

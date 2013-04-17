@@ -288,6 +288,60 @@ namespace TdService.UI.Web.Controllers
         }
 
         /// <summary>
+        /// Form informating user that pwd reset email has been sent
+        /// </summary>
+        /// <returns>
+        /// Model with new password.
+        /// </returns>
+        public ActionResult PasswordReset()
+        {
+            return this.View();
+        }
+
+        /// <summary>
+        /// new password form.
+        /// </summary>
+        /// <returns>
+        /// Model with new password.
+        /// </returns>
+        public ActionResult NewPassword(Guid passwordkey)
+        {
+            var model = new NewPasswordViewModel { PwdResetKey = passwordkey };
+            return this.View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult NewPassword(NewPasswordViewModel model)
+        {
+            var validator = new NewPasswordViewModelValidator();
+            var validationResult = validator.Validate(model);
+            if (validationResult.IsValid)
+            {
+                var resp = this.membershipService.ChangePassword(new ChangePasswordRequest{Password=model.Password,PasswordResetKey = model.PwdResetKey});
+                if (resp.MessageType == MessageType.Success) return this.RedirectToAction("PasswordChanged");
+            }
+            return this.View();
+        }
+
+        public ActionResult PasswordChanged()
+        {
+            return this.View();
+        }
+
+        /// <summary>
+        /// PasswordReset form.
+        /// </summary>
+        /// <returns>
+        /// Model with new password.
+        /// </returns>
+        public ActionResult PasswordResetError()
+        {
+            return this.View();
+        }
+
+
+        /// <summary>
         /// Reset forgotten password form.
         /// </summary>
         /// <param name="view">
@@ -302,13 +356,10 @@ namespace TdService.UI.Web.Controllers
         {
             if (this.ModelState.IsValid)
             {
-                var request = new ChangePasswordLinkRequest { IdentityToken = view.Email };
-                this.membershipService.GenerateChangePasswordLink(request);
-                this.emailService.SendMail(
-                    EmailResources.EmailActivationFrom,
-                    view.Email,
-                    EmailResources.ResetPasswordSubject,
-                    EmailResources.ResetPasswordBody);
+                var request = new ResetPasswordRequest { IdentityToken = view.Email };
+                var response = this.membershipService.ResetPassword(request);
+                if (response.MessageType == MessageType.Success) return this.RedirectToAction("PasswordReset", "Account");
+                if (response.MessageType == MessageType.Error && response.ErrorCode == ErrorCode.UserNotFound.ToString()) return this.RedirectToAction("PasswordResetError", "Account"); 
             }
 
             return this.View(view);
