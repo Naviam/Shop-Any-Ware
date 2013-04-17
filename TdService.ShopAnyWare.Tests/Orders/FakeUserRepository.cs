@@ -284,5 +284,11 @@ namespace TdService.ShopAnyWare.Tests.Orders
         {
             throw new NotImplementedException();
         }
+
+
+        public User GetUserByPwdResetCode(Guid guid)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

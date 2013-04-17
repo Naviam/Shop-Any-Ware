@@ -436,9 +436,29 @@ namespace TdService.Services.Implementations
         /// <returns>
         /// The TdService.Services.Messaging.Membership.ChangePasswordLinkResponse.
         /// </returns>
-        public ChangePasswordLinkResponse GenerateChangePasswordLink(ChangePasswordLinkRequest request)
+        public ResetPasswordResponse ResetPassword(ResetPasswordRequest request)
         {
-            return null;
+            try
+            {
+                var user = this.userRepository.GetUserByEmail(request.IdentityToken);
+                if (user == null)
+                    return new ResetPasswordResponse
+                        { MessageType = MessageType.Error, ErrorCode = ErrorCode.UserNotFound.ToString() };
+                var pwdKey = Guid.NewGuid();
+                user.PasswordResetKey = pwdKey;
+                this.userRepository.UpdateUser(user);
+                this.userRepository.SaveChanges();
+                this.emailService.SendMail(
+                    EmailResources.EmailActivationFrom,
+                    request.IdentityToken,
+                    EmailResources.ResetPasswordSubject,
+                    string.Format(EmailResources.ResetPasswordBody, this.ApplicationUrl, pwdKey));
+                return new ResetPasswordResponse { MessageType = MessageType.Success };
+            }
+            catch(Exception ex)
+            {
+                return new ResetPasswordResponse { MessageType = MessageType.Error, Message=ex.Message };
+            }
         }
 
         /// <summary>
@@ -595,6 +615,27 @@ namespace TdService.Services.Implementations
                            MessageType = MessageType.Success,
                            Message = CommonResources.EmailActivated
                        };
+        }
+
+
+        public ChangePasswordResponse ChangePassword(ChangePasswordRequest request)
+        {
+            try
+            {
+                var user = this.userRepository.GetUserByPwdResetCode(request.PasswordResetKey);
+                if (user == null)
+                    return new ChangePasswordResponse
+                        { MessageType = MessageType.Error, ErrorCode = ErrorCode.UserNotFound.ToString() };
+                user.Password = PasswordHash.CreateHash(request.Password);
+                user.PasswordResetKey = Guid.Empty;
+                this.userRepository.UpdateUser(user);
+                this.userRepository.SaveChanges();
+                return new ChangePasswordResponse { MessageType = MessageType.Success };
+            }
+            catch (Exception ex)
+            {
+                return new ChangePasswordResponse { MessageType = MessageType.Error,Message=ex.Message };
+            }
         }
     }
 }

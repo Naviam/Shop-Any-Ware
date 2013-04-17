@@ -82,7 +82,7 @@ namespace TdService.Services.Interfaces
         UpdateProfileResponse UpdateProfile(UpdateProfileRequest request);
 
         /// <summary>
-        /// The generate change password link.
+        /// Mark user pwd as forgotten and send email with link to reset it.
         /// </summary>
         /// <param name="request">
         /// The request.
@@ -90,7 +90,7 @@ namespace TdService.Services.Interfaces
         /// <returns>
         /// The TdService.Services.Messaging.Membership.ChangePasswordLinkResponse.
         /// </returns>
-        ChangePasswordLinkResponse GenerateChangePasswordLink(ChangePasswordLinkRequest request);
+        ResetPasswordResponse ResetPassword(ResetPasswordRequest request);
 
         /// <summary>
         /// Gets users in role
@@ -175,5 +175,12 @@ namespace TdService.Services.Interfaces
         /// The <see cref="ActivateUserEmailResponse"/>.
         /// </returns>
         ActivateUserEmailResponse ActivateEmail(ActivateUserEmailRequest request);
+
+        /// <summary>
+        /// Change users pwd
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        ChangePasswordResponse ChangePassword(ChangePasswordRequest request);
     }
 }

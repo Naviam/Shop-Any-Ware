@@ -320,5 +320,14 @@ namespace TdService.Repository.MsSql.Repositories
             var pagedList = userQuery.OrderBy(u => u.Id).Skip(skip).Take(take).ToList();
             return new Tuple<List<User>, int>(pagedList, total);
         }
+
+        public User GetUserByPwdResetCode(Guid pwdResetKey)
+        {
+            using (var context = new ShopAnyWareSql())
+            {
+                var user = context.Users.SingleOrDefault(u => u.PasswordResetKey.Equals(pwdResetKey));
+                return user;
+            }
+        }
     }
 }

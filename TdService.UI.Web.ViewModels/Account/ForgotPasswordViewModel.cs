@@ -18,5 +18,15 @@ namespace TdService.UI.Web.ViewModels.Account
         /// Gets or sets Email.
         /// </summary>
         public string Email { get; set; }
+
+        /// <summary>
+        /// Gets or sets PasswordSent.
+        /// </summary>
+        public bool PasswordSent { get; set; }
+
+        /// <summary>
+        /// Gets or sets User Not Found.
+        /// </summary>
+        public bool UserNotFound { get; set; }
     }
 }

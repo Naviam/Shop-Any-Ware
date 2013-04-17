@@ -434,6 +434,10 @@
     <Content Include="Views\Shared\PackageSizePopup.cshtml" />
     <Content Include="Views\Account\ActivateEmail.cshtml" />
     <Content Include="Views\Home\DeliveryRules.cshtml" />
+    <Content Include="Views\Account\PasswordReset.cshtml" />
+    <Content Include="Views\Account\PasswordResetError.cshtml" />
+    <Content Include="Views\Account\NewPassword.cshtml" />
+    <Content Include="Views\Account\PasswordChanged.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
