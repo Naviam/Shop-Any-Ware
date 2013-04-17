@@ -55,6 +55,11 @@ namespace TdService.Model.Membership
         public Guid ActivationCode { get; set; }
 
         /// <summary>
+        /// Gets or sets the Password Reset Key.
+        /// </summary>
+        public Guid PasswordResetKey{ get; set; }
+
+        /// <summary>
         /// Gets or sets a value indicating whether activated.
         /// </summary>
         public bool Activated { get; set; }

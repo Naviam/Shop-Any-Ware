@@ -104,20 +104,6 @@ namespace TdService.ShopAnyWare.Tests.Account
         }
 
         /// <summary>
-        /// Generate change password link.
-        /// </summary>
-        /// <param name="request">
-        /// The generate change password link request.
-        /// </param>
-        /// <returns>
-        /// The response with generated link.
-        /// </returns>
-        public ChangePasswordLinkResponse GenerateChangePasswordLink(ChangePasswordLinkRequest request)
-        {
-            return null;
-        }
-
-        /// <summary>
         /// Update profile.
         /// </summary>
         /// <param name="request">
@@ -263,6 +249,18 @@ namespace TdService.ShopAnyWare.Tests.Account
         /// Not implemented yet.
         /// </exception>
         public ActivateUserEmailResponse ActivateEmail(ActivateUserEmailRequest request)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public ResetPasswordResponse ResetPassword(ResetPasswordRequest request)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public ChangePasswordResponse ChangePassword(ChangePasswordRequest request)
         {
             throw new NotImplementedException();
         }

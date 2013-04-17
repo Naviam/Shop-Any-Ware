@@ -4,7 +4,7 @@
     ViewBag.Title = AccountViewResources.ForgotPageTitle;
 }
 
-@using(Html.BeginForm("Forgot", "Account", FormMethod.Post, new Dictionary<string, object> { { "class", "form-horizontal" } }))
+@using (Html.BeginForm("Forgot", "Account", FormMethod.Post, new Dictionary<string, object> { { "class", "form-horizontal" } }))
 {
     @Html.AntiForgeryToken()
     <fieldset>
@@ -17,7 +17,7 @@
         <div class="control-group">
             <label class="control-label">@AccountViewResources.EmailFormLabel</label>
             <div class="controls error-inline">
-                @Html.TextBoxFor(m => m.Email, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: email" }, { "placeholder", AccountViewResources.EmailFormFieldPlaceholder } })
+                @Html.TextBoxFor(m => m.Email, new Dictionary<string, object> { { "class", "input-xlarge" }, { "placeholder", AccountViewResources.EmailFormFieldPlaceholder } })
                 @Html.ValidationMessageFor(m => m.Email)
             </div>
         </div>

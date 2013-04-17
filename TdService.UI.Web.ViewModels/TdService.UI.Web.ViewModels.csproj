@@ -57,6 +57,8 @@
     <Compile Include="Account\ForgotPasswordViewModel.cs" />
     <Compile Include="Account\ForgotPasswordViewModelValidator.cs" />
     <Compile Include="Account\MainViewModel.cs" />
+    <Compile Include="Account\NewPasswordViewModel.cs" />
+    <Compile Include="Account\NewPasswordViewModelValidator.cs" />
     <Compile Include="Account\ProfileViewModel.cs" />
     <Compile Include="Account\ProfileViewModelValidator.cs" />
     <Compile Include="Account\RoleViewModel.cs" />

@@ -1,9 +1,9 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ChangePasswordLinkRequest.cs" company="TdService">
+// <copyright file="ChangePasswordLinkResponse.cs" company="TdService">
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
-//   Change password link request DTO.
+//   Change password link response DTO.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -12,9 +12,9 @@ namespace TdService.Services.Messaging.Membership
     using TdService.Services.Messaging;
 
     /// <summary>
-    /// Change password link request DTO.
+    /// Change password link response DTO.
     /// </summary>
-    public class ChangePasswordLinkRequest : RequestBase
+    public class ResetPasswordResponse : ResponseBase
     {
     }
 }

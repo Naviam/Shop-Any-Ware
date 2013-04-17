@@ -215,6 +215,7 @@ namespace TdService.Repository.MsSql.Repositories
         /// <returns>
         /// True if password was changed, otherwise false.
         /// </returns>
+        [Obsolete]
         public bool ChangePassword(string email, string oldPassword, string newPassword)
         {
             using (var context = new ShopAnyWareSql())
@@ -421,5 +422,8 @@ namespace TdService.Repository.MsSql.Repositories
             }
         } 
         #endregion
+
+
+       
     }
 }
