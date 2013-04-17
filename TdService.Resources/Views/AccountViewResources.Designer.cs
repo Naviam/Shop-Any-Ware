@@ -151,6 +151,24 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your password has been successfullt changed!.
+        /// </summary>
+        public static string PasswordChangedPageContent {
+            get {
+                return ResourceManager.GetString("PasswordChangedPageContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password changed.
+        /// </summary>
+        public static string PasswordChangedPageTitle {
+            get {
+                return ResourceManager.GetString("PasswordChangedPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Re-enter password.
         /// </summary>
         public static string PasswordConfirmFormFieldPlaceholder {
@@ -174,6 +192,42 @@ namespace TdService.Resources.Views {
         public static string PasswordFormLabel {
             get {
                 return ResourceManager.GetString("PasswordFormLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password reset - error.
+        /// </summary>
+        public static string PasswordResetErrorPageTitle {
+            get {
+                return ResourceManager.GetString("PasswordResetErrorPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password has been reset.
+        /// </summary>
+        public static string PasswordResetPageTitle {
+            get {
+                return ResourceManager.GetString("PasswordResetPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password recovery instructions have been sent to your email.
+        /// </summary>
+        public static string PwdRecoveryEmailSent {
+            get {
+                return ResourceManager.GetString("PwdRecoveryEmailSent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User with specified email not found.
+        /// </summary>
+        public static string PwdRecoveryUserNotFound {
+            get {
+                return ResourceManager.GetString("PwdRecoveryUserNotFound", resourceCulture);
             }
         }
         
