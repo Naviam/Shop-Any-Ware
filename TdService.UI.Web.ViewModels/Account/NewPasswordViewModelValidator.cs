@@ -1,12 +1,26 @@
-﻿using System;
-using FluentValidation;
-using TdService.Infrastructure.Domain;
-using TdService.Resources;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="NewPasswordViewModelValidator.cs" company="Naviam">
+//   Vadim Shaporov. 2013
+// </copyright>
+// <summary>
+//   The new password view model validator.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace TdService.UI.Web.ViewModels.Account
 {
+    using FluentValidation;
+
+    using TdService.Resources;
+
+    /// <summary>
+    /// The new password view model validator.
+    /// </summary>
     public class NewPasswordViewModelValidator : AbstractValidator<NewPasswordViewModel>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NewPasswordViewModelValidator"/> class.
+        /// </summary>
         public NewPasswordViewModelValidator()
         {
             // First set the cascade mode

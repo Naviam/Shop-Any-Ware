@@ -182,12 +182,15 @@ namespace TdService.Model.Membership
         /// </returns>
         User GetUserById(int id);
 
-
         /// <summary>
-        /// Gets user by pwd reset code
+        /// The get user by password reset code.
         /// </summary>
-        /// <param name="guid"></param>
-        /// <returns></returns>
-        User GetUserByPwdResetCode(System.Guid guid);
+        /// <param name="guid">
+        /// The GUID.
+        /// </param>
+        /// <returns>
+        /// The <see cref="User"/>.
+        /// </returns>
+        User GetUserByPwdResetCode(Guid guid);
     }
 }

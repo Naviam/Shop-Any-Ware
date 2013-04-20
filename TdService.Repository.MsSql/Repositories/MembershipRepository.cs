@@ -422,8 +422,5 @@ namespace TdService.Repository.MsSql.Repositories
             }
         } 
         #endregion
-
-
-       
     }
 }

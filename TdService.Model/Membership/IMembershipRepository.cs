@@ -190,11 +190,6 @@ namespace TdService.Model.Membership
         /// The new Email.
         /// </param>
         void UpdateUserEmail(string oldEmail, string newEmail);
-
-        
-
         #endregion
-
-        
     }
 }

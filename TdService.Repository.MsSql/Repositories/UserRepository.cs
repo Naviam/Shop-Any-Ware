@@ -180,7 +180,7 @@ namespace TdService.Repository.MsSql.Repositories
         {
             var user = this.context.Users.SingleOrDefault(u =>
                     (string.Compare(u.Email, email, StringComparison.OrdinalIgnoreCase) == 0));
-            var passwordsMatch = PasswordHash.ValidatePassword(password, user.Password);
+            var passwordsMatch = user != null && PasswordHash.ValidatePassword(password, user.Password);
             return passwordsMatch;
         }
 
@@ -321,11 +321,20 @@ namespace TdService.Repository.MsSql.Repositories
             return new Tuple<List<User>, int>(pagedList, total);
         }
 
+        /// <summary>
+        /// The get user by password reset code.
+        /// </summary>
+        /// <param name="pwdResetKey">
+        /// The password reset key.
+        /// </param>
+        /// <returns>
+        /// The <see cref="User"/>.
+        /// </returns>
         public User GetUserByPwdResetCode(Guid pwdResetKey)
         {
-            using (var context = new ShopAnyWareSql())
+            using (var shopAnyWareSql = new ShopAnyWareSql())
             {
-                var user = context.Users.SingleOrDefault(u => u.PasswordResetKey.Equals(pwdResetKey));
+                var user = shopAnyWareSql.Users.SingleOrDefault(u => u.PasswordResetKey.Equals(pwdResetKey));
                 return user;
             }
         }
