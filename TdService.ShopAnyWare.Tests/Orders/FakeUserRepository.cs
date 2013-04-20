@@ -285,7 +285,18 @@ namespace TdService.ShopAnyWare.Tests.Orders
             throw new NotImplementedException();
         }
 
-
+        /// <summary>
+        /// The get user by password reset code.
+        /// </summary>
+        /// <param name="guid">
+        /// The GUID.
+        /// </param>
+        /// <returns>
+        /// The <see cref="User"/>.
+        /// </returns>
+        /// <exception cref="NotImplementedException">
+        /// not implemented
+        /// </exception>
         public User GetUserByPwdResetCode(Guid guid)
         {
             throw new NotImplementedException();

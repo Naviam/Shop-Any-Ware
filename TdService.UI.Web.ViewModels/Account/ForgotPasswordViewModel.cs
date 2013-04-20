@@ -20,12 +20,12 @@ namespace TdService.UI.Web.ViewModels.Account
         public string Email { get; set; }
 
         /// <summary>
-        /// Gets or sets PasswordSent.
+        /// Gets or sets a value indicating whether password sent.
         /// </summary>
         public bool PasswordSent { get; set; }
 
         /// <summary>
-        /// Gets or sets User Not Found.
+        /// Gets or sets a value indicating whether user not found.
         /// </summary>
         public bool UserNotFound { get; set; }
     }
