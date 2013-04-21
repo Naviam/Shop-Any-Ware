@@ -27,15 +27,15 @@ namespace TdService.UI.Web.Controllers.Base
         /// </param>
         protected override void Initialize(System.Web.Routing.RequestContext requestContext)
         {
+            var url = requestContext.HttpContext.Request.Url;
             var cultureCookie = requestContext.HttpContext.Request.Cookies["culture"];
             if (cultureCookie == null)
             {
                 // get domain name
-                var url = requestContext.HttpContext.Request.Url;
                 if (url != null && url.AbsoluteUri.IndexOf("shopanyware.ru", System.StringComparison.Ordinal) >= 0)
                 {
                     cultureCookie = new HttpCookie("culture", "ru");
-                    Response.Cookies.Set(cultureCookie);
+                    requestContext.HttpContext.Response.Cookies.Set(cultureCookie);
                 }
             }
 
