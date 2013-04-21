@@ -40,6 +40,7 @@
     <OutputPath>bin\</OutputPath>
     <DeployIisAppPath>Default Web Site</DeployIisAppPath>
     <Prefer32Bit>false</Prefer32Bit>
+    <PublishDatabases>false</PublishDatabases>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Antlr3.Runtime, Version=3.3.1.7705, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
