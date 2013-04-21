@@ -11,6 +11,7 @@ namespace TdService.Model.Orders
     /// <summary>
     /// Invalid retailer exception.
     /// </summary>
+    [Serializable]
     public class InvalidRetailerException : Exception
     {
         /// <summary>

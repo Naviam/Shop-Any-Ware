@@ -11,6 +11,7 @@ namespace TdService.Model.Membership
     /// <summary>
     /// Invalid user exception.
     /// </summary>
+    [Serializable]
     public class InvalidUserException : Exception
     {
         /// <summary>

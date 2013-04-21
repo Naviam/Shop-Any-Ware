@@ -14,6 +14,7 @@ namespace TdService.Model.Membership
     /// <summary>
     /// The member ship exception.
     /// </summary>
+    [Serializable]
     public class MemberShipException : Exception
     {
         /// <summary>

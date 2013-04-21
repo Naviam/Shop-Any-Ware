@@ -14,6 +14,7 @@ namespace TdService.Model.Items
     /// <summary>
     /// The invalid item exception.
     /// </summary>
+    [Serializable]
     public class InvalidItemException : Exception
     {
         /// <summary>

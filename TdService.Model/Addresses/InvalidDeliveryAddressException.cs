@@ -14,6 +14,7 @@ namespace TdService.Model.Addresses
     /// <summary>
     /// Invalid delivery address exception.
     /// </summary>
+    [Serializable]
     public class InvalidDeliveryAddressException : Exception
     {
         /// <summary>
