@@ -264,5 +264,11 @@ namespace TdService.ShopAnyWare.Tests.Account
         {
             throw new NotImplementedException();
         }
+
+
+        public ChangeUserCultureResponse ChangeUserUiCulture(ChangeUserCultureRequest request)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

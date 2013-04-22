@@ -11,7 +11,9 @@ namespace TdService.Services.Implementations
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Linq;
+    using TdService.Infrastructure.Email;
     using TdService.Infrastructure.Logging;
     using TdService.Model.Orders;
     using TdService.Resources;
@@ -30,7 +32,13 @@ namespace TdService.Services.Implementations
         /// Order repository.
         /// </summary>
         private readonly IOrderRepository orderRepository;
-        
+
+        /// <summary>
+        /// The email service.
+        /// </summary>
+        private readonly IEmailService emailService;
+
+
         /// <summary>
         /// Initializes a new instance of the <see cref="OrderService"/> class.
         /// </summary>
@@ -40,10 +48,11 @@ namespace TdService.Services.Implementations
         /// <param name="logger">
         /// The logger.
         /// </param>
-        public OrderService(IOrderRepository orderRepository, ILogger logger)
+        public OrderService(IOrderRepository orderRepository, IEmailService emailService, ILogger logger)
             : base(logger)
         {
-            this.orderRepository = orderRepository;  
+            this.orderRepository = orderRepository;
+            this.emailService = emailService;
         }
 
         /// <summary>
@@ -145,6 +154,7 @@ namespace TdService.Services.Implementations
             try
             {
                 var orderResult = this.orderRepository.AddOrder(request.IdentityToken, newOrder);
+               
                 response = orderResult.ConvertToAddOrderResponse();
                 response.Message = CommonResources.OrderAddSuccessMessage;
             }
@@ -249,6 +259,19 @@ namespace TdService.Services.Implementations
                 var order = this.orderRepository.GetOrderById(request.OrderId);
                 order.SetAsReceived();
                 var updatedOrder = this.orderRepository.UpdateOrder(order);
+                if (order.User.Activated)
+                {
+                    this.emailService.SendMail(
+                        EmailResources.EmailActivationFrom,
+                        order.User.Email,
+                        order.User.Profile.GetEmailResourceString("OrderReceivedEmailSubject"),
+                        string.Format(
+                            order.User.Profile.GetEmailResourceString("OrderReceivedEmailBody"),
+                            updatedOrder.Retailer.Name,
+                            updatedOrder.Id,
+                            updatedOrder.ReceivedDate.Value.ToShortDateString(),
+                            order.User.Profile.GetFullName()));
+                }
                 var response = updatedOrder.ConvertToOrderReceivedResponse();
                 response.Message = CommonResources.OrderStatusChangedToReceived;
                 response.MessageType = MessageType.Success;

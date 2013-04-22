@@ -98,6 +98,62 @@ namespace TdService.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;!DOCTYPE html&gt;
+        ///&lt;html lang=&quot;en&quot; xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+        ///&lt;head&gt;
+        ///    &lt;meta charset=&quot;utf-8&quot; /&gt;
+        ///    &lt;title&gt;Email confirmation&lt;/title&gt;
+        ///&lt;/head&gt;
+        ///&lt;body style=&quot;background-color: #E9E9E9; margin: 8px; padding: 0; font-size: 12px&quot;&gt;
+        ///    &lt;center&gt;
+        ///    &lt;table style=&quot;width: 600px; border: none; font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: &apos;Helvetica Neue&apos;, Helvetica, Arial, sans-serif;&quot;&gt;
+        ///        &lt;tr&gt;
+        ///            &lt;td style=&quot;background: url(&apos;top.png&apos;) no-re [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string OrderReceivedEmailBody {
+            get {
+                return ResourceManager.GetString("OrderReceivedEmailBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your order has been received!.
+        /// </summary>
+        public static string OrderReceivedEmailSubject {
+            get {
+                return ResourceManager.GetString("OrderReceivedEmailSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;!DOCTYPE html&gt;
+        ///&lt;html lang=&quot;en&quot; xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+        ///&lt;head&gt;
+        ///    &lt;meta charset=&quot;utf-8&quot; /&gt;
+        ///    &lt;title&gt;Email confirmation&lt;/title&gt;
+        ///&lt;/head&gt;
+        ///&lt;body style=&quot;background-color: #E9E9E9; margin: 8px; padding: 0; font-size: 12px&quot;&gt;
+        ///    &lt;center&gt;
+        ///    &lt;table style=&quot;width: 600px; border: none; font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: &apos;Helvetica Neue&apos;, Helvetica, Arial, sans-serif;&quot;&gt;
+        ///        &lt;tr&gt;
+        ///            &lt;td style=&quot;background: url(&apos;top.png&apos;) no-re [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string PackageStatusChangedBody {
+            get {
+                return ResourceManager.GetString("PackageStatusChangedBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Package status was changed.
+        /// </summary>
+        public static string PackageStatusChangedSubject {
+            get {
+                return ResourceManager.GetString("PackageStatusChangedSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to To reset your password on ShopAnyWare.com please follow instructions on this link: &lt;a href=&quot;{0}account/NewPassword?passwordkey={1}&quot;&gt;{0}account/NewPassword?passwordkey={1}&lt;/a&gt;.
         /// </summary>
         public static string ResetPasswordBody {

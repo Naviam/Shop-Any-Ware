@@ -66,7 +66,6 @@ namespace TdService.ShopAnyWare.Tests.Account
             // arrange
             var controller = new AccountController(
                 this.MembershipService,
-                this.EmailService,
                 this.CookieStorageService,
                 this.FormsAuthentication);
             const string Expected = "SignIn";
@@ -88,7 +87,6 @@ namespace TdService.ShopAnyWare.Tests.Account
             // arrange
             var controller = new AccountController(
                 this.MembershipService,
-                this.EmailService,
                 this.CookieStorageService,
                 this.FormsAuthentication);
             const string Expected = "SignUp";
@@ -110,7 +108,6 @@ namespace TdService.ShopAnyWare.Tests.Account
             // arrange
             var controller = new AccountController(
                 this.MembershipService,
-                this.EmailService,
                 this.CookieStorageService,
                 this.FormsAuthentication);
             var expected = string.Empty;
@@ -132,7 +129,6 @@ namespace TdService.ShopAnyWare.Tests.Account
             // arrange
             var controller = new AccountController(
                 this.MembershipService,
-                this.EmailService,
                 this.CookieStorageService,
                 this.FormsAuthentication);
             var view = new ForgotPasswordViewModel { Email = "vhatalski@naviam.com" };

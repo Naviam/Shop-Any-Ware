@@ -39,11 +39,6 @@ namespace TdService.UI.Web.Controllers
         private readonly IMembershipService membershipService;
 
         /// <summary>
-        /// Email Service.
-        /// </summary>
-        private readonly IEmailService emailService;
-
-        /// <summary>
         /// Cookie storage service.
         /// </summary>
         private readonly ICookieStorageService cookieStorageService;
@@ -54,9 +49,6 @@ namespace TdService.UI.Web.Controllers
         /// <param name="membershipService">
         /// The membership service.
         /// </param>
-        /// <param name="emailService">
-        /// The email service.
-        /// </param>
         /// <param name="cookieStorageService">
         /// The cookie Storage Service.
         /// </param>
@@ -65,13 +57,11 @@ namespace TdService.UI.Web.Controllers
         /// </param>
         public AccountController(
             IMembershipService membershipService,
-            IEmailService emailService,
             ICookieStorageService cookieStorageService,
             IFormsAuthentication formsAuthentication)
             : base(formsAuthentication)
         {
             this.membershipService = membershipService;
-            this.emailService = emailService;
             this.cookieStorageService = cookieStorageService;
         }
 
@@ -318,7 +308,7 @@ namespace TdService.UI.Web.Controllers
             var validationResult = validator.Validate(model);
             if (validationResult.IsValid)
             {
-                var resp = this.membershipService.ChangePassword(new ChangePasswordRequest{Password=model.Password,PasswordResetKey = model.PwdResetKey});
+                var resp = this.membershipService.ChangePassword(new ChangePasswordRequest { Password = model.Password, PasswordResetKey = model.PwdResetKey });
                 if (resp.MessageType == MessageType.Success) return this.RedirectToAction("PasswordChanged");
             }
             return this.View();
@@ -359,7 +349,7 @@ namespace TdService.UI.Web.Controllers
                 var request = new ResetPasswordRequest { IdentityToken = view.Email };
                 var response = this.membershipService.ResetPassword(request);
                 if (response.MessageType == MessageType.Success) return this.RedirectToAction("PasswordReset", "Account");
-                if (response.MessageType == MessageType.Error && response.ErrorCode == ErrorCode.UserNotFound.ToString()) return this.RedirectToAction("PasswordResetError", "Account"); 
+                if (response.MessageType == MessageType.Error && response.ErrorCode == ErrorCode.UserNotFound.ToString()) return this.RedirectToAction("PasswordResetError", "Account");
             }
 
             return this.View(view);
@@ -440,6 +430,25 @@ namespace TdService.UI.Web.Controllers
                 ////view.Password = values["Password"];
                 view.RememberMe = values["RememberMe"] == "yes";
             }
+        }
+
+        [HttpPost]
+        public ActionResult ChangeUserCulture(string culture)
+        {
+            if (!User.Identity.IsAuthenticated)
+                return new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = new {MessageType = MessageType.Success }
+            }; 
+            var request = new ChangeUserCultureRequest { Culture = culture, IdentityToken = FormsAuthentication.GetAuthenticationToken() };
+            var response = this.membershipService.ChangeUserUiCulture(request);
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = response
+            };
+            return jsonNetResult;
         }
     }
 }

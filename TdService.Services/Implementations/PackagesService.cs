@@ -10,22 +10,22 @@
 namespace TdService.Services.Implementations
 {
     using System;
-    using System.Collections.Generic;
-    using System.Globalization;
-
-    using TdService.Infrastructure.Logging;
-    using TdService.Model.Addresses;
-    using TdService.Model.Common;
-    using TdService.Model.Membership;
-    using TdService.Model.Packages;
-    using TdService.Model.Shipping;
-    using TdService.Resources;
-    using TdService.Resources.Views;
-    using TdService.Services.Base;
-    using TdService.Services.Interfaces;
-    using TdService.Services.Mapping;
-    using TdService.Services.Messaging;
-    using TdService.Services.Messaging.Package;
+using System.Collections.Generic;
+using System.Globalization;
+using TdService.Infrastructure.Email;
+using TdService.Infrastructure.Logging;
+using TdService.Model.Addresses;
+using TdService.Model.Common;
+using TdService.Model.Membership;
+using TdService.Model.Packages;
+using TdService.Model.Shipping;
+using TdService.Resources;
+using TdService.Resources.Views;
+using TdService.Services.Base;
+using TdService.Services.Interfaces;
+using TdService.Services.Mapping;
+using TdService.Services.Messaging;
+using TdService.Services.Messaging.Package;
 
     /// <summary>
     /// The packages service.
@@ -47,6 +47,11 @@ namespace TdService.Services.Implementations
         /// </summary>
         private readonly IAddressRepository addressRepository;
 
+         /// <summary>
+        /// The email service.
+        /// </summary>
+        private readonly IEmailService emailService;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="PackagesService"/> class.
         /// </summary>
@@ -62,12 +67,13 @@ namespace TdService.Services.Implementations
         /// <param name="logger">
         /// The logger.
         /// </param>
-        public PackagesService(IPackageRepository packageRepository, IUserRepository userRepository, IAddressRepository addressRepository, ILogger logger)
+        public PackagesService(IPackageRepository packageRepository, IUserRepository userRepository, IAddressRepository addressRepository, IEmailService emailService, ILogger logger)
             : base(logger)
         {
             this.packageRepository = packageRepository;
             this.userRepository = userRepository;
             this.addressRepository = addressRepository;
+            this.emailService = emailService;
         }
 
         /// <summary>
@@ -243,8 +249,25 @@ namespace TdService.Services.Implementations
             try
             {
                 var package = this.packageRepository.GetPackageById(request.PackageId);
-                package.Status = PackageStatus.Assembling;
+                package.ChangePackageStatus(PackageStatus.Assembling);
                 this.packageRepository.UpdatePackage(package);
+
+                if (package.User.Activated)
+                {
+                    var profile = package.User.Profile;
+                    this.emailService.SendMail(
+                        EmailResources.EmailActivationFrom,
+                        package.User.Email,
+                        profile.GetEmailResourceString("PackageStatusChangedSubject"),
+                        string.Format(
+                            profile.GetEmailResourceString("PackageStatusChangedBody"),
+                            package.Name,
+                            package.Id,
+                            profile.GetTranslatedPackageStatus("New"),
+                            profile.GetTranslatedPackageStatus("Assembling"),
+                            profile.GetFullName()));
+                }
+
                 var response = package.ConvertToAssemblePackageResponse();
                 response.MessageType = MessageType.Success;
                 response.Message = string.Format(PackageStatusResources.StatusChanged, PackageStatus.Assembling);
@@ -271,8 +294,25 @@ namespace TdService.Services.Implementations
             try
             {
                 var package = this.packageRepository.GetPackageById(request.PackageId);
-                package.Status = PackageStatus.Assembled;
+                package.ChangePackageStatus(PackageStatus.Assembled);
                 this.packageRepository.UpdatePackage(package);
+
+                if (package.User.Activated)
+                {
+                    var profile = package.User.Profile;
+                    this.emailService.SendMail(
+                        EmailResources.EmailActivationFrom,
+                        package.User.Email,
+                        profile.GetEmailResourceString("PackageStatusChangedSubject"),
+                        string.Format(
+                            profile.GetEmailResourceString("PackageStatusChangedBody"),
+                            package.Name,
+                            package.Id,
+                            profile.GetTranslatedPackageStatus("Assembling"),
+                            profile.GetTranslatedPackageStatus("Assembled"),
+                            profile.GetFullName()));
+                }
+
                 var response = package.ConvertToPackageAssembledResponse();
                 response.MessageType = MessageType.Success;
                 response.Message = string.Format(PackageStatusResources.StatusChanged, PackageStatus.Assembled);
@@ -299,8 +339,25 @@ namespace TdService.Services.Implementations
             try
             {
                 var package = this.packageRepository.GetPackageById(request.PackageId);
-                package.Status = PackageStatus.Sent;
+                package.ChangePackageStatus(PackageStatus.Sent);
                 this.packageRepository.UpdatePackage(package);
+
+                if (package.User.Activated)
+                {
+                    var profile = package.User.Profile;
+                    this.emailService.SendMail(
+                        EmailResources.EmailActivationFrom,
+                        package.User.Email,
+                        profile.GetEmailResourceString("PackageStatusChangedSubject"),
+                        string.Format(
+                            profile.GetEmailResourceString("PackageStatusChangedBody"),
+                            package.Name,
+                            package.Id,
+                            profile.GetTranslatedPackageStatus("Paid"),
+                            profile.GetTranslatedPackageStatus("Sent"),
+                            profile.GetFullName()));
+                }
+
                 var response = package.ConvertToSendPackageResponse();
                 response.MessageType = MessageType.Success;
                 response.Message = string.Format(PackageStatusResources.StatusChanged, PackageStatus.Sent);
