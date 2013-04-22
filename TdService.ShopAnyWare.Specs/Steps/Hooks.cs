@@ -120,7 +120,8 @@ namespace TdService.ShopAnyWare.Specs.Steps
             var addressRepository = new AddressRepository();
             var logger = new FakeLogger();
             var emailSvc = new FakeEmailService();
-            var packagesService = new PackagesService(packageRepository, userRepository, addressRepository,emailSvc, logger);
+            var packagesService = new PackagesService(
+                packageRepository, userRepository, addressRepository, emailSvc, logger);
             var itemsService = new ItemsService(itemsRepository, packageRepository, logger);
             ScenarioContext.Current.Set(packagesService);
             ScenarioContext.Current.Set(itemsService);

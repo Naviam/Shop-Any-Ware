@@ -658,7 +658,15 @@ namespace TdService.Services.Implementations
             }
         }
 
-
+        /// <summary>
+        /// The change user UI culture.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ChangeUserCultureResponse"/>.
+        /// </returns>
         public ChangeUserCultureResponse ChangeUserUiCulture(ChangeUserCultureRequest request)
         {
             try
@@ -669,7 +677,7 @@ namespace TdService.Services.Implementations
                 this.userRepository.SaveChanges();
                 return new ChangeUserCultureResponse { MessageType = MessageType.Success };
             }
-            catch(Exception ex)
+            catch (Exception)
             {
                 return new ChangeUserCultureResponse { MessageType = MessageType.Error };
             }

@@ -206,7 +206,7 @@ namespace TdService.UI.Web.Controllers
                     RetailerUrl = retailerUrl,
                     CreatedDate = DateTime.UtcNow,
                     IdentityToken = userEmail,
-                    CreatedByOperator=!userEmail.Equals(FormsAuthentication.GetAuthenticationToken())
+                    CreatedByOperator = !userEmail.Equals(FormsAuthentication.GetAuthenticationToken())
                 };
                 var response = this.orderService.AddOrder(request);
                 result = response.ConverToOrderViewModel();
