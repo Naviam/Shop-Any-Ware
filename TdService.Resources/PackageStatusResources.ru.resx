@@ -139,7 +139,7 @@
     <value>Оплачена</value>
   </data>
   <data name="Sent" xml:space="preserve">
-    <value>Sent</value>
+    <value>Отправлена</value>
   </data>
   <data name="StatusChanged" xml:space="preserve">
     <value>Статус посылки изменен на {0}</value>

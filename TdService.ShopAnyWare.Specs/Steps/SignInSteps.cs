@@ -39,7 +39,6 @@ namespace TdService.ShopAnyWare.Specs.Steps
         {
             return new AccountController(
                 ScenarioContext.Current.Get<MembershipService>(),
-                ScenarioContext.Current.Get<FakeEmailService>(),
                 new FakeCookieProvider(),
                 ScenarioContext.Current.Get<FakeFormsAuthentication>());
         }

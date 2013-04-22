@@ -11,16 +11,14 @@ namespace TdService.ShopAnyWare.Tests.Orders
 {
     using System;
     using System.Collections.Generic;
-
     using NUnit.Framework;
-
     using Rhino.Mocks;
-
     using TdService.Infrastructure.Logging;
     using TdService.Model.Orders;
     using TdService.Services.Implementations;
     using TdService.Services.Messaging;
     using TdService.Services.Messaging.Order;
+    using TdService.ShopAnyWare.Tests.Mocks;
     using TdService.UI.Web;
 
     /// <summary>
@@ -58,7 +56,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
             const string RetailerUrl = "amazon.com";
             Expect.Call(repository.AddOrder(IdentityToken, new Order { Retailer = new Retailer(RetailerUrl) }))
                 .Return(new Order(OrderStatus.New) { Retailer = new Retailer(RetailerUrl), CreatedDate = DateTime.UtcNow });
-            var service = new OrderService(repository, this.logger);
+            var service = new OrderService(repository, new FakeEmailService(), this.logger);
             var request = new AddOrderRequest
                 {
                     IdentityToken = IdentityToken,
@@ -118,7 +116,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
                             ReturnedDate = null
                         }
                 });
-            var service = new OrderService(repository, this.logger);
+            var service = new OrderService(repository, new FakeEmailService(), this.logger);
             var request = new GetMyOrdersRequest { IdentityToken = IdentityToken };
             var expected = new List<GetMyOrdersResponse>
                 {
@@ -188,7 +186,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
             const string IdentityToken = "vhatalski@naviam.com";
             const int OrderId = 1;
             Expect.Call(repository.RemoveOrder(IdentityToken, OrderId)).Return(new Order { Id = 1 });
-            var service = new OrderService(repository, this.logger);
+            var service = new OrderService(repository,new FakeEmailService(), this.logger);
             var request = new RemoveOrderRequest { IdentityToken = IdentityToken, Id = OrderId };
 
             // act
@@ -213,7 +211,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
             const string IdentityToken = "vhatalski@naviam.com";
             const int OrderId = 2;
             Expect.Call(repository.RemoveOrder(IdentityToken, OrderId)).Throw(new ArgumentException());
-            var service = new OrderService(repository, this.logger);
+            var service = new OrderService(repository, new FakeEmailService(), this.logger);
             var request = new RemoveOrderRequest { IdentityToken = IdentityToken, Id = OrderId };
 
             // act

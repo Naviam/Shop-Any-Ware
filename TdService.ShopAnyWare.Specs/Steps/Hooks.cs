@@ -103,7 +103,7 @@ namespace TdService.ShopAnyWare.Specs.Steps
         {
             var orderRepository = new OrderRepository();
             var logger = new FakeLogger();
-            var orderService = new OrderService(orderRepository, logger);
+            var orderService = new OrderService(orderRepository, new FakeEmailService(), logger);
             ScenarioContext.Current.Set(orderService);
         }
 
@@ -119,7 +119,8 @@ namespace TdService.ShopAnyWare.Specs.Steps
             var itemsRepository = new ItemsRepository();
             var addressRepository = new AddressRepository();
             var logger = new FakeLogger();
-            var packagesService = new PackagesService(packageRepository, userRepository, addressRepository, logger);
+            var emailSvc = new FakeEmailService();
+            var packagesService = new PackagesService(packageRepository, userRepository, addressRepository,emailSvc, logger);
             var itemsService = new ItemsService(itemsRepository, packageRepository, logger);
             ScenarioContext.Current.Set(packagesService);
             ScenarioContext.Current.Set(itemsService);
@@ -137,10 +138,10 @@ namespace TdService.ShopAnyWare.Specs.Steps
             var profileRepository = new ProfileRepository(context);
             var membershipRepository = new MembershipRepository();
             var transactionRepo = new TransactionsRepository();
-
+            var emailSvc = new FakeEmailService();
             var logger = new FakeLogger();
             var emailService = new FakeEmailService();
-            var transactionService = new TransactionService(transactionRepo, logger);
+            var transactionService = new TransactionService(transactionRepo, emailSvc, logger);
             ScenarioContext.Current.Set(transactionService);
             var membershipService = new MembershipService(logger, emailService, userRepository, roleRepository, profileRepository, membershipRepository);
             ScenarioContext.Current.Set(membershipService);

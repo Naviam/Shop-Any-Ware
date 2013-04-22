@@ -45,6 +45,7 @@ namespace TdService.Repository.MsSql.StaticDataSeed
             {
                 FirstName = "Vitali",
                 LastName = "Hatalski",
+                UserCulture="en",
                 NotifyOnOrderStatusChanged = true,
                 NotifyOnPackageStatusChanged = true
             };
