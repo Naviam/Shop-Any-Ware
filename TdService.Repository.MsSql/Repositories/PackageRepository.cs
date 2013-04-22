@@ -95,7 +95,7 @@ namespace TdService.Repository.MsSql.Repositories
         {
             using (var context = new ShopAnyWareSql())
             {
-                return context.Packages.Find(packageId);
+                return context.Packages.Include(p => p.User.Profile).SingleOrDefault(p => p.Id.Equals(packageId));
             }
         }
 

@@ -102,10 +102,14 @@ function eraseCookie(name) {
 
 function changeCulture(culture) {
     /// <summary>Change web site language.</summary>
-    var cultureCookie = readCookie("culture");
-    if (cultureCookie != null) {
-        eraseCookie("culture");
-    }
-    createCookie("culture", culture, 240);
-    window.location.reload();
+    $.post("/account/ChangeUserCulture", { "culture": culture }, function (data) {
+        if (data.MessageType != null && data.MessageType == 0) {
+            var cultureCookie = readCookie("culture");
+            if (cultureCookie != null) {
+                eraseCookie("culture");
+            }
+            createCookie("culture", culture, 240);
+            window.location.reload();
+        }
+    });
 };

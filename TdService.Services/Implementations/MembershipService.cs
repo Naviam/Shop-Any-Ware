@@ -657,5 +657,22 @@ namespace TdService.Services.Implementations
                 return new ChangePasswordResponse { MessageType = MessageType.Error, Message = ex.Message };
             }
         }
+
+
+        public ChangeUserCultureResponse ChangeUserUiCulture(ChangeUserCultureRequest request)
+        {
+            try
+            {
+                var user = this.userRepository.GetUserByEmail(request.IdentityToken);
+                user.Profile.UserCulture = request.Culture;
+                this.userRepository.UpdateUser(user);
+                this.userRepository.SaveChanges();
+                return new ChangeUserCultureResponse { MessageType = MessageType.Success };
+            }
+            catch(Exception ex)
+            {
+                return new ChangeUserCultureResponse { MessageType = MessageType.Error };
+            }
+        }
     }
 }

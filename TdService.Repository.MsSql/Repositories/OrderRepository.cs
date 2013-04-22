@@ -9,6 +9,7 @@ namespace TdService.Repository.MsSql.Repositories
     using System;
     using System.Collections.Generic;
     using System.Data;
+    using System.Data.Entity;
     using System.Linq;
 
     using TdService.Infrastructure.Domain;
@@ -32,7 +33,7 @@ namespace TdService.Repository.MsSql.Repositories
         {
             using (var context = new ShopAnyWareSql())
             {
-                return context.Orders.Find(orderId);
+                return context.Orders.Include(o => o.User.Profile).Include(o=>o.Retailer).SingleOrDefault(o => o.Id.Equals(orderId));
             }
         }
 

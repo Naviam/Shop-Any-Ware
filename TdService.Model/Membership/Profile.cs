@@ -9,7 +9,11 @@
 
 namespace TdService.Model.Membership
 {
+    using System.Globalization;
+    using System.Reflection;
+    using System.Resources;
     using TdService.Infrastructure.Domain;
+    using TdService.Resources;
 
     /// <summary>
     /// User profile.
@@ -35,6 +39,11 @@ namespace TdService.Model.Membership
         /// Gets or sets a value indicating whether NotifyOnPackageStatusChanged.
         /// </summary>
         public bool NotifyOnPackageStatusChanged { get; set; }
+
+        /// <summary>
+        /// Gets or sets a language of emails sent to user
+        /// </summary>
+        public string UserCulture { get; set; }
 
         /// <summary>
         /// Gets or sets Row Version.
@@ -74,6 +83,18 @@ namespace TdService.Model.Membership
             {
                 this.AddBrokenRule(ProfileBusinessRules.LastNameLength);
             }
+        }
+
+        public string GetEmailResourceString(string key)
+        {
+            var ci = string.IsNullOrEmpty(this.UserCulture) ? new CultureInfo("en") : new CultureInfo(this.UserCulture);
+            return EmailResources.ResourceManager.GetString(key, ci);
+        }
+
+        public string GetTranslatedPackageStatus(string status)
+        {
+            var ci = string.IsNullOrEmpty(this.UserCulture) ? new CultureInfo("en") : new CultureInfo(this.UserCulture);
+            return PackageStatusResources.ResourceManager.GetString(status, ci);
         }
     }
 }

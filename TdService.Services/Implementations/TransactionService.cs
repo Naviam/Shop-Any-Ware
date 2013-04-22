@@ -11,7 +11,7 @@ namespace TdService.Services.Implementations
 {
     using System;
     using System.Collections.Generic;
-
+    using TdService.Infrastructure.Email;
     using TdService.Infrastructure.Logging;
     using TdService.Model.Balance;
     using TdService.Resources;
@@ -27,6 +27,11 @@ namespace TdService.Services.Implementations
     public class TransactionService : ServiceBase, ITransactionService
     {
         /// <summary>
+        /// The email service.
+        /// </summary>
+        private readonly IEmailService emailService;
+
+        /// <summary>
         /// The transactions repository.
         /// </summary>
         private readonly ITransactionsRepository transactionsRepository;
@@ -40,10 +45,11 @@ namespace TdService.Services.Implementations
         /// <param name="logger">
         /// The logger.
         /// </param>
-        public TransactionService(ITransactionsRepository transactionsRepository, ILogger logger)
+        public TransactionService(ITransactionsRepository transactionsRepository, IEmailService emailService, ILogger logger)
             : base(logger)
         {
             this.transactionsRepository = transactionsRepository;
+            this.emailService = emailService;
         }
 
         /// <summary>
@@ -161,6 +167,22 @@ namespace TdService.Services.Implementations
                 var tuple = this.transactionsRepository.AddPackagePaymentTransaction(request.PackageId);
                 var package = tuple.Item1;
                 var result = package.ConvertToPayForPackageResponse();
+                if (package.User.Activated)
+                {
+                    var profile = package.User.Profile;
+                    this.emailService.SendMail(
+                        EmailResources.EmailActivationFrom,
+                        package.User.Email,
+                        profile.GetEmailResourceString("PackageStatusChangedSubject"),
+                        string.Format(
+                            profile.GetEmailResourceString("PackageStatusChangedBody"),
+                            package.Name,
+                            package.Id,
+                            profile.GetTranslatedPackageStatus("Assembled"),
+                            profile.GetTranslatedPackageStatus("Paid"),
+                            profile.GetFullName()));
+                }
+
                 result.Message = string.Format(CommonResources.TransactionPaymentSucceded, package.Id);
                 result.MessageType = Messaging.MessageType.Success;
                 result.WalletAmount = tuple.Item2;
