@@ -10,8 +10,7 @@
 namespace TdService.Model.Membership
 {
     using System.Globalization;
-    using System.Reflection;
-    using System.Resources;
+
     using TdService.Infrastructure.Domain;
     using TdService.Resources;
 
@@ -62,6 +61,36 @@ namespace TdService.Model.Membership
         }
 
         /// <summary>
+        /// The get email resource string.
+        /// </summary>
+        /// <param name="key">
+        /// The key.
+        /// </param>
+        /// <returns>
+        /// The <see cref="string"/>.
+        /// </returns>
+        public string GetEmailResourceString(string key)
+        {
+            var ci = string.IsNullOrEmpty(this.UserCulture) ? new CultureInfo("en") : new CultureInfo(this.UserCulture);
+            return EmailResources.ResourceManager.GetString(key, ci);
+        }
+
+        /// <summary>
+        /// The get translated package status.
+        /// </summary>
+        /// <param name="status">
+        /// The status.
+        /// </param>
+        /// <returns>
+        /// The <see cref="string"/>.
+        /// </returns>
+        public string GetTranslatedPackageStatus(string status)
+        {
+            var ci = string.IsNullOrEmpty(this.UserCulture) ? new CultureInfo("en") : new CultureInfo(this.UserCulture);
+            return PackageStatusResources.ResourceManager.GetString(status, ci);
+        }
+
+        /// <summary>
         /// Validate business rules.
         /// </summary>
         protected override void Validate()
@@ -83,18 +112,6 @@ namespace TdService.Model.Membership
             {
                 this.AddBrokenRule(ProfileBusinessRules.LastNameLength);
             }
-        }
-
-        public string GetEmailResourceString(string key)
-        {
-            var ci = string.IsNullOrEmpty(this.UserCulture) ? new CultureInfo("en") : new CultureInfo(this.UserCulture);
-            return EmailResources.ResourceManager.GetString(key, ci);
-        }
-
-        public string GetTranslatedPackageStatus(string status)
-        {
-            var ci = string.IsNullOrEmpty(this.UserCulture) ? new CultureInfo("en") : new CultureInfo(this.UserCulture);
-            return PackageStatusResources.ResourceManager.GetString(status, ci);
         }
     }
 }

@@ -11,7 +11,6 @@ namespace TdService.Services.Implementations
 {
     using System;
     using System.Collections.Generic;
-    using System.Globalization;
     using System.Linq;
     using TdService.Infrastructure.Email;
     using TdService.Infrastructure.Logging;
@@ -38,12 +37,14 @@ namespace TdService.Services.Implementations
         /// </summary>
         private readonly IEmailService emailService;
 
-
         /// <summary>
         /// Initializes a new instance of the <see cref="OrderService"/> class.
         /// </summary>
         /// <param name="orderRepository">
-        /// Order repository.
+        /// The order repository.
+        /// </param>
+        /// <param name="emailService">
+        /// The email service.
         /// </param>
         /// <param name="logger">
         /// The logger.
@@ -261,17 +262,22 @@ namespace TdService.Services.Implementations
                 var updatedOrder = this.orderRepository.UpdateOrder(order);
                 if (order.User.Activated)
                 {
-                    this.emailService.SendMail(
-                        EmailResources.EmailActivationFrom,
-                        order.User.Email,
-                        order.User.Profile.GetEmailResourceString("OrderReceivedEmailSubject"),
-                        string.Format(
+                    if (updatedOrder.ReceivedDate != null)
+                    {
+                        var body = string.Format(
                             order.User.Profile.GetEmailResourceString("OrderReceivedEmailBody"),
                             updatedOrder.Retailer.Name,
                             updatedOrder.Id,
                             updatedOrder.ReceivedDate.Value.ToShortDateString(),
-                            order.User.Profile.GetFullName()));
+                            order.User.Profile.GetFullName());
+                        this.emailService.SendMail(
+                            EmailResources.EmailActivationFrom,
+                            order.User.Email,
+                            order.User.Profile.GetEmailResourceString("OrderReceivedEmailSubject"),
+                            body);
+                    }
                 }
+
                 var response = updatedOrder.ConvertToOrderReceivedResponse();
                 response.Message = CommonResources.OrderStatusChangedToReceived;
                 response.MessageType = MessageType.Success;

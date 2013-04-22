@@ -186,7 +186,7 @@ namespace TdService.ShopAnyWare.Tests.Orders
             const string IdentityToken = "vhatalski@naviam.com";
             const int OrderId = 1;
             Expect.Call(repository.RemoveOrder(IdentityToken, OrderId)).Return(new Order { Id = 1 });
-            var service = new OrderService(repository,new FakeEmailService(), this.logger);
+            var service = new OrderService(repository, new FakeEmailService(), this.logger);
             var request = new RemoveOrderRequest { IdentityToken = IdentityToken, Id = OrderId };
 
             // act

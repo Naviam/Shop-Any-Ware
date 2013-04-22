@@ -188,10 +188,14 @@ namespace TdService.Services.Interfaces
         ChangePasswordResponse ChangePassword(ChangePasswordRequest request);
 
         /// <summary>
-        /// Changes user's culture to specify what resx files to use when sending emails
+        /// The change user UI culture.
         /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ChangeUserCultureResponse"/>.
+        /// </returns>
         ChangeUserCultureResponse ChangeUserUiCulture(ChangeUserCultureRequest request);
     }
 }

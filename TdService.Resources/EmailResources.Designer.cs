@@ -108,7 +108,7 @@ namespace TdService.Resources {
         ///    &lt;center&gt;
         ///    &lt;table style=&quot;width: 600px; border: none; font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: &apos;Helvetica Neue&apos;, Helvetica, Arial, sans-serif;&quot;&gt;
         ///        &lt;tr&gt;
-        ///            &lt;td style=&quot;background: url(&apos;top.png&apos;) no-re [rest of string was truncated]&quot;;.
+        ///            &lt;td style=&quot;background: url(&apos;http://shopanyw [rest of string was truncated]&quot;;.
         /// </summary>
         public static string OrderReceivedEmailBody {
             get {
@@ -136,7 +136,7 @@ namespace TdService.Resources {
         ///    &lt;center&gt;
         ///    &lt;table style=&quot;width: 600px; border: none; font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: &apos;Helvetica Neue&apos;, Helvetica, Arial, sans-serif;&quot;&gt;
         ///        &lt;tr&gt;
-        ///            &lt;td style=&quot;background: url(&apos;top.png&apos;) no-re [rest of string was truncated]&quot;;.
+        ///            &lt;td style=&quot;background: url(&apos;http://shopanyw [rest of string was truncated]&quot;;.
         /// </summary>
         public static string PackageStatusChangedBody {
             get {

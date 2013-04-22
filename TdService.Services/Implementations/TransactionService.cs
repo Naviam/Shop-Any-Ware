@@ -42,6 +42,9 @@ namespace TdService.Services.Implementations
         /// <param name="transactionsRepository">
         /// The transactions repository.
         /// </param>
+        /// <param name="emailService">
+        /// The email Service.
+        /// </param>
         /// <param name="logger">
         /// The logger.
         /// </param>
@@ -170,17 +173,18 @@ namespace TdService.Services.Implementations
                 if (package.User.Activated)
                 {
                     var profile = package.User.Profile;
+                    var body = string.Format(
+                        profile.GetEmailResourceString("PackageStatusChangedBody"),
+                        package.Name,
+                        package.Id,
+                        profile.GetTranslatedPackageStatus("Assembled"),
+                        profile.GetTranslatedPackageStatus("Paid"),
+                        profile.GetFullName());
                     this.emailService.SendMail(
                         EmailResources.EmailActivationFrom,
                         package.User.Email,
                         profile.GetEmailResourceString("PackageStatusChangedSubject"),
-                        string.Format(
-                            profile.GetEmailResourceString("PackageStatusChangedBody"),
-                            package.Name,
-                            package.Id,
-                            profile.GetTranslatedPackageStatus("Assembled"),
-                            profile.GetTranslatedPackageStatus("Paid"),
-                            profile.GetFullName()));
+                        body);
                 }
 
                 result.Message = string.Format(CommonResources.TransactionPaymentSucceded, package.Id);

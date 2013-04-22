@@ -33,7 +33,10 @@ namespace TdService.Repository.MsSql.Repositories
         {
             using (var context = new ShopAnyWareSql())
             {
-                return context.Orders.Include(o => o.User.Profile).Include(o=>o.Retailer).SingleOrDefault(o => o.Id.Equals(orderId));
+                return
+                    context.Orders.Include(o => o.User.Profile)
+                           .Include(o => o.Retailer)
+                           .SingleOrDefault(o => o.Id.Equals(orderId));
             }
         }
 

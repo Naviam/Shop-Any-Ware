@@ -287,7 +287,18 @@ namespace TdService.ShopAnyWare.Tests.Account
             throw new NotImplementedException();
         }
 
-
+        /// <summary>
+        /// The change user UI culture.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ChangeUserCultureResponse"/>.
+        /// </returns>
+        /// <exception cref="NotImplementedException">
+        /// not implemented
+        /// </exception>
         public ChangeUserCultureResponse ChangeUserUiCulture(ChangeUserCultureRequest request)
         {
             throw new NotImplementedException();
