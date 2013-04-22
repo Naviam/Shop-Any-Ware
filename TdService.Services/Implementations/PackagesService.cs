@@ -64,6 +64,9 @@ using TdService.Services.Messaging.Package;
         /// <param name="addressRepository">
         /// The address Repository.
         /// </param>
+        /// <param name="emailService">
+        /// The email Service.
+        /// </param>
         /// <param name="logger">
         /// The logger.
         /// </param>
@@ -255,17 +258,18 @@ using TdService.Services.Messaging.Package;
                 if (package.User.Activated)
                 {
                     var profile = package.User.Profile;
+                    var body = string.Format(
+                        profile.GetEmailResourceString("PackageStatusChangedBody"),
+                        package.Name,
+                        package.Id,
+                        profile.GetTranslatedPackageStatus("New"),
+                        profile.GetTranslatedPackageStatus("Assembling"),
+                        profile.GetFullName());
                     this.emailService.SendMail(
                         EmailResources.EmailActivationFrom,
                         package.User.Email,
                         profile.GetEmailResourceString("PackageStatusChangedSubject"),
-                        string.Format(
-                            profile.GetEmailResourceString("PackageStatusChangedBody"),
-                            package.Name,
-                            package.Id,
-                            profile.GetTranslatedPackageStatus("New"),
-                            profile.GetTranslatedPackageStatus("Assembling"),
-                            profile.GetFullName()));
+                        body);
                 }
 
                 var response = package.ConvertToAssemblePackageResponse();
@@ -300,17 +304,18 @@ using TdService.Services.Messaging.Package;
                 if (package.User.Activated)
                 {
                     var profile = package.User.Profile;
+                    var body = string.Format(
+                        profile.GetEmailResourceString("PackageStatusChangedBody"),
+                        package.Name,
+                        package.Id,
+                        profile.GetTranslatedPackageStatus("Assembling"),
+                        profile.GetTranslatedPackageStatus("Assembled"),
+                        profile.GetFullName());
                     this.emailService.SendMail(
                         EmailResources.EmailActivationFrom,
                         package.User.Email,
                         profile.GetEmailResourceString("PackageStatusChangedSubject"),
-                        string.Format(
-                            profile.GetEmailResourceString("PackageStatusChangedBody"),
-                            package.Name,
-                            package.Id,
-                            profile.GetTranslatedPackageStatus("Assembling"),
-                            profile.GetTranslatedPackageStatus("Assembled"),
-                            profile.GetFullName()));
+                        body);
                 }
 
                 var response = package.ConvertToPackageAssembledResponse();
@@ -345,17 +350,18 @@ using TdService.Services.Messaging.Package;
                 if (package.User.Activated)
                 {
                     var profile = package.User.Profile;
+                    var body = string.Format(
+                        profile.GetEmailResourceString("PackageStatusChangedBody"),
+                        package.Name,
+                        package.Id,
+                        profile.GetTranslatedPackageStatus("Paid"),
+                        profile.GetTranslatedPackageStatus("Sent"),
+                        profile.GetFullName());
                     this.emailService.SendMail(
                         EmailResources.EmailActivationFrom,
                         package.User.Email,
                         profile.GetEmailResourceString("PackageStatusChangedSubject"),
-                        string.Format(
-                            profile.GetEmailResourceString("PackageStatusChangedBody"),
-                            package.Name,
-                            package.Id,
-                            profile.GetTranslatedPackageStatus("Paid"),
-                            profile.GetTranslatedPackageStatus("Sent"),
-                            profile.GetFullName()));
+                        body);
                 }
 
                 var response = package.ConvertToSendPackageResponse();

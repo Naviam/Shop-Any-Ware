@@ -27,7 +27,7 @@ namespace TdService.Services.Messaging.Order
         public DateTime CreatedDate { get; set; }
 
         /// <summary>
-        /// Determines whether order is added by operator
+        /// Gets or sets a value indicating whether created by operator.
         /// </summary>
         public bool CreatedByOperator { get; set; }
     }

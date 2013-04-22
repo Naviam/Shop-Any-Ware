@@ -18,7 +18,6 @@ namespace TdService.UI.Web.Controllers
     using TdService.Infrastructure.Authentication;
     using TdService.Infrastructure.CookieStorage;
     using TdService.Infrastructure.Domain;
-    using TdService.Infrastructure.Email;
     using TdService.Model;
     using TdService.Resources;
     using TdService.Services.Interfaces;
@@ -418,6 +417,41 @@ namespace TdService.UI.Web.Controllers
         }
 
         /// <summary>
+        /// The change user culture.
+        /// </summary>
+        /// <param name="culture">
+        /// The culture.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ActionResult"/>.
+        /// </returns>
+        [HttpPost]
+        public ActionResult ChangeUserCulture(string culture)
+        {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return new JsonNetResult
+                {
+                    Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                    Data = new { MessageType = MessageType.Success }
+                };
+            }
+
+            var request = new ChangeUserCultureRequest
+            {
+                Culture = culture,
+                IdentityToken = FormsAuthentication.GetAuthenticationToken()
+            };
+            var response = this.membershipService.ChangeUserUiCulture(request);
+            var jsonNetResult = new JsonNetResult
+            {
+                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
+                Data = response
+            };
+            return jsonNetResult;
+        }
+
+        /// <summary>
         /// Save credentials to cookie.
         /// </summary>
         /// <param name="view">
@@ -460,25 +494,6 @@ namespace TdService.UI.Web.Controllers
                 ////view.Password = values["Password"];
                 view.RememberMe = values["RememberMe"] == "yes";
             }
-        }
-
-        [HttpPost]
-        public ActionResult ChangeUserCulture(string culture)
-        {
-            if (!User.Identity.IsAuthenticated)
-                return new JsonNetResult
-            {
-                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
-                Data = new {MessageType = MessageType.Success }
-            }; 
-            var request = new ChangeUserCultureRequest { Culture = culture, IdentityToken = FormsAuthentication.GetAuthenticationToken() };
-            var response = this.membershipService.ChangeUserUiCulture(request);
-            var jsonNetResult = new JsonNetResult
-            {
-                Formatting = (Formatting)Newtonsoft.Json.Formatting.Indented,
-                Data = response
-            };
-            return jsonNetResult;
         }
     }
 }

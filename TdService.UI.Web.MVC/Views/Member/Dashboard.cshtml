@@ -167,6 +167,8 @@
     @Scripts.Render("~/bundles/dashboard")
     <script type="text/javascript">
         $(document).ready(function() {
+            var mainViewModel = new DashboardViewModel($("#model").val());
+            
             ko.validation.init(mainViewModel, {
                 registerExtenders: true,
                 messagesOnModified: false,
@@ -174,8 +176,6 @@
                 parseInputAttributes: true,
                 messageTemplate: null
             });
-
-            var mainViewModel = new DashboardViewModel($("#model").val());
 
             ko.applyBindings(mainViewModel);
             $(".store_address").popover();
