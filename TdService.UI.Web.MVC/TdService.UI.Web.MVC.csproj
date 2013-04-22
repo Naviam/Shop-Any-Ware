@@ -202,6 +202,7 @@
     <Content Include="Content\img\sorting\sort.gif" />
     <Content Include="Content\img\story_collapsed1.png" />
     <Content Include="Content\img\story_expanded1.png" />
+    <Content Include="Content\img\top.png" />
     <Content Include="Content\img\white_bg.jpg" />
     <Content Include="Content\noty\jquery.noty.css" />
     <Content Include="Content\noty\noty_theme_default.css" />
