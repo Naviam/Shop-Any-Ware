@@ -18,11 +18,11 @@
 <div class="tab-content">
     <div class="tab-pane active" id="users" data-bind="with:usersTab">
         <div class="filterDiv">
-            <div class="topArea" data-toggle="buttons-radio" data-bind="foreach: roles">
-                <button type="button" class="btn btn-primary" data-bind="css: {active: selected}, click: $parent.changeSelectedRole, text: roleName"></button>
+            <div class="btn-group topArea" data-toggle="buttons-radio" data-bind="foreach: roles">
+                <button type="button" class="btn" data-bind="css: {active: selected}, click: $parent.changeSelectedRole, text: roleName"></button>
             </div>
             <div class="topArea divNewAdminPopupBtn">
-                <button class="btn btn-primary" data-bind="visible: canModifyUserRoles, click:newUserViewModel.showPopup" href="#newUserFormModal">@AdminDashboardResources.AddUserForm</button>
+                <button class="btn btn-success" data-bind="visible: canModifyUserRoles, click:newUserViewModel.showPopup" href="#newUserFormModal">@AdminDashboardResources.AddUserForm</button>
             </div>
         </div>
         <form class="well form-inline" style="padding: 8px 0 0">
@@ -66,8 +66,10 @@
                     <td data-bind='text: FullName'></td>
                     <td data-bind='text: OrdersCount'></td>
                     <td data-bind='text: PackagesCount'></td>
-                    <td data-bind='foreach: Roles' data-toggle='buttons-radio'>
-                        <button type="button" class="btn btn-small" data-bind="css: {active: userIsInRole}, click: $parent.toggleRole,  text: roleName"></button>
+                    <td>
+                        <div class="btn-group" data-bind='foreach: Roles' data-toggle='buttons-radio'>
+                            <button type="button" class="btn btn-small" data-bind="css: {active: userIsInRole}, click: $parent.toggleRole,  text: roleName"></button>
+                        </div>
                     </td>
                 </tr>
             </tbody>
@@ -142,16 +144,16 @@
             </div>
             <div class="modal-footer">
                 <a href="#" class="btn" data-dismiss="modal">@AdminDashboardResources.CancelButton</a>
-                <a href="#" class="btn btn-primary" data-bind="click: saveUser">@AdminDashboardResources.SaveChangesButton</a>
+                <a href="#" class="btn btn-success" data-bind="click: saveUser">@AdminDashboardResources.SaveChangesButton</a>
             </div>
         </div>
     </div>
     <div class="tab-pane" id="packages" data-bind="with:PackagesTab">
         <div class="filterDiv">
-            <div class="topArea">
-                <button type="button" class="btn btn-primary" data-bind="css: {active: assemblingRequestedSelected}, click: toggleShowAssemblingRequestedPackages, text: '@AdminDashboardResources.BtnShowAssemblingText'"></button>
-                <button type="button" class="btn btn-primary" data-bind="css: {active: dispatchRequestedSelected}, click: toggleShowDispatchRequestedPackages, text: '@AdminDashboardResources.BtnShowPaidText'"></button>
-                <button type="button" class="btn btn-primary" data-bind="css: {active: sentPackagesSelected}, click: toggleShowSentPackages, text: '@AdminDashboardResources.BtnShowSelectedText'"></button>
+            <div class="btn-group topArea">
+                <button type="button" class="btn" data-bind="css: {active: assemblingRequestedSelected}, click: toggleShowAssemblingRequestedPackages, text: '@AdminDashboardResources.BtnShowAssemblingText'"></button>
+                <button type="button" class="btn" data-bind="css: {active: dispatchRequestedSelected}, click: toggleShowDispatchRequestedPackages, text: '@AdminDashboardResources.BtnShowPaidText'"></button>
+                <button type="button" class="btn" data-bind="css: {active: sentPackagesSelected}, click: toggleShowSentPackages, text: '@AdminDashboardResources.BtnShowSelectedText'"></button>
             </div>
         </div>
         <div data-bind="visible: userPackages().length == 0">
