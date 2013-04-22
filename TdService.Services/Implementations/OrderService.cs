@@ -262,7 +262,7 @@ namespace TdService.Services.Implementations
                 var updatedOrder = this.orderRepository.UpdateOrder(order);
                 if (order.User.Activated)
                 {
-                    if (updatedOrder.ReceivedDate != null)
+                    if (updatedOrder.ReceivedDate.HasValue)
                     {
                         var body = string.Format(
                             order.User.Profile.GetEmailResourceString("OrderReceivedEmailBody"),
