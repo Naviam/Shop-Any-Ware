@@ -1,12 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="ChangePasswordResponse.cs" company="Naviam">
+//   Vadim Shaporov. 2013
+// </copyright>
+// <summary>
+//   The change password response.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace TdService.Services.Messaging.Membership
 {
-    public class ChangePasswordResponse:ResponseBase
+    /// <summary>
+    /// The change password response.
+    /// </summary>
+    public class ChangePasswordResponse : ResponseBase
     {
     }
 }

@@ -18,6 +18,7 @@ namespace TdService.Infrastructure.PayPalHelpers
     /// <summary>
     /// The pay pal exception.
     /// </summary>
+    [Serializable]
     public class PayPalException : Exception
     {
         /// <summary>

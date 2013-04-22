@@ -22,7 +22,7 @@ namespace TdService.ShopAnyWare.Specs.Fakes
     /// <summary>
     /// The fake address service.
     /// </summary>
-    public class FakeAddressService : IAddressService
+    public sealed class FakeAddressService : IAddressService
     {
         /// <summary>
         /// The addresses.

@@ -11,6 +11,7 @@ namespace TdService.Model.Membership
     /// <summary>
     /// Invalid profile exception.
     /// </summary>
+    [Serializable]
     public class InvalidProfileException : Exception
     {
         /// <summary>

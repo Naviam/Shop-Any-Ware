@@ -253,13 +253,35 @@ namespace TdService.ShopAnyWare.Tests.Account
             throw new NotImplementedException();
         }
 
-
+        /// <summary>
+        /// The reset password.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ResetPasswordResponse"/>.
+        /// </returns>
+        /// <exception cref="NotImplementedException">
+        /// not implemented
+        /// </exception>
         public ResetPasswordResponse ResetPassword(ResetPasswordRequest request)
         {
             throw new NotImplementedException();
         }
 
-
+        /// <summary>
+        /// The change password.
+        /// </summary>
+        /// <param name="request">
+        /// The request.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ChangePasswordResponse"/>.
+        /// </returns>
+        /// <exception cref="NotImplementedException">
+        /// not implemented
+        /// </exception>
         public ChangePasswordResponse ChangePassword(ChangePasswordRequest request)
         {
             throw new NotImplementedException();

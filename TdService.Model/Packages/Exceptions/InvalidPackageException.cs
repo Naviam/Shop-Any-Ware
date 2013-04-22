@@ -14,6 +14,7 @@ namespace TdService.Model.Packages.Exceptions
     /// <summary>
     /// The invalid package exception.
     /// </summary>
+    [Serializable]
     public class InvalidPackageException : Exception
     {
         /// <summary>

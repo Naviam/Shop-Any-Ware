@@ -14,6 +14,7 @@ namespace TdService.Model.Orders
     /// <summary>
     /// The invalid order exception.
     /// </summary>
+    [Serializable]
     public class InvalidOrderException : Exception
     {
         /// <summary>

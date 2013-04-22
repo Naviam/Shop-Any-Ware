@@ -9,10 +9,10 @@
 
 namespace TdService.UI.Web.Controllers
 {
-    using System.Globalization;
     using System.Web.Mvc;
     using System.Xml;
 
+    using TdService.Infrastructure.CookieStorage;
     using TdService.Infrastructure.Usps;
     using TdService.Services.Interfaces;
     using TdService.UI.Web.Controllers.Base;
@@ -31,14 +31,23 @@ namespace TdService.UI.Web.Controllers
         private readonly IAddressService addressService;
 
         /// <summary>
+        /// The cookie storage service.
+        /// </summary>
+        private readonly ICookieStorageService cookieStorageService;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="HomeController"/> class.
         /// </summary>
         /// <param name="addressService">
         /// The address service.
         /// </param>
-        public HomeController(IAddressService addressService)
+        /// <param name="cookieStorageService">
+        /// The cookie Storage Service.
+        /// </param>
+        public HomeController(IAddressService addressService, ICookieStorageService cookieStorageService)
         {
             this.addressService = addressService;
+            this.cookieStorageService = cookieStorageService;
         }
 
         /// <summary>
@@ -49,7 +58,10 @@ namespace TdService.UI.Web.Controllers
         /// </returns>
         public ActionResult Index()
         {
-            var model = new MainViewModel { SignInViewModel = new SignInViewModel(), SignUpViewModel = new SignUpViewModel() };
+            var signInViewModel = new SignInViewModel();
+            this.SetCredentialsFromCookie(ref signInViewModel);
+
+            var model = new MainViewModel { SignInViewModel = signInViewModel, SignUpViewModel = new SignUpViewModel() };
             return this.View(model);
         }
 
@@ -174,6 +186,23 @@ namespace TdService.UI.Web.Controllers
                            }
             };
             return jsonNetResult;
+        }
+
+        /// <summary>
+        /// Set credentials from cookie to sign in view.
+        /// </summary>
+        /// <param name="view">
+        /// The view.
+        /// </param>
+        private void SetCredentialsFromCookie(ref SignInViewModel view)
+        {
+            var values = this.cookieStorageService.RetrieveCollection("shopanyware_login");
+            if (values != null)
+            {
+                view.Email = values["Email"];
+                ////view.Password = values["Password"];
+                view.RememberMe = values["RememberMe"] == "yes";
+            }
         }
     }
 }

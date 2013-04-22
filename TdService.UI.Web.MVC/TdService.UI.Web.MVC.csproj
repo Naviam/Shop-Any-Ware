@@ -37,19 +37,10 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
     <OutputPath>bin\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DeployIisAppPath>tdservice</DeployIisAppPath>
-    <PublishDatabases>false</PublishDatabases>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
-    <IncludeIisSettings>false</IncludeIisSettings>
-    <DeployIisAppPhysicalPath>C:\inetpub\wwwroot</DeployIisAppPhysicalPath>
-    <IncludeAppPool>true</IncludeAppPool>
+    <DeployIisAppPath>Default Web Site</DeployIisAppPath>
     <Prefer32Bit>false</Prefer32Bit>
+    <PublishDatabases>false</PublishDatabases>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Antlr3.Runtime, Version=3.3.1.7705, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -211,6 +202,7 @@
     <Content Include="Content\img\sorting\sort.gif" />
     <Content Include="Content\img\story_collapsed1.png" />
     <Content Include="Content\img\story_expanded1.png" />
+    <Content Include="Content\img\top.png" />
     <Content Include="Content\img\white_bg.jpg" />
     <Content Include="Content\noty\jquery.noty.css" />
     <Content Include="Content\noty\noty_theme_default.css" />
@@ -527,12 +519,12 @@
     <Content Include="Views\Member\Welcome.cshtml" />
   </ItemGroup>
   <PropertyGroup>
-    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v11.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

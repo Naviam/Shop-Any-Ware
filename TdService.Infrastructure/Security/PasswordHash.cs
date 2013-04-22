@@ -1,25 +1,61 @@
-using System;
-using System.Text;
-using System.Security.Cryptography;
+// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="PasswordHash.cs" company="TdService">
+//   Vitali Hatalski. 2012.
+// </copyright>
+// <summary>
+//   Salted password hashing with PBKDF2-SHA1.
+//   Author: havoc AT defuse.ca
+//   www: http://crackstation.net/hashing-security.htm
+//   Compatibility: .NET 3.0 and later.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace TdService.Infrastructure.Security
 {
+    using System;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Security.Cryptography;
+
     /// <summary>
     /// Salted password hashing with PBKDF2-SHA1.
     /// Author: havoc AT defuse.ca
     /// www: http://crackstation.net/hashing-security.htm
     /// Compatibility: .NET 3.0 and later.
     /// </summary>
+    [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "The name of the author.")]
     public class PasswordHash
     {
         // The following constants may be changed without breaking existing hashes.
-        public const int SALT_BYTES = 24;
-        public const int HASH_BYTES = 24;
-        public const int PBKDF2_ITERATIONS = 1000;
 
-        public const int ITERATION_INDEX = 0;
-        public const int SALT_INDEX = 1;
-        public const int PBKDF2_INDEX = 2;
+        /// <summary>
+        /// The salt bytes.
+        /// </summary>
+        public const int SaltBytes = 24;
+
+        /// <summary>
+        /// The hash bytes.
+        /// </summary>
+        public const int HashBytes = 24;
+
+        /// <summary>
+        /// The PBKDF2 iterations.
+        /// </summary>
+        public const int PBKDF2Iterations = 1000;
+
+        /// <summary>
+        /// The iteration index.
+        /// </summary>
+        public const int IterationIndex = 0;
+
+        /// <summary>
+        /// The salt index.
+        /// </summary>
+        public const int SaltIndex = 1;
+
+        /// <summary>
+        /// The PBKDF2 index.
+        /// </summary>
+        public const int PBKDF2Index = 2;
 
         /// <summary>
         /// Creates a salted PBKDF2 hash of the password.
@@ -29,13 +65,13 @@ namespace TdService.Infrastructure.Security
         public static string CreateHash(string password)
         {
             // Generate a random salt
-            RNGCryptoServiceProvider csprng = new RNGCryptoServiceProvider();
-            byte[] salt = new byte[SALT_BYTES];
+            var csprng = new RNGCryptoServiceProvider();
+            var salt = new byte[SaltBytes];
             csprng.GetBytes(salt);
 
             // Hash the password and encode the parameters
-            byte[] hash = PBKDF2(password, salt, PBKDF2_ITERATIONS, HASH_BYTES);
-            return PBKDF2_ITERATIONS + ":" +
+            var hash = PBKDF2(password, salt, PBKDF2Iterations, HashBytes);
+            return PBKDF2Iterations + ":" +
                 Convert.ToBase64String(salt) + ":" +
                 Convert.ToBase64String(hash);
         }
@@ -50,10 +86,10 @@ namespace TdService.Infrastructure.Security
         {
             // Extract the parameters from the hash
             char[] delimiter = { ':' };
-            string[] split = goodHash.Split(delimiter);
-            int iterations = Int32.Parse(split[ITERATION_INDEX]);
-            byte[] salt = Convert.FromBase64String(split[SALT_INDEX]);
-            byte[] hash = Convert.FromBase64String(split[PBKDF2_INDEX]);
+            var split = goodHash.Split(delimiter);
+            var iterations = int.Parse(split[IterationIndex]);
+            byte[] salt = Convert.FromBase64String(split[SaltIndex]);
+            byte[] hash = Convert.FromBase64String(split[PBKDF2Index]);
 
             byte[] testHash = PBKDF2(password, salt, iterations, hash.Length);
             return SlowEquals(hash, testHash);
@@ -69,9 +105,12 @@ namespace TdService.Infrastructure.Security
         /// <returns>True if both byte arrays are equal. False otherwise.</returns>
         private static bool SlowEquals(byte[] a, byte[] b)
         {
-            uint diff = (uint)a.Length ^ (uint)b.Length;
-            for (int i = 0; i < a.Length && i < b.Length; i++)
+            var diff = (uint)a.Length ^ (uint)b.Length;
+            for (var i = 0; i < a.Length && i < b.Length; i++)
+            {
                 diff |= (uint)(a[i] ^ b[i]);
+            }
+
             return diff == 0;
         }
 
@@ -85,8 +124,7 @@ namespace TdService.Infrastructure.Security
         /// <returns>A hash of the password.</returns>
         private static byte[] PBKDF2(string password, byte[] salt, int iterations, int outputBytes)
         {
-            Rfc2898DeriveBytes pbkdf2 = new Rfc2898DeriveBytes(password, salt);
-            pbkdf2.IterationCount = iterations;
+            var pbkdf2 = new Rfc2898DeriveBytes(password, salt) { IterationCount = iterations };
             return pbkdf2.GetBytes(outputBytes);
         }
     }

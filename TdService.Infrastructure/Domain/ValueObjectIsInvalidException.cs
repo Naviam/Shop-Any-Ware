@@ -11,6 +11,7 @@ namespace TdService.Infrastructure.Domain
     /// <summary>
     /// If a value object is not created in a valid state, this exception should be thrown.
     /// </summary>
+    [Serializable]
     public class ValueObjectIsInvalidException : Exception
     {
         /// <summary>
