@@ -8,7 +8,7 @@
     self.brokenRules = serverModel.BrokenRules;
 
     //server model properties
-    self.operationAmount = serverModel.OperationAmount;
+    self.operationAmount = "$" + serverModel.OperationAmount;
     self.transactionDate = serverModel.DateString;
     self.currency = serverModel.Currency;
     self.transactionStatus = serverModel.StatusTranslated;

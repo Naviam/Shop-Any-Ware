@@ -64,7 +64,7 @@ namespace TdService.UI.Web.Controllers
         /// <returns>
         /// Get transaction history in JSON formatted result.
         /// </returns>
-        [Authorize(Roles = "Shopper")]
+        [Authorize(Roles = "Shopper,Operator")]
         [HttpPost]
         public ActionResult TransactionHistory()
         {

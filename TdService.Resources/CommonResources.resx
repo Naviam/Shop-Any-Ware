@@ -142,7 +142,7 @@
     <value>The item has been moved to package {0}, id: {1}</value>
   </data>
   <data name="OrderItemRemovedMessage" xml:space="preserve">
-    <value>Order item was successfullt removed</value>
+    <value>Order item was successfully removed</value>
   </data>
   <data name="OrderItemsSuccessfullyMoved" xml:space="preserve">
     <value>Order items were successfully moved to package {0}, id: {1}</value>
@@ -184,7 +184,7 @@
     <value>Transaction was canceled</value>
   </data>
   <data name="UserAddedToRole" xml:space="preserve">
-    <value>User was successfullt added to role</value>
+    <value>User was successfully added to role</value>
   </data>
   <data name="UserNotFound" xml:space="preserve">
     <value>User with specified ID  was not found</value>

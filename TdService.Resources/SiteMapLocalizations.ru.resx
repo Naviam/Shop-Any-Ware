@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AdminDashboard" xml:space="preserve">
-    <value>Панель администратора</value>
+    <value>Администрирование</value>
   </data>
   <data name="AdminDashboardDescription" xml:space="preserve">
     <value>Администрирование сайта</value>
@@ -160,7 +160,7 @@
     <value>Стоимость</value>
   </data>
   <data name="ShopperDashboard" xml:space="preserve">
-    <value>Панель покупателя</value>
+    <value>Заказы и посылки</value>
   </data>
   <data name="ShopperDashboardDescription" xml:space="preserve">
     <value>Добавление заказов и создание посылок</value>

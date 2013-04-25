@@ -26,12 +26,12 @@
                 </td>
             </tr>
         </table>
-        <div data-bind="collapsed: isCollapsed" class="white collapse" style="height:auto">
+        <div data-bind="collapsed: isCollapsed" class="white collapse" style="height: auto">
             <table class="header">
                 <tbody>
                     <tr>
                         <td>@DashboardViewResources.DeliveryAddressHeader</td>
-                        <td >
+                        <td>
                             <select data-bind='options: $root.deliveryAddresses, 
                                     optionsText: "AddressName", 
                                     optionsValue: "Id",
@@ -56,7 +56,7 @@
                     <tr data-bind="visible:canCalculateDeliveryRates">
                         <td>@DashboardViewResources.EstimatedShippingRate</td>
                         <td>
-                            <span data-bind="text:estimatedDeliveryRate" ></span>
+                            <span data-bind="text:estimatedDeliveryRate"></span>
                         </td>
                     </tr>
                     <tr data-bind="visible:trackingNumberVisible">
@@ -119,7 +119,20 @@
                     </thead>
                     <tbody id="package_items" data-bind="foreach: {data: items}">
                         <tr>
-                            <td class="left"><i class="icon-camera"></i>&nbsp;<span data-bind="text: name"></span></td>
+                            <td class="left">
+                                <div class="modal" data-bind="attr:{id: imagesPopupDivId}" style="display: none;">
+                                    <div class="modal-body">
+                                        <ul data-bind="foreach: {data: images}" class="bxslider">
+                                            <li>
+                                                <img alt="Images"  data-bind="attr: {src: Url, title:FileName}" /></li>
+                                        </ul>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="#" class="btn" data-bind="click:closeImagesPopup">@DashboardViewResources.CancelButton</a>
+                                    </div>
+                                </div>
+                                <i class="icon-camera" style="cursor: pointer" data-bind="click:openImagesPopup"></i>&nbsp;<span data-bind="text: name"></span>
+                            </td>
                             <td><span class="editable" data-bind="text: quantity"></span></td>
                             <td><span class="editable" data-bind="text: weight"></span>lbs</td>
                             <td>$ <span class="editable" data-bind="text: price"></span></td>
@@ -138,7 +151,7 @@
                         <tr>
                             <td class="right">@DashboardViewResources.ItemsTotalHeader</td>
                             <td><span data-bind="text: totalItemsQuantity"></span></td>
-                            <td><span data-bind="text: totalItemsWeight"></span>lbs</td>
+                            <td><span data-bind="text: totalItemsWeight"></span>&nbsp;lbs</td>
                             <td>$ <span data-bind="text: totalItemsAmount"></span></td>
                             <td colspan="2"></td>
                         </tr>

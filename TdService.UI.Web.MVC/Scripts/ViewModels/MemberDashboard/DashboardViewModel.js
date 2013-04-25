@@ -124,6 +124,9 @@ function DashboardViewModel(serverModel) {
     self.retailers = ko.observableArray();
 
     self.balance = ko.observable(addressModel.WalletAmount);
+    self.balanceText = ko.computed(function () {
+        return '$' + self.balance();
+    });
     self.addingFunds = ko.observable(false);
     self.addFundsAmount = ko.observable('').extend({ required: true, number: true });
 

@@ -58,7 +58,8 @@ namespace TdService.Repository.MsSql.StaticDataSeed
                 Password = PasswordHash.CreateHash("ruinruin"),
                 Profile = profile,
                 Roles = new List<Role> { adminRole, shopperRole, operatorRole },
-                Wallet = new Wallet { Amount = 0.00m }
+                Wallet = new Wallet { Amount = 0.00m },
+                Activated = true
             };
             context.Users.Add(user);
             context.SaveChanges();
@@ -81,7 +82,8 @@ namespace TdService.Repository.MsSql.StaticDataSeed
                 Roles = new List<Role> { adminRole },
                 Wallet = new Wallet { Amount = 0.00m },
                 Profile = profileOleg,
-                ActivationCode = Guid.NewGuid()
+                ActivationCode = Guid.NewGuid(),
+                Activated = true
             };
             context.Users.Add(userOleg);
             context.SaveChanges();
@@ -104,7 +106,8 @@ namespace TdService.Repository.MsSql.StaticDataSeed
                 Profile = profileShopper,
                 Roles = new List<Role> { shopperRole },
                 Wallet = new Wallet { Amount = 0.00m },
-                ActivationCode = Guid.NewGuid()
+                ActivationCode = Guid.NewGuid(),
+                Activated=true
             };
             context.Users.Add(shopper);
             context.SaveChanges();
@@ -127,7 +130,8 @@ namespace TdService.Repository.MsSql.StaticDataSeed
                 Profile = profileOperator,
                 Roles = new List<Role> { operatorRole },
                 Wallet = new Wallet { Amount = 0.00m },
-                ActivationCode = Guid.NewGuid()
+                ActivationCode = Guid.NewGuid(),
+                Activated = true
             };
             context.Users.Add(operatorUser);
             context.SaveChanges();
@@ -150,7 +154,8 @@ namespace TdService.Repository.MsSql.StaticDataSeed
                 Profile = profileConsultant,
                 Roles = new List<Role> { consultantRole },
                 Wallet = new Wallet { Amount = 0.00m },
-                ActivationCode = Guid.NewGuid()
+                ActivationCode = Guid.NewGuid(),
+                Activated = true
             };
             context.Users.Add(consultant);
             context.SaveChanges();
@@ -171,7 +176,8 @@ namespace TdService.Repository.MsSql.StaticDataSeed
                 Password = PasswordHash.CreateHash("2320244"),
                 Profile = profileKotg,
                 Roles = new List<Role> { adminRole, shopperRole, operatorRole },
-                Wallet = new Wallet { Amount = 0 }
+                Wallet = new Wallet { Amount = 0 },
+                Activated = true
             };
             context.Users.Add(kotg);
             context.SaveChanges();
@@ -195,8 +201,9 @@ namespace TdService.Repository.MsSql.StaticDataSeed
                     Email = string.Format("user{0}@gmail.com", s),
                     Password = pwd, 
                     Profile = bulkProfile, 
-                    Roles = new List<Role> { shopperRole }, 
-                    Wallet = new Wallet { Amount = 500 }
+                    Roles = new List<Role> { shopperRole },
+                    Wallet = new Wallet { Amount = 500 },
+                    Activated = true
                 };
                 context.Users.Add(bulkUser);
                 context.SaveChanges();
