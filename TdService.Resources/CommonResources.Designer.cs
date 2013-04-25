@@ -259,7 +259,7 @@ namespace TdService.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Order item was successfullt removed.
+        ///   Looks up a localized string similar to Order item was successfully removed.
         /// </summary>
         public static string OrderItemRemovedMessage {
             get {
@@ -457,7 +457,7 @@ namespace TdService.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to User was successfullt added to role.
+        ///   Looks up a localized string similar to User was successfully added to role.
         /// </summary>
         public static string UserAddedToRole {
             get {

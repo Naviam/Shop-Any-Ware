@@ -24,7 +24,7 @@
     self.openImagesPopup = function () {
         if (self.images().length == 0) return;
         $('#' + self.imagesPopupDivId()).modal('show');
-        self.slider = $('#' + self.imagesPopupDivId() +' .bxslider').bxSlider({
+        self.slider = $('#' + self.imagesPopupDivId() + ' .bxslider').bxSlider({
             mode: 'fade',
             captions: true
         });

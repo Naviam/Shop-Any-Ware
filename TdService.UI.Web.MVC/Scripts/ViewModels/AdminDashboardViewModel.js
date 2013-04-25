@@ -212,7 +212,7 @@ function UsersTab(serverModel) {
     self.roles.unshift({ roleName: jsonServerModel.AllRolesTranslated, id: -1, selected: ko.observable(true) });
 
     //global class
-    pageSettings = new PageSettings(jsonServerModel.RoleManagementPermissionsError, jsonServerModel.CanModifyUserRoles, jsonServerModel.UserFilterValiidationMessage, jsonServerModel.MemberDashBoardUrl,
+    pageSettings = new PageSettings(jsonServerModel.RoleManagementPermissionsError, jsonServerModel.CanModifyUserRoles, jsonServerModel.UserFilterValidationMessage, jsonServerModel.MemberDashBoardUrl,
     jsonServerModel.ShopperRoleCannotBeAssigned, jsonServerModel.UserId, jsonServerModel.CantModifyOwnRole);
 
     modalWindowValidationMessages = new ModalWindowValidationMessages(jsonServerModel.EmailIsRequired, jsonServerModel.EmailIsIncorrect, jsonServerModel.FirstNameIsRequired,

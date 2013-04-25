@@ -88,7 +88,7 @@ namespace TdService.Resources.Views {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ShopAnyWare.com 2012.
+        ///   Looks up a localized string similar to ShopAnyWare.com 2013.
         /// </summary>
         public static string Footer {
             get {

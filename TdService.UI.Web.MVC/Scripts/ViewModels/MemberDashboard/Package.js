@@ -268,7 +268,9 @@ function Package(serverModel) {
         self.popupItemViewModel.uploaderVisible(true);
 
         $('#' + self.popupDomId()).modal('show');
-        self.initUploader();
+        if (viewSettings.operatorMode) {
+            self.initUploader();
+        }
     };
 
     self.saveItem = function () {

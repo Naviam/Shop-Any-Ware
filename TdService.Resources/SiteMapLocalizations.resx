@@ -160,7 +160,7 @@
     <value>Delivery Rates</value>
   </data>
   <data name="ShopperDashboard" xml:space="preserve">
-    <value>Shopper Dashboard</value>
+    <value>Orders and packages</value>
   </data>
   <data name="ShopperDashboardDescription" xml:space="preserve">
     <value>Add orders and packages</value>
