@@ -101,7 +101,7 @@ namespace TdService.UI.Web.Controllers
         /// <returns>
         /// Returns the page with the new interface.
         /// </returns>
-        [Authorize(Roles = "Admin, Operator")]
+        [Authorize(Roles = "Admin, Operator, Admin")]
         public ActionResult ViewShopperDashboard(string userEmail)
         {
             var model = new ShopperDashboardViewModel { UserEmail = userEmail, OperatorMode = true };
