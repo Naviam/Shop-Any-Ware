@@ -107,7 +107,7 @@ namespace TdService.Repository.MsSql.StaticDataSeed
                 Roles = new List<Role> { shopperRole },
                 Wallet = new Wallet { Amount = 0.00m },
                 ActivationCode = Guid.NewGuid(),
-                Activated=true
+                Activated = true
             };
             context.Users.Add(shopper);
             context.SaveChanges();
