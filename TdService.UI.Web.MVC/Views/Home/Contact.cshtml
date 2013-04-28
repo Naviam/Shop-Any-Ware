@@ -1,9 +1,13 @@
-﻿@{
+﻿@using TdService.Resources
+@{
     ViewBag.Title = "Shop Any Ware - Contact Us";
 }
-
-<h3>Наши контакты</h3>
-<br/>
+<ul class="breadcrumb">
+    <li>
+        <a href="@Url.Action("Index", "Home")">@SiteMapLocalizations.HomeTitle</a> <span class="divider">/</span>
+    </li>
+    <li class="active">@SiteMapLocalizations.ContactsTitle</li>
+</ul>
 452 PALISADE AVE #D, 07010<br/>
 CLIFFSIDE PARK, NJ, USA<br/>
 <br/>
