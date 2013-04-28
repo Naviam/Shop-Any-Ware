@@ -1,21 +1,28 @@
 ﻿@model TdService.UI.Web.ViewModels.Account.ForgotPasswordViewModel
+@using TdService.Resources
 @using TdService.Resources.Views;
 @{
     ViewBag.Title = AccountViewResources.ForgotPageTitle;
 }
 
+<ul class="breadcrumb">
+    <li>
+        <a href="@Url.Action("Index", "Home")">@SiteMapLocalizations.HomeTitle</a> <span class="divider">/</span>
+    </li>
+    <li>
+        <a href="@Url.Action("SignIn", "Account")">@AccountViewResources.SignInPageHeader</a> <span class="divider">/</span>
+    </li>
+    <li class="active">@AccountViewResources.ForgotPageTitle</li>
+</ul>
 @using (Html.BeginForm("Forgot", "Account", FormMethod.Post, new Dictionary<string, object> { { "class", "form-horizontal" } }))
 {
     @Html.AntiForgeryToken()
     <fieldset>
         <div class="control-group">
-            <h2>@AccountViewResources.ForgotPageTitle</h2>
+            <h3>@AccountViewResources.ForgotFormHelpMessage</h3>
         </div>
         <div class="control-group">
-            @AccountViewResources.ForgotFormHelpMessage
-        </div>
-        <div class="control-group">
-            <label class="control-label">@AccountViewResources.EmailFormLabel</label>
+            <label class="control-label">@AccountViewResources.EmailFormLabel:</label>
             <div class="controls error-inline">
                 @Html.TextBoxFor(m => m.Email, new Dictionary<string, object> { { "class", "input-xlarge" }, { "placeholder", AccountViewResources.EmailFormFieldPlaceholder } })
                 @Html.ValidationMessageFor(m => m.Email)
