@@ -121,7 +121,7 @@
     <value>Confirm Password</value>
   </data>
   <data name="EmailFormFieldPlaceholder" xml:space="preserve">
-    <value>Enter email</value>
+    <value>Enter your email address</value>
   </data>
   <data name="EmailFormLabel" xml:space="preserve">
     <value>Email</value>
@@ -136,7 +136,7 @@
     <value>Enter email address you have specified at registration.</value>
   </data>
   <data name="ForgotPageTitle" xml:space="preserve">
-    <value>ShopAnyWare - Forgot email or password</value>
+    <value>Reset password form</value>
   </data>
   <data name="ForgotPasswordHeader" xml:space="preserve">
     <value>Forgot Password?</value>
@@ -148,7 +148,7 @@
     <value>Last Name</value>
   </data>
   <data name="PasswordChangedPageContent" xml:space="preserve">
-    <value>Your password has been successfullt changed!</value>
+    <value>Your password has been successfully changed!</value>
   </data>
   <data name="PasswordChangedPageTitle" xml:space="preserve">
     <value>Password changed</value>
@@ -163,16 +163,17 @@
     <value>Password</value>
   </data>
   <data name="PasswordResetErrorPageTitle" xml:space="preserve">
-    <value>Password reset - error</value>
+    <value>Error occurred!</value>
   </data>
   <data name="PasswordResetPageTitle" xml:space="preserve">
     <value>Password has been reset</value>
   </data>
   <data name="PwdRecoveryEmailSent" xml:space="preserve">
-    <value>Password recovery instructions have been sent to your email</value>
+    <value>The password recovery information has been sent to your email address.</value>
+    <comment> </comment>
   </data>
   <data name="PwdRecoveryUserNotFound" xml:space="preserve">
-    <value>User with specified email not found</value>
+    <value>The user with a specified email address has not been found.</value>
   </data>
   <data name="RememberMeFormLabel" xml:space="preserve">
     <value>Remember Me</value>
@@ -187,7 +188,7 @@
     <value>Sign In</value>
   </data>
   <data name="SignInPageHeader" xml:space="preserve">
-    <value>Log in to view your ShopAnyWare Account</value>
+    <value>Sign In</value>
   </data>
   <data name="SignInPageTitle" xml:space="preserve">
     <value>Shop Any Ware - Sign In</value>

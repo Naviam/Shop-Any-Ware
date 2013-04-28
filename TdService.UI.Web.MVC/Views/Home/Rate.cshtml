@@ -1,9 +1,14 @@
-﻿@using TdService.Resources.Views;
+﻿@using TdService.Resources
+@using TdService.Resources.Views;
 @{
     ViewBag.Title = DeliveryRatesViewResources.PageHeader;
 }
-<script type="text/javascript" src="@Url.Content("~/Scripts/ViewModels/RatesViewModel.js")"></script>
-<script type="text/javascript" src="@Url.Content("~/Scripts/knockout-2.2.0.js")"></script>
+<ul class="breadcrumb">
+    <li>
+        <a href="@Url.Action("Index", "Home")">@SiteMapLocalizations.HomeTitle</a> <span class="divider">/</span>
+    </li>
+    <li class="active">@SiteMapLocalizations.RatesTitle</li>
+</ul>
 
 <label for="country">@DeliveryRatesViewResources.CountryHeader: </label>
 <select id="country" data-bind="options: countries,optionsText: 'TranslatedName', value: selectedCountry">
@@ -14,11 +19,13 @@
 <label for="weight">@DeliveryRatesViewResources.WeightHeader: </label>
 <input id="weight" data-bind="value:weight" type="text" />&nbsp;@DeliveryRatesViewResources.LbsShort
 <label for="amount">@DeliveryRatesViewResources.AmountHeader: </label>
-<input id="amount" type="text" readonly data-bind="value:calculatedRate" />
+<input id="amount" type="text" readonly="readonly" data-bind="value:calculatedRate" />
 <br />
 <input type="button" value="Calculate" data-bind="click:calculateRate" />
 @section Scripts
 {
+    <script type="text/javascript" src="@Url.Content("~/Scripts/ViewModels/RatesViewModel.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/knockout-2.2.0.js")"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             var ratesViewModel = new RatesViewModel('@DeliveryRatesViewResources.LoadingRatesText', '@DeliveryRatesViewResources.ErrorText', '@DeliveryRatesViewResources.DeliveryUnavailable');

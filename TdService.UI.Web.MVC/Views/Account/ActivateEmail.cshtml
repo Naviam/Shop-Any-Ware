@@ -1,4 +1,5 @@
-﻿@using TdService.Resources.Views
+﻿@using TdService.Resources
+@using TdService.Resources.Views
 @model TdService.UI.Web.ViewModels.Account.ActivateEmailViewModel
 
 @{
@@ -6,4 +7,19 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
- <h3>@Model.ActivateionResult</h3>
+<ul class="breadcrumb">
+    <li>
+        <a href="@Url.Action("Dashboard", "Member")">@SiteMapLocalizations.ShopperDashboard</a> <span class="divider">/</span>
+    </li>
+    <li>
+        <a href="@Url.Action("Index", "Profile")">@LayoutViewResources.ProfileMenuHeader</a> <span class="divider">/</span>
+    </li>
+    <li class="active">@ActivateEmailResources.PageTitle</li>
+</ul>
+<div class="alert alert-info"><h3>@Model.ActivateionResult</h3></div>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>

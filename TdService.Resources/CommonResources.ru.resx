@@ -253,7 +253,7 @@
     <value>Загрузка</value>
   </data>
   <data name="EmailActivated" xml:space="preserve">
-    <value>Ваш почтовый адрес был активирован.  Сейчас вы можете получать сервисные сообщения от ShopAnyWare.</value>
+    <value>Ваш почтовый адрес активирован!  Вы сейчас можете получать сервисные сообщения от ShopAnyWare.</value>
   </data>
   <data name="EmailActivationErrorInvalidCode" xml:space="preserve">
     <value>Не удалось активировать почтовый адрес. Неверный код активации</value>

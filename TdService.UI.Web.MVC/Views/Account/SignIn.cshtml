@@ -1,14 +1,22 @@
-﻿@using TdService.Resources.Views
+﻿@using TdService.Resources
+@using TdService.Resources.Views
 @model TdService.UI.Web.ViewModels.Account.MainViewModel
 @{
     ViewBag.Title = AccountViewResources.SignInPageTitle;
 }
+
+<ul class="breadcrumb">
+    <li>
+        <a href="@Url.Action("Index", "Home")">@SiteMapLocalizations.HomeTitle</a> <span class="divider">/</span>
+    </li>
+    <li class="active">@AccountViewResources.SignInPageHeader</li>
+</ul>
 @using (Html.BeginForm("SignIn", "Account", FormMethod.Post, new Dictionary<string, object> { { "class", "form-horizontal" } }))
 {
     @Html.AntiForgeryToken()
     <fieldset>
         <div class="control-group">
-            <h2>@AccountViewResources.SignInPageHeader</h2>
+            <h3>@AccountViewResources.SignInPageHeader</h3>
         </div>
         <div class="control-group">
             <label class="control-label">@AccountViewResources.EmailFormLabel:</label>

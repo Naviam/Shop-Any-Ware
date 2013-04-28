@@ -1,9 +1,15 @@
-﻿@using TdService.Resources.Views
+﻿@using TdService.Resources
+@using TdService.Resources.Views
 @{
     ViewBag.Title = "Shop Any Ware - Our Services";
 }
 
-<h3>@OurServiceViewResources.OurServiceHeader</h3><br />
+<ul class="breadcrumb">
+    <li>
+        <a href="@Url.Action("Index", "Home")">@SiteMapLocalizations.HomeTitle</a> <span class="divider">/</span>
+    </li>
+    <li class="active">@SiteMapLocalizations.OurServicesTitle</li>
+</ul>
 <div class="row-fluid">
     <ol>
         <li>
