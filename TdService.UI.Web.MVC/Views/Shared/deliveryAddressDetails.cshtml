@@ -5,74 +5,62 @@
     <div class="control-group">
         <label class="control-label">@AddressViewResources.AddressTable_AddressName:</label>
         <div class="controls">
-            @*@Html.HiddenFor(m => m.Id, new Dictionary<string, object> {{ "data-bind", "value: Id" }})*@
-            @Html.TextBoxFor(m => m.AddressName, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: AddressName" }, { "placeholder", AddressViewResources.AddressName_Placeholder } })
-            <input class="input-xlarge" name="Id" data-bind="value: Id" type="hidden" />
-            @*<input class="input-xlarge" name="AddressName" data-bind="value: AddressName" type="text" placeholder="@AddressViewResources.AddressName_Placeholder" />*@
+            <input class="input-xlarge" data-bind="value: Id" type="hidden" />
+            <input class="input-xlarge"  data-bind="value: AddressName" type="text" placeholder="@AddressViewResources.AddressName_Placeholder" />
         </div>
     </div>
     <div class="control-group">
         <label class="control-label">@AddressViewResources.AddressTable_FirstName:</label>
         <div class="controls">
-            @Html.TextBoxFor(m => m.FirstName, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: FirstName" }, { "placeholder", AddressViewResources.FirstName_Placeholder } })
-            @*<input class="input-xlarge" name="FirstName" data-bind="value: FirstName" type="text" placeholder="@AddressViewResources.FirstName_Placeholder" />*@
+            <input class="input-xlarge" data-bind="value: FirstName" type="text" placeholder="@AddressViewResources.FirstName_Placeholder" />
         </div>
     </div>
     <div class="control-group">
         <label class="control-label">@AddressViewResources.AddressTable_LastName:</label>
         <div class="controls">
-            @Html.TextBoxFor(m => m.LastName, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: LastName" }, { "placeholder", AddressViewResources.LastName_Placeholder } })
-            @*<input class="input-xlarge" name="LastName" data-bind="value: LastName" type="text" placeholder="@AddressViewResources.LastName_Placeholder" />*@
+            <input class="input-xlarge" data-bind="value: LastName" type="text" placeholder="@AddressViewResources.LastName_Placeholder" />
         </div>
     </div>
     <div class="control-group">
         <label class="control-label">@AddressViewResources.AddressTable_AddressLine1:</label>
         <div class="controls">
-            @Html.TextBoxFor(m => m.AddressLine1, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: AddressLine1" }, { "placeholder", AddressViewResources.Address1_Placeholder } })
-            @*<input class="input-xlarge" name="AddressLine1" data-bind="value: AddressLine1" type="text" placeholder="@AddressViewResources.Address1_Placeholder" />*@
+            <input class="input-xlarge" data-bind="value: AddressLine1" type="text" placeholder="@AddressViewResources.Address1_Placeholder" />
         </div>
     </div>
     <div class="control-group">
         <label class="control-label">@AddressViewResources.AddressTable_AddressLine2:</label>
         <div class="controls">
-            @Html.TextBoxFor(m => m.AddressLine2, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: AddressLine2" }, { "placeholder", AddressViewResources.Address2_Placeholder } })
-            @*<input class="input-xlarge" name="AddressLine2" data-bind="value: AddressLine2" type="text" placeholder="@AddressViewResources.Address2_Placeholder" />*@
+            <input class="input-xlarge" data-bind="value: AddressLine2" type="text" placeholder="@AddressViewResources.Address2_Placeholder" />
         </div>
     </div>
     <div class="control-group">
         <label class="control-label">@AddressViewResources.AddressTable_City:</label>
         <div class="controls">
-            @Html.TextBoxFor(m => m.City, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: City" }, { "placeholder", AddressViewResources.City_Placeholder } })
-            @*<input class="input-xlarge" name="City" data-bind="value: City" type="text" placeholder="@AddressViewResources.City_Placeholder" />*@
+            <input class="input-xlarge" data-bind="value: City" type="text" placeholder="@AddressViewResources.City_Placeholder" />
         </div>
     </div>
     <div class="control-group">
         <label class="control-label">@AddressViewResources.AddressTable_Region:</label>
         <div class="controls">
-            @Html.TextBoxFor(m => m.Region, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: Region" }, { "placeholder", AddressViewResources.Region_Placeholder } })
-            @*<input class="input-xlarge" name="Region" data-bind="value: Region" type="text" placeholder="@AddressViewResources.Region_Placeholder" />*@
+            <input class="input-xlarge" data-bind="value: Region" type="text" placeholder="@AddressViewResources.Region_Placeholder" />
         </div>
     </div>
     <div class="control-group">
         <label class="control-label">@AddressViewResources.AddressTable_Country:</label>
         <div class="controls">
-            @Html.DropDownListFor(m=>m.CountryId, (IEnumerable<SelectListItem>)ViewData["Countries"],new Dictionary<string, object> { { "data-bind", "value: CountryId" }})
-            @*@Html.TextBoxFor(m => m.Country, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: Country" }, { "placeholder", AddressViewResources.Country_Placeholder } })*@
-            @*<input class="input-xlarge" name="Country" data-bind="value: Country" type="text" placeholder="@AddressViewResources.Country_Placeholder" />*@
+            <select class="input-xlarge" data-bind="options: $root.countries, optionsText: 'TranslatedName', value: SelectedCountry"></select>
         </div>
     </div>
     <div class="control-group">
         <label class="control-label">@AddressViewResources.AddressTable_ZipCode:</label>
         <div class="controls">
-            @Html.TextBoxFor(m => m.ZipCode, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: ZipCode" }, { "placeholder", AddressViewResources.ZipCode_Placeholder } })
-            @*<input class="input-xlarge" name="ZipCode" data-bind="value: ZipCode" type="text" placeholder="@AddressViewResources.ZipCode_Placeholder" />*@
+            <input class="input-xlarge" data-bind="value: ZipCode" type="text" placeholder="@AddressViewResources.ZipCode_Placeholder" />
         </div>
     </div>
     <div class="control-group">
         <label class="control-label">@AddressViewResources.AddressTable_Phone:</label>
         <div class="controls">
-            @Html.TextBoxFor(m => m.Phone, new Dictionary<string, object> { { "class", "input-xlarge" }, { "data-bind", "value: Phone" }, { "placeholder", AddressViewResources.Phone_Placeholder } })
-            @*<input class="input-xlarge" name="Phone" data-bind="value: Phone" type="text" placeholder="@AddressViewResources.Phone_Placeholder" />*@
+            <input class="input-xlarge" data-bind="value: Phone" type="text" placeholder="@AddressViewResources.Phone_Placeholder" />
         </div>
     </div>
 </fieldset>

@@ -138,9 +138,9 @@ namespace TdService.UI.Web.Controllers
         [Authorize(Roles = "Shopper")]
         public ActionResult Index()
         {
-            var result = this.addressService.GetCountries().ConvertToCountriesViewModel();
-            var sl = result.Select(vm => new SelectListItem { Text = vm.TranslatedName, Value = vm.Id.ToString(CultureInfo.InvariantCulture) });
-            this.ViewData["Countries"] = sl;
+            //var result = this.addressService.GetCountries().ConvertToCountriesViewModel();
+            //var sl = result.Select(vm => new SelectListItem { Text = vm.TranslatedName, Value = vm.Id.ToString(CultureInfo.InvariantCulture) });
+            //this.ViewData["Countries"] = sl;
             return this.View("Index");
         }
 

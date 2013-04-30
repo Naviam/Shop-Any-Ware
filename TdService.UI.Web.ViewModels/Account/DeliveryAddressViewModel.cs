@@ -55,6 +55,8 @@ namespace TdService.UI.Web.ViewModels.Account
         {
             get
             {
+                if (string.IsNullOrEmpty(CountryCode)) return string.Empty;
+
                 return Countries.ResourceManager.GetString(this.CountryCode);
             }
         }

@@ -27,6 +27,8 @@ namespace TdService.UI.Web.ViewModels.Account
             // First set the cascade mode
             this.CascadeMode = CascadeMode.StopOnFirstFailure;
 
+
+            RuleFor(da => da.CountryId).NotEmpty().WithState(e => ErrorCode.AddressCountryRequired.ToString());
             RuleFor(da => da.AddressName)
                 .NotEmpty().WithState(e => ErrorCode.DeliveryAddressAddressNameRequired.ToString()).WithLocalizedMessage(() => ErrorCodeResources.DeliveryAddressAddressNameRequired)
                 .Length(1, 40).WithState(e => ErrorCode.DeliveryAddressAddressNameMaxLength.ToString()).WithLocalizedMessage(() => ErrorCodeResources.DeliveryAddressAddressNameMaxLength);

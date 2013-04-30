@@ -18,10 +18,7 @@
         return self.rate();
     });
     $.post("/home/getCountries", function (data) {
-        var resp = ko.toJS(data);
-        $.each(resp, function (index, value) {
-            self.countries.push({ TranslatedName: value.TranslatedName, DefaultName: value.DefaultName });
-        });
+        self.countries(data);
     });
 
     self.calculateRate = function () {
