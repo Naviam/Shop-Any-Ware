@@ -10,7 +10,7 @@
     <li><a href="@Url.Action("Dashboard", "Member")">@SiteMapLocalizations.ShopperDashboard</a> <span class="divider">/</span></li>
     <li class="active">@LayoutViewResources.DeliveryAddressesMenuHeader</li>
 </ul>
-<a class="btn btn-success" data-toggle="modal" href="#addDeliveryAddressModel" >@AddressViewResources.AddAddressButton</a>
+<a class="btn btn-success" data-toggle="modal" href="#addDeliveryAddressModel">@AddressViewResources.AddAddressButton</a>
 <div class="row-fluid">
     <div id="dashboardModel" class="span12">
         <div data-bind="visible: addressBook().length == 0">
@@ -29,7 +29,7 @@
                     <th>@AddressViewResources.AddressTable_AddressLine2</th>
                     <th>@AddressViewResources.AddressTable_City</th>
                     <th>@AddressViewResources.AddressTable_Region</th>
-                    <th>@AddressViewResources.AddressTable_Country</th>                    
+                    <th>@AddressViewResources.AddressTable_Country</th>
                     <th>@AddressViewResources.AddressTable_ZipCode</th>
                     <th>@AddressViewResources.AddressTable_Phone</th>
                 </tr>
@@ -45,9 +45,8 @@
                             </div>
                             <div class="modal-body">
                                 <form class="form-horizontal" data-bind="attr: { id: addressFormId }">
-                                      @Html.AntiForgeryToken()
-                                      @Html.ValidationSummary()
-                                      @{ Html.RenderPartial("deliveryAddressDetails", Model); }
+                                    @Html.ValidationSummary(CommonResources.DeliveryAddressAddOrUpdateErrorMessage)
+                                    @{ Html.RenderPartial("deliveryAddressDetails"); }
                                 </form>
                             </div>
                             <div class="modal-footer">
@@ -57,7 +56,8 @@
                         </div>
                         <a href="#" data-bind="click: $root.remove" class="btn btn-danger btn-mini"><i class="icon-remove icon-white"></i></a>
                     </td>
-                    <td><span data-bind="text: AddressName"></span><input type="hidden" data-bind="value: Id" /></td>
+                    <td><span data-bind="text: AddressName"></span>
+                        <input type="hidden" data-bind="value: Id" /></td>
                     <td><span data-bind="text: FirstName"></span>, <span data-bind="text: LastName"></span></td>
                     <td><span data-bind="text: AddressLine1"></span></td>
                     <td><span data-bind="text: AddressLine2"></span></td>
@@ -76,12 +76,10 @@
             <h3>@AddressViewResources.AddAddressTitle</h3>
         </div>
         <div class="modal-body">
-            @using (Html.BeginForm("Add", "Address", FormMethod.Post, new Dictionary<string, object> { {"id", "addAddressForm"}, { "class", "form-horizontal" } }))
-            {
-                @Html.AntiForgeryToken()
+            <form class="form-horizontal" id="addAddressForm">
                 @Html.ValidationSummary(CommonResources.DeliveryAddressAddOrUpdateErrorMessage)
-                Html.RenderPartial("deliveryAddressDetails", Model);
-            }
+                @{Html.RenderPartial("deliveryAddressDetails");}
+            </form>
         </div>
         <div class="modal-footer">
             <a href="#" class="btn" data-dismiss="modal">@AddressViewResources.CloseButton</a>

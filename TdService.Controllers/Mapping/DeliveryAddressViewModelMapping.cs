@@ -10,6 +10,7 @@
 namespace TdService.UI.Web.Mapping
 {
     using System.Collections.Generic;
+    using System.Linq;
 
     using AutoMapper;
 
@@ -90,9 +91,16 @@ namespace TdService.UI.Web.Mapping
         /// <returns>
         /// The collection of country view models.
         /// </returns>
-        public static List<CountryViewModel> ConvertToCountriesViewModel(this List<GetCountriesResponse> response)
+        public static IEnumerable<CountryViewModel> ConvertToCountriesViewModel(this List<GetCountriesResponse> response)
         {
-            return Mapper.Map<List<GetCountriesResponse>, List<CountryViewModel>>(response);
+            var converted = Mapper.Map<List<GetCountriesResponse>, List<CountryViewModel>>(response).OrderBy(vm => vm.TranslatedName).ToList();
+            converted.Where(vm => new int[] { 176, 221, 20 }.Contains(vm.Id)).ToArray().Each(
+                vm =>
+                {
+                    converted.Remove(vm);
+                    converted.Insert(0, vm);
+                });
+            return converted;
         }
     }
 }
