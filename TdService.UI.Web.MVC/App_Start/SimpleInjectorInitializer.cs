@@ -60,7 +60,7 @@ namespace TdService.UI.Web.MVC.App_Start
         /// </param>
         private static void InitializeContainer(Container container)
         {
-            container.Register<ILogger, DummyLogger>();
+            container.Register<ILogger, DynamoDbLogger>();
 
             // services
             container.Register<IFormsAuthentication, AspFormsAuthentication>();

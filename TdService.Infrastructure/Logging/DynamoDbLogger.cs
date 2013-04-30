@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="DummyLogger.cs" company="TdService">
+// <copyright file="DynamoDbLogger.cs" company="TdService">
 //   Vitali Hatalski. 2012.
 // </copyright>
 // <summary>
-//   The dummy logger.
+//   The dynamo db logger.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -12,9 +12,9 @@ namespace TdService.Infrastructure.Logging
     using System;
 
     /// <summary>
-    /// The dummy logger.
+    /// The dynamo DB logger.
     /// </summary>
-    public class DummyLogger : ILogger
+    public class DynamoDbLogger : ILogger
     {
         /// <summary>
         /// The warn.
@@ -57,7 +57,7 @@ namespace TdService.Infrastructure.Logging
         }
 
         /// <summary>
-        /// Log the error.
+        /// The error.
         /// </summary>
         /// <param name="message">
         /// The message.
