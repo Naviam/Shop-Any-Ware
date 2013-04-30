@@ -85,7 +85,7 @@ namespace TdService.Model.Addresses
                 this.AddBrokenRule(AddressBusinessRules.AddressLine1MaxLength);
             }
 
-            if (this.AddressLine2.Length > 256)
+            if (!string.IsNullOrEmpty(this.AddressLine2) && this.AddressLine2.Length > 256)
             {
                 this.AddBrokenRule(AddressBusinessRules.AddressLine2MaxLength);
             }
