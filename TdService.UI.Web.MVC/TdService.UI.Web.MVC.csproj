@@ -38,7 +38,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\</OutputPath>
-    <DeployIisAppPath>Default Web Site</DeployIisAppPath>
+    <DeployIisAppPath>shopanyware</DeployIisAppPath>
     <Prefer32Bit>false</Prefer32Bit>
     <PublishDatabases>false</PublishDatabases>
   </PropertyGroup>

@@ -22,7 +22,7 @@ namespace TdService.Infrastructure.Email
         /// <summary>
         /// The credentials.
         /// </summary>
-        private readonly BasicAWSCredentials credentials = new BasicAWSCredentials("", "");
+        private readonly BasicAWSCredentials credentials = new BasicAWSCredentials("AKIAJXBWPMVOLP5D4F3A", "PxCoV5sm+YBg0Km1p4WWMZW/1JpAAXzbvxXmoNC0");
 
         /// <summary>
         /// The send mail.
