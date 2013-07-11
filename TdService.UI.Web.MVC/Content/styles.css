@@ -107,7 +107,7 @@ select,
 
     .modal-body
     {
-        max-height: 464px;
+        max-height: 364px;
     }
 }
 /* end reset bootstrap's css */
